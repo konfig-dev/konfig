@@ -247,6 +247,7 @@ methodObjects:
         description: >-
           Retrieve the primary documents associated with the specified docket
           number in the case with the specified caseId value.
+        example: 0
       - name: inLibrary
         schema: boolean
         required: false
@@ -314,6 +315,7 @@ methodObjects:
         description: >-
           Retrieve the secondary documents associated with the specified docket
           number in the case with the specified caseId value.
+        example: 0
       - name: inLibrary
         schema: boolean
         description: >-
@@ -435,6 +437,7 @@ methodObjects:
         description: >-
           Query parameter specifying the page number of the search results to be
           retrieved.
+        example: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -618,6 +621,7 @@ methodObjects:
         description: |
           Page number.
           - minimum: 1
+        example: 0
     responses:
       - statusCode: '200'
         description: Case Counts by Area Of Law Response.
@@ -655,6 +659,7 @@ methodObjects:
         description: |
           Page number.
           - minimum: 1
+        example: 0
     responses:
       - statusCode: '200'
         description: Case Counts by Case Class Response.
@@ -692,10 +697,12 @@ methodObjects:
         description: |
           Page number.
           - minimum: 1
+        example: 0
       - name: groupBy
         schema: string
         required: true
         description: GroupBy
+        example: GROUPBY
     responses:
       - statusCode: '200'
         description: Response for Case Count by filing date.
@@ -733,6 +740,7 @@ methodObjects:
         description: |
           Page number.
           - minimum: 1
+        example: 0
     responses:
       - statusCode: '200'
         description: Case Counts by Case Types Response.
@@ -770,6 +778,7 @@ methodObjects:
         description: |
           Page number.
           - minimum: 1
+        example: 0
     responses:
       - statusCode: '200'
         description: Case Counts by Case Type Group Response.
@@ -807,6 +816,7 @@ methodObjects:
         description: |
           Page number.
           - minimum: 1
+        example: 0
     responses:
       - statusCode: '200'
         description: Case Counts by Court.
@@ -844,6 +854,7 @@ methodObjects:
         description: |
           Page number.
           - minimum: 1
+        example: 0
     responses:
       - statusCode: '200'
         description: Case Counts by Court Location Response.
@@ -881,6 +892,7 @@ methodObjects:
         description: |
           Page number.
           - minimum: 1
+        example: 0
     responses:
       - statusCode: '200'
         description: Case Counts by Court System.
@@ -918,6 +930,7 @@ methodObjects:
         description: |
           Page number.
           - minimum: 1
+        example: 0
     responses:
       - statusCode: '200'
         description: Case Counts by Court Type.
@@ -955,6 +968,7 @@ methodObjects:
         description: |
           Page number.
           - minimum: 1
+        example: 0
     responses:
       - statusCode: '200'
         description: Case Counts by Juridiction Geo Response.
@@ -992,6 +1006,7 @@ methodObjects:
         description: |
           Page number.
           - minimum: 1
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -1029,6 +1044,7 @@ methodObjects:
         description: |
           Page number.
           - minimum: 1
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -1066,6 +1082,7 @@ methodObjects:
         description: |
           Page number.
           - minimum: 1
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -1103,6 +1120,7 @@ methodObjects:
         description: |
           Page number.
           - minimum: 1
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -1140,6 +1158,7 @@ methodObjects:
         description: |
           Page number.
           - minimum: 1
+        example: 0
     responses:
       - statusCode: '200'
         description: Case Count by Party Type Response.
@@ -1177,6 +1196,7 @@ methodObjects:
         description: |
           Page number.
           - minimum: 1
+        example: 0
     responses:
       - statusCode: '200'
         description: Case Count by Party Type Group Response.
@@ -1225,6 +1245,7 @@ methodObjects:
       - name: isPreviewDocument
         schema: boolean
         description: If the document you want to download is a preview of a document.
+        default: false
     responses:
       - statusCode: '200'
         description: ''
@@ -1264,10 +1285,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: CDOCcre989d654fa05
       - name: isPreviewOnly
         schema: boolean
         required: true
         description: ''
+        example: true
       - name: pacerOptions
         schema: object
         required: false
@@ -1312,6 +1335,7 @@ methodObjects:
         description: |
           Page to fetch the Case Document Order Callback list.<br>
             - Minimum: 1
+        default: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -1359,6 +1383,7 @@ methodObjects:
       - name: date
         schema: string
         description: The date for which callbacks are to be retrieved.
+        example: '2022-03-08T10:17:56.000Z'
       - name: status
         schema: string
         description: The status code of the callbacks to be retrieved.
@@ -1367,6 +1392,8 @@ methodObjects:
         description: |
           The page number of the callbacks to be retrieved.<br>
             - Minimum: 1
+        example: 1
+        default: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -1434,16 +1461,21 @@ methodObjects:
         required: true
         description: |
           Query parameter for keyword expressions.</a>
+        example: Q
       - name: sort
         schema: string
         description: >-
           Query parameter specifying how results are to be sorted. Results can
           be sorted according to filedDate or relevancy.
+        example: filedDate
+        default: filedDate
       - name: order
         schema: string
         description: >-
           Query parameter specifying whether search result are sorted in
           ascending or descending order.
+        example: desc
+        default: desc
       - name: pageNumber
         schema: integer
         description: >
@@ -1453,6 +1485,7 @@ methodObjects:
           - Minimum: 1
 
           - Maximum: 1000
+        example: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -1482,6 +1515,7 @@ methodObjects:
           - Minimum: 1
 
           - Maximum: 1000
+        example: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -1587,15 +1621,18 @@ methodObjects:
         description: >
           The lastFetchDate value of the tracked case. The date value should be
           entered in the format YYYY-MM-DDTHH:MM:SS+ZZ:zz.
+        example: '2022-03-08T10:17:56.000Z'
       - name: lastFetchDateWithUpdates
         schema: string
         description: |
           The date on which changes were last found in the case information.
+        example: '2022-03-08T10:17:56.000Z'
       - name: pageNumber
         schema: integer
         description: |
           The page number of the results to be retrieved.<br>
             - Minimum: 1
+        example: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -1620,6 +1657,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: CASEhq9d8b72d0800c
       - name: pacerOptions
         schema: object
         required: false
@@ -1680,6 +1718,8 @@ methodObjects:
         description: |
           The page number of the callbacks to be retrieved.<br>
             - Minimum: 1
+        example: 1
+        default: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -1744,10 +1784,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: G3cfixgetVzfaoszGOBp5LPGtih1nMJ9
       - name: clientSecret
         schema: string
         required: true
         description: ''
+        example: u6PTti57IjPlrwU5MzOwLBD2MCwx-IEbo8sTStTivh1I-EqQ8Jcm27Gfo2GhpHCw
     responses:
       - statusCode: '200'
         description: ''
@@ -1777,10 +1819,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: G3cfixgetVzfaoszGOBp5LPGtih1nMJ9
       - name: clientSecret
         schema: string
         required: true
         description: ''
+        example: u6PTti57IjPlrwU5MzOwLBD2MCwx-IEbo8sTStTivh1I-EqQ8Jcm27Gfo2GhpHCw
     responses:
       - statusCode: '200'
         description: Success object contains its message related to the API request.
@@ -1805,14 +1849,17 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: G3cfixgetVzfaoszGOBp5LPGtih1nMJ9
       - name: clientSecret
         schema: string
         required: true
         description: ''
+        example: u6PTti57IjPlrwU5MzOwLBD2MCwx-IEbo8sTStTivh1I-EqQ8Jcm27Gfo2GhpHCw
       - name: tokenId
         schema: string
         required: true
         description: ''
+        example: TKID384a057WFC3Dp3
     responses:
       - statusCode: '200'
         description: Success object contains its message related to the API request.
@@ -1862,10 +1909,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: G3cfixgetVzfaoszGOBp5LPGtih1nMJ9
       - name: clientSecret
         schema: string
         required: true
         description: ''
+        example: u6PTti57IjPlrwU5MzOwLBD2MCwx-IEbo8sTStTivh1I-EqQ8Jcm27Gfo2GhpHCw
     responses:
       - statusCode: '200'
         description: ''
@@ -1898,14 +1947,19 @@ methodObjects:
           The page number of the results to be retrieved.
           - minimum: 1
           - maximum: 100
+        example: 1
       - name: sort
         schema: string
         description: The field according to which search results are to be sorted.
+        example: name
+        default: name
       - name: order
         schema: string
         description: >-
           Whether search results are to be shown in ascending or descending
           order.
+        example: asc
+        default: asc
     responses:
       - statusCode: '200'
         description: ''
@@ -1956,14 +2010,19 @@ methodObjects:
           The page number of the results to be retrieved.
           - minimum: 1
           - maximum: 100
+        example: 1
       - name: sort
         schema: string
         description: The field according to which search results are to be sorted.
+        example: name
+        default: name
       - name: order
         schema: string
         description: >-
           Whether search results are to be shown in ascending or descending
           order.
+        example: asc
+        default: asc
     responses:
       - statusCode: '200'
         description: ''
@@ -2016,14 +2075,19 @@ methodObjects:
           The page number of the results to be retrieved.
           - minimum: 1
           - maximum: 100
+        example: 1
       - name: sort
         schema: string
         description: The field according to which search results are to be sorted.
+        example: name
+        default: name
       - name: order
         schema: string
         description: >-
           Whether search results are to be shown in ascending or descending
           order.
+        example: asc
+        default: asc
     responses:
       - statusCode: '200'
         description: ''
@@ -2074,14 +2138,19 @@ methodObjects:
           The page number of the results to be retrieved.
           - minimum: 1
           - maximum: 100
+        example: 1
       - name: sort
         schema: string
         description: The field according to which search results are to be sorted.
+        example: name
+        default: name
       - name: order
         schema: string
         description: >-
           Whether search results are to be shown in ascending or descending
           order.
+        example: asc
+        default: asc
     responses:
       - statusCode: '200'
         description: ''
@@ -2132,14 +2201,19 @@ methodObjects:
           The page number of the results to be retrieved.
           - minimum: 1
           - maximum: 100
+        example: 1
       - name: sort
         schema: string
         description: The field according to which search results are to be sorted.
+        example: name
+        default: name
       - name: order
         schema: string
         description: >-
           Whether search results are to be shown in ascending or descending
           order.
+        example: asc
+        default: asc
     responses:
       - statusCode: '200'
         description: ''
@@ -2190,14 +2264,19 @@ methodObjects:
           The page number of the results to be retrieved.
           - minimum: 1
           - maximum: 100
+        example: 1
       - name: sort
         schema: string
         description: The field according to which search results are to be sorted.
+        example: name
+        default: name
       - name: order
         schema: string
         description: >-
           Whether search results are to be shown in ascending or descending
           order.
+        example: asc
+        default: asc
     responses:
       - statusCode: '200'
         description: ''
@@ -2248,14 +2327,19 @@ methodObjects:
           The page number of the results to be retrieved.
           - minimum: 1
           - maximum: 100
+        example: 1
       - name: sort
         schema: string
         description: The field according to which search results are to be sorted.
+        example: name
+        default: name
       - name: order
         schema: string
         description: >-
           Whether search results are to be shown in ascending or descending
           order.
+        example: asc
+        default: asc
     responses:
       - statusCode: '200'
         description: ''
@@ -2308,14 +2392,19 @@ methodObjects:
           The page number of the results to be retrieved.
           - minimum: 1
           - maximum: 100
+        example: 1
       - name: sort
         schema: string
         description: The field according to which search results are to be sorted.
+        example: name
+        default: name
       - name: order
         schema: string
         description: >-
           Whether search results are to be shown in ascending or descending
           order.
+        example: asc
+        default: asc
     responses:
       - statusCode: '200'
         description: ''
@@ -2368,14 +2457,19 @@ methodObjects:
           The page number of the results to be retrieved.
           - minimum: 1
           - maximum: 100
+        example: 1
       - name: sort
         schema: string
         description: The field according to which search results are to be sorted.
+        example: name
+        default: name
       - name: order
         schema: string
         description: >-
           Whether search results are to be shown in ascending or descending
           order.
+        example: asc
+        default: asc
     responses:
       - statusCode: '200'
         description: ''
@@ -2426,14 +2520,19 @@ methodObjects:
           The page number of the results to be retrieved.
           - minimum: 1
           - maximum: 100
+        example: 1
       - name: sort
         schema: string
         description: The field according to which search results are to be sorted.
+        example: name
+        default: name
       - name: order
         schema: string
         description: >-
           Whether search results are to be shown in ascending or descending
           order.
+        example: asc
+        default: asc
     responses:
       - statusCode: '200'
         description: ''
@@ -2485,14 +2584,19 @@ methodObjects:
           The page number of the results to be retrieved.
           - minimum: 1
           - maximum: 100
+        example: 1
       - name: sort
         schema: string
         description: The field according to which search results are to be sorted.
+        example: name
+        default: name
       - name: order
         schema: string
         description: >-
           Whether search results are to be shown in ascending or descending
           order.
+        example: asc
+        default: asc
     responses:
       - statusCode: '200'
         description: ''
@@ -2546,14 +2650,19 @@ methodObjects:
           The page number of the results to be retrieved.
           - minimum: 1
           - maximum: 100
+        example: 1
       - name: sort
         schema: string
         description: The field according to which search results are to be sorted.
+        example: name
+        default: name
       - name: order
         schema: string
         description: >-
           Whether search results are to be shown in ascending or descending
           order.
+        example: asc
+        default: asc
     responses:
       - statusCode: '200'
         description: ''
@@ -2604,14 +2713,19 @@ methodObjects:
           The page number of the results to be retrieved.
           - minimum: 1
           - maximum: 100
+        example: 1
       - name: sort
         schema: string
         description: The field according to which search results are to be sorted.
+        example: name
+        default: name
       - name: order
         schema: string
         description: >-
           Whether search results are to be shown in ascending or descending
           order.
+        example: asc
+        default: asc
     responses:
       - statusCode: '200'
         description: ''
@@ -2663,14 +2777,19 @@ methodObjects:
           The page number of the results to be retrieved.
           - minimum: 1
           - maximum: 100
+        example: 1
       - name: sort
         schema: string
         description: The field according to which search results are to be sorted.
+        example: name
+        default: name
       - name: order
         schema: string
         description: >-
           Whether search results are to be shown in ascending or descending
           order.
+        example: asc
+        default: asc
     responses:
       - statusCode: '200'
         description: ''
@@ -2721,14 +2840,19 @@ methodObjects:
           The page number of the results to be retrieved.
           - minimum: 1
           - maximum: 100
+        example: 1
       - name: sort
         schema: string
         description: The field according to which search results are to be sorted.
+        example: name
+        default: name
       - name: order
         schema: string
         description: >-
           Whether search results are to be shown in ascending or descending
           order.
+        example: asc
+        default: asc
     responses:
       - statusCode: '200'
         description: ''
@@ -2779,14 +2903,19 @@ methodObjects:
           The page number of the results to be retrieved.
           - minimum: 1
           - maximum: 100
+        example: 1
       - name: sort
         schema: string
         description: The field according to which search results are to be sorted.
+        example: name
+        default: name
       - name: order
         schema: string
         description: >-
           Whether search results are to be shown in ascending or descending
           order.
+        example: asc
+        default: asc
     responses:
       - statusCode: '200'
         description: ''
@@ -2837,14 +2966,19 @@ methodObjects:
           The page number of the results to be retrieved.
           - minimum: 1
           - maximum: 100
+        example: 1
       - name: sort
         schema: string
         description: The field according to which search results are to be sorted.
+        example: name
+        default: name
       - name: order
         schema: string
         description: >-
           Whether search results are to be shown in ascending or descending
           order.
+        example: asc
+        default: asc
     responses:
       - statusCode: '200'
         description: ''
@@ -2897,14 +3031,19 @@ methodObjects:
           The page number of the results to be retrieved.
           - minimum: 1
           - maximum: 100
+        example: 1
       - name: sort
         schema: string
         description: The field according to which search results are to be sorted.
+        example: name
+        default: name
       - name: order
         schema: string
         description: >-
           Whether search results are to be shown in ascending or descending
           order.
+        example: asc
+        default: asc
     responses:
       - statusCode: '200'
         description: ''
@@ -2951,14 +3090,19 @@ methodObjects:
           The page number of the results to be retrieved.
           - minimum: 1
           - maximum: 100
+        example: 1
       - name: sort
         schema: string
         description: The field according to which search results are to be sorted.
+        example: name
+        default: name
       - name: order
         schema: string
         description: >-
           Whether search results are to be shown in ascending or descending
           order.
+        example: asc
+        default: asc
     responses:
       - statusCode: '200'
         description: ''
@@ -2990,14 +3134,19 @@ methodObjects:
           The page number of the results to be retrieved.
           - minimum: 1
           - maximum: 100
+        example: 1
       - name: sort
         schema: string
         description: The field according to which search results are to be sorted.
+        example: name
+        default: name
       - name: order
         schema: string
         description: >-
           Whether search results are to be shown in ascending or descending
           order.
+        example: asc
+        default: asc
     responses:
       - statusCode: '200'
         description: ''
@@ -3029,14 +3178,19 @@ methodObjects:
           The page number of the results to be retrieved.
           - minimum: 1
           - maximum: 100
+        example: 1
       - name: sort
         schema: string
         description: The field according to which search results are to be sorted.
+        example: state
+        default: state
       - name: order
         schema: string
         description: >-
           Whether search results are to be shown in ascending or descending
           order.
+        example: asc
+        default: asc
     responses:
       - statusCode: '200'
         description: ''
@@ -3074,14 +3228,19 @@ methodObjects:
           The page number of the results to be retrieved.
           - minimum: 1
           - maximum: 100
+        example: 1
       - name: sort
         schema: string
         description: The field according to which search results are to be sorted.
+        example: name
+        default: name
       - name: order
         schema: string
         description: >-
           Whether search results are to be shown in ascending or descending
           order.
+        example: asc
+        default: asc
     responses:
       - statusCode: '200'
         description: ''
@@ -3128,14 +3287,19 @@ methodObjects:
           The page number of the results to be retrieved.
           - minimum: 1
           - maximum: 100
+        example: 1
       - name: sort
         schema: string
         description: The field according to which search results are to be sorted.
+        example: name
+        default: name
       - name: order
         schema: string
         description: >-
           Whether search results are to be shown in ascending or descending
           order.
+        example: asc
+        default: asc
     responses:
       - statusCode: '200'
         description: ''
@@ -3173,14 +3337,19 @@ methodObjects:
           The page number of the results to be retrieved.
           - minimum: 1
           - maximum: 100
+        example: 1
       - name: sort
         schema: string
         description: The field according to which search results are to be sorted.
+        example: name
+        default: name
       - name: order
         schema: string
         description: >-
           Whether search results are to be shown in ascending or descending
           order.
+        example: asc
+        default: asc
     responses:
       - statusCode: '200'
         description: ''
@@ -3233,14 +3402,19 @@ methodObjects:
           The page number of the results to be retrieved.
           - minimum: 1
           - maximum: 100
+        example: 1
       - name: sort
         schema: string
         description: The field according to which search results are to be sorted.
+        example: name
+        default: name
       - name: order
         schema: string
         description: >-
           Whether search results are to be shown in ascending or descending
           order.
+        example: asc
+        default: asc
     responses:
       - statusCode: '200'
         description: ''
@@ -3293,14 +3467,19 @@ methodObjects:
           The page number of the results to be retrieved.
           - minimum: 1
           - maximum: 100
+        example: 1
       - name: sort
         schema: string
         description: The field according to which search results are to be sorted.
+        example: name
+        default: name
       - name: order
         schema: string
         description: >-
           Whether search results are to be shown in ascending or descending
           order.
+        example: asc
+        default: asc
     responses:
       - statusCode: '200'
         description: ''
@@ -3351,14 +3530,19 @@ methodObjects:
           The page number of the results to be retrieved.
           - minimum: 1
           - maximum: 100
+        example: 1
       - name: sort
         schema: string
         description: The field according to which search results are to be sorted.
+        example: name
+        default: name
       - name: order
         schema: string
         description: >-
           Whether search results are to be shown in ascending or descending
           order.
+        example: asc
+        default: asc
     responses:
       - statusCode: '200'
         description: ''
@@ -3411,14 +3595,19 @@ methodObjects:
           The page number of the results to be retrieved.
           - minimum: 1
           - maximum: 100
+        example: 1
       - name: sort
         schema: string
         description: The field according to which search results are to be sorted.
+        example: state
+        default: state
       - name: order
         schema: string
         description: >-
           Whether search results are to be shown in ascending or descending
           order.
+        example: asc
+        default: asc
     responses:
       - statusCode: '200'
         description: ''
@@ -3465,12 +3654,17 @@ methodObjects:
           Page number.
           - minimum: 1
           - maximum: 100
+        example: 1
       - name: sort
         schema: string
         description: Sort field.
+        example: name
+        default: name
       - name: order
         schema: string
         description: Sort order.
+        example: asc
+        default: asc
     responses:
       - statusCode: '200'
         description: ''
@@ -3506,14 +3700,19 @@ methodObjects:
           The page number of the results to be retrieved.
           - minimum: 1
           - maximum: 100
+        example: 1
       - name: sort
         schema: string
         description: The field according to which search results are to be sorted.
+        example: name
+        default: name
       - name: order
         schema: string
         description: >-
           Whether search results are to be shown in ascending or descending
           order.
+        example: asc
+        default: asc
     responses:
       - statusCode: '200'
         description: ''
@@ -3564,14 +3763,19 @@ methodObjects:
           The page number of the results to be retrieved.
           - minimum: 1
           - maximum: 100
+        example: 1
       - name: sort
         schema: string
         description: The field according to which search results are to be sorted.
+        example: name
+        default: name
       - name: order
         schema: string
         description: >-
           Whether search results are to be shown in ascending or descending
           order.
+        example: asc
+        default: asc
     responses:
       - statusCode: '200'
         description: ''
@@ -3644,6 +3848,7 @@ methodObjects:
         description: |
           Page number.
           - minimum: 1
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -3681,6 +3886,7 @@ methodObjects:
         description: |
           Page number.
           - minimum: 1
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -3718,6 +3924,7 @@ methodObjects:
         description: |
           Page number.
           - minimum: 1
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -3755,6 +3962,7 @@ methodObjects:
         description: |
           Page number.
           - minimum: 1
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -3796,6 +4004,7 @@ methodObjects:
           - Minimum: 1
 
           - Maximum: 1000
+        example: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -3825,6 +4034,7 @@ methodObjects:
           - Minimum: 1
 
           - Maximum: 1000
+        example: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -3882,6 +4092,7 @@ methodObjects:
         description: |
           Page number.
           - minimum: 1
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -3919,6 +4130,7 @@ methodObjects:
         description: |
           Page number.
           - minimum: 1
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -3956,6 +4168,7 @@ methodObjects:
         description: |
           Page number.
           - minimum: 1
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -3997,6 +4210,7 @@ methodObjects:
           - Minimum: 1
 
           - Maximum: 1000
+        example: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -4026,6 +4240,7 @@ methodObjects:
           - Minimum: 1
 
           - Maximum: 1000
+        example: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -4083,6 +4298,7 @@ methodObjects:
         description: |
           Page number.
           - minimum: 1
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -4120,6 +4336,7 @@ methodObjects:
         description: |
           Page number.
           - minimum: 1
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -4157,6 +4374,7 @@ methodObjects:
         description: |
           Page number.
           - minimum: 1
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -4194,6 +4412,7 @@ methodObjects:
         description: |
           Page number.
           - minimum: 1
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -4235,6 +4454,7 @@ methodObjects:
           - Minimum: 1
 
           - Maximum: 1000
+        example: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -4264,6 +4484,7 @@ methodObjects:
           - Minimum: 1
 
           - Maximum: 1000
+        example: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -4321,6 +4542,7 @@ methodObjects:
         description: |
           Page number.
           - minimum: 1
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -4358,6 +4580,7 @@ methodObjects:
         description: |
           Page number.
           - minimum: 1
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -4395,6 +4618,7 @@ methodObjects:
         description: |
           Page number.
           - minimum: 1
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -4432,6 +4656,7 @@ methodObjects:
         description: |
           Page number.
           - minimum: 1
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -4473,6 +4698,7 @@ methodObjects:
           - Minimum: 1
 
           - Maximum: 1000
+        example: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -4502,6 +4728,7 @@ methodObjects:
           - Minimum: 1
 
           - Maximum: 1000
+        example: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -4533,18 +4760,22 @@ methodObjects:
         description: >-
           The PACER username of the PACER account under which the case should be
           imported.
+        example: johndoe
       - name: pacerClientCode
         schema: string
         required: true
         description: The PACER client code under which the case should be imported.
+        example: john
       - name: caseNumber
         schema: string
         required: true
         description: The case number of the case to be imported.
+        example: 2:15-mc-12345
       - name: courtId
         schema: string
         required: true
         description: The courtId value of the court from which the case is to be imported.
+        example: COURTID
     responses:
       - statusCode: '200'
         description: ''
@@ -4571,13 +4802,16 @@ methodObjects:
         description: >-
           The username of the PACER account under which the search is to be
           performed.
+        example: johndoe
       - name: pacerClientCode
         schema: string
         required: true
         description: The PACER client code under which the search is to be performed.
+        example: john
       - name: caseNumber
         schema: string
         description: "The case number of the target case. You may use the following case-number formats: \n\n\tyy-nnnnn \n\n\tyy-tp-nnnnn \n\n\tyy tp nnnnn \n\n\tyytpnnnnn \n\n\to:yy-nnnnn \n\n\to:yy-tp-nnnnn \n\n\to:yy tp nnnnn \n\n\to:yytpnnnnn \n\nwhere: \n\nyy  case year (may be 2 or 4 digits) \n\nnnnnn  case number (up to 5 digits) \n\ntp  case type (up to 2 characters) \n\no  office where the case was filed (1 digit)."
+        example: 12-1234
       - name: pacerCaseId
         schema: integer
         description: The PACER-assigned identifier of the target case.
@@ -4626,6 +4860,7 @@ methodObjects:
       - name: sortParameterQuery
         schema: string
         description: "How search results from PACER are to be sorted. Please see Appendix C for valid sort-related settings. \n\n\tScenario: When mulitple sort paramters needs to be requested. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of courtId and caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtId,ASC&caseId,ASC"
+        default: sort=caseYear,DESC
       - name: caseStatus
         schema: string
         description: Whether the target case is marked as 'open' or 'closed' within PACER.
@@ -4658,13 +4893,16 @@ methodObjects:
         description: >-
           The username of the PACER account under which the search is to be
           performed.
+        example: johndoe
       - name: pacerClientCode
         schema: string
         required: true
         description: The PACER client code under which the search is to be performed.
+        example: john
       - name: caseNumber
         schema: string
         description: "The case number of the target case. You may use the following case-number formats: \n\n\tyy-nnnnn  \n\nwhere: \n\nyy  case year (may be 2 or 4 digits) \n\nnnnnn  case number (up to 5 digits)."
+        example: 12-1234
       - name: pacerCaseId
         schema: integer
         description: The PACER-assigned identifier of the target case.
@@ -4716,12 +4954,14 @@ methodObjects:
       - name: sortParameterQuery
         schema: string
         description: "How search results from PACER are to be sorted. Please see Appendix C for valid sort-related settings. \n\n\tScenario: When mulitple sort paramters needs to be requested. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of courtId and caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtId,ASC&caseId,ASC"
+        default: sort=caseYear,DESC
       - name: caseStatus
         schema: string
         description: Whether the target case is marked as 'open' or 'closed' within PACER.
       - name: pageNumber
         schema: integer
         description: The page number of the search results to be retrieved.
+        example: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -4748,13 +4988,16 @@ methodObjects:
         description: >-
           The username of the PACER account under which the search is to be
           performed.
+        example: johndoe
       - name: pacerClientCode
         schema: string
         required: true
         description: The PACER client code under which the search is to be performed.
+        example: john
       - name: caseNumber
         schema: string
         description: "The case number of the target case. You may use the following case-number formats: \n\n\tyy-nnnnn \n\n\tyy-tp-nnnnn \n\n\tyy tp nnnnn \n\n\tyytpnnnnn \n\n\to:yy-nnnnn \n\n\to:yy-tp-nnnnn \n\n\to:yy tp nnnnn \n\n\to:yytpnnnnn \n\nwhere: \n\nyy  case year (may be 2 or 4 digits) \n\nnnnnn  case number (up to 5 digits) \n\ntp  case type (up to 2 characters) \n\no  office where the case was filed (1 digit)."
+        example: 12-1234
       - name: pacerCaseId
         schema: integer
         description: The PACER-assigned identifier of the target case.
@@ -4821,6 +5064,7 @@ methodObjects:
       - name: sortParameterQuery
         schema: string
         description: "How search results from PACER are to be sorted. Please see Appendix C for valid sort-related settings. \n\n\tScenario: When mulitple sort paramters needs to be requested. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of courtId and caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtId,ASC&caseId,ASC"
+        default: sort=caseYear,DESC
       - name: caseStatus
         schema: string
         description: Whether the target case is marked as 'open' or 'closed' within PACER.
@@ -4853,13 +5097,16 @@ methodObjects:
         description: >-
           The username of the PACER account under which the search is to be
           performed.
+        example: johndoe
       - name: pacerClientCode
         schema: string
         required: true
         description: The PACER client code under which the search is to be performed.
+        example: john
       - name: caseNumber
         schema: string
         description: "The case number of the target case. You may use the following case-number formats: \n\n\tyy-nnnnn \n\n\tyy-tp-nnnnn \n\n\tyy tp nnnnn \n\n\tyytpnnnnn \n\n\to:yy-nnnnn \n\n\to:yy-tp-nnnnn \n\n\to:yy tp nnnnn \n\n\to:yytpnnnnn \n\nwhere: \n\nyy  case year (may be 2 or 4 digits) \n\nnnnnn  case number (up to 5 digits) \n\ntp  case type (up to 2 characters) \n\no  office where the case was filed (1 digit)."
+        example: 12-1234
       - name: pacerCaseId
         schema: integer
         description: The PACER-assigned identifier of the target case.
@@ -4911,6 +5158,7 @@ methodObjects:
       - name: sortParameterQuery
         schema: string
         description: "How search results from PACER are to be sorted. Please see Appendix C for valid sort-related settings. \n\n\tScenario: When mulitple sort paramters needs to be requested. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of courtId and caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtId,ASC&caseId,ASC"
+        default: sort=caseYear,DESC
       - name: caseStatus
         schema: string
         description: Whether the target case is marked as 'open' or 'closed' within PACER.
@@ -4943,13 +5191,16 @@ methodObjects:
         description: >-
           The username of the PACER account under which the search is to be
           performed.
+        example: johndoe
       - name: pacerClientCode
         schema: string
         required: true
         description: The PACER client code under which the search is to be performed.
+        example: john
       - name: caseNumber
         schema: string
         description: "The case number of the target case. You may use the following case-number formats: \n\n\tyy-nnnnn \n\n\tyy-tp-nnnnn \n\n\tyy tp nnnnn \n\n\tyytpnnnnn \n\n\to:yy-nnnnn \n\n\to:yy-tp-nnnnn \n\n\to:yy tp nnnnn \n\n\to:yytpnnnnn \n\nwhere: \n\nyy  case year (may be 2 or 4 digits) \n\nnnnnn  case number (up to 5 digits) \n\ntp  case type (up to 2 characters) \n\no  office where the case was filed (1 digit)."
+        example: 12-1234
       - name: pacerCaseId
         schema: integer
         description: The PACER-assigned identifier of the target case.
@@ -4998,6 +5249,7 @@ methodObjects:
       - name: sortParameterQuery
         schema: string
         description: "How search results from PACER are to be sorted. Please see Appendix C for valid sort-related settings. \n\n\tScenario: When mulitple sort paramters needs to be requested. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of courtId and caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtId,ASC&caseId,ASC"
+        default: sort=caseYear,DESC
       - name: caseStatus
         schema: string
         description: Whether the target case is marked as 'open' or 'closed' within PACER.
@@ -5030,13 +5282,16 @@ methodObjects:
         description: >-
           The username of the PACER account under which the search is to be
           performed.
+        example: johndoe
       - name: pacerClientCode
         schema: string
         required: true
         description: The PACER client code under which the search is to be performed.
+        example: john
       - name: caseNumber
         schema: string
         description: "The case number of the target case. You may use the following case-number formats: \n\n\tyy-nnnnn \n\n\tyy-tp-nnnnn \n\n\tyy tp nnnnn \n\n\tyytpnnnnn \n\n\to:yy-nnnnn \n\n\to:yy-tp-nnnnn \n\n\to:yy tp nnnnn \n\n\to:yytpnnnnn \n\nwhere: \n\nyy  case year (may be 2 or 4 digits) \n\nnnnnn  case number (up to 5 digits) \n\ntp  case type (up to 2 characters) \n\no  office where the case was filed (1 digit)."
+        example: 12-1234
       - name: jpmlNumber
         schema: integer
         description: Master JPML Case Number.
@@ -5088,6 +5343,7 @@ methodObjects:
       - name: sortParameterQuery
         schema: string
         description: "How search results from PACER are to be sorted. Please see Appendix C for valid sort-related settings. \n\n\tScenario: When mulitple sort paramters needs to be requested. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of courtId and caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtId,ASC&caseId,ASC"
+        default: sort=caseYear,DESC
       - name: caseStatus
         schema: string
         description: Whether the target case is marked as 'open' or 'closed' within PACER.
@@ -5120,13 +5376,16 @@ methodObjects:
         description: >-
           The username of the PACER account under which the search is to be
           performed.
+        example: johndoe
       - name: pacerClientCode
         schema: string
         required: true
         description: The PACER client code under which the search is to be performed.
+        example: john
       - name: caseNumber
         schema: string
         description: "The case number of the target case. You may use the following case-number formats: \n\n\tyy-nnnnn \n\n\tyy-tp-nnnnn \n\n\tyy tp nnnnn \n\n\tyytpnnnnn \n\n\to:yy-nnnnn \n\n\to:yy-tp-nnnnn \n\n\to:yy tp nnnnn \n\n\to:yytpnnnnn \n\nwhere: \n\nyy  case year (may be 2 or 4 digits) \n\nnnnnn  case number (up to 5 digits) \n\ntp  case type (up to 2 characters) \n\no  office where the case was filed (1 digit)."
+        example: 12-1234
       - name: pacerCaseId
         schema: integer
         description: The PACER-assigned identifier of the target case.
@@ -5135,21 +5394,26 @@ methodObjects:
         description: >-
           The last name (for an individual) or the entity name (for a business
           entity) of the target party.
+        example: John
       - name: firstName
         schema: string
         description: The first name of the target party.
+        example: John
       - name: middleName
         schema: string
         description: The middle name of the target party.
+        example: Doe
       - name: generation
         schema: string
         description: The suffix (e.g., Jr., III) of the target party's name.
+        example: III
       - name: partyType
         schema: string
         description: >-
           The court-assigned party type for a party involved in a case. Party
           type codes are created and assigned by individual courts, and as such,
           their meanings can vary from court to court.
+        example: ptf
       - name: partyExactNameMatch
         schema: boolean
         description: >-
@@ -5216,6 +5480,7 @@ methodObjects:
       - name: sortParameterQuery
         schema: string
         description: "How search results from PACER are to be sorted. Please see Appendix C for valid sort-related settings. \n\n\tScenario 1: When mulitple sort paramters needs to be requested. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of courtId and caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtId,ASC&caseId,ASC \n\n\tScenario 2: When you want to sort the response using the case parameters in the party search. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of caseOffice and descending order of caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtCase.caseOffice,ASC&caseid,DESC"
+        default: sort=caseYear,DESC
       - name: caseStatus
         schema: string
         description: Whether the target case is marked as 'open' or 'closed' within PACER.
@@ -5248,13 +5513,16 @@ methodObjects:
         description: >-
           The username of the PACER account under which the search is to be
           performed.
+        example: johndoe
       - name: pacerClientCode
         schema: string
         required: true
         description: The PACER client code under which the search is to be performed.
+        example: john
       - name: caseNumber
         schema: string
         description: "The case number of the target case. You may use the following case-number formats: \n\n\tyy-nnnnn \n\n\tyy-tp-nnnnn \n\n\tyy tp nnnnn \n\n\tyytpnnnnn \n\n\to:yy-nnnnn \n\n\to:yy-tp-nnnnn \n\n\to:yy tp nnnnn \n\n\to:yytpnnnnn \n\nwhere: \n\nyy  case year (may be 2 or 4 digits) \n\nnnnnn  case number (up to 5 digits) \n\ntp  case type (up to 2 characters) \n\no  office where the case was filed (1 digit)."
+        example: 12-1234
       - name: pacerCaseId
         schema: integer
         description: The PACER-assigned identifier of the target case.
@@ -5263,21 +5531,26 @@ methodObjects:
         description: >-
           The last name (for an individual) or the entity name (for a business
           entity) of the target party.
+        example: John
       - name: firstName
         schema: string
         description: The first name of the target party.
+        example: John
       - name: middleName
         schema: string
         description: The middle name of the target party.
+        example: Doe
       - name: generation
         schema: string
         description: The suffix (e.g., Jr., III) of the target party's name.
+        example: III
       - name: partyType
         schema: string
         description: >-
           The court-assigned party type for a party involved in a case. Party
           type codes are created and assigned by individual courts, and as such,
           their meanings can vary from court to court.
+        example: ptf
       - name: partyExactNameMatch
         schema: boolean
         description: >-
@@ -5344,6 +5617,7 @@ methodObjects:
       - name: sortParameterQuery
         schema: string
         description: "How search results from PACER are to be sorted. Please see Appendix C for valid sort-related settings. \n\n\tScenario 1: When mulitple sort paramters needs to be requested. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of courtId and caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtId,ASC&caseId,ASC \n\n\tScenario 2: When you want to sort the response using the case parameters in the party search. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of caseOffice and descending order of caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtCase.caseOffice,ASC&caseid,DESC"
+        default: sort=caseYear,DESC
       - name: caseStatus
         schema: string
         description: Whether the target case is marked as 'open' or 'closed' within PACER.
@@ -5376,13 +5650,16 @@ methodObjects:
         description: >-
           The username of the PACER account under which the search is to be
           performed.
+        example: johndoe
       - name: pacerClientCode
         schema: string
         required: true
         description: The PACER client code under which the search is to be performed.
+        example: john
       - name: caseNumber
         schema: string
         description: "The case number of the target case. You may use the following case-number formats: \n\n\tyy-nnnnn \n\n\tyy-tp-nnnnn \n\n\tyy tp nnnnn \n\n\tyytpnnnnn \n\n\to:yy-nnnnn \n\n\to:yy-tp-nnnnn \n\n\to:yy tp nnnnn \n\n\to:yytpnnnnn \n\nwhere: \n\nyy  case year (may be 2 or 4 digits) \n\nnnnnn  case number (up to 5 digits) \n\ntp  case type (up to 2 characters) \n\no  office where the case was filed (1 digit)."
+        example: 12-1234
       - name: pacerCaseId
         schema: integer
         description: The PACER-assigned identifier of the target case.
@@ -5391,21 +5668,26 @@ methodObjects:
         description: >-
           The last name (for an individual) or the entity name (for a business
           entity) of the target party.
+        example: John
       - name: firstName
         schema: string
         description: The first name of the target party.
+        example: John
       - name: middleName
         schema: string
         description: The middle name of the target party.
+        example: Doe
       - name: generation
         schema: string
         description: The suffix (e.g., Jr., III) of the target party's name.
+        example: III
       - name: partyType
         schema: string
         description: >-
           The court-assigned party type for a party involved in a case. Party
           type codes are created and assigned by individual courts, and as such,
           their meanings can vary from court to court.
+        example: ptf
       - name: partyExactNameMatch
         schema: boolean
         description: >-
@@ -5496,6 +5778,7 @@ methodObjects:
       - name: sortParameterQuery
         schema: string
         description: "How search results from PACER are to be sorted. Please see Appendix C for valid sort-related settings. \n\n\tScenario 1: When mulitple sort paramters needs to be requested. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of courtId and caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtId,ASC&caseId,ASC \n\n\tScenario 2: When you want to sort the response using the case parameters in the party search. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of caseOffice and descending order of caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtCase.caseOffice,ASC&caseid,DESC"
+        default: sort=caseYear,DESC
       - name: caseStatus
         schema: string
         description: Whether the target case is marked as 'open' or 'closed' within PACER.
@@ -5528,13 +5811,16 @@ methodObjects:
         description: >-
           The username of the PACER account under which the search is to be
           performed.
+        example: johndoe
       - name: pacerClientCode
         schema: string
         required: true
         description: The PACER client code under which the search is to be performed.
+        example: john
       - name: caseNumber
         schema: string
         description: "The case number of the target case. You may use the following case-number formats: \n\n\tyy-nnnnn \n\n\tyy-tp-nnnnn \n\n\tyy tp nnnnn \n\n\tyytpnnnnn \n\n\to:yy-nnnnn \n\n\to:yy-tp-nnnnn \n\n\to:yy tp nnnnn \n\n\to:yytpnnnnn \n\nwhere: \n\nyy  case year (may be 2 or 4 digits) \n\nnnnnn  case number (up to 5 digits) \n\ntp  case type (up to 2 characters) \n\no  office where the case was filed (1 digit)."
+        example: 12-1234
       - name: pacerCaseId
         schema: integer
         description: The PACER-assigned identifier of the target case.
@@ -5543,21 +5829,26 @@ methodObjects:
         description: >-
           The last name (for an individual) or the entity name (for a business
           entity) of the target party.
+        example: John
       - name: firstName
         schema: string
         description: The first name of the target party.
+        example: John
       - name: middleName
         schema: string
         description: The middle name of the target party.
+        example: Doe
       - name: generation
         schema: string
         description: The name suffix (e.g., III, MD).
+        example: III
       - name: partyType
         schema: string
         description: >-
           The court-assigned party type for a party involved in a case. Party
           type codes are created and assigned by individual courts, and as such,
           their meanings can vary from court to court.
+        example: ptf
       - name: partyExactNameMatch
         schema: boolean
         description: >-
@@ -5624,6 +5915,7 @@ methodObjects:
       - name: sortParameterQuery
         schema: string
         description: "How search results from PACER are to be sorted. Please see Appendix C for valid sort-related settings. \n\n\tScenario 1: When mulitple sort paramters needs to be requested. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of courtId and caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtId,ASC&caseId,ASC \n\n\tScenario 2: When you want to sort the response using the case parameters in the party search. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of caseOffice and descending order of caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtCase.caseOffice,ASC&caseid,DESC"
+        default: sort=caseYear,DESC
       - name: caseStatus
         schema: string
         description: Whether the target case is marked as 'open' or 'closed' within PACER.
@@ -5656,13 +5948,16 @@ methodObjects:
         description: >-
           The username of the PACER account under which the search is to be
           performed.
+        example: johndoe
       - name: pacerClientCode
         schema: string
         required: true
         description: The PACER client code under which the search is to be performed.
+        example: john
       - name: caseNumber
         schema: string
         description: "The case number of the target case. You may use the following case-number formats: \n\n\tyy-nnnnn \n\n\tyy-tp-nnnnn \n\n\tyy tp nnnnn \n\n\tyytpnnnnn \n\n\to:yy-nnnnn \n\n\to:yy-tp-nnnnn \n\n\to:yy tp nnnnn \n\n\to:yytpnnnnn \n\nwhere: \n\nyy  case year (may be 2 or 4 digits) \n\nnnnnn  case number (up to 5 digits) \n\ntp  case type (up to 2 characters) \n\no  office where the case was filed (1 digit)."
+        example: 12-1234
       - name: pacerCaseId
         schema: integer
         description: The PACER-assigned identifier of the target case.
@@ -5671,21 +5966,26 @@ methodObjects:
         description: >-
           The last name (for an individual) or the entity name (for a business
           entity) of the target party.
+        example: John
       - name: firstName
         schema: string
         description: The first name of the target party.
+        example: John
       - name: middleName
         schema: string
         description: The middle name of the target party.
+        example: Doe
       - name: generation
         schema: string
         description: The suffix (e.g., Jr., III) of the target party's name.
+        example: III
       - name: partyType
         schema: string
         description: >-
           The court-assigned party type for a party involved in a case. Party
           type codes are created and assigned by individual courts, and as such,
           their meanings can vary from court to court.
+        example: ptf
       - name: partyExactNameMatch
         schema: boolean
         description: >-
@@ -5752,6 +6052,7 @@ methodObjects:
       - name: sortParameterQuery
         schema: string
         description: "How search results from PACER are to be sorted. Please see Appendix C for valid sort-related settings. \n\n\tScenario 1: When mulitple sort paramters needs to be requested. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of courtId and caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtId,ASC&caseId,ASC \n\n\tScenario 2: When you want to sort the response using the case parameters in the party search. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of caseOffice and descending order of caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtCase.caseOffice,ASC&caseid,DESC"
+        default: sort=caseYear,DESC
       - name: caseStatus
         schema: string
         description: Whether the target case is marked as 'open' or 'closed' within PACER.
@@ -5784,13 +6085,16 @@ methodObjects:
         description: >-
           The username of the PACER account under which the search is to be
           performed.
+        example: johndoe
       - name: pacerClientCode
         schema: string
         required: true
         description: The PACER client code under which the search is to be performed.
+        example: john
       - name: caseNumber
         schema: string
         description: "The case number of the target case. You may use the following case-number formats: \n\n\tyy-nnnnn \n\n\tyy-tp-nnnnn \n\n\tyy tp nnnnn \n\n\tyytpnnnnn \n\n\to:yy-nnnnn \n\n\to:yy-tp-nnnnn \n\n\to:yy tp nnnnn \n\n\to:yytpnnnnn \n\nwhere: \n\nyy  case year (may be 2 or 4 digits) \n\nnnnnn  case number (up to 5 digits) \n\ntp  case type (up to 2 characters) \n\no  office where the case was filed (1 digit)."
+        example: 12-1234
       - name: jpmlNumber
         schema: integer
         description: Master JPML Case Number.
@@ -5802,21 +6106,26 @@ methodObjects:
         description: >-
           The last name (for an individual) or the entity name (for a business
           entity) of the target party.
+        example: John
       - name: firstName
         schema: string
         description: The first name of the target party.
+        example: John
       - name: middleName
         schema: string
         description: The middle name of the target party.
+        example: Doe
       - name: generation
         schema: string
         description: The suffix (e.g., Jr., III) of the target party's name.
+        example: III
       - name: partyType
         schema: string
         description: >-
           The court-assigned party type for a party involved in a case. Party
           type codes are created and assigned by individual courts, and as such,
           their meanings can vary from court to court.
+        example: ptf
       - name: partyExactNameMatch
         schema: boolean
         description: >-
@@ -5883,6 +6192,7 @@ methodObjects:
       - name: sortParameterQuery
         schema: string
         description: "How search results from PACER are to be sorted. Please see Appendix C for valid sort-related settings. \n\n\tScenario 1: When mulitple sort paramters needs to be requested. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of courtId and caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtId,ASC&caseId,ASC \n\n\tScenario 2: When you want to sort the response using the case parameters in the party search. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of caseOffice and descending order of caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtCase.caseOffice,ASC&caseid,DESC"
+        default: sort=caseYear,DESC
       - name: caseStatus
         schema: string
         description: Whether the target case is marked as 'open' or 'closed' within PACER.
@@ -5914,6 +6224,7 @@ methodObjects:
         description: |
           The page number of the PACER credentials to be retrieved.<br>
             - Minimum: 1
+        example: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -5938,14 +6249,17 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: Test UniCourt API
       - name: pacerUserId
         schema: string
         required: true
         description: ''
+        example: URKYwer3tyh5r56gq2
       - name: password
         schema: string
         required: true
         description: ''
+        example: your password
     responses:
       - statusCode: '200'
         description: Success object contains its message related to the API request.

@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function BrexBudgetsTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function BrexBudgetsTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/budgets/logo.png"
       clientNameCamelCase="brexBudgets"
       homepage="brex.com"
-      lastUpdated={new Date("2024-03-11T06:43:11.466Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/budgets/favicon.png"
       contactUrl="https://brex.com"
       contactEmail="developer-access@brex.com"
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/budgets/imagePreview.jpg"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["finance","payments","online_payments","fintech","automation","global_payments","travel_expenses","banking","business_accounts","corporate_cards"]}
       methods={[
   {
     "url": "/v1/budget_programs",
@@ -76,7 +79,8 @@ export default function BrexBudgetsTypeScriptSdk() {
         "name": "idempotencyKey",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "IDEMPOTENCY-KEY"
       },
       {
         "name": "description",
@@ -106,7 +110,8 @@ export default function BrexBudgetsTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -140,7 +145,8 @@ export default function BrexBudgetsTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -178,7 +184,8 @@ export default function BrexBudgetsTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -216,13 +223,15 @@ export default function BrexBudgetsTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "idempotencyKey",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "IDEMPOTENCY-KEY"
       },
       {
         "name": "description",
@@ -325,7 +334,8 @@ export default function BrexBudgetsTypeScriptSdk() {
         "name": "idempotencyKey",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "IDEMPOTENCY-KEY"
       },
       {
         "name": "description",
@@ -343,7 +353,8 @@ export default function BrexBudgetsTypeScriptSdk() {
         "name": "parent_budget_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PARENT_BUDGET_ID"
       },
       {
         "name": "owner_user_ids",
@@ -361,7 +372,8 @@ export default function BrexBudgetsTypeScriptSdk() {
         "name": "period_type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PERIOD_TYPE"
       },
       {
         "name": "limit",
@@ -373,13 +385,15 @@ export default function BrexBudgetsTypeScriptSdk() {
         "name": "limit_type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "LIMIT_TYPE"
       },
       {
         "name": "spend_type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SPEND_TYPE"
       },
       {
         "name": "start_date",
@@ -397,7 +411,8 @@ export default function BrexBudgetsTypeScriptSdk() {
         "name": "limit_visibility",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "LIMIT_VISIBILITY"
       }
     ],
     "responses": [
@@ -431,7 +446,8 @@ export default function BrexBudgetsTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -469,13 +485,15 @@ export default function BrexBudgetsTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "idempotencyKey",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "IDEMPOTENCY-KEY"
       },
       {
         "name": "description",
@@ -563,7 +581,8 @@ export default function BrexBudgetsTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [

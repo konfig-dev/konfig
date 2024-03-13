@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function KlarnaCheckoutTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function KlarnaCheckoutTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/klarna/checkout/logo.png"
       clientNameCamelCase="klarnaCheckout"
       homepage="klarna.com"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/klarna/checkout/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/klarna/checkout/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["finance","payments","online_payments","fintech","checkout_experience"]}
       methods={[
   {
     "url": "/checkout/v3/orders",
@@ -48,37 +51,43 @@ export default function KlarnaCheckoutTypeScriptSdk() {
         "name": "order_id",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "f3392f8b-6116-4073-ab96-e330819e2c07"
       },
       {
         "name": "name",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Women's Fashion"
       },
       {
         "name": "purchase_country",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "US"
       },
       {
         "name": "purchase_currency",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USD"
       },
       {
         "name": "locale",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "en-US"
       },
       {
         "name": "status",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "CHECKOUT_INCOMPLETE"
       },
       {
         "name": "billing_address",
@@ -96,13 +105,15 @@ export default function KlarnaCheckoutTypeScriptSdk() {
         "name": "order_amount",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 50000
       },
       {
         "name": "order_tax_amount",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 4545
       },
       {
         "name": "order_lines",
@@ -126,19 +137,22 @@ export default function KlarnaCheckoutTypeScriptSdk() {
         "name": "html_snippet",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "<div id='klarna-checkout-container'><script>alert('Initializing Klarna Checkout');</script></div>"
       },
       {
         "name": "merchant_reference1",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "45aa52f387871e3a210645d4"
       },
       {
         "name": "merchant_reference2",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "45aa52f387871e3a210645d4"
       },
       {
         "name": "started_at",
@@ -198,7 +212,8 @@ export default function KlarnaCheckoutTypeScriptSdk() {
         "name": "merchant_data",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "{\"marketplace_seller_info\":[{\"product_category\":\"Women's Fashion\",\"product_name\":\"Women Sweatshirt\"}]}"
       },
       {
         "name": "gui",
@@ -276,7 +291,8 @@ export default function KlarnaCheckoutTypeScriptSdk() {
         "name": "orderId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ORDER_ID"
       }
     ],
     "responses": [
@@ -310,7 +326,8 @@ export default function KlarnaCheckoutTypeScriptSdk() {
         "name": "orderId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ORDER_ID"
       },
       {
         "name": "tags",
@@ -322,37 +339,43 @@ export default function KlarnaCheckoutTypeScriptSdk() {
         "name": "order_id",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "f3392f8b-6116-4073-ab96-e330819e2c07"
       },
       {
         "name": "name",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Women's Fashion"
       },
       {
         "name": "purchase_country",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "US"
       },
       {
         "name": "purchase_currency",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USD"
       },
       {
         "name": "locale",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "en-US"
       },
       {
         "name": "status",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "CHECKOUT_INCOMPLETE"
       },
       {
         "name": "billing_address",
@@ -370,13 +393,15 @@ export default function KlarnaCheckoutTypeScriptSdk() {
         "name": "order_amount",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 50000
       },
       {
         "name": "order_tax_amount",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 4545
       },
       {
         "name": "order_lines",
@@ -400,19 +425,22 @@ export default function KlarnaCheckoutTypeScriptSdk() {
         "name": "html_snippet",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "<div id='klarna-checkout-container'><script>alert('Initializing Klarna Checkout');</script></div>"
       },
       {
         "name": "merchant_reference1",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "45aa52f387871e3a210645d4"
       },
       {
         "name": "merchant_reference2",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "45aa52f387871e3a210645d4"
       },
       {
         "name": "started_at",
@@ -472,7 +500,8 @@ export default function KlarnaCheckoutTypeScriptSdk() {
         "name": "merchant_data",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "{\"marketplace_seller_info\":[{\"product_category\":\"Women's Fashion\",\"product_name\":\"Women Sweatshirt\"}]}"
       },
       {
         "name": "gui",
@@ -558,7 +587,8 @@ export default function KlarnaCheckoutTypeScriptSdk() {
         "name": "orderId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ORDER_ID"
       }
     ],
     "responses": [

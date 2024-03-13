@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function ZuoraTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function ZuoraTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zuora/logo.png"
       clientNameCamelCase="zuora"
       homepage="zuora.com"
-      lastUpdated={new Date("2024-03-11T16:37:37.247Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zuora/favicon.png"
       // Missing contactUrl
       contactEmail="docs@zuora.com"
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zuora/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["finance","developer_tools","billing","payments"]}
       methods={[
   {
     "url": "/oauth/token",
@@ -42,19 +45,22 @@ export default function ZuoraTypeScriptSdk() {
         "name": "client_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CLIENT_ID"
       },
       {
         "name": "client_secret",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CLIENT_SECRET"
       },
       {
         "name": "grant_type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "GRANT_TYPE"
       }
     ],
     "responses": [
@@ -104,7 +110,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "rejectUnknownFields",
         "schema": "boolean",
         "required": false,
-        "description": "Specifies whether the call fails if the request body contains unknown fields.\nWith `rejectUnknownFields` set to `true`, Zuora returns a 400 response if\nthe request body contains unknown fields. The body of the 400 response is:\n\n```json\n{\n    \"message\": \"Error - unrecognised fields\"\n}\n```\n\nBy default, Zuora ignores unknown fields in the request body.\n"
+        "description": "Specifies whether the call fails if the request body contains unknown fields.\nWith `rejectUnknownFields` set to `true`, Zuora returns a 400 response if\nthe request body contains unknown fields. The body of the 400 response is:\n\n```json\n{\n    \"message\": \"Error - unrecognised fields\"\n}\n```\n\nBy default, Zuora ignores unknown fields in the request body.\n",
+        "default": false
       },
       {
         "name": "zuoraEntityIds",
@@ -128,7 +135,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "xZuoraWsdlVersion",
         "schema": "string",
         "required": false,
-        "description": "Zuora WSDL version number.\n"
+        "description": "Zuora WSDL version number.\n",
+        "default": 79
       }
     ],
     "responses": [
@@ -194,7 +202,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Object id"
+        "description": "Object id",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -256,7 +265,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "xZuoraWsdlVersion",
         "schema": "string",
         "required": false,
-        "description": "Zuora WSDL version number.\n"
+        "description": "Zuora WSDL version number.\n",
+        "default": 79
       },
       {
         "name": "fields",
@@ -268,7 +278,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Object id"
+        "description": "Object id",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -316,7 +327,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "rejectUnknownFields",
         "schema": "boolean",
         "required": false,
-        "description": "Specifies whether the call fails if the request body contains unknown fields.\nWith `rejectUnknownFields` set to `true`, Zuora returns a 400 response if\nthe request body contains unknown fields. The body of the 400 response is:\n\n```json\n{\n    \"message\": \"Error - unrecognised fields\"\n}\n```\n\nBy default, Zuora ignores unknown fields in the request body.\n"
+        "description": "Specifies whether the call fails if the request body contains unknown fields.\nWith `rejectUnknownFields` set to `true`, Zuora returns a 400 response if\nthe request body contains unknown fields. The body of the 400 response is:\n\n```json\n{\n    \"message\": \"Error - unrecognised fields\"\n}\n```\n\nBy default, Zuora ignores unknown fields in the request body.\n",
+        "default": false
       },
       {
         "name": "zuoraEntityIds",
@@ -340,13 +352,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "xZuoraWsdlVersion",
         "schema": "string",
         "required": false,
-        "description": "Zuora WSDL version number.\n"
+        "description": "Zuora WSDL version number.\n",
+        "default": 79
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Object id"
+        "description": "Object id",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -408,13 +422,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n"
+        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n",
+        "default": 1
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response.\n"
+        "description": "The number of records returned per page in the response.\n",
+        "default": 10
       },
       {
         "name": "zuoraVersion",
@@ -484,7 +500,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "productKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID, SKU, or product number of the product that you want to retrieve. For example, 8a808255575bdae4015774e9602e16fe, SKU-00000987, or PC-00000006.\n"
+        "description": "The unique ID, SKU, or product number of the product that you want to retrieve. For example, 8a808255575bdae4015774e9602e16fe, SKU-00000987, or PC-00000006.\n",
+        "example": "PRODUCT-KEY"
       }
     ],
     "responses": [
@@ -542,13 +559,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response.\n"
+        "description": "The number of records returned per page in the response.\n",
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n"
+        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n",
+        "default": 1
       }
     ],
     "responses": [
@@ -664,7 +683,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "catalogGroupKey",
         "schema": "string",
         "required": true,
-        "description": "The unique number or ID of the catalog group to be deleted.\n"
+        "description": "The unique number or ID of the catalog group to be deleted.\n",
+        "example": "CATALOG-GROUP-KEY"
       }
     ],
     "responses": [
@@ -722,7 +742,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "catalogGroupKey",
         "schema": "string",
         "required": true,
-        "description": "The unique number or ID of the catalog group to be retrieved.\n"
+        "description": "The unique number or ID of the catalog group to be retrieved.\n",
+        "example": "CATALOG-GROUP-KEY"
       }
     ],
     "responses": [
@@ -780,7 +801,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "catalogGroupKey",
         "schema": "string",
         "required": true,
-        "description": "The unique number or ID of the catalog group to be updated. \n"
+        "description": "The unique number or ID of the catalog group to be updated. \n",
+        "example": "CATALOG-GROUP-KEY"
       }
     ],
     "responses": [
@@ -838,19 +860,22 @@ export default function ZuoraTypeScriptSdk() {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n"
+        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n",
+        "default": 1
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response.\n"
+        "description": "The number of records returned per page in the response.\n",
+        "default": 20
       },
       {
         "name": "productKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or SKU of a product. For example, 2c92c0f96487e16a016487f663c71a61 or SKU-00000987.\n"
+        "description": "The unique ID or SKU of a product. For example, 2c92c0f96487e16a016487f663c71a61 or SKU-00000987.\n",
+        "example": "PRODUCT-KEY"
       },
       {
         "name": "showChargeDefinitions",
@@ -914,7 +939,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID, external ID, or the natural key of the product rate plan to be retrieved. For example, `402888e67f8b3a68017f8bbb2a06062d`, `Apple0001`, or `PRP-00000008`.\n"
+        "description": "The ID, external ID, or the natural key of the product rate plan to be retrieved. For example, `402888e67f8b3a68017f8bbb2a06062d`, `Apple0001`, or `PRP-00000008`.\n",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -972,7 +998,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The external ID of the product rate plan to be retrieved. For example, `Apple0001`.\n"
+        "description": "The external ID of the product rate plan to be retrieved. For example, `Apple0001`.\n",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -1018,7 +1045,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "rejectUnknownFields",
         "schema": "boolean",
         "required": false,
-        "description": "Specifies whether the call fails if the request body contains unknown fields.\nWith `rejectUnknownFields` set to `true`, Zuora returns a 400 response if\nthe request body contains unknown fields. The body of the 400 response is:\n\n```json\n{\n    \"message\": \"Error - unrecognised fields\"\n}\n```\n\nBy default, Zuora ignores unknown fields in the request body.\n"
+        "description": "Specifies whether the call fails if the request body contains unknown fields.\nWith `rejectUnknownFields` set to `true`, Zuora returns a 400 response if\nthe request body contains unknown fields. The body of the 400 response is:\n\n```json\n{\n    \"message\": \"Error - unrecognised fields\"\n}\n```\n\nBy default, Zuora ignores unknown fields in the request body.\n",
+        "default": false
       },
       {
         "name": "zuoraEntityIds",
@@ -1042,7 +1070,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "xZuoraWsdlVersion",
         "schema": "string",
         "required": false,
-        "description": "Zuora WSDL version number.\n"
+        "description": "Zuora WSDL version number.\n",
+        "default": 79
       }
     ],
     "responses": [
@@ -1108,7 +1137,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Object id"
+        "description": "Object id",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -1170,7 +1200,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "xZuoraWsdlVersion",
         "schema": "string",
         "required": false,
-        "description": "Zuora WSDL version number.\n"
+        "description": "Zuora WSDL version number.\n",
+        "default": 79
       },
       {
         "name": "fields",
@@ -1182,7 +1213,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Object id"
+        "description": "Object id",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -1230,7 +1262,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "rejectUnknownFields",
         "schema": "boolean",
         "required": false,
-        "description": "Specifies whether the call fails if the request body contains unknown fields.\nWith `rejectUnknownFields` set to `true`, Zuora returns a 400 response if\nthe request body contains unknown fields. The body of the 400 response is:\n\n```json\n{\n    \"message\": \"Error - unrecognised fields\"\n}\n```\n\nBy default, Zuora ignores unknown fields in the request body.\n"
+        "description": "Specifies whether the call fails if the request body contains unknown fields.\nWith `rejectUnknownFields` set to `true`, Zuora returns a 400 response if\nthe request body contains unknown fields. The body of the 400 response is:\n\n```json\n{\n    \"message\": \"Error - unrecognised fields\"\n}\n```\n\nBy default, Zuora ignores unknown fields in the request body.\n",
+        "default": false
       },
       {
         "name": "zuoraEntityIds",
@@ -1254,13 +1287,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "xZuoraWsdlVersion",
         "schema": "string",
         "required": false,
-        "description": "Zuora WSDL version number.\n"
+        "description": "Zuora WSDL version number.\n",
+        "default": 79
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Object id"
+        "description": "Object id",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -1446,7 +1481,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "productRateplanDefinitionKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of the product rate plan definition to be deleted.\n"
+        "description": "The unique ID of the product rate plan definition to be deleted.\n",
+        "example": "PRODUCT-RATEPLAN-DEFINITION-KEY"
       }
     ],
     "responses": [
@@ -1498,7 +1534,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "productRateplanDefinitionKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of the product rate plan definition to be retrieved.\n"
+        "description": "The unique ID of the product rate plan definition to be retrieved.\n",
+        "example": "PRODUCT-RATEPLAN-DEFINITION-KEY"
       }
     ],
     "responses": [
@@ -1550,7 +1587,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "productRatePlanChargeKey",
         "schema": "string",
         "required": true,
-        "description": "The unique number or ID of the product rate plan charge to be retrieved.\n"
+        "description": "The unique number or ID of the product rate plan charge to be retrieved.\n",
+        "example": "PRODUCT-RATE-PLAN-CHARGE-KEY"
       },
       {
         "name": "showChargeDefinitions",
@@ -1602,7 +1640,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "rejectUnknownFields",
         "schema": "boolean",
         "required": false,
-        "description": "Specifies whether the call fails if the request body contains unknown fields.\nWith `rejectUnknownFields` set to `true`, Zuora returns a 400 response if\nthe request body contains unknown fields. The body of the 400 response is:\n\n```json\n{\n    \"message\": \"Error - unrecognised fields\"\n}\n```\n\nBy default, Zuora ignores unknown fields in the request body.\n"
+        "description": "Specifies whether the call fails if the request body contains unknown fields.\nWith `rejectUnknownFields` set to `true`, Zuora returns a 400 response if\nthe request body contains unknown fields. The body of the 400 response is:\n\n```json\n{\n    \"message\": \"Error - unrecognised fields\"\n}\n```\n\nBy default, Zuora ignores unknown fields in the request body.\n",
+        "default": false
       },
       {
         "name": "zuoraEntityIds",
@@ -1626,7 +1665,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "xZuoraWsdlVersion",
         "schema": "string",
         "required": false,
-        "description": "Zuora WSDL version number.\n"
+        "description": "Zuora WSDL version number.\n",
+        "default": 79
       }
     ],
     "responses": [
@@ -1688,7 +1728,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of the product rate plan charge to be deleted. For example, 2c93808457d787030157e031fcd34e19.\n"
+        "description": "The unique ID of the product rate plan charge to be deleted. For example, 2c93808457d787030157e031fcd34e19.\n",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -1750,7 +1791,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "xZuoraWsdlVersion",
         "schema": "string",
         "required": false,
-        "description": "Zuora WSDL version number.\n"
+        "description": "Zuora WSDL version number.\n",
+        "default": 79
       },
       {
         "name": "fields",
@@ -1762,7 +1804,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a product rate plan charge to be retrieved. For example, 2c93808457d787030157e031fcd34e19.\n"
+        "description": "The unique ID of a product rate plan charge to be retrieved. For example, 2c93808457d787030157e031fcd34e19.\n",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -1810,7 +1853,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "rejectUnknownFields",
         "schema": "boolean",
         "required": false,
-        "description": "Specifies whether the call fails if the request body contains unknown fields.\nWith `rejectUnknownFields` set to `true`, Zuora returns a 400 response if\nthe request body contains unknown fields. The body of the 400 response is:\n\n```json\n{\n    \"message\": \"Error - unrecognised fields\"\n}\n```\n\nBy default, Zuora ignores unknown fields in the request body.\n"
+        "description": "Specifies whether the call fails if the request body contains unknown fields.\nWith `rejectUnknownFields` set to `true`, Zuora returns a 400 response if\nthe request body contains unknown fields. The body of the 400 response is:\n\n```json\n{\n    \"message\": \"Error - unrecognised fields\"\n}\n```\n\nBy default, Zuora ignores unknown fields in the request body.\n",
+        "default": false
       },
       {
         "name": "zuoraEntityIds",
@@ -1834,13 +1878,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "xZuoraWsdlVersion",
         "schema": "string",
         "required": false,
-        "description": "Zuora WSDL version number.\n"
+        "description": "Zuora WSDL version number.\n",
+        "default": 79
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of the product rate plan charge to be updated. For example, 2c93808457d787030157e031fcd34e19.\n"
+        "description": "The unique ID of the product rate plan charge to be updated. For example, 2c93808457d787030157e031fcd34e19.\n",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -2229,7 +2275,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "productChargeDefinitionKey",
         "schema": "string",
         "required": true,
-        "description": "The unique number or ID of the product charge definition to be deleted.\n"
+        "description": "The unique number or ID of the product charge definition to be deleted.\n",
+        "example": "PRODUCT-CHARGE-DEFINITION-KEY"
       }
     ],
     "responses": [
@@ -2281,7 +2328,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "productChargeDefinitionKey",
         "schema": "string",
         "required": true,
-        "description": "The unique number or ID of the product charge definition to be retrieved.\n"
+        "description": "The unique number or ID of the product charge definition to be retrieved.\n",
+        "example": "PRODUCT-CHARGE-DEFINITION-KEY"
       },
       {
         "name": "hideInheritedValues",
@@ -2339,7 +2387,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "productChargeDefinitionKey",
         "schema": "string",
         "required": true,
-        "description": "The unique number or ID of the product charge definition to be updated.\n"
+        "description": "The unique number or ID of the product charge definition to be updated.\n",
+        "example": "PRODUCT-CHARGE-DEFINITION-KEY"
       },
       {
         "name": "billingPeriod",
@@ -2488,7 +2537,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Object id"
+        "description": "Object id",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -2536,7 +2586,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "rejectUnknownFields",
         "schema": "boolean",
         "required": false,
-        "description": "Specifies whether the call fails if the request body contains unknown fields.\nWith `rejectUnknownFields` set to `true`, Zuora returns a 400 response if\nthe request body contains unknown fields. The body of the 400 response is:\n\n```json\n{\n    \"message\": \"Error - unrecognised fields\"\n}\n```\n\nBy default, Zuora ignores unknown fields in the request body.\n"
+        "description": "Specifies whether the call fails if the request body contains unknown fields.\nWith `rejectUnknownFields` set to `true`, Zuora returns a 400 response if\nthe request body contains unknown fields. The body of the 400 response is:\n\n```json\n{\n    \"message\": \"Error - unrecognised fields\"\n}\n```\n\nBy default, Zuora ignores unknown fields in the request body.\n",
+        "default": false
       },
       {
         "name": "zuoraEntityIds",
@@ -2560,7 +2611,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of the product rate plan charge tier to be updated. For example, 2c92c0f86c85891e016c88d55a6e543b.\n"
+        "description": "The unique ID of the product rate plan charge tier to be updated. For example, 2c92c0f86c85891e016c88d55a6e543b.\n",
+        "example": "ID"
       },
       {
         "name": "Price",
@@ -2615,7 +2667,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraTrackId",
@@ -2627,43 +2680,50 @@ export default function ZuoraTypeScriptSdk() {
         "name": "adjustmentLiabilityAccount",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ADJUSTMENTLIABILITYACCOUNT"
       },
       {
         "name": "adjustmentRevenueAccount",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ADJUSTMENTREVENUEACCOUNT"
       },
       {
         "name": "contractAssetAccount",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CONTRACTASSETACCOUNT"
       },
       {
         "name": "contractLiabilityAccount",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CONTRACTLIABILITYACCOUNT"
       },
       {
         "name": "productRatePlanChargeId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PRODUCTRATEPLANCHARGEID"
       },
       {
         "name": "recognizedRevenueAccount",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "RECOGNIZEDREVENUEACCOUNT"
       },
       {
         "name": "unbilledReceivablesAccount",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "UNBILLEDRECEIVABLESACCOUNT"
       }
     ],
     "responses": [
@@ -2785,7 +2845,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "accountKey",
         "schema": "string",
         "required": true,
-        "description": "Account number or account ID."
+        "description": "Account number or account ID.",
+        "example": "ACCOUNT-KEY"
       }
     ],
     "responses": [
@@ -2843,7 +2904,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "accountKey",
         "schema": "string",
         "required": true,
-        "description": "Account number or account ID."
+        "description": "Account number or account ID.",
+        "example": "ACCOUNT-KEY"
       }
     ],
     "responses": [
@@ -2901,7 +2963,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "accountKey",
         "schema": "string",
         "required": true,
-        "description": "Account number or account ID."
+        "description": "Account number or account ID.",
+        "example": "ACCOUNT-KEY"
       }
     ],
     "responses": [
@@ -2959,7 +3022,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "accountKey",
         "schema": "string",
         "required": true,
-        "description": "Account number or account ID."
+        "description": "Account number or account ID.",
+        "example": "ACCOUNT-KEY"
       },
       {
         "name": "isDefaultOnly",
@@ -3029,7 +3093,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "accountKey",
         "schema": "string",
         "required": true,
-        "description": "Account number or account ID."
+        "description": "Account number or account ID.",
+        "example": "ACCOUNT-KEY"
       }
     ],
     "responses": [
@@ -3087,7 +3152,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "accountKey",
         "schema": "string",
         "required": true,
-        "description": "Account number or account ID."
+        "description": "Account number or account ID.",
+        "example": "ACCOUNT-KEY"
       },
       {
         "name": "excludeUsage",
@@ -3209,7 +3275,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "contactId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the contact that you want to delete.\n"
+        "description": "The ID of the contact that you want to delete.\n",
+        "example": "CONTACTID"
       }
     ],
     "responses": [
@@ -3267,7 +3334,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "contactId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the contact that you want to retrieve.\n"
+        "description": "The ID of the contact that you want to retrieve.\n",
+        "example": "CONTACTID"
       }
     ],
     "responses": [
@@ -3325,7 +3393,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "contactId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the contact that you want to update.\n"
+        "description": "The ID of the contact that you want to update.\n",
+        "example": "CONTACTID"
       }
     ],
     "responses": [
@@ -3383,7 +3452,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "contactId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the contact that you want to scrub sensitive data from.\n"
+        "description": "The ID of the contact that you want to scrub sensitive data from.\n",
+        "example": "CONTACTID"
       }
     ],
     "responses": [
@@ -3441,19 +3511,22 @@ export default function ZuoraTypeScriptSdk() {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n"
+        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n",
+        "default": 1
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response.\n"
+        "description": "The number of records returned per page in the response.\n",
+        "default": 20
       },
       {
         "name": "contactSnapshotId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of the contact snapshot to be retrieved. For example, 2c92c8955bd63cc1015bd7c151af02ab.\n"
+        "description": "The unique ID of the contact snapshot to be retrieved. For example, 2c92c8955bd63cc1015bd7c151af02ab.\n",
+        "example": "CONTACT-SNAPSHOT-ID"
       }
     ],
     "responses": [
@@ -3493,7 +3566,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraTrackId",
@@ -3611,7 +3685,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "category",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": "NewSales"
       },
       {
         "name": "customFields",
@@ -3629,7 +3704,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "orderDate",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ORDERDATE"
       },
       {
         "name": "orderLineItems",
@@ -3735,7 +3811,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "category",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": "NewSales"
       },
       {
         "name": "customFields",
@@ -3753,7 +3830,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "orderDate",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ORDERDATE"
       },
       {
         "name": "orderLineItems",
@@ -3847,13 +3925,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n"
+        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n",
+        "default": 1
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response.\n"
+        "description": "The number of records returned per page in the response.\n",
+        "default": 20
       },
       {
         "name": "dateFilterOption",
@@ -3941,7 +4021,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "returnIds",
         "schema": "boolean",
         "required": false,
-        "description": "Specify whether to return IDs associated with the numbers returned in the \"Create an order\" operation.\n"
+        "description": "Specify whether to return IDs associated with the numbers returned in the \"Create an order\" operation.\n",
+        "default": false
       },
       {
         "name": "zuoraVersion",
@@ -3959,7 +4040,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "category",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": "NewSales"
       },
       {
         "name": "customFields",
@@ -3989,7 +4071,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "orderDate",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ORDERDATE"
       },
       {
         "name": "orderLineItems",
@@ -4095,7 +4178,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "returnIds",
         "schema": "boolean",
         "required": false,
-        "description": "Specify whether to return IDs for the [Get job status and response](https://developer.zuora.com/api-references/api/operation/GET_JobStatusAndResponse) operation. If you set this query parameter to `true`, the corresponding IDs, which are associated with the numbers returned in this operation, can be returned in the \"Get job status and response\" response body.\n"
+        "description": "Specify whether to return IDs for the [Get job status and response](https://developer.zuora.com/api-references/api/operation/GET_JobStatusAndResponse) operation. If you set this query parameter to `true`, the corresponding IDs, which are associated with the numbers returned in this operation, can be returned in the \"Get job status and response\" response body.\n",
+        "default": false
       },
       {
         "name": "zuoraVersion",
@@ -4113,7 +4197,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "category",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": "NewSales"
       },
       {
         "name": "customFields",
@@ -4143,7 +4228,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "orderDate",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ORDERDATE"
       },
       {
         "name": "orderLineItems",
@@ -4231,7 +4317,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "orderNumber",
         "schema": "string",
         "required": true,
-        "description": "The number of the order to be deleted."
+        "description": "The number of the order to be deleted.",
+        "example": "ORDERNUMBER"
       }
     ],
     "responses": [
@@ -4289,7 +4376,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "orderNumber",
         "schema": "string",
         "required": true,
-        "description": "The order number to be retrieved."
+        "description": "The order number to be retrieved.",
+        "example": "ORDERNUMBER"
       }
     ],
     "responses": [
@@ -4347,7 +4435,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "orderNumber",
         "schema": "string",
         "required": true,
-        "description": "Order number of a order in which you are to update."
+        "description": "Order number of a order in which you are to update.",
+        "example": "ORDERNUMBER"
       },
       {
         "name": "description",
@@ -4359,7 +4448,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "category",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": "NewSales"
       },
       {
         "name": "customFields",
@@ -4389,7 +4479,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "orderDate",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ORDERDATE"
       },
       {
         "name": "orderLineItems",
@@ -4477,7 +4568,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "jobId",
         "schema": "string",
         "required": true,
-        "description": "UUID of the asynchronous job created by an asynchronous API operation."
+        "description": "UUID of the asynchronous job created by an asynchronous API operation.",
+        "example": "JOBID"
       }
     ],
     "responses": [
@@ -4535,19 +4627,22 @@ export default function ZuoraTypeScriptSdk() {
         "name": "accountNumber",
         "schema": "string",
         "required": true,
-        "description": "The subscription owner account number."
+        "description": "The subscription owner account number.",
+        "example": "ACCOUNTNUMBER"
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n"
+        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n",
+        "default": 1
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response.\n"
+        "description": "The number of records returned per page in the response.\n",
+        "default": 20
       },
       {
         "name": "dateFilterOption",
@@ -4623,19 +4718,22 @@ export default function ZuoraTypeScriptSdk() {
         "name": "subscriptionNumber",
         "schema": "string",
         "required": true,
-        "description": "The subscription number."
+        "description": "The subscription number.",
+        "example": "SUBSCRIPTIONNUMBER"
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n"
+        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n",
+        "default": 1
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response.\n"
+        "description": "The number of records returned per page in the response.\n",
+        "default": 20
       },
       {
         "name": "dateFilterOption",
@@ -4717,19 +4815,22 @@ export default function ZuoraTypeScriptSdk() {
         "name": "accountNumber",
         "schema": "string",
         "required": true,
-        "description": "The invoice owner account number."
+        "description": "The invoice owner account number.",
+        "example": "ACCOUNTNUMBER"
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n"
+        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n",
+        "default": 1
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response.\n"
+        "description": "The number of records returned per page in the response.\n",
+        "default": 20
       },
       {
         "name": "dateFilterOption",
@@ -4811,7 +4912,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "orderNumber",
         "schema": "string",
         "required": true,
-        "description": "The order number."
+        "description": "The order number.",
+        "example": "ORDERNUMBER"
       },
       {
         "name": "customFields",
@@ -4879,7 +4981,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "subscriptionNumber",
         "schema": "string",
         "required": true,
-        "description": "The subscription number to be updated."
+        "description": "The subscription number to be updated.",
+        "example": "SUBSCRIPTIONNUMBER"
       },
       {
         "name": "customFields",
@@ -4947,7 +5050,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "orderNumber",
         "schema": "string",
         "required": true,
-        "description": "Order number of a pending order in which you are to update an order action's triggering dates."
+        "description": "Order number of a pending order in which you are to update an order action's triggering dates.",
+        "example": "ORDERNUMBER"
       },
       {
         "name": "subscriptions",
@@ -5010,7 +5114,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "orderNumber",
         "schema": "string",
         "required": true,
-        "description": "Order number of a order in which you are to activate."
+        "description": "Order number of a order in which you are to activate.",
+        "example": "ORDERNUMBER"
       }
     ],
     "responses": [
@@ -5068,12 +5173,14 @@ export default function ZuoraTypeScriptSdk() {
         "name": "orderNumber",
         "schema": "string",
         "required": true,
-        "description": "The order number of the draft order you wish to cancel."
+        "description": "The order number of the draft order you wish to cancel.",
+        "example": "ORDERNUMBER"
       },
       {
         "name": "cancelReason",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Customer cancelled the order."
       }
     ],
     "responses": [
@@ -5131,7 +5238,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "subscriptionKey",
         "schema": "string",
         "required": true,
-        "description": "Subscription number. For example, A-S00000135.\n"
+        "description": "Subscription number. For example, A-S00000135.\n",
+        "example": "SUBSCRIPTION-KEY"
       }
     ],
     "responses": [
@@ -5189,7 +5297,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The id of the Order Action to update."
+        "description": "The id of the Order Action to update.",
+        "example": "ID"
       },
       {
         "name": "orderAction",
@@ -5252,13 +5361,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "itemId",
         "schema": "string",
         "required": true,
-        "description": "The id of the Order Line Item to retrieve."
+        "description": "The id of the Order Line Item to retrieve.",
+        "example": "ITEMID"
       },
       {
         "name": "fulfillment",
         "schema": "boolean",
         "required": false,
-        "description": "Return the related fulfillments or not.\n"
+        "description": "Return the related fulfillments or not.\n",
+        "default": false
       }
     ],
     "responses": [
@@ -5316,7 +5427,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "itemId",
         "schema": "string",
         "required": true,
-        "description": "The id of the Order Line Item to update."
+        "description": "The id of the Order Line Item to update.",
+        "example": "ITEMID"
       },
       {
         "name": "description",
@@ -5361,7 +5473,8 @@ export default function ZuoraTypeScriptSdk() {
       {
         "name": "billingRule",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "TriggerWithoutFulfillment"
       },
       {
         "name": "contractAssetAccountingCode",
@@ -5720,7 +5833,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "key",
         "schema": "string",
         "required": true,
-        "description": "The id or fulfillment number of the Fulfillment to delete."
+        "description": "The id or fulfillment number of the Fulfillment to delete.",
+        "example": "KEY"
       }
     ],
     "responses": [
@@ -5778,13 +5892,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "key",
         "schema": "string",
         "required": true,
-        "description": "The id or fulfillment number of the Fulfillment to retrieve."
+        "description": "The id or fulfillment number of the Fulfillment to retrieve.",
+        "example": "KEY"
       },
       {
         "name": "fulfillmentItems",
         "schema": "boolean",
         "required": false,
-        "description": "Return the related fulfillment items or not."
+        "description": "Return the related fulfillment items or not.",
+        "default": false
       }
     ],
     "responses": [
@@ -5842,7 +5958,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "key",
         "schema": "string",
         "required": true,
-        "description": "The id or fulfillment number of the Fulfillment to update."
+        "description": "The id or fulfillment number of the Fulfillment to update.",
+        "example": "KEY"
       },
       {
         "name": "description",
@@ -6038,7 +6155,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The id of the Fulfillment Item to delete."
+        "description": "The id of the Fulfillment Item to delete.",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -6096,7 +6214,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The id of the Fulfillment Item to retrieve."
+        "description": "The id of the Fulfillment Item to retrieve.",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -6154,7 +6273,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The id of the Fulfillment Item to update."
+        "description": "The id of the Fulfillment Item to update.",
+        "example": "ID"
       },
       {
         "name": "description",
@@ -6227,7 +6347,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "rampNumber",
         "schema": "string",
         "required": true,
-        "description": "The automatically generated number of a ramp. For example, R-00000268.\n"
+        "description": "The automatically generated number of a ramp. For example, R-00000268.\n",
+        "example": "RAMPNUMBER"
       }
     ],
     "responses": [
@@ -6285,7 +6406,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "rampNumber",
         "schema": "string",
         "required": true,
-        "description": "The automatically generated number of a ramp. For example, R-00000268.\n"
+        "description": "The automatically generated number of a ramp. For example, R-00000268.\n",
+        "example": "RAMPNUMBER"
       }
     ],
     "responses": [
@@ -6343,7 +6465,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "subscriptionKey",
         "schema": "string",
         "required": true,
-        "description": "The ID or number of an existing subscription.\n"
+        "description": "The ID or number of an existing subscription.\n",
+        "example": "SUBSCRIPTIONKEY"
       }
     ],
     "responses": [
@@ -6401,7 +6524,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "subscriptionKey",
         "schema": "string",
         "required": true,
-        "description": "The ID or number of an existing subscription.\n"
+        "description": "The ID or number of an existing subscription.\n",
+        "example": "SUBSCRIPTIONKEY"
       }
     ],
     "responses": [
@@ -6459,7 +6583,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "orderNumber",
         "schema": "string",
         "required": true,
-        "description": "The number of the existing order.\n"
+        "description": "The number of the existing order.\n",
+        "example": "ORDERNUMBER"
       }
     ],
     "responses": [
@@ -6581,7 +6706,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "subscriptionKey",
         "schema": "string",
         "required": true,
-        "description": "Subscription number or ID"
+        "description": "Subscription number or ID",
+        "example": "SUBSCRIPTION-KEY"
       },
       {
         "name": "previewStartDate",
@@ -6718,19 +6844,22 @@ export default function ZuoraTypeScriptSdk() {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n"
+        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n",
+        "default": 1
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response.\n"
+        "description": "The number of records returned per page in the response.\n",
+        "default": 20
       },
       {
         "name": "accountKey",
         "schema": "string",
         "required": true,
-        "description": "\nPossible values are:\n* an account number\n* an account ID\n"
+        "description": "\nPossible values are:\n* an account number\n* an account ID\n",
+        "example": "ACCOUNT-KEY"
       },
       {
         "name": "chargeDetail",
@@ -6800,7 +6929,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "subscriptionKey",
         "schema": "string",
         "required": true,
-        "description": "Possible values are:\n  * a subscription number\n  * a subscription ID\n"
+        "description": "Possible values are:\n  * a subscription number\n  * a subscription ID\n",
+        "example": "SUBSCRIPTION-KEY"
       },
       {
         "name": "chargeDetail",
@@ -6876,7 +7006,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "subscriptionKey",
         "schema": "string",
         "required": true,
-        "description": "\nSubscription number or ID. \nID can be the latest version or any history version of ID. \n* To make sure you update the last version of the subscription, use one of the following operations to retrieve the last version of ID:\n  * [List subscriptions by account key](https://developer.zuora.com/api-references/api/operation/GET_SubscriptionsByAccount)\n  * [Retrieve a subscription by key](https://developer.zuora.com/api-references/api/operation/GET_SubscriptionsByKey) by using the subscription number as the subscription-key\n* If you want to use any history version of ID, the `STABLE_ID_PUBLIC_API` permission must be enabled. Submit a request at [Zuora Global Support](http://support.zuora.com/) to enable the permission. To retrieve a history version of ID, use the [Retrieve a subscription by key and version](https://developer.zuora.com/api-references/api/operation/GET_SubscriptionsByKeyAndVersion) operation.\n"
+        "description": "\nSubscription number or ID. \nID can be the latest version or any history version of ID. \n* To make sure you update the last version of the subscription, use one of the following operations to retrieve the last version of ID:\n  * [List subscriptions by account key](https://developer.zuora.com/api-references/api/operation/GET_SubscriptionsByAccount)\n  * [Retrieve a subscription by key](https://developer.zuora.com/api-references/api/operation/GET_SubscriptionsByKey) by using the subscription number as the subscription-key\n* If you want to use any history version of ID, the `STABLE_ID_PUBLIC_API` permission must be enabled. Submit a request at [Zuora Global Support](http://support.zuora.com/) to enable the permission. To retrieve a history version of ID, use the [Retrieve a subscription by key and version](https://developer.zuora.com/api-references/api/operation/GET_SubscriptionsByKeyAndVersion) operation.\n",
+        "example": "SUBSCRIPTION-KEY"
       }
     ],
     "responses": [
@@ -6934,13 +7065,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "subscriptionKey",
         "schema": "string",
         "required": true,
-        "description": "Subscription number. For example, A-S00000135.\n"
+        "description": "Subscription number. For example, A-S00000135.\n",
+        "example": "SUBSCRIPTION-KEY"
       },
       {
         "name": "version",
         "schema": "string",
         "required": true,
-        "description": "Subscription version. For example, 1.\n"
+        "description": "Subscription version. For example, 1.\n",
+        "example": "VERSION"
       },
       {
         "name": "chargeDetail",
@@ -6957,7 +7090,8 @@ export default function ZuoraTypeScriptSdk() {
       {
         "name": "getDetailedMetrics",
         "schema": "boolean",
-        "description": " If the `getDetailedMetrics` is `true`, `contractedNetMrr`, `asOfDayGrossMrr`, `asOfDayNetMrr` will be in the response.\nThe default value is `false`. "
+        "description": " If the `getDetailedMetrics` is `true`, `contractedNetMrr`, `asOfDayGrossMrr`, `asOfDayNetMrr` will be in the response.\nThe default value is `false`. ",
+        "default": false
       },
       {
         "name": "asOfDay",
@@ -7026,7 +7160,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "subscriptionKey",
         "schema": "string",
         "required": true,
-        "description": "Subscription number or ID"
+        "description": "Subscription number or ID",
+        "example": "SUBSCRIPTION-KEY"
       },
       {
         "name": "applicationOrder",
@@ -7046,7 +7181,8 @@ export default function ZuoraTypeScriptSdk() {
       {
         "name": "collect",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "creditMemoReasonCode",
@@ -7066,7 +7202,8 @@ export default function ZuoraTypeScriptSdk() {
       {
         "name": "invoiceCollect",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "default": true
       },
       {
         "name": "invoiceTargetDate",
@@ -7081,7 +7218,8 @@ export default function ZuoraTypeScriptSdk() {
       {
         "name": "runBilling",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "targetDate",
@@ -7150,7 +7288,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "subscriptionKey",
         "schema": "string",
         "required": true,
-        "description": "Subscription number or ID. Subscription status must be `Active`."
+        "description": "Subscription number or ID. Subscription status must be `Active`.",
+        "example": "SUBSCRIPTION-KEY"
       },
       {
         "name": "applicationOrder",
@@ -7186,13 +7325,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "cancellationPolicy",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CANCELLATIONPOLICY"
       },
       {
         "name": "collect",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "contractEffectiveDate",
@@ -7222,7 +7363,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "invoiceCollect",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "invoiceTargetDate",
@@ -7240,7 +7382,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "runBilling",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "targetDate",
@@ -7310,7 +7453,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "subscriptionKey",
         "schema": "string",
         "required": true,
-        "description": "Subscription number or ID. Subscription status must be Suspended."
+        "description": "Subscription number or ID. Subscription status must be Suspended.",
+        "example": "SUBSCRIPTION-KEY"
       },
       {
         "name": "applicationOrder",
@@ -7340,7 +7484,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "collect",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "contractEffectiveDate",
@@ -7376,7 +7521,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "invoiceCollect",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "invoiceTargetDate",
@@ -7406,7 +7552,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "resumePolicy",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "RESUMEPOLICY"
       },
       {
         "name": "resumeSpecificDate",
@@ -7418,7 +7565,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "runBilling",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "targetDate",
@@ -7488,7 +7636,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "subscriptionKey",
         "schema": "string",
         "required": true,
-        "description": "Subscription number or ID. Subscription status must be Active."
+        "description": "Subscription number or ID. Subscription status must be Active.",
+        "example": "SUBSCRIPTION-KEY"
       },
       {
         "name": "applicationOrder",
@@ -7518,7 +7667,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "collect",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "contractEffectiveDate",
@@ -7602,7 +7752,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "runBilling",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "suspendPeriods",
@@ -7620,7 +7771,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "suspendPolicy",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SUSPENDPOLICY"
       },
       {
         "name": "suspendSpecificDate",
@@ -7690,7 +7842,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "subscriptionKey",
         "schema": "string",
         "required": true,
-        "description": "Subscription number"
+        "description": "Subscription number",
+        "example": "SUBSCRIPTION-KEY"
       }
     ],
     "responses": [
@@ -7748,13 +7901,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "subscriptionNumber",
         "schema": "string",
         "required": true,
-        "description": "The subscription number to be updated."
+        "description": "The subscription number to be updated.",
+        "example": "SUBSCRIPTIONNUMBER"
       },
       {
         "name": "version",
         "schema": "string",
         "required": true,
-        "description": "The subscription version to be updated."
+        "description": "The subscription version to be updated.",
+        "example": "VERSION"
       },
       {
         "name": "customFields",
@@ -7822,7 +7977,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "ratePlanId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the subscription rate plan to be retrieved."
+        "description": "The ID of the subscription rate plan to be retrieved.",
+        "example": "RATEPLANID"
       }
     ],
     "responses": [
@@ -8065,7 +8221,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "file",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "FILE"
       }
     ],
     "responses": [
@@ -8123,19 +8280,22 @@ export default function ZuoraTypeScriptSdk() {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n"
+        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n",
+        "default": 1
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response.\n"
+        "description": "The number of records returned per page in the response.\n",
+        "default": 20
       },
       {
         "name": "accountKey",
         "schema": "string",
         "required": true,
-        "description": "Account number or account ID."
+        "description": "Account number or account ID.",
+        "example": "ACCOUNT-KEY"
       }
     ],
     "responses": [
@@ -8193,7 +8353,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "invoiceItemId",
         "schema": "string",
         "required": true,
-        "description": "Invoice item ID. For example, `402880e57f725d85017f7267c4ad002b`. Available through Data Source export."
+        "description": "Invoice item ID. For example, `402880e57f725d85017f7267c4ad002b`. Available through Data Source export.",
+        "example": "INVOICE-ITEM-ID"
       }
     ],
     "responses": [
@@ -8239,7 +8400,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "rejectUnknownFields",
         "schema": "boolean",
         "required": false,
-        "description": "Specifies whether the call fails if the request body contains unknown fields.\nWith `rejectUnknownFields` set to `true`, Zuora returns a 400 response if\nthe request body contains unknown fields. The body of the 400 response is:\n\n```json\n{\n    \"message\": \"Error - unrecognised fields\"\n}\n```\n\nBy default, Zuora ignores unknown fields in the request body.\n"
+        "description": "Specifies whether the call fails if the request body contains unknown fields.\nWith `rejectUnknownFields` set to `true`, Zuora returns a 400 response if\nthe request body contains unknown fields. The body of the 400 response is:\n\n```json\n{\n    \"message\": \"Error - unrecognised fields\"\n}\n```\n\nBy default, Zuora ignores unknown fields in the request body.\n",
+        "default": false
       },
       {
         "name": "zuoraEntityIds",
@@ -8263,7 +8425,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "xZuoraWsdlVersion",
         "schema": "string",
         "required": false,
-        "description": "Zuora WSDL version number.\n"
+        "description": "Zuora WSDL version number.\n",
+        "default": 79
       }
     ],
     "responses": [
@@ -8329,7 +8492,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Object id"
+        "description": "Object id",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -8397,7 +8561,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Object id"
+        "description": "Object id",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -8445,7 +8610,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "rejectUnknownFields",
         "schema": "boolean",
         "required": false,
-        "description": "Specifies whether the call fails if the request body contains unknown fields.\nWith `rejectUnknownFields` set to `true`, Zuora returns a 400 response if\nthe request body contains unknown fields. The body of the 400 response is:\n\n```json\n{\n    \"message\": \"Error - unrecognised fields\"\n}\n```\n\nBy default, Zuora ignores unknown fields in the request body.\n"
+        "description": "Specifies whether the call fails if the request body contains unknown fields.\nWith `rejectUnknownFields` set to `true`, Zuora returns a 400 response if\nthe request body contains unknown fields. The body of the 400 response is:\n\n```json\n{\n    \"message\": \"Error - unrecognised fields\"\n}\n```\n\nBy default, Zuora ignores unknown fields in the request body.\n",
+        "default": false
       },
       {
         "name": "zuoraEntityIds",
@@ -8469,7 +8635,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Object id"
+        "description": "Object id",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -8531,7 +8698,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "subscriptionNumber",
         "schema": "string",
         "required": true,
-        "description": "A subscription number.\n"
+        "description": "A subscription number.\n",
+        "example": "SUBSCRIPTION-NUMBER"
       }
     ],
     "responses": [
@@ -8613,7 +8781,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "endDate",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ENDDATE"
       },
       {
         "name": "exclusion",
@@ -8643,7 +8812,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "startDate",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "STARTDATE"
       },
       {
         "name": "subscriptionNumber",
@@ -8737,7 +8907,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "endDate",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ENDDATE"
       },
       {
         "name": "reason",
@@ -8761,7 +8932,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "startDate",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "STARTDATE"
       },
       {
         "name": "subscriptionNumber",
@@ -8831,7 +9003,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "adjustmentKey",
         "schema": "string",
         "required": true,
-        "description": "The delivery adjustment ID or number to retrieve."
+        "description": "The delivery adjustment ID or number to retrieve.",
+        "example": "ADJUSTMENT-KEY"
       }
     ],
     "responses": [
@@ -8889,7 +9062,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "adjustmentId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the delivery adjustment to cancel.\n"
+        "description": "The ID of the delivery adjustment to cancel.\n",
+        "example": "ADJUSTMENTID"
       }
     ],
     "responses": [
@@ -8947,13 +9121,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n"
+        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n",
+        "default": 1
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response.\n"
+        "description": "The number of records returned per page in the response.\n",
+        "default": 20
       },
       {
         "name": "accountId",
@@ -9109,7 +9285,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "jobId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a billing document file deletion job. For example, 2c92c8f83dc4f752013dc72c24ee016c."
+        "description": "The unique ID of a billing document file deletion job. For example, 2c92c8f83dc4f752013dc72c24ee016c.",
+        "example": "JOBID"
       }
     ],
     "responses": [
@@ -9173,17 +9350,20 @@ export default function ZuoraTypeScriptSdk() {
         "name": "key",
         "schema": "string",
         "required": true,
-        "description": "The ID or number of the customer account that billing documents are generated for. For example, 8a8082e65b27f6c3015ba3e326b26419 or AC0000001.\n"
+        "description": "The ID or number of the customer account that billing documents are generated for. For example, 8a8082e65b27f6c3015ba3e326b26419 or AC0000001.\n",
+        "example": "KEY"
       },
       {
         "name": "autoPost",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "autoRenew",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "chargeTypeToExclude",
@@ -9501,7 +9681,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "invoiceKeys",
         "schema": "string",
         "required": true,
-        "description": "The IDs or numbers of the invoices separated by commas. For example - `?invoiceKeys=2c92c8955bd63cc1015bd7c151af02ab,4b65b8605bd63cc1015bd7c151af02cd,INV-0000001`. "
+        "description": "The IDs or numbers of the invoices separated by commas. For example - `?invoiceKeys=2c92c8955bd63cc1015bd7c151af02ab,4b65b8605bd63cc1015bd7c151af02cd,INV-0000001`. ",
+        "example": "INVOICEKEYS"
       },
       {
         "name": "zuoraVersion",
@@ -9577,7 +9758,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "invoiceKey",
         "schema": "string",
         "required": true,
-        "description": "The ID or number of the invoice to be deleted. For example, 2c92c8955bd63cc1015bd7c151af02ab or INV-0000001.\n"
+        "description": "The ID or number of the invoice to be deleted. For example, 2c92c8955bd63cc1015bd7c151af02ab or INV-0000001.\n",
+        "example": "INVOICEKEY"
       }
     ],
     "responses": [
@@ -9635,7 +9817,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "invoiceKey",
         "schema": "string",
         "required": true,
-        "description": "The ID or number of the invoice. For example, 2c92c8955bd63cc1015bd7c151af02ab or INV-0000001.\n"
+        "description": "The ID or number of the invoice. For example, 2c92c8955bd63cc1015bd7c151af02ab or INV-0000001.\n",
+        "example": "INVOICEKEY"
       }
     ],
     "responses": [
@@ -9693,7 +9876,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "invoiceKey",
         "schema": "string",
         "required": true,
-        "description": "The ID or number of the invoice. For example, 2c92c8955bd63cc1015bd7c151af02ab or INV-0000001.\n"
+        "description": "The ID or number of the invoice. For example, 2c92c8955bd63cc1015bd7c151af02ab or INV-0000001.\n",
+        "example": "INVOICEKEY"
       }
     ],
     "responses": [
@@ -9751,7 +9935,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "invoiceKey",
         "schema": "string",
         "required": true,
-        "description": "The ID or number of the invoice. For example, 2c92c8955bd63cc1015bd7c151af02ab or INV-0000001.\n"
+        "description": "The ID or number of the invoice. For example, 2c92c8955bd63cc1015bd7c151af02ab or INV-0000001.\n",
+        "example": "INVOICEKEY"
       }
     ],
     "responses": [
@@ -9809,7 +9994,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "invoiceKey",
         "schema": "string",
         "required": true,
-        "description": "The ID or number of the invoice. For example, 2c92c8955bd63cc1015bd7c151af02ab or INV-0000001.\n"
+        "description": "The ID or number of the invoice. For example, 2c92c8955bd63cc1015bd7c151af02ab or INV-0000001.\n",
+        "example": "INVOICEKEY"
       }
     ],
     "responses": [
@@ -9873,7 +10059,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "invoiceKey",
         "schema": "string",
         "required": true,
-        "description": "The ID or number of the invoice. For example, 2c92c8955bd63cc1015bd7c151af02ab or INV-0000001.\n"
+        "description": "The ID or number of the invoice. For example, 2c92c8955bd63cc1015bd7c151af02ab or INV-0000001.\n",
+        "example": "INVOICEKEY"
       },
       {
         "name": "emailAddresses",
@@ -9883,12 +10070,14 @@ export default function ZuoraTypeScriptSdk() {
       {
         "name": "includeAdditionalEmailAddresses",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "useEmailTemplateSetting",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "default": false
       }
     ],
     "responses": [
@@ -9946,19 +10135,22 @@ export default function ZuoraTypeScriptSdk() {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response.\n"
+        "description": "The number of records returned per page in the response.\n",
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n"
+        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n",
+        "default": 1
       },
       {
         "name": "invoiceKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of an invoice. For example, 2c92c8955bd63cc1015bd7c151af02ab or INV00000001.\n"
+        "description": "The unique ID or number of an invoice. For example, 2c92c8955bd63cc1015bd7c151af02ab or INV00000001.\n",
+        "example": "INVOICEKEY"
       }
     ],
     "responses": [
@@ -10022,7 +10214,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "invoiceKey",
         "schema": "string",
         "required": true,
-        "description": "The ID or number of the invoice that you want to upload a PDF file for. For example, 2c92c8955bd63cc1015bd7c151af02ab or INV00000001.\n"
+        "description": "The ID or number of the invoice that you want to upload a PDF file for. For example, 2c92c8955bd63cc1015bd7c151af02ab or INV00000001.\n",
+        "example": "INVOICEKEY"
       },
       {
         "name": "file",
@@ -10085,19 +10278,22 @@ export default function ZuoraTypeScriptSdk() {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response.\n"
+        "description": "The number of records returned per page in the response.\n",
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n"
+        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n",
+        "default": 1
       },
       {
         "name": "invoiceKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of an invoice. For example, 2c92c8955bd63cc1015bd7c151af02ab or INV00000001.\n"
+        "description": "The unique ID or number of an invoice. For example, 2c92c8955bd63cc1015bd7c151af02ab or INV00000001.\n",
+        "example": "INVOICEKEY"
       }
     ],
     "responses": [
@@ -10155,25 +10351,29 @@ export default function ZuoraTypeScriptSdk() {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response.\n"
+        "description": "The number of records returned per page in the response.\n",
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n"
+        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n",
+        "default": 1
       },
       {
         "name": "invoiceKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of an invoice. For example, 2c92c8955bd63cc1015bd7c151af02ab or INV00000001.\n"
+        "description": "The unique ID or number of an invoice. For example, 2c92c8955bd63cc1015bd7c151af02ab or INV00000001.\n",
+        "example": "INVOICEKEY"
       },
       {
         "name": "itemId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of an invoice item. For example, 2c86c8955bd63cc1015bd7c151af02ef.\n"
+        "description": "The unique ID of an invoice item. For example, 2c86c8955bd63cc1015bd7c151af02ef.\n",
+        "example": "ITEMID"
       }
     ],
     "responses": [
@@ -10231,7 +10431,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "invoiceKey",
         "schema": "string",
         "required": true,
-        "description": "The ID or number of the invoice. For example, 2c92c8955bd63cc1015bd7c151af02ab or INV-0000001.\n"
+        "description": "The ID or number of the invoice. For example, 2c92c8955bd63cc1015bd7c151af02ab or INV-0000001.\n",
+        "example": "INVOICEKEY"
       },
       {
         "name": "applyEffectiveDate",
@@ -10305,7 +10506,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "invoiceKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of an invoice. For example, 8a8082e65b27f6c3015ba45ff82c7172 or INV00000001.\n"
+        "description": "The unique ID or number of an invoice. For example, 8a8082e65b27f6c3015ba45ff82c7172 or INV00000001.\n",
+        "example": "INVOICEKEY"
       },
       {
         "name": "taxationItems",
@@ -10368,12 +10570,14 @@ export default function ZuoraTypeScriptSdk() {
         "name": "invoiceKey",
         "schema": "string",
         "required": true,
-        "description": "The ID or number of the invoice. For example, 2c92c8955bd63cc1015bd7c151af02ab or INV-0000001.\n"
+        "description": "The ID or number of the invoice. For example, 2c92c8955bd63cc1015bd7c151af02ab or INV-0000001.\n",
+        "example": "INVOICEKEY"
       },
       {
         "name": "memoDate",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "2019-01-02"
       }
     ],
     "responses": [
@@ -10431,13 +10635,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n"
+        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n",
+        "default": 1
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response.\n"
+        "description": "The number of records returned per page in the response.\n",
+        "default": 20
       },
       {
         "name": "accountId",
@@ -10807,7 +11013,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "creditMemoKeys",
         "schema": "string",
         "required": true,
-        "description": "The IDs or numbers of the credit memos separated by commas. For example - `?creditMemoKeys=2c92c8955bd63cc1015bd7c151af02ab,4b65b8605bd63cc1015bd7c151af02cd,CM0000001`.\n"
+        "description": "The IDs or numbers of the credit memos separated by commas. For example - `?creditMemoKeys=2c92c8955bd63cc1015bd7c151af02ab,4b65b8605bd63cc1015bd7c151af02cd,CM0000001`.\n",
+        "example": "CREDITMEMOKEYS"
       },
       {
         "name": "zuoraVersion",
@@ -10883,25 +11090,29 @@ export default function ZuoraTypeScriptSdk() {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response.\n"
+        "description": "The number of records returned per page in the response.\n",
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n"
+        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n",
+        "default": 1
       },
       {
         "name": "cmitemid",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a credit memo item. You can get the credit memo item ID from the response of [List credit memo items](https://developer.zuora.com/api-references/api/operation/GET_CreditMemoItems).\n"
+        "description": "The unique ID of a credit memo item. You can get the credit memo item ID from the response of [List credit memo items](https://developer.zuora.com/api-references/api/operation/GET_CreditMemoItems).\n",
+        "example": "CMITEMID"
       },
       {
         "name": "creditMemoId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a credit memo. For example, 8a8082e65b27f6c3015ba45ff82c7172.\n"
+        "description": "The unique ID of a credit memo. For example, 8a8082e65b27f6c3015ba45ff82c7172.\n",
+        "example": "CREDITMEMOID"
       }
     ],
     "responses": [
@@ -10959,7 +11170,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "creditMemoId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a credit memo. For example, 8a8082e65b27f6c3015ba45ff82c7172.\n"
+        "description": "The unique ID of a credit memo. For example, 8a8082e65b27f6c3015ba45ff82c7172.\n",
+        "example": "CREDITMEMOID"
       }
     ],
     "responses": [
@@ -11017,7 +11229,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "creditMemoKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of a credit memo. For example, 8a8082e65b27f6c3015ba45ff82c7172 or CM00000001.\n"
+        "description": "The unique ID or number of a credit memo. For example, 8a8082e65b27f6c3015ba45ff82c7172 or CM00000001.\n",
+        "example": "CREDITMEMOKEY"
       }
     ],
     "responses": [
@@ -11075,7 +11288,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "creditMemoKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of a credit memo. For example, 8a8082e65b27f6c3015ba45ff82c7172 or CM00000001.\n"
+        "description": "The unique ID or number of a credit memo. For example, 8a8082e65b27f6c3015ba45ff82c7172 or CM00000001.\n",
+        "example": "CREDITMEMOKEY"
       }
     ],
     "responses": [
@@ -11133,7 +11347,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "creditMemoKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of a credit memo. For example, 8a8082e65b27f6c3015ba45ff82c7172 or CM00000001.\n"
+        "description": "The unique ID or number of a credit memo. For example, 8a8082e65b27f6c3015ba45ff82c7172 or CM00000001.\n",
+        "example": "CREDITMEMOKEY"
       }
     ],
     "responses": [
@@ -11191,7 +11406,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "creditMemoKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of a credit memo. For example, 8a8082e65b27f6c3015ba45ff82c7172.\n"
+        "description": "The unique ID or number of a credit memo. For example, 8a8082e65b27f6c3015ba45ff82c7172.\n",
+        "example": "CREDITMEMOKEY"
       },
       {
         "name": "debitMemos",
@@ -11264,7 +11480,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "creditMemoKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of a credit memo. For example, 8a8082e65b27f6c3015ba45ff82c7172 or CM00000001.\n"
+        "description": "The unique ID or number of a credit memo. For example, 8a8082e65b27f6c3015ba45ff82c7172 or CM00000001.\n",
+        "example": "CREDITMEMOKEY"
       }
     ],
     "responses": [
@@ -11322,7 +11539,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "creditMemoKey",
         "schema": "string",
         "required": true,
-        "description": "The ID or number of the credit memo. For example, 2c92c8955bd63cc1015bd7c151af02ab or CM-0000001.\n"
+        "description": "The ID or number of the credit memo. For example, 2c92c8955bd63cc1015bd7c151af02ab or CM-0000001.\n",
+        "example": "CREDITMEMOKEY"
       }
     ],
     "responses": [
@@ -11386,7 +11604,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "creditMemoKey",
         "schema": "string",
         "required": true,
-        "description": "The ID or number of a posted credit memo. For example, 8a8082e65b27f6c3015ba45ff82c7172 or CM00000001.\n"
+        "description": "The ID or number of a posted credit memo. For example, 8a8082e65b27f6c3015ba45ff82c7172 or CM00000001.\n",
+        "example": "CREDITMEMOKEY"
       },
       {
         "name": "emailAddresses",
@@ -11396,7 +11615,8 @@ export default function ZuoraTypeScriptSdk() {
       {
         "name": "includeAdditionalEmailAddresses",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "pdfFileId",
@@ -11406,7 +11626,8 @@ export default function ZuoraTypeScriptSdk() {
       {
         "name": "useEmailTemplateSetting",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "default": false
       }
     ],
     "responses": [
@@ -11470,7 +11691,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "creditMemoKey",
         "schema": "string",
         "required": true,
-        "description": "The ID or number of the credit memo that you want to upload a PDF file for. For example, 402890555a7e9791015a879f064a0054 or CM00000001.\n"
+        "description": "The ID or number of the credit memo that you want to upload a PDF file for. For example, 402890555a7e9791015a879f064a0054 or CM00000001.\n",
+        "example": "CREDITMEMOKEY"
       },
       {
         "name": "file",
@@ -11533,19 +11755,22 @@ export default function ZuoraTypeScriptSdk() {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n"
+        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n",
+        "default": 1
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response.\n"
+        "description": "The number of records returned per page in the response.\n",
+        "default": 20
       },
       {
         "name": "creditMemoKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of a credit memo. For example, 8a8082e65b27f6c3015ba45ff82c7172 or CM00000001.\n"
+        "description": "The unique ID or number of a credit memo. For example, 8a8082e65b27f6c3015ba45ff82c7172 or CM00000001.\n",
+        "example": "CREDITMEMOKEY"
       },
       {
         "name": "zuoraVersion",
@@ -11699,13 +11924,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "cmitemid",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a credit memo item. You can get the credit memo item ID from the response of [List credit memo items](https://developer.zuora.com/api-references/api/operation/GET_CreditMemoItems).\n"
+        "description": "The unique ID of a credit memo item. You can get the credit memo item ID from the response of [List credit memo items](https://developer.zuora.com/api-references/api/operation/GET_CreditMemoItems).\n",
+        "example": "CMITEMID"
       },
       {
         "name": "creditMemoKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of a credit memo. For example, 8a8082e65b27f6c3015ba45ff82c7172 or CM00000001.\n"
+        "description": "The unique ID or number of a credit memo. For example, 8a8082e65b27f6c3015ba45ff82c7172 or CM00000001.\n",
+        "example": "CREDITMEMOKEY"
       },
       {
         "name": "zuoraVersion",
@@ -11769,19 +11996,22 @@ export default function ZuoraTypeScriptSdk() {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n"
+        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n",
+        "default": 1
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response.\n"
+        "description": "The number of records returned per page in the response.\n",
+        "default": 20
       },
       {
         "name": "creditMemoKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of a credit memo. For example, 8a8082e65b27f6c3015ba45ff82c7172.\n"
+        "description": "The unique ID or number of a credit memo. For example, 8a8082e65b27f6c3015ba45ff82c7172.\n",
+        "example": "CREDITMEMOKEY"
       }
     ],
     "responses": [
@@ -11839,13 +12069,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "partid",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a specific credit memo part. You can get the credit memo part ID from the response of [List all parts of a credit memo](https://developer.zuora.com/api-references/api/operation/GET_CreditMemoParts).\n"
+        "description": "The unique ID of a specific credit memo part. You can get the credit memo part ID from the response of [List all parts of a credit memo](https://developer.zuora.com/api-references/api/operation/GET_CreditMemoParts).\n",
+        "example": "PARTID"
       },
       {
         "name": "creditMemoKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of a credit memo. For example, 8a8082e65b27f6c3015ba45ff82c7172.\n"
+        "description": "The unique ID or number of a credit memo. For example, 8a8082e65b27f6c3015ba45ff82c7172.\n",
+        "example": "CREDITMEMOKEY"
       }
     ],
     "responses": [
@@ -11909,7 +12141,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "creditMemoKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of the credit memo that you want to create a PDF file for. For example, 8a8082e65b27f6c3015ba45ff82c7172 or CM00000001.\n"
+        "description": "The unique ID or number of the credit memo that you want to create a PDF file for. For example, 8a8082e65b27f6c3015ba45ff82c7172 or CM00000001.\n",
+        "example": "CREDITMEMOKEY"
       }
     ],
     "responses": [
@@ -11967,7 +12200,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "creditMemoKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of a credit memo. For example, 8a8082e65b27f6c3015ba45ff82c7172 or CM00000001.\n"
+        "description": "The unique ID or number of a credit memo. For example, 8a8082e65b27f6c3015ba45ff82c7172 or CM00000001.\n",
+        "example": "CREDITMEMOKEY"
       }
     ],
     "responses": [
@@ -12031,7 +12265,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "creditMemoKey",
         "schema": "string",
         "required": true,
-        "description": "The ID or number of the credit memo. For example, 2c92c8955bd63cc1015bd7c151af02ab or CM00000001.\n"
+        "description": "The ID or number of the credit memo. For example, 2c92c8955bd63cc1015bd7c151af02ab or CM00000001.\n",
+        "example": "CREDITMEMOKEY"
       }
     ],
     "responses": [
@@ -12089,7 +12324,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "creditMemoKey",
         "schema": "string",
         "required": true,
-        "description": "The ID or number of the credit memo. For example, 2c92c8955bd63cc1015bd7c151af02ab or CM00000001.\n"
+        "description": "The ID or number of the credit memo. For example, 2c92c8955bd63cc1015bd7c151af02ab or CM00000001.\n",
+        "example": "CREDITMEMOKEY"
       },
       {
         "name": "applyEffectiveDate",
@@ -12163,7 +12399,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "creditMemoKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of a credit memo. For example, 8a8082e65b27f6c3015ba45ff82c7172 or CM00000001.\n"
+        "description": "The unique ID or number of a credit memo. For example, 8a8082e65b27f6c3015ba45ff82c7172 or CM00000001.\n",
+        "example": "CREDITMEMOKEY"
       },
       {
         "name": "taxationItems",
@@ -12226,7 +12463,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "creditMemoKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of a credit memo. For example, 8a8082e65b27f6c3015ba45ff82c7172.\n"
+        "description": "The unique ID or number of a credit memo. For example, 8a8082e65b27f6c3015ba45ff82c7172.\n",
+        "example": "CREDITMEMOKEY"
       },
       {
         "name": "debitMemos",
@@ -12299,7 +12537,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "creditMemoKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of a credit memo. For example, 8a8082e65b27f6c3015ba45ff82c7172 or CM00000001.\n"
+        "description": "The unique ID or number of a credit memo. For example, 8a8082e65b27f6c3015ba45ff82c7172 or CM00000001.\n",
+        "example": "CREDITMEMOKEY"
       }
     ],
     "responses": [
@@ -12369,7 +12608,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "invoiceKey",
         "schema": "string",
         "required": true,
-        "description": "The ID or number of an invoice that you want to create a credit memo from. For example, 2c93808457d787030157e030d10f3f64 or INV00000001.\n"
+        "description": "The ID or number of an invoice that you want to create a credit memo from. For example, 2c93808457d787030157e030d10f3f64 or INV00000001.\n",
+        "example": "INVOICEKEY"
       }
     ],
     "responses": [
@@ -12427,13 +12667,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n"
+        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n",
+        "default": 1
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response.\n"
+        "description": "The number of records returned per page in the response.\n",
+        "default": 20
       },
       {
         "name": "accountId",
@@ -12842,7 +13084,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "debitMemoKeys",
         "schema": "string",
         "required": true,
-        "description": "The IDs or numbers of the debit memos separated by commas. For example - `?debitMemoKeys=2c92c8955bd63cc1015bd7c151af02ab,4b65b8605bd63cc1015bd7c151af02cd,DM0000001`.\n"
+        "description": "The IDs or numbers of the debit memos separated by commas. For example - `?debitMemoKeys=2c92c8955bd63cc1015bd7c151af02ab,4b65b8605bd63cc1015bd7c151af02cd,DM0000001`.\n",
+        "example": "DEBITMEMOKEYS"
       },
       {
         "name": "zuoraVersion",
@@ -12918,7 +13161,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "debitMemoId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a debit memo. For example, 8a8082e65b27f6c3015ba419f3c2644e.\n"
+        "description": "The unique ID of a debit memo. For example, 8a8082e65b27f6c3015ba419f3c2644e.\n",
+        "example": "DEBITMEMOID"
       }
     ],
     "responses": [
@@ -12976,25 +13220,29 @@ export default function ZuoraTypeScriptSdk() {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response.\n"
+        "description": "The number of records returned per page in the response.\n",
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n"
+        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n",
+        "default": 1
       },
       {
         "name": "dmitemid",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a debit memo item. You can get the debit memo item ID from the response of [List debit memo items](https://developer.zuora.com/api-references/api/operation/GET_DebitMemoItems).\n"
+        "description": "The unique ID of a debit memo item. You can get the debit memo item ID from the response of [List debit memo items](https://developer.zuora.com/api-references/api/operation/GET_DebitMemoItems).\n",
+        "example": "DMITEMID"
       },
       {
         "name": "debitMemoId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a debit memo. For example, 8a8082e65b27f6c3015ba419f3c2644e.\n"
+        "description": "The unique ID of a debit memo. For example, 8a8082e65b27f6c3015ba419f3c2644e.\n",
+        "example": "DEBITMEMOID"
       }
     ],
     "responses": [
@@ -13052,7 +13300,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "debitMemoKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of a debit memo. For example, 8a8082e65b27f6c3015ba419f3c2644e or DM00000003.\n"
+        "description": "The unique ID or number of a debit memo. For example, 8a8082e65b27f6c3015ba419f3c2644e or DM00000003.\n",
+        "example": "DEBITMEMOKEY"
       }
     ],
     "responses": [
@@ -13110,7 +13359,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "debitMemoKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of a debit memo. For example, 8a8082e65b27f6c3015ba419f3c2644e or DM00000001.\n"
+        "description": "The unique ID or number of a debit memo. For example, 8a8082e65b27f6c3015ba419f3c2644e or DM00000001.\n",
+        "example": "DEBITMEMOKEY"
       }
     ],
     "responses": [
@@ -13168,7 +13418,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "debitMemoKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of a debit memo. For example, 8a8082e65b27f6c3015ba419f3c2644e or DM00000001.\n"
+        "description": "The unique ID or number of a debit memo. For example, 8a8082e65b27f6c3015ba419f3c2644e or DM00000001.\n",
+        "example": "DEBITMEMOKEY"
       }
     ],
     "responses": [
@@ -13226,7 +13477,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "debitMemoKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of a debit memo. For example, 8a8082e65b27f6c3015ba419f3c2644e or DM00000003.\n"
+        "description": "The unique ID or number of a debit memo. For example, 8a8082e65b27f6c3015ba419f3c2644e or DM00000003.\n",
+        "example": "DEBITMEMOKEY"
       }
     ],
     "responses": [
@@ -13290,7 +13542,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "debitMemoKey",
         "schema": "string",
         "required": true,
-        "description": "The ID or number of a posted debit memo. For example, 8a8082e65b27f6c3015ba419f3c2644e.\n"
+        "description": "The ID or number of a posted debit memo. For example, 8a8082e65b27f6c3015ba419f3c2644e.\n",
+        "example": "DEBITMEMOKEY"
       },
       {
         "name": "applicationOrder",
@@ -13300,12 +13553,14 @@ export default function ZuoraTypeScriptSdk() {
       {
         "name": "applyCredit",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "collect",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "payment",
@@ -13368,7 +13623,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "debitMemoKey",
         "schema": "string",
         "required": true,
-        "description": "The ID or number of the debit memo. For example, 2c92c8955bd63cc1015bd7c151af02ab or DM-0000001.\n"
+        "description": "The ID or number of the debit memo. For example, 2c92c8955bd63cc1015bd7c151af02ab or DM-0000001.\n",
+        "example": "DEBITMEMOKEY"
       }
     ],
     "responses": [
@@ -13432,7 +13688,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "debitMemoKey",
         "schema": "string",
         "required": true,
-        "description": "The ID or number of a posted debit memo. For example, 8a8082e65b27f6c3015ba419f3c2644e or DM00000001.\n"
+        "description": "The ID or number of a posted debit memo. For example, 8a8082e65b27f6c3015ba419f3c2644e or DM00000001.\n",
+        "example": "DEBITMEMOKEY"
       },
       {
         "name": "emailAddresses",
@@ -13442,7 +13699,8 @@ export default function ZuoraTypeScriptSdk() {
       {
         "name": "includeAdditionalEmailAddresses",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "pdfFileId",
@@ -13452,7 +13710,8 @@ export default function ZuoraTypeScriptSdk() {
       {
         "name": "useEmailTemplateSetting",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "default": false
       }
     ],
     "responses": [
@@ -13516,7 +13775,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "debitMemoKey",
         "schema": "string",
         "required": true,
-        "description": "The ID or number of the debit memo that you want to upload a PDF file for. For example, 402890555a87d7f5015a8919e4fe002e or DM00000001.\n"
+        "description": "The ID or number of the debit memo that you want to upload a PDF file for. For example, 402890555a87d7f5015a8919e4fe002e or DM00000001.\n",
+        "example": "DEBITMEMOKEY"
       },
       {
         "name": "file",
@@ -13579,19 +13839,22 @@ export default function ZuoraTypeScriptSdk() {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n"
+        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n",
+        "default": 1
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response.\n"
+        "description": "The number of records returned per page in the response.\n",
+        "default": 20
       },
       {
         "name": "debitMemoKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of a debit memo. For example, 8a8082e65b27f6c3015ba419f3c2644e or DM00000001.\n"
+        "description": "The unique ID or number of a debit memo. For example, 8a8082e65b27f6c3015ba419f3c2644e or DM00000001.\n",
+        "example": "DEBITMEMOKEY"
       },
       {
         "name": "zuoraVersion",
@@ -13739,13 +14002,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "dmitemid",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a debit memo item. You can get the debit memo item ID from the response of [List debit memo items](https://developer.zuora.com/api-references/api/operation/GET_DebitMemoItems).\n"
+        "description": "The unique ID of a debit memo item. You can get the debit memo item ID from the response of [List debit memo items](https://developer.zuora.com/api-references/api/operation/GET_DebitMemoItems).\n",
+        "example": "DMITEMID"
       },
       {
         "name": "debitMemoKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of a debit memo. For example, 8a8082e65b27f6c3015ba419f3c2644e or DM00000001.\n"
+        "description": "The unique ID or number of a debit memo. For example, 8a8082e65b27f6c3015ba419f3c2644e or DM00000001.\n",
+        "example": "DEBITMEMOKEY"
       },
       {
         "name": "zuoraVersion",
@@ -13815,7 +14080,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "debitMemoKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of the debit memo that you want to create a PDF file for. For example, 8a8082e65b27f6c3015ba419f3c2644e or DM00000001.\n"
+        "description": "The unique ID or number of the debit memo that you want to create a PDF file for. For example, 8a8082e65b27f6c3015ba419f3c2644e or DM00000001.\n",
+        "example": "DEBITMEMOKEY"
       }
     ],
     "responses": [
@@ -13873,7 +14139,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "debitMemoKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of a debit memo. For example, 8a8082e65b27f6c3015ba419f3c2644e or DM00000001.\n"
+        "description": "The unique ID or number of a debit memo. For example, 8a8082e65b27f6c3015ba419f3c2644e or DM00000001.\n",
+        "example": "DEBITMEMOKEY"
       }
     ],
     "responses": [
@@ -13937,7 +14204,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "debitMemoKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of a debit memo. For example, 8a8082e65b27f6c3015ba419f3c2644e or DM00000001.\n"
+        "description": "The unique ID or number of a debit memo. For example, 8a8082e65b27f6c3015ba419f3c2644e or DM00000001.\n",
+        "example": "DEBITMEMOKEY"
       },
       {
         "name": "taxationItems",
@@ -14000,7 +14268,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "debitMemoKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of a debit memo. For example, 8a8082e65b27f6c3015ba419f3c2644e or DM00000001.\n"
+        "description": "The unique ID or number of a debit memo. For example, 8a8082e65b27f6c3015ba419f3c2644e or DM00000001.\n",
+        "example": "DEBITMEMOKEY"
       }
     ],
     "responses": [
@@ -14064,7 +14333,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "invoiceKey",
         "schema": "string",
         "required": true,
-        "description": "The ID or number of an invoice that you want to create a debit memo from. For example, 2c93808457d787030157e030d10f3f64 or INV00000001.\n"
+        "description": "The ID or number of an invoice that you want to create a debit memo from. For example, 2c93808457d787030157e030d10f3f64 or INV00000001.\n",
+        "example": "INVOICEKEY"
       },
       {
         "name": "zuoraVersion",
@@ -14238,7 +14508,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "key",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of the e-invoicing service provider that you want to \n"
+        "description": "The unique ID or number of the e-invoicing service provider that you want to \n",
+        "example": "KEY"
       }
     ],
     "responses": [
@@ -14296,7 +14567,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "key",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of the e-invoicing service provider that you want to retrieve information about.\n"
+        "description": "The unique ID or number of the e-invoicing service provider that you want to retrieve information about.\n",
+        "example": "KEY"
       }
     ],
     "responses": [
@@ -14354,7 +14626,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "key",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of the e-invoicing service provider that you want to update.\n"
+        "description": "The unique ID or number of the e-invoicing service provider that you want to update.\n",
+        "example": "KEY"
       }
     ],
     "responses": [
@@ -14522,7 +14795,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "key",
         "schema": "string",
         "required": true,
-        "description": "The unqiue ID or number of the e-invoicing business region that you want to delete.\n"
+        "description": "The unqiue ID or number of the e-invoicing business region that you want to delete.\n",
+        "example": "KEY"
       }
     ],
     "responses": [
@@ -14580,7 +14854,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "key",
         "schema": "string",
         "required": true,
-        "description": "The unqiue ID or number of the e-invoicing business region that you want to retrieve information about.\n"
+        "description": "The unqiue ID or number of the e-invoicing business region that you want to retrieve information about.\n",
+        "example": "KEY"
       }
     ],
     "responses": [
@@ -14638,7 +14913,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "key",
         "schema": "string",
         "required": true,
-        "description": "The unqiue ID or number of the e-invoicing business region that you want to update.\n"
+        "description": "The unqiue ID or number of the e-invoicing business region that you want to update.\n",
+        "example": "KEY"
       }
     ],
     "responses": [
@@ -14696,19 +14972,22 @@ export default function ZuoraTypeScriptSdk() {
         "name": "country",
         "schema": "string",
         "required": true,
-        "description": "The short name of a country or region where you must comply with e-invoicing requirements. For example, `IN` for India. For the full list of country names and codes, see <a href=\"https://knowledgecenter.zuora.com/Quick_References/Country%2C_State%2C_and_Province_Codes/A_Country_Names_and_Their_ISO_Codes\" target=\"_blank\">ISO Standard Country Codes</a>.\n"
+        "description": "The short name of a country or region where you must comply with e-invoicing requirements. For example, `IN` for India. For the full list of country names and codes, see <a href=\"https://knowledgecenter.zuora.com/Quick_References/Country%2C_State%2C_and_Province_Codes/A_Country_Names_and_Their_ISO_Codes\" target=\"_blank\">ISO Standard Country Codes</a>.\n",
+        "example": "COUNTRY"
       },
       {
         "name": "documentType",
         "schema": "string",
         "required": true,
-        "description": "The type of billing documents for which the e-invoice file template is intended.\n"
+        "description": "The type of billing documents for which the e-invoice file template is intended.\n",
+        "example": "DOCUMENTTYPE"
       },
       {
         "name": "provider",
         "schema": "string",
         "required": true,
-        "description": "The name of the e-invoicing service provider that assists in generating e-invoice files. \n"
+        "description": "The name of the e-invoicing service provider that assists in generating e-invoice files. \n",
+        "example": "PROVIDER"
       }
     ],
     "responses": [
@@ -14824,7 +15103,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "key",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of the e-invoice file template that you want to delete.\n"
+        "description": "The unique ID or number of the e-invoice file template that you want to delete.\n",
+        "example": "KEY"
       }
     ],
     "responses": [
@@ -14882,7 +15162,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "key",
         "schema": "string",
         "required": true,
-        "description": "The unique number or ID of the e-invoice file template that you want to retrieve information about.\n"
+        "description": "The unique number or ID of the e-invoice file template that you want to retrieve information about.\n",
+        "example": "KEY"
       }
     ],
     "responses": [
@@ -14940,7 +15221,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "key",
         "schema": "string",
         "required": true,
-        "description": "The unique number or ID of the e-invoice file template that you want to update.\n"
+        "description": "The unique number or ID of the e-invoice file template that you want to update.\n",
+        "example": "KEY"
       }
     ],
     "responses": [
@@ -15056,7 +15338,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "scheduleKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of the invoice schedule to be deleted. For example, 2c92c8955bd63cc1015bd7c151af02ab or IS-0000001.\n"
+        "description": "The unique ID or number of the invoice schedule to be deleted. For example, 2c92c8955bd63cc1015bd7c151af02ab or IS-0000001.\n",
+        "example": "SCHEDULEKEY"
       }
     ],
     "responses": [
@@ -15114,19 +15397,22 @@ export default function ZuoraTypeScriptSdk() {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n"
+        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n",
+        "default": 1
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response.\n"
+        "description": "The number of records returned per page in the response.\n",
+        "default": 20
       },
       {
         "name": "scheduleKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of the invoice schedule to be retrieved. For example, 2c92c8955bd63cc1015bd7c151af02ab or IS-0000001.\n"
+        "description": "The unique ID or number of the invoice schedule to be retrieved. For example, 2c92c8955bd63cc1015bd7c151af02ab or IS-0000001.\n",
+        "example": "SCHEDULEKEY"
       }
     ],
     "responses": [
@@ -15184,7 +15470,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "scheduleKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of the invoice schedule to be updated. For example, 2c92c8955bd63cc1015bd7c151af02ab or IS-0000001.\n"
+        "description": "The unique ID or number of the invoice schedule to be updated. For example, 2c92c8955bd63cc1015bd7c151af02ab or IS-0000001.\n",
+        "example": "SCHEDULEKEY"
       }
     ],
     "responses": [
@@ -15248,7 +15535,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "scheduleKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of the schedule to be executed. For example, 2c92c8955bd63cc1015bd7c151af02ab or IS-0000001.\n"
+        "description": "The unique ID or number of the schedule to be executed. For example, 2c92c8955bd63cc1015bd7c151af02ab or IS-0000001.\n",
+        "example": "SCHEDULEKEY"
       }
     ],
     "responses": [
@@ -15306,7 +15594,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "scheduleKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of the schedule to be paused. For example, 2c92c8955bd63cc1015bd7c151af02ab or IS-0000001.\n"
+        "description": "The unique ID or number of the schedule to be paused. For example, 2c92c8955bd63cc1015bd7c151af02ab or IS-0000001.\n",
+        "example": "SCHEDULEKEY"
       }
     ],
     "responses": [
@@ -15364,7 +15653,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "scheduleKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of the schedule to be resumed. For example, 2c92c8955bd63cc1015bd7c151af02ab or IS-0000001.\n"
+        "description": "The unique ID or number of the schedule to be resumed. For example, 2c92c8955bd63cc1015bd7c151af02ab or IS-0000001.\n",
+        "example": "SCHEDULEKEY"
       }
     ],
     "responses": [
@@ -15410,7 +15700,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "rejectUnknownFields",
         "schema": "boolean",
         "required": false,
-        "description": "Specifies whether the call fails if the request body contains unknown fields.\nWith `rejectUnknownFields` set to `true`, Zuora returns a 400 response if\nthe request body contains unknown fields. The body of the 400 response is:\n\n```json\n{\n    \"message\": \"Error - unrecognised fields\"\n}\n```\n\nBy default, Zuora ignores unknown fields in the request body.\n"
+        "description": "Specifies whether the call fails if the request body contains unknown fields.\nWith `rejectUnknownFields` set to `true`, Zuora returns a 400 response if\nthe request body contains unknown fields. The body of the 400 response is:\n\n```json\n{\n    \"message\": \"Error - unrecognised fields\"\n}\n```\n\nBy default, Zuora ignores unknown fields in the request body.\n",
+        "default": false
       },
       {
         "name": "zuoraEntityIds",
@@ -15494,7 +15785,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a taxation item.\n"
+        "description": "The unique ID of a taxation item.\n",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -15552,7 +15844,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a taxation item.\n"
+        "description": "The unique ID of a taxation item.\n",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -15610,7 +15903,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a taxation item.\n"
+        "description": "The unique ID of a taxation item.\n",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -15668,13 +15962,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response.\n"
+        "description": "The number of records returned per page in the response.\n",
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n"
+        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n",
+        "default": 1
       },
       {
         "name": "name",
@@ -15801,7 +16097,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the sequence set to delete.\n"
+        "description": "The ID of the sequence set to delete.\n",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -15859,7 +16156,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the sequence set to retrieve information about.\n"
+        "description": "The ID of the sequence set to retrieve information about.\n",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -15917,7 +16215,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the sequence set to update.\n"
+        "description": "The ID of the sequence set to update.\n",
+        "example": "ID"
       },
       {
         "name": "creditMemo",
@@ -16047,7 +16346,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "targetDate",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TARGETDATE"
       }
     ],
     "responses": [
@@ -16117,7 +16417,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "accountKey",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ACCOUNTKEY"
       },
       {
         "name": "documentDate",
@@ -16217,7 +16518,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "jobId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the operation job to retrieve information about. For example, 2c92c8955bd63cc1015bd7c151af02ab.\n"
+        "description": "The ID of the operation job to retrieve information about. For example, 2c92c8955bd63cc1015bd7c151af02ab.\n",
+        "example": "JOBID"
       }
     ],
     "responses": [
@@ -16333,7 +16635,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "billRunId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a bill run.\n"
+        "description": "The unique ID of a bill run.\n",
+        "example": "BILLRUNID"
       }
     ],
     "responses": [
@@ -16391,7 +16694,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "billRunId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a bill run.\n"
+        "description": "The unique ID of a bill run.\n",
+        "example": "BILLRUNID"
       }
     ],
     "responses": [
@@ -16449,12 +16753,14 @@ export default function ZuoraTypeScriptSdk() {
         "name": "billRunId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a bill run.\n"
+        "description": "The unique ID of a bill run.\n",
+        "example": "BILLRUNID"
       },
       {
         "name": "cancelOnce",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "default": true
       }
     ],
     "responses": [
@@ -16512,13 +16818,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "billRunId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a bill run.\n"
+        "description": "The unique ID of a bill run.\n",
+        "example": "BILLRUNID"
       },
       {
         "name": "invoiceDate",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "INVOICEDATE"
       }
     ],
     "responses": [
@@ -16582,12 +16890,14 @@ export default function ZuoraTypeScriptSdk() {
         "name": "billRunKey",
         "schema": "string",
         "required": true,
-        "description": "The ID or number of the bill run. For example, 2c92c8f95d0c886e015d11287a8f0f8b or BR-00000001.\n"
+        "description": "The ID or number of the bill run. For example, 2c92c8f95d0c886e015d11287a8f0f8b or BR-00000001.\n",
+        "example": "BILLRUNKEY"
       },
       {
         "name": "resend",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "default": false
       }
     ],
     "responses": [
@@ -16705,7 +17015,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "targetDate",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TARGETDATE"
       }
     ],
     "responses": [
@@ -16769,7 +17080,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "billingPreviewRunId",
         "schema": "string",
         "required": true,
-        "description": "Id of the billing preview run.\n"
+        "description": "Id of the billing preview run.\n",
+        "example": "BILLINGPREVIEWRUNID"
       }
     ],
     "responses": [
@@ -16897,13 +17209,23 @@ export default function ZuoraTypeScriptSdk() {
         "name": "cardHolderInfo",
         "schema": "object",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": {
+          "cardHolderName": "Amy Lawrence",
+          "addressLine1": "101 Redwood Shores Parkway",
+          "city": "Redwood City",
+          "state": "CA",
+          "zipCode": 94065,
+          "country": "USA",
+          "phone": "(888) 976-9056"
+        }
       },
       {
         "name": "integrationType",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "INTEGRATIONTYPE"
       },
       {
         "name": "invoiceId",
@@ -16915,7 +17237,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "merchantID",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "MERCHANTID"
       },
       {
         "name": "mitConsentAgreementSrc",
@@ -17009,7 +17332,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentMethodId",
         "schema": "string",
         "required": true,
-        "description": "Unique identifier of a payment method. (Since this ID is unique, and linked to a customer account in the system, no customer identifier is needed.)"
+        "description": "Unique identifier of a payment method. (Since this ID is unique, and linked to a customer account in the system, no customer identifier is needed.)",
+        "example": "PAYMENT-METHOD-ID"
       }
     ],
     "responses": [
@@ -17067,7 +17391,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentMethodId",
         "schema": "string",
         "required": true,
-        "description": "Unique ID of the payment method to update."
+        "description": "Unique ID of the payment method to update.",
+        "example": "PAYMENT-METHOD-ID"
       }
     ],
     "responses": [
@@ -17125,7 +17450,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentMethodId",
         "schema": "string",
         "required": true,
-        "description": "Unique ID of the payment method to update."
+        "description": "Unique ID of the payment method to update.",
+        "example": "PAYMENT-METHOD-ID"
       }
     ],
     "responses": [
@@ -17171,7 +17497,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentMethodId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the payment method to be verified.\n"
+        "description": "The ID of the payment method to be verified.\n",
+        "example": "PAYMENT-METHOD-ID"
       },
       {
         "name": "currencyCode",
@@ -17249,7 +17576,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentMethodId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the payment method where you want to scrub the sensitive data.\n"
+        "description": "The ID of the payment method where you want to scrub the sensitive data.\n",
+        "example": "PAYMENT-METHOD-ID"
       }
     ],
     "responses": [
@@ -17307,12 +17635,14 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentMethodId",
         "schema": "string",
         "required": true,
-        "description": "ID of a payment method.\n"
+        "description": "ID of a payment method.\n",
+        "example": "PAYMENT-METHOD-ID"
       },
       {
         "name": "includeAll",
         "schema": "boolean",
-        "description": "Specifies whether to retrieve all the stored credential profiles within the payment method.\n\nBy default, Zuora returns only the stored credential profiles with `Agreed` or `Active` status. If you set this parameter to `true`, Zuora returns all the stored credential profiles.\n"
+        "description": "Specifies whether to retrieve all the stored credential profiles within the payment method.\n\nBy default, Zuora returns only the stored credential profiles with `Agreed` or `Active` status. If you set this parameter to `true`, Zuora returns all the stored credential profiles.\n",
+        "default": false
       }
     ],
     "responses": [
@@ -17376,7 +17706,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentMethodId",
         "schema": "string",
         "required": true,
-        "description": "ID of a payment method.\n"
+        "description": "ID of a payment method.\n",
+        "example": "PAYMENT-METHOD-ID"
       },
       {
         "name": "action",
@@ -17412,7 +17743,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "consentAgreementSrc",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CONSENTAGREEMENTSRC"
       },
       {
         "name": "networkTransactionId",
@@ -17424,13 +17756,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "status",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "STATUS"
       },
       {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TYPE"
       }
     ],
     "responses": [
@@ -17494,13 +17828,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentMethodId",
         "schema": "string",
         "required": true,
-        "description": "ID of a payment method.\n"
+        "description": "ID of a payment method.\n",
+        "example": "PAYMENT-METHOD-ID"
       },
       {
         "name": "profileNumber",
         "schema": "integer",
         "required": true,
-        "description": "Number that identifies a stored credential profile within the payment method.\n"
+        "description": "Number that identifies a stored credential profile within the payment method.\n",
+        "example": 0
       }
     ],
     "responses": [
@@ -17564,13 +17900,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentMethodId",
         "schema": "string",
         "required": true,
-        "description": "ID of a payment method.\n"
+        "description": "ID of a payment method.\n",
+        "example": "PAYMENT-METHOD-ID"
       },
       {
         "name": "profileNumber",
         "schema": "integer",
         "required": true,
-        "description": "Number that identifies a stored credential profile within the payment method.\n"
+        "description": "Number that identifies a stored credential profile within the payment method.\n",
+        "example": 0
       }
     ],
     "responses": [
@@ -17697,7 +18035,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "domainName",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "DOMAINNAME"
       }
     ],
     "responses": [
@@ -17761,7 +18100,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the domain, such as `402881a38924ff1001892502da090021`."
+        "description": "The ID of the domain, such as `402881a38924ff1001892502da090021`.",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -17825,7 +18165,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "accountId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ACCOUNTID"
       },
       {
         "name": "amount",
@@ -17843,19 +18184,22 @@ export default function ZuoraTypeScriptSdk() {
         "name": "currency",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CURRENCY"
       },
       {
         "name": "paymentGateway",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PAYMENTGATEWAY"
       },
       {
         "name": "processPayment",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -17919,7 +18263,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Object id"
+        "description": "Object id",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -17991,7 +18336,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Object id"
+        "description": "Object id",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -18115,13 +18461,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "billingCycleDay",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "updaterAccountId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "UPDATERACCOUNTID"
       }
     ],
     "responses": [
@@ -18299,13 +18647,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "method",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "METHOD"
       },
       {
         "name": "pageId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PAGEID"
       },
       {
         "name": "param_gwOptions_[*option*]",
@@ -18383,7 +18733,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "uri",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "URI"
       },
       {
         "name": "useDefaultRetryRule",
@@ -18453,19 +18804,22 @@ export default function ZuoraTypeScriptSdk() {
         "name": "method",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "METHOD"
       },
       {
         "name": "publicKey",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PUBLICKEY"
       },
       {
         "name": "signature",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SIGNATURE"
       }
     ],
     "responses": [
@@ -18563,7 +18917,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraTrackId",
@@ -18599,19 +18954,22 @@ export default function ZuoraTypeScriptSdk() {
         "name": "internalName",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "INTERNALNAME"
       },
       {
         "name": "label",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "LABEL"
       },
       {
         "name": "methodReferenceIdField",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "METHODREFERENCEIDFIELD"
       },
       {
         "name": "subTypeField",
@@ -18623,7 +18981,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "tenantId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TENANTID"
       },
       {
         "name": "userReferenceIdField",
@@ -18663,7 +19022,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraTrackId",
@@ -18687,7 +19047,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentMethodTypeName",
         "schema": "string",
         "required": true,
-        "description": "The API name of the custom payment method type, such as `AmazonPay__c_12368`.\n"
+        "description": "The API name of the custom payment method type, such as `AmazonPay__c_12368`.\n",
+        "example": "PAYMENTMETHODTYPENAME"
       }
     ],
     "responses": [
@@ -18721,7 +19082,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraTrackId",
@@ -18745,7 +19107,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentMethodTypeName",
         "schema": "string",
         "required": true,
-        "description": "The API name of the custom payment method type, such as `AmazonPay__c_12368`.\n"
+        "description": "The API name of the custom payment method type, such as `AmazonPay__c_12368`.\n",
+        "example": "PAYMENTMETHODTYPENAME"
       },
       {
         "name": "entityId",
@@ -18763,19 +19126,22 @@ export default function ZuoraTypeScriptSdk() {
         "name": "internalName",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "INTERNALNAME"
       },
       {
         "name": "label",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "LABEL"
       },
       {
         "name": "methodReferenceIdField",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "METHODREFERENCEIDFIELD"
       },
       {
         "name": "subTypeField",
@@ -18787,7 +19153,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "tenantId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TENANTID"
       },
       {
         "name": "userReferenceIdField",
@@ -18827,7 +19194,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraTrackId",
@@ -18851,13 +19219,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentMethodTypeName",
         "schema": "string",
         "required": true,
-        "description": "The API name of the custom payment method type, such as `AmazonPay__c_12368`.\n"
+        "description": "The API name of the custom payment method type, such as `AmazonPay__c_12368`.\n",
+        "example": "PAYMENTMETHODTYPENAME"
       },
       {
         "name": "revisionNumber",
         "schema": "integer",
         "required": true,
-        "description": "The revision number of the draft revision to be retrieved.\n"
+        "description": "The revision number of the draft revision to be retrieved.\n",
+        "example": 0
       }
     ],
     "responses": [
@@ -18891,7 +19261,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraTrackId",
@@ -18915,7 +19286,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentMethodTypeName",
         "schema": "string",
         "required": true,
-        "description": "The API name of the custom payment method type, such as `AmazonPay__c_12368`.\n"
+        "description": "The API name of the custom payment method type, such as `AmazonPay__c_12368`.\n",
+        "example": "PAYMENTMETHODTYPENAME"
       }
     ],
     "responses": [
@@ -18979,7 +19351,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentMethodId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of the payment method where the authorization is created.\n"
+        "description": "The unique ID of the payment method where the authorization is created.\n",
+        "example": "PAYMENT-METHOD-ID"
       },
       {
         "name": "accountId",
@@ -18997,7 +19370,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "amount",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "gatewayOptions",
@@ -19009,7 +19383,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "gatewayOrderId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "GATEWAYORDERID"
       },
       {
         "name": "mitTransactionSource",
@@ -19097,7 +19472,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentMethodId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of the payment method where the authorization is cancelled.\n"
+        "description": "The unique ID of the payment method where the authorization is cancelled.\n",
+        "example": "PAYMENT-METHOD-ID"
       },
       {
         "name": "accountId",
@@ -19121,7 +19497,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "gatewayOrderId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "GATEWAYORDERID"
       },
       {
         "name": "paymentGatewayId",
@@ -19133,7 +19510,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "transactionId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TRANSACTIONID"
       }
     ],
     "responses": [
@@ -19249,13 +19627,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentKey",
         "schema": "string",
         "required": true,
-        "description": "The payment number starting with \"P-\" or the unique payment ID."
+        "description": "The payment number starting with \"P-\" or the unique payment ID.",
+        "example": "PAYMENT-KEY"
       },
       {
         "name": "amount",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "gatewayReconciliationReason",
@@ -19367,7 +19747,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentKey",
         "schema": "string",
         "required": true,
-        "description": "The payment number starting with \"P-\" or the unique payment ID."
+        "description": "The payment number starting with \"P-\" or the unique payment ID.",
+        "example": "PAYMENT-KEY"
       },
       {
         "name": "gatewayReconciliationReason",
@@ -19466,7 +19847,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentKey",
         "schema": "string",
         "required": true,
-        "description": "The payment number starting with \"P-\" or the unique payment ID."
+        "description": "The payment number starting with \"P-\" or the unique payment ID.",
+        "example": "PAYMENT-KEY"
       },
       {
         "name": "gatewayReconciliationReason",
@@ -19550,7 +19932,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "refundKey",
         "schema": "string",
         "required": true,
-        "description": "The refund number starting with “R-” or the unique refund ID."
+        "description": "The refund number starting with “R-” or the unique refund ID.",
+        "example": "REFUND-KEY"
       },
       {
         "name": "action",
@@ -19633,13 +20016,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n"
+        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n",
+        "default": 1
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response.\n"
+        "description": "The number of records returned per page in the response.\n",
+        "default": 20
       },
       {
         "name": "accountId",
@@ -19851,7 +20236,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of an unapplied payment. For example, `8a8082e65b27f6c3015b89e4344c16b1`.\n"
+        "description": "The unique ID of an unapplied payment. For example, `8a8082e65b27f6c3015b89e4344c16b1`.\n",
+        "example": "PAYMENTID"
       }
     ],
     "responses": [
@@ -19909,7 +20295,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of an unapplied payment. For example, `8a8082e65b27f6c3015b89e4344c16b1`, or `P-00000001`.\n"
+        "description": "The unique ID or number of an unapplied payment. For example, `8a8082e65b27f6c3015b89e4344c16b1`, or `P-00000001`.\n",
+        "example": "PAYMENTKEY"
       }
     ],
     "responses": [
@@ -19967,7 +20354,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of an unapplied payment. For example, `8a8082e65b27f6c3015b89e4344c16b1`, or `P-00000001`.\n"
+        "description": "The unique ID or number of an unapplied payment. For example, `8a8082e65b27f6c3015b89e4344c16b1`, or `P-00000001`.\n",
+        "example": "PAYMENTKEY"
       }
     ],
     "responses": [
@@ -20025,7 +20413,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of an unapplied payment. For example, `8a8082e65b27f6c3015b89e4344c16b1`, or `P-00000001`.\n"
+        "description": "The unique ID or number of an unapplied payment. For example, `8a8082e65b27f6c3015b89e4344c16b1`, or `P-00000001`.\n",
+        "example": "PAYMENTKEY"
       },
       {
         "name": "debitMemos",
@@ -20098,7 +20487,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of an unapplied payment. For example, `8a8082e65b27f6c3015b89e4344c16b1`, or `P-00000001`.\n"
+        "description": "The unique ID or number of an unapplied payment. For example, `8a8082e65b27f6c3015b89e4344c16b1`, or `P-00000001`.\n",
+        "example": "PAYMENTKEY"
       }
     ],
     "responses": [
@@ -20156,19 +20546,22 @@ export default function ZuoraTypeScriptSdk() {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n"
+        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n",
+        "default": 1
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response.\n"
+        "description": "The number of records returned per page in the response.\n",
+        "default": 20
       },
       {
         "name": "paymentKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of an unapplied payment. For example, `8a8082e65b27f6c3015b89e4344c16b1`, or `P-00000001`.\n"
+        "description": "The unique ID or number of an unapplied payment. For example, `8a8082e65b27f6c3015b89e4344c16b1`, or `P-00000001`.\n",
+        "example": "PAYMENTKEY"
       }
     ],
     "responses": [
@@ -20226,13 +20619,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "partid",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a specific payment part. You can get the payment part ID from the response of [List all parts of a payment](https://www.zuora.com/developer/api-references/api/operation/GET_PaymentParts).\n"
+        "description": "The unique ID of a specific payment part. You can get the payment part ID from the response of [List all parts of a payment](https://www.zuora.com/developer/api-references/api/operation/GET_PaymentParts).\n",
+        "example": "PARTID"
       },
       {
         "name": "paymentKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of an unapplied payment. For example, `8a8082e65b27f6c3015b89e4344c16b1`, or `P-00000001`.\n"
+        "description": "The unique ID or number of an unapplied payment. For example, `8a8082e65b27f6c3015b89e4344c16b1`, or `P-00000001`.\n",
+        "example": "PAYMENTKEY"
       }
     ],
     "responses": [
@@ -20290,25 +20685,29 @@ export default function ZuoraTypeScriptSdk() {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n"
+        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n",
+        "default": 1
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response.\n"
+        "description": "The number of records returned per page in the response.\n",
+        "default": 20
       },
       {
         "name": "partid",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a specific payment part. You can get the payment part ID from the response of [List all parts of a payment](https://www.zuora.com/developer/api-references/api/operation/GET_PaymentParts).\n"
+        "description": "The unique ID of a specific payment part. You can get the payment part ID from the response of [List all parts of a payment](https://www.zuora.com/developer/api-references/api/operation/GET_PaymentParts).\n",
+        "example": "PARTID"
       },
       {
         "name": "paymentKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of an unapplied payment. For example, `8a8082e65b27f6c3015b89e4344c16b1`, or `P-00000001`.\n"
+        "description": "The unique ID or number of an unapplied payment. For example, `8a8082e65b27f6c3015b89e4344c16b1`, or `P-00000001`.\n",
+        "example": "PAYMENTKEY"
       }
     ],
     "responses": [
@@ -20366,19 +20765,22 @@ export default function ZuoraTypeScriptSdk() {
         "name": "partid",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a specific payment part. You can get the payment part ID from the response of [List all parts of a payment](https://www.zuora.com/developer/api-references/api/operation/GET_PaymentParts).\n"
+        "description": "The unique ID of a specific payment part. You can get the payment part ID from the response of [List all parts of a payment](https://www.zuora.com/developer/api-references/api/operation/GET_PaymentParts).\n",
+        "example": "PARTID"
       },
       {
         "name": "itempartid",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a specific payment part item. You can get the payment part item ID from the response of [List all payment part items](https://www.zuora.com/developer/api-references/api/operation/GET_PaymentItemParts).\n"
+        "description": "The unique ID of a specific payment part item. You can get the payment part item ID from the response of [List all payment part items](https://www.zuora.com/developer/api-references/api/operation/GET_PaymentItemParts).\n",
+        "example": "ITEMPARTID"
       },
       {
         "name": "paymentKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of an unapplied payment. For example, `8a8082e65b27f6c3015b89e4344c16b1`, or `P-00000001`.\n"
+        "description": "The unique ID or number of an unapplied payment. For example, `8a8082e65b27f6c3015b89e4344c16b1`, or `P-00000001`.\n",
+        "example": "PAYMENTKEY"
       }
     ],
     "responses": [
@@ -20442,7 +20844,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of an unapplied payment. For example, `8a8082e65b27f6c3015b89e4344c16b1`, or `P-00000001`.\n"
+        "description": "The unique ID or number of an unapplied payment. For example, `8a8082e65b27f6c3015b89e4344c16b1`, or `P-00000001`.\n",
+        "example": "PAYMENTKEY"
       }
     ],
     "responses": [
@@ -20506,7 +20909,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of an unapplied payment. For example, `8a8082e65b27f6c3015b89e4344c16b1`, or `P-00000001`.\n"
+        "description": "The unique ID or number of an unapplied payment. For example, `8a8082e65b27f6c3015b89e4344c16b1`, or `P-00000001`.\n",
+        "example": "PAYMENTKEY"
       }
     ],
     "responses": [
@@ -20564,7 +20968,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of an unapplied payment. For example, `8a8082e65b27f6c3015b89e4344c16b1`, or `P-00000001`.          \n"
+        "description": "The unique ID or number of an unapplied payment. For example, `8a8082e65b27f6c3015b89e4344c16b1`, or `P-00000001`.          \n",
+        "example": "PAYMENTKEY"
       },
       {
         "name": "accountId",
@@ -20627,7 +21032,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of an unapplied payment. For example, `8a8082e65b27f6c3015b89e4344c16b1`, or `P-00000001`.\n"
+        "description": "The unique ID or number of an unapplied payment. For example, `8a8082e65b27f6c3015b89e4344c16b1`, or `P-00000001`.\n",
+        "example": "PAYMENTKEY"
       },
       {
         "name": "debitMemos",
@@ -20700,7 +21106,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of a payment transaction log.\n"
+        "description": "The ID of a payment transaction log.\n",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -20766,13 +21173,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n"
+        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n",
+        "default": 1
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response.\n"
+        "description": "The number of records returned per page in the response.\n",
+        "default": 20
       },
       {
         "name": "createdById",
@@ -20998,7 +21407,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentRunKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a payment run or the payment run number. For example, 402890245f097f39015f0f074a2e0566.\n"
+        "description": "The unique ID of a payment run or the payment run number. For example, 402890245f097f39015f0f074a2e0566.\n",
+        "example": "PAYMENTRUNKEY"
       }
     ],
     "responses": [
@@ -21056,7 +21466,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentRunKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a payment run or the payment run number. For example, 402890245f097f39015f0f074a2e0566.\n"
+        "description": "The unique ID of a payment run or the payment run number. For example, 402890245f097f39015f0f074a2e0566.\n",
+        "example": "PAYMENTRUNKEY"
       }
     ],
     "responses": [
@@ -21114,7 +21525,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentRunKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a payment run or the payment run number. For example, 402890245f097f39015f0f074a2e0566.\n"
+        "description": "The unique ID of a payment run or the payment run number. For example, 402890245f097f39015f0f074a2e0566.\n",
+        "example": "PAYMENTRUNKEY"
       },
       {
         "name": "accountId",
@@ -21235,7 +21647,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentRunKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a payment run or the payment run number. For example, 402890245f097f39015f0f074a2e0566.\n"
+        "description": "The unique ID of a payment run or the payment run number. For example, 402890245f097f39015f0f074a2e0566.\n",
+        "example": "PAYMENTRUNKEY"
       }
     ],
     "responses": [
@@ -21281,7 +21694,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentRunKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a payment run or the payment run number. For example, 402890245f097f39015f0f074a2e0566.\n"
+        "description": "The unique ID of a payment run or the payment run number. For example, 402890245f097f39015f0f074a2e0566.\n",
+        "example": "PAYMENTRUNKEY"
       }
     ],
     "responses": [
@@ -21414,7 +21828,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "itemId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a payment schedule item.\n"
+        "description": "The unique ID of a payment schedule item.\n",
+        "example": "ITEM-ID"
       }
     ],
     "responses": [
@@ -21472,7 +21887,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "itemId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a payment schedule item.\n"
+        "description": "The unique ID of a payment schedule item.\n",
+        "example": "ITEM-ID"
       },
       {
         "name": "zuoraVersion",
@@ -21542,7 +21958,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "itemId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a payment schedule item.     \n"
+        "description": "The unique ID of a payment schedule item.     \n",
+        "example": "ITEM-ID"
       }
     ],
     "responses": [
@@ -21606,7 +22023,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "itemId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a payment schedule item.   \n"
+        "description": "The unique ID of a payment schedule item.   \n",
+        "example": "ITEM-ID"
       }
     ],
     "responses": [
@@ -21879,7 +22297,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "yyyyMmDd",
         "schema": "string",
         "required": true,
-        "description": "Specifies the date of the payment schedule statistic you want to view. \n"
+        "description": "Specifies the date of the payment schedule statistic you want to view. \n",
+        "example": "YYYY-MM-DD"
       }
     ],
     "responses": [
@@ -21955,7 +22374,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentScheduleKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of a payment schedule. For example, `8a90857b822459cd018224dcb9eb13be`, or `PS-00000007`.\n"
+        "description": "The unique ID or number of a payment schedule. For example, `8a90857b822459cd018224dcb9eb13be`, or `PS-00000007`.\n",
+        "example": "PAYMENTSCHEDULEKEY"
       }
     ],
     "responses": [
@@ -22019,7 +22439,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentScheduleKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of a payment schedule. For example, `8a90857b822459cd018224dcb9eb13be`, or `PS-00000007`.\n"
+        "description": "The unique ID or number of a payment schedule. For example, `8a90857b822459cd018224dcb9eb13be`, or `PS-00000007`.\n",
+        "example": "PAYMENTSCHEDULEKEY"
       }
     ],
     "responses": [
@@ -22077,7 +22498,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentScheduleKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of a payment schedule. For example, `8a90857b822459cd018224dcb9eb13be`, or `PS-00000007`.\n"
+        "description": "The unique ID or number of a payment schedule. For example, `8a90857b822459cd018224dcb9eb13be`, or `PS-00000007`.\n",
+        "example": "PAYMENTSCHEDULEKEY"
       },
       {
         "name": "zuoraVersion",
@@ -22089,7 +22511,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "cancelDate",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CANCELDATE"
       }
     ],
     "responses": [
@@ -22159,7 +22582,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentScheduleKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of a payment schedule. For example, `8a90857b822459cd018224dcb9eb13be`, or `PS-00000007`.\n"
+        "description": "The unique ID or number of a payment schedule. For example, `8a90857b822459cd018224dcb9eb13be`, or `PS-00000007`.\n",
+        "example": "PAYMENTSCHEDULEKEY"
       },
       {
         "name": "items",
@@ -22228,7 +22652,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "paymentScheduleKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID or number of a payment schedule. For example, `8a90857b822459cd018224dcb9eb13be`, or `PS-00000007`.\n"
+        "description": "The unique ID or number of a payment schedule. For example, `8a90857b822459cd018224dcb9eb13be`, or `PS-00000007`.\n",
+        "example": "PAYMENTSCHEDULEKEY"
       }
     ],
     "responses": [
@@ -22286,13 +22711,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n"
+        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n",
+        "default": 1
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response.\n"
+        "description": "The number of records returned per page in the response.\n",
+        "default": 20
       },
       {
         "name": "accountId",
@@ -22428,7 +22855,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "refundId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a refund. For example, 4028905f5a87c0ff015a889e590e00c9.\n"
+        "description": "The unique ID of a refund. For example, 4028905f5a87c0ff015a889e590e00c9.\n",
+        "example": "REFUNDID"
       }
     ],
     "responses": [
@@ -22486,7 +22914,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "refundKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a refund or the refund number. For example, 4028905f5a87c0ff015a889e590e00c9.\n"
+        "description": "The unique ID of a refund or the refund number. For example, 4028905f5a87c0ff015a889e590e00c9.\n",
+        "example": "REFUNDKEY"
       }
     ],
     "responses": [
@@ -22544,7 +22973,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "refundKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a refund or the refund number. For example, 4028905f5a87c0ff015a889e590e00c9.\n"
+        "description": "The unique ID of a refund or the refund number. For example, 4028905f5a87c0ff015a889e590e00c9.\n",
+        "example": "REFUNDKEY"
       }
     ],
     "responses": [
@@ -22602,7 +23032,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "refundKey",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a refund or the refund number. For example, 4028905f5a87c0ff015a889e590e00c9.      \n"
+        "description": "The unique ID of a refund or the refund number. For example, 4028905f5a87c0ff015a889e590e00c9.      \n",
+        "example": "REFUNDKEY"
       }
     ],
     "responses": [
@@ -22660,7 +23091,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "refundKey",
         "schema": "string",
         "required": true,
-        "description": "The number or unique ID of a refund. For example, 4028905f5a87c0ff015a889e590e00c9.\n"
+        "description": "The number or unique ID of a refund. For example, 4028905f5a87c0ff015a889e590e00c9.\n",
+        "example": "REFUNDKEY"
       }
     ],
     "responses": [
@@ -22718,13 +23150,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "refundpartid",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a specific refund part. You can get the refund part ID from the response of [List all parts of a refund](https://developer.zuora.com/api-references/api/operation/GET_RefundParts).\n"
+        "description": "The unique ID of a specific refund part. You can get the refund part ID from the response of [List all parts of a refund](https://developer.zuora.com/api-references/api/operation/GET_RefundParts).\n",
+        "example": "REFUNDPARTID"
       },
       {
         "name": "refundKey",
         "schema": "string",
         "required": true,
-        "description": "The number or unique ID of a refund. For example, 4028905f5a87c0ff015a889e590e00c9.\n"
+        "description": "The number or unique ID of a refund. For example, 4028905f5a87c0ff015a889e590e00c9.\n",
+        "example": "REFUNDKEY"
       }
     ],
     "responses": [
@@ -22782,25 +23216,29 @@ export default function ZuoraTypeScriptSdk() {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n"
+        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n",
+        "default": 1
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response.\n"
+        "description": "The number of records returned per page in the response.\n",
+        "default": 20
       },
       {
         "name": "refundpartid",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a specific refund part. You can get the refund part ID from the response of [List all parts of a refund](https://developer.zuora.com/api-references/api/operation/GET_RefundParts).\n"
+        "description": "The unique ID of a specific refund part. You can get the refund part ID from the response of [List all parts of a refund](https://developer.zuora.com/api-references/api/operation/GET_RefundParts).\n",
+        "example": "REFUNDPARTID"
       },
       {
         "name": "refundKey",
         "schema": "string",
         "required": true,
-        "description": "The number or unique ID of a refund. For example, 4028905f5a87c0ff015a889e590e00c9.\n"
+        "description": "The number or unique ID of a refund. For example, 4028905f5a87c0ff015a889e590e00c9.\n",
+        "example": "REFUNDKEY"
       }
     ],
     "responses": [
@@ -22858,19 +23296,22 @@ export default function ZuoraTypeScriptSdk() {
         "name": "itempartid",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a specific refund part item. You can get the refund part item ID from the response of [Get refund part items](https://developer.zuora.com/api-references/api/operation/GET_RefundItemParts).\n"
+        "description": "The unique ID of a specific refund part item. You can get the refund part item ID from the response of [Get refund part items](https://developer.zuora.com/api-references/api/operation/GET_RefundItemParts).\n",
+        "example": "ITEMPARTID"
       },
       {
         "name": "refundpartid",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a specific refund part. You can get the refund part ID from the response of [List all parts of a refund](https://developer.zuora.com/api-references/api/operation/GET_RefundParts).\n"
+        "description": "The unique ID of a specific refund part. You can get the refund part ID from the response of [List all parts of a refund](https://developer.zuora.com/api-references/api/operation/GET_RefundParts).\n",
+        "example": "REFUNDPARTID"
       },
       {
         "name": "refundKey",
         "schema": "string",
         "required": true,
-        "description": "The number or unique ID of a refund. For example, 4028905f5a87c0ff015a889e590e00c9.\n"
+        "description": "The number or unique ID of a refund. For example, 4028905f5a87c0ff015a889e590e00c9.\n",
+        "example": "REFUNDKEY"
       }
     ],
     "responses": [
@@ -22928,13 +23369,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n"
+        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n",
+        "default": 1
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response.\n"
+        "description": "The number of records returned per page in the response.\n",
+        "default": 300
       }
     ],
     "responses": [
@@ -23050,7 +23493,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "acId",
         "schema": "string",
         "required": true,
-        "description": "ID of the accounting code you want to delete."
+        "description": "ID of the accounting code you want to delete.",
+        "example": "AC-ID"
       }
     ],
     "responses": [
@@ -23108,7 +23552,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "acId",
         "schema": "string",
         "required": true,
-        "description": "ID of the accounting code you want to query."
+        "description": "ID of the accounting code you want to query.",
+        "example": "AC-ID"
       }
     ],
     "responses": [
@@ -23166,7 +23611,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "acId",
         "schema": "string",
         "required": true,
-        "description": "ID of the accounting code you want to update."
+        "description": "ID of the accounting code you want to update.",
+        "example": "AC-ID"
       }
     ],
     "responses": [
@@ -23224,7 +23670,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "acId",
         "schema": "string",
         "required": true,
-        "description": "ID of the accounting code you want to activate."
+        "description": "ID of the accounting code you want to activate.",
+        "example": "AC-ID"
       }
     ],
     "responses": [
@@ -23282,7 +23729,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "acId",
         "schema": "string",
         "required": true,
-        "description": "ID of the accounting code you want to deactivate."
+        "description": "ID of the accounting code you want to deactivate.",
+        "example": "AC-ID"
       }
     ],
     "responses": [
@@ -23340,13 +23788,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n"
+        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n",
+        "default": 1
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response.\n"
+        "description": "The number of records returned per page in the response.\n",
+        "default": 300
       }
     ],
     "responses": [
@@ -23462,7 +23912,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "apId",
         "schema": "string",
         "required": true,
-        "description": "ID of the accounting period you want to delete."
+        "description": "ID of the accounting period you want to delete.",
+        "example": "AP-ID"
       }
     ],
     "responses": [
@@ -23520,7 +23971,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "apId",
         "schema": "string",
         "required": true,
-        "description": "ID of the accounting period you want to get."
+        "description": "ID of the accounting period you want to get.",
+        "example": "AP-ID"
       }
     ],
     "responses": [
@@ -23578,7 +24030,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "apId",
         "schema": "string",
         "required": true,
-        "description": "ID of the accounting period you want to update."
+        "description": "ID of the accounting period you want to update.",
+        "example": "AP-ID"
       }
     ],
     "responses": [
@@ -23636,7 +24089,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "apId",
         "schema": "string",
         "required": true,
-        "description": "ID of the accounting period you want to close."
+        "description": "ID of the accounting period you want to close.",
+        "example": "AP-ID"
       }
     ],
     "responses": [
@@ -23694,7 +24148,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "apId",
         "schema": "string",
         "required": true,
-        "description": "ID of the accounting period you want to set to pending close."
+        "description": "ID of the accounting period you want to set to pending close.",
+        "example": "AP-ID"
       }
     ],
     "responses": [
@@ -23752,7 +24207,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "apId",
         "schema": "string",
         "required": true,
-        "description": "ID of the accounting period that you want to re-open."
+        "description": "ID of the accounting period that you want to re-open.",
+        "example": "AP-ID"
       }
     ],
     "responses": [
@@ -23810,7 +24266,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "apId",
         "schema": "string",
         "required": true,
-        "description": "ID of the accounting period for which you want to run a trial balance."
+        "description": "ID of the accounting period for which you want to run a trial balance.",
+        "example": "AP-ID"
       }
     ],
     "responses": [
@@ -23926,19 +24383,22 @@ export default function ZuoraTypeScriptSdk() {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n"
+        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n",
+        "default": 1
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response.\n"
+        "description": "The number of records returned per page in the response.\n",
+        "default": 8
       },
       {
         "name": "jrNumber",
         "schema": "string",
         "required": true,
-        "description": "Journal run number."
+        "description": "Journal run number.",
+        "example": "JR-NUMBER"
       }
     ],
     "responses": [
@@ -23996,7 +24456,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "jeNumber",
         "schema": "string",
         "required": true,
-        "description": "Journal entry number in the format JE-00000001."
+        "description": "Journal entry number in the format JE-00000001.",
+        "example": "JE-NUMBER"
       }
     ],
     "responses": [
@@ -24054,7 +24515,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "jeNumber",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "JE-NUMBER"
       }
     ],
     "responses": [
@@ -24112,7 +24574,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "jeNumber",
         "schema": "string",
         "required": true,
-        "description": "Journal entry number in the format JE-00000001."
+        "description": "Journal entry number in the format JE-00000001.",
+        "example": "JE-NUMBER"
       }
     ],
     "responses": [
@@ -24170,7 +24633,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "jeNumber",
         "schema": "string",
         "required": true,
-        "description": "Journal entry number in the format JE-00000001."
+        "description": "Journal entry number in the format JE-00000001.",
+        "example": "JE-NUMBER"
       }
     ],
     "responses": [
@@ -24240,7 +24704,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "journalEntryDate",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "JOURNALENTRYDATE"
       },
       {
         "name": "organizationLabels",
@@ -24322,7 +24787,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "jrNumber",
         "schema": "string",
         "required": true,
-        "description": "Journal run number. Must be a valid journal run number in the format `JR-00000001`.\n"
+        "description": "Journal run number. Must be a valid journal run number in the format `JR-00000001`.\n",
+        "example": "JR-NUMBER"
       }
     ],
     "responses": [
@@ -24380,7 +24846,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "jrNumber",
         "schema": "string",
         "required": true,
-        "description": "Journal run number. Must be a valid journal run number in the format `JR-00000001`.\n"
+        "description": "Journal run number. Must be a valid journal run number in the format `JR-00000001`.\n",
+        "example": "JR-NUMBER"
       }
     ],
     "responses": [
@@ -24438,7 +24905,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "jrNumber",
         "schema": "string",
         "required": true,
-        "description": "Journal run number. Must be a valid journal run number in the format JR-00000001. \nYou can only cancel a journal run whose status is \"Pending\", \"Error\", or \"Completed\".\n"
+        "description": "Journal run number. Must be a valid journal run number in the format JR-00000001. \nYou can only cancel a journal run whose status is \"Pending\", \"Error\", or \"Completed\".\n",
+        "example": "JR-NUMBER"
       }
     ],
     "responses": [
@@ -24502,13 +24970,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "file",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "FILE"
       },
       {
         "name": "params",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PARAMS"
       }
     ],
     "responses": [
@@ -24566,7 +25036,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "bulkKey",
         "schema": "string",
         "required": true,
-        "description": "String of 32 characters that identifies a mass action. You get the bulk-key after performing a mass action through the REST API.\n"
+        "description": "String of 32 characters that identifies a mass action. You get the bulk-key after performing a mass action through the REST API.\n",
+        "example": "BULK-KEY"
       }
     ],
     "responses": [
@@ -24624,7 +25095,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "bulkKey",
         "schema": "string",
         "required": true,
-        "description": "String of 32 characters that identifies a mass action. You get the bulk-key after performing a mass action through the REST API.\n"
+        "description": "String of 32 characters that identifies a mass action. You get the bulk-key after performing a mass action through the REST API.\n",
+        "example": "BULK-KEY"
       }
     ],
     "responses": [
@@ -24658,7 +25130,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -24700,13 +25173,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "start",
         "schema": "integer",
         "required": false,
-        "description": "The first index of the query result. Default to 0 if absent, and the minimum is 0."
+        "description": "The first index of the query result. Default to 0 if absent, and the minimum is 0.",
+        "default": 0
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of data records to be returned. Default to 10 if absent."
+        "description": "The maximum number of data records to be returned. Default to 10 if absent.",
+        "default": 10
       }
     ],
     "responses": [
@@ -24754,7 +25229,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -24784,19 +25260,22 @@ export default function ZuoraTypeScriptSdk() {
         "name": "active",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "baseObject",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "BASEOBJECT"
       },
       {
         "name": "condition",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CONDITION"
       },
       {
         "name": "eventType",
@@ -24844,7 +25323,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -24868,7 +25348,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -24910,7 +25391,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -24934,7 +25416,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -24976,7 +25459,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -25000,7 +25484,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "description",
@@ -25062,7 +25547,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -25110,13 +25596,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "start",
         "schema": "integer",
         "required": false,
-        "description": "The first index of the query result. Default to 0 if absent, and the minimum is 0."
+        "description": "The first index of the query result. Default to 0 if absent, and the minimum is 0.",
+        "default": 0
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of data records to be returned. Default to 10 if absent."
+        "description": "The maximum number of data records to be returned. Default to 10 if absent.",
+        "default": 10
       }
     ],
     "responses": [
@@ -25164,7 +25652,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -25200,19 +25689,22 @@ export default function ZuoraTypeScriptSdk() {
         "name": "active",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": true
       },
       {
         "name": "apiField",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "APIFIELD"
       },
       {
         "name": "apiObject",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "APIOBJECT"
       },
       {
         "name": "condition",
@@ -25224,25 +25716,29 @@ export default function ZuoraTypeScriptSdk() {
         "name": "displayName",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "DISPLAYNAME"
       },
       {
         "name": "hours",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "minutes",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -25284,7 +25780,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -25308,7 +25805,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the scheduled event."
+        "description": "The ID of the scheduled event.",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -25350,7 +25848,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -25374,7 +25873,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the scheduled event."
+        "description": "The ID of the scheduled event.",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -25416,7 +25916,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -25440,7 +25941,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the scheduled event."
+        "description": "The ID of the scheduled event.",
+        "example": "ID"
       },
       {
         "name": "description",
@@ -25517,7 +26019,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraTrackId",
@@ -25540,12 +26043,14 @@ export default function ZuoraTypeScriptSdk() {
       {
         "name": "start",
         "schema": "integer",
-        "description": "The first index of the query result."
+        "description": "The first index of the query result.",
+        "default": 1
       },
       {
         "name": "limit",
         "schema": "integer",
-        "description": "The maximum number of results the query should return."
+        "description": "The maximum number of results the query should return.",
+        "default": 20
       },
       {
         "name": "profileId",
@@ -25621,7 +26126,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraTrackId",
@@ -25651,7 +26157,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "active",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": true
       },
       {
         "name": "associatedAccount",
@@ -25669,7 +26176,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "calloutActive",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "communicationProfileId",
@@ -25681,7 +26189,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "emailActive",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "emailTemplateId",
@@ -25705,7 +26214,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "eventTypeNamespace",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": "user.notification"
       },
       {
         "name": "filterRule",
@@ -25723,7 +26233,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -25777,7 +26288,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraTrackId",
@@ -25801,7 +26313,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the notification definition to be deleted."
+        "description": "The ID of the notification definition to be deleted.",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -25855,7 +26368,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraTrackId",
@@ -25879,7 +26393,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the notification definition."
+        "description": "The ID of the notification definition.",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -25929,7 +26444,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraTrackId",
@@ -25953,7 +26469,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the notification definition to be updated."
+        "description": "The ID of the notification definition to be updated.",
+        "example": "ID"
       },
       {
         "name": "description",
@@ -25963,7 +26480,8 @@ export default function ZuoraTypeScriptSdk() {
       {
         "name": "active",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "default": true
       },
       {
         "name": "associatedAccount",
@@ -25978,7 +26496,8 @@ export default function ZuoraTypeScriptSdk() {
       {
         "name": "calloutActive",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "communicationProfileId",
@@ -25988,7 +26507,8 @@ export default function ZuoraTypeScriptSdk() {
       {
         "name": "emailActive",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "emailTemplateId",
@@ -26068,7 +26588,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraTrackId",
@@ -26130,7 +26651,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraTrackId",
@@ -26153,12 +26675,14 @@ export default function ZuoraTypeScriptSdk() {
       {
         "name": "start",
         "schema": "integer",
-        "description": "The first index of the query result."
+        "description": "The first index of the query result.",
+        "default": 1
       },
       {
         "name": "limit",
         "schema": "integer",
-        "description": "The maximum number of results the query should return."
+        "description": "The maximum number of results the query should return.",
+        "default": 20
       },
       {
         "name": "eventCategory",
@@ -26229,7 +26753,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraTrackId",
@@ -26259,7 +26784,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "active",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": true
       },
       {
         "name": "bccEmailAddress",
@@ -26277,25 +26803,29 @@ export default function ZuoraTypeScriptSdk() {
         "name": "ccEmailType",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": "SpecificEmails"
       },
       {
         "name": "emailBody",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "EMAILBODY"
       },
       {
         "name": "emailSubject",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "EMAILSUBJECT"
       },
       {
         "name": "encodingType",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": "UTF8"
       },
       {
         "name": "eventCategory",
@@ -26325,7 +26855,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "fromEmailType",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "FROMEMAILTYPE"
       },
       {
         "name": "fromName",
@@ -26337,13 +26868,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "isHtml",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "replyToEmailAddress",
@@ -26367,7 +26900,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "toEmailType",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TOEMAILTYPE"
       }
     ],
     "responses": [
@@ -26421,7 +26955,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraTrackId",
@@ -26445,7 +26980,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the email template to be deleted."
+        "description": "The ID of the email template to be deleted.",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -26499,7 +27035,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraTrackId",
@@ -26523,7 +27060,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the email template."
+        "description": "The ID of the email template.",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -26577,7 +27115,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraTrackId",
@@ -26601,7 +27140,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the email template to be updated."
+        "description": "The ID of the email template to be updated.",
+        "example": "ID"
       },
       {
         "name": "description",
@@ -26626,7 +27166,8 @@ export default function ZuoraTypeScriptSdk() {
       {
         "name": "ccEmailType",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "SpecificEmails"
       },
       {
         "name": "emailBody",
@@ -26740,7 +27281,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraTrackId",
@@ -26764,7 +27306,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "accountId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the account whose notification histories are to be deleted."
+        "description": "The ID of the account whose notification histories are to be deleted.",
+        "example": "ACCOUNTID"
       }
     ],
     "responses": [
@@ -26806,7 +27349,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraTrackId",
@@ -26830,7 +27374,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the notification history deletion task. You can get the deletion task ID from the 202 response body of the [Delete notification histories for an account](https://developer.zuora.com/api-references/api/operation/DELETE_Delete_Notification_History_For_Account) operation.\n"
+        "description": "The ID of the notification history deletion task. You can get the deletion task ID from the 202 response body of the [Delete notification histories for an account](https://developer.zuora.com/api-references/api/operation/DELETE_Delete_Notification_History_For_Account) operation.\n",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -26874,7 +27419,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraTrackId",
@@ -26936,7 +27482,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraTrackId",
@@ -27016,13 +27563,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n"
+        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n",
+        "default": 1
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response.\n"
+        "description": "The number of records returned per page in the response.\n",
+        "default": 20
       },
       {
         "name": "endTime",
@@ -27116,13 +27665,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n"
+        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n",
+        "default": 1
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response.\n"
+        "description": "The number of records returned per page in the response.\n",
+        "default": 20
       },
       {
         "name": "accountId",
@@ -27209,7 +27760,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraVersion",
@@ -27279,7 +27831,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraVersion",
@@ -27352,7 +27905,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraVersion",
@@ -27416,7 +27970,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraVersion",
@@ -27428,7 +27983,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "object",
         "schema": "string",
         "required": true,
-        "description": "Specifies the custom object's API name as object. It is case-sensitive."
+        "description": "Specifies the custom object's API name as object. It is case-sensitive.",
+        "example": "OBJECT"
       }
     ],
     "responses": [
@@ -27480,7 +28036,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraVersion",
@@ -27492,7 +28049,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "object",
         "schema": "string",
         "required": true,
-        "description": "Specifies the custom object's API name as object. It is case-sensitive."
+        "description": "Specifies the custom object's API name as object. It is case-sensitive.",
+        "example": "OBJECT"
       }
     ],
     "responses": [
@@ -27548,7 +28106,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraVersion",
@@ -27560,7 +28119,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "object",
         "schema": "string",
         "required": true,
-        "description": "Specifies the custom object's API name as object. It is case-sensitive."
+        "description": "Specifies the custom object's API name as object. It is case-sensitive.",
+        "example": "OBJECT"
       },
       {
         "name": "q",
@@ -27642,7 +28202,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraVersion",
@@ -27654,13 +28215,16 @@ export default function ZuoraTypeScriptSdk() {
         "name": "object",
         "schema": "string",
         "required": true,
-        "description": "Specifies the custom object's API name as object. It is case-sensitive."
+        "description": "Specifies the custom object's API name as object. It is case-sensitive.",
+        "example": "OBJECT"
       },
       {
         "name": "allowPartialSuccess",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true,
+        "default": false
       },
       {
         "name": "records",
@@ -27730,7 +28294,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraVersion",
@@ -27742,13 +28307,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "object",
         "schema": "string",
         "required": true,
-        "description": "Specifies the custom object's API name as object. It is case-sensitive."
+        "description": "Specifies the custom object's API name as object. It is case-sensitive.",
+        "example": "OBJECT"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Id identifier in uuid form"
+        "description": "Id identifier in uuid form",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -27800,7 +28367,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraVersion",
@@ -27812,13 +28380,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "object",
         "schema": "string",
         "required": true,
-        "description": "Specifies the custom object's API name as object. It is case-sensitive."
+        "description": "Specifies the custom object's API name as object. It is case-sensitive.",
+        "example": "OBJECT"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Id identifier in uuid form"
+        "description": "Id identifier in uuid form",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -27880,7 +28450,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraVersion",
@@ -27892,13 +28463,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "object",
         "schema": "string",
         "required": true,
-        "description": "Specifies the custom object's API name as object. It is case-sensitive."
+        "description": "Specifies the custom object's API name as object. It is case-sensitive.",
+        "example": "OBJECT"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Id identifier in uuid form"
+        "description": "Id identifier in uuid form",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -27954,7 +28527,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "ifMatch",
@@ -27972,13 +28546,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "object",
         "schema": "string",
         "required": true,
-        "description": "Specifies the custom object's API name as object. It is case-sensitive."
+        "description": "Specifies the custom object's API name as object. It is case-sensitive.",
+        "example": "OBJECT"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Id identifier in uuid form"
+        "description": "Id identifier in uuid form",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -28040,7 +28616,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraVersion",
@@ -28052,7 +28629,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "object",
         "schema": "string",
         "required": true,
-        "description": "Specifies the custom object's API name as object. It is case-sensitive."
+        "description": "Specifies the custom object's API name as object. It is case-sensitive.",
+        "example": "OBJECT"
       },
       {
         "name": "action",
@@ -28122,7 +28700,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraVersion",
@@ -28134,7 +28713,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response."
+        "description": "The number of records returned per page in the response.",
+        "default": 25
       },
       {
         "name": "cursor",
@@ -28204,7 +28784,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraVersion",
@@ -28222,19 +28803,22 @@ export default function ZuoraTypeScriptSdk() {
         "name": "namespace",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAMESPACE"
       },
       {
         "name": "object",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "passenger"
       },
       {
         "name": "operation",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "OPERATION"
       }
     ],
     "responses": [
@@ -28294,7 +28878,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraVersion",
@@ -28306,7 +28891,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the custom object bulk job to be retrieved."
+        "description": "The ID of the custom object bulk job to be retrieved.",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -28368,7 +28954,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraVersion",
@@ -28380,7 +28967,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the custom object bulk job that the file is uploaded to."
+        "description": "The ID of the custom object bulk job that the file is uploaded to.",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -28444,7 +29032,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraVersion",
@@ -28456,7 +29045,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the custom object bulk job that you retrieve errors for."
+        "description": "The ID of the custom object bulk job that you retrieve errors for.",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -28518,7 +29108,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraVersion",
@@ -28530,7 +29121,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the custom object bulk job that you want to cancel."
+        "description": "The ID of the custom object bulk job that you want to cancel.",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -28572,7 +29164,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -28608,13 +29201,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "startTime",
         "schema": "string",
         "required": true,
-        "description": "Start time of the volume summary.\n\nFormat: `yyyy-MM-dd'T'HH:mmZ` Example: `2022-09-22T09:07+0800`.\n"
+        "description": "Start time of the volume summary.\n\nFormat: `yyyy-MM-dd'T'HH:mmZ` Example: `2022-09-22T09:07+0800`.\n",
+        "example": "STARTTIME"
       },
       {
         "name": "endTime",
         "schema": "string",
         "required": true,
-        "description": "End time of the volume summary.\n\nFormat: `yyyy-MM-dd'T'HH:mmZ` Example: `2022-09-29T09:07+0800`.\n"
+        "description": "End time of the volume summary.\n\nFormat: `yyyy-MM-dd'T'HH:mmZ` Example: `2022-09-29T09:07+0800`.\n",
+        "example": "ENDTIME"
       }
     ],
     "responses": [
@@ -28652,7 +29247,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -28676,13 +29272,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "startTime",
         "schema": "string",
         "required": true,
-        "description": "Start time of the volume summary.\n\nFormat: `yyyy-MM-dd'T'HH:mmZ` Example: `2022-09-22T09:07+0800`.\n"
+        "description": "Start time of the volume summary.\n\nFormat: `yyyy-MM-dd'T'HH:mmZ` Example: `2022-09-22T09:07+0800`.\n",
+        "example": "STARTTIME"
       },
       {
         "name": "endTime",
         "schema": "string",
         "required": true,
-        "description": "End time of the volume summary.\n\nFormat: `yyyy-MM-dd'T'HH:mmZ` Example: `2022-09-22T09:07+0800`.\n"
+        "description": "End time of the volume summary.\n\nFormat: `yyyy-MM-dd'T'HH:mmZ` Example: `2022-09-22T09:07+0800`.\n",
+        "example": "ENDTIME"
       }
     ],
     "responses": [
@@ -28720,7 +29318,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -28756,13 +29355,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "startTime",
         "schema": "string",
         "required": true,
-        "description": "Start time of the volume summary.\n\nFormat: `yyyy-MM-dd'T'HH:mmZ` Example: `2022-09-22T09:07+0800`.\n"
+        "description": "Start time of the volume summary.\n\nFormat: `yyyy-MM-dd'T'HH:mmZ` Example: `2022-09-22T09:07+0800`.\n",
+        "example": "STARTTIME"
       },
       {
         "name": "endTime",
         "schema": "string",
         "required": true,
-        "description": "End time of the volume summary.\n\nFormat: `yyyy-MM-dd'T'HH:mmZ` Example: `2022-09-22T09:07+0800`.\n"
+        "description": "End time of the volume summary.\n\nFormat: `yyyy-MM-dd'T'HH:mmZ` Example: `2022-09-22T09:07+0800`.\n",
+        "example": "ENDTIME"
       }
     ],
     "responses": [
@@ -28800,7 +29401,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraTrackId",
@@ -28812,7 +29414,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "versionId",
         "schema": "integer",
         "required": true,
-        "description": "The unique id of the workflow version."
+        "description": "The unique id of the workflow version.",
+        "example": 0
       }
     ],
     "responses": [
@@ -28850,7 +29453,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -28904,13 +29508,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "If you want to retrieve only the workflows on a specific page, you can specify the `page` number in the query.\n"
+        "description": "If you want to retrieve only the workflows on a specific page, you can specify the `page` number in the query.\n",
+        "default": 1
       },
       {
         "name": "pageLength",
         "schema": "integer",
         "required": false,
-        "description": "The number of workflows shown in a single call. If the `page` parameter is not specified, the operation will return only the first page of results. If there are multiple pages of results, use it with the `page` parameter to get the results on subsequent pages. The maximum value is 50.\n"
+        "description": "The number of workflows shown in a single call. If the `page` parameter is not specified, the operation will return only the first page of results. If there are multiple pages of results, use it with the `page` parameter to get the results on subsequent pages. The maximum value is 50.\n",
+        "default": 20
       }
     ],
     "responses": [
@@ -28950,7 +29556,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraTrackId",
@@ -29023,7 +29630,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -29047,19 +29655,22 @@ export default function ZuoraTypeScriptSdk() {
         "name": "startDate",
         "schema": "string",
         "required": true,
-        "description": "The start date of the usage data that you want to get. For example, 2019-01-01.\n"
+        "description": "The start date of the usage data that you want to get. For example, 2019-01-01.\n",
+        "example": "STARTDATE"
       },
       {
         "name": "endDate",
         "schema": "string",
         "required": true,
-        "description": "The end date of the usage data that you want to get. For example, 2019-12-31.\n"
+        "description": "The end date of the usage data that you want to get. For example, 2019-12-31.\n",
+        "example": "ENDDATE"
       },
       {
         "name": "metrics",
         "schema": "string",
         "required": true,
-        "description": "The type of metric that you want to get. Currently, only `taskCount` is supported. `taskCount` is the amount of task runs.\n"
+        "description": "The type of metric that you want to get. Currently, only `taskCount` is supported. `taskCount` is the amount of task runs.\n",
+        "example": "METRICS"
       }
     ],
     "responses": [
@@ -29093,7 +29704,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -29171,13 +29783,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "If you want to retrieve only the workflows on a specific page, you can specify the `page` number in the query.\n"
+        "description": "If you want to retrieve only the workflows on a specific page, you can specify the `page` number in the query.\n",
+        "default": 1
       },
       {
         "name": "pageLength",
         "schema": "integer",
         "required": false,
-        "description": "The number of workflow tasks shown in a single call. If the `page` parameter is not specified, the operation will return only the first page of results. If there are multiple pages of results, use it with the `page` parameter to get the results on subsequent pages. The maximum value is 100.\n"
+        "description": "The number of workflow tasks shown in a single call. If the `page` parameter is not specified, the operation will return only the first page of results. If there are multiple pages of results, use it with the `page` parameter to get the results on subsequent pages. The maximum value is 100.\n",
+        "default": 20
       }
     ],
     "responses": [
@@ -29211,7 +29825,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -29276,7 +29891,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -29300,7 +29916,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "taskId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of the task.\n"
+        "description": "The unique ID of the task.\n",
+        "example": "TASK_ID"
       }
     ],
     "responses": [
@@ -29340,7 +29957,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -29364,7 +29982,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "taskId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of the task.\n"
+        "description": "The unique ID of the task.\n",
+        "example": "TASK_ID"
       }
     ],
     "responses": [
@@ -29398,7 +30017,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -29422,7 +30042,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "workflowRunId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a workflow run. For example, 19080.\n"
+        "description": "The unique ID of a workflow run. For example, 19080.\n",
+        "example": "WORKFLOW_RUN_ID"
       }
     ],
     "responses": [
@@ -29456,7 +30077,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -29480,7 +30102,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "workflowId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a workflow definition. For example, 19080.\n"
+        "description": "The unique ID of a workflow definition. For example, 19080.\n",
+        "example": "WORKFLOW_ID"
       }
     ],
     "responses": [
@@ -29518,7 +30141,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -29542,7 +30166,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "workflowId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a workflow definition. For example, 19080.\n"
+        "description": "The unique ID of a workflow definition. For example, 19080.\n",
+        "example": "WORKFLOW_ID"
       }
     ],
     "responses": [
@@ -29600,13 +30225,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "workflowId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a workflow definition. For example, 19080.\n"
+        "description": "The unique ID of a workflow definition. For example, 19080.\n",
+        "example": "WORKFLOW_ID"
       },
       {
         "name": "description",
@@ -29668,7 +30295,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraTrackId",
@@ -29680,7 +30308,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "workflowId",
         "schema": "integer",
         "required": true,
-        "description": "The ID of the workflow definition to export."
+        "description": "The ID of the workflow definition to export.",
+        "example": 0
       },
       {
         "name": "version",
@@ -29734,7 +30363,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -29758,17 +30388,20 @@ export default function ZuoraTypeScriptSdk() {
         "name": "workflowId",
         "schema": "integer",
         "required": true,
-        "description": "The ID of the workflow definition you want to run."
+        "description": "The ID of the workflow definition you want to run.",
+        "example": 0
       },
       {
         "name": "accountId",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "4028905f5a87c0ff015a87d25ae90025"
       },
       {
         "name": "paymentId",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "4028905f5a87c0ff015a889ddfb800c0"
       }
     ],
     "responses": [
@@ -29814,7 +30447,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraTrackId",
@@ -29826,7 +30460,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "workflowId",
         "schema": "integer",
         "required": true,
-        "description": "The unique id of the workflow definition to import a workflow version under."
+        "description": "The unique id of the workflow definition to import a workflow version under.",
+        "example": 0
       }
     ],
     "responses": [
@@ -29866,7 +30501,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraTrackId",
@@ -29878,13 +30514,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "workflowId",
         "schema": "integer",
         "required": true,
-        "description": "The unique id of the workflow definition to import a workflow version under."
+        "description": "The unique id of the workflow definition to import a workflow version under.",
+        "example": 0
       },
       {
         "name": "version",
         "schema": "string",
         "required": true,
-        "description": "The version number of the new workflow version to import. Must be greater than any existing version numbers."
+        "description": "The version number of the new workflow version to import. Must be greater than any existing version numbers.",
+        "example": "VERSION"
       },
       {
         "name": "activate",
@@ -29937,7 +30575,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -29958,7 +30597,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "workflowRunId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a workflow run. For example, 19080.\n"
+        "description": "The unique ID of a workflow run. For example, 19080.\n",
+        "example": "WORKFLOW_RUN_ID"
       }
     ],
     "responses": [
@@ -29996,7 +30636,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -30026,7 +30667,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response.\n"
+        "description": "The number of records returned per page in the response.\n",
+        "default": 20
       }
     ],
     "responses": [
@@ -30066,7 +30708,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -30096,7 +30739,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "compression",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "COMPRESSION"
       },
       {
         "name": "encryptionKey",
@@ -30114,19 +30758,22 @@ export default function ZuoraTypeScriptSdk() {
         "name": "outputFormat",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "OUTPUTFORMAT"
       },
       {
         "name": "query",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "QUERY"
       },
       {
         "name": "readDeleted",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "sourceData",
@@ -30182,7 +30829,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -30206,7 +30854,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "jobId",
         "schema": "string",
         "required": true,
-        "description": "Internal identifier of the query job.\n"
+        "description": "Internal identifier of the query job.\n",
+        "example": "JOB-ID"
       }
     ],
     "responses": [
@@ -30244,7 +30893,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -30268,7 +30918,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "jobId",
         "schema": "string",
         "required": true,
-        "description": "Internal identifier of the query job.\n"
+        "description": "Internal identifier of the query job.\n",
+        "example": "JOB-ID"
       }
     ],
     "responses": [
@@ -30310,7 +30961,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -30334,13 +30986,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "partner",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a data integration partner. \n"
+        "description": "The unique ID of a data integration partner. \n",
+        "example": "PARTNER"
       },
       {
         "name": "project",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a data integration project for a particular partner.\n"
+        "description": "The unique ID of a data integration project for a particular partner.\n",
+        "example": "PROJECT"
       }
     ],
     "responses": [
@@ -30374,7 +31028,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -30398,7 +31053,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "jobid",
         "schema": "string",
         "required": true,
-        "description": "Internal identifier of the query job.\n"
+        "description": "Internal identifier of the query job.\n",
+        "example": "JOBID"
       }
     ],
     "responses": [
@@ -30432,7 +31088,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -30456,7 +31113,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "jobid",
         "schema": "string",
         "required": true,
-        "description": "Internal identifier of the query job.\n"
+        "description": "Internal identifier of the query job.\n",
+        "example": "JOBID"
       }
     ],
     "responses": [
@@ -30490,7 +31148,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -30514,7 +31173,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "deploymentTemplateId",
         "schema": "string",
         "required": true,
-        "description": "Id which template needs to be downloaded."
+        "description": "Id which template needs to be downloaded.",
+        "example": "DEPLOYMENT_TEMPLATE_ID"
       }
     ],
     "responses": [
@@ -30570,7 +31230,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -30594,7 +31255,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "tenant",
         "schema": "string",
         "required": true,
-        "description": "Customers need to specify tenant ID."
+        "description": "Customers need to specify tenant ID.",
+        "example": "TENANT"
       },
       {
         "name": "template",
@@ -30655,7 +31317,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -30679,13 +31342,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "tenant",
         "schema": "string",
         "required": true,
-        "description": "Customers need to specify tenant ID in query parameter."
+        "description": "Customers need to specify tenant ID in query parameter.",
+        "example": "TENANT"
       },
       {
         "name": "description",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Migration from/to Sandbox"
       },
       {
         "name": "comments",
@@ -30697,13 +31362,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "emailIds",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "abcd@zuora.com,xyz@zuora.com"
       },
       {
         "name": "entityUuid",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 11111
       },
       {
         "name": "metaData",
@@ -30715,19 +31382,22 @@ export default function ZuoraTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Job A"
       },
       {
         "name": "request",
         "schema": "array",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "ST 4"
       },
       {
         "name": "sendEmail",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -30781,7 +31451,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -30849,7 +31520,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -30923,7 +31595,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -30947,7 +31620,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "description",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "DESCRIPTION"
       },
       {
         "name": "content",
@@ -30971,7 +31645,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "notifications",
@@ -30995,7 +31670,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "templateTenant",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "80b3f8cd-5801-4ed7-bee7-ad1569916c2f"
       },
       {
         "name": "workflows",
@@ -31055,7 +31731,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -31079,7 +31756,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the template that needs to be deleted."
+        "description": "The ID of the template that needs to be deleted.",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -31133,7 +31811,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -31157,7 +31836,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the template that needs to be retrieved."
+        "description": "The ID of the template that needs to be retrieved.",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -31200,19 +31880,22 @@ export default function ZuoraTypeScriptSdk() {
         "name": "description",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "DESCRIPTION"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "sendEmail",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "emails",
@@ -31230,25 +31913,29 @@ export default function ZuoraTypeScriptSdk() {
         "name": "settings",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "notifications",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "workflows",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "customFields",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "customObjects",
@@ -31260,7 +31947,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "productCatalog",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "taxation",
@@ -31272,19 +31960,22 @@ export default function ZuoraTypeScriptSdk() {
         "name": "userRoles",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "reporting",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "sourceTenantId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SOURCETENANTID"
       }
     ],
     "responses": [
@@ -31315,19 +32006,22 @@ export default function ZuoraTypeScriptSdk() {
         "name": "description",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "DESCRIPTION"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "sendEmail",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "emails",
@@ -31345,7 +32039,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "template",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TEMPLATE"
       }
     ],
     "responses": [
@@ -31372,7 +32067,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "migrationId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a migration.\n"
+        "description": "The unique ID of a migration.\n",
+        "example": "MIGRATIONID"
       }
     ],
     "responses": [
@@ -31399,7 +32095,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "migrationId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of a migration.\n"
+        "description": "The unique ID of a migration.\n",
+        "example": "MIGRATIONID"
       }
     ],
     "responses": [
@@ -31426,67 +32123,78 @@ export default function ZuoraTypeScriptSdk() {
         "name": "description",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Product Catalog tenant - 01"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Tenant01PC"
       },
       {
         "name": "sendEmail",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "emails",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "zuoraUser@zuora.com"
       },
       {
         "name": "comments",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Product Catalog tenant - 47"
       },
       {
         "name": "inActiveProducts",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "activeProducts",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "activeRatePlans",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "inActiveRatePlans",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "compareField",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "name"
       },
       {
         "name": "sourceTenantId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "83e7e56d-0e02-4b4d-91f6-cc77f322c40b"
       }
     ],
     "responses": [
@@ -31517,67 +32225,78 @@ export default function ZuoraTypeScriptSdk() {
         "name": "description",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Import Product Catalog - template"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Deploy PC"
       },
       {
         "name": "sendEmail",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "emails",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "zuoraUser1@zuora.com,zuoraUser2@zuora.com"
       },
       {
         "name": "comments",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Import Product Catalog - template"
       },
       {
         "name": "template",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "@/Users/praghav/Downloads/products.json"
       },
       {
         "name": "inActiveProducts",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "activeProducts",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "activeRatePlans",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "inActiveRatePlans",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "compareField",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "name"
       }
     ],
     "responses": [
@@ -31617,7 +32336,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -31641,7 +32361,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "objectType",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "OBJECTTYPE"
       },
       {
         "name": "orgIds",
@@ -31665,7 +32386,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "queryType",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "QUERYTYPE"
       }
     ],
     "responses": [
@@ -31703,7 +32425,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -31721,7 +32444,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "jobId",
         "schema": "string",
         "required": true,
-        "description": "Identifier of the data labeling job.\n"
+        "description": "Identifier of the data labeling job.\n",
+        "example": "JOB-ID"
       }
     ],
     "responses": [
@@ -31765,7 +32489,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraTrackId",
@@ -31864,7 +32589,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraTrackId",
@@ -31943,7 +32669,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraTrackId",
@@ -31971,7 +32698,8 @@ export default function ZuoraTypeScriptSdk() {
       {
         "name": "mode",
         "schema": "string",
-        "description": "The generation mode."
+        "description": "The generation mode.",
+        "default": "Incremental"
       },
       {
         "name": "forRevenueRecollect",
@@ -32016,7 +32744,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraTrackId",
@@ -32057,7 +32786,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "originalChargeId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ORIGINALCHARGEID"
       }
     ],
     "responses": [
@@ -32085,7 +32815,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "contentEncoding",
@@ -32137,7 +32868,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "contentEncoding",
@@ -32195,7 +32927,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "contentEncoding",
@@ -32225,7 +32958,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "jobId",
         "schema": "string",
         "required": true,
-        "description": "ID of the job to retrieve\n"
+        "description": "ID of the job to retrieve\n",
+        "example": "JOBID"
       }
     ],
     "responses": [
@@ -32253,7 +32987,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "contentEncoding",
@@ -32283,13 +33018,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "jobId",
         "schema": "string",
         "required": true,
-        "description": "ID of the job to stop\n"
+        "description": "ID of the job to stop\n",
+        "example": "JOBID"
       },
       {
         "name": "status",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "STATUS"
       }
     ],
     "responses": [
@@ -32317,7 +33054,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "file",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "FILE"
       },
       {
         "name": "checksum",
@@ -32351,7 +33089,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "contentEncoding",
@@ -32381,7 +33120,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "jobId",
         "schema": "string",
         "required": true,
-        "description": "ID of the job to retrieve\n"
+        "description": "ID of the job to retrieve\n",
+        "example": "JOBID"
       }
     ],
     "responses": [
@@ -32409,7 +33149,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "contentEncoding",
@@ -32439,13 +33180,15 @@ export default function ZuoraTypeScriptSdk() {
         "name": "jobId",
         "schema": "string",
         "required": true,
-        "description": "ID of the job to stop\n"
+        "description": "ID of the job to stop\n",
+        "example": "JOBID"
       },
       {
         "name": "status",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "STATUS"
       }
     ],
     "responses": [
@@ -32488,7 +33231,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "contentEncoding",
@@ -32518,7 +33262,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": "Type of the template file that you want to download for data backfill\n"
+        "description": "Type of the template file that you want to download for data backfill\n",
+        "example": "TYPE"
       }
     ],
     "responses": [
@@ -32564,7 +33309,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "rejectUnknownFields",
         "schema": "boolean",
         "required": false,
-        "description": "Specifies whether the call fails if the request body contains unknown fields.\nWith `rejectUnknownFields` set to `true`, Zuora returns a 400 response if\nthe request body contains unknown fields. The body of the 400 response is:\n\n```json\n{\n    \"message\": \"Error - unrecognised fields\"\n}\n```\n\nBy default, Zuora ignores unknown fields in the request body.\n"
+        "description": "Specifies whether the call fails if the request body contains unknown fields.\nWith `rejectUnknownFields` set to `true`, Zuora returns a 400 response if\nthe request body contains unknown fields. The body of the 400 response is:\n\n```json\n{\n    \"message\": \"Error - unrecognised fields\"\n}\n```\n\nBy default, Zuora ignores unknown fields in the request body.\n",
+        "default": false
       },
       {
         "name": "zuoraEntityIds",
@@ -32588,7 +33334,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "xZuoraWsdlVersion",
         "schema": "string",
         "required": false,
-        "description": "Zuora WSDL version number.\n"
+        "description": "Zuora WSDL version number.\n",
+        "default": 79
       },
       {
         "name": "objects",
@@ -32600,7 +33347,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TYPE"
       }
     ],
     "responses": [
@@ -32650,7 +33398,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "rejectUnknownFields",
         "schema": "boolean",
         "required": false,
-        "description": "Specifies whether the call fails if the request body contains unknown fields.\nWith `rejectUnknownFields` set to `true`, Zuora returns a 400 response if\nthe request body contains unknown fields. The body of the 400 response is:\n\n```json\n{\n    \"message\": \"Error - unrecognised fields\"\n}\n```\n\nBy default, Zuora ignores unknown fields in the request body.\n"
+        "description": "Specifies whether the call fails if the request body contains unknown fields.\nWith `rejectUnknownFields` set to `true`, Zuora returns a 400 response if\nthe request body contains unknown fields. The body of the 400 response is:\n\n```json\n{\n    \"message\": \"Error - unrecognised fields\"\n}\n```\n\nBy default, Zuora ignores unknown fields in the request body.\n",
+        "default": false
       },
       {
         "name": "zuoraEntityIds",
@@ -32674,7 +33423,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "xZuoraWsdlVersion",
         "schema": "string",
         "required": false,
-        "description": "Zuora WSDL version number.\n"
+        "description": "Zuora WSDL version number.\n",
+        "default": 79
       },
       {
         "name": "ids",
@@ -32686,7 +33436,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TYPE"
       }
     ],
     "responses": [
@@ -32736,7 +33487,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "rejectUnknownFields",
         "schema": "boolean",
         "required": false,
-        "description": "Specifies whether the call fails if the request body contains unknown fields.\nWith `rejectUnknownFields` set to `true`, Zuora returns a 400 response if\nthe request body contains unknown fields. The body of the 400 response is:\n\n```json\n{\n    \"message\": \"Error - unrecognised fields\"\n}\n```\n\nBy default, Zuora ignores unknown fields in the request body.\n"
+        "description": "Specifies whether the call fails if the request body contains unknown fields.\nWith `rejectUnknownFields` set to `true`, Zuora returns a 400 response if\nthe request body contains unknown fields. The body of the 400 response is:\n\n```json\n{\n    \"message\": \"Error - unrecognised fields\"\n}\n```\n\nBy default, Zuora ignores unknown fields in the request body.\n",
+        "default": false
       },
       {
         "name": "zuoraEntityIds",
@@ -32760,7 +33512,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "xZuoraWsdlVersion",
         "schema": "string",
         "required": false,
-        "description": "Zuora WSDL version number.\n"
+        "description": "Zuora WSDL version number.\n",
+        "default": 79
       },
       {
         "name": "conf",
@@ -32772,7 +33525,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "queryString",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "QUERYSTRING"
       }
     ],
     "responses": [
@@ -32822,7 +33576,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "rejectUnknownFields",
         "schema": "boolean",
         "required": false,
-        "description": "Specifies whether the call fails if the request body contains unknown fields.\nWith `rejectUnknownFields` set to `true`, Zuora returns a 400 response if\nthe request body contains unknown fields. The body of the 400 response is:\n\n```json\n{\n    \"message\": \"Error - unrecognised fields\"\n}\n```\n\nBy default, Zuora ignores unknown fields in the request body.\n"
+        "description": "Specifies whether the call fails if the request body contains unknown fields.\nWith `rejectUnknownFields` set to `true`, Zuora returns a 400 response if\nthe request body contains unknown fields. The body of the 400 response is:\n\n```json\n{\n    \"message\": \"Error - unrecognised fields\"\n}\n```\n\nBy default, Zuora ignores unknown fields in the request body.\n",
+        "default": false
       },
       {
         "name": "zuoraEntityIds",
@@ -32846,7 +33601,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "xZuoraWsdlVersion",
         "schema": "string",
         "required": false,
-        "description": "Zuora WSDL version number.\n"
+        "description": "Zuora WSDL version number.\n",
+        "default": 79
       },
       {
         "name": "conf",
@@ -32858,7 +33614,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "queryLocator",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "QUERYLOCATOR"
       }
     ],
     "responses": [
@@ -32908,7 +33665,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "rejectUnknownFields",
         "schema": "boolean",
         "required": false,
-        "description": "Specifies whether the call fails if the request body contains unknown fields.\nWith `rejectUnknownFields` set to `true`, Zuora returns a 400 response if\nthe request body contains unknown fields. The body of the 400 response is:\n\n```json\n{\n    \"message\": \"Error - unrecognised fields\"\n}\n```\n\nBy default, Zuora ignores unknown fields in the request body.\n"
+        "description": "Specifies whether the call fails if the request body contains unknown fields.\nWith `rejectUnknownFields` set to `true`, Zuora returns a 400 response if\nthe request body contains unknown fields. The body of the 400 response is:\n\n```json\n{\n    \"message\": \"Error - unrecognised fields\"\n}\n```\n\nBy default, Zuora ignores unknown fields in the request body.\n",
+        "default": false
       },
       {
         "name": "zuoraEntityIds",
@@ -32932,7 +33690,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "xZuoraWsdlVersion",
         "schema": "string",
         "required": false,
-        "description": "Zuora WSDL version number.\n"
+        "description": "Zuora WSDL version number.\n",
+        "default": 79
       },
       {
         "name": "objects",
@@ -32944,7 +33703,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TYPE"
       }
     ],
     "responses": [
@@ -32988,7 +33748,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -33045,7 +33806,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -33121,7 +33883,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The Zuora ID of the file to retrieve.\n"
+        "description": "The Zuora ID of the file to retrieve.\n",
+        "example": "FILE-ID"
       }
     ],
     "responses": [
@@ -33167,7 +33930,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "rejectUnknownFields",
         "schema": "boolean",
         "required": false,
-        "description": "Specifies whether the call fails if the request body contains unknown fields.\nWith `rejectUnknownFields` set to `true`, Zuora returns a 400 response if\nthe request body contains unknown fields. The body of the 400 response is:\n\n```json\n{\n    \"message\": \"Error - unrecognised fields\"\n}\n```\n\nBy default, Zuora ignores unknown fields in the request body.\n"
+        "description": "Specifies whether the call fails if the request body contains unknown fields.\nWith `rejectUnknownFields` set to `true`, Zuora returns a 400 response if\nthe request body contains unknown fields. The body of the 400 response is:\n\n```json\n{\n    \"message\": \"Error - unrecognised fields\"\n}\n```\n\nBy default, Zuora ignores unknown fields in the request body.\n",
+        "default": false
       },
       {
         "name": "zuoraEntityIds",
@@ -33191,19 +33955,22 @@ export default function ZuoraTypeScriptSdk() {
         "name": "File",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "FILE"
       },
       {
         "name": "ImportType",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "IMPORTTYPE"
       },
       {
         "name": "Name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -33271,7 +34038,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Object id"
+        "description": "Object id",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -33337,19 +34105,22 @@ export default function ZuoraTypeScriptSdk() {
         "name": "currency",
         "schema": "string",
         "required": true,
-        "description": "The target base currency of the tenant. The exchange rates in the response are calculated in relation to the target currency.\n\nThe value must be a three-letter currency code, for example, USD. \n"
+        "description": "The target base currency of the tenant. The exchange rates in the response are calculated in relation to the target currency.\n\nThe value must be a three-letter currency code, for example, USD. \n",
+        "example": "CURRENCY"
       },
       {
         "name": "startDate",
         "schema": "string",
         "required": true,
-        "description": "Start date of the date range for which you want to get exchange rates.\n\nThe date must be in yyyy-mm-dd format, for example, 2016-01-15. The start date cannot be later than the end date.\n"
+        "description": "Start date of the date range for which you want to get exchange rates.\n\nThe date must be in yyyy-mm-dd format, for example, 2016-01-15. The start date cannot be later than the end date.\n",
+        "example": "STARTDATE"
       },
       {
         "name": "endDate",
         "schema": "string",
         "required": true,
-        "description": "End date of the date range for which you want to get exchange rates.\n\nThe date must be in yyyy-mm-dd format, for example, 2016-01-16. The end date can be a maximum of 90 days after the start date.\n"
+        "description": "End date of the date range for which you want to get exchange rates.\n\nThe date must be in yyyy-mm-dd format, for example, 2016-01-16. The end date can be a maximum of 90 days after the start date.\n",
+        "example": "ENDDATE"
       }
     ],
     "responses": [
@@ -33419,19 +34190,22 @@ export default function ZuoraTypeScriptSdk() {
         "name": "associatedObjectType",
         "schema": "string",
         "required": true,
-        "description": "The type of the object to add attachements for. \n"
+        "description": "The type of the object to add attachements for. \n",
+        "example": "ASSOCIATEDOBJECTTYPE"
       },
       {
         "name": "associatedObjectKey",
         "schema": "string",
         "required": true,
-        "description": "For the Subscription type, specify the Subscription Number. An attachment is tied to the Subscription Number and thus viewable with every subscription version.\n\nFor Account, Credit Memo, and Debit Memo, specify the corresponding ID or number. For Invoice, specify the corresponding ID.\n"
+        "description": "For the Subscription type, specify the Subscription Number. An attachment is tied to the Subscription Number and thus viewable with every subscription version.\n\nFor Account, Credit Memo, and Debit Memo, specify the corresponding ID or number. For Invoice, specify the corresponding ID.\n",
+        "example": "ASSOCIATEDOBJECTKEY"
       },
       {
         "name": "file",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "FILE"
       }
     ],
     "responses": [
@@ -33489,7 +34263,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "attachmentId",
         "schema": "string",
         "required": true,
-        "description": "Id of the attachment to be deleted."
+        "description": "Id of the attachment to be deleted.",
+        "example": "ATTACHMENT-ID"
       }
     ],
     "responses": [
@@ -33547,7 +34322,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "attachmentId",
         "schema": "string",
         "required": true,
-        "description": "Id of the attachment you want to view."
+        "description": "Id of the attachment you want to view.",
+        "example": "ATTACHMENT-ID"
       }
     ],
     "responses": [
@@ -33605,7 +34381,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "attachmentId",
         "schema": "string",
         "required": true,
-        "description": "Id of the attachment to be updated."
+        "description": "Id of the attachment to be updated.",
+        "example": "ATTACHMENT-ID"
       },
       {
         "name": "description",
@@ -33673,25 +34450,29 @@ export default function ZuoraTypeScriptSdk() {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n"
+        "description": "The index number of the page that you want to retrieve. This parameter is dependent on `pageSize`. You must set `pageSize` before specifying `page`. For example, if you set `pageSize` to `20` and `page` to `2`, the 21st to 40th records are returned in the response.\n",
+        "default": 1
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned per page in the response.\n"
+        "description": "The number of records returned per page in the response.\n",
+        "default": 20
       },
       {
         "name": "objectType",
         "schema": "string",
         "required": true,
-        "description": "The type of the object to list attachements for.\n"
+        "description": "The type of the object to list attachements for.\n",
+        "example": "OBJECT-TYPE"
       },
       {
         "name": "objectKey",
         "schema": "string",
         "required": true,
-        "description": "ID of the object to list attachements for.\n - If `object-type` is `account`, specify an account ID or number.\n - If `object-type` is `invoice`, specify an invoice ID.\n - If `object-type` is `subscription`, specify a subscription number.\n - If `object-type` is `creditmemo`, specify a credit memo ID or number.\n - If `object-type` is `debitmemo`, specify a debit memo ID or number.\n"
+        "description": "ID of the object to list attachements for.\n - If `object-type` is `account`, specify an account ID or number.\n - If `object-type` is `invoice`, specify an invoice ID.\n - If `object-type` is `subscription`, specify a subscription number.\n - If `object-type` is `creditmemo`, specify a credit memo ID or number.\n - If `object-type` is `debitmemo`, specify a debit memo ID or number.\n",
+        "example": "OBJECT-KEY"
       }
     ],
     "responses": [
@@ -33749,7 +34530,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "object",
         "schema": "string",
         "required": true,
-        "description": "API name of an object in your Zuora tenant. For example, `InvoiceItem`. See [Zuora Object Model](https://developer.zuora.com/rest-api/general-concepts/object-model/) for the list of valid object names.\n\nDepending on the features enabled in your Zuora tenant, you may not be able to list the fields of some objects.\n"
+        "description": "API name of an object in your Zuora tenant. For example, `InvoiceItem`. See [Zuora Object Model](https://developer.zuora.com/rest-api/general-concepts/object-model/) for the list of valid object names.\n\nDepending on the features enabled in your Zuora tenant, you may not be able to list the fields of some objects.\n",
+        "example": "OBJECT"
       },
       {
         "name": "showCurrencyConversionInformation",
@@ -33798,7 +34580,8 @@ export default function ZuoraTypeScriptSdk() {
         "name": "authorization",
         "schema": "string",
         "required": true,
-        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n"
+        "description": "The value is in the `Bearer {token}` format where {token} is a valid OAuth token generated by calling [Create an OAuth token](https://developer.zuora.com/api-references/api/operation/createToken).\n",
+        "example": "AUTHORIZATION"
       },
       {
         "name": "zuoraEntityIds",
@@ -33856,7 +34639,8 @@ export default function ZuoraTypeScriptSdk() {
       {
         "name": "offset",
         "schema": "number",
-        "description": ""
+        "description": "",
+        "default": 0
       },
       {
         "name": "partner",

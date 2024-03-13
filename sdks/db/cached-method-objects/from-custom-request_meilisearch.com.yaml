@@ -44,9 +44,11 @@ methodObjects:
       - name: limit
         schema: number
         description: Maximum number of results to return.
+        default: 20
       - name: offset
         schema: number
         description: Number of results to skip.
+        default: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -63,6 +65,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: UID
       - name: primaryKey
         schema: string
         required: false
@@ -113,6 +116,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: PRIMARYKEY
     responses:
       - statusCode: '202'
         description: Accepted
@@ -146,14 +150,18 @@ methodObjects:
       - name: limit
         schema: number
         description: Maximum number of results to return.
+        default: 20
       - name: offset
         schema: number
         description: Number of results to skip.
+        default: 0
       - name: fields
         schema: string
         description: >-
           Comma-separated list of fields to display for an API resource. By
           default it contains all fields of an API resource.
+        example: uid,createdAt
+        default: '*'
       - name: filter
         schema: undefined
         required: false
@@ -186,6 +194,7 @@ methodObjects:
           > Attribute(s) used in `filter` should be declared as filterable
           attributes. See [Filtering and Faceted
           Search](https://docs.meilisearch.com/reference/features/filtering_and_faceted_search.html).
+        example: something > 1 AND genres=comedy AND (genres=horror OR title=batman)
     responses:
       - statusCode: '200'
         description: ''
@@ -215,6 +224,7 @@ methodObjects:
         description: >-
           Customize the csv delimiter when importing CSV documents. By default
           its a comma ","
+        default: ','
     responses:
       - statusCode: '202'
         description: Accepted
@@ -244,6 +254,7 @@ methodObjects:
         description: >-
           Customize the csv delimiter when importing CSV documents. By default
           its a comma ","
+        default: ','
     responses:
       - statusCode: '202'
         description: Accepted
@@ -261,15 +272,21 @@ methodObjects:
       - name: offset
         schema: number
         description: ''
+        default: 0
       - name: limit
         schema: number
         description: ''
+        default: 20
       - name: fields
         schema: array
         description: ''
       - name: filter
         schema: undefined
         description: ''
+        example: &ref_0
+          - director:Mati Diop
+          - - genres:Comedy
+            - genres:Romance
     responses:
       - statusCode: '200'
         description: ''
@@ -301,6 +318,7 @@ methodObjects:
       - name: filter
         schema: undefined
         description: ''
+        example: *ref_0
     responses:
       - statusCode: '202'
         description: Accepted
@@ -334,6 +352,8 @@ methodObjects:
         description: >-
           Comma-separated list of fields to display for an API resource. By
           default it contains all fields of an API resource.
+        example: uid,createdAt
+        default: '*'
     responses:
       - statusCode: '200'
         description: >-
@@ -353,6 +373,8 @@ methodObjects:
       - name: q
         schema: string
         description: Query string.
+        example: back to the future
+        default: '""'
       - name: attributesToRetrieve
         schema: string
         description: >-
@@ -360,38 +382,47 @@ methodObjects:
           returned documents. Defaults to the [displayedAttributes
           list](https://docs.meilisearch.com/reference/features/settings.html#displayed-attributes)
           which contains by default all attributes found in the documents.
+        example: title,description
+        default: '*'
       - name: attributesToHighlight
         schema: string
         description: >-
           Comma-separated list of attributes whose values will contain
           highlighted matching terms. Highlighted attributes are returned in
           `_formatted` response object.
+        example: title,description
       - name: highlightPreTag
         schema: string
         required: false
         description: Specify the tag to put before the highlighted query terms.
+        default: <em>
       - name: highlightPostTag
         schema: string
         required: false
         description: Specify the tag to put after the highlighted query terms.
+        default: </em>
       - name: attributesToCrop
         schema: string
         required: false
         description: >-
           Comma-separated list of attributes whose values have to be cropped.
           Cropped attributes are returned in `_formatted` response object.
+        example: overview:10
       - name: cropMarker
         schema: string
         required: false
         description: >-
           Sets the crop marker to apply before and/or after cropped part
           selected within an attribute defined in `attributesToCrop` parameter.
+        default: …
       - name: cropLength
         schema: integer
         required: false
         description: >-
           Sets the total number of words to keep around the matched part of an
           attribute specified in the `attributesToCrop` parameter.
+        example: 5
+        default: 10
       - name: facets
         schema: string
         description: >-
@@ -401,6 +432,7 @@ methodObjects:
           you can retrieve the count of matching terms for each facets.[Learn
           more about facet distribution in the dedicated
           guide](https://docs.meilisearch.com/reference/features/search_parameters.html#facet-distribution)
+        example: genres,author
       - name: filter
         schema: undefined
         required: false
@@ -433,9 +465,11 @@ methodObjects:
           > Attribute(s) used in `filter` should be declared as filterable
           attributes. See [Filtering and Faceted
           Search](https://docs.meilisearch.com/reference/features/filtering_and_faceted_search.html).
+        example: something > 1 AND genres=comedy AND (genres=horror OR title=batman)
       - name: offset
         schema: number
         description: Number of results to skip.
+        default: 0
       - name: sort
         schema: string
         required: false
@@ -454,23 +488,28 @@ methodObjects:
 
           > _geoPoint({lat}, {long}) built-in sort rule can be used to sort
           documents around a geo point.
+        example: price:asc
       - name: limit
         schema: number
         description: Maximum number of results to return.
+        default: 20
       - name: page
         schema: number
         description: Sets the specific results page.
+        default: 1
       - name: hitsPerPage
         schema: number
         description: >-
           Sets the number of results returned for a query. If hitsPerPage is not
           provided as a query parameter, this parameter is ignored.
+        default: 20
       - name: showMatchesPosition
         schema: boolean
         required: false
         description: >-
           Defines whether an `_matchesPosition` object that contains information
           about the matches should be returned or not.
+        default: 'false'
       - name: matchingStrategy
         schema: string
         required: false
@@ -478,6 +517,7 @@ methodObjects:
           Defines which strategy to use to match the query terms within the
           documents as search results. Two different strategies are available,
           `last` and `all`. By default, the `last` strategy is chosen.
+        default: last
     responses:
       - statusCode: '200'
         description: ''
@@ -495,9 +535,13 @@ methodObjects:
       - name: q
         schema: string
         description: ''
+        example: '"Back to the future"'
+        default: '""'
       - name: vector
         schema: array
         description: ''
+        example: '[0.8, 0.145, 0.26, 0.3]'
+        default: 'null'
       - name: attributesToRetrieve
         schema: array
         description: ''
@@ -507,54 +551,72 @@ methodObjects:
       - name: highlightPreTag
         schema: string
         description: ''
+        example: <mark>
+        default: <em>
       - name: highlightPostTag
         schema: string
         description: ''
+        example: </mark>
+        default: </em>
       - name: attributesToCrop
         schema: array
         description: ''
       - name: cropMarker
         schema: string
         description: ''
+        default: …
       - name: cropLength
         schema: number
         description: ''
+        default: 10
       - name: showMatchesPosition
         schema: boolean
         description: ''
+        default: false
       - name: showRankingScore
         schema: boolean
         description: ''
+        default: false
       - name: showRankingScoreDetails
         schema: boolean
         description: ''
+        default: false
       - name: matchingStrategy
         schema: string
         description: ''
+        default: last
       - name: attributesToSearchOn
         schema: array
         description: ''
+        default: '["*"]'
       - name: filter
         schema: undefined
         description: ''
+        example: *ref_0
       - name: facets
         schema: array
         description: ''
       - name: offset
         schema: number
         description: ''
+        default: 0
       - name: limit
         schema: number
         description: ''
+        default: 20
       - name: page
         schema: number
         description: ''
+        example: 1
       - name: hitsPerPage
         schema: number
         description: ''
+        example: 20
       - name: sort
         schema: undefined
         description: ''
+        example:
+          - price:desc
     responses:
       - statusCode: '200'
         description: ''
@@ -572,18 +634,25 @@ methodObjects:
       - name: facetName
         schema: string
         description: ''
+        example: '"genres"'
       - name: facetQuery
         schema: string
         description: ''
+        example: '"Horror"'
+        default: '""'
       - name: q
         schema: string
         description: ''
+        example: '"Back to the future"'
+        default: '""'
       - name: matchingStrategy
         schema: string
         description: ''
+        default: last
       - name: filter
         schema: undefined
         description: ''
+        example: *ref_0
     responses:
       - statusCode: '200'
         description: ''
@@ -629,27 +698,64 @@ methodObjects:
       - name: synonyms
         schema: object
         description: ''
+        example:
+          wolverine:
+            - xmen
+            - logan
+          logan:
+            - wolverine
+            - xmen
+          wow:
+            - world of warcraft
       - name: stopWords
         schema: array
         description: ''
+        example:
+          - of
+          - the
+          - to
       - name: rankingRules
         schema: array
         description: ''
+        example:
+          - words
+          - typo
+          - proximity
+          - attribute
+          - sort
+          - exactness
+          - release_date:asc
       - name: distinctAttribute
         schema: string
         description: ''
       - name: searchableAttributes
         schema: array
         description: ''
+        example:
+          - title
+          - description
+          - genre
       - name: displayedAttributes
         schema: array
         description: ''
+        example:
+          - title
+          - description
+          - genre
+          - release_date
       - name: filterableAttributes
         schema: array
         description: ''
+        example:
+          - genres
+          - director
       - name: sortableAttributes
         schema: array
         description: ''
+        example:
+          - price
+          - author
+          - title
       - name: typoTolerance
         schema: object
         description: ''
@@ -889,12 +995,15 @@ methodObjects:
       - name: enabled
         schema: boolean
         description: ''
+        default: true
       - name: disableOnAttributes
         schema: array
         description: ''
+        default: []
       - name: disableOnWords
         schema: array
         description: ''
+        default: []
       - name: minWordSizeForTypos
         schema: object
         description: ''
@@ -943,6 +1052,7 @@ methodObjects:
       - name: maxTotalHits
         schema: integer
         description: ''
+        default: 1000
     responses:
       - statusCode: '202'
         description: Accepted
@@ -988,9 +1098,13 @@ methodObjects:
       - name: maxValuesPerFacet
         schema: integer
         description: ''
+        default: 100
       - name: sortFacetValuesBy
         schema: object
         description: ''
+        example:
+          '*': alpha
+          genres: count
     responses:
       - statusCode: '202'
         description: Accepted
@@ -1213,9 +1327,11 @@ methodObjects:
       - name: limit
         schema: number
         description: Maximum number of results to return.
+        default: 20
       - name: offset
         schema: number
         description: Number of results to skip.
+        default: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -1232,14 +1348,17 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        default: null
       - name: uid
         schema: string
         required: false
         description: ''
+        example: 01b4bc42-eb33-4041-b481-254d00cce834
       - name: key
         schema: string
         required: false
         description: ''
+        example: d0552b41536279a0ad88bd595327b96f01176a60c2243e906c52ac02375f9bc4
       - name: actions
         schema: array
         required: true
@@ -1252,6 +1371,7 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        default: null
       - name: expiresAt
         schema: string
         required: true
@@ -1260,10 +1380,12 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: '2021-11-12T10:00:00Z'
       - name: updatedAt
         schema: string
         required: false
         description: ''
+        default: null
     responses:
       - statusCode: '200'
         description: >-
@@ -1294,6 +1416,7 @@ methodObjects:
         schema: string
         required: true
         description: The uid or the key field value of the API Key.
+        example: UIDORKEY
     responses:
       - statusCode: '200'
         description: >-
@@ -1443,6 +1566,7 @@ methodObjects:
       - name: limit
         schema: number
         description: Maximum number of results to return.
+        default: 20
       - name: from
         schema: number
         description: Fetch the next set of results from the given uid.
@@ -1534,6 +1658,7 @@ methodObjects:
         schema: integer
         required: true
         description: The task identifier
+        example: 0
     responses:
       - statusCode: '200'
         description: >

@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function SoundCloudTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function SoundCloudTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/soundcloud/logo.jpg"
       clientNameCamelCase="soundCloud"
       homepage="developers.soundcloud.com"
-      lastUpdated={new Date("2024-03-11T16:20:31.165Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/soundcloud/favicon.jpeg"
       contactUrl="https://github.com/soundcloud/api"
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/soundcloud/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["media"]}
       methods={[
   {
     "url": "/connect",
@@ -36,25 +39,29 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "clientId",
         "schema": "string",
         "required": true,
-        "description": "The client id belonging to your application"
+        "description": "The client id belonging to your application",
+        "example": "some client"
       },
       {
         "name": "redirectUri",
         "schema": "string",
         "required": true,
-        "description": "The redirect uri you have configured for your application"
+        "description": "The redirect uri you have configured for your application",
+        "example": "https://soundcloud.com"
       },
       {
         "name": "responseType",
         "schema": "string",
         "required": true,
-        "description": "Support only the Authorization Code Flow"
+        "description": "Support only the Authorization Code Flow",
+        "example": "code"
       },
       {
         "name": "state",
         "schema": "string",
         "required": false,
-        "description": "Any value included here will be appended to the redirect URI. Use this for CSRF protection."
+        "description": "Any value included here will be appended to the redirect URI. Use this for CSRF protection.",
+        "example": "encrypted_session_info"
       }
     ],
     "responses": [
@@ -84,37 +91,43 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "grant_type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "authorization_code"
       },
       {
         "name": "client_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CLIENT_ID"
       },
       {
         "name": "client_secret",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CLIENT_SECRET"
       },
       {
         "name": "code",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "1-123456-12345678-FAbcfbe9ir2wdj0"
       },
       {
         "name": "redirect_uri",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "https://mywebsite/auth/soundcloud"
       },
       {
         "name": "refresh_token",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "1234c331329477150e7b6056ff212345"
       }
     ],
     "responses": [
@@ -162,13 +175,16 @@ export default function SoundCloudTypeScriptSdk() {
       {
         "name": "access",
         "schema": "array",
-        "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n"
+        "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n",
+        "default": "playable,preview"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Number of results to return in the collection."
+        "description": "Number of results to return in the collection.",
+        "example": 2,
+        "default": 50
       }
     ],
     "responses": [
@@ -193,13 +209,16 @@ export default function SoundCloudTypeScriptSdk() {
       {
         "name": "access",
         "schema": "array",
-        "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n"
+        "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n",
+        "default": "playable,preview"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Number of results to return in the collection."
+        "description": "Number of results to return in the collection.",
+        "example": 2,
+        "default": 50
       }
     ],
     "responses": [
@@ -224,13 +243,16 @@ export default function SoundCloudTypeScriptSdk() {
       {
         "name": "access",
         "schema": "array",
-        "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n"
+        "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n",
+        "default": "playable,preview"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Number of results to return in the collection."
+        "description": "Number of results to return in the collection.",
+        "example": 2,
+        "default": 50
       }
     ],
     "responses": [
@@ -256,18 +278,22 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Number of results to return in the collection."
+        "description": "Number of results to return in the collection.",
+        "example": 2,
+        "default": 50
       },
       {
         "name": "access",
         "schema": "array",
-        "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n"
+        "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n",
+        "default": "playable,preview,blocked"
       },
       {
         "name": "linkedPartitioning",
         "schema": "boolean",
         "required": false,
-        "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)"
+        "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)",
+        "example": true
       }
     ],
     "responses": [
@@ -293,13 +319,16 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Number of results to return in the collection."
+        "description": "Number of results to return in the collection.",
+        "example": 2,
+        "default": 50
       },
       {
         "name": "linkedPartitioning",
         "schema": "boolean",
         "required": false,
-        "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)"
+        "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)",
+        "example": true
       }
     ],
     "responses": [
@@ -325,13 +354,17 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Number of results to return in the collection."
+        "description": "Number of results to return in the collection.",
+        "example": 2,
+        "default": 50
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Offset of first result. Deprecated, use `linked_partitioning` instead."
+        "description": "Offset of first result. Deprecated, use `linked_partitioning` instead.",
+        "example": 0,
+        "default": 0
       }
     ],
     "responses": [
@@ -356,19 +389,24 @@ export default function SoundCloudTypeScriptSdk() {
       {
         "name": "access",
         "schema": "array",
-        "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n"
+        "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n",
+        "default": "playable,preview"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Number of results to return in the collection."
+        "description": "Number of results to return in the collection.",
+        "example": 2,
+        "default": 50
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Offset of first result. Deprecated, use `linked_partitioning` instead."
+        "description": "Offset of first result. Deprecated, use `linked_partitioning` instead.",
+        "example": 0,
+        "default": 0
       }
     ],
     "responses": [
@@ -394,7 +432,8 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "userId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud User id"
+        "description": "SoundCloud User id",
+        "example": 743372812
       }
     ],
     "responses": [
@@ -428,7 +467,8 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "userId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud User id"
+        "description": "SoundCloud User id",
+        "example": 948745750
       }
     ],
     "responses": [
@@ -458,7 +498,8 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "userId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud User id"
+        "description": "SoundCloud User id",
+        "example": 743372812
       }
     ],
     "responses": [
@@ -492,7 +533,9 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Number of results to return in the collection."
+        "description": "Number of results to return in the collection.",
+        "example": 2,
+        "default": 50
       }
     ],
     "responses": [
@@ -518,7 +561,8 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "followerId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud User id to denote a Follower"
+        "description": "SoundCloud User id to denote a Follower",
+        "example": 743372812
       }
     ],
     "responses": [
@@ -544,19 +588,23 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "showTracks",
         "schema": "boolean",
         "required": false,
-        "description": "A boolean flag to request a playlist with or without tracks. Default is `true`."
+        "description": "A boolean flag to request a playlist with or without tracks. Default is `true`.",
+        "example": true
       },
       {
         "name": "linkedPartitioning",
         "schema": "boolean",
         "required": false,
-        "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)"
+        "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)",
+        "example": true
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Number of results to return in the collection."
+        "description": "Number of results to return in the collection.",
+        "example": 2,
+        "default": 50
       }
     ],
     "responses": [
@@ -586,13 +634,16 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Number of results to return in the collection."
+        "description": "Number of results to return in the collection.",
+        "example": 2,
+        "default": 50
       },
       {
         "name": "linkedPartitioning",
         "schema": "boolean",
         "required": false,
-        "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)"
+        "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)",
+        "example": true
       }
     ],
     "responses": [
@@ -618,25 +669,29 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "q",
         "schema": "string",
         "required": false,
-        "description": "search"
+        "description": "search",
+        "example": "hello"
       },
       {
         "name": "ids",
         "schema": "string",
         "required": false,
-        "description": "A comma separated list of track ids to filter on"
+        "description": "A comma separated list of track ids to filter on",
+        "example": "1,2,3"
       },
       {
         "name": "genres",
         "schema": "string",
         "required": false,
-        "description": "A comma separated list of genres"
+        "description": "A comma separated list of genres",
+        "example": "Pop,House"
       },
       {
         "name": "tags",
         "schema": "string",
         "required": false,
-        "description": "A comma separated list of tags"
+        "description": "A comma separated list of tags",
+        "example": "test"
       },
       {
         "name": "bpm",
@@ -659,25 +714,31 @@ export default function SoundCloudTypeScriptSdk() {
       {
         "name": "access",
         "schema": "array",
-        "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n"
+        "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n",
+        "default": "playable,preview"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Number of results to return in the collection."
+        "description": "Number of results to return in the collection.",
+        "example": 2,
+        "default": 50
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Offset of first result. Deprecated, use `linked_partitioning` instead."
+        "description": "Offset of first result. Deprecated, use `linked_partitioning` instead.",
+        "example": 0,
+        "default": 0
       },
       {
         "name": "linkedPartitioning",
         "schema": "boolean",
         "required": false,
-        "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)"
+        "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)",
+        "example": true
       }
     ],
     "responses": [
@@ -738,36 +799,44 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "q",
         "schema": "string",
         "required": false,
-        "description": "search"
+        "description": "search",
+        "example": "hello"
       },
       {
         "name": "access",
         "schema": "array",
-        "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n"
+        "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n",
+        "default": "playable,preview"
       },
       {
         "name": "showTracks",
         "schema": "boolean",
         "required": false,
-        "description": "A boolean flag to request a playlist with or without tracks. Default is `true`."
+        "description": "A boolean flag to request a playlist with or without tracks. Default is `true`.",
+        "example": true
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Number of results to return in the collection."
+        "description": "Number of results to return in the collection.",
+        "example": 2,
+        "default": 50
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Offset of first result. Deprecated, use `linked_partitioning` instead."
+        "description": "Offset of first result. Deprecated, use `linked_partitioning` instead.",
+        "example": 0,
+        "default": 0
       },
       {
         "name": "linkedPartitioning",
         "schema": "boolean",
         "required": false,
-        "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)"
+        "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)",
+        "example": true
       }
     ],
     "responses": [
@@ -826,31 +895,38 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "q",
         "schema": "string",
         "required": false,
-        "description": "search"
+        "description": "search",
+        "example": "hello"
       },
       {
         "name": "ids",
         "schema": "string",
         "required": false,
-        "description": "A comma separated list of track ids to filter on"
+        "description": "A comma separated list of track ids to filter on",
+        "example": "1,2,3"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Number of results to return in the collection."
+        "description": "Number of results to return in the collection.",
+        "example": 2,
+        "default": 50
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Offset of first result. Deprecated, use `linked_partitioning` instead."
+        "description": "Offset of first result. Deprecated, use `linked_partitioning` instead.",
+        "example": 0,
+        "default": 0
       },
       {
         "name": "linkedPartitioning",
         "schema": "boolean",
         "required": false,
-        "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)"
+        "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)",
+        "example": true
       }
     ],
     "responses": [
@@ -880,7 +956,8 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "playlistId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud playlist id"
+        "description": "SoundCloud playlist id",
+        "example": 10
       }
     ],
     "responses": [
@@ -906,7 +983,8 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "playlistId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud playlist id"
+        "description": "SoundCloud playlist id",
+        "example": 1212781357
       },
       {
         "name": "secretToken",
@@ -917,13 +995,15 @@ export default function SoundCloudTypeScriptSdk() {
       {
         "name": "access",
         "schema": "array",
-        "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n"
+        "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n",
+        "default": "playable,preview"
       },
       {
         "name": "showTracks",
         "schema": "boolean",
         "required": false,
-        "description": "A boolean flag to request a playlist with or without tracks. Default is `true`."
+        "description": "A boolean flag to request a playlist with or without tracks. Default is `true`.",
+        "example": true
       }
     ],
     "responses": [
@@ -953,7 +1033,8 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "playlistId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud playlist id"
+        "description": "SoundCloud playlist id",
+        "example": 10
       },
       {
         "name": "playlist",
@@ -988,7 +1069,8 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "playlistId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud playlist id"
+        "description": "SoundCloud playlist id",
+        "example": 1212781357
       },
       {
         "name": "secretToken",
@@ -999,13 +1081,15 @@ export default function SoundCloudTypeScriptSdk() {
       {
         "name": "access",
         "schema": "array",
-        "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n"
+        "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n",
+        "default": "playable,preview"
       },
       {
         "name": "linkedPartitioning",
         "schema": "boolean",
         "required": false,
-        "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)"
+        "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)",
+        "example": true
       }
     ],
     "responses": [
@@ -1035,13 +1119,16 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "playlistId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud playlist id"
+        "description": "SoundCloud playlist id",
+        "example": 1212781357
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Number of results to return in the collection."
+        "description": "Number of results to return in the collection.",
+        "example": 2,
+        "default": 50
       }
     ],
     "responses": [
@@ -1071,7 +1158,8 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "trackId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud Track id"
+        "description": "SoundCloud Track id",
+        "example": 308946187
       }
     ],
     "responses": [
@@ -1097,7 +1185,8 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "trackId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud Track id"
+        "description": "SoundCloud Track id",
+        "example": 308946187
       },
       {
         "name": "secretToken",
@@ -1133,7 +1222,8 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "trackId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud Track id"
+        "description": "SoundCloud Track id",
+        "example": 308946187
       },
       {
         "name": "track",
@@ -1168,7 +1258,8 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "trackId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud Track id"
+        "description": "SoundCloud Track id",
+        "example": 308946187
       },
       {
         "name": "secretToken",
@@ -1204,25 +1295,31 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "trackId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud Track id"
+        "description": "SoundCloud Track id",
+        "example": 308946187
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Number of results to return in the collection."
+        "description": "Number of results to return in the collection.",
+        "example": 2,
+        "default": 50
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Offset of first result. Deprecated, use `linked_partitioning` instead."
+        "description": "Offset of first result. Deprecated, use `linked_partitioning` instead.",
+        "example": 0,
+        "default": 0
       },
       {
         "name": "linkedPartitioning",
         "schema": "boolean",
         "required": false,
-        "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)"
+        "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)",
+        "example": true
       }
     ],
     "responses": [
@@ -1252,7 +1349,8 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "trackId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud Track id"
+        "description": "SoundCloud Track id",
+        "example": 308946187
       },
       {
         "name": "comment",
@@ -1287,19 +1385,23 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "trackId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud Track id"
+        "description": "SoundCloud Track id",
+        "example": 308946187
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Number of results to return in the collection."
+        "description": "Number of results to return in the collection.",
+        "example": 2,
+        "default": 50
       },
       {
         "name": "linkedPartitioning",
         "schema": "boolean",
         "required": false,
-        "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)"
+        "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)",
+        "example": true
       }
     ],
     "responses": [
@@ -1329,13 +1431,16 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "trackId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud Track id"
+        "description": "SoundCloud Track id",
+        "example": 308946187
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Number of results to return in the collection."
+        "description": "Number of results to return in the collection.",
+        "example": 2,
+        "default": 50
       }
     ],
     "responses": [
@@ -1365,30 +1470,37 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "trackId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud Track id"
+        "description": "SoundCloud Track id",
+        "example": 308946187
       },
       {
         "name": "access",
         "schema": "array",
-        "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n"
+        "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n",
+        "default": "playable,preview"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Number of results to return in the collection."
+        "description": "Number of results to return in the collection.",
+        "example": 2,
+        "default": 50
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Offset of first result. Deprecated, use `linked_partitioning` instead."
+        "description": "Offset of first result. Deprecated, use `linked_partitioning` instead.",
+        "example": 0,
+        "default": 0
       },
       {
         "name": "linkedPartitioning",
         "schema": "boolean",
         "required": false,
-        "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)"
+        "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)",
+        "example": true
       }
     ],
     "responses": [
@@ -1418,7 +1530,8 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "url",
         "schema": "string",
         "required": true,
-        "description": "SoundCloud URL"
+        "description": "SoundCloud URL",
+        "example": "https://soundcloud.com/user-434241656"
       }
     ],
     "responses": [
@@ -1448,7 +1561,8 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "userId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud User id"
+        "description": "SoundCloud User id",
+        "example": 948745750
       }
     ],
     "responses": [
@@ -1478,19 +1592,23 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "userId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud User id"
+        "description": "SoundCloud User id",
+        "example": 948745750
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Number of results to return in the collection."
+        "description": "Number of results to return in the collection.",
+        "example": 2,
+        "default": 50
       },
       {
         "name": "linkedPartitioning",
         "schema": "boolean",
         "required": false,
-        "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)"
+        "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)",
+        "example": true
       }
     ],
     "responses": [
@@ -1516,13 +1634,16 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "userId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud User id"
+        "description": "SoundCloud User id",
+        "example": 948745750
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Number of results to return in the collection."
+        "description": "Number of results to return in the collection.",
+        "example": 2,
+        "default": 50
       }
     ],
     "responses": [
@@ -1548,13 +1669,16 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "userId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud User id"
+        "description": "SoundCloud User id",
+        "example": 948745750
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Number of results to return in the collection."
+        "description": "Number of results to return in the collection.",
+        "example": 2,
+        "default": 50
       }
     ],
     "responses": [
@@ -1580,13 +1704,15 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "userId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud User id"
+        "description": "SoundCloud User id",
+        "example": 948745750
       },
       {
         "name": "followingId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud User id to denote a Following of a user"
+        "description": "SoundCloud User id to denote a Following of a user",
+        "example": 25219981
       }
     ],
     "responses": [
@@ -1616,30 +1742,36 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "userId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud User id"
+        "description": "SoundCloud User id",
+        "example": 948745750
       },
       {
         "name": "access",
         "schema": "array",
-        "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n"
+        "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n",
+        "default": "playable,preview"
       },
       {
         "name": "showTracks",
         "schema": "boolean",
         "required": false,
-        "description": "A boolean flag to request a playlist with or without tracks. Default is `true`."
+        "description": "A boolean flag to request a playlist with or without tracks. Default is `true`.",
+        "example": true
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Number of results to return in the collection."
+        "description": "Number of results to return in the collection.",
+        "example": 2,
+        "default": 50
       },
       {
         "name": "linkedPartitioning",
         "schema": "boolean",
         "required": false,
-        "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)"
+        "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)",
+        "example": true
       }
     ],
     "responses": [
@@ -1665,24 +1797,29 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "userId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud User id"
+        "description": "SoundCloud User id",
+        "example": 948745750
       },
       {
         "name": "access",
         "schema": "array",
-        "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n"
+        "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n",
+        "default": "playable,preview"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Number of results to return in the collection."
+        "description": "Number of results to return in the collection.",
+        "example": 2,
+        "default": 50
       },
       {
         "name": "linkedPartitioning",
         "schema": "boolean",
         "required": false,
-        "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)"
+        "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)",
+        "example": true
       }
     ],
     "responses": [
@@ -1708,13 +1845,16 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "userId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud User id"
+        "description": "SoundCloud User id",
+        "example": 948745750
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Number of results to return in the collection."
+        "description": "Number of results to return in the collection.",
+        "example": 2,
+        "default": 50
       }
     ],
     "responses": [
@@ -1740,24 +1880,29 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "userId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud User id"
+        "description": "SoundCloud User id",
+        "example": 948745750
       },
       {
         "name": "access",
         "schema": "array",
-        "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n"
+        "description": "Filters content by level of access the user (logged in or anonymous) has to the track. The result list will include only tracks with the specified access. Include all options if you'd like to see all possible tracks. See `Track#access` schema for more details.\n",
+        "default": "playable,preview"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Number of results to return in the collection."
+        "description": "Number of results to return in the collection.",
+        "example": 2,
+        "default": 50
       },
       {
         "name": "linkedPartitioning",
         "schema": "boolean",
         "required": false,
-        "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)"
+        "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)",
+        "example": true
       }
     ],
     "responses": [
@@ -1791,19 +1936,23 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "userId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud User id"
+        "description": "SoundCloud User id",
+        "example": 948745750
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Number of results to return in the collection."
+        "description": "Number of results to return in the collection.",
+        "example": 2,
+        "default": 50
       },
       {
         "name": "linkedPartitioning",
         "schema": "boolean",
         "required": false,
-        "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)"
+        "description": "Returns paginated collection of items (recommended, returning a list without pagination is deprecated and should not be used)",
+        "example": true
       }
     ],
     "responses": [
@@ -1837,7 +1986,8 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "trackId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud Track id"
+        "description": "SoundCloud Track id",
+        "example": 1015448728
       }
     ],
     "responses": [
@@ -1867,7 +2017,8 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "trackId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud Track id"
+        "description": "SoundCloud Track id",
+        "example": 1015448728
       }
     ],
     "responses": [
@@ -1905,7 +2056,8 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "playlistId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud playlist id"
+        "description": "SoundCloud playlist id",
+        "example": 1212781357
       }
     ],
     "responses": [
@@ -1935,7 +2087,8 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "playlistId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud playlist id"
+        "description": "SoundCloud playlist id",
+        "example": 1212781357
       }
     ],
     "responses": [
@@ -1973,7 +2126,8 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "trackId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud Track id"
+        "description": "SoundCloud Track id",
+        "example": 1015448728
       }
     ],
     "responses": [
@@ -2003,7 +2157,8 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "trackId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud Track id"
+        "description": "SoundCloud Track id",
+        "example": 1015448728
       }
     ],
     "responses": [
@@ -2033,7 +2188,8 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "playlistId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud playlist id"
+        "description": "SoundCloud playlist id",
+        "example": 1205584273
       }
     ],
     "responses": [
@@ -2063,7 +2219,8 @@ export default function SoundCloudTypeScriptSdk() {
         "name": "playlistId",
         "schema": "integer",
         "required": true,
-        "description": "SoundCloud playlist id"
+        "description": "SoundCloud playlist id",
+        "example": 1205584273
       }
     ],
     "responses": [

@@ -1,8 +1,17 @@
+export type ParameterExampleOrDefault =
+  | string
+  | number
+  | null
+  | boolean
+  | object
+  | undefined;
 export type Parameter = {
   name: string;
   schema: string;
   required?: boolean;
   description: string;
+  default: ParameterExampleOrDefault;
+  example: ParameterExampleOrDefault;
 };
 
 export type Response = {

@@ -4,29 +4,28 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function TerminalTypeScriptSdk() {
   return (
     <Sdk
       sdkName="terminal-typescript-sdk"
-      metaDescription="Terminal is Plaid for Telematics in commercial trucking. Companies building the next generation of insurance products, financial services and fleet software for trucking use our Universal API to access GPS data, speeding data and vehicle stats.
-
-We are a fast growing, venture-backed startup supported by top investors including Y Combinator, Golden Ventures and Wayfinder Ventures (+ latest investors to be announced soon!). Our exceptionally talented team spans across San Francisco, Toronto and Vancouver.
-
-For more details, check us out at https://withterminal.com"
+      metaDescription="Terminal is Plaid for Telematics in commercial trucking. Companies building the next generation of insurance products, financial services and fleet software for trucking use our Universal API to access GPS data, speeding data and vehicle stats.Check us out at https://withterminal.com"
       company="Terminal"
       // Missing serviceName
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/terminal/logo.png"
       clientNameCamelCase="terminal"
       homepage="withterminal.com"
-      lastUpdated={new Date("2024-03-11T19:23:56.542Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/terminal/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/terminal/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["developer_tools","telematics","trucking","universal_api","gps_data","speeding_data","vehicle_stats"]}
       methods={[
   {
     "url": "/public-token/exchange",
@@ -39,7 +38,8 @@ For more details, check us out at https://withterminal.com"
       {
         "name": "publicToken",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "INSERT_PUBLIC_TOKEN"
       }
     ],
     "responses": [
@@ -60,27 +60,32 @@ For more details, check us out at https://withterminal.com"
       {
         "name": "cursor",
         "schema": "string",
-        "description": "Pagination cursor to start requests from"
+        "description": "Pagination cursor to start requests from",
+        "example": "{{nextCursor}}"
       },
       {
         "name": "limit",
         "schema": "string",
-        "description": "The maximum number of results to return in a page."
+        "description": "The maximum number of results to return in a page.",
+        "example": "1"
       },
       {
         "name": "externalId",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "123"
       },
       {
         "name": "dotNumber",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "123"
       },
       {
         "name": "tag",
         "schema": "string",
-        "description": "Filter connections by tag"
+        "description": "Filter connections by tag",
+        "example": "tempor in aliqua"
       }
     ],
     "responses": [
@@ -101,7 +106,11 @@ For more details, check us out at https://withterminal.com"
       {
         "name": "tags",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "example": [
+          "Tag Name",
+          "Tag Name"
+        ]
       },
       {
         "name": "backfill",
@@ -121,17 +130,20 @@ For more details, check us out at https://withterminal.com"
       {
         "name": "externalId",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "ullamco dolore ipsum"
       },
       {
         "name": "provider",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "geotab"
       },
       {
         "name": "syncMode",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "automatic"
       }
     ],
     "responses": [
@@ -152,7 +164,8 @@ For more details, check us out at https://withterminal.com"
       {
         "name": "connectionToken",
         "schema": "string",
-        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account."
+        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account.",
+        "example": "{{connectionToken}}"
       }
     ],
     "responses": [
@@ -173,12 +186,17 @@ For more details, check us out at https://withterminal.com"
       {
         "name": "connectionToken",
         "schema": "string",
-        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account."
+        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account.",
+        "example": "{{connectionToken}}"
       },
       {
         "name": "tags",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "example": [
+          "dolor in magna",
+          "reprehenderit dolor nostrud"
+        ]
       },
       {
         "name": "company",
@@ -188,17 +206,20 @@ For more details, check us out at https://withterminal.com"
       {
         "name": "externalId",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "ad sed dolore cupidatat"
       },
       {
         "name": "status",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "laborum sed consectetur"
       },
       {
         "name": "syncMode",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "automatic"
       }
     ],
     "responses": [
@@ -219,27 +240,32 @@ For more details, check us out at https://withterminal.com"
       {
         "name": "limit",
         "schema": "string",
-        "description": "The maximum number of results to return in a page."
+        "description": "The maximum number of results to return in a page.",
+        "example": "1"
       },
       {
         "name": "cursor",
         "schema": "string",
-        "description": "Pagination cursor to start requests from"
+        "description": "Pagination cursor to start requests from",
+        "example": "{{nextCursor}}"
       },
       {
         "name": "status",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "in_progress"
       },
       {
         "name": "expand",
         "schema": "string",
-        "description": "Expand related resources in the response to reduce requests."
+        "description": "Expand related resources in the response to reduce requests.",
+        "example": ""
       },
       {
         "name": "connectionToken",
         "schema": "string",
-        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account."
+        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account.",
+        "example": "{{connectionToken}}"
       }
     ],
     "responses": [
@@ -260,12 +286,14 @@ For more details, check us out at https://withterminal.com"
       {
         "name": "connectionToken",
         "schema": "string",
-        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account."
+        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account.",
+        "example": "{{connectionToken}}"
       },
       {
         "name": "days",
         "schema": "number",
-        "description": ""
+        "description": "",
+        "example": 7
       }
     ],
     "responses": [
@@ -286,12 +314,14 @@ For more details, check us out at https://withterminal.com"
       {
         "name": "expand",
         "schema": "string",
-        "description": "Expand related resources in the response to reduce requests."
+        "description": "Expand related resources in the response to reduce requests.",
+        "example": ""
       },
       {
         "name": "connectionToken",
         "schema": "string",
-        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account."
+        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account.",
+        "example": "{{connectionToken}}"
       }
     ],
     "responses": [
@@ -312,12 +342,14 @@ For more details, check us out at https://withterminal.com"
       {
         "name": "connectionToken",
         "schema": "string",
-        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account."
+        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account.",
+        "example": "{{connectionToken}}"
       },
       {
         "name": "body",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "{\"reportId\":\"1234\"}"
       },
       {
         "name": "headers",
@@ -327,12 +359,14 @@ For more details, check us out at https://withterminal.com"
       {
         "name": "method",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "POST"
       },
       {
         "name": "path",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "/reports"
       }
     ],
     "responses": [
@@ -353,37 +387,44 @@ For more details, check us out at https://withterminal.com"
       {
         "name": "cursor",
         "schema": "string",
-        "description": "Pagination cursor to start requests from"
+        "description": "Pagination cursor to start requests from",
+        "example": "{{nextCursor}}"
       },
       {
         "name": "limit",
         "schema": "string",
-        "description": "The maximum number of results to return in a page."
+        "description": "The maximum number of results to return in a page.",
+        "example": "1"
       },
       {
         "name": "modifiedAfter",
         "schema": "string",
-        "description": "Only include records that were last modified after a provided date."
+        "description": "Only include records that were last modified after a provided date.",
+        "example": "2021-01-06T03:24:53.000Z"
       },
       {
         "name": "modifiedBefore",
         "schema": "string",
-        "description": "Only include records that were last modified before a provided date."
+        "description": "Only include records that were last modified before a provided date.",
+        "example": "2021-01-06T03:24:53.000Z"
       },
       {
         "name": "raw",
         "schema": "string",
-        "description": "Include raw responses used to normalize model. Used for debugging or accessing unique properties that are not unified."
+        "description": "Include raw responses used to normalize model. Used for debugging or accessing unique properties that are not unified.",
+        "example": "true"
       },
       {
         "name": "expand",
         "schema": "string",
-        "description": "Expand resources in the returned response"
+        "description": "Expand resources in the returned response",
+        "example": ""
       },
       {
         "name": "connectionToken",
         "schema": "string",
-        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account."
+        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account.",
+        "example": "{{connectionToken}}"
       }
     ],
     "responses": [
@@ -404,17 +445,20 @@ For more details, check us out at https://withterminal.com"
       {
         "name": "raw",
         "schema": "string",
-        "description": "Include raw responses used to normalize model. Used for debugging or accessing unique properties that are not unified."
+        "description": "Include raw responses used to normalize model. Used for debugging or accessing unique properties that are not unified.",
+        "example": "true"
       },
       {
         "name": "expand",
         "schema": "string",
-        "description": "Expand resources in the returned response"
+        "description": "Expand resources in the returned response",
+        "example": ""
       },
       {
         "name": "connectionToken",
         "schema": "string",
-        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account."
+        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account.",
+        "example": "{{connectionToken}}"
       }
     ],
     "responses": [
@@ -435,37 +479,44 @@ For more details, check us out at https://withterminal.com"
       {
         "name": "limit",
         "schema": "string",
-        "description": "The maximum number of results to return in a page."
+        "description": "The maximum number of results to return in a page.",
+        "example": "1"
       },
       {
         "name": "cursor",
         "schema": "string",
-        "description": "Pagination cursor to start requests from"
+        "description": "Pagination cursor to start requests from",
+        "example": "{{nextCursor}}"
       },
       {
         "name": "expand",
         "schema": "string",
-        "description": "Expand resources in the returned response"
+        "description": "Expand resources in the returned response",
+        "example": ""
       },
       {
         "name": "raw",
         "schema": "string",
-        "description": "Include raw responses used to normalize model. Used for debugging or accessing unique properties that are not unified."
+        "description": "Include raw responses used to normalize model. Used for debugging or accessing unique properties that are not unified.",
+        "example": "true"
       },
       {
         "name": "modifiedAfter",
         "schema": "string",
-        "description": "Only include records that were last modified after a provided date."
+        "description": "Only include records that were last modified after a provided date.",
+        "example": "2021-01-06T03:24:53.000Z"
       },
       {
         "name": "modifiedBefore",
         "schema": "string",
-        "description": "Only include records that were last modified before a provided date."
+        "description": "Only include records that were last modified before a provided date.",
+        "example": "2021-01-06T03:24:53.000Z"
       },
       {
         "name": "connectionToken",
         "schema": "string",
-        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account."
+        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account.",
+        "example": "{{connectionToken}}"
       }
     ],
     "responses": [
@@ -486,32 +537,38 @@ For more details, check us out at https://withterminal.com"
       {
         "name": "cursor",
         "schema": "string",
-        "description": "Pagination cursor to start requests from"
+        "description": "Pagination cursor to start requests from",
+        "example": "{{nextCursor}}"
       },
       {
         "name": "limit",
         "schema": "string",
-        "description": "The maximum number of results to return in a page."
+        "description": "The maximum number of results to return in a page.",
+        "example": "1"
       },
       {
         "name": "driverIds",
         "schema": "string",
-        "description": "Comma separated list of driver IDs to filter for"
+        "description": "Comma separated list of driver IDs to filter for",
+        "example": "{{driverId}}"
       },
       {
         "name": "expand",
         "schema": "string",
-        "description": "Expand resources in the returned response"
+        "description": "Expand resources in the returned response",
+        "example": ""
       },
       {
         "name": "raw",
         "schema": "string",
-        "description": "Include raw responses used to normalize model. Used for debugging or accessing unique properties that are not unified."
+        "description": "Include raw responses used to normalize model. Used for debugging or accessing unique properties that are not unified.",
+        "example": "true"
       },
       {
         "name": "connectionToken",
         "schema": "string",
-        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account."
+        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account.",
+        "example": "{{connectionToken}}"
       }
     ],
     "responses": [
@@ -532,52 +589,62 @@ For more details, check us out at https://withterminal.com"
       {
         "name": "cursor",
         "schema": "string",
-        "description": "Pagination cursor to start requests from"
+        "description": "Pagination cursor to start requests from",
+        "example": "{{nextCursor}}"
       },
       {
         "name": "limit",
         "schema": "string",
-        "description": "The maximum number of results to return in a page."
+        "description": "The maximum number of results to return in a page.",
+        "example": "1"
       },
       {
         "name": "startedAfter",
         "schema": "string",
-        "description": "Only include records of statuses that started after a provided date."
+        "description": "Only include records of statuses that started after a provided date.",
+        "example": "2021-01-06T03:24:53.000Z"
       },
       {
         "name": "startedBefore",
         "schema": "string",
-        "description": "Only include records of statuses that started before a provided date."
+        "description": "Only include records of statuses that started before a provided date.",
+        "example": "2021-01-06T03:24:53.000Z"
       },
       {
         "name": "modifiedAfter",
         "schema": "string",
-        "description": "Only include records that were last modified after a provided date."
+        "description": "Only include records that were last modified after a provided date.",
+        "example": "2021-01-06T03:24:53.000Z"
       },
       {
         "name": "modifiedBefore",
         "schema": "string",
-        "description": "Only include records that were last modified before a provided date."
+        "description": "Only include records that were last modified before a provided date.",
+        "example": "2021-01-06T03:24:53.000Z"
       },
       {
         "name": "driverIds",
         "schema": "string",
-        "description": "Comma separated list of driver IDs to filter for"
+        "description": "Comma separated list of driver IDs to filter for",
+        "example": "{{driverId}}"
       },
       {
         "name": "expand",
         "schema": "string",
-        "description": "Expand resources in the returned response"
+        "description": "Expand resources in the returned response",
+        "example": ""
       },
       {
         "name": "raw",
         "schema": "string",
-        "description": "Include raw responses used to normalize model. Used for debugging or accessing unique properties that are not unified."
+        "description": "Include raw responses used to normalize model. Used for debugging or accessing unique properties that are not unified.",
+        "example": "true"
       },
       {
         "name": "connectionToken",
         "schema": "string",
-        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account."
+        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account.",
+        "example": "{{connectionToken}}"
       }
     ],
     "responses": [
@@ -598,52 +665,62 @@ For more details, check us out at https://withterminal.com"
       {
         "name": "cursor",
         "schema": "string",
-        "description": "Pagination cursor to start requests from"
+        "description": "Pagination cursor to start requests from",
+        "example": "{{nextCursor}}"
       },
       {
         "name": "limit",
         "schema": "string",
-        "description": "The maximum number of results to return in a page."
+        "description": "The maximum number of results to return in a page.",
+        "example": "1"
       },
       {
         "name": "startDate",
         "schema": "string",
-        "description": "Only include daily logs from on or after a specific date"
+        "description": "Only include daily logs from on or after a specific date",
+        "example": "1995-04-25"
       },
       {
         "name": "endDate",
         "schema": "string",
-        "description": "Only include daily logs from on or before a specific date"
+        "description": "Only include daily logs from on or before a specific date",
+        "example": "1995-04-25"
       },
       {
         "name": "modifiedAfter",
         "schema": "string",
-        "description": "Only include records that were last modified after a provided date."
+        "description": "Only include records that were last modified after a provided date.",
+        "example": "2021-01-06T03:24:53.000Z"
       },
       {
         "name": "modifiedBefore",
         "schema": "string",
-        "description": "Only include records that were last modified before a provided date."
+        "description": "Only include records that were last modified before a provided date.",
+        "example": "2021-01-06T03:24:53.000Z"
       },
       {
         "name": "driverIds",
         "schema": "string",
-        "description": "Comma separated list of driver IDs to filter for"
+        "description": "Comma separated list of driver IDs to filter for",
+        "example": "{{driverId}}"
       },
       {
         "name": "raw",
         "schema": "string",
-        "description": "Include raw responses used to normalize model. Used for debugging or accessing unique properties that are not unified."
+        "description": "Include raw responses used to normalize model. Used for debugging or accessing unique properties that are not unified.",
+        "example": "true"
       },
       {
         "name": "expand",
         "schema": "string",
-        "description": "Expand resources in the returned response"
+        "description": "Expand resources in the returned response",
+        "example": ""
       },
       {
         "name": "connectionToken",
         "schema": "string",
-        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account."
+        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account.",
+        "example": "{{connectionToken}}"
       }
     ],
     "responses": [
@@ -664,37 +741,44 @@ For more details, check us out at https://withterminal.com"
       {
         "name": "cursor",
         "schema": "string",
-        "description": "Pagination cursor to start requests from"
+        "description": "Pagination cursor to start requests from",
+        "example": "{{nextCursor}}"
       },
       {
         "name": "expand",
         "schema": "string",
-        "description": "Expand resources in the returned response"
+        "description": "Expand resources in the returned response",
+        "example": ""
       },
       {
         "name": "raw",
         "schema": "string",
-        "description": "Include raw responses used to normalize model. Used for debugging or accessing unique properties that are not unified."
+        "description": "Include raw responses used to normalize model. Used for debugging or accessing unique properties that are not unified.",
+        "example": "true"
       },
       {
         "name": "startMonth",
         "schema": "string",
-        "description": "(Required) The month from which to start including vehicle reports"
+        "description": "(Required) The month from which to start including vehicle reports",
+        "example": "2021-01"
       },
       {
         "name": "endMonth",
         "schema": "string",
-        "description": "(Required) Include vehicle reports up to and including this month"
+        "description": "(Required) Include vehicle reports up to and including this month",
+        "example": "2021-01"
       },
       {
         "name": "groupBy",
         "schema": "string",
-        "description": "Computes the total distance traversed within a specified month range, with the results grouped by either jurisdiction, vehicle, or both. If no grouping parameter is provided, the default grouping is `vehicle,jurisdiction`."
+        "description": "Computes the total distance traversed within a specified month range, with the results grouped by either jurisdiction, vehicle, or both. If no grouping parameter is provided, the default grouping is `vehicle,jurisdiction`.",
+        "example": "vehicle,jurisdiction"
       },
       {
         "name": "connectionToken",
         "schema": "string",
-        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account."
+        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account.",
+        "example": "{{connectionToken}}"
       }
     ],
     "responses": [
@@ -715,42 +799,50 @@ For more details, check us out at https://withterminal.com"
       {
         "name": "limit",
         "schema": "string",
-        "description": "The maximum number of results to return in a page."
+        "description": "The maximum number of results to return in a page.",
+        "example": "1"
       },
       {
         "name": "cursor",
         "schema": "string",
-        "description": "Pagination cursor to start requests from"
+        "description": "Pagination cursor to start requests from",
+        "example": "{{nextCursor}}"
       },
       {
         "name": "lastReportedAfter",
         "schema": "string",
-        "description": "Timestamp to start when the issue was last observed"
+        "description": "Timestamp to start when the issue was last observed",
+        "example": "2023-06-07"
       },
       {
         "name": "lastReportedBefore",
         "schema": "string",
-        "description": "Timestamp to end when the issue was last observed"
+        "description": "Timestamp to end when the issue was last observed",
+        "example": "2023-06-07"
       },
       {
         "name": "expand",
         "schema": "string",
-        "description": "Expand related resources to see all details"
+        "description": "Expand related resources to see all details",
+        "example": ""
       },
       {
         "name": "connectionId",
         "schema": "string",
-        "description": "Filter issues to a specific connection"
+        "description": "Filter issues to a specific connection",
+        "example": "conn_01GV12VR4DJP70GD1ZBK0SDWFH"
       },
       {
         "name": "errorCode",
         "schema": "string",
-        "description": "Filter issues to a specific error code"
+        "description": "Filter issues to a specific error code",
+        "example": "invalid_source_id"
       },
       {
         "name": "status",
         "schema": "string",
-        "description": "Filter issues to a specific status"
+        "description": "Filter issues to a specific status",
+        "example": "ongoing"
       }
     ],
     "responses": [
@@ -801,57 +893,68 @@ For more details, check us out at https://withterminal.com"
       {
         "name": "cursor",
         "schema": "string",
-        "description": "Pagination cursor to start requests from"
+        "description": "Pagination cursor to start requests from",
+        "example": "{{nextCursor}}"
       },
       {
         "name": "limit",
         "schema": "string",
-        "description": "The maximum number of results to return in a page."
+        "description": "The maximum number of results to return in a page.",
+        "example": "1"
       },
       {
         "name": "modifiedAfter",
         "schema": "string",
-        "description": "Only include records that were last modified after a provided date."
+        "description": "Only include records that were last modified after a provided date.",
+        "example": "2021-01-06T03:24:53.000Z"
       },
       {
         "name": "modifiedBefore",
         "schema": "string",
-        "description": "Only include records that were last modified before a provided date."
+        "description": "Only include records that were last modified before a provided date.",
+        "example": "2021-01-06T03:24:53.000Z"
       },
       {
         "name": "startedAfter",
         "schema": "string",
-        "description": "Only include records of statuses that started after a provided date."
+        "description": "Only include records of statuses that started after a provided date.",
+        "example": "2021-01-06T03:24:53.000Z"
       },
       {
         "name": "startedBefore",
         "schema": "string",
-        "description": "Only include records of statuses that started before a provided date."
+        "description": "Only include records of statuses that started before a provided date.",
+        "example": "2021-01-06T03:24:53.000Z"
       },
       {
         "name": "driverIds",
         "schema": "string",
-        "description": "Comma separated list of driver IDs to filter for"
+        "description": "Comma separated list of driver IDs to filter for",
+        "example": "{{driverId}}"
       },
       {
         "name": "vehicleIds",
         "schema": "string",
-        "description": "Comma separated list of vehicle IDs to filter for"
+        "description": "Comma separated list of vehicle IDs to filter for",
+        "example": "{{vehicleId}}"
       },
       {
         "name": "expand",
         "schema": "string",
-        "description": "Expand resources in the returned response"
+        "description": "Expand resources in the returned response",
+        "example": ""
       },
       {
         "name": "raw",
         "schema": "string",
-        "description": "Include raw responses used to normalize model. Used for debugging or accessing unique properties that are not unified."
+        "description": "Include raw responses used to normalize model. Used for debugging or accessing unique properties that are not unified.",
+        "example": "true"
       },
       {
         "name": "connectionToken",
         "schema": "string",
-        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account."
+        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account.",
+        "example": "{{connectionToken}}"
       }
     ],
     "responses": [
@@ -872,37 +975,44 @@ For more details, check us out at https://withterminal.com"
       {
         "name": "limit",
         "schema": "string",
-        "description": "The maximum number of results to return in a page."
+        "description": "The maximum number of results to return in a page.",
+        "example": "1"
       },
       {
         "name": "cursor",
         "schema": "string",
-        "description": "Pagination cursor to start requests from"
+        "description": "Pagination cursor to start requests from",
+        "example": "{{nextCursor}}"
       },
       {
         "name": "expand",
         "schema": "string",
-        "description": "Expand resources in the returned response"
+        "description": "Expand resources in the returned response",
+        "example": ""
       },
       {
         "name": "raw",
         "schema": "string",
-        "description": "Include raw responses used to normalize model. Used for debugging or accessing unique properties that are not unified."
+        "description": "Include raw responses used to normalize model. Used for debugging or accessing unique properties that are not unified.",
+        "example": "true"
       },
       {
         "name": "modifiedAfter",
         "schema": "string",
-        "description": "Only include records that were last modified after a provided date."
+        "description": "Only include records that were last modified after a provided date.",
+        "example": "2021-01-06T03:24:53.000Z"
       },
       {
         "name": "modifiedBefore",
         "schema": "string",
-        "description": "Only include records that were last modified before a provided date."
+        "description": "Only include records that were last modified before a provided date.",
+        "example": "2021-01-06T03:24:53.000Z"
       },
       {
         "name": "connectionToken",
         "schema": "string",
-        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account."
+        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account.",
+        "example": "{{connectionToken}}"
       }
     ],
     "responses": [
@@ -923,27 +1033,32 @@ For more details, check us out at https://withterminal.com"
       {
         "name": "limit",
         "schema": "string",
-        "description": "The maximum number of results to return in a page."
+        "description": "The maximum number of results to return in a page.",
+        "example": "1"
       },
       {
         "name": "cursor",
         "schema": "string",
-        "description": "Pagination cursor to start requests from"
+        "description": "Pagination cursor to start requests from",
+        "example": "{{nextCursor}}"
       },
       {
         "name": "expand",
         "schema": "string",
-        "description": "Expand resources in the returned response"
+        "description": "Expand resources in the returned response",
+        "example": ""
       },
       {
         "name": "raw",
         "schema": "string",
-        "description": "Include raw responses used to normalize model. Used for debugging or accessing unique properties that are not unified."
+        "description": "Include raw responses used to normalize model. Used for debugging or accessing unique properties that are not unified.",
+        "example": "true"
       },
       {
         "name": "connectionToken",
         "schema": "string",
-        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account."
+        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account.",
+        "example": "{{connectionToken}}"
       }
     ],
     "responses": [
@@ -964,37 +1079,44 @@ For more details, check us out at https://withterminal.com"
       {
         "name": "cursor",
         "schema": "string",
-        "description": "Pagination cursor to start requests from"
+        "description": "Pagination cursor to start requests from",
+        "example": "{{nextCursor}}"
       },
       {
         "name": "limit",
         "schema": "string",
-        "description": "The maximum number of results to return in a page."
+        "description": "The maximum number of results to return in a page.",
+        "example": "1"
       },
       {
         "name": "modifiedAfter",
         "schema": "string",
-        "description": "Only include records that were last modified after a provided date."
+        "description": "Only include records that were last modified after a provided date.",
+        "example": "2021-01-06T03:24:53.000Z"
       },
       {
         "name": "modifiedBefore",
         "schema": "string",
-        "description": "Only include records that were last modified before a provided date."
+        "description": "Only include records that were last modified before a provided date.",
+        "example": "2021-01-06T03:24:53.000Z"
       },
       {
         "name": "raw",
         "schema": "string",
-        "description": "Include raw responses used to normalize model. Used for debugging or accessing unique properties that are not unified."
+        "description": "Include raw responses used to normalize model. Used for debugging or accessing unique properties that are not unified.",
+        "example": "true"
       },
       {
         "name": "expand",
         "schema": "string",
-        "description": "Expand resources in the returned response"
+        "description": "Expand resources in the returned response",
+        "example": ""
       },
       {
         "name": "connectionToken",
         "schema": "string",
-        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account."
+        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account.",
+        "example": "{{connectionToken}}"
       }
     ],
     "responses": [
@@ -1015,17 +1137,20 @@ For more details, check us out at https://withterminal.com"
       {
         "name": "raw",
         "schema": "string",
-        "description": "Include raw responses used to normalize model. Used for debugging or accessing unique properties that are not unified."
+        "description": "Include raw responses used to normalize model. Used for debugging or accessing unique properties that are not unified.",
+        "example": "true"
       },
       {
         "name": "expand",
         "schema": "string",
-        "description": "Expand resources in the returned response"
+        "description": "Expand resources in the returned response",
+        "example": ""
       },
       {
         "name": "connectionToken",
         "schema": "string",
-        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account."
+        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account.",
+        "example": "{{connectionToken}}"
       }
     ],
     "responses": [
@@ -1046,32 +1171,38 @@ For more details, check us out at https://withterminal.com"
       {
         "name": "cursor",
         "schema": "string",
-        "description": "Pagination cursor to start requests from"
+        "description": "Pagination cursor to start requests from",
+        "example": "{{nextCursor}}"
       },
       {
         "name": "limit",
         "schema": "string",
-        "description": "The maximum number of results to return in a page."
+        "description": "The maximum number of results to return in a page.",
+        "example": "1"
       },
       {
         "name": "raw",
         "schema": "string",
-        "description": "Include raw responses used to normalize model. Used for debugging or accessing unique properties that are not unified."
+        "description": "Include raw responses used to normalize model. Used for debugging or accessing unique properties that are not unified.",
+        "example": "true"
       },
       {
         "name": "vehicleIds",
         "schema": "string",
-        "description": "Comma separated list of vehicle IDs to filter for"
+        "description": "Comma separated list of vehicle IDs to filter for",
+        "example": "{{vehicleId}}"
       },
       {
         "name": "expand",
         "schema": "string",
-        "description": "Expand resources in the returned response"
+        "description": "Expand resources in the returned response",
+        "example": ""
       },
       {
         "name": "connectionToken",
         "schema": "string",
-        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account."
+        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account.",
+        "example": "{{connectionToken}}"
       }
     ],
     "responses": [
@@ -1092,32 +1223,38 @@ For more details, check us out at https://withterminal.com"
       {
         "name": "cursor",
         "schema": "string",
-        "description": "Pagination cursor to start requests from"
+        "description": "Pagination cursor to start requests from",
+        "example": "{{nextCursor}}"
       },
       {
         "name": "limit",
         "schema": "string",
-        "description": "The maximum number of results to return in a page."
+        "description": "The maximum number of results to return in a page.",
+        "example": "1"
       },
       {
         "name": "startAt",
         "schema": "string",
-        "description": "Timestamp to start from - defaults to `TODAY - 1 MONTH`"
+        "description": "Timestamp to start from - defaults to `TODAY - 1 MONTH`",
+        "example": "2021-01-06T03:24:53.000Z"
       },
       {
         "name": "endAt",
         "schema": "string",
-        "description": "Timestamp to end at - defaults to `TODAY`"
+        "description": "Timestamp to end at - defaults to `TODAY`",
+        "example": "2021-01-06T03:24:53.000Z"
       },
       {
         "name": "raw",
         "schema": "string",
-        "description": "Include raw responses used to normalize model. Used for debugging or accessing unique properties that are not unified."
+        "description": "Include raw responses used to normalize model. Used for debugging or accessing unique properties that are not unified.",
+        "example": "true"
       },
       {
         "name": "connectionToken",
         "schema": "string",
-        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account."
+        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account.",
+        "example": "{{connectionToken}}"
       }
     ],
     "responses": [
@@ -1138,42 +1275,50 @@ For more details, check us out at https://withterminal.com"
       {
         "name": "cursor",
         "schema": "string",
-        "description": "Pagination cursor to start requests from"
+        "description": "Pagination cursor to start requests from",
+        "example": "{{nextCursor}}"
       },
       {
         "name": "limit",
         "schema": "string",
-        "description": "The maximum number of results to return in a page."
+        "description": "The maximum number of results to return in a page.",
+        "example": "1"
       },
       {
         "name": "expand",
         "schema": "string",
-        "description": "Expand resources in the returned response"
+        "description": "Expand resources in the returned response",
+        "example": ""
       },
       {
         "name": "startAt",
         "schema": "string",
-        "description": "Timestamp to start from - defaults to `TODAY - 1 MONTH`"
+        "description": "Timestamp to start from - defaults to `TODAY - 1 MONTH`",
+        "example": "2021-01-06T03:24:53.000Z"
       },
       {
         "name": "endAt",
         "schema": "string",
-        "description": "Timestamp to end at - defaults to `TODAY`"
+        "description": "Timestamp to end at - defaults to `TODAY`",
+        "example": "2021-01-06T03:24:53.000Z"
       },
       {
         "name": "types",
         "schema": "string",
-        "description": "Comma separated list of vehicle stats to filter for"
+        "description": "Comma separated list of vehicle stats to filter for",
+        "example": "odometer,engine_state,fuel_level,total_fuel_consumption"
       },
       {
         "name": "raw",
         "schema": "string",
-        "description": "Include raw responses used to normalize model. Used for debugging or accessing unique properties that are not unified."
+        "description": "Include raw responses used to normalize model. Used for debugging or accessing unique properties that are not unified.",
+        "example": "true"
       },
       {
         "name": "connectionToken",
         "schema": "string",
-        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account."
+        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account.",
+        "example": "{{connectionToken}}"
       }
     ],
     "responses": [
@@ -1194,67 +1339,80 @@ For more details, check us out at https://withterminal.com"
       {
         "name": "cursor",
         "schema": "string",
-        "description": "Pagination cursor to start requests from"
+        "description": "Pagination cursor to start requests from",
+        "example": "{{nextCursor}}"
       },
       {
         "name": "limit",
         "schema": "string",
-        "description": "The maximum number of results to return in a page."
+        "description": "The maximum number of results to return in a page.",
+        "example": "1"
       },
       {
         "name": "modifiedAfter",
         "schema": "string",
-        "description": "Only include records that were last modified after a provided date."
+        "description": "Only include records that were last modified after a provided date.",
+        "example": "2021-01-06T03:24:53.000Z"
       },
       {
         "name": "modifiedBefore",
         "schema": "string",
-        "description": "Only include records that were last modified before a provided date."
+        "description": "Only include records that were last modified before a provided date.",
+        "example": "2021-01-06T03:24:53.000Z"
       },
       {
         "name": "startedAfter",
         "schema": "string",
-        "description": "Only include trips that started after a provided date."
+        "description": "Only include trips that started after a provided date.",
+        "example": "2021-01-06T03:24:53.000Z"
       },
       {
         "name": "startedBefore",
         "schema": "string",
-        "description": "Only include trips that started before a provided date."
+        "description": "Only include trips that started before a provided date.",
+        "example": "2021-01-06T03:24:53.000Z"
       },
       {
         "name": "endedAfter",
         "schema": "string",
-        "description": "Only include trips that ended after a provided date."
+        "description": "Only include trips that ended after a provided date.",
+        "example": "2021-01-06T03:24:53.000Z"
       },
       {
         "name": "endedBefore",
         "schema": "string",
-        "description": "Only include trips that ended before a provided date."
+        "description": "Only include trips that ended before a provided date.",
+        "example": "2021-01-06T03:24:53.000Z"
       },
       {
         "name": "driverIds",
         "schema": "string",
-        "description": "Comma separated list of driver IDs to filter for"
+        "description": "Comma separated list of driver IDs to filter for",
+        "example": "{{driverId}}"
       },
       {
         "name": "vehicleIds",
         "schema": "string",
-        "description": "Comma separated list of vehicle IDs to filter for"
+        "description": "Comma separated list of vehicle IDs to filter for",
+        "example": "{{vehicleId}}"
       },
       {
         "name": "raw",
         "schema": "string",
-        "description": "Include raw responses used to normalize model. Used for debugging or accessing unique properties that are not unified."
+        "description": "Include raw responses used to normalize model. Used for debugging or accessing unique properties that are not unified.",
+        "example": "true"
       },
       {
         "name": "expand",
         "schema": "string",
-        "description": "Expand resources in the returned response"
+        "description": "Expand resources in the returned response",
+        "example": ""
       },
       {
         "name": "connectionToken",
         "schema": "string",
-        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account."
+        "description": "(Required) The token returned when a user authenticated their account. This authorizes access to a specific account.",
+        "example": "{{connectionToken}}"
       }
     ],
     "responses": [

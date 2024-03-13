@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function SpotifyTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function SpotifyTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/spotify/logo.png"
       clientNameCamelCase="spotify"
       homepage="developer.spotify.com"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/spotify/favicon.ico"
       contactUrl="https://community.spotify.com/t5/Spotify-for-Developers/bd-p/Spotify_Developer"
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/spotify/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["media"]}
       methods={[
   {
     "url": "/albums/{id}",
@@ -36,13 +39,15 @@ export default function SpotifyTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "4aawyAB9vmqN3uQ7FjRGTy"
       },
       {
         "name": "market",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "ES"
       }
     ],
     "responses": [
@@ -76,13 +81,15 @@ export default function SpotifyTypeScriptSdk() {
         "name": "ids",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc"
       },
       {
         "name": "market",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "ES"
       }
     ],
     "responses": [
@@ -116,25 +123,31 @@ export default function SpotifyTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "4aawyAB9vmqN3uQ7FjRGTy"
       },
       {
         "name": "market",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "ES"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 10,
+        "default": 20
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 5,
+        "default": 0
       }
     ],
     "responses": [
@@ -168,7 +181,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "0TnOYISbd1XYRBk9myaseg"
       }
     ],
     "responses": [
@@ -202,7 +216,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "ids",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6"
       }
     ],
     "responses": [
@@ -236,31 +251,38 @@ export default function SpotifyTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "0TnOYISbd1XYRBk9myaseg"
       },
       {
         "name": "includeGroups",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "single,appears_on"
       },
       {
         "name": "market",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "ES"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 10,
+        "default": 20
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 5,
+        "default": 0
       }
     ],
     "responses": [
@@ -294,13 +316,15 @@ export default function SpotifyTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "0TnOYISbd1XYRBk9myaseg"
       },
       {
         "name": "market",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "ES"
       }
     ],
     "responses": [
@@ -334,7 +358,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "0TnOYISbd1XYRBk9myaseg"
       }
     ],
     "responses": [
@@ -368,13 +393,15 @@ export default function SpotifyTypeScriptSdk() {
         "name": "market",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "ES"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "38bS44xjbVVZ3No3ByF1dJ"
       }
     ],
     "responses": [
@@ -408,13 +435,15 @@ export default function SpotifyTypeScriptSdk() {
         "name": "market",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "ES"
       },
       {
         "name": "ids",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "5CfCWKI5pZ28U0uOzXkDHe,5as3aKmN2k11yfDDDSrvaZ"
       }
     ],
     "responses": [
@@ -448,25 +477,31 @@ export default function SpotifyTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "38bS44xjbVVZ3No3ByF1dJ"
       },
       {
         "name": "market",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "ES"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 10,
+        "default": 20
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 5,
+        "default": 0
       }
     ],
     "responses": [
@@ -500,13 +535,15 @@ export default function SpotifyTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "512ojhOuo1ktJprKbVcKyQ"
       },
       {
         "name": "market",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "ES"
       }
     ],
     "responses": [
@@ -540,13 +577,15 @@ export default function SpotifyTypeScriptSdk() {
         "name": "ids",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf"
       },
       {
         "name": "market",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "ES"
       }
     ],
     "responses": [
@@ -580,13 +619,15 @@ export default function SpotifyTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "7iHfbu1YPACw6oZPAFJtqe"
       },
       {
         "name": "market",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "ES"
       }
     ],
     "responses": [
@@ -628,13 +669,15 @@ export default function SpotifyTypeScriptSdk() {
         "name": "ids",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe"
       },
       {
         "name": "market",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "ES"
       }
     ],
     "responses": [
@@ -668,25 +711,31 @@ export default function SpotifyTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "7iHfbu1YPACw6oZPAFJtqe"
       },
       {
         "name": "market",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "ES"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 10,
+        "default": 20
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 5,
+        "default": 0
       }
     ],
     "responses": [
@@ -720,7 +769,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "ids",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe"
       }
     ],
     "responses": [
@@ -754,13 +804,17 @@ export default function SpotifyTypeScriptSdk() {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 10,
+        "default": 20
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 5,
+        "default": 0
       }
     ],
     "responses": [
@@ -794,7 +848,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "ids",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe"
       }
     ],
     "responses": [
@@ -828,7 +883,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "ids",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "18yVqkdbdRvS24c0Ilj2ci,1HGw3J3NxZO1TP1BTtVhpZ,7iHfbu1YPACw6oZPAFJtqe"
       }
     ],
     "responses": [
@@ -862,13 +918,15 @@ export default function SpotifyTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "0D5wENdkdwbqlrHoaJ9g29"
       },
       {
         "name": "market",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "ES"
       }
     ],
     "responses": [
@@ -902,13 +960,15 @@ export default function SpotifyTypeScriptSdk() {
         "name": "ids",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "0IsXVP0JmcB2adSE338GkK,3ZXb8FKZGU0EHALYX6uCzU,0D5wENdkdwbqlrHoaJ9g29"
       },
       {
         "name": "market",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "ES"
       }
     ],
     "responses": [
@@ -942,13 +1002,15 @@ export default function SpotifyTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "11dFghVXANMlKmJXsNCbNl"
       },
       {
         "name": "market",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "ES"
       }
     ],
     "responses": [
@@ -982,13 +1044,15 @@ export default function SpotifyTypeScriptSdk() {
         "name": "market",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "ES"
       },
       {
         "name": "ids",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B"
       }
     ],
     "responses": [
@@ -1022,7 +1086,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "q",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "remaster%20track:Doxy%20artist:Miles%20Davis"
       },
       {
         "name": "type",
@@ -1034,19 +1099,24 @@ export default function SpotifyTypeScriptSdk() {
         "name": "market",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "ES"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 10,
+        "default": 20
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 5,
+        "default": 0
       },
       {
         "name": "includeExternal",
@@ -1113,19 +1183,22 @@ export default function SpotifyTypeScriptSdk() {
         "name": "playlistId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "3cEYpjA9oz9GiPac4AsH4n"
       },
       {
         "name": "market",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "ES"
       },
       {
         "name": "fields",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "items(added_by.id,track(name,href,album(name,href)))"
       },
       {
         "name": "additionalTypes",
@@ -1165,7 +1238,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "playlistId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "3cEYpjA9oz9GiPac4AsH4n"
       },
       {
         "name": "description",
@@ -1219,7 +1293,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "playlistId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "3cEYpjA9oz9GiPac4AsH4n"
       },
       {
         "name": "tracks",
@@ -1265,31 +1340,38 @@ export default function SpotifyTypeScriptSdk() {
         "name": "playlistId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "3cEYpjA9oz9GiPac4AsH4n"
       },
       {
         "name": "market",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "ES"
       },
       {
         "name": "fields",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "items(added_by.id,track(name,href,album(name,href)))"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 10,
+        "default": 20
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 5,
+        "default": 0
       },
       {
         "name": "additionalTypes",
@@ -1329,19 +1411,22 @@ export default function SpotifyTypeScriptSdk() {
         "name": "playlistId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "3cEYpjA9oz9GiPac4AsH4n"
       },
       {
         "name": "position",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "uris",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "spotify:track:4iV5W9uYEdYUVa79Axb7Rh,spotify:track:1301WleyT98MSxVHPZCA6M"
       },
       {
         "name": "uris",
@@ -1385,7 +1470,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "playlistId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "3cEYpjA9oz9GiPac4AsH4n"
       },
       {
         "name": "uris",
@@ -1450,13 +1536,17 @@ export default function SpotifyTypeScriptSdk() {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 10,
+        "default": 20
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 5,
+        "default": 0
       }
     ],
     "responses": [
@@ -1490,7 +1580,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "ids",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc"
       },
       {
         "name": "ids",
@@ -1529,19 +1620,24 @@ export default function SpotifyTypeScriptSdk() {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 10,
+        "default": 20
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 5,
+        "default": 0
       },
       {
         "name": "market",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "ES"
       }
     ],
     "responses": [
@@ -1575,7 +1671,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "ids",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc"
       },
       {
         "name": "ids",
@@ -1614,7 +1711,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "ids",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "382ObEPsp2rxGrnsizN5TX,1A2GTWGtFfWp7KSQTwWOyo,2noRn2Aes5aoNVsU6iWThc"
       }
     ],
     "responses": [
@@ -1648,7 +1746,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "ids",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B"
       },
       {
         "name": "ids",
@@ -1687,19 +1786,24 @@ export default function SpotifyTypeScriptSdk() {
         "name": "market",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "ES"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 10,
+        "default": 20
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 5,
+        "default": 0
       }
     ],
     "responses": [
@@ -1733,7 +1837,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "ids",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B"
       },
       {
         "name": "ids",
@@ -1773,7 +1878,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "ids",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B"
       }
     ],
     "responses": [
@@ -1807,7 +1913,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "ids",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B"
       },
       {
         "name": "ids",
@@ -1846,19 +1953,24 @@ export default function SpotifyTypeScriptSdk() {
         "name": "market",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "ES"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 10,
+        "default": 20
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 5,
+        "default": 0
       }
     ],
     "responses": [
@@ -1892,7 +2004,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "ids",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf"
       },
       {
         "name": "ids",
@@ -1932,7 +2045,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "ids",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "77o6BIVlYM3msb4MMIL1jH,0Q86acNRm6V9GYx55SXKwf"
       }
     ],
     "responses": [
@@ -1966,13 +2080,15 @@ export default function SpotifyTypeScriptSdk() {
         "name": "ids",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "5CfCWKI5pZ28U0uOzXkDHe,5as3aKmN2k11yfDDDSrvaZ"
       },
       {
         "name": "market",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "ES"
       }
     ],
     "responses": [
@@ -2006,13 +2122,17 @@ export default function SpotifyTypeScriptSdk() {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 10,
+        "default": 20
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 5,
+        "default": 0
       }
     ],
     "responses": [
@@ -2046,7 +2166,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "ids",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "5CfCWKI5pZ28U0uOzXkDHe,5as3aKmN2k11yfDDDSrvaZ"
       }
     ],
     "responses": [
@@ -2080,7 +2201,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "ids",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "5CfCWKI5pZ28U0uOzXkDHe,5as3aKmN2k11yfDDDSrvaZ"
       }
     ],
     "responses": [
@@ -2114,25 +2236,32 @@ export default function SpotifyTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TYPE"
       },
       {
         "name": "timeRange",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "medium_term",
+        "default": "medium_term"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 10,
+        "default": 20
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 5,
+        "default": 0
       }
     ],
     "responses": [
@@ -2166,7 +2295,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "userId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "smedjan"
       }
     ],
     "responses": [
@@ -2200,19 +2330,24 @@ export default function SpotifyTypeScriptSdk() {
         "name": "userId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "smedjan"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 10,
+        "default": 20
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 5,
+        "default": 0
       }
     ],
     "responses": [
@@ -2246,7 +2381,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "userId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "smedjan"
       },
       {
         "name": "description",
@@ -2258,7 +2394,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "public",
@@ -2304,7 +2441,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "playlistId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "3cEYpjA9oz9GiPac4AsH4n"
       }
     ],
     "responses": [
@@ -2338,7 +2476,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "playlistId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "3cEYpjA9oz9GiPac4AsH4n"
       },
       {
         "name": "public",
@@ -2377,19 +2516,24 @@ export default function SpotifyTypeScriptSdk() {
         "name": "locale",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "sv_SE"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 10,
+        "default": 20
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 5,
+        "default": 0
       }
     ],
     "responses": [
@@ -2423,19 +2567,24 @@ export default function SpotifyTypeScriptSdk() {
         "name": "locale",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "sv_SE"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 10,
+        "default": 20
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 5,
+        "default": 0
       }
     ],
     "responses": [
@@ -2469,13 +2618,15 @@ export default function SpotifyTypeScriptSdk() {
         "name": "categoryId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "dinner"
       },
       {
         "name": "locale",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "sv_SE"
       }
     ],
     "responses": [
@@ -2509,19 +2660,24 @@ export default function SpotifyTypeScriptSdk() {
         "name": "categoryId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "dinner"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 10,
+        "default": 20
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 5,
+        "default": 0
       }
     ],
     "responses": [
@@ -2555,7 +2711,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "playlistId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "3cEYpjA9oz9GiPac4AsH4n"
       }
     ],
     "responses": [
@@ -2589,7 +2746,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "playlistId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "3cEYpjA9oz9GiPac4AsH4n"
       }
     ],
     "responses": [
@@ -2623,13 +2781,17 @@ export default function SpotifyTypeScriptSdk() {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 10,
+        "default": 20
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 5,
+        "default": 0
       }
     ],
     "responses": [
@@ -2663,13 +2825,15 @@ export default function SpotifyTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "artist"
       },
       {
         "name": "ids",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6"
       },
       {
         "name": "ids",
@@ -2708,19 +2872,23 @@ export default function SpotifyTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "artist"
       },
       {
         "name": "after",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "0I2XqVXqHScXjHhk6AYYRe"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 10,
+        "default": 20
       }
     ],
     "responses": [
@@ -2754,13 +2922,15 @@ export default function SpotifyTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "artist"
       },
       {
         "name": "ids",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6"
       },
       {
         "name": "ids",
@@ -2800,13 +2970,15 @@ export default function SpotifyTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "artist"
       },
       {
         "name": "ids",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6"
       }
     ],
     "responses": [
@@ -2840,13 +3012,15 @@ export default function SpotifyTypeScriptSdk() {
         "name": "playlistId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "3cEYpjA9oz9GiPac4AsH4n"
       },
       {
         "name": "ids",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "jmperezperez,thelinmichael,wizzler"
       }
     ],
     "responses": [
@@ -2880,7 +3054,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "ids",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B"
       }
     ],
     "responses": [
@@ -2914,7 +3089,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "11dFghVXANMlKmJXsNCbNl"
       }
     ],
     "responses": [
@@ -2948,7 +3124,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "11dFghVXANMlKmJXsNCbNl"
       }
     ],
     "responses": [
@@ -2982,31 +3159,37 @@ export default function SpotifyTypeScriptSdk() {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 10,
+        "default": 20
       },
       {
         "name": "market",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "ES"
       },
       {
         "name": "seedArtists",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "4NHQUGzhtTLFvgF5SZesLK"
       },
       {
         "name": "seedGenres",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "classical,country"
       },
       {
         "name": "seedTracks",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "0c6xIDDpzE81m2q797ordA"
       },
       {
         "name": "minAcousticness",
@@ -3319,7 +3502,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "market",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "ES"
       },
       {
         "name": "additionalTypes",
@@ -3430,7 +3614,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "market",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "ES"
       },
       {
         "name": "additionalTypes",
@@ -3470,7 +3655,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "deviceId",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
       },
       {
         "name": "context_uri",
@@ -3524,7 +3710,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "deviceId",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
       }
     ],
     "responses": [
@@ -3558,7 +3745,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "deviceId",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
       }
     ],
     "responses": [
@@ -3592,7 +3780,8 @@ export default function SpotifyTypeScriptSdk() {
         "name": "deviceId",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
       }
     ],
     "responses": [
@@ -3626,13 +3815,15 @@ export default function SpotifyTypeScriptSdk() {
         "name": "positionMs",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 25000
       },
       {
         "name": "deviceId",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
       }
     ],
     "responses": [
@@ -3666,13 +3857,15 @@ export default function SpotifyTypeScriptSdk() {
         "name": "state",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "context"
       },
       {
         "name": "deviceId",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
       }
     ],
     "responses": [
@@ -3706,13 +3899,15 @@ export default function SpotifyTypeScriptSdk() {
         "name": "volumePercent",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 50
       },
       {
         "name": "deviceId",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
       }
     ],
     "responses": [
@@ -3746,13 +3941,15 @@ export default function SpotifyTypeScriptSdk() {
         "name": "state",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "deviceId",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
       }
     ],
     "responses": [
@@ -3786,13 +3983,16 @@ export default function SpotifyTypeScriptSdk() {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 10,
+        "default": 20
       },
       {
         "name": "after",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 1484811043508
       },
       {
         "name": "before",
@@ -3859,13 +4059,15 @@ export default function SpotifyTypeScriptSdk() {
         "name": "uri",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "spotify:track:4iV5W9uYEdYUVa79Axb7Rh"
       },
       {
         "name": "deviceId",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "0d1841b0976bae2a3a310dd74c0f3df354899bc8"
       }
     ],
     "responses": [

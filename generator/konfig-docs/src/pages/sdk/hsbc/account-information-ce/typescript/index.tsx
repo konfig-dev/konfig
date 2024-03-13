@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function HsbcAccountInformationCeTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function HsbcAccountInformationCeTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/hsbc/accountinformationce/logo.png"
       clientNameCamelCase="hsbcAccountInformationCe"
       homepage="hsbc.com"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/hsbc/accountinformationce/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/hsbc/accountinformationce/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["finance","banking","payments","online_payments","fintech","checkout_experience","multinational","financial_services","wealth_management","global_banking","retail_banking","commercial_banking","open_banking"]}
       methods={[
   {
     "url": "/account-access-consents",
@@ -36,25 +39,29 @@ export default function HsbcAccountInformationCeTypeScriptSdk() {
         "name": "xFapiAuthDate",
         "schema": "string",
         "required": false,
-        "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC",
+        "example": "Tue, 18 Apr 2023 14:42:25 UTC"
       },
       {
         "name": "xFapiCustomerIpAddress",
         "schema": "string",
         "required": false,
-        "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        "description": "The PSU's IP address if the PSU is currently logged in with the TPP.",
+        "example": "12.201.45.125"
       },
       {
         "name": "xFapiInteractionId",
         "schema": "string",
         "required": false,
-        "description": "An RFC4122 UID used as a correlation id."
+        "description": "An RFC4122 UID used as a correlation id.",
+        "example": "20177a90-5e29-43ba-bea0-cc6c344a9d32"
       },
       {
         "name": "xCustomerUserAgent",
         "schema": "string",
         "required": false,
-        "description": "Indicates the user-agent that the PSU is using."
+        "description": "Indicates the user-agent that the PSU is using.",
+        "example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
       },
       {
         "name": "Data",
@@ -120,31 +127,36 @@ export default function HsbcAccountInformationCeTypeScriptSdk() {
         "name": "consentId",
         "schema": "string",
         "required": true,
-        "description": "ConsentId"
+        "description": "ConsentId",
+        "example": "7404e99b-1a4d-4b08-b441-c327661527f0"
       },
       {
         "name": "xFapiAuthDate",
         "schema": "string",
         "required": false,
-        "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC",
+        "example": "Tue, 18 Apr 2023 14:42:25 UTC"
       },
       {
         "name": "xFapiCustomerIpAddress",
         "schema": "string",
         "required": false,
-        "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        "description": "The PSU's IP address if the PSU is currently logged in with the TPP.",
+        "example": "12.201.45.125"
       },
       {
         "name": "xFapiInteractionId",
         "schema": "string",
         "required": false,
-        "description": "An RFC4122 UID used as a correlation id."
+        "description": "An RFC4122 UID used as a correlation id.",
+        "example": "20177a90-5e29-43ba-bea0-cc6c344a9d32"
       },
       {
         "name": "xCustomerUserAgent",
         "schema": "string",
         "required": false,
-        "description": "Indicates the user-agent that the PSU is using."
+        "description": "Indicates the user-agent that the PSU is using.",
+        "example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
       }
     ],
     "responses": [
@@ -194,31 +206,36 @@ export default function HsbcAccountInformationCeTypeScriptSdk() {
         "name": "consentId",
         "schema": "string",
         "required": true,
-        "description": "ConsentId"
+        "description": "ConsentId",
+        "example": "7404e99b-1a4d-4b08-b441-c327661527f0"
       },
       {
         "name": "xFapiAuthDate",
         "schema": "string",
         "required": false,
-        "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC",
+        "example": "Tue, 18 Apr 2023 14:42:25 UTC"
       },
       {
         "name": "xFapiCustomerIpAddress",
         "schema": "string",
         "required": false,
-        "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        "description": "The PSU's IP address if the PSU is currently logged in with the TPP.",
+        "example": "12.201.45.125"
       },
       {
         "name": "xFapiInteractionId",
         "schema": "string",
         "required": false,
-        "description": "An RFC4122 UID used as a correlation id."
+        "description": "An RFC4122 UID used as a correlation id.",
+        "example": "20177a90-5e29-43ba-bea0-cc6c344a9d32"
       },
       {
         "name": "xCustomerUserAgent",
         "schema": "string",
         "required": false,
-        "description": "Indicates the user-agent that the PSU is using."
+        "description": "Indicates the user-agent that the PSU is using.",
+        "example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
       }
     ],
     "responses": [
@@ -268,25 +285,29 @@ export default function HsbcAccountInformationCeTypeScriptSdk() {
         "name": "xFapiAuthDate",
         "schema": "string",
         "required": false,
-        "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC",
+        "example": "Tue, 18 Apr 2023 14:42:25 UTC"
       },
       {
         "name": "xFapiCustomerIpAddress",
         "schema": "string",
         "required": false,
-        "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        "description": "The PSU's IP address if the PSU is currently logged in with the TPP.",
+        "example": "12.201.45.125"
       },
       {
         "name": "xFapiInteractionId",
         "schema": "string",
         "required": false,
-        "description": "An RFC4122 UID used as a correlation id."
+        "description": "An RFC4122 UID used as a correlation id.",
+        "example": "20177a90-5e29-43ba-bea0-cc6c344a9d32"
       },
       {
         "name": "xCustomerUserAgent",
         "schema": "string",
         "required": false,
-        "description": "Indicates the user-agent that the PSU is using."
+        "description": "Indicates the user-agent that the PSU is using.",
+        "example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
       }
     ],
     "responses": [
@@ -336,31 +357,36 @@ export default function HsbcAccountInformationCeTypeScriptSdk() {
         "name": "accountId",
         "schema": "string",
         "required": true,
-        "description": "AccountId"
+        "description": "AccountId",
+        "example": "ThR-RpLMV5lZzDu8vrfEFg"
       },
       {
         "name": "xFapiAuthDate",
         "schema": "string",
         "required": false,
-        "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC",
+        "example": "Tue, 18 Apr 2023 14:42:25 UTC"
       },
       {
         "name": "xFapiCustomerIpAddress",
         "schema": "string",
         "required": false,
-        "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        "description": "The PSU's IP address if the PSU is currently logged in with the TPP.",
+        "example": "12.201.45.125"
       },
       {
         "name": "xFapiInteractionId",
         "schema": "string",
         "required": false,
-        "description": "An RFC4122 UID used as a correlation id."
+        "description": "An RFC4122 UID used as a correlation id.",
+        "example": "20177a90-5e29-43ba-bea0-cc6c344a9d32"
       },
       {
         "name": "xCustomerUserAgent",
         "schema": "string",
         "required": false,
-        "description": "Indicates the user-agent that the PSU is using."
+        "description": "Indicates the user-agent that the PSU is using.",
+        "example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
       }
     ],
     "responses": [
@@ -410,31 +436,36 @@ export default function HsbcAccountInformationCeTypeScriptSdk() {
         "name": "accountId",
         "schema": "string",
         "required": true,
-        "description": "AccountId"
+        "description": "AccountId",
+        "example": "ThR-RpLMV5lZzDu8vrfEFg"
       },
       {
         "name": "xFapiAuthDate",
         "schema": "string",
         "required": false,
-        "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC",
+        "example": "Tue, 18 Apr 2023 14:42:25 UTC"
       },
       {
         "name": "xFapiCustomerIpAddress",
         "schema": "string",
         "required": false,
-        "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        "description": "The PSU's IP address if the PSU is currently logged in with the TPP.",
+        "example": "12.201.45.125"
       },
       {
         "name": "xFapiInteractionId",
         "schema": "string",
         "required": false,
-        "description": "An RFC4122 UID used as a correlation id."
+        "description": "An RFC4122 UID used as a correlation id.",
+        "example": "20177a90-5e29-43ba-bea0-cc6c344a9d32"
       },
       {
         "name": "xCustomerUserAgent",
         "schema": "string",
         "required": false,
-        "description": "Indicates the user-agent that the PSU is using."
+        "description": "Indicates the user-agent that the PSU is using.",
+        "example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
       }
     ],
     "responses": [
@@ -484,31 +515,36 @@ export default function HsbcAccountInformationCeTypeScriptSdk() {
         "name": "accountId",
         "schema": "string",
         "required": true,
-        "description": "AccountId"
+        "description": "AccountId",
+        "example": "ThR-RpLMV5lZzDu8vrfEFg"
       },
       {
         "name": "xFapiAuthDate",
         "schema": "string",
         "required": false,
-        "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC",
+        "example": "Tue, 18 Apr 2023 14:42:25 UTC"
       },
       {
         "name": "xFapiCustomerIpAddress",
         "schema": "string",
         "required": false,
-        "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        "description": "The PSU's IP address if the PSU is currently logged in with the TPP.",
+        "example": "12.201.45.125"
       },
       {
         "name": "xFapiInteractionId",
         "schema": "string",
         "required": false,
-        "description": "An RFC4122 UID used as a correlation id."
+        "description": "An RFC4122 UID used as a correlation id.",
+        "example": "20177a90-5e29-43ba-bea0-cc6c344a9d32"
       },
       {
         "name": "xCustomerUserAgent",
         "schema": "string",
         "required": false,
-        "description": "Indicates the user-agent that the PSU is using."
+        "description": "Indicates the user-agent that the PSU is using.",
+        "example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
       }
     ],
     "responses": [
@@ -562,31 +598,36 @@ export default function HsbcAccountInformationCeTypeScriptSdk() {
         "name": "accountId",
         "schema": "string",
         "required": true,
-        "description": "AccountId"
+        "description": "AccountId",
+        "example": "ThR-RpLMV5lZzDu8vrfEFg"
       },
       {
         "name": "xFapiAuthDate",
         "schema": "string",
         "required": false,
-        "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC",
+        "example": "Tue, 18 Apr 2023 14:42:25 UTC"
       },
       {
         "name": "xFapiCustomerIpAddress",
         "schema": "string",
         "required": false,
-        "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        "description": "The PSU's IP address if the PSU is currently logged in with the TPP.",
+        "example": "12.201.45.125"
       },
       {
         "name": "xFapiInteractionId",
         "schema": "string",
         "required": false,
-        "description": "An RFC4122 UID used as a correlation id."
+        "description": "An RFC4122 UID used as a correlation id.",
+        "example": "20177a90-5e29-43ba-bea0-cc6c344a9d32"
       },
       {
         "name": "xCustomerUserAgent",
         "schema": "string",
         "required": false,
-        "description": "Indicates the user-agent that the PSU is using."
+        "description": "Indicates the user-agent that the PSU is using.",
+        "example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
       }
     ],
     "responses": [
@@ -640,31 +681,36 @@ export default function HsbcAccountInformationCeTypeScriptSdk() {
         "name": "accountId",
         "schema": "string",
         "required": true,
-        "description": "AccountId"
+        "description": "AccountId",
+        "example": "ThR-RpLMV5lZzDu8vrfEFg"
       },
       {
         "name": "xFapiAuthDate",
         "schema": "string",
         "required": false,
-        "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC",
+        "example": "Tue, 18 Apr 2023 14:42:25 UTC"
       },
       {
         "name": "xFapiCustomerIpAddress",
         "schema": "string",
         "required": false,
-        "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        "description": "The PSU's IP address if the PSU is currently logged in with the TPP.",
+        "example": "12.201.45.125"
       },
       {
         "name": "xFapiInteractionId",
         "schema": "string",
         "required": false,
-        "description": "An RFC4122 UID used as a correlation id."
+        "description": "An RFC4122 UID used as a correlation id.",
+        "example": "20177a90-5e29-43ba-bea0-cc6c344a9d32"
       },
       {
         "name": "xCustomerUserAgent",
         "schema": "string",
         "required": false,
-        "description": "Indicates the user-agent that the PSU is using."
+        "description": "Indicates the user-agent that the PSU is using.",
+        "example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
       }
     ],
     "responses": [
@@ -718,41 +764,48 @@ export default function HsbcAccountInformationCeTypeScriptSdk() {
         "name": "accountId",
         "schema": "string",
         "required": true,
-        "description": "AccountId"
+        "description": "AccountId",
+        "example": "ThR-RpLMV5lZzDu8vrfEFg"
       },
       {
         "name": "xFapiAuthDate",
         "schema": "string",
         "required": false,
-        "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC",
+        "example": "Tue, 18 Apr 2023 14:42:25 UTC"
       },
       {
         "name": "xFapiCustomerIpAddress",
         "schema": "string",
         "required": false,
-        "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        "description": "The PSU's IP address if the PSU is currently logged in with the TPP.",
+        "example": "12.201.45.125"
       },
       {
         "name": "xFapiInteractionId",
         "schema": "string",
         "required": false,
-        "description": "An RFC4122 UID used as a correlation id."
+        "description": "An RFC4122 UID used as a correlation id.",
+        "example": "20177a90-5e29-43ba-bea0-cc6c344a9d32"
       },
       {
         "name": "xCustomerUserAgent",
         "schema": "string",
         "required": false,
-        "description": "Indicates the user-agent that the PSU is using."
+        "description": "Indicates the user-agent that the PSU is using.",
+        "example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
       },
       {
         "name": "fromBookingDateTime",
         "schema": "string",
-        "description": "The UTC ISO 8601 Date Time to filter transactions FROM\nNB Time component is optional - set to 00:00:00 for just Date.\nIf the Date Time contains a timezone, the ASPSP must ignore the timezone component."
+        "description": "The UTC ISO 8601 Date Time to filter transactions FROM\nNB Time component is optional - set to 00:00:00 for just Date.\nIf the Date Time contains a timezone, the ASPSP must ignore the timezone component.",
+        "example": "2023-01-04T13:21:07+00:00"
       },
       {
         "name": "toBookingDateTime",
         "schema": "string",
-        "description": "The UTC ISO 8601 Date Time to filter transactions TO\nNB Time component is optional - set to 00:00:00 for just Date.\nIf the Date Time contains a timezone, the ASPSP must ignore the timezone component."
+        "description": "The UTC ISO 8601 Date Time to filter transactions TO\nNB Time component is optional - set to 00:00:00 for just Date.\nIf the Date Time contains a timezone, the ASPSP must ignore the timezone component.",
+        "example": "2023-02-04T13:21:07+00:00"
       }
     ],
     "responses": [
@@ -802,31 +855,36 @@ export default function HsbcAccountInformationCeTypeScriptSdk() {
         "name": "accountId",
         "schema": "string",
         "required": true,
-        "description": "AccountId"
+        "description": "AccountId",
+        "example": "ThR-RpLMV5lZzDu8vrfEFg"
       },
       {
         "name": "xFapiAuthDate",
         "schema": "string",
         "required": false,
-        "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC",
+        "example": "Tue, 18 Apr 2023 14:42:25 UTC"
       },
       {
         "name": "xFapiCustomerIpAddress",
         "schema": "string",
         "required": false,
-        "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        "description": "The PSU's IP address if the PSU is currently logged in with the TPP.",
+        "example": "12.201.45.125"
       },
       {
         "name": "xFapiInteractionId",
         "schema": "string",
         "required": false,
-        "description": "An RFC4122 UID used as a correlation id."
+        "description": "An RFC4122 UID used as a correlation id.",
+        "example": "20177a90-5e29-43ba-bea0-cc6c344a9d32"
       },
       {
         "name": "xCustomerUserAgent",
         "schema": "string",
         "required": false,
-        "description": "Indicates the user-agent that the PSU is using."
+        "description": "Indicates the user-agent that the PSU is using.",
+        "example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
       }
     ],
     "responses": [
@@ -880,31 +938,36 @@ export default function HsbcAccountInformationCeTypeScriptSdk() {
         "name": "accountId",
         "schema": "string",
         "required": true,
-        "description": "AccountId"
+        "description": "AccountId",
+        "example": "ThR-RpLMV5lZzDu8vrfEFg"
       },
       {
         "name": "xFapiAuthDate",
         "schema": "string",
         "required": false,
-        "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC",
+        "example": "Tue, 18 Apr 2023 14:42:25 UTC"
       },
       {
         "name": "xFapiCustomerIpAddress",
         "schema": "string",
         "required": false,
-        "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        "description": "The PSU's IP address if the PSU is currently logged in with the TPP.",
+        "example": "12.201.45.125"
       },
       {
         "name": "xFapiInteractionId",
         "schema": "string",
         "required": false,
-        "description": "An RFC4122 UID used as a correlation id."
+        "description": "An RFC4122 UID used as a correlation id.",
+        "example": "20177a90-5e29-43ba-bea0-cc6c344a9d32"
       },
       {
         "name": "xCustomerUserAgent",
         "schema": "string",
         "required": false,
-        "description": "Indicates the user-agent that the PSU is using."
+        "description": "Indicates the user-agent that the PSU is using.",
+        "example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
       }
     ],
     "responses": [
@@ -958,31 +1021,36 @@ export default function HsbcAccountInformationCeTypeScriptSdk() {
         "name": "accountId",
         "schema": "string",
         "required": true,
-        "description": "AccountId"
+        "description": "AccountId",
+        "example": "ThR-RpLMV5lZzDu8vrfEFg"
       },
       {
         "name": "xFapiAuthDate",
         "schema": "string",
         "required": false,
-        "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC"
+        "description": "The time when the PSU last logged in with the TPP. \nAll dates in the HTTP headers are represented as RFC 7231 Full Dates. An example is below: \nSun, 10 Sep 2017 19:43:31 UTC",
+        "example": "Tue, 18 Apr 2023 14:42:25 UTC"
       },
       {
         "name": "xFapiCustomerIpAddress",
         "schema": "string",
         "required": false,
-        "description": "The PSU's IP address if the PSU is currently logged in with the TPP."
+        "description": "The PSU's IP address if the PSU is currently logged in with the TPP.",
+        "example": "12.201.45.125"
       },
       {
         "name": "xFapiInteractionId",
         "schema": "string",
         "required": false,
-        "description": "An RFC4122 UID used as a correlation id."
+        "description": "An RFC4122 UID used as a correlation id.",
+        "example": "20177a90-5e29-43ba-bea0-cc6c344a9d32"
       },
       {
         "name": "xCustomerUserAgent",
         "schema": "string",
         "required": false,
-        "description": "Indicates the user-agent that the PSU is using."
+        "description": "Indicates the user-agent that the PSU is using.",
+        "example": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36"
       }
     ],
     "responses": [

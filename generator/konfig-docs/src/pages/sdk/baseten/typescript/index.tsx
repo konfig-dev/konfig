@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function BasetenTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function BasetenTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/baseten/logo.png"
       clientNameCamelCase="baseten"
       homepage="baseten.co"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/baseten/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/baseten/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["ai","ml","developer_tools","automation","collaboration","media","cloud","open_source","machine_learning","deployment","scalability","cost_efficiency","llm","stable_diffusion","tts","text_to_audio","text_to_speech","text_to_image","image_to_video","image_classification","text_embeddings","audio_to_text","image_to_text"]}
       methods={[
   {
     "url": "/v1/secrets",
@@ -51,13 +54,15 @@ export default function BasetenTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "value",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "VALUE"
       }
     ],
     "responses": [

@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function CleverTypeScriptSdk() {
@@ -22,13 +23,15 @@ We go to work every day striving to improve education for millions of kids. Join
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/clever/logo.png"
       clientNameCamelCase="clever"
       homepage="clever.com"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/clever/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/clever/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["education","collaboration","developer_tools","learning_platform","educational_equity","educational_technology","education","k_12_education","application_platforms","enterprise_software","information_technology"]}
       methods={[
   {
     "url": "/courses",
@@ -78,7 +81,8 @@ We go to work every day striving to improve education for millions of kids. Join
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -104,7 +108,8 @@ We go to work every day striving to improve education for millions of kids. Join
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -130,7 +135,8 @@ We go to work every day striving to improve education for millions of kids. Join
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "limit",
@@ -171,7 +177,8 @@ We go to work every day striving to improve education for millions of kids. Join
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "limit",
@@ -212,7 +219,8 @@ We go to work every day striving to improve education for millions of kids. Join
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "limit",
@@ -274,7 +282,8 @@ We go to work every day striving to improve education for millions of kids. Join
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -331,7 +340,8 @@ We go to work every day striving to improve education for millions of kids. Join
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -357,7 +367,8 @@ We go to work every day striving to improve education for millions of kids. Join
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "limit",
@@ -398,7 +409,8 @@ We go to work every day striving to improve education for millions of kids. Join
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "limit",
@@ -439,7 +451,8 @@ We go to work every day striving to improve education for millions of kids. Join
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "role",
@@ -521,7 +534,8 @@ We go to work every day striving to improve education for millions of kids. Join
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -547,7 +561,8 @@ We go to work every day striving to improve education for millions of kids. Join
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "limit",
@@ -588,7 +603,8 @@ We go to work every day striving to improve education for millions of kids. Join
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -614,7 +630,8 @@ We go to work every day striving to improve education for millions of kids. Join
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "limit",
@@ -655,7 +672,8 @@ We go to work every day striving to improve education for millions of kids. Join
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "limit",
@@ -696,7 +714,8 @@ We go to work every day striving to improve education for millions of kids. Join
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "role",
@@ -783,7 +802,8 @@ We go to work every day striving to improve education for millions of kids. Join
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -809,7 +829,8 @@ We go to work every day striving to improve education for millions of kids. Join
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -835,7 +856,8 @@ We go to work every day striving to improve education for millions of kids. Join
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -861,7 +883,8 @@ We go to work every day striving to improve education for millions of kids. Join
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "limit",
@@ -902,7 +925,8 @@ We go to work every day striving to improve education for millions of kids. Join
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -928,7 +952,8 @@ We go to work every day striving to improve education for millions of kids. Join
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -954,7 +979,8 @@ We go to work every day striving to improve education for millions of kids. Join
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "role",
@@ -1036,7 +1062,8 @@ We go to work every day striving to improve education for millions of kids. Join
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -1062,7 +1089,8 @@ We go to work every day striving to improve education for millions of kids. Join
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -1088,7 +1116,8 @@ We go to work every day striving to improve education for millions of kids. Join
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "limit",
@@ -1129,7 +1158,8 @@ We go to work every day striving to improve education for millions of kids. Join
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "limit",
@@ -1211,7 +1241,8 @@ We go to work every day striving to improve education for millions of kids. Join
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -1237,7 +1268,8 @@ We go to work every day striving to improve education for millions of kids. Join
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -1263,7 +1295,8 @@ We go to work every day striving to improve education for millions of kids. Join
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "limit",
@@ -1304,7 +1337,8 @@ We go to work every day striving to improve education for millions of kids. Join
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "limit",
@@ -1345,7 +1379,8 @@ We go to work every day striving to improve education for millions of kids. Join
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "limit",
@@ -1386,7 +1421,8 @@ We go to work every day striving to improve education for millions of kids. Join
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "limit",
@@ -1427,7 +1463,8 @@ We go to work every day striving to improve education for millions of kids. Join
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "primary",
@@ -1473,7 +1510,8 @@ We go to work every day striving to improve education for millions of kids. Join
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "limit",

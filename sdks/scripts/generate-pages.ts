@@ -84,6 +84,14 @@ function main() {
       path.join(dirPath, "_getting-started.mdx"),
       gettingStartedMdx
     );
+
+    if (json.useNewPage) {
+      const firstRequestMdx = generateFirstRequestMdx(json);
+      fs.writeFileSync(
+        path.join(dirPath, "_first-request.mdx"),
+        firstRequestMdx
+      );
+    }
   }
 
   // write redirects.json
@@ -166,7 +174,16 @@ function generateGettingStartedMdx({
   typescriptSdkUsageCode,
 }: Published): string {
   return `\`\`\`typescript index.ts
-${typescriptSdkUsageCode}`;
+${typescriptSdkUsageCode}
+\`\`\``;
+}
+
+function generateFirstRequestMdx({
+  typescriptSdkFirstRequestCode,
+}: Published): string {
+  return `\`\`\`typescript index.ts
+${typescriptSdkFirstRequestCode}
+\`\`\``;
 }
 
 function generateDescriptionMdx({ apiDescription }: Published): string {
@@ -229,18 +246,26 @@ function generateIndexTsx({
   openApiRaw,
   parameters,
   apiDescription,
+  useNewPage,
+  categories,
 }: Published): string {
   // If name starts with a number or contains special characters, prepend a "Sdk_"
   const codeFriendlyCompanyName =
     company.search(/^[0-9]/) !== -1 ? `Sdk_${company}` : company;
-  console.log(company, codeFriendlyCompanyName);
+  const reactComponent = useNewPage ? "SdkNew" : "Sdk";
   return `import React from "react";
 import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 // @ts-ignore
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
-import { Sdk } from "@site/src/components/Sdk";
+${
+  useNewPage
+    ? `// @ts-ignore
+import FirstRequest from "./_first-request.mdx"`
+    : ""
+}
+import { ${reactComponent} } from "@site/src/components/${reactComponent}";
 
 export default function ${camelcase(codeFriendlyCompanyName, {
     pascalCase: true,
@@ -248,7 +273,7 @@ export default function ${camelcase(codeFriendlyCompanyName, {
     serviceName ? camelcase(serviceName, { pascalCase: true }) : ""
   }TypeScriptSdk() {
   return (
-    <Sdk
+    <${reactComponent}
       sdkName="${sdkName.replace("{language}", "typescript")}"
       metaDescription="${metaDescription}"
       company="${company}"${
@@ -280,6 +305,8 @@ export default function ${camelcase(codeFriendlyCompanyName, {
       previewLinkImage="${previewLinkImage}"
       GettingStarted={GettingStarted}
       Description={Description}
+      ${useNewPage ? `FirstRequest={FirstRequest}` : ""}
+      categories={${JSON.stringify(categories)}}
       methods={${JSON.stringify(
         methods,
         (key, value) => {

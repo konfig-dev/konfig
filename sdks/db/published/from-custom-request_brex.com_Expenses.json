@@ -64,7 +64,8 @@
           "name": "expand[]",
           "schema": "array",
           "required": false,
-          "description": "Get additional details for the expense, e.g. merchant mcc code, by passing in `expand[]=merchant`. Query parameters include `location`, `department`, `merchant`, `receipts.download_uris`, `user`, `budget` and `payment`."
+          "description": "Get additional details for the expense, e.g. merchant mcc code, by passing in `expand[]=merchant`. Query parameters include `location`, `department`, `merchant`, `receipts.download_uris`, `user`, `budget` and `payment`.",
+          "example": "\n?expand[]=merchant&expand[]=location\n"
         },
         {
           "name": "userId[]",
@@ -100,13 +101,15 @@
           "name": "purchasedAtStart",
           "schema": "string",
           "required": false,
-          "description": "\nShows only expenses with a `purchased_at` on or after this date-time. This parameter is the date-time notation as defined by [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6), e.g. 2022-11-12T23:59:59.999\n"
+          "description": "\nShows only expenses with a `purchased_at` on or after this date-time. This parameter is the date-time notation as defined by [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6), e.g. 2022-11-12T23:59:59.999\n",
+          "example": "\n2023-01-01T23:59:59.999\n"
         },
         {
           "name": "purchasedAtEnd",
           "schema": "string",
           "required": false,
-          "description": "\nShows only expenses with a `purchased_at` on or before this date-time. This parameter is the date-time notation as defined by [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6), e.g. 2022-11-12T23:59:59.999\n"
+          "description": "\nShows only expenses with a `purchased_at` on or before this date-time. This parameter is the date-time notation as defined by [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6), e.g. 2022-11-12T23:59:59.999\n",
+          "example": "\n2023-01-10T23:59:59.999\n"
         },
         {
           "name": "cursor",
@@ -152,7 +155,8 @@
           "name": "receipt_name",
           "schema": "string",
           "required": true,
-          "description": ""
+          "description": "",
+          "example": "RECEIPT_NAME"
         }
       ],
       "responses": [
@@ -182,13 +186,15 @@
           "name": "expenseId",
           "schema": "string",
           "required": true,
-          "description": ""
+          "description": "",
+          "example": "EXPENSE_ID"
         },
         {
           "name": "expand[]",
           "schema": "array",
           "required": false,
-          "description": "Get additional details for the expense, e.g. merchant mcc code, by passing in `expand[]=merchant`. Query parameters include `location`, `department`, `merchant`, `receipts.download_uris`, `user`, `budget` and `payment`."
+          "description": "Get additional details for the expense, e.g. merchant mcc code, by passing in `expand[]=merchant`. Query parameters include `location`, `department`, `merchant`, `receipts.download_uris`, `user`, `budget` and `payment`.",
+          "example": "\n?expand[]=merchant&expand[]=location\n"
         }
       ],
       "responses": [
@@ -226,7 +232,8 @@
           "name": "expenseId",
           "schema": "string",
           "required": true,
-          "description": ""
+          "description": "",
+          "example": "EXPENSE_ID"
         },
         {
           "name": "memo",
@@ -269,13 +276,15 @@
           "name": "expenseId",
           "schema": "string",
           "required": true,
-          "description": ""
+          "description": "",
+          "example": "EXPENSE_ID"
         },
         {
           "name": "receipt_name",
           "schema": "string",
           "required": true,
-          "description": ""
+          "description": "",
+          "example": "RECEIPT_NAME"
         }
       ],
       "responses": [
@@ -308,7 +317,8 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/expenses/imagePreview.jpg",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/expenses/favicon.png",
   "clientNameCamelCase": "brexExpenses",
-  "lastUpdated": "2024-03-12T23:31:36.728Z",
+  "lastUpdated": "2024-03-13T01:24:30.233Z",
   "typescriptSdkUsageCode": "import { BrexExpenses } from 'brex-expenses-typescript-sdk';\n\nconst brexExpenses = new BrexExpenses({\n    // OAuth2 security scheme\n    clientId: \"CLIENT_ID\",\n    clientSecret: \"CLIENT_SECRET\",\n    redirectUri: \"REDIRECT_URI\",\n})",
+  "typescriptSdkFirstRequestCode": "// List expenses\nconst listResponse = brexExpenses.Card Expenses.list({\n    expand[]: \n?expand[]=merchant&expand[]=location\n\n    userId[]: undefined\n    parentExpenseId[]: undefined\n    budgetId[]: undefined\n    status[]: undefined\n    paymentStatus[]: undefined\n    purchasedAtStart: \n2023-01-01T23:59:59.999\n\n    purchasedAtEnd: \n2023-01-10T23:59:59.999\n\n    cursor: undefined\n    limit: undefined\n})",
   "fixedSpecFileName": "brex-expenses-fixed-spec.yaml"
 }

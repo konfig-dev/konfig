@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function WikimediaTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function WikimediaTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/wikimedia/logo.png"
       clientNameCamelCase="wikimedia"
       homepage="wikimedia.org"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/wikimedia/favicon.ico"
       contactUrl="http://mediawiki.org/wiki/REST_API"
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/wikimedia/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["media"]}
       methods={[
   {
     "url": "/feed/availability",
@@ -55,13 +58,15 @@ export default function WikimediaTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": "The input type of the given formula; can be tex or inline-tex"
+        "description": "The input type of the given formula; can be tex or inline-tex",
+        "example": "TYPE"
       },
       {
         "name": "q",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Q"
       }
     ],
     "responses": [
@@ -91,7 +96,8 @@ export default function WikimediaTypeScriptSdk() {
         "name": "hash",
         "schema": "string",
         "required": true,
-        "description": "The hash string of the previous POST data"
+        "description": "The hash string of the previous POST data",
+        "example": "HASH"
       }
     ],
     "responses": [
@@ -121,13 +127,15 @@ export default function WikimediaTypeScriptSdk() {
         "name": "format",
         "schema": "string",
         "required": true,
-        "description": "The output format; can be svg or mml"
+        "description": "The output format; can be svg or mml",
+        "example": "FORMAT"
       },
       {
         "name": "hash",
         "schema": "string",
         "required": true,
-        "description": "The hash string of the previous POST data"
+        "description": "The hash string of the previous POST data",
+        "example": "HASH"
       }
     ],
     "responses": [
@@ -157,37 +165,43 @@ export default function WikimediaTypeScriptSdk() {
         "name": "project",
         "schema": "string",
         "required": true,
-        "description": "The name of any Wikimedia project formatted like {language code}.{project name},\nfor example en.wikipedia. You may pass en.wikipedia.org and the .org will be stripped\noff. For projects like commons without language codes, use commons.wikimedia. For\nprojects like www.mediawiki.org, you can use that full string, or just use mediawiki\nor mediawiki.org. If you're interested in the aggregation of all projects, use\nall-projects.\n"
+        "description": "The name of any Wikimedia project formatted like {language code}.{project name},\nfor example en.wikipedia. You may pass en.wikipedia.org and the .org will be stripped\noff. For projects like commons without language codes, use commons.wikimedia. For\nprojects like www.mediawiki.org, you can use that full string, or just use mediawiki\nor mediawiki.org. If you're interested in the aggregation of all projects, use\nall-projects.\n",
+        "example": "PROJECT"
       },
       {
         "name": "editorType",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by editor-type, use one of anonymous, group-bot (registered\naccounts belonging to the bot group), name-bot (registered accounts not belonging to\nthe bot group but having bot-like names) or user (registered account not in bot group\nnor having bot-like name). If you are interested in edits regardless of their\neditor-type, use all-editor-types.\n"
+        "description": "If you want to filter by editor-type, use one of anonymous, group-bot (registered\naccounts belonging to the bot group), name-bot (registered accounts not belonging to\nthe bot group but having bot-like names) or user (registered account not in bot group\nnor having bot-like name). If you are interested in edits regardless of their\neditor-type, use all-editor-types.\n",
+        "example": "EDITOR-TYPE"
       },
       {
         "name": "pageType",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by page-type, use one of content (edits on pages in content\nnamespaces) or non-content (edits on pages in non-content namespaces). If you are\ninterested in edits regardless of their page-type, use all-page-types.\n"
+        "description": "If you want to filter by page-type, use one of content (edits on pages in content\nnamespaces) or non-content (edits on pages in non-content namespaces). If you are\ninterested in edits regardless of their page-type, use all-page-types.\n",
+        "example": "PAGE-TYPE"
       },
       {
         "name": "granularity",
         "schema": "string",
         "required": true,
-        "description": "Time unit for the response data. As of today, supported values are daily and monthly\n"
+        "description": "Time unit for the response data. As of today, supported values are daily and monthly\n",
+        "example": "GRANULARITY"
       },
       {
         "name": "start",
         "schema": "string",
         "required": true,
-        "description": "The date of the first day to include, in YYYYMMDD format"
+        "description": "The date of the first day to include, in YYYYMMDD format",
+        "example": "START"
       },
       {
         "name": "end",
         "schema": "string",
         "required": true,
-        "description": "The date of the last day to include, in YYYYMMDD format"
+        "description": "The date of the last day to include, in YYYYMMDD format",
+        "example": "END"
       }
     ],
     "responses": [
@@ -213,37 +227,43 @@ export default function WikimediaTypeScriptSdk() {
         "name": "project",
         "schema": "string",
         "required": true,
-        "description": "The name of any Wikimedia project formatted like {language code}.{project name},\nfor example en.wikipedia. You may pass en.wikipedia.org and the .org will be stripped\noff. For projects like commons without language codes, use commons.wikimedia. For\nprojects like www.mediawiki.org, you can use that full string, or just use mediawiki\nor mediawiki.org.\n"
+        "description": "The name of any Wikimedia project formatted like {language code}.{project name},\nfor example en.wikipedia. You may pass en.wikipedia.org and the .org will be stripped\noff. For projects like commons without language codes, use commons.wikimedia. For\nprojects like www.mediawiki.org, you can use that full string, or just use mediawiki\nor mediawiki.org.\n",
+        "example": "PROJECT"
       },
       {
         "name": "pageTitle",
         "schema": "string",
         "required": true,
-        "description": "The page-title to request absolute bytes-difference for. Should be prefixed with the\npage canonical namespace.\n"
+        "description": "The page-title to request absolute bytes-difference for. Should be prefixed with the\npage canonical namespace.\n",
+        "example": "PAGE-TITLE"
       },
       {
         "name": "editorType",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by editor-type, use one of anonymous, group-bot (registered\naccounts belonging to the bot group), name-bot (registered accounts not belonging to\nthe bot group but having bot-like names) or user (registered account not in bot group\nnor having bot-like name). If you are interested in edits regardless of their\neditor-type, use all-editor-types.\n"
+        "description": "If you want to filter by editor-type, use one of anonymous, group-bot (registered\naccounts belonging to the bot group), name-bot (registered accounts not belonging to\nthe bot group but having bot-like names) or user (registered account not in bot group\nnor having bot-like name). If you are interested in edits regardless of their\neditor-type, use all-editor-types.\n",
+        "example": "EDITOR-TYPE"
       },
       {
         "name": "granularity",
         "schema": "string",
         "required": true,
-        "description": "Time unit for the response data. As of today, supported values are daily and monthly\n"
+        "description": "Time unit for the response data. As of today, supported values are daily and monthly\n",
+        "example": "GRANULARITY"
       },
       {
         "name": "start",
         "schema": "string",
         "required": true,
-        "description": "The date of the first day to include, in YYYYMMDD format"
+        "description": "The date of the first day to include, in YYYYMMDD format",
+        "example": "START"
       },
       {
         "name": "end",
         "schema": "string",
         "required": true,
-        "description": "The date of the last day to include, in YYYYMMDD format"
+        "description": "The date of the last day to include, in YYYYMMDD format",
+        "example": "END"
       }
     ],
     "responses": [
@@ -269,37 +289,43 @@ export default function WikimediaTypeScriptSdk() {
         "name": "project",
         "schema": "string",
         "required": true,
-        "description": "The name of any Wikimedia project formatted like {language code}.{project name},\nfor example en.wikipedia. You may pass en.wikipedia.org and the .org will be stripped\noff. For projects like commons without language codes, use commons.wikimedia. For\nprojects like www.mediawiki.org, you can use that full string, or just use mediawiki\nor mediawiki.org. If you're interested in the aggregation of all projects, use\nall-projects.\n"
+        "description": "The name of any Wikimedia project formatted like {language code}.{project name},\nfor example en.wikipedia. You may pass en.wikipedia.org and the .org will be stripped\noff. For projects like commons without language codes, use commons.wikimedia. For\nprojects like www.mediawiki.org, you can use that full string, or just use mediawiki\nor mediawiki.org. If you're interested in the aggregation of all projects, use\nall-projects.\n",
+        "example": "PROJECT"
       },
       {
         "name": "editorType",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by editor-type, use one of anonymous, group-bot (registered\naccounts belonging to the bot group), name-bot (registered accounts not belonging to\nthe bot group but having bot-like names) or user (registered account not in bot group\nnor having bot-like name). If you are interested in edits regardless of their\neditor-type, use all-editor-types.\n"
+        "description": "If you want to filter by editor-type, use one of anonymous, group-bot (registered\naccounts belonging to the bot group), name-bot (registered accounts not belonging to\nthe bot group but having bot-like names) or user (registered account not in bot group\nnor having bot-like name). If you are interested in edits regardless of their\neditor-type, use all-editor-types.\n",
+        "example": "EDITOR-TYPE"
       },
       {
         "name": "pageType",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by page-type, use one of content (edits on pages in content\nnamespaces) or non-content (edits on pages in non-content namespaces). If you are\ninterested in edits regardless of their page-type, use all-page-types.\n"
+        "description": "If you want to filter by page-type, use one of content (edits on pages in content\nnamespaces) or non-content (edits on pages in non-content namespaces). If you are\ninterested in edits regardless of their page-type, use all-page-types.\n",
+        "example": "PAGE-TYPE"
       },
       {
         "name": "granularity",
         "schema": "string",
         "required": true,
-        "description": "Time unit for the response data. As of today, supported values are daily and monthly\n"
+        "description": "Time unit for the response data. As of today, supported values are daily and monthly\n",
+        "example": "GRANULARITY"
       },
       {
         "name": "start",
         "schema": "string",
         "required": true,
-        "description": "The date of the first day to include, in YYYYMMDD format"
+        "description": "The date of the first day to include, in YYYYMMDD format",
+        "example": "START"
       },
       {
         "name": "end",
         "schema": "string",
         "required": true,
-        "description": "The date of the last day to include, in YYYYMMDD format"
+        "description": "The date of the last day to include, in YYYYMMDD format",
+        "example": "END"
       }
     ],
     "responses": [
@@ -325,37 +351,43 @@ export default function WikimediaTypeScriptSdk() {
         "name": "project",
         "schema": "string",
         "required": true,
-        "description": "The name of any Wikimedia project formatted like {language code}.{project name},\nfor example en.wikipedia. You may pass en.wikipedia.org and the .org will be stripped\noff. For projects like commons without language codes, use commons.wikimedia. For\nprojects like www.mediawiki.org, you can use that full string, or just use mediawiki\nor mediawiki.org.\n"
+        "description": "The name of any Wikimedia project formatted like {language code}.{project name},\nfor example en.wikipedia. You may pass en.wikipedia.org and the .org will be stripped\noff. For projects like commons without language codes, use commons.wikimedia. For\nprojects like www.mediawiki.org, you can use that full string, or just use mediawiki\nor mediawiki.org.\n",
+        "example": "PROJECT"
       },
       {
         "name": "pageTitle",
         "schema": "string",
         "required": true,
-        "description": "The page-title to request net bytes-difference for. Should be prefixed with the\npage canonical namespace.\n"
+        "description": "The page-title to request net bytes-difference for. Should be prefixed with the\npage canonical namespace.\n",
+        "example": "PAGE-TITLE"
       },
       {
         "name": "editorType",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by editor-type, use one of anonymous, group-bot (registered\naccounts belonging to the bot group), name-bot (registered accounts not belonging to\nthe bot group but having bot-like names) or user (registered account not in bot group\nnor having bot-like name). If you are interested in edits regardless of their\neditor-type, use all-editor-types.\n"
+        "description": "If you want to filter by editor-type, use one of anonymous, group-bot (registered\naccounts belonging to the bot group), name-bot (registered accounts not belonging to\nthe bot group but having bot-like names) or user (registered account not in bot group\nnor having bot-like name). If you are interested in edits regardless of their\neditor-type, use all-editor-types.\n",
+        "example": "EDITOR-TYPE"
       },
       {
         "name": "granularity",
         "schema": "string",
         "required": true,
-        "description": "Time unit for the response data. As of today, supported values are daily and monthly\n"
+        "description": "Time unit for the response data. As of today, supported values are daily and monthly\n",
+        "example": "GRANULARITY"
       },
       {
         "name": "start",
         "schema": "string",
         "required": true,
-        "description": "The date of the first day to include, in YYYYMMDD format"
+        "description": "The date of the first day to include, in YYYYMMDD format",
+        "example": "START"
       },
       {
         "name": "end",
         "schema": "string",
         "required": true,
-        "description": "The date of the last day to include, in YYYYMMDD format"
+        "description": "The date of the last day to include, in YYYYMMDD format",
+        "example": "END"
       }
     ],
     "responses": [
@@ -381,43 +413,50 @@ export default function WikimediaTypeScriptSdk() {
         "name": "project",
         "schema": "string",
         "required": true,
-        "description": "The name of any Wikimedia project formatted like {language code}.{project name},\nfor example en.wikipedia. You may pass en.wikipedia.org and the .org will be stripped\noff.  For projects like commons without language codes, use commons.wikimedia.\nFor projects like www.mediawiki.org, you can use that full string, or just use\nmediawiki or mediawiki.org.\n"
+        "description": "The name of any Wikimedia project formatted like {language code}.{project name},\nfor example en.wikipedia. You may pass en.wikipedia.org and the .org will be stripped\noff.  For projects like commons without language codes, use commons.wikimedia.\nFor projects like www.mediawiki.org, you can use that full string, or just use\nmediawiki or mediawiki.org.\n",
+        "example": "PROJECT"
       },
       {
         "name": "editorType",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by editor-type, use one of anonymous, group-bot (registered\naccounts belonging to the bot group), name-bot (registered accounts not belonging to\nthe bot group but having bot-like names) or user (registered account not in bot group\nnor having bot-like name). If you are interested in edits regardless of their\neditor-type, use all-editor-types.\n"
+        "description": "If you want to filter by editor-type, use one of anonymous, group-bot (registered\naccounts belonging to the bot group), name-bot (registered accounts not belonging to\nthe bot group but having bot-like names) or user (registered account not in bot group\nnor having bot-like name). If you are interested in edits regardless of their\neditor-type, use all-editor-types.\n",
+        "example": "EDITOR-TYPE"
       },
       {
         "name": "pageType",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by page-type, use one of content (edited-pages in content\nnamespaces) or non-content (edited-pages in non-content namespaces). If you are\ninterested in edited-pages regardless of their page-type, use all-page-types.\n"
+        "description": "If you want to filter by page-type, use one of content (edited-pages in content\nnamespaces) or non-content (edited-pages in non-content namespaces). If you are\ninterested in edited-pages regardless of their page-type, use all-page-types.\n",
+        "example": "PAGE-TYPE"
       },
       {
         "name": "activityLevel",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by activity-level, use one of 1..4-edits, 5..24-edits,\n25..99-edits or 100..-edits. If you are interested in edited-pages regardless\nof their activity level, use all-activity-levels.\n"
+        "description": "If you want to filter by activity-level, use one of 1..4-edits, 5..24-edits,\n25..99-edits or 100..-edits. If you are interested in edited-pages regardless\nof their activity level, use all-activity-levels.\n",
+        "example": "ACTIVITY-LEVEL"
       },
       {
         "name": "granularity",
         "schema": "string",
         "required": true,
-        "description": "The time unit for the response data. As of today, supported values are\ndaily and monthly.\n"
+        "description": "The time unit for the response data. As of today, supported values are\ndaily and monthly.\n",
+        "example": "GRANULARITY"
       },
       {
         "name": "start",
         "schema": "string",
         "required": true,
-        "description": "The date of the first day to include, in YYYYMMDD format"
+        "description": "The date of the first day to include, in YYYYMMDD format",
+        "example": "START"
       },
       {
         "name": "end",
         "schema": "string",
         "required": true,
-        "description": "The date of the last day to include, in YYYYMMDD format"
+        "description": "The date of the last day to include, in YYYYMMDD format",
+        "example": "END"
       }
     ],
     "responses": [
@@ -443,37 +482,43 @@ export default function WikimediaTypeScriptSdk() {
         "name": "project",
         "schema": "string",
         "required": true,
-        "description": "The name of any Wikimedia project formatted like {language code}.{project name},\nfor example en.wikipedia. You may pass en.wikipedia.org and the .org will be stripped\noff.  For projects like commons without language codes, use commons.wikimedia.\nFor projects like www.mediawiki.org, you can use that full string, or just use\nmediawiki or mediawiki.org. If you're interested in the aggregation of all\nprojects, use all-projects.\n"
+        "description": "The name of any Wikimedia project formatted like {language code}.{project name},\nfor example en.wikipedia. You may pass en.wikipedia.org and the .org will be stripped\noff.  For projects like commons without language codes, use commons.wikimedia.\nFor projects like www.mediawiki.org, you can use that full string, or just use\nmediawiki or mediawiki.org. If you're interested in the aggregation of all\nprojects, use all-projects.\n",
+        "example": "PROJECT"
       },
       {
         "name": "editorType",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by editor-type, use one of anonymous, group-bot (registered\naccounts belonging to the bot group), name-bot (registered accounts not belonging\nto the bot group but having bot-like names) or user (registered account not in bot\ngroup nor having bot-like name). If you are interested in edits regardless of\ntheir editor-type, use all-editor-types.\n"
+        "description": "If you want to filter by editor-type, use one of anonymous, group-bot (registered\naccounts belonging to the bot group), name-bot (registered accounts not belonging\nto the bot group but having bot-like names) or user (registered account not in bot\ngroup nor having bot-like name). If you are interested in edits regardless of\ntheir editor-type, use all-editor-types.\n",
+        "example": "EDITOR-TYPE"
       },
       {
         "name": "pageType",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by page-type, use one of content (new pages in content\nnamespaces) or non-content (new pages in non-content namespaces). If you are\ninterested in new-articles regardless of their page-type, use all-page-types.\n"
+        "description": "If you want to filter by page-type, use one of content (new pages in content\nnamespaces) or non-content (new pages in non-content namespaces). If you are\ninterested in new-articles regardless of their page-type, use all-page-types.\n",
+        "example": "PAGE-TYPE"
       },
       {
         "name": "granularity",
         "schema": "string",
         "required": true,
-        "description": "The time unit for the response data. As of today, supported values are\ndaily and monthly.\n"
+        "description": "The time unit for the response data. As of today, supported values are\ndaily and monthly.\n",
+        "example": "GRANULARITY"
       },
       {
         "name": "start",
         "schema": "string",
         "required": true,
-        "description": "The date of the first day to include, in YYYYMMDD format"
+        "description": "The date of the first day to include, in YYYYMMDD format",
+        "example": "START"
       },
       {
         "name": "end",
         "schema": "string",
         "required": true,
-        "description": "The date of the last day to include, in YYYYMMDD format"
+        "description": "The date of the last day to include, in YYYYMMDD format",
+        "example": "END"
       }
     ],
     "responses": [
@@ -499,37 +544,43 @@ export default function WikimediaTypeScriptSdk() {
         "name": "project",
         "schema": "string",
         "required": true,
-        "description": "The name of any Wikimedia project formatted like {language code}.{project name},\nfor example en.wikipedia. You may pass en.wikipedia.org and the .org will be stripped\noff. For projects like commons without language codes, use commons.wikimedia. For\nprojects like www.mediawiki.org, you can use that full string, or just use mediawiki\nor mediawiki.org.\n"
+        "description": "The name of any Wikimedia project formatted like {language code}.{project name},\nfor example en.wikipedia. You may pass en.wikipedia.org and the .org will be stripped\noff. For projects like commons without language codes, use commons.wikimedia. For\nprojects like www.mediawiki.org, you can use that full string, or just use mediawiki\nor mediawiki.org.\n",
+        "example": "PROJECT"
       },
       {
         "name": "editorType",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by editor-type, use one of anonymous, group-bot (registered\naccounts belonging to the bot group), name-bot (registered accounts not belonging to\nthe bot group but having bot-like names) or user (registered account not in bot group\nnor having bot-like name). If you are interested in edits regardless of their\neditor-type, use all-editor-types.\n"
+        "description": "If you want to filter by editor-type, use one of anonymous, group-bot (registered\naccounts belonging to the bot group), name-bot (registered accounts not belonging to\nthe bot group but having bot-like names) or user (registered account not in bot group\nnor having bot-like name). If you are interested in edits regardless of their\neditor-type, use all-editor-types.\n",
+        "example": "EDITOR-TYPE"
       },
       {
         "name": "pageType",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by page-type, use one of content (edits on pages in content\nnamespaces) or non-content (edits on pages in non-content namespaces). If you are\ninterested in edits regardless of their page-type, use all-page-types.\n"
+        "description": "If you want to filter by page-type, use one of content (edits on pages in content\nnamespaces) or non-content (edits on pages in non-content namespaces). If you are\ninterested in edits regardless of their page-type, use all-page-types.\n",
+        "example": "PAGE-TYPE"
       },
       {
         "name": "year",
         "schema": "string",
         "required": true,
-        "description": "The year of the date for which to retrieve top edited-pages, in YYYY format."
+        "description": "The year of the date for which to retrieve top edited-pages, in YYYY format.",
+        "example": "YEAR"
       },
       {
         "name": "month",
         "schema": "string",
         "required": true,
-        "description": "The month of the date for which to retrieve top edited-pages, in MM format. If you want to get the top edited-pages of a whole month, the day parameter should be all-days."
+        "description": "The month of the date for which to retrieve top edited-pages, in MM format. If you want to get the top edited-pages of a whole month, the day parameter should be all-days.",
+        "example": "MONTH"
       },
       {
         "name": "day",
         "schema": "string",
         "required": true,
-        "description": "The day of the date for which to retrieve top edited-pages, in DD format, or all-days for a monthly value."
+        "description": "The day of the date for which to retrieve top edited-pages, in DD format, or all-days for a monthly value.",
+        "example": "DAY"
       }
     ],
     "responses": [
@@ -555,37 +606,43 @@ export default function WikimediaTypeScriptSdk() {
         "name": "project",
         "schema": "string",
         "required": true,
-        "description": "The name of any Wikimedia project formatted like {language code}.{project name},\nfor example en.wikipedia. You may pass en.wikipedia.org and the .org will be stripped\noff. For projects like commons without language codes, use commons.wikimedia. For\nprojects like www.mediawiki.org, you can use that full string, or just use mediawiki\nor mediawiki.org.\n"
+        "description": "The name of any Wikimedia project formatted like {language code}.{project name},\nfor example en.wikipedia. You may pass en.wikipedia.org and the .org will be stripped\noff. For projects like commons without language codes, use commons.wikimedia. For\nprojects like www.mediawiki.org, you can use that full string, or just use mediawiki\nor mediawiki.org.\n",
+        "example": "PROJECT"
       },
       {
         "name": "editorType",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by editor-type, use one of anonymous, group-bot (registered\naccounts belonging to the bot group), name-bot (registered accounts not belonging to\nthe bot group but having bot-like names) or user (registered account not in bot group\nnor having bot-like name). If you are interested in edits regardless of their\neditor-type, use all-editor-types.\n"
+        "description": "If you want to filter by editor-type, use one of anonymous, group-bot (registered\naccounts belonging to the bot group), name-bot (registered accounts not belonging to\nthe bot group but having bot-like names) or user (registered account not in bot group\nnor having bot-like name). If you are interested in edits regardless of their\neditor-type, use all-editor-types.\n",
+        "example": "EDITOR-TYPE"
       },
       {
         "name": "pageType",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by page-type, use one of content (edits on pages in content\nnamespaces) or non-content (edits on pages in non-content namespaces). If you are\ninterested in edits regardless of their page-type, use all-page-types.\n"
+        "description": "If you want to filter by page-type, use one of content (edits on pages in content\nnamespaces) or non-content (edits on pages in non-content namespaces). If you are\ninterested in edits regardless of their page-type, use all-page-types.\n",
+        "example": "PAGE-TYPE"
       },
       {
         "name": "year",
         "schema": "string",
         "required": true,
-        "description": "The year of the date for which to retrieve top edited-pages, in YYYY format."
+        "description": "The year of the date for which to retrieve top edited-pages, in YYYY format.",
+        "example": "YEAR"
       },
       {
         "name": "month",
         "schema": "string",
         "required": true,
-        "description": "The month of the date for which to retrieve top edited-pages, in MM format. If you want to get the top edited-pages of a whole month, the day parameter should be all-days."
+        "description": "The month of the date for which to retrieve top edited-pages, in MM format. If you want to get the top edited-pages of a whole month, the day parameter should be all-days.",
+        "example": "MONTH"
       },
       {
         "name": "day",
         "schema": "string",
         "required": true,
-        "description": "The day of the date for which to retrieve top edited-pages, in DD format, or all-days for a monthly value."
+        "description": "The day of the date for which to retrieve top edited-pages, in DD format, or all-days for a monthly value.",
+        "example": "DAY"
       }
     ],
     "responses": [
@@ -611,37 +668,43 @@ export default function WikimediaTypeScriptSdk() {
         "name": "project",
         "schema": "string",
         "required": true,
-        "description": "The name of any Wikimedia project formatted like {language code}.{project name},\nfor example en.wikipedia. You may pass en.wikipedia.org and the .org will be stripped\noff. For projects like commons without language codes, use commons.wikimedia. For\nprojects like www.mediawiki.org, you can use that full string, or just use mediawiki\nor mediawiki.org.\n"
+        "description": "The name of any Wikimedia project formatted like {language code}.{project name},\nfor example en.wikipedia. You may pass en.wikipedia.org and the .org will be stripped\noff. For projects like commons without language codes, use commons.wikimedia. For\nprojects like www.mediawiki.org, you can use that full string, or just use mediawiki\nor mediawiki.org.\n",
+        "example": "PROJECT"
       },
       {
         "name": "editorType",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by editor-type, use one of anonymous, group-bot (registered\naccounts belonging to the bot group), name-bot (registered accounts not belonging to\nthe bot group but having bot-like names) or user (registered account not in bot group\nnor having bot-like name). If you are interested in edits regardless of their\neditor-type, use all-editor-types.\n"
+        "description": "If you want to filter by editor-type, use one of anonymous, group-bot (registered\naccounts belonging to the bot group), name-bot (registered accounts not belonging to\nthe bot group but having bot-like names) or user (registered account not in bot group\nnor having bot-like name). If you are interested in edits regardless of their\neditor-type, use all-editor-types.\n",
+        "example": "EDITOR-TYPE"
       },
       {
         "name": "pageType",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by page-type, use one of content (edits on pages in content\nnamespaces) or non-content (edits on pages in non-content namespaces). If you are\ninterested in edits regardless of their page-type, use all-page-types.\n"
+        "description": "If you want to filter by page-type, use one of content (edits on pages in content\nnamespaces) or non-content (edits on pages in non-content namespaces). If you are\ninterested in edits regardless of their page-type, use all-page-types.\n",
+        "example": "PAGE-TYPE"
       },
       {
         "name": "year",
         "schema": "string",
         "required": true,
-        "description": "The year of the date for which to retrieve top edited-pages, in YYYY format."
+        "description": "The year of the date for which to retrieve top edited-pages, in YYYY format.",
+        "example": "YEAR"
       },
       {
         "name": "month",
         "schema": "string",
         "required": true,
-        "description": "The month of the date for which to retrieve top edited-pages, in MM format. If you want to get the top edited-pages of a whole month, the day parameter should be all-days."
+        "description": "The month of the date for which to retrieve top edited-pages, in MM format. If you want to get the top edited-pages of a whole month, the day parameter should be all-days.",
+        "example": "MONTH"
       },
       {
         "name": "day",
         "schema": "string",
         "required": true,
-        "description": "The day of the date for which to retrieve top edited-pages, in DD format, or all-days for a monthly value."
+        "description": "The day of the date for which to retrieve top edited-pages, in DD format, or all-days for a monthly value.",
+        "example": "DAY"
       }
     ],
     "responses": [
@@ -667,43 +730,50 @@ export default function WikimediaTypeScriptSdk() {
         "name": "project",
         "schema": "string",
         "required": true,
-        "description": "The name of any Wikimedia project formatted like {language code}.{project name},\nfor example en.wikipedia. You may pass en.wikipedia.org and the .org will be stripped\noff.  For projects like commons without language codes, use commons.wikimedia.\nFor projects like www.mediawiki.org, you can use that full string, or just use\nmediawiki or mediawiki.org.\n"
+        "description": "The name of any Wikimedia project formatted like {language code}.{project name},\nfor example en.wikipedia. You may pass en.wikipedia.org and the .org will be stripped\noff.  For projects like commons without language codes, use commons.wikimedia.\nFor projects like www.mediawiki.org, you can use that full string, or just use\nmediawiki or mediawiki.org.\n",
+        "example": "PROJECT"
       },
       {
         "name": "editorType",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by editor-type, use one of anonymous, group-bot (registered\naccounts belonging to the bot group), name-bot (registered accounts not belonging\nto the bot group but having bot-like names) or user (registered account not in bot\ngroup nor having bot-like name). If you are interested in edits regardless\nof their editor-type, use all-editor-types.\n"
+        "description": "If you want to filter by editor-type, use one of anonymous, group-bot (registered\naccounts belonging to the bot group), name-bot (registered accounts not belonging\nto the bot group but having bot-like names) or user (registered account not in bot\ngroup nor having bot-like name). If you are interested in edits regardless\nof their editor-type, use all-editor-types.\n",
+        "example": "EDITOR-TYPE"
       },
       {
         "name": "pageType",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by page-type, use one of content (edits made in content\nnamespaces) or non-content (edits made in non-content namespaces). If you are\ninterested in editors regardless of their page-type, use all-page-types.\n"
+        "description": "If you want to filter by page-type, use one of content (edits made in content\nnamespaces) or non-content (edits made in non-content namespaces). If you are\ninterested in editors regardless of their page-type, use all-page-types.\n",
+        "example": "PAGE-TYPE"
       },
       {
         "name": "activityLevel",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by activity-level, use one of 1..4-edits, 5..24-edits,\n25..99-edits or 100..-edits. If you are interested in editors regardless\nof their activity-level, use all-activity-levels.\n"
+        "description": "If you want to filter by activity-level, use one of 1..4-edits, 5..24-edits,\n25..99-edits or 100..-edits. If you are interested in editors regardless\nof their activity-level, use all-activity-levels.\n",
+        "example": "ACTIVITY-LEVEL"
       },
       {
         "name": "granularity",
         "schema": "string",
         "required": true,
-        "description": "The time unit for the response data. As of today, supported values are\ndaily and monthly.\n"
+        "description": "The time unit for the response data. As of today, supported values are\ndaily and monthly.\n",
+        "example": "GRANULARITY"
       },
       {
         "name": "start",
         "schema": "string",
         "required": true,
-        "description": "The date of the first day to include, in YYYYMMDD format"
+        "description": "The date of the first day to include, in YYYYMMDD format",
+        "example": "START"
       },
       {
         "name": "end",
         "schema": "string",
         "required": true,
-        "description": "The date of the last day to include, in YYYYMMDD format"
+        "description": "The date of the last day to include, in YYYYMMDD format",
+        "example": "END"
       }
     ],
     "responses": [
@@ -729,37 +799,43 @@ export default function WikimediaTypeScriptSdk() {
         "name": "project",
         "schema": "string",
         "required": true,
-        "description": "The name of any Wikimedia project formatted like {language code}.{project name},\nfor example en.wikipedia. You may pass en.wikipedia.org and the .org will be stripped\noff. For projects like commons without language codes, use commons.wikimedia. For\nprojects like www.mediawiki.org, you can use that full string, or just use mediawiki\nor mediawiki.org.\n"
+        "description": "The name of any Wikimedia project formatted like {language code}.{project name},\nfor example en.wikipedia. You may pass en.wikipedia.org and the .org will be stripped\noff. For projects like commons without language codes, use commons.wikimedia. For\nprojects like www.mediawiki.org, you can use that full string, or just use mediawiki\nor mediawiki.org.\n",
+        "example": "PROJECT"
       },
       {
         "name": "editorType",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by editor-type, use one of anonymous, group-bot (registered\naccounts belonging to the bot group), name-bot (registered accounts not belonging to\nthe bot group but having bot-like names) or user (registered account not in bot group\nnor having bot-like name). If you are interested in edits regardless of their\neditor-type, use all-editor-types.\n"
+        "description": "If you want to filter by editor-type, use one of anonymous, group-bot (registered\naccounts belonging to the bot group), name-bot (registered accounts not belonging to\nthe bot group but having bot-like names) or user (registered account not in bot group\nnor having bot-like name). If you are interested in edits regardless of their\neditor-type, use all-editor-types.\n",
+        "example": "EDITOR-TYPE"
       },
       {
         "name": "pageType",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by page-type, use one of content (edits on pages in content\nnamespaces) or non-content (edits on pages in non-content namespaces). If you are\ninterested in edits regardless of their page-type, use all-page-types.\n"
+        "description": "If you want to filter by page-type, use one of content (edits on pages in content\nnamespaces) or non-content (edits on pages in non-content namespaces). If you are\ninterested in edits regardless of their page-type, use all-page-types.\n",
+        "example": "PAGE-TYPE"
       },
       {
         "name": "year",
         "schema": "string",
         "required": true,
-        "description": "The year of the date for which to retrieve top editors, in YYYY format."
+        "description": "The year of the date for which to retrieve top editors, in YYYY format.",
+        "example": "YEAR"
       },
       {
         "name": "month",
         "schema": "string",
         "required": true,
-        "description": "The month of the date for which to retrieve top editors, in MM format. If you want to get the top editors of a whole month, the day parameter should be all-days."
+        "description": "The month of the date for which to retrieve top editors, in MM format. If you want to get the top editors of a whole month, the day parameter should be all-days.",
+        "example": "MONTH"
       },
       {
         "name": "day",
         "schema": "string",
         "required": true,
-        "description": "The day of the date for which to retrieve top editors, in DD format, or all-days for a monthly value."
+        "description": "The day of the date for which to retrieve top editors, in DD format, or all-days for a monthly value.",
+        "example": "DAY"
       }
     ],
     "responses": [
@@ -785,37 +861,43 @@ export default function WikimediaTypeScriptSdk() {
         "name": "project",
         "schema": "string",
         "required": true,
-        "description": "The name of any Wikimedia project formatted like {language code}.{project name},\nfor example en.wikipedia. You may pass en.wikipedia.org and the .org will be stripped\noff. For projects like commons without language codes, use commons.wikimedia. For\nprojects like www.mediawiki.org, you can use that full string, or just use mediawiki\nor mediawiki.org.\n"
+        "description": "The name of any Wikimedia project formatted like {language code}.{project name},\nfor example en.wikipedia. You may pass en.wikipedia.org and the .org will be stripped\noff. For projects like commons without language codes, use commons.wikimedia. For\nprojects like www.mediawiki.org, you can use that full string, or just use mediawiki\nor mediawiki.org.\n",
+        "example": "PROJECT"
       },
       {
         "name": "editorType",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by editor-type, use one of anonymous, group-bot (registered\naccounts belonging to the bot group), name-bot (registered accounts not belonging to\nthe bot group but having bot-like names) or user (registered account not in bot group\nnor having bot-like name). If you are interested in edits regardless of their\neditor-type, use all-editor-types.\n"
+        "description": "If you want to filter by editor-type, use one of anonymous, group-bot (registered\naccounts belonging to the bot group), name-bot (registered accounts not belonging to\nthe bot group but having bot-like names) or user (registered account not in bot group\nnor having bot-like name). If you are interested in edits regardless of their\neditor-type, use all-editor-types.\n",
+        "example": "EDITOR-TYPE"
       },
       {
         "name": "pageType",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by page-type, use one of content (edits on pages in content\nnamespaces) or non-content (edits on pages in non-content namespaces). If you are\ninterested in edits regardless of their page-type, use all-page-types.\n"
+        "description": "If you want to filter by page-type, use one of content (edits on pages in content\nnamespaces) or non-content (edits on pages in non-content namespaces). If you are\ninterested in edits regardless of their page-type, use all-page-types.\n",
+        "example": "PAGE-TYPE"
       },
       {
         "name": "year",
         "schema": "string",
         "required": true,
-        "description": "The year of the date for which to retrieve top editors, in YYYY format."
+        "description": "The year of the date for which to retrieve top editors, in YYYY format.",
+        "example": "YEAR"
       },
       {
         "name": "month",
         "schema": "string",
         "required": true,
-        "description": "The month of the date for which to retrieve top editors, in MM format. If you want to get the top editors of a whole month, the day parameter should be all-days."
+        "description": "The month of the date for which to retrieve top editors, in MM format. If you want to get the top editors of a whole month, the day parameter should be all-days.",
+        "example": "MONTH"
       },
       {
         "name": "day",
         "schema": "string",
         "required": true,
-        "description": "The day of the date for which to retrieve top editors, in DD format, or all-days for a monthly value."
+        "description": "The day of the date for which to retrieve top editors, in DD format, or all-days for a monthly value.",
+        "example": "DAY"
       }
     ],
     "responses": [
@@ -841,37 +923,43 @@ export default function WikimediaTypeScriptSdk() {
         "name": "project",
         "schema": "string",
         "required": true,
-        "description": "The name of any Wikimedia project formatted like {language code}.{project name},\nfor example en.wikipedia. You may pass en.wikipedia.org and the .org will be stripped\noff. For projects like commons without language codes, use commons.wikimedia. For\nprojects like www.mediawiki.org, you can use that full string, or just use mediawiki\nor mediawiki.org.\n"
+        "description": "The name of any Wikimedia project formatted like {language code}.{project name},\nfor example en.wikipedia. You may pass en.wikipedia.org and the .org will be stripped\noff. For projects like commons without language codes, use commons.wikimedia. For\nprojects like www.mediawiki.org, you can use that full string, or just use mediawiki\nor mediawiki.org.\n",
+        "example": "PROJECT"
       },
       {
         "name": "editorType",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by editor-type, use one of anonymous, group-bot (registered\naccounts belonging to the bot group), name-bot (registered accounts not belonging to\nthe bot group but having bot-like names) or user (registered account not in bot group\nnor having bot-like name). If you are interested in edits regardless of their\neditor-type, use all-editor-types.\n"
+        "description": "If you want to filter by editor-type, use one of anonymous, group-bot (registered\naccounts belonging to the bot group), name-bot (registered accounts not belonging to\nthe bot group but having bot-like names) or user (registered account not in bot group\nnor having bot-like name). If you are interested in edits regardless of their\neditor-type, use all-editor-types.\n",
+        "example": "EDITOR-TYPE"
       },
       {
         "name": "pageType",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by page-type, use one of content (edits on pages in content\nnamespaces) or non-content (edits on pages in non-content namespaces). If you are\ninterested in edits regardless of their page-type, use all-page-types.\n"
+        "description": "If you want to filter by page-type, use one of content (edits on pages in content\nnamespaces) or non-content (edits on pages in non-content namespaces). If you are\ninterested in edits regardless of their page-type, use all-page-types.\n",
+        "example": "PAGE-TYPE"
       },
       {
         "name": "year",
         "schema": "string",
         "required": true,
-        "description": "The year of the date for which to retrieve top editors, in YYYY format."
+        "description": "The year of the date for which to retrieve top editors, in YYYY format.",
+        "example": "YEAR"
       },
       {
         "name": "month",
         "schema": "string",
         "required": true,
-        "description": "The month of the date for which to retrieve top editors, in MM format. If you want to get the top editors of a whole month, the day parameter should be all-days."
+        "description": "The month of the date for which to retrieve top editors, in MM format. If you want to get the top editors of a whole month, the day parameter should be all-days.",
+        "example": "MONTH"
       },
       {
         "name": "day",
         "schema": "string",
         "required": true,
-        "description": "The day of the date for which to retrieve top editors, in DD format, or all-days for a monthly value."
+        "description": "The day of the date for which to retrieve top editors, in DD format, or all-days for a monthly value.",
+        "example": "DAY"
       }
     ],
     "responses": [
@@ -897,37 +985,43 @@ export default function WikimediaTypeScriptSdk() {
         "name": "project",
         "schema": "string",
         "required": true,
-        "description": "The name of any Wikimedia project formatted like {language code}.{project name},\nfor example en.wikipedia. You may pass en.wikipedia.org and the .org will be stripped\noff.  For projects like commons without language codes, use commons.wikimedia.\nFor projects like www.mediawiki.org, you can use that full string, or just use\nmediawiki or mediawiki.org. If you're interested in the aggregation of\nall projects, use all-projects.\n"
+        "description": "The name of any Wikimedia project formatted like {language code}.{project name},\nfor example en.wikipedia. You may pass en.wikipedia.org and the .org will be stripped\noff.  For projects like commons without language codes, use commons.wikimedia.\nFor projects like www.mediawiki.org, you can use that full string, or just use\nmediawiki or mediawiki.org. If you're interested in the aggregation of\nall projects, use all-projects.\n",
+        "example": "PROJECT"
       },
       {
         "name": "editorType",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by editor-type, use one of anonymous, group-bot (registered\naccounts belonging to the bot group), name-bot (registered accounts not belonging\nto the bot group but having bot-like names) or user (registered account not in bot\ngroup nor having bot-like name). If you are interested in edits regardless\nof their editor-type, use all-editor-types.\n"
+        "description": "If you want to filter by editor-type, use one of anonymous, group-bot (registered\naccounts belonging to the bot group), name-bot (registered accounts not belonging\nto the bot group but having bot-like names) or user (registered account not in bot\ngroup nor having bot-like name). If you are interested in edits regardless\nof their editor-type, use all-editor-types.\n",
+        "example": "EDITOR-TYPE"
       },
       {
         "name": "pageType",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by page-type, use one of content (edits on pages in content\nnamespaces) or non-content (edits on pages in non-content namespaces). If you are\ninterested in edits regardless of their page-type, use all-page-types.\n"
+        "description": "If you want to filter by page-type, use one of content (edits on pages in content\nnamespaces) or non-content (edits on pages in non-content namespaces). If you are\ninterested in edits regardless of their page-type, use all-page-types.\n",
+        "example": "PAGE-TYPE"
       },
       {
         "name": "granularity",
         "schema": "string",
         "required": true,
-        "description": "The time unit for the response data. As of today, supported values are\ndaily and monthly.\n"
+        "description": "The time unit for the response data. As of today, supported values are\ndaily and monthly.\n",
+        "example": "GRANULARITY"
       },
       {
         "name": "start",
         "schema": "string",
         "required": true,
-        "description": "The date of the first day to include, in YYYYMMDD format"
+        "description": "The date of the first day to include, in YYYYMMDD format",
+        "example": "START"
       },
       {
         "name": "end",
         "schema": "string",
         "required": true,
-        "description": "The date of the last day to include, in YYYYMMDD format"
+        "description": "The date of the last day to include, in YYYYMMDD format",
+        "example": "END"
       }
     ],
     "responses": [
@@ -953,37 +1047,43 @@ export default function WikimediaTypeScriptSdk() {
         "name": "project",
         "schema": "string",
         "required": true,
-        "description": "The name of any Wikimedia project formatted like {language code}.{project name},\nfor example en.wikipedia. You may pass en.wikipedia.org and the .org will be stripped\noff. For projects like commons without language codes, use commons.wikimedia. For\nprojects like www.mediawiki.org, you can use that full string, or just use mediawiki\nor mediawiki.org.\n"
+        "description": "The name of any Wikimedia project formatted like {language code}.{project name},\nfor example en.wikipedia. You may pass en.wikipedia.org and the .org will be stripped\noff. For projects like commons without language codes, use commons.wikimedia. For\nprojects like www.mediawiki.org, you can use that full string, or just use mediawiki\nor mediawiki.org.\n",
+        "example": "PROJECT"
       },
       {
         "name": "pageTitle",
         "schema": "string",
         "required": true,
-        "description": "The page-title to request edits for. It should be prefixed with canonical namespace.\nSpaces will be converted to underscores.\n"
+        "description": "The page-title to request edits for. It should be prefixed with canonical namespace.\nSpaces will be converted to underscores.\n",
+        "example": "PAGE-TITLE"
       },
       {
         "name": "editorType",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by editor-type, use one of anonymous, group-bot (registered\naccounts belonging to the bot group), name-bot (registered accounts not belonging to\nthe bot group but having bot-like names) or user (registered account not in bot group\nnor having bot-like name). If you are interested in edits regardless of their\neditor-type, use all-editor-types.\n"
+        "description": "If you want to filter by editor-type, use one of anonymous, group-bot (registered\naccounts belonging to the bot group), name-bot (registered accounts not belonging to\nthe bot group but having bot-like names) or user (registered account not in bot group\nnor having bot-like name). If you are interested in edits regardless of their\neditor-type, use all-editor-types.\n",
+        "example": "EDITOR-TYPE"
       },
       {
         "name": "granularity",
         "schema": "string",
         "required": true,
-        "description": "Time unit for the response data. As of today, supported values are daily and monthly\n"
+        "description": "Time unit for the response data. As of today, supported values are daily and monthly\n",
+        "example": "GRANULARITY"
       },
       {
         "name": "start",
         "schema": "string",
         "required": true,
-        "description": "The date of the first day to include, in YYYYMMDD format"
+        "description": "The date of the first day to include, in YYYYMMDD format",
+        "example": "START"
       },
       {
         "name": "end",
         "schema": "string",
         "required": true,
-        "description": "The date of the last day to include, in YYYYMMDD format"
+        "description": "The date of the last day to include, in YYYYMMDD format",
+        "example": "END"
       }
     ],
     "responses": [
@@ -1009,31 +1109,36 @@ export default function WikimediaTypeScriptSdk() {
         "name": "project",
         "schema": "string",
         "required": true,
-        "description": "The name of any Wikimedia project formatted like {language code}.{project name},\nfor example en.wikipedia. You may pass en.wikipedia.org and the .org will be stripped\noff. For projects like commons without language codes, use commons.wikimedia.\n"
+        "description": "The name of any Wikimedia project formatted like {language code}.{project name},\nfor example en.wikipedia. You may pass en.wikipedia.org and the .org will be stripped\noff. For projects like commons without language codes, use commons.wikimedia.\n",
+        "example": "PROJECT"
       },
       {
         "name": "accessSite",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by access site, use one of desktop-site or mobile-site. If you are interested in pagecounts regardless of access site use all-sites."
+        "description": "If you want to filter by access site, use one of desktop-site or mobile-site. If you are interested in pagecounts regardless of access site use all-sites.",
+        "example": "ACCESS-SITE"
       },
       {
         "name": "granularity",
         "schema": "string",
         "required": true,
-        "description": "The time unit for the response data. As of today, the supported granularities for\nthis endpoint are hourly, daily and monthly.\n"
+        "description": "The time unit for the response data. As of today, the supported granularities for\nthis endpoint are hourly, daily and monthly.\n",
+        "example": "GRANULARITY"
       },
       {
         "name": "start",
         "schema": "string",
         "required": true,
-        "description": "The timestamp of the first hour/day/month to include, in YYYYMMDDHH format."
+        "description": "The timestamp of the first hour/day/month to include, in YYYYMMDDHH format.",
+        "example": "START"
       },
       {
         "name": "end",
         "schema": "string",
         "required": true,
-        "description": "The timestamp of the last hour/day/month to include, in YYYYMMDDHH format.\nIn hourly and daily granularities this value is inclusive, in the monthly granularity\nthis value is exclusive.\n"
+        "description": "The timestamp of the last hour/day/month to include, in YYYYMMDDHH format.\nIn hourly and daily granularities this value is inclusive, in the monthly granularity\nthis value is exclusive.\n",
+        "example": "END"
       }
     ],
     "responses": [
@@ -1059,37 +1164,43 @@ export default function WikimediaTypeScriptSdk() {
         "name": "project",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by project, use the domain of any Wikimedia project,\nfor example 'en.wikipedia.org', 'www.mediawiki.org' or 'commons.wikimedia.org'.\nIf you are interested in all pageviews regardless of project, use all-projects.\n"
+        "description": "If you want to filter by project, use the domain of any Wikimedia project,\nfor example 'en.wikipedia.org', 'www.mediawiki.org' or 'commons.wikimedia.org'.\nIf you are interested in all pageviews regardless of project, use all-projects.\n",
+        "example": "PROJECT"
       },
       {
         "name": "access",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by access method, use one of desktop, mobile-app or mobile-web.\nIf you are interested in pageviews regardless of access method, use all-access.\n"
+        "description": "If you want to filter by access method, use one of desktop, mobile-app or mobile-web.\nIf you are interested in pageviews regardless of access method, use all-access.\n",
+        "example": "ACCESS"
       },
       {
         "name": "agent",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by agent type, use one of user or spider. If you are interested\nin pageviews regardless of agent type, use all-agents.\n"
+        "description": "If you want to filter by agent type, use one of user or spider. If you are interested\nin pageviews regardless of agent type, use all-agents.\n",
+        "example": "AGENT"
       },
       {
         "name": "granularity",
         "schema": "string",
         "required": true,
-        "description": "The time unit for the response data. As of today, the supported granularities for this\nendpoint are hourly, daily, and monthly.\n"
+        "description": "The time unit for the response data. As of today, the supported granularities for this\nendpoint are hourly, daily, and monthly.\n",
+        "example": "GRANULARITY"
       },
       {
         "name": "start",
         "schema": "string",
         "required": true,
-        "description": "The timestamp of the first hour/day/month to include, in YYYYMMDDHH format"
+        "description": "The timestamp of the first hour/day/month to include, in YYYYMMDDHH format",
+        "example": "START"
       },
       {
         "name": "end",
         "schema": "string",
         "required": true,
-        "description": "The timestamp of the last hour/day/month to include, in YYYYMMDDHH format"
+        "description": "The timestamp of the last hour/day/month to include, in YYYYMMDDHH format",
+        "example": "END"
       }
     ],
     "responses": [
@@ -1115,43 +1226,50 @@ export default function WikimediaTypeScriptSdk() {
         "name": "project",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by project, use the domain of any Wikimedia project,\nfor example 'en.wikipedia.org', 'www.mediawiki.org' or 'commons.wikimedia.org'.\n"
+        "description": "If you want to filter by project, use the domain of any Wikimedia project,\nfor example 'en.wikipedia.org', 'www.mediawiki.org' or 'commons.wikimedia.org'.\n",
+        "example": "PROJECT"
       },
       {
         "name": "access",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by access method, use one of desktop, mobile-app\nor mobile-web. If you are interested in pageviews regardless of access method,\nuse all-access.\n"
+        "description": "If you want to filter by access method, use one of desktop, mobile-app\nor mobile-web. If you are interested in pageviews regardless of access method,\nuse all-access.\n",
+        "example": "ACCESS"
       },
       {
         "name": "agent",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by agent type, use one of user, bot or spider. If you are\ninterested in pageviews regardless of agent type, use all-agents.\n"
+        "description": "If you want to filter by agent type, use one of user, bot or spider. If you are\ninterested in pageviews regardless of agent type, use all-agents.\n",
+        "example": "AGENT"
       },
       {
         "name": "article",
         "schema": "string",
         "required": true,
-        "description": "'The title of any article in the specified project. Any spaces should be replaced\nwith underscores. It also should be URI-encoded, so that non-URI-safe characters like\n%, / or ? are accepted. Example: Are_You_the_One%3F'.\n"
+        "description": "'The title of any article in the specified project. Any spaces should be replaced\nwith underscores. It also should be URI-encoded, so that non-URI-safe characters like\n%, / or ? are accepted. Example: Are_You_the_One%3F'.\n",
+        "example": "ARTICLE"
       },
       {
         "name": "granularity",
         "schema": "string",
         "required": true,
-        "description": "The time unit for the response data. As of today, the only supported granularity for\nthis endpoint is daily and monthly.\n"
+        "description": "The time unit for the response data. As of today, the only supported granularity for\nthis endpoint is daily and monthly.\n",
+        "example": "GRANULARITY"
       },
       {
         "name": "start",
         "schema": "string",
         "required": true,
-        "description": "The date of the first day to include, in YYYYMMDD or YYYYMMDDHH format"
+        "description": "The date of the first day to include, in YYYYMMDD or YYYYMMDDHH format",
+        "example": "START"
       },
       {
         "name": "end",
         "schema": "string",
         "required": true,
-        "description": "The date of the last day to include, in YYYYMMDD or YYYYMMDDHH format"
+        "description": "The date of the last day to include, in YYYYMMDD or YYYYMMDDHH format",
+        "example": "END"
       }
     ],
     "responses": [
@@ -1177,25 +1295,29 @@ export default function WikimediaTypeScriptSdk() {
         "name": "project",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by project, use the domain of any Wikimedia project,\nfor example 'en.wikipedia.org', 'www.mediawiki.org' or 'commons.wikimedia.org'.\n"
+        "description": "If you want to filter by project, use the domain of any Wikimedia project,\nfor example 'en.wikipedia.org', 'www.mediawiki.org' or 'commons.wikimedia.org'.\n",
+        "example": "PROJECT"
       },
       {
         "name": "access",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by access method, use one of desktop, mobile-app or mobile-web.\nIf you are interested in pageviews regardless of access method, use all-access.\n"
+        "description": "If you want to filter by access method, use one of desktop, mobile-app or mobile-web.\nIf you are interested in pageviews regardless of access method, use all-access.\n",
+        "example": "ACCESS"
       },
       {
         "name": "year",
         "schema": "string",
         "required": true,
-        "description": "The year of the date for which to retrieve top countries, in YYYY format."
+        "description": "The year of the date for which to retrieve top countries, in YYYY format.",
+        "example": "YEAR"
       },
       {
         "name": "month",
         "schema": "string",
         "required": true,
-        "description": "The month of the date for which to retrieve top countries, in MM format.\n"
+        "description": "The month of the date for which to retrieve top countries, in MM format.\n",
+        "example": "MONTH"
       }
     ],
     "responses": [
@@ -1221,31 +1343,36 @@ export default function WikimediaTypeScriptSdk() {
         "name": "project",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by project, use the domain of any Wikimedia project,\nfor example 'en.wikipedia.org', 'www.mediawiki.org' or 'commons.wikimedia.org'.\n"
+        "description": "If you want to filter by project, use the domain of any Wikimedia project,\nfor example 'en.wikipedia.org', 'www.mediawiki.org' or 'commons.wikimedia.org'.\n",
+        "example": "PROJECT"
       },
       {
         "name": "access",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by access method, use one of desktop, mobile-app or mobile-web.\nIf you are interested in pageviews regardless of access method, use all-access.\n"
+        "description": "If you want to filter by access method, use one of desktop, mobile-app or mobile-web.\nIf you are interested in pageviews regardless of access method, use all-access.\n",
+        "example": "ACCESS"
       },
       {
         "name": "year",
         "schema": "string",
         "required": true,
-        "description": "The year of the date for which to retrieve top articles, in YYYY format."
+        "description": "The year of the date for which to retrieve top articles, in YYYY format.",
+        "example": "YEAR"
       },
       {
         "name": "month",
         "schema": "string",
         "required": true,
-        "description": "The month of the date for which to retrieve top articles, in MM format. If you want\nto get the top articles of a whole month, the day parameter should be all-days.\n"
+        "description": "The month of the date for which to retrieve top articles, in MM format. If you want\nto get the top articles of a whole month, the day parameter should be all-days.\n",
+        "example": "MONTH"
       },
       {
         "name": "day",
         "schema": "string",
         "required": true,
-        "description": "The day of the date for which to retrieve top articles, in DD format."
+        "description": "The day of the date for which to retrieve top articles, in DD format.",
+        "example": "DAY"
       }
     ],
     "responses": [
@@ -1271,25 +1398,29 @@ export default function WikimediaTypeScriptSdk() {
         "name": "project",
         "schema": "string",
         "required": true,
-        "description": "The name of any Wikimedia project formatted like {language code}.{project name},\nfor example en.wikipedia. You may pass en.wikipedia.org and the .org will be stripped\noff.  For projects like commons without language codes, use commons.wikimedia.\nFor projects like www.mediawiki.org, you can use that full string, or just use\nmediawiki or mediawiki.org. If you're interested in the aggregation of\nall projects, use all.\n"
+        "description": "The name of any Wikimedia project formatted like {language code}.{project name},\nfor example en.wikipedia. You may pass en.wikipedia.org and the .org will be stripped\noff.  For projects like commons without language codes, use commons.wikimedia.\nFor projects like www.mediawiki.org, you can use that full string, or just use\nmediawiki or mediawiki.org. If you're interested in the aggregation of\nall projects, use all.\n",
+        "example": "PROJECT"
       },
       {
         "name": "granularity",
         "schema": "string",
         "required": true,
-        "description": "The time unit for the response data. As of today, supported values are\ndaily and monthly.\n"
+        "description": "The time unit for the response data. As of today, supported values are\ndaily and monthly.\n",
+        "example": "GRANULARITY"
       },
       {
         "name": "start",
         "schema": "string",
         "required": true,
-        "description": "The date of the first day to include, in YYYYMMDD format"
+        "description": "The date of the first day to include, in YYYYMMDD format",
+        "example": "START"
       },
       {
         "name": "end",
         "schema": "string",
         "required": true,
-        "description": "The date of the last day to include, in YYYYMMDD format"
+        "description": "The date of the last day to include, in YYYYMMDD format",
+        "example": "END"
       }
     ],
     "responses": [
@@ -1315,31 +1446,36 @@ export default function WikimediaTypeScriptSdk() {
         "name": "project",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by project, use the domain of any Wikimedia project,\nfor example 'en.wikipedia.org', 'www.mediawiki.org' or 'commons.wikimedia.org'.\n"
+        "description": "If you want to filter by project, use the domain of any Wikimedia project,\nfor example 'en.wikipedia.org', 'www.mediawiki.org' or 'commons.wikimedia.org'.\n",
+        "example": "PROJECT"
       },
       {
         "name": "accessSite",
         "schema": "string",
         "required": true,
-        "description": "If you want to filter by accessed site, use one of desktop-site or mobile-site.\nIf you are interested in unique devices regardless of accessed site, use or all-sites.\n"
+        "description": "If you want to filter by accessed site, use one of desktop-site or mobile-site.\nIf you are interested in unique devices regardless of accessed site, use or all-sites.\n",
+        "example": "ACCESS-SITE"
       },
       {
         "name": "granularity",
         "schema": "string",
         "required": true,
-        "description": "The time unit for the response data. As of today, the supported granularities\nfor this endpoint are daily and monthly.\n"
+        "description": "The time unit for the response data. As of today, the supported granularities\nfor this endpoint are daily and monthly.\n",
+        "example": "GRANULARITY"
       },
       {
         "name": "start",
         "schema": "string",
         "required": true,
-        "description": "The timestamp of the first day/month to include, in YYYYMMDD format"
+        "description": "The timestamp of the first day/month to include, in YYYYMMDD format",
+        "example": "START"
       },
       {
         "name": "end",
         "schema": "string",
         "required": true,
-        "description": "The timestamp of the last day/month to include, in YYYYMMDD format"
+        "description": "The timestamp of the last day/month to include, in YYYYMMDD format",
+        "example": "END"
       }
     ],
     "responses": [
@@ -1365,19 +1501,22 @@ export default function WikimediaTypeScriptSdk() {
         "name": "fromLang",
         "schema": "string",
         "required": true,
-        "description": "The source language code"
+        "description": "The source language code",
+        "example": "FROM_LANG"
       },
       {
         "name": "toLang",
         "schema": "string",
         "required": true,
-        "description": "The target language code"
+        "description": "The target language code",
+        "example": "TO_LANG"
       },
       {
         "name": "html",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "HTML"
       }
     ],
     "responses": [
@@ -1403,25 +1542,29 @@ export default function WikimediaTypeScriptSdk() {
         "name": "fromLang",
         "schema": "string",
         "required": true,
-        "description": "The source language code"
+        "description": "The source language code",
+        "example": "FROM_LANG"
       },
       {
         "name": "toLang",
         "schema": "string",
         "required": true,
-        "description": "The target language code"
+        "description": "The target language code",
+        "example": "TO_LANG"
       },
       {
         "name": "provider",
         "schema": "string",
         "required": true,
-        "description": "The machine translation provider id"
+        "description": "The machine translation provider id",
+        "example": "PROVIDER"
       },
       {
         "name": "html",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "HTML"
       }
     ],
     "responses": [
@@ -1447,7 +1590,8 @@ export default function WikimediaTypeScriptSdk() {
         "name": "tool",
         "schema": "string",
         "required": true,
-        "description": "The tool category to list tools and language pairs for"
+        "description": "The tool category to list tools and language pairs for",
+        "example": "TOOL"
       }
     ],
     "responses": [
@@ -1473,13 +1617,15 @@ export default function WikimediaTypeScriptSdk() {
         "name": "tool",
         "schema": "string",
         "required": true,
-        "description": "The tool category to list tools and language pairs for"
+        "description": "The tool category to list tools and language pairs for",
+        "example": "TOOL"
       },
       {
         "name": "from",
         "schema": "string",
         "required": true,
-        "description": "The source language code"
+        "description": "The source language code",
+        "example": "FROM"
       }
     ],
     "responses": [
@@ -1505,19 +1651,22 @@ export default function WikimediaTypeScriptSdk() {
         "name": "tool",
         "schema": "string",
         "required": true,
-        "description": "The tool category to list tools and language pairs for"
+        "description": "The tool category to list tools and language pairs for",
+        "example": "TOOL"
       },
       {
         "name": "from",
         "schema": "string",
         "required": true,
-        "description": "The source language code"
+        "description": "The source language code",
+        "example": "FROM"
       },
       {
         "name": "to",
         "schema": "string",
         "required": true,
-        "description": "The target language code"
+        "description": "The target language code",
+        "example": "TO"
       }
     ],
     "responses": [
@@ -1543,19 +1692,22 @@ export default function WikimediaTypeScriptSdk() {
         "name": "fromLang",
         "schema": "string",
         "required": true,
-        "description": "The source language code"
+        "description": "The source language code",
+        "example": "FROM_LANG"
       },
       {
         "name": "toLang",
         "schema": "string",
         "required": true,
-        "description": "The target language code"
+        "description": "The target language code",
+        "example": "TO_LANG"
       },
       {
         "name": "word",
         "schema": "string",
         "required": true,
-        "description": "The word to lookup"
+        "description": "The word to lookup",
+        "example": "WORD"
       }
     ],
     "responses": [
@@ -1581,25 +1733,29 @@ export default function WikimediaTypeScriptSdk() {
         "name": "fromLang",
         "schema": "string",
         "required": true,
-        "description": "The source language code"
+        "description": "The source language code",
+        "example": "FROM_LANG"
       },
       {
         "name": "toLang",
         "schema": "string",
         "required": true,
-        "description": "The target language code"
+        "description": "The target language code",
+        "example": "TO_LANG"
       },
       {
         "name": "word",
         "schema": "string",
         "required": true,
-        "description": "The word to lookup"
+        "description": "The word to lookup",
+        "example": "WORD"
       },
       {
         "name": "provider",
         "schema": "string",
         "required": true,
-        "description": "The dictionary provider id"
+        "description": "The dictionary provider id",
+        "example": "PROVIDER"
       }
     ],
     "responses": [
@@ -1640,13 +1796,15 @@ export default function WikimediaTypeScriptSdk() {
         "name": "from",
         "schema": "string",
         "required": true,
-        "description": "The source language code"
+        "description": "The source language code",
+        "example": "FROM"
       },
       {
         "name": "to",
         "schema": "string",
         "required": true,
-        "description": "The target language code"
+        "description": "The target language code",
+        "example": "TO"
       }
     ],
     "responses": [

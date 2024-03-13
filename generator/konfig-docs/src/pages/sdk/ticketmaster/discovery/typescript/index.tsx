@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function TicketmasterDiscoveryTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function TicketmasterDiscoveryTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/ticketmaster/discovery/logo.png"
       clientNameCamelCase="ticketmaster"
       homepage="developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/ticketmaster/discovery/favicon.ico"
       contactUrl="http://developer.ticketmaster.com/support/contact-us/"
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/ticketmaster/discovery/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["ecommerce"]}
       methods={[
   {
     "url": "/discovery/v2/attractions",
@@ -36,73 +39,97 @@ export default function TicketmasterDiscoveryTypeScriptSdk() {
         "name": "sort",
         "schema": "string",
         "required": false,
-        "description": "Sorting order of the search result. Allowable Values : 'name,asc', 'name,desc', 'relevance,asc', 'relevance,desc'"
+        "description": "Sorting order of the search result. Allowable Values : 'name,asc', 'name,desc', 'relevance,asc', 'relevance,desc'",
+        "example": "",
+        "default": "relevance,desc"
       },
       {
         "name": "classificationName",
         "schema": "array",
         "required": false,
-        "description": "Filter attractions by classification name: name of any segment, genre, sub-genre, type, sub-type"
+        "description": "Filter attractions by classification name: name of any segment, genre, sub-genre, type, sub-type",
+        "example": "",
+        "default": ""
       },
       {
         "name": "classificationId",
         "schema": "array",
         "required": false,
-        "description": "Filter attractions by classification id: id of any segment, genre, sub-genre, type, sub-type"
+        "description": "Filter attractions by classification id: id of any segment, genre, sub-genre, type, sub-type",
+        "example": "",
+        "default": ""
       },
       {
         "name": "keyword",
         "schema": "string",
         "required": false,
-        "description": "Keyword to search on"
+        "description": "Keyword to search on",
+        "example": "",
+        "default": ""
       },
       {
         "name": "id",
         "schema": "string",
         "required": false,
-        "description": "Filter entities by its id"
+        "description": "Filter entities by its id",
+        "example": "",
+        "default": ""
       },
       {
         "name": "source",
         "schema": "string",
         "required": false,
-        "description": "Filter entities by its source name"
+        "description": "Filter entities by its source name",
+        "example": "",
+        "default": ""
       },
       {
         "name": "includeTest",
         "schema": "string",
         "required": false,
-        "description": "True if you want to have entities flag as test in the response. Only, if you only wanted test entities"
+        "description": "True if you want to have entities flag as test in the response. Only, if you only wanted test entities",
+        "example": "",
+        "default": "no"
       },
       {
         "name": "page",
         "schema": "string",
         "required": false,
-        "description": "Page number"
+        "description": "Page number",
+        "example": "",
+        "default": "0"
       },
       {
         "name": "size",
         "schema": "string",
         "required": false,
-        "description": "Page size of the response"
+        "description": "Page size of the response",
+        "example": "",
+        "default": "20"
       },
       {
         "name": "locale",
         "schema": "string",
         "required": false,
-        "description": "The locale in ISO code format. Multiple comma-separated values can be provided. When omitting the country part of the code (e.g. only 'en' or 'fr') then the first matching locale is used. When using a '*' it matches all locales. '*' can only be used at the end (e.g. 'en-us,en,*') "
+        "description": "The locale in ISO code format. Multiple comma-separated values can be provided. When omitting the country part of the code (e.g. only 'en' or 'fr') then the first matching locale is used. When using a '*' it matches all locales. '*' can only be used at the end (e.g. 'en-us,en,*') ",
+        "example": "en-us,en,fr",
+        "default": "en"
       },
       {
         "name": "includeLicensedContent",
         "schema": "string",
         "required": false,
-        "description": "Yes if you want to display licensed content"
+        "description": "Yes if you want to display licensed content",
+        "example": "",
+        "default": "no"
       },
       {
         "name": "includeSpellcheck",
         "schema": "string",
         "required": false,
-        "description": "yes, to include spell check suggestions in the response."
+        "description": "yes, to include spell check suggestions in the response.",
+        "example": "",
+        "default": "no"
       }
     ],
     "responses": [
@@ -124,19 +151,24 @@ export default function TicketmasterDiscoveryTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "ID of the attraction"
+        "description": "ID of the attraction",
+        "example": "ID"
       },
       {
         "name": "locale",
         "schema": "string",
         "required": false,
-        "description": "The locale in ISO code format. Multiple comma-separated values can be provided. When omitting the country part of the code (e.g. only 'en' or 'fr') then the first matching locale is used. When using a '*' it matches all locales. '*' can only be used at the end (e.g. 'en-us,en,*') "
+        "description": "The locale in ISO code format. Multiple comma-separated values can be provided. When omitting the country part of the code (e.g. only 'en' or 'fr') then the first matching locale is used. When using a '*' it matches all locales. '*' can only be used at the end (e.g. 'en-us,en,*') ",
+        "example": "en-us,en,fr",
+        "default": "en"
       },
       {
         "name": "includeLicensedContent",
         "schema": "string",
         "required": false,
-        "description": "True if you want to display licensed content"
+        "description": "True if you want to display licensed content",
+        "example": "",
+        "default": "no"
       }
     ],
     "responses": [
@@ -158,61 +190,81 @@ export default function TicketmasterDiscoveryTypeScriptSdk() {
         "name": "sort",
         "schema": "string",
         "required": false,
-        "description": "Sorting order of the search result"
+        "description": "Sorting order of the search result",
+        "example": "",
+        "default": "name,asc"
       },
       {
         "name": "keyword",
         "schema": "string",
         "required": false,
-        "description": "Keyword to search on"
+        "description": "Keyword to search on",
+        "example": "",
+        "default": ""
       },
       {
         "name": "id",
         "schema": "string",
         "required": false,
-        "description": "Filter entities by its id"
+        "description": "Filter entities by its id",
+        "example": "",
+        "default": ""
       },
       {
         "name": "source",
         "schema": "string",
         "required": false,
-        "description": "Filter entities by its source name"
+        "description": "Filter entities by its source name",
+        "example": "",
+        "default": ""
       },
       {
         "name": "includeTest",
         "schema": "string",
         "required": false,
-        "description": "True if you want to have entities flag as test in the response. Only, if you only wanted test entities"
+        "description": "True if you want to have entities flag as test in the response. Only, if you only wanted test entities",
+        "example": "",
+        "default": "no"
       },
       {
         "name": "page",
         "schema": "string",
         "required": false,
-        "description": "Page number"
+        "description": "Page number",
+        "example": "",
+        "default": "0"
       },
       {
         "name": "size",
         "schema": "string",
         "required": false,
-        "description": "Page size of the response"
+        "description": "Page size of the response",
+        "example": "",
+        "default": "20"
       },
       {
         "name": "locale",
         "schema": "string",
         "required": false,
-        "description": "The locale in ISO code format. Multiple comma-separated values can be provided. When omitting the country part of the code (e.g. only 'en' or 'fr') then the first matching locale is used. When using a '*' it matches all locales. '*' can only be used at the end (e.g. 'en-us,en,*') "
+        "description": "The locale in ISO code format. Multiple comma-separated values can be provided. When omitting the country part of the code (e.g. only 'en' or 'fr') then the first matching locale is used. When using a '*' it matches all locales. '*' can only be used at the end (e.g. 'en-us,en,*') ",
+        "example": "en-us,en,fr",
+        "default": "en"
       },
       {
         "name": "includeLicensedContent",
         "schema": "string",
         "required": false,
-        "description": "Yes if you want to display licensed content"
+        "description": "Yes if you want to display licensed content",
+        "example": "",
+        "default": "no"
       },
       {
         "name": "includeSpellcheck",
         "schema": "string",
         "required": false,
-        "description": "yes, to include spell check suggestions in the response."
+        "description": "yes, to include spell check suggestions in the response.",
+        "example": "",
+        "default": "no"
       }
     ],
     "responses": [
@@ -234,19 +286,24 @@ export default function TicketmasterDiscoveryTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "ID of the genre"
+        "description": "ID of the genre",
+        "example": "ID"
       },
       {
         "name": "locale",
         "schema": "string",
         "required": false,
-        "description": "The locale in ISO code format. Multiple comma-separated values can be provided. When omitting the country part of the code (e.g. only 'en' or 'fr') then the first matching locale is used. When using a '*' it matches all locales. '*' can only be used at the end (e.g. 'en-us,en,*') "
+        "description": "The locale in ISO code format. Multiple comma-separated values can be provided. When omitting the country part of the code (e.g. only 'en' or 'fr') then the first matching locale is used. When using a '*' it matches all locales. '*' can only be used at the end (e.g. 'en-us,en,*') ",
+        "example": "en-us,en,fr",
+        "default": "en"
       },
       {
         "name": "includeLicensedContent",
         "schema": "string",
         "required": false,
-        "description": "True if you want to display licensed content"
+        "description": "True if you want to display licensed content",
+        "example": "",
+        "default": "no"
       }
     ],
     "responses": [
@@ -268,19 +325,24 @@ export default function TicketmasterDiscoveryTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "ID of the segment"
+        "description": "ID of the segment",
+        "example": "ID"
       },
       {
         "name": "locale",
         "schema": "string",
         "required": false,
-        "description": "The locale in ISO code format. Multiple comma-separated values can be provided. When omitting the country part of the code (e.g. only 'en' or 'fr') then the first matching locale is used. When using a '*' it matches all locales. '*' can only be used at the end (e.g. 'en-us,en,*') "
+        "description": "The locale in ISO code format. Multiple comma-separated values can be provided. When omitting the country part of the code (e.g. only 'en' or 'fr') then the first matching locale is used. When using a '*' it matches all locales. '*' can only be used at the end (e.g. 'en-us,en,*') ",
+        "example": "en-us,en,fr",
+        "default": "en"
       },
       {
         "name": "includeLicensedContent",
         "schema": "string",
         "required": false,
-        "description": "True if you want to display licensed content"
+        "description": "True if you want to display licensed content",
+        "example": "",
+        "default": "no"
       }
     ],
     "responses": [
@@ -302,19 +364,24 @@ export default function TicketmasterDiscoveryTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "ID of the subgenre"
+        "description": "ID of the subgenre",
+        "example": "ID"
       },
       {
         "name": "locale",
         "schema": "string",
         "required": false,
-        "description": "The locale in ISO code format. Multiple comma-separated values can be provided. When omitting the country part of the code (e.g. only 'en' or 'fr') then the first matching locale is used. When using a '*' it matches all locales. '*' can only be used at the end (e.g. 'en-us,en,*') "
+        "description": "The locale in ISO code format. Multiple comma-separated values can be provided. When omitting the country part of the code (e.g. only 'en' or 'fr') then the first matching locale is used. When using a '*' it matches all locales. '*' can only be used at the end (e.g. 'en-us,en,*') ",
+        "example": "en-us,en,fr",
+        "default": "en"
       },
       {
         "name": "includeLicensedContent",
         "schema": "string",
         "required": false,
-        "description": "True if you want to display licensed content"
+        "description": "True if you want to display licensed content",
+        "example": "",
+        "default": "no"
       }
     ],
     "responses": [
@@ -336,19 +403,24 @@ export default function TicketmasterDiscoveryTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "ID of the segment, genre, or sub-genre"
+        "description": "ID of the segment, genre, or sub-genre",
+        "example": "ID"
       },
       {
         "name": "locale",
         "schema": "string",
         "required": false,
-        "description": "The locale in ISO code format. Multiple comma-separated values can be provided. When omitting the country part of the code (e.g. only 'en' or 'fr') then the first matching locale is used. When using a '*' it matches all locales. '*' can only be used at the end (e.g. 'en-us,en,*') "
+        "description": "The locale in ISO code format. Multiple comma-separated values can be provided. When omitting the country part of the code (e.g. only 'en' or 'fr') then the first matching locale is used. When using a '*' it matches all locales. '*' can only be used at the end (e.g. 'en-us,en,*') ",
+        "example": "en-us,en,fr",
+        "default": "en"
       },
       {
         "name": "includeLicensedContent",
         "schema": "string",
         "required": false,
-        "description": "True if you want to display licensed content"
+        "description": "True if you want to display licensed content",
+        "example": "",
+        "default": "no"
       }
     ],
     "responses": [
@@ -370,217 +442,289 @@ export default function TicketmasterDiscoveryTypeScriptSdk() {
         "name": "sort",
         "schema": "string",
         "required": false,
-        "description": "Sorting order of the search result. Allowable values : 'name,asc', 'name,desc', 'date,asc', 'date,desc', 'relevance,asc', 'relevance,desc', 'distance,asc', 'name,date,asc', 'name,date,desc', 'date,name,asc', 'date,name,desc','onsaleStartDate,asc', 'id,asc'"
+        "description": "Sorting order of the search result. Allowable values : 'name,asc', 'name,desc', 'date,asc', 'date,desc', 'relevance,asc', 'relevance,desc', 'distance,asc', 'name,date,asc', 'name,date,desc', 'date,name,asc', 'date,name,desc','onsaleStartDate,asc', 'id,asc'",
+        "example": "",
+        "default": "relevance,desc"
       },
       {
         "name": "startDateTime",
         "schema": "string",
         "required": false,
-        "description": "Filter events with a start date after this date"
+        "description": "Filter events with a start date after this date",
+        "example": "",
+        "default": ""
       },
       {
         "name": "endDateTime",
         "schema": "string",
         "required": false,
-        "description": "Filter events with a start date before this date"
+        "description": "Filter events with a start date before this date",
+        "example": "",
+        "default": ""
       },
       {
         "name": "onsaleStartDateTime",
         "schema": "string",
         "required": false,
-        "description": "Filter events with onsale start date after this date"
+        "description": "Filter events with onsale start date after this date",
+        "example": "",
+        "default": ""
       },
       {
         "name": "onsaleOnStartDate",
         "schema": "string",
         "required": false,
-        "description": "Filter events with onsale start date on this date"
+        "description": "Filter events with onsale start date on this date",
+        "example": "",
+        "default": ""
       },
       {
         "name": "onsaleOnAfterStartDate",
         "schema": "string",
         "required": false,
-        "description": "Filter events with onsale range within this date"
+        "description": "Filter events with onsale range within this date",
+        "example": "",
+        "default": ""
       },
       {
         "name": "onsaleEndDateTime",
         "schema": "string",
         "required": false,
-        "description": "Filter events with onsale end date before this date"
+        "description": "Filter events with onsale end date before this date",
+        "example": "",
+        "default": ""
       },
       {
         "name": "city",
         "schema": "string",
         "required": false,
-        "description": "Filter events by city"
+        "description": "Filter events by city",
+        "example": "",
+        "default": ""
       },
       {
         "name": "countryCode",
         "schema": "string",
         "required": false,
-        "description": "Filter events by country code"
+        "description": "Filter events by country code",
+        "example": "",
+        "default": ""
       },
       {
         "name": "stateCode",
         "schema": "string",
         "required": false,
-        "description": "Filter events by state code"
+        "description": "Filter events by state code",
+        "example": "",
+        "default": ""
       },
       {
         "name": "postalCode",
         "schema": "string",
         "required": false,
-        "description": "Filter events by postal code / zipcode"
+        "description": "Filter events by postal code / zipcode",
+        "example": "",
+        "default": ""
       },
       {
         "name": "venueId",
         "schema": "string",
         "required": false,
-        "description": "Filter events by venue id"
+        "description": "Filter events by venue id",
+        "example": "",
+        "default": ""
       },
       {
         "name": "attractionId",
         "schema": "string",
         "required": false,
-        "description": "Filter events by attraction id"
+        "description": "Filter events by attraction id",
+        "example": "",
+        "default": ""
       },
       {
         "name": "segmentId",
         "schema": "string",
         "required": false,
-        "description": "Filter events by segment id"
+        "description": "Filter events by segment id",
+        "example": "",
+        "default": ""
       },
       {
         "name": "segmentName",
         "schema": "string",
         "required": false,
-        "description": "Filter events by segment name"
+        "description": "Filter events by segment name",
+        "example": "",
+        "default": ""
       },
       {
         "name": "classificationName",
         "schema": "array",
         "required": false,
-        "description": "Filter events by classification name: name of any segment, genre, sub-genre, type, sub-type"
+        "description": "Filter events by classification name: name of any segment, genre, sub-genre, type, sub-type",
+        "example": "",
+        "default": ""
       },
       {
         "name": "classificationId",
         "schema": "array",
         "required": false,
-        "description": "Filter events by classification id: id of any segment, genre, sub-genre, type, sub-type"
+        "description": "Filter events by classification id: id of any segment, genre, sub-genre, type, sub-type",
+        "example": "",
+        "default": ""
       },
       {
         "name": "marketId",
         "schema": "string",
         "required": false,
-        "description": "Filter events by market id"
+        "description": "Filter events by market id",
+        "example": "",
+        "default": ""
       },
       {
         "name": "promoterId",
         "schema": "string",
         "required": false,
-        "description": "Filter events by promoter id"
+        "description": "Filter events by promoter id",
+        "example": "",
+        "default": ""
       },
       {
         "name": "dmaId",
         "schema": "string",
         "required": false,
-        "description": "Filter events by dma id"
+        "description": "Filter events by dma id",
+        "example": "",
+        "default": ""
       },
       {
         "name": "includeTba",
         "schema": "string",
         "required": false,
-        "description": "True, to include events with date to be announce (TBA)"
+        "description": "True, to include events with date to be announce (TBA)",
+        "example": "",
+        "default": "no if date parameter sent, yes otherwise"
       },
       {
         "name": "includeTbd",
         "schema": "string",
         "required": false,
-        "description": "True, to include event with a date to be defined (TBD)"
+        "description": "True, to include event with a date to be defined (TBD)",
+        "example": "",
+        "default": "no if date parameter sent, yes otherwise"
       },
       {
         "name": "clientVisibility",
         "schema": "string",
         "required": false,
-        "description": "Filter events by clientName"
+        "description": "Filter events by clientName",
+        "example": "",
+        "default": ""
       },
       {
         "name": "latlong",
         "schema": "string",
         "required": false,
-        "description": "Filter events by latitude and longitude, this filter is deprecated and maybe removed in a future release, please use geoPoint instead"
+        "description": "Filter events by latitude and longitude, this filter is deprecated and maybe removed in a future release, please use geoPoint instead",
+        "example": "33.80003000,-117.88304300",
+        "default": ""
       },
       {
         "name": "radius",
         "schema": "string",
         "required": false,
-        "description": "Radius of the area in which we want to search for events."
+        "description": "Radius of the area in which we want to search for events.",
+        "example": "",
+        "default": "50"
       },
       {
         "name": "unit",
         "schema": "string",
         "required": false,
-        "description": "Unit of the radius"
+        "description": "Unit of the radius",
+        "example": "",
+        "default": "miles"
       },
       {
         "name": "geoPoint",
         "schema": "string",
         "required": false,
-        "description": "filter events by geoHash"
+        "description": "filter events by geoHash",
+        "example": "dr5rh",
+        "default": ""
       },
       {
         "name": "keyword",
         "schema": "string",
         "required": false,
-        "description": "Keyword to search on"
+        "description": "Keyword to search on",
+        "example": "",
+        "default": ""
       },
       {
         "name": "id",
         "schema": "string",
         "required": false,
-        "description": "Filter entities by its id"
+        "description": "Filter entities by its id",
+        "example": "",
+        "default": ""
       },
       {
         "name": "source",
         "schema": "string",
         "required": false,
-        "description": "Filter entities by its source name"
+        "description": "Filter entities by its source name",
+        "example": "",
+        "default": ""
       },
       {
         "name": "includeTest",
         "schema": "string",
         "required": false,
-        "description": "True if you want to have entities flag as test in the response. Only, if you only wanted test entities"
+        "description": "True if you want to have entities flag as test in the response. Only, if you only wanted test entities",
+        "example": "",
+        "default": "no"
       },
       {
         "name": "page",
         "schema": "string",
         "required": false,
-        "description": "Page number"
+        "description": "Page number",
+        "example": "",
+        "default": "0"
       },
       {
         "name": "size",
         "schema": "string",
         "required": false,
-        "description": "Page size of the response"
+        "description": "Page size of the response",
+        "example": "",
+        "default": "20"
       },
       {
         "name": "locale",
         "schema": "string",
         "required": false,
-        "description": "The locale in ISO code format. Multiple comma-separated values can be provided. When omitting the country part of the code (e.g. only 'en' or 'fr') then the first matching locale is used. When using a '*' it matches all locales. '*' can only be used at the end (e.g. 'en-us,en,*') "
+        "description": "The locale in ISO code format. Multiple comma-separated values can be provided. When omitting the country part of the code (e.g. only 'en' or 'fr') then the first matching locale is used. When using a '*' it matches all locales. '*' can only be used at the end (e.g. 'en-us,en,*') ",
+        "example": "en-us,en,fr",
+        "default": "en"
       },
       {
         "name": "includeLicensedContent",
         "schema": "string",
         "required": false,
-        "description": "Yes if you want to display licensed content"
+        "description": "Yes if you want to display licensed content",
+        "example": "",
+        "default": "no"
       },
       {
         "name": "includeSpellcheck",
         "schema": "string",
         "required": false,
-        "description": "yes, to include spell check suggestions in the response."
+        "description": "yes, to include spell check suggestions in the response.",
+        "example": "",
+        "default": "no"
       }
     ],
     "responses": [
@@ -602,19 +746,24 @@ export default function TicketmasterDiscoveryTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "ID of the event"
+        "description": "ID of the event",
+        "example": "ID"
       },
       {
         "name": "locale",
         "schema": "string",
         "required": false,
-        "description": "The locale in ISO code format. Multiple comma-separated values can be provided. When omitting the country part of the code (e.g. only 'en' or 'fr') then the first matching locale is used. When using a '*' it matches all locales. '*' can only be used at the end (e.g. 'en-us,en,*') "
+        "description": "The locale in ISO code format. Multiple comma-separated values can be provided. When omitting the country part of the code (e.g. only 'en' or 'fr') then the first matching locale is used. When using a '*' it matches all locales. '*' can only be used at the end (e.g. 'en-us,en,*') ",
+        "example": "en-us,en,fr",
+        "default": "en"
       },
       {
         "name": "includeLicensedContent",
         "schema": "string",
         "required": false,
-        "description": "True if you want to display licensed content"
+        "description": "True if you want to display licensed content",
+        "example": "",
+        "default": "no"
       }
     ],
     "responses": [
@@ -636,19 +785,24 @@ export default function TicketmasterDiscoveryTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "ID of the event"
+        "description": "ID of the event",
+        "example": "ID"
       },
       {
         "name": "locale",
         "schema": "string",
         "required": false,
-        "description": "The locale in ISO code format. Multiple comma-separated values can be provided. When omitting the country part of the code (e.g. only 'en' or 'fr') then the first matching locale is used. When using a '*' it matches all locales. '*' can only be used at the end (e.g. 'en-us,en,*') "
+        "description": "The locale in ISO code format. Multiple comma-separated values can be provided. When omitting the country part of the code (e.g. only 'en' or 'fr') then the first matching locale is used. When using a '*' it matches all locales. '*' can only be used at the end (e.g. 'en-us,en,*') ",
+        "example": "en-us,en,fr",
+        "default": "en"
       },
       {
         "name": "includeLicensedContent",
         "schema": "string",
         "required": false,
-        "description": "True if you want to display licensed content"
+        "description": "True if you want to display licensed content",
+        "example": "",
+        "default": "no"
       }
     ],
     "responses": [
@@ -670,97 +824,129 @@ export default function TicketmasterDiscoveryTypeScriptSdk() {
         "name": "keyword",
         "schema": "string",
         "required": false,
-        "description": "Keyword to search on"
+        "description": "Keyword to search on",
+        "example": "",
+        "default": ""
       },
       {
         "name": "source",
         "schema": "string",
         "required": false,
-        "description": "Filter entities by its source name"
+        "description": "Filter entities by its source name",
+        "example": "",
+        "default": ""
       },
       {
         "name": "latlong",
         "schema": "string",
         "required": false,
-        "description": "Filter events by latitude and longitude, this filter is deprecated and maybe removed in a future release, please use geoPoint instead"
+        "description": "Filter events by latitude and longitude, this filter is deprecated and maybe removed in a future release, please use geoPoint instead",
+        "example": "33.80003000,-117.88304300",
+        "default": ""
       },
       {
         "name": "radius",
         "schema": "string",
         "required": false,
-        "description": "Radius of the area in which we want to search for events."
+        "description": "Radius of the area in which we want to search for events.",
+        "example": "",
+        "default": "100"
       },
       {
         "name": "unit",
         "schema": "string",
         "required": false,
-        "description": "Unit of the radius"
+        "description": "Unit of the radius",
+        "example": "",
+        "default": "miles"
       },
       {
         "name": "size",
         "schema": "string",
         "required": false,
-        "description": "Size of every entity returned in the response"
+        "description": "Size of every entity returned in the response",
+        "example": "",
+        "default": "5"
       },
       {
         "name": "includeFuzzy",
         "schema": "string",
         "required": false,
-        "description": "yes, to include fuzzy matches in the search. This has performance impact."
+        "description": "yes, to include fuzzy matches in the search. This has performance impact.",
+        "example": "",
+        "default": "no"
       },
       {
         "name": "clientVisibility",
         "schema": "string",
         "required": false,
-        "description": "Filter events to clientName"
+        "description": "Filter events to clientName",
+        "example": "",
+        "default": ""
       },
       {
         "name": "countryCode",
         "schema": "string",
         "required": false,
-        "description": "Filter suggestions by country code"
+        "description": "Filter suggestions by country code",
+        "example": "",
+        "default": ""
       },
       {
         "name": "includeTba",
         "schema": "string",
         "required": false,
-        "description": "True, to include events with date to be announce (TBA)"
+        "description": "True, to include events with date to be announce (TBA)",
+        "example": "",
+        "default": "no if date parameter sent, yes otherwise"
       },
       {
         "name": "includeTbd",
         "schema": "string",
         "required": false,
-        "description": "True, to include event with a date to be defined (TBD)"
+        "description": "True, to include event with a date to be defined (TBD)",
+        "example": "",
+        "default": "no if date parameter sent, yes otherwise"
       },
       {
         "name": "segmentId",
         "schema": "string",
         "required": false,
-        "description": "Filter suggestions by segment id"
+        "description": "Filter suggestions by segment id",
+        "example": "",
+        "default": ""
       },
       {
         "name": "geoPoint",
         "schema": "string",
         "required": false,
-        "description": "filter events by geoHash"
+        "description": "filter events by geoHash",
+        "example": "dr5rh",
+        "default": ""
       },
       {
         "name": "locale",
         "schema": "string",
         "required": false,
-        "description": "The locale in ISO code format. Multiple comma-separated values can be provided. When omitting the country part of the code (e.g. only 'en' or 'fr') then the first matching locale is used. When using a '*' it matches all locales. '*' can only be used at the end (e.g. 'en-us,en,*') "
+        "description": "The locale in ISO code format. Multiple comma-separated values can be provided. When omitting the country part of the code (e.g. only 'en' or 'fr') then the first matching locale is used. When using a '*' it matches all locales. '*' can only be used at the end (e.g. 'en-us,en,*') ",
+        "example": "en-us,en,fr",
+        "default": "en"
       },
       {
         "name": "includeLicensedContent",
         "schema": "string",
         "required": false,
-        "description": "Yes if you want to display licensed content"
+        "description": "Yes if you want to display licensed content",
+        "example": "",
+        "default": "no"
       },
       {
         "name": "includeSpellcheck",
         "schema": "string",
         "required": false,
-        "description": "yes, to include spell check suggestions in the response."
+        "description": "yes, to include spell check suggestions in the response.",
+        "example": "",
+        "default": "no"
       }
     ],
     "responses": [
@@ -782,97 +968,129 @@ export default function TicketmasterDiscoveryTypeScriptSdk() {
         "name": "sort",
         "schema": "string",
         "required": false,
-        "description": "Sorting order of the search result. Allowable Values: 'name,asc', 'name,desc', 'relevance,asc', 'relevance,desc', 'distance,asc', 'distance,desc'"
+        "description": "Sorting order of the search result. Allowable Values: 'name,asc', 'name,desc', 'relevance,asc', 'relevance,desc', 'distance,asc', 'distance,desc'",
+        "example": "",
+        "default": "relevance,desc"
       },
       {
         "name": "stateCode",
         "schema": "string",
         "required": false,
-        "description": "Filter venues by state / province code"
+        "description": "Filter venues by state / province code",
+        "example": "",
+        "default": ""
       },
       {
         "name": "countryCode",
         "schema": "string",
         "required": false,
-        "description": "Filter venues by country code"
+        "description": "Filter venues by country code",
+        "example": "",
+        "default": ""
       },
       {
         "name": "latlong",
         "schema": "string",
         "required": false,
-        "description": "Filter events by latitude and longitude, this filter is deprecated and maybe removed in a future release, please use geoPoint instead"
+        "description": "Filter events by latitude and longitude, this filter is deprecated and maybe removed in a future release, please use geoPoint instead",
+        "example": "33.80003000,-117.88304300",
+        "default": ""
       },
       {
         "name": "radius",
         "schema": "string",
         "required": false,
-        "description": "Radius of the area in which we want to search for events."
+        "description": "Radius of the area in which we want to search for events.",
+        "example": "",
+        "default": "50"
       },
       {
         "name": "unit",
         "schema": "string",
         "required": false,
-        "description": "Unit of the radius"
+        "description": "Unit of the radius",
+        "example": "",
+        "default": "miles"
       },
       {
         "name": "geoPoint",
         "schema": "string",
         "required": false,
-        "description": "filter events by geoHash"
+        "description": "filter events by geoHash",
+        "example": "dr5rh",
+        "default": ""
       },
       {
         "name": "keyword",
         "schema": "string",
         "required": false,
-        "description": "Keyword to search on"
+        "description": "Keyword to search on",
+        "example": "",
+        "default": ""
       },
       {
         "name": "id",
         "schema": "string",
         "required": false,
-        "description": "Filter entities by its id"
+        "description": "Filter entities by its id",
+        "example": "",
+        "default": ""
       },
       {
         "name": "source",
         "schema": "string",
         "required": false,
-        "description": "Filter entities by its source name"
+        "description": "Filter entities by its source name",
+        "example": "",
+        "default": ""
       },
       {
         "name": "includeTest",
         "schema": "string",
         "required": false,
-        "description": "True if you want to have entities flag as test in the response. Only, if you only wanted test entities"
+        "description": "True if you want to have entities flag as test in the response. Only, if you only wanted test entities",
+        "example": "",
+        "default": "no"
       },
       {
         "name": "page",
         "schema": "string",
         "required": false,
-        "description": "Page number"
+        "description": "Page number",
+        "example": "",
+        "default": "0"
       },
       {
         "name": "size",
         "schema": "string",
         "required": false,
-        "description": "Page size of the response"
+        "description": "Page size of the response",
+        "example": "",
+        "default": "20"
       },
       {
         "name": "locale",
         "schema": "string",
         "required": false,
-        "description": "The locale in ISO code format. Multiple comma-separated values can be provided. When omitting the country part of the code (e.g. only 'en' or 'fr') then the first matching locale is used. When using a '*' it matches all locales. '*' can only be used at the end (e.g. 'en-us,en,*') "
+        "description": "The locale in ISO code format. Multiple comma-separated values can be provided. When omitting the country part of the code (e.g. only 'en' or 'fr') then the first matching locale is used. When using a '*' it matches all locales. '*' can only be used at the end (e.g. 'en-us,en,*') ",
+        "example": "en-us,en,fr",
+        "default": "en"
       },
       {
         "name": "includeLicensedContent",
         "schema": "string",
         "required": false,
-        "description": "Yes if you want to display licensed content"
+        "description": "Yes if you want to display licensed content",
+        "example": "",
+        "default": "no"
       },
       {
         "name": "includeSpellcheck",
         "schema": "string",
         "required": false,
-        "description": "yes, to include spell check suggestions in the response."
+        "description": "yes, to include spell check suggestions in the response.",
+        "example": "",
+        "default": "no"
       }
     ],
     "responses": [
@@ -894,19 +1112,24 @@ export default function TicketmasterDiscoveryTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "ID of the venue"
+        "description": "ID of the venue",
+        "example": "ID"
       },
       {
         "name": "locale",
         "schema": "string",
         "required": false,
-        "description": "The locale in ISO code format. Multiple comma-separated values can be provided. When omitting the country part of the code (e.g. only 'en' or 'fr') then the first matching locale is used. When using a '*' it matches all locales. '*' can only be used at the end (e.g. 'en-us,en,*') "
+        "description": "The locale in ISO code format. Multiple comma-separated values can be provided. When omitting the country part of the code (e.g. only 'en' or 'fr') then the first matching locale is used. When using a '*' it matches all locales. '*' can only be used at the end (e.g. 'en-us,en,*') ",
+        "example": "en-us,en,fr",
+        "default": "en"
       },
       {
         "name": "includeLicensedContent",
         "schema": "string",
         "required": false,
-        "description": "True if you want to display licensed content"
+        "description": "True if you want to display licensed content",
+        "example": "",
+        "default": "no"
       }
     ],
     "responses": [

@@ -45,6 +45,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: NAME
       - name: owner
         schema: undefined
         required: true
@@ -65,6 +66,7 @@ methodObjects:
         schema: string
         required: true
         description: ID of the context (UUID)
+        example: CONTEXT-ID
     responses:
       - statusCode: '200'
         description: message response
@@ -81,6 +83,7 @@ methodObjects:
         schema: string
         required: true
         description: ID of the context (UUID)
+        example: CONTEXT-ID
     responses:
       - statusCode: '200'
         description: ''
@@ -97,6 +100,7 @@ methodObjects:
         schema: string
         required: true
         description: ID of the context (UUID)
+        example: CONTEXT-ID
       - name: pageToken
         schema: string
         required: false
@@ -117,10 +121,12 @@ methodObjects:
         schema: string
         required: true
         description: The name of the environment variable
+        example: POSTGRES_USER
       - name: contextId
         schema: string
         required: true
         description: ID of the context (UUID)
+        example: CONTEXT-ID
     responses:
       - statusCode: '200'
         description: message response
@@ -137,14 +143,17 @@ methodObjects:
         schema: string
         required: true
         description: ID of the context (UUID)
+        example: CONTEXT-ID
       - name: envVarName
         schema: string
         required: true
         description: The name of the environment variable
+        example: POSTGRES_USER
       - name: value
         schema: string
         required: true
         description: ''
+        example: some-secret-value
     responses:
       - statusCode: '200'
         description: ''
@@ -168,20 +177,28 @@ methodObjects:
           App, use `circleci` as the `vcs-slug`, replace `org-name` with the
           organization ID (found in Organization Settings), and replace
           `repo-name` with the project ID (found in Project Settings).
+        example: gh/CircleCI-Public/api-preview-docs
       - name: reportingWindow
         schema: string
         required: false
         description: >-
           The time window used to calculate summary metrics. If not provided,
           defaults to last-90-days
+        example: last-90-days
       - name: branches
         schema: object
         required: false
         description: The names of VCS branches to include in branch-level workflow metrics.
+        example: >-
+          A single branch: ?branches=main or for multiple branches:
+          ?branches=main&branches=feature&branches=dev
       - name: workflowNames
         schema: object
         required: false
         description: The names of workflows to include in workflow-level metrics.
+        example: |-
+          A single workflow name: ?workflow-names=build-test-deploy or
+              for multiple workflow names: ?workflow-names=build&workflow-names=test-and-deploy.
     responses:
       - statusCode: '200'
         description: ''
@@ -203,10 +220,12 @@ methodObjects:
           App, use `circleci` as the `vcs-slug`, replace `org-name` with the
           organization ID (found in Organization Settings), and replace
           `repo-name` with the project ID (found in Project Settings).
+        example: gh/CircleCI-Public/api-preview-docs
       - name: workflowName
         schema: string
         required: true
         description: The name of the workflow.
+        example: build-and-test
       - name: branch
         schema: string
         required: false
@@ -217,18 +236,21 @@ methodObjects:
         schema: string
         required: false
         description: The granularity for which to query timeseries data.
+        example: hourly
       - name: startDate
         schema: string
         required: false
         description: >-
           Include only executions that started at or after this date. This must
           be specified if an end-date is provided.
+        example: '2020-08-21T13:26:29Z'
       - name: endDate
         schema: string
         required: false
         description: >-
           Include only executions that started before this date. This date can
           be at most 90 days after the start-date.
+        example: '2020-09-04T13:26:29Z'
     responses:
       - statusCode: '200'
         description: Project level timeseries metrics response
@@ -247,16 +269,21 @@ methodObjects:
         description: >-
           Org slug in the form `vcs-slug/org-name`. The `/` characters may be
           URL-escaped.
+        example: gh/CircleCI-Public
       - name: reportingWindow
         schema: string
         required: false
         description: >-
           The time window used to calculate summary metrics. If not provided,
           defaults to last-90-days
+        example: last-90-days
       - name: projectNames
         schema: object
         required: false
         description: List of project names.
+        example: >-
+          For a single project: ?project-names=some-project or for multiple
+          projects: ?project-names=some-project1&project-names=some-project2
     responses:
       - statusCode: '200'
         description: Summary metrics with trends for the entire org, and for each project.
@@ -278,12 +305,14 @@ methodObjects:
           App, use `circleci` as the `vcs-slug`, replace `org-name` with the
           organization ID (found in Organization Settings), and replace
           `repo-name` with the project ID (found in Project Settings).
+        example: gh/CircleCI-Public/api-preview-docs
       - name: workflowName
         schema: string
         required: false
         description: >-
           The name of a workflow. If not passed we will scope the API call to
           the project.
+        example: build-and-test
     responses:
       - statusCode: '200'
         description: Project branches response.
@@ -305,6 +334,7 @@ methodObjects:
           App, use `circleci` as the `vcs-slug`, replace `org-name` with the
           organization ID (found in Organization Settings), and replace
           `repo-name` with the project ID (found in Project Settings).
+        example: gh/CircleCI-Public/api-preview-docs
     responses:
       - statusCode: '200'
         description: Flaky tests response
@@ -326,6 +356,7 @@ methodObjects:
           App, use `circleci` as the `vcs-slug`, replace `org-name` with the
           organization ID (found in Organization Settings), and replace
           `repo-name` with the project ID (found in Project Settings).
+        example: gh/CircleCI-Public/api-preview-docs
       - name: pageToken
         schema: string
         required: false
@@ -348,6 +379,7 @@ methodObjects:
         description: >-
           The time window used to calculate summary metrics. If not provided,
           defaults to last-90-days
+        example: last-90-days
     responses:
       - statusCode: '200'
         description: Paginated workflow summary metrics.
@@ -369,10 +401,12 @@ methodObjects:
           App, use `circleci` as the `vcs-slug`, replace `org-name` with the
           organization ID (found in Organization Settings), and replace
           `repo-name` with the project ID (found in Project Settings).
+        example: gh/CircleCI-Public/api-preview-docs
       - name: workflowName
         schema: string
         required: true
         description: The name of the workflow.
+        example: build-and-test
       - name: allBranches
         schema: boolean
         required: false
@@ -395,12 +429,14 @@ methodObjects:
         description: >-
           Include only executions that started at or after this date. This must
           be specified if an end-date is provided.
+        example: '2020-08-21T13:26:29Z'
       - name: endDate
         schema: string
         required: false
         description: >-
           Include only executions that started before this date. This date can
           be at most 90 days after the start-date.
+        example: '2020-09-04T13:26:29Z'
     responses:
       - statusCode: '200'
         description: Paginated recent workflow runs.
@@ -422,10 +458,12 @@ methodObjects:
           App, use `circleci` as the `vcs-slug`, replace `org-name` with the
           organization ID (found in Organization Settings), and replace
           `repo-name` with the project ID (found in Project Settings).
+        example: gh/CircleCI-Public/api-preview-docs
       - name: workflowName
         schema: string
         required: true
         description: The name of the workflow.
+        example: build-and-test
       - name: pageToken
         schema: string
         required: false
@@ -448,6 +486,7 @@ methodObjects:
         description: >-
           The time window used to calculate summary metrics. If not provided,
           defaults to last-90-days
+        example: last-90-days
     responses:
       - statusCode: '200'
         description: Paginated workflow job summary metrics.
@@ -469,10 +508,12 @@ methodObjects:
           App, use `circleci` as the `vcs-slug`, replace `org-name` with the
           organization ID (found in Organization Settings), and replace
           `repo-name` with the project ID (found in Project Settings).
+        example: gh/CircleCI-Public/api-preview-docs
       - name: workflowName
         schema: string
         required: true
         description: The name of the workflow.
+        example: build-and-test
       - name: allBranches
         schema: boolean
         required: false
@@ -506,10 +547,12 @@ methodObjects:
           App, use `circleci` as the `vcs-slug`, replace `org-name` with the
           organization ID (found in Organization Settings), and replace
           `repo-name` with the project ID (found in Project Settings).
+        example: gh/CircleCI-Public/api-preview-docs
       - name: workflowName
         schema: string
         required: true
         description: The name of the workflow.
+        example: build-and-test
       - name: branch
         schema: string
         required: false
@@ -565,6 +608,7 @@ methodObjects:
           Org slug in the form `vcs-slug/org-name`. For projects that use GitLab
           or GitHub App, use `circleci` as the `vcs-slug` and replace the
           `org-name` with the organization ID (found in Organization Settings).
+        example: gh/CircleCI-Public
       - name: pageToken
         schema: string
         required: false
@@ -589,14 +633,18 @@ methodObjects:
         schema: object
         required: false
         description: ''
+        example:
+          deploy_prod: true
       - name: continuation-key
         schema: string
         required: true
         description: ''
+        example: CONTINUATION-KEY
       - name: configuration
         schema: string
         required: true
         description: ''
+        example: CONFIGURATION
     responses:
       - statusCode: '200'
         description: message response
@@ -613,6 +661,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID of the pipeline.
+        example: 5034460f-c7c4-4c43-9457-de07e2029e7b
     responses:
       - statusCode: '200'
         description: A pipeline response.
@@ -629,6 +678,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID of the pipeline.
+        example: 5034460f-c7c4-4c43-9457-de07e2029e7b
     responses:
       - statusCode: '200'
         description: The configuration strings for the pipeline.
@@ -645,6 +695,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID of the pipeline.
+        example: 5034460f-c7c4-4c43-9457-de07e2029e7b
       - name: pageToken
         schema: string
         required: false
@@ -670,6 +721,7 @@ methodObjects:
           App, use `circleci` as the `vcs-slug`, replace `org-name` with the
           organization ID (found in Organization Settings), and replace
           `repo-name` with the project ID (found in Project Settings).
+        example: gh/CircleCI-Public/api-preview-docs
     responses:
       - statusCode: '200'
         description: 'NOTE: The definition of Project is subject to change.'
@@ -691,6 +743,7 @@ methodObjects:
           App, use `circleci` as the `vcs-slug`, replace `org-name` with the
           organization ID (found in Organization Settings), and replace
           `repo-name` with the project ID (found in Project Settings).
+        example: gh/CircleCI-Public/api-preview-docs
       - name: digest
         schema: string
         required: false
@@ -718,10 +771,12 @@ methodObjects:
           App, use `circleci` as the `vcs-slug`, replace `org-name` with the
           organization ID (found in Organization Settings), and replace
           `repo-name` with the project ID (found in Project Settings).
+        example: gh/CircleCI-Public/api-preview-docs
       - name: type
         schema: string
         required: true
         description: ''
+        example: deploy-key
     responses:
       - statusCode: '201'
         description: A checkout key
@@ -743,10 +798,12 @@ methodObjects:
           App, use `circleci` as the `vcs-slug`, replace `org-name` with the
           organization ID (found in Organization Settings), and replace
           `repo-name` with the project ID (found in Project Settings).
+        example: gh/CircleCI-Public/api-preview-docs
       - name: fingerprint
         schema: string
         required: true
         description: An SSH key fingerprint.
+        example: c9:0b:1c:4f:d5:65:56:b9:ad:88:f9:81:2b:37:74:2f
     responses:
       - statusCode: '200'
         description: message response
@@ -768,10 +825,12 @@ methodObjects:
           App, use `circleci` as the `vcs-slug`, replace `org-name` with the
           organization ID (found in Organization Settings), and replace
           `repo-name` with the project ID (found in Project Settings).
+        example: gh/CircleCI-Public/api-preview-docs
       - name: fingerprint
         schema: string
         required: true
         description: An SSH key fingerprint.
+        example: c9:0b:1c:4f:d5:65:56:b9:ad:88:f9:81:2b:37:74:2f
     responses:
       - statusCode: '200'
         description: A checkout key
@@ -793,6 +852,7 @@ methodObjects:
           App, use `circleci` as the `vcs-slug`, replace `org-name` with the
           organization ID (found in Organization Settings), and replace
           `repo-name` with the project ID (found in Project Settings).
+        example: gh/CircleCI-Public/api-preview-docs
     responses:
       - statusCode: '200'
         description: ''
@@ -814,14 +874,17 @@ methodObjects:
           App, use `circleci` as the `vcs-slug`, replace `org-name` with the
           organization ID (found in Organization Settings), and replace
           `repo-name` with the project ID (found in Project Settings).
+        example: gh/CircleCI-Public/api-preview-docs
       - name: name
         schema: string
         required: true
         description: ''
+        example: foo
       - name: value
         schema: string
         required: true
         description: ''
+        example: xxxx1234
     responses:
       - statusCode: '201'
         description: >-
@@ -845,10 +908,12 @@ methodObjects:
           App, use `circleci` as the `vcs-slug`, replace `org-name` with the
           organization ID (found in Organization Settings), and replace
           `repo-name` with the project ID (found in Project Settings).
+        example: gh/CircleCI-Public/api-preview-docs
       - name: name
         schema: string
         required: true
         description: The name of the environment variable.
+        example: foo
     responses:
       - statusCode: '200'
         description: message response
@@ -870,10 +935,12 @@ methodObjects:
           App, use `circleci` as the `vcs-slug`, replace `org-name` with the
           organization ID (found in Organization Settings), and replace
           `repo-name` with the project ID (found in Project Settings).
+        example: gh/CircleCI-Public/api-preview-docs
       - name: name
         schema: string
         required: true
         description: The name of the environment variable.
+        example: foo
     responses:
       - statusCode: '200'
         description: >-
@@ -892,6 +959,7 @@ methodObjects:
         schema: undefined
         required: true
         description: The number of the job.
+        example: '123'
       - name: projectSlug
         schema: string
         required: true
@@ -901,6 +969,7 @@ methodObjects:
           App, use `circleci` as the `vcs-slug`, replace `org-name` with the
           organization ID (found in Organization Settings), and replace
           `repo-name` with the project ID (found in Project Settings).
+        example: gh/CircleCI-Public/api-preview-docs
     responses:
       - statusCode: '200'
         description: Job Details
@@ -917,6 +986,7 @@ methodObjects:
         schema: undefined
         required: true
         description: The number of the job.
+        example: '123'
       - name: projectSlug
         schema: string
         required: true
@@ -926,6 +996,7 @@ methodObjects:
           App, use `circleci` as the `vcs-slug`, replace `org-name` with the
           organization ID (found in Organization Settings), and replace
           `repo-name` with the project ID (found in Project Settings).
+        example: gh/CircleCI-Public/api-preview-docs
     responses:
       - statusCode: '200'
         description: message response
@@ -947,6 +1018,7 @@ methodObjects:
           App, use `circleci` as the `vcs-slug`, replace `org-name` with the
           organization ID (found in Organization Settings), and replace
           `repo-name` with the project ID (found in Project Settings).
+        example: gh/CircleCI-Public/api-preview-docs
       - name: branch
         schema: string
         required: false
@@ -976,15 +1048,20 @@ methodObjects:
           App, use `circleci` as the `vcs-slug`, replace `org-name` with the
           organization ID (found in Organization Settings), and replace
           `repo-name` with the project ID (found in Project Settings).
+        example: gh/CircleCI-Public/api-preview-docs
       - name: parameters
         schema: object
         description: ''
+        example:
+          deploy_prod: true
       - name: branch
         schema: string
         description: ''
+        example: feature/design-new-api
       - name: tag
         schema: string
         description: ''
+        example: v3.1.4159
     responses:
       - statusCode: '201'
         description: A pipeline creation response.
@@ -1006,6 +1083,7 @@ methodObjects:
           App, use `circleci` as the `vcs-slug`, replace `org-name` with the
           organization ID (found in Organization Settings), and replace
           `repo-name` with the project ID (found in Project Settings).
+        example: gh/CircleCI-Public/api-preview-docs
       - name: pageToken
         schema: string
         required: false
@@ -1031,10 +1109,12 @@ methodObjects:
           App, use `circleci` as the `vcs-slug`, replace `org-name` with the
           organization ID (found in Organization Settings), and replace
           `repo-name` with the project ID (found in Project Settings).
+        example: gh/CircleCI-Public/api-preview-docs
       - name: pipelineNumber
         schema: undefined
         required: true
         description: The number of the pipeline.
+        example: '123'
     responses:
       - statusCode: '200'
         description: A pipeline response.
@@ -1056,6 +1136,7 @@ methodObjects:
           App, use `circleci` as the `vcs-slug`, replace `org-name` with the
           organization ID (found in Organization Settings), and replace
           `repo-name` with the project ID (found in Project Settings).
+        example: gh/CircleCI-Public/api-preview-docs
       - name: pageToken
         schema: string
         required: false
@@ -1081,6 +1162,7 @@ methodObjects:
           App, use `circleci` as the `vcs-slug`, replace `org-name` with the
           organization ID (found in Organization Settings), and replace
           `repo-name` with the project ID (found in Project Settings).
+        example: gh/CircleCI-Public/api-preview-docs
       - name: description
         schema: string
         required: false
@@ -1089,10 +1171,14 @@ methodObjects:
         schema: object
         required: true
         description: ''
+        example:
+          deploy_prod: true
+          branch: feature/design-new-api
       - name: name
         schema: string
         required: true
         description: ''
+        example: NAME
       - name: timetable
         schema: undefined
         required: true
@@ -1101,6 +1187,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: current
     responses:
       - statusCode: '201'
         description: A schedule response
@@ -1117,6 +1204,7 @@ methodObjects:
         schema: undefined
         required: true
         description: The number of the job.
+        example: '123'
       - name: projectSlug
         schema: string
         required: true
@@ -1126,6 +1214,7 @@ methodObjects:
           App, use `circleci` as the `vcs-slug`, replace `org-name` with the
           organization ID (found in Organization Settings), and replace
           `repo-name` with the project ID (found in Project Settings).
+        example: gh/CircleCI-Public/api-preview-docs
     responses:
       - statusCode: '200'
         description: ''
@@ -1142,6 +1231,7 @@ methodObjects:
         schema: undefined
         required: true
         description: The number of the job.
+        example: '123'
       - name: projectSlug
         schema: string
         required: true
@@ -1151,6 +1241,7 @@ methodObjects:
           App, use `circleci` as the `vcs-slug`, replace `org-name` with the
           organization ID (found in Organization Settings), and replace
           `repo-name` with the project ID (found in Project Settings).
+        example: gh/CircleCI-Public/api-preview-docs
     responses:
       - statusCode: '200'
         description: ''
@@ -1167,6 +1258,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID of the schedule.
+        example: SCHEDULE-ID
     responses:
       - statusCode: '200'
         description: message response
@@ -1183,6 +1275,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID of the schedule.
+        example: SCHEDULE-ID
     responses:
       - statusCode: '200'
         description: A schedule response
@@ -1199,12 +1292,16 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID of the schedule.
+        example: SCHEDULE-ID
       - name: description
         schema: string
         description: ''
       - name: parameters
         schema: object
         description: ''
+        example:
+          deploy_prod: true
+          branch: feature/design-new-api
       - name: name
         schema: string
         description: ''
@@ -1214,6 +1311,7 @@ methodObjects:
       - name: attribution-actor
         schema: string
         description: ''
+        example: current
     responses:
       - statusCode: '200'
         description: A schedule response
@@ -1230,6 +1328,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID of the user.
+        example: ID
     responses:
       - statusCode: '200'
         description: ''
@@ -1248,10 +1347,12 @@ methodObjects:
         description: >-
           ID of the scope being used (at the moment, only project ID is
           supported)
+        example: SCOPE-ID
       - name: scopeType
         schema: string
         required: true
         description: Type of the scope being used
+        example: SCOPE-TYPE
     responses:
       - statusCode: '200'
         description: A list of webhooks
@@ -1268,6 +1369,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: NAME
       - name: events
         schema: array
         required: true
@@ -1276,14 +1378,17 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: URL
       - name: verify-tls
         schema: boolean
         required: true
         description: ''
+        example: true
       - name: signing-secret
         schema: string
         required: true
         description: ''
+        example: SIGNING-SECRET
       - name: scope
         schema: object
         required: true
@@ -1304,6 +1409,7 @@ methodObjects:
         schema: string
         required: true
         description: ID of the webhook (UUID)
+        example: WEBHOOK-ID
     responses:
       - statusCode: '200'
         description: message response
@@ -1320,6 +1426,7 @@ methodObjects:
         schema: string
         required: true
         description: ID of the webhook (UUID)
+        example: WEBHOOK-ID
     responses:
       - statusCode: '200'
         description: ''
@@ -1336,6 +1443,7 @@ methodObjects:
         schema: string
         required: true
         description: ID of the webhook (UUID)
+        example: WEBHOOK-ID
       - name: name
         schema: string
         description: ''
@@ -1367,6 +1475,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID of the workflow.
+        example: 5034460f-c7c4-4c43-9457-de07e2029e7b
     responses:
       - statusCode: '200'
         description: A workflow
@@ -1383,10 +1492,12 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the job being approved.
+        example: APPROVAL_REQUEST_ID
       - name: id
         schema: string
         required: true
         description: The unique ID of the workflow.
+        example: 5034460f-c7c4-4c43-9457-de07e2029e7b
     responses:
       - statusCode: '202'
         description: message response
@@ -1403,6 +1514,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID of the workflow.
+        example: 5034460f-c7c4-4c43-9457-de07e2029e7b
     responses:
       - statusCode: '202'
         description: message response
@@ -1419,6 +1531,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID of the workflow.
+        example: 5034460f-c7c4-4c43-9457-de07e2029e7b
     responses:
       - statusCode: '200'
         description: ''
@@ -1435,18 +1548,25 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID of the workflow.
+        example: 5034460f-c7c4-4c43-9457-de07e2029e7b
       - name: enable_ssh
         schema: boolean
         description: ''
+        example: false
       - name: from_failed
         schema: boolean
         description: ''
+        example: false
       - name: jobs
         schema: array
         description: ''
+        example:
+          - c65b68ef-e73b-4bf2-be9a-7a322a9df150
+          - 5e957edd-5e8c-4985-9178-5d0d69561822
       - name: sparse_tree
         schema: boolean
         description: ''
+        example: false
     responses:
       - statusCode: '202'
         description: A response to rerunning a workflow
@@ -1463,12 +1583,14 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: ORGID
       - name: claims
         schema: string
         required: true
         description: >-
           comma separated list of claims to delete. Valid values are "audience"
           and "ttl".
+        example: CLAIMS
     responses:
       - statusCode: '200'
         description: ''
@@ -1489,6 +1611,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: ORGID
     responses:
       - statusCode: '200'
         description: ''
@@ -1509,6 +1632,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: ORGID
       - name: audience
         schema: array
         description: ''
@@ -1535,16 +1659,19 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: ORGID
       - name: projectId
         schema: string
         required: true
         description: ''
+        example: PROJECTID
       - name: claims
         schema: string
         required: true
         description: >-
           comma separated list of claims to delete. Valid values are "audience"
           and "ttl".
+        example: CLAIMS
     responses:
       - statusCode: '200'
         description: ''
@@ -1565,10 +1692,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: ORGID
       - name: projectId
         schema: string
         required: true
         description: ''
+        example: PROJECTID
     responses:
       - statusCode: '200'
         description: ''
@@ -1589,10 +1718,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: ORGID
       - name: projectId
         schema: string
         required: true
         description: ''
+        example: PROJECTID
       - name: audience
         schema: array
         description: ''
@@ -1619,10 +1750,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: OWNERID
       - name: context
         schema: string
         required: true
         description: ''
+        example: CONTEXT
       - name: status
         schema: string
         required: false
@@ -1673,14 +1806,17 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: OWNERID
       - name: context
         schema: string
         required: true
         description: ''
+        example: CONTEXT
       - name: input
         schema: string
         required: true
         description: ''
+        example: INPUT
       - name: metadata
         schema: object
         required: false
@@ -1705,10 +1841,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: OWNERID
       - name: context
         schema: string
         required: true
         description: ''
+        example: CONTEXT
     responses:
       - statusCode: '200'
         description: ''
@@ -1731,10 +1869,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: OWNERID
       - name: context
         schema: string
         required: true
         description: ''
+        example: CONTEXT
       - name: enabled
         schema: boolean
         description: ''
@@ -1760,14 +1900,17 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: OWNERID
       - name: context
         schema: string
         required: true
         description: ''
+        example: CONTEXT
       - name: decisionId
         schema: string
         required: true
         description: ''
+        example: DECISIONID
     responses:
       - statusCode: '200'
         description: ''
@@ -1792,14 +1935,17 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: OWNERID
       - name: context
         schema: string
         required: true
         description: ''
+        example: CONTEXT
       - name: decisionId
         schema: string
         required: true
         description: ''
+        example: DECISIONID
     responses:
       - statusCode: '200'
         description: ''
@@ -1824,10 +1970,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: OWNERID
       - name: context
         schema: string
         required: true
         description: ''
+        example: CONTEXT
     responses:
       - statusCode: '200'
         description: ''
@@ -1850,10 +1998,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: OWNERID
       - name: context
         schema: string
         required: true
         description: ''
+        example: CONTEXT
       - name: dry
         schema: boolean
         description: ''

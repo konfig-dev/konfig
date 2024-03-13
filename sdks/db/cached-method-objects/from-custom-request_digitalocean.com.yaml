@@ -11,6 +11,7 @@ methodObjects:
         schema: string
         required: false
         description: Restrict results to a certain type of 1-Click.
+        example: kubernetes
     responses:
       - statusCode: '200'
         description: ''
@@ -33,10 +34,15 @@ methodObjects:
         schema: array
         required: true
         description: ''
+        example:
+          - kube-state-metrics
+          - loki
+        default: []
       - name: cluster_uuid
         schema: string
         required: true
         description: ''
+        example: 50a994b6-c303-438f-9495-7e896cfe6b08
     responses:
       - statusCode: '200'
         description: ''
@@ -77,10 +83,14 @@ methodObjects:
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -103,18 +113,25 @@ methodObjects:
         schema: integer
         required: false
         description: ''
+        example: 512189
       - name: fingerprint
         schema: string
         required: false
         description: ''
+        example: 3b:16:bf:e4:8b:00:8b:b8:59:8c:a9:d3:f0:19:45:fa
       - name: public_key
         schema: string
         required: true
         description: ''
+        example: >-
+          ssh-rsa
+          AEXAMPLEaC1yc2EAAAADAQABAAAAQQDDHr/jh2Jy4yALcK4JyWbVkPRaWmhck3IgCoeOO3z1e2dBowLh64QAM+Qb72pxekALga2oi4GvT+TlWNhzPH4V
+          example
       - name: name
         schema: string
         required: true
         description: ''
+        example: My SSH Public Key
     responses:
       - statusCode: '201'
         description: ''
@@ -137,6 +154,7 @@ methodObjects:
         schema: undefined
         required: true
         description: Either the ID or the fingerprint of an existing SSH key.
+        example: 512189
     responses:
       - statusCode: '204'
         description: ''
@@ -161,6 +179,7 @@ methodObjects:
         schema: undefined
         required: true
         description: Either the ID or the fingerprint of an existing SSH key.
+        example: 512189
     responses:
       - statusCode: '200'
         description: ''
@@ -185,9 +204,11 @@ methodObjects:
         schema: undefined
         required: true
         description: Either the ID or the fingerprint of an existing SSH key.
+        example: 512189
       - name: name
         schema: string
         description: ''
+        example: My SSH Public Key
     responses:
       - statusCode: '200'
         description: ''
@@ -212,10 +233,14 @@ methodObjects:
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -240,6 +265,7 @@ methodObjects:
         description: >-
           A unique numeric ID that can be used to identify and reference an
           action.
+        example: 36804636
     responses:
       - statusCode: '200'
         description: ''
@@ -264,13 +290,18 @@ methodObjects:
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
       - name: perPage
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: withProjects
         schema: boolean
         description: Whether the project_id of listed apps should be fetched and included.
+        example: true
     responses:
       - statusCode: '200'
         description: ''
@@ -319,6 +350,7 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the app
+        example: 4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf
     responses:
       - statusCode: '200'
         description: ''
@@ -343,9 +375,11 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the app
+        example: 4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf
       - name: name
         schema: string
         description: The name of the app to retrieve.
+        example: myApp
     responses:
       - statusCode: '200'
         description: ''
@@ -370,6 +404,7 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the app
+        example: 4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf
       - name: spec
         schema: object
         required: true
@@ -398,15 +433,18 @@ methodObjects:
         schema: string
         required: true
         description: The app ID
+        example: 4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf
       - name: componentName
         schema: string
         required: true
         description: >-
           An optional component name. If set, logs will be limited to this
           component only.
+        example: component
       - name: follow
         schema: boolean
         description: Whether the logs should follow live updates.
+        example: true
       - name: type
         schema: string
         required: true
@@ -416,11 +454,14 @@ methodObjects:
           - DEPLOY: Deploy-time logs
           - RUN: Live run-time logs
           - RUN_RESTARTED: Logs of crashed/restarted instances during runtime
+        example: BUILD
+        default: UNSPECIFIED
       - name: podConnectionTimeout
         schema: string
         description: >-
           An optional time duration to wait if the underlying component instance
           is not immediately available. Default: `3m`.
+        example: 3m
     responses:
       - statusCode: '200'
         description: ''
@@ -445,14 +486,19 @@ methodObjects:
         schema: string
         required: true
         description: The app ID
+        example: 4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
       - name: perPage
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
     responses:
       - statusCode: '200'
         description: ''
@@ -477,9 +523,11 @@ methodObjects:
         schema: string
         required: true
         description: The app ID
+        example: 4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf
       - name: force_build
         schema: boolean
         description: ''
+        example: true
     responses:
       - statusCode: '200'
         description: ''
@@ -504,10 +552,12 @@ methodObjects:
         schema: string
         required: true
         description: The app ID
+        example: 4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf
       - name: deploymentId
         schema: string
         required: true
         description: The deployment ID
+        example: 3aa4d20e-5527-4c00-b496-601fbd22520a
     responses:
       - statusCode: '200'
         description: ''
@@ -532,10 +582,12 @@ methodObjects:
         schema: string
         required: true
         description: The app ID
+        example: 4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf
       - name: deploymentId
         schema: string
         required: true
         description: The deployment ID
+        example: 3aa4d20e-5527-4c00-b496-601fbd22520a
     responses:
       - statusCode: '200'
         description: ''
@@ -561,19 +613,23 @@ methodObjects:
         schema: string
         required: true
         description: The app ID
+        example: 4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf
       - name: deploymentId
         schema: string
         required: true
         description: The deployment ID
+        example: 3aa4d20e-5527-4c00-b496-601fbd22520a
       - name: componentName
         schema: string
         required: true
         description: >-
           An optional component name. If set, logs will be limited to this
           component only.
+        example: component
       - name: follow
         schema: boolean
         description: Whether the logs should follow live updates.
+        example: true
       - name: type
         schema: string
         required: true
@@ -583,11 +639,14 @@ methodObjects:
           - DEPLOY: Deploy-time logs
           - RUN: Live run-time logs
           - RUN_RESTARTED: Logs of crashed/restarted instances during runtime
+        example: BUILD
+        default: UNSPECIFIED
       - name: podConnectionTimeout
         schema: string
         description: >-
           An optional time duration to wait if the underlying component instance
           is not immediately available. Default: `3m`.
+        example: 3m
     responses:
       - statusCode: '200'
         description: ''
@@ -612,13 +671,16 @@ methodObjects:
         schema: string
         required: true
         description: The app ID
+        example: 4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf
       - name: deploymentId
         schema: string
         required: true
         description: The deployment ID
+        example: 3aa4d20e-5527-4c00-b496-601fbd22520a
       - name: follow
         schema: boolean
         description: Whether the logs should follow live updates.
+        example: true
       - name: type
         schema: string
         required: true
@@ -628,11 +690,14 @@ methodObjects:
           - DEPLOY: Deploy-time logs
           - RUN: Live run-time logs
           - RUN_RESTARTED: Logs of crashed/restarted instances during runtime
+        example: BUILD
+        default: UNSPECIFIED
       - name: podConnectionTimeout
         schema: string
         description: >-
           An optional time duration to wait if the underlying component instance
           is not immediately available. Default: `3m`.
+        example: 3m
     responses:
       - statusCode: '200'
         description: ''
@@ -657,9 +722,11 @@ methodObjects:
         schema: string
         required: true
         description: The app ID
+        example: 4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf
       - name: follow
         schema: boolean
         description: Whether the logs should follow live updates.
+        example: true
       - name: type
         schema: string
         required: true
@@ -669,11 +736,14 @@ methodObjects:
           - DEPLOY: Deploy-time logs
           - RUN: Live run-time logs
           - RUN_RESTARTED: Logs of crashed/restarted instances during runtime
+        example: BUILD
+        default: UNSPECIFIED
       - name: podConnectionTimeout
         schema: string
         description: >-
           An optional time duration to wait if the underlying component instance
           is not immediately available. Default: `3m`.
+        example: 3m
     responses:
       - statusCode: '200'
         description: ''
@@ -716,6 +786,7 @@ methodObjects:
         schema: string
         required: true
         description: The slug of the tier
+        example: basic
     responses:
       - statusCode: '200'
         description: ''
@@ -758,6 +829,7 @@ methodObjects:
         schema: string
         required: true
         description: The slug of the instance size
+        example: basic-xxs
     responses:
       - statusCode: '200'
         description: ''
@@ -804,6 +876,7 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: b6bdf840-2854-4f87-a36c-5f231c617c84
     responses:
       - statusCode: '200'
         description: ''
@@ -826,6 +899,7 @@ methodObjects:
         schema: string
         required: true
         description: The app ID
+        example: 4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf
     responses:
       - statusCode: '200'
         description: ''
@@ -850,13 +924,17 @@ methodObjects:
         schema: string
         required: true
         description: The app ID
+        example: 4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf
       - name: alertId
         schema: string
         required: true
         description: The alert ID
+        example: 5a624ab5-dd58-4b39-b7dd-8b7c36e8a91d
       - name: emails
         schema: array
         description: ''
+        example:
+          - sammy@digitalocean.com
       - name: slack_webhooks
         schema: array
         description: ''
@@ -884,12 +962,15 @@ methodObjects:
         schema: string
         required: true
         description: The app ID
+        example: 4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf
       - name: deployment_id
         schema: string
         description: ''
+        example: 3aa4d20e-5527-4c00-b496-601fbd22520a
       - name: skip_pin
         schema: boolean
         description: ''
+        example: false
     responses:
       - statusCode: '200'
         description: ''
@@ -914,12 +995,15 @@ methodObjects:
         schema: string
         required: true
         description: The app ID
+        example: 4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf
       - name: deployment_id
         schema: string
         description: ''
+        example: 3aa4d20e-5527-4c00-b496-601fbd22520a
       - name: skip_pin
         schema: boolean
         description: ''
+        example: false
     responses:
       - statusCode: '200'
         description: ''
@@ -944,6 +1028,7 @@ methodObjects:
         schema: string
         required: true
         description: The app ID
+        example: 4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf
     responses:
       - statusCode: '200'
         description: ''
@@ -968,6 +1053,7 @@ methodObjects:
         schema: string
         required: true
         description: The app ID
+        example: 4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf
     responses:
       - statusCode: '200'
         description: ''
@@ -992,11 +1078,13 @@ methodObjects:
         schema: string
         required: true
         description: The app ID
+        example: 4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf
       - name: date
         schema: string
         description: >-
           Optional day to query. Only the date component of the timestamp will
           be considered. Default: yesterday.
+        example: '2023-01-17T00:00:00Z'
     responses:
       - statusCode: '200'
         description: ''
@@ -1021,10 +1109,14 @@ methodObjects:
         schema: array
         required: true
         description: ''
+        example:
+          - 4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf
+          - c2a93513-8d9b-4223-9d61-5e7272c81cf5
       - name: date
         schema: string
         required: false
         description: ''
+        example: '2023-01-17T00:00:00Z'
     responses:
       - statusCode: '200'
         description: ''
@@ -1049,10 +1141,14 @@ methodObjects:
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -1075,30 +1171,38 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: 892071a0-bb95-49bc-8021-3afd67a210bf
       - name: origin
         schema: string
         required: true
         description: ''
+        example: static-images.nyc3.digitaloceanspaces.com
       - name: endpoint
         schema: string
         required: false
         description: ''
+        example: static-images.nyc3.cdn.digitaloceanspaces.com
       - name: ttl
         schema: integer
         required: false
         description: ''
+        example: 3600
+        default: 3600
       - name: certificate_id
         schema: string
         required: false
         description: ''
+        example: 892071a0-bb95-49bc-8021-3afd67a210bf
       - name: custom_domain
         schema: string
         required: false
         description: ''
+        example: static.example.com
       - name: created_at
         schema: string
         required: false
         description: ''
+        example: '2018-03-21T16:02:37Z'
     responses:
       - statusCode: '201'
         description: ''
@@ -1121,6 +1225,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a CDN endpoint.
+        example: 19f06b6a-3ace-4315-b086-499a0e521b76
     responses:
       - statusCode: '204'
         description: ''
@@ -1145,6 +1250,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a CDN endpoint.
+        example: 19f06b6a-3ace-4315-b086-499a0e521b76
     responses:
       - statusCode: '200'
         description: ''
@@ -1169,15 +1275,20 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a CDN endpoint.
+        example: 19f06b6a-3ace-4315-b086-499a0e521b76
       - name: ttl
         schema: integer
         description: ''
+        example: 3600
+        default: 3600
       - name: certificate_id
         schema: string
         description: ''
+        example: 892071a0-bb95-49bc-8021-3afd67a210bf
       - name: custom_domain
         schema: string
         description: ''
+        example: static.example.com
     responses:
       - statusCode: '200'
         description: ''
@@ -1202,10 +1313,14 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a CDN endpoint.
+        example: 19f06b6a-3ace-4315-b086-499a0e521b76
       - name: files
         schema: array
         required: true
         description: ''
+        example:
+          - path/to/image.png
+          - path/to/css/*
     responses:
       - statusCode: '204'
         description: ''
@@ -1230,14 +1345,20 @@ methodObjects:
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
       - name: name
         schema: string
         required: false
         description: Name of expected certificate
+        example: certificate-name
+        default: ''
     responses:
       - statusCode: '200'
         description: ''
@@ -1278,6 +1399,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a certificate.
+        example: 4de7ac8b-495b-4884-9a69-1050c6793cd6
     responses:
       - statusCode: '204'
         description: ''
@@ -1302,6 +1424,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a certificate.
+        example: 4de7ac8b-495b-4884-9a69-1050c6793cd6
     responses:
       - statusCode: '200'
         description: ''
@@ -1366,10 +1489,14 @@ methodObjects:
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -1392,6 +1519,7 @@ methodObjects:
         schema: string
         required: true
         description: UUID of the invoice
+        example: 22737513-0ea7-4206-8ceb-98a575af7681
     responses:
       - statusCode: '200'
         description: ''
@@ -1416,6 +1544,7 @@ methodObjects:
         schema: string
         required: true
         description: UUID of the invoice
+        example: 22737513-0ea7-4206-8ceb-98a575af7681
     responses:
       - statusCode: '200'
         description: ''
@@ -1440,6 +1569,7 @@ methodObjects:
         schema: string
         required: true
         description: UUID of the invoice
+        example: 22737513-0ea7-4206-8ceb-98a575af7681
     responses:
       - statusCode: '200'
         description: ''
@@ -1464,6 +1594,7 @@ methodObjects:
         schema: string
         required: true
         description: UUID of the invoice
+        example: 22737513-0ea7-4206-8ceb-98a575af7681
     responses:
       - statusCode: '200'
         description: ''
@@ -1508,6 +1639,7 @@ methodObjects:
         schema: string
         required: false
         description: Limits the results to database clusters with a specific tag.
+        example: production
     responses:
       - statusCode: '200'
         description: ''
@@ -1552,6 +1684,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
     responses:
       - statusCode: '204'
         description: ''
@@ -1576,6 +1709,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
     responses:
       - statusCode: '200'
         description: ''
@@ -1600,6 +1734,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
     responses:
       - statusCode: '200'
         description: ''
@@ -1624,6 +1759,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
       - name: config
         schema: undefined
         description: ''
@@ -1651,6 +1787,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
     responses:
       - statusCode: '200'
         description: ''
@@ -1675,6 +1812,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
     responses:
       - statusCode: '200'
         description: ''
@@ -1699,15 +1837,21 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
       - name: source
         schema: object
         description: ''
       - name: disable_ssl
         schema: boolean
         description: ''
+        example: false
       - name: ignore_dbs
         schema: array
         description: ''
+        example:
+          - db0
+          - db1
+        default: []
     responses:
       - statusCode: '200'
         description: ''
@@ -1732,10 +1876,12 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
       - name: migrationId
         schema: string
         required: true
         description: A unique identifier assigned to the online migration.
+        example: 77b28fc8-19ff-11eb-8c9c-c68e24557488
     responses:
       - statusCode: '204'
         description: ''
@@ -1760,10 +1906,12 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
       - name: region
         schema: string
         required: true
         description: ''
+        example: lon1
     responses:
       - statusCode: '202'
         description: ''
@@ -1788,18 +1936,22 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
       - name: size
         schema: string
         required: true
         description: ''
+        example: db-s-4vcpu-8gb
       - name: num_nodes
         schema: integer
         required: true
         description: ''
+        example: 3
       - name: storage_size_mib
         schema: integer
         required: false
         description: ''
+        example: 61440
     responses:
       - statusCode: '202'
         description: ''
@@ -1824,6 +1976,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
     responses:
       - statusCode: '200'
         description: ''
@@ -1848,6 +2001,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
       - name: rules
         schema: array
         description: ''
@@ -1875,22 +2029,29 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
       - name: description
         schema: array
         required: false
         description: ''
+        example:
+          - Update TimescaleDB to version 1.2.1
+          - Upgrade to PostgreSQL 11.2 and 10.7 bugfix releases
       - name: day
         schema: string
         required: true
         description: ''
+        example: tuesday
       - name: hour
         schema: string
         required: true
         description: ''
+        example: '14:00'
       - name: pending
         schema: boolean
         required: false
         description: ''
+        example: true
     responses:
       - statusCode: '204'
         description: ''
@@ -1915,6 +2076,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
     responses:
       - statusCode: '200'
         description: ''
@@ -1939,6 +2101,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
     responses:
       - statusCode: '200'
         description: ''
@@ -1963,38 +2126,48 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
       - name: tags
         schema: array
         required: false
         description: ''
+        example:
+          - production
       - name: id
         schema: string
         required: false
         description: ''
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
       - name: name
         schema: string
         required: true
         description: ''
+        example: read-nyc3-01
       - name: region
         schema: string
         required: false
         description: ''
+        example: nyc3
       - name: size
         schema: string
         required: false
         description: ''
+        example: db-s-2vcpu-4gb
       - name: status
         schema: string
         required: false
         description: ''
+        example: creating
       - name: created_at
         schema: string
         required: false
         description: ''
+        example: '2019-01-11T18:37:36Z'
       - name: private_network_uuid
         schema: string
         required: false
         description: ''
+        example: 9423cbad-9211-442f-820b-ef6915e99b5f
       - name: connection
         schema: undefined
         required: false
@@ -2007,6 +2180,7 @@ methodObjects:
         schema: integer
         required: false
         description: ''
+        example: 61440
     responses:
       - statusCode: '201'
         description: ''
@@ -2031,6 +2205,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
     responses:
       - statusCode: '200'
         description: ''
@@ -2055,10 +2230,12 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
       - name: replicaName
         schema: string
         required: true
         description: The name of the database replica.
+        example: read-nyc3-01
     responses:
       - statusCode: '204'
         description: ''
@@ -2083,10 +2260,12 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
       - name: replicaName
         schema: string
         required: true
         description: The name of the database replica.
+        example: read-nyc3-01
     responses:
       - statusCode: '200'
         description: ''
@@ -2111,10 +2290,12 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
       - name: replicaName
         schema: string
         required: true
         description: The name of the database replica.
+        example: read-nyc3-01
     responses:
       - statusCode: '204'
         description: ''
@@ -2139,6 +2320,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
     responses:
       - statusCode: '200'
         description: ''
@@ -2163,6 +2345,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
     responses:
       - statusCode: '201'
         description: ''
@@ -2187,10 +2370,12 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
       - name: username
         schema: string
         required: true
         description: The name of the database user.
+        example: app-01
     responses:
       - statusCode: '204'
         description: ''
@@ -2215,10 +2400,12 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
       - name: username
         schema: string
         required: true
         description: The name of the database user.
+        example: app-01
     responses:
       - statusCode: '200'
         description: ''
@@ -2243,10 +2430,12 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
       - name: username
         schema: string
         required: true
         description: The name of the database user.
+        example: app-01
     responses:
       - statusCode: '201'
         description: ''
@@ -2271,10 +2460,12 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
       - name: username
         schema: string
         required: true
         description: The name of the database user.
+        example: app-01
       - name: mysql_settings
         schema: object
         description: ''
@@ -2302,6 +2493,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
     responses:
       - statusCode: '200'
         description: ''
@@ -2326,10 +2518,12 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
       - name: name
         schema: string
         required: true
         description: ''
+        example: alpha
     responses:
       - statusCode: '201'
         description: ''
@@ -2354,10 +2548,12 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
       - name: databaseName
         schema: string
         required: true
         description: The name of the database.
+        example: alpha
     responses:
       - statusCode: '204'
         description: ''
@@ -2382,10 +2578,12 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
       - name: databaseName
         schema: string
         required: true
         description: The name of the database.
+        example: alpha
     responses:
       - statusCode: '200'
         description: ''
@@ -2410,6 +2608,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
     responses:
       - statusCode: '200'
         description: ''
@@ -2434,26 +2633,32 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
       - name: name
         schema: string
         required: true
         description: ''
+        example: backend-pool
       - name: mode
         schema: string
         required: true
         description: ''
+        example: transaction
       - name: size
         schema: integer
         required: true
         description: ''
+        example: 10
       - name: db
         schema: string
         required: true
         description: ''
+        example: defaultdb
       - name: user
         schema: string
         required: false
         description: ''
+        example: doadmin
       - name: connection
         schema: undefined
         required: false
@@ -2494,10 +2699,12 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
       - name: poolName
         schema: string
         required: true
         description: The name used to identify the connection pool.
+        example: backend-pool
     responses:
       - statusCode: '204'
         description: ''
@@ -2522,10 +2729,12 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
       - name: poolName
         schema: string
         required: true
         description: The name used to identify the connection pool.
+        example: backend-pool
     responses:
       - statusCode: '200'
         description: ''
@@ -2550,26 +2759,32 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
       - name: poolName
         schema: string
         required: true
         description: The name used to identify the connection pool.
+        example: backend-pool
       - name: mode
         schema: string
         required: true
         description: ''
+        example: transaction
       - name: size
         schema: integer
         required: true
         description: ''
+        example: 10
       - name: db
         schema: string
         required: true
         description: ''
+        example: defaultdb
       - name: user
         schema: string
         required: false
         description: ''
+        example: doadmin
     responses:
       - statusCode: '204'
         description: ''
@@ -2594,6 +2809,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
     responses:
       - statusCode: '200'
         description: ''
@@ -2618,10 +2834,12 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
       - name: eviction_policy
         schema: string
         required: true
         description: ''
+        example: allkeys_lru
     responses:
       - statusCode: '204'
         description: ''
@@ -2646,6 +2864,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
     responses:
       - statusCode: '200'
         description: ''
@@ -2670,10 +2889,13 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
       - name: sql_mode
         schema: string
         required: true
         description: ''
+        example: >-
+          ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES
     responses:
       - statusCode: '204'
         description: ''
@@ -2698,9 +2920,11 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
       - name: version
         schema: string
         description: ''
+        example: '8'
     responses:
       - statusCode: '204'
         description: ''
@@ -2725,6 +2949,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
     responses:
       - statusCode: '200'
         description: ''
@@ -2749,15 +2974,19 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
       - name: name
         schema: string
         description: ''
+        example: customer-events
       - name: partitions
         schema: number
         description: ''
+        example: 3
       - name: replication
         schema: number
         description: ''
+        example: 2
       - name: config
         schema: object
         description: ''
@@ -2785,10 +3014,12 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
       - name: topicName
         schema: string
         required: true
         description: The name used to identify the Kafka topic.
+        example: customer-events
     responses:
       - statusCode: '204'
         description: ''
@@ -2813,10 +3044,12 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
       - name: topicName
         schema: string
         required: true
         description: The name used to identify the Kafka topic.
+        example: customer-events
     responses:
       - statusCode: '200'
         description: ''
@@ -2841,16 +3074,20 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a database cluster.
+        example: 9cc10173-e9ea-4176-9dbc-a4cee4c4ff30
       - name: topicName
         schema: string
         required: true
         description: The name used to identify the Kafka topic.
+        example: customer-events
       - name: replication_factor
         schema: integer
         description: ''
+        example: 2
       - name: partition_count
         schema: integer
         description: ''
+        example: 3
       - name: config
         schema: object
         description: ''
@@ -2878,10 +3115,14 @@ methodObjects:
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -2903,15 +3144,33 @@ methodObjects:
       - name: name
         schema: string
         description: ''
+        example: example.com
       - name: ip_address
         schema: string
         description: ''
+        example: 192.0.2.1
       - name: ttl
         schema: integer
         description: ''
+        example: 1800
       - name: zone_file
         schema: string
         description: ''
+        example: >
+          $ORIGIN example.com.
+
+          $TTL 1800
+
+          example.com. IN SOA ns1.digitalocean.com. hostmaster.example.com.
+          1415982609 10800 3600 604800 1800
+
+          example.com. 1800 IN NS ns1.digitalocean.com.
+
+          example.com. 1800 IN NS ns2.digitalocean.com.
+
+          example.com. 1800 IN NS ns3.digitalocean.com.
+
+          example.com. 1800 IN A 1.2.3.4
     responses:
       - statusCode: '201'
         description: ''
@@ -2934,6 +3193,7 @@ methodObjects:
         schema: string
         required: true
         description: The name of the domain itself.
+        example: example.com
     responses:
       - statusCode: '204'
         description: ''
@@ -2958,6 +3218,7 @@ methodObjects:
         schema: string
         required: true
         description: The name of the domain itself.
+        example: example.com
     responses:
       - statusCode: '200'
         description: ''
@@ -2982,23 +3243,30 @@ methodObjects:
         schema: string
         required: true
         description: The name of the domain itself.
+        example: example.com
       - name: name
         schema: string
         description: >-
           A fully qualified record name. For example, to only include records
           matching sub.example.com, send a GET request to
           `/v2/domains/$DOMAIN_NAME/records?name=sub.example.com`.
+        example: sub.example.com
       - name: type
         schema: string
         description: 'The type of the DNS record. For example: A, CNAME, TXT, ...'
+        example: A
       - name: perPage
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -3023,6 +3291,7 @@ methodObjects:
         schema: string
         required: true
         description: The name of the domain itself.
+        example: example.com
     responses:
       - statusCode: '201'
         description: ''
@@ -3047,10 +3316,12 @@ methodObjects:
         schema: string
         required: true
         description: The name of the domain itself.
+        example: example.com
       - name: domainRecordId
         schema: integer
         required: true
         description: The unique identifier of the domain record.
+        example: 3352896
     responses:
       - statusCode: '204'
         description: ''
@@ -3075,10 +3346,12 @@ methodObjects:
         schema: string
         required: true
         description: The name of the domain itself.
+        example: example.com
       - name: domainRecordId
         schema: integer
         required: true
         description: The unique identifier of the domain record.
+        example: 3352896
     responses:
       - statusCode: '200'
         description: ''
@@ -3103,50 +3376,62 @@ methodObjects:
         schema: string
         required: true
         description: The name of the domain itself.
+        example: example.com
       - name: domainRecordId
         schema: integer
         required: true
         description: The unique identifier of the domain record.
+        example: 3352896
       - name: id
         schema: integer
         required: false
         description: ''
+        example: 28448429
       - name: type
         schema: string
         required: true
         description: ''
+        example: NS
       - name: name
         schema: string
         required: false
         description: ''
+        example: '@'
       - name: data
         schema: string
         required: false
         description: ''
+        example: ns1.digitalocean.com
       - name: priority
         schema: integer
         required: false
         description: ''
+        example: null
       - name: port
         schema: integer
         required: false
         description: ''
+        example: null
       - name: ttl
         schema: integer
         required: false
         description: ''
+        example: 1800
       - name: weight
         schema: integer
         required: false
         description: ''
+        example: null
       - name: flags
         schema: integer
         required: false
         description: ''
+        example: null
       - name: tag
         schema: string
         required: false
         description: ''
+        example: null
     responses:
       - statusCode: '200'
         description: ''
@@ -3171,50 +3456,62 @@ methodObjects:
         schema: string
         required: true
         description: The name of the domain itself.
+        example: example.com
       - name: domainRecordId
         schema: integer
         required: true
         description: The unique identifier of the domain record.
+        example: 3352896
       - name: id
         schema: integer
         required: false
         description: ''
+        example: 28448429
       - name: type
         schema: string
         required: true
         description: ''
+        example: NS
       - name: name
         schema: string
         required: false
         description: ''
+        example: '@'
       - name: data
         schema: string
         required: false
         description: ''
+        example: ns1.digitalocean.com
       - name: priority
         schema: integer
         required: false
         description: ''
+        example: null
       - name: port
         schema: integer
         required: false
         description: ''
+        example: null
       - name: ttl
         schema: integer
         required: false
         description: ''
+        example: 1800
       - name: weight
         schema: integer
         required: false
         description: ''
+        example: null
       - name: flags
         schema: integer
         required: false
         description: ''
+        example: null
       - name: tag
         schema: string
         required: false
         description: ''
+        example: null
     responses:
       - statusCode: '200'
         description: ''
@@ -3239,6 +3536,7 @@ methodObjects:
         schema: string
         required: true
         description: Specifies Droplets to be deleted by tag.
+        example: env:test
     responses:
       - statusCode: '204'
         description: ''
@@ -3263,16 +3561,21 @@ methodObjects:
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
       - name: tagName
         schema: string
         required: false
         description: >-
           Used to filter Droplets by a specific tag. Can not be combined with
           `name`.
+        example: env:prod
       - name: name
         schema: string
         required: false
@@ -3280,6 +3583,7 @@ methodObjects:
           Used to filter list response by Droplet name returning only exact
           matches. It is case-insensitive and can not be combined with
           `tag_name`.
+        example: web-01
     responses:
       - statusCode: '200'
         description: ''
@@ -3320,6 +3624,7 @@ methodObjects:
         schema: integer
         required: true
         description: A unique identifier for a Droplet instance.
+        example: 3164444
     responses:
       - statusCode: '204'
         description: ''
@@ -3344,6 +3649,7 @@ methodObjects:
         schema: integer
         required: true
         description: A unique identifier for a Droplet instance.
+        example: 3164444
     responses:
       - statusCode: '200'
         description: ''
@@ -3368,14 +3674,19 @@ methodObjects:
         schema: integer
         required: true
         description: A unique identifier for a Droplet instance.
+        example: 3164444
       - name: perPage
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -3400,14 +3711,19 @@ methodObjects:
         schema: integer
         required: true
         description: A unique identifier for a Droplet instance.
+        example: 3164444
       - name: perPage
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -3432,14 +3748,19 @@ methodObjects:
         schema: integer
         required: true
         description: A unique identifier for a Droplet instance.
+        example: 3164444
       - name: perPage
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -3464,6 +3785,7 @@ methodObjects:
         schema: integer
         required: true
         description: A unique identifier for a Droplet instance.
+        example: 3164444
     responses:
       - statusCode: '201'
         description: ''
@@ -3490,6 +3812,7 @@ methodObjects:
         description: >-
           Used to filter Droplets by a specific tag. Can not be combined with
           `name`.
+        example: env:prod
     responses:
       - statusCode: '201'
         description: ''
@@ -3512,12 +3835,14 @@ methodObjects:
         schema: integer
         required: true
         description: A unique identifier for a Droplet instance.
+        example: 3164444
       - name: actionId
         schema: integer
         required: true
         description: >-
           A unique numeric ID that can be used to identify and reference an
           action.
+        example: 36804636
     responses:
       - statusCode: '200'
         description: ''
@@ -3542,14 +3867,19 @@ methodObjects:
         schema: integer
         required: true
         description: A unique identifier for a Droplet instance.
+        example: 3164444
       - name: perPage
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -3574,14 +3904,19 @@ methodObjects:
         schema: integer
         required: true
         description: A unique identifier for a Droplet instance.
+        example: 3164444
       - name: perPage
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -3606,6 +3941,7 @@ methodObjects:
         schema: integer
         required: true
         description: A unique identifier for a Droplet instance.
+        example: 3164444
     responses:
       - statusCode: '200'
         description: ''
@@ -3630,6 +3966,7 @@ methodObjects:
         schema: integer
         required: true
         description: A unique identifier for a Droplet instance.
+        example: 3164444
     responses:
       - statusCode: '200'
         description: ''
@@ -3654,21 +3991,32 @@ methodObjects:
         schema: integer
         required: true
         description: A unique identifier for a Droplet instance.
+        example: 3164444
       - name: floating_ips
         schema: array
         description: ''
+        example:
+          - '6186916'
       - name: reserved_ips
         schema: array
         description: ''
+        example:
+          - '6186916'
       - name: snapshots
         schema: array
         description: ''
+        example:
+          - '61486916'
       - name: volumes
         schema: array
         description: ''
+        example:
+          - ba49449a-7435-11ea-b89e-0a58ac14480f
       - name: volume_snapshots
         schema: array
         description: ''
+        example:
+          - edb0478d-7436-11ea-86e6-0a58ac144b91
     responses:
       - statusCode: '202'
         description: ''
@@ -3693,12 +4041,14 @@ methodObjects:
         schema: integer
         required: true
         description: A unique identifier for a Droplet instance.
+        example: 3164444
       - name: xDangerous
         schema: boolean
         required: true
         description: >-
           Acknowledge this action will destroy the Droplet and all associated
           resources and _can not_ be reversed.
+        example: true
     responses:
       - statusCode: '202'
         description: ''
@@ -3723,6 +4073,7 @@ methodObjects:
         schema: integer
         required: true
         description: A unique identifier for a Droplet instance.
+        example: 3164444
     responses:
       - statusCode: '200'
         description: >-
@@ -3749,6 +4100,7 @@ methodObjects:
         schema: integer
         required: true
         description: A unique identifier for a Droplet instance.
+        example: 3164444
     responses:
       - statusCode: '202'
         description: ''
@@ -3775,10 +4127,14 @@ methodObjects:
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -3821,6 +4177,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique ID that can be used to identify and reference a firewall.
+        example: bb4b2611-3d72-467b-8602-280330ecd65c
     responses:
       - statusCode: '204'
         description: ''
@@ -3845,6 +4202,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique ID that can be used to identify and reference a firewall.
+        example: bb4b2611-3d72-467b-8602-280330ecd65c
     responses:
       - statusCode: '200'
         description: ''
@@ -3869,6 +4227,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique ID that can be used to identify and reference a firewall.
+        example: bb4b2611-3d72-467b-8602-280330ecd65c
     responses:
       - statusCode: '200'
         description: ''
@@ -3895,10 +4254,13 @@ methodObjects:
         schema: string
         required: true
         description: A unique ID that can be used to identify and reference a firewall.
+        example: bb4b2611-3d72-467b-8602-280330ecd65c
       - name: droplet_ids
         schema: array
         required: true
         description: ''
+        example:
+          - 49696269
     responses:
       - statusCode: '204'
         description: ''
@@ -3925,10 +4287,13 @@ methodObjects:
         schema: string
         required: true
         description: A unique ID that can be used to identify and reference a firewall.
+        example: bb4b2611-3d72-467b-8602-280330ecd65c
       - name: droplet_ids
         schema: array
         required: true
         description: ''
+        example:
+          - 49696269
     responses:
       - statusCode: '204'
         description: ''
@@ -3955,6 +4320,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique ID that can be used to identify and reference a firewall.
+        example: bb4b2611-3d72-467b-8602-280330ecd65c
       - name: tags
         schema: undefined
         required: true
@@ -3985,6 +4351,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique ID that can be used to identify and reference a firewall.
+        example: bb4b2611-3d72-467b-8602-280330ecd65c
       - name: tags
         schema: undefined
         required: true
@@ -4015,6 +4382,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique ID that can be used to identify and reference a firewall.
+        example: bb4b2611-3d72-467b-8602-280330ecd65c
     responses:
       - statusCode: '204'
         description: ''
@@ -4041,6 +4409,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique ID that can be used to identify and reference a firewall.
+        example: bb4b2611-3d72-467b-8602-280330ecd65c
     responses:
       - statusCode: '204'
         description: ''
@@ -4067,10 +4436,14 @@ methodObjects:
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -4111,6 +4484,7 @@ methodObjects:
         schema: string
         required: true
         description: A floating IP address.
+        example: 45.55.96.47
     responses:
       - statusCode: '204'
         description: ''
@@ -4135,6 +4509,7 @@ methodObjects:
         schema: string
         required: true
         description: A floating IP address.
+        example: 45.55.96.47
     responses:
       - statusCode: '200'
         description: ''
@@ -4159,6 +4534,7 @@ methodObjects:
         schema: string
         required: true
         description: A floating IP address.
+        example: 45.55.96.47
     responses:
       - statusCode: '200'
         description: ''
@@ -4183,6 +4559,7 @@ methodObjects:
         schema: string
         required: true
         description: A floating IP address.
+        example: 45.55.96.47
     responses:
       - statusCode: '201'
         description: ''
@@ -4207,12 +4584,14 @@ methodObjects:
         schema: string
         required: true
         description: A floating IP address.
+        example: 45.55.96.47
       - name: actionId
         schema: integer
         required: true
         description: >-
           A unique numeric ID that can be used to identify and reference an
           action.
+        example: 36804636
     responses:
       - statusCode: '200'
         description: ''
@@ -4255,10 +4634,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: nyc1
       - name: label
         schema: string
         required: true
         description: ''
+        example: my namespace
     responses:
       - statusCode: '200'
         description: ''
@@ -4285,6 +4666,7 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the namespace to be managed.
+        example: fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
     responses:
       - statusCode: '204'
         description: ''
@@ -4309,6 +4691,7 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the namespace to be managed.
+        example: fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
     responses:
       - statusCode: '200'
         description: ''
@@ -4335,6 +4718,7 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the namespace to be managed.
+        example: fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
     responses:
       - statusCode: '200'
         description: ''
@@ -4359,22 +4743,27 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the namespace to be managed.
+        example: fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
       - name: name
         schema: string
         required: true
         description: ''
+        example: my trigger
       - name: function
         schema: string
         required: true
         description: ''
+        example: hello
       - name: type
         schema: string
         required: true
         description: ''
+        example: SCHEDULED
       - name: is_enabled
         schema: boolean
         required: true
         description: ''
+        example: true
       - name: scheduled_details
         schema: object
         required: true
@@ -4407,10 +4796,12 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the namespace to be managed.
+        example: fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
       - name: triggerName
         schema: string
         required: true
         description: The name of the trigger to be managed.
+        example: my trigger
     responses:
       - statusCode: '204'
         description: ''
@@ -4435,10 +4826,12 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the namespace to be managed.
+        example: fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
       - name: triggerName
         schema: string
         required: true
         description: The name of the trigger to be managed.
+        example: my trigger
     responses:
       - statusCode: '200'
         description: ''
@@ -4463,13 +4856,16 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the namespace to be managed.
+        example: fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
       - name: triggerName
         schema: string
         required: true
         description: The name of the trigger to be managed.
+        example: my trigger
       - name: is_enabled
         schema: boolean
         description: ''
+        example: true
       - name: scheduled_details
         schema: object
         description: ''
@@ -4501,22 +4897,29 @@ methodObjects:
         description: >-
           Filters results based on image type which can be either `application`
           or `distribution`.
+        example: distribution
       - name: private
         schema: boolean
         required: false
         description: Used to filter only user images.
+        example: true
       - name: tagName
         schema: string
         required: false
         description: Used to filter images by a specific tag.
+        example: base-image
       - name: perPage
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -4543,22 +4946,28 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: Cloud-optimized image w/ small footprint
       - name: name
         schema: string
         required: true
         description: ''
+        example: ubuntu-18.04-minimal
       - name: url
         schema: string
         required: true
         description: ''
+        example: >-
+          http://cloud-images.ubuntu.com/minimal/releases/bionic/release/ubuntu-18.04-minimal-cloudimg-amd64.img
       - name: distribution
         schema: string
         required: false
         description: ''
+        example: Ubuntu
       - name: region
         schema: string
         required: true
         description: ''
+        example: nyc3
     responses:
       - statusCode: '202'
         description: ''
@@ -4583,6 +4992,7 @@ methodObjects:
         description: >-
           A unique number that can be used to identify and reference a specific
           image.
+        example: 62137902
     responses:
       - statusCode: '204'
         description: ''
@@ -4639,15 +5049,19 @@ methodObjects:
         description: >-
           A unique number that can be used to identify and reference a specific
           image.
+        example: 62137902
       - name: description
         schema: string
         description: ''
+        example: ' '
       - name: name
         schema: string
         description: ''
+        example: Nifty New Snapshot
       - name: distribution
         schema: string
         description: ''
+        example: Ubuntu
     responses:
       - statusCode: '200'
         description: ''
@@ -4674,6 +5088,7 @@ methodObjects:
         description: >-
           A unique number that can be used to identify and reference a specific
           image.
+        example: 62137902
     responses:
       - statusCode: '200'
         description: ''
@@ -4700,6 +5115,7 @@ methodObjects:
         description: >-
           A unique number that can be used to identify and reference a specific
           image.
+        example: 62137902
     responses:
       - statusCode: '201'
         description: ''
@@ -4726,12 +5142,14 @@ methodObjects:
         description: >-
           A unique number that can be used to identify and reference a specific
           image.
+        example: 62137902
       - name: actionId
         schema: integer
         required: true
         description: >-
           A unique numeric ID that can be used to identify and reference an
           action.
+        example: 36804636
     responses:
       - statusCode: '200'
         description: ''
@@ -4756,10 +5174,14 @@ methodObjects:
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -4782,42 +5204,56 @@ methodObjects:
         schema: array
         required: false
         description: ''
+        example:
+          - k8s
+          - k8s:bd5f5959-5e1e-4205-a714-a914373942af
+          - production
+          - web-team
       - name: version
         schema: string
         required: true
         description: ''
+        example: 1.18.6-do.0
       - name: id
         schema: string
         required: false
         description: ''
+        example: bd5f5959-5e1e-4205-a714-a914373942af
       - name: name
         schema: string
         required: true
         description: ''
+        example: prod-cluster-01
       - name: region
         schema: string
         required: true
         description: ''
+        example: nyc1
       - name: cluster_subnet
         schema: string
         required: false
         description: ''
+        example: 10.244.0.0/16
       - name: service_subnet
         schema: string
         required: false
         description: ''
+        example: 10.245.0.0/16
       - name: vpc_uuid
         schema: string
         required: false
         description: ''
+        example: c33931f2-a26a-4e61-b85c-4e95a2ec431b
       - name: ipv4
         schema: string
         required: false
         description: ''
+        example: 68.183.121.157
       - name: endpoint
         schema: string
         required: false
         description: ''
+        example: https://bd5f5959-5e1e-4205-a714-a914373942af.k8s.ondigitalocean.com
       - name: node_pools
         schema: array
         required: true
@@ -4830,6 +5266,8 @@ methodObjects:
         schema: boolean
         required: false
         description: ''
+        example: true
+        default: false
       - name: status
         schema: object
         required: false
@@ -4838,22 +5276,29 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: '2018-11-15T16:00:11Z'
       - name: updated_at
         schema: string
         required: false
         description: ''
+        example: '2018-11-15T16:00:11Z'
       - name: surge_upgrade
         schema: boolean
         required: false
         description: ''
+        example: true
+        default: false
       - name: ha
         schema: boolean
         required: false
         description: ''
+        example: true
+        default: false
       - name: registry_enabled
         schema: boolean
         required: false
         description: ''
+        example: true
     responses:
       - statusCode: '201'
         description: ''
@@ -4876,6 +5321,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique ID that can be used to reference a Kubernetes cluster.
+        example: bd5f5959-5e1e-4205-a714-a914373942af
     responses:
       - statusCode: '204'
         description: ''
@@ -4900,6 +5346,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique ID that can be used to reference a Kubernetes cluster.
+        example: bd5f5959-5e1e-4205-a714-a914373942af
     responses:
       - statusCode: '200'
         description: ''
@@ -4924,14 +5371,21 @@ methodObjects:
         schema: string
         required: true
         description: A unique ID that can be used to reference a Kubernetes cluster.
+        example: bd5f5959-5e1e-4205-a714-a914373942af
       - name: tags
         schema: array
         required: false
         description: ''
+        example:
+          - k8s
+          - k8s:bd5f5959-5e1e-4205-a714-a914373942af
+          - production
+          - web-team
       - name: name
         schema: string
         required: true
         description: ''
+        example: prod-cluster-01
       - name: maintenance_policy
         schema: object
         required: false
@@ -4940,14 +5394,20 @@ methodObjects:
         schema: boolean
         required: false
         description: ''
+        example: true
+        default: false
       - name: surge_upgrade
         schema: boolean
         required: false
         description: ''
+        example: true
+        default: false
       - name: ha
         schema: boolean
         required: false
         description: ''
+        example: true
+        default: false
     responses:
       - statusCode: '202'
         description: ''
@@ -4972,6 +5432,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique ID that can be used to reference a Kubernetes cluster.
+        example: bd5f5959-5e1e-4205-a714-a914373942af
     responses:
       - statusCode: '200'
         description: >-
@@ -4999,15 +5460,22 @@ methodObjects:
         schema: string
         required: true
         description: A unique ID that can be used to reference a Kubernetes cluster.
+        example: bd5f5959-5e1e-4205-a714-a914373942af
       - name: load_balancers
         schema: array
         description: ''
+        example:
+          - 4de7ac8b-495b-4884-9a69-1050c6793cd6
       - name: volumes
         schema: array
         description: ''
+        example:
+          - ba49449a-7435-11ea-b89e-0a58ac14480f
       - name: volume_snapshots
         schema: array
         description: ''
+        example:
+          - edb0478d-7436-11ea-86e6-0a58ac144b91
     responses:
       - statusCode: '204'
         description: ''
@@ -5033,6 +5501,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique ID that can be used to reference a Kubernetes cluster.
+        example: bd5f5959-5e1e-4205-a714-a914373942af
     responses:
       - statusCode: '204'
         description: ''
@@ -5057,12 +5526,15 @@ methodObjects:
         schema: string
         required: true
         description: A unique ID that can be used to reference a Kubernetes cluster.
+        example: bd5f5959-5e1e-4205-a714-a914373942af
       - name: expirySeconds
         schema: integer
         required: false
         description: >-
           The duration in seconds that the returned Kubernetes credentials will
           be valid. If not set or 0, the credentials will have a 7 day expiry.
+        example: 300
+        default: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -5087,12 +5559,15 @@ methodObjects:
         schema: string
         required: true
         description: A unique ID that can be used to reference a Kubernetes cluster.
+        example: bd5f5959-5e1e-4205-a714-a914373942af
       - name: expirySeconds
         schema: integer
         required: false
         description: >-
           The duration in seconds that the returned Kubernetes credentials will
           be valid. If not set or 0, the credentials will have a 7 day expiry.
+        example: 300
+        default: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -5117,6 +5592,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique ID that can be used to reference a Kubernetes cluster.
+        example: bd5f5959-5e1e-4205-a714-a914373942af
     responses:
       - statusCode: '200'
         description: ''
@@ -5141,9 +5617,11 @@ methodObjects:
         schema: string
         required: true
         description: A unique ID that can be used to reference a Kubernetes cluster.
+        example: bd5f5959-5e1e-4205-a714-a914373942af
       - name: version
         schema: string
         description: ''
+        example: 1.16.13-do.0
     responses:
       - statusCode: '202'
         description: ''
@@ -5168,6 +5646,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique ID that can be used to reference a Kubernetes cluster.
+        example: bd5f5959-5e1e-4205-a714-a914373942af
     responses:
       - statusCode: '200'
         description: ''
@@ -5192,6 +5671,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique ID that can be used to reference a Kubernetes cluster.
+        example: bd5f5959-5e1e-4205-a714-a914373942af
       - name: tags
         schema: array
         required: false
@@ -5200,26 +5680,32 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: s-1vcpu-2gb
       - name: count
         schema: number
         required: true
         description: ''
+        example: 3
       - name: name
         schema: string
         required: true
         description: ''
+        example: new-pool
       - name: auto_scale
         schema: boolean
         required: false
         description: ''
+        example: true
       - name: min_nodes
         schema: number
         required: false
         description: ''
+        example: 3
       - name: max_nodes
         schema: number
         required: false
         description: ''
+        example: 6
     responses:
       - statusCode: '201'
         description: ''
@@ -5244,10 +5730,12 @@ methodObjects:
         schema: string
         required: true
         description: A unique ID that can be used to reference a Kubernetes cluster.
+        example: bd5f5959-5e1e-4205-a714-a914373942af
       - name: nodePoolId
         schema: string
         required: true
         description: A unique ID that can be used to reference a Kubernetes node pool.
+        example: cdda885e-7663-40c8-bc74-3a036c66545d
     responses:
       - statusCode: '204'
         description: ''
@@ -5272,10 +5760,12 @@ methodObjects:
         schema: string
         required: true
         description: A unique ID that can be used to reference a Kubernetes cluster.
+        example: bd5f5959-5e1e-4205-a714-a914373942af
       - name: nodePoolId
         schema: string
         required: true
         description: A unique ID that can be used to reference a Kubernetes node pool.
+        example: cdda885e-7663-40c8-bc74-3a036c66545d
     responses:
       - statusCode: '200'
         description: ''
@@ -5300,37 +5790,52 @@ methodObjects:
         schema: string
         required: true
         description: A unique ID that can be used to reference a Kubernetes cluster.
+        example: bd5f5959-5e1e-4205-a714-a914373942af
       - name: nodePoolId
         schema: string
         required: true
         description: A unique ID that can be used to reference a Kubernetes node pool.
+        example: cdda885e-7663-40c8-bc74-3a036c66545d
       - name: tags
         schema: array
         description: ''
+        example:
+          - k8s
+          - k8s:bd5f5959-5e1e-4205-a714-a914373942af
+          - k8s-worker
+          - production
+          - web-team
       - name: id
         schema: string
         description: ''
+        example: cdda885e-7663-40c8-bc74-3a036c66545d
       - name: name
         schema: string
         description: ''
+        example: frontend-pool
       - name: count
         schema: integer
         description: ''
+        example: 3
       - name: labels
         schema: object
         description: ''
+        example: null
       - name: taints
         schema: array
         description: ''
       - name: auto_scale
         schema: boolean
         description: ''
+        example: true
       - name: min_nodes
         schema: integer
         description: ''
+        example: 3
       - name: max_nodes
         schema: integer
         description: ''
+        example: 6
       - name: nodes
         schema: array
         description: ''
@@ -5359,16 +5864,19 @@ methodObjects:
         schema: string
         required: true
         description: A unique ID that can be used to reference a Kubernetes cluster.
+        example: bd5f5959-5e1e-4205-a714-a914373942af
       - name: nodePoolId
         schema: string
         required: true
         description: A unique ID that can be used to reference a Kubernetes node pool.
+        example: cdda885e-7663-40c8-bc74-3a036c66545d
       - name: nodeId
         schema: string
         required: true
         description: >-
           A unique ID that can be used to reference a node in a Kubernetes node
           pool.
+        example: 478247f8-b1bb-4f7a-8db9-2a5f8d4b8f8f
       - name: skipDrain
         schema: integer
         required: false
@@ -5377,6 +5885,8 @@ methodObjects:
           deleted. Setting it to `1` causes node draining to be skipped.
           Omitting the query parameter or setting its value to `0` carries out
           draining prior to deletion.
+        example: 1
+        default: 0
       - name: replace
         schema: integer
         required: false
@@ -5385,6 +5895,8 @@ methodObjects:
           Setting it to `1` causes the node to be replaced by a new one after
           deletion. Omitting the query parameter or setting its value to `0`
           deletes without replacement.
+        example: 1
+        default: 0
     responses:
       - statusCode: '202'
         description: ''
@@ -5409,13 +5921,17 @@ methodObjects:
         schema: string
         required: true
         description: A unique ID that can be used to reference a Kubernetes cluster.
+        example: bd5f5959-5e1e-4205-a714-a914373942af
       - name: nodePoolId
         schema: string
         required: true
         description: A unique ID that can be used to reference a Kubernetes node pool.
+        example: cdda885e-7663-40c8-bc74-3a036c66545d
       - name: nodes
         schema: array
         description: ''
+        example:
+          - d8db5e1a-6103-43b5-a7b3-8a948210a9fc
     responses:
       - statusCode: '202'
         description: ''
@@ -5440,6 +5956,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique ID that can be used to reference a Kubernetes cluster.
+        example: bd5f5959-5e1e-4205-a714-a914373942af
     responses:
       - statusCode: '200'
         description: ''
@@ -5484,10 +6001,12 @@ methodObjects:
         schema: string
         required: true
         description: A unique ID that can be used to reference a Kubernetes cluster.
+        example: bd5f5959-5e1e-4205-a714-a914373942af
       - name: runId
         schema: string
         required: false
         description: Specifies the clusterlint run whose results will be retrieved.
+        example: 50c2f44c-011d-493e-aee5-361a4a0d1844
     responses:
       - statusCode: '200'
         description: ''
@@ -5512,18 +6031,30 @@ methodObjects:
         schema: string
         required: true
         description: A unique ID that can be used to reference a Kubernetes cluster.
+        example: bd5f5959-5e1e-4205-a714-a914373942af
       - name: include_groups
         schema: array
         description: ''
+        example:
+          - basic
+          - doks
+          - security
       - name: include_checks
         schema: array
         description: ''
+        example:
+          - bare-pods
+          - resource-requirements
       - name: exclude_groups
         schema: array
         description: ''
+        example:
+          - workload-health
       - name: exclude_checks
         schema: array
         description: ''
+        example:
+          - default-namespace
     responses:
       - statusCode: '202'
         description: ''
@@ -5547,6 +6078,9 @@ methodObjects:
       - name: cluster_uuids
         schema: array
         description: ''
+        example: &ref_0
+          - bd5f5959-5e1e-4205-a714-a914373942af
+          - 50c2f44c-011d-493e-aee5-361a4a0d1844
     responses:
       - statusCode: '204'
         description: ''
@@ -5568,6 +6102,7 @@ methodObjects:
       - name: cluster_uuids
         schema: array
         description: ''
+        example: *ref_0
     responses:
       - statusCode: '204'
         description: ''
@@ -5590,10 +6125,14 @@ methodObjects:
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -5634,6 +6173,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a load balancer.
+        example: 4de7ac8b-495b-4884-9a69-1050c6793cd6
     responses:
       - statusCode: '204'
         description: ''
@@ -5658,6 +6198,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a load balancer.
+        example: 4de7ac8b-495b-4884-9a69-1050c6793cd6
     responses:
       - statusCode: '200'
         description: ''
@@ -5682,6 +6223,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a load balancer.
+        example: 4de7ac8b-495b-4884-9a69-1050c6793cd6
     responses:
       - statusCode: '200'
         description: ''
@@ -5706,10 +6248,14 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a load balancer.
+        example: 4de7ac8b-495b-4884-9a69-1050c6793cd6
       - name: droplet_ids
         schema: array
         required: true
         description: ''
+        example:
+          - 3164444
+          - 3164445
     responses:
       - statusCode: '204'
         description: ''
@@ -5734,10 +6280,14 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a load balancer.
+        example: 4de7ac8b-495b-4884-9a69-1050c6793cd6
       - name: droplet_ids
         schema: array
         required: true
         description: ''
+        example:
+          - 3164444
+          - 3164445
     responses:
       - statusCode: '204'
         description: ''
@@ -5762,6 +6312,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a load balancer.
+        example: 4de7ac8b-495b-4884-9a69-1050c6793cd6
       - name: forwarding_rules
         schema: array
         required: true
@@ -5790,6 +6341,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a load balancer.
+        example: 4de7ac8b-495b-4884-9a69-1050c6793cd6
       - name: forwarding_rules
         schema: array
         required: true
@@ -5818,10 +6370,14 @@ methodObjects:
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -5844,10 +6400,13 @@ methodObjects:
         schema: array
         required: true
         description: ''
+        example: &ref_1
+          - droplet_tag
       - name: description
         schema: string
         required: true
         description: ''
+        example: CPU Alert
       - name: alerts
         schema: object
         required: true
@@ -5856,26 +6415,33 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: GreaterThan
       - name: enabled
         schema: boolean
         required: true
         description: ''
+        example: true
       - name: entities
         schema: array
         required: true
         description: ''
+        example: &ref_2
+          - '192018292'
       - name: type
         schema: string
         required: true
         description: ''
+        example: v1/insights/droplet/cpu
       - name: value
         schema: number
         required: true
         description: ''
+        example: 80
       - name: window
         schema: string
         required: true
         description: ''
+        example: 5m
     responses:
       - statusCode: '200'
         description: ''
@@ -5898,6 +6464,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for an alert policy.
+        example: 4de7ac8b-495b-4884-9a69-1050c6793cd6
     responses:
       - statusCode: '204'
         description: ''
@@ -5922,6 +6489,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for an alert policy.
+        example: 4de7ac8b-495b-4884-9a69-1050c6793cd6
     responses:
       - statusCode: '200'
         description: ''
@@ -5946,14 +6514,17 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for an alert policy.
+        example: 4de7ac8b-495b-4884-9a69-1050c6793cd6
       - name: tags
         schema: array
         required: true
         description: ''
+        example: *ref_1
       - name: description
         schema: string
         required: true
         description: ''
+        example: CPU Alert
       - name: alerts
         schema: object
         required: true
@@ -5962,26 +6533,32 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: GreaterThan
       - name: enabled
         schema: boolean
         required: true
         description: ''
+        example: true
       - name: entities
         schema: array
         required: true
         description: ''
+        example: *ref_2
       - name: type
         schema: string
         required: true
         description: ''
+        example: v1/insights/droplet/cpu
       - name: value
         schema: number
         required: true
         description: ''
+        example: 80
       - name: window
         schema: string
         required: true
         description: ''
+        example: 5m
     responses:
       - statusCode: '200'
         description: ''
@@ -6006,22 +6583,27 @@ methodObjects:
         schema: string
         required: true
         description: The droplet ID.
+        example: '17209102'
       - name: interface
         schema: string
         required: true
         description: The network interface.
+        example: private
       - name: direction
         schema: string
         required: true
         description: The traffic direction.
+        example: inbound
       - name: start
         schema: string
         required: true
         description: Timestamp to start metric window.
+        example: '1620683817'
       - name: end
         schema: string
         required: true
         description: Timestamp to end metric window.
+        example: '1620705417'
     responses:
       - statusCode: '200'
         description: ''
@@ -6044,14 +6626,17 @@ methodObjects:
         schema: string
         required: true
         description: The droplet ID.
+        example: '17209102'
       - name: start
         schema: string
         required: true
         description: Timestamp to start metric window.
+        example: '1620683817'
       - name: end
         schema: string
         required: true
         description: Timestamp to end metric window.
+        example: '1620705417'
     responses:
       - statusCode: '200'
         description: ''
@@ -6074,14 +6659,17 @@ methodObjects:
         schema: string
         required: true
         description: The droplet ID.
+        example: '17209102'
       - name: start
         schema: string
         required: true
         description: Timestamp to start metric window.
+        example: '1620683817'
       - name: end
         schema: string
         required: true
         description: Timestamp to end metric window.
+        example: '1620705417'
     responses:
       - statusCode: '200'
         description: ''
@@ -6104,14 +6692,17 @@ methodObjects:
         schema: string
         required: true
         description: The droplet ID.
+        example: '17209102'
       - name: start
         schema: string
         required: true
         description: Timestamp to start metric window.
+        example: '1620683817'
       - name: end
         schema: string
         required: true
         description: Timestamp to end metric window.
+        example: '1620705417'
     responses:
       - statusCode: '200'
         description: ''
@@ -6134,14 +6725,17 @@ methodObjects:
         schema: string
         required: true
         description: The droplet ID.
+        example: '17209102'
       - name: start
         schema: string
         required: true
         description: Timestamp to start metric window.
+        example: '1620683817'
       - name: end
         schema: string
         required: true
         description: Timestamp to end metric window.
+        example: '1620705417'
     responses:
       - statusCode: '200'
         description: ''
@@ -6164,14 +6758,17 @@ methodObjects:
         schema: string
         required: true
         description: The droplet ID.
+        example: '17209102'
       - name: start
         schema: string
         required: true
         description: Timestamp to start metric window.
+        example: '1620683817'
       - name: end
         schema: string
         required: true
         description: Timestamp to end metric window.
+        example: '1620705417'
     responses:
       - statusCode: '200'
         description: ''
@@ -6194,14 +6791,17 @@ methodObjects:
         schema: string
         required: true
         description: The droplet ID.
+        example: '17209102'
       - name: start
         schema: string
         required: true
         description: Timestamp to start metric window.
+        example: '1620683817'
       - name: end
         schema: string
         required: true
         description: Timestamp to end metric window.
+        example: '1620705417'
     responses:
       - statusCode: '200'
         description: ''
@@ -6224,14 +6824,17 @@ methodObjects:
         schema: string
         required: true
         description: The droplet ID.
+        example: '17209102'
       - name: start
         schema: string
         required: true
         description: Timestamp to start metric window.
+        example: '1620683817'
       - name: end
         schema: string
         required: true
         description: Timestamp to end metric window.
+        example: '1620705417'
     responses:
       - statusCode: '200'
         description: ''
@@ -6254,14 +6857,17 @@ methodObjects:
         schema: string
         required: true
         description: The droplet ID.
+        example: '17209102'
       - name: start
         schema: string
         required: true
         description: Timestamp to start metric window.
+        example: '1620683817'
       - name: end
         schema: string
         required: true
         description: Timestamp to end metric window.
+        example: '1620705417'
     responses:
       - statusCode: '200'
         description: ''
@@ -6284,14 +6890,17 @@ methodObjects:
         schema: string
         required: true
         description: The droplet ID.
+        example: '17209102'
       - name: start
         schema: string
         required: true
         description: Timestamp to start metric window.
+        example: '1620683817'
       - name: end
         schema: string
         required: true
         description: Timestamp to end metric window.
+        example: '1620705417'
     responses:
       - statusCode: '200'
         description: ''
@@ -6314,14 +6923,17 @@ methodObjects:
         schema: string
         required: true
         description: The droplet ID.
+        example: '17209102'
       - name: start
         schema: string
         required: true
         description: Timestamp to start metric window.
+        example: '1620683817'
       - name: end
         schema: string
         required: true
         description: Timestamp to end metric window.
+        example: '1620705417'
     responses:
       - statusCode: '200'
         description: ''
@@ -6344,18 +6956,22 @@ methodObjects:
         schema: string
         required: true
         description: The app UUID.
+        example: 2db3c021-15ad-4088-bfe8-99dc972b9cf6
       - name: appComponent
         schema: string
         required: false
         description: The app component name.
+        example: sample-application
       - name: start
         schema: string
         required: true
         description: Timestamp to start metric window.
+        example: '1620683817'
       - name: end
         schema: string
         required: true
         description: Timestamp to end metric window.
+        example: '1620705417'
     responses:
       - statusCode: '200'
         description: ''
@@ -6378,18 +6994,22 @@ methodObjects:
         schema: string
         required: true
         description: The app UUID.
+        example: 2db3c021-15ad-4088-bfe8-99dc972b9cf6
       - name: appComponent
         schema: string
         required: false
         description: The app component name.
+        example: sample-application
       - name: start
         schema: string
         required: true
         description: Timestamp to start metric window.
+        example: '1620683817'
       - name: end
         schema: string
         required: true
         description: Timestamp to end metric window.
+        example: '1620705417'
     responses:
       - statusCode: '200'
         description: ''
@@ -6412,18 +7032,22 @@ methodObjects:
         schema: string
         required: true
         description: The app UUID.
+        example: 2db3c021-15ad-4088-bfe8-99dc972b9cf6
       - name: appComponent
         schema: string
         required: false
         description: The app component name.
+        example: sample-application
       - name: start
         schema: string
         required: true
         description: Timestamp to start metric window.
+        example: '1620683817'
       - name: end
         schema: string
         required: true
         description: Timestamp to end metric window.
+        example: '1620705417'
     responses:
       - statusCode: '200'
         description: ''
@@ -6446,10 +7070,14 @@ methodObjects:
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -6471,30 +7099,39 @@ methodObjects:
       - name: description
         schema: string
         description: ''
+        example: My website API
       - name: id
         schema: string
         description: ''
+        example: 4e1bfbc3-dc3e-41f2-a18f-1b4d7ba71679
       - name: owner_uuid
         schema: string
         description: ''
+        example: 99525febec065ca37b2ffe4f852fd2b2581895e7
       - name: owner_id
         schema: integer
         description: ''
+        example: 258992
       - name: name
         schema: string
         description: ''
+        example: my-web-api
       - name: purpose
         schema: string
         description: ''
+        example: Service or API
       - name: environment
         schema: string
         description: ''
+        example: Production
       - name: created_at
         schema: string
         description: ''
+        example: '2018-09-27T20:10:35Z'
       - name: updated_at
         schema: string
         description: ''
+        example: '2018-09-27T20:10:35Z'
     responses:
       - statusCode: '201'
         description: ''
@@ -6577,6 +7214,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a project.
+        example: 4de7ac8b-495b-4884-9a69-1050c6793cd6
     responses:
       - statusCode: '204'
         description: ''
@@ -6603,6 +7241,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a project.
+        example: 4de7ac8b-495b-4884-9a69-1050c6793cd6
     responses:
       - statusCode: '200'
         description: ''
@@ -6627,6 +7266,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a project.
+        example: 4de7ac8b-495b-4884-9a69-1050c6793cd6
     responses:
       - statusCode: '200'
         description: ''
@@ -6651,6 +7291,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a project.
+        example: 4de7ac8b-495b-4884-9a69-1050c6793cd6
     responses:
       - statusCode: '200'
         description: ''
@@ -6675,14 +7316,19 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a project.
+        example: 4de7ac8b-495b-4884-9a69-1050c6793cd6
       - name: perPage
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -6707,9 +7353,12 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a project.
+        example: 4de7ac8b-495b-4884-9a69-1050c6793cd6
       - name: resources
         schema: array
         description: ''
+        example: &ref_3
+          - do:droplet:13457723
     responses:
       - statusCode: '200'
         description: ''
@@ -6753,6 +7402,7 @@ methodObjects:
       - name: resources
         schema: array
         description: ''
+        example: *ref_3
     responses:
       - statusCode: '200'
         description: ''
@@ -6777,10 +7427,14 @@ methodObjects:
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -6841,14 +7495,17 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: example
       - name: subscription_tier_slug
         schema: string
         required: true
         description: ''
+        example: basic
       - name: region
         schema: string
         required: false
         description: ''
+        example: fra1
     responses:
       - statusCode: '201'
         description: ''
@@ -6888,6 +7545,7 @@ methodObjects:
       - name: tier_slug
         schema: string
         description: ''
+        example: basic
     responses:
       - statusCode: '200'
         description: ''
@@ -6912,12 +7570,16 @@ methodObjects:
         description: >-
           The duration in seconds that the returned registry credentials will be
           valid. If not set or 0, the credentials will not expire.
+        example: 3600
+        default: 0
       - name: readWrite
         schema: boolean
         required: false
         description: >-
           By default, the registry credentials allow for read-only access. Set
           this query parameter to `true` to obtain read-write credentials.
+        example: true
+        default: false
     responses:
       - statusCode: '200'
         description: ''
@@ -6940,6 +7602,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: example
     responses:
       - statusCode: '204'
         description: ''
@@ -6964,14 +7627,19 @@ methodObjects:
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
       - name: registryName
         schema: string
         required: true
         description: The name of a container registry.
+        example: example
     responses:
       - statusCode: '200'
         description: ''
@@ -6996,22 +7664,28 @@ methodObjects:
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: >-
           Which 'page' of paginated results to return. Ignored when 'page_token'
           is provided.
+        example: 1
+        default: 1
       - name: pageToken
         schema: string
         required: false
         description: >-
           Token to retrieve of the next or previous set of results more quickly
           than using 'page'.
+        example: eyJUb2tlbiI6IkNnZGpiMjlz
       - name: registryName
         schema: string
         required: true
         description: The name of a container registry.
+        example: example
     responses:
       - statusCode: '200'
         description: ''
@@ -7038,20 +7712,26 @@ methodObjects:
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
       - name: registryName
         schema: string
         required: true
         description: The name of a container registry.
+        example: example
       - name: repositoryName
         schema: string
         required: true
         description: >-
           The name of a container registry repository. If the name contains `/`
           characters, they must be URL-encoded, e.g. `%2F`.
+        example: repo-1
     responses:
       - statusCode: '200'
         description: ''
@@ -7077,16 +7757,19 @@ methodObjects:
         schema: string
         required: true
         description: The name of a container registry.
+        example: example
       - name: repositoryName
         schema: string
         required: true
         description: >-
           The name of a container registry repository. If the name contains `/`
           characters, they must be URL-encoded, e.g. `%2F`.
+        example: repo-1
       - name: repositoryTag
         schema: string
         required: true
         description: The name of a container registry repository tag.
+        example: 06a447a
     responses:
       - statusCode: '204'
         description: ''
@@ -7111,20 +7794,26 @@ methodObjects:
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
       - name: registryName
         schema: string
         required: true
         description: The name of a container registry.
+        example: example
       - name: repositoryName
         schema: string
         required: true
         description: >-
           The name of a container registry repository. If the name contains `/`
           characters, they must be URL-encoded, e.g. `%2F`.
+        example: repo-1
     responses:
       - statusCode: '200'
         description: ''
@@ -7150,16 +7839,20 @@ methodObjects:
         schema: string
         required: true
         description: The name of a container registry.
+        example: example
       - name: repositoryName
         schema: string
         required: true
         description: >-
           The name of a container registry repository. If the name contains `/`
           characters, they must be URL-encoded, e.g. `%2F`.
+        example: repo-1
       - name: manifestDigest
         schema: string
         required: true
         description: The manifest digest of a container registry repository tag.
+        example: >-
+          sha256:cb8a924afdf0229ef7515d9e5b3024e23b3eb03ddbba287f4a19c6ac90b8d221
     responses:
       - statusCode: '204'
         description: ''
@@ -7184,6 +7877,7 @@ methodObjects:
         schema: string
         required: true
         description: The name of a container registry.
+        example: example
     responses:
       - statusCode: '200'
         description: ''
@@ -7208,6 +7902,7 @@ methodObjects:
         schema: string
         required: true
         description: The name of a container registry.
+        example: example
     responses:
       - statusCode: '201'
         description: ''
@@ -7232,14 +7927,19 @@ methodObjects:
         schema: string
         required: true
         description: The name of a container registry.
+        example: example
       - name: perPage
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -7264,13 +7964,16 @@ methodObjects:
         schema: string
         required: true
         description: The name of a container registry.
+        example: example
       - name: garbageCollectionUuid
         schema: string
         required: true
         description: The UUID of a garbage collection run.
+        example: eff0feee-49c7-4e8f-ba5c-a320c109c8a8
       - name: cancel
         schema: boolean
         description: ''
+        example: true
     responses:
       - statusCode: '200'
         description: ''
@@ -7333,10 +8036,14 @@ methodObjects:
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -7377,6 +8084,7 @@ methodObjects:
         schema: string
         required: true
         description: A reserved IP address.
+        example: 45.55.96.47
     responses:
       - statusCode: '204'
         description: ''
@@ -7401,6 +8109,7 @@ methodObjects:
         schema: string
         required: true
         description: A reserved IP address.
+        example: 45.55.96.47
     responses:
       - statusCode: '200'
         description: ''
@@ -7425,6 +8134,7 @@ methodObjects:
         schema: string
         required: true
         description: A reserved IP address.
+        example: 45.55.96.47
     responses:
       - statusCode: '200'
         description: ''
@@ -7449,6 +8159,7 @@ methodObjects:
         schema: string
         required: true
         description: A reserved IP address.
+        example: 45.55.96.47
     responses:
       - statusCode: '201'
         description: ''
@@ -7473,12 +8184,14 @@ methodObjects:
         schema: string
         required: true
         description: A reserved IP address.
+        example: 45.55.96.47
       - name: actionId
         schema: integer
         required: true
         description: >-
           A unique numeric ID that can be used to identify and reference an
           action.
+        example: 36804636
     responses:
       - statusCode: '200'
         description: ''
@@ -7503,10 +8216,14 @@ methodObjects:
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -7529,14 +8246,19 @@ methodObjects:
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
       - name: resourceType
         schema: string
         required: false
         description: Used to filter snapshots by a resource type.
+        example: droplet
     responses:
       - statusCode: '200'
         description: ''
@@ -7561,6 +8283,7 @@ methodObjects:
         description: >-
           Either the ID of an existing snapshot. This will be an integer for a
           Droplet snapshot or a string for a volume snapshot.
+        example: 6372321
     responses:
       - statusCode: '204'
         description: ''
@@ -7587,6 +8310,7 @@ methodObjects:
         description: >-
           Either the ID of an existing snapshot. This will be an integer for a
           Droplet snapshot or a string for a volume snapshot.
+        example: 6372321
     responses:
       - statusCode: '200'
         description: ''
@@ -7611,10 +8335,14 @@ methodObjects:
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -7636,9 +8364,31 @@ methodObjects:
       - name: name
         schema: string
         description: ''
+        example: extra-awesome
       - name: resources
         schema: object
         description: ''
+        example:
+          count: 5
+          last_tagged_uri: https://api.digitalocean.com/v2/images/7555620
+          droplets:
+            count: 1
+            last_tagged_uri: https://api.digitalocean.com/v2/droplets/3164444
+          images:
+            count: 1
+            last_tagged_uri: https://api.digitalocean.com/v2/images/7555620
+          volumes:
+            count: 1
+            last_tagged_uri: >-
+              https://api.digitalocean.com/v2/volumes/3d80cb72-342b-4aaa-b92e-4e4abb24a933
+          volume_snapshots:
+            count: 1
+            last_tagged_uri: >-
+              https://api.digitalocean.com/v2/snapshots/1f6f46e8-6b60-11e9-be4e-0a58ac144519
+          databases:
+            count: 1
+            last_tagged_uri: >-
+              https://api.digitalocean.com/v2/databases/b92438f6-ba03-416c-b642-e9236db91976
     responses:
       - statusCode: '201'
         description: ''
@@ -7665,6 +8415,7 @@ methodObjects:
         description: >-
           The name of the tag. Tags may contain letters, numbers, colons,
           dashes, and underscores. There is a limit of 255 characters per tag.
+        example: awesome
     responses:
       - statusCode: '204'
         description: ''
@@ -7691,6 +8442,7 @@ methodObjects:
         description: >-
           The name of the tag. Tags may contain letters, numbers, colons,
           dashes, and underscores. There is a limit of 255 characters per tag.
+        example: awesome
     responses:
       - statusCode: '200'
         description: ''
@@ -7717,10 +8469,18 @@ methodObjects:
         description: >-
           The name of the tag. Tags may contain letters, numbers, colons,
           dashes, and underscores. There is a limit of 255 characters per tag.
+        example: awesome
       - name: resources
         schema: array
         required: true
         description: ''
+        example: &ref_4
+          - resource_id: '9569411'
+            resource_type: droplet
+          - resource_id: '7555620'
+            resource_type: image
+          - resource_id: 3d80cb72-342b-4aaa-b92e-4e4abb24a933
+            resource_type: volume
     responses:
       - statusCode: '204'
         description: ''
@@ -7747,10 +8507,12 @@ methodObjects:
         description: >-
           The name of the tag. Tags may contain letters, numbers, colons,
           dashes, and underscores. There is a limit of 255 characters per tag.
+        example: awesome
       - name: resources
         schema: array
         required: true
         description: ''
+        example: *ref_4
     responses:
       - statusCode: '204'
         description: ''
@@ -7774,9 +8536,11 @@ methodObjects:
       - name: name
         schema: string
         description: The block storage volume's name.
+        example: example
       - name: region
         schema: string
         description: The slug identifier for the region where the resource is available.
+        example: nyc3
     responses:
       - statusCode: '204'
         description: ''
@@ -7800,17 +8564,23 @@ methodObjects:
       - name: name
         schema: string
         description: The block storage volume's name.
+        example: example
       - name: region
         schema: string
         description: The slug identifier for the region where the resource is available.
+        example: nyc3
       - name: perPage
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -7855,10 +8625,14 @@ methodObjects:
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
     responses:
       - statusCode: '202'
         description: ''
@@ -7885,6 +8659,7 @@ methodObjects:
         description: >-
           Either the ID of an existing snapshot. This will be an integer for a
           Droplet snapshot or a string for a volume snapshot.
+        example: 6372321
     responses:
       - statusCode: '204'
         description: ''
@@ -7911,6 +8686,7 @@ methodObjects:
         description: >-
           Either the ID of an existing snapshot. This will be an integer for a
           Droplet snapshot or a string for a volume snapshot.
+        example: 6372321
     responses:
       - statusCode: '200'
         description: ''
@@ -7935,6 +8711,7 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the block storage volume.
+        example: 7724db7c-e098-11e5-b522-000f53304e51
     responses:
       - statusCode: '204'
         description: ''
@@ -7959,6 +8736,7 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the block storage volume.
+        example: 7724db7c-e098-11e5-b522-000f53304e51
     responses:
       - statusCode: '200'
         description: ''
@@ -7983,14 +8761,19 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the block storage volume.
+        example: 7724db7c-e098-11e5-b522-000f53304e51
       - name: perPage
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -8015,14 +8798,19 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the block storage volume.
+        example: 7724db7c-e098-11e5-b522-000f53304e51
       - name: perPage
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
     responses:
       - statusCode: '202'
         description: ''
@@ -8047,20 +8835,26 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the block storage volume.
+        example: 7724db7c-e098-11e5-b522-000f53304e51
       - name: actionId
         schema: integer
         required: true
         description: >-
           A unique numeric ID that can be used to identify and reference an
           action.
+        example: 36804636
       - name: perPage
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -8085,14 +8879,19 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the block storage volume.
+        example: 7724db7c-e098-11e5-b522-000f53304e51
       - name: perPage
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -8117,14 +8916,19 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the block storage volume.
+        example: 7724db7c-e098-11e5-b522-000f53304e51
       - name: tags
         schema: array
         required: false
         description: ''
+        example:
+          - base-image
+          - prod
       - name: name
         schema: string
         required: true
         description: ''
+        example: big-data-snapshot1475261774
     responses:
       - statusCode: '201'
         description: ''
@@ -8151,10 +8955,14 @@ methodObjects:
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -8197,6 +9005,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a VPC.
+        example: 4de7ac8b-495b-4884-9a69-1050c6793cd6
     responses:
       - statusCode: '204'
         description: ''
@@ -8221,6 +9030,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a VPC.
+        example: 4de7ac8b-495b-4884-9a69-1050c6793cd6
     responses:
       - statusCode: '200'
         description: ''
@@ -8245,6 +9055,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a VPC.
+        example: 4de7ac8b-495b-4884-9a69-1050c6793cd6
     responses:
       - statusCode: '200'
         description: ''
@@ -8269,6 +9080,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a VPC.
+        example: 4de7ac8b-495b-4884-9a69-1050c6793cd6
     responses:
       - statusCode: '200'
         description: ''
@@ -8293,18 +9105,24 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a VPC.
+        example: 4de7ac8b-495b-4884-9a69-1050c6793cd6
       - name: resourceType
         schema: string
         required: false
         description: Used to filter VPC members by a resource type.
+        example: droplet
       - name: perPage
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -8329,10 +9147,14 @@ methodObjects:
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -8356,18 +9178,26 @@ methodObjects:
       - name: name
         schema: string
         description: ''
+        example: Landing page check
       - name: type
         schema: string
         description: ''
+        example: https
       - name: target
         schema: string
         description: ''
+        example: https://www.landingpage.com
       - name: regions
         schema: array
         description: ''
+        example: &ref_5
+          - us_east
+          - eu_west
       - name: enabled
         schema: boolean
         description: ''
+        example: true
+        default: true
     responses:
       - statusCode: '201'
         description: ''
@@ -8390,6 +9220,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a check.
+        example: 4de7ac8b-495b-4884-9a69-1050c6793cd6
     responses:
       - statusCode: '204'
         description: ''
@@ -8414,6 +9245,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a check.
+        example: 4de7ac8b-495b-4884-9a69-1050c6793cd6
     responses:
       - statusCode: '200'
         description: ''
@@ -8438,21 +9270,28 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a check.
+        example: 4de7ac8b-495b-4884-9a69-1050c6793cd6
       - name: name
         schema: string
         description: ''
+        example: Landing page check
       - name: type
         schema: string
         description: ''
+        example: https
       - name: target
         schema: string
         description: ''
+        example: https://www.landingpage.com
       - name: regions
         schema: array
         description: ''
+        example: *ref_5
       - name: enabled
         schema: boolean
         description: ''
+        example: true
+        default: true
     responses:
       - statusCode: '200'
         description: ''
@@ -8477,6 +9316,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a check.
+        example: 4de7ac8b-495b-4884-9a69-1050c6793cd6
     responses:
       - statusCode: '200'
         description: ''
@@ -8501,14 +9341,19 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a check.
+        example: 4de7ac8b-495b-4884-9a69-1050c6793cd6
       - name: perPage
         schema: integer
         required: false
         description: Number of items returned per page
+        example: 2
+        default: 20
       - name: page
         schema: integer
         required: false
         description: Which 'page' of paginated results to return.
+        example: 1
+        default: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -8533,6 +9378,7 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a check.
+        example: 4de7ac8b-495b-4884-9a69-1050c6793cd6
     responses:
       - statusCode: '201'
         description: ''
@@ -8557,10 +9403,12 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a check.
+        example: 4de7ac8b-495b-4884-9a69-1050c6793cd6
       - name: alertId
         schema: string
         required: true
         description: A unique identifier for an alert.
+        example: 17f0f0ae-b7e5-4ef6-86e3-aa569db58284
     responses:
       - statusCode: '204'
         description: ''
@@ -8585,10 +9433,12 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a check.
+        example: 4de7ac8b-495b-4884-9a69-1050c6793cd6
       - name: alertId
         schema: string
         required: true
         description: A unique identifier for an alert.
+        example: 17f0f0ae-b7e5-4ef6-86e3-aa569db58284
     responses:
       - statusCode: '200'
         description: ''
@@ -8613,28 +9463,35 @@ methodObjects:
         schema: string
         required: true
         description: A unique identifier for a check.
+        example: 4de7ac8b-495b-4884-9a69-1050c6793cd6
       - name: alertId
         schema: string
         required: true
         description: A unique identifier for an alert.
+        example: 17f0f0ae-b7e5-4ef6-86e3-aa569db58284
       - name: name
         schema: string
         description: ''
+        example: Landing page degraded performance
       - name: type
         schema: string
         description: ''
+        example: latency
       - name: threshold
         schema: integer
         description: ''
+        example: 300
       - name: comparison
         schema: string
         description: ''
+        example: greater_than
       - name: notifications
         schema: object
         description: ''
       - name: period
         schema: string
         description: ''
+        example: 2m
     responses:
       - statusCode: '200'
         description: ''

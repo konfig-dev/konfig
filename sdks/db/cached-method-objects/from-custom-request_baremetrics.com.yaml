@@ -38,6 +38,7 @@ methodObjects:
         schema: string
         required: true
         description: Please see [Sources](ref:sources)
+        example: SOURCE_ID
     responses:
       - statusCode: '200'
         description: ''
@@ -54,38 +55,47 @@ methodObjects:
         schema: string
         required: true
         description: Please see [Sources](ref:sources)
+        example: SOURCE_ID
       - name: oid
         schema: string
         required: true
         description: ''
+        example: OID
       - name: name
         schema: string
         required: true
         description: ''
+        example: NAME
       - name: currency
         schema: string
         required: true
         description: ''
+        example: CURRENCY
       - name: amount
         schema: integer
         required: true
         description: ''
+        example: 0
       - name: interval
         schema: string
         required: true
         description: ''
+        example: INTERVAL
       - name: interval_count
         schema: integer
         required: true
         description: ''
+        example: 0
       - name: trial_duration
         schema: integer
         required: false
         description: ''
+        default: 0
       - name: trial_duration_unit
         schema: string
         required: false
         description: ''
+        default: day
     responses:
       - statusCode: '200'
         description: ''
@@ -102,10 +112,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: OID
       - name: sourceId
         schema: string
         required: true
         description: Please see [Sources](ref:sources)
+        example: SOURCE_ID
     responses:
       - statusCode: '202'
         description: ''
@@ -122,10 +134,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: OID
       - name: sourceId
         schema: string
         required: true
         description: Please see [Sources](ref:sources)
+        example: SOURCE_ID
     responses:
       - statusCode: '200'
         description: ''
@@ -142,14 +156,17 @@ methodObjects:
         schema: string
         required: true
         description: Your interval plan id
+        example: PLAN_OID
       - name: sourceId
         schema: string
         required: true
         description: Please see [Sources](ref:sources)
+        example: SOURCE_ID
       - name: name
         schema: string
         required: true
         description: ''
+        example: NAME
     responses:
       - statusCode: '200'
         description: ''
@@ -171,12 +188,15 @@ methodObjects:
         schema: string
         required: true
         description: Please see [Sources](ref:sources)
+        example: SOURCE_ID
       - name: sort
         schema: string
         description: Allows you to sort the results. You can use ltv or created
+        default: created
       - name: order
         schema: string
         description: ''
+        default: asc
     responses:
       - statusCode: '200'
         description: ''
@@ -193,6 +213,7 @@ methodObjects:
         schema: string
         required: true
         description: Please see [Sources](ref:sources)
+        example: SOURCE_ID
       - name: name
         schema: string
         required: false
@@ -209,10 +230,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: OID
       - name: created
         schema: string
         required: false
         description: ''
+        default: NOW
     responses:
       - statusCode: '200'
         description: ''
@@ -229,10 +252,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: OID
       - name: sourceId
         schema: string
         required: true
         description: Please see [Sources](ref:sources)
+        example: SOURCE_ID
     responses:
       - statusCode: '202'
         description: ''
@@ -249,10 +274,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: OID
       - name: sourceId
         schema: string
         required: true
         description: Please see [Sources](ref:sources)
+        example: SOURCE_ID
     responses:
       - statusCode: '200'
         description: ''
@@ -269,10 +296,12 @@ methodObjects:
         schema: string
         required: true
         description: Please see [Sources](ref:sources)
+        example: SOURCE_ID
       - name: oid
         schema: string
         required: true
         description: ''
+        example: OID
     responses:
       - statusCode: '200'
         description: ''
@@ -289,10 +318,12 @@ methodObjects:
         schema: string
         required: true
         description: Your unique ID for the customer
+        example: CUSTOMER_OID
       - name: sourceId
         schema: string
         required: true
         description: Please see [Sources](ref:sources)
+        example: SOURCE_ID
       - name: name
         schema: string
         description: ''
@@ -321,6 +352,7 @@ methodObjects:
         schema: string
         required: true
         description: Please see [Sources](ref:sources)
+        example: SOURCE_ID
       - name: customerOid
         schema: string
         description: This allows you to return subscriptions for a given customer
@@ -329,6 +361,7 @@ methodObjects:
         description: >-
           Allows you to order subscriptions from newest to oldest `desc` or
           oldest to newest `asc`
+        default: desc
     responses:
       - statusCode: '200'
         description: ''
@@ -345,14 +378,17 @@ methodObjects:
         schema: string
         required: true
         description: Please see [Sources](ref:sources)
+        example: SOURCE_ID
       - name: oid
         schema: string
         required: true
         description: ''
+        example: OID
       - name: started_at
         schema: string
         required: true
         description: ''
+        example: STARTED_AT
       - name: canceled_at
         schema: string
         required: false
@@ -361,10 +397,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: PLAN_OID
       - name: customer_oid
         schema: string
         required: true
         description: ''
+        example: CUSTOMER_OID
       - name: addons
         schema: array
         required: false
@@ -373,6 +411,7 @@ methodObjects:
         schema: integer
         required: false
         description: ''
+        default: 1
       - name: discount
         schema: integer
         required: false
@@ -393,10 +432,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: OID
       - name: sourceId
         schema: string
         required: true
         description: Please see [Sources](ref:sources)
+        example: SOURCE_ID
     responses:
       - statusCode: '202'
         description: ''
@@ -413,10 +454,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: OID
       - name: sourceId
         schema: string
         required: true
         description: Please see [Sources](ref:sources)
+        example: SOURCE_ID
     responses:
       - statusCode: '200'
         description: ''
@@ -433,18 +476,22 @@ methodObjects:
         schema: string
         required: true
         description: Your unique ID for the subscription
+        example: SUBSCRIPTION_OID
       - name: sourceId
         schema: string
         required: true
         description: Please see [Sources](ref:sources)
+        example: SOURCE_ID
       - name: plan_oid
         schema: string
         required: true
         description: ''
+        example: PLAN_OID
       - name: occurred_at
         schema: string
         required: false
         description: ''
+        default: NOW
       - name: addons
         schema: array
         required: false
@@ -453,6 +500,7 @@ methodObjects:
         schema: integer
         required: false
         description: ''
+        default: 1
       - name: discount
         schema: integer
         required: false
@@ -473,14 +521,17 @@ methodObjects:
         schema: string
         required: true
         description: Your unique ID for the subscription
+        example: SUBSCRIPTION_OID
       - name: sourceId
         schema: string
         required: true
         description: Please see [Sources](ref:sources)
+        example: SOURCE_ID
       - name: canceled_at
         schema: string
         required: true
         description: ''
+        example: CANCELED_AT
     responses:
       - statusCode: '200'
         description: ''
@@ -509,22 +560,27 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: METRIC
       - name: annotation
         schema: string
         required: true
         description: ''
+        example: ANNOTATION
       - name: date
         schema: string
         required: true
         description: ''
+        example: DATE
       - name: global
         schema: boolean
         required: true
         description: ''
+        example: true
       - name: user_id
         schema: string
         required: true
         description: ''
+        example: USER_ID
     responses:
       - statusCode: '200'
         description: ''
@@ -541,6 +597,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: ID
     responses:
       - statusCode: '202'
         description: ''
@@ -557,6 +614,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: ID
     responses:
       - statusCode: '200'
         description: ''
@@ -585,26 +643,32 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: METRIC
       - name: start_amount
         schema: integer
         required: true
         description: ''
+        example: 0
       - name: end_amount
         schema: integer
         required: true
         description: ''
+        example: 0
       - name: start_date
         schema: string
         required: true
         description: ''
+        example: START_DATE
       - name: end_date
         schema: string
         required: true
         description: ''
+        example: END_DATE
       - name: name
         schema: string
         required: true
         description: ''
+        example: NAME
     responses:
       - statusCode: '200'
         description: ''
@@ -621,6 +685,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: ID
     responses:
       - statusCode: '202'
         description: ''
@@ -637,6 +702,7 @@ methodObjects:
         schema: string
         required: true
         description: Unique ID
+        example: ID
     responses:
       - statusCode: '200'
         description: ''
@@ -665,6 +731,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: ID
     responses:
       - statusCode: '200'
         description: ''
@@ -681,6 +748,7 @@ methodObjects:
         schema: string
         required: true
         description: Please see [Sources](ref:sources)
+        example: SOURCE_ID
       - name: start
         schema: string
         description: ''
@@ -709,34 +777,42 @@ methodObjects:
         schema: string
         required: true
         description: Please see [Sources](ref:sources)
+        example: SOURCE_ID
       - name: oid
         schema: string
         required: true
         description: ''
+        example: OID
       - name: amount
         schema: integer
         required: true
         description: ''
+        example: 0
       - name: currency
         schema: string
         required: true
         description: ''
+        example: CURRENCY
       - name: customer_oid
         schema: string
         required: true
         description: ''
+        example: CUSTOMER_OID
       - name: created
         schema: string
         required: false
         description: ''
+        default: NOW
       - name: status
         schema: string
         required: false
         description: ''
+        default: paid
       - name: fee
         schema: integer
         required: false
         description: ''
+        default: 0
       - name: subscription_oid
         schema: string
         required: false
@@ -757,10 +833,12 @@ methodObjects:
         schema: string
         required: true
         description: Please see [Sources](ref:sources)
+        example: SOURCE_ID
       - name: oid
         schema: string
         required: true
         description: ''
+        example: OID
     responses:
       - statusCode: '202'
         description: ''
@@ -777,10 +855,12 @@ methodObjects:
         schema: string
         required: true
         description: Please see [Sources](ref:sources)
+        example: SOURCE_ID
       - name: oid
         schema: string
         required: true
         description: ''
+        example: OID
     responses:
       - statusCode: '200'
         description: ''
@@ -797,6 +877,7 @@ methodObjects:
         schema: string
         required: true
         description: Please see [Sources](ref:sources)
+        example: SOURCE_ID
       - name: start
         schema: string
         description: ''
@@ -819,30 +900,37 @@ methodObjects:
         schema: string
         required: true
         description: Please see [Sources](ref:sources)
+        example: SOURCE_ID
       - name: oid
         schema: string
         required: true
         description: ''
+        example: OID
       - name: amount
         schema: integer
         required: true
         description: ''
+        example: 0
       - name: currency
         schema: string
         required: true
         description: ''
+        example: CURRENCY
       - name: customer_oid
         schema: string
         required: true
         description: ''
+        example: CUSTOMER_OID
       - name: charge_oid
         schema: string
         required: true
         description: ''
+        example: CHARGE_OID
       - name: created
         schema: string
         required: false
         description: ''
+        default: NOW
     responses:
       - statusCode: '200'
         description: ''
@@ -859,10 +947,12 @@ methodObjects:
         schema: string
         required: true
         description: Please see [Sources](ref:sources)
+        example: SOURCE_ID
       - name: oid
         schema: string
         required: true
         description: ''
+        example: OID
     responses:
       - statusCode: '202'
         description: ''
@@ -879,10 +969,12 @@ methodObjects:
         schema: string
         required: true
         description: Please see [Sources](ref:sources)
+        example: SOURCE_ID
       - name: oid
         schema: string
         required: true
         description: ''
+        example: OID
     responses:
       - statusCode: '200'
         description: ''
@@ -899,9 +991,11 @@ methodObjects:
         schema: string
         required: true
         description: Please see [Sources](ref:sources)
+        example: SOURCE_ID
       - name: liveStream
         schema: string
         description: Set this to true to only return events that show up in the live stream
+        default: 'false'
       - name: start
         schema: string
         description: ''
@@ -924,10 +1018,12 @@ methodObjects:
         schema: string
         required: true
         description: Please see [Sources](ref:sources)
+        example: SOURCE_ID
       - name: id
         schema: string
         required: true
         description: ''
+        example: ID
     responses:
       - statusCode: '200'
         description: ''
@@ -944,10 +1040,14 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: START_DATE
+        default: '2016-11-01'
       - name: endDate
         schema: string
         required: true
         description: ''
+        example: END_DATE
+        default: '2016-11-26'
     responses:
       - statusCode: '200'
         description: ''
@@ -966,17 +1066,23 @@ methodObjects:
         description: >-
           You can see a list of available metrics
           [here](https://developers.baremetrics.com/reference/introduction)
+        example: METRIC
       - name: startDate
         schema: string
         required: true
         description: ''
+        example: START_DATE
+        default: '2016-11-01'
       - name: endDate
         schema: string
         required: true
         description: ''
+        example: END_DATE
+        default: '2016-11-26'
       - name: compareTo
         schema: integer
         description: The number of days ago to compare results to
+        default: 30
     responses:
       - statusCode: '200'
         description: ''
@@ -993,16 +1099,19 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: START_DATE
       - name: endDate
         schema: string
         required: true
         description: ''
+        example: END_DATE
       - name: metric
         schema: string
         required: true
         description: >-
           You can see a list of available metrics
           [here](https://developers.baremetrics.com/reference/introduction)
+        example: METRIC
     responses:
       - statusCode: '200'
         description: ''
@@ -1019,16 +1128,19 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: START_DATE
       - name: endDate
         schema: string
         required: true
         description: ''
+        example: END_DATE
       - name: metric
         schema: string
         required: true
         description: >-
           You can see a list of available metrics
           [here](https://developers.baremetrics.com/reference/introduction)
+        example: METRIC
     responses:
       - statusCode: '200'
         description: ''
@@ -1101,6 +1213,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: ID
     responses:
       - statusCode: '202'
         description: ''
@@ -1117,6 +1230,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: ID
     responses:
       - statusCode: '200'
         description: ''
@@ -1133,6 +1247,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: ID
       - name: name
         schema: string
         description: ''
@@ -1154,15 +1269,19 @@ methodObjects:
       - name: perPage
         schema: integer
         description: ''
+        default: 30
       - name: page
         schema: integer
         description: ''
+        default: 0
       - name: sort
         schema: string
         description: ''
+        default: created
       - name: order
         schema: string
         description: ''
+        default: asc
       - name: query
         schema: array
         required: true
@@ -1212,10 +1331,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: TITLE
       - name: field_type
         schema: string
         required: true
         description: ''
+        example: FIELD_TYPE
     responses:
       - statusCode: '200'
         description: ''
@@ -1232,10 +1353,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: ID
       - name: title
         schema: string
         required: true
         description: ''
+        example: TITLE
     responses:
       - statusCode: '200'
         description: ''
@@ -1264,6 +1387,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: REASON_ID
       - name: comment
         schema: string
         required: false
@@ -1292,6 +1416,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: ID
     responses:
       - statusCode: '200'
         description: ''
@@ -1308,6 +1433,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: ID
       - name: reason_id
         schema: string
         description: ''
@@ -1330,6 +1456,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: ID
     responses:
       - statusCode: '202'
         description: ''
@@ -1346,6 +1473,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: ID
     responses:
       - statusCode: '200'
         description: ''
@@ -1362,10 +1490,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: ID
       - name: text
         schema: string
         required: true
         description: ''
+        example: TEXT
       - name: sort_key
         schema: integer
         required: false
@@ -1386,6 +1516,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: TEXT
       - name: sort_key
         schema: integer
         required: false

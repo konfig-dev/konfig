@@ -4,7 +4,9 @@ import {
   Parameter,
   Method,
   Response,
+  ParameterExampleOrDefault,
 } from "../../generator/konfig-docs/src/components/SdkComponentProps";
+import { prodDependencies } from "mathjs";
 
 // See generator/konfig-docs/src/components/Sdk.tsx#Method
 export function getMethodObjects(spec: Spec): Method[] {
@@ -19,16 +21,51 @@ export function getMethodObjects(spec: Spec): Method[] {
           $ref: spec.$ref,
         });
         const schemaOrRef = parameter.schema;
-        const schema =
+        const schemaObject =
           schemaOrRef !== undefined
-            ? resolveRef({ refOrObject: schemaOrRef, $ref: spec.$ref }).type ??
-              "undefined"
+            ? resolveRef({ refOrObject: schemaOrRef, $ref: spec.$ref })
             : "undefined";
+        const schemaType =
+          schemaObject !== "undefined"
+            ? schemaObject.type === undefined
+              ? "undefined"
+              : schemaObject.type
+            : "undefined";
+
+        function getExample(): ParameterExampleOrDefault {
+          if (parameter.example !== undefined) return parameter.example;
+          if (
+            parameter.examples !== undefined &&
+            Array.isArray(parameter.examples) &&
+            parameter.examples.length > 0
+          ) {
+            return parameter.examples;
+          }
+          if (schemaObject === "undefined") return;
+          if (schemaObject.example !== undefined) return schemaObject.example;
+          if (!parameter.required) return;
+          if (schemaObject.type === "string")
+            return `${parameter.name.toUpperCase()}`;
+          if (schemaObject.type === "number") return 0;
+          if (schemaObject.type === "boolean") return true;
+          if (schemaObject.type === "integer") return 0;
+        }
+
+        function getDefault(): ParameterExampleOrDefault {
+          if (schemaObject === "undefined") return;
+          if (schemaObject.default !== undefined) return schemaObject.default;
+        }
+
+        const example = getExample();
+        const dflt = getDefault();
+
         parameters.push({
           name: camelcase(parameter.name),
-          schema,
+          schema: schemaType,
           required: parameter.required,
           description: parameter.description ?? "",
+          example,
+          default: dflt,
         });
       }
     }
@@ -57,25 +94,75 @@ export function getMethodObjects(spec: Spec): Method[] {
             throw Error("Expect schema to be dereferenced");
           }
           if (schema.properties !== undefined) {
+            const required = schema.required;
             for (const property in schema.properties) {
               const propertySchemaOrRef = schema.properties[property];
               // avoid "TypeError: Cannot use 'in' operator to search for '$ref' in false"
               if (typeof propertySchemaOrRef !== "object") continue;
-              let propertySchema =
+
+              const propertySchemaObject =
                 propertySchemaOrRef !== undefined
                   ? resolveRef({
                       refOrObject: propertySchemaOrRef,
                       $ref: spec.$ref,
-                    }).type ?? "undefined"
+                    })
                   : "undefined";
-              const firstSchema = Array.isArray(propertySchema)
-                ? propertySchema[0]
-                : propertySchema;
+              const propertySchemaType =
+                propertySchemaObject !== "undefined"
+                  ? propertySchemaObject.type
+                  : "undefined";
+              const stringSchemaOrObjectSchema = Array.isArray(
+                propertySchemaType
+              )
+                ? propertySchemaType[0]
+                : propertySchemaType;
+
+              function getSchemaType(): string {
+                if (typeof stringSchemaOrObjectSchema === "string")
+                  return stringSchemaOrObjectSchema;
+                return "undefined";
+              }
+
+              function getExample(): ParameterExampleOrDefault {
+                if (propertySchemaObject === "undefined") return;
+                if (propertySchemaObject.example !== undefined)
+                  return propertySchemaObject.example;
+                if (required?.includes(property)) {
+                  if (propertySchemaObject.type === "string") {
+                    return property.toUpperCase();
+                  }
+                  if (propertySchemaObject.type === "number") {
+                    return 0;
+                  }
+                  if (propertySchemaObject.type === "boolean") {
+                    return true;
+                  }
+                  if (propertySchemaObject.type === "integer") {
+                    return 0;
+                  }
+                  if (propertySchemaObject.type === "null") {
+                    return null;
+                  }
+                }
+              }
+
+              function getDefault(): ParameterExampleOrDefault {
+                if (propertySchemaObject === "undefined") return;
+                if (propertySchemaObject.default !== undefined)
+                  return propertySchemaObject.default;
+              }
+
+              const schemaType = getSchemaType();
+              const example = getExample();
+              const dflt = getDefault();
+
               parameters.push({
                 name: property,
-                schema: firstSchema,
+                schema: schemaType,
                 required: schema.required?.includes(property),
                 description: "",
+                example,
+                default: dflt,
               });
             }
           }

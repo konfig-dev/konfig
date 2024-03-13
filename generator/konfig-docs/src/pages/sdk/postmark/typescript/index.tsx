@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function PostmarkTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function PostmarkTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/postmark/logo.svg"
       clientNameCamelCase="postmark"
       homepage="postmarkapp.com"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/postmark/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/postmark/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["email"]}
       methods={[
   {
     "url": "/bounces",
@@ -36,13 +39,15 @@ export default function PostmarkTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": true,
-        "description": "Number of bounces to return per request. Max 500."
+        "description": "Number of bounces to return per request. Max 500.",
+        "example": 0
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": true,
-        "description": "Number of bounces to skip."
+        "description": "Number of bounces to skip.",
+        "example": 0
       },
       {
         "name": "type",
@@ -107,7 +112,8 @@ export default function PostmarkTypeScriptSdk() {
         "name": "bounceid",
         "schema": "integer",
         "required": true,
-        "description": "The ID of the bounce to retrieve."
+        "description": "The ID of the bounce to retrieve.",
+        "example": 0
       }
     ],
     "responses": [
@@ -137,7 +143,8 @@ export default function PostmarkTypeScriptSdk() {
         "name": "bounceid",
         "schema": "integer",
         "required": true,
-        "description": "The ID of the Bounce to activate."
+        "description": "The ID of the Bounce to activate.",
+        "example": 0
       }
     ],
     "responses": [
@@ -167,7 +174,8 @@ export default function PostmarkTypeScriptSdk() {
         "name": "bounceid",
         "schema": "integer",
         "required": true,
-        "description": "The ID for the bounce dump to retrieve."
+        "description": "The ID for the bounce dump to retrieve.",
+        "example": 0
       }
     ],
     "responses": [
@@ -379,7 +387,8 @@ export default function PostmarkTypeScriptSdk() {
         "name": "From",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "FROM"
       },
       {
         "name": "Headers",
@@ -391,7 +400,8 @@ export default function PostmarkTypeScriptSdk() {
         "name": "InlineCss",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": true
       },
       {
         "name": "ReplyTo",
@@ -409,13 +419,15 @@ export default function PostmarkTypeScriptSdk() {
         "name": "TemplateAlias",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TEMPLATEALIAS"
       },
       {
         "name": "TemplateId",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "TemplateModel",
@@ -427,7 +439,8 @@ export default function PostmarkTypeScriptSdk() {
         "name": "To",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TO"
       },
       {
         "name": "TrackLinks",
@@ -469,13 +482,15 @@ export default function PostmarkTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": true,
-        "description": "Number of messages to return per request. Max 500."
+        "description": "Number of messages to return per request. Max 500.",
+        "example": 0
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": true,
-        "description": "Number of messages to skip"
+        "description": "Number of messages to skip",
+        "example": 0
       },
       {
         "name": "recipient",
@@ -545,7 +560,8 @@ export default function PostmarkTypeScriptSdk() {
         "name": "messageid",
         "schema": "string",
         "required": true,
-        "description": "The ID of the message which should bypass inbound rules."
+        "description": "The ID of the message which should bypass inbound rules.",
+        "example": "MESSAGEID"
       }
     ],
     "responses": [
@@ -575,7 +591,8 @@ export default function PostmarkTypeScriptSdk() {
         "name": "messageid",
         "schema": "string",
         "required": true,
-        "description": "The ID of the message for which to details will be retrieved."
+        "description": "The ID of the message for which to details will be retrieved.",
+        "example": "MESSAGEID"
       }
     ],
     "responses": [
@@ -605,7 +622,8 @@ export default function PostmarkTypeScriptSdk() {
         "name": "messageid",
         "schema": "string",
         "required": true,
-        "description": "The ID of the inbound message on which we should retry processing."
+        "description": "The ID of the inbound message on which we should retry processing.",
+        "example": "MESSAGEID"
       }
     ],
     "responses": [
@@ -635,13 +653,15 @@ export default function PostmarkTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": true,
-        "description": "Number of messages to return per request. Max 500."
+        "description": "Number of messages to return per request. Max 500.",
+        "example": 0
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": true,
-        "description": "Number of messages to skip"
+        "description": "Number of messages to skip",
+        "example": 0
       },
       {
         "name": "recipient",
@@ -701,13 +721,15 @@ export default function PostmarkTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": true,
-        "description": "Number of message clicks to return per request. Max 500."
+        "description": "Number of message clicks to return per request. Max 500.",
+        "example": 0
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": true,
-        "description": "Number of messages to skip"
+        "description": "Number of messages to skip",
+        "example": 0
       },
       {
         "name": "recipient",
@@ -809,19 +831,24 @@ export default function PostmarkTypeScriptSdk() {
         "name": "messageid",
         "schema": "string",
         "required": true,
-        "description": "The ID of the Outbound Message for which click statistics should be retrieved."
+        "description": "The ID of the Outbound Message for which click statistics should be retrieved.",
+        "example": "MESSAGEID"
       },
       {
         "name": "count",
         "schema": "integer",
         "required": true,
-        "description": "Number of message clicks to return per request. Max 500."
+        "description": "Number of message clicks to return per request. Max 500.",
+        "example": 0,
+        "default": 1
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": true,
-        "description": "Number of messages to skip."
+        "description": "Number of messages to skip.",
+        "example": 0,
+        "default": 0
       }
     ],
     "responses": [
@@ -851,13 +878,15 @@ export default function PostmarkTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": true,
-        "description": "Number of message opens to return per request. Max 500."
+        "description": "Number of message opens to return per request. Max 500.",
+        "example": 0
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": true,
-        "description": "Number of messages to skip"
+        "description": "Number of messages to skip",
+        "example": 0
       },
       {
         "name": "recipient",
@@ -959,19 +988,24 @@ export default function PostmarkTypeScriptSdk() {
         "name": "messageid",
         "schema": "string",
         "required": true,
-        "description": "The ID of the Outbound Message for which open statistics should be retrieved."
+        "description": "The ID of the Outbound Message for which open statistics should be retrieved.",
+        "example": "MESSAGEID"
       },
       {
         "name": "count",
         "schema": "integer",
         "required": true,
-        "description": "Number of message opens to return per request. Max 500."
+        "description": "Number of message opens to return per request. Max 500.",
+        "example": 0,
+        "default": 1
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": true,
-        "description": "Number of messages to skip."
+        "description": "Number of messages to skip.",
+        "example": 0,
+        "default": 0
       }
     ],
     "responses": [
@@ -1001,7 +1035,8 @@ export default function PostmarkTypeScriptSdk() {
         "name": "messageid",
         "schema": "string",
         "required": true,
-        "description": "The ID of the message for which to retrieve details."
+        "description": "The ID of the message for which to retrieve details.",
+        "example": "MESSAGEID"
       }
     ],
     "responses": [
@@ -1031,7 +1066,8 @@ export default function PostmarkTypeScriptSdk() {
         "name": "messageid",
         "schema": "string",
         "required": true,
-        "description": "The ID of the message for which to retrieve a dump."
+        "description": "The ID of the message for which to retrieve a dump.",
+        "example": "MESSAGEID"
       }
     ],
     "responses": [
@@ -1646,13 +1682,15 @@ export default function PostmarkTypeScriptSdk() {
         "name": "count",
         "schema": "number",
         "required": true,
-        "description": "The number of Templates to return"
+        "description": "The number of Templates to return",
+        "example": 0
       },
       {
         "name": "offset",
         "schema": "number",
         "required": true,
-        "description": "The number of Templates to \"skip\" before returning results."
+        "description": "The number of Templates to \"skip\" before returning results.",
+        "example": 0
       }
     ],
     "responses": [
@@ -1694,13 +1732,15 @@ export default function PostmarkTypeScriptSdk() {
         "name": "Name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "Subject",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SUBJECT"
       },
       {
         "name": "TextBody",
@@ -1740,7 +1780,8 @@ export default function PostmarkTypeScriptSdk() {
       {
         "name": "InlineCssForHtmlTestRender",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "default": true
       },
       {
         "name": "Subject",
@@ -1785,7 +1826,8 @@ export default function PostmarkTypeScriptSdk() {
         "name": "templateIdOrAlias",
         "schema": "string",
         "required": true,
-        "description": "The 'TemplateID' or 'Alias' value for the Template you wish to delete."
+        "description": "The 'TemplateID' or 'Alias' value for the Template you wish to delete.",
+        "example": "TEMPLATEIDORALIAS"
       }
     ],
     "responses": [
@@ -1815,7 +1857,8 @@ export default function PostmarkTypeScriptSdk() {
         "name": "templateIdOrAlias",
         "schema": "string",
         "required": true,
-        "description": "The 'TemplateID' or 'Alias' value for the Template you wish to retrieve."
+        "description": "The 'TemplateID' or 'Alias' value for the Template you wish to retrieve.",
+        "example": "TEMPLATEIDORALIAS"
       }
     ],
     "responses": [
@@ -1845,7 +1888,8 @@ export default function PostmarkTypeScriptSdk() {
         "name": "templateIdOrAlias",
         "schema": "string",
         "required": true,
-        "description": "The 'TemplateID' or 'Alias' value for the Template you wish to update."
+        "description": "The 'TemplateID' or 'Alias' value for the Template you wish to update.",
+        "example": "TEMPLATEIDORALIAS"
       },
       {
         "name": "Alias",
@@ -1905,13 +1949,15 @@ export default function PostmarkTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": true,
-        "description": "Number of records to return per request."
+        "description": "Number of records to return per request.",
+        "example": 0
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": true,
-        "description": "Number of records to skip."
+        "description": "Number of records to skip.",
+        "example": 0
       }
     ],
     "responses": [
@@ -1970,7 +2016,8 @@ export default function PostmarkTypeScriptSdk() {
         "name": "triggerid",
         "schema": "integer",
         "required": true,
-        "description": "The ID of the Inbound Rule that should be deleted."
+        "description": "The ID of the Inbound Rule that should be deleted.",
+        "example": 0
       }
     ],
     "responses": [

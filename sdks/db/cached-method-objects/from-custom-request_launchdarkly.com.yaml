@@ -39,6 +39,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: NAME
       - name: policy
         schema: array
         required: true
@@ -63,6 +64,7 @@ methodObjects:
         schema: string
         required: true
         description: The relay auto config id
+        example: ID
     responses:
       - statusCode: '204'
         description: Action succeeded
@@ -85,6 +87,7 @@ methodObjects:
         schema: string
         required: true
         description: The relay auto config id
+        example: ID
     responses:
       - statusCode: '200'
         description: ''
@@ -107,6 +110,7 @@ methodObjects:
         schema: string
         required: true
         description: The relay auto config id
+        example: ID
       - name: patch
         schema: array
         required: true
@@ -141,6 +145,7 @@ methodObjects:
         schema: string
         required: true
         description: The Relay Proxy configuration ID
+        example: ID
       - name: expiry
         schema: integer
         description: >-
@@ -218,6 +223,7 @@ methodObjects:
         schema: string
         required: true
         description: The application key
+        example: APPLICATIONKEY
     responses:
       - statusCode: '204'
         description: Action succeeded
@@ -240,6 +246,7 @@ methodObjects:
         schema: string
         required: true
         description: The application key
+        example: APPLICATIONKEY
       - name: expand
         schema: string
         description: >-
@@ -269,6 +276,7 @@ methodObjects:
         schema: string
         required: true
         description: The application key
+        example: APPLICATIONKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -300,6 +308,7 @@ methodObjects:
         schema: string
         required: true
         description: The application key
+        example: APPLICATIONKEY
       - name: limit
         schema: integer
         description: The number of versions to return. Defaults to 50.
@@ -340,10 +349,12 @@ methodObjects:
         schema: string
         required: true
         description: The application key
+        example: APPLICATIONKEY
       - name: versionKey
         schema: string
         required: true
         description: The application version key
+        example: VERSIONKEY
     responses:
       - statusCode: '204'
         description: Action succeeded
@@ -366,10 +377,12 @@ methodObjects:
         schema: string
         required: true
         description: The application key
+        example: APPLICATIONKEY
       - name: versionKey
         schema: string
         required: true
         description: The application version key
+        example: VERSIONKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -433,14 +446,17 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: Requesting to update targeting
       - name: resourceId
         schema: string
         required: true
         description: ''
+        example: RESOURCEID
       - name: comment
         schema: string
         required: false
         description: ''
+        example: optional comment
       - name: instructions
         schema: array
         required: true
@@ -449,10 +465,14 @@ methodObjects:
         schema: array
         required: false
         description: ''
+        example:
+          - 1234a56b7c89d012345e678f
       - name: notifyTeamKeys
         schema: array
         required: false
         description: ''
+        example:
+          - example-reviewer-team
       - name: integrationConfig
         schema: object
         required: false
@@ -479,6 +499,7 @@ methodObjects:
         schema: string
         required: true
         description: The approval request ID
+        example: ID
     responses:
       - statusCode: '204'
         description: Action succeeded
@@ -501,6 +522,7 @@ methodObjects:
         schema: string
         required: true
         description: The approval request ID
+        example: ID
       - name: expand
         schema: string
         description: >-
@@ -530,9 +552,11 @@ methodObjects:
         schema: string
         required: true
         description: The feature flag approval request ID
+        example: ID
       - name: comment
         schema: string
         description: ''
+        example: Looks good, thanks for updating
     responses:
       - statusCode: '200'
         description: ''
@@ -557,12 +581,15 @@ methodObjects:
         schema: string
         required: true
         description: The approval request ID
+        example: ID
       - name: kind
         schema: string
         description: ''
+        example: approve
       - name: comment
         schema: string
         description: ''
+        example: Looks good, thanks for updating
     responses:
       - statusCode: '200'
         description: ''
@@ -632,6 +659,7 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the audit log entry
+        example: ID
     responses:
       - statusCode: '200'
         description: ''
@@ -730,26 +758,33 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: LaunchDarkly-Docs
       - name: sourceLink
         schema: string
         required: false
         description: ''
+        example: https://github.com/launchdarkly/LaunchDarkly-Docs
       - name: commitUrlTemplate
         schema: string
         required: false
         description: ''
+        example: https://github.com/launchdarkly/LaunchDarkly-Docs/commit/${sha}
       - name: hunkUrlTemplate
         schema: string
         required: false
         description: ''
+        example: >-
+          https://github.com/launchdarkly/LaunchDarkly-Docs/blob/${sha}/${filePath}#L${lineNumber}
       - name: type
         schema: string
         required: false
         description: ''
+        example: github
       - name: defaultBranch
         schema: string
         required: false
         description: ''
+        example: main
     responses:
       - statusCode: '200'
         description: ''
@@ -774,6 +809,7 @@ methodObjects:
         schema: string
         required: true
         description: The repository name
+        example: REPO
     responses:
       - statusCode: '204'
         description: Action succeeded
@@ -798,6 +834,7 @@ methodObjects:
         schema: string
         required: true
         description: The repository name
+        example: REPO
     responses:
       - statusCode: '200'
         description: ''
@@ -822,6 +859,7 @@ methodObjects:
         schema: string
         required: true
         description: The repository name
+        example: REPO
     responses:
       - statusCode: '200'
         description: ''
@@ -846,6 +884,7 @@ methodObjects:
         schema: string
         required: true
         description: The repository name to delete branches for.
+        example: REPO
     responses:
       - statusCode: '200'
         description: Action succeeded
@@ -870,6 +909,7 @@ methodObjects:
         schema: string
         required: true
         description: The repository name
+        example: REPO
     responses:
       - statusCode: '200'
         description: ''
@@ -894,10 +934,12 @@ methodObjects:
         schema: string
         required: true
         description: The repository name
+        example: REPO
       - name: branch
         schema: string
         required: true
         description: The url-encoded branch name
+        example: BRANCH
       - name: projKey
         schema: string
         description: Filter results to a specific project
@@ -928,26 +970,32 @@ methodObjects:
         schema: string
         required: true
         description: The repository name
+        example: REPO
       - name: branch
         schema: string
         required: true
         description: The URL-encoded branch name
+        example: BRANCH
       - name: name
         schema: string
         required: true
         description: ''
+        example: main
       - name: head
         schema: string
         required: true
         description: ''
+        example: a94a8fe5ccb19ba61c4c0873d391e987982fbbd3
       - name: updateSequenceId
         schema: integer
         required: false
         description: ''
+        example: 25
       - name: syncTime
         schema: integer
         required: true
         description: ''
+        example: 0
       - name: references
         schema: array
         required: false
@@ -982,10 +1030,12 @@ methodObjects:
         schema: string
         required: true
         description: The repository name
+        example: REPO
       - name: branch
         schema: string
         required: true
         description: The URL-encoded branch name
+        example: BRANCH
     responses:
       - statusCode: '200'
         description: Action succeeded
@@ -1028,6 +1078,7 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: flagKey
         schema: string
         description: Filter results to a specific flag key
@@ -1069,22 +1120,28 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: name
         schema: string
         description: ''
+        example: example-destination
       - name: kind
         schema: string
         description: ''
+        example: google-pubsub
       - name: config
         schema: undefined
         description: ''
+        example: '{"project":"test-prod","topic":"ld-pubsub-test-192301"}'
       - name: 'on'
         schema: boolean
         description: ''
+        example: true
     responses:
       - statusCode: '201'
         description: ''
@@ -1109,14 +1166,17 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: id
         schema: string
         required: true
         description: The Data Export destination ID
+        example: ID
     responses:
       - statusCode: '204'
         description: Destination response
@@ -1139,14 +1199,17 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: id
         schema: string
         required: true
         description: The Data Export destination ID
+        example: ID
     responses:
       - statusCode: '200'
         description: ''
@@ -1169,14 +1232,17 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: id
         schema: string
         required: true
         description: The Data Export destination ID
+        example: ID
     responses:
       - statusCode: '200'
         description: ''
@@ -1203,10 +1269,12 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -1227,19 +1295,24 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
       - name: title
         schema: string
         description: ''
+        example: Example link title
       - name: description
         schema: string
         description: ''
+        example: Example link description
       - name: key
         schema: string
         description: ''
+        example: flag-link-key-123abc
       - name: integrationKey
         schema: string
         description: ''
@@ -1249,6 +1322,7 @@ methodObjects:
       - name: deepLink
         schema: string
         description: ''
+        example: https://example.com/archives/123123123
       - name: metadata
         schema: object
         description: ''
@@ -1276,14 +1350,17 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
       - name: id
         schema: string
         required: true
         description: The flag link ID or Key
+        example: ID
     responses:
       - statusCode: '204'
         description: Action succeeded
@@ -1308,14 +1385,17 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
       - name: id
         schema: string
         required: true
         description: The flag link ID
+        example: ID
     responses:
       - statusCode: '200'
         description: ''
@@ -1342,10 +1422,12 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
       - name: env
         schema: string
         description: Optional environment filter
@@ -1371,10 +1453,12 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -1397,14 +1481,17 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -1427,6 +1514,7 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: env
         schema: string
         description: Filter configurations by environment
@@ -1502,6 +1590,7 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: clone
         schema: string
         description: >-
@@ -1513,18 +1602,23 @@ methodObjects:
         schema: array
         required: false
         description: ''
+        example:
+          - example-tag
       - name: description
         schema: string
         required: false
         description: ''
+        example: This flag controls the example widgets
       - name: name
         schema: string
         required: true
         description: ''
+        example: My flag
       - name: key
         schema: string
         required: true
         description: ''
+        example: flag-key-123abc
       - name: includeInSnippet
         schema: boolean
         required: false
@@ -1537,10 +1631,14 @@ methodObjects:
         schema: array
         required: false
         description: ''
+        example:
+          - value: true
+          - value: false
       - name: temporary
         schema: boolean
         required: false
         description: ''
+        example: false
       - name: customProperties
         schema: object
         required: false
@@ -1553,6 +1651,7 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: migration
       - name: migrationSettings
         schema: object
         required: false
@@ -1580,14 +1679,17 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -1610,10 +1712,12 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key. The key identifies the flag in your code.
+        example: FEATUREFLAGKEY
     responses:
       - statusCode: '204'
         description: Action succeeded
@@ -1636,10 +1740,12 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
       - name: env
         schema: string
         description: Filter configurations by environment
@@ -1670,10 +1776,12 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key. The key identifies the flag in your code.
+        example: FEATUREFLAGKEY
       - name: patch
         schema: array
         required: true
@@ -1708,10 +1816,12 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key. The key identifies the flag in your code.
+        example: FEATUREFLAGKEY
       - name: source
         schema: object
         required: true
@@ -1728,10 +1838,14 @@ methodObjects:
         schema: array
         required: false
         description: ''
+        example:
+          - updateOn
       - name: excludedActions
         schema: array
         required: false
         description: ''
+        example:
+          - updateOn
     responses:
       - statusCode: '201'
         description: ''
@@ -1756,10 +1870,12 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -1783,18 +1899,22 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: metricKey
         schema: string
         required: true
         description: The metric key
+        example: METRICKEY
       - name: from
         schema: integer
         description: >-
@@ -1830,14 +1950,17 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -1861,22 +1984,31 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
       - name: comment
         schema: string
         required: false
         description: ''
+        example: optional comment
       - name: instructions
         schema: array
         required: true
         description: ''
+        example: &ref_0
+          - kind: addExpireUserTargetDate
+            userKey: sandy
+            value: 1686412800000
+            variationId: ce12d345-a1b2-4fb5-a123-ab123d4d5f5d
     responses:
       - statusCode: '200'
         description: ''
@@ -1902,14 +2034,17 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -1933,22 +2068,27 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
       - name: comment
         schema: string
         required: false
         description: ''
+        example: optional comment
       - name: instructions
         schema: array
         required: true
         description: ''
+        example: *ref_0
     responses:
       - statusCode: '200'
         description: ''
@@ -1973,14 +2113,17 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -2001,26 +2144,33 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
       - name: comment
         schema: string
         required: false
         description: ''
+        example: example comment
       - name: instructions
         schema: array
         required: false
         description: ''
+        example:
+          - kind: turnFlagOn
       - name: integrationKey
         schema: string
         required: true
         description: ''
+        example: generic-trigger
     responses:
       - statusCode: '201'
         description: ''
@@ -2045,18 +2195,22 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
       - name: id
         schema: string
         required: true
         description: The flag trigger ID
+        example: ID
     responses:
       - statusCode: '204'
         description: Action succeeded
@@ -2081,18 +2235,22 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: id
         schema: string
         required: true
         description: The flag trigger ID
+        example: ID
     responses:
       - statusCode: '200'
         description: ''
@@ -2115,24 +2273,31 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
       - name: id
         schema: string
         required: true
         description: The flag trigger ID
+        example: ID
       - name: comment
         schema: string
         description: ''
+        example: optional comment
       - name: instructions
         schema: array
         description: ''
+        example:
+          - kind: disableTrigger
     responses:
       - statusCode: '200'
         description: ''
@@ -2159,10 +2324,12 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: flagKey
         schema: string
         required: true
         description: The flag key
+        example: FLAGKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -2179,10 +2346,12 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: flagKey
         schema: string
         required: true
         description: The flag key
+        example: FLAGKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -2226,22 +2395,28 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: integrationKey
         schema: string
         required: true
         description: The integration key, either `redis` or `dynamodb`
+        example: INTEGRATIONKEY
       - name: tags
         schema: array
         required: false
         description: ''
+        example: &ref_1
+          - example-tag
       - name: 'on'
         schema: boolean
         required: false
         description: ''
+        example: false
       - name: config
         schema: object
         required: true
@@ -2250,6 +2425,7 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: Sample integration
     responses:
       - statusCode: '201'
         description: ''
@@ -2277,18 +2453,22 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: integrationKey
         schema: string
         required: true
         description: The integration key, either `redis` or `dynamodb`
+        example: INTEGRATIONKEY
       - name: integrationId
         schema: string
         required: true
         description: The integration ID
+        example: INTEGRATIONID
     responses:
       - statusCode: '204'
         description: Action completed successfully
@@ -2314,18 +2494,22 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: integrationKey
         schema: string
         required: true
         description: The integration key, either `redis` or `dynamodb`
+        example: INTEGRATIONKEY
       - name: integrationId
         schema: string
         required: true
         description: The integration ID
+        example: INTEGRATIONID
     responses:
       - statusCode: '200'
         description: ''
@@ -2349,18 +2533,22 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: integrationKey
         schema: string
         required: true
         description: The integration key, either `redis` or `dynamodb`
+        example: INTEGRATIONKEY
       - name: integrationId
         schema: string
         required: true
         description: The integration ID
+        example: INTEGRATIONID
     responses:
       - statusCode: '200'
         description: ''
@@ -2406,10 +2594,12 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -2433,22 +2623,27 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: integrationKey
         schema: string
         required: true
         description: The integration key
+        example: INTEGRATIONKEY
       - name: tags
         schema: array
         required: false
         description: ''
+        example: *ref_1
       - name: 'on'
         schema: boolean
         required: false
         description: ''
+        example: false
       - name: config
         schema: object
         required: true
@@ -2457,6 +2652,7 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: Sample integration
     responses:
       - statusCode: '201'
         description: ''
@@ -2482,18 +2678,22 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: integrationKey
         schema: string
         required: true
         description: The integration key
+        example: INTEGRATIONKEY
       - name: id
         schema: string
         required: true
         description: The configuration ID
+        example: ID
     responses:
       - statusCode: '204'
         description: Action succeeded
@@ -2519,18 +2719,22 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: integrationKey
         schema: string
         required: true
         description: The integration key
+        example: INTEGRATIONKEY
       - name: id
         schema: string
         required: true
         description: The configuration ID
+        example: ID
     responses:
       - statusCode: '200'
         description: ''
@@ -2550,18 +2754,22 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: integrationKey
         schema: string
         required: true
         description: The integration key
+        example: INTEGRATIONKEY
       - name: id
         schema: string
         required: true
         description: The configuration ID
+        example: ID
     responses:
       - statusCode: '200'
         description: ''
@@ -2589,18 +2797,22 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: integrationKey
         schema: string
         required: true
         description: The integration key
+        example: INTEGRATIONKEY
       - name: id
         schema: string
         required: true
         description: The configuration ID
+        example: ID
     responses:
       - statusCode: '200'
         description: ''
@@ -2625,6 +2837,7 @@ methodObjects:
         schema: string
         required: true
         description: The integration key
+        example: INTEGRATIONKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -2647,14 +2860,18 @@ methodObjects:
         schema: string
         required: true
         description: The integration key
+        example: INTEGRATIONKEY
       - name: tags
         schema: array
         required: false
         description: ''
+        example:
+          - testing-tag
       - name: name
         schema: string
         required: true
         description: ''
+        example: Example audit log subscription.
       - name: statements
         schema: array
         required: false
@@ -2663,10 +2880,15 @@ methodObjects:
         schema: boolean
         required: false
         description: ''
+        example: false
       - name: config
         schema: object
         required: true
         description: ''
+        example:
+          optional: an optional property
+          required: the required property
+          url: https://example.com
       - name: url
         schema: string
         required: false
@@ -2699,10 +2921,12 @@ methodObjects:
         schema: string
         required: true
         description: The integration key
+        example: INTEGRATIONKEY
       - name: id
         schema: string
         required: true
         description: The subscription ID
+        example: ID
     responses:
       - statusCode: '204'
         description: Action succeeded
@@ -2725,10 +2949,12 @@ methodObjects:
         schema: string
         required: true
         description: The integration key
+        example: INTEGRATIONKEY
       - name: id
         schema: string
         required: true
         description: The subscription ID
+        example: ID
     responses:
       - statusCode: '200'
         description: ''
@@ -2751,10 +2977,12 @@ methodObjects:
         schema: string
         required: true
         description: The integration key
+        example: INTEGRATIONKEY
       - name: id
         schema: string
         required: true
         description: The ID of the audit log subscription
+        example: ID
     responses:
       - statusCode: '200'
         description: ''
@@ -2816,6 +3044,7 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: Optional comment about the update
       - name: instructions
         schema: array
         required: true
@@ -2864,6 +3093,7 @@ methodObjects:
         schema: string
         required: true
         description: The member ID
+        example: ID
     responses:
       - statusCode: '204'
         description: Action succeeded
@@ -2888,6 +3118,7 @@ methodObjects:
         schema: string
         required: true
         description: The member ID
+        example: ID
     responses:
       - statusCode: '200'
         description: ''
@@ -2910,6 +3141,7 @@ methodObjects:
         schema: string
         required: true
         description: The member ID
+        example: ID
     responses:
       - statusCode: '200'
         description: ''
@@ -2936,10 +3168,14 @@ methodObjects:
         schema: string
         required: true
         description: The member ID
+        example: ID
       - name: teamKeys
         schema: array
         required: true
         description: ''
+        example:
+          - team1
+          - team2
     responses:
       - statusCode: '201'
         description: ''
@@ -2966,6 +3202,7 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: expand
         schema: string
         description: >-
@@ -2989,62 +3226,79 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: tags
         schema: array
         required: false
         description: ''
+        example:
+          - example-tag
       - name: description
         schema: string
         required: false
         description: ''
+        example: optional description
       - name: key
         schema: string
         required: true
         description: ''
+        example: metric-key-123abc
       - name: name
         schema: string
         required: false
         description: ''
+        example: Example metric
       - name: kind
         schema: string
         required: true
         description: ''
+        example: custom
       - name: selector
         schema: string
         required: false
         description: ''
+        example: .dropdown-toggle
       - name: urls
         schema: array
         required: false
         description: ''
+        example: invalid example
       - name: isActive
         schema: boolean
         required: false
         description: ''
+        example: true
       - name: isNumeric
         schema: boolean
         required: false
         description: ''
+        example: false
       - name: unit
         schema: string
         required: false
         description: ''
+        example: orders
       - name: eventKey
         schema: string
         required: false
         description: ''
+        example: sales generated
       - name: successCriteria
         schema: string
         required: false
         description: ''
+        example: HigherThanBaseline
       - name: randomizationUnits
         schema: array
         required: false
         description: ''
+        example:
+          - user
       - name: unitAggregationType
         schema: string
         required: false
         description: ''
+        example: average
     responses:
       - statusCode: '201'
         description: ''
@@ -3071,10 +3325,12 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: metricKey
         schema: string
         required: true
         description: The metric key
+        example: METRICKEY
     responses:
       - statusCode: '204'
         description: Action succeeded
@@ -3097,10 +3353,12 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: metricKey
         schema: string
         required: true
         description: The metric key
+        example: METRICKEY
       - name: expand
         schema: string
         description: >-
@@ -3128,10 +3386,12 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: metricKey
         schema: string
         required: true
         description: The metric key
+        example: METRICKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -3197,6 +3457,7 @@ methodObjects:
         schema: string
         required: true
         description: The client ID
+        example: CLIENTID
     responses:
       - statusCode: '204'
         description: Action succeeded
@@ -3219,6 +3480,7 @@ methodObjects:
         schema: string
         required: true
         description: The client ID
+        example: CLIENTID
     responses:
       - statusCode: '200'
         description: ''
@@ -3241,6 +3503,7 @@ methodObjects:
         schema: string
         required: true
         description: The client ID
+        example: CLIENTID
     responses:
       - statusCode: '200'
         description: ''
@@ -3317,18 +3580,23 @@ methodObjects:
         schema: array
         required: false
         description: ''
+        example:
+          - ops
       - name: name
         schema: string
         required: true
         description: ''
+        example: My Project
       - name: key
         schema: string
         required: true
         description: ''
+        example: project-key-123abc
       - name: includeInSnippetByDefault
         schema: boolean
         required: false
         description: ''
+        example: true
       - name: defaultClientSideAvailability
         schema: object
         required: false
@@ -3361,6 +3629,7 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
     responses:
       - statusCode: '204'
         description: Action succeeded
@@ -3385,6 +3654,7 @@ methodObjects:
         schema: string
         required: true
         description: The project key.
+        example: PROJECTKEY
       - name: expand
         schema: string
         description: >-
@@ -3414,6 +3684,7 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -3440,6 +3711,7 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -3460,30 +3732,37 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: key
         schema: string
         required: true
         description: The context kind key
+        example: KEY
       - name: description
         schema: string
         required: false
         description: ''
+        example: An example context kind for organizations
       - name: version
         schema: integer
         required: false
         description: ''
+        example: 1
       - name: name
         schema: string
         required: true
         description: ''
+        example: organization
       - name: hideInTargeting
         schema: boolean
         required: false
         description: ''
+        example: false
       - name: archived
         schema: boolean
         required: false
         description: ''
+        example: false
     responses:
       - statusCode: '200'
         description: ''
@@ -3506,6 +3785,7 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: limit
         schema: integer
         description: The number of environments to return in the response. Defaults to 20.
@@ -3551,42 +3831,53 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: tags
         schema: array
         required: false
         description: ''
+        example:
+          - ops
       - name: name
         schema: string
         required: true
         description: ''
+        example: My Environment
       - name: key
         schema: string
         required: true
         description: ''
+        example: environment-key-123abc
       - name: color
         schema: string
         required: true
         description: ''
+        example: F5A623
       - name: defaultTtl
         schema: integer
         required: false
         description: ''
+        example: 5
       - name: secureMode
         schema: boolean
         required: false
         description: ''
+        example: true
       - name: defaultTrackEvents
         schema: boolean
         required: false
         description: ''
+        example: false
       - name: confirmChanges
         schema: boolean
         required: false
         description: ''
+        example: false
       - name: requireComments
         schema: boolean
         required: false
         description: ''
+        example: false
       - name: source
         schema: object
         required: false
@@ -3595,6 +3886,7 @@ methodObjects:
         schema: boolean
         required: false
         description: ''
+        example: true
     responses:
       - statusCode: '201'
         description: ''
@@ -3621,10 +3913,12 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
     responses:
       - statusCode: '204'
         description: Action succeeded
@@ -3647,10 +3941,12 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -3673,10 +3969,12 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -3701,10 +3999,12 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: expiry
         schema: integer
         description: >-
@@ -3739,10 +4039,12 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: filter
         schema: string
         description: >-
@@ -3774,14 +4076,17 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: attributeName
         schema: string
         required: true
         description: The attribute name
+        example: ATTRIBUTENAME
       - name: filter
         schema: string
         description: >-
@@ -3813,10 +4118,12 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: limit
         schema: integer
         description: >-
@@ -3849,15 +4156,21 @@ methodObjects:
       - name: filter
         schema: string
         description: ''
+        example: >-
+          {"filter": "kindKeys:{"contains": ["user:Henry"]},"sort":
+          "-ts","limit": 50}
       - name: sort
         schema: string
         description: ''
+        example: '-ts'
       - name: limit
         schema: integer
         description: ''
+        example: 10
       - name: continuationToken
         schema: string
         description: ''
+        example: QAGFKH1313KUGI2351
     responses:
       - statusCode: '200'
         description: ''
@@ -3881,14 +4194,17 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: id
         schema: string
         required: true
         description: The context instance ID
+        example: ID
     responses:
       - statusCode: '204'
         description: Action succeeded
@@ -3914,14 +4230,17 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: id
         schema: string
         required: true
         description: The context instance ID
+        example: ID
       - name: limit
         schema: integer
         description: >-
@@ -3974,10 +4293,12 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: limit
         schema: integer
         description: >-
@@ -4009,15 +4330,19 @@ methodObjects:
       - name: filter
         schema: string
         description: ''
+        example: '*.name startsWith Jo,kind anyOf ["user","organization"]'
       - name: sort
         schema: string
         description: ''
+        example: '-ts'
       - name: limit
         schema: integer
         description: ''
+        example: 10
       - name: continuationToken
         schema: string
         description: ''
+        example: QAGFKH1313KUGI2351
     responses:
       - statusCode: '200'
         description: ''
@@ -4041,28 +4366,35 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: contextKind
         schema: string
         required: true
         description: The context kind
+        example: CONTEXTKIND
       - name: contextKey
         schema: string
         required: true
         description: The context key
+        example: CONTEXTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
       - name: setting
         schema: undefined
         description: ''
+        example: existing_variation_value_to_use
       - name: comment
         schema: string
         description: ''
+        example: make sure this context experiences a specific variation
     responses:
       - statusCode: '204'
         description: Action succeeded
@@ -4088,18 +4420,22 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: kind
         schema: string
         required: true
         description: The context kind
+        example: KIND
       - name: key
         schema: string
         required: true
         description: The context key
+        example: KEY
       - name: limit
         schema: integer
         description: >-
@@ -4151,10 +4487,12 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: limit
         schema: integer
         description: The maximum number of experiments to return. Defaults to 20.
@@ -4205,26 +4543,32 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: description
         schema: string
         required: false
         description: ''
+        example: An example experiment, used in testing
       - name: name
         schema: string
         required: true
         description: ''
+        example: Example experiment
       - name: maintainerId
         schema: string
         required: false
         description: ''
+        example: 12ab3c45de678910fgh12345
       - name: key
         schema: string
         required: true
         description: ''
+        example: experiment-key-123abc
       - name: iteration
         schema: object
         required: true
@@ -4254,14 +4598,17 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: experimentKey
         schema: string
         required: true
         description: The experiment key
+        example: EXPERIMENTKEY
       - name: expand
         schema: string
         description: >-
@@ -4294,18 +4641,22 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: experimentKey
         schema: string
         required: true
         description: The experiment key
+        example: EXPERIMENTKEY
       - name: comment
         schema: string
         required: false
         description: ''
+        example: Optional comment
       - name: instructions
         schema: array
         required: true
@@ -4335,22 +4686,27 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: experimentKey
         schema: string
         required: true
         description: The experiment key
+        example: EXPERIMENTKEY
       - name: hypothesis
         schema: string
         required: true
         description: ''
+        example: Example hypothesis, the new button placement will increase conversion
       - name: canReshuffleTraffic
         schema: boolean
         required: false
         description: ''
+        example: true
       - name: metrics
         schema: array
         required: true
@@ -4359,10 +4715,12 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: metric-key-123abc
       - name: primaryFunnelKey
         schema: string
         required: false
         description: ''
+        example: metric-group-key-123abc
       - name: treatments
         schema: array
         required: true
@@ -4375,6 +4733,7 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: user
     responses:
       - statusCode: '200'
         description: ''
@@ -4400,18 +4759,22 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: experimentKey
         schema: string
         required: true
         description: The experiment key
+        example: EXPERIMENTKEY
       - name: metricGroupKey
         schema: string
         required: true
         description: The metric group key
+        example: METRICGROUPKEY
       - name: iterationId
         schema: string
         description: The iteration ID
@@ -4440,18 +4803,22 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: experimentKey
         schema: string
         required: true
         description: The experiment key
+        example: EXPERIMENTKEY
       - name: metricKey
         schema: string
         required: true
         description: The metric key
+        example: METRICKEY
       - name: iterationId
         schema: string
         description: The iteration ID
@@ -4484,10 +4851,12 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: limit
         schema: integer
         description: >-
@@ -4533,10 +4902,12 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -4559,10 +4930,12 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -4590,10 +4963,12 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -4614,6 +4989,7 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -4640,6 +5016,7 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: randomizationUnits
         schema: array
         required: true
@@ -4670,6 +5047,7 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -4690,6 +5068,7 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -4716,14 +5095,19 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: tags
         schema: array
         required: true
         description: ''
+        example:
+          - tag-1
+          - tag-2
       - name: temporary
         schema: boolean
         required: true
         description: ''
+        example: true
       - name: booleanDefaults
         schema: object
         required: true
@@ -4759,14 +5143,17 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -4790,22 +5177,27 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: description
         schema: string
         required: true
         description: ''
+        example: Requesting to update targeting
       - name: comment
         schema: string
         required: false
         description: ''
+        example: optional comment
       - name: instructions
         schema: array
         required: true
@@ -4814,10 +5206,14 @@ methodObjects:
         schema: array
         required: false
         description: ''
+        example:
+          - 1234a56b7c89d012345e678f
       - name: notifyTeamKeys
         schema: array
         required: false
         description: ''
+        example:
+          - example-reviewer-team
       - name: executionDate
         schema: integer
         required: false
@@ -4826,6 +5222,7 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: 6297ed79dee7dc14e1f9a80c
       - name: integrationConfig
         schema: object
         required: false
@@ -4853,30 +5250,39 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key for the target environment
+        example: ENVIRONMENTKEY
       - name: description
         schema: string
         required: true
         description: ''
+        example: copy flag settings to another environment
       - name: comment
         schema: string
         required: false
         description: ''
+        example: optional comment
       - name: notifyMemberIds
         schema: array
         required: false
         description: ''
+        example:
+          - 1234a56b7c89d012345e678f
       - name: notifyTeamKeys
         schema: array
         required: false
         description: ''
+        example:
+          - example-reviewer-team
       - name: source
         schema: object
         required: true
@@ -4885,10 +5291,14 @@ methodObjects:
         schema: array
         required: false
         description: ''
+        example:
+          - updateOn
       - name: excludedActions
         schema: array
         required: false
         description: ''
+        example:
+          - updateOn
     responses:
       - statusCode: '201'
         description: ''
@@ -4914,18 +5324,22 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: id
         schema: string
         required: true
         description: The feature flag approval request ID
+        example: ID
     responses:
       - statusCode: '204'
         description: Action succeeded
@@ -4949,18 +5363,22 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: id
         schema: string
         required: true
         description: The feature flag approval request ID
+        example: ID
     responses:
       - statusCode: '200'
         description: ''
@@ -4984,21 +5402,26 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: id
         schema: string
         required: true
         description: The feature flag approval request ID
+        example: ID
       - name: comment
         schema: string
         description: ''
+        example: Looks good, thanks for updating
     responses:
       - statusCode: '200'
         description: ''
@@ -5024,24 +5447,30 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: id
         schema: string
         required: true
         description: The feature flag approval request ID
+        example: ID
       - name: kind
         schema: string
         description: ''
+        example: approve
       - name: comment
         schema: string
         description: ''
+        example: Looks good, thanks for updating
     responses:
       - statusCode: '200'
         description: ''
@@ -5067,14 +5496,17 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -5098,20 +5530,24 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: memberId
         schema: string
         required: true
         description: >-
           The memberId of the member to remove as a follower of the flag. Reader
           roles can only remove themselves.
+        example: MEMBERID
     responses:
       - statusCode: '204'
         description: Action succeeded
@@ -5135,20 +5571,24 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: memberId
         schema: string
         required: true
         description: >-
           The memberId of the member to add as a follower of the flag. Reader
           roles can only add themselves.
+        example: MEMBERID
     responses:
       - statusCode: '204'
         description: Action succeeded
@@ -5172,14 +5612,17 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -5203,14 +5646,17 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: ignoreConflicts
         schema: boolean
         description: >-
@@ -5220,10 +5666,12 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: optional comment
       - name: executionDate
         schema: integer
         required: true
         description: ''
+        example: 0
       - name: instructions
         schema: array
         required: true
@@ -5257,18 +5705,22 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: id
         schema: string
         required: true
         description: The scheduled change id
+        example: ID
     responses:
       - statusCode: '204'
         description: Action succeeded
@@ -5296,18 +5748,22 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: id
         schema: string
         required: true
         description: The scheduled change id
+        example: ID
     responses:
       - statusCode: '200'
         description: ''
@@ -5329,18 +5785,22 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: id
         schema: string
         required: true
         description: The scheduled change ID
+        example: ID
       - name: ignoreConflicts
         schema: boolean
         description: >-
@@ -5350,6 +5810,7 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: optional comment
       - name: instructions
         schema: array
         required: true
@@ -5383,14 +5844,17 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: status
         schema: string
         description: >-
@@ -5431,18 +5895,22 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: description
         schema: string
         required: false
         description: ''
+        example: Turn flag on for 10% of users each day
       - name: maintainerId
         schema: string
         required: false
@@ -5451,6 +5919,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: Progressive rollout starting in two days
       - name: stages
         schema: array
         required: false
@@ -5484,18 +5953,22 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: workflowId
         schema: string
         required: true
         description: The workflow id
+        example: WORKFLOWID
     responses:
       - statusCode: '204'
         description: Action completed successfully
@@ -5521,18 +5994,22 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: workflowId
         schema: string
         required: true
         description: The workflow ID
+        example: WORKFLOWID
     responses:
       - statusCode: '200'
         description: ''
@@ -5556,14 +6033,17 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: flagKey
         schema: string
         required: true
         description: The migration flag key
+        example: FLAGKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: instructions
         schema: array
         required: true
@@ -5600,6 +6080,7 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: expand
         schema: string
         description: >-
@@ -5631,30 +6112,38 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: tags
         schema: array
         required: true
         description: ''
+        example:
+          - ops
       - name: description
         schema: string
         required: false
         description: ''
+        example: Description of the metric group
       - name: key
         schema: string
         required: true
         description: ''
+        example: metric-group-key-123abc
       - name: name
         schema: string
         required: true
         description: ''
+        example: My metric group
       - name: kind
         schema: string
         required: true
         description: ''
+        example: funnel
       - name: maintainerId
         schema: string
         required: true
         description: ''
+        example: 569fdeadbeef1644facecafe
       - name: metrics
         schema: array
         required: true
@@ -5685,10 +6174,12 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: metricGroupKey
         schema: string
         required: true
         description: The metric group key
+        example: METRICGROUPKEY
     responses:
       - statusCode: '204'
         description: Action succeeded
@@ -5715,10 +6206,12 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: metricGroupKey
         schema: string
         required: true
         description: The metric group key
+        example: METRICGROUPKEY
       - name: expand
         schema: string
         description: >-
@@ -5750,10 +6243,12 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: metricGroupKey
         schema: string
         required: true
         description: The metric group key
+        example: METRICGROUPKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -5780,6 +6275,7 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: filter
         schema: string
         description: >-
@@ -5811,22 +6307,28 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: tags
         schema: array
         required: false
         description: ''
+        example:
+          - example-tag
       - name: description
         schema: string
         required: false
         description: ''
+        example: Standard pipeline to roll out to production
       - name: key
         schema: string
         required: true
         description: ''
+        example: standard-pipeline
       - name: name
         schema: string
         required: true
         description: ''
+        example: Standard Pipeline
       - name: phases
         schema: array
         required: true
@@ -5853,10 +6355,12 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: pipelineKey
         schema: string
         required: true
         description: The release pipeline key
+        example: PIPELINEKEY
     responses:
       - statusCode: '204'
         description: Action succeeded
@@ -5875,10 +6379,12 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: pipelineKey
         schema: string
         required: true
         description: The release pipeline key
+        example: PIPELINEKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -5895,10 +6401,12 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: pipelineKey
         schema: string
         required: true
         description: The release pipeline key
+        example: PIPELINEKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -5947,14 +6455,17 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: An example role for members of the ops team
       - name: name
         schema: string
         required: true
         description: ''
+        example: Ops team
       - name: key
         schema: string
         required: true
         description: ''
+        example: role-key-123abc
       - name: policy
         schema: array
         required: true
@@ -5987,6 +6498,7 @@ methodObjects:
         schema: string
         required: true
         description: The custom role key
+        example: CUSTOMROLEKEY
     responses:
       - statusCode: '204'
         description: Action succeeded
@@ -6007,6 +6519,7 @@ methodObjects:
         schema: string
         required: true
         description: The custom role key or ID
+        example: CUSTOMROLEKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -6029,6 +6542,7 @@ methodObjects:
         schema: string
         required: true
         description: The custom role key
+        example: CUSTOMROLEKEY
       - name: patch
         schema: array
         required: true
@@ -6061,10 +6575,12 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: limit
         schema: integer
         description: The number of segments to return. Defaults to 50.
@@ -6111,34 +6627,43 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: tags
         schema: array
         required: false
         description: ''
+        example:
+          - testing
       - name: description
         schema: string
         required: false
         description: ''
+        example: Bundle our sample customers together
       - name: name
         schema: string
         required: true
         description: ''
+        example: Example segment
       - name: key
         schema: string
         required: true
         description: ''
+        example: segment-key-123abc
       - name: unbounded
         schema: boolean
         required: false
         description: ''
+        example: false
       - name: unboundedContextKind
         schema: string
         required: false
         description: ''
+        example: device
     responses:
       - statusCode: '201'
         description: ''
@@ -6163,14 +6688,17 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: segmentKey
         schema: string
         required: true
         description: The segment key
+        example: SEGMENTKEY
     responses:
       - statusCode: '204'
         description: Action succeeded
@@ -6195,14 +6723,17 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: segmentKey
         schema: string
         required: true
         description: The segment key
+        example: SEGMENTKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -6223,14 +6754,17 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: segmentKey
         schema: string
         required: true
         description: The segment key
+        example: SEGMENTKEY
       - name: patch
         schema: array
         required: true
@@ -6265,14 +6799,17 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: segmentKey
         schema: string
         required: true
         description: The segment key
+        example: SEGMENTKEY
       - name: included
         schema: object
         description: ''
@@ -6302,18 +6839,22 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: segmentKey
         schema: string
         required: true
         description: The segment key
+        example: SEGMENTKEY
       - name: contextKey
         schema: string
         required: true
         description: The context key
+        example: CONTEXTKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -6336,14 +6877,17 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: segmentKey
         schema: string
         required: true
         description: The segment key
+        example: SEGMENTKEY
     responses:
       - statusCode: '200'
         description: Action succeeded
@@ -6367,18 +6911,22 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: segmentKey
         schema: string
         required: true
         description: The segment key
+        example: SEGMENTKEY
       - name: exportId
         schema: string
         required: true
         description: The export ID
+        example: EXPORTID
     responses:
       - statusCode: '200'
         description: ''
@@ -6399,14 +6947,17 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: segmentKey
         schema: string
         required: true
         description: The segment key
+        example: SEGMENTKEY
       - name: file
         schema: string
         description: ''
@@ -6438,18 +6989,22 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: segmentKey
         schema: string
         required: true
         description: The segment key
+        example: SEGMENTKEY
       - name: importId
         schema: string
         required: true
         description: The import ID
+        example: IMPORTID
     responses:
       - statusCode: '200'
         description: ''
@@ -6470,14 +7025,17 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: segmentKey
         schema: string
         required: true
         description: The segment key
+        example: SEGMENTKEY
       - name: included
         schema: object
         description: ''
@@ -6507,18 +7065,22 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: segmentKey
         schema: string
         required: true
         description: The segment key
+        example: SEGMENTKEY
       - name: userKey
         schema: string
         required: true
         description: The user key
+        example: USERKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -6542,14 +7104,17 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: segmentKey
         schema: string
         required: true
         description: The segment key
+        example: SEGMENTKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -6571,22 +7136,33 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: segmentKey
         schema: string
         required: true
         description: The segment key
+        example: SEGMENTKEY
       - name: comment
         schema: string
         required: false
         description: ''
+        example: optional comment
       - name: instructions
         schema: array
         required: true
         description: ''
+        example:
+          - version: 0
+            contextKey: user@email.com
+            contextKind: user
+            kind: updateExpiringTarget
+            targetType: included
+            value: 1587582000000
     responses:
       - statusCode: '200'
         description: ''
@@ -6614,14 +7190,17 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: segmentKey
         schema: string
         required: true
         description: The segment key
+        example: SEGMENTKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -6643,22 +7222,33 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: segmentKey
         schema: string
         required: true
         description: The segment key
+        example: SEGMENTKEY
       - name: comment
         schema: string
         required: false
         description: ''
+        example: optional comment
       - name: instructions
         schema: array
         required: true
         description: ''
+        example:
+          - version: 0
+            contextKey: contextKey
+            contextKind: user
+            kind: updateExpiringTarget
+            targetType: included
+            value: 1587582000000
     responses:
       - statusCode: '200'
         description: ''
@@ -6750,6 +7340,7 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: Optional comment about the update
       - name: instructions
         schema: array
         required: true
@@ -6783,22 +7374,30 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: An example team
       - name: customRoleKeys
         schema: array
         required: false
         description: ''
+        example:
+          - example-role1
+          - example-role2
       - name: key
         schema: string
         required: true
         description: ''
+        example: team-key-123abc
       - name: memberIDs
         schema: array
         required: false
         description: ''
+        example:
+          - 12ab3c45de678910fgh12345
       - name: name
         schema: string
         required: true
         description: ''
+        example: Example team
       - name: permissionGrants
         schema: array
         required: false
@@ -6825,6 +7424,7 @@ methodObjects:
         schema: string
         required: true
         description: The team key
+        example: TEAMKEY
     responses:
       - statusCode: '204'
         description: Action succeeded
@@ -6845,6 +7445,7 @@ methodObjects:
         schema: string
         required: true
         description: The team key.
+        example: TEAMKEY
       - name: expand
         schema: string
         description: >-
@@ -6876,6 +7477,7 @@ methodObjects:
         schema: string
         required: true
         description: The team key
+        example: TEAMKEY
       - name: expand
         schema: string
         description: >-
@@ -6885,6 +7487,7 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: Optional comment about the update
       - name: instructions
         schema: array
         required: true
@@ -6915,6 +7518,7 @@ methodObjects:
         schema: string
         required: true
         description: The team key
+        example: TEAMKEY
       - name: limit
         schema: integer
         description: The number of maintainers to return in the response. Defaults to 20.
@@ -6950,6 +7554,7 @@ methodObjects:
         schema: string
         required: true
         description: The team key
+        example: TEAMKEY
       - name: file
         schema: string
         description: ''
@@ -6977,6 +7582,7 @@ methodObjects:
         schema: string
         required: true
         description: The team key
+        example: TEAMKEY
       - name: limit
         schema: integer
         description: The number of roles to return in the response. Defaults to 20.
@@ -7040,6 +7646,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: KEY
       - name: name
         schema: string
         required: false
@@ -7086,6 +7693,7 @@ methodObjects:
         schema: string
         required: true
         description: The template key
+        example: TEMPLATEKEY
     responses:
       - statusCode: '204'
         description: Action completed successfully
@@ -7179,6 +7787,7 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the access token to update
+        example: ID
     responses:
       - statusCode: '204'
         description: Action succeeded
@@ -7201,6 +7810,7 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the access token
+        example: ID
     responses:
       - statusCode: '200'
         description: ''
@@ -7223,6 +7833,7 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the access token to update
+        example: ID
     responses:
       - statusCode: '200'
         description: ''
@@ -7251,6 +7862,7 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the access token to update
+        example: ID
       - name: expiry
         schema: integer
         description: >-
@@ -7278,14 +7890,17 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
       - name: from
         schema: string
         description: >-
@@ -7325,6 +7940,7 @@ methodObjects:
         description: >-
           The type of event to retrieve. Must be either `received` or
           `published`.
+        example: TYPE
       - name: from
         schema: string
         description: >-
@@ -7549,6 +8165,7 @@ methodObjects:
         description: >-
           The source of streaming connections to describe. Must be either
           `client` or `server`.
+        example: SOURCE
       - name: from
         schema: string
         description: >-
@@ -7588,6 +8205,7 @@ methodObjects:
         description: >-
           The source of streaming connections to describe. Must be either
           `client` or `server`.
+        example: SOURCE
       - name: from
         schema: string
         description: >-
@@ -7637,6 +8255,7 @@ methodObjects:
         description: >-
           The source of streaming connections to describe. Must be either
           `client` or `server`.
+        example: SOURCE
     responses:
       - statusCode: '200'
         description: ''
@@ -7657,10 +8276,12 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -7683,10 +8304,12 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: q
         schema: string
         description: >-
@@ -7748,10 +8371,12 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: limit
         schema: integer
         description: The number of elements to return per page
@@ -7785,14 +8410,17 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: userKey
         schema: string
         required: true
         description: The user key
+        example: USERKEY
     responses:
       - statusCode: '204'
         description: Action succeeded
@@ -7817,14 +8445,17 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: userKey
         schema: string
         required: true
         description: The user key
+        example: USERKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -7849,14 +8480,17 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: userKey
         schema: string
         required: true
         description: The user key
+        example: USERKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -7882,18 +8516,22 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: userKey
         schema: string
         required: true
         description: The user key
+        example: USERKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -7919,24 +8557,30 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: userKey
         schema: string
         required: true
         description: The user key
+        example: USERKEY
       - name: featureFlagKey
         schema: string
         required: true
         description: The feature flag key
+        example: FEATUREFLAGKEY
       - name: setting
         schema: undefined
         description: ''
+        example: existing_variation_value_to_use
       - name: comment
         schema: string
         description: ''
+        example: make sure this context experiences a specific variation
     responses:
       - statusCode: '204'
         description: Action succeeded
@@ -7962,14 +8606,17 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: userKey
         schema: string
         required: true
         description: The user key
+        example: USERKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
     responses:
       - statusCode: '200'
         description: ''
@@ -7993,18 +8640,22 @@ methodObjects:
         schema: string
         required: true
         description: The project key
+        example: PROJECTKEY
       - name: userKey
         schema: string
         required: true
         description: The user key
+        example: USERKEY
       - name: environmentKey
         schema: string
         required: true
         description: The environment key
+        example: ENVIRONMENTKEY
       - name: comment
         schema: string
         required: false
         description: ''
+        example: optional comment
       - name: instructions
         schema: array
         required: true
@@ -8065,18 +8716,22 @@ methodObjects:
         schema: array
         required: false
         description: ''
+        example: []
       - name: name
         schema: string
         required: false
         description: ''
+        example: Example hook
       - name: url
         schema: string
         required: true
         description: ''
+        example: http://www.example.com
       - name: secret
         schema: string
         required: false
         description: ''
+        example: frobozz
       - name: statements
         schema: array
         required: false
@@ -8085,10 +8740,12 @@ methodObjects:
         schema: boolean
         required: true
         description: ''
+        example: true
       - name: 'on'
         schema: boolean
         required: true
         description: ''
+        example: true
     responses:
       - statusCode: '200'
         description: ''
@@ -8111,6 +8768,7 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the webhook to delete
+        example: ID
     responses:
       - statusCode: '204'
         description: Action succeeded
@@ -8133,6 +8791,7 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the webhook
+        example: ID
     responses:
       - statusCode: '200'
         description: ''
@@ -8155,6 +8814,7 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the webhook to update
+        example: ID
     responses:
       - statusCode: '200'
         description: ''

@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function BrexWebhooksTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function BrexWebhooksTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/webhooks/logo.png"
       clientNameCamelCase="brexWebhooks"
       homepage="brex.com"
-      lastUpdated={new Date("2024-03-11T06:43:11.466Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/webhooks/favicon.png"
       contactUrl="https://brex.com"
       contactEmail="developer-access@brex.com"
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/webhooks/imagePreview.jpg"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["finance","payments","online_payments","fintech","automation","banking","global_payments","travel_expenses"]}
       methods={[
   {
     "url": "/v1/webhooks",
@@ -80,13 +83,15 @@ export default function BrexWebhooksTypeScriptSdk() {
         "name": "idempotencyKey",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "IDEMPOTENCY-KEY"
       },
       {
         "name": "url",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "URL"
       },
       {
         "name": "event_types",
@@ -161,7 +166,8 @@ export default function BrexWebhooksTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -199,7 +205,8 @@ export default function BrexWebhooksTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -237,13 +244,15 @@ export default function BrexWebhooksTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "url",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "URL"
       },
       {
         "name": "event_types",
@@ -255,7 +264,8 @@ export default function BrexWebhooksTypeScriptSdk() {
         "name": "status",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "STATUS"
       }
     ],
     "responses": [

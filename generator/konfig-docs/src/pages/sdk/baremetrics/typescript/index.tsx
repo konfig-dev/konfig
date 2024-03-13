@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function BaremetricsTypeScriptSdk() {
@@ -24,13 +25,15 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/baremetrics/logo.png"
       clientNameCamelCase="baremetrics"
       homepage="baremetrics.com"
-      lastUpdated={new Date("2024-03-11T16:20:31.165Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/baremetrics/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/baremetrics/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["finance","payments","online_payments","fintech","developer_tools","automation","analytics","metrics","forecasting","subscription"]}
       methods={[
   {
     "url": "/v1/account",
@@ -87,7 +90,8 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "sourceId",
         "schema": "string",
         "required": true,
-        "description": "Please see [Sources](ref:sources)"
+        "description": "Please see [Sources](ref:sources)",
+        "example": "SOURCE_ID"
       }
     ],
     "responses": [
@@ -113,55 +117,64 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "sourceId",
         "schema": "string",
         "required": true,
-        "description": "Please see [Sources](ref:sources)"
+        "description": "Please see [Sources](ref:sources)",
+        "example": "SOURCE_ID"
       },
       {
         "name": "oid",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "OID"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "currency",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CURRENCY"
       },
       {
         "name": "amount",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "interval",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "INTERVAL"
       },
       {
         "name": "interval_count",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "trial_duration",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": 0
       },
       {
         "name": "trial_duration_unit",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": "day"
       }
     ],
     "responses": [
@@ -187,13 +200,15 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "oid",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "OID"
       },
       {
         "name": "sourceId",
         "schema": "string",
         "required": true,
-        "description": "Please see [Sources](ref:sources)"
+        "description": "Please see [Sources](ref:sources)",
+        "example": "SOURCE_ID"
       }
     ],
     "responses": [
@@ -219,13 +234,15 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "oid",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "OID"
       },
       {
         "name": "sourceId",
         "schema": "string",
         "required": true,
-        "description": "Please see [Sources](ref:sources)"
+        "description": "Please see [Sources](ref:sources)",
+        "example": "SOURCE_ID"
       }
     ],
     "responses": [
@@ -251,19 +268,22 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "planOid",
         "schema": "string",
         "required": true,
-        "description": "Your interval plan id"
+        "description": "Your interval plan id",
+        "example": "PLAN_OID"
       },
       {
         "name": "sourceId",
         "schema": "string",
         "required": true,
-        "description": "Please see [Sources](ref:sources)"
+        "description": "Please see [Sources](ref:sources)",
+        "example": "SOURCE_ID"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -294,17 +314,20 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "sourceId",
         "schema": "string",
         "required": true,
-        "description": "Please see [Sources](ref:sources)"
+        "description": "Please see [Sources](ref:sources)",
+        "example": "SOURCE_ID"
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "Allows you to sort the results. You can use ltv or created"
+        "description": "Allows you to sort the results. You can use ltv or created",
+        "default": "created"
       },
       {
         "name": "order",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "asc"
       }
     ],
     "responses": [
@@ -330,7 +353,8 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "sourceId",
         "schema": "string",
         "required": true,
-        "description": "Please see [Sources](ref:sources)"
+        "description": "Please see [Sources](ref:sources)",
+        "example": "SOURCE_ID"
       },
       {
         "name": "name",
@@ -354,13 +378,15 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "oid",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "OID"
       },
       {
         "name": "created",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": "NOW"
       }
     ],
     "responses": [
@@ -386,13 +412,15 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "oid",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "OID"
       },
       {
         "name": "sourceId",
         "schema": "string",
         "required": true,
-        "description": "Please see [Sources](ref:sources)"
+        "description": "Please see [Sources](ref:sources)",
+        "example": "SOURCE_ID"
       }
     ],
     "responses": [
@@ -418,13 +446,15 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "oid",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "OID"
       },
       {
         "name": "sourceId",
         "schema": "string",
         "required": true,
-        "description": "Please see [Sources](ref:sources)"
+        "description": "Please see [Sources](ref:sources)",
+        "example": "SOURCE_ID"
       }
     ],
     "responses": [
@@ -450,13 +480,15 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "sourceId",
         "schema": "string",
         "required": true,
-        "description": "Please see [Sources](ref:sources)"
+        "description": "Please see [Sources](ref:sources)",
+        "example": "SOURCE_ID"
       },
       {
         "name": "oid",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "OID"
       }
     ],
     "responses": [
@@ -482,13 +514,15 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "customerOid",
         "schema": "string",
         "required": true,
-        "description": "Your unique ID for the customer"
+        "description": "Your unique ID for the customer",
+        "example": "CUSTOMER_OID"
       },
       {
         "name": "sourceId",
         "schema": "string",
         "required": true,
-        "description": "Please see [Sources](ref:sources)"
+        "description": "Please see [Sources](ref:sources)",
+        "example": "SOURCE_ID"
       },
       {
         "name": "name",
@@ -534,7 +568,8 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "sourceId",
         "schema": "string",
         "required": true,
-        "description": "Please see [Sources](ref:sources)"
+        "description": "Please see [Sources](ref:sources)",
+        "example": "SOURCE_ID"
       },
       {
         "name": "customerOid",
@@ -544,7 +579,8 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
       {
         "name": "order",
         "schema": "string",
-        "description": "Allows you to order subscriptions from newest to oldest `desc` or oldest to newest `asc`"
+        "description": "Allows you to order subscriptions from newest to oldest `desc` or oldest to newest `asc`",
+        "default": "desc"
       }
     ],
     "responses": [
@@ -570,19 +606,22 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "sourceId",
         "schema": "string",
         "required": true,
-        "description": "Please see [Sources](ref:sources)"
+        "description": "Please see [Sources](ref:sources)",
+        "example": "SOURCE_ID"
       },
       {
         "name": "oid",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "OID"
       },
       {
         "name": "started_at",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "STARTED_AT"
       },
       {
         "name": "canceled_at",
@@ -594,13 +633,15 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "plan_oid",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PLAN_OID"
       },
       {
         "name": "customer_oid",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CUSTOMER_OID"
       },
       {
         "name": "addons",
@@ -612,7 +653,8 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "quantity",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": 1
       },
       {
         "name": "discount",
@@ -644,13 +686,15 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "oid",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "OID"
       },
       {
         "name": "sourceId",
         "schema": "string",
         "required": true,
-        "description": "Please see [Sources](ref:sources)"
+        "description": "Please see [Sources](ref:sources)",
+        "example": "SOURCE_ID"
       }
     ],
     "responses": [
@@ -676,13 +720,15 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "oid",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "OID"
       },
       {
         "name": "sourceId",
         "schema": "string",
         "required": true,
-        "description": "Please see [Sources](ref:sources)"
+        "description": "Please see [Sources](ref:sources)",
+        "example": "SOURCE_ID"
       }
     ],
     "responses": [
@@ -708,25 +754,29 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "subscriptionOid",
         "schema": "string",
         "required": true,
-        "description": "Your unique ID for the subscription"
+        "description": "Your unique ID for the subscription",
+        "example": "SUBSCRIPTION_OID"
       },
       {
         "name": "sourceId",
         "schema": "string",
         "required": true,
-        "description": "Please see [Sources](ref:sources)"
+        "description": "Please see [Sources](ref:sources)",
+        "example": "SOURCE_ID"
       },
       {
         "name": "plan_oid",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PLAN_OID"
       },
       {
         "name": "occurred_at",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": "NOW"
       },
       {
         "name": "addons",
@@ -738,7 +788,8 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "quantity",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": 1
       },
       {
         "name": "discount",
@@ -770,19 +821,22 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "subscriptionOid",
         "schema": "string",
         "required": true,
-        "description": "Your unique ID for the subscription"
+        "description": "Your unique ID for the subscription",
+        "example": "SUBSCRIPTION_OID"
       },
       {
         "name": "sourceId",
         "schema": "string",
         "required": true,
-        "description": "Please see [Sources](ref:sources)"
+        "description": "Please see [Sources](ref:sources)",
+        "example": "SOURCE_ID"
       },
       {
         "name": "canceled_at",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CANCELED_AT"
       }
     ],
     "responses": [
@@ -827,31 +881,36 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "metric",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "METRIC"
       },
       {
         "name": "annotation",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ANNOTATION"
       },
       {
         "name": "date",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "DATE"
       },
       {
         "name": "global",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "user_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USER_ID"
       }
     ],
     "responses": [
@@ -877,7 +936,8 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -903,7 +963,8 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -948,37 +1009,43 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "metric",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "METRIC"
       },
       {
         "name": "start_amount",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "end_amount",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "start_date",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "START_DATE"
       },
       {
         "name": "end_date",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "END_DATE"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -1004,7 +1071,8 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -1030,7 +1098,8 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Unique ID"
+        "description": "Unique ID",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -1075,7 +1144,8 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -1101,7 +1171,8 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "sourceId",
         "schema": "string",
         "required": true,
-        "description": "Please see [Sources](ref:sources)"
+        "description": "Please see [Sources](ref:sources)",
+        "example": "SOURCE_ID"
       },
       {
         "name": "start",
@@ -1147,49 +1218,57 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "sourceId",
         "schema": "string",
         "required": true,
-        "description": "Please see [Sources](ref:sources)"
+        "description": "Please see [Sources](ref:sources)",
+        "example": "SOURCE_ID"
       },
       {
         "name": "oid",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "OID"
       },
       {
         "name": "amount",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "currency",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CURRENCY"
       },
       {
         "name": "customer_oid",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CUSTOMER_OID"
       },
       {
         "name": "created",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": "NOW"
       },
       {
         "name": "status",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": "paid"
       },
       {
         "name": "fee",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": 0
       },
       {
         "name": "subscription_oid",
@@ -1221,13 +1300,15 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "sourceId",
         "schema": "string",
         "required": true,
-        "description": "Please see [Sources](ref:sources)"
+        "description": "Please see [Sources](ref:sources)",
+        "example": "SOURCE_ID"
       },
       {
         "name": "oid",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "OID"
       }
     ],
     "responses": [
@@ -1253,13 +1334,15 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "sourceId",
         "schema": "string",
         "required": true,
-        "description": "Please see [Sources](ref:sources)"
+        "description": "Please see [Sources](ref:sources)",
+        "example": "SOURCE_ID"
       },
       {
         "name": "oid",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "OID"
       }
     ],
     "responses": [
@@ -1285,7 +1368,8 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "sourceId",
         "schema": "string",
         "required": true,
-        "description": "Please see [Sources](ref:sources)"
+        "description": "Please see [Sources](ref:sources)",
+        "example": "SOURCE_ID"
       },
       {
         "name": "start",
@@ -1321,43 +1405,50 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "sourceId",
         "schema": "string",
         "required": true,
-        "description": "Please see [Sources](ref:sources)"
+        "description": "Please see [Sources](ref:sources)",
+        "example": "SOURCE_ID"
       },
       {
         "name": "oid",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "OID"
       },
       {
         "name": "amount",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "currency",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CURRENCY"
       },
       {
         "name": "customer_oid",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CUSTOMER_OID"
       },
       {
         "name": "charge_oid",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CHARGE_OID"
       },
       {
         "name": "created",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": "NOW"
       }
     ],
     "responses": [
@@ -1383,13 +1474,15 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "sourceId",
         "schema": "string",
         "required": true,
-        "description": "Please see [Sources](ref:sources)"
+        "description": "Please see [Sources](ref:sources)",
+        "example": "SOURCE_ID"
       },
       {
         "name": "oid",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "OID"
       }
     ],
     "responses": [
@@ -1415,13 +1508,15 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "sourceId",
         "schema": "string",
         "required": true,
-        "description": "Please see [Sources](ref:sources)"
+        "description": "Please see [Sources](ref:sources)",
+        "example": "SOURCE_ID"
       },
       {
         "name": "oid",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "OID"
       }
     ],
     "responses": [
@@ -1447,12 +1542,14 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "sourceId",
         "schema": "string",
         "required": true,
-        "description": "Please see [Sources](ref:sources)"
+        "description": "Please see [Sources](ref:sources)",
+        "example": "SOURCE_ID"
       },
       {
         "name": "liveStream",
         "schema": "string",
-        "description": "Set this to true to only return events that show up in the live stream"
+        "description": "Set this to true to only return events that show up in the live stream",
+        "default": "false"
       },
       {
         "name": "start",
@@ -1488,13 +1585,15 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "sourceId",
         "schema": "string",
         "required": true,
-        "description": "Please see [Sources](ref:sources)"
+        "description": "Please see [Sources](ref:sources)",
+        "example": "SOURCE_ID"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -1520,13 +1619,17 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "startDate",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "START_DATE",
+        "default": "2016-11-01"
       },
       {
         "name": "endDate",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "END_DATE",
+        "default": "2016-11-26"
       }
     ],
     "responses": [
@@ -1552,24 +1655,30 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "metric",
         "schema": "string",
         "required": true,
-        "description": "You can see a list of available metrics [here](https://developers.baremetrics.com/reference/introduction)"
+        "description": "You can see a list of available metrics [here](https://developers.baremetrics.com/reference/introduction)",
+        "example": "METRIC"
       },
       {
         "name": "startDate",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "START_DATE",
+        "default": "2016-11-01"
       },
       {
         "name": "endDate",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "END_DATE",
+        "default": "2016-11-26"
       },
       {
         "name": "compareTo",
         "schema": "integer",
-        "description": "The number of days ago to compare results to"
+        "description": "The number of days ago to compare results to",
+        "default": 30
       }
     ],
     "responses": [
@@ -1595,19 +1704,22 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "startDate",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "START_DATE"
       },
       {
         "name": "endDate",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "END_DATE"
       },
       {
         "name": "metric",
         "schema": "string",
         "required": true,
-        "description": "You can see a list of available metrics [here](https://developers.baremetrics.com/reference/introduction)"
+        "description": "You can see a list of available metrics [here](https://developers.baremetrics.com/reference/introduction)",
+        "example": "METRIC"
       }
     ],
     "responses": [
@@ -1633,19 +1745,22 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "startDate",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "START_DATE"
       },
       {
         "name": "endDate",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "END_DATE"
       },
       {
         "name": "metric",
         "schema": "string",
         "required": true,
-        "description": "You can see a list of available metrics [here](https://developers.baremetrics.com/reference/introduction)"
+        "description": "You can see a list of available metrics [here](https://developers.baremetrics.com/reference/introduction)",
+        "example": "METRIC"
       }
     ],
     "responses": [
@@ -1760,7 +1875,8 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -1786,7 +1902,8 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -1812,7 +1929,8 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "name",
@@ -1847,22 +1965,26 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
       {
         "name": "perPage",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "default": 30
       },
       {
         "name": "page",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "default": 0
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "created"
       },
       {
         "name": "order",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "asc"
       },
       {
         "name": "query",
@@ -1942,13 +2064,15 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "title",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TITLE"
       },
       {
         "name": "field_type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "FIELD_TYPE"
       }
     ],
     "responses": [
@@ -1974,13 +2098,15 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "title",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TITLE"
       }
     ],
     "responses": [
@@ -2025,7 +2151,8 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "reason_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "REASON_ID"
       },
       {
         "name": "comment",
@@ -2069,7 +2196,8 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -2095,7 +2223,8 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "reason_id",
@@ -2131,7 +2260,8 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -2157,7 +2287,8 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -2183,13 +2314,15 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "text",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TEXT"
       },
       {
         "name": "sort_key",
@@ -2221,7 +2354,8 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "text",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TEXT"
       },
       {
         "name": "sort_key",

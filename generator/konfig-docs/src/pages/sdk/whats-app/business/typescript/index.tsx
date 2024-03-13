@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function WhatsAppBusinessTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function WhatsAppBusinessTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/whatsapp/business/logo.png"
       clientNameCamelCase="whatsAppBusiness"
       homepage="developers.facebook.com/docs/whatsapp"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/whatsapp/business/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/whatsapp/business/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["messaging","sms"]}
       methods={[
   {
     "url": "/account",
@@ -36,25 +39,29 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "name": "cc",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CC"
       },
       {
         "name": "cert",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CERT"
       },
       {
         "name": "method",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "METHOD"
       },
       {
         "name": "phone_number",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PHONE_NUMBER"
       },
       {
         "name": "pin",
@@ -86,25 +93,29 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "name": "cc",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CC"
       },
       {
         "name": "phone_number",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PHONE_NUMBER"
       },
       {
         "name": "pin",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PIN"
       },
       {
         "name": "shards",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       }
     ],
     "responses": [
@@ -126,7 +137,8 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "name": "code",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CODE"
       }
     ],
     "responses": [
@@ -223,7 +235,8 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "name": "blocking",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": "no_wait"
       },
       {
         "name": "contacts",
@@ -266,7 +279,8 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "name": "subject",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SUBJECT"
       }
     ],
     "responses": [
@@ -288,7 +302,8 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "name": "groupId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "GROUPID"
       }
     ],
     "responses": [
@@ -310,13 +325,15 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "name": "groupId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "GROUPID"
       },
       {
         "name": "subject",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SUBJECT"
       }
     ],
     "responses": [
@@ -338,7 +355,8 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "name": "groupId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "GROUPID"
       },
       {
         "name": "wa_ids",
@@ -366,7 +384,8 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "name": "groupId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "GROUPID"
       },
       {
         "name": "wa_ids",
@@ -394,13 +413,15 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "name": "groupId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "GROUPID"
       },
       {
         "name": "File",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "FILE"
       }
     ],
     "responses": [
@@ -422,7 +443,8 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "name": "groupId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "GROUPID"
       }
     ],
     "responses": [
@@ -444,13 +466,15 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "name": "groupId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "GROUPID"
       },
       {
         "name": "File",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "FILE"
       }
     ],
     "responses": [
@@ -472,7 +496,8 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "name": "groupId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "GROUPID"
       }
     ],
     "responses": [
@@ -494,7 +519,8 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "name": "groupId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "GROUPID"
       }
     ],
     "responses": [
@@ -516,7 +542,8 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "name": "groupId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "GROUPID"
       }
     ],
     "responses": [
@@ -538,7 +565,8 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "name": "groupId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "GROUPID"
       },
       {
         "name": "wa_ids",
@@ -596,7 +624,8 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "name": "mediaId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "MEDIAID"
       }
     ],
     "responses": [
@@ -618,7 +647,8 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "name": "mediaId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "MEDIAID"
       }
     ],
     "responses": [
@@ -658,7 +688,20 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "name": "hsm",
         "schema": "object",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": {
+          "element_name": "hello_world",
+          "language": {
+            "code": "en",
+            "policy": "deterministic"
+          },
+          "localizable_params": [
+            {
+              "default": "1234"
+            }
+          ],
+          "namespace": "business_a_namespace"
+        }
       },
       {
         "name": "image",
@@ -670,7 +713,13 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "name": "location",
         "schema": "object",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": {
+          "address": "<Location's Address>",
+          "latitude": "<Latitude>",
+          "longitude": "<Longitude>",
+          "name": "<Location Name>"
+        }
       },
       {
         "name": "preview_url",
@@ -682,19 +731,24 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "name": "recipient_type",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": "individual"
       },
       {
         "name": "text",
         "schema": "object",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": {
+          "body": "<Message Text>"
+        }
       },
       {
         "name": "to",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TO"
       },
       {
         "name": "ttl",
@@ -706,7 +760,8 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": "text"
       },
       {
         "name": "video",
@@ -734,13 +789,16 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "name": "messageId",
         "schema": "string",
         "required": true,
-        "description": "Message ID from Webhook"
+        "description": "Message ID from Webhook",
+        "example": "MESSAGEID"
       },
       {
         "name": "status",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "STATUS",
+        "default": "read"
       }
     ],
     "responses": [
@@ -761,7 +819,8 @@ export default function WhatsAppBusinessTypeScriptSdk() {
       {
         "name": "format",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "prometheus"
       }
     ],
     "responses": [
@@ -798,7 +857,8 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "name": "pin",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PIN"
       }
     ],
     "responses": [
@@ -849,27 +909,38 @@ export default function WhatsAppBusinessTypeScriptSdk() {
       {
         "name": "callback_backoff_delay_ms",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "3000"
       },
       {
         "name": "callback_persist",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "default": true
       },
       {
         "name": "heartbeat_interval",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "default": 5
       },
       {
         "name": "max_callback_backoff_delay_ms",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "900000"
       },
       {
         "name": "media",
         "schema": "object",
-        "description": ""
+        "description": "",
+        "example": {
+          "auto_download": [
+            "image",
+            "document",
+            "audio"
+          ]
+        }
       },
       {
         "name": "on_call_pager",
@@ -879,22 +950,29 @@ export default function WhatsAppBusinessTypeScriptSdk() {
       {
         "name": "pass_through",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "default": true
       },
       {
         "name": "sent_status",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "unhealthy_interval",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "default": 30
       },
       {
         "name": "webhooks",
         "schema": "object",
-        "description": ""
+        "description": "",
+        "example": {
+          "max_concurrent_requests": 12,
+          "url": "<Webhook URL, https>"
+        }
       }
     ],
     "responses": [
@@ -946,7 +1024,8 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "name": "providerName",
         "schema": "string",
         "required": true,
-        "description": "Provider Name"
+        "description": "Provider Name",
+        "example": "PROVIDERNAME"
       }
     ],
     "responses": [
@@ -968,7 +1047,8 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "name": "password",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PASSWORD"
       }
     ],
     "responses": [
@@ -1005,25 +1085,29 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "name": "description",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "DESCRIPTION"
       },
       {
         "name": "address",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ADDRESS"
       },
       {
         "name": "email",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "EMAIL"
       },
       {
         "name": "vertical",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "VERTICAL"
       },
       {
         "name": "websites",
@@ -1066,7 +1150,8 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "name": "text",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TEXT"
       }
     ],
     "responses": [
@@ -1102,7 +1187,8 @@ export default function WhatsAppBusinessTypeScriptSdk() {
       {
         "name": "format",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "link"
       }
     ],
     "responses": [
@@ -1124,7 +1210,8 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "name": "File",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "FILE"
       }
     ],
     "responses": [
@@ -1146,13 +1233,15 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "name": "data",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "DATA"
       },
       {
         "name": "password",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PASSWORD"
       }
     ],
     "responses": [
@@ -1173,7 +1262,8 @@ export default function WhatsAppBusinessTypeScriptSdk() {
       {
         "name": "format",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "prometheus"
       }
     ],
     "responses": [
@@ -1194,7 +1284,8 @@ export default function WhatsAppBusinessTypeScriptSdk() {
       {
         "name": "format",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "prometheus"
       }
     ],
     "responses": [
@@ -1231,13 +1322,15 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "name": "password",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PASSWORD"
       },
       {
         "name": "username",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USERNAME"
       }
     ],
     "responses": [
@@ -1259,7 +1352,8 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "name": "new_password",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NEW_PASSWORD"
       }
     ],
     "responses": [
@@ -1296,7 +1390,8 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "name": "userUsername",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USERUSERNAME"
       }
     ],
     "responses": [
@@ -1318,7 +1413,8 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "name": "userUsername",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USERUSERNAME"
       }
     ],
     "responses": [
@@ -1340,13 +1436,15 @@ export default function WhatsAppBusinessTypeScriptSdk() {
         "name": "userUsername",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USERUSERNAME"
       },
       {
         "name": "password",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PASSWORD"
       }
     ],
     "responses": [

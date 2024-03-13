@@ -15,6 +15,9 @@ methodObjects:
           passing in `expand[]=merchant`. Query parameters include `location`,
           `department`, `merchant`, `receipts.download_uris`, `user`, `budget`
           and `payment`.
+        example: |
+
+          ?expand[]=merchant&expand[]=location
       - name: userId[]
         schema: array
         required: false
@@ -44,6 +47,9 @@ methodObjects:
           This parameter is the date-time notation as defined by [RFC 3339,
           section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6), e.g.
           2022-11-12T23:59:59.999
+        example: |
+
+          2023-01-01T23:59:59.999
       - name: purchasedAtEnd
         schema: string
         required: false
@@ -53,6 +59,9 @@ methodObjects:
           This parameter is the date-time notation as defined by [RFC 3339,
           section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6), e.g.
           2022-11-12T23:59:59.999
+        example: |
+
+          2023-01-10T23:59:59.999
       - name: cursor
         schema: string
         required: false
@@ -84,6 +93,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: RECEIPT_NAME
     responses:
       - statusCode: '200'
         description: |
@@ -103,6 +113,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: EXPENSE_ID
       - name: expand[]
         schema: array
         required: false
@@ -111,6 +122,9 @@ methodObjects:
           passing in `expand[]=merchant`. Query parameters include `location`,
           `department`, `merchant`, `receipts.download_uris`, `user`, `budget`
           and `payment`.
+        example: |
+
+          ?expand[]=merchant&expand[]=location
     responses:
       - statusCode: '200'
         description: >-
@@ -135,6 +149,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: EXPENSE_ID
       - name: memo
         schema: string
         description: ''
@@ -160,10 +175,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: EXPENSE_ID
       - name: receipt_name
         schema: string
         required: true
         description: ''
+        example: RECEIPT_NAME
     responses:
       - statusCode: '200'
         description: |

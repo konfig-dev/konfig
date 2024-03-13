@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function LaunchDarklyTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function LaunchDarklyTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/launchdarkly/logo.png"
       clientNameCamelCase="launchDarkly"
       homepage="launchdarkly.com"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/launchdarkly/favicon.png"
       contactUrl="https://support.launchdarkly.com"
       contactEmail="support@launchdarkly.com"
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/launchdarkly/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["developer_tools","automation","feature_management","software_development","feature_flags","analytics"]}
       methods={[
   {
     "url": "/api/v2",
@@ -82,7 +85,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "policy",
@@ -122,7 +126,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The relay auto config id"
+        "description": "The relay auto config id",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -160,7 +165,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The relay auto config id"
+        "description": "The relay auto config id",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -198,7 +204,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The relay auto config id"
+        "description": "The relay auto config id",
+        "example": "ID"
       },
       {
         "name": "patch",
@@ -256,7 +263,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The Relay Proxy configuration ID"
+        "description": "The Relay Proxy configuration ID",
+        "example": "ID"
       },
       {
         "name": "expiry",
@@ -360,7 +368,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "applicationKey",
         "schema": "string",
         "required": true,
-        "description": "The application key"
+        "description": "The application key",
+        "example": "APPLICATIONKEY"
       }
     ],
     "responses": [
@@ -398,7 +407,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "applicationKey",
         "schema": "string",
         "required": true,
-        "description": "The application key"
+        "description": "The application key",
+        "example": "APPLICATIONKEY"
       },
       {
         "name": "expand",
@@ -445,7 +455,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "applicationKey",
         "schema": "string",
         "required": true,
-        "description": "The application key"
+        "description": "The application key",
+        "example": "APPLICATIONKEY"
       }
     ],
     "responses": [
@@ -492,7 +503,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "applicationKey",
         "schema": "string",
         "required": true,
-        "description": "The application key"
+        "description": "The application key",
+        "example": "APPLICATIONKEY"
       },
       {
         "name": "limit",
@@ -549,13 +561,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "applicationKey",
         "schema": "string",
         "required": true,
-        "description": "The application key"
+        "description": "The application key",
+        "example": "APPLICATIONKEY"
       },
       {
         "name": "versionKey",
         "schema": "string",
         "required": true,
-        "description": "The application version key"
+        "description": "The application version key",
+        "example": "VERSIONKEY"
       }
     ],
     "responses": [
@@ -593,13 +607,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "applicationKey",
         "schema": "string",
         "required": true,
-        "description": "The application key"
+        "description": "The application key",
+        "example": "APPLICATIONKEY"
       },
       {
         "name": "versionKey",
         "schema": "string",
         "required": true,
-        "description": "The application version key"
+        "description": "The application version key",
+        "example": "VERSIONKEY"
       }
     ],
     "responses": [
@@ -693,19 +709,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "description",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Requesting to update targeting"
       },
       {
         "name": "resourceId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "RESOURCEID"
       },
       {
         "name": "comment",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "optional comment"
       },
       {
         "name": "instructions",
@@ -717,13 +736,19 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "notifyMemberIds",
         "schema": "array",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": [
+          "1234a56b7c89d012345e678f"
+        ]
       },
       {
         "name": "notifyTeamKeys",
         "schema": "array",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": [
+          "example-reviewer-team"
+        ]
       },
       {
         "name": "integrationConfig",
@@ -767,7 +792,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The approval request ID"
+        "description": "The approval request ID",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -805,7 +831,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The approval request ID"
+        "description": "The approval request ID",
+        "example": "ID"
       },
       {
         "name": "expand",
@@ -852,12 +879,14 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The feature flag approval request ID"
+        "description": "The feature flag approval request ID",
+        "example": "ID"
       },
       {
         "name": "comment",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Looks good, thanks for updating"
       }
     ],
     "responses": [
@@ -899,17 +928,20 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The approval request ID"
+        "description": "The approval request ID",
+        "example": "ID"
       },
       {
         "name": "kind",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "approve"
       },
       {
         "name": "comment",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Looks good, thanks for updating"
       }
     ],
     "responses": [
@@ -1012,7 +1044,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the audit log entry"
+        "description": "The ID of the audit log entry",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -1156,37 +1189,43 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "LaunchDarkly-Docs"
       },
       {
         "name": "sourceLink",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "https://github.com/launchdarkly/LaunchDarkly-Docs"
       },
       {
         "name": "commitUrlTemplate",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "https://github.com/launchdarkly/LaunchDarkly-Docs/commit/${sha}"
       },
       {
         "name": "hunkUrlTemplate",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "https://github.com/launchdarkly/LaunchDarkly-Docs/blob/${sha}/${filePath}#L${lineNumber}"
       },
       {
         "name": "type",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "github"
       },
       {
         "name": "defaultBranch",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "main"
       }
     ],
     "responses": [
@@ -1228,7 +1267,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "repo",
         "schema": "string",
         "required": true,
-        "description": "The repository name"
+        "description": "The repository name",
+        "example": "REPO"
       }
     ],
     "responses": [
@@ -1270,7 +1310,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "repo",
         "schema": "string",
         "required": true,
-        "description": "The repository name"
+        "description": "The repository name",
+        "example": "REPO"
       }
     ],
     "responses": [
@@ -1312,7 +1353,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "repo",
         "schema": "string",
         "required": true,
-        "description": "The repository name"
+        "description": "The repository name",
+        "example": "REPO"
       }
     ],
     "responses": [
@@ -1354,7 +1396,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "repo",
         "schema": "string",
         "required": true,
-        "description": "The repository name to delete branches for."
+        "description": "The repository name to delete branches for.",
+        "example": "REPO"
       }
     ],
     "responses": [
@@ -1396,7 +1439,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "repo",
         "schema": "string",
         "required": true,
-        "description": "The repository name"
+        "description": "The repository name",
+        "example": "REPO"
       }
     ],
     "responses": [
@@ -1438,13 +1482,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "repo",
         "schema": "string",
         "required": true,
-        "description": "The repository name"
+        "description": "The repository name",
+        "example": "REPO"
       },
       {
         "name": "branch",
         "schema": "string",
         "required": true,
-        "description": "The url-encoded branch name"
+        "description": "The url-encoded branch name",
+        "example": "BRANCH"
       },
       {
         "name": "projKey",
@@ -1496,37 +1542,43 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "repo",
         "schema": "string",
         "required": true,
-        "description": "The repository name"
+        "description": "The repository name",
+        "example": "REPO"
       },
       {
         "name": "branch",
         "schema": "string",
         "required": true,
-        "description": "The URL-encoded branch name"
+        "description": "The URL-encoded branch name",
+        "example": "BRANCH"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "main"
       },
       {
         "name": "head",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "a94a8fe5ccb19ba61c4c0873d391e987982fbbd3"
       },
       {
         "name": "updateSequenceId",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 25
       },
       {
         "name": "syncTime",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "references",
@@ -1584,13 +1636,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "repo",
         "schema": "string",
         "required": true,
-        "description": "The repository name"
+        "description": "The repository name",
+        "example": "REPO"
       },
       {
         "name": "branch",
         "schema": "string",
         "required": true,
-        "description": "The URL-encoded branch name"
+        "description": "The URL-encoded branch name",
+        "example": "BRANCH"
       }
     ],
     "responses": [
@@ -1663,7 +1717,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "flagKey",
@@ -1733,33 +1788,39 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "example-destination"
       },
       {
         "name": "kind",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "google-pubsub"
       },
       {
         "name": "config",
         "schema": "undefined",
-        "description": ""
+        "description": "",
+        "example": "{\"project\":\"test-prod\",\"topic\":\"ld-pubsub-test-192301\"}"
       },
       {
         "name": "on",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -1801,19 +1862,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The Data Export destination ID"
+        "description": "The Data Export destination ID",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -1851,19 +1915,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The Data Export destination ID"
+        "description": "The Data Export destination ID",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -1901,19 +1968,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The Data Export destination ID"
+        "description": "The Data Export destination ID",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -1959,13 +2029,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       }
     ],
     "responses": [
@@ -1999,28 +2071,33 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       },
       {
         "name": "title",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Example link title"
       },
       {
         "name": "description",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Example link description"
       },
       {
         "name": "key",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "flag-link-key-123abc"
       },
       {
         "name": "integrationKey",
@@ -2035,7 +2112,8 @@ export default function LaunchDarklyTypeScriptSdk() {
       {
         "name": "deepLink",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "https://example.com/archives/123123123"
       },
       {
         "name": "metadata",
@@ -2082,19 +2160,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The flag link ID or Key"
+        "description": "The flag link ID or Key",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -2136,19 +2217,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The flag link ID"
+        "description": "The flag link ID",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -2194,13 +2278,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       },
       {
         "name": "env",
@@ -2243,13 +2329,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       }
     ],
     "responses": [
@@ -2287,19 +2375,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       }
     ],
     "responses": [
@@ -2337,7 +2428,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "env",
@@ -2429,7 +2521,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "clone",
@@ -2440,25 +2533,31 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "tags",
         "schema": "array",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": [
+          "example-tag"
+        ]
       },
       {
         "name": "description",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "This flag controls the example widgets"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "My flag"
       },
       {
         "name": "key",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "flag-key-123abc"
       },
       {
         "name": "includeInSnippet",
@@ -2476,13 +2575,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "variations",
         "schema": "array",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": [
+          {
+            "value": true
+          },
+          {
+            "value": false
+          }
+        ]
       },
       {
         "name": "temporary",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "customProperties",
@@ -2500,7 +2608,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "purpose",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "migration"
       },
       {
         "name": "migrationSettings",
@@ -2544,19 +2653,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       }
     ],
     "responses": [
@@ -2594,13 +2706,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key. The key identifies the flag in your code."
+        "description": "The feature flag key. The key identifies the flag in your code.",
+        "example": "FEATUREFLAGKEY"
       }
     ],
     "responses": [
@@ -2638,13 +2752,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       },
       {
         "name": "env",
@@ -2692,13 +2808,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key. The key identifies the flag in your code."
+        "description": "The feature flag key. The key identifies the flag in your code.",
+        "example": "FEATUREFLAGKEY"
       },
       {
         "name": "patch",
@@ -2756,13 +2874,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key. The key identifies the flag in your code."
+        "description": "The feature flag key. The key identifies the flag in your code.",
+        "example": "FEATUREFLAGKEY"
       },
       {
         "name": "source",
@@ -2786,13 +2906,19 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "includedActions",
         "schema": "array",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": [
+          "updateOn"
+        ]
       },
       {
         "name": "excludedActions",
         "schema": "array",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": [
+          "updateOn"
+        ]
       }
     ],
     "responses": [
@@ -2834,13 +2960,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       }
     ],
     "responses": [
@@ -2878,25 +3006,29 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "metricKey",
         "schema": "string",
         "required": true,
-        "description": "The metric key"
+        "description": "The metric key",
+        "example": "METRICKEY"
       },
       {
         "name": "from",
@@ -2948,19 +3080,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       }
     ],
     "responses": [
@@ -2998,31 +3133,43 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       },
       {
         "name": "comment",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "optional comment"
       },
       {
         "name": "instructions",
         "schema": "array",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": [
+          {
+            "kind": "addExpireUserTargetDate",
+            "userKey": "sandy",
+            "value": 1686412800000,
+            "variationId": "ce12d345-a1b2-4fb5-a123-ab123d4d5f5d"
+          }
+        ]
       }
     ],
     "responses": [
@@ -3064,19 +3211,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       }
     ],
     "responses": [
@@ -3114,31 +3264,43 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       },
       {
         "name": "comment",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "optional comment"
       },
       {
         "name": "instructions",
         "schema": "array",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": [
+          {
+            "kind": "addExpireUserTargetDate",
+            "userKey": "sandy",
+            "value": 1686412800000,
+            "variationId": "ce12d345-a1b2-4fb5-a123-ab123d4d5f5d"
+          }
+        ]
       }
     ],
     "responses": [
@@ -3180,19 +3342,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       }
     ],
     "responses": [
@@ -3226,37 +3391,47 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       },
       {
         "name": "comment",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "example comment"
       },
       {
         "name": "instructions",
         "schema": "array",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": [
+          {
+            "kind": "turnFlagOn"
+          }
+        ]
       },
       {
         "name": "integrationKey",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "generic-trigger"
       }
     ],
     "responses": [
@@ -3298,25 +3473,29 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The flag trigger ID"
+        "description": "The flag trigger ID",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -3358,25 +3537,29 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The flag trigger ID"
+        "description": "The flag trigger ID",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -3414,35 +3597,45 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The flag trigger ID"
+        "description": "The flag trigger ID",
+        "example": "ID"
       },
       {
         "name": "comment",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "optional comment"
       },
       {
         "name": "instructions",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "example": [
+          {
+            "kind": "disableTrigger"
+          }
+        ]
       }
     ],
     "responses": [
@@ -3488,13 +3681,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "flagKey",
         "schema": "string",
         "required": true,
-        "description": "The flag key"
+        "description": "The flag key",
+        "example": "FLAGKEY"
       }
     ],
     "responses": [
@@ -3520,13 +3715,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "flagKey",
         "schema": "string",
         "required": true,
-        "description": "The flag key"
+        "description": "The flag key",
+        "example": "FLAGKEY"
       }
     ],
     "responses": [
@@ -3599,31 +3796,38 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "integrationKey",
         "schema": "string",
         "required": true,
-        "description": "The integration key, either `redis` or `dynamodb`"
+        "description": "The integration key, either `redis` or `dynamodb`",
+        "example": "INTEGRATIONKEY"
       },
       {
         "name": "tags",
         "schema": "array",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": [
+          "example-tag"
+        ]
       },
       {
         "name": "on",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "config",
@@ -3635,7 +3839,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Sample integration"
       }
     ],
     "responses": [
@@ -3681,25 +3886,29 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "integrationKey",
         "schema": "string",
         "required": true,
-        "description": "The integration key, either `redis` or `dynamodb`"
+        "description": "The integration key, either `redis` or `dynamodb`",
+        "example": "INTEGRATIONKEY"
       },
       {
         "name": "integrationId",
         "schema": "string",
         "required": true,
-        "description": "The integration ID"
+        "description": "The integration ID",
+        "example": "INTEGRATIONID"
       }
     ],
     "responses": [
@@ -3741,25 +3950,29 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "integrationKey",
         "schema": "string",
         "required": true,
-        "description": "The integration key, either `redis` or `dynamodb`"
+        "description": "The integration key, either `redis` or `dynamodb`",
+        "example": "INTEGRATIONKEY"
       },
       {
         "name": "integrationId",
         "schema": "string",
         "required": true,
-        "description": "The integration ID"
+        "description": "The integration ID",
+        "example": "INTEGRATIONID"
       }
     ],
     "responses": [
@@ -3797,25 +4010,29 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "integrationKey",
         "schema": "string",
         "required": true,
-        "description": "The integration key, either `redis` or `dynamodb`"
+        "description": "The integration key, either `redis` or `dynamodb`",
+        "example": "INTEGRATIONKEY"
       },
       {
         "name": "integrationId",
         "schema": "string",
         "required": true,
-        "description": "The integration ID"
+        "description": "The integration ID",
+        "example": "INTEGRATIONID"
       }
     ],
     "responses": [
@@ -3892,13 +4109,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       }
     ],
     "responses": [
@@ -3936,31 +4155,38 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "integrationKey",
         "schema": "string",
         "required": true,
-        "description": "The integration key"
+        "description": "The integration key",
+        "example": "INTEGRATIONKEY"
       },
       {
         "name": "tags",
         "schema": "array",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": [
+          "example-tag"
+        ]
       },
       {
         "name": "on",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "config",
@@ -3972,7 +4198,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Sample integration"
       }
     ],
     "responses": [
@@ -4014,25 +4241,29 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "integrationKey",
         "schema": "string",
         "required": true,
-        "description": "The integration key"
+        "description": "The integration key",
+        "example": "INTEGRATIONKEY"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The configuration ID"
+        "description": "The configuration ID",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -4074,25 +4305,29 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "integrationKey",
         "schema": "string",
         "required": true,
-        "description": "The integration key"
+        "description": "The integration key",
+        "example": "INTEGRATIONKEY"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The configuration ID"
+        "description": "The configuration ID",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -4122,25 +4357,29 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "integrationKey",
         "schema": "string",
         "required": true,
-        "description": "The integration key"
+        "description": "The integration key",
+        "example": "INTEGRATIONKEY"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The configuration ID"
+        "description": "The configuration ID",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -4186,25 +4425,29 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "integrationKey",
         "schema": "string",
         "required": true,
-        "description": "The integration key"
+        "description": "The integration key",
+        "example": "INTEGRATIONKEY"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The configuration ID"
+        "description": "The configuration ID",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -4246,7 +4489,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "integrationKey",
         "schema": "string",
         "required": true,
-        "description": "The integration key"
+        "description": "The integration key",
+        "example": "INTEGRATIONKEY"
       }
     ],
     "responses": [
@@ -4284,19 +4528,24 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "integrationKey",
         "schema": "string",
         "required": true,
-        "description": "The integration key"
+        "description": "The integration key",
+        "example": "INTEGRATIONKEY"
       },
       {
         "name": "tags",
         "schema": "array",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": [
+          "testing-tag"
+        ]
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Example audit log subscription."
       },
       {
         "name": "statements",
@@ -4308,13 +4557,19 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "on",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "config",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "optional": "an optional property",
+          "required": "the required property",
+          "url": "https://example.com"
+        }
       },
       {
         "name": "url",
@@ -4368,13 +4623,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "integrationKey",
         "schema": "string",
         "required": true,
-        "description": "The integration key"
+        "description": "The integration key",
+        "example": "INTEGRATIONKEY"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The subscription ID"
+        "description": "The subscription ID",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -4412,13 +4669,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "integrationKey",
         "schema": "string",
         "required": true,
-        "description": "The integration key"
+        "description": "The integration key",
+        "example": "INTEGRATIONKEY"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The subscription ID"
+        "description": "The subscription ID",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -4456,13 +4715,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "integrationKey",
         "schema": "string",
         "required": true,
-        "description": "The integration key"
+        "description": "The integration key",
+        "example": "INTEGRATIONKEY"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the audit log subscription"
+        "description": "The ID of the audit log subscription",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -4556,7 +4817,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "comment",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Optional comment about the update"
       },
       {
         "name": "instructions",
@@ -4639,7 +4901,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The member ID"
+        "description": "The member ID",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -4681,7 +4944,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The member ID"
+        "description": "The member ID",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -4719,7 +4983,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The member ID"
+        "description": "The member ID",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -4765,13 +5030,18 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The member ID"
+        "description": "The member ID",
+        "example": "ID"
       },
       {
         "name": "teamKeys",
         "schema": "array",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": [
+          "team1",
+          "team2"
+        ]
       }
     ],
     "responses": [
@@ -4817,7 +5087,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "expand",
@@ -4852,91 +5123,110 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "tags",
         "schema": "array",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": [
+          "example-tag"
+        ]
       },
       {
         "name": "description",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "optional description"
       },
       {
         "name": "key",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "metric-key-123abc"
       },
       {
         "name": "name",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Example metric"
       },
       {
         "name": "kind",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "custom"
       },
       {
         "name": "selector",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": ".dropdown-toggle"
       },
       {
         "name": "urls",
         "schema": "array",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "invalid example"
       },
       {
         "name": "isActive",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "isNumeric",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "unit",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "orders"
       },
       {
         "name": "eventKey",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "sales generated"
       },
       {
         "name": "successCriteria",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "HigherThanBaseline"
       },
       {
         "name": "randomizationUnits",
         "schema": "array",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": [
+          "user"
+        ]
       },
       {
         "name": "unitAggregationType",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "average"
       }
     ],
     "responses": [
@@ -4982,13 +5272,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "metricKey",
         "schema": "string",
         "required": true,
-        "description": "The metric key"
+        "description": "The metric key",
+        "example": "METRICKEY"
       }
     ],
     "responses": [
@@ -5026,13 +5318,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "metricKey",
         "schema": "string",
         "required": true,
-        "description": "The metric key"
+        "description": "The metric key",
+        "example": "METRICKEY"
       },
       {
         "name": "expand",
@@ -5075,13 +5369,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "metricKey",
         "schema": "string",
         "required": true,
-        "description": "The metric key"
+        "description": "The metric key",
+        "example": "METRICKEY"
       }
     ],
     "responses": [
@@ -5193,7 +5489,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "clientId",
         "schema": "string",
         "required": true,
-        "description": "The client ID"
+        "description": "The client ID",
+        "example": "CLIENTID"
       }
     ],
     "responses": [
@@ -5231,7 +5528,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "clientId",
         "schema": "string",
         "required": true,
-        "description": "The client ID"
+        "description": "The client ID",
+        "example": "CLIENTID"
       }
     ],
     "responses": [
@@ -5269,7 +5567,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "clientId",
         "schema": "string",
         "required": true,
-        "description": "The client ID"
+        "description": "The client ID",
+        "example": "CLIENTID"
       }
     ],
     "responses": [
@@ -5383,25 +5682,31 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "tags",
         "schema": "array",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": [
+          "ops"
+        ]
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "My Project"
       },
       {
         "name": "key",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "project-key-123abc"
       },
       {
         "name": "includeInSnippetByDefault",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "defaultClientSideAvailability",
@@ -5455,7 +5760,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       }
     ],
     "responses": [
@@ -5497,7 +5803,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key."
+        "description": "The project key.",
+        "example": "PROJECTKEY"
       },
       {
         "name": "expand",
@@ -5544,7 +5851,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       }
     ],
     "responses": [
@@ -5590,7 +5898,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       }
     ],
     "responses": [
@@ -5624,43 +5933,50 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "key",
         "schema": "string",
         "required": true,
-        "description": "The context kind key"
+        "description": "The context kind key",
+        "example": "KEY"
       },
       {
         "name": "description",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "An example context kind for organizations"
       },
       {
         "name": "version",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 1
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "organization"
       },
       {
         "name": "hideInTargeting",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "archived",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": false
       }
     ],
     "responses": [
@@ -5698,7 +6014,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "limit",
@@ -5764,61 +6081,73 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "tags",
         "schema": "array",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": [
+          "ops"
+        ]
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "My Environment"
       },
       {
         "name": "key",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "environment-key-123abc"
       },
       {
         "name": "color",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "F5A623"
       },
       {
         "name": "defaultTtl",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 5
       },
       {
         "name": "secureMode",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "defaultTrackEvents",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "confirmChanges",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "requireComments",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "source",
@@ -5830,7 +6159,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "critical",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -5876,13 +6206,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       }
     ],
     "responses": [
@@ -5920,13 +6252,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       }
     ],
     "responses": [
@@ -5964,13 +6298,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       }
     ],
     "responses": [
@@ -6012,13 +6348,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "expiry",
@@ -6069,13 +6407,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "filter",
@@ -6118,19 +6458,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "attributeName",
         "schema": "string",
         "required": true,
-        "description": "The attribute name"
+        "description": "The attribute name",
+        "example": "ATTRIBUTENAME"
       },
       {
         "name": "filter",
@@ -6173,13 +6516,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "limit",
@@ -6209,22 +6554,26 @@ export default function LaunchDarklyTypeScriptSdk() {
       {
         "name": "filter",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "{\"filter\": \"kindKeys:{\"contains\": [\"user:Henry\"]},\"sort\": \"-ts\",\"limit\": 50}"
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "-ts"
       },
       {
         "name": "limit",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 10
       },
       {
         "name": "continuationToken",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "QAGFKH1313KUGI2351"
       }
     ],
     "responses": [
@@ -6262,19 +6611,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The context instance ID"
+        "description": "The context instance ID",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -6316,19 +6668,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The context instance ID"
+        "description": "The context instance ID",
+        "example": "ID"
       },
       {
         "name": "limit",
@@ -6391,13 +6746,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "limit",
@@ -6427,22 +6784,26 @@ export default function LaunchDarklyTypeScriptSdk() {
       {
         "name": "filter",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "*.name startsWith Jo,kind anyOf [\"user\",\"organization\"]"
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "-ts"
       },
       {
         "name": "limit",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 10
       },
       {
         "name": "continuationToken",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "QAGFKH1313KUGI2351"
       }
     ],
     "responses": [
@@ -6480,41 +6841,48 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "contextKind",
         "schema": "string",
         "required": true,
-        "description": "The context kind"
+        "description": "The context kind",
+        "example": "CONTEXTKIND"
       },
       {
         "name": "contextKey",
         "schema": "string",
         "required": true,
-        "description": "The context key"
+        "description": "The context key",
+        "example": "CONTEXTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       },
       {
         "name": "setting",
         "schema": "undefined",
-        "description": ""
+        "description": "",
+        "example": "existing_variation_value_to_use"
       },
       {
         "name": "comment",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "make sure this context experiences a specific variation"
       }
     ],
     "responses": [
@@ -6556,25 +6924,29 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "kind",
         "schema": "string",
         "required": true,
-        "description": "The context kind"
+        "description": "The context kind",
+        "example": "KIND"
       },
       {
         "name": "key",
         "schema": "string",
         "required": true,
-        "description": "The context key"
+        "description": "The context key",
+        "example": "KEY"
       },
       {
         "name": "limit",
@@ -6637,13 +7009,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "limit",
@@ -6714,37 +7088,43 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "description",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "An example experiment, used in testing"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Example experiment"
       },
       {
         "name": "maintainerId",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "12ab3c45de678910fgh12345"
       },
       {
         "name": "key",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "experiment-key-123abc"
       },
       {
         "name": "iteration",
@@ -6792,19 +7172,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "experimentKey",
         "schema": "string",
         "required": true,
-        "description": "The experiment key"
+        "description": "The experiment key",
+        "example": "EXPERIMENTKEY"
       },
       {
         "name": "expand",
@@ -6855,25 +7238,29 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "experimentKey",
         "schema": "string",
         "required": true,
-        "description": "The experiment key"
+        "description": "The experiment key",
+        "example": "EXPERIMENTKEY"
       },
       {
         "name": "comment",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Optional comment"
       },
       {
         "name": "instructions",
@@ -6921,31 +7308,36 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "experimentKey",
         "schema": "string",
         "required": true,
-        "description": "The experiment key"
+        "description": "The experiment key",
+        "example": "EXPERIMENTKEY"
       },
       {
         "name": "hypothesis",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Example hypothesis, the new button placement will increase conversion"
       },
       {
         "name": "canReshuffleTraffic",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "metrics",
@@ -6957,13 +7349,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "primarySingleMetricKey",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "metric-key-123abc"
       },
       {
         "name": "primaryFunnelKey",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "metric-group-key-123abc"
       },
       {
         "name": "treatments",
@@ -6981,7 +7375,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "randomizationUnit",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "user"
       }
     ],
     "responses": [
@@ -7023,25 +7418,29 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "experimentKey",
         "schema": "string",
         "required": true,
-        "description": "The experiment key"
+        "description": "The experiment key",
+        "example": "EXPERIMENTKEY"
       },
       {
         "name": "metricGroupKey",
         "schema": "string",
         "required": true,
-        "description": "The metric group key"
+        "description": "The metric group key",
+        "example": "METRICGROUPKEY"
       },
       {
         "name": "iterationId",
@@ -7088,25 +7487,29 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "experimentKey",
         "schema": "string",
         "required": true,
-        "description": "The experiment key"
+        "description": "The experiment key",
+        "example": "EXPERIMENTKEY"
       },
       {
         "name": "metricKey",
         "schema": "string",
         "required": true,
-        "description": "The metric key"
+        "description": "The metric key",
+        "example": "METRICKEY"
       },
       {
         "name": "iterationId",
@@ -7158,13 +7561,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "limit",
@@ -7226,13 +7631,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       }
     ],
     "responses": [
@@ -7270,13 +7677,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       }
     ],
     "responses": [
@@ -7322,13 +7731,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       }
     ],
     "responses": [
@@ -7362,7 +7773,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       }
     ],
     "responses": [
@@ -7408,7 +7820,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "randomizationUnits",
@@ -7460,7 +7873,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       }
     ],
     "responses": [
@@ -7494,7 +7908,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       }
     ],
     "responses": [
@@ -7540,19 +7955,25 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "tags",
         "schema": "array",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": [
+          "tag-1",
+          "tag-2"
+        ]
       },
       {
         "name": "temporary",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "booleanDefaults",
@@ -7610,19 +8031,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       }
     ],
     "responses": [
@@ -7660,31 +8084,36 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "description",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Requesting to update targeting"
       },
       {
         "name": "comment",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "optional comment"
       },
       {
         "name": "instructions",
@@ -7696,13 +8125,19 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "notifyMemberIds",
         "schema": "array",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": [
+          "1234a56b7c89d012345e678f"
+        ]
       },
       {
         "name": "notifyTeamKeys",
         "schema": "array",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": [
+          "example-reviewer-team"
+        ]
       },
       {
         "name": "executionDate",
@@ -7714,7 +8149,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "operatingOnId",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "6297ed79dee7dc14e1f9a80c"
       },
       {
         "name": "integrationConfig",
@@ -7758,43 +8194,54 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key for the target environment"
+        "description": "The environment key for the target environment",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "description",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "copy flag settings to another environment"
       },
       {
         "name": "comment",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "optional comment"
       },
       {
         "name": "notifyMemberIds",
         "schema": "array",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": [
+          "1234a56b7c89d012345e678f"
+        ]
       },
       {
         "name": "notifyTeamKeys",
         "schema": "array",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": [
+          "example-reviewer-team"
+        ]
       },
       {
         "name": "source",
@@ -7806,13 +8253,19 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "includedActions",
         "schema": "array",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": [
+          "updateOn"
+        ]
       },
       {
         "name": "excludedActions",
         "schema": "array",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": [
+          "updateOn"
+        ]
       }
     ],
     "responses": [
@@ -7854,25 +8307,29 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The feature flag approval request ID"
+        "description": "The feature flag approval request ID",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -7910,25 +8367,29 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The feature flag approval request ID"
+        "description": "The feature flag approval request ID",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -7966,30 +8427,35 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The feature flag approval request ID"
+        "description": "The feature flag approval request ID",
+        "example": "ID"
       },
       {
         "name": "comment",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Looks good, thanks for updating"
       }
     ],
     "responses": [
@@ -8031,35 +8497,41 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The feature flag approval request ID"
+        "description": "The feature flag approval request ID",
+        "example": "ID"
       },
       {
         "name": "kind",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "approve"
       },
       {
         "name": "comment",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Looks good, thanks for updating"
       }
     ],
     "responses": [
@@ -8101,19 +8573,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       }
     ],
     "responses": [
@@ -8151,25 +8626,29 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "memberId",
         "schema": "string",
         "required": true,
-        "description": "The memberId of the member to remove as a follower of the flag. Reader roles can only remove themselves."
+        "description": "The memberId of the member to remove as a follower of the flag. Reader roles can only remove themselves.",
+        "example": "MEMBERID"
       }
     ],
     "responses": [
@@ -8207,25 +8686,29 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "memberId",
         "schema": "string",
         "required": true,
-        "description": "The memberId of the member to add as a follower of the flag. Reader roles can only add themselves."
+        "description": "The memberId of the member to add as a follower of the flag. Reader roles can only add themselves.",
+        "example": "MEMBERID"
       }
     ],
     "responses": [
@@ -8263,19 +8746,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       }
     ],
     "responses": [
@@ -8313,19 +8799,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "ignoreConflicts",
@@ -8336,13 +8825,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "comment",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "optional comment"
       },
       {
         "name": "executionDate",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "instructions",
@@ -8398,25 +8889,29 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The scheduled change id"
+        "description": "The scheduled change id",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -8462,25 +8957,29 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The scheduled change id"
+        "description": "The scheduled change id",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -8514,25 +9013,29 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The scheduled change ID"
+        "description": "The scheduled change ID",
+        "example": "ID"
       },
       {
         "name": "ignoreConflicts",
@@ -8543,7 +9046,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "comment",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "optional comment"
       },
       {
         "name": "instructions",
@@ -8599,19 +9103,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "status",
@@ -8669,25 +9176,29 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "description",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Turn flag on for 10% of users each day"
       },
       {
         "name": "maintainerId",
@@ -8699,7 +9210,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Progressive rollout starting in two days"
       },
       {
         "name": "stages",
@@ -8753,25 +9265,29 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "workflowId",
         "schema": "string",
         "required": true,
-        "description": "The workflow id"
+        "description": "The workflow id",
+        "example": "WORKFLOWID"
       }
     ],
     "responses": [
@@ -8813,25 +9329,29 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "workflowId",
         "schema": "string",
         "required": true,
-        "description": "The workflow ID"
+        "description": "The workflow ID",
+        "example": "WORKFLOWID"
       }
     ],
     "responses": [
@@ -8869,19 +9389,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "flagKey",
         "schema": "string",
         "required": true,
-        "description": "The migration flag key"
+        "description": "The migration flag key",
+        "example": "FLAGKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "instructions",
@@ -8943,7 +9466,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "expand",
@@ -8994,43 +9518,52 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "tags",
         "schema": "array",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": [
+          "ops"
+        ]
       },
       {
         "name": "description",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Description of the metric group"
       },
       {
         "name": "key",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "metric-group-key-123abc"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "My metric group"
       },
       {
         "name": "kind",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "funnel"
       },
       {
         "name": "maintainerId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "569fdeadbeef1644facecafe"
       },
       {
         "name": "metrics",
@@ -9082,13 +9615,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "metricGroupKey",
         "schema": "string",
         "required": true,
-        "description": "The metric group key"
+        "description": "The metric group key",
+        "example": "METRICGROUPKEY"
       }
     ],
     "responses": [
@@ -9134,13 +9669,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "metricGroupKey",
         "schema": "string",
         "required": true,
-        "description": "The metric group key"
+        "description": "The metric group key",
+        "example": "METRICGROUPKEY"
       },
       {
         "name": "expand",
@@ -9191,13 +9728,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "metricGroupKey",
         "schema": "string",
         "required": true,
-        "description": "The metric group key"
+        "description": "The metric group key",
+        "example": "METRICGROUPKEY"
       }
     ],
     "responses": [
@@ -9243,7 +9782,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "filter",
@@ -9284,31 +9824,38 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "tags",
         "schema": "array",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": [
+          "example-tag"
+        ]
       },
       {
         "name": "description",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Standard pipeline to roll out to production"
       },
       {
         "name": "key",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "standard-pipeline"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Standard Pipeline"
       },
       {
         "name": "phases",
@@ -9352,13 +9899,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "pipelineKey",
         "schema": "string",
         "required": true,
-        "description": "The release pipeline key"
+        "description": "The release pipeline key",
+        "example": "PIPELINEKEY"
       }
     ],
     "responses": [
@@ -9388,13 +9937,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "pipelineKey",
         "schema": "string",
         "required": true,
-        "description": "The release pipeline key"
+        "description": "The release pipeline key",
+        "example": "PIPELINEKEY"
       }
     ],
     "responses": [
@@ -9420,13 +9971,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "pipelineKey",
         "schema": "string",
         "required": true,
-        "description": "The release pipeline key"
+        "description": "The release pipeline key",
+        "example": "PIPELINEKEY"
       }
     ],
     "responses": [
@@ -9506,19 +10059,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "description",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "An example role for members of the ops team"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Ops team"
       },
       {
         "name": "key",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "role-key-123abc"
       },
       {
         "name": "policy",
@@ -9572,7 +10128,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "customRoleKey",
         "schema": "string",
         "required": true,
-        "description": "The custom role key"
+        "description": "The custom role key",
+        "example": "CUSTOMROLEKEY"
       }
     ],
     "responses": [
@@ -9606,7 +10163,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "customRoleKey",
         "schema": "string",
         "required": true,
-        "description": "The custom role key or ID"
+        "description": "The custom role key or ID",
+        "example": "CUSTOMROLEKEY"
       }
     ],
     "responses": [
@@ -9644,7 +10202,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "customRoleKey",
         "schema": "string",
         "required": true,
-        "description": "The custom role key"
+        "description": "The custom role key",
+        "example": "CUSTOMROLEKEY"
       },
       {
         "name": "patch",
@@ -9698,13 +10257,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "limit",
@@ -9754,49 +10315,59 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "tags",
         "schema": "array",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": [
+          "testing"
+        ]
       },
       {
         "name": "description",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Bundle our sample customers together"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Example segment"
       },
       {
         "name": "key",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "segment-key-123abc"
       },
       {
         "name": "unbounded",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "unboundedContextKind",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "device"
       }
     ],
     "responses": [
@@ -9838,19 +10409,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "segmentKey",
         "schema": "string",
         "required": true,
-        "description": "The segment key"
+        "description": "The segment key",
+        "example": "SEGMENTKEY"
       }
     ],
     "responses": [
@@ -9892,19 +10466,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "segmentKey",
         "schema": "string",
         "required": true,
-        "description": "The segment key"
+        "description": "The segment key",
+        "example": "SEGMENTKEY"
       }
     ],
     "responses": [
@@ -9938,19 +10515,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "segmentKey",
         "schema": "string",
         "required": true,
-        "description": "The segment key"
+        "description": "The segment key",
+        "example": "SEGMENTKEY"
       },
       {
         "name": "patch",
@@ -10008,19 +10588,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "segmentKey",
         "schema": "string",
         "required": true,
-        "description": "The segment key"
+        "description": "The segment key",
+        "example": "SEGMENTKEY"
       },
       {
         "name": "included",
@@ -10068,25 +10651,29 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "segmentKey",
         "schema": "string",
         "required": true,
-        "description": "The segment key"
+        "description": "The segment key",
+        "example": "SEGMENTKEY"
       },
       {
         "name": "contextKey",
         "schema": "string",
         "required": true,
-        "description": "The context key"
+        "description": "The context key",
+        "example": "CONTEXTKEY"
       }
     ],
     "responses": [
@@ -10124,19 +10711,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "segmentKey",
         "schema": "string",
         "required": true,
-        "description": "The segment key"
+        "description": "The segment key",
+        "example": "SEGMENTKEY"
       }
     ],
     "responses": [
@@ -10174,25 +10764,29 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "segmentKey",
         "schema": "string",
         "required": true,
-        "description": "The segment key"
+        "description": "The segment key",
+        "example": "SEGMENTKEY"
       },
       {
         "name": "exportId",
         "schema": "string",
         "required": true,
-        "description": "The export ID"
+        "description": "The export ID",
+        "example": "EXPORTID"
       }
     ],
     "responses": [
@@ -10226,19 +10820,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "segmentKey",
         "schema": "string",
         "required": true,
-        "description": "The segment key"
+        "description": "The segment key",
+        "example": "SEGMENTKEY"
       },
       {
         "name": "file",
@@ -10290,25 +10887,29 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "segmentKey",
         "schema": "string",
         "required": true,
-        "description": "The segment key"
+        "description": "The segment key",
+        "example": "SEGMENTKEY"
       },
       {
         "name": "importId",
         "schema": "string",
         "required": true,
-        "description": "The import ID"
+        "description": "The import ID",
+        "example": "IMPORTID"
       }
     ],
     "responses": [
@@ -10342,19 +10943,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "segmentKey",
         "schema": "string",
         "required": true,
-        "description": "The segment key"
+        "description": "The segment key",
+        "example": "SEGMENTKEY"
       },
       {
         "name": "included",
@@ -10402,25 +11006,29 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "segmentKey",
         "schema": "string",
         "required": true,
-        "description": "The segment key"
+        "description": "The segment key",
+        "example": "SEGMENTKEY"
       },
       {
         "name": "userKey",
         "schema": "string",
         "required": true,
-        "description": "The user key"
+        "description": "The user key",
+        "example": "USERKEY"
       }
     ],
     "responses": [
@@ -10458,19 +11066,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "segmentKey",
         "schema": "string",
         "required": true,
-        "description": "The segment key"
+        "description": "The segment key",
+        "example": "SEGMENTKEY"
       }
     ],
     "responses": [
@@ -10504,31 +11115,45 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "segmentKey",
         "schema": "string",
         "required": true,
-        "description": "The segment key"
+        "description": "The segment key",
+        "example": "SEGMENTKEY"
       },
       {
         "name": "comment",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "optional comment"
       },
       {
         "name": "instructions",
         "schema": "array",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": [
+          {
+            "version": 0,
+            "contextKey": "user@email.com",
+            "contextKind": "user",
+            "kind": "updateExpiringTarget",
+            "targetType": "included",
+            "value": 1587582000000
+          }
+        ]
       }
     ],
     "responses": [
@@ -10574,19 +11199,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "segmentKey",
         "schema": "string",
         "required": true,
-        "description": "The segment key"
+        "description": "The segment key",
+        "example": "SEGMENTKEY"
       }
     ],
     "responses": [
@@ -10620,31 +11248,45 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "segmentKey",
         "schema": "string",
         "required": true,
-        "description": "The segment key"
+        "description": "The segment key",
+        "example": "SEGMENTKEY"
       },
       {
         "name": "comment",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "optional comment"
       },
       {
         "name": "instructions",
         "schema": "array",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": [
+          {
+            "version": 0,
+            "contextKey": "contextKey",
+            "contextKind": "user",
+            "kind": "updateExpiringTarget",
+            "targetType": "included",
+            "value": 1587582000000
+          }
+        ]
       }
     ],
     "responses": [
@@ -10785,7 +11427,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "comment",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Optional comment about the update"
       },
       {
         "name": "instructions",
@@ -10838,31 +11481,41 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "description",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "An example team"
       },
       {
         "name": "customRoleKeys",
         "schema": "array",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": [
+          "example-role1",
+          "example-role2"
+        ]
       },
       {
         "name": "key",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "team-key-123abc"
       },
       {
         "name": "memberIDs",
         "schema": "array",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": [
+          "12ab3c45de678910fgh12345"
+        ]
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Example team"
       },
       {
         "name": "permissionGrants",
@@ -10906,7 +11559,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "teamKey",
         "schema": "string",
         "required": true,
-        "description": "The team key"
+        "description": "The team key",
+        "example": "TEAMKEY"
       }
     ],
     "responses": [
@@ -10940,7 +11594,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "teamKey",
         "schema": "string",
         "required": true,
-        "description": "The team key."
+        "description": "The team key.",
+        "example": "TEAMKEY"
       },
       {
         "name": "expand",
@@ -10991,7 +11646,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "teamKey",
         "schema": "string",
         "required": true,
-        "description": "The team key"
+        "description": "The team key",
+        "example": "TEAMKEY"
       },
       {
         "name": "expand",
@@ -11002,7 +11658,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "comment",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Optional comment about the update"
       },
       {
         "name": "instructions",
@@ -11054,7 +11711,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "teamKey",
         "schema": "string",
         "required": true,
-        "description": "The team key"
+        "description": "The team key",
+        "example": "TEAMKEY"
       },
       {
         "name": "limit",
@@ -11110,7 +11768,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "teamKey",
         "schema": "string",
         "required": true,
-        "description": "The team key"
+        "description": "The team key",
+        "example": "TEAMKEY"
       },
       {
         "name": "file",
@@ -11157,7 +11816,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "teamKey",
         "schema": "string",
         "required": true,
-        "description": "The team key"
+        "description": "The team key",
+        "example": "TEAMKEY"
       },
       {
         "name": "limit",
@@ -11257,7 +11917,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "key",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "KEY"
       },
       {
         "name": "name",
@@ -11331,7 +11992,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "templateKey",
         "schema": "string",
         "required": true,
-        "description": "The template key"
+        "description": "The template key",
+        "example": "TEMPLATEKEY"
       }
     ],
     "responses": [
@@ -11483,7 +12145,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the access token to update"
+        "description": "The ID of the access token to update",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -11521,7 +12184,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the access token"
+        "description": "The ID of the access token",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -11559,7 +12223,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the access token to update"
+        "description": "The ID of the access token to update",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -11609,7 +12274,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the access token to update"
+        "description": "The ID of the access token to update",
+        "example": "ID"
       },
       {
         "name": "expiry",
@@ -11652,19 +12318,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       },
       {
         "name": "from",
@@ -11721,7 +12390,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": "The type of event to retrieve. Must be either `received` or `published`."
+        "description": "The type of event to retrieve. Must be either `received` or `published`.",
+        "example": "TYPE"
       },
       {
         "name": "from",
@@ -12030,7 +12700,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "source",
         "schema": "string",
         "required": true,
-        "description": "The source of streaming connections to describe. Must be either `client` or `server`."
+        "description": "The source of streaming connections to describe. Must be either `client` or `server`.",
+        "example": "SOURCE"
       },
       {
         "name": "from",
@@ -12087,7 +12758,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "source",
         "schema": "string",
         "required": true,
-        "description": "The source of streaming connections to describe. Must be either `client` or `server`."
+        "description": "The source of streaming connections to describe. Must be either `client` or `server`.",
+        "example": "SOURCE"
       },
       {
         "name": "from",
@@ -12154,7 +12826,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "source",
         "schema": "string",
         "required": true,
-        "description": "The source of streaming connections to describe. Must be either `client` or `server`."
+        "description": "The source of streaming connections to describe. Must be either `client` or `server`.",
+        "example": "SOURCE"
       }
     ],
     "responses": [
@@ -12188,13 +12861,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       }
     ],
     "responses": [
@@ -12232,13 +12907,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "q",
@@ -12315,13 +12992,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "limit",
@@ -12373,19 +13052,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "userKey",
         "schema": "string",
         "required": true,
-        "description": "The user key"
+        "description": "The user key",
+        "example": "USERKEY"
       }
     ],
     "responses": [
@@ -12427,19 +13109,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "userKey",
         "schema": "string",
         "required": true,
-        "description": "The user key"
+        "description": "The user key",
+        "example": "USERKEY"
       }
     ],
     "responses": [
@@ -12481,19 +13166,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "userKey",
         "schema": "string",
         "required": true,
-        "description": "The user key"
+        "description": "The user key",
+        "example": "USERKEY"
       }
     ],
     "responses": [
@@ -12535,25 +13223,29 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "userKey",
         "schema": "string",
         "required": true,
-        "description": "The user key"
+        "description": "The user key",
+        "example": "USERKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       }
     ],
     "responses": [
@@ -12595,35 +13287,41 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "userKey",
         "schema": "string",
         "required": true,
-        "description": "The user key"
+        "description": "The user key",
+        "example": "USERKEY"
       },
       {
         "name": "featureFlagKey",
         "schema": "string",
         "required": true,
-        "description": "The feature flag key"
+        "description": "The feature flag key",
+        "example": "FEATUREFLAGKEY"
       },
       {
         "name": "setting",
         "schema": "undefined",
-        "description": ""
+        "description": "",
+        "example": "existing_variation_value_to_use"
       },
       {
         "name": "comment",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "make sure this context experiences a specific variation"
       }
     ],
     "responses": [
@@ -12665,19 +13363,22 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "userKey",
         "schema": "string",
         "required": true,
-        "description": "The user key"
+        "description": "The user key",
+        "example": "USERKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       }
     ],
     "responses": [
@@ -12715,25 +13416,29 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "projectKey",
         "schema": "string",
         "required": true,
-        "description": "The project key"
+        "description": "The project key",
+        "example": "PROJECTKEY"
       },
       {
         "name": "userKey",
         "schema": "string",
         "required": true,
-        "description": "The user key"
+        "description": "The user key",
+        "example": "USERKEY"
       },
       {
         "name": "environmentKey",
         "schema": "string",
         "required": true,
-        "description": "The environment key"
+        "description": "The environment key",
+        "example": "ENVIRONMENTKEY"
       },
       {
         "name": "comment",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "optional comment"
       },
       {
         "name": "instructions",
@@ -12835,25 +13540,29 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "tags",
         "schema": "array",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": []
       },
       {
         "name": "name",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Example hook"
       },
       {
         "name": "url",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "http://www.example.com"
       },
       {
         "name": "secret",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "frobozz"
       },
       {
         "name": "statements",
@@ -12865,13 +13574,15 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "sign",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "on",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -12909,7 +13620,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the webhook to delete"
+        "description": "The ID of the webhook to delete",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -12947,7 +13659,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the webhook"
+        "description": "The ID of the webhook",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -12985,7 +13698,8 @@ export default function LaunchDarklyTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the webhook to update"
+        "description": "The ID of the webhook to update",
+        "example": "ID"
       }
     ],
     "responses": [

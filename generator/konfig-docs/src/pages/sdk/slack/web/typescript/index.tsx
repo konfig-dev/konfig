@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function SlackWebTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function SlackWebTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/slack/web/logo.png"
       clientNameCamelCase="slackWeb"
       homepage="slack.dev"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/slack/web/favicon.png"
       contactUrl="https://api.slack.com/support"
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/slack/web/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["collaboration","messaging","automation"]}
       methods={[
   {
     "url": "/admin.apps.approve",
@@ -36,7 +39,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.apps:write`"
+        "description": "Authentication token. Requires scope: `admin.apps:write`",
+        "example": "TOKEN"
       },
       {
         "name": "app_id",
@@ -77,7 +81,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.apps:read`"
+        "description": "Authentication token. Requires scope: `admin.apps:read`",
+        "example": "TOKEN"
       },
       {
         "name": "limit",
@@ -123,7 +128,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.apps:read`"
+        "description": "Authentication token. Requires scope: `admin.apps:read`",
+        "example": "TOKEN"
       },
       {
         "name": "limit",
@@ -164,7 +170,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.apps:write`"
+        "description": "Authentication token. Requires scope: `admin.apps:write`",
+        "example": "TOKEN"
       },
       {
         "name": "app_id",
@@ -205,7 +212,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.apps:read`"
+        "description": "Authentication token. Requires scope: `admin.apps:read`",
+        "example": "TOKEN"
       },
       {
         "name": "limit",
@@ -251,13 +259,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.conversations:write`"
+        "description": "Authentication token. Requires scope: `admin.conversations:write`",
+        "example": "TOKEN"
       },
       {
         "name": "channel_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CHANNEL_ID"
       }
     ],
     "responses": [
@@ -283,13 +293,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.conversations:write`"
+        "description": "Authentication token. Requires scope: `admin.conversations:write`",
+        "example": "TOKEN"
       },
       {
         "name": "channel_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CHANNEL_ID"
       }
     ],
     "responses": [
@@ -315,7 +327,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.conversations:write`"
+        "description": "Authentication token. Requires scope: `admin.conversations:write`",
+        "example": "TOKEN"
       },
       {
         "name": "description",
@@ -327,13 +340,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "is_private",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "org_wide",
@@ -371,13 +386,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.conversations:write`"
+        "description": "Authentication token. Requires scope: `admin.conversations:write`",
+        "example": "TOKEN"
       },
       {
         "name": "channel_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CHANNEL_ID"
       }
     ],
     "responses": [
@@ -403,13 +420,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.conversations:write`"
+        "description": "Authentication token. Requires scope: `admin.conversations:write`",
+        "example": "TOKEN"
       },
       {
         "name": "channel_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CHANNEL_ID"
       },
       {
         "name": "leaving_team_ids",
@@ -441,7 +460,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.conversations:read`"
+        "description": "Authentication token. Requires scope: `admin.conversations:read`",
+        "example": "TOKEN"
       },
       {
         "name": "channelIds",
@@ -487,13 +507,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.conversations:read`"
+        "description": "Authentication token. Requires scope: `admin.conversations:read`",
+        "example": "TOKEN"
       },
       {
         "name": "channelId",
         "schema": "string",
         "required": true,
-        "description": "The channel to get preferences for."
+        "description": "The channel to get preferences for.",
+        "example": "CHANNEL_ID"
       }
     ],
     "responses": [
@@ -519,13 +541,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.conversations:read`"
+        "description": "Authentication token. Requires scope: `admin.conversations:read`",
+        "example": "TOKEN"
       },
       {
         "name": "channelId",
         "schema": "string",
         "required": true,
-        "description": "The channel to determine connected workspaces within the organization for."
+        "description": "The channel to determine connected workspaces within the organization for.",
+        "example": "CHANNEL_ID"
       },
       {
         "name": "cursor",
@@ -561,19 +585,22 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.conversations:write`"
+        "description": "Authentication token. Requires scope: `admin.conversations:write`",
+        "example": "TOKEN"
       },
       {
         "name": "channel_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CHANNEL_ID"
       },
       {
         "name": "user_ids",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USER_IDS"
       }
     ],
     "responses": [
@@ -599,19 +626,22 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.conversations:write`"
+        "description": "Authentication token. Requires scope: `admin.conversations:write`",
+        "example": "TOKEN"
       },
       {
         "name": "channel_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CHANNEL_ID"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -637,13 +667,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "channel_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CHANNEL_ID"
       },
       {
         "name": "group_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "GROUP_ID"
       },
       {
         "name": "team_id",
@@ -655,7 +687,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TOKEN"
       }
     ],
     "responses": [
@@ -681,13 +714,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.conversations:read`"
+        "description": "Authentication token. Requires scope: `admin.conversations:read`",
+        "example": "TOKEN"
       },
       {
         "name": "channelId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CHANNEL_ID"
       },
       {
         "name": "teamId",
@@ -718,25 +753,29 @@ export default function SlackWebTypeScriptSdk() {
         "name": "channel_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CHANNEL_ID"
       },
       {
         "name": "group_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "GROUP_ID"
       },
       {
         "name": "team_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TEAM_ID"
       },
       {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TOKEN"
       }
     ],
     "responses": [
@@ -762,7 +801,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.conversations:read`"
+        "description": "Authentication token. Requires scope: `admin.conversations:read`",
+        "example": "TOKEN"
       },
       {
         "name": "teamIds",
@@ -823,19 +863,22 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.conversations:write`"
+        "description": "Authentication token. Requires scope: `admin.conversations:write`",
+        "example": "TOKEN"
       },
       {
         "name": "channel_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CHANNEL_ID"
       },
       {
         "name": "prefs",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PREFS"
       }
     ],
     "responses": [
@@ -861,13 +904,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.conversations:write`"
+        "description": "Authentication token. Requires scope: `admin.conversations:write`",
+        "example": "TOKEN"
       },
       {
         "name": "channel_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CHANNEL_ID"
       },
       {
         "name": "org_channel",
@@ -911,13 +956,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.conversations:write`"
+        "description": "Authentication token. Requires scope: `admin.conversations:write`",
+        "example": "TOKEN"
       },
       {
         "name": "channel_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CHANNEL_ID"
       }
     ],
     "responses": [
@@ -943,19 +990,22 @@ export default function SlackWebTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TOKEN"
       },
       {
         "name": "url",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "URL"
       }
     ],
     "responses": [
@@ -981,19 +1031,22 @@ export default function SlackWebTypeScriptSdk() {
         "name": "alias_for",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ALIAS_FOR"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TOKEN"
       }
     ],
     "responses": [
@@ -1019,7 +1072,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.teams:read`"
+        "description": "Authentication token. Requires scope: `admin.teams:read`",
+        "example": "TOKEN"
       },
       {
         "name": "cursor",
@@ -1055,13 +1109,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TOKEN"
       }
     ],
     "responses": [
@@ -1087,19 +1143,22 @@ export default function SlackWebTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "new_name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NEW_NAME"
       },
       {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TOKEN"
       }
     ],
     "responses": [
@@ -1125,13 +1184,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.invites:write`"
+        "description": "Authentication token. Requires scope: `admin.invites:write`",
+        "example": "TOKEN"
       },
       {
         "name": "invite_request_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "INVITE_REQUEST_ID"
       },
       {
         "name": "team_id",
@@ -1163,7 +1224,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.invites:read`"
+        "description": "Authentication token. Requires scope: `admin.invites:read`",
+        "example": "TOKEN"
       },
       {
         "name": "teamId",
@@ -1204,7 +1266,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.invites:read`"
+        "description": "Authentication token. Requires scope: `admin.invites:read`",
+        "example": "TOKEN"
       },
       {
         "name": "teamId",
@@ -1245,13 +1308,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.invites:write`"
+        "description": "Authentication token. Requires scope: `admin.invites:write`",
+        "example": "TOKEN"
       },
       {
         "name": "invite_request_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "INVITE_REQUEST_ID"
       },
       {
         "name": "team_id",
@@ -1283,7 +1348,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.invites:read`"
+        "description": "Authentication token. Requires scope: `admin.invites:read`",
+        "example": "TOKEN"
       },
       {
         "name": "teamId",
@@ -1324,7 +1390,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.teams:read`"
+        "description": "Authentication token. Requires scope: `admin.teams:read`",
+        "example": "TOKEN"
       },
       {
         "name": "limit",
@@ -1340,7 +1407,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "teamId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TEAM_ID"
       }
     ],
     "responses": [
@@ -1366,7 +1434,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.teams:write`"
+        "description": "Authentication token. Requires scope: `admin.teams:write`",
+        "example": "TOKEN"
       },
       {
         "name": "team_description",
@@ -1384,13 +1453,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "team_domain",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TEAM_DOMAIN"
       },
       {
         "name": "team_name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TEAM_NAME"
       }
     ],
     "responses": [
@@ -1416,7 +1487,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.teams:read`"
+        "description": "Authentication token. Requires scope: `admin.teams:read`",
+        "example": "TOKEN"
       },
       {
         "name": "limit",
@@ -1452,13 +1524,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.teams:read`"
+        "description": "Authentication token. Requires scope: `admin.teams:read`",
+        "example": "TOKEN"
       },
       {
         "name": "teamId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TEAM_ID"
       },
       {
         "name": "limit",
@@ -1494,13 +1568,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.teams:read`"
+        "description": "Authentication token. Requires scope: `admin.teams:read`",
+        "example": "TOKEN"
       },
       {
         "name": "teamId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TEAM_ID"
       }
     ],
     "responses": [
@@ -1526,19 +1602,22 @@ export default function SlackWebTypeScriptSdk() {
         "name": "channel_ids",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CHANNEL_IDS"
       },
       {
         "name": "team_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TEAM_ID"
       },
       {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TOKEN"
       }
     ],
     "responses": [
@@ -1564,19 +1643,22 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.teams:write`"
+        "description": "Authentication token. Requires scope: `admin.teams:write`",
+        "example": "TOKEN"
       },
       {
         "name": "description",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "DESCRIPTION"
       },
       {
         "name": "team_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TEAM_ID"
       }
     ],
     "responses": [
@@ -1602,19 +1684,22 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.teams:write`"
+        "description": "Authentication token. Requires scope: `admin.teams:write`",
+        "example": "TOKEN"
       },
       {
         "name": "discoverability",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "DISCOVERABILITY"
       },
       {
         "name": "team_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TEAM_ID"
       }
     ],
     "responses": [
@@ -1640,19 +1725,22 @@ export default function SlackWebTypeScriptSdk() {
         "name": "image_url",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "IMAGE_URL"
       },
       {
         "name": "team_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TEAM_ID"
       },
       {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TOKEN"
       }
     ],
     "responses": [
@@ -1678,19 +1766,22 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.teams:write`"
+        "description": "Authentication token. Requires scope: `admin.teams:write`",
+        "example": "TOKEN"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "team_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TEAM_ID"
       }
     ],
     "responses": [
@@ -1716,13 +1807,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.usergroups:write`"
+        "description": "Authentication token. Requires scope: `admin.usergroups:write`",
+        "example": "TOKEN"
       },
       {
         "name": "channel_ids",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CHANNEL_IDS"
       },
       {
         "name": "team_id",
@@ -1734,7 +1827,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "usergroup_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USERGROUP_ID"
       }
     ],
     "responses": [
@@ -1760,7 +1854,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.teams:write`"
+        "description": "Authentication token. Requires scope: `admin.teams:write`",
+        "example": "TOKEN"
       },
       {
         "name": "auto_provision",
@@ -1772,13 +1867,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "team_ids",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TEAM_IDS"
       },
       {
         "name": "usergroup_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USERGROUP_ID"
       }
     ],
     "responses": [
@@ -1804,13 +1901,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.usergroups:read`"
+        "description": "Authentication token. Requires scope: `admin.usergroups:read`",
+        "example": "TOKEN"
       },
       {
         "name": "usergroupId",
         "schema": "string",
         "required": true,
-        "description": "ID of the IDP group to list default channels for."
+        "description": "ID of the IDP group to list default channels for.",
+        "example": "USERGROUP_ID"
       },
       {
         "name": "teamId",
@@ -1846,19 +1945,22 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.usergroups:write`"
+        "description": "Authentication token. Requires scope: `admin.usergroups:write`",
+        "example": "TOKEN"
       },
       {
         "name": "channel_ids",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CHANNEL_IDS"
       },
       {
         "name": "usergroup_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USERGROUP_ID"
       }
     ],
     "responses": [
@@ -1884,7 +1986,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.users:write`"
+        "description": "Authentication token. Requires scope: `admin.users:write`",
+        "example": "TOKEN"
       },
       {
         "name": "channel_ids",
@@ -1908,13 +2011,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "team_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TEAM_ID"
       },
       {
         "name": "user_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USER_ID"
       }
     ],
     "responses": [
@@ -1940,13 +2045,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.users:write`"
+        "description": "Authentication token. Requires scope: `admin.users:write`",
+        "example": "TOKEN"
       },
       {
         "name": "channel_ids",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CHANNEL_IDS"
       },
       {
         "name": "custom_message",
@@ -1958,7 +2065,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "email",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "EMAIL"
       },
       {
         "name": "guest_expiration_ts",
@@ -1994,7 +2102,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "team_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TEAM_ID"
       }
     ],
     "responses": [
@@ -2020,13 +2129,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.users:read`"
+        "description": "Authentication token. Requires scope: `admin.users:read`",
+        "example": "TOKEN"
       },
       {
         "name": "teamId",
         "schema": "string",
         "required": true,
-        "description": "The ID (`T1234`) of the workspace."
+        "description": "The ID (`T1234`) of the workspace.",
+        "example": "TEAM_ID"
       },
       {
         "name": "cursor",
@@ -2062,19 +2173,22 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.users:write`"
+        "description": "Authentication token. Requires scope: `admin.users:write`",
+        "example": "TOKEN"
       },
       {
         "name": "team_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TEAM_ID"
       },
       {
         "name": "user_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USER_ID"
       }
     ],
     "responses": [
@@ -2100,19 +2214,22 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.users:write`"
+        "description": "Authentication token. Requires scope: `admin.users:write`",
+        "example": "TOKEN"
       },
       {
         "name": "session_id",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "team_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TEAM_ID"
       }
     ],
     "responses": [
@@ -2138,7 +2255,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.users:write`"
+        "description": "Authentication token. Requires scope: `admin.users:write`",
+        "example": "TOKEN"
       },
       {
         "name": "mobile_only",
@@ -2150,7 +2268,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "user_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USER_ID"
       },
       {
         "name": "web_only",
@@ -2182,19 +2301,22 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.users:write`"
+        "description": "Authentication token. Requires scope: `admin.users:write`",
+        "example": "TOKEN"
       },
       {
         "name": "team_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TEAM_ID"
       },
       {
         "name": "user_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USER_ID"
       }
     ],
     "responses": [
@@ -2220,25 +2342,29 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.users:write`"
+        "description": "Authentication token. Requires scope: `admin.users:write`",
+        "example": "TOKEN"
       },
       {
         "name": "expiration_ts",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "team_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TEAM_ID"
       },
       {
         "name": "user_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USER_ID"
       }
     ],
     "responses": [
@@ -2264,19 +2390,22 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.users:write`"
+        "description": "Authentication token. Requires scope: `admin.users:write`",
+        "example": "TOKEN"
       },
       {
         "name": "team_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TEAM_ID"
       },
       {
         "name": "user_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USER_ID"
       }
     ],
     "responses": [
@@ -2302,19 +2431,22 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin.users:write`"
+        "description": "Authentication token. Requires scope: `admin.users:write`",
+        "example": "TOKEN"
       },
       {
         "name": "team_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TEAM_ID"
       },
       {
         "name": "user_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USER_ID"
       }
     ],
     "responses": [
@@ -2370,13 +2502,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `authorizations:read`"
+        "description": "Authentication token. Requires scope: `authorizations:read`",
+        "example": "TOKEN"
       },
       {
         "name": "eventContext",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "EVENT_CONTEXT"
       },
       {
         "name": "cursor",
@@ -2437,19 +2571,22 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `none`"
+        "description": "Authentication token. Requires scope: `none`",
+        "example": "TOKEN"
       },
       {
         "name": "scopes",
         "schema": "string",
         "required": true,
-        "description": "A comma separated list of scopes to request for"
+        "description": "A comma separated list of scopes to request for",
+        "example": "SCOPES"
       },
       {
         "name": "triggerId",
         "schema": "string",
         "required": true,
-        "description": "Token used to trigger the permissions API"
+        "description": "Token used to trigger the permissions API",
+        "example": "TRIGGER_ID"
       }
     ],
     "responses": [
@@ -2475,7 +2612,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `none`"
+        "description": "Authentication token. Requires scope: `none`",
+        "example": "TOKEN"
       },
       {
         "name": "cursor",
@@ -2511,7 +2649,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `none`"
+        "description": "Authentication token. Requires scope: `none`",
+        "example": "TOKEN"
       }
     ],
     "responses": [
@@ -2537,7 +2676,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `none`"
+        "description": "Authentication token. Requires scope: `none`",
+        "example": "TOKEN"
       },
       {
         "name": "cursor",
@@ -2573,25 +2713,29 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `none`"
+        "description": "Authentication token. Requires scope: `none`",
+        "example": "TOKEN"
       },
       {
         "name": "scopes",
         "schema": "string",
         "required": true,
-        "description": "A comma separated list of user scopes to request for"
+        "description": "A comma separated list of user scopes to request for",
+        "example": "SCOPES"
       },
       {
         "name": "triggerId",
         "schema": "string",
         "required": true,
-        "description": "Token used to trigger the request"
+        "description": "Token used to trigger the request",
+        "example": "TRIGGER_ID"
       },
       {
         "name": "user",
         "schema": "string",
         "required": true,
-        "description": "The user this scope is being requested for"
+        "description": "The user this scope is being requested for",
+        "example": "USER"
       }
     ],
     "responses": [
@@ -2652,7 +2796,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `none`"
+        "description": "Authentication token. Requires scope: `none`",
+        "example": "TOKEN"
       },
       {
         "name": "test",
@@ -2683,7 +2828,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `none`"
+        "description": "Authentication token. Requires scope: `none`",
+        "example": "TOKEN"
       }
     ],
     "responses": [
@@ -2709,7 +2855,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `users:read`"
+        "description": "Authentication token. Requires scope: `users:read`",
+        "example": "TOKEN"
       },
       {
         "name": "bot",
@@ -2740,7 +2887,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `calls:write`"
+        "description": "Authentication token. Requires scope: `calls:write`",
+        "example": "TOKEN"
       },
       {
         "name": "title",
@@ -2776,13 +2924,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "external_unique_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "EXTERNAL_UNIQUE_ID"
       },
       {
         "name": "join_url",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "JOIN_URL"
       },
       {
         "name": "users",
@@ -2814,7 +2964,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `calls:write`"
+        "description": "Authentication token. Requires scope: `calls:write`",
+        "example": "TOKEN"
       },
       {
         "name": "duration",
@@ -2826,7 +2977,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -2852,13 +3004,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `calls:read`"
+        "description": "Authentication token. Requires scope: `calls:read`",
+        "example": "TOKEN"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "`id` of the Call returned by the [`calls.add`](https://slack.dev) method."
+        "description": "`id` of the Call returned by the [`calls.add`](https://slack.dev) method.",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -2884,19 +3038,22 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `calls:write`"
+        "description": "Authentication token. Requires scope: `calls:write`",
+        "example": "TOKEN"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "users",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USERS"
       }
     ],
     "responses": [
@@ -2922,19 +3079,22 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `calls:write`"
+        "description": "Authentication token. Requires scope: `calls:write`",
+        "example": "TOKEN"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "users",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USERS"
       }
     ],
     "responses": [
@@ -2960,7 +3120,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `calls:write`"
+        "description": "Authentication token. Requires scope: `calls:write`",
+        "example": "TOKEN"
       },
       {
         "name": "title",
@@ -2978,7 +3139,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "join_url",
@@ -3050,7 +3212,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `chat:write`"
+        "description": "Authentication token. Requires scope: `chat:write`",
+        "example": "TOKEN"
       },
       {
         "name": "as_user",
@@ -3062,13 +3225,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "channel",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CHANNEL"
       },
       {
         "name": "scheduled_message_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SCHEDULED_MESSAGE_ID"
       }
     ],
     "responses": [
@@ -3094,19 +3259,22 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `none`"
+        "description": "Authentication token. Requires scope: `none`",
+        "example": "TOKEN"
       },
       {
         "name": "channel",
         "schema": "string",
         "required": true,
-        "description": "The ID of the conversation or channel containing the message"
+        "description": "The ID of the conversation or channel containing the message",
+        "example": "CHANNEL"
       },
       {
         "name": "messageTs",
         "schema": "string",
         "required": true,
-        "description": "A message's `ts` value, uniquely identifying it within a channel"
+        "description": "A message's `ts` value, uniquely identifying it within a channel",
+        "example": "MESSAGE_TS"
       }
     ],
     "responses": [
@@ -3167,7 +3335,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `chat:write`"
+        "description": "Authentication token. Requires scope: `chat:write`",
+        "example": "TOKEN"
       },
       {
         "name": "as_user",
@@ -3191,7 +3360,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "channel",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CHANNEL"
       },
       {
         "name": "icon_emoji",
@@ -3233,7 +3403,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "user",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USER"
       },
       {
         "name": "username",
@@ -3265,7 +3436,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `chat:write`"
+        "description": "Authentication token. Requires scope: `chat:write`",
+        "example": "TOKEN"
       },
       {
         "name": "as_user",
@@ -3289,7 +3461,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "channel",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CHANNEL"
       },
       {
         "name": "icon_emoji",
@@ -3516,19 +3689,22 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `links:write`"
+        "description": "Authentication token. Requires scope: `links:write`",
+        "example": "TOKEN"
       },
       {
         "name": "channel",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CHANNEL"
       },
       {
         "name": "ts",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TS"
       },
       {
         "name": "unfurls",
@@ -3578,7 +3754,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `chat:write`"
+        "description": "Authentication token. Requires scope: `chat:write`",
+        "example": "TOKEN"
       },
       {
         "name": "as_user",
@@ -3602,7 +3779,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "channel",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CHANNEL"
       },
       {
         "name": "link_names",
@@ -3626,7 +3804,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "ts",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TS"
       }
     ],
     "responses": [
@@ -4327,19 +4506,22 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `none`"
+        "description": "Authentication token. Requires scope: `none`",
+        "example": "TOKEN"
       },
       {
         "name": "dialog",
         "schema": "string",
         "required": true,
-        "description": "The dialog definition. This must be a JSON-encoded string."
+        "description": "The dialog definition. This must be a JSON-encoded string.",
+        "example": "DIALOG"
       },
       {
         "name": "triggerId",
         "schema": "string",
         "required": true,
-        "description": "Exchange a trigger to post to the user."
+        "description": "Exchange a trigger to post to the user.",
+        "example": "TRIGGER_ID"
       }
     ],
     "responses": [
@@ -4365,7 +4547,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `dnd:write`"
+        "description": "Authentication token. Requires scope: `dnd:write`",
+        "example": "TOKEN"
       }
     ],
     "responses": [
@@ -4391,7 +4574,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `dnd:write`"
+        "description": "Authentication token. Requires scope: `dnd:write`",
+        "example": "TOKEN"
       }
     ],
     "responses": [
@@ -4447,13 +4631,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "num_minutes",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NUM_MINUTES"
       },
       {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TOKEN"
       }
     ],
     "responses": [
@@ -4509,7 +4695,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `emoji:read`"
+        "description": "Authentication token. Requires scope: `emoji:read`",
+        "example": "TOKEN"
       }
     ],
     "responses": [
@@ -5115,13 +5302,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `tokens.basic`"
+        "description": "Authentication token. Requires scope: `tokens.basic`",
+        "example": "TOKEN"
       },
       {
         "name": "users",
         "schema": "string",
         "required": true,
-        "description": "A comma-separated list of user ids, up to 400 per request"
+        "description": "A comma-separated list of user ids, up to 400 per request",
+        "example": "USERS"
       },
       {
         "name": "teamId",
@@ -5257,7 +5446,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "code",
         "schema": "string",
         "required": true,
-        "description": "The `code` param returned via the OAuth callback."
+        "description": "The `code` param returned via the OAuth callback.",
+        "example": "CODE"
       },
       {
         "name": "redirectUri",
@@ -5288,13 +5478,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `pins:write`"
+        "description": "Authentication token. Requires scope: `pins:write`",
+        "example": "TOKEN"
       },
       {
         "name": "channel",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CHANNEL"
       },
       {
         "name": "timestamp",
@@ -5326,13 +5518,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `pins:read`"
+        "description": "Authentication token. Requires scope: `pins:read`",
+        "example": "TOKEN"
       },
       {
         "name": "channel",
         "schema": "string",
         "required": true,
-        "description": "Channel to get pinned items for."
+        "description": "Channel to get pinned items for.",
+        "example": "CHANNEL"
       }
     ],
     "responses": [
@@ -5358,13 +5552,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `pins:write`"
+        "description": "Authentication token. Requires scope: `pins:write`",
+        "example": "TOKEN"
       },
       {
         "name": "channel",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CHANNEL"
       },
       {
         "name": "timestamp",
@@ -5396,25 +5592,29 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `reactions:write`"
+        "description": "Authentication token. Requires scope: `reactions:write`",
+        "example": "TOKEN"
       },
       {
         "name": "channel",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CHANNEL"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "timestamp",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TIMESTAMP"
       }
     ],
     "responses": [
@@ -5440,7 +5640,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `reactions:read`"
+        "description": "Authentication token. Requires scope: `reactions:read`",
+        "example": "TOKEN"
       },
       {
         "name": "channel",
@@ -5491,7 +5692,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `reactions:read`"
+        "description": "Authentication token. Requires scope: `reactions:read`",
+        "example": "TOKEN"
       },
       {
         "name": "user",
@@ -5547,7 +5749,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `reactions:write`"
+        "description": "Authentication token. Requires scope: `reactions:write`",
+        "example": "TOKEN"
       },
       {
         "name": "channel",
@@ -5571,7 +5774,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "timestamp",
@@ -5603,19 +5807,22 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `reminders:write`"
+        "description": "Authentication token. Requires scope: `reminders:write`",
+        "example": "TOKEN"
       },
       {
         "name": "text",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TEXT"
       },
       {
         "name": "time",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TIME"
       },
       {
         "name": "user",
@@ -5762,7 +5969,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `rtm:stream`"
+        "description": "Authentication token. Requires scope: `rtm:stream`",
+        "example": "TOKEN"
       },
       {
         "name": "batchPresenceAware",
@@ -5798,7 +6006,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `search:read`"
+        "description": "Authentication token. Requires scope: `search:read`",
+        "example": "TOKEN"
       },
       {
         "name": "count",
@@ -5819,7 +6028,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "query",
         "schema": "string",
         "required": true,
-        "description": "Search query."
+        "description": "Search query.",
+        "example": "QUERY"
       },
       {
         "name": "sort",
@@ -5855,7 +6065,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `stars:write`"
+        "description": "Authentication token. Requires scope: `stars:write`",
+        "example": "TOKEN"
       },
       {
         "name": "channel",
@@ -5946,7 +6157,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `stars:write`"
+        "description": "Authentication token. Requires scope: `stars:write`",
+        "example": "TOKEN"
       },
       {
         "name": "channel",
@@ -5992,7 +6204,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin`"
+        "description": "Authentication token. Requires scope: `admin`",
+        "example": "TOKEN"
       },
       {
         "name": "before",
@@ -6033,7 +6246,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin`"
+        "description": "Authentication token. Requires scope: `admin`",
+        "example": "TOKEN"
       },
       {
         "name": "user",
@@ -6064,7 +6278,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `team:read`"
+        "description": "Authentication token. Requires scope: `team:read`",
+        "example": "TOKEN"
       },
       {
         "name": "team",
@@ -6095,7 +6310,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `admin`"
+        "description": "Authentication token. Requires scope: `admin`",
+        "example": "TOKEN"
       },
       {
         "name": "appId",
@@ -6151,7 +6367,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `users.profile:read`"
+        "description": "Authentication token. Requires scope: `users.profile:read`",
+        "example": "TOKEN"
       },
       {
         "name": "visibility",
@@ -6182,7 +6399,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `usergroups:write`"
+        "description": "Authentication token. Requires scope: `usergroups:write`",
+        "example": "TOKEN"
       },
       {
         "name": "description",
@@ -6212,7 +6430,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -6238,7 +6457,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `usergroups:write`"
+        "description": "Authentication token. Requires scope: `usergroups:write`",
+        "example": "TOKEN"
       },
       {
         "name": "include_count",
@@ -6250,7 +6470,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "usergroup",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USERGROUP"
       }
     ],
     "responses": [
@@ -6276,7 +6497,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `usergroups:write`"
+        "description": "Authentication token. Requires scope: `usergroups:write`",
+        "example": "TOKEN"
       },
       {
         "name": "include_count",
@@ -6288,7 +6510,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "usergroup",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USERGROUP"
       }
     ],
     "responses": [
@@ -6319,7 +6542,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `usergroups:read`"
+        "description": "Authentication token. Requires scope: `usergroups:read`",
+        "example": "TOKEN"
       },
       {
         "name": "includeCount",
@@ -6355,7 +6579,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `usergroups:write`"
+        "description": "Authentication token. Requires scope: `usergroups:write`",
+        "example": "TOKEN"
       },
       {
         "name": "description",
@@ -6391,7 +6616,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "usergroup",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USERGROUP"
       }
     ],
     "responses": [
@@ -6417,7 +6643,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `usergroups:read`"
+        "description": "Authentication token. Requires scope: `usergroups:read`",
+        "example": "TOKEN"
       },
       {
         "name": "includeDisabled",
@@ -6428,7 +6655,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "usergroup",
         "schema": "string",
         "required": true,
-        "description": "The encoded ID of the User Group to update."
+        "description": "The encoded ID of the User Group to update.",
+        "example": "USERGROUP"
       }
     ],
     "responses": [
@@ -6454,7 +6682,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `usergroups:write`"
+        "description": "Authentication token. Requires scope: `usergroups:write`",
+        "example": "TOKEN"
       },
       {
         "name": "include_count",
@@ -6466,13 +6695,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "usergroup",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USERGROUP"
       },
       {
         "name": "users",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USERS"
       }
     ],
     "responses": [
@@ -6548,7 +6779,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TOKEN"
       }
     ],
     "responses": [
@@ -6574,7 +6806,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `users:read`"
+        "description": "Authentication token. Requires scope: `users:read`",
+        "example": "TOKEN"
       },
       {
         "name": "user",
@@ -6630,7 +6863,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `users:read`"
+        "description": "Authentication token. Requires scope: `users:read`",
+        "example": "TOKEN"
       },
       {
         "name": "includeLocale",
@@ -6706,13 +6940,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `users:read.email`"
+        "description": "Authentication token. Requires scope: `users:read.email`",
+        "example": "TOKEN"
       },
       {
         "name": "email",
         "schema": "string",
         "required": true,
-        "description": "An email address belonging to a user in the workspace"
+        "description": "An email address belonging to a user in the workspace",
+        "example": "EMAIL"
       }
     ],
     "responses": [
@@ -6738,7 +6974,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `users.profile:read`"
+        "description": "Authentication token. Requires scope: `users.profile:read`",
+        "example": "TOKEN"
       },
       {
         "name": "includeLabels",
@@ -6774,7 +7011,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `users.profile:write`"
+        "description": "Authentication token. Requires scope: `users.profile:write`",
+        "example": "TOKEN"
       },
       {
         "name": "name",
@@ -6820,7 +7058,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `users:write`"
+        "description": "Authentication token. Requires scope: `users:write`",
+        "example": "TOKEN"
       }
     ],
     "responses": [
@@ -6870,7 +7109,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TOKEN"
       }
     ],
     "responses": [
@@ -6896,13 +7136,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `users:write`"
+        "description": "Authentication token. Requires scope: `users:write`",
+        "example": "TOKEN"
       },
       {
         "name": "presence",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PRESENCE"
       }
     ],
     "responses": [
@@ -6928,19 +7170,22 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `none`"
+        "description": "Authentication token. Requires scope: `none`",
+        "example": "TOKEN"
       },
       {
         "name": "triggerId",
         "schema": "string",
         "required": true,
-        "description": "Exchange a trigger to post to the user."
+        "description": "Exchange a trigger to post to the user.",
+        "example": "TRIGGER_ID"
       },
       {
         "name": "view",
         "schema": "string",
         "required": true,
-        "description": "A [view payload](https://slack.dev). This must be a JSON-encoded string."
+        "description": "A [view payload](https://slack.dev). This must be a JSON-encoded string.",
+        "example": "VIEW"
       }
     ],
     "responses": [
@@ -6966,19 +7211,22 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `none`"
+        "description": "Authentication token. Requires scope: `none`",
+        "example": "TOKEN"
       },
       {
         "name": "userId",
         "schema": "string",
         "required": true,
-        "description": "`id` of the user you want publish a view to."
+        "description": "`id` of the user you want publish a view to.",
+        "example": "USER_ID"
       },
       {
         "name": "view",
         "schema": "string",
         "required": true,
-        "description": "A [view payload](https://slack.dev). This must be a JSON-encoded string."
+        "description": "A [view payload](https://slack.dev). This must be a JSON-encoded string.",
+        "example": "VIEW"
       },
       {
         "name": "hash",
@@ -7009,19 +7257,22 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `none`"
+        "description": "Authentication token. Requires scope: `none`",
+        "example": "TOKEN"
       },
       {
         "name": "triggerId",
         "schema": "string",
         "required": true,
-        "description": "Exchange a trigger to post to the user."
+        "description": "Exchange a trigger to post to the user.",
+        "example": "TRIGGER_ID"
       },
       {
         "name": "view",
         "schema": "string",
         "required": true,
-        "description": "A [view payload](https://slack.dev). This must be a JSON-encoded string."
+        "description": "A [view payload](https://slack.dev). This must be a JSON-encoded string.",
+        "example": "VIEW"
       }
     ],
     "responses": [
@@ -7047,7 +7298,8 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `none`"
+        "description": "Authentication token. Requires scope: `none`",
+        "example": "TOKEN"
       },
       {
         "name": "viewId",
@@ -7093,13 +7345,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `workflow.steps:execute`"
+        "description": "Authentication token. Requires scope: `workflow.steps:execute`",
+        "example": "TOKEN"
       },
       {
         "name": "workflowStepExecuteId",
         "schema": "string",
         "required": true,
-        "description": "Context identifier that maps to the correct workflow step execution."
+        "description": "Context identifier that maps to the correct workflow step execution.",
+        "example": "WORKFLOW_STEP_EXECUTE_ID"
       },
       {
         "name": "outputs",
@@ -7130,19 +7384,22 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `workflow.steps:execute`"
+        "description": "Authentication token. Requires scope: `workflow.steps:execute`",
+        "example": "TOKEN"
       },
       {
         "name": "workflowStepExecuteId",
         "schema": "string",
         "required": true,
-        "description": "Context identifier that maps to the correct workflow step execution."
+        "description": "Context identifier that maps to the correct workflow step execution.",
+        "example": "WORKFLOW_STEP_EXECUTE_ID"
       },
       {
         "name": "error",
         "schema": "string",
         "required": true,
-        "description": "A JSON-based object with a `message` property that should contain a human readable error message."
+        "description": "A JSON-based object with a `message` property that should contain a human readable error message.",
+        "example": "ERROR"
       }
     ],
     "responses": [
@@ -7168,13 +7425,15 @@ export default function SlackWebTypeScriptSdk() {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": "Authentication token. Requires scope: `workflow.steps:execute`"
+        "description": "Authentication token. Requires scope: `workflow.steps:execute`",
+        "example": "TOKEN"
       },
       {
         "name": "workflowStepEditId",
         "schema": "string",
         "required": true,
-        "description": "A context identifier provided with `view_submission` payloads used to call back to `workflows.updateStep`."
+        "description": "A context identifier provided with `view_submission` payloads used to call back to `workflows.updateStep`.",
+        "example": "WORKFLOW_STEP_EDIT_ID"
       },
       {
         "name": "inputs",

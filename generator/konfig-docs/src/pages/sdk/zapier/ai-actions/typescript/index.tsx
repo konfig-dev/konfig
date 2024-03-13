@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function ZapierAiActionsTypeScriptSdk() {
@@ -17,13 +18,15 @@ export default function ZapierAiActionsTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zapier/ai-actions/logo.png"
       clientNameCamelCase="zapierActions"
       homepage="zapier.com"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zapier/ai-actions/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zapier/ai-actions/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["automation","ai","developer_tools"]}
       methods={[
   {
     "url": "/api/v1/check",
@@ -82,19 +85,22 @@ export default function ZapierAiActionsTypeScriptSdk() {
         "name": "exposedAppActionId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "01ARZ3NDEKTSV4RRFFQ69G5FAV"
       },
       {
         "name": "instructions",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "INSTRUCTIONS"
       },
       {
         "name": "preview_only",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": false
       }
     ],
     "responses": [
@@ -120,7 +126,8 @@ export default function ZapierAiActionsTypeScriptSdk() {
         "name": "executionLogId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "01ARZ3NDEKTSV4RRFFQ69G5FAV"
       }
     ],
     "responses": [

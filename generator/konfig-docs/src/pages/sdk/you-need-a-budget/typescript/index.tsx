@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function YouNeedABudgetTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function YouNeedABudgetTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/you-need-a-budget/logo.png"
       clientNameCamelCase="ynab"
       homepage="api.youneedabudget.com"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/you-need-a-budget/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/you-need-a-budget/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["finance"]}
       methods={[
   {
     "url": "/user",
@@ -84,7 +87,8 @@ export default function YouNeedABudgetTypeScriptSdk() {
         "name": "budgetId",
         "schema": "string",
         "required": true,
-        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget).",
+        "example": "BUDGET_ID"
       },
       {
         "name": "lastKnowledgeOfServer",
@@ -119,7 +123,8 @@ export default function YouNeedABudgetTypeScriptSdk() {
         "name": "budgetId",
         "schema": "string",
         "required": true,
-        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget).",
+        "example": "BUDGET_ID"
       }
     ],
     "responses": [
@@ -149,7 +154,8 @@ export default function YouNeedABudgetTypeScriptSdk() {
         "name": "budgetId",
         "schema": "string",
         "required": true,
-        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget).",
+        "example": "BUDGET_ID"
       },
       {
         "name": "lastKnowledgeOfServer",
@@ -184,7 +190,8 @@ export default function YouNeedABudgetTypeScriptSdk() {
         "name": "budgetId",
         "schema": "string",
         "required": true,
-        "description": "The id of the budget (\"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)"
+        "description": "The id of the budget (\"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)",
+        "example": "BUDGET_ID"
       },
       {
         "name": "account",
@@ -216,13 +223,15 @@ export default function YouNeedABudgetTypeScriptSdk() {
         "name": "budgetId",
         "schema": "string",
         "required": true,
-        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget).",
+        "example": "BUDGET_ID"
       },
       {
         "name": "accountId",
         "schema": "string",
         "required": true,
-        "description": "The id of the account"
+        "description": "The id of the account",
+        "example": "ACCOUNT_ID"
       }
     ],
     "responses": [
@@ -252,7 +261,8 @@ export default function YouNeedABudgetTypeScriptSdk() {
         "name": "budgetId",
         "schema": "string",
         "required": true,
-        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget).",
+        "example": "BUDGET_ID"
       },
       {
         "name": "lastKnowledgeOfServer",
@@ -287,13 +297,15 @@ export default function YouNeedABudgetTypeScriptSdk() {
         "name": "budgetId",
         "schema": "string",
         "required": true,
-        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget).",
+        "example": "BUDGET_ID"
       },
       {
         "name": "categoryId",
         "schema": "string",
         "required": true,
-        "description": "The id of the category"
+        "description": "The id of the category",
+        "example": "CATEGORY_ID"
       }
     ],
     "responses": [
@@ -323,13 +335,15 @@ export default function YouNeedABudgetTypeScriptSdk() {
         "name": "budgetId",
         "schema": "string",
         "required": true,
-        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget).",
+        "example": "BUDGET_ID"
       },
       {
         "name": "categoryId",
         "schema": "string",
         "required": true,
-        "description": "The id of the category"
+        "description": "The id of the category",
+        "example": "CATEGORY_ID"
       },
       {
         "name": "category",
@@ -361,19 +375,22 @@ export default function YouNeedABudgetTypeScriptSdk() {
         "name": "budgetId",
         "schema": "string",
         "required": true,
-        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget).",
+        "example": "BUDGET_ID"
       },
       {
         "name": "month",
         "schema": "string",
         "required": true,
-        "description": "The budget month in ISO format (e.g. 2016-12-01) (\"current\" can also be used to specify the current calendar month (UTC))"
+        "description": "The budget month in ISO format (e.g. 2016-12-01) (\"current\" can also be used to specify the current calendar month (UTC))",
+        "example": "MONTH"
       },
       {
         "name": "categoryId",
         "schema": "string",
         "required": true,
-        "description": "The id of the category"
+        "description": "The id of the category",
+        "example": "CATEGORY_ID"
       }
     ],
     "responses": [
@@ -403,19 +420,22 @@ export default function YouNeedABudgetTypeScriptSdk() {
         "name": "budgetId",
         "schema": "string",
         "required": true,
-        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget).",
+        "example": "BUDGET_ID"
       },
       {
         "name": "month",
         "schema": "string",
         "required": true,
-        "description": "The budget month in ISO format (e.g. 2016-12-01) (\"current\" can also be used to specify the current calendar month (UTC))"
+        "description": "The budget month in ISO format (e.g. 2016-12-01) (\"current\" can also be used to specify the current calendar month (UTC))",
+        "example": "MONTH"
       },
       {
         "name": "categoryId",
         "schema": "string",
         "required": true,
-        "description": "The id of the category"
+        "description": "The id of the category",
+        "example": "CATEGORY_ID"
       },
       {
         "name": "category",
@@ -447,7 +467,8 @@ export default function YouNeedABudgetTypeScriptSdk() {
         "name": "budgetId",
         "schema": "string",
         "required": true,
-        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget).",
+        "example": "BUDGET_ID"
       },
       {
         "name": "lastKnowledgeOfServer",
@@ -482,13 +503,15 @@ export default function YouNeedABudgetTypeScriptSdk() {
         "name": "budgetId",
         "schema": "string",
         "required": true,
-        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget).",
+        "example": "BUDGET_ID"
       },
       {
         "name": "payeeId",
         "schema": "string",
         "required": true,
-        "description": "The id of the payee"
+        "description": "The id of the payee",
+        "example": "PAYEE_ID"
       }
     ],
     "responses": [
@@ -518,7 +541,8 @@ export default function YouNeedABudgetTypeScriptSdk() {
         "name": "budgetId",
         "schema": "string",
         "required": true,
-        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget).",
+        "example": "BUDGET_ID"
       }
     ],
     "responses": [
@@ -548,13 +572,15 @@ export default function YouNeedABudgetTypeScriptSdk() {
         "name": "budgetId",
         "schema": "string",
         "required": true,
-        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget).",
+        "example": "BUDGET_ID"
       },
       {
         "name": "payeeLocationId",
         "schema": "string",
         "required": true,
-        "description": "id of payee location"
+        "description": "id of payee location",
+        "example": "PAYEE_LOCATION_ID"
       }
     ],
     "responses": [
@@ -584,13 +610,15 @@ export default function YouNeedABudgetTypeScriptSdk() {
         "name": "budgetId",
         "schema": "string",
         "required": true,
-        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget).",
+        "example": "BUDGET_ID"
       },
       {
         "name": "payeeId",
         "schema": "string",
         "required": true,
-        "description": "id of payee"
+        "description": "id of payee",
+        "example": "PAYEE_ID"
       }
     ],
     "responses": [
@@ -620,7 +648,8 @@ export default function YouNeedABudgetTypeScriptSdk() {
         "name": "budgetId",
         "schema": "string",
         "required": true,
-        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget).",
+        "example": "BUDGET_ID"
       },
       {
         "name": "lastKnowledgeOfServer",
@@ -655,13 +684,15 @@ export default function YouNeedABudgetTypeScriptSdk() {
         "name": "budgetId",
         "schema": "string",
         "required": true,
-        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget).",
+        "example": "BUDGET_ID"
       },
       {
         "name": "month",
         "schema": "string",
         "required": true,
-        "description": "The budget month in ISO format (e.g. 2016-12-01) (\"current\" can also be used to specify the current calendar month (UTC))"
+        "description": "The budget month in ISO format (e.g. 2016-12-01) (\"current\" can also be used to specify the current calendar month (UTC))",
+        "example": "MONTH"
       }
     ],
     "responses": [
@@ -691,7 +722,8 @@ export default function YouNeedABudgetTypeScriptSdk() {
         "name": "budgetId",
         "schema": "string",
         "required": true,
-        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget).",
+        "example": "BUDGET_ID"
       },
       {
         "name": "sinceDate",
@@ -736,7 +768,8 @@ export default function YouNeedABudgetTypeScriptSdk() {
         "name": "budgetId",
         "schema": "string",
         "required": true,
-        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget).",
+        "example": "BUDGET_ID"
       },
       {
         "name": "transactions",
@@ -768,7 +801,8 @@ export default function YouNeedABudgetTypeScriptSdk() {
         "name": "budgetId",
         "schema": "string",
         "required": true,
-        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget).",
+        "example": "BUDGET_ID"
       },
       {
         "name": "transaction",
@@ -808,7 +842,8 @@ export default function YouNeedABudgetTypeScriptSdk() {
         "name": "budgetId",
         "schema": "string",
         "required": true,
-        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget).",
+        "example": "BUDGET_ID"
       }
     ],
     "responses": [
@@ -838,13 +873,15 @@ export default function YouNeedABudgetTypeScriptSdk() {
         "name": "budgetId",
         "schema": "string",
         "required": true,
-        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget).",
+        "example": "BUDGET_ID"
       },
       {
         "name": "transactionId",
         "schema": "string",
         "required": true,
-        "description": "The id of the transaction"
+        "description": "The id of the transaction",
+        "example": "TRANSACTION_ID"
       }
     ],
     "responses": [
@@ -870,13 +907,15 @@ export default function YouNeedABudgetTypeScriptSdk() {
         "name": "budgetId",
         "schema": "string",
         "required": true,
-        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget).",
+        "example": "BUDGET_ID"
       },
       {
         "name": "transactionId",
         "schema": "string",
         "required": true,
-        "description": "The id of the transaction"
+        "description": "The id of the transaction",
+        "example": "TRANSACTION_ID"
       }
     ],
     "responses": [
@@ -906,13 +945,15 @@ export default function YouNeedABudgetTypeScriptSdk() {
         "name": "budgetId",
         "schema": "string",
         "required": true,
-        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget).",
+        "example": "BUDGET_ID"
       },
       {
         "name": "transactionId",
         "schema": "string",
         "required": true,
-        "description": "The id of the transaction"
+        "description": "The id of the transaction",
+        "example": "TRANSACTION_ID"
       },
       {
         "name": "transaction",
@@ -944,13 +985,15 @@ export default function YouNeedABudgetTypeScriptSdk() {
         "name": "budgetId",
         "schema": "string",
         "required": true,
-        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget).",
+        "example": "BUDGET_ID"
       },
       {
         "name": "accountId",
         "schema": "string",
         "required": true,
-        "description": "The id of the account"
+        "description": "The id of the account",
+        "example": "ACCOUNT_ID"
       },
       {
         "name": "sinceDate",
@@ -995,13 +1038,15 @@ export default function YouNeedABudgetTypeScriptSdk() {
         "name": "budgetId",
         "schema": "string",
         "required": true,
-        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget).",
+        "example": "BUDGET_ID"
       },
       {
         "name": "categoryId",
         "schema": "string",
         "required": true,
-        "description": "The id of the category"
+        "description": "The id of the category",
+        "example": "CATEGORY_ID"
       },
       {
         "name": "sinceDate",
@@ -1046,13 +1091,15 @@ export default function YouNeedABudgetTypeScriptSdk() {
         "name": "budgetId",
         "schema": "string",
         "required": true,
-        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget).",
+        "example": "BUDGET_ID"
       },
       {
         "name": "payeeId",
         "schema": "string",
         "required": true,
-        "description": "The id of the payee"
+        "description": "The id of the payee",
+        "example": "PAYEE_ID"
       },
       {
         "name": "sinceDate",
@@ -1097,7 +1144,8 @@ export default function YouNeedABudgetTypeScriptSdk() {
         "name": "budgetId",
         "schema": "string",
         "required": true,
-        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget).",
+        "example": "BUDGET_ID"
       },
       {
         "name": "lastKnowledgeOfServer",
@@ -1132,13 +1180,15 @@ export default function YouNeedABudgetTypeScriptSdk() {
         "name": "budgetId",
         "schema": "string",
         "required": true,
-        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget)."
+        "description": "The id of the budget. \"last-used\" can be used to specify the last used budget and \"default\" can be used if default budget selection is enabled (see: https://api.ynab.com/#oauth-default-budget).",
+        "example": "BUDGET_ID"
       },
       {
         "name": "scheduledTransactionId",
         "schema": "string",
         "required": true,
-        "description": "The id of the scheduled transaction"
+        "description": "The id of the scheduled transaction",
+        "example": "SCHEDULED_TRANSACTION_ID"
       }
     ],
     "responses": [

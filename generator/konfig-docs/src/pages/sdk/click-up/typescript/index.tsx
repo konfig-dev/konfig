@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function ClickUpTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function ClickUpTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/clickup/logo.png"
       clientNameCamelCase="clickUp"
       homepage="clickup.com"
-      lastUpdated={new Date("2024-03-11T17:20:37.894Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/clickup/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/clickup/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["productivity","collaboration","planning","agile","automation","docs","documentation","okr","goals","gantt","kanban","forms","wikis","roadmap","reporting"]}
       methods={[
   {
     "url": "/task/{task_id}/attachment",
@@ -36,17 +39,20 @@ export default function ClickUpTypeScriptSdk() {
         "name": "taskId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "9hv"
       },
       {
         "name": "customTaskIds",
         "schema": "boolean",
-        "description": "If you want to reference a task by it's custom task id, this value must be `true`."
+        "description": "If you want to reference a task by it's custom task id, this value must be `true`.",
+        "example": true
       },
       {
         "name": "teamId",
         "schema": "number",
-        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`."
+        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`.",
+        "example": 123
       },
       {
         "name": "attachment",
@@ -73,19 +79,22 @@ export default function ClickUpTypeScriptSdk() {
         "name": "clientId",
         "schema": "string",
         "required": true,
-        "description": "Oauth app client id"
+        "description": "Oauth app client id",
+        "example": "CLIENT_ID"
       },
       {
         "name": "clientSecret",
         "schema": "string",
         "required": true,
-        "description": "Oauth app client secret"
+        "description": "Oauth app client secret",
+        "example": "CLIENT_SECRET"
       },
       {
         "name": "code",
         "schema": "string",
         "required": true,
-        "description": "Code given in redirect url"
+        "description": "Code given in redirect url",
+        "example": "CODE"
       }
     ],
     "responses": [
@@ -137,23 +146,27 @@ export default function ClickUpTypeScriptSdk() {
         "name": "taskId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "9hz"
       },
       {
         "name": "customTaskIds",
         "schema": "boolean",
-        "description": "If you want to reference a task by it's custom task id, this value must be `true`."
+        "description": "If you want to reference a task by it's custom task id, this value must be `true`.",
+        "example": true
       },
       {
         "name": "teamId",
         "schema": "number",
-        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`."
+        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`.",
+        "example": 123
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -175,7 +188,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "checklistId",
         "schema": "string",
         "required": true,
-        "description": "b8a8-48d8-a0c6-b4200788a683 (uuid)"
+        "description": "b8a8-48d8-a0c6-b4200788a683 (uuid)",
+        "example": "b955c4dc"
       }
     ],
     "responses": [
@@ -197,7 +211,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "checklistId",
         "schema": "string",
         "required": true,
-        "description": "b8a8-48d8-a0c6-b4200788a683 (uuid)"
+        "description": "b8a8-48d8-a0c6-b4200788a683 (uuid)",
+        "example": "b955c4dc"
       },
       {
         "name": "name",
@@ -229,7 +244,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "checklistId",
         "schema": "string",
         "required": true,
-        "description": "b8a8-48d8-a0c6-b4200788a683 (uuid)"
+        "description": "b8a8-48d8-a0c6-b4200788a683 (uuid)",
+        "example": "b955c4dc"
       },
       {
         "name": "name",
@@ -261,13 +277,15 @@ export default function ClickUpTypeScriptSdk() {
         "name": "checklistId",
         "schema": "string",
         "required": true,
-        "description": "b8a8-48d8-a0c6-b4200788a683 (uuid)"
+        "description": "b8a8-48d8-a0c6-b4200788a683 (uuid)",
+        "example": "b955c4dc"
       },
       {
         "name": "checklistItemId",
         "schema": "string",
         "required": true,
-        "description": "e491-47f5-9fd8-d1dc4cedcc6f (uuid)"
+        "description": "e491-47f5-9fd8-d1dc4cedcc6f (uuid)",
+        "example": "21e08dc8"
       }
     ],
     "responses": [
@@ -289,13 +307,15 @@ export default function ClickUpTypeScriptSdk() {
         "name": "checklistId",
         "schema": "string",
         "required": true,
-        "description": "b8a8-48d8-a0c6-b4200788a683 (uuid)"
+        "description": "b8a8-48d8-a0c6-b4200788a683 (uuid)",
+        "example": "b955c4dc"
       },
       {
         "name": "checklistItemId",
         "schema": "string",
         "required": true,
-        "description": "e491-47f5-9fd8-d1dc4cedcc6f (uuid)"
+        "description": "e491-47f5-9fd8-d1dc4cedcc6f (uuid)",
+        "example": "21e08dc8"
       },
       {
         "name": "name",
@@ -337,17 +357,20 @@ export default function ClickUpTypeScriptSdk() {
         "name": "taskId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "9hz"
       },
       {
         "name": "customTaskIds",
         "schema": "boolean",
-        "description": "If you want to reference a task by it's custom task id, this value must be `true`."
+        "description": "If you want to reference a task by it's custom task id, this value must be `true`.",
+        "example": true
       },
       {
         "name": "teamId",
         "schema": "number",
-        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`."
+        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`.",
+        "example": 123
       },
       {
         "name": "start",
@@ -379,35 +402,41 @@ export default function ClickUpTypeScriptSdk() {
         "name": "taskId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "9hz"
       },
       {
         "name": "customTaskIds",
         "schema": "boolean",
-        "description": "If you want to reference a task by it's custom task id, this value must be `true`."
+        "description": "If you want to reference a task by it's custom task id, this value must be `true`.",
+        "example": true
       },
       {
         "name": "teamId",
         "schema": "number",
-        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`."
+        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`.",
+        "example": 123
       },
       {
         "name": "comment_text",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "COMMENT_TEXT"
       },
       {
         "name": "assignee",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "notify_all",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -429,7 +458,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "viewId",
         "schema": "string",
         "required": true,
-        "description": "105 (string)"
+        "description": "105 (string)",
+        "example": "3c"
       },
       {
         "name": "start",
@@ -461,19 +491,22 @@ export default function ClickUpTypeScriptSdk() {
         "name": "viewId",
         "schema": "string",
         "required": true,
-        "description": "105 (string)"
+        "description": "105 (string)",
+        "example": "3c"
       },
       {
         "name": "comment_text",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "COMMENT_TEXT"
       },
       {
         "name": "notify_all",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -495,7 +528,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "listId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 124
       },
       {
         "name": "start",
@@ -527,25 +561,29 @@ export default function ClickUpTypeScriptSdk() {
         "name": "listId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 124
       },
       {
         "name": "comment_text",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "COMMENT_TEXT"
       },
       {
         "name": "assignee",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "notify_all",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -567,7 +605,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "commentId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 456
       }
     ],
     "responses": [
@@ -589,25 +628,29 @@ export default function ClickUpTypeScriptSdk() {
         "name": "commentId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 456
       },
       {
         "name": "comment_text",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "COMMENT_TEXT"
       },
       {
         "name": "assignee",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "resolved",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -629,7 +672,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "listId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 123
       }
     ],
     "responses": [
@@ -651,23 +695,27 @@ export default function ClickUpTypeScriptSdk() {
         "name": "taskId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "9hv"
       },
       {
         "name": "fieldId",
         "schema": "string",
         "required": true,
-        "description": "b8a8-48d8-a0c6-b4200788a683 (uuid)"
+        "description": "b8a8-48d8-a0c6-b4200788a683 (uuid)",
+        "example": "b955c4dc"
       },
       {
         "name": "customTaskIds",
         "schema": "boolean",
-        "description": "If you want to reference a task by it's custom task id, this value must be `true`."
+        "description": "If you want to reference a task by it's custom task id, this value must be `true`.",
+        "example": true
       },
       {
         "name": "teamId",
         "schema": "number",
-        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`."
+        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`.",
+        "example": 123
       }
     ],
     "responses": [
@@ -689,23 +737,27 @@ export default function ClickUpTypeScriptSdk() {
         "name": "taskId",
         "schema": "string",
         "required": true,
-        "description": "Enter the task ID of the task you want to update."
+        "description": "Enter the task ID of the task you want to update.",
+        "example": "9hv"
       },
       {
         "name": "fieldId",
         "schema": "string",
         "required": true,
-        "description": "Enter the universal unique identifier (UUID) of the Custom Field you want to set."
+        "description": "Enter the universal unique identifier (UUID) of the Custom Field you want to set.",
+        "example": "b955c4dc"
       },
       {
         "name": "customTaskIds",
         "schema": "boolean",
-        "description": "If you want to reference a task by its Custom Task ID, this value must be `true`."
+        "description": "If you want to reference a task by its Custom Task ID, this value must be `true`.",
+        "example": true
       },
       {
         "name": "teamId",
         "schema": "number",
-        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`."
+        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`.",
+        "example": 123
       }
     ],
     "responses": [
@@ -727,29 +779,34 @@ export default function ClickUpTypeScriptSdk() {
         "name": "taskId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "9hv"
       },
       {
         "name": "dependsOn",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "9hz"
       },
       {
         "name": "dependencyOf",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "9hz"
       },
       {
         "name": "customTaskIds",
         "schema": "boolean",
-        "description": "If you want to reference a task by it's custom task id, this value must be `true`."
+        "description": "If you want to reference a task by it's custom task id, this value must be `true`.",
+        "example": true
       },
       {
         "name": "teamId",
         "schema": "number",
-        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`."
+        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`.",
+        "example": 123
       }
     ],
     "responses": [
@@ -771,17 +828,20 @@ export default function ClickUpTypeScriptSdk() {
         "name": "taskId",
         "schema": "string",
         "required": true,
-        "description": "This is the task which is waiting on or blocking another task."
+        "description": "This is the task which is waiting on or blocking another task.",
+        "example": "9hv"
       },
       {
         "name": "customTaskIds",
         "schema": "boolean",
-        "description": "If you want to reference a task by it's custom task id, this value must be `true`."
+        "description": "If you want to reference a task by it's custom task id, this value must be `true`.",
+        "example": true
       },
       {
         "name": "teamId",
         "schema": "number",
-        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\n\nFor example: `custom_task_ids=true&team_id=123`."
+        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\n\nFor example: `custom_task_ids=true&team_id=123`.",
+        "example": 123
       },
       {
         "name": "depends_on",
@@ -813,23 +873,27 @@ export default function ClickUpTypeScriptSdk() {
         "name": "taskId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "9hv"
       },
       {
         "name": "linksTo",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "9hz"
       },
       {
         "name": "customTaskIds",
         "schema": "boolean",
-        "description": "If you want to reference a task by it's custom task id, this value must be `true`."
+        "description": "If you want to reference a task by it's custom task id, this value must be `true`.",
+        "example": true
       },
       {
         "name": "teamId",
         "schema": "number",
-        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`."
+        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`.",
+        "example": 123
       }
     ],
     "responses": [
@@ -851,23 +915,27 @@ export default function ClickUpTypeScriptSdk() {
         "name": "taskId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "9hv"
       },
       {
         "name": "linksTo",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "9hz"
       },
       {
         "name": "customTaskIds",
         "schema": "boolean",
-        "description": "If you want to reference a task by it's custom task id, this value must be `true`."
+        "description": "If you want to reference a task by it's custom task id, this value must be `true`.",
+        "example": true
       },
       {
         "name": "teamId",
         "schema": "number",
-        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`."
+        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`.",
+        "example": 123
       }
     ],
     "responses": [
@@ -889,12 +957,14 @@ export default function ClickUpTypeScriptSdk() {
         "name": "spaceId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 789
       },
       {
         "name": "archived",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       }
     ],
     "responses": [
@@ -916,13 +986,15 @@ export default function ClickUpTypeScriptSdk() {
         "name": "spaceId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 789
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -944,7 +1016,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "folderId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 457
       }
     ],
     "responses": [
@@ -966,7 +1039,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "folderId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 457
       }
     ],
     "responses": [
@@ -988,13 +1062,15 @@ export default function ClickUpTypeScriptSdk() {
         "name": "folderId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 457
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -1016,12 +1092,14 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": 123
       },
       {
         "name": "includeCompleted",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -1043,31 +1121,36 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": 123
       },
       {
         "name": "description",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "DESCRIPTION"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "due_date",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "multiple_owners",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "owners",
@@ -1079,7 +1162,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "color",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "COLOR"
       }
     ],
     "responses": [
@@ -1101,7 +1185,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "goalId",
         "schema": "string",
         "required": true,
-        "description": "900e-462d-a849-4a216b06d930 (uuid)"
+        "description": "900e-462d-a849-4a216b06d930 (uuid)",
+        "example": "e53a033c"
       }
     ],
     "responses": [
@@ -1123,7 +1208,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "goalId",
         "schema": "string",
         "required": true,
-        "description": "900e-462d-a849-4a216b06d930 (uuid)"
+        "description": "900e-462d-a849-4a216b06d930 (uuid)",
+        "example": "e53a033c"
       }
     ],
     "responses": [
@@ -1145,25 +1231,29 @@ export default function ClickUpTypeScriptSdk() {
         "name": "goalId",
         "schema": "string",
         "required": true,
-        "description": "900e-462d-a849-4a216b06d930 (uuid)"
+        "description": "900e-462d-a849-4a216b06d930 (uuid)",
+        "example": "e53a033c"
       },
       {
         "name": "description",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "DESCRIPTION"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "due_date",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "rem_owners",
@@ -1181,7 +1271,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "color",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "COLOR"
       }
     ],
     "responses": [
@@ -1203,13 +1294,15 @@ export default function ClickUpTypeScriptSdk() {
         "name": "goalId",
         "schema": "string",
         "required": true,
-        "description": "900e-462d-a849-4a216b06d930 (uuid)"
+        "description": "900e-462d-a849-4a216b06d930 (uuid)",
+        "example": "e53a033c"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "owners",
@@ -1221,25 +1314,29 @@ export default function ClickUpTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TYPE"
       },
       {
         "name": "steps_start",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "steps_end",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "unit",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "UNIT"
       },
       {
         "name": "task_ids",
@@ -1273,7 +1370,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "keyResultId",
         "schema": "string",
         "required": true,
-        "description": "8480-49bc-8c57-e569747efe93 (uuid)"
+        "description": "8480-49bc-8c57-e569747efe93 (uuid)",
+        "example": "947d46ed"
       }
     ],
     "responses": [
@@ -1295,19 +1393,22 @@ export default function ClickUpTypeScriptSdk() {
         "name": "keyResultId",
         "schema": "string",
         "required": true,
-        "description": "8480-49bc-8c57-e569747efe93 (uuid)"
+        "description": "8480-49bc-8c57-e569747efe93 (uuid)",
+        "example": "947d46ed"
       },
       {
         "name": "steps_current",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "note",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NOTE"
       }
     ],
     "responses": [
@@ -1329,43 +1430,50 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": 123
       },
       {
         "name": "email",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "EMAIL"
       },
       {
         "name": "can_edit_tags",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "can_see_time_spent",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "can_see_time_estimated",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "can_create_views",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "custom_role_id",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       }
     ],
     "responses": [
@@ -1387,13 +1495,15 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": 123
       },
       {
         "name": "guestId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 403
       }
     ],
     "responses": [
@@ -1415,13 +1525,15 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": 123
       },
       {
         "name": "guestId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 403
       }
     ],
     "responses": [
@@ -1443,49 +1555,57 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": 123
       },
       {
         "name": "guestId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 403
       },
       {
         "name": "username",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USERNAME"
       },
       {
         "name": "can_edit_tags",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "can_see_time_spent",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "can_see_time_estimated",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "can_create_views",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "custom_role_id",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       }
     ],
     "responses": [
@@ -1507,29 +1627,34 @@ export default function ClickUpTypeScriptSdk() {
         "name": "taskId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "c04"
       },
       {
         "name": "guestId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 403
       },
       {
         "name": "includeShared",
         "schema": "boolean",
         "required": false,
-        "description": "Exclude details of items shared with the guest by setting this parameter to `false`. By default this parameter is set to `true`."
+        "description": "Exclude details of items shared with the guest by setting this parameter to `false`. By default this parameter is set to `true`.",
+        "example": false
       },
       {
         "name": "customTaskIds",
         "schema": "boolean",
-        "description": "If you want to reference a task by it's custom task id, this value must be `true`."
+        "description": "If you want to reference a task by it's custom task id, this value must be `true`.",
+        "example": true
       },
       {
         "name": "teamId",
         "schema": "number",
-        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`."
+        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`.",
+        "example": 123
       }
     ],
     "responses": [
@@ -1551,35 +1676,41 @@ export default function ClickUpTypeScriptSdk() {
         "name": "taskId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "c04"
       },
       {
         "name": "guestId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 403
       },
       {
         "name": "includeShared",
         "schema": "boolean",
         "required": false,
-        "description": "Exclude details of items shared with the guest by setting this parameter to `false`. By default this parameter is set to `true`."
+        "description": "Exclude details of items shared with the guest by setting this parameter to `false`. By default this parameter is set to `true`.",
+        "example": false
       },
       {
         "name": "customTaskIds",
         "schema": "boolean",
-        "description": "If you want to reference a task by it's custom task id, this value must be `true`."
+        "description": "If you want to reference a task by it's custom task id, this value must be `true`.",
+        "example": true
       },
       {
         "name": "teamId",
         "schema": "number",
-        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`."
+        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`.",
+        "example": 123
       },
       {
         "name": "permission_level",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PERMISSION_LEVEL"
       }
     ],
     "responses": [
@@ -1601,19 +1732,22 @@ export default function ClickUpTypeScriptSdk() {
         "name": "listId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 1427
       },
       {
         "name": "guestId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 403
       },
       {
         "name": "includeShared",
         "schema": "boolean",
         "required": false,
-        "description": "Exclude details of items shared with the guest by setting this parameter to `false`. By default this parameter is set to `true`."
+        "description": "Exclude details of items shared with the guest by setting this parameter to `false`. By default this parameter is set to `true`.",
+        "example": false
       }
     ],
     "responses": [
@@ -1635,25 +1769,29 @@ export default function ClickUpTypeScriptSdk() {
         "name": "listId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 1427
       },
       {
         "name": "guestId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 403
       },
       {
         "name": "includeShared",
         "schema": "boolean",
         "required": false,
-        "description": "Exclude details of items shared with the guest by setting this parameter to `false`. By default this parameter is set to `true`."
+        "description": "Exclude details of items shared with the guest by setting this parameter to `false`. By default this parameter is set to `true`.",
+        "example": false
       },
       {
         "name": "permission_level",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PERMISSION_LEVEL"
       }
     ],
     "responses": [
@@ -1675,19 +1813,22 @@ export default function ClickUpTypeScriptSdk() {
         "name": "folderId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 1057
       },
       {
         "name": "guestId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 403
       },
       {
         "name": "includeShared",
         "schema": "boolean",
         "required": false,
-        "description": "Exclude details of items shared with the guest by setting this parameter to `false`. By default this parameter is set to `true`."
+        "description": "Exclude details of items shared with the guest by setting this parameter to `false`. By default this parameter is set to `true`.",
+        "example": false
       }
     ],
     "responses": [
@@ -1709,25 +1850,29 @@ export default function ClickUpTypeScriptSdk() {
         "name": "folderId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 1057
       },
       {
         "name": "guestId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 403
       },
       {
         "name": "includeShared",
         "schema": "boolean",
         "required": false,
-        "description": "Exclude details of items shared with the guest by setting this parameter to `false`. By default this parameter is set to `true`."
+        "description": "Exclude details of items shared with the guest by setting this parameter to `false`. By default this parameter is set to `true`.",
+        "example": false
       },
       {
         "name": "permission_level",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PERMISSION_LEVEL"
       }
     ],
     "responses": [
@@ -1749,12 +1894,14 @@ export default function ClickUpTypeScriptSdk() {
         "name": "folderId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 456
       },
       {
         "name": "archived",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       }
     ],
     "responses": [
@@ -1776,13 +1923,15 @@ export default function ClickUpTypeScriptSdk() {
         "name": "folderId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 456
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "content",
@@ -1840,12 +1989,14 @@ export default function ClickUpTypeScriptSdk() {
         "name": "spaceId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 789
       },
       {
         "name": "archived",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       }
     ],
     "responses": [
@@ -1867,13 +2018,15 @@ export default function ClickUpTypeScriptSdk() {
         "name": "spaceId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 789
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "content",
@@ -1931,7 +2084,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "listId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 124
       }
     ],
     "responses": [
@@ -1953,7 +2107,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "listId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 124
       }
     ],
     "responses": [
@@ -1975,55 +2130,64 @@ export default function ClickUpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "124"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "content",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CONTENT"
       },
       {
         "name": "due_date",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "due_date_time",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "priority",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "assignee",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ASSIGNEE"
       },
       {
         "name": "status",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "STATUS"
       },
       {
         "name": "unset_status",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -2045,13 +2209,15 @@ export default function ClickUpTypeScriptSdk() {
         "name": "listId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 123
       },
       {
         "name": "taskId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "9hz"
       }
     ],
     "responses": [
@@ -2073,13 +2239,15 @@ export default function ClickUpTypeScriptSdk() {
         "name": "listId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 123
       },
       {
         "name": "taskId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "9hz"
       }
     ],
     "responses": [
@@ -2101,7 +2269,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "taskId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "9hz"
       }
     ],
     "responses": [
@@ -2123,7 +2292,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "listId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 123
       }
     ],
     "responses": [
@@ -2145,12 +2315,14 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 123
       },
       {
         "name": "includeMembers",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -2172,7 +2344,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": 123
       }
     ],
     "responses": [
@@ -2194,12 +2367,14 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": 123
       },
       {
         "name": "archived",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       }
     ],
     "responses": [
@@ -2221,25 +2396,60 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": 123
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "multiple_assignees",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "features",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "tags": {
+            "enabled": true
+          },
+          "due_dates": {
+            "enabled": true,
+            "start_date": false,
+            "remap_due_dates": true,
+            "remap_closed_due_date": false
+          },
+          "time_tracking": {
+            "enabled": false
+          },
+          "time_estimates": {
+            "enabled": true
+          },
+          "checklists": {
+            "enabled": true
+          },
+          "custom_fields": {
+            "enabled": true
+          },
+          "remap_dependencies": {
+            "enabled": true
+          },
+          "dependency_warning": {
+            "enabled": true
+          },
+          "portfolios": {
+            "enabled": true
+          }
+        }
       }
     ],
     "responses": [
@@ -2261,7 +2471,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "spaceId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 790
       }
     ],
     "responses": [
@@ -2283,7 +2494,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "spaceId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 790
       }
     ],
     "responses": [
@@ -2305,43 +2517,81 @@ export default function ClickUpTypeScriptSdk() {
         "name": "spaceId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 790
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "color",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "COLOR"
       },
       {
         "name": "private",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "admin_can_manage",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "multiple_assignees",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "features",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "tags": {
+            "enabled": true
+          },
+          "due_dates": {
+            "enabled": true,
+            "start_date": false,
+            "remap_due_dates": true,
+            "remap_closed_due_date": false
+          },
+          "time_tracking": {
+            "enabled": false
+          },
+          "time_estimates": {
+            "enabled": true
+          },
+          "checklists": {
+            "enabled": true
+          },
+          "custom_fields": {
+            "enabled": true
+          },
+          "remap_dependencies": {
+            "enabled": true
+          },
+          "dependency_warning": {
+            "enabled": true
+          },
+          "portfolios": {
+            "enabled": true
+          }
+        }
       }
     ],
     "responses": [
@@ -2363,7 +2613,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "spaceId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 512
       }
     ],
     "responses": [
@@ -2385,13 +2636,19 @@ export default function ClickUpTypeScriptSdk() {
         "name": "spaceId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 512
       },
       {
         "name": "tag",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "name": "Tag Name",
+          "tag_fg": "#000000",
+          "tag_bg": "#000000"
+        }
       }
     ],
     "responses": [
@@ -2413,19 +2670,26 @@ export default function ClickUpTypeScriptSdk() {
         "name": "spaceId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 512
       },
       {
         "name": "tagName",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "name"
       },
       {
         "name": "tag",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "name": "Tag Name",
+          "tag_fg": "#000000",
+          "tag_bg": "#000000"
+        }
       }
     ],
     "responses": [
@@ -2447,19 +2711,26 @@ export default function ClickUpTypeScriptSdk() {
         "name": "spaceId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 512
       },
       {
         "name": "tagName",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "name"
       },
       {
         "name": "tag",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "name": "Updated Tag",
+          "fg_color": "#ffffff",
+          "bg_color": "#ffffff"
+        }
       }
     ],
     "responses": [
@@ -2481,23 +2752,27 @@ export default function ClickUpTypeScriptSdk() {
         "name": "taskId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "abc"
       },
       {
         "name": "tagName",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "name"
       },
       {
         "name": "customTaskIds",
         "schema": "boolean",
-        "description": "If you want to reference a task by it's custom task id, this value must be `true`."
+        "description": "If you want to reference a task by it's custom task id, this value must be `true`.",
+        "example": true
       },
       {
         "name": "teamId",
         "schema": "number",
-        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`."
+        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`.",
+        "example": 123
       }
     ],
     "responses": [
@@ -2519,23 +2794,27 @@ export default function ClickUpTypeScriptSdk() {
         "name": "taskId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "abc"
       },
       {
         "name": "tagName",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "name"
       },
       {
         "name": "customTaskIds",
         "schema": "boolean",
-        "description": "If you want to reference a task by it's custom task id, this value must be `true`."
+        "description": "If you want to reference a task by it's custom task id, this value must be `true`.",
+        "example": true
       },
       {
         "name": "teamId",
         "schema": "number",
-        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`."
+        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`.",
+        "example": 123
       }
     ],
     "responses": [
@@ -2557,17 +2836,20 @@ export default function ClickUpTypeScriptSdk() {
         "name": "listId",
         "schema": "number",
         "required": true,
-        "description": "To find the list_id:<br> 1. In the Sidebar, hover over the List and click the **ellipsis ...** menu.<br> 2. Select **Copy link.**<br> 3. Use the copied URL to find the list_id. The list_id is the number that follows /li in the URL."
+        "description": "To find the list_id:<br> 1. In the Sidebar, hover over the List and click the **ellipsis ...** menu.<br> 2. Select **Copy link.**<br> 3. Use the copied URL to find the list_id. The list_id is the number that follows /li in the URL.",
+        "example": 123
       },
       {
         "name": "archived",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "includeMarkdownDescription",
         "schema": "boolean",
-        "description": "To return task descriptions in Markdown format, use `?include_markdown_description=true`."
+        "description": "To return task descriptions in Markdown format, use `?include_markdown_description=true`.",
+        "example": true
       },
       {
         "name": "page",
@@ -2679,17 +2961,20 @@ export default function ClickUpTypeScriptSdk() {
         "name": "listId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 123
       },
       {
         "name": "customTaskIds",
         "schema": "boolean",
-        "description": "If you want to reference a task by it's custom task id, this value must be `true`."
+        "description": "If you want to reference a task by it's custom task id, this value must be `true`.",
+        "example": true
       },
       {
         "name": "teamId",
         "schema": "number",
-        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`."
+        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`.",
+        "example": 123
       },
       {
         "name": "tags",
@@ -2707,7 +2992,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "assignees",
@@ -2813,17 +3099,20 @@ export default function ClickUpTypeScriptSdk() {
         "name": "taskId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "9xh"
       },
       {
         "name": "customTaskIds",
         "schema": "boolean",
-        "description": "If you want to reference a task by it's custom task id, this value must be `true`."
+        "description": "If you want to reference a task by it's custom task id, this value must be `true`.",
+        "example": true
       },
       {
         "name": "teamId",
         "schema": "number",
-        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`."
+        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`.",
+        "example": 123
       }
     ],
     "responses": [
@@ -2845,17 +3134,20 @@ export default function ClickUpTypeScriptSdk() {
         "name": "taskId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "9hz"
       },
       {
         "name": "customTaskIds",
         "schema": "boolean",
-        "description": "If you want to reference a task by it's custom task id, this value must be `true`."
+        "description": "If you want to reference a task by it's custom task id, this value must be `true`.",
+        "example": true
       },
       {
         "name": "teamId",
         "schema": "number",
-        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`."
+        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`.",
+        "example": 123
       },
       {
         "name": "includeSubtasks",
@@ -2865,7 +3157,8 @@ export default function ClickUpTypeScriptSdk() {
       {
         "name": "includeMarkdownDescription",
         "schema": "boolean",
-        "description": "To return task descriptions in Markdown format, use `?include_markdown_description=true`."
+        "description": "To return task descriptions in Markdown format, use `?include_markdown_description=true`.",
+        "example": true
       }
     ],
     "responses": [
@@ -2887,17 +3180,20 @@ export default function ClickUpTypeScriptSdk() {
         "name": "taskId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "9hx"
       },
       {
         "name": "customTaskIds",
         "schema": "boolean",
-        "description": "If you want to reference a task by it's custom task id, this value must be `true`."
+        "description": "If you want to reference a task by it's custom task id, this value must be `true`.",
+        "example": true
       },
       {
         "name": "teamId",
         "schema": "number",
-        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`."
+        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`.",
+        "example": 123
       },
       {
         "name": "description",
@@ -2957,7 +3253,15 @@ export default function ClickUpTypeScriptSdk() {
       {
         "name": "assignees",
         "schema": "object",
-        "description": ""
+        "description": "",
+        "example": {
+          "add": [
+            182
+          ],
+          "rem": [
+            183
+          ]
+        }
       },
       {
         "name": "archived",
@@ -2984,7 +3288,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": 123
       },
       {
         "name": "page",
@@ -3089,12 +3394,14 @@ export default function ClickUpTypeScriptSdk() {
       {
         "name": "customTaskIds",
         "schema": "boolean",
-        "description": "If you want to reference a task by it's custom task id, this value must be `true`."
+        "description": "If you want to reference a task by it's custom task id, this value must be `true`.",
+        "example": true
       },
       {
         "name": "teamId",
         "schema": "number",
-        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`."
+        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`.",
+        "example": 123
       },
       {
         "name": "parent",
@@ -3104,7 +3411,8 @@ export default function ClickUpTypeScriptSdk() {
       {
         "name": "includeMarkdownDescription",
         "schema": "boolean",
-        "description": "To return task descriptions in Markdown format, use `?include_markdown_description=true`."
+        "description": "To return task descriptions in Markdown format, use `?include_markdown_description=true`.",
+        "example": true
       }
     ],
     "responses": [
@@ -3126,17 +3434,20 @@ export default function ClickUpTypeScriptSdk() {
         "name": "taskId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "9hz"
       },
       {
         "name": "customTaskIds",
         "schema": "boolean",
-        "description": "If you want to reference a task by it's custom task id, this value must be `true`."
+        "description": "If you want to reference a task by it's custom task id, this value must be `true`.",
+        "example": true
       },
       {
         "name": "teamId",
         "schema": "number",
-        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`."
+        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`.",
+        "example": 123
       }
     ],
     "responses": [
@@ -3158,17 +3469,20 @@ export default function ClickUpTypeScriptSdk() {
         "name": "taskIds",
         "schema": "string",
         "required": true,
-        "description": "Include this paramater once per `task_id`.\nYou can include up to 100 task ids per request.\nFor example: `task_ids=3cuh&task_ids=g4fs`"
+        "description": "Include this paramater once per `task_id`.\nYou can include up to 100 task ids per request.\nFor example: `task_ids=3cuh&task_ids=g4fs`",
+        "example": "TASK_IDS"
       },
       {
         "name": "customTaskIds",
         "schema": "boolean",
-        "description": "If you want to reference a task by it's custom task id, this value must be `true`."
+        "description": "If you want to reference a task by it's custom task id, this value must be `true`.",
+        "example": true
       },
       {
         "name": "teamId",
         "schema": "number",
-        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`."
+        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`.",
+        "example": 123
       }
     ],
     "responses": [
@@ -3190,13 +3504,15 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": 123
       },
       {
         "name": "page",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       }
     ],
     "responses": [
@@ -3218,19 +3534,22 @@ export default function ClickUpTypeScriptSdk() {
         "name": "listId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 512
       },
       {
         "name": "templateId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "9hz"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -3252,7 +3571,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "string",
         "required": true,
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": "TEAM_ID"
       }
     ],
     "responses": [
@@ -3274,7 +3594,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "string",
         "required": true,
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": "TEAM_ID"
       }
     ],
     "responses": [
@@ -3296,13 +3617,15 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": 123
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "members",
@@ -3330,7 +3653,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": 123
       }
     ],
     "responses": [
@@ -3352,7 +3676,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "groupId",
         "schema": "string",
         "required": true,
-        "description": "7C73-4002-A6A9-310014852858 (string) - Team ID (user group)"
+        "description": "7C73-4002-A6A9-310014852858 (string) - Team ID (user group)",
+        "example": "C9C58BE9"
       }
     ],
     "responses": [
@@ -3374,7 +3699,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "groupId",
         "schema": "string",
         "required": true,
-        "description": "7C73-4002-A6A9-310014852858 (string) - Team ID (user group)"
+        "description": "7C73-4002-A6A9-310014852858 (string) - Team ID (user group)",
+        "example": "C9C58BE9"
       },
       {
         "name": "name",
@@ -3389,7 +3715,16 @@ export default function ClickUpTypeScriptSdk() {
       {
         "name": "members",
         "schema": "object",
-        "description": ""
+        "description": "",
+        "example": {
+          "add": [
+            123456,
+            987654
+          ],
+          "rem": [
+            159753
+          ]
+        }
       }
     ],
     "responses": [
@@ -3410,12 +3745,14 @@ export default function ClickUpTypeScriptSdk() {
       {
         "name": "teamId",
         "schema": "number",
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": 123
       },
       {
         "name": "groupIds",
         "schema": "string",
-        "description": "Enter one or more Team ids (user groups) to retrieve information about specific Teams."
+        "description": "Enter one or more Team ids (user groups) to retrieve information about specific Teams.",
+        "example": "C9C58BE9-7C73-4002-A6A9-310014852858"
       }
     ],
     "responses": [
@@ -3437,17 +3774,20 @@ export default function ClickUpTypeScriptSdk() {
         "name": "taskId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "9hv"
       },
       {
         "name": "customTaskIds",
         "schema": "boolean",
-        "description": "If you want to reference a task by it's custom task id, this value must be `true`."
+        "description": "If you want to reference a task by it's custom task id, this value must be `true`.",
+        "example": true
       },
       {
         "name": "teamId",
         "schema": "number",
-        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`."
+        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`.",
+        "example": 123
       }
     ],
     "responses": [
@@ -3469,35 +3809,41 @@ export default function ClickUpTypeScriptSdk() {
         "name": "taskId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "9hv"
       },
       {
         "name": "customTaskIds",
         "schema": "boolean",
-        "description": "If you want to reference a task by it's custom task id, this value must be `true`."
+        "description": "If you want to reference a task by it's custom task id, this value must be `true`.",
+        "example": true
       },
       {
         "name": "teamId",
         "schema": "number",
-        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`."
+        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`.",
+        "example": 123
       },
       {
         "name": "start",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "end",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "time",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       }
     ],
     "responses": [
@@ -3519,23 +3865,27 @@ export default function ClickUpTypeScriptSdk() {
         "name": "taskId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "9hv"
       },
       {
         "name": "intervalId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "123"
       },
       {
         "name": "customTaskIds",
         "schema": "boolean",
-        "description": "If you want to reference a task by it's custom task id, this value must be `true`."
+        "description": "If you want to reference a task by it's custom task id, this value must be `true`.",
+        "example": true
       },
       {
         "name": "teamId",
         "schema": "number",
-        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`."
+        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`.",
+        "example": 123
       }
     ],
     "responses": [
@@ -3557,41 +3907,48 @@ export default function ClickUpTypeScriptSdk() {
         "name": "taskId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "9hv"
       },
       {
         "name": "intervalId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "123"
       },
       {
         "name": "customTaskIds",
         "schema": "boolean",
-        "description": "If you want to reference a task by it's custom task id, this value must be `true`."
+        "description": "If you want to reference a task by it's custom task id, this value must be `true`.",
+        "example": true
       },
       {
         "name": "teamId",
         "schema": "number",
-        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`."
+        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`.",
+        "example": 123
       },
       {
         "name": "start",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "end",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "time",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       }
     ],
     "responses": [
@@ -3613,7 +3970,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": 123
       },
       {
         "name": "startDate",
@@ -3663,12 +4021,14 @@ export default function ClickUpTypeScriptSdk() {
       {
         "name": "customTaskIds",
         "schema": "boolean",
-        "description": "If you want to reference a task by it's custom task id, this value must be `true`."
+        "description": "If you want to reference a task by it's custom task id, this value must be `true`.",
+        "example": true
       },
       {
         "name": "teamId",
         "schema": "number",
-        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`."
+        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`.",
+        "example": 123
       }
     ],
     "responses": [
@@ -3690,17 +4050,20 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": 123
       },
       {
         "name": "customTaskIds",
         "schema": "boolean",
-        "description": "If you want to reference a task by it's custom task id, this value must be `true`."
+        "description": "If you want to reference a task by it's custom task id, this value must be `true`.",
+        "example": true
       },
       {
         "name": "teamId",
         "schema": "number",
-        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`."
+        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`.",
+        "example": 123
       },
       {
         "name": "tags",
@@ -3718,7 +4081,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "start",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "stop",
@@ -3742,7 +4106,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "duration",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "assignee",
@@ -3776,13 +4141,15 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": 123
       },
       {
         "name": "timerId",
         "schema": "number",
         "required": true,
-        "description": "Array of timer ids to delete separated by commas"
+        "description": "Array of timer ids to delete separated by commas",
+        "example": 0
       }
     ],
     "responses": [
@@ -3804,13 +4171,15 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": 123
       },
       {
         "name": "timerId",
         "schema": "string",
         "required": true,
-        "description": "The ID of a time entry. \\\n \\\nThis can be found using the [Get Time Entries Within a Date Range](https://clickup.com/api) endpoint."
+        "description": "The ID of a time entry. \\\n \\\nThis can be found using the [Get Time Entries Within a Date Range](https://clickup.com/api) endpoint.",
+        "example": "1963465985517105840"
       },
       {
         "name": "includeTask",
@@ -3842,23 +4211,27 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": 123
       },
       {
         "name": "timerId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 2004673344540003600
       },
       {
         "name": "customTaskIds",
         "schema": "boolean",
-        "description": "If you want to reference a task by it's custom task id, this value must be `true`."
+        "description": "If you want to reference a task by it's custom task id, this value must be `true`.",
+        "example": true
       },
       {
         "name": "teamId",
         "schema": "number",
-        "description": "Only used when the parameter is set to `custom_task_ids=true`\\\n \\\nFor example: `custom_task_ids=true&team_id=123`"
+        "description": "Only used when the parameter is set to `custom_task_ids=true`\\\n \\\nFor example: `custom_task_ids=true&team_id=123`",
+        "example": 123
       },
       {
         "name": "tags",
@@ -3928,13 +4301,15 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": 123
       },
       {
         "name": "timerId",
         "schema": "string",
         "required": true,
-        "description": "The ID of a time entry. \\\n \\\nThis can be found using the [Get Time Entries Within a Date Range](https://clickup.com/api/clickupreference/operation/Gettimeentrieswithinadaterange/) endpoint."
+        "description": "The ID of a time entry. \\\n \\\nThis can be found using the [Get Time Entries Within a Date Range](https://clickup.com/api/clickupreference/operation/Gettimeentrieswithinadaterange/) endpoint.",
+        "example": "1963465985517105840"
       }
     ],
     "responses": [
@@ -3956,7 +4331,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": 123
       },
       {
         "name": "assignee",
@@ -3983,7 +4359,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": 123
       },
       {
         "name": "tags",
@@ -4017,7 +4394,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": 123
       }
     ],
     "responses": [
@@ -4039,7 +4417,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": 123
       },
       {
         "name": "tags",
@@ -4073,31 +4452,36 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": 123
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "new_name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NEW_NAME"
       },
       {
         "name": "tag_bg",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TAG_BG"
       },
       {
         "name": "tag_fg",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TAG_FG"
       }
     ],
     "responses": [
@@ -4119,17 +4503,20 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": 123
       },
       {
         "name": "customTaskIds",
         "schema": "boolean",
-        "description": "If you want to reference a task by it's custom task id, this value must be `true`."
+        "description": "If you want to reference a task by it's custom task id, this value must be `true`.",
+        "example": true
       },
       {
         "name": "teamId",
         "schema": "number",
-        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`."
+        "description": "Only used when the `custom_task_ids` parameter is set to `true`.\\\n \\\nFor example: `custom_task_ids=true&team_id=123`.",
+        "example": 123
       },
       {
         "name": "tags",
@@ -4171,7 +4558,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": 123
       }
     ],
     "responses": [
@@ -4193,19 +4581,22 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": 123
       },
       {
         "name": "email",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "EMAIL"
       },
       {
         "name": "admin",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "custom_role_id",
@@ -4233,13 +4624,15 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": 123
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 403
       }
     ],
     "responses": [
@@ -4261,13 +4654,15 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": 123
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 403
       }
     ],
     "responses": [
@@ -4289,31 +4684,36 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": 123
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 403
       },
       {
         "name": "username",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USERNAME"
       },
       {
         "name": "admin",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "custom_role_id",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       }
     ],
     "responses": [
@@ -4335,7 +4735,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": 123
       }
     ],
     "responses": [
@@ -4357,61 +4758,110 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": 123
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TYPE"
       },
       {
         "name": "grouping",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "field": "status",
+          "dir": 1,
+          "collapsed": [],
+          "ignore": false
+        }
       },
       {
         "name": "divide",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "field": null,
+          "dir": null,
+          "collapsed": []
+        }
       },
       {
         "name": "sorting",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "fields": [
+            {
+              "field": "cf_624a423a-c1d1-4467-99e2-63e225658cb2",
+              "dir": -1,
+              "idx": 0
+            }
+          ]
+        }
       },
       {
         "name": "filters",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "op": "AND",
+          "fields": [],
+          "search": "",
+          "show_closed": false
+        }
       },
       {
         "name": "columns",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "fields": []
+        }
       },
       {
         "name": "team_sidebar",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "assignees": [],
+          "assigned_comments": false,
+          "unassigned_tasks": false
+        }
       },
       {
         "name": "settings",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "show_task_locations": false,
+          "show_subtasks": 3,
+          "show_subtask_parent_names": false,
+          "show_closed_subtasks": false,
+          "show_assignees": true,
+          "show_images": true,
+          "collapse_empty_columns": null,
+          "me_comments": true,
+          "me_subtasks": true,
+          "me_checklists": true
+        }
       }
     ],
     "responses": [
@@ -4433,7 +4883,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "spaceId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 790
       }
     ],
     "responses": [
@@ -4455,61 +4906,110 @@ export default function ClickUpTypeScriptSdk() {
         "name": "spaceId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 790
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TYPE"
       },
       {
         "name": "grouping",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "field": "status",
+          "dir": 1,
+          "collapsed": [],
+          "ignore": false
+        }
       },
       {
         "name": "divide",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "field": null,
+          "dir": null,
+          "collapsed": []
+        }
       },
       {
         "name": "sorting",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "fields": [
+            {
+              "field": "cf_624a423a-c1d1-4467-99e2-63e225658cb2",
+              "dir": -1,
+              "idx": 0
+            }
+          ]
+        }
       },
       {
         "name": "filters",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "op": "AND",
+          "fields": [],
+          "search": "",
+          "show_closed": false
+        }
       },
       {
         "name": "columns",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "fields": []
+        }
       },
       {
         "name": "team_sidebar",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "assignees": [],
+          "assigned_comments": false,
+          "unassigned_tasks": false
+        }
       },
       {
         "name": "settings",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "show_task_locations": false,
+          "show_subtasks": 3,
+          "show_subtask_parent_names": false,
+          "show_closed_subtasks": false,
+          "show_assignees": true,
+          "show_images": true,
+          "collapse_empty_columns": null,
+          "me_comments": true,
+          "me_subtasks": true,
+          "me_checklists": true
+        }
       }
     ],
     "responses": [
@@ -4531,7 +5031,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "folderId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 457
       }
     ],
     "responses": [
@@ -4553,61 +5054,110 @@ export default function ClickUpTypeScriptSdk() {
         "name": "folderId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 457
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TYPE"
       },
       {
         "name": "grouping",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "field": "status",
+          "dir": 1,
+          "collapsed": [],
+          "ignore": false
+        }
       },
       {
         "name": "divide",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "field": null,
+          "dir": null,
+          "collapsed": []
+        }
       },
       {
         "name": "sorting",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "fields": [
+            {
+              "field": "cf_624a423a-c1d1-4467-99e2-63e225658cb2",
+              "dir": -1,
+              "idx": 0
+            }
+          ]
+        }
       },
       {
         "name": "filters",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "op": "AND",
+          "fields": [],
+          "search": "",
+          "show_closed": false
+        }
       },
       {
         "name": "columns",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "fields": []
+        }
       },
       {
         "name": "team_sidebar",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "assignees": [],
+          "assigned_comments": false,
+          "unassigned_tasks": false
+        }
       },
       {
         "name": "settings",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "show_task_locations": false,
+          "show_subtasks": 3,
+          "show_subtask_parent_names": false,
+          "show_closed_subtasks": false,
+          "show_assignees": true,
+          "show_images": true,
+          "collapse_empty_columns": null,
+          "me_comments": true,
+          "me_subtasks": true,
+          "me_checklists": true
+        }
       }
     ],
     "responses": [
@@ -4629,7 +5179,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "listId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 124
       }
     ],
     "responses": [
@@ -4651,61 +5202,110 @@ export default function ClickUpTypeScriptSdk() {
         "name": "listId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 124
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TYPE"
       },
       {
         "name": "grouping",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "field": "status",
+          "dir": 1,
+          "collapsed": [],
+          "ignore": false
+        }
       },
       {
         "name": "divide",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "field": null,
+          "dir": null,
+          "collapsed": []
+        }
       },
       {
         "name": "sorting",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "fields": [
+            {
+              "field": "cf_624a423a-c1d1-4467-99e2-63e225658cb2",
+              "dir": -1,
+              "idx": 0
+            }
+          ]
+        }
       },
       {
         "name": "filters",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "op": "AND",
+          "fields": [],
+          "search": "",
+          "show_closed": false
+        }
       },
       {
         "name": "columns",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "fields": []
+        }
       },
       {
         "name": "team_sidebar",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "assignees": [],
+          "assigned_comments": false,
+          "unassigned_tasks": false
+        }
       },
       {
         "name": "settings",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "show_task_locations": false,
+          "show_subtasks": 3,
+          "show_subtask_parent_names": false,
+          "show_closed_subtasks": false,
+          "show_assignees": true,
+          "show_images": true,
+          "collapse_empty_columns": null,
+          "me_comments": true,
+          "me_subtasks": true,
+          "me_checklists": true
+        }
       }
     ],
     "responses": [
@@ -4727,7 +5327,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "viewId",
         "schema": "string",
         "required": true,
-        "description": "105 (string)"
+        "description": "105 (string)",
+        "example": "3c"
       }
     ],
     "responses": [
@@ -4749,7 +5350,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "viewId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "3c-105"
       }
     ],
     "responses": [
@@ -4771,67 +5373,120 @@ export default function ClickUpTypeScriptSdk() {
         "name": "viewId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "3c"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TYPE"
       },
       {
         "name": "parent",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "id": "512X",
+          "type": 7
+        }
       },
       {
         "name": "grouping",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "field": "status",
+          "dir": 1,
+          "collapsed": [],
+          "ignore": false
+        }
       },
       {
         "name": "divide",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "field": null,
+          "dir": null,
+          "collapsed": []
+        }
       },
       {
         "name": "sorting",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "fields": [
+            {
+              "field": "cf_624a423a-c1d1-4467-99e2-63e225658cb2",
+              "dir": -1,
+              "idx": 0
+            }
+          ]
+        }
       },
       {
         "name": "filters",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "op": "AND",
+          "fields": [],
+          "search": "",
+          "show_closed": false
+        }
       },
       {
         "name": "columns",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "fields": []
+        }
       },
       {
         "name": "team_sidebar",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "assignees": [],
+          "assigned_comments": false,
+          "unassigned_tasks": false
+        }
       },
       {
         "name": "settings",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "show_task_locations": false,
+          "show_subtasks": 3,
+          "show_subtask_parent_names": false,
+          "show_closed_subtasks": false,
+          "show_assignees": true,
+          "show_images": true,
+          "collapse_empty_columns": null,
+          "me_comments": true,
+          "me_subtasks": true,
+          "me_checklists": true
+        }
       }
     ],
     "responses": [
@@ -4853,13 +5508,15 @@ export default function ClickUpTypeScriptSdk() {
         "name": "viewId",
         "schema": "string",
         "required": true,
-        "description": "105 (string)"
+        "description": "105 (string)",
+        "example": "3c"
       },
       {
         "name": "page",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       }
     ],
     "responses": [
@@ -4881,7 +5538,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": 123
       }
     ],
     "responses": [
@@ -4903,13 +5561,15 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)"
+        "description": "Team ID (Workspace)",
+        "example": 123
       },
       {
         "name": "endpoint",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ENDPOINT"
       },
       {
         "name": "events",
@@ -4961,7 +5621,8 @@ export default function ClickUpTypeScriptSdk() {
         "name": "webhookId",
         "schema": "string",
         "required": true,
-        "description": "e506-4a29-9d42-26e504e3435e (uuid)"
+        "description": "e506-4a29-9d42-26e504e3435e (uuid)",
+        "example": "4b67ac88"
       }
     ],
     "responses": [
@@ -4983,25 +5644,29 @@ export default function ClickUpTypeScriptSdk() {
         "name": "webhookId",
         "schema": "string",
         "required": true,
-        "description": "e506-4a29-9d42-26e504e3435e (uuid)"
+        "description": "e506-4a29-9d42-26e504e3435e (uuid)",
+        "example": "4b67ac88"
       },
       {
         "name": "endpoint",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ENDPOINT"
       },
       {
         "name": "events",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "EVENTS"
       },
       {
         "name": "status",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "STATUS"
       }
     ],
     "responses": [

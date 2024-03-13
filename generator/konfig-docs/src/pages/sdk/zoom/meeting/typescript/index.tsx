@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function ZoomMeetingTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function ZoomMeetingTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zoom/meeting/logo.png"
       clientNameCamelCase="zoomMeeting"
       homepage="zoom.us/"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zoom/meeting/favicon.png"
       contactUrl="https://developer.zoom.us/"
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zoom/meeting/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["productivity","collaboration","video","conferencing","webinar","communications"]}
       methods={[
   {
     "url": "/archive_files",
@@ -36,37 +39,45 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned within a single API call."
+        "description": "The number of records returned within a single API call.",
+        "example": 30,
+        "default": 30
       },
       {
         "name": "nextPageToken",
         "schema": "string",
         "required": false,
-        "description": "Use the next page token to paginate through large result sets. A next page token is returned whenever the set of available results exceeds the current page size. This token's expiration period is 15 minutes."
+        "description": "Use the next page token to paginate through large result sets. A next page token is returned whenever the set of available results exceeds the current page size. This token's expiration period is 15 minutes.",
+        "example": "IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2"
       },
       {
         "name": "from",
         "schema": "string",
         "required": false,
-        "description": "The query start date, in `yyyy-MM-dd'T'HH:mm:ssZ` format. This value and the `to` query parameter value cannot exceed seven days."
+        "description": "The query start date, in `yyyy-MM-dd'T'HH:mm:ssZ` format. This value and the `to` query parameter value cannot exceed seven days.",
+        "example": "2021-03-11T05:41:36Z"
       },
       {
         "name": "to",
         "schema": "string",
         "required": false,
-        "description": "The query end date, in `yyyy-MM-dd'T'HH:mm:ssZ` format. This value and the `from` query parameter value cannot exceed seven days."
+        "description": "The query end date, in `yyyy-MM-dd'T'HH:mm:ssZ` format. This value and the `from` query parameter value cannot exceed seven days.",
+        "example": "2021-03-18T05:41:36Z"
       },
       {
         "name": "queryDateType",
         "schema": "string",
         "required": false,
-        "description": "The type of query date.\n* `meeting_start_time` \n* `archive_complete_time` \n\n This value defaults to `meeting_start_time`."
+        "description": "The type of query date.\n* `meeting_start_time` \n* `archive_complete_time` \n\n This value defaults to `meeting_start_time`.",
+        "example": "meeting_start_time",
+        "default": "meeting_start_time"
       },
       {
         "name": "groupId",
         "schema": "string",
         "required": false,
-        "description": "The group ID. To get a group ID, use the [List groups](https://developers.zoom.us/docs/api/rest/reference/zoom-api/methods/#operation/groups) API."
+        "description": "The group ID. To get a group ID, use the [List groups](https://developers.zoom.us/docs/api/rest/reference/zoom-api/methods/#operation/groups) API.",
+        "example": "pvFIYKSDTum9iCDOOtQL4w"
       }
     ],
     "responses": [
@@ -92,13 +103,15 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "from",
         "schema": "string",
         "required": false,
-        "description": "The query start date, `yyyy-MM-dd'T'HH:mm:ssZ` format. This value and the `to` query parameter value cannot exceed seven days."
+        "description": "The query start date, `yyyy-MM-dd'T'HH:mm:ssZ` format. This value and the `to` query parameter value cannot exceed seven days.",
+        "example": "2021-03-11T05:41:36Z"
       },
       {
         "name": "to",
         "schema": "string",
         "required": false,
-        "description": "The query end date, in `yyyy-MM-dd'T'HH:mm:ssZ` format. This value and the `from` query parameter value cannot exceed seven days."
+        "description": "The query end date, in `yyyy-MM-dd'T'HH:mm:ssZ` format. This value and the `from` query parameter value cannot exceed seven days.",
+        "example": "2021-03-18T05:41:36Z"
       }
     ],
     "responses": [
@@ -130,7 +143,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "auto_delete",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -160,7 +174,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingUuid",
         "schema": "string",
         "required": true,
-        "description": "The meeting's universally unique identifier (UUID). Each meeting instance generates a UUID. For example, after a meeting ends, a new UUID is generated for the next meeting instance.\n\nIf the meeting UUID begins with a `/` character or contains a `//` character, you **must** [double encode](https://marketplace.zoom.us/docs/api-reference/using-zoom-apis/#meeting-id-and-uuid) the meeting UUID when using the meeting UUID for other API calls."
+        "description": "The meeting's universally unique identifier (UUID). Each meeting instance generates a UUID. For example, after a meeting ends, a new UUID is generated for the next meeting instance.\n\nIf the meeting UUID begins with a `/` character or contains a `//` character, you **must** [double encode](https://marketplace.zoom.us/docs/api-reference/using-zoom-apis/#meeting-id-and-uuid) the meeting UUID when using the meeting UUID for other API calls.",
+        "example": "4444AAAiAAAAAiAiAiiAii=="
       }
     ],
     "responses": [
@@ -190,7 +205,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingUuid",
         "schema": "string",
         "required": true,
-        "description": "The meeting's universally unique identifier (UUID). Each meeting instance generates a UUID. After a meeting ends, a new UUID is generated for the next meeting instance.\n\nIf the meeting UUID begins with a `/` character or contains a `//` character, you **must** [double encode](https://developers.zoom.us/docs/api/rest/using-zoom-apis/#meeting-id-and-uuid) the meeting UUID when using the meeting UUID for other API calls."
+        "description": "The meeting's universally unique identifier (UUID). Each meeting instance generates a UUID. After a meeting ends, a new UUID is generated for the next meeting instance.\n\nIf the meeting UUID begins with a `/` character or contains a `//` character, you **must** [double encode](https://developers.zoom.us/docs/api/rest/using-zoom-apis/#meeting-id-and-uuid) the meeting UUID when using the meeting UUID for other API calls.",
+        "example": "4444AAAiAAAAAiAiAiiAii=="
       }
     ],
     "responses": [
@@ -216,13 +232,16 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "string",
         "required": true,
-        "description": "To get Cloud Recordings of a meeting, provide the meeting ID or meeting UUID. If the meeting ID is provided instead of UUID,the response will be for the latest meeting instance. \n\nTo get Cloud Recordings of a webinar, provide the webinar ID or the webinar UUID. If the webinar ID is provided instead of UUID,the response will be for the latest webinar instance. \n\nIf a UUID starts with &quot;/&quot; or contains &quot;//&quot; (example: &quot;/ajXp112QmuoKj4854875==&quot;), you must **[double encode](https://marketplace.zoom.us/docs/api-reference/using-zoom-apis/#meeting-id-and-uuid)** the UUID before making an API request. "
+        "description": "To get Cloud Recordings of a meeting, provide the meeting ID or meeting UUID. If the meeting ID is provided instead of UUID,the response will be for the latest meeting instance. \n\nTo get Cloud Recordings of a webinar, provide the webinar ID or the webinar UUID. If the webinar ID is provided instead of UUID,the response will be for the latest webinar instance. \n\nIf a UUID starts with &quot;/&quot; or contains &quot;//&quot; (example: &quot;/ajXp112QmuoKj4854875==&quot;), you must **[double encode](https://marketplace.zoom.us/docs/api-reference/using-zoom-apis/#meeting-id-and-uuid)** the UUID before making an API request. ",
+        "example": "atsXxhSEQWit9t+U02HXNQ=="
       },
       {
         "name": "action",
         "schema": "string",
         "required": false,
-        "description": "The recording delete actions:  \n `trash` - Move recording to trash.  \n `delete` - Delete recording permanently."
+        "description": "The recording delete actions:  \n `trash` - Move recording to trash.  \n `delete` - Delete recording permanently.",
+        "example": "trash",
+        "default": "trash"
       }
     ],
     "responses": [
@@ -256,19 +275,22 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "string",
         "required": true,
-        "description": "To get a meeting's cloud recordings, provide the meeting ID or UUID. If providing the meeting ID instead of UUID, the response will be for the latest meeting instance. \n\nTo get a webinar's cloud recordings, provide the webinar's ID or UUID. If providing the webinar ID instead of UUID, the response will be for the latest webinar instance. \n\nIf a UUID starts with `/` or contains `//` (example: `/ajXp112QmuoKj4854875==`), **[double encode](https://developers.zoom.us) the UUID** before making an API request. "
+        "description": "To get a meeting's cloud recordings, provide the meeting ID or UUID. If providing the meeting ID instead of UUID, the response will be for the latest meeting instance. \n\nTo get a webinar's cloud recordings, provide the webinar's ID or UUID. If providing the webinar ID instead of UUID, the response will be for the latest webinar instance. \n\nIf a UUID starts with `/` or contains `//` (example: `/ajXp112QmuoKj4854875==`), **[double encode](https://developers.zoom.us) the UUID** before making an API request. ",
+        "example": "atsXxhSEQWit9t+U02HXNQ=="
       },
       {
         "name": "includeFields",
         "schema": "string",
         "required": false,
-        "description": "The `download_access_token` value for downloading the meeting's recordings."
+        "description": "The `download_access_token` value for downloading the meeting's recordings.",
+        "example": "a2f19f96-9294-4f51-8134-6f0eea108eb2"
       },
       {
         "name": "ttl",
         "schema": "integer",
         "required": false,
-        "description": "The `download_access_token` Time to Live (TTL) value. This parameter is only valid if the `include_fields` query parameter contains the `download_access_token` value."
+        "description": "The `download_access_token` Time to Live (TTL) value. This parameter is only valid if the `include_fields` query parameter contains the `download_access_token` value.",
+        "example": 1
       }
     ],
     "responses": [
@@ -298,37 +320,44 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "string",
         "required": true,
-        "description": "To get Cloud Recordings of a meeting, provide the meeting ID or meeting UUID. If the meeting ID is provided instead of UUID,the response will be for the latest meeting instance. \n\nTo get Cloud Recordings of a webinar, provide the webinar ID or the webinar UUID. If the webinar ID is provided instead of UUID,the response will be for the latest webinar instance. \n\nIf a UUID starts with &quot;/&quot; or contains &quot;//&quot; (example: &quot;/ajXp112QmuoKj4854875==&quot;), you must **[double encode](https://marketplace.zoom.us/docs/api-reference/using-zoom-apis/#meeting-id-and-uuid)** the UUID before making an API request. "
+        "description": "To get Cloud Recordings of a meeting, provide the meeting ID or meeting UUID. If the meeting ID is provided instead of UUID,the response will be for the latest meeting instance. \n\nTo get Cloud Recordings of a webinar, provide the webinar ID or the webinar UUID. If the webinar ID is provided instead of UUID,the response will be for the latest webinar instance. \n\nIf a UUID starts with &quot;/&quot; or contains &quot;//&quot; (example: &quot;/ajXp112QmuoKj4854875==&quot;), you must **[double encode](https://marketplace.zoom.us/docs/api-reference/using-zoom-apis/#meeting-id-and-uuid)** the UUID before making an API request. ",
+        "example": "atsXxhSEQWit9t+U02HXNQ=="
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned within a single API call."
+        "description": "The number of records returned within a single API call.",
+        "example": 30,
+        "default": 30
       },
       {
         "name": "nextPageToken",
         "schema": "string",
         "required": false,
-        "description": "Use the next page token to paginate through large result sets. A next page token is returned whenever the set of available results exceeds the current page size. This token's expiration period is 15 minutes."
+        "description": "Use the next page token to paginate through large result sets. A next page token is returned whenever the set of available results exceeds the current page size. This token's expiration period is 15 minutes.",
+        "example": "IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2"
       },
       {
         "name": "from",
         "schema": "string",
         "required": false,
-        "description": "The start date for the monthly range to query. The maximum range can be a month. If you do not provide this value, this defaults to the current date."
+        "description": "The start date for the monthly range to query. The maximum range can be a month. If you do not provide this value, this defaults to the current date.",
+        "example": "2020-06-30"
       },
       {
         "name": "to",
         "schema": "string",
         "required": false,
-        "description": "The end date for the monthly range to query. The maximum range can be a month."
+        "description": "The end date for the monthly range to query. The maximum range can be a month.",
+        "example": "2020-07-30"
       },
       {
         "name": "type",
         "schema": "string",
         "required": false,
-        "description": "The type of analytics details: \n* `by_view` &mdash; by_view. \n* `by_download` &mdash; by_download."
+        "description": "The type of analytics details: \n* `by_view` &mdash; by_view. \n* `by_download` &mdash; by_download.",
+        "example": "by_view"
       }
     ],
     "responses": [
@@ -358,19 +387,22 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "string",
         "required": true,
-        "description": "To get Cloud Recordings of a meeting, provide the meeting ID or meeting UUID. If the meeting ID is provided instead of UUID,the response will be for the latest meeting instance. \n\nTo get Cloud Recordings of a webinar, provide the webinar ID or the webinar UUID. If the webinar ID is provided instead of UUID,the response will be for the latest webinar instance. \n\nIf a UUID starts with &quot;/&quot; or contains &quot;//&quot; (example: &quot;/ajXp112QmuoKj4854875==&quot;), you must **[double encode](https://marketplace.zoom.us/docs/api-reference/using-zoom-apis/#meeting-id-and-uuid)** the UUID before making an API request. "
+        "description": "To get Cloud Recordings of a meeting, provide the meeting ID or meeting UUID. If the meeting ID is provided instead of UUID,the response will be for the latest meeting instance. \n\nTo get Cloud Recordings of a webinar, provide the webinar ID or the webinar UUID. If the webinar ID is provided instead of UUID,the response will be for the latest webinar instance. \n\nIf a UUID starts with &quot;/&quot; or contains &quot;//&quot; (example: &quot;/ajXp112QmuoKj4854875==&quot;), you must **[double encode](https://marketplace.zoom.us/docs/api-reference/using-zoom-apis/#meeting-id-and-uuid)** the UUID before making an API request. ",
+        "example": "atsXxhSEQWit9t+U02HXNQ=="
       },
       {
         "name": "from",
         "schema": "string",
         "required": false,
-        "description": "The start date for the monthly range to query. The maximum range can be a month. If you do not provide this value, this defaults to the current date."
+        "description": "The start date for the monthly range to query. The maximum range can be a month. If you do not provide this value, this defaults to the current date.",
+        "example": "2020-06-30"
       },
       {
         "name": "to",
         "schema": "string",
         "required": false,
-        "description": "The end date for the monthly range to query. The maximum range can be a month."
+        "description": "The end date for the monthly range to query. The maximum range can be a month.",
+        "example": "2020-07-30"
       }
     ],
     "responses": [
@@ -400,31 +432,39 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "integer",
         "required": true,
-        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits."
+        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits.",
+        "example": 85746065
       },
       {
         "name": "status",
         "schema": "string",
         "required": false,
-        "description": "Query by the registrant's status: \n* `pending` &mdash; The registration is pending. \n* `approved` &mdash; The registrant is approved. \n* `denied` &mdash; The registration is denied."
+        "description": "Query by the registrant's status: \n* `pending` &mdash; The registration is pending. \n* `approved` &mdash; The registrant is approved. \n* `denied` &mdash; The registration is denied.",
+        "example": "pending",
+        "default": "approved"
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned within a single API call."
+        "description": "The number of records returned within a single API call.",
+        "example": 30,
+        "default": 30
       },
       {
         "name": "pageNumber",
         "schema": "integer",
         "required": false,
-        "description": "**Deprecated.** We will no longer support this field in a future release. Instead, use the `next_page_token` for pagination."
+        "description": "**Deprecated.** We will no longer support this field in a future release. Instead, use the `next_page_token` for pagination.",
+        "example": 1,
+        "default": 1
       },
       {
         "name": "nextPageToken",
         "schema": "string",
         "required": false,
-        "description": "Use the next page token to paginate through large result sets. A next page token is returned whenever the set of available results exceeds the current page size. This token's expiration period is 15 minutes."
+        "description": "Use the next page token to paginate through large result sets. A next page token is returned whenever the set of available results exceeds the current page size. This token's expiration period is 15 minutes.",
+        "example": "IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2"
       }
     ],
     "responses": [
@@ -450,31 +490,36 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "integer",
         "required": true,
-        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits."
+        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits.",
+        "example": 85746065
       },
       {
         "name": "address",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "1800 Amphibious Blvd."
       },
       {
         "name": "city",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Mountain View"
       },
       {
         "name": "comments",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Looking forward to the discussion."
       },
       {
         "name": "country",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "US"
       },
       {
         "name": "custom_questions",
@@ -486,79 +531,92 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "email",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "jchill@example.com"
       },
       {
         "name": "first_name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Jill"
       },
       {
         "name": "industry",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Food"
       },
       {
         "name": "job_title",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Chef"
       },
       {
         "name": "last_name",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Chill"
       },
       {
         "name": "no_of_employees",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "1-20"
       },
       {
         "name": "org",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Cooking Org"
       },
       {
         "name": "phone",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "5550100"
       },
       {
         "name": "purchasing_time_frame",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "1-3 months"
       },
       {
         "name": "role_in_purchase_process",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Influencer"
       },
       {
         "name": "state",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "CA"
       },
       {
         "name": "status",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "approved"
       },
       {
         "name": "zip",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "94045"
       }
     ],
     "responses": [
@@ -584,7 +642,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "string",
         "required": true,
-        "description": "To get Cloud Recordings of a meeting, provide the meeting ID or meeting UUID. If the meeting ID is provided instead of UUID,the response will be for the latest meeting instance. \n\nTo get Cloud Recordings of a webinar, provide the webinar ID or the webinar UUID. If the webinar ID is provided instead of UUID,the response will be for the latest webinar instance. \n\nIf a UUID starts with &quot;/&quot; or contains &quot;//&quot; (example: &quot;/ajXp112QmuoKj4854875==&quot;), you must **[double encode](https://marketplace.zoom.us/docs/api-reference/using-zoom-apis/#meeting-id-and-uuid)** the UUID before making an API request. "
+        "description": "To get Cloud Recordings of a meeting, provide the meeting ID or meeting UUID. If the meeting ID is provided instead of UUID,the response will be for the latest meeting instance. \n\nTo get Cloud Recordings of a webinar, provide the webinar ID or the webinar UUID. If the webinar ID is provided instead of UUID,the response will be for the latest webinar instance. \n\nIf a UUID starts with &quot;/&quot; or contains &quot;//&quot; (example: &quot;/ajXp112QmuoKj4854875==&quot;), you must **[double encode](https://marketplace.zoom.us/docs/api-reference/using-zoom-apis/#meeting-id-and-uuid)** the UUID before making an API request. ",
+        "example": "atsXxhSEQWit9t+U02HXNQ=="
       }
     ],
     "responses": [
@@ -610,7 +669,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "string",
         "required": true,
-        "description": "To get Cloud Recordings of a meeting, provide the meeting ID or meeting UUID. If the meeting ID is provided instead of UUID,the response will be for the latest meeting instance. \n\nTo get Cloud Recordings of a webinar, provide the webinar ID or the webinar UUID. If the webinar ID is provided instead of UUID,the response will be for the latest webinar instance. \n\nIf a UUID starts with &quot;/&quot; or contains &quot;//&quot; (example: &quot;/ajXp112QmuoKj4854875==&quot;), you must **[double encode](https://marketplace.zoom.us/docs/api-reference/using-zoom-apis/#meeting-id-and-uuid)** the UUID before making an API request. "
+        "description": "To get Cloud Recordings of a meeting, provide the meeting ID or meeting UUID. If the meeting ID is provided instead of UUID,the response will be for the latest meeting instance. \n\nTo get Cloud Recordings of a webinar, provide the webinar ID or the webinar UUID. If the webinar ID is provided instead of UUID,the response will be for the latest webinar instance. \n\nIf a UUID starts with &quot;/&quot; or contains &quot;//&quot; (example: &quot;/ajXp112QmuoKj4854875==&quot;), you must **[double encode](https://marketplace.zoom.us/docs/api-reference/using-zoom-apis/#meeting-id-and-uuid)** the UUID before making an API request. ",
+        "example": "atsXxhSEQWit9t+U02HXNQ=="
       },
       {
         "name": "custom_questions",
@@ -646,13 +706,15 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "integer",
         "required": true,
-        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits."
+        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits.",
+        "example": 85746065
       },
       {
         "name": "action",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "approve"
       },
       {
         "name": "registrants",
@@ -684,7 +746,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "string",
         "required": true,
-        "description": "The meeting ID enables you to get cloud recording of a:\n- Meeting, provide the meeting ID or meeting UUID. If the meeting ID is provided instead of UUID,the response will be for the latest meeting instance. \n\n- Webinar, provide the webinar ID or the webinar UUID. If the webinar ID is provided instead of UUID,the response will be for the latest webinar instance. \n\nIf a UUID starts with &quot;/&quot; or contains &quot;//&quot; (example: &quot;/ajXp112QmuoKj4854875==&quot;), you must **double encode** the UUID before making an API request. "
+        "description": "The meeting ID enables you to get cloud recording of a:\n- Meeting, provide the meeting ID or meeting UUID. If the meeting ID is provided instead of UUID,the response will be for the latest meeting instance. \n\n- Webinar, provide the webinar ID or the webinar UUID. If the webinar ID is provided instead of UUID,the response will be for the latest webinar instance. \n\nIf a UUID starts with &quot;/&quot; or contains &quot;//&quot; (example: &quot;/ajXp112QmuoKj4854875==&quot;), you must **double encode** the UUID before making an API request. ",
+        "example": "atsXxhSEQWit9t+U02HXNQ=="
       }
     ],
     "responses": [
@@ -710,62 +773,74 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "string",
         "required": true,
-        "description": "To get Cloud Recordings of a meeting, provide the meeting ID or meeting UUID. If the meeting ID is provided instead of UUID,the response will be for the latest meeting instance. \n\nTo get Cloud Recordings of a webinar, provide the webinar ID or the webinar UUID. If the webinar ID is provided instead of UUID,the response will be for the latest webinar instance. \n\nIf a UUID starts with &quot;/&quot; or contains &quot;//&quot; (example: &quot;/ajXp112QmuoKj4854875==&quot;), you must **double encode** the UUID before making an API request. "
+        "description": "To get Cloud Recordings of a meeting, provide the meeting ID or meeting UUID. If the meeting ID is provided instead of UUID,the response will be for the latest meeting instance. \n\nTo get Cloud Recordings of a webinar, provide the webinar ID or the webinar UUID. If the webinar ID is provided instead of UUID,the response will be for the latest webinar instance. \n\nIf a UUID starts with &quot;/&quot; or contains &quot;//&quot; (example: &quot;/ajXp112QmuoKj4854875==&quot;), you must **double encode** the UUID before making an API request. ",
+        "example": "atsXxhSEQWit9t+U02HXNQ=="
       },
       {
         "name": "approval_type",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "authentication_domains",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "test.com"
       },
       {
         "name": "authentication_option",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "auth_option"
       },
       {
         "name": "on_demand",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "password",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "975238724"
       },
       {
         "name": "recording_authentication",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "send_email_to_host",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "share_recording",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "publicly"
       },
       {
         "name": "show_social_share_buttons",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "topic",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "My Personal Meeting Room"
       },
       {
         "name": "viewer_download",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -791,19 +866,23 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "string",
         "required": true,
-        "description": "To get Cloud Recordings of a meeting, provide the meeting ID or meeting UUID. If the meeting ID is provided instead of UUID,the response will be for the latest meeting instance. \n\nTo get Cloud Recordings of a webinar, provide the webinar ID or the webinar UUID. If the webinar ID is provided instead of UUID,the response will be for the latest webinar instance. \n\nIf a UUID starts with &quot;/&quot; or contains &quot;//&quot; (example: &quot;/ajXp112QmuoKj4854875==&quot;), you must **[double encode](https://marketplace.zoom.us/docs/api-reference/using-zoom-apis/#meeting-id-and-uuid)** the UUID before making an API request. "
+        "description": "To get Cloud Recordings of a meeting, provide the meeting ID or meeting UUID. If the meeting ID is provided instead of UUID,the response will be for the latest meeting instance. \n\nTo get Cloud Recordings of a webinar, provide the webinar ID or the webinar UUID. If the webinar ID is provided instead of UUID,the response will be for the latest webinar instance. \n\nIf a UUID starts with &quot;/&quot; or contains &quot;//&quot; (example: &quot;/ajXp112QmuoKj4854875==&quot;), you must **[double encode](https://marketplace.zoom.us/docs/api-reference/using-zoom-apis/#meeting-id-and-uuid)** the UUID before making an API request. ",
+        "example": "atsXxhSEQWit9t+U02HXNQ=="
       },
       {
         "name": "recordingId",
         "schema": "string",
         "required": true,
-        "description": "The recording ID."
+        "description": "The recording ID.",
+        "example": "a2f19f96-9294-4f51-8134-6f0eea108eb2"
       },
       {
         "name": "action",
         "schema": "string",
         "required": false,
-        "description": "The recording delete actions:  \n `trash` - Move recording to trash.  \n `delete` - Delete recording permanently."
+        "description": "The recording delete actions:  \n `trash` - Move recording to trash.  \n `delete` - Delete recording permanently.",
+        "example": "trash",
+        "default": "trash"
       }
     ],
     "responses": [
@@ -837,18 +916,21 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "string",
         "required": true,
-        "description": "To get Cloud Recordings of a meeting, provide the meeting ID or meeting UUID. If the meeting ID is provided instead of UUID,the response will be for the latest meeting instance. \n\nTo get Cloud Recordings of a webinar, provide the webinar ID or the webinar UUID. If the webinar ID is provided instead of UUID,the response will be for the latest webinar instance. \n\nIf a UUID starts with &quot;/&quot; or contains &quot;//&quot; (example: &quot;/ajXp112QmuoKj4854875==&quot;), you must **[double encode](https://marketplace.zoom.us/docs/api-reference/using-zoom-apis/#meeting-id-and-uuid)** the UUID before making an API request. "
+        "description": "To get Cloud Recordings of a meeting, provide the meeting ID or meeting UUID. If the meeting ID is provided instead of UUID,the response will be for the latest meeting instance. \n\nTo get Cloud Recordings of a webinar, provide the webinar ID or the webinar UUID. If the webinar ID is provided instead of UUID,the response will be for the latest webinar instance. \n\nIf a UUID starts with &quot;/&quot; or contains &quot;//&quot; (example: &quot;/ajXp112QmuoKj4854875==&quot;), you must **[double encode](https://marketplace.zoom.us/docs/api-reference/using-zoom-apis/#meeting-id-and-uuid)** the UUID before making an API request. ",
+        "example": "atsXxhSEQWit9t+U02HXNQ=="
       },
       {
         "name": "recordingId",
         "schema": "string",
         "required": true,
-        "description": "The recording ID."
+        "description": "The recording ID.",
+        "example": "a2f19f96-9294-4f51-8134-6f0eea108eb2"
       },
       {
         "name": "action",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "recover"
       }
     ],
     "responses": [
@@ -878,12 +960,14 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingUuid",
         "schema": "string",
         "required": true,
-        "description": "The meeting's universally unique identifier (UUID). Each meeting instance generates a UUID. For example, after a meeting ends, a new UUID is generated for the next meeting instance.\n\nIf the meeting UUID begins with a `/` character or contains a `//` character, you **must** [double encode](https://marketplace.zoom.us/docs/api-reference/using-zoom-apis/#meeting-id-and-uuid) the meeting UUID when using the meeting UUID for other API calls."
+        "description": "The meeting's universally unique identifier (UUID). Each meeting instance generates a UUID. For example, after a meeting ends, a new UUID is generated for the next meeting instance.\n\nIf the meeting UUID begins with a `/` character or contains a `//` character, you **must** [double encode](https://marketplace.zoom.us/docs/api-reference/using-zoom-apis/#meeting-id-and-uuid) the meeting UUID when using the meeting UUID for other API calls.",
+        "example": "4444AAAiAAAAAiAiAiiAii=="
       },
       {
         "name": "action",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "recover"
       }
     ],
     "responses": [
@@ -917,55 +1001,68 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "userId",
         "schema": "string",
         "required": true,
-        "description": "The user's ID or email address. For user-level apps, pass the `me` value."
+        "description": "The user's ID or email address. For user-level apps, pass the `me` value.",
+        "example": "USERID"
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned within a single API call."
+        "description": "The number of records returned within a single API call.",
+        "example": 30,
+        "default": 30
       },
       {
         "name": "nextPageToken",
         "schema": "string",
         "required": false,
-        "description": "The next page token paginates through a large set of results. A next page token returns whenever the set of available results exceeds the current page size. The expiration period for this token is 15 minutes."
+        "description": "The next page token paginates through a large set of results. A next page token returns whenever the set of available results exceeds the current page size. The expiration period for this token is 15 minutes.",
+        "example": "IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2"
       },
       {
         "name": "mc",
         "schema": "string",
         "required": false,
-        "description": "The query metadata of the recording if using an on-premise meeting connector for the meeting."
+        "description": "The query metadata of the recording if using an on-premise meeting connector for the meeting.",
+        "example": "false",
+        "default": "false"
       },
       {
         "name": "trash",
         "schema": "boolean",
         "required": false,
-        "description": "The query trash.\n* `true` - List recordings from trash.  \n* `false` - Do not list recordings from the trash.  \n\nThe default value is `false`. If you set it to `true`, you can use the `trash_type` property to indicate the type of Cloud recording that you need to retrieve. "
+        "description": "The query trash.\n* `true` - List recordings from trash.  \n* `false` - Do not list recordings from the trash.  \n\nThe default value is `false`. If you set it to `true`, you can use the `trash_type` property to indicate the type of Cloud recording that you need to retrieve. ",
+        "example": false,
+        "default": false
       },
       {
         "name": "from",
         "schema": "string",
         "required": false,
-        "description": "The start date in 'yyyy-mm-dd' UTC format for the date range where you would like to retrieve recordings. The maximum range can be a month. If no value is provided for this field, the default will be current date. \n\nFor example, if you make the API request on June 30, 2020, without providing the `from` and `to` parameters, by default the value of 'from' field will be `2020-06-30` and the value of the 'to' field will be `2020-07-01`. \n\n**Note**: The `trash` files cannot be filtered by date range and thus, the `from` and `to` fields should not be used for trash files."
+        "description": "The start date in 'yyyy-mm-dd' UTC format for the date range where you would like to retrieve recordings. The maximum range can be a month. If no value is provided for this field, the default will be current date. \n\nFor example, if you make the API request on June 30, 2020, without providing the `from` and `to` parameters, by default the value of 'from' field will be `2020-06-30` and the value of the 'to' field will be `2020-07-01`. \n\n**Note**: The `trash` files cannot be filtered by date range and thus, the `from` and `to` fields should not be used for trash files.",
+        "example": "2020-06-30"
       },
       {
         "name": "to",
         "schema": "string",
         "required": false,
-        "description": "The end date in 'yyyy-mm-dd' 'yyyy-mm-dd' UTC format. "
+        "description": "The end date in 'yyyy-mm-dd' 'yyyy-mm-dd' UTC format. ",
+        "example": "2020-06-30"
       },
       {
         "name": "trashType",
         "schema": "string",
         "required": false,
-        "description": "The type of cloud recording to retrieve from the trash. \n \n *   `meeting_recordings`: List all meeting recordings from the trash.  \n *  `recording_file`: List all individual recording files from the trash. "
+        "description": "The type of cloud recording to retrieve from the trash. \n \n *   `meeting_recordings`: List all meeting recordings from the trash.  \n *  `recording_file`: List all individual recording files from the trash. ",
+        "example": "meeting_recordings",
+        "default": "meeting_recordings"
       },
       {
         "name": "meetingId",
         "schema": "integer",
         "required": false,
-        "description": "The meeting ID."
+        "description": "The meeting ID.",
+        "example": 6840331990
       }
     ],
     "responses": [
@@ -995,55 +1092,68 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "searchText",
         "schema": "string",
         "required": false,
-        "description": "Filter devices by name or serial number."
+        "description": "Filter devices by name or serial number.",
+        "example": "poly"
       },
       {
         "name": "platformOs",
         "schema": "string",
         "required": false,
-        "description": "Filter devices by platform operating system."
+        "description": "Filter devices by platform operating system.",
+        "example": "win"
       },
       {
         "name": "isEnrolledInZdm",
         "schema": "boolean",
         "required": false,
-        "description": "Filter devices by enrollment of ZDM (Zoom Device Management)."
+        "description": "Filter devices by enrollment of ZDM (Zoom Device Management).",
+        "example": true,
+        "default": true
       },
       {
         "name": "deviceType",
         "schema": "integer",
         "required": false,
-        "description": "Filter devices by device type.  \n  Device Type:  \n `-1` - All Zoom Room device(0,1,2,3,4,6).  \n `0` - Zoom Rooms Computer.  \n `1` - Zoom Rooms Controller.  \n `2` - Zoom Rooms Scheduling Display.  \n `3` - Zoom Rooms Control System.  \n `4` -  Zoom Rooms Whiteboard.  \n `5` - Zoom Phone Appliance.  \n `6` - Zoom Rooms Computer (with Controller)."
+        "description": "Filter devices by device type.  \n  Device Type:  \n `-1` - All Zoom Room device(0,1,2,3,4,6).  \n `0` - Zoom Rooms Computer.  \n `1` - Zoom Rooms Controller.  \n `2` - Zoom Rooms Scheduling Display.  \n `3` - Zoom Rooms Control System.  \n `4` -  Zoom Rooms Whiteboard.  \n `5` - Zoom Phone Appliance.  \n `6` - Zoom Rooms Computer (with Controller).",
+        "example": 0,
+        "default": -1
       },
       {
         "name": "deviceVendor",
         "schema": "string",
         "required": false,
-        "description": "Filter devices by vendor."
+        "description": "Filter devices by vendor.",
+        "example": "poly"
       },
       {
         "name": "deviceModel",
         "schema": "string",
         "required": false,
-        "description": "Filter devices by model."
+        "description": "Filter devices by model.",
+        "example": "ep5"
       },
       {
         "name": "deviceStatus",
         "schema": "integer",
         "required": false,
-        "description": "Filter devices by status.   \n  Device Status:  \n `0` - offline.  \n `1` - online.  \n `-1` - unlink"
+        "description": "Filter devices by status.   \n  Device Status:  \n `0` - offline.  \n `1` - online.  \n `-1` - unlink",
+        "example": 0,
+        "default": -1
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned within a single API call."
+        "description": "The number of records returned within a single API call.",
+        "example": 30,
+        "default": 30
       },
       {
         "name": "nextPageToken",
         "schema": "string",
         "required": false,
-        "description": "Use the next page token to paginate through large result sets. A next page token is returned whenever the set of available results exceeds the current page size. This token's expiration period is 15 minutes."
+        "description": "Use the next page token to paginate through large result sets. A next page token is returned whenever the set of available results exceeds the current page size. This token's expiration period is 15 minutes.",
+        "example": "IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2"
       }
     ],
     "responses": [
@@ -1069,55 +1179,64 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "device_name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "My device"
       },
       {
         "name": "mac_address",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "01-23-45-67-89-AB"
       },
       {
         "name": "serial_number",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "6NRN2A0"
       },
       {
         "name": "vendor",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Poly"
       },
       {
         "name": "model",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "StudioX30"
       },
       {
         "name": "room_id",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "72afdc13-a289-40c3-b358-50c8b8de"
       },
       {
         "name": "user_email",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "test-user@ya.us"
       },
       {
         "name": "device_type",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "tag",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "personal rooms"
       }
     ],
     "responses": [
@@ -1143,7 +1262,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "deviceId",
         "schema": "string",
         "required": true,
-        "description": "Unique identifier of the device."
+        "description": "Unique identifier of the device.",
+        "example": "F1C6E9DF-429E-4FA1-85DA-AC95464F3D18"
       }
     ],
     "responses": [
@@ -1173,7 +1293,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "deviceId",
         "schema": "string",
         "required": true,
-        "description": "The device's unique identifier."
+        "description": "The device's unique identifier.",
+        "example": "F1C6E9DF-429E-4FA1-85DA-AC95464F3D18"
       }
     ],
     "responses": [
@@ -1203,31 +1324,36 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "deviceId",
         "schema": "string",
         "required": true,
-        "description": "Unique identifier of the device."
+        "description": "Unique identifier of the device.",
+        "example": "F1C6E9DF-429E-4FA1-85DA-AC95464F3D18"
       },
       {
         "name": "device_name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "My device"
       },
       {
         "name": "tag",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "personal rooms"
       },
       {
         "name": "room_id",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "72afdc13-a289-40c3-b358-50c8b8de"
       },
       {
         "name": "device_type",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 1
       }
     ],
     "responses": [
@@ -1257,19 +1383,23 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "deviceId",
         "schema": "string",
         "required": true,
-        "description": "Unique identifier of the device."
+        "description": "Unique identifier of the device.",
+        "example": "F1C6E9DF-429E-4FA1-85DA-AC95464F3D18"
       },
       {
         "name": "room_id",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "qMOLddnySIGGVycz8aX_JQ"
       },
       {
         "name": "app_type",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "ZR",
+        "default": "ZR"
       }
     ],
     "responses": [
@@ -1299,19 +1429,24 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned within a single API call."
+        "description": "The number of records returned within a single API call.",
+        "example": 30,
+        "default": 30
       },
       {
         "name": "pageNumber",
         "schema": "integer",
         "required": false,
-        "description": "**Deprecated.** We will no longer support this field in a future release. Instead, use the `next_page_token` for pagination."
+        "description": "**Deprecated.** We will no longer support this field in a future release. Instead, use the `next_page_token` for pagination.",
+        "example": 1,
+        "default": 1
       },
       {
         "name": "nextPageToken",
         "schema": "string",
         "required": false,
-        "description": "Use the next page token to paginate through large result sets. A next page token is returned whenever the set of available results exceeds the current page size. This token's expiration period is 15 minutes."
+        "description": "Use the next page token to paginate through large result sets. A next page token is returned whenever the set of available results exceeds the current page size. This token's expiration period is 15 minutes.",
+        "example": "IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2"
       }
     ],
     "responses": [
@@ -1333,25 +1468,29 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "encryption",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "auto"
       },
       {
         "name": "ip",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "127.0.0.1"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "api_test_20190508"
       },
       {
         "name": "protocol",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "H.323"
       }
     ],
     "responses": [
@@ -1381,7 +1520,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "deviceId",
         "schema": "string",
         "required": true,
-        "description": "The device ID."
+        "description": "The device ID.",
+        "example": "abceHewahkrehwiK"
       }
     ],
     "responses": [
@@ -1411,31 +1551,36 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "deviceId",
         "schema": "string",
         "required": true,
-        "description": "The device ID."
+        "description": "The device ID.",
+        "example": "abceHewahkrehwiK"
       },
       {
         "name": "encryption",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "auto"
       },
       {
         "name": "ip",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "127.0.0.1"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "api_test_20190508"
       },
       {
         "name": "protocol",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "H.323"
       }
     ],
     "responses": [
@@ -1461,19 +1606,22 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "integer",
         "required": true,
-        "description": "The meeting's ID. \n\n When storing this value in your database, store it as a long-format integer and **not** an integer. Meeting IDs can exceed 10 digits."
+        "description": "The meeting's ID. \n\n When storing this value in your database, store it as a long-format integer and **not** an integer. Meeting IDs can exceed 10 digits.",
+        "example": 85746065
       },
       {
         "name": "messageId",
         "schema": "string",
         "required": true,
-        "description": "The live meeting chat message's unique identifier (UUID), in base64-encoded format."
+        "description": "The live meeting chat message's unique identifier (UUID), in base64-encoded format.",
+        "example": "MS17MDQ5NjE4QjYtRjk4Ny00REEwLUFBQUItMTg3QTY0RjU2MzhFfQ=="
       },
       {
         "name": "fileIds",
         "schema": "string",
         "required": false,
-        "description": "The live webinar chat file's universally unique identifier (UUID), in base64-encoded format. Separate multiple values with commas."
+        "description": "The live webinar chat file's universally unique identifier (UUID), in base64-encoded format. Separate multiple values with commas.",
+        "example": "MS17RDk0QTY3QUQtQkFGQy04QTJFLTI2RUEtNkYxQjRBRTU1MTk5fQ==,MS17NDQ0OEU5MjMtM0JFOS1CMDA1LTQ0NDAtQjdGOTU0Rjk5MTkyfQ=="
       }
     ],
     "responses": [
@@ -1503,19 +1651,22 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "integer",
         "required": true,
-        "description": "The meeting's ID. \n\n When storing this value in your database, store it as a long-format integer and **not** an integer. Meeting IDs can exceed 10 digits."
+        "description": "The meeting's ID. \n\n When storing this value in your database, store it as a long-format integer and **not** an integer. Meeting IDs can exceed 10 digits.",
+        "example": 85746065
       },
       {
         "name": "messageId",
         "schema": "string",
         "required": true,
-        "description": "The live meeting chat message's unique identifier (UUID), in base64-encoded format."
+        "description": "The live meeting chat message's unique identifier (UUID), in base64-encoded format.",
+        "example": "MS17MDQ5NjE4QjYtRjk4Ny00REEwLUFBQUItMTg3QTY0RjU2MzhFfQ=="
       },
       {
         "name": "message_content",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "This is a test message"
       }
     ],
     "responses": [
@@ -1545,12 +1696,14 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "string",
         "required": true,
-        "description": "The live meeting's ID."
+        "description": "The live meeting's ID.",
+        "example": "93398114182"
       },
       {
         "name": "method",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "recording.start"
       },
       {
         "name": "params",
@@ -1589,25 +1742,30 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned within a single API call."
+        "description": "The number of records returned within a single API call.",
+        "example": 30,
+        "default": 30
       },
       {
         "name": "nextPageToken",
         "schema": "string",
         "required": false,
-        "description": "The next page token paginates through a large set of results. A next page token returns whenever the set of available results exceeds the current page size. The expiration period for this token is 15 minutes."
+        "description": "The next page token paginates through a large set of results. A next page token returns whenever the set of available results exceeds the current page size. The expiration period for this token is 15 minutes.",
+        "example": "IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2"
       },
       {
         "name": "from",
         "schema": "string",
         "required": false,
-        "description": "The start date in `yyyy-MM-dd'T'HH:mm:ss'Z'` UTC format used to retrieve the creation date range of the meeting summaries."
+        "description": "The start date in `yyyy-MM-dd'T'HH:mm:ss'Z'` UTC format used to retrieve the creation date range of the meeting summaries.",
+        "example": "2023-10-19T07:00:00Z"
       },
       {
         "name": "to",
         "schema": "string",
         "required": false,
-        "description": "The end date in `yyyy-MM-dd'T'HH:mm:ss'Z'` UTC format used to retrieve the creation date range of the meeting summaries."
+        "description": "The end date in `yyyy-MM-dd'T'HH:mm:ss'Z'` UTC format used to retrieve the creation date range of the meeting summaries.",
+        "example": "2023-10-20T07:00:00Z"
       }
     ],
     "responses": [
@@ -1637,25 +1795,29 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "integer",
         "required": true,
-        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits."
+        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits.",
+        "example": 85746065
       },
       {
         "name": "occurrenceId",
         "schema": "string",
         "required": false,
-        "description": "The meeting or webinar occurrence ID."
+        "description": "The meeting or webinar occurrence ID.",
+        "example": "1648194360000"
       },
       {
         "name": "scheduleForReminder",
         "schema": "boolean",
         "required": false,
-        "description": "`true`: Notify host and alternative host about the meeting cancellation via email.\n`false`: Do not send any email notification."
+        "description": "`true`: Notify host and alternative host about the meeting cancellation via email.\n`false`: Do not send any email notification.",
+        "example": true
       },
       {
         "name": "cancelMeetingReminder",
         "schema": "boolean",
         "required": false,
-        "description": "`true`: Notify registrants about the meeting cancellation via email. \n\n`false`: Do not send any email notification to meeting registrants. \n\nThe default value of this field is `false`."
+        "description": "`true`: Notify registrants about the meeting cancellation via email. \n\n`false`: Do not send any email notification to meeting registrants. \n\nThe default value of this field is `false`.",
+        "example": true
       }
     ],
     "responses": [
@@ -1685,19 +1847,22 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "integer",
         "required": true,
-        "description": "The meeting's ID. \n\n When storing this value in your database, store it as a long format integer and **not** an integer. Meeting IDs can be more than 10 digits."
+        "description": "The meeting's ID. \n\n When storing this value in your database, store it as a long format integer and **not** an integer. Meeting IDs can be more than 10 digits.",
+        "example": 85746065
       },
       {
         "name": "occurrenceId",
         "schema": "string",
         "required": false,
-        "description": "Meeting occurrence ID. Provide this field to view meeting details of a particular occurrence of the [recurring meeting](https://support.zoom.us/hc/en-us/articles/214973206-Scheduling-Recurring-Meetings)."
+        "description": "Meeting occurrence ID. Provide this field to view meeting details of a particular occurrence of the [recurring meeting](https://support.zoom.us/hc/en-us/articles/214973206-Scheduling-Recurring-Meetings).",
+        "example": "1648194360000"
       },
       {
         "name": "showPreviousOccurrences",
         "schema": "boolean",
         "required": false,
-        "description": "Set this field's value to `true` to view meeting details of all previous occurrences of a [recurring meeting](https://support.zoom.us/hc/en-us/articles/214973206-Scheduling-Recurring-Meetings). "
+        "description": "Set this field's value to `true` to view meeting details of all previous occurrences of a [recurring meeting](https://support.zoom.us/hc/en-us/articles/214973206-Scheduling-Recurring-Meetings). ",
+        "example": true
       }
     ],
     "responses": [
@@ -1727,38 +1892,46 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "integer",
         "required": true,
-        "description": "The meeting's ID. \n\n When storing this value in your database, store it as a long format integer and **not** an integer. Meeting IDs can be greater than 10 digits."
+        "description": "The meeting's ID. \n\n When storing this value in your database, store it as a long format integer and **not** an integer. Meeting IDs can be greater than 10 digits.",
+        "example": 85746065
       },
       {
         "name": "occurrenceId",
         "schema": "string",
         "required": false,
-        "description": "Meeting occurrence ID. Support change of agenda, `start_time`, duration, or settings {`host_video`, `participant_video`, `join_before_host`, `mute_upon_entry`, `waiting_room`, `watermark`, `auto_recording`}."
+        "description": "Meeting occurrence ID. Support change of agenda, `start_time`, duration, or settings {`host_video`, `participant_video`, `join_before_host`, `mute_upon_entry`, `waiting_room`, `watermark`, `auto_recording`}.",
+        "example": "1648194360000"
       },
       {
         "name": "agenda",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "My Meeting"
       },
       {
         "name": "duration",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 60
       },
       {
         "name": "password",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "123456"
       },
       {
         "name": "pre_schedule",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false,
+        "default": false
       },
       {
         "name": "schedule_for",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "jchill@example.com"
       },
       {
         "name": "recurrence",
@@ -1773,22 +1946,26 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "name": "start_time",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "2022-03-25T07:29:29Z"
       },
       {
         "name": "template_id",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "5Cj3ceXoStO6TGOVvIOVPA=="
       },
       {
         "name": "timezone",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "America/Los_Angeles"
       },
       {
         "name": "topic",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "My Meeting"
       },
       {
         "name": "tracking_fields",
@@ -1798,7 +1975,9 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "name": "type",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 2,
+        "default": 2
       }
     ],
     "responses": [
@@ -1832,7 +2011,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "93398114182"
       },
       {
         "name": "polls",
@@ -1863,17 +2043,20 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "string",
         "required": true,
-        "description": "Unique identifier of the meeting (Meeting Number)."
+        "description": "Unique identifier of the meeting (Meeting Number).",
+        "example": "91498058927"
       },
       {
         "name": "auto_approve",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "registrants_confirmation_email",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "registrants",
@@ -1908,7 +2091,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "integer",
         "required": true,
-        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits."
+        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits.",
+        "example": 85746065
       }
     ],
     "responses": [
@@ -1934,7 +2118,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "integer",
         "required": true,
-        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits."
+        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits.",
+        "example": 85746065
       },
       {
         "name": "attendees",
@@ -1944,7 +2129,9 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "name": "ttl",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 1000,
+        "default": 7200
       }
     ],
     "responses": [
@@ -1970,7 +2157,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "integer",
         "required": true,
-        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits."
+        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits.",
+        "example": 85746065
       }
     ],
     "responses": [
@@ -2000,7 +2188,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "integer",
         "required": true,
-        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits."
+        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits.",
+        "example": 85746065
       }
     ],
     "responses": [
@@ -2030,7 +2219,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "integer",
         "required": true,
-        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits."
+        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits.",
+        "example": 85746065
       }
     ],
     "responses": [
@@ -2060,7 +2250,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "string",
         "required": true,
-        "description": "Unique identifier of the meeting."
+        "description": "Unique identifier of the meeting.",
+        "example": "93398114182"
       }
     ],
     "responses": [
@@ -2090,31 +2281,36 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "integer",
         "required": true,
-        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits."
+        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits.",
+        "example": 85746065
       },
       {
         "name": "page_url",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "https://example.com/livestream/123"
       },
       {
         "name": "stream_key",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "contact-it@example.com"
       },
       {
         "name": "stream_url",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "https://example.com/livestream"
       },
       {
         "name": "resolution",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "720p"
       }
     ],
     "responses": [
@@ -2144,12 +2340,14 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "integer",
         "required": true,
-        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits."
+        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits.",
+        "example": 85746065
       },
       {
         "name": "action",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "start"
       },
       {
         "name": "settings",
@@ -2184,7 +2382,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "string",
         "required": false,
-        "description": "The meeting's universally unique ID (UUID). When you provide a meeting UUID that begins with a `/` character or contains the `//` characters, you **must** double-encode the meeting UUID before making an API request."
+        "description": "The meeting's universally unique ID (UUID). When you provide a meeting UUID that begins with a `/` character or contains the `//` characters, you **must** double-encode the meeting UUID before making an API request.",
+        "example": "aDYlohsHRtCd4ii1uC2+hA=="
       }
     ],
     "responses": [
@@ -2206,13 +2405,15 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "integer",
         "required": true,
-        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits."
+        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits.",
+        "example": 85746065
       },
       {
         "name": "anonymous",
         "schema": "boolean",
         "required": false,
-        "description": "Whether to query for polls with the **Anonymous** option enabled: \n* `true` &mdash; Query for polls with the **Anonymous** option enabled. \n* `false` &mdash; Do not query for polls with the **Anonymous** option enabled."
+        "description": "Whether to query for polls with the **Anonymous** option enabled: \n* `true` &mdash; Query for polls with the **Anonymous** option enabled. \n* `false` &mdash; Do not query for polls with the **Anonymous** option enabled.",
+        "example": true
       }
     ],
     "responses": [
@@ -2242,22 +2443,27 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "integer",
         "required": true,
-        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits."
+        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits.",
+        "example": 85746065
       },
       {
         "name": "title",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Learn something new"
       },
       {
         "name": "anonymous",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true,
+        "default": false
       },
       {
         "name": "poll_type",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 2
       },
       {
         "name": "questions",
@@ -2292,13 +2498,15 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "integer",
         "required": true,
-        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits."
+        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits.",
+        "example": 85746065
       },
       {
         "name": "pollId",
         "schema": "string",
         "required": true,
-        "description": "The poll ID"
+        "description": "The poll ID",
+        "example": "QalIoKWLTJehBJ8e1xRrbQ"
       }
     ],
     "responses": [
@@ -2328,13 +2536,15 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "integer",
         "required": true,
-        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits."
+        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits.",
+        "example": 85746065
       },
       {
         "name": "pollId",
         "schema": "string",
         "required": true,
-        "description": "The poll ID"
+        "description": "The poll ID",
+        "example": "QalIoKWLTJehBJ8e1xRrbQ"
       }
     ],
     "responses": [
@@ -2364,28 +2574,34 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "integer",
         "required": true,
-        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits."
+        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits.",
+        "example": 85746065
       },
       {
         "name": "pollId",
         "schema": "string",
         "required": true,
-        "description": "The poll ID"
+        "description": "The poll ID",
+        "example": "QalIoKWLTJehBJ8e1xRrbQ"
       },
       {
         "name": "title",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Learn something new"
       },
       {
         "name": "anonymous",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true,
+        "default": false
       },
       {
         "name": "poll_type",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 2
       },
       {
         "name": "questions",
@@ -2420,37 +2636,46 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "integer",
         "required": true,
-        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits."
+        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits.",
+        "example": 85746065
       },
       {
         "name": "occurrenceId",
         "schema": "string",
         "required": false,
-        "description": "The meeting or webinar occurrence ID."
+        "description": "The meeting or webinar occurrence ID.",
+        "example": "1648194360000"
       },
       {
         "name": "status",
         "schema": "string",
         "required": false,
-        "description": "Query by the registrant's status. \n* `pending` - The registration is pending. \n* `approved` - The registrant is approved. \n* `denied` - The registration is denied."
+        "description": "Query by the registrant's status. \n* `pending` - The registration is pending. \n* `approved` - The registrant is approved. \n* `denied` - The registration is denied.",
+        "example": "pending",
+        "default": "approved"
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned within a single API call."
+        "description": "The number of records returned within a single API call.",
+        "example": 30,
+        "default": 30
       },
       {
         "name": "pageNumber",
         "schema": "integer",
         "required": false,
-        "description": "**Deprecated.** We will no longer support this field in a future release. Instead, use the `next_page_token` for pagination."
+        "description": "**Deprecated.** We will no longer support this field in a future release. Instead, use the `next_page_token` for pagination.",
+        "example": 1,
+        "default": 1
       },
       {
         "name": "nextPageToken",
         "schema": "string",
         "required": false,
-        "description": "Use the next page token to paginate through large result sets. A next page token is returned whenever the set of available results exceeds the current page size. This token's expiration period is 15 minutes."
+        "description": "Use the next page token to paginate through large result sets. A next page token is returned whenever the set of available results exceeds the current page size. This token's expiration period is 15 minutes.",
+        "example": "IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2"
       }
     ],
     "responses": [
@@ -2480,73 +2705,85 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "integer",
         "required": true,
-        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits."
+        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits.",
+        "example": 85746065
       },
       {
         "name": "occurrenceIds",
         "schema": "string",
         "required": false,
-        "description": "A comma-separated list of meeting occurrence IDs. You can get this value with the [Get a meeting](https://developers.zoom.us) API."
+        "description": "A comma-separated list of meeting occurrence IDs. You can get this value with the [Get a meeting](https://developers.zoom.us) API.",
+        "example": "1648194360000,1648367160000"
       },
       {
         "name": "first_name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Jill"
       },
       {
         "name": "last_name",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Chill"
       },
       {
         "name": "email",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "jchill@example.com"
       },
       {
         "name": "address",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "1800 Amphibious Blvd."
       },
       {
         "name": "city",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Mountain View"
       },
       {
         "name": "state",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "CA"
       },
       {
         "name": "zip",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "94045"
       },
       {
         "name": "country",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "US"
       },
       {
         "name": "phone",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "5550100"
       },
       {
         "name": "comments",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Looking forward to the discussion."
       },
       {
         "name": "custom_questions",
@@ -2558,49 +2795,57 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "industry",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Food"
       },
       {
         "name": "job_title",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Chef"
       },
       {
         "name": "no_of_employees",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "1-20"
       },
       {
         "name": "org",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Cooking Org"
       },
       {
         "name": "purchasing_time_frame",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "1-3 months"
       },
       {
         "name": "role_in_purchase_process",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Influencer"
       },
       {
         "name": "language",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "en-US"
       },
       {
         "name": "auto_approve",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -2630,7 +2875,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "integer",
         "required": true,
-        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits."
+        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits.",
+        "example": 85746065
       }
     ],
     "responses": [
@@ -2660,7 +2906,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "integer",
         "required": true,
-        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits."
+        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits.",
+        "example": 85746065
       },
       {
         "name": "custom_questions",
@@ -2700,19 +2947,22 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "integer",
         "required": true,
-        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits."
+        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits.",
+        "example": 85746065
       },
       {
         "name": "occurrenceId",
         "schema": "string",
         "required": false,
-        "description": "The meeting or webinar occurrence ID."
+        "description": "The meeting or webinar occurrence ID.",
+        "example": "1648194360000"
       },
       {
         "name": "action",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "approve"
       },
       {
         "name": "registrants",
@@ -2748,19 +2998,22 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "occurrenceId",
         "schema": "string",
         "required": false,
-        "description": "The meeting occurrence ID."
+        "description": "The meeting occurrence ID.",
+        "example": "approved"
       },
       {
         "name": "meetingId",
         "schema": "integer",
         "required": true,
-        "description": "The meeting ID."
+        "description": "The meeting ID.",
+        "example": 91498058927
       },
       {
         "name": "registrantId",
         "schema": "string",
         "required": true,
-        "description": "The meeting registrant ID."
+        "description": "The meeting registrant ID.",
+        "example": "9tboDiHUQAeOnbmudzWa5g"
       }
     ],
     "responses": [
@@ -2786,13 +3039,15 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "integer",
         "required": true,
-        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits."
+        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits.",
+        "example": 85746065
       },
       {
         "name": "registrantId",
         "schema": "string",
         "required": true,
-        "description": "The registrant ID."
+        "description": "The registrant ID.",
+        "example": "9tboDiHUQAeOnbmudzWa5g"
       }
     ],
     "responses": [
@@ -2822,12 +3077,14 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "integer",
         "required": true,
-        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits."
+        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits.",
+        "example": 85746065
       },
       {
         "name": "passcode",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "xxxx"
       }
     ],
     "responses": [
@@ -2857,12 +3114,14 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "integer",
         "required": true,
-        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits."
+        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits.",
+        "example": 85746065
       },
       {
         "name": "action",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "recover"
       }
     ],
     "responses": [
@@ -2892,7 +3151,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "integer",
         "required": true,
-        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits."
+        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits.",
+        "example": 85746065
       }
     ],
     "responses": [
@@ -2922,7 +3182,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "integer",
         "required": true,
-        "description": "The meeting's ID. \n\n When storing this value in your database, store it as a long-format integer and **not** a simple integer. Meeting IDs can be more than 10 digits."
+        "description": "The meeting's ID. \n\n When storing this value in your database, store it as a long-format integer and **not** a simple integer. Meeting IDs can be more than 10 digits.",
+        "example": 85746065
       }
     ],
     "responses": [
@@ -2952,7 +3213,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "integer",
         "required": true,
-        "description": "The meeting's ID. \n\n When storing this value in your database, store it as a long-format integer and **not** a simple integer. Meeting IDs can be over 10 digits."
+        "description": "The meeting's ID. \n\n When storing this value in your database, store it as a long-format integer and **not** a simple integer. Meeting IDs can be over 10 digits.",
+        "example": 85746065
       },
       {
         "name": "custom_survey",
@@ -2962,12 +3224,15 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "name": "show_in_the_browser",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true,
+        "default": true
       },
       {
         "name": "third_party_survey",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "https://example.com"
       }
     ],
     "responses": [
@@ -2997,13 +3262,16 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "integer",
         "required": true,
-        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits."
+        "description": "The meeting's ID. \n\n When storing this value in your database, you must store it as a long format integer and **not** an integer. Meeting IDs can exceed 10 digits.",
+        "example": 85746065
       },
       {
         "name": "type",
         "schema": "string",
         "required": false,
-        "description": "The meeting token type: \n* `closed_caption_token` &mdash; The third-party closed caption API token. \n\nThis defaults to `closed_caption_token`."
+        "description": "The meeting token type: \n* `closed_caption_token` &mdash; The third-party closed caption API token. \n\nThis defaults to `closed_caption_token`.",
+        "example": "closed_caption_token",
+        "default": "closed_caption_token"
       }
     ],
     "responses": [
@@ -3063,7 +3331,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "integer",
         "required": true,
-        "description": "The past meeting's ID."
+        "description": "The past meeting's ID.",
+        "example": 93398114182
       }
     ],
     "responses": [
@@ -3089,19 +3358,23 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "string",
         "required": true,
-        "description": "The meeting's ID or universally unique ID (UUID). \n* If you provide a meeting ID, the API will return a response for the latest meeting instance. \n* If you provide a meeting UUID that begins with a `/` character or contains the `//` characters, you **must** double-encode the meeting UUID before making an API request."
+        "description": "The meeting's ID or universally unique ID (UUID). \n* If you provide a meeting ID, the API will return a response for the latest meeting instance. \n* If you provide a meeting UUID that begins with a `/` character or contains the `//` characters, you **must** double-encode the meeting UUID before making an API request.",
+        "example": "MEETINGID"
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned within a single API call."
+        "description": "The number of records returned within a single API call.",
+        "example": 30,
+        "default": 30
       },
       {
         "name": "nextPageToken",
         "schema": "string",
         "required": false,
-        "description": "Use the next page token to paginate through large result sets. A next page token is returned whenever the set of available results exceeds the current page size. This token's expiration period is 15 minutes."
+        "description": "Use the next page token to paginate through large result sets. A next page token is returned whenever the set of available results exceeds the current page size. This token's expiration period is 15 minutes.",
+        "example": "IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2"
       }
     ],
     "responses": [
@@ -3131,7 +3404,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "string",
         "required": true,
-        "description": "The meeting's ID or universally unique ID (UUID). \n* If you provide a meeting ID, the API will return a response for the latest meeting instance. \n* If you provide a meeting UUID that begins with a `/` character or contains the `//` characters, you **must** double-encode the meeting UUID before making an API request."
+        "description": "The meeting's ID or universally unique ID (UUID). \n* If you provide a meeting ID, the API will return a response for the latest meeting instance. \n* If you provide a meeting UUID that begins with a `/` character or contains the `//` characters, you **must** double-encode the meeting UUID before making an API request.",
+        "example": "MEETINGID"
       }
     ],
     "responses": [
@@ -3157,7 +3431,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "string",
         "required": true,
-        "description": "The meeting's ID or universally unique ID (UUID). \n* If you provide a meeting ID, the API will return a response for the latest meeting instance. \n* If you provide a meeting UUID that begins with a `/` character or contains the `//` characters, you **must** double-encode the meeting UUID before making an API request."
+        "description": "The meeting's ID or universally unique ID (UUID). \n* If you provide a meeting ID, the API will return a response for the latest meeting instance. \n* If you provide a meeting UUID that begins with a `/` character or contains the `//` characters, you **must** double-encode the meeting UUID before making an API request.",
+        "example": "MEETINGID"
       }
     ],
     "responses": [
@@ -3187,7 +3462,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "userId",
         "schema": "string",
         "required": true,
-        "description": "The user ID retrievable from the [List users](https://developers.zoom.us) API."
+        "description": "The user ID retrievable from the [List users](https://developers.zoom.us) API.",
+        "example": "30R7kT7bTIKSNUFEuH_Qlg"
       }
     ],
     "responses": [
@@ -3217,27 +3493,34 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "userId",
         "schema": "string",
         "required": true,
-        "description": "The user ID retrievable from the [List users](https://developers.zoom.us) API."
+        "description": "The user ID retrievable from the [List users](https://developers.zoom.us) API.",
+        "example": "30R7kT7bTIKSNUFEuH_Qlg"
       },
       {
         "name": "meeting_id",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 96172769962
       },
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "My Meeting Template"
       },
       {
         "name": "save_recurrence",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false,
+        "default": false
       },
       {
         "name": "overwrite",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false,
+        "default": false
       }
     ],
     "responses": [
@@ -3267,43 +3550,52 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "userId",
         "schema": "string",
         "required": true,
-        "description": "The user's user ID or email address. For user-level apps, pass the `me` value."
+        "description": "The user's user ID or email address. For user-level apps, pass the `me` value.",
+        "example": "USERID"
       },
       {
         "name": "type",
         "schema": "string",
         "required": false,
-        "description": "The type of meeting. \n* `scheduled` - All valid previous (unexpired) meetings, live meetings, and upcoming scheduled meetings. \n* `live` - All the ongoing meetings. \n* `upcoming` - All upcoming meetings, including live meetings. \n* `upcoming_meetings` - All upcoming meetings, including live meetings. \n* `previous_meetings` - All the previous meetings."
+        "description": "The type of meeting. \n* `scheduled` - All valid previous (unexpired) meetings, live meetings, and upcoming scheduled meetings. \n* `live` - All the ongoing meetings. \n* `upcoming` - All upcoming meetings, including live meetings. \n* `upcoming_meetings` - All upcoming meetings, including live meetings. \n* `previous_meetings` - All the previous meetings.",
+        "example": "scheduled",
+        "default": "scheduled"
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned within a single API call."
+        "description": "The number of records returned within a single API call.",
+        "example": 30,
+        "default": 30
       },
       {
         "name": "nextPageToken",
         "schema": "string",
         "required": false,
-        "description": "Use the next page token to paginate through large result sets. A next page token is returned whenever the set of available results exceeds the current page size. This token's expiration period is 15 minutes."
+        "description": "Use the next page token to paginate through large result sets. A next page token is returned whenever the set of available results exceeds the current page size. This token's expiration period is 15 minutes.",
+        "example": "IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2"
       },
       {
         "name": "pageNumber",
         "schema": "integer",
         "required": false,
-        "description": "The page number of the current page in the returned records."
+        "description": "The page number of the current page in the returned records.",
+        "example": 1
       },
       {
         "name": "from",
         "schema": "string",
         "required": false,
-        "description": "The start date."
+        "description": "The start date.",
+        "example": "2023-01-01"
       },
       {
         "name": "to",
         "schema": "string",
         "required": false,
-        "description": "The end data."
+        "description": "The end data.",
+        "example": "2023-01-16"
       }
     ],
     "responses": [
@@ -3333,32 +3625,40 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "userId",
         "schema": "string",
         "required": true,
-        "description": "The user's user ID or email address. For user-level apps, pass the `me` value."
+        "description": "The user's user ID or email address. For user-level apps, pass the `me` value.",
+        "example": "USERID"
       },
       {
         "name": "agenda",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "My Meeting"
       },
       {
         "name": "default_password",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false,
+        "default": false
       },
       {
         "name": "duration",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 60
       },
       {
         "name": "password",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "123456"
       },
       {
         "name": "pre_schedule",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false,
+        "default": false
       },
       {
         "name": "recurrence",
@@ -3368,7 +3668,8 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "name": "schedule_for",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "jchill@example.com"
       },
       {
         "name": "settings",
@@ -3378,22 +3679,26 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "name": "start_time",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "2022-03-25T07:32:55Z"
       },
       {
         "name": "template_id",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Dv4YdINdTk+Z5RToadh5ug=="
       },
       {
         "name": "timezone",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "America/Los_Angeles"
       },
       {
         "name": "topic",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "My Meeting"
       },
       {
         "name": "tracking_fields",
@@ -3403,7 +3708,9 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "name": "type",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 2,
+        "default": 2
       }
     ],
     "responses": [
@@ -3437,7 +3744,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "userId",
         "schema": "string",
         "required": true,
-        "description": "The user's user ID or email address. For user-level apps, pass the `me` value."
+        "description": "The user's user ID or email address. For user-level apps, pass the `me` value.",
+        "example": "USERID"
       }
     ],
     "responses": [
@@ -3467,25 +3775,29 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "from",
         "schema": "string",
         "required": false,
-        "description": "Start date for which you would like to view the activity logs report. Using the `from` and `to` parameters, specify a monthly date range for the report as the API only provides one month worth of data in one request. The specified date range should fall within the last six months."
+        "description": "Start date for which you would like to view the activity logs report. Using the `from` and `to` parameters, specify a monthly date range for the report as the API only provides one month worth of data in one request. The specified date range should fall within the last six months.",
+        "example": "2019-09-01"
       },
       {
         "name": "to",
         "schema": "string",
         "required": false,
-        "description": "End date up to which you would like to view the activity logs report."
+        "description": "End date up to which you would like to view the activity logs report.",
+        "example": "2019-09-20"
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to be returned within a single API call"
+        "description": "The number of records to be returned within a single API call",
+        "example": 30
       },
       {
         "name": "nextPageToken",
         "schema": "string",
         "required": false,
-        "description": "Next page token is used to paginate through large result sets"
+        "description": "Next page token is used to paginate through large result sets",
+        "example": "b43YBRLJFg3V4vsSpxvGdKIGtNbxn9h9If2"
       }
     ],
     "responses": [
@@ -3530,7 +3842,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "billingId",
         "schema": "string",
         "required": true,
-        "description": "Unique Identifier of the Billing Report. Retrieve this ID from the response of **Get Billing Reports** API request. \n\n"
+        "description": "Unique Identifier of the Billing Report. Retrieve this ID from the response of **Get Billing Reports** API request. \n\n",
+        "example": "indfhgfhfho"
       }
     ],
     "responses": [
@@ -3556,19 +3869,22 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "from",
         "schema": "string",
         "required": true,
-        "description": "Start date in 'yyyy-mm-dd' format. The date range defined by the &quot;from&quot; and &quot;to&quot; parameters should only be one month as the report includes only one month worth of data at once."
+        "description": "Start date in 'yyyy-mm-dd' format. The date range defined by the &quot;from&quot; and &quot;to&quot; parameters should only be one month as the report includes only one month worth of data at once.",
+        "example": "2022-01-01"
       },
       {
         "name": "to",
         "schema": "string",
         "required": true,
-        "description": "End date."
+        "description": "End date.",
+        "example": "2022-01-28"
       },
       {
         "name": "groupId",
         "schema": "string",
         "required": false,
-        "description": "The group ID. To get a group ID, use the [**List groups**](https://developers.zoom.us) API. \n\n **Note:** The API response will only contain users who are members of the queried group ID."
+        "description": "The group ID. To get a group ID, use the [**List groups**](https://developers.zoom.us) API. \n\n **Note:** The API response will only contain users who are members of the queried group ID.",
+        "example": "TaVA8QKik_1233"
       }
     ],
     "responses": [
@@ -3594,19 +3910,22 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "year",
         "schema": "integer",
         "required": false,
-        "description": "Year for this report"
+        "description": "Year for this report",
+        "example": 2022
       },
       {
         "name": "month",
         "schema": "integer",
         "required": false,
-        "description": "Month for this report"
+        "description": "Month for this report",
+        "example": 3
       },
       {
         "name": "groupId",
         "schema": "string",
         "required": false,
-        "description": "The group ID. To get a group ID, use the [**List groups**](https://developers.zoom.us) API. \n\n **Note:** The API response will only contain users who are members of the queried group ID."
+        "description": "The group ID. To get a group ID, use the [**List groups**](https://developers.zoom.us) API. \n\n **Note:** The API response will only contain users who are members of the queried group ID.",
+        "example": "TaVA8QKik_1233"
       }
     ],
     "responses": [
@@ -3662,25 +3981,30 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "meetingId",
         "schema": "string",
         "required": true,
-        "description": "The meeting's ID or universally unique ID (UUID). \n* If you provide a meeting ID, the API will return a response for the latest meeting instance. \n* If you provide a meeting UUID that begins with a `/` character or contains the `//` characters, you **must** double-encode the meeting UUID before making an API request."
+        "description": "The meeting's ID or universally unique ID (UUID). \n* If you provide a meeting ID, the API will return a response for the latest meeting instance. \n* If you provide a meeting UUID that begins with a `/` character or contains the `//` characters, you **must** double-encode the meeting UUID before making an API request.",
+        "example": "MEETINGID"
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned within a single API call."
+        "description": "The number of records returned within a single API call.",
+        "example": 30,
+        "default": 30
       },
       {
         "name": "nextPageToken",
         "schema": "string",
         "required": false,
-        "description": "Use the next page token to paginate through large result sets. A next page token is returned whenever the set of available results exceeds the current page size. This token's expiration period is 15 minutes."
+        "description": "Use the next page token to paginate through large result sets. A next page token is returned whenever the set of available results exceeds the current page size. This token's expiration period is 15 minutes.",
+        "example": "IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2"
       },
       {
         "name": "includeFields",
         "schema": "string",
         "required": false,
-        "description": "Provide `registrant_id` as the value for this field if you would like to see the registrant ID attribute in the response of this API call. A registrant ID is a unique identifier of a [meeting registrant](https://developers.zoom.us)."
+        "description": "Provide `registrant_id` as the value for this field if you would like to see the registrant ID attribute in the response of this API call. A registrant ID is a unique identifier of a [meeting registrant](https://developers.zoom.us).",
+        "example": "registrant_id"
       }
     ],
     "responses": [
@@ -3770,31 +4094,37 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "from",
         "schema": "string",
         "required": true,
-        "description": "Start date in 'yyyy-mm-dd' format. The date range defined by the &quot;from&quot; and &quot;to&quot; parameters should only be one month as the report includes only one month worth of data at once."
+        "description": "Start date in 'yyyy-mm-dd' format. The date range defined by the &quot;from&quot; and &quot;to&quot; parameters should only be one month as the report includes only one month worth of data at once.",
+        "example": "2022-01-01"
       },
       {
         "name": "to",
         "schema": "string",
         "required": true,
-        "description": "End date."
+        "description": "End date.",
+        "example": "2022-01-28"
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned within a single API call."
+        "description": "The number of records returned within a single API call.",
+        "example": 30,
+        "default": 30
       },
       {
         "name": "nextPageToken",
         "schema": "string",
         "required": false,
-        "description": "Use the next page token to paginate through large result sets. A next page token is returned whenever the set of available results exceeds the current page size. This token's expiration period is 15 minutes."
+        "description": "Use the next page token to paginate through large result sets. A next page token is returned whenever the set of available results exceeds the current page size. This token's expiration period is 15 minutes.",
+        "example": "IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2"
       },
       {
         "name": "categoryType",
         "schema": "string",
         "required": false,
-        "description": "**Optional**  \n \nFilter your response by a category type to see reports for a specific category.\nThe value for this field can be one of the following:  \n  `all`  \n `user`  \n `user_settings`  \n `account`  \n `billing`  \n `im`  \n `recording`  \n `phone_contacts`  \n `webinar`  \n `sub_account`  \n `role`  \n `zoom_rooms`"
+        "description": "**Optional**  \n \nFilter your response by a category type to see reports for a specific category.\nThe value for this field can be one of the following:  \n  `all`  \n `user`  \n `user_settings`  \n `account`  \n `billing`  \n `im`  \n `recording`  \n `phone_contacts`  \n `webinar`  \n `sub_account`  \n `role`  \n `zoom_rooms`",
+        "example": "user"
       }
     ],
     "responses": [
@@ -3820,43 +4150,54 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": false,
-        "description": "Audio types:  \n `1` - Toll-free Call-in &amp; Call-out.  \n `2` - Toll   \n \n`3` - SIP Connected Audio"
+        "description": "Audio types:  \n `1` - Toll-free Call-in &amp; Call-out.  \n `2` - Toll   \n \n`3` - SIP Connected Audio",
+        "example": "33",
+        "default": "1"
       },
       {
         "name": "queryDateType",
         "schema": "string",
         "required": false,
-        "description": "The type of date to query. \n* `start_time` &mdash; Query by call start time. \n* `end_time` &mdash; Query by call end time. \n* `meeting_start_time` &mdash; Query by meeting start time. \n* `meeting_end_time` &mdash; Query by meeting end time. \n\nThis value defaults to `start_time`."
+        "description": "The type of date to query. \n* `start_time` &mdash; Query by call start time. \n* `end_time` &mdash; Query by call end time. \n* `meeting_start_time` &mdash; Query by meeting start time. \n* `meeting_end_time` &mdash; Query by meeting end time. \n\nThis value defaults to `start_time`.",
+        "example": "start_time",
+        "default": "start_time"
       },
       {
         "name": "from",
         "schema": "string",
         "required": true,
-        "description": "Start date in 'yyyy-mm-dd' format. The date range defined by the &quot;from&quot; and &quot;to&quot; parameters should only be one month as the report includes only one month worth of data at once."
+        "description": "Start date in 'yyyy-mm-dd' format. The date range defined by the &quot;from&quot; and &quot;to&quot; parameters should only be one month as the report includes only one month worth of data at once.",
+        "example": "2022-01-01"
       },
       {
         "name": "to",
         "schema": "string",
         "required": true,
-        "description": "End date."
+        "description": "End date.",
+        "example": "2022-01-28"
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned within a single API call."
+        "description": "The number of records returned within a single API call.",
+        "example": 30,
+        "default": 30
       },
       {
         "name": "pageNumber",
         "schema": "integer",
         "required": false,
-        "description": "The page number of the current page in the returned records. This field is **not** available if the `query_date_type` parameter is the `meeting_start_time` or `meeting_end_time` value. \n\nThis field is deprecated. Use the `next_page_token` query parameter for pagination."
+        "description": "The page number of the current page in the returned records. This field is **not** available if the `query_date_type` parameter is the `meeting_start_time` or `meeting_end_time` value. \n\nThis field is deprecated. Use the `next_page_token` query parameter for pagination.",
+        "example": 1,
+        "default": 1
       },
       {
         "name": "nextPageToken",
         "schema": "string",
         "required": false,
-        "description": "The next page token is used to paginate through large result sets. A next page token will be returned whenever the set of available results exceeds the current page size. The expiration period for this token is 15 minutes."
+        "description": "The next page token is used to paginate through large result sets. A next page token will be returned whenever the set of available results exceeds the current page size. The expiration period for this token is 15 minutes.",
+        "example": "b43YBRLJFg3V4vsSpxvGdKIGtNbxn9h9If2"
       }
     ],
     "responses": [
@@ -3878,37 +4219,45 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "from",
         "schema": "string",
         "required": true,
-        "description": "Start date in 'yyyy-mm-dd' format. The date range defined by the &quot;from&quot; and &quot;to&quot; parameters should only be one month as the report includes only one month worth of data at once."
+        "description": "Start date in 'yyyy-mm-dd' format. The date range defined by the &quot;from&quot; and &quot;to&quot; parameters should only be one month as the report includes only one month worth of data at once.",
+        "example": "2022-01-01"
       },
       {
         "name": "to",
         "schema": "string",
         "required": true,
-        "description": "End date."
+        "description": "End date.",
+        "example": "2022-01-28"
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned within a single API call."
+        "description": "The number of records returned within a single API call.",
+        "example": 30,
+        "default": 30
       },
       {
         "name": "nextPageToken",
         "schema": "string",
         "required": false,
-        "description": "Use the next page token to paginate through large result sets. A next page token is returned whenever the set of available results exceeds the current page size. This token's expiration period is 15 minutes."
+        "description": "Use the next page token to paginate through large result sets. A next page token is returned whenever the set of available results exceeds the current page size. This token's expiration period is 15 minutes.",
+        "example": "IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2"
       },
       {
         "name": "type",
         "schema": "string",
         "required": false,
-        "description": "The type of event to query. \n* `meeting` &mdash; A meeting event. \n* `webinar` &mdash; A webinar event. \n* `all` &mdash; Both meeting and webinar events.\n\nThis value defaults to `all`."
+        "description": "The type of event to query. \n* `meeting` &mdash; A meeting event. \n* `webinar` &mdash; A webinar event. \n* `all` &mdash; Both meeting and webinar events.\n\nThis value defaults to `all`.",
+        "example": "meeting",
+        "default": "all"
       },
       {
         "name": "groupId",
         "schema": "string",
         "required": false,
-        "description": "The group ID. To get a group ID, use the [**List groups**](https://developers.zoom.us) API. \n\n **Note:** The API response will only contain meetings where the host is a member of the queried group ID."
+        "description": "The group ID. To get a group ID, use the [**List groups**](https://developers.zoom.us) API. \n\n **Note:** The API response will only contain meetings where the host is a member of the queried group ID.",
+        "example": "TaVA8QKik_1233"
       }
     ],
     "responses": [
@@ -3934,43 +4283,52 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": false,
-        "description": "Active or inactive hosts.  \n `active` - Active hosts.   \n `inactive` - Inactive hosts."
+        "description": "Active or inactive hosts.  \n `active` - Active hosts.   \n `inactive` - Inactive hosts.",
+        "example": "active"
       },
       {
         "name": "from",
         "schema": "string",
         "required": true,
-        "description": "Start date in 'yyyy-mm-dd' format. The date range defined by the `from` and `to` parameters should only be one month as the report includes only one month worth of data at once."
+        "description": "Start date in 'yyyy-mm-dd' format. The date range defined by the `from` and `to` parameters should only be one month as the report includes only one month worth of data at once.",
+        "example": "2022-01-01"
       },
       {
         "name": "to",
         "schema": "string",
         "required": true,
-        "description": "End date."
+        "description": "End date.",
+        "example": "2022-01-28"
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned within a single API call."
+        "description": "The number of records returned within a single API call.",
+        "example": 30,
+        "default": 30
       },
       {
         "name": "pageNumber",
         "schema": "integer",
         "required": false,
-        "description": "The page number of the current page in the returned records."
+        "description": "The page number of the current page in the returned records.",
+        "example": 1,
+        "default": 1
       },
       {
         "name": "nextPageToken",
         "schema": "string",
         "required": false,
-        "description": "The next page token is used to paginate through large result sets. A next page token will be returned whenever the set of available results exceeds the current page size. The expiration period for this token is 15 minutes."
+        "description": "The next page token is used to paginate through large result sets. A next page token will be returned whenever the set of available results exceeds the current page size. The expiration period for this token is 15 minutes.",
+        "example": "b43YBRLJFg3V4vsSpxvGdKIGtNbxn9h9If2"
       },
       {
         "name": "groupId",
         "schema": "string",
         "required": false,
-        "description": "The group ID. To get a group ID, use the [**List groups**](https://developers.zoom.us) API. \n\n **Note:** The API response will only contain users who are members of the queried group ID."
+        "description": "The group ID. To get a group ID, use the [**List groups**](https://developers.zoom.us) API. \n\n **Note:** The API response will only contain users who are members of the queried group ID.",
+        "example": "TaVA8QKik_1233"
       }
     ],
     "responses": [
@@ -4002,31 +4360,38 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "from",
         "schema": "string",
         "required": true,
-        "description": "Start date in 'yyyy-mm-dd' format. The date range defined by the &quot;from&quot; and &quot;to&quot; parameters should only be one month as the report includes only one month worth of data at once."
+        "description": "Start date in 'yyyy-mm-dd' format. The date range defined by the &quot;from&quot; and &quot;to&quot; parameters should only be one month as the report includes only one month worth of data at once.",
+        "example": "2022-01-01"
       },
       {
         "name": "to",
         "schema": "string",
         "required": true,
-        "description": "End date."
+        "description": "End date.",
+        "example": "2022-01-28"
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned within a single API call."
+        "description": "The number of records returned within a single API call.",
+        "example": 30,
+        "default": 30
       },
       {
         "name": "nextPageToken",
         "schema": "string",
         "required": false,
-        "description": "Use the next page token to paginate through large result sets. A next page token is returned whenever the set of available results exceeds the current page size. This token's expiration period is 15 minutes."
+        "description": "Use the next page token to paginate through large result sets. A next page token is returned whenever the set of available results exceeds the current page size. This token's expiration period is 15 minutes.",
+        "example": "IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2"
       },
       {
         "name": "type",
         "schema": "string",
         "required": false,
-        "description": "The meeting type to query for: \n* `past` &mdash; All past meetings. \n* `pastOne` &mdash; A single past user meeting. \n* `pastJoined` &mdash; All past meetings the account's users hosted or joined."
+        "description": "The meeting type to query for: \n* `past` &mdash; All past meetings. \n* `pastOne` &mdash; A single past user meeting. \n* `pastJoined` &mdash; All past meetings the account's users hosted or joined.",
+        "example": "past",
+        "default": "past"
       }
     ],
     "responses": [
@@ -4056,7 +4421,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "string",
         "required": true,
-        "description": "The webinar's ID or universally unique ID (UUID). \n* If you provide a webinar ID, the API will return a response for the latest webinar instance. \n* If you provide a webinar UUID that begins with a `/` character or contains the `//` characters, you **must** [double encode](https://marketplace.zoom.us/docs/api-reference/using-zoom-apis/#meeting-id-and-uuid) the webinar UUID before making an API request."
+        "description": "The webinar's ID or universally unique ID (UUID). \n* If you provide a webinar ID, the API will return a response for the latest webinar instance. \n* If you provide a webinar UUID that begins with a `/` character or contains the `//` characters, you **must** [double encode](https://marketplace.zoom.us/docs/api-reference/using-zoom-apis/#meeting-id-and-uuid) the webinar UUID before making an API request.",
+        "example": "ABCDE12345"
       }
     ],
     "responses": [
@@ -4086,25 +4452,30 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "string",
         "required": true,
-        "description": "The webinar's ID or universally unique ID (UUID). \n* If you provide a webinar ID, the API will return a response for the latest webinar instance. \n* If you provide a webinar UUID that begins with a `/` character or contains the `//` characters, you **must** double-encode the webinar UUID before making an API request."
+        "description": "The webinar's ID or universally unique ID (UUID). \n* If you provide a webinar ID, the API will return a response for the latest webinar instance. \n* If you provide a webinar UUID that begins with a `/` character or contains the `//` characters, you **must** double-encode the webinar UUID before making an API request.",
+        "example": "ABCDE12345"
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned within a single API call."
+        "description": "The number of records returned within a single API call.",
+        "example": 30,
+        "default": 30
       },
       {
         "name": "nextPageToken",
         "schema": "string",
         "required": false,
-        "description": "Use the next page token to paginate through large result sets. A next page token is returned whenever the set of available results exceeds the current page size. This token's expiration period is 15 minutes."
+        "description": "Use the next page token to paginate through large result sets. A next page token is returned whenever the set of available results exceeds the current page size. This token's expiration period is 15 minutes.",
+        "example": "IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2"
       },
       {
         "name": "includeFields",
         "schema": "string",
         "required": false,
-        "description": "The additional query parameters to include. \n* `registrant_id` - Include the registrant's ID in the API response. The registrant ID is the webinar participant's unique ID."
+        "description": "The additional query parameters to include. \n* `registrant_id` - Include the registrant's ID in the API response. The registrant ID is the webinar participant's unique ID.",
+        "example": "registrant_id"
       }
     ],
     "responses": [
@@ -4134,7 +4505,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "string",
         "required": true,
-        "description": "The webinar's ID or universally unique ID (UUID). \n* If you provide a webinar ID, the API will return a response for the latest webinar instance. \n* If you provide a webinar UUID that begins with a `/` character or contains the `//` characters, you **must** double-encode the webinar UUID before making an API request."
+        "description": "The webinar's ID or universally unique ID (UUID). \n* If you provide a webinar ID, the API will return a response for the latest webinar instance. \n* If you provide a webinar UUID that begins with a `/` character or contains the `//` characters, you **must** double-encode the webinar UUID before making an API request.",
+        "example": "ABCDE12345"
       }
     ],
     "responses": [
@@ -4164,7 +4536,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "string",
         "required": true,
-        "description": "The webinar's ID or universally unique ID (UUID). \n* If you provide a webinar ID, the API will return a response for the latest webinar instance. \n* If you provide a webinar UUID that begins with a `/` character or contains the `//` characters, you **must** [double encode](https://marketplace.zoom.us/docs/api-reference/using-zoom-apis/#meeting-id-and-uuid) the webinar UUID before making an API request."
+        "description": "The webinar's ID or universally unique ID (UUID). \n* If you provide a webinar ID, the API will return a response for the latest webinar instance. \n* If you provide a webinar UUID that begins with a `/` character or contains the `//` characters, you **must** [double encode](https://marketplace.zoom.us/docs/api-reference/using-zoom-apis/#meeting-id-and-uuid) the webinar UUID before making an API request.",
+        "example": "ABCDE12345"
       }
     ],
     "responses": [
@@ -4194,25 +4567,30 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "pageNumber",
         "schema": "integer",
         "required": false,
-        "description": "**Deprecated.** We will no longer support this field in a future release. Instead, use the `next_page_token` for pagination."
+        "description": "**Deprecated.** We will no longer support this field in a future release. Instead, use the `next_page_token` for pagination.",
+        "example": 1,
+        "default": 1
       },
       {
         "name": "searchKey",
         "schema": "string",
         "required": false,
-        "description": "User name or email address of a user. If this parameter is provided, only the SIP phone system integration enabled for that specific user will be returned. Otherwise, all SIP phones on an account will be returned."
+        "description": "User name or email address of a user. If this parameter is provided, only the SIP phone system integration enabled for that specific user will be returned. Otherwise, all SIP phones on an account will be returned.",
+        "example": "jchill@example.com"
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned within a single API call."
+        "description": "The number of records returned within a single API call.",
+        "example": 30
       },
       {
         "name": "nextPageToken",
         "schema": "string",
         "required": false,
-        "description": "The next page token is used to paginate through large result sets. A next page token will be returned whenever the set of available results exceeds the current page size. The expiration period for this token is 15 minutes."
+        "description": "The next page token is used to paginate through large result sets. A next page token will be returned whenever the set of available results exceeds the current page size. The expiration period for this token is 15 minutes.",
+        "example": "Tva2CuIdTgsv8wAnhyAdU3m06Y2HuLQtlh3"
       }
     ],
     "responses": [
@@ -4238,97 +4616,114 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "authorization_name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "testname"
       },
       {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "example.com"
       },
       {
         "name": "password",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "123456"
       },
       {
         "name": "proxy_server",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "192.0.2.2"
       },
       {
         "name": "proxy_server2",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "192.0.2.4"
       },
       {
         "name": "proxy_server3",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "192.0.2.6"
       },
       {
         "name": "register_server",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "192.0.2.1"
       },
       {
         "name": "register_server2",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "192.0.2.3"
       },
       {
         "name": "register_server3",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "192.0.2.5"
       },
       {
         "name": "registration_expire_time",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 60,
+        "default": 60
       },
       {
         "name": "transport_protocol",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "UDP"
       },
       {
         "name": "transport_protocol2",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "UDP"
       },
       {
         "name": "transport_protocol3",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "UDP"
       },
       {
         "name": "user_email",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "jchill@example.com"
       },
       {
         "name": "user_name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Jill Chill"
       },
       {
         "name": "voice_mail",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "4000"
       }
     ],
     "responses": [
@@ -4358,7 +4753,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "phoneId",
         "schema": "string",
         "required": true,
-        "description": "The SIP phone ID. It can be retrieved from the List SIP Phones API."
+        "description": "The SIP phone ID. It can be retrieved from the List SIP Phones API.",
+        "example": "123456"
       }
     ],
     "responses": [
@@ -4384,97 +4780,114 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "phoneId",
         "schema": "string",
         "required": true,
-        "description": "The SIP phone ID. This can be retrieved from the List SIP Phones API."
+        "description": "The SIP phone ID. This can be retrieved from the List SIP Phones API.",
+        "example": "123456"
       },
       {
         "name": "authorization_name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "testname"
       },
       {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "example.com"
       },
       {
         "name": "password",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "123456"
       },
       {
         "name": "proxy_server",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "192.0.2.2"
       },
       {
         "name": "proxy_server2",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "192.0.2.4"
       },
       {
         "name": "proxy_server3",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "192.0.2.6"
       },
       {
         "name": "register_server",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "192.0.2.1"
       },
       {
         "name": "register_server2",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "192.0.2.3"
       },
       {
         "name": "register_server3",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "192.0.2.5"
       },
       {
         "name": "registration_expire_time",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 60,
+        "default": 60
       },
       {
         "name": "transport_protocol",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "UDP"
       },
       {
         "name": "transport_protocol2",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "UDP"
       },
       {
         "name": "transport_protocol3",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "UDP"
       },
       {
         "name": "user_name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Jill Chill"
       },
       {
         "name": "voice_mail",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "4000"
       }
     ],
     "responses": [
@@ -4518,37 +4931,44 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "name": "dial_in_number_unrestricted",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "enable",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "master_account_setting_extended",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "modify_credential_forbidden",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "tsp_bridge",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "US_TSP_TB"
       },
       {
         "name": "tsp_enabled",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "tsp_provider",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "someprovidername"
       }
     ],
     "responses": [
@@ -4610,7 +5030,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "conference_code",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "0125"
       },
       {
         "name": "dial_in_numbers",
@@ -4622,13 +5043,15 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "leader_pin",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "US_TSP_TB"
       },
       {
         "name": "tsp_bridge",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "US_TSP_TB"
       }
     ],
     "responses": [
@@ -4658,12 +5081,14 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "userId",
         "schema": "string",
         "required": true,
-        "description": "The userId or email address of the user."
+        "description": "The userId or email address of the user.",
+        "example": "6dfgdfgdg444447b0egga"
       },
       {
         "name": "audio_url",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "https://example.com"
       }
     ],
     "responses": [
@@ -4699,7 +5124,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "tspId",
         "schema": "string",
         "required": true,
-        "description": "TSP account ID."
+        "description": "TSP account ID.",
+        "example": "1"
       }
     ],
     "responses": [
@@ -4735,7 +5161,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "tspId",
         "schema": "string",
         "required": true,
-        "description": "TSP account ID."
+        "description": "TSP account ID.",
+        "example": "1"
       }
     ],
     "responses": [
@@ -4771,13 +5198,15 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "tspId",
         "schema": "string",
         "required": true,
-        "description": "TSP account ID."
+        "description": "TSP account ID.",
+        "example": "1"
       },
       {
         "name": "conference_code",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "0125"
       },
       {
         "name": "dial_in_numbers",
@@ -4789,13 +5218,15 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "leader_pin",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "11189898"
       },
       {
         "name": "tsp_bridge",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "US_TSP_TB"
       }
     ],
     "responses": [
@@ -4839,7 +5270,8 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "name": "field",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "field1"
       },
       {
         "name": "recommended_values",
@@ -4849,12 +5281,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "name": "required",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "visible",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -4876,7 +5310,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "fieldId",
         "schema": "string",
         "required": true,
-        "description": "The Tracking Field ID"
+        "description": "The Tracking Field ID",
+        "example": "a32CJji-weJ92"
       }
     ],
     "responses": [
@@ -4902,7 +5337,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "fieldId",
         "schema": "string",
         "required": true,
-        "description": "The Tracking Field ID"
+        "description": "The Tracking Field ID",
+        "example": "a32CJji-weJ92"
       }
     ],
     "responses": [
@@ -4928,12 +5364,14 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "fieldId",
         "schema": "string",
         "required": true,
-        "description": "The Tracking Field ID"
+        "description": "The Tracking Field ID",
+        "example": "a32CJji-weJ92"
       },
       {
         "name": "field",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "field1"
       },
       {
         "name": "recommended_values",
@@ -4943,12 +5381,14 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "name": "required",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "visible",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -4974,19 +5414,22 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       },
       {
         "name": "messageId",
         "schema": "string",
         "required": true,
-        "description": "The live webinar chat message's unique identifier (UUID), in base64-encoded format."
+        "description": "The live webinar chat message's unique identifier (UUID), in base64-encoded format.",
+        "example": "MS17MDQ5NjE4QjYtRjk4Ny00REEwLUFBQUItMTg3QTY0RjU2MzhFfQ=="
       },
       {
         "name": "fileIds",
         "schema": "string",
         "required": false,
-        "description": "The live webinar chat file's universally unique identifier (UUID), in base64-encoded format. Separate multiple values with commas."
+        "description": "The live webinar chat file's universally unique identifier (UUID), in base64-encoded format. Separate multiple values with commas.",
+        "example": "MS17RDk0QTY3QUQtQkFGQy04QTJFLTI2RUEtNkYxQjRBRTU1MTk5fQ==,MS17NDQ0OEU5MjMtM0JFOS1CMDA1LTQ0NDAtQjdGOTU0Rjk5MTkyfQ=="
       }
     ],
     "responses": [
@@ -5016,25 +5459,30 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "string",
         "required": true,
-        "description": "The webinar's ID or universally unique ID (UUID). \n* If you provide a webinar ID, the API will return a response for the latest webinar instance. \n* If you provide a webinar UUID that begins with a `/` character or contains the `//` characters, you **must** [double encode](https://developers.zoom.us/docs/api/rest/using-zoom-apis/#meeting-id-and-uuid) the webinar UUID before making an API request."
+        "description": "The webinar's ID or universally unique ID (UUID). \n* If you provide a webinar ID, the API will return a response for the latest webinar instance. \n* If you provide a webinar UUID that begins with a `/` character or contains the `//` characters, you **must** [double encode](https://developers.zoom.us/docs/api/rest/using-zoom-apis/#meeting-id-and-uuid) the webinar UUID before making an API request.",
+        "example": "ABCDE12345"
       },
       {
         "name": "occurrenceId",
         "schema": "string",
         "required": false,
-        "description": "The meeting or webinar occurrence ID."
+        "description": "The meeting or webinar occurrence ID.",
+        "example": "1648194360000"
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned within a single API call."
+        "description": "The number of records returned within a single API call.",
+        "example": 30,
+        "default": 30
       },
       {
         "name": "nextPageToken",
         "schema": "string",
         "required": false,
-        "description": "Use the next page token to paginate through large result sets. A next page token is returned whenever the set of available results exceeds the current page size. This token's expiration period is 15 minutes."
+        "description": "Use the next page token to paginate through large result sets. A next page token is returned whenever the set of available results exceeds the current page size. This token's expiration period is 15 minutes.",
+        "example": "IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2"
       }
     ],
     "responses": [
@@ -5064,7 +5512,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       }
     ],
     "responses": [
@@ -5090,19 +5539,23 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "string",
         "required": true,
-        "description": "The webinar's ID or universally unique ID (UUID). \n* If you provide a webinar ID, the API returns a response for the latest webinar instance. \n* If you provide a webinar UUID that begins with a `/` character or contains the `//` characters, you **must** [double encode](https://developers.zoom.us/docs/api/rest/using-zoom-apis/#meeting-id-and-uuid) the webinar UUID before making an API request."
+        "description": "The webinar's ID or universally unique ID (UUID). \n* If you provide a webinar ID, the API returns a response for the latest webinar instance. \n* If you provide a webinar UUID that begins with a `/` character or contains the `//` characters, you **must** [double encode](https://developers.zoom.us/docs/api/rest/using-zoom-apis/#meeting-id-and-uuid) the webinar UUID before making an API request.",
+        "example": "ABCDE12345"
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned within a single API call."
+        "description": "The number of records returned within a single API call.",
+        "example": 30,
+        "default": 30
       },
       {
         "name": "nextPageToken",
         "schema": "string",
         "required": false,
-        "description": "Use the next page token to paginate through large result sets. A next page token is returned whenever the set of available results exceeds the current page size. This token's expiration period is 15 minutes."
+        "description": "Use the next page token to paginate through large result sets. A next page token is returned whenever the set of available results exceeds the current page size. This token's expiration period is 15 minutes.",
+        "example": "IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2"
       }
     ],
     "responses": [
@@ -5132,7 +5585,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "string",
         "required": true,
-        "description": "The webinar's ID or universally unique ID (UUID). \n* If you provide a webinar ID, the API returns a response for the latest webinar instance. \n* If you provide a webinar UUID that begins with a `/` character or contains the `//` characters, you **must** [double encode](https://developers.zoom.us/docs/api/rest/using-zoom-apis/#meeting-id-and-uuid) the webinar UUID before making an API request."
+        "description": "The webinar's ID or universally unique ID (UUID). \n* If you provide a webinar ID, the API returns a response for the latest webinar instance. \n* If you provide a webinar UUID that begins with a `/` character or contains the `//` characters, you **must** [double encode](https://developers.zoom.us/docs/api/rest/using-zoom-apis/#meeting-id-and-uuid) the webinar UUID before making an API request.",
+        "example": "ABCDE12345"
       }
     ],
     "responses": [
@@ -5162,7 +5616,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "string",
         "required": true,
-        "description": "The webinar's ID or universally unique ID (UUID). \n* If you provide a webinar ID, the API returns a response for the latest webinar instance. \n* If you provide a webinar UUID that begins with a `/` character or contains the `//` characters, you **must** [double encode](https://developers.zoom.us/docs/api/rest/using-zoom-apis/#meeting-id-and-uuid) the webinar UUID before making an API request."
+        "description": "The webinar's ID or universally unique ID (UUID). \n* If you provide a webinar ID, the API returns a response for the latest webinar instance. \n* If you provide a webinar UUID that begins with a `/` character or contains the `//` characters, you **must** [double encode](https://developers.zoom.us/docs/api/rest/using-zoom-apis/#meeting-id-and-uuid) the webinar UUID before making an API request.",
+        "example": "ABCDE12345"
       }
     ],
     "responses": [
@@ -5192,7 +5647,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "userId",
         "schema": "string",
         "required": true,
-        "description": "The user's ID. To get a user's ID, use the [**List users**](https://developers.zoom.us) API. For user-level apps, pass the `me` value instead of the user ID value."
+        "description": "The user's ID. To get a user's ID, use the [**List users**](https://developers.zoom.us) API. For user-level apps, pass the `me` value instead of the user ID value.",
+        "example": "abcD3ojfdbjfg"
       }
     ],
     "responses": [
@@ -5218,27 +5674,34 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "userId",
         "schema": "string",
         "required": true,
-        "description": "The user ID retrievable from the [List users](https://developers.zoom.us) API."
+        "description": "The user ID retrievable from the [List users](https://developers.zoom.us) API.",
+        "example": "30R7kT7bTIKSNUFEuH_Qlg"
       },
       {
         "name": "webinar_id",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 96172769962
       },
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Weekly Meeting Template"
       },
       {
         "name": "save_recurrence",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false,
+        "default": false
       },
       {
         "name": "overwrite",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false,
+        "default": false
       }
     ],
     "responses": [
@@ -5268,25 +5731,32 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "userId",
         "schema": "string",
         "required": true,
-        "description": "The user's user ID or email address. For user-level apps, pass the `me` value."
+        "description": "The user's user ID or email address. For user-level apps, pass the `me` value.",
+        "example": "USERID"
       },
       {
         "name": "type",
         "schema": "string",
         "required": false,
-        "description": "The type of webinar. \n* `scheduled` - All valid previous (unexpired) webinars, live webinars, and upcoming scheduled webinars. \n* `upcoming` - All upcoming webinars, including live webinars."
+        "description": "The type of webinar. \n* `scheduled` - All valid previous (unexpired) webinars, live webinars, and upcoming scheduled webinars. \n* `upcoming` - All upcoming webinars, including live webinars.",
+        "example": "scheduled",
+        "default": "scheduled"
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned within a single API call."
+        "description": "The number of records returned within a single API call.",
+        "example": 30,
+        "default": 30
       },
       {
         "name": "pageNumber",
         "schema": "integer",
         "required": false,
-        "description": "**Deprecated** We will no longer support this field in a future release. Instead, use the `next_page_token` for pagination."
+        "description": "**Deprecated** We will no longer support this field in a future release. Instead, use the `next_page_token` for pagination.",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -5312,22 +5782,26 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "userId",
         "schema": "string",
         "required": true,
-        "description": "The user ID or email address of the user. For user-level apps, pass the `me` value."
+        "description": "The user ID or email address of the user. For user-level apps, pass the `me` value.",
+        "example": "USERID"
       },
       {
         "name": "agenda",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "My Webinar"
       },
       {
         "name": "duration",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 60
       },
       {
         "name": "password",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "123456"
       },
       {
         "name": "recurrence",
@@ -5337,7 +5811,8 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "name": "schedule_for",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "jchill@example.com"
       },
       {
         "name": "settings",
@@ -5347,22 +5822,26 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "name": "start_time",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "2022-03-26T06:44:14Z"
       },
       {
         "name": "template_id",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "5Cj3ceXoStO6TGOVvIOVPA=="
       },
       {
         "name": "timezone",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "America/Los_Angeles"
       },
       {
         "name": "topic",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "My Webinar"
       },
       {
         "name": "tracking_fields",
@@ -5372,17 +5851,21 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "name": "type",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 5,
+        "default": 5
       },
       {
         "name": "is_simulive",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "record_file_id",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "f09340e1-cdc3-4eae-9a74-98f9777ed908"
       }
     ],
     "responses": [
@@ -5416,19 +5899,22 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       },
       {
         "name": "occurrenceId",
         "schema": "string",
         "required": false,
-        "description": "The meeting or webinar occurrence ID."
+        "description": "The meeting or webinar occurrence ID.",
+        "example": "1648194360000"
       },
       {
         "name": "cancelWebinarReminder",
         "schema": "boolean",
         "required": false,
-        "description": "`true` - Notify panelists and registrants about the webinar cancellation via email. \n\n`false` - Do not send any email notification to webinar registrants and panelists. \n\nThe default value of this field is `false`."
+        "description": "`true` - Notify panelists and registrants about the webinar cancellation via email. \n\n`false` - Do not send any email notification to webinar registrants and panelists. \n\nThe default value of this field is `false`.",
+        "example": true
       }
     ],
     "responses": [
@@ -5458,19 +5944,22 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "string",
         "required": true,
-        "description": "The webinar's ID or universally unique ID (UUID)."
+        "description": "The webinar's ID or universally unique ID (UUID).",
+        "example": "95204914252"
       },
       {
         "name": "occurrenceId",
         "schema": "string",
         "required": false,
-        "description": "Unique identifier for an occurrence of a recurring webinar. [Recurring webinars](https://support.zoom.us/hc/en-us/articles/216354763-How-to-Schedule-A-Recurring-Webinar) can have a maximum of 50 occurrences. When you create a recurring Webinar using [**Create a webinar**](https://developers.zoom.us) API, you can retrieve the Occurrence ID from the response of the API call."
+        "description": "Unique identifier for an occurrence of a recurring webinar. [Recurring webinars](https://support.zoom.us/hc/en-us/articles/216354763-How-to-Schedule-A-Recurring-Webinar) can have a maximum of 50 occurrences. When you create a recurring Webinar using [**Create a webinar**](https://developers.zoom.us) API, you can retrieve the Occurrence ID from the response of the API call.",
+        "example": "1648538280000"
       },
       {
         "name": "showPreviousOccurrences",
         "schema": "boolean",
         "required": false,
-        "description": "Set the value of this field to `true` if you would like to view Webinar details of all previous occurrences of a recurring Webinar."
+        "description": "Set the value of this field to `true` if you would like to view Webinar details of all previous occurrences of a recurring Webinar.",
+        "example": true
       }
     ],
     "responses": [
@@ -5500,33 +5989,39 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       },
       {
         "name": "occurrenceId",
         "schema": "string",
         "required": false,
-        "description": "Webinar occurrence ID. Support change of agenda, start time, duration, and settings `host_video`, `panelist_video`, `hd_video, watermark`, `auto_recording`."
+        "description": "Webinar occurrence ID. Support change of agenda, start time, duration, and settings `host_video`, `panelist_video`, `hd_video, watermark`, `auto_recording`.",
+        "example": "1648538280000"
       },
       {
         "name": "agenda",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "My Webinar"
       },
       {
         "name": "duration",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 60
       },
       {
         "name": "password",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "123456"
       },
       {
         "name": "schedule_for",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "jchill@example.com"
       },
       {
         "name": "recurrence",
@@ -5541,17 +6036,20 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "name": "start_time",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "2022-03-26T07:18:32Z"
       },
       {
         "name": "timezone",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "America/Los_Angeles"
       },
       {
         "name": "topic",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "My webinar"
       },
       {
         "name": "tracking_fields",
@@ -5561,17 +6059,21 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "name": "type",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 5,
+        "default": 5
       },
       {
         "name": "is_simulive",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "record_file_id",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "f09340e1-cdc3-4eae-9a74-98f9777ed908"
       }
     ],
     "responses": [
@@ -5601,12 +6103,14 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "string",
         "required": true,
-        "description": "The webinar's unique identifier."
+        "description": "The webinar's unique identifier.",
+        "example": "97871060099"
       },
       {
         "name": "auto_approve",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "registrants",
@@ -5645,7 +6149,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       }
     ],
     "responses": [
@@ -5675,13 +6180,15 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "nameTagIds",
         "schema": "string",
         "required": false,
-        "description": "A comma-separated list of the name tag IDs to delete."
+        "description": "A comma-separated list of the name tag IDs to delete.",
+        "example": "zazQjwDuQkS3Q2EprNd7jQ,AsfE0cx2TFSfqqKbE0BUZg"
       },
       {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       }
     ],
     "responses": [
@@ -5711,43 +6218,52 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "name"
       },
       {
         "name": "text_color",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "0e72ed"
       },
       {
         "name": "accent_color",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "0e72ed"
       },
       {
         "name": "background_color",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "0e72ed"
       },
       {
         "name": "is_default",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true,
+        "default": false
       },
       {
         "name": "set_default_for_all_panelists",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true,
+        "default": true
       }
     ],
     "responses": [
@@ -5777,43 +6293,53 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       },
       {
         "name": "nameTagId",
         "schema": "string",
         "required": true,
-        "description": "The name tag's ID."
+        "description": "The name tag's ID.",
+        "example": "J0sFXN2PSOCGrqTqLRwgAQ"
       },
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "name"
       },
       {
         "name": "text_color",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "0e72ed"
       },
       {
         "name": "accent_color",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "0e72ed"
       },
       {
         "name": "background_color",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "0e72ed"
       },
       {
         "name": "is_default",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true,
+        "default": false
       },
       {
         "name": "set_default_for_all_panelists",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true,
+        "default": true
       }
     ],
     "responses": [
@@ -5843,13 +6369,15 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "ids",
         "schema": "string",
         "required": false,
-        "description": "A comma-separated list of the Virtual Background file IDs to delete."
+        "description": "A comma-separated list of the Virtual Background file IDs to delete.",
+        "example": "zazQjwDuQkS3Q2EprNd7jQ,AsfE0cx2TFSfqqKbE0BUZg"
       },
       {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       }
     ],
     "responses": [
@@ -5879,19 +6407,22 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": false,
-        "description": "The Virtual Background file ID to update."
+        "description": "The Virtual Background file ID to update.",
+        "example": "zazQjwDuQkS3Q2EprNd7jQ"
       },
       {
         "name": "setDefaultForAllPanelists",
         "schema": "boolean",
         "required": false,
-        "description": "Whether to set the Virtual Background file as the new default for all panelists. This includes panelists not currently assigned a default Virtual Background."
+        "description": "Whether to set the Virtual Background file as the new default for all panelists. This includes panelists not currently assigned a default Virtual Background.",
+        "example": true
       },
       {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       }
     ],
     "responses": [
@@ -5921,25 +6452,31 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       },
       {
         "name": "file",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "WVVoU01HTklUVFpNZVRsc1pVZEdkR05IZUd4TWJVNTJZbEU5UFE9PQ=="
       },
       {
         "name": "default",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true,
+        "default": false
       },
       {
         "name": "set_default_for_all_panelists",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true,
+        "default": true
       }
     ],
     "responses": [
@@ -5969,7 +6506,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       }
     ],
     "responses": [
@@ -5999,13 +6537,15 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       },
       {
         "name": "file",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "FILE"
       }
     ],
     "responses": [
@@ -6035,7 +6575,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       },
       {
         "name": "attendees",
@@ -6045,7 +6586,9 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "name": "ttl",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 1000,
+        "default": 7200
       }
     ],
     "responses": [
@@ -6071,7 +6614,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       }
     ],
     "responses": [
@@ -6101,7 +6645,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       }
     ],
     "responses": [
@@ -6131,7 +6676,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       }
     ],
     "responses": [
@@ -6161,7 +6707,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "string",
         "required": true,
-        "description": "The webinar's unique ID."
+        "description": "The webinar's unique ID.",
+        "example": "95204914252"
       }
     ],
     "responses": [
@@ -6187,31 +6734,36 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       },
       {
         "name": "page_url",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "https://example.com/livestream/123"
       },
       {
         "name": "stream_key",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "contact-it@example.com"
       },
       {
         "name": "stream_url",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "https://example.com/livestream"
       },
       {
         "name": "resolution",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "720p"
       }
     ],
     "responses": [
@@ -6237,12 +6789,14 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       },
       {
         "name": "action",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "start"
       },
       {
         "name": "settings",
@@ -6273,7 +6827,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       }
     ],
     "responses": [
@@ -6303,7 +6858,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       }
     ],
     "responses": [
@@ -6333,7 +6889,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       },
       {
         "name": "panelists",
@@ -6372,13 +6929,15 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       },
       {
         "name": "panelistId",
         "schema": "string",
         "required": true,
-        "description": "The panelist's ID or email."
+        "description": "The panelist's ID or email.",
+        "example": "Tg2b6GhcQKKbV7nSCbDKug"
       }
     ],
     "responses": [
@@ -6408,13 +6967,15 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       },
       {
         "name": "anonymous",
         "schema": "boolean",
         "required": false,
-        "description": "Whether to query for polls with the **Anonymous** option enabled: \n* `true` &mdash; Query for polls with the **Anonymous** option enabled. \n* `false` &mdash; Do not query for polls with the **Anonymous** option enabled."
+        "description": "Whether to query for polls with the **Anonymous** option enabled: \n* `true` &mdash; Query for polls with the **Anonymous** option enabled. \n* `false` &mdash; Do not query for polls with the **Anonymous** option enabled.",
+        "example": true
       }
     ],
     "responses": [
@@ -6444,22 +7005,27 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       },
       {
         "name": "title",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Learn something new"
       },
       {
         "name": "anonymous",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true,
+        "default": false
       },
       {
         "name": "poll_type",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 2
       },
       {
         "name": "questions",
@@ -6494,13 +7060,15 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       },
       {
         "name": "pollId",
         "schema": "string",
         "required": true,
-        "description": "The poll ID"
+        "description": "The poll ID",
+        "example": "QalIoKWLTJehBJ8e1xRrbQ"
       }
     ],
     "responses": [
@@ -6530,13 +7098,15 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       },
       {
         "name": "pollId",
         "schema": "string",
         "required": true,
-        "description": "The poll ID"
+        "description": "The poll ID",
+        "example": "QalIoKWLTJehBJ8e1xRrbQ"
       }
     ],
     "responses": [
@@ -6566,28 +7136,34 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       },
       {
         "name": "pollId",
         "schema": "string",
         "required": true,
-        "description": "The poll ID"
+        "description": "The poll ID",
+        "example": "QalIoKWLTJehBJ8e1xRrbQ"
       },
       {
         "name": "title",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Learn something new"
       },
       {
         "name": "anonymous",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true,
+        "default": false
       },
       {
         "name": "poll_type",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 2
       },
       {
         "name": "questions",
@@ -6622,43 +7198,53 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       },
       {
         "name": "occurrenceId",
         "schema": "string",
         "required": false,
-        "description": "The meeting or webinar occurrence ID."
+        "description": "The meeting or webinar occurrence ID.",
+        "example": "1648194360000"
       },
       {
         "name": "status",
         "schema": "string",
         "required": false,
-        "description": "Query by the registrant's status. \n* `pending` - The registration is pending. \n* `approved` - The registrant is approved. \n* `denied` - The registration is denied."
+        "description": "Query by the registrant's status. \n* `pending` - The registration is pending. \n* `approved` - The registrant is approved. \n* `denied` - The registration is denied.",
+        "example": "pending",
+        "default": "approved"
       },
       {
         "name": "trackingSourceId",
         "schema": "string",
         "required": false,
-        "description": "The tracking source ID for the registrants. Useful if you share the webinar registration page in multiple locations. See [Creating source tracking links for webinar registration](https://support.zoom.us/hc/en-us/articles/360000315683-Creating-source-tracking-links-for-webinar-registration) for details."
+        "description": "The tracking source ID for the registrants. Useful if you share the webinar registration page in multiple locations. See [Creating source tracking links for webinar registration](https://support.zoom.us/hc/en-us/articles/360000315683-Creating-source-tracking-links-for-webinar-registration) for details.",
+        "example": "5516482804110"
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "The number of records returned within a single API call."
+        "description": "The number of records returned within a single API call.",
+        "example": 30,
+        "default": 30
       },
       {
         "name": "pageNumber",
         "schema": "integer",
         "required": false,
-        "description": "**Deprecated** This field will be deprecated. We will no longer support this field in a future release. Instead, use the `next_page_token` for pagination."
+        "description": "**Deprecated** This field will be deprecated. We will no longer support this field in a future release. Instead, use the `next_page_token` for pagination.",
+        "example": 1,
+        "default": 1
       },
       {
         "name": "nextPageToken",
         "schema": "string",
         "required": false,
-        "description": "Use the next page token to paginate through large result sets. A next page token is returned whenever the set of available results exceeds the current page size. This token's expiration period is 15 minutes."
+        "description": "Use the next page token to paginate through large result sets. A next page token is returned whenever the set of available results exceeds the current page size. This token's expiration period is 15 minutes.",
+        "example": "IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2"
       }
     ],
     "responses": [
@@ -6688,73 +7274,85 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       },
       {
         "name": "occurrenceIds",
         "schema": "string",
         "required": false,
-        "description": "A comma-separated list of webinar occurrence IDs. Get this value with the [Get a webinar](https://developers.zoom.us) API. Make sure the `registration_type` is 3 if updating multiple occurrences with this API."
+        "description": "A comma-separated list of webinar occurrence IDs. Get this value with the [Get a webinar](https://developers.zoom.us) API. Make sure the `registration_type` is 3 if updating multiple occurrences with this API.",
+        "example": "1648538280000"
       },
       {
         "name": "first_name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Jill"
       },
       {
         "name": "last_name",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Chill"
       },
       {
         "name": "email",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "jchill@example.com"
       },
       {
         "name": "address",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "1800 Amphibious Blvd."
       },
       {
         "name": "city",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Mountain View"
       },
       {
         "name": "state",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "CA"
       },
       {
         "name": "zip",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "94045"
       },
       {
         "name": "country",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "US"
       },
       {
         "name": "phone",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "5550100"
       },
       {
         "name": "comments",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Looking forward to the discussion."
       },
       {
         "name": "custom_questions",
@@ -6766,49 +7364,57 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "industry",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Food"
       },
       {
         "name": "job_title",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Chef"
       },
       {
         "name": "no_of_employees",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "1-20"
       },
       {
         "name": "org",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Cooking Org"
       },
       {
         "name": "purchasing_time_frame",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "1-3 months"
       },
       {
         "name": "role_in_purchase_process",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Influencer"
       },
       {
         "name": "language",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "en-US"
       },
       {
         "name": "source_id",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "4816766181770"
       }
     ],
     "responses": [
@@ -6842,7 +7448,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       }
     ],
     "responses": [
@@ -6868,7 +7475,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       },
       {
         "name": "custom_questions",
@@ -6904,19 +7512,22 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       },
       {
         "name": "occurrenceId",
         "schema": "string",
         "required": false,
-        "description": "The meeting or webinar occurrence ID."
+        "description": "The meeting or webinar occurrence ID.",
+        "example": "1648194360000"
       },
       {
         "name": "action",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "approve"
       },
       {
         "name": "registrants",
@@ -6956,19 +7567,22 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar ID."
+        "description": "The webinar ID.",
+        "example": 95204914252
       },
       {
         "name": "registrantId",
         "schema": "string",
         "required": true,
-        "description": "The registrant ID."
+        "description": "The registrant ID.",
+        "example": "9tboDiHUQAeOnbmudzWa5g"
       },
       {
         "name": "occurrenceId",
         "schema": "string",
         "required": false,
-        "description": "The webinar occurrence ID."
+        "description": "The webinar occurrence ID.",
+        "example": "1648538280000"
       }
     ],
     "responses": [
@@ -6994,19 +7608,22 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       },
       {
         "name": "registrantId",
         "schema": "string",
         "required": true,
-        "description": "The registrant ID."
+        "description": "The registrant ID.",
+        "example": "9tboDiHUQAeOnbmudzWa5g"
       },
       {
         "name": "occurrenceId",
         "schema": "string",
         "required": false,
-        "description": "The meeting or webinar occurrence ID."
+        "description": "The meeting or webinar occurrence ID.",
+        "example": "1648194360000"
       }
     ],
     "responses": [
@@ -7036,12 +7653,14 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID. \n\n When storing this value in your database, store it as a long format integer and **not** an integer. Webinar IDs can exceed 10 digits."
+        "description": "The webinar's ID. \n\n When storing this value in your database, store it as a long format integer and **not** an integer. Webinar IDs can exceed 10 digits.",
+        "example": 85746065
       },
       {
         "name": "passcode",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "xxxx"
       }
     ],
     "responses": [
@@ -7067,12 +7686,14 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       },
       {
         "name": "action",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "end"
       }
     ],
     "responses": [
@@ -7102,7 +7723,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       }
     ],
     "responses": [
@@ -7132,7 +7754,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       }
     ],
     "responses": [
@@ -7162,7 +7785,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       },
       {
         "name": "custom_survey",
@@ -7172,17 +7796,22 @@ export default function ZoomMeetingTypeScriptSdk() {
       {
         "name": "show_in_the_browser",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true,
+        "default": true
       },
       {
         "name": "show_in_the_follow_up_email",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false,
+        "default": false
       },
       {
         "name": "third_party_survey",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "https://example.com"
       }
     ],
     "responses": [
@@ -7212,13 +7841,16 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       },
       {
         "name": "type",
         "schema": "string",
         "required": false,
-        "description": "The webinar token type: \n* `closed_caption_token` &mdash; The third-party closed caption API token. \n\nThis defaults to `closed_caption_token`."
+        "description": "The webinar token type: \n* `closed_caption_token` &mdash; The third-party closed caption API token. \n\nThis defaults to `closed_caption_token`.",
+        "example": "closed_caption_token",
+        "default": "closed_caption_token"
       }
     ],
     "responses": [
@@ -7248,7 +7880,8 @@ export default function ZoomMeetingTypeScriptSdk() {
         "name": "webinarId",
         "schema": "integer",
         "required": true,
-        "description": "The webinar's ID."
+        "description": "The webinar's ID.",
+        "example": 99289110036
       }
     ],
     "responses": [

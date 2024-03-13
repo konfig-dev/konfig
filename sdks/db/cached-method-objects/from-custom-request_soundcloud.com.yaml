@@ -13,20 +13,24 @@ methodObjects:
         schema: string
         required: true
         description: The client id belonging to your application
+        example: some client
       - name: redirectUri
         schema: string
         required: true
         description: The redirect uri you have configured for your application
+        example: https://soundcloud.com
       - name: responseType
         schema: string
         required: true
         description: Support only the Authorization Code Flow
+        example: code
       - name: state
         schema: string
         required: false
         description: >-
           Any value included here will be appended to the redirect URI. Use this
           for CSRF protection.
+        example: encrypted_session_info
     responses:
       - statusCode: '200'
         description: OK
@@ -47,26 +51,32 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: authorization_code
       - name: client_id
         schema: string
         required: true
         description: ''
+        example: CLIENT_ID
       - name: client_secret
         schema: string
         required: true
         description: ''
+        example: CLIENT_SECRET
       - name: code
         schema: string
         required: false
         description: ''
+        example: 1-123456-12345678-FAbcfbe9ir2wdj0
       - name: redirect_uri
         schema: string
         required: false
         description: ''
+        example: https://mywebsite/auth/soundcloud
       - name: refresh_token
         schema: string
         required: false
         description: ''
+        example: 1234c331329477150e7b6056ff212345
     responses:
       - statusCode: '200'
         description: ''
@@ -100,10 +110,13 @@ methodObjects:
           has to the track. The result list will include only tracks with the
           specified access. Include all options if you'd like to see all
           possible tracks. See `Track#access` schema for more details.
+        default: playable,preview
       - name: limit
         schema: integer
         required: false
         description: Number of results to return in the collection.
+        example: 2
+        default: 50
     responses:
       - statusCode: '200'
         description: User's activities.
@@ -123,10 +136,13 @@ methodObjects:
           has to the track. The result list will include only tracks with the
           specified access. Include all options if you'd like to see all
           possible tracks. See `Track#access` schema for more details.
+        default: playable,preview
       - name: limit
         schema: integer
         required: false
         description: Number of results to return in the collection.
+        example: 2
+        default: 50
     responses:
       - statusCode: '200'
         description: User's activities.
@@ -146,10 +162,13 @@ methodObjects:
           has to the track. The result list will include only tracks with the
           specified access. Include all options if you'd like to see all
           possible tracks. See `Track#access` schema for more details.
+        default: playable,preview
       - name: limit
         schema: integer
         required: false
         description: Number of results to return in the collection.
+        example: 2
+        default: 50
     responses:
       - statusCode: '200'
         description: User's activities.
@@ -166,6 +185,8 @@ methodObjects:
         schema: integer
         required: false
         description: Number of results to return in the collection.
+        example: 2
+        default: 50
       - name: access
         schema: array
         description: >
@@ -173,12 +194,14 @@ methodObjects:
           has to the track. The result list will include only tracks with the
           specified access. Include all options if you'd like to see all
           possible tracks. See `Track#access` schema for more details.
+        default: playable,preview,blocked
       - name: linkedPartitioning
         schema: boolean
         required: false
         description: >-
           Returns paginated collection of items (recommended, returning a list
           without pagination is deprecated and should not be used)
+        example: true
     responses:
       - statusCode: '200'
         description: ''
@@ -195,12 +218,15 @@ methodObjects:
         schema: integer
         required: false
         description: Number of results to return in the collection.
+        example: 2
+        default: 50
       - name: linkedPartitioning
         schema: boolean
         required: false
         description: >-
           Returns paginated collection of items (recommended, returning a list
           without pagination is deprecated and should not be used)
+        example: true
     responses:
       - statusCode: '200'
         description: ''
@@ -217,10 +243,14 @@ methodObjects:
         schema: integer
         required: false
         description: Number of results to return in the collection.
+        example: 2
+        default: 50
       - name: offset
         schema: integer
         required: false
         description: Offset of first result. Deprecated, use `linked_partitioning` instead.
+        example: 0
+        default: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -242,14 +272,19 @@ methodObjects:
           has to the track. The result list will include only tracks with the
           specified access. Include all options if you'd like to see all
           possible tracks. See `Track#access` schema for more details.
+        default: playable,preview
       - name: limit
         schema: integer
         required: false
         description: Number of results to return in the collection.
+        example: 2
+        default: 50
       - name: offset
         schema: integer
         required: false
         description: Offset of first result. Deprecated, use `linked_partitioning` instead.
+        example: 0
+        default: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -266,6 +301,7 @@ methodObjects:
         schema: integer
         required: true
         description: SoundCloud User id
+        example: 743372812
     responses:
       - statusCode: '200'
         description: ''
@@ -288,6 +324,7 @@ methodObjects:
         schema: integer
         required: true
         description: SoundCloud User id
+        example: 948745750
     responses:
       - statusCode: '200'
         description: SoundCloud User object
@@ -306,6 +343,7 @@ methodObjects:
         schema: integer
         required: true
         description: SoundCloud User id
+        example: 743372812
     responses:
       - statusCode: '200'
         description: ''
@@ -326,6 +364,8 @@ methodObjects:
         schema: integer
         required: false
         description: Number of results to return in the collection.
+        example: 2
+        default: 50
     responses:
       - statusCode: '200'
         description: ''
@@ -344,6 +384,7 @@ methodObjects:
         schema: integer
         required: true
         description: SoundCloud User id to denote a Follower
+        example: 743372812
     responses:
       - statusCode: '200'
         description: SoundCloud User object
@@ -362,16 +403,20 @@ methodObjects:
         description: >-
           A boolean flag to request a playlist with or without tracks. Default
           is `true`.
+        example: true
       - name: linkedPartitioning
         schema: boolean
         required: false
         description: >-
           Returns paginated collection of items (recommended, returning a list
           without pagination is deprecated and should not be used)
+        example: true
       - name: limit
         schema: integer
         required: false
         description: Number of results to return in the collection.
+        example: 2
+        default: 50
     responses:
       - statusCode: '200'
         description: ''
@@ -390,12 +435,15 @@ methodObjects:
         schema: integer
         required: false
         description: Number of results to return in the collection.
+        example: 2
+        default: 50
       - name: linkedPartitioning
         schema: boolean
         required: false
         description: >-
           Returns paginated collection of items (recommended, returning a list
           without pagination is deprecated and should not be used)
+        example: true
     responses:
       - statusCode: '200'
         description: ''
@@ -412,18 +460,22 @@ methodObjects:
         schema: string
         required: false
         description: search
+        example: hello
       - name: ids
         schema: string
         required: false
         description: A comma separated list of track ids to filter on
+        example: 1,2,3
       - name: genres
         schema: string
         required: false
         description: A comma separated list of genres
+        example: Pop,House
       - name: tags
         schema: string
         required: false
         description: A comma separated list of tags
+        example: test
       - name: bpm
         schema: object
         required: false
@@ -443,20 +495,26 @@ methodObjects:
           has to the track. The result list will include only tracks with the
           specified access. Include all options if you'd like to see all
           possible tracks. See `Track#access` schema for more details.
+        default: playable,preview
       - name: limit
         schema: integer
         required: false
         description: Number of results to return in the collection.
+        example: 2
+        default: 50
       - name: offset
         schema: integer
         required: false
         description: Offset of first result. Deprecated, use `linked_partitioning` instead.
+        example: 0
+        default: 0
       - name: linkedPartitioning
         schema: boolean
         required: false
         description: >-
           Returns paginated collection of items (recommended, returning a list
           without pagination is deprecated and should not be used)
+        example: true
     responses:
       - statusCode: '200'
         description: ''
@@ -493,6 +551,7 @@ methodObjects:
         schema: string
         required: false
         description: search
+        example: hello
       - name: access
         schema: array
         description: >
@@ -500,26 +559,33 @@ methodObjects:
           has to the track. The result list will include only tracks with the
           specified access. Include all options if you'd like to see all
           possible tracks. See `Track#access` schema for more details.
+        default: playable,preview
       - name: showTracks
         schema: boolean
         required: false
         description: >-
           A boolean flag to request a playlist with or without tracks. Default
           is `true`.
+        example: true
       - name: limit
         schema: integer
         required: false
         description: Number of results to return in the collection.
+        example: 2
+        default: 50
       - name: offset
         schema: integer
         required: false
         description: Offset of first result. Deprecated, use `linked_partitioning` instead.
+        example: 0
+        default: 0
       - name: linkedPartitioning
         schema: boolean
         required: false
         description: >-
           Returns paginated collection of items (recommended, returning a list
           without pagination is deprecated and should not be used)
+        example: true
     responses:
       - statusCode: '200'
         description: ''
@@ -555,24 +621,31 @@ methodObjects:
         schema: string
         required: false
         description: search
+        example: hello
       - name: ids
         schema: string
         required: false
         description: A comma separated list of track ids to filter on
+        example: 1,2,3
       - name: limit
         schema: integer
         required: false
         description: Number of results to return in the collection.
+        example: 2
+        default: 50
       - name: offset
         schema: integer
         required: false
         description: Offset of first result. Deprecated, use `linked_partitioning` instead.
+        example: 0
+        default: 0
       - name: linkedPartitioning
         schema: boolean
         required: false
         description: >-
           Returns paginated collection of items (recommended, returning a list
           without pagination is deprecated and should not be used)
+        example: true
     responses:
       - statusCode: '200'
         description: ''
@@ -591,6 +664,7 @@ methodObjects:
         schema: integer
         required: true
         description: SoundCloud playlist id
+        example: 10
     responses:
       - statusCode: '200'
         description: Success
@@ -607,6 +681,7 @@ methodObjects:
         schema: integer
         required: true
         description: SoundCloud playlist id
+        example: 1212781357
       - name: secretToken
         schema: string
         required: false
@@ -618,12 +693,14 @@ methodObjects:
           has to the track. The result list will include only tracks with the
           specified access. Include all options if you'd like to see all
           possible tracks. See `Track#access` schema for more details.
+        default: playable,preview
       - name: showTracks
         schema: boolean
         required: false
         description: >-
           A boolean flag to request a playlist with or without tracks. Default
           is `true`.
+        example: true
     responses:
       - statusCode: '200'
         description: Soundcloud Playlist Object
@@ -642,6 +719,7 @@ methodObjects:
         schema: integer
         required: true
         description: SoundCloud playlist id
+        example: 10
       - name: playlist
         schema: object
         description: ''
@@ -663,6 +741,7 @@ methodObjects:
         schema: integer
         required: true
         description: SoundCloud playlist id
+        example: 1212781357
       - name: secretToken
         schema: string
         required: false
@@ -674,12 +753,14 @@ methodObjects:
           has to the track. The result list will include only tracks with the
           specified access. Include all options if you'd like to see all
           possible tracks. See `Track#access` schema for more details.
+        default: playable,preview
       - name: linkedPartitioning
         schema: boolean
         required: false
         description: >-
           Returns paginated collection of items (recommended, returning a list
           without pagination is deprecated and should not be used)
+        example: true
     responses:
       - statusCode: '200'
         description: ''
@@ -698,10 +779,13 @@ methodObjects:
         schema: integer
         required: true
         description: SoundCloud playlist id
+        example: 1212781357
       - name: limit
         schema: integer
         required: false
         description: Number of results to return in the collection.
+        example: 2
+        default: 50
     responses:
       - statusCode: '200'
         description: ''
@@ -720,6 +804,7 @@ methodObjects:
         schema: integer
         required: true
         description: SoundCloud Track id
+        example: 308946187
     responses:
       - statusCode: '200'
         description: Success
@@ -736,6 +821,7 @@ methodObjects:
         schema: integer
         required: true
         description: SoundCloud Track id
+        example: 308946187
       - name: secretToken
         schema: string
         required: false
@@ -758,6 +844,7 @@ methodObjects:
         schema: integer
         required: true
         description: SoundCloud Track id
+        example: 308946187
       - name: track
         schema: object
         description: ''
@@ -779,6 +866,7 @@ methodObjects:
         schema: integer
         required: true
         description: SoundCloud Track id
+        example: 308946187
       - name: secretToken
         schema: string
         required: false
@@ -801,20 +889,26 @@ methodObjects:
         schema: integer
         required: true
         description: SoundCloud Track id
+        example: 308946187
       - name: limit
         schema: integer
         required: false
         description: Number of results to return in the collection.
+        example: 2
+        default: 50
       - name: offset
         schema: integer
         required: false
         description: Offset of first result. Deprecated, use `linked_partitioning` instead.
+        example: 0
+        default: 0
       - name: linkedPartitioning
         schema: boolean
         required: false
         description: >-
           Returns paginated collection of items (recommended, returning a list
           without pagination is deprecated and should not be used)
+        example: true
     responses:
       - statusCode: '200'
         description: ''
@@ -833,6 +927,7 @@ methodObjects:
         schema: integer
         required: true
         description: SoundCloud Track id
+        example: 308946187
       - name: comment
         schema: object
         description: ''
@@ -854,16 +949,20 @@ methodObjects:
         schema: integer
         required: true
         description: SoundCloud Track id
+        example: 308946187
       - name: limit
         schema: integer
         required: false
         description: Number of results to return in the collection.
+        example: 2
+        default: 50
       - name: linkedPartitioning
         schema: boolean
         required: false
         description: >-
           Returns paginated collection of items (recommended, returning a list
           without pagination is deprecated and should not be used)
+        example: true
     responses:
       - statusCode: '200'
         description: ''
@@ -882,10 +981,13 @@ methodObjects:
         schema: integer
         required: true
         description: SoundCloud Track id
+        example: 308946187
       - name: limit
         schema: integer
         required: false
         description: Number of results to return in the collection.
+        example: 2
+        default: 50
     responses:
       - statusCode: '200'
         description: ''
@@ -904,6 +1006,7 @@ methodObjects:
         schema: integer
         required: true
         description: SoundCloud Track id
+        example: 308946187
       - name: access
         schema: array
         description: >
@@ -911,20 +1014,26 @@ methodObjects:
           has to the track. The result list will include only tracks with the
           specified access. Include all options if you'd like to see all
           possible tracks. See `Track#access` schema for more details.
+        default: playable,preview
       - name: limit
         schema: integer
         required: false
         description: Number of results to return in the collection.
+        example: 2
+        default: 50
       - name: offset
         schema: integer
         required: false
         description: Offset of first result. Deprecated, use `linked_partitioning` instead.
+        example: 0
+        default: 0
       - name: linkedPartitioning
         schema: boolean
         required: false
         description: >-
           Returns paginated collection of items (recommended, returning a list
           without pagination is deprecated and should not be used)
+        example: true
     responses:
       - statusCode: '200'
         description: ''
@@ -945,6 +1054,7 @@ methodObjects:
         schema: string
         required: true
         description: SoundCloud URL
+        example: https://soundcloud.com/user-434241656
     responses:
       - statusCode: '200'
         description: OK
@@ -963,6 +1073,7 @@ methodObjects:
         schema: integer
         required: true
         description: SoundCloud User id
+        example: 948745750
     responses:
       - statusCode: '200'
         description: SoundCloud User object
@@ -983,16 +1094,20 @@ methodObjects:
         schema: integer
         required: true
         description: SoundCloud User id
+        example: 948745750
       - name: limit
         schema: integer
         required: false
         description: Number of results to return in the collection.
+        example: 2
+        default: 50
       - name: linkedPartitioning
         schema: boolean
         required: false
         description: >-
           Returns paginated collection of items (recommended, returning a list
           without pagination is deprecated and should not be used)
+        example: true
     responses:
       - statusCode: '200'
         description: ''
@@ -1009,10 +1124,13 @@ methodObjects:
         schema: integer
         required: true
         description: SoundCloud User id
+        example: 948745750
       - name: limit
         schema: integer
         required: false
         description: Number of results to return in the collection.
+        example: 2
+        default: 50
     responses:
       - statusCode: '200'
         description: ''
@@ -1029,10 +1147,13 @@ methodObjects:
         schema: integer
         required: true
         description: SoundCloud User id
+        example: 948745750
       - name: limit
         schema: integer
         required: false
         description: Number of results to return in the collection.
+        example: 2
+        default: 50
     responses:
       - statusCode: '200'
         description: ''
@@ -1051,10 +1172,12 @@ methodObjects:
         schema: integer
         required: true
         description: SoundCloud User id
+        example: 948745750
       - name: followingId
         schema: integer
         required: true
         description: SoundCloud User id to denote a Following of a user
+        example: 25219981
     responses:
       - statusCode: '200'
         description: SoundCloud User object
@@ -1073,6 +1196,7 @@ methodObjects:
         schema: integer
         required: true
         description: SoundCloud User id
+        example: 948745750
       - name: access
         schema: array
         description: >
@@ -1080,22 +1204,27 @@ methodObjects:
           has to the track. The result list will include only tracks with the
           specified access. Include all options if you'd like to see all
           possible tracks. See `Track#access` schema for more details.
+        default: playable,preview
       - name: showTracks
         schema: boolean
         required: false
         description: >-
           A boolean flag to request a playlist with or without tracks. Default
           is `true`.
+        example: true
       - name: limit
         schema: integer
         required: false
         description: Number of results to return in the collection.
+        example: 2
+        default: 50
       - name: linkedPartitioning
         schema: boolean
         required: false
         description: >-
           Returns paginated collection of items (recommended, returning a list
           without pagination is deprecated and should not be used)
+        example: true
     responses:
       - statusCode: '200'
         description: ''
@@ -1112,6 +1241,7 @@ methodObjects:
         schema: integer
         required: true
         description: SoundCloud User id
+        example: 948745750
       - name: access
         schema: array
         description: >
@@ -1119,16 +1249,20 @@ methodObjects:
           has to the track. The result list will include only tracks with the
           specified access. Include all options if you'd like to see all
           possible tracks. See `Track#access` schema for more details.
+        default: playable,preview
       - name: limit
         schema: integer
         required: false
         description: Number of results to return in the collection.
+        example: 2
+        default: 50
       - name: linkedPartitioning
         schema: boolean
         required: false
         description: >-
           Returns paginated collection of items (recommended, returning a list
           without pagination is deprecated and should not be used)
+        example: true
     responses:
       - statusCode: '200'
         description: ''
@@ -1147,10 +1281,13 @@ methodObjects:
         schema: integer
         required: true
         description: SoundCloud User id
+        example: 948745750
       - name: limit
         schema: integer
         required: false
         description: Number of results to return in the collection.
+        example: 2
+        default: 50
     responses:
       - statusCode: '200'
         description: User's links added to their profile
@@ -1167,6 +1304,7 @@ methodObjects:
         schema: integer
         required: true
         description: SoundCloud User id
+        example: 948745750
       - name: access
         schema: array
         description: >
@@ -1174,16 +1312,20 @@ methodObjects:
           has to the track. The result list will include only tracks with the
           specified access. Include all options if you'd like to see all
           possible tracks. See `Track#access` schema for more details.
+        default: playable,preview
       - name: limit
         schema: integer
         required: false
         description: Number of results to return in the collection.
+        example: 2
+        default: 50
       - name: linkedPartitioning
         schema: boolean
         required: false
         description: >-
           Returns paginated collection of items (recommended, returning a list
           without pagination is deprecated and should not be used)
+        example: true
     responses:
       - statusCode: '200'
         description: ''
@@ -1204,16 +1346,20 @@ methodObjects:
         schema: integer
         required: true
         description: SoundCloud User id
+        example: 948745750
       - name: limit
         schema: integer
         required: false
         description: Number of results to return in the collection.
+        example: 2
+        default: 50
       - name: linkedPartitioning
         schema: boolean
         required: false
         description: >-
           Returns paginated collection of items (recommended, returning a list
           without pagination is deprecated and should not be used)
+        example: true
     responses:
       - statusCode: '200'
         description: ''
@@ -1234,6 +1380,7 @@ methodObjects:
         schema: integer
         required: true
         description: SoundCloud Track id
+        example: 1015448728
     responses:
       - statusCode: '200'
         description: ''
@@ -1252,6 +1399,7 @@ methodObjects:
         schema: integer
         required: true
         description: SoundCloud Track id
+        example: 1015448728
     responses:
       - statusCode: '200'
         description: ''
@@ -1274,6 +1422,7 @@ methodObjects:
         schema: integer
         required: true
         description: SoundCloud playlist id
+        example: 1212781357
     responses:
       - statusCode: '200'
         description: ''
@@ -1292,6 +1441,7 @@ methodObjects:
         schema: integer
         required: true
         description: SoundCloud playlist id
+        example: 1212781357
     responses:
       - statusCode: '200'
         description: ''
@@ -1314,6 +1464,7 @@ methodObjects:
         schema: integer
         required: true
         description: SoundCloud Track id
+        example: 1015448728
     responses:
       - statusCode: '200'
         description: Success
@@ -1332,6 +1483,7 @@ methodObjects:
         schema: integer
         required: true
         description: SoundCloud Track id
+        example: 1015448728
     responses:
       - statusCode: '201'
         description: Created
@@ -1350,6 +1502,7 @@ methodObjects:
         schema: integer
         required: true
         description: SoundCloud playlist id
+        example: 1205584273
     responses:
       - statusCode: '200'
         description: Success
@@ -1368,6 +1521,7 @@ methodObjects:
         schema: integer
         required: true
         description: SoundCloud playlist id
+        example: 1205584273
     responses:
       - statusCode: '201'
         description: Created

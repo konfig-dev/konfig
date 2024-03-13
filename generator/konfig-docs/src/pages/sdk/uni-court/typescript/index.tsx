@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function UniCourtTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function UniCourtTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/unicourt/logo.png"
       clientNameCamelCase="uniCourt"
       homepage="unicourt.com"
-      lastUpdated={new Date("2024-03-11T16:37:37.247Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/unicourt/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/unicourt/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["open_data"]}
       methods={[
   {
     "url": "/attorney/{attorneyId}",
@@ -293,7 +296,8 @@ export default function UniCourtTypeScriptSdk() {
         "name": "docketNumber",
         "schema": "integer",
         "required": true,
-        "description": "Retrieve the primary documents associated with the specified docket number in the case with the specified caseId value."
+        "description": "Retrieve the primary documents associated with the specified docket number in the case with the specified caseId value.",
+        "example": 0
       },
       {
         "name": "inLibrary",
@@ -352,7 +356,8 @@ export default function UniCourtTypeScriptSdk() {
         "name": "docketNumber",
         "schema": "integer",
         "required": true,
-        "description": "Retrieve the secondary documents associated with the specified docket number in the case with the specified caseId value."
+        "description": "Retrieve the secondary documents associated with the specified docket number in the case with the specified caseId value.",
+        "example": 0
       },
       {
         "name": "inLibrary",
@@ -476,7 +481,8 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "Query parameter specifying the page number of the search results to be retrieved."
+        "description": "Query parameter specifying the page number of the search results to be retrieved.",
+        "example": 1
       }
     ],
     "responses": [
@@ -666,7 +672,8 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pageNumber",
         "schema": "integer",
         "required": true,
-        "description": "Page number.\n- minimum: 1\n"
+        "description": "Page number.\n- minimum: 1\n",
+        "example": 0
       }
     ],
     "responses": [
@@ -705,7 +712,8 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pageNumber",
         "schema": "integer",
         "required": true,
-        "description": "Page number.\n- minimum: 1\n"
+        "description": "Page number.\n- minimum: 1\n",
+        "example": 0
       }
     ],
     "responses": [
@@ -744,13 +752,15 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pageNumber",
         "schema": "integer",
         "required": true,
-        "description": "Page number.\n- minimum: 1\n"
+        "description": "Page number.\n- minimum: 1\n",
+        "example": 0
       },
       {
         "name": "groupBy",
         "schema": "string",
         "required": true,
-        "description": "GroupBy"
+        "description": "GroupBy",
+        "example": "GROUPBY"
       }
     ],
     "responses": [
@@ -789,7 +799,8 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pageNumber",
         "schema": "integer",
         "required": true,
-        "description": "Page number.\n- minimum: 1\n"
+        "description": "Page number.\n- minimum: 1\n",
+        "example": 0
       }
     ],
     "responses": [
@@ -828,7 +839,8 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pageNumber",
         "schema": "integer",
         "required": true,
-        "description": "Page number.\n- minimum: 1\n"
+        "description": "Page number.\n- minimum: 1\n",
+        "example": 0
       }
     ],
     "responses": [
@@ -867,7 +879,8 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pageNumber",
         "schema": "integer",
         "required": true,
-        "description": "Page number.\n- minimum: 1\n"
+        "description": "Page number.\n- minimum: 1\n",
+        "example": 0
       }
     ],
     "responses": [
@@ -906,7 +919,8 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pageNumber",
         "schema": "integer",
         "required": true,
-        "description": "Page number.\n- minimum: 1\n"
+        "description": "Page number.\n- minimum: 1\n",
+        "example": 0
       }
     ],
     "responses": [
@@ -945,7 +959,8 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pageNumber",
         "schema": "integer",
         "required": true,
-        "description": "Page number.\n- minimum: 1\n"
+        "description": "Page number.\n- minimum: 1\n",
+        "example": 0
       }
     ],
     "responses": [
@@ -984,7 +999,8 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pageNumber",
         "schema": "integer",
         "required": true,
-        "description": "Page number.\n- minimum: 1\n"
+        "description": "Page number.\n- minimum: 1\n",
+        "example": 0
       }
     ],
     "responses": [
@@ -1023,7 +1039,8 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pageNumber",
         "schema": "integer",
         "required": true,
-        "description": "Page number.\n- minimum: 1\n"
+        "description": "Page number.\n- minimum: 1\n",
+        "example": 0
       }
     ],
     "responses": [
@@ -1062,7 +1079,8 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pageNumber",
         "schema": "integer",
         "required": true,
-        "description": "Page number.\n- minimum: 1\n"
+        "description": "Page number.\n- minimum: 1\n",
+        "example": 0
       }
     ],
     "responses": [
@@ -1101,7 +1119,8 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pageNumber",
         "schema": "integer",
         "required": true,
-        "description": "Page number.\n- minimum: 1\n"
+        "description": "Page number.\n- minimum: 1\n",
+        "example": 0
       }
     ],
     "responses": [
@@ -1140,7 +1159,8 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pageNumber",
         "schema": "integer",
         "required": true,
-        "description": "Page number.\n- minimum: 1\n"
+        "description": "Page number.\n- minimum: 1\n",
+        "example": 0
       }
     ],
     "responses": [
@@ -1179,7 +1199,8 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pageNumber",
         "schema": "integer",
         "required": true,
-        "description": "Page number.\n- minimum: 1\n"
+        "description": "Page number.\n- minimum: 1\n",
+        "example": 0
       }
     ],
     "responses": [
@@ -1218,7 +1239,8 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pageNumber",
         "schema": "integer",
         "required": true,
-        "description": "Page number.\n- minimum: 1\n"
+        "description": "Page number.\n- minimum: 1\n",
+        "example": 0
       }
     ],
     "responses": [
@@ -1257,7 +1279,8 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pageNumber",
         "schema": "integer",
         "required": true,
-        "description": "Page number.\n- minimum: 1\n"
+        "description": "Page number.\n- minimum: 1\n",
+        "example": 0
       }
     ],
     "responses": [
@@ -1313,7 +1336,8 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "isPreviewDocument",
         "schema": "boolean",
-        "description": "If the document you want to download is a preview of a document."
+        "description": "If the document you want to download is a preview of a document.",
+        "default": false
       }
     ],
     "responses": [
@@ -1355,13 +1379,15 @@ export default function UniCourtTypeScriptSdk() {
         "name": "caseDocumentId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CDOCcre989d654fa05"
       },
       {
         "name": "isPreviewOnly",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "pacerOptions",
@@ -1410,7 +1436,8 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "Page to fetch the Case Document Order Callback list.<br>\n  - Minimum: 1\n"
+        "description": "Page to fetch the Case Document Order Callback list.<br>\n  - Minimum: 1\n",
+        "default": 1
       }
     ],
     "responses": [
@@ -1466,7 +1493,8 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "date",
         "schema": "string",
-        "description": "The date for which callbacks are to be retrieved."
+        "description": "The date for which callbacks are to be retrieved.",
+        "example": "2022-03-08T10:17:56.000Z"
       },
       {
         "name": "status",
@@ -1476,7 +1504,9 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "The page number of the callbacks to be retrieved.<br>\n  - Minimum: 1\n"
+        "description": "The page number of the callbacks to be retrieved.<br>\n  - Minimum: 1\n",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -1556,22 +1586,28 @@ export default function UniCourtTypeScriptSdk() {
         "name": "q",
         "schema": "string",
         "required": true,
-        "description": "Query parameter for keyword expressions.</a>\n"
+        "description": "Query parameter for keyword expressions.</a>\n",
+        "example": "Q"
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "Query parameter specifying how results are to be sorted. Results can be sorted according to filedDate or relevancy."
+        "description": "Query parameter specifying how results are to be sorted. Results can be sorted according to filedDate or relevancy.",
+        "example": "filedDate",
+        "default": "filedDate"
       },
       {
         "name": "order",
         "schema": "string",
-        "description": "Query parameter specifying whether search result are sorted in ascending or descending order."
+        "description": "Query parameter specifying whether search result are sorted in ascending or descending order.",
+        "example": "desc",
+        "default": "desc"
       },
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "Query parameter specifying the page number of the search results to be retrieved.\n- Minimum: 1\n- Maximum: 1000\n"
+        "description": "Query parameter specifying the page number of the search results to be retrieved.\n- Minimum: 1\n- Maximum: 1000\n",
+        "example": 1
       }
     ],
     "responses": [
@@ -1600,7 +1636,8 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "Query parameter specifying the page number of the search results to be retrieved.\n- Minimum: 1\n- Maximum: 1000\n"
+        "description": "Query parameter specifying the page number of the search results to be retrieved.\n- Minimum: 1\n- Maximum: 1000\n",
+        "example": 1
       }
     ],
     "responses": [
@@ -1723,17 +1760,20 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "lastFetchDate",
         "schema": "string",
-        "description": "The lastFetchDate value of the tracked case. The date value should be entered in the format YYYY-MM-DDTHH:MM:SS+ZZ:zz.\n"
+        "description": "The lastFetchDate value of the tracked case. The date value should be entered in the format YYYY-MM-DDTHH:MM:SS+ZZ:zz.\n",
+        "example": "2022-03-08T10:17:56.000Z"
       },
       {
         "name": "lastFetchDateWithUpdates",
         "schema": "string",
-        "description": "The date on which changes were last found in the case information.\n"
+        "description": "The date on which changes were last found in the case information.\n",
+        "example": "2022-03-08T10:17:56.000Z"
       },
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "The page number of the results to be retrieved.<br>\n  - Minimum: 1\n"
+        "description": "The page number of the results to be retrieved.<br>\n  - Minimum: 1\n",
+        "example": 1
       }
     ],
     "responses": [
@@ -1763,7 +1803,8 @@ export default function UniCourtTypeScriptSdk() {
         "name": "caseId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CASEhq9d8b72d0800c"
       },
       {
         "name": "pacerOptions",
@@ -1840,7 +1881,9 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "The page number of the callbacks to be retrieved.<br>\n  - Minimum: 1\n"
+        "description": "The page number of the callbacks to be retrieved.<br>\n  - Minimum: 1\n",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -1916,13 +1959,15 @@ export default function UniCourtTypeScriptSdk() {
         "name": "clientId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "G3cfixgetVzfaoszGOBp5LPGtih1nMJ9"
       },
       {
         "name": "clientSecret",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "u6PTti57IjPlrwU5MzOwLBD2MCwx-IEbo8sTStTivh1I-EqQ8Jcm27Gfo2GhpHCw"
       }
     ],
     "responses": [
@@ -1956,13 +2001,15 @@ export default function UniCourtTypeScriptSdk() {
         "name": "clientId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "G3cfixgetVzfaoszGOBp5LPGtih1nMJ9"
       },
       {
         "name": "clientSecret",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "u6PTti57IjPlrwU5MzOwLBD2MCwx-IEbo8sTStTivh1I-EqQ8Jcm27Gfo2GhpHCw"
       }
     ],
     "responses": [
@@ -1992,19 +2039,22 @@ export default function UniCourtTypeScriptSdk() {
         "name": "clientId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "G3cfixgetVzfaoszGOBp5LPGtih1nMJ9"
       },
       {
         "name": "clientSecret",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "u6PTti57IjPlrwU5MzOwLBD2MCwx-IEbo8sTStTivh1I-EqQ8Jcm27Gfo2GhpHCw"
       },
       {
         "name": "tokenId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TKID384a057WFC3Dp3"
       }
     ],
     "responses": [
@@ -2061,13 +2111,15 @@ export default function UniCourtTypeScriptSdk() {
         "name": "clientId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "G3cfixgetVzfaoszGOBp5LPGtih1nMJ9"
       },
       {
         "name": "clientSecret",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "u6PTti57IjPlrwU5MzOwLBD2MCwx-IEbo8sTStTivh1I-EqQ8Jcm27Gfo2GhpHCw"
       }
     ],
     "responses": [
@@ -2101,17 +2153,22 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n"
+        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n",
+        "example": 1
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "The field according to which search results are to be sorted."
+        "description": "The field according to which search results are to be sorted.",
+        "example": "name",
+        "default": "name"
       },
       {
         "name": "order",
         "schema": "string",
-        "description": "Whether search results are to be shown in ascending or descending order."
+        "description": "Whether search results are to be shown in ascending or descending order.",
+        "example": "asc",
+        "default": "asc"
       }
     ],
     "responses": [
@@ -2168,17 +2225,22 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n"
+        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n",
+        "example": 1
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "The field according to which search results are to be sorted."
+        "description": "The field according to which search results are to be sorted.",
+        "example": "name",
+        "default": "name"
       },
       {
         "name": "order",
         "schema": "string",
-        "description": "Whether search results are to be shown in ascending or descending order."
+        "description": "Whether search results are to be shown in ascending or descending order.",
+        "example": "asc",
+        "default": "asc"
       }
     ],
     "responses": [
@@ -2235,17 +2297,22 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n"
+        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n",
+        "example": 1
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "The field according to which search results are to be sorted."
+        "description": "The field according to which search results are to be sorted.",
+        "example": "name",
+        "default": "name"
       },
       {
         "name": "order",
         "schema": "string",
-        "description": "Whether search results are to be shown in ascending or descending order."
+        "description": "Whether search results are to be shown in ascending or descending order.",
+        "example": "asc",
+        "default": "asc"
       }
     ],
     "responses": [
@@ -2302,17 +2369,22 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n"
+        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n",
+        "example": 1
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "The field according to which search results are to be sorted."
+        "description": "The field according to which search results are to be sorted.",
+        "example": "name",
+        "default": "name"
       },
       {
         "name": "order",
         "schema": "string",
-        "description": "Whether search results are to be shown in ascending or descending order."
+        "description": "Whether search results are to be shown in ascending or descending order.",
+        "example": "asc",
+        "default": "asc"
       }
     ],
     "responses": [
@@ -2369,17 +2441,22 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n"
+        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n",
+        "example": 1
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "The field according to which search results are to be sorted."
+        "description": "The field according to which search results are to be sorted.",
+        "example": "name",
+        "default": "name"
       },
       {
         "name": "order",
         "schema": "string",
-        "description": "Whether search results are to be shown in ascending or descending order."
+        "description": "Whether search results are to be shown in ascending or descending order.",
+        "example": "asc",
+        "default": "asc"
       }
     ],
     "responses": [
@@ -2436,17 +2513,22 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n"
+        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n",
+        "example": 1
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "The field according to which search results are to be sorted."
+        "description": "The field according to which search results are to be sorted.",
+        "example": "name",
+        "default": "name"
       },
       {
         "name": "order",
         "schema": "string",
-        "description": "Whether search results are to be shown in ascending or descending order."
+        "description": "Whether search results are to be shown in ascending or descending order.",
+        "example": "asc",
+        "default": "asc"
       }
     ],
     "responses": [
@@ -2503,17 +2585,22 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n"
+        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n",
+        "example": 1
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "The field according to which search results are to be sorted."
+        "description": "The field according to which search results are to be sorted.",
+        "example": "name",
+        "default": "name"
       },
       {
         "name": "order",
         "schema": "string",
-        "description": "Whether search results are to be shown in ascending or descending order."
+        "description": "Whether search results are to be shown in ascending or descending order.",
+        "example": "asc",
+        "default": "asc"
       }
     ],
     "responses": [
@@ -2570,17 +2657,22 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n"
+        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n",
+        "example": 1
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "The field according to which search results are to be sorted."
+        "description": "The field according to which search results are to be sorted.",
+        "example": "name",
+        "default": "name"
       },
       {
         "name": "order",
         "schema": "string",
-        "description": "Whether search results are to be shown in ascending or descending order."
+        "description": "Whether search results are to be shown in ascending or descending order.",
+        "example": "asc",
+        "default": "asc"
       }
     ],
     "responses": [
@@ -2637,17 +2729,22 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n"
+        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n",
+        "example": 1
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "The field according to which search results are to be sorted."
+        "description": "The field according to which search results are to be sorted.",
+        "example": "name",
+        "default": "name"
       },
       {
         "name": "order",
         "schema": "string",
-        "description": "Whether search results are to be shown in ascending or descending order."
+        "description": "Whether search results are to be shown in ascending or descending order.",
+        "example": "asc",
+        "default": "asc"
       }
     ],
     "responses": [
@@ -2704,17 +2801,22 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n"
+        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n",
+        "example": 1
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "The field according to which search results are to be sorted."
+        "description": "The field according to which search results are to be sorted.",
+        "example": "name",
+        "default": "name"
       },
       {
         "name": "order",
         "schema": "string",
-        "description": "Whether search results are to be shown in ascending or descending order."
+        "description": "Whether search results are to be shown in ascending or descending order.",
+        "example": "asc",
+        "default": "asc"
       }
     ],
     "responses": [
@@ -2771,17 +2873,22 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n"
+        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n",
+        "example": 1
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "The field according to which search results are to be sorted."
+        "description": "The field according to which search results are to be sorted.",
+        "example": "name",
+        "default": "name"
       },
       {
         "name": "order",
         "schema": "string",
-        "description": "Whether search results are to be shown in ascending or descending order."
+        "description": "Whether search results are to be shown in ascending or descending order.",
+        "example": "asc",
+        "default": "asc"
       }
     ],
     "responses": [
@@ -2838,17 +2945,22 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n"
+        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n",
+        "example": 1
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "The field according to which search results are to be sorted."
+        "description": "The field according to which search results are to be sorted.",
+        "example": "name",
+        "default": "name"
       },
       {
         "name": "order",
         "schema": "string",
-        "description": "Whether search results are to be shown in ascending or descending order."
+        "description": "Whether search results are to be shown in ascending or descending order.",
+        "example": "asc",
+        "default": "asc"
       }
     ],
     "responses": [
@@ -2905,17 +3017,22 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n"
+        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n",
+        "example": 1
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "The field according to which search results are to be sorted."
+        "description": "The field according to which search results are to be sorted.",
+        "example": "name",
+        "default": "name"
       },
       {
         "name": "order",
         "schema": "string",
-        "description": "Whether search results are to be shown in ascending or descending order."
+        "description": "Whether search results are to be shown in ascending or descending order.",
+        "example": "asc",
+        "default": "asc"
       }
     ],
     "responses": [
@@ -2972,17 +3089,22 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n"
+        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n",
+        "example": 1
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "The field according to which search results are to be sorted."
+        "description": "The field according to which search results are to be sorted.",
+        "example": "name",
+        "default": "name"
       },
       {
         "name": "order",
         "schema": "string",
-        "description": "Whether search results are to be shown in ascending or descending order."
+        "description": "Whether search results are to be shown in ascending or descending order.",
+        "example": "asc",
+        "default": "asc"
       }
     ],
     "responses": [
@@ -3039,17 +3161,22 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n"
+        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n",
+        "example": 1
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "The field according to which search results are to be sorted."
+        "description": "The field according to which search results are to be sorted.",
+        "example": "name",
+        "default": "name"
       },
       {
         "name": "order",
         "schema": "string",
-        "description": "Whether search results are to be shown in ascending or descending order."
+        "description": "Whether search results are to be shown in ascending or descending order.",
+        "example": "asc",
+        "default": "asc"
       }
     ],
     "responses": [
@@ -3106,17 +3233,22 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n"
+        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n",
+        "example": 1
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "The field according to which search results are to be sorted."
+        "description": "The field according to which search results are to be sorted.",
+        "example": "name",
+        "default": "name"
       },
       {
         "name": "order",
         "schema": "string",
-        "description": "Whether search results are to be shown in ascending or descending order."
+        "description": "Whether search results are to be shown in ascending or descending order.",
+        "example": "asc",
+        "default": "asc"
       }
     ],
     "responses": [
@@ -3173,17 +3305,22 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n"
+        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n",
+        "example": 1
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "The field according to which search results are to be sorted."
+        "description": "The field according to which search results are to be sorted.",
+        "example": "name",
+        "default": "name"
       },
       {
         "name": "order",
         "schema": "string",
-        "description": "Whether search results are to be shown in ascending or descending order."
+        "description": "Whether search results are to be shown in ascending or descending order.",
+        "example": "asc",
+        "default": "asc"
       }
     ],
     "responses": [
@@ -3240,17 +3377,22 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n"
+        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n",
+        "example": 1
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "The field according to which search results are to be sorted."
+        "description": "The field according to which search results are to be sorted.",
+        "example": "name",
+        "default": "name"
       },
       {
         "name": "order",
         "schema": "string",
-        "description": "Whether search results are to be shown in ascending or descending order."
+        "description": "Whether search results are to be shown in ascending or descending order.",
+        "example": "asc",
+        "default": "asc"
       }
     ],
     "responses": [
@@ -3302,17 +3444,22 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n"
+        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n",
+        "example": 1
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "The field according to which search results are to be sorted."
+        "description": "The field according to which search results are to be sorted.",
+        "example": "name",
+        "default": "name"
       },
       {
         "name": "order",
         "schema": "string",
-        "description": "Whether search results are to be shown in ascending or descending order."
+        "description": "Whether search results are to be shown in ascending or descending order.",
+        "example": "asc",
+        "default": "asc"
       }
     ],
     "responses": [
@@ -3345,17 +3492,22 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n"
+        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n",
+        "example": 1
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "The field according to which search results are to be sorted."
+        "description": "The field according to which search results are to be sorted.",
+        "example": "name",
+        "default": "name"
       },
       {
         "name": "order",
         "schema": "string",
-        "description": "Whether search results are to be shown in ascending or descending order."
+        "description": "Whether search results are to be shown in ascending or descending order.",
+        "example": "asc",
+        "default": "asc"
       }
     ],
     "responses": [
@@ -3388,17 +3540,22 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n"
+        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n",
+        "example": 1
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "The field according to which search results are to be sorted."
+        "description": "The field according to which search results are to be sorted.",
+        "example": "state",
+        "default": "state"
       },
       {
         "name": "order",
         "schema": "string",
-        "description": "Whether search results are to be shown in ascending or descending order."
+        "description": "Whether search results are to be shown in ascending or descending order.",
+        "example": "asc",
+        "default": "asc"
       }
     ],
     "responses": [
@@ -3436,17 +3593,22 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n"
+        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n",
+        "example": 1
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "The field according to which search results are to be sorted."
+        "description": "The field according to which search results are to be sorted.",
+        "example": "name",
+        "default": "name"
       },
       {
         "name": "order",
         "schema": "string",
-        "description": "Whether search results are to be shown in ascending or descending order."
+        "description": "Whether search results are to be shown in ascending or descending order.",
+        "example": "asc",
+        "default": "asc"
       }
     ],
     "responses": [
@@ -3498,17 +3660,22 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n"
+        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n",
+        "example": 1
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "The field according to which search results are to be sorted."
+        "description": "The field according to which search results are to be sorted.",
+        "example": "name",
+        "default": "name"
       },
       {
         "name": "order",
         "schema": "string",
-        "description": "Whether search results are to be shown in ascending or descending order."
+        "description": "Whether search results are to be shown in ascending or descending order.",
+        "example": "asc",
+        "default": "asc"
       }
     ],
     "responses": [
@@ -3546,17 +3713,22 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n"
+        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n",
+        "example": 1
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "The field according to which search results are to be sorted."
+        "description": "The field according to which search results are to be sorted.",
+        "example": "name",
+        "default": "name"
       },
       {
         "name": "order",
         "schema": "string",
-        "description": "Whether search results are to be shown in ascending or descending order."
+        "description": "Whether search results are to be shown in ascending or descending order.",
+        "example": "asc",
+        "default": "asc"
       }
     ],
     "responses": [
@@ -3613,17 +3785,22 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n"
+        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n",
+        "example": 1
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "The field according to which search results are to be sorted."
+        "description": "The field according to which search results are to be sorted.",
+        "example": "name",
+        "default": "name"
       },
       {
         "name": "order",
         "schema": "string",
-        "description": "Whether search results are to be shown in ascending or descending order."
+        "description": "Whether search results are to be shown in ascending or descending order.",
+        "example": "asc",
+        "default": "asc"
       }
     ],
     "responses": [
@@ -3680,17 +3857,22 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n"
+        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n",
+        "example": 1
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "The field according to which search results are to be sorted."
+        "description": "The field according to which search results are to be sorted.",
+        "example": "name",
+        "default": "name"
       },
       {
         "name": "order",
         "schema": "string",
-        "description": "Whether search results are to be shown in ascending or descending order."
+        "description": "Whether search results are to be shown in ascending or descending order.",
+        "example": "asc",
+        "default": "asc"
       }
     ],
     "responses": [
@@ -3747,17 +3929,22 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n"
+        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n",
+        "example": 1
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "The field according to which search results are to be sorted."
+        "description": "The field according to which search results are to be sorted.",
+        "example": "name",
+        "default": "name"
       },
       {
         "name": "order",
         "schema": "string",
-        "description": "Whether search results are to be shown in ascending or descending order."
+        "description": "Whether search results are to be shown in ascending or descending order.",
+        "example": "asc",
+        "default": "asc"
       }
     ],
     "responses": [
@@ -3814,17 +4001,22 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n"
+        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n",
+        "example": 1
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "The field according to which search results are to be sorted."
+        "description": "The field according to which search results are to be sorted.",
+        "example": "state",
+        "default": "state"
       },
       {
         "name": "order",
         "schema": "string",
-        "description": "Whether search results are to be shown in ascending or descending order."
+        "description": "Whether search results are to be shown in ascending or descending order.",
+        "example": "asc",
+        "default": "asc"
       }
     ],
     "responses": [
@@ -3876,17 +4068,22 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "Page number.\n- minimum: 1\n- maximum: 100\n"
+        "description": "Page number.\n- minimum: 1\n- maximum: 100\n",
+        "example": 1
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "Sort field."
+        "description": "Sort field.",
+        "example": "name",
+        "default": "name"
       },
       {
         "name": "order",
         "schema": "string",
-        "description": "Sort order."
+        "description": "Sort order.",
+        "example": "asc",
+        "default": "asc"
       }
     ],
     "responses": [
@@ -3924,17 +4121,22 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n"
+        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n",
+        "example": 1
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "The field according to which search results are to be sorted."
+        "description": "The field according to which search results are to be sorted.",
+        "example": "name",
+        "default": "name"
       },
       {
         "name": "order",
         "schema": "string",
-        "description": "Whether search results are to be shown in ascending or descending order."
+        "description": "Whether search results are to be shown in ascending or descending order.",
+        "example": "asc",
+        "default": "asc"
       }
     ],
     "responses": [
@@ -3991,17 +4193,22 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n"
+        "description": "The page number of the results to be retrieved.\n- minimum: 1\n- maximum: 100\n",
+        "example": 1
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "The field according to which search results are to be sorted."
+        "description": "The field according to which search results are to be sorted.",
+        "example": "name",
+        "default": "name"
       },
       {
         "name": "order",
         "schema": "string",
-        "description": "Whether search results are to be shown in ascending or descending order."
+        "description": "Whether search results are to be shown in ascending or descending order.",
+        "example": "asc",
+        "default": "asc"
       }
     ],
     "responses": [
@@ -4082,7 +4289,8 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pageNumber",
         "schema": "integer",
         "required": true,
-        "description": "Page number.\n- minimum: 1\n"
+        "description": "Page number.\n- minimum: 1\n",
+        "example": 0
       }
     ],
     "responses": [
@@ -4121,7 +4329,8 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pageNumber",
         "schema": "integer",
         "required": true,
-        "description": "Page number.\n- minimum: 1\n"
+        "description": "Page number.\n- minimum: 1\n",
+        "example": 0
       }
     ],
     "responses": [
@@ -4160,7 +4369,8 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pageNumber",
         "schema": "integer",
         "required": true,
-        "description": "Page number.\n- minimum: 1\n"
+        "description": "Page number.\n- minimum: 1\n",
+        "example": 0
       }
     ],
     "responses": [
@@ -4199,7 +4409,8 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pageNumber",
         "schema": "integer",
         "required": true,
-        "description": "Page number.\n- minimum: 1\n"
+        "description": "Page number.\n- minimum: 1\n",
+        "example": 0
       }
     ],
     "responses": [
@@ -4237,7 +4448,8 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "Query parameter specifying the page number of the search results to be retrieved.\n- Minimum: 1\n- Maximum: 1000\n"
+        "description": "Query parameter specifying the page number of the search results to be retrieved.\n- Minimum: 1\n- Maximum: 1000\n",
+        "example": 1
       }
     ],
     "responses": [
@@ -4266,7 +4478,8 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "Query parameter specifying the page number of the search results to be retrieved.\n- Minimum: 1\n- Maximum: 1000\n"
+        "description": "Query parameter specifying the page number of the search results to be retrieved.\n- Minimum: 1\n- Maximum: 1000\n",
+        "example": 1
       }
     ],
     "responses": [
@@ -4328,7 +4541,8 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pageNumber",
         "schema": "integer",
         "required": true,
-        "description": "Page number.\n- minimum: 1\n"
+        "description": "Page number.\n- minimum: 1\n",
+        "example": 0
       }
     ],
     "responses": [
@@ -4367,7 +4581,8 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pageNumber",
         "schema": "integer",
         "required": true,
-        "description": "Page number.\n- minimum: 1\n"
+        "description": "Page number.\n- minimum: 1\n",
+        "example": 0
       }
     ],
     "responses": [
@@ -4406,7 +4621,8 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pageNumber",
         "schema": "integer",
         "required": true,
-        "description": "Page number.\n- minimum: 1\n"
+        "description": "Page number.\n- minimum: 1\n",
+        "example": 0
       }
     ],
     "responses": [
@@ -4444,7 +4660,8 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "Query parameter specifying the page number of the search results to be retrieved.\n- Minimum: 1\n- Maximum: 1000\n"
+        "description": "Query parameter specifying the page number of the search results to be retrieved.\n- Minimum: 1\n- Maximum: 1000\n",
+        "example": 1
       }
     ],
     "responses": [
@@ -4473,7 +4690,8 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "Query parameter specifying the page number of the search results to be retrieved.\n- Minimum: 1\n- Maximum: 1000\n"
+        "description": "Query parameter specifying the page number of the search results to be retrieved.\n- Minimum: 1\n- Maximum: 1000\n",
+        "example": 1
       }
     ],
     "responses": [
@@ -4535,7 +4753,8 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pageNumber",
         "schema": "integer",
         "required": true,
-        "description": "Page number.\n- minimum: 1\n"
+        "description": "Page number.\n- minimum: 1\n",
+        "example": 0
       }
     ],
     "responses": [
@@ -4574,7 +4793,8 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pageNumber",
         "schema": "integer",
         "required": true,
-        "description": "Page number.\n- minimum: 1\n"
+        "description": "Page number.\n- minimum: 1\n",
+        "example": 0
       }
     ],
     "responses": [
@@ -4613,7 +4833,8 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pageNumber",
         "schema": "integer",
         "required": true,
-        "description": "Page number.\n- minimum: 1\n"
+        "description": "Page number.\n- minimum: 1\n",
+        "example": 0
       }
     ],
     "responses": [
@@ -4652,7 +4873,8 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pageNumber",
         "schema": "integer",
         "required": true,
-        "description": "Page number.\n- minimum: 1\n"
+        "description": "Page number.\n- minimum: 1\n",
+        "example": 0
       }
     ],
     "responses": [
@@ -4690,7 +4912,8 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "Query parameter specifying the page number of the search results to be retrieved.\n- Minimum: 1\n- Maximum: 1000\n"
+        "description": "Query parameter specifying the page number of the search results to be retrieved.\n- Minimum: 1\n- Maximum: 1000\n",
+        "example": 1
       }
     ],
     "responses": [
@@ -4719,7 +4942,8 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "Query parameter specifying the page number of the search results to be retrieved.\n- Minimum: 1\n- Maximum: 1000\n"
+        "description": "Query parameter specifying the page number of the search results to be retrieved.\n- Minimum: 1\n- Maximum: 1000\n",
+        "example": 1
       }
     ],
     "responses": [
@@ -4781,7 +5005,8 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pageNumber",
         "schema": "integer",
         "required": true,
-        "description": "Page number.\n- minimum: 1\n"
+        "description": "Page number.\n- minimum: 1\n",
+        "example": 0
       }
     ],
     "responses": [
@@ -4820,7 +5045,8 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pageNumber",
         "schema": "integer",
         "required": true,
-        "description": "Page number.\n- minimum: 1\n"
+        "description": "Page number.\n- minimum: 1\n",
+        "example": 0
       }
     ],
     "responses": [
@@ -4859,7 +5085,8 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pageNumber",
         "schema": "integer",
         "required": true,
-        "description": "Page number.\n- minimum: 1\n"
+        "description": "Page number.\n- minimum: 1\n",
+        "example": 0
       }
     ],
     "responses": [
@@ -4898,7 +5125,8 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pageNumber",
         "schema": "integer",
         "required": true,
-        "description": "Page number.\n- minimum: 1\n"
+        "description": "Page number.\n- minimum: 1\n",
+        "example": 0
       }
     ],
     "responses": [
@@ -4936,7 +5164,8 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "Query parameter specifying the page number of the search results to be retrieved.\n- Minimum: 1\n- Maximum: 1000\n"
+        "description": "Query parameter specifying the page number of the search results to be retrieved.\n- Minimum: 1\n- Maximum: 1000\n",
+        "example": 1
       }
     ],
     "responses": [
@@ -4965,7 +5194,8 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "Query parameter specifying the page number of the search results to be retrieved.\n- Minimum: 1\n- Maximum: 1000\n"
+        "description": "Query parameter specifying the page number of the search results to be retrieved.\n- Minimum: 1\n- Maximum: 1000\n",
+        "example": 1
       }
     ],
     "responses": [
@@ -4999,25 +5229,29 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pacerUserId",
         "schema": "string",
         "required": true,
-        "description": "The PACER username of the PACER account under which the case should be imported."
+        "description": "The PACER username of the PACER account under which the case should be imported.",
+        "example": "johndoe"
       },
       {
         "name": "pacerClientCode",
         "schema": "string",
         "required": true,
-        "description": "The PACER client code under which the case should be imported."
+        "description": "The PACER client code under which the case should be imported.",
+        "example": "john"
       },
       {
         "name": "caseNumber",
         "schema": "string",
         "required": true,
-        "description": "The case number of the case to be imported."
+        "description": "The case number of the case to be imported.",
+        "example": "2:15-mc-12345"
       },
       {
         "name": "courtId",
         "schema": "string",
         "required": true,
-        "description": "The courtId value of the court from which the case is to be imported."
+        "description": "The courtId value of the court from which the case is to be imported.",
+        "example": "COURTID"
       }
     ],
     "responses": [
@@ -5047,18 +5281,21 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pacerUserId",
         "schema": "string",
         "required": true,
-        "description": "The username of the PACER account under which the search is to be performed."
+        "description": "The username of the PACER account under which the search is to be performed.",
+        "example": "johndoe"
       },
       {
         "name": "pacerClientCode",
         "schema": "string",
         "required": true,
-        "description": "The PACER client code under which the search is to be performed."
+        "description": "The PACER client code under which the search is to be performed.",
+        "example": "john"
       },
       {
         "name": "caseNumber",
         "schema": "string",
-        "description": "The case number of the target case. You may use the following case-number formats: \n\n\tyy-nnnnn \n\n\tyy-tp-nnnnn \n\n\tyy tp nnnnn \n\n\tyytpnnnnn \n\n\to:yy-nnnnn \n\n\to:yy-tp-nnnnn \n\n\to:yy tp nnnnn \n\n\to:yytpnnnnn \n\nwhere: \n\nyy  case year (may be 2 or 4 digits) \n\nnnnnn  case number (up to 5 digits) \n\ntp  case type (up to 2 characters) \n\no  office where the case was filed (1 digit)."
+        "description": "The case number of the target case. You may use the following case-number formats: \n\n\tyy-nnnnn \n\n\tyy-tp-nnnnn \n\n\tyy tp nnnnn \n\n\tyytpnnnnn \n\n\to:yy-nnnnn \n\n\to:yy-tp-nnnnn \n\n\to:yy tp nnnnn \n\n\to:yytpnnnnn \n\nwhere: \n\nyy  case year (may be 2 or 4 digits) \n\nnnnnn  case number (up to 5 digits) \n\ntp  case type (up to 2 characters) \n\no  office where the case was filed (1 digit).",
+        "example": "12-1234"
       },
       {
         "name": "pacerCaseId",
@@ -5118,7 +5355,8 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "sortParameterQuery",
         "schema": "string",
-        "description": "How search results from PACER are to be sorted. Please see Appendix C for valid sort-related settings. \n\n\tScenario: When mulitple sort paramters needs to be requested. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of courtId and caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtId,ASC&caseId,ASC"
+        "description": "How search results from PACER are to be sorted. Please see Appendix C for valid sort-related settings. \n\n\tScenario: When mulitple sort paramters needs to be requested. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of courtId and caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtId,ASC&caseId,ASC",
+        "default": "sort=caseYear,DESC"
       },
       {
         "name": "caseStatus",
@@ -5158,18 +5396,21 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pacerUserId",
         "schema": "string",
         "required": true,
-        "description": "The username of the PACER account under which the search is to be performed."
+        "description": "The username of the PACER account under which the search is to be performed.",
+        "example": "johndoe"
       },
       {
         "name": "pacerClientCode",
         "schema": "string",
         "required": true,
-        "description": "The PACER client code under which the search is to be performed."
+        "description": "The PACER client code under which the search is to be performed.",
+        "example": "john"
       },
       {
         "name": "caseNumber",
         "schema": "string",
-        "description": "The case number of the target case. You may use the following case-number formats: \n\n\tyy-nnnnn  \n\nwhere: \n\nyy  case year (may be 2 or 4 digits) \n\nnnnnn  case number (up to 5 digits)."
+        "description": "The case number of the target case. You may use the following case-number formats: \n\n\tyy-nnnnn  \n\nwhere: \n\nyy  case year (may be 2 or 4 digits) \n\nnnnnn  case number (up to 5 digits).",
+        "example": "12-1234"
       },
       {
         "name": "pacerCaseId",
@@ -5234,7 +5475,8 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "sortParameterQuery",
         "schema": "string",
-        "description": "How search results from PACER are to be sorted. Please see Appendix C for valid sort-related settings. \n\n\tScenario: When mulitple sort paramters needs to be requested. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of courtId and caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtId,ASC&caseId,ASC"
+        "description": "How search results from PACER are to be sorted. Please see Appendix C for valid sort-related settings. \n\n\tScenario: When mulitple sort paramters needs to be requested. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of courtId and caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtId,ASC&caseId,ASC",
+        "default": "sort=caseYear,DESC"
       },
       {
         "name": "caseStatus",
@@ -5244,7 +5486,8 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "The page number of the search results to be retrieved."
+        "description": "The page number of the search results to be retrieved.",
+        "example": 1
       }
     ],
     "responses": [
@@ -5274,18 +5517,21 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pacerUserId",
         "schema": "string",
         "required": true,
-        "description": "The username of the PACER account under which the search is to be performed."
+        "description": "The username of the PACER account under which the search is to be performed.",
+        "example": "johndoe"
       },
       {
         "name": "pacerClientCode",
         "schema": "string",
         "required": true,
-        "description": "The PACER client code under which the search is to be performed."
+        "description": "The PACER client code under which the search is to be performed.",
+        "example": "john"
       },
       {
         "name": "caseNumber",
         "schema": "string",
-        "description": "The case number of the target case. You may use the following case-number formats: \n\n\tyy-nnnnn \n\n\tyy-tp-nnnnn \n\n\tyy tp nnnnn \n\n\tyytpnnnnn \n\n\to:yy-nnnnn \n\n\to:yy-tp-nnnnn \n\n\to:yy tp nnnnn \n\n\to:yytpnnnnn \n\nwhere: \n\nyy  case year (may be 2 or 4 digits) \n\nnnnnn  case number (up to 5 digits) \n\ntp  case type (up to 2 characters) \n\no  office where the case was filed (1 digit)."
+        "description": "The case number of the target case. You may use the following case-number formats: \n\n\tyy-nnnnn \n\n\tyy-tp-nnnnn \n\n\tyy tp nnnnn \n\n\tyytpnnnnn \n\n\to:yy-nnnnn \n\n\to:yy-tp-nnnnn \n\n\to:yy tp nnnnn \n\n\to:yytpnnnnn \n\nwhere: \n\nyy  case year (may be 2 or 4 digits) \n\nnnnnn  case number (up to 5 digits) \n\ntp  case type (up to 2 characters) \n\no  office where the case was filed (1 digit).",
+        "example": "12-1234"
       },
       {
         "name": "pacerCaseId",
@@ -5370,7 +5616,8 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "sortParameterQuery",
         "schema": "string",
-        "description": "How search results from PACER are to be sorted. Please see Appendix C for valid sort-related settings. \n\n\tScenario: When mulitple sort paramters needs to be requested. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of courtId and caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtId,ASC&caseId,ASC"
+        "description": "How search results from PACER are to be sorted. Please see Appendix C for valid sort-related settings. \n\n\tScenario: When mulitple sort paramters needs to be requested. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of courtId and caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtId,ASC&caseId,ASC",
+        "default": "sort=caseYear,DESC"
       },
       {
         "name": "caseStatus",
@@ -5410,18 +5657,21 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pacerUserId",
         "schema": "string",
         "required": true,
-        "description": "The username of the PACER account under which the search is to be performed."
+        "description": "The username of the PACER account under which the search is to be performed.",
+        "example": "johndoe"
       },
       {
         "name": "pacerClientCode",
         "schema": "string",
         "required": true,
-        "description": "The PACER client code under which the search is to be performed."
+        "description": "The PACER client code under which the search is to be performed.",
+        "example": "john"
       },
       {
         "name": "caseNumber",
         "schema": "string",
-        "description": "The case number of the target case. You may use the following case-number formats: \n\n\tyy-nnnnn \n\n\tyy-tp-nnnnn \n\n\tyy tp nnnnn \n\n\tyytpnnnnn \n\n\to:yy-nnnnn \n\n\to:yy-tp-nnnnn \n\n\to:yy tp nnnnn \n\n\to:yytpnnnnn \n\nwhere: \n\nyy  case year (may be 2 or 4 digits) \n\nnnnnn  case number (up to 5 digits) \n\ntp  case type (up to 2 characters) \n\no  office where the case was filed (1 digit)."
+        "description": "The case number of the target case. You may use the following case-number formats: \n\n\tyy-nnnnn \n\n\tyy-tp-nnnnn \n\n\tyy tp nnnnn \n\n\tyytpnnnnn \n\n\to:yy-nnnnn \n\n\to:yy-tp-nnnnn \n\n\to:yy tp nnnnn \n\n\to:yytpnnnnn \n\nwhere: \n\nyy  case year (may be 2 or 4 digits) \n\nnnnnn  case number (up to 5 digits) \n\ntp  case type (up to 2 characters) \n\no  office where the case was filed (1 digit).",
+        "example": "12-1234"
       },
       {
         "name": "pacerCaseId",
@@ -5486,7 +5736,8 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "sortParameterQuery",
         "schema": "string",
-        "description": "How search results from PACER are to be sorted. Please see Appendix C for valid sort-related settings. \n\n\tScenario: When mulitple sort paramters needs to be requested. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of courtId and caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtId,ASC&caseId,ASC"
+        "description": "How search results from PACER are to be sorted. Please see Appendix C for valid sort-related settings. \n\n\tScenario: When mulitple sort paramters needs to be requested. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of courtId and caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtId,ASC&caseId,ASC",
+        "default": "sort=caseYear,DESC"
       },
       {
         "name": "caseStatus",
@@ -5526,18 +5777,21 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pacerUserId",
         "schema": "string",
         "required": true,
-        "description": "The username of the PACER account under which the search is to be performed."
+        "description": "The username of the PACER account under which the search is to be performed.",
+        "example": "johndoe"
       },
       {
         "name": "pacerClientCode",
         "schema": "string",
         "required": true,
-        "description": "The PACER client code under which the search is to be performed."
+        "description": "The PACER client code under which the search is to be performed.",
+        "example": "john"
       },
       {
         "name": "caseNumber",
         "schema": "string",
-        "description": "The case number of the target case. You may use the following case-number formats: \n\n\tyy-nnnnn \n\n\tyy-tp-nnnnn \n\n\tyy tp nnnnn \n\n\tyytpnnnnn \n\n\to:yy-nnnnn \n\n\to:yy-tp-nnnnn \n\n\to:yy tp nnnnn \n\n\to:yytpnnnnn \n\nwhere: \n\nyy  case year (may be 2 or 4 digits) \n\nnnnnn  case number (up to 5 digits) \n\ntp  case type (up to 2 characters) \n\no  office where the case was filed (1 digit)."
+        "description": "The case number of the target case. You may use the following case-number formats: \n\n\tyy-nnnnn \n\n\tyy-tp-nnnnn \n\n\tyy tp nnnnn \n\n\tyytpnnnnn \n\n\to:yy-nnnnn \n\n\to:yy-tp-nnnnn \n\n\to:yy tp nnnnn \n\n\to:yytpnnnnn \n\nwhere: \n\nyy  case year (may be 2 or 4 digits) \n\nnnnnn  case number (up to 5 digits) \n\ntp  case type (up to 2 characters) \n\no  office where the case was filed (1 digit).",
+        "example": "12-1234"
       },
       {
         "name": "pacerCaseId",
@@ -5597,7 +5851,8 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "sortParameterQuery",
         "schema": "string",
-        "description": "How search results from PACER are to be sorted. Please see Appendix C for valid sort-related settings. \n\n\tScenario: When mulitple sort paramters needs to be requested. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of courtId and caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtId,ASC&caseId,ASC"
+        "description": "How search results from PACER are to be sorted. Please see Appendix C for valid sort-related settings. \n\n\tScenario: When mulitple sort paramters needs to be requested. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of courtId and caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtId,ASC&caseId,ASC",
+        "default": "sort=caseYear,DESC"
       },
       {
         "name": "caseStatus",
@@ -5637,18 +5892,21 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pacerUserId",
         "schema": "string",
         "required": true,
-        "description": "The username of the PACER account under which the search is to be performed."
+        "description": "The username of the PACER account under which the search is to be performed.",
+        "example": "johndoe"
       },
       {
         "name": "pacerClientCode",
         "schema": "string",
         "required": true,
-        "description": "The PACER client code under which the search is to be performed."
+        "description": "The PACER client code under which the search is to be performed.",
+        "example": "john"
       },
       {
         "name": "caseNumber",
         "schema": "string",
-        "description": "The case number of the target case. You may use the following case-number formats: \n\n\tyy-nnnnn \n\n\tyy-tp-nnnnn \n\n\tyy tp nnnnn \n\n\tyytpnnnnn \n\n\to:yy-nnnnn \n\n\to:yy-tp-nnnnn \n\n\to:yy tp nnnnn \n\n\to:yytpnnnnn \n\nwhere: \n\nyy  case year (may be 2 or 4 digits) \n\nnnnnn  case number (up to 5 digits) \n\ntp  case type (up to 2 characters) \n\no  office where the case was filed (1 digit)."
+        "description": "The case number of the target case. You may use the following case-number formats: \n\n\tyy-nnnnn \n\n\tyy-tp-nnnnn \n\n\tyy tp nnnnn \n\n\tyytpnnnnn \n\n\to:yy-nnnnn \n\n\to:yy-tp-nnnnn \n\n\to:yy tp nnnnn \n\n\to:yytpnnnnn \n\nwhere: \n\nyy  case year (may be 2 or 4 digits) \n\nnnnnn  case number (up to 5 digits) \n\ntp  case type (up to 2 characters) \n\no  office where the case was filed (1 digit).",
+        "example": "12-1234"
       },
       {
         "name": "jpmlNumber",
@@ -5713,7 +5971,8 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "sortParameterQuery",
         "schema": "string",
-        "description": "How search results from PACER are to be sorted. Please see Appendix C for valid sort-related settings. \n\n\tScenario: When mulitple sort paramters needs to be requested. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of courtId and caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtId,ASC&caseId,ASC"
+        "description": "How search results from PACER are to be sorted. Please see Appendix C for valid sort-related settings. \n\n\tScenario: When mulitple sort paramters needs to be requested. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of courtId and caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtId,ASC&caseId,ASC",
+        "default": "sort=caseYear,DESC"
       },
       {
         "name": "caseStatus",
@@ -5753,18 +6012,21 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pacerUserId",
         "schema": "string",
         "required": true,
-        "description": "The username of the PACER account under which the search is to be performed."
+        "description": "The username of the PACER account under which the search is to be performed.",
+        "example": "johndoe"
       },
       {
         "name": "pacerClientCode",
         "schema": "string",
         "required": true,
-        "description": "The PACER client code under which the search is to be performed."
+        "description": "The PACER client code under which the search is to be performed.",
+        "example": "john"
       },
       {
         "name": "caseNumber",
         "schema": "string",
-        "description": "The case number of the target case. You may use the following case-number formats: \n\n\tyy-nnnnn \n\n\tyy-tp-nnnnn \n\n\tyy tp nnnnn \n\n\tyytpnnnnn \n\n\to:yy-nnnnn \n\n\to:yy-tp-nnnnn \n\n\to:yy tp nnnnn \n\n\to:yytpnnnnn \n\nwhere: \n\nyy  case year (may be 2 or 4 digits) \n\nnnnnn  case number (up to 5 digits) \n\ntp  case type (up to 2 characters) \n\no  office where the case was filed (1 digit)."
+        "description": "The case number of the target case. You may use the following case-number formats: \n\n\tyy-nnnnn \n\n\tyy-tp-nnnnn \n\n\tyy tp nnnnn \n\n\tyytpnnnnn \n\n\to:yy-nnnnn \n\n\to:yy-tp-nnnnn \n\n\to:yy tp nnnnn \n\n\to:yytpnnnnn \n\nwhere: \n\nyy  case year (may be 2 or 4 digits) \n\nnnnnn  case number (up to 5 digits) \n\ntp  case type (up to 2 characters) \n\no  office where the case was filed (1 digit).",
+        "example": "12-1234"
       },
       {
         "name": "pacerCaseId",
@@ -5774,27 +6036,32 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "lastName",
         "schema": "string",
-        "description": "The last name (for an individual) or the entity name (for a business entity) of the target party."
+        "description": "The last name (for an individual) or the entity name (for a business entity) of the target party.",
+        "example": "John"
       },
       {
         "name": "firstName",
         "schema": "string",
-        "description": "The first name of the target party."
+        "description": "The first name of the target party.",
+        "example": "John"
       },
       {
         "name": "middleName",
         "schema": "string",
-        "description": "The middle name of the target party."
+        "description": "The middle name of the target party.",
+        "example": "Doe"
       },
       {
         "name": "generation",
         "schema": "string",
-        "description": "The suffix (e.g., Jr., III) of the target party's name."
+        "description": "The suffix (e.g., Jr., III) of the target party's name.",
+        "example": "III"
       },
       {
         "name": "partyType",
         "schema": "string",
-        "description": "The court-assigned party type for a party involved in a case. Party type codes are created and assigned by individual courts, and as such, their meanings can vary from court to court."
+        "description": "The court-assigned party type for a party involved in a case. Party type codes are created and assigned by individual courts, and as such, their meanings can vary from court to court.",
+        "example": "ptf"
       },
       {
         "name": "partyExactNameMatch",
@@ -5869,7 +6136,8 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "sortParameterQuery",
         "schema": "string",
-        "description": "How search results from PACER are to be sorted. Please see Appendix C for valid sort-related settings. \n\n\tScenario 1: When mulitple sort paramters needs to be requested. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of courtId and caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtId,ASC&caseId,ASC \n\n\tScenario 2: When you want to sort the response using the case parameters in the party search. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of caseOffice and descending order of caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtCase.caseOffice,ASC&caseid,DESC"
+        "description": "How search results from PACER are to be sorted. Please see Appendix C for valid sort-related settings. \n\n\tScenario 1: When mulitple sort paramters needs to be requested. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of courtId and caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtId,ASC&caseId,ASC \n\n\tScenario 2: When you want to sort the response using the case parameters in the party search. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of caseOffice and descending order of caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtCase.caseOffice,ASC&caseid,DESC",
+        "default": "sort=caseYear,DESC"
       },
       {
         "name": "caseStatus",
@@ -5909,18 +6177,21 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pacerUserId",
         "schema": "string",
         "required": true,
-        "description": "The username of the PACER account under which the search is to be performed."
+        "description": "The username of the PACER account under which the search is to be performed.",
+        "example": "johndoe"
       },
       {
         "name": "pacerClientCode",
         "schema": "string",
         "required": true,
-        "description": "The PACER client code under which the search is to be performed."
+        "description": "The PACER client code under which the search is to be performed.",
+        "example": "john"
       },
       {
         "name": "caseNumber",
         "schema": "string",
-        "description": "The case number of the target case. You may use the following case-number formats: \n\n\tyy-nnnnn \n\n\tyy-tp-nnnnn \n\n\tyy tp nnnnn \n\n\tyytpnnnnn \n\n\to:yy-nnnnn \n\n\to:yy-tp-nnnnn \n\n\to:yy tp nnnnn \n\n\to:yytpnnnnn \n\nwhere: \n\nyy  case year (may be 2 or 4 digits) \n\nnnnnn  case number (up to 5 digits) \n\ntp  case type (up to 2 characters) \n\no  office where the case was filed (1 digit)."
+        "description": "The case number of the target case. You may use the following case-number formats: \n\n\tyy-nnnnn \n\n\tyy-tp-nnnnn \n\n\tyy tp nnnnn \n\n\tyytpnnnnn \n\n\to:yy-nnnnn \n\n\to:yy-tp-nnnnn \n\n\to:yy tp nnnnn \n\n\to:yytpnnnnn \n\nwhere: \n\nyy  case year (may be 2 or 4 digits) \n\nnnnnn  case number (up to 5 digits) \n\ntp  case type (up to 2 characters) \n\no  office where the case was filed (1 digit).",
+        "example": "12-1234"
       },
       {
         "name": "pacerCaseId",
@@ -5930,27 +6201,32 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "lastName",
         "schema": "string",
-        "description": "The last name (for an individual) or the entity name (for a business entity) of the target party."
+        "description": "The last name (for an individual) or the entity name (for a business entity) of the target party.",
+        "example": "John"
       },
       {
         "name": "firstName",
         "schema": "string",
-        "description": "The first name of the target party."
+        "description": "The first name of the target party.",
+        "example": "John"
       },
       {
         "name": "middleName",
         "schema": "string",
-        "description": "The middle name of the target party."
+        "description": "The middle name of the target party.",
+        "example": "Doe"
       },
       {
         "name": "generation",
         "schema": "string",
-        "description": "The suffix (e.g., Jr., III) of the target party's name."
+        "description": "The suffix (e.g., Jr., III) of the target party's name.",
+        "example": "III"
       },
       {
         "name": "partyType",
         "schema": "string",
-        "description": "The court-assigned party type for a party involved in a case. Party type codes are created and assigned by individual courts, and as such, their meanings can vary from court to court."
+        "description": "The court-assigned party type for a party involved in a case. Party type codes are created and assigned by individual courts, and as such, their meanings can vary from court to court.",
+        "example": "ptf"
       },
       {
         "name": "partyExactNameMatch",
@@ -6025,7 +6301,8 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "sortParameterQuery",
         "schema": "string",
-        "description": "How search results from PACER are to be sorted. Please see Appendix C for valid sort-related settings. \n\n\tScenario 1: When mulitple sort paramters needs to be requested. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of courtId and caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtId,ASC&caseId,ASC \n\n\tScenario 2: When you want to sort the response using the case parameters in the party search. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of caseOffice and descending order of caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtCase.caseOffice,ASC&caseid,DESC"
+        "description": "How search results from PACER are to be sorted. Please see Appendix C for valid sort-related settings. \n\n\tScenario 1: When mulitple sort paramters needs to be requested. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of courtId and caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtId,ASC&caseId,ASC \n\n\tScenario 2: When you want to sort the response using the case parameters in the party search. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of caseOffice and descending order of caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtCase.caseOffice,ASC&caseid,DESC",
+        "default": "sort=caseYear,DESC"
       },
       {
         "name": "caseStatus",
@@ -6065,18 +6342,21 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pacerUserId",
         "schema": "string",
         "required": true,
-        "description": "The username of the PACER account under which the search is to be performed."
+        "description": "The username of the PACER account under which the search is to be performed.",
+        "example": "johndoe"
       },
       {
         "name": "pacerClientCode",
         "schema": "string",
         "required": true,
-        "description": "The PACER client code under which the search is to be performed."
+        "description": "The PACER client code under which the search is to be performed.",
+        "example": "john"
       },
       {
         "name": "caseNumber",
         "schema": "string",
-        "description": "The case number of the target case. You may use the following case-number formats: \n\n\tyy-nnnnn \n\n\tyy-tp-nnnnn \n\n\tyy tp nnnnn \n\n\tyytpnnnnn \n\n\to:yy-nnnnn \n\n\to:yy-tp-nnnnn \n\n\to:yy tp nnnnn \n\n\to:yytpnnnnn \n\nwhere: \n\nyy  case year (may be 2 or 4 digits) \n\nnnnnn  case number (up to 5 digits) \n\ntp  case type (up to 2 characters) \n\no  office where the case was filed (1 digit)."
+        "description": "The case number of the target case. You may use the following case-number formats: \n\n\tyy-nnnnn \n\n\tyy-tp-nnnnn \n\n\tyy tp nnnnn \n\n\tyytpnnnnn \n\n\to:yy-nnnnn \n\n\to:yy-tp-nnnnn \n\n\to:yy tp nnnnn \n\n\to:yytpnnnnn \n\nwhere: \n\nyy  case year (may be 2 or 4 digits) \n\nnnnnn  case number (up to 5 digits) \n\ntp  case type (up to 2 characters) \n\no  office where the case was filed (1 digit).",
+        "example": "12-1234"
       },
       {
         "name": "pacerCaseId",
@@ -6086,27 +6366,32 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "lastName",
         "schema": "string",
-        "description": "The last name (for an individual) or the entity name (for a business entity) of the target party."
+        "description": "The last name (for an individual) or the entity name (for a business entity) of the target party.",
+        "example": "John"
       },
       {
         "name": "firstName",
         "schema": "string",
-        "description": "The first name of the target party."
+        "description": "The first name of the target party.",
+        "example": "John"
       },
       {
         "name": "middleName",
         "schema": "string",
-        "description": "The middle name of the target party."
+        "description": "The middle name of the target party.",
+        "example": "Doe"
       },
       {
         "name": "generation",
         "schema": "string",
-        "description": "The suffix (e.g., Jr., III) of the target party's name."
+        "description": "The suffix (e.g., Jr., III) of the target party's name.",
+        "example": "III"
       },
       {
         "name": "partyType",
         "schema": "string",
-        "description": "The court-assigned party type for a party involved in a case. Party type codes are created and assigned by individual courts, and as such, their meanings can vary from court to court."
+        "description": "The court-assigned party type for a party involved in a case. Party type codes are created and assigned by individual courts, and as such, their meanings can vary from court to court.",
+        "example": "ptf"
       },
       {
         "name": "partyExactNameMatch",
@@ -6211,7 +6496,8 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "sortParameterQuery",
         "schema": "string",
-        "description": "How search results from PACER are to be sorted. Please see Appendix C for valid sort-related settings. \n\n\tScenario 1: When mulitple sort paramters needs to be requested. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of courtId and caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtId,ASC&caseId,ASC \n\n\tScenario 2: When you want to sort the response using the case parameters in the party search. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of caseOffice and descending order of caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtCase.caseOffice,ASC&caseid,DESC"
+        "description": "How search results from PACER are to be sorted. Please see Appendix C for valid sort-related settings. \n\n\tScenario 1: When mulitple sort paramters needs to be requested. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of courtId and caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtId,ASC&caseId,ASC \n\n\tScenario 2: When you want to sort the response using the case parameters in the party search. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of caseOffice and descending order of caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtCase.caseOffice,ASC&caseid,DESC",
+        "default": "sort=caseYear,DESC"
       },
       {
         "name": "caseStatus",
@@ -6251,18 +6537,21 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pacerUserId",
         "schema": "string",
         "required": true,
-        "description": "The username of the PACER account under which the search is to be performed."
+        "description": "The username of the PACER account under which the search is to be performed.",
+        "example": "johndoe"
       },
       {
         "name": "pacerClientCode",
         "schema": "string",
         "required": true,
-        "description": "The PACER client code under which the search is to be performed."
+        "description": "The PACER client code under which the search is to be performed.",
+        "example": "john"
       },
       {
         "name": "caseNumber",
         "schema": "string",
-        "description": "The case number of the target case. You may use the following case-number formats: \n\n\tyy-nnnnn \n\n\tyy-tp-nnnnn \n\n\tyy tp nnnnn \n\n\tyytpnnnnn \n\n\to:yy-nnnnn \n\n\to:yy-tp-nnnnn \n\n\to:yy tp nnnnn \n\n\to:yytpnnnnn \n\nwhere: \n\nyy  case year (may be 2 or 4 digits) \n\nnnnnn  case number (up to 5 digits) \n\ntp  case type (up to 2 characters) \n\no  office where the case was filed (1 digit)."
+        "description": "The case number of the target case. You may use the following case-number formats: \n\n\tyy-nnnnn \n\n\tyy-tp-nnnnn \n\n\tyy tp nnnnn \n\n\tyytpnnnnn \n\n\to:yy-nnnnn \n\n\to:yy-tp-nnnnn \n\n\to:yy tp nnnnn \n\n\to:yytpnnnnn \n\nwhere: \n\nyy  case year (may be 2 or 4 digits) \n\nnnnnn  case number (up to 5 digits) \n\ntp  case type (up to 2 characters) \n\no  office where the case was filed (1 digit).",
+        "example": "12-1234"
       },
       {
         "name": "pacerCaseId",
@@ -6272,27 +6561,32 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "lastName",
         "schema": "string",
-        "description": "The last name (for an individual) or the entity name (for a business entity) of the target party."
+        "description": "The last name (for an individual) or the entity name (for a business entity) of the target party.",
+        "example": "John"
       },
       {
         "name": "firstName",
         "schema": "string",
-        "description": "The first name of the target party."
+        "description": "The first name of the target party.",
+        "example": "John"
       },
       {
         "name": "middleName",
         "schema": "string",
-        "description": "The middle name of the target party."
+        "description": "The middle name of the target party.",
+        "example": "Doe"
       },
       {
         "name": "generation",
         "schema": "string",
-        "description": "The name suffix (e.g., III, MD)."
+        "description": "The name suffix (e.g., III, MD).",
+        "example": "III"
       },
       {
         "name": "partyType",
         "schema": "string",
-        "description": "The court-assigned party type for a party involved in a case. Party type codes are created and assigned by individual courts, and as such, their meanings can vary from court to court."
+        "description": "The court-assigned party type for a party involved in a case. Party type codes are created and assigned by individual courts, and as such, their meanings can vary from court to court.",
+        "example": "ptf"
       },
       {
         "name": "partyExactNameMatch",
@@ -6367,7 +6661,8 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "sortParameterQuery",
         "schema": "string",
-        "description": "How search results from PACER are to be sorted. Please see Appendix C for valid sort-related settings. \n\n\tScenario 1: When mulitple sort paramters needs to be requested. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of courtId and caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtId,ASC&caseId,ASC \n\n\tScenario 2: When you want to sort the response using the case parameters in the party search. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of caseOffice and descending order of caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtCase.caseOffice,ASC&caseid,DESC"
+        "description": "How search results from PACER are to be sorted. Please see Appendix C for valid sort-related settings. \n\n\tScenario 1: When mulitple sort paramters needs to be requested. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of courtId and caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtId,ASC&caseId,ASC \n\n\tScenario 2: When you want to sort the response using the case parameters in the party search. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of caseOffice and descending order of caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtCase.caseOffice,ASC&caseid,DESC",
+        "default": "sort=caseYear,DESC"
       },
       {
         "name": "caseStatus",
@@ -6407,18 +6702,21 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pacerUserId",
         "schema": "string",
         "required": true,
-        "description": "The username of the PACER account under which the search is to be performed."
+        "description": "The username of the PACER account under which the search is to be performed.",
+        "example": "johndoe"
       },
       {
         "name": "pacerClientCode",
         "schema": "string",
         "required": true,
-        "description": "The PACER client code under which the search is to be performed."
+        "description": "The PACER client code under which the search is to be performed.",
+        "example": "john"
       },
       {
         "name": "caseNumber",
         "schema": "string",
-        "description": "The case number of the target case. You may use the following case-number formats: \n\n\tyy-nnnnn \n\n\tyy-tp-nnnnn \n\n\tyy tp nnnnn \n\n\tyytpnnnnn \n\n\to:yy-nnnnn \n\n\to:yy-tp-nnnnn \n\n\to:yy tp nnnnn \n\n\to:yytpnnnnn \n\nwhere: \n\nyy  case year (may be 2 or 4 digits) \n\nnnnnn  case number (up to 5 digits) \n\ntp  case type (up to 2 characters) \n\no  office where the case was filed (1 digit)."
+        "description": "The case number of the target case. You may use the following case-number formats: \n\n\tyy-nnnnn \n\n\tyy-tp-nnnnn \n\n\tyy tp nnnnn \n\n\tyytpnnnnn \n\n\to:yy-nnnnn \n\n\to:yy-tp-nnnnn \n\n\to:yy tp nnnnn \n\n\to:yytpnnnnn \n\nwhere: \n\nyy  case year (may be 2 or 4 digits) \n\nnnnnn  case number (up to 5 digits) \n\ntp  case type (up to 2 characters) \n\no  office where the case was filed (1 digit).",
+        "example": "12-1234"
       },
       {
         "name": "pacerCaseId",
@@ -6428,27 +6726,32 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "lastName",
         "schema": "string",
-        "description": "The last name (for an individual) or the entity name (for a business entity) of the target party."
+        "description": "The last name (for an individual) or the entity name (for a business entity) of the target party.",
+        "example": "John"
       },
       {
         "name": "firstName",
         "schema": "string",
-        "description": "The first name of the target party."
+        "description": "The first name of the target party.",
+        "example": "John"
       },
       {
         "name": "middleName",
         "schema": "string",
-        "description": "The middle name of the target party."
+        "description": "The middle name of the target party.",
+        "example": "Doe"
       },
       {
         "name": "generation",
         "schema": "string",
-        "description": "The suffix (e.g., Jr., III) of the target party's name."
+        "description": "The suffix (e.g., Jr., III) of the target party's name.",
+        "example": "III"
       },
       {
         "name": "partyType",
         "schema": "string",
-        "description": "The court-assigned party type for a party involved in a case. Party type codes are created and assigned by individual courts, and as such, their meanings can vary from court to court."
+        "description": "The court-assigned party type for a party involved in a case. Party type codes are created and assigned by individual courts, and as such, their meanings can vary from court to court.",
+        "example": "ptf"
       },
       {
         "name": "partyExactNameMatch",
@@ -6523,7 +6826,8 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "sortParameterQuery",
         "schema": "string",
-        "description": "How search results from PACER are to be sorted. Please see Appendix C for valid sort-related settings. \n\n\tScenario 1: When mulitple sort paramters needs to be requested. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of courtId and caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtId,ASC&caseId,ASC \n\n\tScenario 2: When you want to sort the response using the case parameters in the party search. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of caseOffice and descending order of caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtCase.caseOffice,ASC&caseid,DESC"
+        "description": "How search results from PACER are to be sorted. Please see Appendix C for valid sort-related settings. \n\n\tScenario 1: When mulitple sort paramters needs to be requested. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of courtId and caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtId,ASC&caseId,ASC \n\n\tScenario 2: When you want to sort the response using the case parameters in the party search. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of caseOffice and descending order of caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtCase.caseOffice,ASC&caseid,DESC",
+        "default": "sort=caseYear,DESC"
       },
       {
         "name": "caseStatus",
@@ -6563,18 +6867,21 @@ export default function UniCourtTypeScriptSdk() {
         "name": "pacerUserId",
         "schema": "string",
         "required": true,
-        "description": "The username of the PACER account under which the search is to be performed."
+        "description": "The username of the PACER account under which the search is to be performed.",
+        "example": "johndoe"
       },
       {
         "name": "pacerClientCode",
         "schema": "string",
         "required": true,
-        "description": "The PACER client code under which the search is to be performed."
+        "description": "The PACER client code under which the search is to be performed.",
+        "example": "john"
       },
       {
         "name": "caseNumber",
         "schema": "string",
-        "description": "The case number of the target case. You may use the following case-number formats: \n\n\tyy-nnnnn \n\n\tyy-tp-nnnnn \n\n\tyy tp nnnnn \n\n\tyytpnnnnn \n\n\to:yy-nnnnn \n\n\to:yy-tp-nnnnn \n\n\to:yy tp nnnnn \n\n\to:yytpnnnnn \n\nwhere: \n\nyy  case year (may be 2 or 4 digits) \n\nnnnnn  case number (up to 5 digits) \n\ntp  case type (up to 2 characters) \n\no  office where the case was filed (1 digit)."
+        "description": "The case number of the target case. You may use the following case-number formats: \n\n\tyy-nnnnn \n\n\tyy-tp-nnnnn \n\n\tyy tp nnnnn \n\n\tyytpnnnnn \n\n\to:yy-nnnnn \n\n\to:yy-tp-nnnnn \n\n\to:yy tp nnnnn \n\n\to:yytpnnnnn \n\nwhere: \n\nyy  case year (may be 2 or 4 digits) \n\nnnnnn  case number (up to 5 digits) \n\ntp  case type (up to 2 characters) \n\no  office where the case was filed (1 digit).",
+        "example": "12-1234"
       },
       {
         "name": "jpmlNumber",
@@ -6589,27 +6896,32 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "lastName",
         "schema": "string",
-        "description": "The last name (for an individual) or the entity name (for a business entity) of the target party."
+        "description": "The last name (for an individual) or the entity name (for a business entity) of the target party.",
+        "example": "John"
       },
       {
         "name": "firstName",
         "schema": "string",
-        "description": "The first name of the target party."
+        "description": "The first name of the target party.",
+        "example": "John"
       },
       {
         "name": "middleName",
         "schema": "string",
-        "description": "The middle name of the target party."
+        "description": "The middle name of the target party.",
+        "example": "Doe"
       },
       {
         "name": "generation",
         "schema": "string",
-        "description": "The suffix (e.g., Jr., III) of the target party's name."
+        "description": "The suffix (e.g., Jr., III) of the target party's name.",
+        "example": "III"
       },
       {
         "name": "partyType",
         "schema": "string",
-        "description": "The court-assigned party type for a party involved in a case. Party type codes are created and assigned by individual courts, and as such, their meanings can vary from court to court."
+        "description": "The court-assigned party type for a party involved in a case. Party type codes are created and assigned by individual courts, and as such, their meanings can vary from court to court.",
+        "example": "ptf"
       },
       {
         "name": "partyExactNameMatch",
@@ -6684,7 +6996,8 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "sortParameterQuery",
         "schema": "string",
-        "description": "How search results from PACER are to be sorted. Please see Appendix C for valid sort-related settings. \n\n\tScenario 1: When mulitple sort paramters needs to be requested. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of courtId and caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtId,ASC&caseId,ASC \n\n\tScenario 2: When you want to sort the response using the case parameters in the party search. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of caseOffice and descending order of caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtCase.caseOffice,ASC&caseid,DESC"
+        "description": "How search results from PACER are to be sorted. Please see Appendix C for valid sort-related settings. \n\n\tScenario 1: When mulitple sort paramters needs to be requested. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of courtId and caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtId,ASC&caseId,ASC \n\n\tScenario 2: When you want to sort the response using the case parameters in the party search. \n\n\tImagine for a given case number 12-1234 I would like to sort the results in the Ascending order of caseOffice and descending order of caseId, My query in the request will look like the example mentioned below. \n\n\tExample: sortParameterQuery=courtCase.caseOffice,ASC&caseid,DESC",
+        "default": "sort=caseYear,DESC"
       },
       {
         "name": "caseStatus",
@@ -6723,7 +7036,8 @@ export default function UniCourtTypeScriptSdk() {
       {
         "name": "pageNumber",
         "schema": "integer",
-        "description": "The page number of the PACER credentials to be retrieved.<br>\n  - Minimum: 1\n"
+        "description": "The page number of the PACER credentials to be retrieved.<br>\n  - Minimum: 1\n",
+        "example": 1
       }
     ],
     "responses": [
@@ -6753,19 +7067,22 @@ export default function UniCourtTypeScriptSdk() {
         "name": "defaultPacerClientCode",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Test UniCourt API"
       },
       {
         "name": "pacerUserId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "URKYwer3tyh5r56gq2"
       },
       {
         "name": "password",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "your password"
       }
     ],
     "responses": [

@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function BoxTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function BoxTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/box/logo.png"
       clientNameCamelCase="box"
       homepage="box.com"
-      lastUpdated={new Date("2024-03-11T17:00:34.807Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/box/favicon.png"
       contactUrl="https://box.dev"
       contactEmail="devrel@box.com"
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/box/imagePreview.jpg"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["collaboration","storage","cloud_content_management","file_sharing","ftp_replacement","enterprise_content_management","content_management","esignature","esign"]}
       methods={[
   {
     "url": "/authorize",
@@ -36,31 +39,36 @@ export default function BoxTypeScriptSdk() {
         "name": "responseType",
         "schema": "string",
         "required": true,
-        "description": "The type of response we'd like to receive."
+        "description": "The type of response we'd like to receive.",
+        "example": "code"
       },
       {
         "name": "clientId",
         "schema": "string",
         "required": true,
-        "description": "The Client ID of the application that is requesting to authenticate\nthe user. To get the Client ID for your application, log in to your\nBox developer console and click the **Edit Application** link for\nthe application you're working with. In the OAuth 2.0 Parameters section\nof the configuration page, find the item labelled `client_id`. The\ntext of that item is your application's Client ID."
+        "description": "The Client ID of the application that is requesting to authenticate\nthe user. To get the Client ID for your application, log in to your\nBox developer console and click the **Edit Application** link for\nthe application you're working with. In the OAuth 2.0 Parameters section\nof the configuration page, find the item labelled `client_id`. The\ntext of that item is your application's Client ID.",
+        "example": "ly1nj6n11vionaie65emwzk575hnnmrk"
       },
       {
         "name": "redirectUri",
         "schema": "string",
         "required": false,
-        "description": "The URI to which Box redirects the browser after the user has granted\nor denied the application permission. This URI match one of the redirect\nURIs in the configuration of your application. It must be a\nvalid HTTPS URI and it needs to be able to handle the redirection to\ncomplete the next step in the OAuth 2.0 flow.\nAlthough this parameter is optional, it must be a part of the\nauthorization URL if you configured multiple redirect URIs\nfor the application in the developer console. A missing parameter causes\na `redirect_uri_missing` error after the user grants application access."
+        "description": "The URI to which Box redirects the browser after the user has granted\nor denied the application permission. This URI match one of the redirect\nURIs in the configuration of your application. It must be a\nvalid HTTPS URI and it needs to be able to handle the redirection to\ncomplete the next step in the OAuth 2.0 flow.\nAlthough this parameter is optional, it must be a part of the\nauthorization URL if you configured multiple redirect URIs\nfor the application in the developer console. A missing parameter causes\na `redirect_uri_missing` error after the user grants application access.",
+        "example": "http://example.com/auth/callback"
       },
       {
         "name": "state",
         "schema": "string",
         "required": false,
-        "description": "A custom string of your choice. Box will pass the same string to\nthe redirect URL when authentication is complete. This parameter\ncan be used to identify a user on redirect, as well as protect\nagainst hijacked sessions and other exploits."
+        "description": "A custom string of your choice. Box will pass the same string to\nthe redirect URL when authentication is complete. This parameter\ncan be used to identify a user on redirect, as well as protect\nagainst hijacked sessions and other exploits.",
+        "example": "my_state"
       },
       {
         "name": "scope",
         "schema": "string",
         "required": false,
-        "description": "A space-separated list of application scopes you'd like to\nauthenticate the user for. This defaults to all the scopes configured\nfor the application in its configuration page."
+        "description": "A space-separated list of application scopes you'd like to\nauthenticate the user for. This defaults to all the scopes configured\nfor the application in its configuration page.",
+        "example": "admin_readwrite"
       }
     ],
     "responses": [
@@ -86,91 +94,106 @@ export default function BoxTypeScriptSdk() {
         "name": "grant_type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "authorization_code"
       },
       {
         "name": "client_id",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "ly1nj6n11vionaie65emwzk575hnnmrk"
       },
       {
         "name": "client_secret",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "hOzsTeFlT6ko0dme22uGbQal04SBPYc1"
       },
       {
         "name": "code",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "n22JPxrh18m4Y0wIZPIqYZK7VRrsMTWW"
       },
       {
         "name": "refresh_token",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "c3FIOG9vSGV4VHo4QzAyg5T1JvNnJoZ3ExaVNyQWw6WjRsanRKZG5lQk9qUE1BVQ"
       },
       {
         "name": "assertion",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "xxxxx.yyyyy.zzzzz"
       },
       {
         "name": "subject_token",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "c3FIOG9vSGV4VHo4QzAyg5T1JvNnJoZ3ExaVNyQWw6WjRsanRKZG5lQk9qUE1BVQ"
       },
       {
         "name": "subject_token_type",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "urn:ietf:params:oauth:token-type:access_token"
       },
       {
         "name": "actor_token",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "c3FIOG9vSGV4VHo4QzAyg5T1JvNnJoZ3ExaVNyQWw6WjRsanRKZG5lQk9qUE1BVQ"
       },
       {
         "name": "actor_token_type",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "urn:ietf:params:oauth:token-type:id_token"
       },
       {
         "name": "scope",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "item_upload item_preview base_explorer"
       },
       {
         "name": "resource",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "https://api.box.com/2.0/files/123456"
       },
       {
         "name": "box_subject_type",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "enterprise"
       },
       {
         "name": "box_subject_id",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "123456789"
       },
       {
         "name": "box_shared_link",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "https://cloud.box.com/s/123456"
       }
     ],
     "responses": [
@@ -200,25 +223,29 @@ export default function BoxTypeScriptSdk() {
         "name": "grant_type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "refresh_token"
       },
       {
         "name": "client_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ly1nj6n11vionaie65emwzk575hnnmrk"
       },
       {
         "name": "client_secret",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "hOzsTeFlT6ko0dme22uGbQal04SBPYc1"
       },
       {
         "name": "refresh_token",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "c3FIOG9vSGV4VHo4QzAyg5T1JvNnJoZ3ExaVNyQWw6WjRsanRKZG5lQk9qUE1BVQ"
       }
     ],
     "responses": [
@@ -248,19 +275,22 @@ export default function BoxTypeScriptSdk() {
         "name": "client_id",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "ly1nj6n11vionaie65emwzk575hnnmrk"
       },
       {
         "name": "client_secret",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "hOzsTeFlT6ko0dme22uGbQal04SBPYc1"
       },
       {
         "name": "token",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "n22JPxrh18m4Y0wIZPIqYZK7VRrsMTWW"
       }
     ],
     "responses": [
@@ -290,13 +320,15 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       },
       {
         "name": "ifMatch",
         "schema": "string",
         "required": false,
-        "description": "Ensures this item hasn't recently changed before\nmaking changes.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `412 Precondition Failed` if it\nhas changed since."
+        "description": "Ensures this item hasn't recently changed before\nmaking changes.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `412 Precondition Failed` if it\nhas changed since.",
+        "example": "1"
       }
     ],
     "responses": [
@@ -338,31 +370,40 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.\n\nAdditionally this field can be used to query any metadata\napplied to the file by specifying the `metadata` field as well\nas the scope and key of the template to retrieve, for example\n`?field=metadata.enterprise_12345.contractTemplate`."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.\n\nAdditionally this field can be used to query any metadata\napplied to the file by specifying the `metadata` field as well\nas the scope and key of the template to retrieve, for example\n`?field=metadata.enterprise_12345.contractTemplate`.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "ifNoneMatch",
         "schema": "string",
         "required": false,
-        "description": "Ensures an item is only returned if it has changed.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `304 Not Modified` if the item has not\nchanged since."
+        "description": "Ensures an item is only returned if it has changed.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `304 Not Modified` if the item has not\nchanged since.",
+        "example": "1"
       },
       {
         "name": "boxapi",
         "schema": "string",
         "required": false,
-        "description": "The URL, and optional password, for the shared link of this item.\n\nThis header can be used to access items that have not been\nexplicitly shared with a user.\n\nUse the format `shared_link=[link]` or if a password is required then\nuse `shared_link=[link]&shared_link_password=[password]`.\n\nThis header can be used on the file or folder shared, as well as on any files\nor folders nested within the item."
+        "description": "The URL, and optional password, for the shared link of this item.\n\nThis header can be used to access items that have not been\nexplicitly shared with a user.\n\nUse the format `shared_link=[link]` or if a password is required then\nuse `shared_link=[link]&shared_link_password=[password]`.\n\nThis header can be used on the file or folder shared, as well as on any files\nor folders nested within the item.",
+        "example": "shared_link=[link]&shared_link_password=[password]"
       },
       {
         "name": "xRepHints",
         "schema": "string",
         "required": false,
-        "description": "A header required to request specific `representations`\nof a file. Use this in combination with the `fields` query\nparameter to request a specific file representation.\n\nThe general format for these representations is\n`X-Rep-Hints: [...]` where `[...]` is one or many\nhints in the format `[fileType?query]`.\n\nFor example, to request a `png` representation in `32x32`\nas well as `64x64` pixel dimensions provide the following\nhints.\n\n`x-rep-hints: [jpg?dimensions=32x32][jpg?dimensions=64x64]`\n\nAdditionally, a `text` representation is available for all\ndocument file types in Box using the `[extracted_text]`\nrepresentation.\n\n`x-rep-hints: [extracted_text]`"
+        "description": "A header required to request specific `representations`\nof a file. Use this in combination with the `fields` query\nparameter to request a specific file representation.\n\nThe general format for these representations is\n`X-Rep-Hints: [...]` where `[...]` is one or many\nhints in the format `[fileType?query]`.\n\nFor example, to request a `png` representation in `32x32`\nas well as `64x64` pixel dimensions provide the following\nhints.\n\n`x-rep-hints: [jpg?dimensions=32x32][jpg?dimensions=64x64]`\n\nAdditionally, a `text` representation is available for all\ndocument file types in Box using the `[extracted_text]`\nrepresentation.\n\n`x-rep-hints: [extracted_text]`",
+        "example": "[pdf]"
       }
     ],
     "responses": [
@@ -408,18 +449,25 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Restored.docx"
       },
       {
         "name": "parent",
@@ -462,34 +510,46 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "ifMatch",
         "schema": "string",
         "required": false,
-        "description": "Ensures this item hasn't recently changed before\nmaking changes.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `412 Precondition Failed` if it\nhas changed since."
+        "description": "Ensures this item hasn't recently changed before\nmaking changes.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `412 Precondition Failed` if it\nhas changed since.",
+        "example": "1"
       },
       {
         "name": "tags",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "example": [
+          "approved"
+        ]
       },
       {
         "name": "description",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "The latest reports. Automatically updated"
       },
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "NewFile.txt"
       },
       {
         "name": "parent",
@@ -509,7 +569,8 @@ export default function BoxTypeScriptSdk() {
       {
         "name": "disposition_at",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "2012-12-12T10:53:43-08:00"
       },
       {
         "name": "permissions",
@@ -569,31 +630,36 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       },
       {
         "name": "range",
         "schema": "string",
         "required": false,
-        "description": "The byte range of the content to download.\n\nThe format `bytes={start_byte}-{end_byte}` can be used to specify\nwhat section of the file to download."
+        "description": "The byte range of the content to download.\n\nThe format `bytes={start_byte}-{end_byte}` can be used to specify\nwhat section of the file to download.",
+        "example": "bytes=0-1024"
       },
       {
         "name": "boxapi",
         "schema": "string",
         "required": false,
-        "description": "The URL, and optional password, for the shared link of this item.\n\nThis header can be used to access items that have not been\nexplicitly shared with a user.\n\nUse the format `shared_link=[link]` or if a password is required then\nuse `shared_link=[link]&shared_link_password=[password]`.\n\nThis header can be used on the file or folder shared, as well as on any files\nor folders nested within the item."
+        "description": "The URL, and optional password, for the shared link of this item.\n\nThis header can be used to access items that have not been\nexplicitly shared with a user.\n\nUse the format `shared_link=[link]` or if a password is required then\nuse `shared_link=[link]&shared_link_password=[password]`.\n\nThis header can be used on the file or folder shared, as well as on any files\nor folders nested within the item.",
+        "example": "shared_link=[link]&shared_link_password=[password]"
       },
       {
         "name": "version",
         "schema": "string",
         "required": false,
-        "description": "The file version to download"
+        "description": "The file version to download",
+        "example": "4"
       },
       {
         "name": "accessToken",
         "schema": "string",
         "required": false,
-        "description": "An optional access token that can be used to pre-authenticate this request, which means that a download link can be shared with a browser or a third party service without them needing to know how to handle the authentication.\nWhen using this parameter, please make sure that the access token is sufficiently scoped down to only allow read access to that file and no other files or folders."
+        "description": "An optional access token that can be used to pre-authenticate this request, which means that a download link can be shared with a browser or a third party service without them needing to know how to handle the authentication.\nWhen using this parameter, please make sure that the access token is sufficiently scoped down to only allow read access to that file and no other files or folders.",
+        "example": "c3FIOG9vSGV4VHo4QzAyg5T1JvNnJoZ3ExaVNyQWw6WjRsanRKZG5lQk9qUE1BVQ"
       }
     ],
     "responses": [
@@ -627,25 +693,33 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       },
       {
         "name": "ifMatch",
         "schema": "string",
         "required": false,
-        "description": "Ensures this item hasn't recently changed before\nmaking changes.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `412 Precondition Failed` if it\nhas changed since."
+        "description": "Ensures this item hasn't recently changed before\nmaking changes.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `412 Precondition Failed` if it\nhas changed since.",
+        "example": "1"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "contentMd5",
         "schema": "string",
         "required": false,
-        "description": "An optional header containing the SHA1 hash of the file to\nensure that the file was not corrupted in transit."
+        "description": "An optional header containing the SHA1 hash of the file to\nensure that the file was not corrupted in transit.",
+        "example": "134b65991ed521fcfe4724b7d814ab8ded5185dc"
       },
       {
         "name": "attributes",
@@ -657,7 +731,8 @@ export default function BoxTypeScriptSdk() {
         "name": "file",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "FILE"
       }
     ],
     "responses": [
@@ -686,12 +761,14 @@ export default function BoxTypeScriptSdk() {
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "File.mp4"
       },
       {
         "name": "size",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 1024
       },
       {
         "name": "parent",
@@ -726,13 +803,19 @@ export default function BoxTypeScriptSdk() {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "contentMd5",
         "schema": "string",
         "required": false,
-        "description": "An optional header containing the SHA1 hash of the file to\nensure that the file was not corrupted in transit."
+        "description": "An optional header containing the SHA1 hash of the file to\nensure that the file was not corrupted in transit.",
+        "example": "134b65991ed521fcfe4724b7d814ab8ded5185dc"
       },
       {
         "name": "attributes",
@@ -744,7 +827,8 @@ export default function BoxTypeScriptSdk() {
         "name": "file",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "FILE"
       }
     ],
     "responses": [
@@ -782,19 +866,22 @@ export default function BoxTypeScriptSdk() {
         "name": "folder_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "0"
       },
       {
         "name": "file_size",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 104857600
       },
       {
         "name": "file_name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Project.mov"
       }
     ],
     "responses": [
@@ -836,19 +923,22 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       },
       {
         "name": "file_size",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 104857600
       },
       {
         "name": "file_name",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Project.mov"
       }
     ],
     "responses": [
@@ -878,7 +968,8 @@ export default function BoxTypeScriptSdk() {
         "name": "uploadSessionId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the upload session."
+        "description": "The ID of the upload session.",
+        "example": "D5E3F7A"
       }
     ],
     "responses": [
@@ -904,7 +995,8 @@ export default function BoxTypeScriptSdk() {
         "name": "uploadSessionId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the upload session."
+        "description": "The ID of the upload session.",
+        "example": "D5E3F7A"
       }
     ],
     "responses": [
@@ -930,19 +1022,22 @@ export default function BoxTypeScriptSdk() {
         "name": "uploadSessionId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the upload session."
+        "description": "The ID of the upload session.",
+        "example": "D5E3F7A"
       },
       {
         "name": "digest",
         "schema": "string",
         "required": true,
-        "description": "The [RFC3230][1] message digest of the chunk uploaded.\n\nOnly SHA1 is supported. The SHA1 digest must be base64\nencoded. The format of this header is as\n`sha=BASE64_ENCODED_DIGEST`.\n\nTo get the value for the `SHA` digest, use the\nopenSSL command to encode the file part:\n`openssl sha1 -binary <FILE_PART_NAME> | base64`\n\n[1]: https://tools.ietf.org/html/rfc3230"
+        "description": "The [RFC3230][1] message digest of the chunk uploaded.\n\nOnly SHA1 is supported. The SHA1 digest must be base64\nencoded. The format of this header is as\n`sha=BASE64_ENCODED_DIGEST`.\n\nTo get the value for the `SHA` digest, use the\nopenSSL command to encode the file part:\n`openssl sha1 -binary <FILE_PART_NAME> | base64`\n\n[1]: https://tools.ietf.org/html/rfc3230",
+        "example": "sha=fpRyg5eVQletdZqEKaFlqwBXJzM="
       },
       {
         "name": "contentRange",
         "schema": "string",
         "required": true,
-        "description": "The byte range of the chunk.\n\nMust not overlap with the range of a part already\nuploaded this session. Each part’s size must be\nexactly equal in size to the part size specified\nin the upload session that you created.\nOne exception is the last part of the file, as this can be smaller.\n\nWhen providing the value for `content-range`, remember that:\n\n* The lower bound of each part's byte range\n  must be a multiple of the part size.\n* The higher bound must be a multiple of the part size - 1."
+        "description": "The byte range of the chunk.\n\nMust not overlap with the range of a part already\nuploaded this session. Each part’s size must be\nexactly equal in size to the part size specified\nin the upload session that you created.\nOne exception is the last part of the file, as this can be smaller.\n\nWhen providing the value for `content-range`, remember that:\n\n* The lower bound of each part's byte range\n  must be a multiple of the part size.\n* The higher bound must be a multiple of the part size - 1.",
+        "example": "bytes 8388608-16777215/445856194"
       }
     ],
     "responses": [
@@ -980,19 +1075,23 @@ export default function BoxTypeScriptSdk() {
         "name": "uploadSessionId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the upload session."
+        "description": "The ID of the upload session.",
+        "example": "D5E3F7A"
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "The offset of the item at which to begin the response.\n\nQueries with offset parameter value\nexceeding 10000 will be rejected\nwith a 400 response."
+        "description": "The offset of the item at which to begin the response.\n\nQueries with offset parameter value\nexceeding 10000 will be rejected\nwith a 400 response.",
+        "example": 1000,
+        "default": 0
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       }
     ],
     "responses": [
@@ -1018,25 +1117,29 @@ export default function BoxTypeScriptSdk() {
         "name": "uploadSessionId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the upload session."
+        "description": "The ID of the upload session.",
+        "example": "D5E3F7A"
       },
       {
         "name": "digest",
         "schema": "string",
         "required": true,
-        "description": "The [RFC3230][1] message digest of the whole file.\n\nOnly SHA1 is supported. The SHA1 digest must be Base64\nencoded. The format of this header is as\n`sha=BASE64_ENCODED_DIGEST`.\n\n[1]: https://tools.ietf.org/html/rfc3230"
+        "description": "The [RFC3230][1] message digest of the whole file.\n\nOnly SHA1 is supported. The SHA1 digest must be Base64\nencoded. The format of this header is as\n`sha=BASE64_ENCODED_DIGEST`.\n\n[1]: https://tools.ietf.org/html/rfc3230",
+        "example": "sha=fpRyg5eVQletdZqEKaFlqwBXJzM="
       },
       {
         "name": "ifMatch",
         "schema": "string",
         "required": false,
-        "description": "Ensures this item hasn't recently changed before\nmaking changes.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `412 Precondition Failed` if it\nhas changed since."
+        "description": "Ensures this item hasn't recently changed before\nmaking changes.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `412 Precondition Failed` if it\nhas changed since.",
+        "example": "1"
       },
       {
         "name": "ifNoneMatch",
         "schema": "string",
         "required": false,
-        "description": "Ensures an item is only returned if it has changed.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `304 Not Modified` if the item has not\nchanged since."
+        "description": "Ensures an item is only returned if it has changed.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `304 Not Modified` if the item has not\nchanged since.",
+        "example": "1"
       },
       {
         "name": "parts",
@@ -1080,25 +1183,33 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "version",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "0"
       },
       {
         "name": "name",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "FileCopy.txt"
       },
       {
         "name": "parent",
@@ -1150,35 +1261,41 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       },
       {
         "name": "extension",
         "schema": "string",
         "required": true,
-        "description": "The file format for the thumbnail"
+        "description": "The file format for the thumbnail",
+        "example": "png"
       },
       {
         "name": "minHeight",
         "schema": "integer",
-        "description": "The minimum height of the thumbnail"
+        "description": "The minimum height of the thumbnail",
+        "example": 32
       },
       {
         "name": "minWidth",
         "schema": "integer",
-        "description": "The minimum width of the thumbnail"
+        "description": "The minimum width of the thumbnail",
+        "example": 32
       },
       {
         "name": "maxHeight",
         "schema": "integer",
         "required": false,
-        "description": "The maximum height of the thumbnail"
+        "description": "The maximum height of the thumbnail",
+        "example": 320
       },
       {
         "name": "maxWidth",
         "schema": "integer",
         "required": false,
-        "description": "The maximum width of the thumbnail"
+        "description": "The maximum width of the thumbnail",
+        "example": 320
       }
     ],
     "responses": [
@@ -1224,25 +1341,33 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       },
       {
         "name": "marker",
         "schema": "string",
         "required": false,
-        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`."
+        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+        "example": "JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii"
       }
     ],
     "responses": [
@@ -1268,25 +1393,34 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "The offset of the item at which to begin the response.\n\nQueries with offset parameter value\nexceeding 10000 will be rejected\nwith a 400 response."
+        "description": "The offset of the item at which to begin the response.\n\nQueries with offset parameter value\nexceeding 10000 will be rejected\nwith a 400 response.",
+        "example": 1000,
+        "default": 0
       }
     ],
     "responses": [
@@ -1312,7 +1446,8 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       }
     ],
     "responses": [
@@ -1350,7 +1485,8 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       }
     ],
     "responses": [
@@ -1380,13 +1516,19 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       }
     ],
     "responses": [
@@ -1416,25 +1558,34 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "The offset of the item at which to begin the response.\n\nQueries with offset parameter value\nexceeding 10000 will be rejected\nwith a 400 response."
+        "description": "The offset of the item at which to begin the response.\n\nQueries with offset parameter value\nexceeding 10000 will be rejected\nwith a 400 response.",
+        "example": 1000,
+        "default": 0
       }
     ],
     "responses": [
@@ -1460,19 +1611,22 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       },
       {
         "name": "fileVersionId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the file version"
+        "description": "The ID of the file version",
+        "example": "1234"
       },
       {
         "name": "ifMatch",
         "schema": "string",
         "required": false,
-        "description": "Ensures this item hasn't recently changed before\nmaking changes.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `412 Precondition Failed` if it\nhas changed since."
+        "description": "Ensures this item hasn't recently changed before\nmaking changes.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `412 Precondition Failed` if it\nhas changed since.",
+        "example": "1"
       }
     ],
     "responses": [
@@ -1498,19 +1652,26 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "fileVersionId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the file version"
+        "description": "The ID of the file version",
+        "example": "1234"
       }
     ],
     "responses": [
@@ -1536,18 +1697,21 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       },
       {
         "name": "fileVersionId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the file version"
+        "description": "The ID of the file version",
+        "example": "1234"
       },
       {
         "name": "trashed_at",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "null"
       }
     ],
     "responses": [
@@ -1573,23 +1737,31 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "id",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "11446498"
       },
       {
         "name": "type",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "file_version"
       }
     ],
     "responses": [
@@ -1615,7 +1787,8 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       }
     ],
     "responses": [
@@ -1649,7 +1822,8 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       }
     ],
     "responses": [
@@ -1687,7 +1861,8 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       }
     ],
     "responses": [
@@ -1725,12 +1900,14 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       },
       {
         "name": "Box__Security__Classification__Key",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Sensitive"
       }
     ],
     "responses": [
@@ -1768,7 +1945,8 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       }
     ],
     "responses": [
@@ -1802,19 +1980,22 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       },
       {
         "name": "scope",
         "schema": "string",
         "required": true,
-        "description": "The scope of the metadata template"
+        "description": "The scope of the metadata template",
+        "example": "global"
       },
       {
         "name": "templateKey",
         "schema": "string",
         "required": true,
-        "description": "The name of the metadata template"
+        "description": "The name of the metadata template",
+        "example": "properties"
       }
     ],
     "responses": [
@@ -1852,19 +2033,22 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       },
       {
         "name": "scope",
         "schema": "string",
         "required": true,
-        "description": "The scope of the metadata template"
+        "description": "The scope of the metadata template",
+        "example": "global"
       },
       {
         "name": "templateKey",
         "schema": "string",
         "required": true,
-        "description": "The name of the metadata template"
+        "description": "The name of the metadata template",
+        "example": "properties"
       }
     ],
     "responses": [
@@ -1902,19 +2086,22 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       },
       {
         "name": "scope",
         "schema": "string",
         "required": true,
-        "description": "The scope of the metadata template"
+        "description": "The scope of the metadata template",
+        "example": "global"
       },
       {
         "name": "templateKey",
         "schema": "string",
         "required": true,
-        "description": "The name of the metadata template"
+        "description": "The name of the metadata template",
+        "example": "properties"
       }
     ],
     "responses": [
@@ -1952,19 +2139,22 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       },
       {
         "name": "scope",
         "schema": "string",
         "required": true,
-        "description": "The scope of the metadata template"
+        "description": "The scope of the metadata template",
+        "example": "global"
       },
       {
         "name": "templateKey",
         "schema": "string",
         "required": true,
-        "description": "The name of the metadata template"
+        "description": "The name of the metadata template",
+        "example": "properties"
       }
     ],
     "responses": [
@@ -1998,7 +2188,8 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       }
     ],
     "responses": [
@@ -2032,7 +2223,8 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       }
     ],
     "responses": [
@@ -2058,7 +2250,8 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       },
       {
         "name": "cards",
@@ -2102,7 +2295,8 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       }
     ],
     "responses": [
@@ -2132,7 +2326,8 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       }
     ],
     "responses": [
@@ -2162,7 +2357,8 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       }
     ],
     "responses": [
@@ -2192,7 +2388,8 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       },
       {
         "name": "watermark",
@@ -2228,7 +2425,8 @@ export default function BoxTypeScriptSdk() {
         "name": "fileRequestId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represent a file request.\n\nThe ID for any file request can be determined\nby visiting a file request builder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/filerequest/123`\nthe `file_request_id` is `123`."
+        "description": "The unique identifier that represent a file request.\n\nThe ID for any file request can be determined\nby visiting a file request builder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/filerequest/123`\nthe `file_request_id` is `123`.",
+        "example": "123"
       }
     ],
     "responses": [
@@ -2266,7 +2464,8 @@ export default function BoxTypeScriptSdk() {
         "name": "fileRequestId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represent a file request.\n\nThe ID for any file request can be determined\nby visiting a file request builder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/filerequest/123`\nthe `file_request_id` is `123`."
+        "description": "The unique identifier that represent a file request.\n\nThe ID for any file request can be determined\nby visiting a file request builder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/filerequest/123`\nthe `file_request_id` is `123`.",
+        "example": "123"
       }
     ],
     "responses": [
@@ -2304,43 +2503,51 @@ export default function BoxTypeScriptSdk() {
         "name": "fileRequestId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represent a file request.\n\nThe ID for any file request can be determined\nby visiting a file request builder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/filerequest/123`\nthe `file_request_id` is `123`."
+        "description": "The unique identifier that represent a file request.\n\nThe ID for any file request can be determined\nby visiting a file request builder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/filerequest/123`\nthe `file_request_id` is `123`.",
+        "example": "123"
       },
       {
         "name": "ifMatch",
         "schema": "string",
         "required": false,
-        "description": "Ensures this item hasn't recently changed before\nmaking changes.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `412 Precondition Failed` if it\nhas changed since."
+        "description": "Ensures this item hasn't recently changed before\nmaking changes.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `412 Precondition Failed` if it\nhas changed since.",
+        "example": "1"
       },
       {
         "name": "title",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Please upload required documents"
       },
       {
         "name": "description",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Please upload required documents"
       },
       {
         "name": "status",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "active"
       },
       {
         "name": "is_email_required",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "is_description_required",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "expires_at",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "2020-09-28T10:53:43-08:00"
       }
     ],
     "responses": [
@@ -2386,7 +2593,8 @@ export default function BoxTypeScriptSdk() {
         "name": "fileRequestId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represent a file request.\n\nThe ID for any file request can be determined\nby visiting a file request builder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/filerequest/123`\nthe `file_request_id` is `123`."
+        "description": "The unique identifier that represent a file request.\n\nThe ID for any file request can be determined\nby visiting a file request builder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/filerequest/123`\nthe `file_request_id` is `123`.",
+        "example": "123"
       }
     ],
     "responses": [
@@ -2428,19 +2636,22 @@ export default function BoxTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
+        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`.",
+        "example": "12345"
       },
       {
         "name": "ifMatch",
         "schema": "string",
         "required": false,
-        "description": "Ensures this item hasn't recently changed before\nmaking changes.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `412 Precondition Failed` if it\nhas changed since."
+        "description": "Ensures this item hasn't recently changed before\nmaking changes.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `412 Precondition Failed` if it\nhas changed since.",
+        "example": "1"
       },
       {
         "name": "recursive",
         "schema": "boolean",
         "required": false,
-        "description": "Delete a folder that is not empty by recursively deleting the\nfolder and all of its content."
+        "description": "Delete a folder that is not empty by recursively deleting the\nfolder and all of its content.",
+        "example": true
       }
     ],
     "responses": [
@@ -2490,49 +2701,62 @@ export default function BoxTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
+        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`.",
+        "example": "12345"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.\n\nAdditionally this field can be used to query any metadata\napplied to the file by specifying the `metadata` field as well\nas the scope and key of the template to retrieve, for example\n`?field=metadata.enterprise_12345.contractTemplate`."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.\n\nAdditionally this field can be used to query any metadata\napplied to the file by specifying the `metadata` field as well\nas the scope and key of the template to retrieve, for example\n`?field=metadata.enterprise_12345.contractTemplate`.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "ifNoneMatch",
         "schema": "string",
         "required": false,
-        "description": "Ensures an item is only returned if it has changed.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `304 Not Modified` if the item has not\nchanged since."
+        "description": "Ensures an item is only returned if it has changed.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `304 Not Modified` if the item has not\nchanged since.",
+        "example": "1"
       },
       {
         "name": "boxapi",
         "schema": "string",
         "required": false,
-        "description": "The URL, and optional password, for the shared link of this item.\n\nThis header can be used to access items that have not been\nexplicitly shared with a user.\n\nUse the format `shared_link=[link]` or if a password is required then\nuse `shared_link=[link]&shared_link_password=[password]`.\n\nThis header can be used on the file or folder shared, as well as on any files\nor folders nested within the item."
+        "description": "The URL, and optional password, for the shared link of this item.\n\nThis header can be used to access items that have not been\nexplicitly shared with a user.\n\nUse the format `shared_link=[link]` or if a password is required then\nuse `shared_link=[link]&shared_link_password=[password]`.\n\nThis header can be used on the file or folder shared, as well as on any files\nor folders nested within the item.",
+        "example": "shared_link=[link]&shared_link_password=[password]"
       },
       {
         "name": "sort",
         "schema": "string",
         "required": false,
-        "description": "Defines the **second** attribute by which items\nare sorted.\n\nThe folder type affects the way the items\nare sorted:\n\n  * **Standard folder**:\n  Items are always sorted by\n  their `type` first, with\n  folders listed before files,\n  and files listed\n  before web links.\n\n  * **Root folder**:\n  This parameter is not supported\n  for marker-based pagination\n  on the root folder\n\n  (the folder with an `id` of `0`).\n\n  * **Shared folder with parent path\n  to the associated folder visible to\n  the collaborator**:\n  Items are always sorted by\n  their `type` first, with\n  folders listed before files,\n  and files listed\n  before web links."
+        "description": "Defines the **second** attribute by which items\nare sorted.\n\nThe folder type affects the way the items\nare sorted:\n\n  * **Standard folder**:\n  Items are always sorted by\n  their `type` first, with\n  folders listed before files,\n  and files listed\n  before web links.\n\n  * **Root folder**:\n  This parameter is not supported\n  for marker-based pagination\n  on the root folder\n\n  (the folder with an `id` of `0`).\n\n  * **Shared folder with parent path\n  to the associated folder visible to\n  the collaborator**:\n  Items are always sorted by\n  their `type` first, with\n  folders listed before files,\n  and files listed\n  before web links.",
+        "example": "id"
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The direction to sort results in. This can be either in alphabetical ascending\n(`ASC`) or descending (`DESC`) order."
+        "description": "The direction to sort results in. This can be either in alphabetical ascending\n(`ASC`) or descending (`DESC`) order.",
+        "example": "ASC"
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "The offset of the item at which to begin the response.\n\nQueries with offset parameter value\nexceeding 10000 will be rejected\nwith a 400 response."
+        "description": "The offset of the item at which to begin the response.\n\nQueries with offset parameter value\nexceeding 10000 will be rejected\nwith a 400 response.",
+        "example": 1000,
+        "default": 0
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       }
     ],
     "responses": [
@@ -2574,18 +2798,25 @@ export default function BoxTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
+        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`.",
+        "example": "12345"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Restored Photos"
       },
       {
         "name": "parent",
@@ -2628,44 +2859,58 @@ export default function BoxTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
+        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`.",
+        "example": "12345"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "ifMatch",
         "schema": "string",
         "required": false,
-        "description": "Ensures this item hasn't recently changed before\nmaking changes.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `412 Precondition Failed` if it\nhas changed since."
+        "description": "Ensures this item hasn't recently changed before\nmaking changes.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `412 Precondition Failed` if it\nhas changed since.",
+        "example": "1"
       },
       {
         "name": "tags",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "example": [
+          "approved"
+        ]
       },
       {
         "name": "description",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Legal contracts for the new ACME deal"
       },
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "New Folder"
       },
       {
         "name": "sync_state",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "synced"
       },
       {
         "name": "can_non_owners_invite",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "parent",
@@ -2685,7 +2930,8 @@ export default function BoxTypeScriptSdk() {
       {
         "name": "is_collaboration_restricted_to_enterprise",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "collections",
@@ -2695,7 +2941,8 @@ export default function BoxTypeScriptSdk() {
       {
         "name": "can_non_owners_view_collaborators",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -2745,55 +2992,69 @@ export default function BoxTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
+        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`.",
+        "example": "12345"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.\n\nAdditionally this field can be used to query any metadata\napplied to the file by specifying the `metadata` field as well\nas the scope and key of the template to retrieve, for example\n`?field=metadata.enterprise_12345.contractTemplate`."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.\n\nAdditionally this field can be used to query any metadata\napplied to the file by specifying the `metadata` field as well\nas the scope and key of the template to retrieve, for example\n`?field=metadata.enterprise_12345.contractTemplate`.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "usemarker",
         "schema": "boolean",
         "required": false,
-        "description": "Specifies whether to use marker-based pagination instead of\noffset-based pagination. Only one pagination method can\nbe used at a time.\n\nBy setting this value to true, the API will return a `marker` field\nthat can be passed as a parameter to this endpoint to get the next\npage of the response."
+        "description": "Specifies whether to use marker-based pagination instead of\noffset-based pagination. Only one pagination method can\nbe used at a time.\n\nBy setting this value to true, the API will return a `marker` field\nthat can be passed as a parameter to this endpoint to get the next\npage of the response.",
+        "example": true
       },
       {
         "name": "marker",
         "schema": "string",
         "required": false,
-        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`."
+        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+        "example": "JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii"
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "The offset of the item at which to begin the response.\n\nQueries with offset parameter value\nexceeding 10000 will be rejected\nwith a 400 response."
+        "description": "The offset of the item at which to begin the response.\n\nQueries with offset parameter value\nexceeding 10000 will be rejected\nwith a 400 response.",
+        "example": 1000,
+        "default": 0
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       },
       {
         "name": "boxapi",
         "schema": "string",
         "required": false,
-        "description": "The URL, and optional password, for the shared link of this item.\n\nThis header can be used to access items that have not been\nexplicitly shared with a user.\n\nUse the format `shared_link=[link]` or if a password is required then\nuse `shared_link=[link]&shared_link_password=[password]`.\n\nThis header can be used on the file or folder shared, as well as on any files\nor folders nested within the item."
+        "description": "The URL, and optional password, for the shared link of this item.\n\nThis header can be used to access items that have not been\nexplicitly shared with a user.\n\nUse the format `shared_link=[link]` or if a password is required then\nuse `shared_link=[link]&shared_link_password=[password]`.\n\nThis header can be used on the file or folder shared, as well as on any files\nor folders nested within the item.",
+        "example": "shared_link=[link]&shared_link_password=[password]"
       },
       {
         "name": "sort",
         "schema": "string",
         "required": false,
-        "description": "Defines the **second** attribute by which items\nare sorted.\n\nThe folder type affects the way the items\nare sorted:\n\n  * **Standard folder**:\n  Items are always sorted by\n  their `type` first, with\n  folders listed before files,\n  and files listed\n  before web links.\n\n  * **Root folder**:\n  This parameter is not supported\n  for marker-based pagination\n  on the root folder\n\n  (the folder with an `id` of `0`).\n\n  * **Shared folder with parent path\n  to the associated folder visible to\n  the collaborator**:\n  Items are always sorted by\n  their `type` first, with\n  folders listed before files,\n  and files listed\n  before web links."
+        "description": "Defines the **second** attribute by which items\nare sorted.\n\nThe folder type affects the way the items\nare sorted:\n\n  * **Standard folder**:\n  Items are always sorted by\n  their `type` first, with\n  folders listed before files,\n  and files listed\n  before web links.\n\n  * **Root folder**:\n  This parameter is not supported\n  for marker-based pagination\n  on the root folder\n\n  (the folder with an `id` of `0`).\n\n  * **Shared folder with parent path\n  to the associated folder visible to\n  the collaborator**:\n  Items are always sorted by\n  their `type` first, with\n  folders listed before files,\n  and files listed\n  before web links.",
+        "example": "id"
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The direction to sort results in. This can be either in alphabetical ascending\n(`ASC`) or descending (`DESC`) order."
+        "description": "The direction to sort results in. This can be either in alphabetical ascending\n(`ASC`) or descending (`DESC`) order.",
+        "example": "ASC"
       }
     ],
     "responses": [
@@ -2831,13 +3092,19 @@ export default function BoxTypeScriptSdk() {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "New Folder"
       },
       {
         "name": "parent",
@@ -2855,7 +3122,8 @@ export default function BoxTypeScriptSdk() {
         "name": "sync_state",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "synced"
       }
     ],
     "responses": [
@@ -2897,19 +3165,26 @@ export default function BoxTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier of the folder to copy.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder with the ID `0` can not be copied."
+        "description": "The unique identifier of the folder to copy.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder with the ID `0` can not be copied.",
+        "example": "0"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "name",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "New Folder"
       },
       {
         "name": "parent",
@@ -2965,13 +3240,19 @@ export default function BoxTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`."
+        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.",
+        "example": "12345"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       }
     ],
     "responses": [
@@ -2997,7 +3278,8 @@ export default function BoxTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
+        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`.",
+        "example": "12345"
       }
     ],
     "responses": [
@@ -3027,13 +3309,19 @@ export default function BoxTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
+        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`.",
+        "example": "12345"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       }
     ],
     "responses": [
@@ -3063,7 +3351,8 @@ export default function BoxTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
+        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`.",
+        "example": "12345"
       }
     ],
     "responses": [
@@ -3097,7 +3386,8 @@ export default function BoxTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
+        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`.",
+        "example": "12345"
       }
     ],
     "responses": [
@@ -3135,7 +3425,8 @@ export default function BoxTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
+        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`.",
+        "example": "12345"
       }
     ],
     "responses": [
@@ -3173,12 +3464,14 @@ export default function BoxTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
+        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`.",
+        "example": "12345"
       },
       {
         "name": "Box__Security__Classification__Key",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Sensitive"
       }
     ],
     "responses": [
@@ -3216,7 +3509,8 @@ export default function BoxTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
+        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`.",
+        "example": "12345"
       }
     ],
     "responses": [
@@ -3250,19 +3544,22 @@ export default function BoxTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
+        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`.",
+        "example": "12345"
       },
       {
         "name": "scope",
         "schema": "string",
         "required": true,
-        "description": "The scope of the metadata template"
+        "description": "The scope of the metadata template",
+        "example": "global"
       },
       {
         "name": "templateKey",
         "schema": "string",
         "required": true,
-        "description": "The name of the metadata template"
+        "description": "The name of the metadata template",
+        "example": "properties"
       }
     ],
     "responses": [
@@ -3300,19 +3597,22 @@ export default function BoxTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
+        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`.",
+        "example": "12345"
       },
       {
         "name": "scope",
         "schema": "string",
         "required": true,
-        "description": "The scope of the metadata template"
+        "description": "The scope of the metadata template",
+        "example": "global"
       },
       {
         "name": "templateKey",
         "schema": "string",
         "required": true,
-        "description": "The name of the metadata template"
+        "description": "The name of the metadata template",
+        "example": "properties"
       }
     ],
     "responses": [
@@ -3350,19 +3650,22 @@ export default function BoxTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
+        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`.",
+        "example": "12345"
       },
       {
         "name": "scope",
         "schema": "string",
         "required": true,
-        "description": "The scope of the metadata template"
+        "description": "The scope of the metadata template",
+        "example": "global"
       },
       {
         "name": "templateKey",
         "schema": "string",
         "required": true,
-        "description": "The name of the metadata template"
+        "description": "The name of the metadata template",
+        "example": "properties"
       }
     ],
     "responses": [
@@ -3400,19 +3703,22 @@ export default function BoxTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
+        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`.",
+        "example": "12345"
       },
       {
         "name": "scope",
         "schema": "string",
         "required": true,
-        "description": "The scope of the metadata template"
+        "description": "The scope of the metadata template",
+        "example": "global"
       },
       {
         "name": "templateKey",
         "schema": "string",
         "required": true,
-        "description": "The name of the metadata template"
+        "description": "The name of the metadata template",
+        "example": "properties"
       }
     ],
     "responses": [
@@ -3446,43 +3752,55 @@ export default function BoxTypeScriptSdk() {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "The offset of the item at which to begin the response.\n\nQueries with offset parameter value\nexceeding 10000 will be rejected\nwith a 400 response."
+        "description": "The offset of the item at which to begin the response.\n\nQueries with offset parameter value\nexceeding 10000 will be rejected\nwith a 400 response.",
+        "example": 1000,
+        "default": 0
       },
       {
         "name": "usemarker",
         "schema": "boolean",
         "required": false,
-        "description": "Specifies whether to use marker-based pagination instead of\noffset-based pagination. Only one pagination method can\nbe used at a time.\n\nBy setting this value to true, the API will return a `marker` field\nthat can be passed as a parameter to this endpoint to get the next\npage of the response."
+        "description": "Specifies whether to use marker-based pagination instead of\noffset-based pagination. Only one pagination method can\nbe used at a time.\n\nBy setting this value to true, the API will return a `marker` field\nthat can be passed as a parameter to this endpoint to get the next\npage of the response.",
+        "example": true
       },
       {
         "name": "marker",
         "schema": "string",
         "required": false,
-        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`."
+        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+        "example": "JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii"
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The direction to sort results in. This can be either in alphabetical ascending\n(`ASC`) or descending (`DESC`) order."
+        "description": "The direction to sort results in. This can be either in alphabetical ascending\n(`ASC`) or descending (`DESC`) order.",
+        "example": "ASC"
       },
       {
         "name": "sort",
         "schema": "string",
         "required": false,
-        "description": "Defines the **second** attribute by which items\nare sorted.\n\nItems are always sorted by their `type` first, with\nfolders listed before files, and files listed\nbefore web links.\n\nThis parameter is not supported when using marker-based pagination."
+        "description": "Defines the **second** attribute by which items\nare sorted.\n\nItems are always sorted by their `type` first, with\nfolders listed before files, and files listed\nbefore web links.\n\nThis parameter is not supported when using marker-based pagination.",
+        "example": "name"
       }
     ],
     "responses": [
@@ -3512,7 +3830,8 @@ export default function BoxTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
+        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`.",
+        "example": "12345"
       }
     ],
     "responses": [
@@ -3542,7 +3861,8 @@ export default function BoxTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
+        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`.",
+        "example": "12345"
       }
     ],
     "responses": [
@@ -3572,7 +3892,8 @@ export default function BoxTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
+        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`.",
+        "example": "12345"
       },
       {
         "name": "watermark",
@@ -3608,7 +3929,8 @@ export default function BoxTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
+        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`.",
+        "example": "12345"
       }
     ],
     "responses": [
@@ -3686,7 +4008,8 @@ export default function BoxTypeScriptSdk() {
         "name": "folderLockId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the folder lock."
+        "description": "The ID of the folder lock.",
+        "example": "12345"
       }
     ],
     "responses": [
@@ -3720,7 +4043,8 @@ export default function BoxTypeScriptSdk() {
         "name": "metadataInstanceId",
         "schema": "string",
         "required": true,
-        "description": "The ID of an instance of the metadata template to find."
+        "description": "The ID of an instance of the metadata template to find.",
+        "example": "01234500-12f1-1234-aa12-b1d234cb567e"
       }
     ],
     "responses": [
@@ -3831,13 +4155,15 @@ export default function BoxTypeScriptSdk() {
         "name": "scope",
         "schema": "string",
         "required": true,
-        "description": "The scope of the metadata template"
+        "description": "The scope of the metadata template",
+        "example": "global"
       },
       {
         "name": "templateKey",
         "schema": "string",
         "required": true,
-        "description": "The name of the metadata template"
+        "description": "The name of the metadata template",
+        "example": "properties"
       }
     ],
     "responses": [
@@ -3871,13 +4197,15 @@ export default function BoxTypeScriptSdk() {
         "name": "scope",
         "schema": "string",
         "required": true,
-        "description": "The scope of the metadata template"
+        "description": "The scope of the metadata template",
+        "example": "global"
       },
       {
         "name": "templateKey",
         "schema": "string",
         "required": true,
-        "description": "The name of the metadata template"
+        "description": "The name of the metadata template",
+        "example": "properties"
       }
     ],
     "responses": [
@@ -3911,13 +4239,15 @@ export default function BoxTypeScriptSdk() {
         "name": "scope",
         "schema": "string",
         "required": true,
-        "description": "The scope of the metadata template"
+        "description": "The scope of the metadata template",
+        "example": "global"
       },
       {
         "name": "templateKey",
         "schema": "string",
         "required": true,
-        "description": "The name of the metadata template"
+        "description": "The name of the metadata template",
+        "example": "properties"
       }
     ],
     "responses": [
@@ -3955,7 +4285,8 @@ export default function BoxTypeScriptSdk() {
         "name": "templateId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the template"
+        "description": "The ID of the template",
+        "example": "f7a9891f"
       }
     ],
     "responses": [
@@ -3985,13 +4316,15 @@ export default function BoxTypeScriptSdk() {
         "name": "marker",
         "schema": "string",
         "required": false,
-        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`."
+        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+        "example": "JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       }
     ],
     "responses": [
@@ -4021,13 +4354,15 @@ export default function BoxTypeScriptSdk() {
         "name": "marker",
         "schema": "string",
         "required": false,
-        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`."
+        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+        "example": "JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       }
     ],
     "responses": [
@@ -4057,25 +4392,30 @@ export default function BoxTypeScriptSdk() {
         "name": "scope",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "enterprise"
       },
       {
         "name": "templateKey",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "productInfo"
       },
       {
         "name": "displayName",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Product Info"
       },
       {
         "name": "hidden",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true,
+        "default": false
       },
       {
         "name": "fields",
@@ -4087,7 +4427,9 @@ export default function BoxTypeScriptSdk() {
         "name": "copyInstanceOnItemCopy",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true,
+        "default": false
       }
     ],
     "responses": [
@@ -4121,31 +4463,36 @@ export default function BoxTypeScriptSdk() {
         "name": "scope",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "enterprise"
       },
       {
         "name": "templateKey",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "securityClassification-6VMVochwUWo"
       },
       {
         "name": "displayName",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Classification"
       },
       {
         "name": "hidden",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "copyInstanceOnItemCopy",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "fields",
@@ -4185,24 +4532,29 @@ export default function BoxTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "Specifies which folder to return policies for. This can not be used on the\nroot folder with ID `0`."
+        "description": "Specifies which folder to return policies for. This can not be used on the\nroot folder with ID `0`.",
+        "example": "31232"
       },
       {
         "name": "ownerEnterpriseId",
         "schema": "string",
-        "description": "The ID of the enterprise ID for which to find metadata\ncascade policies. If not specified, it defaults to the\ncurrent enterprise."
+        "description": "The ID of the enterprise ID for which to find metadata\ncascade policies. If not specified, it defaults to the\ncurrent enterprise.",
+        "example": "31232"
       },
       {
         "name": "marker",
         "schema": "string",
         "required": false,
-        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`."
+        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+        "example": "JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii"
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "The offset of the item at which to begin the response.\n\nQueries with offset parameter value\nexceeding 10000 will be rejected\nwith a 400 response."
+        "description": "The offset of the item at which to begin the response.\n\nQueries with offset parameter value\nexceeding 10000 will be rejected\nwith a 400 response.",
+        "example": 1000,
+        "default": 0
       }
     ],
     "responses": [
@@ -4240,19 +4592,22 @@ export default function BoxTypeScriptSdk() {
         "name": "folder_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "1234567"
       },
       {
         "name": "scope",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "enterprise"
       },
       {
         "name": "templateKey",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "productInfo"
       }
     ],
     "responses": [
@@ -4294,7 +4649,8 @@ export default function BoxTypeScriptSdk() {
         "name": "metadataCascadePolicyId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the metadata cascade policy."
+        "description": "The ID of the metadata cascade policy.",
+        "example": "6fd4ff89-8fc1-42cf-8b29-1890dedd26d7"
       }
     ],
     "responses": [
@@ -4324,7 +4680,8 @@ export default function BoxTypeScriptSdk() {
         "name": "metadataCascadePolicyId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the metadata cascade policy."
+        "description": "The ID of the metadata cascade policy.",
+        "example": "6fd4ff89-8fc1-42cf-8b29-1890dedd26d7"
       }
     ],
     "responses": [
@@ -4354,13 +4711,15 @@ export default function BoxTypeScriptSdk() {
         "name": "metadataCascadePolicyId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the cascade policy to force-apply."
+        "description": "The ID of the cascade policy to force-apply.",
+        "example": "6fd4ff89-8fc1-42cf-8b29-1890dedd26d7"
       },
       {
         "name": "conflict_resolution",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "none"
       }
     ],
     "responses": [
@@ -4390,25 +4749,31 @@ export default function BoxTypeScriptSdk() {
         "name": "from",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "enterprise_123456.someTemplate"
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "value >= :amount"
       },
       {
         "name": "query_params",
         "schema": "object",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": {
+          "amount": "100"
+        }
       },
       {
         "name": "ancestor_folder_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "0"
       },
       {
         "name": "order_by",
@@ -4420,19 +4785,29 @@ export default function BoxTypeScriptSdk() {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 50,
+        "default": 100
       },
       {
         "name": "marker",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "AAAAAmVYB1FWec8GH6yWu2nwmanfMh07IyYInaa7DZDYjgO1H4KoLW29vPlLY173OKsci6h6xGh61gG73gnaxoS+o0BbI1/h6le6cikjlupVhASwJ2Cj0tOD9wlnrUMHHw3/ISf+uuACzrOMhN6d5fYrbidPzS6MdhJOejuYlvsg4tcBYzjauP3+VU51p77HFAIuObnJT0ff"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": [
+          "extension",
+          "created_at",
+          "item_status",
+          "metadata.enterprise_1234.contracts",
+          "metadata.enterprise_1234.regions.location"
+        ]
       }
     ],
     "responses": [
@@ -4466,7 +4841,8 @@ export default function BoxTypeScriptSdk() {
         "name": "commentId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the comment."
+        "description": "The ID of the comment.",
+        "example": "12345"
       }
     ],
     "responses": [
@@ -4492,13 +4868,19 @@ export default function BoxTypeScriptSdk() {
         "name": "commentId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the comment."
+        "description": "The ID of the comment.",
+        "example": "12345"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       }
     ],
     "responses": [
@@ -4524,18 +4906,25 @@ export default function BoxTypeScriptSdk() {
         "name": "commentId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the comment."
+        "description": "The ID of the comment.",
+        "example": "12345"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "message",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Review completed!"
       }
     ],
     "responses": [
@@ -4561,19 +4950,26 @@ export default function BoxTypeScriptSdk() {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "message",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Review completed!"
       },
       {
         "name": "tagged_message",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "@[1234:John] Review completed!"
       },
       {
         "name": "item",
@@ -4605,7 +5001,8 @@ export default function BoxTypeScriptSdk() {
         "name": "collaborationId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the collaboration"
+        "description": "The ID of the collaboration",
+        "example": "1234"
       }
     ],
     "responses": [
@@ -4631,13 +5028,19 @@ export default function BoxTypeScriptSdk() {
         "name": "collaborationId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the collaboration"
+        "description": "The ID of the collaboration",
+        "example": "1234"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       }
     ],
     "responses": [
@@ -4663,31 +5066,36 @@ export default function BoxTypeScriptSdk() {
         "name": "collaborationId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the collaboration"
+        "description": "The ID of the collaboration",
+        "example": "1234"
       },
       {
         "name": "role",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "editor"
       },
       {
         "name": "status",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "accepted"
       },
       {
         "name": "expires_at",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "2019-08-29T23:59:00-07:00"
       },
       {
         "name": "can_view_path",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -4721,25 +5129,34 @@ export default function BoxTypeScriptSdk() {
         "name": "status",
         "schema": "string",
         "required": true,
-        "description": "The status of the collaborations to retrieve"
+        "description": "The status of the collaborations to retrieve",
+        "example": "pending"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "The offset of the item at which to begin the response.\n\nQueries with offset parameter value\nexceeding 10000 will be rejected\nwith a 400 response."
+        "description": "The offset of the item at which to begin the response.\n\nQueries with offset parameter value\nexceeding 10000 will be rejected\nwith a 400 response.",
+        "example": 1000,
+        "default": 0
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       }
     ],
     "responses": [
@@ -4765,13 +5182,19 @@ export default function BoxTypeScriptSdk() {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "notify",
         "schema": "boolean",
         "required": false,
-        "description": "Determines if users should receive email notification\nfor the action performed."
+        "description": "Determines if users should receive email notification\nfor the action performed.",
+        "example": true
       },
       {
         "name": "item",
@@ -4789,25 +5212,29 @@ export default function BoxTypeScriptSdk() {
         "name": "role",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "editor"
       },
       {
         "name": "is_access_only",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "can_view_path",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "expires_at",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "2019-08-29T23:59:00-07:00"
       }
     ],
     "responses": [
@@ -4837,127 +5264,202 @@ export default function BoxTypeScriptSdk() {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The string to search for. This query is matched against item names,\ndescriptions, text content of files, and various other fields of\nthe different item types.\n\nThis parameter supports a variety of operators to further refine\nthe results returns.\n\n* `\"\"` - by wrapping a query in double quotes only exact matches are\n  returned by the API. Exact searches do not return search matches\n  based on specific character sequences. Instead, they return\n  matches based on phrases, that is, word sequences. For example:\n  A search for `\"Blue-Box\"` may return search results including\n  the sequence `\"blue.box\"`, `\"Blue Box\"`, and `\"Blue-Box\"`;\n  any item containing the words `Blue` and `Box` consecutively, in\n  the order specified.\n* `AND` - returns items that contain both the search terms. For\n  example, a search for `marketing AND BoxWorks` returns items\n  that have both `marketing` and `BoxWorks` within its text in any order.\n  It does not return a result that only has `BoxWorks` in its text.\n* `OR` - returns items that contain either of the search terms. For\n  example, a search for `marketing OR BoxWorks` returns a result that\n  has either `marketing` or `BoxWorks` within its text. Using this\n  operator is not necessary as we implicitly interpret multi-word\n  queries as `OR` unless another supported boolean term is used.\n* `NOT` - returns items that do not contain the search term provided.\n  For example, a search for `marketing AND NOT BoxWorks` returns a result\n  that has only `marketing` within its text. Results containing\n  `BoxWorks` are omitted.\n\nWe do not support lower case (that is,\n`and`, `or`, and `not`) or mixed case (that is, `And`, `Or`, and `Not`)\noperators.\n\nThis field is required unless the `mdfilters` parameter is defined."
+        "description": "The string to search for. This query is matched against item names,\ndescriptions, text content of files, and various other fields of\nthe different item types.\n\nThis parameter supports a variety of operators to further refine\nthe results returns.\n\n* `\"\"` - by wrapping a query in double quotes only exact matches are\n  returned by the API. Exact searches do not return search matches\n  based on specific character sequences. Instead, they return\n  matches based on phrases, that is, word sequences. For example:\n  A search for `\"Blue-Box\"` may return search results including\n  the sequence `\"blue.box\"`, `\"Blue Box\"`, and `\"Blue-Box\"`;\n  any item containing the words `Blue` and `Box` consecutively, in\n  the order specified.\n* `AND` - returns items that contain both the search terms. For\n  example, a search for `marketing AND BoxWorks` returns items\n  that have both `marketing` and `BoxWorks` within its text in any order.\n  It does not return a result that only has `BoxWorks` in its text.\n* `OR` - returns items that contain either of the search terms. For\n  example, a search for `marketing OR BoxWorks` returns a result that\n  has either `marketing` or `BoxWorks` within its text. Using this\n  operator is not necessary as we implicitly interpret multi-word\n  queries as `OR` unless another supported boolean term is used.\n* `NOT` - returns items that do not contain the search term provided.\n  For example, a search for `marketing AND NOT BoxWorks` returns a result\n  that has only `marketing` within its text. Results containing\n  `BoxWorks` are omitted.\n\nWe do not support lower case (that is,\n`and`, `or`, and `not`) or mixed case (that is, `And`, `Or`, and `Not`)\noperators.\n\nThis field is required unless the `mdfilters` parameter is defined.",
+        "example": "sales"
       },
       {
         "name": "scope",
         "schema": "string",
         "required": false,
-        "description": "Limits the search results to either the files that the user has\naccess to, or to files available to the entire enterprise.\n\nThe scope defaults to `user_content`, which limits the search\nresults to content that is available to the currently authenticated\nuser.\n\nThe `enterprise_content` can be requested by an admin through our\nsupport channels. Once this scope has been enabled for a user, it\nwill allow that use to query for content across the entire\nenterprise and not only the content that they have access to."
+        "description": "Limits the search results to either the files that the user has\naccess to, or to files available to the entire enterprise.\n\nThe scope defaults to `user_content`, which limits the search\nresults to content that is available to the currently authenticated\nuser.\n\nThe `enterprise_content` can be requested by an admin through our\nsupport channels. Once this scope has been enabled for a user, it\nwill allow that use to query for content across the entire\nenterprise and not only the content that they have access to.",
+        "example": "user_content",
+        "default": "user_content"
       },
       {
         "name": "fileExtensions",
         "schema": "array",
         "required": false,
-        "description": "Limits the search results to any files that match any of the provided\nfile extensions. This list is a comma-separated list of file extensions\nwithout the dots."
+        "description": "Limits the search results to any files that match any of the provided\nfile extensions. This list is a comma-separated list of file extensions\nwithout the dots.",
+        "example": [
+          "pdf",
+          "png",
+          "gif"
+        ]
       },
       {
         "name": "createdAtRange",
         "schema": "array",
         "required": false,
-        "description": "Limits the search results to any items created within\na given date range.\n\nDate ranges are defined as comma separated RFC3339\ntimestamps.\n\nIf the the start date is omitted (`,2014-05-17T13:35:01-07:00`)\nanything created before the end date will be returned.\n\nIf the end date is omitted (`2014-05-15T13:35:01-07:00,`) the\ncurrent date will be used as the end date instead."
+        "description": "Limits the search results to any items created within\na given date range.\n\nDate ranges are defined as comma separated RFC3339\ntimestamps.\n\nIf the the start date is omitted (`,2014-05-17T13:35:01-07:00`)\nanything created before the end date will be returned.\n\nIf the end date is omitted (`2014-05-15T13:35:01-07:00,`) the\ncurrent date will be used as the end date instead.",
+        "example": [
+          "2014-05-15T13:35:01-07:00",
+          "2014-05-17T13:35:01-07:00"
+        ]
       },
       {
         "name": "updatedAtRange",
         "schema": "array",
         "required": false,
-        "description": "Limits the search results to any items updated within\na given date range.\n\nDate ranges are defined as comma separated RFC3339\ntimestamps.\n\nIf the start date is omitted (`,2014-05-17T13:35:01-07:00`)\nanything updated before the end date will be returned.\n\nIf the end date is omitted (`2014-05-15T13:35:01-07:00,`) the\ncurrent date will be used as the end date instead."
+        "description": "Limits the search results to any items updated within\na given date range.\n\nDate ranges are defined as comma separated RFC3339\ntimestamps.\n\nIf the start date is omitted (`,2014-05-17T13:35:01-07:00`)\nanything updated before the end date will be returned.\n\nIf the end date is omitted (`2014-05-15T13:35:01-07:00,`) the\ncurrent date will be used as the end date instead.",
+        "example": [
+          "2014-05-15T13:35:01-07:00",
+          "2014-05-17T13:35:01-07:00"
+        ]
       },
       {
         "name": "sizeRange",
         "schema": "array",
         "required": false,
-        "description": "Limits the search results to any items with a size within\na given file size range. This applied to files and folders.\n\nSize ranges are defined as comma separated list of a lower\nand upper byte size limit (inclusive).\n\nThe upper and lower bound can be omitted to create open ranges."
+        "description": "Limits the search results to any items with a size within\na given file size range. This applied to files and folders.\n\nSize ranges are defined as comma separated list of a lower\nand upper byte size limit (inclusive).\n\nThe upper and lower bound can be omitted to create open ranges.",
+        "example": [
+          1000000,
+          5000000
+        ]
       },
       {
         "name": "ownerUserIds",
         "schema": "array",
         "required": false,
-        "description": "Limits the search results to any items that are owned\nby the given list of owners, defined as a list of comma separated\nuser IDs.\n\nThe items still need to be owned or shared with\nthe currently authenticated user for them to show up in the search\nresults. If the user does not have access to any files owned by any of\nthe users an empty result set will be returned.\n\nTo search across an entire enterprise, we recommend using the\n`enterprise_content` scope parameter which can be requested with our\nsupport team."
+        "description": "Limits the search results to any items that are owned\nby the given list of owners, defined as a list of comma separated\nuser IDs.\n\nThe items still need to be owned or shared with\nthe currently authenticated user for them to show up in the search\nresults. If the user does not have access to any files owned by any of\nthe users an empty result set will be returned.\n\nTo search across an entire enterprise, we recommend using the\n`enterprise_content` scope parameter which can be requested with our\nsupport team.",
+        "example": [
+          "123422",
+          "23532",
+          "3241212"
+        ]
       },
       {
         "name": "recentUpdaterUserIds",
         "schema": "array",
         "required": false,
-        "description": "Limits the search results to any items that have been updated\nby the given list of users, defined as a list of comma separated\nuser IDs.\n\nThe items still need to be owned or shared with\nthe currently authenticated user for them to show up in the search\nresults. If the user does not have access to any files owned by any of\nthe users an empty result set will be returned.\n\nThis feature only searches back to the last 10 versions of an item."
+        "description": "Limits the search results to any items that have been updated\nby the given list of users, defined as a list of comma separated\nuser IDs.\n\nThe items still need to be owned or shared with\nthe currently authenticated user for them to show up in the search\nresults. If the user does not have access to any files owned by any of\nthe users an empty result set will be returned.\n\nThis feature only searches back to the last 10 versions of an item.",
+        "example": [
+          "123422",
+          "23532",
+          "3241212"
+        ]
       },
       {
         "name": "ancestorFolderIds",
         "schema": "array",
         "required": false,
-        "description": "Limits the search results to items within the given\nlist of folders, defined as a comma separated lists\nof folder IDs.\n\nSearch results will also include items within any subfolders\nof those ancestor folders.\n\nThe folders still need to be owned or shared with\nthe currently authenticated user. If the folder is not accessible by this\nuser, or it does not exist, a `HTTP 404` error code will be returned\ninstead.\n\nTo search across an entire enterprise, we recommend using the\n`enterprise_content` scope parameter which can be requested with our\nsupport team."
+        "description": "Limits the search results to items within the given\nlist of folders, defined as a comma separated lists\nof folder IDs.\n\nSearch results will also include items within any subfolders\nof those ancestor folders.\n\nThe folders still need to be owned or shared with\nthe currently authenticated user. If the folder is not accessible by this\nuser, or it does not exist, a `HTTP 404` error code will be returned\ninstead.\n\nTo search across an entire enterprise, we recommend using the\n`enterprise_content` scope parameter which can be requested with our\nsupport team.",
+        "example": [
+          "4535234",
+          "234123235",
+          "2654345"
+        ]
       },
       {
         "name": "contentTypes",
         "schema": "array",
         "required": false,
-        "description": "Limits the search results to any items that match the search query\nfor a specific part of the file, for example the file description.\n\nContent types are defined as a comma separated lists\nof Box recognized content types. The allowed content types are as follows.\n\n* `name` - The name of the item, as defined by its `name` field.\n* `description` - The description of the item, as defined by its\n  `description` field.\n* `file_content` - The actual content of the file.\n* `comments` - The content of any of the comments on a file or\n   folder.\n* `tags` - Any tags that are applied to an item, as defined by its\n   `tags` field."
+        "description": "Limits the search results to any items that match the search query\nfor a specific part of the file, for example the file description.\n\nContent types are defined as a comma separated lists\nof Box recognized content types. The allowed content types are as follows.\n\n* `name` - The name of the item, as defined by its `name` field.\n* `description` - The description of the item, as defined by its\n  `description` field.\n* `file_content` - The actual content of the file.\n* `comments` - The content of any of the comments on a file or\n   folder.\n* `tags` - Any tags that are applied to an item, as defined by its\n   `tags` field.",
+        "example": [
+          "name",
+          "description"
+        ]
       },
       {
         "name": "type",
         "schema": "string",
         "required": false,
-        "description": "Limits the search results to any items of this type. This\nparameter only takes one value. By default the API returns\nitems that match any of these types.\n\n* `file` - Limits the search results to files\n* `folder` - Limits the search results to folders\n* `web_link` - Limits the search results to web links, also known\n   as bookmarks"
+        "description": "Limits the search results to any items of this type. This\nparameter only takes one value. By default the API returns\nitems that match any of these types.\n\n* `file` - Limits the search results to files\n* `folder` - Limits the search results to folders\n* `web_link` - Limits the search results to web links, also known\n   as bookmarks",
+        "example": "file"
       },
       {
         "name": "trashContent",
         "schema": "string",
         "required": false,
-        "description": "Determines if the search should look in the trash for items.\n\nBy default, this API only returns search results for items\nnot currently in the trash (`non_trashed_only`).\n\n* `trashed_only` - Only searches for items currently in the trash\n* `non_trashed_only` - Only searches for items currently not in\n  the trash\n* `all_items` - Searches for both trashed and non-trashed items."
+        "description": "Determines if the search should look in the trash for items.\n\nBy default, this API only returns search results for items\nnot currently in the trash (`non_trashed_only`).\n\n* `trashed_only` - Only searches for items currently in the trash\n* `non_trashed_only` - Only searches for items currently not in\n  the trash\n* `all_items` - Searches for both trashed and non-trashed items.",
+        "example": "non_trashed_only",
+        "default": "non_trashed_only"
       },
       {
         "name": "mdfilters",
         "schema": "array",
         "required": false,
-        "description": "Limits the search results to any items for which the metadata matches\nthe provided filter.\n\nThis parameter contains a list of 1 metadata template to filter\nthe search results by. This list can currently only\ncontain one entry, though this might be expanded in the future.\n\nThis parameter is required unless the `query` parameter is provided."
+        "description": "Limits the search results to any items for which the metadata matches\nthe provided filter.\n\nThis parameter contains a list of 1 metadata template to filter\nthe search results by. This list can currently only\ncontain one entry, though this might be expanded in the future.\n\nThis parameter is required unless the `query` parameter is provided.",
+        "example": [
+          {
+            "scope": "enterprise",
+            "templateKey": "contract",
+            "filters": {
+              "category": "online"
+            }
+          }
+        ]
       },
       {
         "name": "sort",
         "schema": "string",
         "required": false,
-        "description": "Defines the order in which search results are returned. This API\ndefaults to returning items by relevance unless this parameter is\nexplicitly specified.\n\n* `relevance` (default) returns the results sorted by relevance to the\nquery search term. The relevance is based on the occurrence of the search\nterm in the items name, description, content, and additional properties.\n* `modified_at` returns the results ordered in descending order by date\nat which the item was last modified."
+        "description": "Defines the order in which search results are returned. This API\ndefaults to returning items by relevance unless this parameter is\nexplicitly specified.\n\n* `relevance` (default) returns the results sorted by relevance to the\nquery search term. The relevance is based on the occurrence of the search\nterm in the items name, description, content, and additional properties.\n* `modified_at` returns the results ordered in descending order by date\nat which the item was last modified.",
+        "example": "modified_at",
+        "default": "relevance"
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "Defines the direction in which search results are ordered. This API\ndefaults to returning items in descending (`DESC`) order unless this\nparameter is explicitly specified.\n\nWhen results are sorted by `relevance` the ordering is locked to returning\nitems in descending order of relevance, and this parameter is ignored."
+        "description": "Defines the direction in which search results are ordered. This API\ndefaults to returning items in descending (`DESC`) order unless this\nparameter is explicitly specified.\n\nWhen results are sorted by `relevance` the ordering is locked to returning\nitems in descending order of relevance, and this parameter is ignored.",
+        "example": "ASC",
+        "default": "DESC"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Defines the maximum number of items to return as part of a page of\nresults."
+        "description": "Defines the maximum number of items to return as part of a page of\nresults.",
+        "example": 100,
+        "default": 30
       },
       {
         "name": "includeRecentSharedLinks",
         "schema": "boolean",
         "required": false,
-        "description": "Defines whether the search results should include any items\nthat the user recently accessed through a shared link.\n\nWhen this parameter has been set to true,\nthe format of the response of this API changes to return\na list of [Search Results with\nShared Links](r://search_results_with_shared_links)"
+        "description": "Defines whether the search results should include any items\nthat the user recently accessed through a shared link.\n\nWhen this parameter has been set to true,\nthe format of the response of this API changes to return\na list of [Search Results with\nShared Links](r://search_results_with_shared_links)",
+        "example": true,
+        "default": false
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "The offset of the item at which to begin the response.\n\nQueries with offset parameter value\nexceeding 10000 will be rejected\nwith a 400 response."
+        "description": "The offset of the item at which to begin the response.\n\nQueries with offset parameter value\nexceeding 10000 will be rejected\nwith a 400 response.",
+        "example": 1000,
+        "default": 0
       },
       {
         "name": "deletedUserIds",
         "schema": "array",
         "required": false,
-        "description": "Limits the search results to items that were deleted by the given\nlist of users, defined as a list of comma separated user IDs.\n\nThe `trash_content` parameter needs to be set to `trashed_only`.\n\nIf searching in trash is not performed, an empty result set\nis returned. The items need to be owned or shared with\nthe currently authenticated user for them to show up in the search\nresults.\n\nIf the user does not have access to any files owned by\nany of the users, an empty result set is returned.\n\nData available from 2023-02-01 onwards."
+        "description": "Limits the search results to items that were deleted by the given\nlist of users, defined as a list of comma separated user IDs.\n\nThe `trash_content` parameter needs to be set to `trashed_only`.\n\nIf searching in trash is not performed, an empty result set\nis returned. The items need to be owned or shared with\nthe currently authenticated user for them to show up in the search\nresults.\n\nIf the user does not have access to any files owned by\nany of the users, an empty result set is returned.\n\nData available from 2023-02-01 onwards.",
+        "example": [
+          "123422",
+          "23532",
+          "3241212"
+        ]
       },
       {
         "name": "deletedAtRange",
         "schema": "array",
         "required": false,
-        "description": "Limits the search results to any items deleted within a given\ndate range.\n\nDate ranges are defined as comma separated RFC3339 timestamps.\n\nIf the the start date is omitted (`2014-05-17T13:35:01-07:00`),\nanything deleted before the end date will be returned.\n\nIf the end date is omitted (`2014-05-15T13:35:01-07:00`),\nthe current date will be used as the end date instead.\n\nThe `trash_content` parameter needs to be set to `trashed_only`.\n\nIf searching in trash is not performed, then an empty result\nis returned.\n\nData available from 2023-02-01 onwards."
+        "description": "Limits the search results to any items deleted within a given\ndate range.\n\nDate ranges are defined as comma separated RFC3339 timestamps.\n\nIf the the start date is omitted (`2014-05-17T13:35:01-07:00`),\nanything deleted before the end date will be returned.\n\nIf the end date is omitted (`2014-05-15T13:35:01-07:00`),\nthe current date will be used as the end date instead.\n\nThe `trash_content` parameter needs to be set to `trashed_only`.\n\nIf searching in trash is not performed, then an empty result\nis returned.\n\nData available from 2023-02-01 onwards.",
+        "example": [
+          "2014-05-15T13:35:01-07:00",
+          "2014-05-17T13:35:01-07:00"
+        ]
       }
     ],
     "responses": [
@@ -5001,25 +5503,32 @@ export default function BoxTypeScriptSdk() {
         "name": "action",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "review",
+        "default": "review"
       },
       {
         "name": "message",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Please review",
+        "default": ""
       },
       {
         "name": "due_at",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "2012-12-12T10:53:43-08:00"
       },
       {
         "name": "completion_rule",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "all_assignees",
+        "default": "all_assignees"
       }
     ],
     "responses": [
@@ -5057,7 +5566,8 @@ export default function BoxTypeScriptSdk() {
         "name": "taskId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the task."
+        "description": "The ID of the task.",
+        "example": "12345"
       }
     ],
     "responses": [
@@ -5087,7 +5597,8 @@ export default function BoxTypeScriptSdk() {
         "name": "taskId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the task."
+        "description": "The ID of the task.",
+        "example": "12345"
       }
     ],
     "responses": [
@@ -5117,27 +5628,32 @@ export default function BoxTypeScriptSdk() {
         "name": "taskId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the task."
+        "description": "The ID of the task.",
+        "example": "12345"
       },
       {
         "name": "action",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "review"
       },
       {
         "name": "message",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Please review"
       },
       {
         "name": "due_at",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "2012-12-12T10:53:43-08:00"
       },
       {
         "name": "completion_rule",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "all_assignees"
       }
     ],
     "responses": [
@@ -5175,7 +5691,8 @@ export default function BoxTypeScriptSdk() {
         "name": "taskId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the task."
+        "description": "The ID of the task.",
+        "example": "12345"
       }
     ],
     "responses": [
@@ -5253,7 +5770,8 @@ export default function BoxTypeScriptSdk() {
         "name": "taskAssignmentId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the task assignment."
+        "description": "The ID of the task assignment.",
+        "example": "12345"
       }
     ],
     "responses": [
@@ -5283,7 +5801,8 @@ export default function BoxTypeScriptSdk() {
         "name": "taskAssignmentId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the task assignment."
+        "description": "The ID of the task assignment.",
+        "example": "12345"
       }
     ],
     "responses": [
@@ -5313,17 +5832,20 @@ export default function BoxTypeScriptSdk() {
         "name": "taskAssignmentId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the task assignment."
+        "description": "The ID of the task assignment.",
+        "example": "12345"
       },
       {
         "name": "message",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Looks good to me"
       },
       {
         "name": "resolution_state",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "completed"
       }
     ],
     "responses": [
@@ -5357,19 +5879,26 @@ export default function BoxTypeScriptSdk() {
         "name": "ifNoneMatch",
         "schema": "string",
         "required": false,
-        "description": "Ensures an item is only returned if it has changed.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `304 Not Modified` if the item has not\nchanged since."
+        "description": "Ensures an item is only returned if it has changed.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `304 Not Modified` if the item has not\nchanged since.",
+        "example": "1"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "boxapi",
         "schema": "string",
         "required": true,
-        "description": "A header containing the shared link and optional password for the\nshared link.\n\nThe format for this header is as follows.\n\n`shared_link=[link]&shared_link_password=[password]`"
+        "description": "A header containing the shared link and optional password for the\nshared link.\n\nThe format for this header is as follows.\n\n`shared_link=[link]&shared_link_password=[password]`",
+        "example": "shared_link=[link]&shared_link_password=[password]"
       }
     ],
     "responses": [
@@ -5399,13 +5928,15 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       },
       {
         "name": "fields",
         "schema": "string",
         "required": true,
-        "description": "Explicitly request the `shared_link` fields\nto be returned for this item."
+        "description": "Explicitly request the `shared_link` fields\nto be returned for this item.",
+        "example": "shared_link"
       }
     ],
     "responses": [
@@ -5443,13 +5974,15 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       },
       {
         "name": "fields",
         "schema": "string",
         "required": true,
-        "description": "Explicitly request the `shared_link` fields\nto be returned for this item."
+        "description": "Explicitly request the `shared_link` fields\nto be returned for this item.",
+        "example": "shared_link"
       },
       {
         "name": "shared_link",
@@ -5504,13 +6037,15 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       },
       {
         "name": "fields",
         "schema": "string",
         "required": true,
-        "description": "Explicitly request the `shared_link` fields\nto be returned for this item."
+        "description": "Explicitly request the `shared_link` fields\nto be returned for this item.",
+        "example": "shared_link"
       },
       {
         "name": "shared_link",
@@ -5565,18 +6100,21 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`."
+        "description": "The unique identifier that represents a file.\n\nThe ID for any file can be determined\nby visiting a file in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/files/123`\nthe `file_id` is `123`.",
+        "example": "12345"
       },
       {
         "name": "fields",
         "schema": "string",
         "required": true,
-        "description": "Explicitly request the `shared_link` fields\nto be returned for this item."
+        "description": "Explicitly request the `shared_link` fields\nto be returned for this item.",
+        "example": "shared_link"
       },
       {
         "name": "shared_link",
         "schema": "object",
-        "description": ""
+        "description": "",
+        "example": null
       }
     ],
     "responses": [
@@ -5622,19 +6160,26 @@ export default function BoxTypeScriptSdk() {
         "name": "ifNoneMatch",
         "schema": "string",
         "required": false,
-        "description": "Ensures an item is only returned if it has changed.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `304 Not Modified` if the item has not\nchanged since."
+        "description": "Ensures an item is only returned if it has changed.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `304 Not Modified` if the item has not\nchanged since.",
+        "example": "1"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "boxapi",
         "schema": "string",
         "required": true,
-        "description": "A header containing the shared link and optional password for the\nshared link.\n\nThe format for this header is as follows.\n\n`shared_link=[link]&shared_link_password=[password]`"
+        "description": "A header containing the shared link and optional password for the\nshared link.\n\nThe format for this header is as follows.\n\n`shared_link=[link]&shared_link_password=[password]`",
+        "example": "shared_link=[link]&shared_link_password=[password]"
       }
     ],
     "responses": [
@@ -5664,13 +6209,15 @@ export default function BoxTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
+        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`.",
+        "example": "12345"
       },
       {
         "name": "fields",
         "schema": "string",
         "required": true,
-        "description": "Explicitly request the `shared_link` fields\nto be returned for this item."
+        "description": "Explicitly request the `shared_link` fields\nto be returned for this item.",
+        "example": "shared_link"
       }
     ],
     "responses": [
@@ -5708,13 +6255,15 @@ export default function BoxTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
+        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`.",
+        "example": "12345"
       },
       {
         "name": "fields",
         "schema": "string",
         "required": true,
-        "description": "Explicitly request the `shared_link` fields\nto be returned for this item."
+        "description": "Explicitly request the `shared_link` fields\nto be returned for this item.",
+        "example": "shared_link"
       },
       {
         "name": "shared_link",
@@ -5769,13 +6318,15 @@ export default function BoxTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
+        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`.",
+        "example": "12345"
       },
       {
         "name": "fields",
         "schema": "string",
         "required": true,
-        "description": "Explicitly request the `shared_link` fields\nto be returned for this item."
+        "description": "Explicitly request the `shared_link` fields\nto be returned for this item.",
+        "example": "shared_link"
       },
       {
         "name": "shared_link",
@@ -5830,18 +6381,21 @@ export default function BoxTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
+        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`.",
+        "example": "12345"
       },
       {
         "name": "fields",
         "schema": "string",
         "required": true,
-        "description": "Explicitly request the `shared_link` fields\nto be returned for this item."
+        "description": "Explicitly request the `shared_link` fields\nto be returned for this item.",
+        "example": "shared_link"
       },
       {
         "name": "shared_link",
         "schema": "object",
-        "description": ""
+        "description": "",
+        "example": null
       }
     ],
     "responses": [
@@ -5887,13 +6441,15 @@ export default function BoxTypeScriptSdk() {
         "name": "description",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Cloud Content Management"
       },
       {
         "name": "url",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "https://box.com"
       },
       {
         "name": "parent",
@@ -5905,7 +6461,8 @@ export default function BoxTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Box Website"
       }
     ],
     "responses": [
@@ -5931,7 +6488,8 @@ export default function BoxTypeScriptSdk() {
         "name": "webLinkId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the web link."
+        "description": "The ID of the web link.",
+        "example": "12345"
       }
     ],
     "responses": [
@@ -5957,13 +6515,15 @@ export default function BoxTypeScriptSdk() {
         "name": "webLinkId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the web link."
+        "description": "The ID of the web link.",
+        "example": "12345"
       },
       {
         "name": "boxapi",
         "schema": "string",
         "required": false,
-        "description": "The URL, and optional password, for the shared link of this item.\n\nThis header can be used to access items that have not been\nexplicitly shared with a user.\n\nUse the format `shared_link=[link]` or if a password is required then\nuse `shared_link=[link]&shared_link_password=[password]`.\n\nThis header can be used on the file or folder shared, as well as on any files\nor folders nested within the item."
+        "description": "The URL, and optional password, for the shared link of this item.\n\nThis header can be used to access items that have not been\nexplicitly shared with a user.\n\nUse the format `shared_link=[link]` or if a password is required then\nuse `shared_link=[link]&shared_link_password=[password]`.\n\nThis header can be used on the file or folder shared, as well as on any files\nor folders nested within the item.",
+        "example": "shared_link=[link]&shared_link_password=[password]"
       }
     ],
     "responses": [
@@ -5989,18 +6549,25 @@ export default function BoxTypeScriptSdk() {
         "name": "webLinkId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the web link."
+        "description": "The ID of the web link.",
+        "example": "12345"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Restored.docx"
       },
       {
         "name": "parent",
@@ -6043,17 +6610,20 @@ export default function BoxTypeScriptSdk() {
         "name": "webLinkId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the web link."
+        "description": "The ID of the web link.",
+        "example": "12345"
       },
       {
         "name": "description",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Cloud Content Management"
       },
       {
         "name": "url",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "https://box.com"
       },
       {
         "name": "parent",
@@ -6063,7 +6633,8 @@ export default function BoxTypeScriptSdk() {
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Box Website"
       },
       {
         "name": "shared_link",
@@ -6094,7 +6665,8 @@ export default function BoxTypeScriptSdk() {
         "name": "webLinkId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the web link."
+        "description": "The ID of the web link.",
+        "example": "12345"
       }
     ],
     "responses": [
@@ -6124,13 +6696,19 @@ export default function BoxTypeScriptSdk() {
         "name": "webLinkId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the web link."
+        "description": "The ID of the web link.",
+        "example": "12345"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       }
     ],
     "responses": [
@@ -6160,19 +6738,26 @@ export default function BoxTypeScriptSdk() {
         "name": "ifNoneMatch",
         "schema": "string",
         "required": false,
-        "description": "Ensures an item is only returned if it has changed.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `304 Not Modified` if the item has not\nchanged since."
+        "description": "Ensures an item is only returned if it has changed.\n\nPass in the item's last observed `etag` value\ninto this header and the endpoint will fail\nwith a `304 Not Modified` if the item has not\nchanged since.",
+        "example": "1"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "boxapi",
         "schema": "string",
         "required": true,
-        "description": "A header containing the shared link and optional password for the\nshared link.\n\nThe format for this header is as follows.\n\n`shared_link=[link]&shared_link_password=[password]`"
+        "description": "A header containing the shared link and optional password for the\nshared link.\n\nThe format for this header is as follows.\n\n`shared_link=[link]&shared_link_password=[password]`",
+        "example": "shared_link=[link]&shared_link_password=[password]"
       }
     ],
     "responses": [
@@ -6202,13 +6787,15 @@ export default function BoxTypeScriptSdk() {
         "name": "webLinkId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the web link."
+        "description": "The ID of the web link.",
+        "example": "12345"
       },
       {
         "name": "fields",
         "schema": "string",
         "required": true,
-        "description": "Explicitly request the `shared_link` fields\nto be returned for this item."
+        "description": "Explicitly request the `shared_link` fields\nto be returned for this item.",
+        "example": "shared_link"
       }
     ],
     "responses": [
@@ -6246,13 +6833,15 @@ export default function BoxTypeScriptSdk() {
         "name": "webLinkId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the web link."
+        "description": "The ID of the web link.",
+        "example": "12345"
       },
       {
         "name": "fields",
         "schema": "string",
         "required": true,
-        "description": "Explicitly request the `shared_link` fields\nto be returned for this item."
+        "description": "Explicitly request the `shared_link` fields\nto be returned for this item.",
+        "example": "shared_link"
       },
       {
         "name": "shared_link",
@@ -6307,13 +6896,15 @@ export default function BoxTypeScriptSdk() {
         "name": "webLinkId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the web link."
+        "description": "The ID of the web link.",
+        "example": "12345"
       },
       {
         "name": "fields",
         "schema": "string",
         "required": true,
-        "description": "Explicitly request the `shared_link` fields\nto be returned for this item."
+        "description": "Explicitly request the `shared_link` fields\nto be returned for this item.",
+        "example": "shared_link"
       },
       {
         "name": "shared_link",
@@ -6368,18 +6959,21 @@ export default function BoxTypeScriptSdk() {
         "name": "webLinkId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the web link."
+        "description": "The ID of the web link.",
+        "example": "12345"
       },
       {
         "name": "fields",
         "schema": "string",
         "required": true,
-        "description": "Explicitly request the `shared_link` fields\nto be returned for this item."
+        "description": "Explicitly request the `shared_link` fields\nto be returned for this item.",
+        "example": "shared_link"
       },
       {
         "name": "shared_link",
         "schema": "object",
-        "description": ""
+        "description": "",
+        "example": null
       }
     ],
     "responses": [
@@ -6425,49 +7019,62 @@ export default function BoxTypeScriptSdk() {
         "name": "filterTerm",
         "schema": "string",
         "required": false,
-        "description": "Limits the results to only users who's `name` or\n`login` start with the search term.\n\nFor externally managed users, the search term needs\nto completely match the in order to find the user, and\nit will only return one user at a time."
+        "description": "Limits the results to only users who's `name` or\n`login` start with the search term.\n\nFor externally managed users, the search term needs\nto completely match the in order to find the user, and\nit will only return one user at a time.",
+        "example": "john"
       },
       {
         "name": "userType",
         "schema": "string",
         "required": false,
-        "description": "Limits the results to the kind of user specified.\n\n* `all` returns every kind of user for whom the\n  `login` or `name` partially matches the\n  `filter_term`. It will only return an external user\n  if the login matches the `filter_term` completely,\n  and in that case it will only return that user.\n* `managed` returns all managed and app users for whom\n  the `login` or `name` partially matches the\n  `filter_term`.\n* `external` returns all external users for whom the\n  `login` matches the `filter_term` exactly."
+        "description": "Limits the results to the kind of user specified.\n\n* `all` returns every kind of user for whom the\n  `login` or `name` partially matches the\n  `filter_term`. It will only return an external user\n  if the login matches the `filter_term` completely,\n  and in that case it will only return that user.\n* `managed` returns all managed and app users for whom\n  the `login` or `name` partially matches the\n  `filter_term`.\n* `external` returns all external users for whom the\n  `login` matches the `filter_term` exactly.",
+        "example": "managed"
       },
       {
         "name": "externalAppUserId",
         "schema": "string",
         "required": false,
-        "description": "Limits the results to app users with the given\n`external_app_user_id` value.\n\nWhen creating an app user, an\n`external_app_user_id` value can be set. This value can\nthen be used in this endpoint to find any users that\nmatch that `external_app_user_id` value."
+        "description": "Limits the results to app users with the given\n`external_app_user_id` value.\n\nWhen creating an app user, an\n`external_app_user_id` value can be set. This value can\nthen be used in this endpoint to find any users that\nmatch that `external_app_user_id` value.",
+        "example": "my-user-1234"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "The offset of the item at which to begin the response.\n\nQueries with offset parameter value\nexceeding 10000 will be rejected\nwith a 400 response."
+        "description": "The offset of the item at which to begin the response.\n\nQueries with offset parameter value\nexceeding 10000 will be rejected\nwith a 400 response.",
+        "example": 1000,
+        "default": 0
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       },
       {
         "name": "usemarker",
         "schema": "boolean",
         "required": false,
-        "description": "Specifies whether to use marker-based pagination instead of\noffset-based pagination. Only one pagination method can\nbe used at a time.\n\nBy setting this value to true, the API will return a `marker` field\nthat can be passed as a parameter to this endpoint to get the next\npage of the response."
+        "description": "Specifies whether to use marker-based pagination instead of\noffset-based pagination. Only one pagination method can\nbe used at a time.\n\nBy setting this value to true, the API will return a `marker` field\nthat can be passed as a parameter to this endpoint to get the next\npage of the response.",
+        "example": true
       },
       {
         "name": "marker",
         "schema": "string",
         "required": false,
-        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`."
+        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+        "example": "JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii"
       }
     ],
     "responses": [
@@ -6493,67 +7100,82 @@ export default function BoxTypeScriptSdk() {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Aaron Levie"
       },
       {
         "name": "login",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "boss@box.com"
       },
       {
         "name": "is_platform_access_only",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "role",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "user"
       },
       {
         "name": "language",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "en"
       },
       {
         "name": "is_sync_enabled",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "job_title",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "CEO"
       },
       {
         "name": "phone",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "6509241374"
       },
       {
         "name": "address",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "900 Jefferson Ave, Redwood City, CA 94063"
       },
       {
         "name": "space_amount",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 11345156112
       },
       {
         "name": "tracking_codes",
@@ -6565,43 +7187,50 @@ export default function BoxTypeScriptSdk() {
         "name": "can_see_managed_users",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "timezone",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Africa/Bujumbura"
       },
       {
         "name": "is_external_collab_restricted",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "is_exempt_from_device_limits",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "is_exempt_from_login_verification",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "status",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "active"
       },
       {
         "name": "external_app_user_id",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "my-user-1234"
       }
     ],
     "responses": [
@@ -6627,7 +7256,12 @@ export default function BoxTypeScriptSdk() {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       }
     ],
     "responses": [
@@ -6653,13 +7287,21 @@ export default function BoxTypeScriptSdk() {
         "name": "user_ids",
         "schema": "array",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": [
+          "123456",
+          "456789"
+        ]
       },
       {
         "name": "user_logins",
         "schema": "array",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": [
+          "user@sample.com",
+          "user2@sample.com"
+        ]
       }
     ],
     "responses": [
@@ -6709,17 +7351,20 @@ export default function BoxTypeScriptSdk() {
         "name": "userId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": "12345"
       },
       {
         "name": "notify",
         "schema": "boolean",
-        "description": "Whether the user will receive email notification of\nthe deletion"
+        "description": "Whether the user will receive email notification of\nthe deletion",
+        "example": true
       },
       {
         "name": "force",
         "schema": "boolean",
-        "description": "Whether the user should be deleted even if this user\nstill own files"
+        "description": "Whether the user should be deleted even if this user\nstill own files",
+        "example": true
       }
     ],
     "responses": [
@@ -6745,13 +7390,19 @@ export default function BoxTypeScriptSdk() {
         "name": "userId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": "12345"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       }
     ],
     "responses": [
@@ -6777,63 +7428,79 @@ export default function BoxTypeScriptSdk() {
         "name": "userId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": "12345"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "enterprise",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": null
       },
       {
         "name": "notify",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Aaron Levie"
       },
       {
         "name": "login",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "somename@box.com"
       },
       {
         "name": "role",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "user"
       },
       {
         "name": "language",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "en"
       },
       {
         "name": "is_sync_enabled",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "job_title",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "CEO"
       },
       {
         "name": "phone",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "6509241374"
       },
       {
         "name": "address",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "900 Jefferson Ave, Redwood City, CA 94063"
       },
       {
         "name": "tracking_codes",
@@ -6843,42 +7510,50 @@ export default function BoxTypeScriptSdk() {
       {
         "name": "can_see_managed_users",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "timezone",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Africa/Bujumbura"
       },
       {
         "name": "is_external_collab_restricted",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "is_exempt_from_device_limits",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "is_exempt_from_login_verification",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "is_password_reset_required",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "status",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "active"
       },
       {
         "name": "space_amount",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 11345156112
       },
       {
         "name": "notification_email",
@@ -6888,7 +7563,8 @@ export default function BoxTypeScriptSdk() {
       {
         "name": "external_app_user_id",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "my-user-1234"
       }
     ],
     "responses": [
@@ -6922,7 +7598,8 @@ export default function BoxTypeScriptSdk() {
         "name": "userId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": "12345"
       }
     ],
     "responses": [
@@ -6956,7 +7633,8 @@ export default function BoxTypeScriptSdk() {
         "name": "userId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": "12345"
       }
     ],
     "responses": [
@@ -6982,13 +7660,15 @@ export default function BoxTypeScriptSdk() {
         "name": "userId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": "12345"
       },
       {
         "name": "pic",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PIC"
       }
     ],
     "responses": [
@@ -7030,19 +7710,26 @@ export default function BoxTypeScriptSdk() {
         "name": "userId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": "12345"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "notify",
         "schema": "boolean",
         "required": false,
-        "description": "Determines if users should receive email notification\nfor the action performed."
+        "description": "Determines if users should receive email notification\nfor the action performed.",
+        "example": true
       },
       {
         "name": "owned_by",
@@ -7078,7 +7765,8 @@ export default function BoxTypeScriptSdk() {
         "name": "userId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": "12345"
       }
     ],
     "responses": [
@@ -7104,13 +7792,15 @@ export default function BoxTypeScriptSdk() {
         "name": "userId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": "12345"
       },
       {
         "name": "email",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "alias@example.com"
       }
     ],
     "responses": [
@@ -7136,13 +7826,15 @@ export default function BoxTypeScriptSdk() {
         "name": "userId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": "12345"
       },
       {
         "name": "emailAliasId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the email alias."
+        "description": "The ID of the email alias.",
+        "example": "23432"
       }
     ],
     "responses": [
@@ -7168,19 +7860,23 @@ export default function BoxTypeScriptSdk() {
         "name": "userId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": "12345"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "The offset of the item at which to begin the response.\n\nQueries with offset parameter value\nexceeding 10000 will be rejected\nwith a 400 response."
+        "description": "The offset of the item at which to begin the response.\n\nQueries with offset parameter value\nexceeding 10000 will be rejected\nwith a 400 response.",
+        "example": 1000,
+        "default": 0
       }
     ],
     "responses": [
@@ -7206,7 +7902,12 @@ export default function BoxTypeScriptSdk() {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "enterprise",
@@ -7244,13 +7945,19 @@ export default function BoxTypeScriptSdk() {
         "name": "inviteId",
         "schema": "string",
         "required": true,
-        "description": "The ID of an invite."
+        "description": "The ID of an invite.",
+        "example": "213723"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       }
     ],
     "responses": [
@@ -7276,25 +7983,34 @@ export default function BoxTypeScriptSdk() {
         "name": "filterTerm",
         "schema": "string",
         "required": false,
-        "description": "Limits the results to only groups whose `name` starts\nwith the search term."
+        "description": "Limits the results to only groups whose `name` starts\nwith the search term.",
+        "example": "Engineering"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "The offset of the item at which to begin the response.\n\nQueries with offset parameter value\nexceeding 10000 will be rejected\nwith a 400 response."
+        "description": "The offset of the item at which to begin the response.\n\nQueries with offset parameter value\nexceeding 10000 will be rejected\nwith a 400 response.",
+        "example": 1000,
+        "default": 0
       }
     ],
     "responses": [
@@ -7320,43 +8036,54 @@ export default function BoxTypeScriptSdk() {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "description",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "\"Customer Support Group - as imported from Active Directory\""
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Customer Support"
       },
       {
         "name": "provenance",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Active Directory"
       },
       {
         "name": "external_sync_identifier",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "AD:123456"
       },
       {
         "name": "invitability_level",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "admins_only"
       },
       {
         "name": "member_viewability_level",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "admins_only"
       }
     ],
     "responses": [
@@ -7386,7 +8113,11 @@ export default function BoxTypeScriptSdk() {
         "name": "group_ids",
         "schema": "array",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": [
+          "123456",
+          "456789"
+        ]
       }
     ],
     "responses": [
@@ -7436,7 +8167,8 @@ export default function BoxTypeScriptSdk() {
         "name": "groupId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the group."
+        "description": "The ID of the group.",
+        "example": "57645"
       }
     ],
     "responses": [
@@ -7462,13 +8194,19 @@ export default function BoxTypeScriptSdk() {
         "name": "groupId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the group."
+        "description": "The ID of the group.",
+        "example": "57645"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       }
     ],
     "responses": [
@@ -7494,43 +8232,55 @@ export default function BoxTypeScriptSdk() {
         "name": "groupId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the group."
+        "description": "The ID of the group.",
+        "example": "57645"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "description",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "\"Customer Support Group - as imported from Active Directory\""
       },
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Customer Support"
       },
       {
         "name": "provenance",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Active Directory"
       },
       {
         "name": "external_sync_identifier",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "AD:123456"
       },
       {
         "name": "invitability_level",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "admins_only"
       },
       {
         "name": "member_viewability_level",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "admins_only"
       }
     ],
     "responses": [
@@ -7560,19 +8310,23 @@ export default function BoxTypeScriptSdk() {
         "name": "groupId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the group."
+        "description": "The ID of the group.",
+        "example": "57645"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "The offset of the item at which to begin the response.\n\nQueries with offset parameter value\nexceeding 10000 will be rejected\nwith a 400 response."
+        "description": "The offset of the item at which to begin the response.\n\nQueries with offset parameter value\nexceeding 10000 will be rejected\nwith a 400 response.",
+        "example": 1000,
+        "default": 0
       }
     ],
     "responses": [
@@ -7598,19 +8352,23 @@ export default function BoxTypeScriptSdk() {
         "name": "groupId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the group."
+        "description": "The ID of the group.",
+        "example": "57645"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "The offset of the item at which to begin the response.\n\nQueries with offset parameter value\nexceeding 10000 will be rejected\nwith a 400 response."
+        "description": "The offset of the item at which to begin the response.\n\nQueries with offset parameter value\nexceeding 10000 will be rejected\nwith a 400 response.",
+        "example": 1000,
+        "default": 0
       }
     ],
     "responses": [
@@ -7636,7 +8394,12 @@ export default function BoxTypeScriptSdk() {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "user",
@@ -7654,13 +8417,17 @@ export default function BoxTypeScriptSdk() {
         "name": "role",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "member"
       },
       {
         "name": "configurable_permissions",
         "schema": "object",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": {
+          "can_run_reports": true
+        }
       }
     ],
     "responses": [
@@ -7690,7 +8457,8 @@ export default function BoxTypeScriptSdk() {
         "name": "groupMembershipId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the group membership."
+        "description": "The ID of the group membership.",
+        "example": "434534"
       }
     ],
     "responses": [
@@ -7716,13 +8484,19 @@ export default function BoxTypeScriptSdk() {
         "name": "groupMembershipId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the group membership."
+        "description": "The ID of the group membership.",
+        "example": "434534"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       }
     ],
     "responses": [
@@ -7748,23 +8522,33 @@ export default function BoxTypeScriptSdk() {
         "name": "groupMembershipId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the group membership."
+        "description": "The ID of the group membership.",
+        "example": "434534"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "role",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "member"
       },
       {
         "name": "configurable_permissions",
         "schema": "object",
-        "description": ""
+        "description": "",
+        "example": {
+          "can_run_reports": true
+        }
       }
     ],
     "responses": [
@@ -7790,13 +8574,15 @@ export default function BoxTypeScriptSdk() {
         "name": "marker",
         "schema": "string",
         "required": false,
-        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`."
+        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+        "example": "JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       }
     ],
     "responses": [
@@ -7832,13 +8618,17 @@ export default function BoxTypeScriptSdk() {
         "name": "address",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "https://example.com/webhooks"
       },
       {
         "name": "triggers",
         "schema": "array",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": [
+          "FILE.UPLOADED"
+        ]
       }
     ],
     "responses": [
@@ -7880,7 +8670,8 @@ export default function BoxTypeScriptSdk() {
         "name": "webhookId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the webhook."
+        "description": "The ID of the webhook.",
+        "example": "3321123"
       }
     ],
     "responses": [
@@ -7914,7 +8705,8 @@ export default function BoxTypeScriptSdk() {
         "name": "webhookId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the webhook."
+        "description": "The ID of the webhook.",
+        "example": "3321123"
       }
     ],
     "responses": [
@@ -7948,7 +8740,8 @@ export default function BoxTypeScriptSdk() {
         "name": "webhookId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the webhook."
+        "description": "The ID of the webhook.",
+        "example": "3321123"
       },
       {
         "name": "target",
@@ -7958,12 +8751,16 @@ export default function BoxTypeScriptSdk() {
       {
         "name": "address",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "https://example.com/webhooks"
       },
       {
         "name": "triggers",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "example": [
+          "FILE.UPLOADED"
+        ]
       }
     ],
     "responses": [
@@ -8005,13 +8802,15 @@ export default function BoxTypeScriptSdk() {
         "name": "skillId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the skill to apply this metadata for."
+        "description": "The ID of the skill to apply this metadata for.",
+        "example": "33243242"
       },
       {
         "name": "status",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "success"
       },
       {
         "name": "metadata",
@@ -8068,33 +8867,43 @@ export default function BoxTypeScriptSdk() {
       {
         "name": "streamType",
         "schema": "string",
-        "description": "Defines the type of events that are returned\n\n* `all` returns everything for a user and is the default\n* `changes` returns events that may cause file tree changes\n  such as file updates or collaborations.\n* `sync` is similar to `changes` but only applies to synced folders\n* `admin_logs` returns all events for an entire enterprise and\n  requires the user making the API call to have admin permissions. This\n  stream type is for programmatically pulling from a 1 year history of\n  events across all users within the enterprise and within a\n  `created_after` and `created_before` time frame. The complete history\n  of events will be returned in chronological order based on the event\n  time, but latency will be much higher than `admin_logs_streaming`.\n* `admin_logs_streaming` returns all events for an entire enterprise and\n  requires the user making the API call to have admin permissions. This\n  stream type is for polling for recent events across all users within\n  the enterprise. Latency will be much lower than `admin_logs`, but\n  events will not be returned in chronological order and may\n  contain duplicates."
+        "description": "Defines the type of events that are returned\n\n* `all` returns everything for a user and is the default\n* `changes` returns events that may cause file tree changes\n  such as file updates or collaborations.\n* `sync` is similar to `changes` but only applies to synced folders\n* `admin_logs` returns all events for an entire enterprise and\n  requires the user making the API call to have admin permissions. This\n  stream type is for programmatically pulling from a 1 year history of\n  events across all users within the enterprise and within a\n  `created_after` and `created_before` time frame. The complete history\n  of events will be returned in chronological order based on the event\n  time, but latency will be much higher than `admin_logs_streaming`.\n* `admin_logs_streaming` returns all events for an entire enterprise and\n  requires the user making the API call to have admin permissions. This\n  stream type is for polling for recent events across all users within\n  the enterprise. Latency will be much lower than `admin_logs`, but\n  events will not be returned in chronological order and may\n  contain duplicates.",
+        "example": "all",
+        "default": "all"
       },
       {
         "name": "streamPosition",
         "schema": "string",
-        "description": "The location in the event stream to start receiving events from.\n\n* `now` will return an empty list events and\nthe latest stream position for initialization.\n* `0` or `null` will return all events."
+        "description": "The location in the event stream to start receiving events from.\n\n* `now` will return an empty list events and\nthe latest stream position for initialization.\n* `0` or `null` will return all events.",
+        "example": "1348790499819"
       },
       {
         "name": "limit",
         "schema": "integer",
-        "description": "Limits the number of events returned\n\nNote: Sometimes, the events less than the limit requested can be returned\neven when there may be more events remaining. This is primarily done in\nthe case where a number of events have already been retrieved and these\nretrieved events are returned rather than delaying for an unknown amount\nof time to see if there are any more results."
+        "description": "Limits the number of events returned\n\nNote: Sometimes, the events less than the limit requested can be returned\neven when there may be more events remaining. This is primarily done in\nthe case where a number of events have already been retrieved and these\nretrieved events are returned rather than delaying for an unknown amount\nof time to see if there are any more results.",
+        "example": 50,
+        "default": 100
       },
       {
         "name": "eventType",
         "schema": "array",
-        "description": "A comma-separated list of events to filter by. This can only be used when\nrequesting the events with a `stream_type` of `admin_logs` or\n`adming_logs_streaming`. For any other `stream_type` this value will be\nignored."
+        "description": "A comma-separated list of events to filter by. This can only be used when\nrequesting the events with a `stream_type` of `admin_logs` or\n`adming_logs_streaming`. For any other `stream_type` this value will be\nignored.",
+        "example": [
+          "ACCESS_GRANTED"
+        ]
       },
       {
         "name": "createdAfter",
         "schema": "string",
-        "description": "The lower bound date and time to return events for. This can only be used\nwhen requesting the events with a `stream_type` of `admin_logs`. For any\nother `stream_type` this value will be ignored."
+        "description": "The lower bound date and time to return events for. This can only be used\nwhen requesting the events with a `stream_type` of `admin_logs`. For any\nother `stream_type` this value will be ignored.",
+        "example": "2012-12-12T10:53:43-08:00"
       },
       {
         "name": "createdBefore",
         "schema": "string",
         "required": false,
-        "description": "The upper bound date and time to return events for. This can only be used\nwhen requesting the events with a `stream_type` of `admin_logs`. For any\nother `stream_type` this value will be ignored."
+        "description": "The upper bound date and time to return events for. This can only be used\nwhen requesting the events with a `stream_type` of `admin_logs`. For any\nother `stream_type` this value will be ignored.",
+        "example": "2013-12-12T10:53:43-08:00"
       }
     ],
     "responses": [
@@ -8139,19 +8948,27 @@ export default function BoxTypeScriptSdk() {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "The offset of the item at which to begin the response.\n\nQueries with offset parameter value\nexceeding 10000 will be rejected\nwith a 400 response."
+        "description": "The offset of the item at which to begin the response.\n\nQueries with offset parameter value\nexceeding 10000 will be rejected\nwith a 400 response.",
+        "example": 1000,
+        "default": 0
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       }
     ],
     "responses": [
@@ -8177,25 +8994,34 @@ export default function BoxTypeScriptSdk() {
         "name": "collectionId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the collection."
+        "description": "The ID of the collection.",
+        "example": "926489"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "The offset of the item at which to begin the response.\n\nQueries with offset parameter value\nexceeding 10000 will be rejected\nwith a 400 response."
+        "description": "The offset of the item at which to begin the response.\n\nQueries with offset parameter value\nexceeding 10000 will be rejected\nwith a 400 response.",
+        "example": 1000,
+        "default": 0
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       }
     ],
     "responses": [
@@ -8221,19 +9047,26 @@ export default function BoxTypeScriptSdk() {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       },
       {
         "name": "marker",
         "schema": "string",
         "required": false,
-        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`."
+        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+        "example": "JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii"
       }
     ],
     "responses": [
@@ -8259,37 +9092,47 @@ export default function BoxTypeScriptSdk() {
         "name": "policyName",
         "schema": "string",
         "required": false,
-        "description": "Filters results by a case sensitive prefix of the name of\nretention policies."
+        "description": "Filters results by a case sensitive prefix of the name of\nretention policies.",
+        "example": "Sales Policy"
       },
       {
         "name": "policyType",
         "schema": "string",
         "required": false,
-        "description": "Filters results by the type of retention policy."
+        "description": "Filters results by the type of retention policy.",
+        "example": "finite"
       },
       {
         "name": "createdByUserId",
         "schema": "string",
         "required": false,
-        "description": "Filters results by the ID of the user who created policy."
+        "description": "Filters results by the ID of the user who created policy.",
+        "example": "21312321"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       },
       {
         "name": "marker",
         "schema": "string",
         "required": false,
-        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination."
+        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.",
+        "example": "JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii"
       }
     ],
     "responses": [
@@ -8323,49 +9166,57 @@ export default function BoxTypeScriptSdk() {
         "name": "description",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Policy to retain all reports for at least one month"
       },
       {
         "name": "policy_name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Some Policy Name"
       },
       {
         "name": "policy_type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "finite"
       },
       {
         "name": "disposition_action",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "permanently_delete"
       },
       {
         "name": "retention_length",
         "schema": "undefined",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "365"
       },
       {
         "name": "retention_type",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "modifiable"
       },
       {
         "name": "can_owner_extend_retention",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "are_owners_notified",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "custom_notification_recipients",
@@ -8405,7 +9256,8 @@ export default function BoxTypeScriptSdk() {
         "name": "retentionPolicyId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the retention policy."
+        "description": "The ID of the retention policy.",
+        "example": "982312"
       }
     ],
     "responses": [
@@ -8439,13 +9291,19 @@ export default function BoxTypeScriptSdk() {
         "name": "retentionPolicyId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the retention policy."
+        "description": "The ID of the retention policy.",
+        "example": "982312"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       }
     ],
     "responses": [
@@ -8471,47 +9329,56 @@ export default function BoxTypeScriptSdk() {
         "name": "retentionPolicyId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the retention policy."
+        "description": "The ID of the retention policy.",
+        "example": "982312"
       },
       {
         "name": "description",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Policy to retain all reports for at least one month"
       },
       {
         "name": "policy_name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Some Policy Name"
       },
       {
         "name": "disposition_action",
         "schema": "undefined",
-        "description": ""
+        "description": "",
+        "example": "permanently_delete"
       },
       {
         "name": "retention_type",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "non-modifiable"
       },
       {
         "name": "retention_length",
         "schema": "undefined",
-        "description": ""
+        "description": "",
+        "example": "365"
       },
       {
         "name": "status",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "retired"
       },
       {
         "name": "can_owner_extend_retention",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "are_owners_notified",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "custom_notification_recipients",
@@ -8554,31 +9421,40 @@ export default function BoxTypeScriptSdk() {
         "name": "retentionPolicyId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the retention policy."
+        "description": "The ID of the retention policy.",
+        "example": "982312"
       },
       {
         "name": "type",
         "schema": "string",
         "required": false,
-        "description": "The type of the retention policy assignment to retrieve."
+        "description": "The type of the retention policy assignment to retrieve.",
+        "example": "metadata_template"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "marker",
         "schema": "string",
         "required": false,
-        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination."
+        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.",
+        "example": "JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       }
     ],
     "responses": [
@@ -8608,7 +9484,8 @@ export default function BoxTypeScriptSdk() {
         "name": "policy_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "173463"
       },
       {
         "name": "assign_to",
@@ -8626,7 +9503,8 @@ export default function BoxTypeScriptSdk() {
         "name": "start_date_field",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "upload_date"
       }
     ],
     "responses": [
@@ -8664,7 +9542,8 @@ export default function BoxTypeScriptSdk() {
         "name": "retentionPolicyAssignmentId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the retention policy assignment."
+        "description": "The ID of the retention policy assignment.",
+        "example": "1233123"
       }
     ],
     "responses": [
@@ -8698,13 +9577,19 @@ export default function BoxTypeScriptSdk() {
         "name": "retentionPolicyAssignmentId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the retention policy assignment."
+        "description": "The ID of the retention policy assignment.",
+        "example": "1233123"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       }
     ],
     "responses": [
@@ -8730,19 +9615,22 @@ export default function BoxTypeScriptSdk() {
         "name": "retentionPolicyAssignmentId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the retention policy assignment."
+        "description": "The ID of the retention policy assignment.",
+        "example": "1233123"
       },
       {
         "name": "marker",
         "schema": "string",
         "required": false,
-        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`."
+        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+        "example": "JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       }
     ],
     "responses": [
@@ -8772,19 +9660,22 @@ export default function BoxTypeScriptSdk() {
         "name": "retentionPolicyAssignmentId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the retention policy assignment."
+        "description": "The ID of the retention policy assignment.",
+        "example": "1233123"
       },
       {
         "name": "marker",
         "schema": "string",
         "required": false,
-        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`."
+        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+        "example": "JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       }
     ],
     "responses": [
@@ -8814,25 +9705,33 @@ export default function BoxTypeScriptSdk() {
         "name": "policyName",
         "schema": "string",
         "required": false,
-        "description": "Limits results to policies for which the names start with\nthis search term. This is a case-insensitive prefix."
+        "description": "Limits results to policies for which the names start with\nthis search term. This is a case-insensitive prefix.",
+        "example": "Sales Policy"
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "marker",
         "schema": "string",
         "required": false,
-        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`."
+        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+        "example": "JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       }
     ],
     "responses": [
@@ -8858,31 +9757,36 @@ export default function BoxTypeScriptSdk() {
         "name": "description",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "A custom policy for the sales team"
       },
       {
         "name": "policy_name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Sales Policy"
       },
       {
         "name": "filter_started_at",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "2012-12-12T10:53:43-08:00"
       },
       {
         "name": "filter_ended_at",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "2012-12-18T10:53:43-08:00"
       },
       {
         "name": "is_ongoing",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -8916,7 +9820,8 @@ export default function BoxTypeScriptSdk() {
         "name": "legalHoldPolicyId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the legal hold policy"
+        "description": "The ID of the legal hold policy",
+        "example": "324432"
       }
     ],
     "responses": [
@@ -8942,7 +9847,8 @@ export default function BoxTypeScriptSdk() {
         "name": "legalHoldPolicyId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the legal hold policy"
+        "description": "The ID of the legal hold policy",
+        "example": "324432"
       }
     ],
     "responses": [
@@ -8968,22 +9874,26 @@ export default function BoxTypeScriptSdk() {
         "name": "legalHoldPolicyId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the legal hold policy"
+        "description": "The ID of the legal hold policy",
+        "example": "324432"
       },
       {
         "name": "description",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "A custom policy for the sales team"
       },
       {
         "name": "policy_name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Sales Policy"
       },
       {
         "name": "release_notes",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Required for GDPR"
       }
     ],
     "responses": [
@@ -9013,35 +9923,45 @@ export default function BoxTypeScriptSdk() {
         "name": "policyId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the legal hold policy"
+        "description": "The ID of the legal hold policy",
+        "example": "324432"
       },
       {
         "name": "assignToType",
         "schema": "string",
-        "description": "Filters the results by the type of item the\npolicy was applied to."
+        "description": "Filters the results by the type of item the\npolicy was applied to.",
+        "example": "file"
       },
       {
         "name": "assignToId",
         "schema": "string",
-        "description": "Filters the results by the ID of item the\npolicy was applied to."
+        "description": "Filters the results by the ID of item the\npolicy was applied to.",
+        "example": "1234323"
       },
       {
         "name": "marker",
         "schema": "string",
         "required": false,
-        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`."
+        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+        "example": "JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       }
     ],
     "responses": [
@@ -9067,7 +9987,8 @@ export default function BoxTypeScriptSdk() {
         "name": "policy_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "123244"
       },
       {
         "name": "assign_to",
@@ -9099,7 +10020,8 @@ export default function BoxTypeScriptSdk() {
         "name": "legalHoldPolicyAssignmentId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the legal hold policy assignment"
+        "description": "The ID of the legal hold policy assignment",
+        "example": "753465"
       }
     ],
     "responses": [
@@ -9125,7 +10047,8 @@ export default function BoxTypeScriptSdk() {
         "name": "legalHoldPolicyAssignmentId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the legal hold policy assignment"
+        "description": "The ID of the legal hold policy assignment",
+        "example": "753465"
       }
     ],
     "responses": [
@@ -9151,25 +10074,33 @@ export default function BoxTypeScriptSdk() {
         "name": "legalHoldPolicyAssignmentId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the legal hold policy assignment"
+        "description": "The ID of the legal hold policy assignment",
+        "example": "753465"
       },
       {
         "name": "marker",
         "schema": "string",
         "required": false,
-        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`."
+        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+        "example": "JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       }
     ],
     "responses": [
@@ -9195,49 +10126,57 @@ export default function BoxTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": false,
-        "description": "Filters results by files with this ID."
+        "description": "Filters results by files with this ID.",
+        "example": "43123123"
       },
       {
         "name": "fileVersionId",
         "schema": "string",
         "required": false,
-        "description": "Filters results by file versions with this ID."
+        "description": "Filters results by file versions with this ID.",
+        "example": "1"
       },
       {
         "name": "policyId",
         "schema": "string",
         "required": false,
-        "description": "Filters results by the retention policy with this ID."
+        "description": "Filters results by the retention policy with this ID.",
+        "example": "982312"
       },
       {
         "name": "dispositionAction",
         "schema": "string",
         "required": false,
-        "description": "Filters results by the retention policy with this disposition\naction."
+        "description": "Filters results by the retention policy with this disposition\naction.",
+        "example": "permanently_delete"
       },
       {
         "name": "dispositionBefore",
         "schema": "string",
         "required": false,
-        "description": "Filters results by files that will have their disposition\ncome into effect before this date."
+        "description": "Filters results by files that will have their disposition\ncome into effect before this date.",
+        "example": "2012-12-12T10:53:43-08:00"
       },
       {
         "name": "dispositionAfter",
         "schema": "string",
         "required": false,
-        "description": "Filters results by files that will have their disposition\ncome into effect after this date."
+        "description": "Filters results by files that will have their disposition\ncome into effect after this date.",
+        "example": "2012-12-19T10:34:23-08:00"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       },
       {
         "name": "marker",
         "schema": "string",
         "required": false,
-        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`."
+        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+        "example": "JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii"
       }
     ],
     "responses": [
@@ -9263,25 +10202,33 @@ export default function BoxTypeScriptSdk() {
         "name": "legalHoldPolicyAssignmentId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the legal hold policy assignment"
+        "description": "The ID of the legal hold policy assignment",
+        "example": "753465"
       },
       {
         "name": "marker",
         "schema": "string",
         "required": false,
-        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`."
+        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+        "example": "JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       },
       {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       }
     ],
     "responses": [
@@ -9307,7 +10254,8 @@ export default function BoxTypeScriptSdk() {
         "name": "fileVersionRetentionId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the file version retention"
+        "description": "The ID of the file version retention",
+        "example": "3424234"
       }
     ],
     "responses": [
@@ -9333,7 +10281,8 @@ export default function BoxTypeScriptSdk() {
         "name": "fileVersionLegalHoldId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the file version legal hold"
+        "description": "The ID of the file version legal hold",
+        "example": "2348213"
       }
     ],
     "responses": [
@@ -9359,19 +10308,22 @@ export default function BoxTypeScriptSdk() {
         "name": "policyId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the legal hold policy to get the file version legal\nholds for."
+        "description": "The ID of the legal hold policy to get the file version legal\nholds for.",
+        "example": "133870"
       },
       {
         "name": "marker",
         "schema": "string",
         "required": false,
-        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`."
+        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+        "example": "JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       }
     ],
     "responses": [
@@ -9397,7 +10349,8 @@ export default function BoxTypeScriptSdk() {
         "name": "shieldInformationBarrierId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the shield information barrier."
+        "description": "The ID of the shield information barrier.",
+        "example": "1910967"
       }
     ],
     "responses": [
@@ -9427,13 +10380,15 @@ export default function BoxTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "1910967"
       },
       {
         "name": "status",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "pending"
       }
     ],
     "responses": [
@@ -9467,13 +10422,15 @@ export default function BoxTypeScriptSdk() {
         "name": "marker",
         "schema": "string",
         "required": false,
-        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination."
+        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.",
+        "example": "JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       }
     ],
     "responses": [
@@ -9533,19 +10490,22 @@ export default function BoxTypeScriptSdk() {
         "name": "shieldInformationBarrierId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the shield information barrier."
+        "description": "The ID of the shield information barrier.",
+        "example": "1910967"
       },
       {
         "name": "marker",
         "schema": "string",
         "required": false,
-        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`."
+        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+        "example": "JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       }
     ],
     "responses": [
@@ -9608,7 +10568,8 @@ export default function BoxTypeScriptSdk() {
         "name": "shieldInformationBarrierReportId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the shield information barrier Report."
+        "description": "The ID of the shield information barrier Report.",
+        "example": "3423"
       }
     ],
     "responses": [
@@ -9638,7 +10599,8 @@ export default function BoxTypeScriptSdk() {
         "name": "shieldInformationBarrierSegmentId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the shield information barrier segment."
+        "description": "The ID of the shield information barrier segment.",
+        "example": "3423"
       }
     ],
     "responses": [
@@ -9668,7 +10630,8 @@ export default function BoxTypeScriptSdk() {
         "name": "shieldInformationBarrierSegmentId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the shield information barrier segment."
+        "description": "The ID of the shield information barrier segment.",
+        "example": "3423"
       }
     ],
     "responses": [
@@ -9698,17 +10661,20 @@ export default function BoxTypeScriptSdk() {
         "name": "shieldInformationBarrierSegmentId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the shield information barrier segment."
+        "description": "The ID of the shield information barrier segment.",
+        "example": "3423"
       },
       {
         "name": "description",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "'Corporate division that engages in advisory_based\nfinancial transactions on behalf of individuals,\ncorporations, and governments.'"
       },
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Investment Banking"
       }
     ],
     "responses": [
@@ -9742,19 +10708,22 @@ export default function BoxTypeScriptSdk() {
         "name": "shieldInformationBarrierId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the shield information barrier."
+        "description": "The ID of the shield information barrier.",
+        "example": "1910967"
       },
       {
         "name": "marker",
         "schema": "string",
         "required": false,
-        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`."
+        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+        "example": "JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       }
     ],
     "responses": [
@@ -9784,7 +10753,8 @@ export default function BoxTypeScriptSdk() {
         "name": "description",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "'Corporate division that engages in\n advisory_based financial\ntransactions on behalf of individuals,\ncorporations, and governments.'"
       },
       {
         "name": "shield_information_barrier",
@@ -9796,7 +10766,8 @@ export default function BoxTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Investment Banking"
       }
     ],
     "responses": [
@@ -9830,7 +10801,8 @@ export default function BoxTypeScriptSdk() {
         "name": "shieldInformationBarrierSegmentMemberId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the shield information barrier segment Member."
+        "description": "The ID of the shield information barrier segment Member.",
+        "example": "7815"
       }
     ],
     "responses": [
@@ -9860,7 +10832,8 @@ export default function BoxTypeScriptSdk() {
         "name": "shieldInformationBarrierSegmentMemberId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the shield information barrier segment Member."
+        "description": "The ID of the shield information barrier segment Member.",
+        "example": "7815"
       }
     ],
     "responses": [
@@ -9890,19 +10863,22 @@ export default function BoxTypeScriptSdk() {
         "name": "shieldInformationBarrierSegmentId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the shield information barrier segment."
+        "description": "The ID of the shield information barrier segment.",
+        "example": "3423"
       },
       {
         "name": "marker",
         "schema": "string",
         "required": false,
-        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`."
+        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+        "example": "JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       }
     ],
     "responses": [
@@ -9928,7 +10904,8 @@ export default function BoxTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "shield_information_barrier_segment_member"
       },
       {
         "name": "shield_information_barrier",
@@ -9976,7 +10953,8 @@ export default function BoxTypeScriptSdk() {
         "name": "shieldInformationBarrierSegmentRestrictionId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the shield information barrier segment Restriction."
+        "description": "The ID of the shield information barrier segment Restriction.",
+        "example": "4563"
       }
     ],
     "responses": [
@@ -10006,7 +10984,8 @@ export default function BoxTypeScriptSdk() {
         "name": "shieldInformationBarrierSegmentRestrictionId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the shield information barrier segment Restriction."
+        "description": "The ID of the shield information barrier segment Restriction.",
+        "example": "4563"
       }
     ],
     "responses": [
@@ -10036,19 +11015,22 @@ export default function BoxTypeScriptSdk() {
         "name": "shieldInformationBarrierSegmentId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the shield information barrier segment."
+        "description": "The ID of the shield information barrier segment.",
+        "example": "3423"
       },
       {
         "name": "marker",
         "schema": "string",
         "required": false,
-        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`."
+        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+        "example": "JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       }
     ],
     "responses": [
@@ -10074,7 +11056,8 @@ export default function BoxTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "shield_information_barrier_segment_restriction"
       },
       {
         "name": "shield_information_barrier",
@@ -10122,7 +11105,8 @@ export default function BoxTypeScriptSdk() {
         "name": "devicePinnerId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the device pin"
+        "description": "The ID of the device pin",
+        "example": "2324234"
       }
     ],
     "responses": [
@@ -10148,7 +11132,8 @@ export default function BoxTypeScriptSdk() {
         "name": "devicePinnerId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the device pin"
+        "description": "The ID of the device pin",
+        "example": "2324234"
       }
     ],
     "responses": [
@@ -10174,25 +11159,29 @@ export default function BoxTypeScriptSdk() {
         "name": "enterpriseId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the enterprise"
+        "description": "The ID of the enterprise",
+        "example": "3442311"
       },
       {
         "name": "marker",
         "schema": "string",
         "required": false,
-        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`."
+        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+        "example": "JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The direction to sort results in. This can be either in alphabetical ascending\n(`ASC`) or descending (`DESC`) order."
+        "description": "The direction to sort results in. This can be either in alphabetical ascending\n(`ASC`) or descending (`DESC`) order.",
+        "example": "ASC"
       }
     ],
     "responses": [
@@ -10218,7 +11207,8 @@ export default function BoxTypeScriptSdk() {
         "name": "tosType",
         "schema": "string",
         "required": false,
-        "description": "Limits the results to the terms of service of the given type."
+        "description": "Limits the results to the terms of service of the given type.",
+        "example": "managed"
       }
     ],
     "responses": [
@@ -10244,19 +11234,22 @@ export default function BoxTypeScriptSdk() {
         "name": "status",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "enabled"
       },
       {
         "name": "tos_type",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "managed"
       },
       {
         "name": "text",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "By collaborating on this file you are accepting..."
       }
     ],
     "responses": [
@@ -10282,7 +11275,8 @@ export default function BoxTypeScriptSdk() {
         "name": "termsOfServiceId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the terms of service."
+        "description": "The ID of the terms of service.",
+        "example": "324234"
       }
     ],
     "responses": [
@@ -10308,19 +11302,22 @@ export default function BoxTypeScriptSdk() {
         "name": "termsOfServiceId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the terms of service."
+        "description": "The ID of the terms of service.",
+        "example": "324234"
       },
       {
         "name": "status",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "enabled"
       },
       {
         "name": "text",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "By collaborating on this file you are accepting..."
       }
     ],
     "responses": [
@@ -10346,13 +11343,15 @@ export default function BoxTypeScriptSdk() {
         "name": "tosId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the terms of service."
+        "description": "The ID of the terms of service.",
+        "example": "324234"
       },
       {
         "name": "userId",
         "schema": "string",
         "required": false,
-        "description": "Limits results to the given user ID."
+        "description": "Limits results to the given user ID.",
+        "example": "123334"
       }
     ],
     "responses": [
@@ -10390,7 +11389,8 @@ export default function BoxTypeScriptSdk() {
         "name": "is_accepted",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -10416,13 +11416,15 @@ export default function BoxTypeScriptSdk() {
         "name": "termsOfServiceUserStatusId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the terms of service status."
+        "description": "The ID of the terms of service status.",
+        "example": "324234"
       },
       {
         "name": "is_accepted",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -10448,13 +11450,15 @@ export default function BoxTypeScriptSdk() {
         "name": "marker",
         "schema": "string",
         "required": false,
-        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`."
+        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+        "example": "JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       }
     ],
     "responses": [
@@ -10480,13 +11484,15 @@ export default function BoxTypeScriptSdk() {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "example.com"
       },
       {
         "name": "direction",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "inbound"
       }
     ],
     "responses": [
@@ -10512,7 +11518,8 @@ export default function BoxTypeScriptSdk() {
         "name": "collaborationWhitelistEntryId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the entry in the list."
+        "description": "The ID of the entry in the list.",
+        "example": "213123"
       }
     ],
     "responses": [
@@ -10538,7 +11545,8 @@ export default function BoxTypeScriptSdk() {
         "name": "collaborationWhitelistEntryId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the entry in the list."
+        "description": "The ID of the entry in the list.",
+        "example": "213123"
       }
     ],
     "responses": [
@@ -10564,13 +11572,15 @@ export default function BoxTypeScriptSdk() {
         "name": "marker",
         "schema": "string",
         "required": false,
-        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`."
+        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+        "example": "JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       }
     ],
     "responses": [
@@ -10622,7 +11632,8 @@ export default function BoxTypeScriptSdk() {
         "name": "collaborationWhitelistExemptTargetId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the exemption to the list."
+        "description": "The ID of the exemption to the list.",
+        "example": "984923"
       }
     ],
     "responses": [
@@ -10648,7 +11659,8 @@ export default function BoxTypeScriptSdk() {
         "name": "collaborationWhitelistExemptTargetId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the exemption to the list."
+        "description": "The ID of the exemption to the list.",
+        "example": "984923"
       }
     ],
     "responses": [
@@ -10674,19 +11686,26 @@ export default function BoxTypeScriptSdk() {
         "name": "fields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested."
+        "description": "A comma-separated list of attributes to include in the\nresponse. This can be used to request fields that are\nnot normally returned in a standard response.\n\nBe aware that specifying this parameter will have the\neffect that none of the standard fields are returned in\nthe response unless explicitly specified, instead only\nfields for the mini representation are returned, additional\nto the fields requested.",
+        "example": [
+          "id",
+          "type",
+          "name"
+        ]
       },
       {
         "name": "marker",
         "schema": "string",
         "required": false,
-        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`."
+        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+        "example": "JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       }
     ],
     "responses": [
@@ -10712,7 +11731,8 @@ export default function BoxTypeScriptSdk() {
         "name": "storagePolicyId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the storage policy."
+        "description": "The ID of the storage policy.",
+        "example": "34342"
       }
     ],
     "responses": [
@@ -10738,19 +11758,22 @@ export default function BoxTypeScriptSdk() {
         "name": "marker",
         "schema": "string",
         "required": false,
-        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`."
+        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+        "example": "JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii"
       },
       {
         "name": "resolvedForType",
         "schema": "string",
         "required": true,
-        "description": "The target type to return assignments for"
+        "description": "The target type to return assignments for",
+        "example": "user"
       },
       {
         "name": "resolvedForId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the user or enterprise to return assignments for"
+        "description": "The ID of the user or enterprise to return assignments for",
+        "example": "984322"
       }
     ],
     "responses": [
@@ -10808,7 +11831,8 @@ export default function BoxTypeScriptSdk() {
         "name": "storagePolicyAssignmentId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the storage policy assignment."
+        "description": "The ID of the storage policy assignment.",
+        "example": "932483"
       }
     ],
     "responses": [
@@ -10834,7 +11858,8 @@ export default function BoxTypeScriptSdk() {
         "name": "storagePolicyAssignmentId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the storage policy assignment."
+        "description": "The ID of the storage policy assignment.",
+        "example": "932483"
       }
     ],
     "responses": [
@@ -10860,7 +11885,8 @@ export default function BoxTypeScriptSdk() {
         "name": "storagePolicyAssignmentId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the storage policy assignment."
+        "description": "The ID of the storage policy assignment.",
+        "example": "932483"
       },
       {
         "name": "storage_policy",
@@ -10898,7 +11924,8 @@ export default function BoxTypeScriptSdk() {
         "name": "download_file_name",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "January Financials"
       }
     ],
     "responses": [
@@ -10936,7 +11963,8 @@ export default function BoxTypeScriptSdk() {
         "name": "zipDownloadId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represent this `zip` archive."
+        "description": "The unique identifier that represent this `zip` archive.",
+        "example": "Lu6fA9Ob-jyysp3AAvMF4AkLEwZwAYbL=tgj2zIC=eK9RvJnJbjJl9rNh2qBgHDpyOCAOhpM=vajg2mKq8Mdd"
       }
     ],
     "responses": [
@@ -10970,7 +11998,8 @@ export default function BoxTypeScriptSdk() {
         "name": "zipDownloadId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represent this `zip` archive."
+        "description": "The unique identifier that represent this `zip` archive.",
+        "example": "Lu6fA9Ob-jyysp3AAvMF4AkLEwZwAYbL=tgj2zIC=eK9RvJnJbjJl9rNh2qBgHDpyOCAOhpM=vajg2mKq8Mdd"
       }
     ],
     "responses": [
@@ -11008,7 +12037,8 @@ export default function BoxTypeScriptSdk() {
         "name": "signRequestId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the sign request"
+        "description": "The ID of the sign request",
+        "example": "33243242"
       }
     ],
     "responses": [
@@ -11038,7 +12068,8 @@ export default function BoxTypeScriptSdk() {
         "name": "signRequestId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the sign request"
+        "description": "The ID of the sign request",
+        "example": "33243242"
       }
     ],
     "responses": [
@@ -11068,7 +12099,8 @@ export default function BoxTypeScriptSdk() {
         "name": "signRequestId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the sign request"
+        "description": "The ID of the sign request",
+        "example": "33243242"
       }
     ],
     "responses": [
@@ -11098,13 +12130,15 @@ export default function BoxTypeScriptSdk() {
         "name": "marker",
         "schema": "string",
         "required": false,
-        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`."
+        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+        "example": "JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       }
     ],
     "responses": [
@@ -11149,25 +12183,29 @@ export default function BoxTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`."
+        "description": "The unique identifier that represent a folder.\n\nThe ID for any folder can be determined\nby visiting this folder in the web application\nand copying the ID from the URL. For example,\nfor the URL `https://*.app.box.com/folder/123`\nthe `folder_id` is `123`.\n\nThe root folder of a Box account is\nalways represented by the ID `0`.",
+        "example": "12345"
       },
       {
         "name": "triggerType",
         "schema": "string",
         "required": false,
-        "description": "Type of trigger to search for."
+        "description": "Type of trigger to search for.",
+        "example": "WORKFLOW_MANUAL_START"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       },
       {
         "name": "marker",
         "schema": "string",
         "required": false,
-        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`."
+        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+        "example": "JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii"
       }
     ],
     "responses": [
@@ -11201,13 +12239,15 @@ export default function BoxTypeScriptSdk() {
         "name": "workflowId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the workflow."
+        "description": "The ID of the workflow.",
+        "example": "12345"
       },
       {
         "name": "type",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "workflow_parameters"
       },
       {
         "name": "flow",
@@ -11269,13 +12309,15 @@ export default function BoxTypeScriptSdk() {
         "name": "marker",
         "schema": "string",
         "required": false,
-        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`."
+        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+        "example": "JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       }
     ],
     "responses": [
@@ -11305,7 +12347,8 @@ export default function BoxTypeScriptSdk() {
         "name": "templateId",
         "schema": "string",
         "required": true,
-        "description": "The ID of a Box Sign template."
+        "description": "The ID of a Box Sign template.",
+        "example": "123075213-7d117509-8f05-42e4-a5ef-5190a319d41d"
       }
     ],
     "responses": [
@@ -11339,38 +12382,45 @@ export default function BoxTypeScriptSdk() {
         "name": "marker",
         "schema": "string",
         "required": false,
-        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`."
+        "description": "Defines the position marker at which to begin returning results. This is\nused when paginating using marker-based pagination.\n\nThis requires `usemarker` to be set to `true`.",
+        "example": "JV9IRGZmieiBasejOG9yDCRNgd2ymoZIbjsxbJMjIs3kioVii"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of items to return per page."
+        "description": "The maximum number of items to return per page.",
+        "example": 1000
       },
       {
         "name": "partnerItemType",
         "schema": "string",
-        "description": "Mapped item type, for which the mapping should be returned"
+        "description": "Mapped item type, for which the mapping should be returned",
+        "example": "channel"
       },
       {
         "name": "partnerItemId",
         "schema": "string",
-        "description": "ID of the mapped item, for which the mapping should be returned"
+        "description": "ID of the mapped item, for which the mapping should be returned",
+        "example": "12345"
       },
       {
         "name": "boxItemId",
         "schema": "string",
-        "description": "Box item ID, for which the mappings should be returned"
+        "description": "Box item ID, for which the mappings should be returned",
+        "example": "12345"
       },
       {
         "name": "boxItemType",
         "schema": "string",
-        "description": "Box item type, for which the mappings should be returned"
+        "description": "Box item type, for which the mappings should be returned",
+        "example": "folder"
       },
       {
         "name": "isManuallyCreated",
         "schema": "boolean",
-        "description": "Whether the mapping has been manually created"
+        "description": "Whether the mapping has been manually created",
+        "example": true
       }
     ],
     "responses": [
@@ -11450,7 +12500,8 @@ export default function BoxTypeScriptSdk() {
         "name": "integrationMappingId",
         "schema": "string",
         "required": true,
-        "description": "An ID of an integration mapping"
+        "description": "An ID of an integration mapping",
+        "example": "11235432"
       }
     ],
     "responses": [
@@ -11480,7 +12531,8 @@ export default function BoxTypeScriptSdk() {
         "name": "integrationMappingId",
         "schema": "string",
         "required": true,
-        "description": "An ID of an integration mapping"
+        "description": "An ID of an integration mapping",
+        "example": "11235432"
       },
       {
         "name": "box_item",

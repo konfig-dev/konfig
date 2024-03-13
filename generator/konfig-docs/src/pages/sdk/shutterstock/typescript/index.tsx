@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function ShutterstockTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function ShutterstockTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/shutterstock/logo.png"
       clientNameCamelCase="shutterstock"
       homepage="developers.shutterstock.com"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/shutterstock/favicon.ico"
       // Missing contactUrl
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/shutterstock/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["media"]}
       methods={[
   {
     "url": "/v2/ai/audio/descriptors",
@@ -35,67 +38,82 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "renderSpeedOver",
         "schema": "number",
-        "description": "Show descriptors with an average render speed that is greater than or equal to the specified value"
+        "description": "Show descriptors with an average render speed that is greater than or equal to the specified value",
+        "example": 5
       },
       {
         "name": "bandId",
         "schema": "string",
-        "description": "Show descriptors that contain the specified band (case-sentsitive)"
+        "description": "Show descriptors that contain the specified band (case-sentsitive)",
+        "example": "Corporate Folk Bonfire Band 1"
       },
       {
         "name": "bandName",
         "schema": "string",
-        "description": "Show descriptors with the specified band name (case-sensitive)"
+        "description": "Show descriptors with the specified band name (case-sensitive)",
+        "example": "Documentary Underscore Heartfelt Band 1"
       },
       {
         "name": "page",
         "schema": "integer",
-        "description": "Page number"
+        "description": "Page number",
+        "example": 1,
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "example": 1,
+        "default": 20
       },
       {
         "name": "id",
         "schema": "array",
-        "description": "Show descriptors with the specified IDs (case-sensitive)"
+        "description": "Show descriptors with the specified IDs (case-sensitive)",
+        "example": "documentary_underscore_heartfelt"
       },
       {
         "name": "instrumentName",
         "schema": "string",
-        "description": "Show descriptors with the specified instrument name (case-sensitive)"
+        "description": "Show descriptors with the specified instrument name (case-sensitive)",
+        "example": "Precision Bass - Full"
       },
       {
         "name": "instrumentId",
         "schema": "string",
-        "description": "Show descriptors with the specified instrument ID (case-sensitive)"
+        "description": "Show descriptors with the specified instrument ID (case-sensitive)",
+        "example": "direct_fluorescent_synth_lead"
       },
       {
         "name": "tempo",
         "schema": "number",
-        "description": "Show descriptors whose tempo range includes the specified tempo in beats per minute"
+        "description": "Show descriptors whose tempo range includes the specified tempo in beats per minute",
+        "example": 90
       },
       {
         "name": "tempoTo",
         "schema": "number",
-        "description": "Show descriptors with a tempo that is less than or equal to the specified number"
+        "description": "Show descriptors with a tempo that is less than or equal to the specified number",
+        "example": 120
       },
       {
         "name": "tempoFrom",
         "schema": "number",
-        "description": "Show descriptors that have a tempo range that includes the specified tempo in beats per minute"
+        "description": "Show descriptors that have a tempo range that includes the specified tempo in beats per minute",
+        "example": 60
       },
       {
         "name": "name",
         "schema": "string",
-        "description": "Show descriptors with the specified name (case-sensitive)"
+        "description": "Show descriptors with the specified name (case-sensitive)",
+        "example": "Corporate Pop Inspirational High Energy"
       },
       {
         "name": "tag",
         "schema": "string",
-        "description": "Show descriptors with the specified tag, such as Cinematic or Roomy (case-sensitive)"
+        "description": "Show descriptors with the specified tag, such as Cinematic or Roomy (case-sensitive)",
+        "example": "Cinematic"
       }
     ],
     "responses": [
@@ -132,27 +150,34 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "id",
         "schema": "array",
-        "description": "Show instruments with the specified ID"
+        "description": "Show instruments with the specified ID",
+        "example": "wood_blocks"
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "example": 1,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
-        "description": "Page number"
+        "description": "Page number",
+        "example": 1,
+        "default": 1
       },
       {
         "name": "name",
         "schema": "string",
-        "description": "Show instruments with the specified name (case-sensitive)"
+        "description": "Show instruments with the specified name (case-sensitive)",
+        "example": "Precision Bass - Full"
       },
       {
         "name": "tag",
         "schema": "string",
-        "description": "Show instruments with the specified tag, such as Percussion or Strings (case-sensitive)"
+        "description": "Show instruments with the specified tag, such as Percussion or Strings (case-sensitive)",
+        "example": "Percussion"
       }
     ],
     "responses": [
@@ -186,7 +211,11 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "array",
         "required": true,
-        "description": "One or more render IDs"
+        "description": "One or more render IDs",
+        "example": [
+          "L2w7h9VNFlkzpllSUunSYayenKjN",
+          "BeHx3UNXzMBB4dGsC9aa6VxnpcWl"
+        ]
       }
     ],
     "responses": [
@@ -258,17 +287,24 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "array",
         "required": true,
-        "description": "One or more audio IDs"
+        "description": "One or more audio IDs",
+        "example": [
+          "442583",
+          "434750"
+        ]
       },
       {
         "name": "view",
         "schema": "string",
-        "description": "Amount of detail to render in the response"
+        "description": "Amount of detail to render in the response",
+        "example": "full",
+        "default": "minimal"
       },
       {
         "name": "searchId",
         "schema": "string",
-        "description": "The ID of the search that is related to this request"
+        "description": "The ID of the search that is related to this request",
+        "example": "00000000-0000-0000-0000-000000000000"
       }
     ],
     "responses": [
@@ -301,17 +337,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "page",
         "schema": "integer",
-        "description": "Page number"
+        "description": "Page number",
+        "example": 1,
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "example": 100,
+        "default": 100
       },
       {
         "name": "embed",
         "schema": "array",
-        "description": "Which sharing information to include in the response, such as a URL to the collection"
+        "description": "Which sharing information to include in the response, such as a URL to the collection",
+        "example": "share_code"
       }
     ],
     "responses": [
@@ -345,7 +386,8 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -379,7 +421,8 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Collection ID"
+        "description": "Collection ID",
+        "example": "48433111"
       }
     ],
     "responses": [
@@ -417,7 +460,8 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Collection ID"
+        "description": "Collection ID",
+        "example": "48433107"
       },
       {
         "name": "embed",
@@ -465,13 +509,15 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Collection ID"
+        "description": "Collection ID",
+        "example": "48433107"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -509,12 +555,17 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Collection ID"
+        "description": "Collection ID",
+        "example": "48433119"
       },
       {
         "name": "itemId",
         "schema": "array",
-        "description": "One or more item IDs to remove from the collection"
+        "description": "One or more item IDs to remove from the collection",
+        "example": [
+          "76688182",
+          "40005859"
+        ]
       }
     ],
     "responses": [
@@ -552,17 +603,20 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Collection ID"
+        "description": "Collection ID",
+        "example": "126351027"
       },
       {
         "name": "page",
         "schema": "integer",
-        "description": "Page number"
+        "description": "Page number",
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "default": 100
       },
       {
         "name": "shareCode",
@@ -572,7 +626,8 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "sort",
         "schema": "string",
-        "description": "Sort order"
+        "description": "Sort order",
+        "default": "oldest"
       }
     ],
     "responses": [
@@ -610,7 +665,8 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Collection ID"
+        "description": "Collection ID",
+        "example": "48433115"
       },
       {
         "name": "items",
@@ -695,52 +751,62 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "audioId",
         "schema": "string",
-        "description": "Show licenses for the specified track ID"
+        "description": "Show licenses for the specified track ID",
+        "example": "1"
       },
       {
         "name": "license",
         "schema": "string",
-        "description": "Restrict results by license. Prepending a `-` sign will exclude results by license"
+        "description": "Restrict results by license. Prepending a `-` sign will exclude results by license",
+        "example": "48433107"
       },
       {
         "name": "page",
         "schema": "integer",
-        "description": "Page number"
+        "description": "Page number",
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "default": 20
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "Sort order"
+        "description": "Sort order",
+        "default": "newest"
       },
       {
         "name": "username",
         "schema": "string",
-        "description": "Filter licenses by username of licensee"
+        "description": "Filter licenses by username of licensee",
+        "example": "aUniqueUsername"
       },
       {
         "name": "startDate",
         "schema": "string",
-        "description": "Show licenses created on or after the specified date"
+        "description": "Show licenses created on or after the specified date",
+        "example": "2021-03-29T13:25:13.521Z"
       },
       {
         "name": "endDate",
         "schema": "string",
-        "description": "Show licenses created before the specified date"
+        "description": "Show licenses created before the specified date",
+        "example": "2021-03-29T13:25:13.521Z"
       },
       {
         "name": "downloadAvailability",
         "schema": "string",
-        "description": "Filter licenses by download availability"
+        "description": "Filter licenses by download availability",
+        "default": "all"
       },
       {
         "name": "teamHistory",
         "schema": "boolean",
-        "description": "Set to true to see license history for all members of your team."
+        "description": "Set to true to see license history for all members of your team.",
+        "default": false
       }
     ],
     "responses": [
@@ -773,12 +839,14 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "license",
         "schema": "string",
-        "description": "License type"
+        "description": "License type",
+        "example": "audio_platform"
       },
       {
         "name": "searchId",
         "schema": "string",
-        "description": "The ID of the search that led to licensing this track"
+        "description": "The ID of the search that led to licensing this track",
+        "example": "p5S6QwRikdFJTHXwsoiqTg"
       },
       {
         "name": "audio",
@@ -818,7 +886,8 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "License ID"
+        "description": "License ID",
+        "example": "e123"
       }
     ],
     "responses": [
@@ -882,82 +951,109 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "bpmFrom",
         "schema": "integer",
-        "description": "Show tracks with the specified beats per minute or faster"
+        "description": "Show tracks with the specified beats per minute or faster",
+        "example": 80
       },
       {
         "name": "bpmTo",
         "schema": "integer",
-        "description": "Show tracks with the specified beats per minute or slower"
+        "description": "Show tracks with the specified beats per minute or slower",
+        "example": 120
       },
       {
         "name": "duration",
         "schema": "integer",
-        "description": "Show tracks with the specified duration in seconds"
+        "description": "Show tracks with the specified duration in seconds",
+        "example": 180
       },
       {
         "name": "durationFrom",
         "schema": "integer",
-        "description": "Show tracks with the specified duration or longer in seconds"
+        "description": "Show tracks with the specified duration or longer in seconds",
+        "example": 30
       },
       {
         "name": "durationTo",
         "schema": "integer",
-        "description": "Show tracks with the specified duration or shorter in seconds"
+        "description": "Show tracks with the specified duration or shorter in seconds",
+        "example": 180
       },
       {
         "name": "genre",
         "schema": "array",
-        "description": "Show tracks with each of the specified genres; to get the list of genres, use `GET /v2/audio/genres`"
+        "description": "Show tracks with each of the specified genres; to get the list of genres, use `GET /v2/audio/genres`",
+        "example": [
+          "Classical",
+          "Holiday"
+        ]
       },
       {
         "name": "isInstrumental",
         "schema": "boolean",
-        "description": "Show instrumental music only"
+        "description": "Show instrumental music only",
+        "example": true
       },
       {
         "name": "instruments",
         "schema": "array",
-        "description": "Show tracks with each of the specified instruments; to get the list of instruments, use `GET /v2/audio/instruments`"
+        "description": "Show tracks with each of the specified instruments; to get the list of instruments, use `GET /v2/audio/instruments`",
+        "example": [
+          "Trumpet",
+          "Percussion"
+        ]
       },
       {
         "name": "moods",
         "schema": "array",
-        "description": "Show tracks with each of the specified moods; to get the list of moods, use `GET /v2/audio/moods`"
+        "description": "Show tracks with each of the specified moods; to get the list of moods, use `GET /v2/audio/moods`",
+        "example": [
+          "Confident",
+          "Playful"
+        ]
       },
       {
         "name": "page",
         "schema": "integer",
-        "description": "Page number"
+        "description": "Page number",
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "example": 1,
+        "default": 20
       },
       {
         "name": "query",
         "schema": "string",
-        "description": "One or more search terms separated by spaces"
+        "description": "One or more search terms separated by spaces",
+        "example": "drum"
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "Sort by"
+        "description": "Sort by",
+        "example": "score"
       },
       {
         "name": "sortOrder",
         "schema": "string",
-        "description": "Sort order"
+        "description": "Sort order",
+        "default": "desc"
       },
       {
         "name": "vocalDescription",
         "schema": "string",
-        "description": "Show tracks with the specified vocal description (male, female)"
+        "description": "Show tracks with the specified vocal description (male, female)",
+        "example": "female"
       },
       {
         "name": "view",
         "schema": "string",
-        "description": "Amount of detail to render in the response"
+        "description": "Amount of detail to render in the response",
+        "example": "full",
+        "default": "minimal"
       },
       {
         "name": "fields",
@@ -967,7 +1063,8 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "library",
         "schema": "string",
-        "description": "Which library to search"
+        "description": "Which library to search",
+        "default": "premier"
       },
       {
         "name": "language",
@@ -1006,17 +1103,21 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "Audio track ID"
+        "description": "Audio track ID",
+        "example": 442583
       },
       {
         "name": "view",
         "schema": "string",
-        "description": "Amount of detail to render in the response"
+        "description": "Amount of detail to render in the response",
+        "example": "full",
+        "default": "full"
       },
       {
         "name": "searchId",
         "schema": "string",
-        "description": "The ID of the search that is related to this request"
+        "description": "The ID of the search that is related to this request",
+        "example": "00000000-0000-0000-0000-000000000000"
       }
     ],
     "responses": [
@@ -1049,32 +1150,38 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "addedDate",
         "schema": "string",
-        "description": "Show images added on the specified date"
+        "description": "Show images added on the specified date",
+        "example": "2021-03-29T00:00:00.000Z"
       },
       {
         "name": "addedDateStart",
         "schema": "string",
-        "description": "Show images added on or after the specified date"
+        "description": "Show images added on or after the specified date",
+        "example": "2021-03-29T00:00:00.000Z"
       },
       {
         "name": "aspectRatioMin",
         "schema": "number",
-        "description": "Show images with the specified aspect ratio or higher, using a positive decimal of the width divided by the height, such as 1.7778 for a 16:9 image"
+        "description": "Show images with the specified aspect ratio or higher, using a positive decimal of the width divided by the height, such as 1.7778 for a 16:9 image",
+        "example": 1.7778
       },
       {
         "name": "aspectRatioMax",
         "schema": "number",
-        "description": "Show images with the specified aspect ratio or lower, using a positive decimal of the width divided by the height, such as 1.7778 for a 16:9 image"
+        "description": "Show images with the specified aspect ratio or lower, using a positive decimal of the width divided by the height, such as 1.7778 for a 16:9 image",
+        "example": 1.7778
       },
       {
         "name": "aspectRatio",
         "schema": "number",
-        "description": "Show images with the specified aspect ratio, using a positive decimal of the width divided by the height, such as 1.7778 for a 16:9 image"
+        "description": "Show images with the specified aspect ratio, using a positive decimal of the width divided by the height, such as 1.7778 for a 16:9 image",
+        "example": 1.7778
       },
       {
         "name": "addedDateEnd",
         "schema": "string",
-        "description": "Show images added before the specified date"
+        "description": "Show images added before the specified date",
+        "example": "2021-03-29T00:00:00.000Z"
       },
       {
         "name": "category",
@@ -1084,17 +1191,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "color",
         "schema": "string",
-        "description": "Specify either a hexadecimal color in the format '4F21EA' or 'grayscale'; the API returns images that use similar colors"
+        "description": "Specify either a hexadecimal color in the format '4F21EA' or 'grayscale'; the API returns images that use similar colors",
+        "example": "4F21EA"
       },
       {
         "name": "contributor",
         "schema": "array",
-        "description": "Show images with the specified contributor names or IDs, allows multiple"
+        "description": "Show images with the specified contributor names or IDs, allows multiple",
+        "example": [
+          "123456"
+        ]
       },
       {
         "name": "contributorCountry",
         "schema": "undefined",
-        "description": "Show images from contributors in one or more specified countries, or start with NOT to exclude a country from the search"
+        "description": "Show images from contributors in one or more specified countries, or start with NOT to exclude a country from the search",
+        "example": "US"
       },
       {
         "name": "fields",
@@ -1109,27 +1221,32 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "heightFrom",
         "schema": "integer",
-        "description": "Show images with the specified height or larger, in pixels"
+        "description": "Show images with the specified height or larger, in pixels",
+        "example": 1080
       },
       {
         "name": "heightTo",
         "schema": "integer",
-        "description": "Show images with the specified height or smaller, in pixels"
+        "description": "Show images with the specified height or smaller, in pixels",
+        "example": 1080
       },
       {
         "name": "imageType",
         "schema": "array",
-        "description": "Show images of the specified type"
+        "description": "Show images of the specified type",
+        "example": "photo"
       },
       {
         "name": "keywordSafeSearch",
         "schema": "boolean",
-        "description": "Hide results with potentially unsafe keywords"
+        "description": "Hide results with potentially unsafe keywords",
+        "default": true
       },
       {
         "name": "language",
         "schema": "string",
-        "description": "Set query and result language (uses Accept-Language header if not set)"
+        "description": "Set query and result language (uses Accept-Language header if not set)",
+        "example": "fr"
       },
       {
         "name": "license",
@@ -1139,72 +1256,91 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "model",
         "schema": "array",
-        "description": "Show image results with the specified model IDs"
+        "description": "Show image results with the specified model IDs",
+        "example": [
+          "12345",
+          "67890"
+        ]
       },
       {
         "name": "orientation",
         "schema": "string",
-        "description": "Show image results with horizontal or vertical orientation"
+        "description": "Show image results with horizontal or vertical orientation",
+        "example": "vertical"
       },
       {
         "name": "page",
         "schema": "integer",
-        "description": "Page number"
+        "description": "Page number",
+        "example": 1,
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "example": 10,
+        "default": 20
       },
       {
         "name": "peopleModelReleased",
         "schema": "boolean",
-        "description": "Show images of people with a signed model release"
+        "description": "Show images of people with a signed model release",
+        "example": true
       },
       {
         "name": "peopleAge",
         "schema": "string",
-        "description": "Show images that feature people of the specified age category"
+        "description": "Show images that feature people of the specified age category",
+        "example": "20s"
       },
       {
         "name": "peopleEthnicity",
         "schema": "array",
-        "description": "Show images with people of the specified ethnicities, or start with NOT to show images without those ethnicities"
+        "description": "Show images with people of the specified ethnicities, or start with NOT to show images without those ethnicities",
+        "example": "hispanic"
       },
       {
         "name": "peopleGender",
         "schema": "string",
-        "description": "Show images with people of the specified gender"
+        "description": "Show images with people of the specified gender",
+        "example": "both"
       },
       {
         "name": "peopleNumber",
         "schema": "integer",
-        "description": "Show images with the specified number of people"
+        "description": "Show images with the specified number of people",
+        "example": 2
       },
       {
         "name": "region",
         "schema": "undefined",
-        "description": "Raise or lower search result rankings based on the result's relevance to a specified region; you can provide a country code or an IP address from which the API infers a country"
+        "description": "Raise or lower search result rankings based on the result's relevance to a specified region; you can provide a country code or an IP address from which the API infers a country",
+        "example": "US"
       },
       {
         "name": "safe",
         "schema": "boolean",
-        "description": "Enable or disable safe search"
+        "description": "Enable or disable safe search",
+        "default": true
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "Sort by"
+        "description": "Sort by",
+        "default": "popular"
       },
       {
         "name": "spellcheckQuery",
         "schema": "boolean",
-        "description": "Spellcheck the search query and return results on suggested spellings"
+        "description": "Spellcheck the search query and return results on suggested spellings",
+        "default": true
       },
       {
         "name": "view",
         "schema": "string",
-        "description": "Amount of detail to render in the response"
+        "description": "Amount of detail to render in the response",
+        "default": "minimal"
       },
       {
         "name": "width",
@@ -1214,12 +1350,14 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "widthFrom",
         "schema": "integer",
-        "description": "Show images with the specified width or larger, in pixels"
+        "description": "Show images with the specified width or larger, in pixels",
+        "example": 1920
       },
       {
         "name": "widthTo",
         "schema": "integer",
-        "description": "Show images with the specified width or smaller, in pixels"
+        "description": "Show images with the specified width or smaller, in pixels",
+        "example": 1920
       }
     ],
     "responses": [
@@ -1252,22 +1390,28 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "page",
         "schema": "integer",
-        "description": "Page number"
+        "description": "Page number",
+        "example": 1,
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "example": 20,
+        "default": 20
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "Sort by"
+        "description": "Sort by",
+        "default": "newest"
       },
       {
         "name": "shared",
         "schema": "boolean",
-        "description": "Set to true to omit collections that you own and return only collections  that are shared with you"
+        "description": "Set to true to omit collections that you own and return only collections  that are shared with you",
+        "default": false
       }
     ],
     "responses": [
@@ -1299,13 +1443,15 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "visibility",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": "private"
       }
     ],
     "responses": [
@@ -1327,7 +1473,8 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "collectionId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the collection to delete"
+        "description": "The ID of the collection to delete",
+        "example": "126351028"
       }
     ],
     "responses": [
@@ -1353,7 +1500,8 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "collectionId",
         "schema": "string",
         "required": true,
-        "description": "ID of collection that needs to be modified"
+        "description": "ID of collection that needs to be modified",
+        "example": "126351028"
       },
       {
         "name": "cover_asset",
@@ -1390,7 +1538,8 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "collectionId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the collection to remove assets from"
+        "description": "The ID of the collection to remove assets from",
+        "example": "126351028"
       },
       {
         "name": "items",
@@ -1418,7 +1567,8 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "collectionId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the collection to add assets to"
+        "description": "The ID of the collection to add assets to",
+        "example": "126351028"
       },
       {
         "name": "items",
@@ -1445,32 +1595,47 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "sort",
         "schema": "string",
-        "description": "Sort by"
+        "description": "Sort by",
+        "default": "newest"
       },
       {
         "name": "page",
         "schema": "integer",
-        "description": "Page number"
+        "description": "Page number",
+        "example": 1,
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "example": 50,
+        "default": 20
       },
       {
         "name": "query",
         "schema": "string",
-        "description": "One or more search terms separated by spaces"
+        "description": "One or more search terms separated by spaces",
+        "example": "dogs on the beach"
       },
       {
         "name": "collectionId",
         "schema": "array",
-        "description": "Filter by collection id"
+        "description": "Filter by collection id",
+        "example": [
+          "123456",
+          "456789",
+          "13579"
+        ]
       },
       {
         "name": "assetType",
         "schema": "array",
-        "description": "Filter by asset type"
+        "description": "Filter by asset type",
+        "example": [
+          "image",
+          "editorial-image"
+        ]
       }
     ],
     "responses": [
@@ -1504,7 +1669,11 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "array",
         "required": true,
-        "description": "One or more contributor IDs"
+        "description": "One or more contributor IDs",
+        "example": [
+          800506,
+          1653538
+        ]
       }
     ],
     "responses": [
@@ -1538,7 +1707,8 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "contributorId",
         "schema": "string",
         "required": true,
-        "description": "Contributor ID"
+        "description": "Contributor ID",
+        "example": 1653538
       }
     ],
     "responses": [
@@ -1572,7 +1742,8 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "contributorId",
         "schema": "string",
         "required": true,
-        "description": "Contributor ID"
+        "description": "Contributor ID",
+        "example": 800506
       },
       {
         "name": "sort",
@@ -1615,13 +1786,15 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "contributorId",
         "schema": "string",
         "required": true,
-        "description": "Contributor ID"
+        "description": "Contributor ID",
+        "example": 800506
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Collection ID that belongs to the contributor"
+        "description": "Collection ID that belongs to the contributor",
+        "example": 1991678
       }
     ],
     "responses": [
@@ -1659,23 +1832,27 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "contributorId",
         "schema": "string",
         "required": true,
-        "description": "Contributor ID"
+        "description": "Contributor ID",
+        "example": 800506
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Collection ID that belongs to the contributor"
+        "description": "Collection ID that belongs to the contributor",
+        "example": 1991678
       },
       {
         "name": "page",
         "schema": "integer",
-        "description": "Page number"
+        "description": "Page number",
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "default": 20
       },
       {
         "name": "sort",
@@ -1718,7 +1895,8 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "base64_image",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "BASE64_IMAGE"
       }
     ],
     "responses": [
@@ -1760,7 +1938,8 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "assetId",
         "schema": "undefined",
         "required": true,
-        "description": "The asset ID or upload ID to suggest keywords for"
+        "description": "The asset ID or upload ID to suggest keywords for",
+        "example": "U6ba16262e3bc2db470b8e3cfa8aaab25"
       }
     ],
     "responses": [
@@ -1798,37 +1977,46 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "assetId",
         "schema": "string",
         "required": true,
-        "description": "The asset ID or upload ID to find similar images for"
+        "description": "The asset ID or upload ID to find similar images for",
+        "example": "U6ba16262e3bc2db470b8e3cfa8aaab25"
       },
       {
         "name": "license",
         "schema": "array",
-        "description": "Show only images with the specified license"
+        "description": "Show only images with the specified license",
+        "default": [
+          "commercial"
+        ]
       },
       {
         "name": "safe",
         "schema": "boolean",
-        "description": "Enable or disable safe search"
+        "description": "Enable or disable safe search",
+        "default": true
       },
       {
         "name": "language",
         "schema": "string",
-        "description": "Language for the keywords and categories in the response"
+        "description": "Language for the keywords and categories in the response",
+        "example": "es"
       },
       {
         "name": "page",
         "schema": "integer",
-        "description": "Page number"
+        "description": "Page number",
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "default": 20
       },
       {
         "name": "view",
         "schema": "string",
-        "description": "Amount of detail to render in the response"
+        "description": "Amount of detail to render in the response",
+        "default": "minimal"
       }
     ],
     "responses": [
@@ -1862,37 +2050,46 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "assetId",
         "schema": "string",
         "required": true,
-        "description": "The asset ID or upload ID to find similar videos for"
+        "description": "The asset ID or upload ID to find similar videos for",
+        "example": "U6ba16262e3bc2db470b8e3cfa8aaab25"
       },
       {
         "name": "license",
         "schema": "array",
-        "description": "Show only videos with the specified license"
+        "description": "Show only videos with the specified license",
+        "default": [
+          "commercial"
+        ]
       },
       {
         "name": "safe",
         "schema": "boolean",
-        "description": "Enable or disable safe search"
+        "description": "Enable or disable safe search",
+        "default": true
       },
       {
         "name": "language",
         "schema": "string",
-        "description": "Language for the keywords and categories in the response"
+        "description": "Language for the keywords and categories in the response",
+        "example": "es"
       },
       {
         "name": "page",
         "schema": "integer",
-        "description": "Page number"
+        "description": "Page number",
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "default": 20
       },
       {
         "name": "view",
         "schema": "string",
-        "description": "Amount of detail to render in the response"
+        "description": "Amount of detail to render in the response",
+        "default": "minimal"
       }
     ],
     "responses": [
@@ -1979,52 +2176,62 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "imageId",
         "schema": "string",
-        "description": "Show licenses for the specified editorial image ID"
+        "description": "Show licenses for the specified editorial image ID",
+        "example": "12345678"
       },
       {
         "name": "license",
         "schema": "string",
-        "description": "Show editorial images that are available with the specified license name"
+        "description": "Show editorial images that are available with the specified license name",
+        "example": "premier_editorial_all_digital"
       },
       {
         "name": "page",
         "schema": "integer",
-        "description": "Page number"
+        "description": "Page number",
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "default": 20
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "Sort order"
+        "description": "Sort order",
+        "default": "newest"
       },
       {
         "name": "username",
         "schema": "string",
-        "description": "Filter licenses by username of licensee"
+        "description": "Filter licenses by username of licensee",
+        "example": "aUniqueUsername"
       },
       {
         "name": "startDate",
         "schema": "string",
-        "description": "Show licenses created on or after the specified date"
+        "description": "Show licenses created on or after the specified date",
+        "example": "2021-03-29T13:25:13.521Z"
       },
       {
         "name": "endDate",
         "schema": "string",
-        "description": "Show licenses created before the specified date"
+        "description": "Show licenses created before the specified date",
+        "example": "2021-03-29T13:25:13.521Z"
       },
       {
         "name": "downloadAvailability",
         "schema": "string",
-        "description": "Filter licenses by download availability"
+        "description": "Filter licenses by download availability",
+        "default": "all"
       },
       {
         "name": "teamHistory",
         "schema": "boolean",
-        "description": "Set to true to see license history for all members of your team."
+        "description": "Set to true to see license history for all members of your team.",
+        "default": false
       }
     ],
     "responses": [
@@ -2058,7 +2265,8 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "country",
         "schema": "undefined",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USA"
       },
       {
         "name": "editorial",
@@ -2102,17 +2310,20 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "country",
         "schema": "string",
         "required": true,
-        "description": "Returns only livefeeds that are available for distribution in a certain country"
+        "description": "Returns only livefeeds that are available for distribution in a certain country",
+        "example": "USA"
       },
       {
         "name": "page",
         "schema": "integer",
-        "description": "Page number"
+        "description": "Page number",
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "default": 20
       }
     ],
     "responses": [
@@ -2150,13 +2361,15 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Editorial livefeed ID; must be an URI encoded string"
+        "description": "Editorial livefeed ID; must be an URI encoded string",
+        "example": "2018%2F10%2F15%2FWomen%20of%20the%20Year%20Lunch%20%26%20Awards%2C%20London"
       },
       {
         "name": "country",
         "schema": "string",
         "required": true,
-        "description": "Returns only if the livefeed is available for distribution in a certain country"
+        "description": "Returns only if the livefeed is available for distribution in a certain country",
+        "example": "USA"
       }
     ],
     "responses": [
@@ -2194,13 +2407,15 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Editorial livefeed ID; must be an URI encoded string"
+        "description": "Editorial livefeed ID; must be an URI encoded string",
+        "example": "2018%2F10%2F15%2FWomen%20of%20the%20Year%20Lunch%20%26%20Awards%2C%20London"
       },
       {
         "name": "country",
         "schema": "string",
         "required": true,
-        "description": "Returns only if the livefeed items are available for distribution in a certain country"
+        "description": "Returns only if the livefeed items are available for distribution in a certain country",
+        "example": "USA"
       }
     ],
     "responses": [
@@ -2237,23 +2452,27 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "query",
         "schema": "string",
-        "description": "One or more search terms separated by spaces"
+        "description": "One or more search terms separated by spaces",
+        "example": "The Academy Awards"
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "Sort by"
+        "description": "Sort by",
+        "default": "relevant"
       },
       {
         "name": "category",
         "schema": "string",
-        "description": "Show editorial content with each of the specified editorial categories; specify category names in a comma-separated list"
+        "description": "Show editorial content with each of the specified editorial categories; specify category names in a comma-separated list",
+        "example": "Alone,Performing"
       },
       {
         "name": "country",
         "schema": "string",
         "required": true,
-        "description": "Show only editorial content that is available for distribution in a certain country"
+        "description": "Show only editorial content that is available for distribution in a certain country",
+        "example": "USA"
       },
       {
         "name": "supplierCode",
@@ -2263,22 +2482,26 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "dateStart",
         "schema": "string",
-        "description": "Show only editorial content generated on or after a specific date"
+        "description": "Show only editorial content generated on or after a specific date",
+        "example": "2020-05-29T00:00:00.000Z"
       },
       {
         "name": "dateEnd",
         "schema": "string",
-        "description": "Show only editorial content generated on or before a specific date"
+        "description": "Show only editorial content generated on or before a specific date",
+        "example": "2021-05-29T00:00:00.000Z"
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "default": 20
       },
       {
         "name": "cursor",
         "schema": "string",
-        "description": "The cursor of the page with which to start fetching results; this cursor is returned from previous requests"
+        "description": "The cursor of the page with which to start fetching results; this cursor is returned from previous requests",
+        "example": "eyJ2IjoxLCJzIjoxfQ=="
       }
     ],
     "responses": [
@@ -2316,55 +2539,67 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": "Specify `addition` to return only images that were added or `edit` to return only images that were edited or deleted"
+        "description": "Specify `addition` to return only images that were added or `edit` to return only images that were edited or deleted",
+        "example": "edit"
       },
       {
         "name": "dateUpdatedStart",
         "schema": "string",
         "required": true,
-        "description": "Show images images added, edited, or deleted after the specified date. Acceptable range is 1970-01-01T00:00:01 to 2038-01-19T00:00:00."
+        "description": "Show images images added, edited, or deleted after the specified date. Acceptable range is 1970-01-01T00:00:01 to 2038-01-19T00:00:00.",
+        "example": "2021-03-29T13:25:13.521Z"
       },
       {
         "name": "dateUpdatedEnd",
         "schema": "string",
         "required": true,
-        "description": "Show images images added, edited, or deleted before the specified date. Acceptable range is 1970-01-01T00:00:01 to 2038-01-19T00:00:00."
+        "description": "Show images images added, edited, or deleted before the specified date. Acceptable range is 1970-01-01T00:00:01 to 2038-01-19T00:00:00.",
+        "example": "2021-03-29T13:25:13.521Z"
       },
       {
         "name": "dateTakenStart",
         "schema": "string",
-        "description": "Show images that were taken on or after the specified date; use this parameter if you want recently created images from the collection instead of updated older assets"
+        "description": "Show images that were taken on or after the specified date; use this parameter if you want recently created images from the collection instead of updated older assets",
+        "example": "2020-02-04T00:00:00.000Z"
       },
       {
         "name": "dateTakenEnd",
         "schema": "string",
-        "description": "Show images that were taken before the specified date"
+        "description": "Show images that were taken before the specified date",
+        "example": "2020-02-05T00:00:00.000Z"
       },
       {
         "name": "cursor",
         "schema": "string",
-        "description": "The cursor of the page with which to start fetching results; this cursor is returned from previous requests"
+        "description": "The cursor of the page with which to start fetching results; this cursor is returned from previous requests",
+        "example": "eyJ2IjoxLCJzIjoyfQ=="
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "Sort by"
+        "description": "Sort by",
+        "example": "newest",
+        "default": "newest"
       },
       {
         "name": "supplierCode",
         "schema": "array",
-        "description": "Show only editorial content from certain suppliers"
+        "description": "Show only editorial content from certain suppliers",
+        "example": "ABC"
       },
       {
         "name": "country",
         "schema": "string",
         "required": true,
-        "description": "Show only editorial content that is available for distribution in a certain country"
+        "description": "Show only editorial content that is available for distribution in a certain country",
+        "example": "USA"
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "example": 200,
+        "default": 500
       }
     ],
     "responses": [
@@ -2402,13 +2637,15 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Editorial ID"
+        "description": "Editorial ID",
+        "example": "9926131a"
       },
       {
         "name": "country",
         "schema": "string",
         "required": true,
-        "description": "Returns only if the content is available for distribution in a certain country"
+        "description": "Returns only if the content is available for distribution in a certain country",
+        "example": "USA"
       }
     ],
     "responses": [
@@ -2446,7 +2683,8 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "country",
         "schema": "undefined",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USA"
       },
       {
         "name": "editorial",
@@ -2490,17 +2728,20 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "country",
         "schema": "string",
         "required": true,
-        "description": "Returns only livefeeds that are available for distribution in a certain country"
+        "description": "Returns only livefeeds that are available for distribution in a certain country",
+        "example": "USA"
       },
       {
         "name": "page",
         "schema": "integer",
-        "description": "Page number"
+        "description": "Page number",
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "default": 20
       }
     ],
     "responses": [
@@ -2538,13 +2779,15 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Editorial livefeed ID; must be an URI encoded string"
+        "description": "Editorial livefeed ID; must be an URI encoded string",
+        "example": "2018%2F10%2F15%2FWomen%20of%20the%20Year%20Lunch%20%26%20Awards%2C%20London"
       },
       {
         "name": "country",
         "schema": "string",
         "required": true,
-        "description": "Returns only if the livefeed is available for distribution in a certain country"
+        "description": "Returns only if the livefeed is available for distribution in a certain country",
+        "example": "USA"
       }
     ],
     "responses": [
@@ -2582,13 +2825,15 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Editorial livefeed ID; must be an URI encoded string"
+        "description": "Editorial livefeed ID; must be an URI encoded string",
+        "example": "2018%2F10%2F15%2FWomen%20of%20the%20Year%20Lunch%20%26%20Awards%2C%20London"
       },
       {
         "name": "country",
         "schema": "string",
         "required": true,
-        "description": "Returns only if the livefeed items are available for distribution in a certain country"
+        "description": "Returns only if the livefeed items are available for distribution in a certain country",
+        "example": "USA"
       }
     ],
     "responses": [
@@ -2630,7 +2875,8 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "sort",
         "schema": "string",
-        "description": "Sort by"
+        "description": "Sort by",
+        "default": "relevant"
       },
       {
         "name": "category",
@@ -2641,7 +2887,8 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "country",
         "schema": "string",
         "required": true,
-        "description": "Show only editorial content that is available for distribution in a certain country"
+        "description": "Show only editorial content that is available for distribution in a certain country",
+        "example": "USA"
       },
       {
         "name": "supplierCode",
@@ -2661,7 +2908,8 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "default": 20
       },
       {
         "name": "cursor",
@@ -2704,55 +2952,67 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": "Specify `addition` to return only images that were added or `edit` to return only images that were edited or deleted"
+        "description": "Specify `addition` to return only images that were added or `edit` to return only images that were edited or deleted",
+        "example": "edit"
       },
       {
         "name": "dateUpdatedStart",
         "schema": "string",
         "required": true,
-        "description": "Show images images added, edited, or deleted after the specified date. Acceptable range is 1970-01-01T00:00:01 to 2038-01-19T00:00:00."
+        "description": "Show images images added, edited, or deleted after the specified date. Acceptable range is 1970-01-01T00:00:01 to 2038-01-19T00:00:00.",
+        "example": "2021-03-29T13:25:13.521Z"
       },
       {
         "name": "dateUpdatedEnd",
         "schema": "string",
         "required": true,
-        "description": "Show images images added, edited, or deleted before the specified date. Acceptable range is 1970-01-01T00:00:01 to 2038-01-19T00:00:00."
+        "description": "Show images images added, edited, or deleted before the specified date. Acceptable range is 1970-01-01T00:00:01 to 2038-01-19T00:00:00.",
+        "example": "2021-03-29T13:25:13.521Z"
       },
       {
         "name": "dateTakenStart",
         "schema": "string",
-        "description": "Show images that were taken on or after the specified date; use this parameter if you want recently created images from the collection instead of updated older assets"
+        "description": "Show images that were taken on or after the specified date; use this parameter if you want recently created images from the collection instead of updated older assets",
+        "example": "2020-02-04T00:00:00.000Z"
       },
       {
         "name": "dateTakenEnd",
         "schema": "string",
-        "description": "Show images that were taken before the specified date"
+        "description": "Show images that were taken before the specified date",
+        "example": "2020-02-05T00:00:00.000Z"
       },
       {
         "name": "cursor",
         "schema": "string",
-        "description": "The cursor of the page with which to start fetching results; this cursor is returned from previous requests"
+        "description": "The cursor of the page with which to start fetching results; this cursor is returned from previous requests",
+        "example": "eyJ2IjoxLCJzIjoyfQ=="
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "Sort by"
+        "description": "Sort by",
+        "example": "newest",
+        "default": "newest"
       },
       {
         "name": "supplierCode",
         "schema": "array",
-        "description": "Show only editorial content from certain suppliers"
+        "description": "Show only editorial content from certain suppliers",
+        "example": "ABC"
       },
       {
         "name": "country",
         "schema": "string",
         "required": true,
-        "description": "Show only editorial content that is available for distribution in a certain country"
+        "description": "Show only editorial content that is available for distribution in a certain country",
+        "example": "USA"
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "example": 200,
+        "default": 500
       }
     ],
     "responses": [
@@ -2816,52 +3076,62 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "videoId",
         "schema": "string",
-        "description": "Show licenses for the specified editorial video ID"
+        "description": "Show licenses for the specified editorial video ID",
+        "example": "12345678"
       },
       {
         "name": "license",
         "schema": "string",
-        "description": "Show editorial videos that are available with the specified license name"
+        "description": "Show editorial videos that are available with the specified license name",
+        "example": "premier_editorial_all_media"
       },
       {
         "name": "page",
         "schema": "integer",
-        "description": "Page number"
+        "description": "Page number",
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "default": 20
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "Sort order"
+        "description": "Sort order",
+        "default": "newest"
       },
       {
         "name": "username",
         "schema": "string",
-        "description": "Filter licenses by username of licensee"
+        "description": "Filter licenses by username of licensee",
+        "example": "aUniqueUsername"
       },
       {
         "name": "startDate",
         "schema": "string",
-        "description": "Show licenses created on or after the specified date"
+        "description": "Show licenses created on or after the specified date",
+        "example": "2021-03-29T13:25:13.521Z"
       },
       {
         "name": "endDate",
         "schema": "string",
-        "description": "Show licenses created before the specified date"
+        "description": "Show licenses created before the specified date",
+        "example": "2021-03-29T13:25:13.521Z"
       },
       {
         "name": "downloadAvailability",
         "schema": "string",
-        "description": "Filter licenses by download availability"
+        "description": "Filter licenses by download availability",
+        "default": "all"
       },
       {
         "name": "teamHistory",
         "schema": "boolean",
-        "description": "Set to true to see license history for all members of your team."
+        "description": "Set to true to see license history for all members of your team.",
+        "default": false
       }
     ],
     "responses": [
@@ -2895,7 +3165,8 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "country",
         "schema": "undefined",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USA"
       },
       {
         "name": "editorial",
@@ -2934,23 +3205,27 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "query",
         "schema": "string",
-        "description": "One or more search terms separated by spaces"
+        "description": "One or more search terms separated by spaces",
+        "example": "The Academy Awards"
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "Sort by"
+        "description": "Sort by",
+        "default": "relevant"
       },
       {
         "name": "category",
         "schema": "string",
-        "description": "Show editorial content with each of the specified editorial categories; specify category names in a comma-separated list"
+        "description": "Show editorial content with each of the specified editorial categories; specify category names in a comma-separated list",
+        "example": "Alone,Performing"
       },
       {
         "name": "country",
         "schema": "string",
         "required": true,
-        "description": "Show only editorial video content that is available for distribution in a certain country"
+        "description": "Show only editorial video content that is available for distribution in a certain country",
+        "example": "USA"
       },
       {
         "name": "supplierCode",
@@ -2960,32 +3235,38 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "dateStart",
         "schema": "string",
-        "description": "Show only editorial video content generated on or after a specific date"
+        "description": "Show only editorial video content generated on or after a specific date",
+        "example": "2020-05-29T00:00:00.000Z"
       },
       {
         "name": "dateEnd",
         "schema": "string",
-        "description": "Show only editorial video content generated on or before a specific date"
+        "description": "Show only editorial video content generated on or before a specific date",
+        "example": "2021-05-29T00:00:00.000Z"
       },
       {
         "name": "resolution",
         "schema": "string",
-        "description": "Show only editorial video content with specific resolution"
+        "description": "Show only editorial video content with specific resolution",
+        "example": "4k"
       },
       {
         "name": "fps",
         "schema": "number",
-        "description": "Show only editorial video content generated with specific frames per second"
+        "description": "Show only editorial video content generated with specific frames per second",
+        "example": 24
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "default": 20
       },
       {
         "name": "cursor",
         "schema": "string",
-        "description": "The cursor of the page with which to start fetching results; this cursor is returned from previous requests"
+        "description": "The cursor of the page with which to start fetching results; this cursor is returned from previous requests",
+        "example": "eyJ2IjoxLCJzIjoxfQ=="
       }
     ],
     "responses": [
@@ -3023,18 +3304,21 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Editorial ID"
+        "description": "Editorial ID",
+        "example": "9926131a"
       },
       {
         "name": "country",
         "schema": "string",
         "required": true,
-        "description": "Returns only if the content is available for distribution in a certain country"
+        "description": "Returns only if the content is available for distribution in a certain country",
+        "example": "USA"
       },
       {
         "name": "searchId",
         "schema": "string",
-        "description": "The ID of the search that is related to this request"
+        "description": "The ID of the search that is related to this request",
+        "example": "00000000-0000-0000-0000-000000000000"
       }
     ],
     "responses": [
@@ -3072,18 +3356,21 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Editorial ID"
+        "description": "Editorial ID",
+        "example": "9926131a"
       },
       {
         "name": "country",
         "schema": "string",
         "required": true,
-        "description": "Returns only if the content is available for distribution in a certain country"
+        "description": "Returns only if the content is available for distribution in a certain country",
+        "example": "USA"
       },
       {
         "name": "searchId",
         "schema": "string",
-        "description": "The ID of the search that is related to this request"
+        "description": "The ID of the search that is related to this request",
+        "example": "00000000-0000-0000-0000-000000000000"
       }
     ],
     "responses": [
@@ -3121,17 +3408,24 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "array",
         "required": true,
-        "description": "One or more image IDs"
+        "description": "One or more image IDs",
+        "example": [
+          "1110335168",
+          "465011609"
+        ]
       },
       {
         "name": "view",
         "schema": "string",
-        "description": "Amount of detail to render in the response"
+        "description": "Amount of detail to render in the response",
+        "example": "minimal",
+        "default": "minimal"
       },
       {
         "name": "searchId",
         "schema": "string",
-        "description": "The ID of the search that is related to this request"
+        "description": "The ID of the search that is related to this request",
+        "example": "00000000-0000-0000-0000-000000000000"
       }
     ],
     "responses": [
@@ -3165,7 +3459,8 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "base64_image",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "BASE64_IMAGE"
       }
     ],
     "responses": [
@@ -3202,7 +3497,8 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "language",
         "schema": "string",
-        "description": "Language for the keywords and categories in the response"
+        "description": "Language for the keywords and categories in the response",
+        "example": "es"
       }
     ],
     "responses": [
@@ -3235,17 +3531,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "embed",
         "schema": "array",
-        "description": "Which sharing information to include in the response, such as a URL to the collection"
+        "description": "Which sharing information to include in the response, such as a URL to the collection",
+        "example": "share_code"
       },
       {
         "name": "page",
         "schema": "integer",
-        "description": "Page number"
+        "description": "Page number",
+        "example": 1,
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "example": 2,
+        "default": 100
       }
     ],
     "responses": [
@@ -3279,7 +3580,8 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -3312,17 +3614,23 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "embed",
         "schema": "string",
-        "description": "Which sharing information to include in the response, such as a URL to the collection"
+        "description": "Which sharing information to include in the response, such as a URL to the collection",
+        "example": "share_url"
       },
       {
         "name": "type",
         "schema": "array",
-        "description": "The types of collections to return"
+        "description": "The types of collections to return",
+        "example": [
+          "photo"
+        ]
       },
       {
         "name": "assetHint",
         "schema": "string",
-        "description": "Cover image size"
+        "description": "Cover image size",
+        "example": "1x",
+        "default": "1x"
       }
     ],
     "responses": [
@@ -3356,7 +3664,8 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Collection ID"
+        "description": "Collection ID",
+        "example": "136351027"
       },
       {
         "name": "embed",
@@ -3366,7 +3675,8 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "assetHint",
         "schema": "string",
-        "description": "Cover image size"
+        "description": "Cover image size",
+        "default": "1x"
       }
     ],
     "responses": [
@@ -3404,17 +3714,20 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Collection ID"
+        "description": "Collection ID",
+        "example": "136351027"
       },
       {
         "name": "page",
         "schema": "integer",
-        "description": "Page number"
+        "description": "Page number",
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "default": 100
       }
     ],
     "responses": [
@@ -3452,7 +3765,8 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Collection ID"
+        "description": "Collection ID",
+        "example": "136351027"
       }
     ],
     "responses": [
@@ -3490,7 +3804,8 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Collection ID"
+        "description": "Collection ID",
+        "example": "126351027"
       },
       {
         "name": "embed",
@@ -3538,13 +3853,15 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Collection ID"
+        "description": "Collection ID",
+        "example": "126351027"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -3582,7 +3899,8 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Collection ID"
+        "description": "Collection ID",
+        "example": "126351027"
       },
       {
         "name": "itemId",
@@ -3625,17 +3943,20 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Collection ID"
+        "description": "Collection ID",
+        "example": "126351027"
       },
       {
         "name": "page",
         "schema": "integer",
-        "description": "Page number"
+        "description": "Page number",
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "default": 100
       },
       {
         "name": "shareCode",
@@ -3645,7 +3966,8 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "sort",
         "schema": "string",
-        "description": "Sort order"
+        "description": "Sort order",
+        "default": "oldest"
       }
     ],
     "responses": [
@@ -3683,7 +4005,8 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Collection ID"
+        "description": "Collection ID",
+        "example": "126351027"
       },
       {
         "name": "items",
@@ -3726,52 +4049,62 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "imageId",
         "schema": "string",
-        "description": "Show licenses for the specified image ID"
+        "description": "Show licenses for the specified image ID",
+        "example": "12345678"
       },
       {
         "name": "license",
         "schema": "string",
-        "description": "Show images that are available with the specified license, such as `standard` or `enhanced`; prepending a `-` sign excludes results from that license"
+        "description": "Show images that are available with the specified license, such as `standard` or `enhanced`; prepending a `-` sign excludes results from that license",
+        "example": "standard"
       },
       {
         "name": "page",
         "schema": "integer",
-        "description": "Page number"
+        "description": "Page number",
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "default": 20
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "Sort order"
+        "description": "Sort order",
+        "default": "newest"
       },
       {
         "name": "username",
         "schema": "string",
-        "description": "Filter licenses by username of licensee"
+        "description": "Filter licenses by username of licensee",
+        "example": "aUniqueUsername"
       },
       {
         "name": "startDate",
         "schema": "string",
-        "description": "Show licenses created on or after the specified date"
+        "description": "Show licenses created on or after the specified date",
+        "example": "2021-03-29T13:25:13.521Z"
       },
       {
         "name": "endDate",
         "schema": "string",
-        "description": "Show licenses created before the specified date"
+        "description": "Show licenses created before the specified date",
+        "example": "2021-03-29T13:25:13.521Z"
       },
       {
         "name": "downloadAvailability",
         "schema": "string",
-        "description": "Filter licenses by download availability"
+        "description": "Filter licenses by download availability",
+        "default": "all"
       },
       {
         "name": "teamHistory",
         "schema": "boolean",
-        "description": "Set to true to see license history for all members of your team."
+        "description": "Set to true to see license history for all members of your team.",
+        "default": false
       }
     ],
     "responses": [
@@ -3814,7 +4147,8 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "size",
         "schema": "string",
-        "description": "Image size"
+        "description": "Image size",
+        "default": "huge"
       },
       {
         "name": "searchId",
@@ -3859,12 +4193,17 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "License ID"
+        "description": "License ID",
+        "example": "e123"
       },
       {
         "name": "auth_cookie",
         "schema": "object",
-        "description": ""
+        "description": "",
+        "example": {
+          "name": "The name of the cookie",
+          "value": "The value of the cookie"
+        }
       },
       {
         "name": "show_modal",
@@ -3913,17 +4252,22 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "array",
         "required": true,
-        "description": "Image IDs"
+        "description": "Image IDs",
+        "example": [
+          465011609
+        ]
       },
       {
         "name": "maxItems",
         "schema": "integer",
-        "description": "Maximum number of results returned in the response"
+        "description": "Maximum number of results returned in the response",
+        "default": 20
       },
       {
         "name": "safe",
         "schema": "boolean",
-        "description": "Restrict results to safe images"
+        "description": "Restrict results to safe images",
+        "default": true
       }
     ],
     "responses": [
@@ -3956,27 +4300,32 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "addedDate",
         "schema": "string",
-        "description": "Show images added on the specified date"
+        "description": "Show images added on the specified date",
+        "example": "2021-03-29T00:00:00.000Z"
       },
       {
         "name": "addedDateStart",
         "schema": "string",
-        "description": "Show images added on or after the specified date"
+        "description": "Show images added on or after the specified date",
+        "example": "2021-03-29T00:00:00.000Z"
       },
       {
         "name": "aspectRatioMin",
         "schema": "number",
-        "description": "Show images with the specified aspect ratio or higher, using a positive decimal of the width divided by the height, such as 1.7778 for a 16:9 image"
+        "description": "Show images with the specified aspect ratio or higher, using a positive decimal of the width divided by the height, such as 1.7778 for a 16:9 image",
+        "example": 1.7778
       },
       {
         "name": "aspectRatioMax",
         "schema": "number",
-        "description": "Show images with the specified aspect ratio or lower, using a positive decimal of the width divided by the height, such as 1.7778 for a 16:9 image"
+        "description": "Show images with the specified aspect ratio or lower, using a positive decimal of the width divided by the height, such as 1.7778 for a 16:9 image",
+        "example": 1.7778
       },
       {
         "name": "aspectRatio",
         "schema": "number",
-        "description": "Show images with the specified aspect ratio, using a positive decimal of the width divided by the height, such as 1.7778 for a 16:9 image"
+        "description": "Show images with the specified aspect ratio, using a positive decimal of the width divided by the height, such as 1.7778 for a 16:9 image",
+        "example": 1.7778
       },
       {
         "name": "aiSearch",
@@ -3986,7 +4335,8 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "aiLabelsLimit",
         "schema": "integer",
-        "description": "For AI-powered search, specify the maximum number of labels to return"
+        "description": "For AI-powered search, specify the maximum number of labels to return",
+        "default": 20
       },
       {
         "name": "aiIndustry",
@@ -4001,7 +4351,8 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "addedDateEnd",
         "schema": "string",
-        "description": "Show images added before the specified date"
+        "description": "Show images added before the specified date",
+        "example": "2021-03-29T00:00:00.000Z"
       },
       {
         "name": "category",
@@ -4011,17 +4362,22 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "color",
         "schema": "string",
-        "description": "Specify either a hexadecimal color in the format '4F21EA' or 'grayscale'; the API returns images that use similar colors"
+        "description": "Specify either a hexadecimal color in the format '4F21EA' or 'grayscale'; the API returns images that use similar colors",
+        "example": "4F21EA"
       },
       {
         "name": "contributor",
         "schema": "array",
-        "description": "Show images with the specified contributor names or IDs, allows multiple"
+        "description": "Show images with the specified contributor names or IDs, allows multiple",
+        "example": [
+          "123456"
+        ]
       },
       {
         "name": "contributorCountry",
         "schema": "undefined",
-        "description": "Show images from contributors in one or more specified countries, or start with NOT to exclude a country from the search"
+        "description": "Show images from contributors in one or more specified countries, or start with NOT to exclude a country from the search",
+        "example": "US"
       },
       {
         "name": "fields",
@@ -4036,27 +4392,32 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "heightFrom",
         "schema": "integer",
-        "description": "Show images with the specified height or larger, in pixels"
+        "description": "Show images with the specified height or larger, in pixels",
+        "example": 1080
       },
       {
         "name": "heightTo",
         "schema": "integer",
-        "description": "Show images with the specified height or smaller, in pixels"
+        "description": "Show images with the specified height or smaller, in pixels",
+        "example": 1080
       },
       {
         "name": "imageType",
         "schema": "array",
-        "description": "Show images of the specified type"
+        "description": "Show images of the specified type",
+        "example": "photo"
       },
       {
         "name": "keywordSafeSearch",
         "schema": "boolean",
-        "description": "Hide results with potentially unsafe keywords"
+        "description": "Hide results with potentially unsafe keywords",
+        "default": true
       },
       {
         "name": "language",
         "schema": "string",
-        "description": "Set query and result language (uses Accept-Language header if not set)"
+        "description": "Set query and result language (uses Accept-Language header if not set)",
+        "example": "fr"
       },
       {
         "name": "license",
@@ -4066,77 +4427,97 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "model",
         "schema": "array",
-        "description": "Show image results with the specified model IDs"
+        "description": "Show image results with the specified model IDs",
+        "example": [
+          "12345",
+          "67890"
+        ]
       },
       {
         "name": "orientation",
         "schema": "string",
-        "description": "Show image results with horizontal or vertical orientation"
+        "description": "Show image results with horizontal or vertical orientation",
+        "example": "vertical"
       },
       {
         "name": "page",
         "schema": "integer",
-        "description": "Page number"
+        "description": "Page number",
+        "example": 1,
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "example": 50,
+        "default": 20
       },
       {
         "name": "peopleModelReleased",
         "schema": "boolean",
-        "description": "Show images of people with a signed model release"
+        "description": "Show images of people with a signed model release",
+        "example": true
       },
       {
         "name": "peopleAge",
         "schema": "string",
-        "description": "Show images that feature people of the specified age category"
+        "description": "Show images that feature people of the specified age category",
+        "example": "20s"
       },
       {
         "name": "peopleEthnicity",
         "schema": "array",
-        "description": "Show images with people of the specified ethnicities, or start with NOT to show images without those ethnicities"
+        "description": "Show images with people of the specified ethnicities, or start with NOT to show images without those ethnicities",
+        "example": "hispanic"
       },
       {
         "name": "peopleGender",
         "schema": "string",
-        "description": "Show images with people of the specified gender"
+        "description": "Show images with people of the specified gender",
+        "example": "both"
       },
       {
         "name": "peopleNumber",
         "schema": "integer",
-        "description": "Show images with the specified number of people"
+        "description": "Show images with the specified number of people",
+        "example": 2
       },
       {
         "name": "query",
         "schema": "string",
-        "description": "One or more search terms separated by spaces; you can use NOT to filter out images that match a term"
+        "description": "One or more search terms separated by spaces; you can use NOT to filter out images that match a term",
+        "example": "dogs on the beach"
       },
       {
         "name": "region",
         "schema": "undefined",
-        "description": "Raise or lower search result rankings based on the result's relevance to a specified region; you can provide a country code or an IP address from which the API infers a country"
+        "description": "Raise or lower search result rankings based on the result's relevance to a specified region; you can provide a country code or an IP address from which the API infers a country",
+        "example": "US"
       },
       {
         "name": "safe",
         "schema": "boolean",
-        "description": "Enable or disable safe search"
+        "description": "Enable or disable safe search",
+        "default": true
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "Sort by"
+        "description": "Sort by",
+        "default": "popular"
       },
       {
         "name": "spellcheckQuery",
         "schema": "boolean",
-        "description": "Spellcheck the search query and return results on suggested spellings"
+        "description": "Spellcheck the search query and return results on suggested spellings",
+        "default": true
       },
       {
         "name": "view",
         "schema": "string",
-        "description": "Amount of detail to render in the response"
+        "description": "Amount of detail to render in the response",
+        "default": "minimal"
       },
       {
         "name": "width",
@@ -4146,12 +4527,14 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "widthFrom",
         "schema": "integer",
-        "description": "Show images with the specified width or larger, in pixels"
+        "description": "Show images with the specified width or larger, in pixels",
+        "example": 1920
       },
       {
         "name": "widthTo",
         "schema": "integer",
-        "description": "Show images with the specified width or smaller, in pixels"
+        "description": "Show images with the specified width or smaller, in pixels",
+        "example": 1920
       }
     ],
     "responses": [
@@ -4185,12 +4568,14 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "query",
         "schema": "string",
         "required": true,
-        "description": "Search term for which you want keyword suggestions"
+        "description": "Search term for which you want keyword suggestions",
+        "example": "cats"
       },
       {
         "name": "limit",
         "schema": "integer",
-        "description": "Limit the number of suggestions"
+        "description": "Limit the number of suggestions",
+        "default": 10
       }
     ],
     "responses": [
@@ -4224,7 +4609,8 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "text",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TEXT"
       }
     ],
     "responses": [
@@ -4257,37 +4643,44 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "type",
         "schema": "array",
-        "description": "Show images that were added, deleted, or edited; by default, the endpoint returns images that were updated in any of these ways"
+        "description": "Show images that were added, deleted, or edited; by default, the endpoint returns images that were updated in any of these ways",
+        "example": "addition"
       },
       {
         "name": "startDate",
         "schema": "string",
-        "description": "Show images updated on or after the specified date"
+        "description": "Show images updated on or after the specified date",
+        "example": "2021-03-29T00:00:00.000Z"
       },
       {
         "name": "endDate",
         "schema": "string",
-        "description": "Show images updated before the specified date"
+        "description": "Show images updated before the specified date",
+        "example": "2021-03-29T00:00:00.000Z"
       },
       {
         "name": "interval",
         "schema": "string",
-        "description": "Show images updated in the specified time period, where the time period is an interval (like SQL INTERVAL) such as 1 DAY, 6 HOUR, or 30 MINUTE; the default is 1 HOUR, which shows images that were updated in the hour preceding the request"
+        "description": "Show images updated in the specified time period, where the time period is an interval (like SQL INTERVAL) such as 1 DAY, 6 HOUR, or 30 MINUTE; the default is 1 HOUR, which shows images that were updated in the hour preceding the request",
+        "default": "1 HOUR"
       },
       {
         "name": "page",
         "schema": "integer",
-        "description": "Page number"
+        "description": "Page number",
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "default": 100
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "Sort order"
+        "description": "Sort order",
+        "default": "newest"
       }
     ],
     "responses": [
@@ -4309,22 +4702,26 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Image ID"
+        "description": "Image ID",
+        "example": "465011609"
       },
       {
         "name": "language",
         "schema": "string",
-        "description": "Language for the keywords and categories in the response"
+        "description": "Language for the keywords and categories in the response",
+        "example": "es"
       },
       {
         "name": "view",
         "schema": "string",
-        "description": "Amount of detail to render in the response"
+        "description": "Amount of detail to render in the response",
+        "default": "full"
       },
       {
         "name": "searchId",
         "schema": "string",
-        "description": "The ID of the search that is related to this request"
+        "description": "The ID of the search that is related to this request",
+        "example": "00000000-0000-0000-0000-000000000000"
       }
     ],
     "responses": [
@@ -4358,27 +4755,32 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Image ID"
+        "description": "Image ID",
+        "example": "465011609"
       },
       {
         "name": "language",
         "schema": "string",
-        "description": "Language for the keywords and categories in the response"
+        "description": "Language for the keywords and categories in the response",
+        "example": "es"
       },
       {
         "name": "page",
         "schema": "integer",
-        "description": "Page number"
+        "description": "Page number",
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "default": 20
       },
       {
         "name": "view",
         "schema": "string",
-        "description": "Amount of detail to render in the response"
+        "description": "Amount of detail to render in the response",
+        "default": "minimal"
       }
     ],
     "responses": [
@@ -4412,7 +4814,8 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "client_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CLIENT_ID"
       },
       {
         "name": "client_secret",
@@ -4430,19 +4833,22 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "expires",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "grant_type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "GRANT_TYPE"
       },
       {
         "name": "realm",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": "customer"
       },
       {
         "name": "refresh_token",
@@ -4482,35 +4888,43 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "clientId",
         "schema": "string",
         "required": true,
-        "description": "Client ID (Consumer Key) of your application"
+        "description": "Client ID (Consumer Key) of your application",
+        "example": "6d097450b209c6dcd859"
       },
       {
         "name": "realm",
         "schema": "string",
-        "description": "User type to be authorized (usually 'customer')"
+        "description": "User type to be authorized (usually 'customer')",
+        "example": "customer",
+        "default": "customer"
       },
       {
         "name": "redirectUri",
         "schema": "string",
         "required": true,
-        "description": "The callback URI to send the request to after authorization; must use a host name that is registered with your application"
+        "description": "The callback URI to send the request to after authorization; must use a host name that is registered with your application",
+        "example": "localhost"
       },
       {
         "name": "responseType",
         "schema": "string",
         "required": true,
-        "description": "Type of temporary authorization code that will be used to generate an access code; the only valid value is 'code'"
+        "description": "Type of temporary authorization code that will be used to generate an access code; the only valid value is 'code'",
+        "example": "code"
       },
       {
         "name": "scope",
         "schema": "string",
-        "description": "Space-separated list of scopes to be authorized"
+        "description": "Space-separated list of scopes to be authorized",
+        "example": "user.view",
+        "default": "user.view"
       },
       {
         "name": "state",
         "schema": "string",
         "required": true,
-        "description": "Unique value used by the calling app to verify the request"
+        "description": "Unique value used by the calling app to verify the request",
+        "example": "1540290465000"
       }
     ],
     "responses": [
@@ -4548,27 +4962,36 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "array",
         "required": true,
-        "description": "One or more sound effect IDs"
+        "description": "One or more sound effect IDs",
+        "example": [
+          "1110335168",
+          "465011609"
+        ]
       },
       {
         "name": "view",
         "schema": "string",
-        "description": "Amount of detail to render in the response"
+        "description": "Amount of detail to render in the response",
+        "example": "minimal",
+        "default": "minimal"
       },
       {
         "name": "language",
         "schema": "string",
-        "description": "Language for the keywords and categories in the response"
+        "description": "Language for the keywords and categories in the response",
+        "example": "cs"
       },
       {
         "name": "library",
         "schema": "string",
-        "description": "Which library to fetch from"
+        "description": "Which library to fetch from",
+        "example": "shutterstock"
       },
       {
         "name": "searchId",
         "schema": "string",
-        "description": "The ID of the search that is related to this request"
+        "description": "The ID of the search that is related to this request",
+        "example": "00000000-0000-0000-0000-000000000000"
       }
     ],
     "responses": [
@@ -4601,42 +5024,50 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "sfxId",
         "schema": "string",
-        "description": "Show licenses for the specified sound effects ID"
+        "description": "Show licenses for the specified sound effects ID",
+        "example": "12345678"
       },
       {
         "name": "license",
         "schema": "string",
-        "description": "Show sound effects that are available with the specified license, such as `standard` or `enhanced`; prepending a `-` sign excludes results from that license"
+        "description": "Show sound effects that are available with the specified license, such as `standard` or `enhanced`; prepending a `-` sign excludes results from that license",
+        "example": "standard"
       },
       {
         "name": "page",
         "schema": "integer",
-        "description": "Page number"
+        "description": "Page number",
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "default": 20
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "Sort order"
+        "description": "Sort order",
+        "default": "newest"
       },
       {
         "name": "username",
         "schema": "string",
-        "description": "Filter licenses by username of licensee"
+        "description": "Filter licenses by username of licensee",
+        "example": "aUniqueUsername"
       },
       {
         "name": "startDate",
         "schema": "string",
-        "description": "Show licenses created on or after the specified date"
+        "description": "Show licenses created on or after the specified date",
+        "example": "2021-03-29T13:25:13.521Z"
       },
       {
         "name": "endDate",
         "schema": "string",
-        "description": "Show licenses created before the specified date"
+        "description": "Show licenses created before the specified date",
+        "example": "2021-03-29T13:25:13.521Z"
       },
       {
         "name": "licenseId",
@@ -4646,12 +5077,14 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "downloadAvailability",
         "schema": "string",
-        "description": "Filter licenses by download availability"
+        "description": "Filter licenses by download availability",
+        "default": "all"
       },
       {
         "name": "teamHistory",
         "schema": "boolean",
-        "description": "Set to true to see license history for all members of your team."
+        "description": "Set to true to see license history for all members of your team.",
+        "default": false
       }
     ],
     "responses": [
@@ -4719,7 +5152,8 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "License ID"
+        "description": "License ID",
+        "example": "123"
       }
     ],
     "responses": [
@@ -4752,67 +5186,83 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "addedDate",
         "schema": "string",
-        "description": "Show sound effects added on the specified date"
+        "description": "Show sound effects added on the specified date",
+        "example": "2022-09-23T00:00:00.000Z"
       },
       {
         "name": "addedDateStart",
         "schema": "string",
-        "description": "Show sound effects added on or after the specified date"
+        "description": "Show sound effects added on or after the specified date",
+        "example": "2021-03-29T00:00:00.000Z"
       },
       {
         "name": "addedDateEnd",
         "schema": "string",
-        "description": "Show sound effects added before the specified date"
+        "description": "Show sound effects added before the specified date",
+        "example": "2021-03-29T00:00:00.000Z"
       },
       {
         "name": "duration",
         "schema": "integer",
-        "description": "Show sound effects with the specified duration in seconds"
+        "description": "Show sound effects with the specified duration in seconds",
+        "example": 180
       },
       {
         "name": "durationFrom",
         "schema": "integer",
-        "description": "Show sound effects with the specified duration or longer in seconds"
+        "description": "Show sound effects with the specified duration or longer in seconds",
+        "example": 30
       },
       {
         "name": "durationTo",
         "schema": "integer",
-        "description": "Show sound effects with the specified duration or shorter in seconds"
+        "description": "Show sound effects with the specified duration or shorter in seconds",
+        "example": 180
       },
       {
         "name": "page",
         "schema": "integer",
-        "description": "Page number"
+        "description": "Page number",
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "example": 1,
+        "default": 20
       },
       {
         "name": "query",
         "schema": "string",
-        "description": "One or more search terms separated by spaces"
+        "description": "One or more search terms separated by spaces",
+        "example": "drum"
       },
       {
         "name": "safe",
         "schema": "boolean",
-        "description": "Enable or disable safe search"
+        "description": "Enable or disable safe search",
+        "default": true
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "Sort by"
+        "description": "Sort by",
+        "example": "popular",
+        "default": "popular"
       },
       {
         "name": "view",
         "schema": "string",
-        "description": "Amount of detail to render in the response"
+        "description": "Amount of detail to render in the response",
+        "example": "full",
+        "default": "minimal"
       },
       {
         "name": "language",
         "schema": "string",
-        "description": "Set query and result language (uses Accept-Language header if not set)"
+        "description": "Set query and result language (uses Accept-Language header if not set)",
+        "example": "cs"
       }
     ],
     "responses": [
@@ -4850,27 +5300,33 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "Audio track ID"
+        "description": "Audio track ID",
+        "example": 442583
       },
       {
         "name": "language",
         "schema": "string",
-        "description": "Language for the keywords and categories in the response"
+        "description": "Language for the keywords and categories in the response",
+        "example": "cs"
       },
       {
         "name": "view",
         "schema": "string",
-        "description": "Amount of detail to render in the response"
+        "description": "Amount of detail to render in the response",
+        "example": "full",
+        "default": "minimal"
       },
       {
         "name": "library",
         "schema": "string",
-        "description": "Which library to fetch from"
+        "description": "Which library to fetch from",
+        "example": "shutterstock"
       },
       {
         "name": "searchId",
         "schema": "string",
-        "description": "The ID of the search that is related to this request"
+        "description": "The ID of the search that is related to this request",
+        "example": "00000000-0000-0000-0000-000000000000"
       }
     ],
     "responses": [
@@ -4907,7 +5363,8 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "text",
         "schema": "string",
-        "description": "Text to echo"
+        "description": "Text to echo",
+        "default": "ok"
       }
     ],
     "responses": [
@@ -4941,7 +5398,8 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "Integer ID"
+        "description": "Integer ID",
+        "example": 123
       },
       {
         "name": "tag",
@@ -5066,17 +5524,23 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "array",
         "required": true,
-        "description": "One or more video IDs"
+        "description": "One or more video IDs",
+        "example": [
+          "639703",
+          "993721"
+        ]
       },
       {
         "name": "view",
         "schema": "string",
-        "description": "Amount of detail to render in the response"
+        "description": "Amount of detail to render in the response",
+        "default": "minimal"
       },
       {
         "name": "searchId",
         "schema": "string",
-        "description": "The ID of the search that is related to this request"
+        "description": "The ID of the search that is related to this request",
+        "example": "00000000-0000-0000-0000-000000000000"
       }
     ],
     "responses": [
@@ -5109,7 +5573,8 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "language",
         "schema": "string",
-        "description": "Language for the keywords and categories in the response"
+        "description": "Language for the keywords and categories in the response",
+        "example": "es"
       }
     ],
     "responses": [
@@ -5142,17 +5607,20 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "page",
         "schema": "integer",
-        "description": "Page number"
+        "description": "Page number",
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "default": 100
       },
       {
         "name": "embed",
         "schema": "array",
-        "description": "Which sharing information to include in the response, such as a URL to the collection"
+        "description": "Which sharing information to include in the response, such as a URL to the collection",
+        "example": "share_code"
       }
     ],
     "responses": [
@@ -5186,7 +5654,8 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -5219,7 +5688,8 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "embed",
         "schema": "string",
-        "description": "What information to include in the response, such as a URL to the collection"
+        "description": "What information to include in the response, such as a URL to the collection",
+        "example": "share_url"
       }
     ],
     "responses": [
@@ -5253,7 +5723,8 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Collection ID"
+        "description": "Collection ID",
+        "example": "136351027"
       },
       {
         "name": "embed",
@@ -5296,17 +5767,20 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Collection ID"
+        "description": "Collection ID",
+        "example": "136351027"
       },
       {
         "name": "page",
         "schema": "integer",
-        "description": "Page number"
+        "description": "Page number",
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "default": 100
       }
     ],
     "responses": [
@@ -5344,7 +5818,8 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the collection to delete"
+        "description": "The ID of the collection to delete",
+        "example": "17555176"
       }
     ],
     "responses": [
@@ -5382,7 +5857,8 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the collection to return"
+        "description": "The ID of the collection to return",
+        "example": "17555176"
       },
       {
         "name": "embed",
@@ -5430,13 +5906,15 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the collection to rename"
+        "description": "The ID of the collection to rename",
+        "example": "17555176"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -5474,7 +5952,8 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the Collection from which items will be deleted"
+        "description": "The ID of the Collection from which items will be deleted",
+        "example": "17555176"
       },
       {
         "name": "itemId",
@@ -5517,17 +5996,20 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Collection ID"
+        "description": "Collection ID",
+        "example": "17555176"
       },
       {
         "name": "page",
         "schema": "integer",
-        "description": "Page number"
+        "description": "Page number",
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "default": 100
       },
       {
         "name": "shareCode",
@@ -5537,7 +6019,8 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "sort",
         "schema": "string",
-        "description": "Sort order"
+        "description": "Sort order",
+        "default": "oldest"
       }
     ],
     "responses": [
@@ -5575,7 +6058,8 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the collection to which items should be added"
+        "description": "The ID of the collection to which items should be added",
+        "example": "17555176"
       },
       {
         "name": "items",
@@ -5618,52 +6102,62 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "videoId",
         "schema": "string",
-        "description": "Show licenses for the specified video ID"
+        "description": "Show licenses for the specified video ID",
+        "example": "12345678"
       },
       {
         "name": "license",
         "schema": "string",
-        "description": "Show videos that are available with the specified license, such as `standard` or `enhanced`; prepending a `-` sign excludes results from that license"
+        "description": "Show videos that are available with the specified license, such as `standard` or `enhanced`; prepending a `-` sign excludes results from that license",
+        "example": "standard"
       },
       {
         "name": "page",
         "schema": "integer",
-        "description": "Page number"
+        "description": "Page number",
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "default": 20
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "Sort by oldest or newest videos first"
+        "description": "Sort by oldest or newest videos first",
+        "default": "newest"
       },
       {
         "name": "username",
         "schema": "string",
-        "description": "Filter licenses by username of licensee"
+        "description": "Filter licenses by username of licensee",
+        "example": "aUniqueUsername"
       },
       {
         "name": "startDate",
         "schema": "string",
-        "description": "Show licenses created on or after the specified date"
+        "description": "Show licenses created on or after the specified date",
+        "example": "2021-03-29T13:25:13.521Z"
       },
       {
         "name": "endDate",
         "schema": "string",
-        "description": "Show licenses created before the specified date"
+        "description": "Show licenses created before the specified date",
+        "example": "2021-03-29T13:25:13.521Z"
       },
       {
         "name": "downloadAvailability",
         "schema": "string",
-        "description": "Filter licenses by download availability"
+        "description": "Filter licenses by download availability",
+        "default": "all"
       },
       {
         "name": "teamHistory",
         "schema": "boolean",
-        "description": "Set to true to see license history for all members of your team."
+        "description": "Set to true to see license history for all members of your team.",
+        "default": false
       }
     ],
     "responses": [
@@ -5696,12 +6190,14 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "subscriptionId",
         "schema": "string",
-        "description": "The subscription ID to use for licensing"
+        "description": "The subscription ID to use for licensing",
+        "example": "s12345678"
       },
       {
         "name": "size",
         "schema": "string",
-        "description": "The size of the video to license"
+        "description": "The size of the video to license",
+        "default": "web"
       },
       {
         "name": "searchId",
@@ -5746,12 +6242,17 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The license ID of the item to (re)download. The download links in the response are valid for 8 hours."
+        "description": "The license ID of the item to (re)download. The download links in the response are valid for 8 hours.",
+        "example": "e123"
       },
       {
         "name": "auth_cookie",
         "schema": "object",
-        "description": ""
+        "description": "",
+        "example": {
+          "name": "The name of the cookie",
+          "value": "The value of the cookie"
+        }
       },
       {
         "name": "show_modal",
@@ -5799,22 +6300,26 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "addedDate",
         "schema": "string",
-        "description": "Show videos added on the specified date"
+        "description": "Show videos added on the specified date",
+        "example": "2020-05-29T00:00:00.000Z"
       },
       {
         "name": "addedDateStart",
         "schema": "string",
-        "description": "Show videos added on or after the specified date"
+        "description": "Show videos added on or after the specified date",
+        "example": "2020-05-29T00:00:00.000Z"
       },
       {
         "name": "addedDateEnd",
         "schema": "string",
-        "description": "Show videos added before the specified date"
+        "description": "Show videos added before the specified date",
+        "example": "2020-05-29T00:00:00.000Z"
       },
       {
         "name": "aspectRatio",
         "schema": "string",
-        "description": "Show videos with the specified aspect ratio"
+        "description": "Show videos with the specified aspect ratio",
+        "example": 43
       },
       {
         "name": "category",
@@ -5824,12 +6329,14 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "contributor",
         "schema": "array",
-        "description": "Show videos with the specified artist names or IDs"
+        "description": "Show videos with the specified artist names or IDs",
+        "example": "[12345678]"
       },
       {
         "name": "contributorCountry",
         "schema": "array",
-        "description": "Show videos from contributors in one or more specified countries"
+        "description": "Show videos from contributors in one or more specified countries",
+        "example": "US"
       },
       {
         "name": "duration",
@@ -5839,12 +6346,14 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "durationFrom",
         "schema": "integer",
-        "description": "Show videos with the specified duration or longer in seconds"
+        "description": "Show videos with the specified duration or longer in seconds",
+        "example": 60
       },
       {
         "name": "durationTo",
         "schema": "integer",
-        "description": "Show videos with the specified duration or shorter in seconds"
+        "description": "Show videos with the specified duration or shorter in seconds",
+        "example": 180
       },
       {
         "name": "fps",
@@ -5854,92 +6363,116 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "fpsFrom",
         "schema": "number",
-        "description": "Show videos with the specified frames per second or more"
+        "description": "Show videos with the specified frames per second or more",
+        "example": 24
       },
       {
         "name": "fpsTo",
         "schema": "number",
-        "description": "Show videos with the specified frames per second or fewer"
+        "description": "Show videos with the specified frames per second or fewer",
+        "example": 60
       },
       {
         "name": "keywordSafeSearch",
         "schema": "boolean",
-        "description": "Hide results with potentially unsafe keywords"
+        "description": "Hide results with potentially unsafe keywords",
+        "default": true
       },
       {
         "name": "language",
         "schema": "string",
-        "description": "Set query and result language (uses Accept-Language header if not set)"
+        "description": "Set query and result language (uses Accept-Language header if not set)",
+        "example": "cs"
       },
       {
         "name": "license",
         "schema": "array",
-        "description": "Show only videos with the specified license or licenses"
+        "description": "Show only videos with the specified license or licenses",
+        "example": [
+          "commercial",
+          "editorial"
+        ]
       },
       {
         "name": "model",
         "schema": "array",
-        "description": "Show videos with each of the specified models"
+        "description": "Show videos with each of the specified models",
+        "example": [
+          "442583",
+          "434750"
+        ]
       },
       {
         "name": "page",
         "schema": "integer",
-        "description": "Page number"
+        "description": "Page number",
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "default": 20
       },
       {
         "name": "peopleAge",
         "schema": "string",
-        "description": "Show videos that feature people of the specified age range"
+        "description": "Show videos that feature people of the specified age range",
+        "example": "20s"
       },
       {
         "name": "peopleEthnicity",
         "schema": "array",
-        "description": "Show videos with people of the specified ethnicities"
+        "description": "Show videos with people of the specified ethnicities",
+        "example": "hispanic"
       },
       {
         "name": "peopleGender",
         "schema": "string",
-        "description": "Show videos with people with the specified gender"
+        "description": "Show videos with people with the specified gender",
+        "example": "female"
       },
       {
         "name": "peopleNumber",
         "schema": "integer",
-        "description": "Show videos with the specified number of people"
+        "description": "Show videos with the specified number of people",
+        "example": 2
       },
       {
         "name": "peopleModelReleased",
         "schema": "boolean",
-        "description": "Show only videos of people with a signed model release"
+        "description": "Show only videos of people with a signed model release",
+        "example": true
       },
       {
         "name": "query",
         "schema": "string",
-        "description": "One or more search terms separated by spaces; you can use NOT to filter out videos that match a term"
+        "description": "One or more search terms separated by spaces; you can use NOT to filter out videos that match a term",
+        "example": "dogs running on the beach"
       },
       {
         "name": "resolution",
         "schema": "string",
-        "description": "Show videos with the specified resolution"
+        "description": "Show videos with the specified resolution",
+        "example": "4k"
       },
       {
         "name": "safe",
         "schema": "boolean",
-        "description": "Enable or disable safe search"
+        "description": "Enable or disable safe search",
+        "default": true
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "Sort by one of these categories"
+        "description": "Sort by one of these categories",
+        "default": "popular"
       },
       {
         "name": "view",
         "schema": "string",
-        "description": "Amount of detail to render in the response"
+        "description": "Amount of detail to render in the response",
+        "default": "minimal"
       }
     ],
     "responses": [
@@ -5977,12 +6510,14 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "query",
         "schema": "string",
         "required": true,
-        "description": "Search term for which you want keyword suggestions"
+        "description": "Search term for which you want keyword suggestions",
+        "example": "cats"
       },
       {
         "name": "limit",
         "schema": "integer",
-        "description": "Limit the number of the suggestions"
+        "description": "Limit the number of the suggestions",
+        "default": 10
       }
     ],
     "responses": [
@@ -6015,32 +6550,38 @@ export default function ShutterstockTypeScriptSdk() {
       {
         "name": "startDate",
         "schema": "string",
-        "description": "Show videos updated on or after the specified date"
+        "description": "Show videos updated on or after the specified date",
+        "example": "2020-05-29T00:00:00.000Z"
       },
       {
         "name": "endDate",
         "schema": "string",
-        "description": "Show videos updated before the specified date"
+        "description": "Show videos updated before the specified date",
+        "example": "2021-05-29T00:00:00.000Z"
       },
       {
         "name": "interval",
         "schema": "string",
-        "description": "Show videos updated in the specified time period, where the time period is an interval (like SQL INTERVAL) such as 1 DAY, 6 HOUR, or 30 MINUTE; the default is 1 HOUR, which shows videos that were updated in the hour preceding the request"
+        "description": "Show videos updated in the specified time period, where the time period is an interval (like SQL INTERVAL) such as 1 DAY, 6 HOUR, or 30 MINUTE; the default is 1 HOUR, which shows videos that were updated in the hour preceding the request",
+        "default": "1 HOUR"
       },
       {
         "name": "page",
         "schema": "integer",
-        "description": "Page number"
+        "description": "Page number",
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "default": 100
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "Sort by oldest or newest videos first"
+        "description": "Sort by oldest or newest videos first",
+        "default": "newest"
       }
     ],
     "responses": [
@@ -6062,22 +6603,26 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Video ID"
+        "description": "Video ID",
+        "example": "639703"
       },
       {
         "name": "language",
         "schema": "string",
-        "description": "Language for the keywords and categories in the response"
+        "description": "Language for the keywords and categories in the response",
+        "example": "es"
       },
       {
         "name": "view",
         "schema": "string",
-        "description": "Amount of detail to render in the response"
+        "description": "Amount of detail to render in the response",
+        "default": "full"
       },
       {
         "name": "searchId",
         "schema": "string",
-        "description": "The ID of the search that is related to this request"
+        "description": "The ID of the search that is related to this request",
+        "example": "00000000-0000-0000-0000-000000000000"
       }
     ],
     "responses": [
@@ -6115,27 +6660,32 @@ export default function ShutterstockTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of a video for which similar videos should be returned"
+        "description": "The ID of a video for which similar videos should be returned",
+        "example": "2140697"
       },
       {
         "name": "language",
         "schema": "string",
-        "description": "Language for the keywords and categories in the response"
+        "description": "Language for the keywords and categories in the response",
+        "example": "es"
       },
       {
         "name": "page",
         "schema": "integer",
-        "description": "Page number"
+        "description": "Page number",
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of results per page"
+        "description": "Number of results per page",
+        "default": 20
       },
       {
         "name": "view",
         "schema": "string",
-        "description": "Amount of detail to render in the response"
+        "description": "Amount of detail to render in the response",
+        "default": "minimal"
       }
     ],
     "responses": [

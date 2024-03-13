@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function MastercardTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function MastercardTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/mastercard/logo.png"
       clientNameCamelCase="mastercard"
       homepage="finicity.com"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/mastercard/favicon.png"
       contactUrl="https://developer.mastercard.com/open-banking-us/documentation/support/"
       contactEmail="apisupport@mastercard.com"
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/mastercard/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["payments","finance","open_banking","banking","consumer"]}
       methods={[
   {
     "url": "/aggregation/v2/partners/authentication",
@@ -36,13 +39,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "partnerId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "1234583871234"
       },
       {
         "name": "partnerSecret",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "aqJ5Ic4SEVx2IgDQ6oR4"
       }
     ],
     "responses": [
@@ -95,43 +100,51 @@ export default function MastercardTypeScriptSdk() {
         "name": "language",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "es"
       },
       {
         "name": "partnerId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "1234583871234"
       },
       {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "1005061234"
       },
       {
         "name": "consumerId",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "0bf46322c167b562e6cbed9d40e19a4c"
       },
       {
         "name": "redirectUri",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "https://www.finicity.com/connect/"
       },
       {
         "name": "webhook",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "https://webhook.site/8d4421a7-d1d1-4f01-bb08-5370aff0321b"
       },
       {
         "name": "webhookContentType",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "application/json",
+        "default": "application/json"
       },
       {
         "name": "webhookData",
@@ -155,13 +168,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "singleUseUrl",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "experience",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "default"
       },
       {
         "name": "institutionSettings",
@@ -173,7 +188,8 @@ export default function MastercardTypeScriptSdk() {
         "name": "fromDate",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 1607450357
       },
       {
         "name": "reportCustomFields",
@@ -185,7 +201,8 @@ export default function MastercardTypeScriptSdk() {
         "name": "isWebView",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -215,43 +232,51 @@ export default function MastercardTypeScriptSdk() {
         "name": "language",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "es"
       },
       {
         "name": "partnerId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "1234583871234"
       },
       {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "1005061234"
       },
       {
         "name": "institutionId",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 4222
       },
       {
         "name": "redirectUri",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "https://www.finicity.com/connect/"
       },
       {
         "name": "webhook",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "https://webhook.site/8d4421a7-d1d1-4f01-bb08-5370aff0321b"
       },
       {
         "name": "webhookContentType",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "application/json",
+        "default": "application/json"
       },
       {
         "name": "webhookData",
@@ -269,19 +294,22 @@ export default function MastercardTypeScriptSdk() {
         "name": "experience",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "default"
       },
       {
         "name": "singleUseUrl",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "isWebView",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -311,43 +339,51 @@ export default function MastercardTypeScriptSdk() {
         "name": "language",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "es"
       },
       {
         "name": "partnerId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "1234583871234"
       },
       {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "1005061234"
       },
       {
         "name": "institutionLoginId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "1007302745"
       },
       {
         "name": "redirectUri",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "https://www.finicity.com/connect/"
       },
       {
         "name": "webhook",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "https://webhook.site/8d4421a7-d1d1-4f01-bb08-5370aff0321b"
       },
       {
         "name": "webhookContentType",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "application/json",
+        "default": "application/json"
       },
       {
         "name": "webhookData",
@@ -365,19 +401,22 @@ export default function MastercardTypeScriptSdk() {
         "name": "experience",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "default"
       },
       {
         "name": "singleUseUrl",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "isWebView",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -411,43 +450,51 @@ export default function MastercardTypeScriptSdk() {
         "name": "language",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "es"
       },
       {
         "name": "partnerId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "1234583871234"
       },
       {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "1005061234"
       },
       {
         "name": "consumerId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "0bf46322c167b562e6cbed9d40e19a4c"
       },
       {
         "name": "redirectUri",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "https://www.finicity.com/connect/"
       },
       {
         "name": "webhook",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "https://webhook.site/8d4421a7-d1d1-4f01-bb08-5370aff0321b"
       },
       {
         "name": "webhookContentType",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "application/json",
+        "default": "application/json"
       },
       {
         "name": "webhookData",
@@ -477,19 +524,22 @@ export default function MastercardTypeScriptSdk() {
         "name": "experience",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "default"
       },
       {
         "name": "singleUseUrl",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "fromDate",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 1607450357
       },
       {
         "name": "reportCustomFields",
@@ -531,13 +581,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "language",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "es"
       },
       {
         "name": "partnerId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "1234583871234"
       },
       {
         "name": "borrowers",
@@ -549,19 +601,23 @@ export default function MastercardTypeScriptSdk() {
         "name": "redirectUri",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "https://www.finicity.com/connect/"
       },
       {
         "name": "webhook",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "https://webhook.site/8d4421a7-d1d1-4f01-bb08-5370aff0321b"
       },
       {
         "name": "webhookContentType",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "application/json",
+        "default": "application/json"
       },
       {
         "name": "webhookData",
@@ -585,13 +641,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "experience",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "default"
       },
       {
         "name": "fromDate",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 1607450357
       },
       {
         "name": "reportCustomFields",
@@ -603,7 +661,8 @@ export default function MastercardTypeScriptSdk() {
         "name": "singleUseUrl",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -632,27 +691,33 @@ export default function MastercardTypeScriptSdk() {
       {
         "name": "partnerId",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "1234583871234"
       },
       {
         "name": "customerId",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "1005061234"
       },
       {
         "name": "redirectUri",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "https://www.finicity.com/connect/"
       },
       {
         "name": "webhook",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "https://webhook.site/8d4421a7-d1d1-4f01-bb08-5370aff0321b"
       },
       {
         "name": "webhookContentType",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "application/json",
+        "default": "application/json"
       },
       {
         "name": "webhookData",
@@ -667,12 +732,14 @@ export default function MastercardTypeScriptSdk() {
       {
         "name": "experience",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "default"
       },
       {
         "name": "accountId",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "5011648377"
       }
     ],
     "responses": [
@@ -702,13 +769,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "language",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "es"
       },
       {
         "name": "partnerId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "1234583871234"
       },
       {
         "name": "borrowers",
@@ -720,19 +789,23 @@ export default function MastercardTypeScriptSdk() {
         "name": "redirectUri",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "https://www.finicity.com/connect/"
       },
       {
         "name": "webhook",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "https://webhook.site/8d4421a7-d1d1-4f01-bb08-5370aff0321b"
       },
       {
         "name": "webhookContentType",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "application/json",
+        "default": "application/json"
       },
       {
         "name": "webhookData",
@@ -762,13 +835,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "experience",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "default"
       },
       {
         "name": "fromDate",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 1607450357
       },
       {
         "name": "reportCustomFields",
@@ -780,7 +855,8 @@ export default function MastercardTypeScriptSdk() {
         "name": "singleUseUrl",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -810,37 +886,43 @@ export default function MastercardTypeScriptSdk() {
         "name": "username",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "customerusername1"
       },
       {
         "name": "firstName",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "John"
       },
       {
         "name": "lastName",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Smith"
       },
       {
         "name": "applicationId",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "123456789"
       },
       {
         "name": "phone",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "1-801-984-4200"
       },
       {
         "name": "email",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "myname@mycompany.com"
       }
     ],
     "responses": [
@@ -870,37 +952,43 @@ export default function MastercardTypeScriptSdk() {
         "name": "username",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "customerusername1"
       },
       {
         "name": "firstName",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "John"
       },
       {
         "name": "lastName",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Smith"
       },
       {
         "name": "applicationId",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "123456789"
       },
       {
         "name": "phone",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "1-801-984-4200"
       },
       {
         "name": "email",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "myname@mycompany.com"
       }
     ],
     "responses": [
@@ -934,31 +1022,38 @@ export default function MastercardTypeScriptSdk() {
         "name": "username",
         "schema": "string",
         "required": false,
-        "description": "Username for exact match (will return 0 or 1 record)"
+        "description": "Username for exact match (will return 0 or 1 record)",
+        "example": "customerusername1"
       },
       {
         "name": "type",
         "schema": "string",
         "required": false,
-        "description": "\"testing\" or \"active\" to return only customers of that type, or leave empty to return all customers"
+        "description": "\"testing\" or \"active\" to return only customers of that type, or leave empty to return all customers",
+        "example": "active"
       },
       {
         "name": "search",
         "schema": "string",
         "required": false,
-        "description": "The text you wish to match. Leave this empty if you wish to return all customers. Must be URL-encoded (see: [Handling Spaces in Queries](https://developer.mastercard.com/open-banking-us/documentation/codes-and-formats/))."
+        "description": "The text you wish to match. Leave this empty if you wish to return all customers. Must be URL-encoded (see: [Handling Spaces in Queries](https://developer.mastercard.com/open-banking-us/documentation/codes-and-formats/)).",
+        "example": "Search Value"
       },
       {
         "name": "start",
         "schema": "integer",
         "required": false,
-        "description": "Index of the page of results to return"
+        "description": "Index of the page of results to return",
+        "example": 1,
+        "default": 1
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Maximum number of results per page"
+        "description": "Maximum number of results per page",
+        "example": 1,
+        "default": 25
       }
     ],
     "responses": [
@@ -988,7 +1083,8 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       }
     ],
     "responses": [
@@ -1022,7 +1118,8 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       }
     ],
     "responses": [
@@ -1052,7 +1149,8 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       }
     ],
     "responses": [
@@ -1086,17 +1184,20 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "firstName",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "John"
       },
       {
         "name": "lastName",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Smith"
       }
     ],
     "responses": [
@@ -1130,7 +1231,8 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       }
     ],
     "responses": [
@@ -1164,55 +1266,64 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "firstName",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "John"
       },
       {
         "name": "lastName",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Smith"
       },
       {
         "name": "address",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "434 W Ascension Way"
       },
       {
         "name": "city",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Murray"
       },
       {
         "name": "state",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "UT"
       },
       {
         "name": "zip",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "84123"
       },
       {
         "name": "phone",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "1-801-984-4200"
       },
       {
         "name": "ssn",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "999-99-9999"
       },
       {
         "name": "birthday",
@@ -1224,13 +1335,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "email",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "myname@mycompany.com"
       },
       {
         "name": "suffix",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "PhD"
       }
     ],
     "responses": [
@@ -1268,7 +1381,8 @@ export default function MastercardTypeScriptSdk() {
         "name": "consumerId",
         "schema": "string",
         "required": true,
-        "description": "The consumer ID"
+        "description": "The consumer ID",
+        "example": "0bf46322c167b562e6cbed9d40e19a4c"
       }
     ],
     "responses": [
@@ -1302,47 +1416,56 @@ export default function MastercardTypeScriptSdk() {
         "name": "consumerId",
         "schema": "string",
         "required": true,
-        "description": "The consumer ID"
+        "description": "The consumer ID",
+        "example": "0bf46322c167b562e6cbed9d40e19a4c"
       },
       {
         "name": "firstName",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "John"
       },
       {
         "name": "lastName",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Smith"
       },
       {
         "name": "address",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "434 W Ascension Way"
       },
       {
         "name": "city",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Murray"
       },
       {
         "name": "state",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "UT"
       },
       {
         "name": "zip",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "84123"
       },
       {
         "name": "phone",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "1-801-984-4200"
       },
       {
         "name": "ssn",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "999-99-9999"
       },
       {
         "name": "birthday",
@@ -1352,12 +1475,14 @@ export default function MastercardTypeScriptSdk() {
       {
         "name": "email",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "myname@mycompany.com"
       },
       {
         "name": "suffix",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "PhD"
       }
     ],
     "responses": [
@@ -1391,13 +1516,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "institutionLoginId",
         "schema": "string",
         "required": true,
-        "description": "The institution login ID"
+        "description": "The institution login ID",
+        "example": "1007302745"
       }
     ],
     "responses": [
@@ -1431,13 +1558,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "institutionLoginId",
         "schema": "string",
         "required": true,
-        "description": "The institution login ID"
+        "description": "The institution login ID",
+        "example": "1007302745"
       }
     ],
     "responses": [
@@ -1471,13 +1600,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "institutionLoginId",
         "schema": "string",
         "required": true,
-        "description": "The institution login ID"
+        "description": "The institution login ID",
+        "example": "1007302745"
       }
     ],
     "responses": [
@@ -1511,13 +1642,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "institutionLoginId",
         "schema": "string",
         "required": true,
-        "description": "The institution login ID"
+        "description": "The institution login ID",
+        "example": "1007302745"
       }
     ],
     "responses": [
@@ -1551,13 +1684,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "accountId",
         "schema": "string",
         "required": true,
-        "description": "The account ID"
+        "description": "The account ID",
+        "example": "5011648377"
       }
     ],
     "responses": [
@@ -1591,13 +1726,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "accountId",
         "schema": "string",
         "required": true,
-        "description": "The account ID"
+        "description": "The account ID",
+        "example": "5011648377"
       }
     ],
     "responses": [
@@ -1631,19 +1768,22 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "status",
         "schema": "string",
         "required": false,
-        "description": "A filter to fetch account in the given status"
+        "description": "A filter to fetch account in the given status",
+        "example": "pending"
       },
       {
         "name": "accountType",
         "schema": "string",
         "required": false,
-        "description": "A filter to fetch accounts for the given type. Currently supported types: \"ava\""
+        "description": "A filter to fetch accounts for the given type. Currently supported types: \"ava\"",
+        "example": "ava"
       }
     ],
     "responses": [
@@ -1677,7 +1817,8 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       }
     ],
     "responses": [
@@ -1711,7 +1852,8 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       }
     ],
     "responses": [
@@ -1745,13 +1887,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "institutionId",
         "schema": "integer",
         "required": true,
-        "description": "The institution ID"
+        "description": "The institution ID",
+        "example": 4222
       }
     ],
     "responses": [
@@ -1785,13 +1929,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "institutionId",
         "schema": "integer",
         "required": true,
-        "description": "The institution ID"
+        "description": "The institution ID",
+        "example": 4222
       }
     ],
     "responses": [
@@ -1825,13 +1971,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "institutionLoginId",
         "schema": "string",
         "required": true,
-        "description": "The institution login ID"
+        "description": "The institution login ID",
+        "example": "1007302745"
       }
     ],
     "responses": [
@@ -1865,13 +2013,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "accountId",
         "schema": "string",
         "required": true,
-        "description": "The account ID"
+        "description": "The account ID",
+        "example": "5011648377"
       }
     ],
     "responses": [
@@ -1905,7 +2055,8 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       }
     ],
     "responses": [
@@ -1939,13 +2090,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "accountId",
         "schema": "string",
         "required": true,
-        "description": "The account ID"
+        "description": "The account ID",
+        "example": "5011648377"
       }
     ],
     "responses": [
@@ -1983,13 +2136,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "accountId",
         "schema": "string",
         "required": true,
-        "description": "The account ID"
+        "description": "The account ID",
+        "example": "5011648377"
       }
     ],
     "responses": [
@@ -2027,19 +2182,22 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "accountId",
         "schema": "string",
         "required": true,
-        "description": "The account ID"
+        "description": "The account ID",
+        "example": "5011648377"
       },
       {
         "name": "withInsights",
         "schema": "boolean",
         "required": false,
-        "description": "If this parameter is true, Identity Insights data will be returned along with the account owner information"
+        "description": "If this parameter is true, Identity Insights data will be returned along with the account owner information",
+        "example": false
       }
     ],
     "responses": [
@@ -2069,67 +2227,78 @@ export default function MastercardTypeScriptSdk() {
         "name": "appDescription",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "The app that makes your budgeting experience awesome"
       },
       {
         "name": "appName",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Awesome Budget App"
       },
       {
         "name": "appUrl",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "https://www.finicity.com/"
       },
       {
         "name": "ownerAddressLine1",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "434 W Ascension Way"
       },
       {
         "name": "ownerAddressLine2",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Suite #200"
       },
       {
         "name": "ownerCity",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Murray"
       },
       {
         "name": "ownerCountry",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USA"
       },
       {
         "name": "ownerName",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Finicity"
       },
       {
         "name": "ownerPostalCode",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "84123"
       },
       {
         "name": "ownerState",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "UT"
       },
       {
         "name": "image",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcgICAKICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICB2ZXJzaW9uPSIxLjEiCiAgIHZpZXdCb3g9IjAgMCAwIDAiCiAgIGhlaWdodD0iMCIKICAgd2lkdGg9IjAiPgogICAgPGcvPgo8L3N2Zz4K"
       }
     ],
     "responses": [
@@ -2159,73 +2328,85 @@ export default function MastercardTypeScriptSdk() {
         "name": "preAppId",
         "schema": "string",
         "required": true,
-        "description": "The application registration tracking ID"
+        "description": "The application registration tracking ID",
+        "example": "2581"
       },
       {
         "name": "appDescription",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "The app that makes your budgeting experience awesome"
       },
       {
         "name": "appName",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Awesome Budget App"
       },
       {
         "name": "appUrl",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "https://www.finicity.com/"
       },
       {
         "name": "ownerAddressLine1",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "434 W Ascension Way"
       },
       {
         "name": "ownerAddressLine2",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Suite #200"
       },
       {
         "name": "ownerCity",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Murray"
       },
       {
         "name": "ownerCountry",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USA"
       },
       {
         "name": "ownerName",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Finicity"
       },
       {
         "name": "ownerPostalCode",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "84123"
       },
       {
         "name": "ownerState",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "UT"
       },
       {
         "name": "image",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcgICAKICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICB2ZXJzaW9uPSIxLjEiCiAgIHZpZXdCb3g9IjAgMCAwIDAiCiAgIGhlaWdodD0iMCIKICAgd2lkdGg9IjAiPgogICAgPGcvPgo8L3N2Zz4K"
       }
     ],
     "responses": [
@@ -2259,49 +2440,59 @@ export default function MastercardTypeScriptSdk() {
         "name": "preAppId",
         "schema": "string",
         "required": false,
-        "description": "The application registration tracking ID"
+        "description": "The application registration tracking ID",
+        "example": "2581"
       },
       {
         "name": "applicationId",
         "schema": "string",
         "required": false,
-        "description": "The application ID"
+        "description": "The application ID",
+        "example": "123456789"
       },
       {
         "name": "status",
         "schema": "string",
         "required": false,
-        "description": "Look up app registration requests by status"
+        "description": "Look up app registration requests by status",
+        "example": "P"
       },
       {
         "name": "appName",
         "schema": "string",
         "required": false,
-        "description": "Look up app registration requests by app name"
+        "description": "Look up app registration requests by app name",
+        "example": "Awesome Budget App"
       },
       {
         "name": "submittedDate",
         "schema": "integer",
         "required": false,
-        "description": "Look up app registration requests by the date they were submitted"
+        "description": "Look up app registration requests by the date they were submitted",
+        "example": 1607450357
       },
       {
         "name": "modifiedDate",
         "schema": "integer",
         "required": false,
-        "description": "Look up app registration requests by the date the request was updated. This can be used to determine when a request was updated to \"A\" or \"R\"."
+        "description": "Look up app registration requests by the date the request was updated. This can be used to determine when a request was updated to \"A\" or \"R\".",
+        "example": 1607450357
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Index of the page of results to return"
+        "description": "Index of the page of results to return",
+        "example": 1,
+        "default": 1
       },
       {
         "name": "pageSize",
         "schema": "integer",
         "required": false,
-        "description": "Maximum number of results per page"
+        "description": "Maximum number of results per page",
+        "example": 20,
+        "default": 1
       }
     ],
     "responses": [
@@ -2335,13 +2526,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "applicationId",
         "schema": "string",
         "required": true,
-        "description": "The application ID"
+        "description": "The application ID",
+        "example": "123456789"
       }
     ],
     "responses": [
@@ -2375,13 +2568,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "institutionLoginId",
         "schema": "string",
         "required": true,
-        "description": "The institution login ID"
+        "description": "The institution login ID",
+        "example": "1007302745"
       }
     ],
     "responses": [
@@ -2415,31 +2610,38 @@ export default function MastercardTypeScriptSdk() {
         "name": "search",
         "schema": "string",
         "required": false,
-        "description": "Search term (financial institution `name` field). Leave empty for all FIs."
+        "description": "Search term (financial institution `name` field). Leave empty for all FIs.",
+        "example": "finbank"
       },
       {
         "name": "start",
         "schema": "integer",
         "required": false,
-        "description": "Index of the page of results to return"
+        "description": "Index of the page of results to return",
+        "example": 1,
+        "default": 1
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Maximum number of results per page"
+        "description": "Maximum number of results per page",
+        "example": 1,
+        "default": 25
       },
       {
         "name": "type",
         "schema": "string",
         "required": false,
-        "description": "A product type: \"transAgg\", \"ach\", \"stateAgg\", \"voi\", \"voa\", \"aha\", \"availBalance\", \"accountOwner\""
+        "description": "A product type: \"transAgg\", \"ach\", \"stateAgg\", \"voi\", \"voa\", \"aha\", \"availBalance\", \"accountOwner\"",
+        "example": "voa"
       },
       {
         "name": "supportedCountries",
         "schema": "array",
         "required": false,
-        "description": "A list of country codes, '*' for all countries."
+        "description": "A list of country codes, '*' for all countries.",
+        "example": "us"
       }
     ],
     "responses": [
@@ -2469,31 +2671,38 @@ export default function MastercardTypeScriptSdk() {
         "name": "search",
         "schema": "string",
         "required": false,
-        "description": "Search term (financial institution `name` field). Leave empty for all FIs."
+        "description": "Search term (financial institution `name` field). Leave empty for all FIs.",
+        "example": "finbank"
       },
       {
         "name": "start",
         "schema": "integer",
         "required": false,
-        "description": "Index of the page of results to return"
+        "description": "Index of the page of results to return",
+        "example": 1,
+        "default": 1
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Maximum number of results per page"
+        "description": "Maximum number of results per page",
+        "example": 1,
+        "default": 25
       },
       {
         "name": "type",
         "schema": "string",
         "required": false,
-        "description": "A product type: \"transAgg\", \"ach\", \"stateAgg\", \"voi\", \"voa\", \"aha\", \"availBalance\", \"accountOwner\""
+        "description": "A product type: \"transAgg\", \"ach\", \"stateAgg\", \"voi\", \"voa\", \"aha\", \"availBalance\", \"accountOwner\"",
+        "example": "voa"
       },
       {
         "name": "supportedCountries",
         "schema": "array",
         "required": false,
-        "description": "A list of country codes, '*' for all countries."
+        "description": "A list of country codes, '*' for all countries.",
+        "example": "us"
       }
     ],
     "responses": [
@@ -2523,31 +2732,38 @@ export default function MastercardTypeScriptSdk() {
         "name": "search",
         "schema": "string",
         "required": false,
-        "description": "Search term (financial institution `name` field). Leave empty for all FIs."
+        "description": "Search term (financial institution `name` field). Leave empty for all FIs.",
+        "example": "finbank"
       },
       {
         "name": "start",
         "schema": "integer",
         "required": false,
-        "description": "Index of the page of results to return"
+        "description": "Index of the page of results to return",
+        "example": 1,
+        "default": 1
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Maximum number of results per page"
+        "description": "Maximum number of results per page",
+        "example": 1,
+        "default": 25
       },
       {
         "name": "type",
         "schema": "string",
         "required": false,
-        "description": "A product type: \"transAgg\", \"ach\", \"stateAgg\", \"voi\", \"voa\", \"aha\", \"availBalance\", \"accountOwner\""
+        "description": "A product type: \"transAgg\", \"ach\", \"stateAgg\", \"voi\", \"voa\", \"aha\", \"availBalance\", \"accountOwner\"",
+        "example": "voa"
       },
       {
         "name": "supportedCountries",
         "schema": "array",
         "required": false,
-        "description": "A list of country codes, '*' for all countries."
+        "description": "A list of country codes, '*' for all countries.",
+        "example": "us"
       }
     ],
     "responses": [
@@ -2577,7 +2793,8 @@ export default function MastercardTypeScriptSdk() {
         "name": "institutionId",
         "schema": "integer",
         "required": true,
-        "description": "The institution ID"
+        "description": "The institution ID",
+        "example": 4222
       }
     ],
     "responses": [
@@ -2611,7 +2828,8 @@ export default function MastercardTypeScriptSdk() {
         "name": "institutionId",
         "schema": "integer",
         "required": true,
-        "description": "The institution ID"
+        "description": "The institution ID",
+        "example": 4222
       }
     ],
     "responses": [
@@ -2645,18 +2863,21 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "callbackUrl",
         "schema": "string",
         "required": false,
-        "description": "A Report Listener URL to receive notifications. The webhook must respond to the Finicity API with a 2xx HTTP status code."
+        "description": "A Report Listener URL to receive notifications. The webhook must respond to the Finicity API with a 2xx HTTP status code.",
+        "example": "https://finicity-test/webhook"
       },
       {
         "name": "accountIds",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "5011648377 5011648378 5011648379"
       },
       {
         "name": "reportCustomFields",
@@ -2666,12 +2887,14 @@ export default function MastercardTypeScriptSdk() {
       {
         "name": "showNsf",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "fromDate",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 1607450357
       }
     ],
     "responses": [
@@ -2705,18 +2928,21 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "callbackUrl",
         "schema": "string",
         "required": false,
-        "description": "A Report Listener URL to receive notifications. The webhook must respond to the Finicity API with a 2xx HTTP status code."
+        "description": "A Report Listener URL to receive notifications. The webhook must respond to the Finicity API with a 2xx HTTP status code.",
+        "example": "https://finicity-test/webhook"
       },
       {
         "name": "accountIds",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "5011648377 5011648378 5011648379"
       },
       {
         "name": "reportCustomFields",
@@ -2726,17 +2952,20 @@ export default function MastercardTypeScriptSdk() {
       {
         "name": "showNsf",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "fromDate",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 1607450357
       },
       {
         "name": "incomeStreamConfidenceMinimum",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 50
       }
     ],
     "responses": [
@@ -2770,18 +2999,21 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "callbackUrl",
         "schema": "string",
         "required": false,
-        "description": "A Report Listener URL to receive notifications. The webhook must respond to the Finicity API with a 2xx HTTP status code."
+        "description": "A Report Listener URL to receive notifications. The webhook must respond to the Finicity API with a 2xx HTTP status code.",
+        "example": "https://finicity-test/webhook"
       },
       {
         "name": "accountIds",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "5011648377 5011648378 5011648379"
       },
       {
         "name": "reportCustomFields",
@@ -2791,12 +3023,14 @@ export default function MastercardTypeScriptSdk() {
       {
         "name": "showNsf",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "fromDate",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 1607450357
       }
     ],
     "responses": [
@@ -2830,18 +3064,21 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "callbackUrl",
         "schema": "string",
         "required": false,
-        "description": "A Report Listener URL to receive notifications. The webhook must respond to the Finicity API with a 2xx HTTP status code."
+        "description": "A Report Listener URL to receive notifications. The webhook must respond to the Finicity API with a 2xx HTTP status code.",
+        "example": "https://finicity-test/webhook"
       },
       {
         "name": "accountIds",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "5011648377 5011648378 5011648379"
       },
       {
         "name": "reportCustomFields",
@@ -2851,12 +3088,14 @@ export default function MastercardTypeScriptSdk() {
       {
         "name": "showNsf",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "fromDate",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 1607450357
       }
     ],
     "responses": [
@@ -2890,18 +3129,21 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "callbackUrl",
         "schema": "string",
         "required": false,
-        "description": "A Report Listener URL to receive notifications. The webhook must respond to the Finicity API with a 2xx HTTP status code."
+        "description": "A Report Listener URL to receive notifications. The webhook must respond to the Finicity API with a 2xx HTTP status code.",
+        "example": "https://finicity-test/webhook"
       },
       {
         "name": "accountIds",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "5011648377 5011648378 5011648379"
       },
       {
         "name": "reportCustomFields",
@@ -2911,12 +3153,14 @@ export default function MastercardTypeScriptSdk() {
       {
         "name": "fromDate",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 1607450357
       },
       {
         "name": "incomeStreamConfidenceMinimum",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 50
       }
     ],
     "responses": [
@@ -2950,13 +3194,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "callbackUrl",
         "schema": "string",
         "required": false,
-        "description": "A Report Listener URL to receive notifications. The webhook must respond to the Finicity API with a 2xx HTTP status code."
+        "description": "A Report Listener URL to receive notifications. The webhook must respond to the Finicity API with a 2xx HTTP status code.",
+        "example": "https://finicity-test/webhook"
       },
       {
         "name": "payrollData",
@@ -2974,25 +3220,29 @@ export default function MastercardTypeScriptSdk() {
         "name": "payStatementsFromDate",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 1607450357
       },
       {
         "name": "marketSegment",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Mortgage"
       },
       {
         "name": "excludeEmpInfo",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "purpose",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "31"
       }
     ],
     "responses": [
@@ -3026,23 +3276,27 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "callbackUrl",
         "schema": "string",
         "required": false,
-        "description": "A Report Listener URL to receive notifications. The webhook must respond to the Finicity API with a 2xx HTTP status code."
+        "description": "A Report Listener URL to receive notifications. The webhook must respond to the Finicity API with a 2xx HTTP status code.",
+        "example": "https://finicity-test/webhook"
       },
       {
         "name": "reportId",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "u4hstnnak45g"
       },
       {
         "name": "accountIds",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "5011648377 5011648378 5011648379"
       },
       {
         "name": "reportCustomFields",
@@ -3052,12 +3306,14 @@ export default function MastercardTypeScriptSdk() {
       {
         "name": "fromDate",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 1607450357
       },
       {
         "name": "incomeStreamConfidenceMinimum",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 50
       }
     ],
     "responses": [
@@ -3091,13 +3347,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "callbackUrl",
         "schema": "string",
         "required": false,
-        "description": "A Report Listener URL to receive notifications. The webhook must respond to the Finicity API with a 2xx HTTP status code."
+        "description": "A Report Listener URL to receive notifications. The webhook must respond to the Finicity API with a 2xx HTTP status code.",
+        "example": "https://finicity-test/webhook"
       },
       {
         "name": "paystatementReport",
@@ -3143,19 +3401,22 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "callbackUrl",
         "schema": "string",
         "required": false,
-        "description": "A Report Listener URL to receive notifications. The webhook must respond to the Finicity API with a 2xx HTTP status code."
+        "description": "A Report Listener URL to receive notifications. The webhook must respond to the Finicity API with a 2xx HTTP status code.",
+        "example": "https://finicity-test/webhook"
       },
       {
         "name": "accountIds",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "5011648377 5011648378 5011648379"
       },
       {
         "name": "voieWithInterviewData",
@@ -3173,13 +3434,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "fromDate",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 1607450357
       },
       {
         "name": "incomeStreamConfidenceMinimum",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 50
       }
     ],
     "responses": [
@@ -3213,13 +3476,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "callbackUrl",
         "schema": "string",
         "required": false,
-        "description": "A Report Listener URL to receive notifications. The webhook must respond to the Finicity API with a 2xx HTTP status code."
+        "description": "A Report Listener URL to receive notifications. The webhook must respond to the Finicity API with a 2xx HTTP status code.",
+        "example": "https://finicity-test/webhook"
       },
       {
         "name": "voieWithStatementData",
@@ -3265,13 +3530,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "callbackUrl",
         "schema": "string",
         "required": false,
-        "description": "A Report Listener URL to receive notifications. The webhook must respond to the Finicity API with a 2xx HTTP status code."
+        "description": "A Report Listener URL to receive notifications. The webhook must respond to the Finicity API with a 2xx HTTP status code.",
+        "example": "https://finicity-test/webhook"
       },
       {
         "name": "payrollData",
@@ -3289,25 +3556,29 @@ export default function MastercardTypeScriptSdk() {
         "name": "payStatementsFromDate",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 1607450357
       },
       {
         "name": "marketSegment",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Mortgage"
       },
       {
         "name": "excludeEmpInfo",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "purpose",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "31"
       }
     ],
     "responses": [
@@ -3341,25 +3612,30 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "accountId",
         "schema": "string",
         "required": true,
-        "description": "The account ID"
+        "description": "The account ID",
+        "example": "5011648377"
       },
       {
         "name": "index",
         "schema": "integer",
         "required": false,
-        "description": "Request statements from 1-24. By default, 1 is the most recent statement. Increase the index value to count back (by month) and retrieve its most recent statement."
+        "description": "Request statements from 1-24. By default, 1 is the most recent statement. Increase the index value to count back (by month) and retrieve its most recent statement.",
+        "example": 1,
+        "default": 1
       },
       {
         "name": "type",
         "schema": "string",
         "required": false,
-        "description": "The type of statement to retrieve"
+        "description": "The type of statement to retrieve",
+        "example": "taxStatement"
       }
     ],
     "responses": [
@@ -3397,13 +3673,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "callbackUrl",
         "schema": "string",
         "required": false,
-        "description": "A Report Listener URL to receive notifications. The webhook must respond to the Finicity API with a 2xx HTTP status code."
+        "description": "A Report Listener URL to receive notifications. The webhook must respond to the Finicity API with a 2xx HTTP status code.",
+        "example": "https://finicity-test/webhook"
       },
       {
         "name": "statementReportData",
@@ -3449,19 +3727,23 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "accountId",
         "schema": "string",
         "required": true,
-        "description": "The account ID"
+        "description": "The account ID",
+        "example": "5011648377"
       },
       {
         "name": "index",
         "schema": "string",
         "required": false,
-        "description": "Request statements with comma-separated indexes ranged between 1-24. The default value is 1 and it will return the most recent statement. Increasing the index will return older statements, for example, setting the index value to 6 will return a statement from six months ago."
+        "description": "Request statements with comma-separated indexes ranged between 1-24. The default value is 1 and it will return the most recent statement. Increasing the index will return older statements, for example, setting the index value to 6 will return a statement from six months ago.",
+        "example": "1,2,3,4,5,6",
+        "default": "1"
       }
     ],
     "responses": [
@@ -3499,43 +3781,54 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "fromDate",
         "schema": "integer",
         "required": true,
-        "description": "A start date"
+        "description": "A start date",
+        "example": 1607450357
       },
       {
         "name": "toDate",
         "schema": "integer",
         "required": true,
-        "description": "A end date"
+        "description": "A end date",
+        "example": 1607450357
       },
       {
         "name": "start",
         "schema": "integer",
         "required": false,
-        "description": "Index of the page of results to return"
+        "description": "Index of the page of results to return",
+        "example": 1,
+        "default": 1
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Maximum number of results per page"
+        "description": "Maximum number of results per page",
+        "example": 1,
+        "default": 25
       },
       {
         "name": "sort",
         "schema": "string",
         "required": false,
-        "description": "Date sort order: \"asc\" for ascending, \"desc\" for descending"
+        "description": "Date sort order: \"asc\" for ascending, \"desc\" for descending",
+        "example": "desc",
+        "default": "desc"
       },
       {
         "name": "includePending",
         "schema": "boolean",
         "required": false,
-        "description": "If pending transactions must be included"
+        "description": "If pending transactions must be included",
+        "example": false,
+        "default": false
       }
     ],
     "responses": [
@@ -3569,13 +3862,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "transactionId",
         "schema": "integer",
         "required": true,
-        "description": "A transaction ID"
+        "description": "A transaction ID",
+        "example": 21284820852
       }
     ],
     "responses": [
@@ -3609,49 +3904,61 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "accountId",
         "schema": "string",
         "required": true,
-        "description": "The account ID"
+        "description": "The account ID",
+        "example": "5011648377"
       },
       {
         "name": "fromDate",
         "schema": "integer",
         "required": true,
-        "description": "A start date"
+        "description": "A start date",
+        "example": 1607450357
       },
       {
         "name": "toDate",
         "schema": "integer",
         "required": true,
-        "description": "A end date"
+        "description": "A end date",
+        "example": 1607450357
       },
       {
         "name": "start",
         "schema": "integer",
         "required": false,
-        "description": "Index of the page of results to return"
+        "description": "Index of the page of results to return",
+        "example": 1,
+        "default": 1
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Maximum number of results per page"
+        "description": "Maximum number of results per page",
+        "example": 1,
+        "default": 25
       },
       {
         "name": "sort",
         "schema": "string",
         "required": false,
-        "description": "Date sort order: \"asc\" for ascending, \"desc\" for descending"
+        "description": "Date sort order: \"asc\" for ascending, \"desc\" for descending",
+        "example": "desc",
+        "default": "desc"
       },
       {
         "name": "includePending",
         "schema": "boolean",
         "required": false,
-        "description": "If pending transactions must be included"
+        "description": "If pending transactions must be included",
+        "example": false,
+        "default": false
       }
     ],
     "responses": [
@@ -3685,35 +3992,42 @@ export default function MastercardTypeScriptSdk() {
         "name": "callbackUrl",
         "schema": "string",
         "required": false,
-        "description": "A Report Listener URL to receive notifications. The webhook must respond to the Finicity API with a 2xx HTTP status code."
+        "description": "A Report Listener URL to receive notifications. The webhook must respond to the Finicity API with a 2xx HTTP status code.",
+        "example": "https://finicity-test/webhook"
       },
       {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "toDate",
         "schema": "integer",
         "required": true,
-        "description": "A end date"
+        "description": "A end date",
+        "example": 1607450357
       },
       {
         "name": "includePending",
         "schema": "boolean",
         "required": false,
-        "description": "If pending transactions must be included"
+        "description": "If pending transactions must be included",
+        "example": false,
+        "default": false
       },
       {
         "name": "accountIds",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "5011648377 5011648378 5011648379"
       },
       {
         "name": "fromDate",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 1607450357
       },
       {
         "name": "reportCustomFields",
@@ -3752,19 +4066,22 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "userType",
         "schema": "string",
         "required": true,
-        "description": "UserType indicates if the request is for a business or personal use case, Allowed values: business/personal."
+        "description": "UserType indicates if the request is for a business or personal use case, Allowed values: business/personal.",
+        "example": "personal"
       },
       {
         "name": "callbackUrl",
         "schema": "string",
         "required": false,
-        "description": "A Report Listener URL to receive notifications. The webhook must respond to the Finicity API with a 2xx HTTP status code."
+        "description": "A Report Listener URL to receive notifications. The webhook must respond to the Finicity API with a 2xx HTTP status code.",
+        "example": "https://finicity-test/webhook"
       },
       {
         "name": "analyticsReportData",
@@ -3774,7 +4091,8 @@ export default function MastercardTypeScriptSdk() {
       {
         "name": "accountIds",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "5011648377 5011648378 5011648379"
       },
       {
         "name": "reportCustomFields",
@@ -3784,7 +4102,8 @@ export default function MastercardTypeScriptSdk() {
       {
         "name": "fromDate",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 1607450357
       }
     ],
     "responses": [
@@ -3818,19 +4137,22 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "userType",
         "schema": "string",
         "required": true,
-        "description": "UserType indicates if the request is for a business or personal use case, Allowed values: business/personal."
+        "description": "UserType indicates if the request is for a business or personal use case, Allowed values: business/personal.",
+        "example": "personal"
       },
       {
         "name": "callbackUrl",
         "schema": "string",
         "required": false,
-        "description": "A Report Listener URL to receive notifications. The webhook must respond to the Finicity API with a 2xx HTTP status code."
+        "description": "A Report Listener URL to receive notifications. The webhook must respond to the Finicity API with a 2xx HTTP status code.",
+        "example": "https://finicity-test/webhook"
       },
       {
         "name": "analyticsReportData",
@@ -3840,7 +4162,8 @@ export default function MastercardTypeScriptSdk() {
       {
         "name": "accountIds",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "5011648377 5011648378 5011648379"
       },
       {
         "name": "reportCustomFields",
@@ -3850,7 +4173,8 @@ export default function MastercardTypeScriptSdk() {
       {
         "name": "fromDate",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 1607450357
       }
     ],
     "responses": [
@@ -3884,19 +4208,22 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "label",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "lastPayPeriod"
       },
       {
         "name": "statement",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "VGhpcyBtdXN0IGJlIGFuIGltYWdl"
       }
     ],
     "responses": [
@@ -3930,13 +4257,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "accountId",
         "schema": "string",
         "required": true,
-        "description": "The account ID"
+        "description": "The account ID",
+        "example": "5011648377"
       }
     ],
     "responses": [
@@ -3970,13 +4299,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "portfolioId",
         "schema": "string",
         "required": true,
-        "description": "A portfolio ID with the portfolio version number. Using the portfolio number without a version number will return the most recently generated reports."
+        "description": "A portfolio ID with the portfolio version number. Using the portfolio number without a version number will return the most recently generated reports.",
+        "example": "y4zsgccj4xpw-6-port"
       }
     ],
     "responses": [
@@ -4010,13 +4341,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "accountId",
         "schema": "string",
         "required": true,
-        "description": "The account ID"
+        "description": "The account ID",
+        "example": "5011648377"
       }
     ],
     "responses": [
@@ -4050,19 +4383,22 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "accountId",
         "schema": "string",
         "required": true,
-        "description": "The account ID"
+        "description": "The account ID",
+        "example": "5011648377"
       },
       {
         "name": "callbackUrl",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "https://www.mydomain.com/txpush/listener"
       }
     ],
     "responses": [
@@ -4096,43 +4432,51 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "accountId",
         "schema": "string",
         "required": true,
-        "description": "The account ID"
+        "description": "The account ID",
+        "example": "5011648377"
       },
       {
         "name": "description",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "a testing transaction description"
       },
       {
         "name": "amount",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": -4.25
       },
       {
         "name": "status",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "pending",
+        "default": "active"
       },
       {
         "name": "postedDate",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 1607450357
       },
       {
         "name": "transactionDate",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 1607450357
       }
     ],
     "responses": [
@@ -4166,13 +4510,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "subscriptionId",
         "schema": "integer",
         "required": true,
-        "description": "The subscription ID"
+        "description": "The subscription ID",
+        "example": 17554874
       }
     ],
     "responses": [
@@ -4206,13 +4552,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "consumerId",
         "schema": "string",
         "required": true,
-        "description": "The consumer ID"
+        "description": "The consumer ID",
+        "example": "0bf46322c167b562e6cbed9d40e19a4c"
       },
       {
         "name": "portfolioId",
         "schema": "string",
         "required": true,
-        "description": "A portfolio ID with the portfolio version number. Using the portfolio number without a version number will return the most recently generated reports."
+        "description": "A portfolio ID with the portfolio version number. Using the portfolio number without a version number will return the most recently generated reports.",
+        "example": "y4zsgccj4xpw-6-port"
       }
     ],
     "responses": [
@@ -4246,13 +4594,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "accountId",
         "schema": "string",
         "required": true,
-        "description": "The account ID"
+        "description": "The account ID",
+        "example": "5011648377"
       }
     ],
     "responses": [
@@ -4286,25 +4636,29 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "reportId",
         "schema": "string",
         "required": true,
-        "description": "ID of the report"
+        "description": "ID of the report",
+        "example": "u4hstnnak45g"
       },
       {
         "name": "onBehalfOf",
         "schema": "string",
         "required": false,
-        "description": "The name of the entity you are retrieving the report on behalf of"
+        "description": "The name of the entity you are retrieving the report on behalf of",
+        "example": "Some entity"
       },
       {
         "name": "purpose",
         "schema": "string",
         "required": false,
-        "description": "2-digit code from [Permissible Purpose Codes](https://developer.mastercard.com/open-banking-us/documentation/products/lend/report-handling/permissible-purpose-codes/), specifying the reason for retrieving this report. Required for retrieving some reports."
+        "description": "2-digit code from [Permissible Purpose Codes](https://developer.mastercard.com/open-banking-us/documentation/products/lend/report-handling/permissible-purpose-codes/), specifying the reason for retrieving this report. Required for retrieving some reports.",
+        "example": "3F"
       }
     ],
     "responses": [
@@ -4338,25 +4692,29 @@ export default function MastercardTypeScriptSdk() {
         "name": "purpose",
         "schema": "string",
         "required": false,
-        "description": "2-digit code from [Permissible Purpose Codes](https://developer.mastercard.com/open-banking-us/documentation/products/lend/report-handling/permissible-purpose-codes/), specifying the reason for retrieving this report. Required for retrieving some reports."
+        "description": "2-digit code from [Permissible Purpose Codes](https://developer.mastercard.com/open-banking-us/documentation/products/lend/report-handling/permissible-purpose-codes/), specifying the reason for retrieving this report. Required for retrieving some reports.",
+        "example": "3F"
       },
       {
         "name": "consumerId",
         "schema": "string",
         "required": true,
-        "description": "The consumer ID"
+        "description": "The consumer ID",
+        "example": "0bf46322c167b562e6cbed9d40e19a4c"
       },
       {
         "name": "reportId",
         "schema": "string",
         "required": true,
-        "description": "ID of the report"
+        "description": "ID of the report",
+        "example": "u4hstnnak45g"
       },
       {
         "name": "onBehalfOf",
         "schema": "string",
         "required": false,
-        "description": "The name of the entity you are retrieving the report on behalf of"
+        "description": "The name of the entity you are retrieving the report on behalf of",
+        "example": "Some entity"
       }
     ],
     "responses": [
@@ -4390,13 +4748,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "purpose",
         "schema": "string",
         "required": false,
-        "description": "2-digit code from [Permissible Purpose Codes](https://developer.mastercard.com/open-banking-us/documentation/products/lend/report-handling/permissible-purpose-codes/), specifying the reason for retrieving this report. Required for retrieving some reports."
+        "description": "2-digit code from [Permissible Purpose Codes](https://developer.mastercard.com/open-banking-us/documentation/products/lend/report-handling/permissible-purpose-codes/), specifying the reason for retrieving this report. Required for retrieving some reports.",
+        "example": "3F"
       }
     ],
     "responses": [
@@ -4434,13 +4794,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "purpose",
         "schema": "string",
         "required": false,
-        "description": "2-digit code from [Permissible Purpose Codes](https://developer.mastercard.com/open-banking-us/documentation/products/lend/report-handling/permissible-purpose-codes/), specifying the reason for retrieving this report. Required for retrieving some reports."
+        "description": "2-digit code from [Permissible Purpose Codes](https://developer.mastercard.com/open-banking-us/documentation/products/lend/report-handling/permissible-purpose-codes/), specifying the reason for retrieving this report. Required for retrieving some reports.",
+        "example": "3F"
       },
       {
         "name": "consumerId",
         "schema": "string",
         "required": true,
-        "description": "The consumer ID"
+        "description": "The consumer ID",
+        "example": "0bf46322c167b562e6cbed9d40e19a4c"
       }
     ],
     "responses": [
@@ -4478,13 +4840,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "assetId",
         "schema": "string",
         "required": true,
-        "description": "The asset ID"
+        "description": "The asset ID",
+        "example": "097545c5-1c2a-4f20-a5ef-77f0820344c9-2018601178"
       }
     ],
     "responses": [
@@ -4518,13 +4882,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "accountId",
         "schema": "string",
         "required": true,
-        "description": "The account ID"
+        "description": "The account ID",
+        "example": "5011648377"
       }
     ],
     "responses": [
@@ -4558,13 +4924,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "accountId",
         "schema": "string",
         "required": true,
-        "description": "The account ID"
+        "description": "The account ID",
+        "example": "5011648377"
       }
     ],
     "responses": [
@@ -4598,18 +4966,21 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "callbackUrl",
         "schema": "string",
         "required": false,
-        "description": "A Report Listener URL to receive notifications. The webhook must respond to the Finicity API with a 2xx HTTP status code."
+        "description": "A Report Listener URL to receive notifications. The webhook must respond to the Finicity API with a 2xx HTTP status code.",
+        "example": "https://finicity-test/webhook"
       },
       {
         "name": "accountIds",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "5011648377 5011648378 5011648379"
       },
       {
         "name": "reportCustomFields",
@@ -4619,17 +4990,20 @@ export default function MastercardTypeScriptSdk() {
       {
         "name": "showNsf",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "fromDate",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 1607450357
       },
       {
         "name": "incomeStreamConfidenceMinimum",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 50
       }
     ],
     "responses": [
@@ -4663,18 +5037,21 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "callbackUrl",
         "schema": "string",
         "required": false,
-        "description": "A Report Listener URL to receive notifications. The webhook must respond to the Finicity API with a 2xx HTTP status code."
+        "description": "A Report Listener URL to receive notifications. The webhook must respond to the Finicity API with a 2xx HTTP status code.",
+        "example": "https://finicity-test/webhook"
       },
       {
         "name": "accountIds",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "5011648377 5011648378 5011648379"
       },
       {
         "name": "reportCustomFields",
@@ -4684,17 +5061,20 @@ export default function MastercardTypeScriptSdk() {
       {
         "name": "showNsf",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "fromDate",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 1607450357
       },
       {
         "name": "incomeStreamConfidenceMinimum",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 50
       }
     ],
     "responses": [
@@ -4728,13 +5108,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "institutionLoginId",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "1007302745"
       },
       {
         "name": "receiver",
@@ -4746,7 +5128,8 @@ export default function MastercardTypeScriptSdk() {
         "name": "callbackUrl",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "https://www.mydomain.com/listener"
       }
     ],
     "responses": [
@@ -4788,19 +5171,25 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "accountId",
         "schema": "string",
         "required": true,
-        "description": "The account ID"
+        "description": "The account ID",
+        "example": "5011648377"
       },
       {
         "name": "amounts",
         "schema": "array",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": [
+          0.12,
+          0.15
+        ]
       }
     ],
     "responses": [
@@ -4834,13 +5223,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "accountId",
         "schema": "string",
         "required": true,
-        "description": "The account ID"
+        "description": "The account ID",
+        "example": "5011648377"
       }
     ],
     "responses": [
@@ -4874,13 +5265,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "referenceNumber",
         "schema": "string",
         "required": false,
-        "description": "Partner-provided reference number to correlate reports."
+        "description": "Partner-provided reference number to correlate reports.",
+        "example": "abc123"
       },
       {
         "name": "accountIds",
@@ -4890,7 +5283,8 @@ export default function MastercardTypeScriptSdk() {
       {
         "name": "lengthOfReport",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 730
       }
     ],
     "responses": [
@@ -4932,13 +5326,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "referenceNumber",
         "schema": "string",
         "required": false,
-        "description": "Partner-provided reference number to correlate reports."
+        "description": "Partner-provided reference number to correlate reports.",
+        "example": "abc123"
       },
       {
         "name": "accountIds",
@@ -4948,7 +5344,8 @@ export default function MastercardTypeScriptSdk() {
       {
         "name": "lengthOfReport",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 730
       }
     ],
     "responses": [
@@ -4990,13 +5387,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "referenceNumber",
         "schema": "string",
         "required": false,
-        "description": "Partner-provided reference number to correlate reports."
+        "description": "Partner-provided reference number to correlate reports.",
+        "example": "abc123"
       },
       {
         "name": "accountIds",
@@ -5006,7 +5405,8 @@ export default function MastercardTypeScriptSdk() {
       {
         "name": "lengthOfReport",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 730
       }
     ],
     "responses": [
@@ -5048,13 +5448,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "referenceNumber",
         "schema": "string",
         "required": false,
-        "description": "Partner-provided reference number to correlate reports."
+        "description": "Partner-provided reference number to correlate reports.",
+        "example": "abc123"
       },
       {
         "name": "accountIds",
@@ -5064,7 +5466,8 @@ export default function MastercardTypeScriptSdk() {
       {
         "name": "lengthOfReport",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 730
       }
     ],
     "responses": [
@@ -5106,13 +5509,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "referenceNumber",
         "schema": "string",
         "required": false,
-        "description": "Partner-provided reference number to correlate reports."
+        "description": "Partner-provided reference number to correlate reports.",
+        "example": "abc123"
       }
     ],
     "responses": [
@@ -5150,13 +5555,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "A customer ID"
+        "description": "A customer ID",
+        "example": "1005061234"
       },
       {
         "name": "referenceNumber",
         "schema": "string",
         "required": false,
-        "description": "Partner-provided reference number to correlate reports."
+        "description": "Partner-provided reference number to correlate reports.",
+        "example": "abc123"
       }
     ],
     "responses": [
@@ -5198,7 +5605,8 @@ export default function MastercardTypeScriptSdk() {
         "name": "obbReportId",
         "schema": "string",
         "required": true,
-        "description": "Report ID generated and returned by OBB products"
+        "description": "Report ID generated and returned by OBB products",
+        "example": "bcab9592-e032-4e7b-b737-0380619a0573"
       }
     ],
     "responses": [
@@ -5232,13 +5640,15 @@ export default function MastercardTypeScriptSdk() {
         "name": "obbReportId",
         "schema": "string",
         "required": true,
-        "description": "Report ID generated and returned by OBB products"
+        "description": "Report ID generated and returned by OBB products",
+        "example": "bcab9592-e032-4e7b-b737-0380619a0573"
       },
       {
         "name": "purpose",
         "schema": "string",
         "required": true,
-        "description": "2-digit code from [Permissible Purpose Codes](https://developer.mastercard.com/open-banking-us/documentation/products/lend/report-handling/permissible-purpose-codes/), specifying the reason for retrieving this report. Required for retrieving some reports."
+        "description": "2-digit code from [Permissible Purpose Codes](https://developer.mastercard.com/open-banking-us/documentation/products/lend/report-handling/permissible-purpose-codes/), specifying the reason for retrieving this report. Required for retrieving some reports.",
+        "example": "3F"
       }
     ],
     "responses": [
@@ -5272,19 +5682,22 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "1005061234"
       },
       {
         "name": "partnerId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "1234583871234"
       },
       {
         "name": "thirdPartyPartnerId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "1234583871234"
       },
       {
         "name": "provenance",
@@ -5330,7 +5743,8 @@ export default function MastercardTypeScriptSdk() {
         "name": "consentReceiptId",
         "schema": "string",
         "required": true,
-        "description": "Third party access key receipt ID"
+        "description": "Third party access key receipt ID",
+        "example": "cr_4pfI3r1X8aOHrDDwrwC01NHFxOXlT1"
       }
     ],
     "responses": [
@@ -5364,25 +5778,29 @@ export default function MastercardTypeScriptSdk() {
         "name": "consentReceiptId",
         "schema": "string",
         "required": true,
-        "description": "Third party access key receipt ID"
+        "description": "Third party access key receipt ID",
+        "example": "cr_4pfI3r1X8aOHrDDwrwC01NHFxOXlT1"
       },
       {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "1005061234"
       },
       {
         "name": "partnerId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "1234583871234"
       },
       {
         "name": "thirdPartyPartnerId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "1234583871234"
       },
       {
         "name": "provenance",
@@ -5428,7 +5846,8 @@ export default function MastercardTypeScriptSdk() {
         "name": "institutionLoginId",
         "schema": "integer",
         "required": true,
-        "description": "Institution login id of the customer."
+        "description": "Institution login id of the customer.",
+        "example": 7008461438
       }
     ],
     "responses": [
@@ -5462,7 +5881,8 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "Unique identifier of the customer"
+        "description": "Unique identifier of the customer",
+        "example": "1005061234"
       }
     ],
     "responses": [
@@ -5488,19 +5908,22 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "Unique identifier of the customer"
+        "description": "Unique identifier of the customer",
+        "example": "1005061234"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ABC Tires Inc"
       },
       {
         "name": "personallyLiable",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "address",
@@ -5518,25 +5941,29 @@ export default function MastercardTypeScriptSdk() {
         "name": "url",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "https://www.finicity.com/"
       },
       {
         "name": "email",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "myname@mycompany.com"
       },
       {
         "name": "type",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Nonprofit"
       },
       {
         "name": "taxId",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "A1234561Z"
       }
     ],
     "responses": [
@@ -5566,7 +5993,8 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "Unique identifier of the customer"
+        "description": "Unique identifier of the customer",
+        "example": "1005061234"
       }
     ],
     "responses": [
@@ -5592,19 +6020,22 @@ export default function MastercardTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "Unique identifier of the customer"
+        "description": "Unique identifier of the customer",
+        "example": "1005061234"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ABC Tires Inc"
       },
       {
         "name": "personallyLiable",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "address",
@@ -5622,25 +6053,29 @@ export default function MastercardTypeScriptSdk() {
         "name": "url",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "https://www.finicity.com/"
       },
       {
         "name": "email",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "myname@mycompany.com"
       },
       {
         "name": "type",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Nonprofit"
       },
       {
         "name": "taxId",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "A1234561Z"
       }
     ],
     "responses": [

@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function RottenTomatoesTypeScriptSdk() {
@@ -17,13 +18,15 @@ export default function RottenTomatoesTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/rotten-tomatoes/logo.png"
       clientNameCamelCase="rottenTomatoes"
       homepage="developer.fandango.com/rotten_tomatoes"
-      lastUpdated={new Date("2024-03-11T17:20:37.894Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/rotten-tomatoes/favicon.png"
       contactUrl="https://github.com/mermade/mashery2openapi"
       contactEmail="mike.ralphson@gmail.com"
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/rotten-tomatoes/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["media","collaboration","social_media","reviews","trailers","showtimes","tickets"]}
       methods={[
   {
     "url": "/lists.json",
@@ -83,19 +86,22 @@ export default function RottenTomatoesTypeScriptSdk() {
         "name": "pageLimit",
         "schema": "string",
         "required": false,
-        "description": "The amount of new release dvds to show per page"
+        "description": "The amount of new release dvds to show per page",
+        "default": "16"
       },
       {
         "name": "page",
         "schema": "string",
         "required": false,
-        "description": "The selected page of current DVD releases"
+        "description": "The selected page of current DVD releases",
+        "default": "1"
       },
       {
         "name": "country",
         "schema": "string",
         "required": false,
-        "description": "Provides localized data for the selected country (ISO 3166-1 alpha-2) if available. Otherwise, returns US data."
+        "description": "Provides localized data for the selected country (ISO 3166-1 alpha-2) if available. Otherwise, returns US data.",
+        "default": "us"
       }
     ],
     "responses": [
@@ -125,19 +131,22 @@ export default function RottenTomatoesTypeScriptSdk() {
         "name": "pageLimit",
         "schema": "string",
         "required": false,
-        "description": "The amount of new release dvds to show per page"
+        "description": "The amount of new release dvds to show per page",
+        "default": "16"
       },
       {
         "name": "page",
         "schema": "string",
         "required": false,
-        "description": "The selected page of new release DVDs"
+        "description": "The selected page of new release DVDs",
+        "default": "1"
       },
       {
         "name": "country",
         "schema": "string",
         "required": false,
-        "description": "Provides localized data for the selected country (ISO 3166-1 alpha-2) if available. Otherwise, returns US data."
+        "description": "Provides localized data for the selected country (ISO 3166-1 alpha-2) if available. Otherwise, returns US data.",
+        "default": "us"
       }
     ],
     "responses": [
@@ -167,13 +176,15 @@ export default function RottenTomatoesTypeScriptSdk() {
         "name": "limit",
         "schema": "string",
         "required": false,
-        "description": "Limits the number of top rentals returned"
+        "description": "Limits the number of top rentals returned",
+        "default": "10"
       },
       {
         "name": "country",
         "schema": "string",
         "required": false,
-        "description": "Provides localized data for the selected country (ISO 3166-1 alpha-2) if available. Otherwise, returns US data."
+        "description": "Provides localized data for the selected country (ISO 3166-1 alpha-2) if available. Otherwise, returns US data.",
+        "default": "us"
       }
     ],
     "responses": [
@@ -203,19 +214,22 @@ export default function RottenTomatoesTypeScriptSdk() {
         "name": "pageLimit",
         "schema": "string",
         "required": false,
-        "description": "The amount of upcoming dvds to show per page"
+        "description": "The amount of upcoming dvds to show per page",
+        "default": "16"
       },
       {
         "name": "page",
         "schema": "string",
         "required": false,
-        "description": "The selected page of upcoming DVDs"
+        "description": "The selected page of upcoming DVDs",
+        "default": "1"
       },
       {
         "name": "country",
         "schema": "string",
         "required": false,
-        "description": "Provides localized data for the selected country (ISO 3166-1 alpha-2) if available. Otherwise, returns US data."
+        "description": "Provides localized data for the selected country (ISO 3166-1 alpha-2) if available. Otherwise, returns US data.",
+        "default": "us"
       }
     ],
     "responses": [
@@ -268,13 +282,15 @@ export default function RottenTomatoesTypeScriptSdk() {
         "name": "limit",
         "schema": "string",
         "required": false,
-        "description": "Limits the number of movies returned"
+        "description": "Limits the number of movies returned",
+        "default": "16"
       },
       {
         "name": "country",
         "schema": "string",
         "required": false,
-        "description": "Provides localized data for the selected country (ISO 3166-1 alpha-2) if available. Otherwise, returns US data."
+        "description": "Provides localized data for the selected country (ISO 3166-1 alpha-2) if available. Otherwise, returns US data.",
+        "default": "us"
       }
     ],
     "responses": [
@@ -304,19 +320,22 @@ export default function RottenTomatoesTypeScriptSdk() {
         "name": "pageLimit",
         "schema": "string",
         "required": false,
-        "description": "The amount of movies in theaters to show per page"
+        "description": "The amount of movies in theaters to show per page",
+        "default": "16"
       },
       {
         "name": "page",
         "schema": "string",
         "required": false,
-        "description": "The selected page of in theaters movies"
+        "description": "The selected page of in theaters movies",
+        "default": "1"
       },
       {
         "name": "country",
         "schema": "string",
         "required": false,
-        "description": "Provides localized data for the selected country (ISO 3166-1 alpha-2) if available. Otherwise, returns US data."
+        "description": "Provides localized data for the selected country (ISO 3166-1 alpha-2) if available. Otherwise, returns US data.",
+        "default": "us"
       }
     ],
     "responses": [
@@ -346,13 +365,15 @@ export default function RottenTomatoesTypeScriptSdk() {
         "name": "limit",
         "schema": "string",
         "required": false,
-        "description": "Limits the number of opening movies returned"
+        "description": "Limits the number of opening movies returned",
+        "default": "16"
       },
       {
         "name": "country",
         "schema": "string",
         "required": false,
-        "description": "Provides localized data for the selected country (ISO 3166-1 alpha-2) if available. Otherwise, returns US data."
+        "description": "Provides localized data for the selected country (ISO 3166-1 alpha-2) if available. Otherwise, returns US data.",
+        "default": "us"
       }
     ],
     "responses": [
@@ -382,19 +403,22 @@ export default function RottenTomatoesTypeScriptSdk() {
         "name": "pageLimit",
         "schema": "string",
         "required": false,
-        "description": "The amount of upcoming movies to show per page"
+        "description": "The amount of upcoming movies to show per page",
+        "default": "16"
       },
       {
         "name": "page",
         "schema": "string",
         "required": false,
-        "description": "The selected page of upcoming movies"
+        "description": "The selected page of upcoming movies",
+        "default": "1"
       },
       {
         "name": "country",
         "schema": "string",
         "required": false,
-        "description": "Provides localized data for the selected country (ISO 3166-1 alpha-2) if available. Otherwise, returns US data."
+        "description": "Provides localized data for the selected country (ISO 3166-1 alpha-2) if available. Otherwise, returns US data.",
+        "default": "us"
       }
     ],
     "responses": [
@@ -424,13 +448,15 @@ export default function RottenTomatoesTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": false,
-        "description": "Movie ID. You can use the movies search endpoint or peruse the lists of movies/dvds to get the Movie ID"
+        "description": "Movie ID. You can use the movies search endpoint or peruse the lists of movies/dvds to get the Movie ID",
+        "default": "0031381"
       },
       {
         "name": "type",
         "schema": "string",
         "required": false,
-        "description": "Only supports imdb lookup at this time"
+        "description": "Only supports imdb lookup at this time",
+        "default": "imdb"
       }
     ],
     "responses": [
@@ -466,13 +492,15 @@ export default function RottenTomatoesTypeScriptSdk() {
         "name": "pageLimit",
         "schema": "string",
         "required": false,
-        "description": "The amount of movie search results to show per page"
+        "description": "The amount of movie search results to show per page",
+        "default": "10"
       },
       {
         "name": "page",
         "schema": "string",
         "required": false,
-        "description": "The selected page of movie search results"
+        "description": "The selected page of movie search results",
+        "default": "1"
       }
     ],
     "responses": [
@@ -502,7 +530,9 @@ export default function RottenTomatoesTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Movie ID. You can use the movies search endpoint or peruse the lists of movies/dvds to get the Movie ID"
+        "description": "Movie ID. You can use the movies search endpoint or peruse the lists of movies/dvds to get the Movie ID",
+        "example": "ID",
+        "default": "770672122"
       }
     ],
     "responses": [
@@ -532,7 +562,9 @@ export default function RottenTomatoesTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Movie ID. You can use the movies search endpoint or peruse the lists of movies/dvds to get the Movie ID"
+        "description": "Movie ID. You can use the movies search endpoint or peruse the lists of movies/dvds to get the Movie ID",
+        "example": "ID",
+        "default": "770672122"
       }
     ],
     "responses": [
@@ -562,7 +594,9 @@ export default function RottenTomatoesTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Movie ID. You can use the movies search endpoint or peruse the lists of movies/dvds to get the Movie ID"
+        "description": "Movie ID. You can use the movies search endpoint or peruse the lists of movies/dvds to get the Movie ID",
+        "example": "ID",
+        "default": "770672122"
       }
     ],
     "responses": [
@@ -592,31 +626,37 @@ export default function RottenTomatoesTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Movie ID. You can use the movies search endpoint or peruse the lists of movies/dvds to get the Movie ID"
+        "description": "Movie ID. You can use the movies search endpoint or peruse the lists of movies/dvds to get the Movie ID",
+        "example": "ID",
+        "default": "770672122"
       },
       {
         "name": "reviewType",
         "schema": "string",
         "required": false,
-        "description": "3 different review types are possible: 'all', 'top_critic' and 'dvd'. 'top_critic' shows all the Rotten Tomatoes designated top critics. 'dvd' pulls the reviews given on the DVD of the movie. 'all' as the name implies retrieves all reviews."
+        "description": "3 different review types are possible: 'all', 'top_critic' and 'dvd'. 'top_critic' shows all the Rotten Tomatoes designated top critics. 'dvd' pulls the reviews given on the DVD of the movie. 'all' as the name implies retrieves all reviews.",
+        "default": "top_critic"
       },
       {
         "name": "pageLimit",
         "schema": "string",
         "required": false,
-        "description": "The number of reviews to show per page"
+        "description": "The number of reviews to show per page",
+        "default": "20"
       },
       {
         "name": "page",
         "schema": "string",
         "required": false,
-        "description": "The selected page of reviews"
+        "description": "The selected page of reviews",
+        "default": "1"
       },
       {
         "name": "country",
         "schema": "string",
         "required": false,
-        "description": "Provides localized data for the selected country (ISO 3166-1 alpha-2) if available. Otherwise, returns US data."
+        "description": "Provides localized data for the selected country (ISO 3166-1 alpha-2) if available. Otherwise, returns US data.",
+        "default": "us"
       }
     ],
     "responses": [
@@ -646,13 +686,16 @@ export default function RottenTomatoesTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Movie ID. You can use the movies search endpoint or peruse the lists of movies/dvds to get the Movie ID"
+        "description": "Movie ID. You can use the movies search endpoint or peruse the lists of movies/dvds to get the Movie ID",
+        "example": "ID",
+        "default": "770672122"
       },
       {
         "name": "limit",
         "schema": "string",
         "required": false,
-        "description": "Limit the number of similar movies to show"
+        "description": "Limit the number of similar movies to show",
+        "default": "5"
       }
     ],
     "responses": [

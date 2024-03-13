@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function HttpbinTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function HttpbinTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/httpbin/logo.svg"
       clientNameCamelCase="httpbin"
       homepage="httpbin.org"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/httpbin/favicon.png"
       contactUrl="https://kennethreitz.org"
       contactEmail="me@kennethreitz.org"
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/httpbin/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["developer_tools","automation","testing","http"]}
       methods={[
   {
     "url": "/absolute-redirect/{n}",
@@ -238,7 +241,9 @@ export default function HttpbinTypeScriptSdk() {
         "name": "value",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "VALUE",
+        "default": "SFRUUEJJTiBpcyBhd2Vzb21l"
       }
     ],
     "responses": [
@@ -260,13 +265,15 @@ export default function HttpbinTypeScriptSdk() {
         "name": "user",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USER"
       },
       {
         "name": "passwd",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PASSWD"
       }
     ],
     "responses": [
@@ -384,7 +391,8 @@ export default function HttpbinTypeScriptSdk() {
         "name": "value",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       }
     ],
     "responses": [
@@ -463,13 +471,15 @@ export default function HttpbinTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "value",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "VALUE"
       }
     ],
     "responses": [
@@ -668,19 +678,22 @@ export default function HttpbinTypeScriptSdk() {
         "name": "qop",
         "schema": "string",
         "required": true,
-        "description": "auth or auth-int"
+        "description": "auth or auth-int",
+        "example": "QOP"
       },
       {
         "name": "user",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USER"
       },
       {
         "name": "passwd",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PASSWD"
       }
     ],
     "responses": [
@@ -706,25 +719,30 @@ export default function HttpbinTypeScriptSdk() {
         "name": "qop",
         "schema": "string",
         "required": true,
-        "description": "auth or auth-int"
+        "description": "auth or auth-int",
+        "example": "QOP"
       },
       {
         "name": "user",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USER"
       },
       {
         "name": "passwd",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PASSWD"
       },
       {
         "name": "algorithm",
         "schema": "string",
         "required": true,
-        "description": "MD5, SHA-256, SHA-512"
+        "description": "MD5, SHA-256, SHA-512",
+        "example": "ALGORITHM",
+        "default": "MD5"
       }
     ],
     "responses": [
@@ -750,31 +768,38 @@ export default function HttpbinTypeScriptSdk() {
         "name": "qop",
         "schema": "string",
         "required": true,
-        "description": "auth or auth-int"
+        "description": "auth or auth-int",
+        "example": "QOP"
       },
       {
         "name": "user",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USER"
       },
       {
         "name": "passwd",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PASSWD"
       },
       {
         "name": "algorithm",
         "schema": "string",
         "required": true,
-        "description": "MD5, SHA-256, SHA-512"
+        "description": "MD5, SHA-256, SHA-512",
+        "example": "ALGORITHM",
+        "default": "MD5"
       },
       {
         "name": "staleAfter",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "STALE_AFTER",
+        "default": "never"
       }
     ],
     "responses": [
@@ -800,25 +825,29 @@ export default function HttpbinTypeScriptSdk() {
         "name": "duration",
         "schema": "number",
         "required": false,
-        "description": "The amount of time (in seconds) over which to drip each byte"
+        "description": "The amount of time (in seconds) over which to drip each byte",
+        "default": 2
       },
       {
         "name": "numbytes",
         "schema": "integer",
         "required": false,
-        "description": "The number of bytes to respond with"
+        "description": "The number of bytes to respond with",
+        "default": 10
       },
       {
         "name": "code",
         "schema": "integer",
         "required": false,
-        "description": "The response code that will be returned"
+        "description": "The response code that will be returned",
+        "default": 200
       },
       {
         "name": "delay",
         "schema": "number",
         "required": false,
-        "description": "The amount of time (in seconds) to delay before responding"
+        "description": "The amount of time (in seconds) to delay before responding",
+        "default": 2
       }
     ],
     "responses": [
@@ -930,13 +959,15 @@ export default function HttpbinTypeScriptSdk() {
         "name": "user",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USER"
       },
       {
         "name": "passwd",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PASSWD"
       }
     ],
     "responses": [
@@ -1192,7 +1223,8 @@ export default function HttpbinTypeScriptSdk() {
         "name": "url",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "URL"
       },
       {
         "name": "statusCode",
@@ -1234,7 +1266,8 @@ export default function HttpbinTypeScriptSdk() {
         "name": "url",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "URL"
       },
       {
         "name": "status_code",
@@ -1262,7 +1295,8 @@ export default function HttpbinTypeScriptSdk() {
         "name": "url",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "URL"
       },
       {
         "name": "status_code",
@@ -1406,7 +1440,8 @@ export default function HttpbinTypeScriptSdk() {
         "name": "codes",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CODES"
       }
     ],
     "responses": [
@@ -1444,7 +1479,8 @@ export default function HttpbinTypeScriptSdk() {
         "name": "codes",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CODES"
       }
     ],
     "responses": [
@@ -1482,7 +1518,8 @@ export default function HttpbinTypeScriptSdk() {
         "name": "codes",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CODES"
       }
     ],
     "responses": [
@@ -1520,7 +1557,8 @@ export default function HttpbinTypeScriptSdk() {
         "name": "codes",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CODES"
       }
     ],
     "responses": [
@@ -1558,7 +1596,8 @@ export default function HttpbinTypeScriptSdk() {
         "name": "codes",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CODES"
       }
     ],
     "responses": [
@@ -1596,7 +1635,8 @@ export default function HttpbinTypeScriptSdk() {
         "name": "codes",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CODES"
       }
     ],
     "responses": [

@@ -63,6 +63,7 @@ type ExtraOrOverwriteProperties = {
 
 export type Published = SdkPageProps & {
   typescriptSdkUsageCode: string;
+  typescriptSdkFirstRequestCode: string;
   originalSpecUrl?: string;
 } & AdditionalSpecDataProps &
   ExtraOrOverwriteProperties;

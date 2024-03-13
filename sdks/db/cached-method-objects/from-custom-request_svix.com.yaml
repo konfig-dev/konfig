@@ -11,15 +11,18 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: idempotencyKey
         schema: string
         description: The request's idempotency key
       - name: featureFlags
         schema: array
         description: ''
+        example: []
       - name: expiry
         schema: integer
         description: ''
+        default: 604800
     responses:
       - statusCode: '200'
         description: ''
@@ -48,6 +51,7 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: idempotencyKey
         schema: string
         description: The request's idempotency key
@@ -106,12 +110,14 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: idempotencyKey
         schema: string
         description: The request's idempotency key
       - name: expiry
         schema: integer
         description: ''
+        example: 60
     responses:
       - statusCode: '204'
         description: no content
@@ -142,6 +148,7 @@ methodObjects:
       - name: iterator
         schema: string
         description: The iterator returned from a prior invocation
+        example: app_1srOrx2ZWZBpBUvZwXKQmoEYga2
       - name: order
         schema: string
         description: The sorting order of the returned items
@@ -174,6 +181,7 @@ methodObjects:
         description: >-
           Get an existing application, or create a new one if doesn't exist.
           It's two separate functions in the libs.
+        default: false
       - name: idempotencyKey
         schema: string
         description: The request's idempotency key
@@ -181,6 +189,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: My first application
       - name: rateLimit
         schema: integer
         required: false
@@ -189,10 +198,12 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: unique-app-identifier
       - name: metadata
         schema: object
         required: false
         description: ''
+        default: &ref_0 {}
     responses:
       - statusCode: '200'
         description: ''
@@ -223,6 +234,7 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
     responses:
       - statusCode: '204'
         description: no content
@@ -251,6 +263,7 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
     responses:
       - statusCode: '200'
         description: ''
@@ -279,6 +292,7 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: name
         schema: string
         description: ''
@@ -288,6 +302,7 @@ methodObjects:
       - name: uid
         schema: string
         description: ''
+        example: unique-app-identifier
       - name: metadata
         schema: object
         description: ''
@@ -319,10 +334,12 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: name
         schema: string
         required: true
         description: ''
+        example: My first application
       - name: rateLimit
         schema: integer
         required: false
@@ -331,10 +348,12 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: unique-app-identifier
       - name: metadata
         schema: object
         required: false
         description: ''
+        default: *ref_0
     responses:
       - statusCode: '200'
         description: ''
@@ -365,12 +384,14 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: limit
         schema: integer
         description: Limit the number of returned items
       - name: iterator
         schema: string
         description: The iterator returned from a prior invocation
+        example: ep_1srOrx2ZWZBpBUvZwXKQmoEYga2
       - name: order
         schema: string
         description: The sorting order of the returned items
@@ -402,6 +423,7 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: idempotencyKey
         schema: string
         description: The request's idempotency key
@@ -409,10 +431,14 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: An example endpoint name
+        default: ''
       - name: version
         schema: integer
         required: false
         description: ''
+        example: 1
+        default: 1
       - name: rateLimit
         schema: integer
         required: false
@@ -421,30 +447,42 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: unique-ep-identifier
       - name: url
         schema: string
         required: true
         description: ''
+        example: https://example.com/webhook/
       - name: disabled
         schema: boolean
         required: false
         description: ''
+        example: false
+        default: false
       - name: filterTypes
         schema: array
         required: false
         description: ''
+        example:
+          - user.signup
+          - user.deleted
       - name: channels
         schema: array
         required: false
         description: ''
+        example:
+          - project_123
+          - group_2
       - name: secret
         schema: string
         required: false
         description: ''
+        example: whsec_C2FVsBQIhrscChlQIMV+b5sSYspob7oD
       - name: metadata
         schema: object
         required: false
         description: ''
+        default: {}
     responses:
       - statusCode: '201'
         description: ''
@@ -473,10 +511,12 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: endpointId
         schema: string
         required: true
         description: The ep's ID or UID
+        example: unique-ep-identifier
     responses:
       - statusCode: '204'
         description: no content
@@ -505,10 +545,12 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: endpointId
         schema: string
         required: true
         description: The ep's ID or UID
+        example: unique-ep-identifier
     responses:
       - statusCode: '200'
         description: ''
@@ -537,22 +579,26 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: endpointId
         schema: string
         required: true
         description: The ep's ID or UID
+        example: unique-ep-identifier
       - name: description
         schema: string
         description: ''
       - name: version
         schema: integer
         description: ''
+        example: 1
       - name: rateLimit
         schema: integer
         description: ''
       - name: uid
         schema: string
         description: ''
+        example: unique-ep-identifier
       - name: url
         schema: string
         description: ''
@@ -568,6 +614,7 @@ methodObjects:
       - name: secret
         schema: string
         description: ''
+        example: whsec_C2FVsBQIhrscChlQIMV+b5sSYspob7oD
       - name: metadata
         schema: object
         description: ''
@@ -599,18 +646,24 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: endpointId
         schema: string
         required: true
         description: The ep's ID or UID
+        example: unique-ep-identifier
       - name: description
         schema: string
         required: false
         description: ''
+        example: An example endpoint name
+        default: ''
       - name: version
         schema: integer
         required: false
         description: ''
+        example: 1
+        default: 1
       - name: rateLimit
         schema: integer
         required: false
@@ -619,26 +672,37 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: unique-ep-identifier
       - name: url
         schema: string
         required: true
         description: ''
+        example: https://example.com/webhook/
       - name: disabled
         schema: boolean
         required: false
         description: ''
+        example: false
+        default: false
       - name: filterTypes
         schema: array
         required: false
         description: ''
+        example:
+          - user.signup
+          - user.deleted
       - name: channels
         schema: array
         required: false
         description: ''
+        example:
+          - project_123
+          - group_2
       - name: metadata
         schema: object
         required: false
         description: ''
+        default: {}
     responses:
       - statusCode: '200'
         description: ''
@@ -669,10 +733,12 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: endpointId
         schema: string
         required: true
         description: The ep's ID or UID
+        example: unique-ep-identifier
     responses:
       - statusCode: '200'
         description: ''
@@ -701,16 +767,20 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: endpointId
         schema: string
         required: true
         description: The ep's ID or UID
+        example: unique-ep-identifier
       - name: idempotencyKey
         schema: string
         description: The request's idempotency key
       - name: key
         schema: string
         description: ''
+        example: whsec_C2FVsBQIhrscChlQIMV+b5sSYspob7oD
+        default: null
     responses:
       - statusCode: '204'
         description: no content
@@ -739,10 +809,12 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: endpointId
         schema: string
         required: true
         description: The ep's ID or UID
+        example: unique-ep-identifier
       - name: since
         schema: string
         description: Filter the range to data starting from this date
@@ -777,10 +849,12 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: endpointId
         schema: string
         required: true
         description: The ep's ID or UID
+        example: unique-ep-identifier
       - name: idempotencyKey
         schema: string
         description: The request's idempotency key
@@ -788,6 +862,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: SINCE
       - name: until
         schema: string
         required: false
@@ -820,10 +895,12 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: endpointId
         schema: string
         required: true
         description: The ep's ID or UID
+        example: unique-ep-identifier
       - name: idempotencyKey
         schema: string
         description: The request's idempotency key
@@ -831,6 +908,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: SINCE
       - name: until
         schema: string
         required: false
@@ -863,10 +941,12 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: endpointId
         schema: string
         required: true
         description: The ep's ID or UID
+        example: unique-ep-identifier
     responses:
       - statusCode: '200'
         description: >-
@@ -900,14 +980,19 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: endpointId
         schema: string
         required: true
         description: The ep's ID or UID
+        example: unique-ep-identifier
       - name: headers
         schema: object
         required: true
         description: ''
+        example:
+          X-Example: '123'
+          X-Foobar: Bar
     responses:
       - statusCode: '204'
         description: no content
@@ -936,14 +1021,19 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: endpointId
         schema: string
         required: true
         description: The ep's ID or UID
+        example: unique-ep-identifier
       - name: headers
         schema: object
         required: true
         description: ''
+        example:
+          X-Example: '123'
+          X-Foobar: Bar
     responses:
       - statusCode: '204'
         description: no content
@@ -972,10 +1062,12 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: endpointId
         schema: string
         required: true
         description: The ep's ID or UID
+        example: unique-ep-identifier
     responses:
       - statusCode: '200'
         description: ''
@@ -1004,10 +1096,12 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: endpointId
         schema: string
         required: true
         description: The ep's ID or UID
+        example: unique-ep-identifier
       - name: code
         schema: string
         description: ''
@@ -1042,10 +1136,12 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: endpointId
         schema: string
         required: true
         description: The ep's ID or UID
+        example: unique-ep-identifier
       - name: idempotencyKey
         schema: string
         description: The request's idempotency key
@@ -1053,6 +1149,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: user.signup
     responses:
       - statusCode: '202'
         description: ''
@@ -1083,6 +1180,7 @@ methodObjects:
       - name: iterator
         schema: string
         description: The iterator returned from a prior invocation
+        example: user.signup
       - name: order
         schema: string
         description: The sorting order of the returned items
@@ -1091,11 +1189,13 @@ methodObjects:
         description: >-
           When `true` archived (deleted but not expunged) items are included in
           the response
+        default: false
       - name: withContent
         schema: boolean
         description: >-
           When `true` the full item (including the schema) is included in the
           response
+        default: false
     responses:
       - statusCode: '200'
         description: ''
@@ -1127,22 +1227,42 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: A user has signed up
       - name: name
         schema: string
         required: true
         description: ''
+        example: user.signup
       - name: archived
         schema: boolean
         required: false
         description: ''
+        example: false
+        default: false
       - name: schemas
         schema: object
         required: false
         description: ''
+        example:
+          '1':
+            title: Invoice Paid Event
+            description: An invoice was paid by a user
+            properties:
+              invoiceId:
+                description: The invoice id
+                type: string
+              userId:
+                description: The user id
+                type: string
+            required:
+              - invoiceId
+              - userId
+            type: object
       - name: featureFlag
         schema: string
         required: false
         description: ''
+        example: cool-new-feature
     responses:
       - statusCode: '201'
         description: ''
@@ -1173,9 +1293,67 @@ methodObjects:
       - name: spec
         schema: object
         description: ''
+        example:
+          openapi: 3.1.0
+          info:
+            title: Webhook Example
+            version: 1.0.0
+          webhooks:
+            pet.new:
+              post:
+                requestBody:
+                  description: Information about a new pet in the system
+                  content:
+                    application/json:
+                      schema:
+                        properties:
+                          id:
+                            format: int64
+                            type: integer
+                          name:
+                            type: string
+                          tag:
+                            type: string
+                        required:
+                          - id
+                          - name
+                responses:
+                  '200':
+                    description: >-
+                      Return a 200 status to indicate that the data was received
+                      successfully
       - name: specRaw
         schema: string
         description: ''
+        example:
+          openapi: 3.1.0
+          info:
+            title: Webhook Example
+            version: 1.0.0
+          webhooks:
+            pet.new:
+              post:
+                requestBody:
+                  description: Information about a new pet in the system
+                  content:
+                    application/json:
+                      schema:
+                        properties:
+                          id:
+                            format: int64
+                            type: integer
+                          name:
+                            type: string
+                          tag:
+                            type: string
+                        required:
+                          - id
+                          - name
+                responses:
+                  '200':
+                    description: >-
+                      Return a 200 status to indicate that the data was received
+                      successfully
     responses:
       - statusCode: '200'
         description: ''
@@ -1204,11 +1382,13 @@ methodObjects:
         schema: string
         required: true
         description: The event type's name
+        example: user.signup
       - name: expunge
         schema: boolean
         description: >-
           By default event types are archived when "deleted". Passing this to
           `true` deletes them entirely.
+        default: false
     responses:
       - statusCode: '204'
         description: no content
@@ -1237,6 +1417,7 @@ methodObjects:
         schema: string
         required: true
         description: The event type's name
+        example: user.signup
     responses:
       - statusCode: '200'
         description: ''
@@ -1265,6 +1446,7 @@ methodObjects:
         schema: string
         required: true
         description: The event type's name
+        example: user.signup
       - name: description
         schema: string
         description: ''
@@ -1274,9 +1456,24 @@ methodObjects:
       - name: schemas
         schema: object
         description: ''
+        example:
+          title: Invoice Paid Event
+          description: An invoice was paid by a user
+          properties:
+            invoiceId:
+              description: The invoice id
+              type: string
+            userId:
+              description: The user id
+              type: string
+          required:
+            - invoiceId
+            - userId
+          type: object
       - name: featureFlag
         schema: string
         description: ''
+        example: cool-new-feature
     responses:
       - statusCode: '200'
         description: ''
@@ -1305,22 +1502,42 @@ methodObjects:
         schema: string
         required: true
         description: The event type's name
+        example: user.signup
       - name: description
         schema: string
         required: true
         description: ''
+        example: A user has signed up
       - name: archived
         schema: boolean
         required: false
         description: ''
+        example: false
+        default: false
       - name: schemas
         schema: object
         required: false
         description: ''
+        example:
+          '1':
+            title: Invoice Paid Event
+            description: An invoice was paid by a user
+            properties:
+              invoiceId:
+                description: The invoice id
+                type: string
+              userId:
+                description: The user id
+                type: string
+            required:
+              - invoiceId
+              - userId
+            type: object
       - name: featureFlag
         schema: string
         required: false
         description: ''
+        example: cool-new-feature
     responses:
       - statusCode: '200'
         description: ''
@@ -1390,6 +1607,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: TASK_ID
     responses:
       - statusCode: '200'
         description: ''
@@ -1418,15 +1636,18 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: limit
         schema: integer
         description: Limit the number of returned items
       - name: iterator
         schema: string
         description: The iterator returned from a prior invocation
+        example: msg_1srOrx2ZWZBpBUvZwXKQmoEYga2
       - name: channel
         schema: string
         description: Filter response based on the channel
+        example: project_1337
       - name: before
         schema: string
         description: Only include items created before a certain date
@@ -1436,9 +1657,11 @@ methodObjects:
       - name: withContent
         schema: boolean
         description: When `true` message payloads are included in the response
+        default: true
       - name: tag
         schema: string
         description: Filter messages matching the provided tag
+        example: project_1337
       - name: eventTypes
         schema: array
         description: Filter response based on the event type
@@ -1470,9 +1693,11 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: withContent
         schema: boolean
         description: When `true` message payloads are included in the response
+        default: true
       - name: idempotencyKey
         schema: string
         description: The request's idempotency key
@@ -1480,26 +1705,40 @@ methodObjects:
         schema: array
         required: false
         description: ''
+        example:
+          - my_tag
+          - other
       - name: eventId
         schema: string
         required: false
         description: ''
+        example: unique-msg-identifier
       - name: eventType
         schema: string
         required: true
         description: ''
+        example: user.signup
       - name: payload
         schema: object
         required: true
         description: ''
+        example:
+          email: test@example.com
+          type: user.created
+          username: test_user
       - name: channels
         schema: array
         required: false
         description: ''
+        example:
+          - project_123
+          - group_2
       - name: payloadRetentionPeriod
         schema: integer
         required: false
         description: ''
+        example: 90
+        default: 90
       - name: application
         schema: object
         required: false
@@ -1538,13 +1777,16 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: msgId
         schema: string
         required: true
         description: The msg's ID or UID
+        example: unique-msg-identifier
       - name: withContent
         schema: boolean
         description: When `true` message payloads are included in the response
+        default: true
     responses:
       - statusCode: '200'
         description: ''
@@ -1573,10 +1815,12 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: msgId
         schema: string
         required: true
         description: The msg's ID or UID
+        example: unique-msg-identifier
     responses:
       - statusCode: '204'
         description: no content
@@ -1607,6 +1851,7 @@ methodObjects:
       - name: iterator
         schema: string
         description: The iterator returned from a prior invocation
+        example: atmpt_1srOrx2ZWZBpBUvZwXKQmoEYga2
       - name: status
         schema: integer
         description: Filter response based on the delivery status
@@ -1616,9 +1861,11 @@ methodObjects:
       - name: channel
         schema: string
         description: Filter response based on the channel
+        example: project_1337
       - name: tag
         schema: string
         description: Filter response based on the tag
+        example: project_1337
       - name: before
         schema: string
         description: Only include items created before a certain date
@@ -1628,9 +1875,11 @@ methodObjects:
       - name: withContent
         schema: boolean
         description: When `true` attempt content is included in the response
+        default: true
       - name: withMsg
         schema: boolean
         description: When `true`, the message information is included in the response
+        default: false
       - name: eventTypes
         schema: array
         description: Filter response based on the event type
@@ -1638,10 +1887,12 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: endpointId
         schema: string
         required: true
         description: The ep's ID or UID
+        example: unique-ep-identifier
     responses:
       - statusCode: '200'
         description: ''
@@ -1672,6 +1923,7 @@ methodObjects:
       - name: iterator
         schema: string
         description: The iterator returned from a prior invocation
+        example: atmpt_1srOrx2ZWZBpBUvZwXKQmoEYga2
       - name: status
         schema: integer
         description: Filter response based on the delivery status
@@ -1681,12 +1933,15 @@ methodObjects:
       - name: channel
         schema: string
         description: Filter response based on the channel
+        example: project_1337
       - name: tag
         schema: string
         description: Filter response based on the tag
+        example: project_1337
       - name: endpointId
         schema: string
         description: Filter the attempts based on the attempted endpoint
+        example: unique-ep-identifier
       - name: before
         schema: string
         description: Only include items created before a certain date
@@ -1696,14 +1951,17 @@ methodObjects:
       - name: withContent
         schema: boolean
         description: When `true` attempt content is included in the response
+        default: true
       - name: appId
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: msgId
         schema: string
         required: true
         description: The msg's ID or UID
+        example: unique-msg-identifier
       - name: eventTypes
         schema: array
         description: Filter response based on the event type
@@ -1737,12 +1995,15 @@ methodObjects:
       - name: iterator
         schema: string
         description: The iterator returned from a prior invocation
+        example: msg_1srOrx2ZWZBpBUvZwXKQmoEYga2
       - name: channel
         schema: string
         description: Filter response based on the channel
+        example: project_1337
       - name: tag
         schema: string
         description: Filter response based on the message tags
+        example: project_1337
       - name: status
         schema: integer
         description: Filter response based on the delivery status
@@ -1755,14 +2016,17 @@ methodObjects:
       - name: withContent
         schema: boolean
         description: When `true` message payloads are included in the response
+        default: true
       - name: appId
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: endpointId
         schema: string
         required: true
         description: The ep's ID or UID
+        example: unique-ep-identifier
       - name: eventTypes
         schema: array
         description: Filter response based on the event type
@@ -1796,14 +2060,17 @@ methodObjects:
       - name: iterator
         schema: string
         description: The iterator returned from a prior invocation
+        example: ep_1srOrx2ZWZBpBUvZwXKQmoEYga2
       - name: appId
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: msgId
         schema: string
         required: true
         description: The msg's ID or UID
+        example: unique-msg-identifier
     responses:
       - statusCode: '200'
         description: ''
@@ -1834,12 +2101,15 @@ methodObjects:
       - name: iterator
         schema: string
         description: The iterator returned from a prior invocation
+        example: atmpt_1srOrx2ZWZBpBUvZwXKQmoEYga2
       - name: channel
         schema: string
         description: Filter response based on the channel
+        example: project_1337
       - name: tag
         schema: string
         description: Filter response based on the tag
+        example: project_1337
       - name: status
         schema: integer
         description: Filter response based on the delivery status
@@ -1856,14 +2126,17 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: msgId
         schema: string
         required: true
         description: The msg's ID or UID
+        example: unique-msg-identifier
       - name: endpointId
         schema: string
         required: true
         description: The ep's ID or UID
+        example: unique-ep-identifier
     responses:
       - statusCode: '200'
         description: ''
@@ -1894,15 +2167,19 @@ methodObjects:
       - name: iterator
         schema: string
         description: The iterator returned from a prior invocation
+        example: atmpt_1srOrx2ZWZBpBUvZwXKQmoEYga2
       - name: endpointId
         schema: string
         description: Filter the attempts based on the attempted endpoint
+        example: unique-ep-identifier
       - name: channel
         schema: string
         description: Filter response based on the channel
+        example: project_1337
       - name: tag
         schema: string
         description: Filter response based on the tag
+        example: project_1337
       - name: status
         schema: integer
         description: Filter response based on the delivery status
@@ -1922,10 +2199,12 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: msgId
         schema: string
         required: true
         description: The msg's ID or UID
+        example: unique-msg-identifier
     responses:
       - statusCode: '200'
         description: ''
@@ -1954,14 +2233,17 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: msgId
         schema: string
         required: true
         description: The msg's ID or UID
+        example: unique-msg-identifier
       - name: attemptId
         schema: string
         required: true
         description: The attempt's ID
+        example: atmpt_1srOrx2ZWZBpBUvZwXKQmoEYga2
     responses:
       - statusCode: '200'
         description: ''
@@ -1990,14 +2272,17 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: msgId
         schema: string
         required: true
         description: The msg's ID or UID
+        example: unique-msg-identifier
       - name: attemptId
         schema: string
         required: true
         description: The attempt's ID
+        example: atmpt_1srOrx2ZWZBpBUvZwXKQmoEYga2
     responses:
       - statusCode: '204'
         description: no content
@@ -2026,14 +2311,17 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: msgId
         schema: string
         required: true
         description: The msg's ID or UID
+        example: unique-msg-identifier
       - name: endpointId
         schema: string
         required: true
         description: The ep's ID or UID
+        example: unique-ep-identifier
       - name: idempotencyKey
         schema: string
         description: The request's idempotency key
@@ -2068,10 +2356,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: SINCE
       - name: until
         schema: string
         required: true
         description: ''
+        example: UNTIL
       - name: appIds
         schema: array
         required: false
@@ -2128,12 +2418,14 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: limit
         schema: integer
         description: Limit the number of returned items
       - name: iterator
         schema: string
         description: The iterator returned from a prior invocation
+        example: integ_1srOrx2ZWZBpBUvZwXKQmoEYga2
     responses:
       - statusCode: '200'
         description: ''
@@ -2162,6 +2454,7 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: idempotencyKey
         schema: string
         description: The request's idempotency key
@@ -2169,6 +2462,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: Example Integration
     responses:
       - statusCode: '201'
         description: ''
@@ -2197,10 +2491,12 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: integId
         schema: string
         required: true
         description: The integ's ID
+        example: integ_1srOrx2ZWZBpBUvZwXKQmoEYga2
     responses:
       - statusCode: '204'
         description: no content
@@ -2229,10 +2525,12 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: integId
         schema: string
         required: true
         description: The integ's ID
+        example: integ_1srOrx2ZWZBpBUvZwXKQmoEYga2
     responses:
       - statusCode: '200'
         description: ''
@@ -2261,14 +2559,17 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: integId
         schema: string
         required: true
         description: The integ's ID
+        example: integ_1srOrx2ZWZBpBUvZwXKQmoEYga2
       - name: name
         schema: string
         required: true
         description: ''
+        example: Example Integration
     responses:
       - statusCode: '200'
         description: ''
@@ -2297,10 +2598,12 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: integId
         schema: string
         required: true
         description: The integ's ID
+        example: integ_1srOrx2ZWZBpBUvZwXKQmoEYga2
     responses:
       - statusCode: '200'
         description: ''
@@ -2329,10 +2632,12 @@ methodObjects:
         schema: string
         required: true
         description: The app's ID or UID
+        example: unique-app-identifier
       - name: integId
         schema: string
         required: true
         description: The integ's ID
+        example: integ_1srOrx2ZWZBpBUvZwXKQmoEYga2
       - name: idempotencyKey
         schema: string
         description: The request's idempotency key

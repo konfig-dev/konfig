@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function BrexExpensesTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function BrexExpensesTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/expenses/logo.png"
       clientNameCamelCase="brexExpenses"
       homepage="brex.com"
-      lastUpdated={new Date("2024-03-11T06:43:11.466Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/expenses/favicon.png"
       contactUrl="https://brex.com"
       contactEmail="developer-access@brex.com"
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/expenses/imagePreview.jpg"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["finance","payments","online_payments","fintech","automation","banking","global_payments","travel_expenses"]}
       methods={[
   {
     "url": "/v1/expenses/card",
@@ -36,7 +39,8 @@ export default function BrexExpensesTypeScriptSdk() {
         "name": "expand[]",
         "schema": "array",
         "required": false,
-        "description": "Get additional details for the expense, e.g. merchant mcc code, by passing in `expand[]=merchant`. Query parameters include `location`, `department`, `merchant`, `receipts.download_uris`, `user`, `budget` and `payment`."
+        "description": "Get additional details for the expense, e.g. merchant mcc code, by passing in `expand[]=merchant`. Query parameters include `location`, `department`, `merchant`, `receipts.download_uris`, `user`, `budget` and `payment`.",
+        "example": "\n?expand[]=merchant&expand[]=location\n"
       },
       {
         "name": "userId[]",
@@ -72,13 +76,15 @@ export default function BrexExpensesTypeScriptSdk() {
         "name": "purchasedAtStart",
         "schema": "string",
         "required": false,
-        "description": "\nShows only expenses with a `purchased_at` on or after this date-time. This parameter is the date-time notation as defined by [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6), e.g. 2022-11-12T23:59:59.999\n"
+        "description": "\nShows only expenses with a `purchased_at` on or after this date-time. This parameter is the date-time notation as defined by [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6), e.g. 2022-11-12T23:59:59.999\n",
+        "example": "\n2023-01-01T23:59:59.999\n"
       },
       {
         "name": "purchasedAtEnd",
         "schema": "string",
         "required": false,
-        "description": "\nShows only expenses with a `purchased_at` on or before this date-time. This parameter is the date-time notation as defined by [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6), e.g. 2022-11-12T23:59:59.999\n"
+        "description": "\nShows only expenses with a `purchased_at` on or before this date-time. This parameter is the date-time notation as defined by [RFC 3339, section 5.6](https://tools.ietf.org/html/rfc3339#section-5.6), e.g. 2022-11-12T23:59:59.999\n",
+        "example": "\n2023-01-10T23:59:59.999\n"
       },
       {
         "name": "cursor",
@@ -124,7 +130,8 @@ export default function BrexExpensesTypeScriptSdk() {
         "name": "receipt_name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "RECEIPT_NAME"
       }
     ],
     "responses": [
@@ -154,13 +161,15 @@ export default function BrexExpensesTypeScriptSdk() {
         "name": "expenseId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "EXPENSE_ID"
       },
       {
         "name": "expand[]",
         "schema": "array",
         "required": false,
-        "description": "Get additional details for the expense, e.g. merchant mcc code, by passing in `expand[]=merchant`. Query parameters include `location`, `department`, `merchant`, `receipts.download_uris`, `user`, `budget` and `payment`."
+        "description": "Get additional details for the expense, e.g. merchant mcc code, by passing in `expand[]=merchant`. Query parameters include `location`, `department`, `merchant`, `receipts.download_uris`, `user`, `budget` and `payment`.",
+        "example": "\n?expand[]=merchant&expand[]=location\n"
       }
     ],
     "responses": [
@@ -198,7 +207,8 @@ export default function BrexExpensesTypeScriptSdk() {
         "name": "expenseId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "EXPENSE_ID"
       },
       {
         "name": "memo",
@@ -241,13 +251,15 @@ export default function BrexExpensesTypeScriptSdk() {
         "name": "expenseId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "EXPENSE_ID"
       },
       {
         "name": "receipt_name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "RECEIPT_NAME"
       }
     ],
     "responses": [

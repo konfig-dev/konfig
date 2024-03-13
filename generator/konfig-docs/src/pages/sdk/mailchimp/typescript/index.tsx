@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function MailchimpTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function MailchimpTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/mailchimp/logo.png"
       clientNameCamelCase="mailchimp"
       homepage="mailchimp.com/"
-      lastUpdated={new Date("2024-03-11T16:20:31.165Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/mailchimp/favicon.png"
       // Missing contactUrl
       contactEmail="apihelp@mailchimp.com"
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/mailchimp/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["automation","marketing","developer_tools","email","sms","social_media"]}
       methods={[
   {
     "url": "/",
@@ -68,13 +71,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       }
     ],
     "responses": [
@@ -112,13 +117,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       }
     ],
     "responses": [
@@ -144,13 +151,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "include_stages",
         "schema": "array",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "[\"audiences\", \"gallery_files\"]"
       },
       {
         "name": "since_timestamp",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "2021-08-23T14:15:09Z"
       }
     ],
     "responses": [
@@ -188,7 +197,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "exportId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the account export."
+        "description": "The unique id for the account export.",
+        "example": "EXPORT_ID"
       }
     ],
     "responses": [
@@ -226,13 +236,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       }
     ],
     "responses": [
@@ -270,7 +282,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "appId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the connected authorized application."
+        "description": "The unique id for the connected authorized application.",
+        "example": "APP_ID"
       }
     ],
     "responses": [
@@ -296,13 +309,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "fields",
@@ -420,7 +435,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "workflowId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the Automation workflow."
+        "description": "The unique id for the Automation workflow.",
+        "example": "WORKFLOW_ID"
       }
     ],
     "responses": [
@@ -446,7 +462,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "workflowId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the Automation workflow."
+        "description": "The unique id for the Automation workflow.",
+        "example": "WORKFLOW_ID"
       }
     ],
     "responses": [
@@ -472,7 +489,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "workflowId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the Automation workflow."
+        "description": "The unique id for the Automation workflow.",
+        "example": "WORKFLOW_ID"
       }
     ],
     "responses": [
@@ -498,7 +516,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "workflowId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the Automation workflow."
+        "description": "The unique id for the Automation workflow.",
+        "example": "WORKFLOW_ID"
       }
     ],
     "responses": [
@@ -524,7 +543,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "workflowId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the Automation workflow."
+        "description": "The unique id for the Automation workflow.",
+        "example": "WORKFLOW_ID"
       }
     ],
     "responses": [
@@ -550,13 +570,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "workflowId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the Automation workflow."
+        "description": "The unique id for the Automation workflow.",
+        "example": "WORKFLOW_ID"
       },
       {
         "name": "workflowEmailId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the Automation workflow email."
+        "description": "The unique id for the Automation workflow email.",
+        "example": "WORKFLOW_EMAIL_ID"
       }
     ],
     "responses": [
@@ -582,13 +604,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "workflowId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the Automation workflow."
+        "description": "The unique id for the Automation workflow.",
+        "example": "WORKFLOW_ID"
       },
       {
         "name": "workflowEmailId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the Automation workflow email."
+        "description": "The unique id for the Automation workflow email.",
+        "example": "WORKFLOW_EMAIL_ID"
       }
     ],
     "responses": [
@@ -614,13 +638,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "workflowId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the Automation workflow."
+        "description": "The unique id for the Automation workflow.",
+        "example": "WORKFLOW_ID"
       },
       {
         "name": "workflowEmailId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the Automation workflow email."
+        "description": "The unique id for the Automation workflow email.",
+        "example": "WORKFLOW_EMAIL_ID"
       },
       {
         "name": "settings",
@@ -656,13 +682,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "workflowId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the Automation workflow."
+        "description": "The unique id for the Automation workflow.",
+        "example": "WORKFLOW_ID"
       },
       {
         "name": "workflowEmailId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the Automation workflow email."
+        "description": "The unique id for the Automation workflow email.",
+        "example": "WORKFLOW_EMAIL_ID"
       }
     ],
     "responses": [
@@ -688,19 +716,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "workflowId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the Automation workflow."
+        "description": "The unique id for the Automation workflow.",
+        "example": "WORKFLOW_ID"
       },
       {
         "name": "workflowEmailId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the Automation workflow email."
+        "description": "The unique id for the Automation workflow email.",
+        "example": "WORKFLOW_EMAIL_ID"
       },
       {
         "name": "email_address",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "EMAIL_ADDRESS"
       }
     ],
     "responses": [
@@ -726,19 +757,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "workflowId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the Automation workflow."
+        "description": "The unique id for the Automation workflow.",
+        "example": "WORKFLOW_ID"
       },
       {
         "name": "workflowEmailId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the Automation workflow email."
+        "description": "The unique id for the Automation workflow email.",
+        "example": "WORKFLOW_EMAIL_ID"
       },
       {
         "name": "subscriberHash",
         "schema": "string",
         "required": true,
-        "description": "The MD5 hash of the lowercase version of the list member's email address."
+        "description": "The MD5 hash of the lowercase version of the list member's email address.",
+        "example": "SUBSCRIBER_HASH"
       }
     ],
     "responses": [
@@ -764,13 +798,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "workflowId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the Automation workflow."
+        "description": "The unique id for the Automation workflow.",
+        "example": "WORKFLOW_ID"
       },
       {
         "name": "workflowEmailId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the Automation workflow email."
+        "description": "The unique id for the Automation workflow email.",
+        "example": "WORKFLOW_EMAIL_ID"
       }
     ],
     "responses": [
@@ -796,13 +832,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "workflowId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the Automation workflow."
+        "description": "The unique id for the Automation workflow.",
+        "example": "WORKFLOW_ID"
       },
       {
         "name": "workflowEmailId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the Automation workflow email."
+        "description": "The unique id for the Automation workflow email.",
+        "example": "WORKFLOW_EMAIL_ID"
       }
     ],
     "responses": [
@@ -828,7 +866,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "workflowId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the Automation workflow."
+        "description": "The unique id for the Automation workflow.",
+        "example": "WORKFLOW_ID"
       }
     ],
     "responses": [
@@ -854,13 +893,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "workflowId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the Automation workflow."
+        "description": "The unique id for the Automation workflow.",
+        "example": "WORKFLOW_ID"
       },
       {
         "name": "email_address",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "EMAIL_ADDRESS"
       }
     ],
     "responses": [
@@ -886,13 +927,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "workflowId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the Automation workflow."
+        "description": "The unique id for the Automation workflow.",
+        "example": "WORKFLOW_ID"
       },
       {
         "name": "subscriberHash",
         "schema": "string",
         "required": true,
-        "description": "The MD5 hash of the lowercase version of the list member's email address."
+        "description": "The MD5 hash of the lowercase version of the list member's email address.",
+        "example": "SUBSCRIBER_HASH"
       }
     ],
     "responses": [
@@ -930,13 +973,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       }
     ],
     "responses": [
@@ -988,7 +1033,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "batchId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the batch operation."
+        "description": "The unique id for the batch operation.",
+        "example": "BATCH_ID"
       }
     ],
     "responses": [
@@ -1026,7 +1072,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "batchId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the batch operation."
+        "description": "The unique id for the batch operation.",
+        "example": "BATCH_ID"
       }
     ],
     "responses": [
@@ -1064,13 +1111,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       }
     ],
     "responses": [
@@ -1096,13 +1145,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "url",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "http://yourdomain.com/webhook"
       },
       {
         "name": "enabled",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -1128,7 +1179,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "batchWebhookId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the batch webhook."
+        "description": "The unique id for the batch webhook.",
+        "example": "BATCH_WEBHOOK_ID"
       }
     ],
     "responses": [
@@ -1166,7 +1218,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "batchWebhookId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the batch webhook."
+        "description": "The unique id for the batch webhook.",
+        "example": "BATCH_WEBHOOK_ID"
       }
     ],
     "responses": [
@@ -1192,17 +1245,20 @@ export default function MailchimpTypeScriptSdk() {
         "name": "batchWebhookId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the batch webhook."
+        "description": "The unique id for the batch webhook.",
+        "example": "BATCH_WEBHOOK_ID"
       },
       {
         "name": "url",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "http://yourdomain.com/webhook"
       },
       {
         "name": "enabled",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -1240,13 +1296,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       }
     ],
     "responses": [
@@ -1272,7 +1330,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -1298,7 +1357,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the template folder."
+        "description": "The unique id for the template folder.",
+        "example": "FOLDER_ID"
       }
     ],
     "responses": [
@@ -1336,7 +1396,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the template folder."
+        "description": "The unique id for the template folder.",
+        "example": "FOLDER_ID"
       }
     ],
     "responses": [
@@ -1362,13 +1423,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the template folder."
+        "description": "The unique id for the template folder.",
+        "example": "FOLDER_ID"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -1406,13 +1469,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       }
     ],
     "responses": [
@@ -1438,7 +1503,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -1464,7 +1530,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign folder."
+        "description": "The unique id for the campaign folder.",
+        "example": "FOLDER_ID"
       }
     ],
     "responses": [
@@ -1502,7 +1569,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign folder."
+        "description": "The unique id for the campaign folder.",
+        "example": "FOLDER_ID"
       }
     ],
     "responses": [
@@ -1528,13 +1596,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign folder."
+        "description": "The unique id for the campaign folder.",
+        "example": "FOLDER_ID"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -1572,13 +1642,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "type",
@@ -1676,7 +1748,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TYPE"
       },
       {
         "name": "recipients",
@@ -1718,7 +1791,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "content_type",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "template"
       }
     ],
     "responses": [
@@ -1744,7 +1818,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       }
     ],
     "responses": [
@@ -1782,7 +1857,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       },
       {
         "name": "includeResendShortcutEligibility",
@@ -1814,7 +1890,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       },
       {
         "name": "recipients",
@@ -1876,7 +1953,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       }
     ],
     "responses": [
@@ -1902,7 +1980,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       }
     ],
     "responses": [
@@ -1928,7 +2007,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       }
     ],
     "responses": [
@@ -1954,13 +2034,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       },
       {
         "name": "schedule_time",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SCHEDULE_TIME"
       },
       {
         "name": "timewarp",
@@ -1998,7 +2080,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       }
     ],
     "responses": [
@@ -2024,7 +2107,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       },
       {
         "name": "test_emails",
@@ -2036,7 +2120,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "send_type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SEND_TYPE"
       }
     ],
     "responses": [
@@ -2062,7 +2147,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       }
     ],
     "responses": [
@@ -2088,7 +2174,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       }
     ],
     "responses": [
@@ -2114,7 +2201,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       },
       {
         "name": "shortcut_type",
@@ -2157,7 +2245,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       }
     ],
     "responses": [
@@ -2183,7 +2272,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       },
       {
         "name": "plain_text",
@@ -2251,7 +2341,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       }
     ],
     "responses": [
@@ -2277,7 +2368,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       },
       {
         "name": "block_id",
@@ -2289,7 +2381,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "message",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "MESSAGE"
       },
       {
         "name": "is_complete",
@@ -2321,13 +2414,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       },
       {
         "name": "feedbackId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the feedback message."
+        "description": "The unique id for the feedback message.",
+        "example": "FEEDBACK_ID"
       }
     ],
     "responses": [
@@ -2365,13 +2460,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       },
       {
         "name": "feedbackId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the feedback message."
+        "description": "The unique id for the feedback message.",
+        "example": "FEEDBACK_ID"
       }
     ],
     "responses": [
@@ -2397,13 +2494,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       },
       {
         "name": "feedbackId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the feedback message."
+        "description": "The unique id for the feedback message.",
+        "example": "FEEDBACK_ID"
       },
       {
         "name": "block_id",
@@ -2456,7 +2555,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       }
     ],
     "responses": [
@@ -2494,13 +2594,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       }
     ],
     "responses": [
@@ -2526,13 +2628,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "foreign_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "MC001"
       },
       {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "example.com"
       }
     ],
     "responses": [
@@ -2558,7 +2662,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "connectedSiteId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier for the site."
+        "description": "The unique identifier for the site.",
+        "example": "CONNECTED_SITE_ID"
       }
     ],
     "responses": [
@@ -2596,7 +2701,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "connectedSiteId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier for the site."
+        "description": "The unique identifier for the site.",
+        "example": "CONNECTED_SITE_ID"
       }
     ],
     "responses": [
@@ -2622,7 +2728,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "connectedSiteId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier for the site."
+        "description": "The unique identifier for the site.",
+        "example": "CONNECTED_SITE_ID"
       }
     ],
     "responses": [
@@ -2660,13 +2767,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "hasUnreadMessages",
@@ -2722,7 +2831,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "conversationId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the conversation."
+        "description": "The unique id for the conversation.",
+        "example": "CONVERSATION_ID"
       }
     ],
     "responses": [
@@ -2760,7 +2870,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "conversationId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the conversation."
+        "description": "The unique id for the conversation.",
+        "example": "CONVERSATION_ID"
       },
       {
         "name": "isRead",
@@ -2816,13 +2927,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "conversationId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the conversation."
+        "description": "The unique id for the conversation.",
+        "example": "CONVERSATION_ID"
       },
       {
         "name": "messageId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the conversation message."
+        "description": "The unique id for the conversation message.",
+        "example": "MESSAGE_ID"
       }
     ],
     "responses": [
@@ -2848,19 +2961,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "journeyId",
         "schema": "integer",
         "required": true,
-        "description": "The id for the Journey."
+        "description": "The id for the Journey.",
+        "example": 0
       },
       {
         "name": "stepId",
         "schema": "integer",
         "required": true,
-        "description": "The id for the Step."
+        "description": "The id for the Step.",
+        "example": 0
       },
       {
         "name": "email_address",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "EMAIL_ADDRESS"
       }
     ],
     "responses": [
@@ -2898,13 +3014,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "type",
@@ -2972,13 +3090,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "file_data",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "FILE_DATA"
       }
     ],
     "responses": [
@@ -3004,7 +3124,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the File Manager file."
+        "description": "The unique id for the File Manager file.",
+        "example": "FILE_ID"
       }
     ],
     "responses": [
@@ -3042,7 +3163,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the File Manager file."
+        "description": "The unique id for the File Manager file.",
+        "example": "FILE_ID"
       }
     ],
     "responses": [
@@ -3068,7 +3190,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "fileId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the File Manager file."
+        "description": "The unique id for the File Manager file.",
+        "example": "FILE_ID"
       },
       {
         "name": "folder_id",
@@ -3116,13 +3239,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "createdBy",
@@ -3166,7 +3291,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -3192,7 +3318,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the File Manager folder."
+        "description": "The unique id for the File Manager folder.",
+        "example": "FOLDER_ID"
       }
     ],
     "responses": [
@@ -3230,7 +3357,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the File Manager folder."
+        "description": "The unique id for the File Manager folder.",
+        "example": "FOLDER_ID"
       }
     ],
     "responses": [
@@ -3256,13 +3384,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the File Manager folder."
+        "description": "The unique id for the File Manager folder.",
+        "example": "FOLDER_ID"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -3288,7 +3418,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "folderId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the File Manager folder."
+        "description": "The unique id for the File Manager folder.",
+        "example": "FOLDER_ID"
       },
       {
         "name": "fields",
@@ -3306,13 +3437,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "type",
@@ -3386,13 +3519,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "beforeDateCreated",
@@ -3472,7 +3607,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "contact",
@@ -3484,13 +3620,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "permission_reminder",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PERMISSION_REMINDER"
       },
       {
         "name": "use_archive_bar",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "campaign_defaults",
@@ -3502,31 +3640,36 @@ export default function MailchimpTypeScriptSdk() {
         "name": "notify_on_subscribe",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "notify_on_unsubscribe",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "email_type_option",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "double_optin",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "marketing_permissions",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": false
       }
     ],
     "responses": [
@@ -3552,7 +3695,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       }
     ],
     "responses": [
@@ -3590,7 +3734,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "includeTotalContacts",
@@ -3622,13 +3767,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "contact",
@@ -3640,13 +3787,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "permission_reminder",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PERMISSION_REMINDER"
       },
       {
         "name": "use_archive_bar",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "campaign_defaults",
@@ -3658,31 +3807,36 @@ export default function MailchimpTypeScriptSdk() {
         "name": "notify_on_subscribe",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "notify_on_unsubscribe",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "email_type_option",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "double_optin",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "marketing_permissions",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": false
       }
     ],
     "responses": [
@@ -3708,7 +3862,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "skipMergeValidation",
@@ -3776,19 +3931,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       }
     ],
     "responses": [
@@ -3826,25 +3984,29 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "reportId",
         "schema": "string",
         "required": true,
-        "description": "The id for the abuse report."
+        "description": "The id for the abuse report.",
+        "example": "REPORT_ID"
       }
     ],
     "responses": [
@@ -3870,13 +4032,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "fields",
@@ -3894,7 +4058,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       }
     ],
     "responses": [
@@ -3932,7 +4097,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       }
     ],
     "responses": [
@@ -3970,19 +4136,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "sortField",
@@ -4032,13 +4201,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "month",
         "schema": "string",
         "required": true,
-        "description": "A specific month of list growth history."
+        "description": "A specific month of list growth history.",
+        "example": "MONTH"
       }
     ],
     "responses": [
@@ -4064,7 +4235,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "fields",
@@ -4082,13 +4254,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "type",
@@ -4120,13 +4294,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "title",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TITLE"
       },
       {
         "name": "display_order",
@@ -4138,7 +4314,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TYPE"
       }
     ],
     "responses": [
@@ -4164,13 +4341,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "interestCategoryId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the interest category."
+        "description": "The unique ID for the interest category.",
+        "example": "INTEREST_CATEGORY_ID"
       }
     ],
     "responses": [
@@ -4196,13 +4375,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "interestCategoryId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the interest category."
+        "description": "The unique ID for the interest category.",
+        "example": "INTEREST_CATEGORY_ID"
       },
       {
         "name": "fields",
@@ -4240,19 +4421,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "interestCategoryId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the interest category."
+        "description": "The unique ID for the interest category.",
+        "example": "INTEREST_CATEGORY_ID"
       },
       {
         "name": "title",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TITLE"
       },
       {
         "name": "display_order",
@@ -4264,7 +4448,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TYPE"
       }
     ],
     "responses": [
@@ -4290,13 +4475,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "interestCategoryId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the interest category."
+        "description": "The unique ID for the interest category.",
+        "example": "INTEREST_CATEGORY_ID"
       },
       {
         "name": "fields",
@@ -4314,13 +4501,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       }
     ],
     "responses": [
@@ -4346,19 +4535,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "interestCategoryId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the interest category."
+        "description": "The unique ID for the interest category.",
+        "example": "INTEREST_CATEGORY_ID"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "display_order",
@@ -4390,19 +4582,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "interestCategoryId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the interest category."
+        "description": "The unique ID for the interest category.",
+        "example": "INTEREST_CATEGORY_ID"
       },
       {
         "name": "interestId",
         "schema": "string",
         "required": true,
-        "description": "The specific interest or 'group name'."
+        "description": "The specific interest or 'group name'.",
+        "example": "INTEREST_ID"
       }
     ],
     "responses": [
@@ -4428,19 +4623,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "interestCategoryId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the interest category."
+        "description": "The unique ID for the interest category.",
+        "example": "INTEREST_CATEGORY_ID"
       },
       {
         "name": "interestId",
         "schema": "string",
         "required": true,
-        "description": "The specific interest or 'group name'."
+        "description": "The specific interest or 'group name'.",
+        "example": "INTEREST_ID"
       },
       {
         "name": "fields",
@@ -4478,25 +4676,29 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "interestCategoryId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the interest category."
+        "description": "The unique ID for the interest category.",
+        "example": "INTEREST_CATEGORY_ID"
       },
       {
         "name": "interestId",
         "schema": "string",
         "required": true,
-        "description": "The specific interest or 'group name'."
+        "description": "The specific interest or 'group name'.",
+        "example": "INTEREST_ID"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "display_order",
@@ -4540,19 +4742,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "type",
@@ -4576,19 +4781,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "includeCleaned",
         "schema": "boolean",
         "required": false,
-        "description": "Include cleaned members in response"
+        "description": "Include cleaned members in response",
+        "example": false
       },
       {
         "name": "includeTransactional",
         "schema": "boolean",
         "required": false,
-        "description": "Include transactional members in response"
+        "description": "Include transactional members in response",
+        "example": false
       },
       {
         "name": "includeUnsubscribed",
         "schema": "boolean",
         "required": false,
-        "description": "Include unsubscribed members in response"
+        "description": "Include unsubscribed members in response",
+        "example": false
       },
       {
         "name": "sinceUpdatedAt",
@@ -4626,13 +4834,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "static_segment",
@@ -4670,13 +4880,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "segmentId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the segment."
+        "description": "The unique id for the segment.",
+        "example": "SEGMENT_ID"
       }
     ],
     "responses": [
@@ -4714,31 +4926,36 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "segmentId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the segment."
+        "description": "The unique id for the segment.",
+        "example": "SEGMENT_ID"
       },
       {
         "name": "includeCleaned",
         "schema": "boolean",
         "required": false,
-        "description": "Include cleaned members in response"
+        "description": "Include cleaned members in response",
+        "example": false
       },
       {
         "name": "includeTransactional",
         "schema": "boolean",
         "required": false,
-        "description": "Include transactional members in response"
+        "description": "Include transactional members in response",
+        "example": false
       },
       {
         "name": "includeUnsubscribed",
         "schema": "boolean",
         "required": false,
-        "description": "Include unsubscribed members in response"
+        "description": "Include unsubscribed members in response",
+        "example": false
       }
     ],
     "responses": [
@@ -4764,19 +4981,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "segmentId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the segment."
+        "description": "The unique id for the segment.",
+        "example": "SEGMENT_ID"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "static_segment",
@@ -4814,13 +5034,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "segmentId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the segment."
+        "description": "The unique id for the segment.",
+        "example": "SEGMENT_ID"
       },
       {
         "name": "members_to_add",
@@ -4868,43 +5090,50 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "segmentId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the segment."
+        "description": "The unique id for the segment.",
+        "example": "SEGMENT_ID"
       },
       {
         "name": "includeCleaned",
         "schema": "boolean",
         "required": false,
-        "description": "Include cleaned members in response"
+        "description": "Include cleaned members in response",
+        "example": false
       },
       {
         "name": "includeTransactional",
         "schema": "boolean",
         "required": false,
-        "description": "Include transactional members in response"
+        "description": "Include transactional members in response",
+        "example": false
       },
       {
         "name": "includeUnsubscribed",
         "schema": "boolean",
         "required": false,
-        "description": "Include unsubscribed members in response"
+        "description": "Include unsubscribed members in response",
+        "example": false
       }
     ],
     "responses": [
@@ -4930,19 +5159,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "segmentId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the segment."
+        "description": "The unique id for the segment.",
+        "example": "SEGMENT_ID"
       },
       {
         "name": "email_address",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "EMAIL_ADDRESS"
       }
     ],
     "responses": [
@@ -4968,19 +5200,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "segmentId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the segment."
+        "description": "The unique id for the segment.",
+        "example": "SEGMENT_ID"
       },
       {
         "name": "subscriberHash",
         "schema": "string",
         "required": true,
-        "description": "The MD5 hash of the lowercase version of the list member's email address."
+        "description": "The MD5 hash of the lowercase version of the list member's email address.",
+        "example": "SUBSCRIBER_HASH"
       }
     ],
     "responses": [
@@ -5006,7 +5241,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "name",
@@ -5050,19 +5286,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "emailType",
@@ -5178,7 +5417,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "skipMergeValidation",
@@ -5196,7 +5436,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "email_address",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "EMAIL_ADDRESS"
       },
       {
         "name": "email_type",
@@ -5208,7 +5449,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "status",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "STATUS"
       },
       {
         "name": "merge_fields",
@@ -5294,13 +5536,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "subscriberHash",
         "schema": "string",
         "required": true,
-        "description": "The MD5 hash of the lowercase version of the list member's email address. This endpoint also accepts a list member's email address or contact_id."
+        "description": "The MD5 hash of the lowercase version of the list member's email address. This endpoint also accepts a list member's email address or contact_id.",
+        "example": "SUBSCRIBER_HASH"
       }
     ],
     "responses": [
@@ -5338,13 +5582,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "subscriberHash",
         "schema": "string",
         "required": true,
-        "description": "The MD5 hash of the lowercase version of the list member's email address. This endpoint also accepts a list member's email address or contact_id."
+        "description": "The MD5 hash of the lowercase version of the list member's email address. This endpoint also accepts a list member's email address or contact_id.",
+        "example": "SUBSCRIBER_HASH"
       }
     ],
     "responses": [
@@ -5370,13 +5616,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "subscriberHash",
         "schema": "string",
         "required": true,
-        "description": "The MD5 hash of the lowercase version of the list member's email address. This endpoint also accepts a list member's email address or contact_id."
+        "description": "The MD5 hash of the lowercase version of the list member's email address. This endpoint also accepts a list member's email address or contact_id.",
+        "example": "SUBSCRIBER_HASH"
       },
       {
         "name": "skipMergeValidation",
@@ -5473,13 +5721,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "subscriberHash",
         "schema": "string",
         "required": true,
-        "description": "The MD5 hash of the lowercase version of the list member's email address. This endpoint also accepts a list member's email address or contact_id."
+        "description": "The MD5 hash of the lowercase version of the list member's email address. This endpoint also accepts a list member's email address or contact_id.",
+        "example": "SUBSCRIBER_HASH"
       },
       {
         "name": "skipMergeValidation",
@@ -5491,13 +5741,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "email_address",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "EMAIL_ADDRESS"
       },
       {
         "name": "status_if_new",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "STATUS_IF_NEW"
       },
       {
         "name": "email_type",
@@ -5595,13 +5847,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "subscriberHash",
         "schema": "string",
         "required": true,
-        "description": "The MD5 hash of the lowercase version of the list member's email address. This endpoint also accepts a list member's email address or contact_id."
+        "description": "The MD5 hash of the lowercase version of the list member's email address. This endpoint also accepts a list member's email address or contact_id.",
+        "example": "SUBSCRIBER_HASH"
       },
       {
         "name": "fields",
@@ -5645,13 +5899,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "subscriberHash",
         "schema": "string",
         "required": true,
-        "description": "The MD5 hash of the lowercase version of the list member's email address. This endpoint also accepts a list member's email address or contact_id."
+        "description": "The MD5 hash of the lowercase version of the list member's email address. This endpoint also accepts a list member's email address or contact_id.",
+        "example": "SUBSCRIBER_HASH"
       },
       {
         "name": "fields",
@@ -5669,13 +5925,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "activityFilters",
@@ -5707,13 +5965,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "subscriberHash",
         "schema": "string",
         "required": true,
-        "description": "The MD5 hash of the lowercase version of the list member's email address. This endpoint also accepts a list member's email address or contact_id."
+        "description": "The MD5 hash of the lowercase version of the list member's email address. This endpoint also accepts a list member's email address or contact_id.",
+        "example": "SUBSCRIBER_HASH"
       },
       {
         "name": "fields",
@@ -5731,13 +5991,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       }
     ],
     "responses": [
@@ -5763,13 +6025,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "subscriberHash",
         "schema": "string",
         "required": true,
-        "description": "The MD5 hash of the lowercase version of the list member's email address."
+        "description": "The MD5 hash of the lowercase version of the list member's email address.",
+        "example": "SUBSCRIBER_HASH"
       },
       {
         "name": "tags",
@@ -5807,25 +6071,29 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "subscriberHash",
         "schema": "string",
         "required": true,
-        "description": "The MD5 hash of the lowercase version of the list member's email address. This endpoint also accepts a list member's email address or contact_id."
+        "description": "The MD5 hash of the lowercase version of the list member's email address. This endpoint also accepts a list member's email address or contact_id.",
+        "example": "SUBSCRIBER_HASH"
       },
       {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "fields",
@@ -5863,19 +6131,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "subscriberHash",
         "schema": "string",
         "required": true,
-        "description": "The MD5 hash of the lowercase version of the list member's email address. This endpoint also accepts a list member's email address or contact_id."
+        "description": "The MD5 hash of the lowercase version of the list member's email address. This endpoint also accepts a list member's email address or contact_id.",
+        "example": "SUBSCRIBER_HASH"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "properties",
@@ -5919,13 +6190,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "subscriberHash",
         "schema": "string",
         "required": true,
-        "description": "The MD5 hash of the lowercase version of the list member's email address. This endpoint also accepts a list member's email address or contact_id."
+        "description": "The MD5 hash of the lowercase version of the list member's email address. This endpoint also accepts a list member's email address or contact_id.",
+        "example": "SUBSCRIBER_HASH"
       },
       {
         "name": "fields",
@@ -5963,13 +6236,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "subscriberHash",
         "schema": "string",
         "required": true,
-        "description": "The MD5 hash of the lowercase version of the list member's email address."
+        "description": "The MD5 hash of the lowercase version of the list member's email address.",
+        "example": "SUBSCRIBER_HASH"
       },
       {
         "name": "sortField",
@@ -5999,13 +6274,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       }
     ],
     "responses": [
@@ -6031,13 +6308,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "subscriberHash",
         "schema": "string",
         "required": true,
-        "description": "The MD5 hash of the lowercase version of the list member's email address."
+        "description": "The MD5 hash of the lowercase version of the list member's email address.",
+        "example": "SUBSCRIBER_HASH"
       },
       {
         "name": "note",
@@ -6068,19 +6347,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "subscriberHash",
         "schema": "string",
         "required": true,
-        "description": "The MD5 hash of the lowercase version of the list member's email address. This endpoint also accepts a list member's email address or contact_id."
+        "description": "The MD5 hash of the lowercase version of the list member's email address. This endpoint also accepts a list member's email address or contact_id.",
+        "example": "SUBSCRIBER_HASH"
       },
       {
         "name": "noteId",
         "schema": "string",
         "required": true,
-        "description": "The id for the note."
+        "description": "The id for the note.",
+        "example": "NOTE_ID"
       }
     ],
     "responses": [
@@ -6106,19 +6388,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "subscriberHash",
         "schema": "string",
         "required": true,
-        "description": "The MD5 hash of the lowercase version of the list member's email address. This endpoint also accepts a list member's email address or contact_id."
+        "description": "The MD5 hash of the lowercase version of the list member's email address. This endpoint also accepts a list member's email address or contact_id.",
+        "example": "SUBSCRIBER_HASH"
       },
       {
         "name": "noteId",
         "schema": "string",
         "required": true,
-        "description": "The id for the note."
+        "description": "The id for the note.",
+        "example": "NOTE_ID"
       },
       {
         "name": "fields",
@@ -6156,19 +6441,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "subscriberHash",
         "schema": "string",
         "required": true,
-        "description": "The MD5 hash of the lowercase version of the list member's email address. This endpoint also accepts a list member's email address or contact_id."
+        "description": "The MD5 hash of the lowercase version of the list member's email address. This endpoint also accepts a list member's email address or contact_id.",
+        "example": "SUBSCRIBER_HASH"
       },
       {
         "name": "noteId",
         "schema": "string",
         "required": true,
-        "description": "The id for the note."
+        "description": "The id for the note.",
+        "example": "NOTE_ID"
       },
       {
         "name": "note",
@@ -6199,13 +6487,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "subscriberHash",
         "schema": "string",
         "required": true,
-        "description": "The MD5 hash of the lowercase version of the list member's email address."
+        "description": "The MD5 hash of the lowercase version of the list member's email address.",
+        "example": "SUBSCRIBER_HASH"
       }
     ],
     "responses": [
@@ -6231,7 +6521,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "fields",
@@ -6249,13 +6540,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "type",
@@ -6293,7 +6586,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "tag",
@@ -6305,13 +6599,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TYPE"
       },
       {
         "name": "required",
@@ -6373,13 +6669,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "mergeId",
         "schema": "string",
         "required": true,
-        "description": "The id for the merge field."
+        "description": "The id for the merge field.",
+        "example": "MERGE_ID"
       }
     ],
     "responses": [
@@ -6405,13 +6703,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "mergeId",
         "schema": "string",
         "required": true,
-        "description": "The id for the merge field."
+        "description": "The id for the merge field.",
+        "example": "MERGE_ID"
       },
       {
         "name": "excludeFields",
@@ -6449,13 +6749,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "mergeId",
         "schema": "string",
         "required": true,
-        "description": "The id for the merge field."
+        "description": "The id for the merge field.",
+        "example": "MERGE_ID"
       },
       {
         "name": "tag",
@@ -6467,7 +6769,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "required",
@@ -6529,7 +6832,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       }
     ],
     "responses": [
@@ -6555,12 +6859,14 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "url",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "http://yourdomain.com/webhook"
       },
       {
         "name": "events",
@@ -6596,13 +6902,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "webhookId",
         "schema": "string",
         "required": true,
-        "description": "The webhook's id."
+        "description": "The webhook's id.",
+        "example": "WEBHOOK_ID"
       }
     ],
     "responses": [
@@ -6628,13 +6936,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "webhookId",
         "schema": "string",
         "required": true,
-        "description": "The webhook's id."
+        "description": "The webhook's id.",
+        "example": "WEBHOOK_ID"
       }
     ],
     "responses": [
@@ -6660,18 +6970,21 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "webhookId",
         "schema": "string",
         "required": true,
-        "description": "The webhook's id."
+        "description": "The webhook's id.",
+        "example": "WEBHOOK_ID"
       },
       {
         "name": "url",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "http://yourdomain.com/webhook"
       },
       {
         "name": "events",
@@ -6707,7 +7020,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       }
     ],
     "responses": [
@@ -6733,7 +7047,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "header",
@@ -6786,7 +7101,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       }
     ],
     "responses": [
@@ -6812,7 +7128,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       }
     ],
     "responses": [
@@ -6838,13 +7155,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the survey."
+        "description": "The ID of the survey.",
+        "example": "SURVEY_ID"
       }
     ],
     "responses": [
@@ -6870,13 +7189,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the survey."
+        "description": "The ID of the survey.",
+        "example": "SURVEY_ID"
       }
     ],
     "responses": [
@@ -6902,13 +7223,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the survey."
+        "description": "The ID of the survey.",
+        "example": "SURVEY_ID"
       }
     ],
     "responses": [
@@ -6934,13 +7257,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID for the list."
+        "description": "The unique ID for the list.",
+        "example": "LIST_ID"
       },
       {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the survey."
+        "description": "The ID of the survey.",
+        "example": "SURVEY_ID"
       }
     ],
     "responses": [
@@ -6990,7 +7315,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       }
     ],
     "responses": [
@@ -7046,12 +7372,14 @@ export default function MailchimpTypeScriptSdk() {
       {
         "name": "type",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "signup"
       },
       {
         "name": "template_id",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 1001
       },
       {
         "name": "tracking",
@@ -7082,7 +7410,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "pageId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the page."
+        "description": "The unique id for the page.",
+        "example": "PAGE_ID"
       }
     ],
     "responses": [
@@ -7120,7 +7449,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "pageId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the page."
+        "description": "The unique id for the page.",
+        "example": "PAGE_ID"
       }
     ],
     "responses": [
@@ -7146,7 +7476,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "pageId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the page."
+        "description": "The unique id for the page.",
+        "example": "PAGE_ID"
       },
       {
         "name": "title",
@@ -7202,7 +7533,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "pageId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the page."
+        "description": "The unique id for the page.",
+        "example": "PAGE_ID"
       }
     ],
     "responses": [
@@ -7228,7 +7560,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "pageId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the page."
+        "description": "The unique id for the page.",
+        "example": "PAGE_ID"
       }
     ],
     "responses": [
@@ -7266,7 +7599,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "pageId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the page."
+        "description": "The unique id for the page.",
+        "example": "PAGE_ID"
       }
     ],
     "responses": [
@@ -7304,13 +7638,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "type",
@@ -7366,7 +7702,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       }
     ],
     "responses": [
@@ -7404,7 +7741,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       }
     ],
     "responses": [
@@ -7442,13 +7780,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       },
       {
         "name": "reportId",
         "schema": "string",
         "required": true,
-        "description": "The id for the abuse report."
+        "description": "The id for the abuse report.",
+        "example": "REPORT_ID"
       }
     ],
     "responses": [
@@ -7486,7 +7826,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       }
     ],
     "responses": [
@@ -7524,19 +7865,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       },
       {
         "name": "sortField",
@@ -7586,13 +7930,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       },
       {
         "name": "linkId",
         "schema": "string",
         "required": true,
-        "description": "The id for the link."
+        "description": "The id for the link.",
+        "example": "LINK_ID"
       }
     ],
     "responses": [
@@ -7630,25 +7976,29 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       },
       {
         "name": "linkId",
         "schema": "string",
         "required": true,
-        "description": "The id for the link."
+        "description": "The id for the link.",
+        "example": "LINK_ID"
       }
     ],
     "responses": [
@@ -7686,19 +8036,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       },
       {
         "name": "linkId",
         "schema": "string",
         "required": true,
-        "description": "The id for the link."
+        "description": "The id for the link.",
+        "example": "LINK_ID"
       },
       {
         "name": "subscriberHash",
         "schema": "string",
         "required": true,
-        "description": "The MD5 hash of the lowercase version of the list member's email address."
+        "description": "The MD5 hash of the lowercase version of the list member's email address.",
+        "example": "SUBSCRIBER_HASH"
       }
     ],
     "responses": [
@@ -7736,25 +8089,29 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       },
       {
         "name": "since",
         "schema": "string",
         "required": false,
-        "description": "Restrict results to campaign open events that occur after a specific time. Uses ISO 8601 time format: 2015-10-21T15:41:36+00:00."
+        "description": "Restrict results to campaign open events that occur after a specific time. Uses ISO 8601 time format: 2015-10-21T15:41:36+00:00.",
+        "example": "2016-04-12 12:00:00"
       },
       {
         "name": "sortField",
@@ -7804,13 +8161,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       },
       {
         "name": "subscriberHash",
         "schema": "string",
         "required": true,
-        "description": "The MD5 hash of the lowercase version of the list member's email address."
+        "description": "The MD5 hash of the lowercase version of the list member's email address.",
+        "example": "SUBSCRIBER_HASH"
       }
     ],
     "responses": [
@@ -7848,7 +8207,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       }
     ],
     "responses": [
@@ -7886,7 +8246,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       }
     ],
     "responses": [
@@ -7924,19 +8285,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       },
       {
         "name": "since",
@@ -7980,13 +8344,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       },
       {
         "name": "subscriberHash",
         "schema": "string",
         "required": true,
-        "description": "The MD5 hash of the lowercase version of the list member's email address."
+        "description": "The MD5 hash of the lowercase version of the list member's email address.",
+        "example": "SUBSCRIBER_HASH"
       },
       {
         "name": "since",
@@ -8030,19 +8396,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       },
       {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       }
     ],
     "responses": [
@@ -8080,19 +8449,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       }
     ],
     "responses": [
@@ -8130,13 +8502,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       },
       {
         "name": "subscriberHash",
         "schema": "string",
         "required": true,
-        "description": "The MD5 hash of the lowercase version of the list member's email address."
+        "description": "The MD5 hash of the lowercase version of the list member's email address.",
+        "example": "SUBSCRIBER_HASH"
       }
     ],
     "responses": [
@@ -8174,7 +8548,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       }
     ],
     "responses": [
@@ -8212,19 +8587,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       }
     ],
     "responses": [
@@ -8262,13 +8640,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       },
       {
         "name": "subscriberHash",
         "schema": "string",
         "required": true,
-        "description": "The MD5 hash of the lowercase version of the list member's email address."
+        "description": "The MD5 hash of the lowercase version of the list member's email address.",
+        "example": "SUBSCRIBER_HASH"
       }
     ],
     "responses": [
@@ -8306,19 +8686,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "campaignId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the campaign."
+        "description": "The unique id for the campaign.",
+        "example": "CAMPAIGN_ID"
       },
       {
         "name": "sortField",
@@ -8362,13 +8745,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "createdBy",
@@ -8448,19 +8833,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Freddie's Jokes"
       },
       {
         "name": "folder_id",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "a4b830b"
       },
       {
         "name": "html",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "HTML"
       }
     ],
     "responses": [
@@ -8486,7 +8874,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "templateId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the template."
+        "description": "The unique id for the template.",
+        "example": "TEMPLATE_ID"
       }
     ],
     "responses": [
@@ -8524,7 +8913,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "templateId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the template."
+        "description": "The unique id for the template.",
+        "example": "TEMPLATE_ID"
       }
     ],
     "responses": [
@@ -8550,25 +8940,29 @@ export default function MailchimpTypeScriptSdk() {
         "name": "templateId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the template."
+        "description": "The unique id for the template.",
+        "example": "TEMPLATE_ID"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Freddie's Jokes"
       },
       {
         "name": "folder_id",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "a4b830b"
       },
       {
         "name": "html",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "HTML"
       }
     ],
     "responses": [
@@ -8606,7 +9000,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "templateId",
         "schema": "string",
         "required": true,
-        "description": "The unique id for the template."
+        "description": "The unique id for the template.",
+        "example": "TEMPLATE_ID"
       }
     ],
     "responses": [
@@ -8644,13 +9039,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "campaignId",
@@ -8712,13 +9109,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       }
     ],
     "responses": [
@@ -8744,19 +9143,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "example_store"
       },
       {
         "name": "list_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "1a2df69511"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Freddie's Cat Hat Emporium"
       },
       {
         "name": "platform",
@@ -8768,7 +9170,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "domain",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "example.com"
       },
       {
         "name": "is_syncing",
@@ -8780,37 +9183,43 @@ export default function MailchimpTypeScriptSdk() {
         "name": "email_address",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "freddie@mailchimp.com"
       },
       {
         "name": "currency_code",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USD"
       },
       {
         "name": "money_format",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "$"
       },
       {
         "name": "primary_locale",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "fr"
       },
       {
         "name": "timezone",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Eastern"
       },
       {
         "name": "phone",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "404-444-4444"
       },
       {
         "name": "address",
@@ -8842,7 +9251,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       }
     ],
     "responses": [
@@ -8880,7 +9290,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       }
     ],
     "responses": [
@@ -8906,12 +9317,14 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Freddie's Cat Hat Emporium"
       },
       {
         "name": "platform",
@@ -8921,7 +9334,8 @@ export default function MailchimpTypeScriptSdk() {
       {
         "name": "domain",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "example.com"
       },
       {
         "name": "is_syncing",
@@ -8931,32 +9345,38 @@ export default function MailchimpTypeScriptSdk() {
       {
         "name": "email_address",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "freddie@mailchimp.com"
       },
       {
         "name": "currency_code",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "USD"
       },
       {
         "name": "money_format",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "$"
       },
       {
         "name": "primary_locale",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "fr"
       },
       {
         "name": "timezone",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Eastern"
       },
       {
         "name": "phone",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "404-444-4444"
       },
       {
         "name": "address",
@@ -8999,19 +9419,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       }
     ],
     "responses": [
@@ -9037,13 +9460,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "customer",
@@ -9055,7 +9480,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "campaign_id",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "839488a60b"
       },
       {
         "name": "checkout_url",
@@ -9067,13 +9493,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "currency_code",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CURRENCY_CODE"
       },
       {
         "name": "order_total",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "tax_total",
@@ -9111,13 +9539,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "cartId",
         "schema": "string",
         "required": true,
-        "description": "The id for the cart."
+        "description": "The id for the cart.",
+        "example": "CART_ID"
       }
     ],
     "responses": [
@@ -9155,13 +9585,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "cartId",
         "schema": "string",
         "required": true,
-        "description": "The id for the cart."
+        "description": "The id for the cart.",
+        "example": "CART_ID"
       }
     ],
     "responses": [
@@ -9187,13 +9619,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "cartId",
         "schema": "string",
         "required": true,
-        "description": "The id for the cart."
+        "description": "The id for the cart.",
+        "example": "CART_ID"
       },
       {
         "name": "customer",
@@ -9203,7 +9637,8 @@ export default function MailchimpTypeScriptSdk() {
       {
         "name": "campaign_id",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "839488a60b"
       },
       {
         "name": "checkout_url",
@@ -9266,25 +9701,29 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "cartId",
         "schema": "string",
         "required": true,
-        "description": "The id for the cart."
+        "description": "The id for the cart.",
+        "example": "CART_ID"
       }
     ],
     "responses": [
@@ -9310,43 +9749,50 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "cartId",
         "schema": "string",
         "required": true,
-        "description": "The id for the cart."
+        "description": "The id for the cart.",
+        "example": "CART_ID"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "product_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PRODUCT_ID"
       },
       {
         "name": "product_variant_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PRODUCT_VARIANT_ID"
       },
       {
         "name": "quantity",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "price",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       }
     ],
     "responses": [
@@ -9372,19 +9818,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "cartId",
         "schema": "string",
         "required": true,
-        "description": "The id for the cart."
+        "description": "The id for the cart.",
+        "example": "CART_ID"
       },
       {
         "name": "lineId",
         "schema": "string",
         "required": true,
-        "description": "The id for the line item of a cart."
+        "description": "The id for the line item of a cart.",
+        "example": "LINE_ID"
       }
     ],
     "responses": [
@@ -9422,19 +9871,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "cartId",
         "schema": "string",
         "required": true,
-        "description": "The id for the cart."
+        "description": "The id for the cart.",
+        "example": "CART_ID"
       },
       {
         "name": "lineId",
         "schema": "string",
         "required": true,
-        "description": "The id for the line item of a cart."
+        "description": "The id for the line item of a cart.",
+        "example": "LINE_ID"
       }
     ],
     "responses": [
@@ -9460,19 +9912,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "cartId",
         "schema": "string",
         "required": true,
-        "description": "The id for the cart."
+        "description": "The id for the cart.",
+        "example": "CART_ID"
       },
       {
         "name": "lineId",
         "schema": "string",
         "required": true,
-        "description": "The id for the line item of a cart."
+        "description": "The id for the line item of a cart.",
+        "example": "LINE_ID"
       },
       {
         "name": "product_id",
@@ -9530,19 +9985,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "emailAddress",
@@ -9574,25 +10032,29 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "email_address",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "EMAIL_ADDRESS"
       },
       {
         "name": "opt_in_status",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "company",
@@ -9642,13 +10104,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "The id for the customer of a store."
+        "description": "The id for the customer of a store.",
+        "example": "CUSTOMER_ID"
       }
     ],
     "responses": [
@@ -9686,13 +10150,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "The id for the customer of a store."
+        "description": "The id for the customer of a store.",
+        "example": "CUSTOMER_ID"
       }
     ],
     "responses": [
@@ -9718,13 +10184,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "The id for the customer of a store."
+        "description": "The id for the customer of a store.",
+        "example": "CUSTOMER_ID"
       },
       {
         "name": "opt_in_status",
@@ -9775,31 +10243,36 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "The id for the customer of a store."
+        "description": "The id for the customer of a store.",
+        "example": "CUSTOMER_ID"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "email_address",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "EMAIL_ADDRESS"
       },
       {
         "name": "opt_in_status",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "company",
@@ -9861,19 +10334,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       }
     ],
     "responses": [
@@ -9899,25 +10375,29 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "title",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "50% off Total Order"
       },
       {
         "name": "description",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Save BIG during our summer sale!"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "starts_at",
@@ -9935,25 +10415,29 @@ export default function MailchimpTypeScriptSdk() {
         "name": "amount",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0.5
       },
       {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TYPE"
       },
       {
         "name": "target",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TARGET"
       },
       {
         "name": "enabled",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "created_at_foreign",
@@ -9991,13 +10475,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "promoRuleId",
         "schema": "string",
         "required": true,
-        "description": "The id for the promo rule of a store."
+        "description": "The id for the promo rule of a store.",
+        "example": "PROMO_RULE_ID"
       }
     ],
     "responses": [
@@ -10035,13 +10521,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "promoRuleId",
         "schema": "string",
         "required": true,
-        "description": "The id for the promo rule of a store."
+        "description": "The id for the promo rule of a store.",
+        "example": "PROMO_RULE_ID"
       }
     ],
     "responses": [
@@ -10067,23 +10555,27 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "promoRuleId",
         "schema": "string",
         "required": true,
-        "description": "The id for the promo rule of a store."
+        "description": "The id for the promo rule of a store.",
+        "example": "PROMO_RULE_ID"
       },
       {
         "name": "title",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "50% off Total Order"
       },
       {
         "name": "description",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Save BIG during our summer sale!"
       },
       {
         "name": "starts_at",
@@ -10098,7 +10590,8 @@ export default function MailchimpTypeScriptSdk() {
       {
         "name": "amount",
         "schema": "number",
-        "description": ""
+        "description": "",
+        "example": 0.5
       },
       {
         "name": "type",
@@ -10113,7 +10606,8 @@ export default function MailchimpTypeScriptSdk() {
       {
         "name": "enabled",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "created_at_foreign",
@@ -10161,25 +10655,29 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "promoRuleId",
         "schema": "string",
         "required": true,
-        "description": "The id for the promo rule of a store."
+        "description": "The id for the promo rule of a store.",
+        "example": "PROMO_RULE_ID"
       },
       {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       }
     ],
     "responses": [
@@ -10205,31 +10703,36 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "promoRuleId",
         "schema": "string",
         "required": true,
-        "description": "The id for the promo rule of a store."
+        "description": "The id for the promo rule of a store.",
+        "example": "PROMO_RULE_ID"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "code",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "summersale"
       },
       {
         "name": "redemption_url",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "A url that applies promo code directly at checkout or a url that points to sale page or store url"
       },
       {
         "name": "usage_count",
@@ -10241,7 +10744,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "enabled",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "created_at_foreign",
@@ -10279,19 +10783,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "promoRuleId",
         "schema": "string",
         "required": true,
-        "description": "The id for the promo rule of a store."
+        "description": "The id for the promo rule of a store.",
+        "example": "PROMO_RULE_ID"
       },
       {
         "name": "promoCodeId",
         "schema": "string",
         "required": true,
-        "description": "The id for the promo code of a store."
+        "description": "The id for the promo code of a store.",
+        "example": "PROMO_CODE_ID"
       }
     ],
     "responses": [
@@ -10329,19 +10836,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "promoRuleId",
         "schema": "string",
         "required": true,
-        "description": "The id for the promo rule of a store."
+        "description": "The id for the promo rule of a store.",
+        "example": "PROMO_RULE_ID"
       },
       {
         "name": "promoCodeId",
         "schema": "string",
         "required": true,
-        "description": "The id for the promo code of a store."
+        "description": "The id for the promo code of a store.",
+        "example": "PROMO_CODE_ID"
       }
     ],
     "responses": [
@@ -10367,29 +10877,34 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "promoRuleId",
         "schema": "string",
         "required": true,
-        "description": "The id for the promo rule of a store."
+        "description": "The id for the promo rule of a store.",
+        "example": "PROMO_RULE_ID"
       },
       {
         "name": "promoCodeId",
         "schema": "string",
         "required": true,
-        "description": "The id for the promo code of a store."
+        "description": "The id for the promo code of a store.",
+        "example": "PROMO_CODE_ID"
       },
       {
         "name": "code",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "summersale"
       },
       {
         "name": "redemption_url",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "A url that applies promo code directly at checkout or a url that points to sale page or store url"
       },
       {
         "name": "usage_count",
@@ -10399,7 +10914,8 @@ export default function MailchimpTypeScriptSdk() {
       {
         "name": "enabled",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "created_at_foreign",
@@ -10447,19 +10963,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "customerId",
@@ -10509,13 +11028,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "customer",
@@ -10527,13 +11048,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "campaign_id",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "839488a60b"
       },
       {
         "name": "landing_site",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "http://www.example.com?source=abc"
       },
       {
         "name": "financial_status",
@@ -10551,13 +11074,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "currency_code",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CURRENCY_CODE"
       },
       {
         "name": "order_total",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "order_url",
@@ -10593,19 +11118,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "processed_at_foreign",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "2015-07-15T19:28:00+00:00"
       },
       {
         "name": "cancelled_at_foreign",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "2015-07-15T19:28:00+00:00"
       },
       {
         "name": "updated_at_foreign",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "2015-07-15T19:28:00+00:00"
       },
       {
         "name": "shipping_address",
@@ -10679,13 +11207,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "orderId",
         "schema": "string",
         "required": true,
-        "description": "The id for the order in a store."
+        "description": "The id for the order in a store.",
+        "example": "ORDER_ID"
       }
     ],
     "responses": [
@@ -10723,13 +11253,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "orderId",
         "schema": "string",
         "required": true,
-        "description": "The id for the order in a store."
+        "description": "The id for the order in a store.",
+        "example": "ORDER_ID"
       }
     ],
     "responses": [
@@ -10755,13 +11287,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "orderId",
         "schema": "string",
         "required": true,
-        "description": "The id for the order in a store."
+        "description": "The id for the order in a store.",
+        "example": "ORDER_ID"
       },
       {
         "name": "customer",
@@ -10771,12 +11305,14 @@ export default function MailchimpTypeScriptSdk() {
       {
         "name": "campaign_id",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "839488a60b"
       },
       {
         "name": "landing_site",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "http://www.example.com?source=abc"
       },
       {
         "name": "financial_status",
@@ -10826,17 +11362,20 @@ export default function MailchimpTypeScriptSdk() {
       {
         "name": "processed_at_foreign",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "2015-07-15T19:28:00+00:00"
       },
       {
         "name": "cancelled_at_foreign",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "2015-07-15T19:28:00+00:00"
       },
       {
         "name": "updated_at_foreign",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "2015-07-15T19:28:00+00:00"
       },
       {
         "name": "shipping_address",
@@ -10914,25 +11453,29 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "orderId",
         "schema": "string",
         "required": true,
-        "description": "The id for the order in a store."
+        "description": "The id for the order in a store.",
+        "example": "ORDER_ID"
       }
     ],
     "responses": [
@@ -10958,43 +11501,50 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "orderId",
         "schema": "string",
         "required": true,
-        "description": "The id for the order in a store."
+        "description": "The id for the order in a store.",
+        "example": "ORDER_ID"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "product_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PRODUCT_ID"
       },
       {
         "name": "product_variant_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PRODUCT_VARIANT_ID"
       },
       {
         "name": "quantity",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "price",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "discount",
@@ -11026,19 +11576,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "orderId",
         "schema": "string",
         "required": true,
-        "description": "The id for the order in a store."
+        "description": "The id for the order in a store.",
+        "example": "ORDER_ID"
       },
       {
         "name": "lineId",
         "schema": "string",
         "required": true,
-        "description": "The id for the line item of an order."
+        "description": "The id for the line item of an order.",
+        "example": "LINE_ID"
       }
     ],
     "responses": [
@@ -11076,19 +11629,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "orderId",
         "schema": "string",
         "required": true,
-        "description": "The id for the order in a store."
+        "description": "The id for the order in a store.",
+        "example": "ORDER_ID"
       },
       {
         "name": "lineId",
         "schema": "string",
         "required": true,
-        "description": "The id for the line item of an order."
+        "description": "The id for the line item of an order.",
+        "example": "LINE_ID"
       }
     ],
     "responses": [
@@ -11114,19 +11670,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "orderId",
         "schema": "string",
         "required": true,
-        "description": "The id for the order in a store."
+        "description": "The id for the order in a store.",
+        "example": "ORDER_ID"
       },
       {
         "name": "lineId",
         "schema": "string",
         "required": true,
-        "description": "The id for the line item of an order."
+        "description": "The id for the line item of an order.",
+        "example": "LINE_ID"
       },
       {
         "name": "product_id",
@@ -11189,19 +11748,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       }
     ],
     "responses": [
@@ -11227,31 +11789,36 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "title",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Cat Hat"
       },
       {
         "name": "description",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "This is a cat hat."
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "handle",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "cat-hat"
       },
       {
         "name": "url",
@@ -11263,7 +11830,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Accessories"
       },
       {
         "name": "vendor",
@@ -11293,7 +11861,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "published_at_foreign",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "2015-07-15T19:28:00+00:00"
       }
     ],
     "responses": [
@@ -11319,13 +11888,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "productId",
         "schema": "string",
         "required": true,
-        "description": "The id for the product of a store."
+        "description": "The id for the product of a store.",
+        "example": "PRODUCT_ID"
       }
     ],
     "responses": [
@@ -11363,13 +11934,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "productId",
         "schema": "string",
         "required": true,
-        "description": "The id for the product of a store."
+        "description": "The id for the product of a store.",
+        "example": "PRODUCT_ID"
       }
     ],
     "responses": [
@@ -11395,28 +11968,33 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "productId",
         "schema": "string",
         "required": true,
-        "description": "The id for the product of a store."
+        "description": "The id for the product of a store.",
+        "example": "PRODUCT_ID"
       },
       {
         "name": "title",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Cat Hat"
       },
       {
         "name": "description",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "This is a cat hat."
       },
       {
         "name": "handle",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "cat-hat"
       },
       {
         "name": "url",
@@ -11426,7 +12004,8 @@ export default function MailchimpTypeScriptSdk() {
       {
         "name": "type",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Accessories"
       },
       {
         "name": "vendor",
@@ -11451,7 +12030,8 @@ export default function MailchimpTypeScriptSdk() {
       {
         "name": "published_at_foreign",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "2015-07-15T19:28:00+00:00"
       }
     ],
     "responses": [
@@ -11489,25 +12069,29 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "productId",
         "schema": "string",
         "required": true,
-        "description": "The id for the product of a store."
+        "description": "The id for the product of a store.",
+        "example": "PRODUCT_ID"
       }
     ],
     "responses": [
@@ -11533,25 +12117,29 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "productId",
         "schema": "string",
         "required": true,
-        "description": "The id for the product of a store."
+        "description": "The id for the product of a store.",
+        "example": "PRODUCT_ID"
       },
       {
         "name": "title",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Cat Hat"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "url",
@@ -11619,19 +12207,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "productId",
         "schema": "string",
         "required": true,
-        "description": "The id for the product of a store."
+        "description": "The id for the product of a store.",
+        "example": "PRODUCT_ID"
       },
       {
         "name": "variantId",
         "schema": "string",
         "required": true,
-        "description": "The id for the product variant."
+        "description": "The id for the product variant.",
+        "example": "VARIANT_ID"
       }
     ],
     "responses": [
@@ -11669,19 +12260,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "productId",
         "schema": "string",
         "required": true,
-        "description": "The id for the product of a store."
+        "description": "The id for the product of a store.",
+        "example": "PRODUCT_ID"
       },
       {
         "name": "variantId",
         "schema": "string",
         "required": true,
-        "description": "The id for the product variant."
+        "description": "The id for the product variant.",
+        "example": "VARIANT_ID"
       }
     ],
     "responses": [
@@ -11707,24 +12301,28 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "productId",
         "schema": "string",
         "required": true,
-        "description": "The id for the product of a store."
+        "description": "The id for the product of a store.",
+        "example": "PRODUCT_ID"
       },
       {
         "name": "variantId",
         "schema": "string",
         "required": true,
-        "description": "The id for the product variant."
+        "description": "The id for the product variant.",
+        "example": "VARIANT_ID"
       },
       {
         "name": "title",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Cat Hat"
       },
       {
         "name": "url",
@@ -11785,31 +12383,36 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "productId",
         "schema": "string",
         "required": true,
-        "description": "The id for the product of a store."
+        "description": "The id for the product of a store.",
+        "example": "PRODUCT_ID"
       },
       {
         "name": "variantId",
         "schema": "string",
         "required": true,
-        "description": "The id for the product variant."
+        "description": "The id for the product variant.",
+        "example": "VARIANT_ID"
       },
       {
         "name": "title",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Cat Hat"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "url",
@@ -11889,25 +12492,29 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "productId",
         "schema": "string",
         "required": true,
-        "description": "The id for the product of a store."
+        "description": "The id for the product of a store.",
+        "example": "PRODUCT_ID"
       }
     ],
     "responses": [
@@ -11933,25 +12540,29 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "productId",
         "schema": "string",
         "required": true,
-        "description": "The id for the product of a store."
+        "description": "The id for the product of a store.",
+        "example": "PRODUCT_ID"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "url",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "URL"
       },
       {
         "name": "variant_ids",
@@ -11983,19 +12594,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "productId",
         "schema": "string",
         "required": true,
-        "description": "The id for the product of a store."
+        "description": "The id for the product of a store.",
+        "example": "PRODUCT_ID"
       },
       {
         "name": "imageId",
         "schema": "string",
         "required": true,
-        "description": "The id for the product image."
+        "description": "The id for the product image.",
+        "example": "IMAGE_ID"
       }
     ],
     "responses": [
@@ -12033,19 +12647,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "productId",
         "schema": "string",
         "required": true,
-        "description": "The id for the product of a store."
+        "description": "The id for the product of a store.",
+        "example": "PRODUCT_ID"
       },
       {
         "name": "imageId",
         "schema": "string",
         "required": true,
-        "description": "The id for the product image."
+        "description": "The id for the product image.",
+        "example": "IMAGE_ID"
       }
     ],
     "responses": [
@@ -12071,19 +12688,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "storeId",
         "schema": "string",
         "required": true,
-        "description": "The store id."
+        "description": "The store id.",
+        "example": "STORE_ID"
       },
       {
         "name": "productId",
         "schema": "string",
         "required": true,
-        "description": "The id for the product of a store."
+        "description": "The id for the product of a store.",
+        "example": "PRODUCT_ID"
       },
       {
         "name": "imageId",
         "schema": "string",
         "required": true,
-        "description": "The id for the product image."
+        "description": "The id for the product image.",
+        "example": "IMAGE_ID"
       },
       {
         "name": "id",
@@ -12136,7 +12756,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "query",
         "schema": "string",
         "required": true,
-        "description": "The search query used to filter results."
+        "description": "The search query used to filter results.",
+        "example": "QUERY"
       }
     ],
     "responses": [
@@ -12174,7 +12795,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "query",
         "schema": "string",
         "required": true,
-        "description": "The search query used to filter results. Query should be a valid email, or a string representing a contact's first or last name."
+        "description": "The search query used to filter results. Query should be a valid email, or a string representing a contact's first or last name.",
+        "example": "QUERY"
       },
       {
         "name": "listId",
@@ -12237,13 +12859,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "sortField",
@@ -12287,7 +12911,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "outreachId",
         "schema": "string",
         "required": true,
-        "description": "The outreach id."
+        "description": "The outreach id.",
+        "example": "OUTREACH_ID"
       },
       {
         "name": "excludeFields",
@@ -12331,13 +12956,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "sortField",
@@ -12381,7 +13008,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "outreachId",
         "schema": "string",
         "required": true,
-        "description": "The outreach id."
+        "description": "The outreach id.",
+        "example": "OUTREACH_ID"
       },
       {
         "name": "excludeFields",
@@ -12425,19 +13053,22 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       },
       {
         "name": "outreachId",
         "schema": "string",
         "required": true,
-        "description": "The outreach id."
+        "description": "The outreach id.",
+        "example": "OUTREACH_ID"
       },
       {
         "name": "sortField",
@@ -12475,7 +13106,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "outreachId",
         "schema": "string",
         "required": true,
-        "description": "The outreach id."
+        "description": "The outreach id.",
+        "example": "OUTREACH_ID"
       },
       {
         "name": "excludeFields",
@@ -12519,13 +13151,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       }
     ],
     "responses": [
@@ -12563,13 +13197,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": false,
-        "description": "The number of records to return. Default value is 10. Maximum value is 1000"
+        "description": "The number of records to return. Default value is 10. Maximum value is 1000",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0."
+        "description": "Used for [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination), this it the number of records from a collection to skip. Default value is 0.",
+        "default": 0
       }
     ],
     "responses": [
@@ -12607,7 +13243,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the survey."
+        "description": "The ID of the survey.",
+        "example": "SURVEY_ID"
       }
     ],
     "responses": [
@@ -12645,7 +13282,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the survey."
+        "description": "The ID of the survey.",
+        "example": "SURVEY_ID"
       }
     ],
     "responses": [
@@ -12683,13 +13321,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the survey."
+        "description": "The ID of the survey.",
+        "example": "SURVEY_ID"
       },
       {
         "name": "questionId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the survey question."
+        "description": "The ID of the survey question.",
+        "example": "QUESTION_ID"
       }
     ],
     "responses": [
@@ -12727,13 +13367,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the survey."
+        "description": "The ID of the survey.",
+        "example": "SURVEY_ID"
       },
       {
         "name": "questionId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the survey question."
+        "description": "The ID of the survey question.",
+        "example": "QUESTION_ID"
       },
       {
         "name": "respondentFamiliarityIs",
@@ -12777,7 +13419,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the survey."
+        "description": "The ID of the survey.",
+        "example": "SURVEY_ID"
       },
       {
         "name": "answeredQuestion",
@@ -12821,13 +13464,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the survey."
+        "description": "The ID of the survey.",
+        "example": "SURVEY_ID"
       },
       {
         "name": "responseId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the survey response."
+        "description": "The ID of the survey response.",
+        "example": "RESPONSE_ID"
       }
     ],
     "responses": [
@@ -12853,7 +13498,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "domainName",
         "schema": "string",
         "required": true,
-        "description": "The domain name."
+        "description": "The domain name.",
+        "example": "DOMAIN_NAME"
       }
     ],
     "responses": [
@@ -12879,7 +13525,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "domainName",
         "schema": "string",
         "required": true,
-        "description": "The domain name."
+        "description": "The domain name.",
+        "example": "DOMAIN_NAME"
       }
     ],
     "responses": [
@@ -12905,13 +13552,15 @@ export default function MailchimpTypeScriptSdk() {
         "name": "domainName",
         "schema": "string",
         "required": true,
-        "description": "The domain name."
+        "description": "The domain name.",
+        "example": "DOMAIN_NAME"
       },
       {
         "name": "code",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CODE"
       }
     ],
     "responses": [
@@ -12956,7 +13605,8 @@ export default function MailchimpTypeScriptSdk() {
         "name": "verification_email",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "VERIFICATION_EMAIL"
       }
     ],
     "responses": [

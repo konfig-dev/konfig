@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function MultiwovenTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function MultiwovenTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/multiwoven/logo.png"
       clientNameCamelCase="multiwoven"
       homepage="www.multiwoven.com/"
-      lastUpdated={new Date("2024-03-11T16:20:31.165Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/multiwoven/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/multiwoven/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["open_source","automation","data_management","open_source","developer_tools","reverse_etl","data_segmentation","data_sync","data_activation"]}
       methods={[
   {
     "url": "/api/v1/models",
@@ -72,7 +75,8 @@ export default function MultiwovenTypeScriptSdk() {
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       }
     ],
     "responses": [
@@ -94,7 +98,8 @@ export default function MultiwovenTypeScriptSdk() {
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       }
     ],
     "responses": [
@@ -116,7 +121,8 @@ export default function MultiwovenTypeScriptSdk() {
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "model",
@@ -143,7 +149,8 @@ export default function MultiwovenTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": "Type of the connector (source or destination)"
+        "description": "Type of the connector (source or destination)",
+        "example": "TYPE"
       }
     ],
     "responses": [
@@ -165,13 +172,15 @@ export default function MultiwovenTypeScriptSdk() {
         "name": "connectorName",
         "schema": "string",
         "required": true,
-        "description": "Name of the connector"
+        "description": "Name of the connector",
+        "example": "CONNECTOR_NAME"
       },
       {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": "Type of the connector (source or destination)"
+        "description": "Type of the connector (source or destination)",
+        "example": "TYPE"
       }
     ],
     "responses": [
@@ -260,7 +269,8 @@ export default function MultiwovenTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Unique ID of the connector"
+        "description": "Unique ID of the connector",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -282,7 +292,8 @@ export default function MultiwovenTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Unique ID of the connector"
+        "description": "Unique ID of the connector",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -304,7 +315,8 @@ export default function MultiwovenTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Unique ID of the connector"
+        "description": "Unique ID of the connector",
+        "example": "ID"
       },
       {
         "name": "connector",
@@ -331,7 +343,8 @@ export default function MultiwovenTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "Unique ID of the connector"
+        "description": "Unique ID of the connector",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -353,7 +366,8 @@ export default function MultiwovenTypeScriptSdk() {
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "The ID of the connector to query"
+        "description": "The ID of the connector to query",
+        "example": 0
       },
       {
         "name": "query",
@@ -429,7 +443,8 @@ export default function MultiwovenTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the sync operation to delete"
+        "description": "The ID of the sync operation to delete",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -451,7 +466,8 @@ export default function MultiwovenTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -473,7 +489,8 @@ export default function MultiwovenTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "sync",
@@ -515,7 +532,8 @@ export default function MultiwovenTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": "Type of the report to query."
+        "description": "Type of the report to query.",
+        "example": "TYPE"
       },
       {
         "name": "metric",
@@ -556,7 +574,8 @@ export default function MultiwovenTypeScriptSdk() {
         "name": "syncId",
         "schema": "integer",
         "required": true,
-        "description": "The ID of the sync to list runs for."
+        "description": "The ID of the sync to list runs for.",
+        "example": 0
       },
       {
         "name": "status",
@@ -592,13 +611,15 @@ export default function MultiwovenTypeScriptSdk() {
         "name": "syncId",
         "schema": "integer",
         "required": true,
-        "description": "The ID of the sync to list records for."
+        "description": "The ID of the sync to list records for.",
+        "example": 0
       },
       {
         "name": "syncRunId",
         "schema": "integer",
         "required": true,
-        "description": "The ID of the sync run to list records for."
+        "description": "The ID of the sync run to list records for.",
+        "example": 0
       },
       {
         "name": "status",

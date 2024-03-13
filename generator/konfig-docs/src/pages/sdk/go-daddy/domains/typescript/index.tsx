@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function GoDaddyDomainsTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function GoDaddyDomainsTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/godaddy/domains/logo.png"
       clientNameCamelCase="goDaddy"
       homepage="developer.godaddy.com"
-      lastUpdated={new Date("2024-03-11T16:20:31.165Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/godaddy/domains/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/godaddy/domains/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["hosting"]}
       methods={[
   {
     "url": "/v1/domains",
@@ -118,7 +121,8 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "xMarketId",
         "schema": "string",
         "required": false,
-        "description": "Unique identifier of the Market used to retrieve/translate Legal Agreements"
+        "description": "Unique identifier of the Market used to retrieve/translate Legal Agreements",
+        "default": "en-US"
       },
       {
         "name": "tlds",
@@ -130,7 +134,8 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "privacy",
         "schema": "boolean",
         "required": true,
-        "description": "Whether or not privacy has been requested"
+        "description": "Whether or not privacy has been requested",
+        "example": true
       },
       {
         "name": "forTransfer",
@@ -182,19 +187,22 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": "Domain name whose availability is to be checked"
+        "description": "Domain name whose availability is to be checked",
+        "example": "DOMAIN"
       },
       {
         "name": "checkType",
         "schema": "string",
         "required": false,
-        "description": "Optimize for time ('FAST') or accuracy ('FULL')"
+        "description": "Optimize for time ('FAST') or accuracy ('FULL')",
+        "default": "FAST"
       },
       {
         "name": "forTransfer",
         "schema": "boolean",
         "required": false,
-        "description": "Whether or not to include domains available for transfer. If set to True, checkType is ignored"
+        "description": "Whether or not to include domains available for transfer. If set to True, checkType is ignored",
+        "default": false
       }
     ],
     "responses": [
@@ -240,7 +248,8 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "checkType",
         "schema": "string",
         "required": false,
-        "description": "Optimize for time ('FAST') or accuracy ('FULL')"
+        "description": "Optimize for time ('FAST') or accuracy ('FULL')",
+        "default": "FAST"
       }
     ],
     "responses": [
@@ -290,13 +299,15 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "xPrivateLabelId",
         "schema": "integer",
         "required": false,
-        "description": "PrivateLabelId to operate as, if different from JWT"
+        "description": "PrivateLabelId to operate as, if different from JWT",
+        "default": 1
       },
       {
         "name": "marketId",
         "schema": "string",
         "required": false,
-        "description": "MarketId in which the request is being made, and for which responses should be localized"
+        "description": "MarketId in which the request is being made, and for which responses should be localized",
+        "default": "en-US"
       },
       {
         "name": "contactAdmin",
@@ -416,7 +427,8 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "DOMAIN"
       },
       {
         "name": "nameServers",
@@ -428,19 +440,22 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "period",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": 1
       },
       {
         "name": "privacy",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "renewAuto",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": true
       }
     ],
     "responses": [
@@ -490,7 +505,8 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "tld",
         "schema": "string",
         "required": true,
-        "description": "The Top-Level Domain whose schema should be retrieved"
+        "description": "The Top-Level Domain whose schema should be retrieved",
+        "example": "TLD"
       }
     ],
     "responses": [
@@ -570,7 +586,8 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "DOMAIN"
       },
       {
         "name": "nameServers",
@@ -582,19 +599,22 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "period",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": 1
       },
       {
         "name": "privacy",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "renewAuto",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": true
       }
     ],
     "responses": [
@@ -698,7 +718,8 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "waitMs",
         "schema": "integer",
         "required": false,
-        "description": "Maximum amount of time, in milliseconds, to wait for responses\nIf elapses, return the results compiled up to that point"
+        "description": "Maximum amount of time, in milliseconds, to wait for responses\nIf elapses, return the results compiled up to that point",
+        "default": 1000
       }
     ],
     "responses": [
@@ -787,7 +808,8 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": "Domain to cancel"
+        "description": "Domain to cancel",
+        "example": "DOMAIN"
       }
     ],
     "responses": [
@@ -843,7 +865,8 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": "Domain name whose details are to be retrieved"
+        "description": "Domain name whose details are to be retrieved",
+        "example": "DOMAIN"
       }
     ],
     "responses": [
@@ -897,7 +920,8 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": "Domain whose details are to be updated"
+        "description": "Domain whose details are to be updated",
+        "example": "DOMAIN"
       },
       {
         "name": "xShopperId",
@@ -993,7 +1017,8 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": "Domain whose Contacts are to be updated."
+        "description": "Domain whose Contacts are to be updated.",
+        "example": "DOMAIN"
       },
       {
         "name": "contactAdmin",
@@ -1081,7 +1106,8 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": "Domain whose privacy is to be cancelled"
+        "description": "Domain whose privacy is to be cancelled",
+        "example": "DOMAIN"
       }
     ],
     "responses": [
@@ -1137,7 +1163,8 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": "Domain for which to purchase privacy"
+        "description": "Domain for which to purchase privacy",
+        "example": "DOMAIN"
       },
       {
         "name": "consent",
@@ -1203,7 +1230,8 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": "Domain whose DNS Records are to be augmented"
+        "description": "Domain whose DNS Records are to be augmented",
+        "example": "DOMAIN"
       }
     ],
     "responses": [
@@ -1263,7 +1291,8 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": "Domain whose DNS Records are to be replaced"
+        "description": "Domain whose DNS Records are to be replaced",
+        "example": "DOMAIN"
       }
     ],
     "responses": [
@@ -1323,13 +1352,15 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": "Domain whose DNS Records are to be replaced"
+        "description": "Domain whose DNS Records are to be replaced",
+        "example": "DOMAIN"
       },
       {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": "DNS Record Type for which DNS Records are to be replaced"
+        "description": "DNS Record Type for which DNS Records are to be replaced",
+        "example": "TYPE"
       }
     ],
     "responses": [
@@ -1389,19 +1420,22 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": "Domain whose DNS Records are to be deleted"
+        "description": "Domain whose DNS Records are to be deleted",
+        "example": "DOMAIN"
       },
       {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": "DNS Record Type for which DNS Records are to be deleted"
+        "description": "DNS Record Type for which DNS Records are to be deleted",
+        "example": "TYPE"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": "DNS Record Name for which DNS Records are to be deleted"
+        "description": "DNS Record Name for which DNS Records are to be deleted",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -1465,19 +1499,22 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": "Domain whose DNS Records are to be retrieved"
+        "description": "Domain whose DNS Records are to be retrieved",
+        "example": "DOMAIN"
       },
       {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": "DNS Record Type for which DNS Records are to be retrieved"
+        "description": "DNS Record Type for which DNS Records are to be retrieved",
+        "example": "TYPE"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": "DNS Record Name for which DNS Records are to be retrieved"
+        "description": "DNS Record Name for which DNS Records are to be retrieved",
+        "example": "NAME"
       },
       {
         "name": "offset",
@@ -1549,19 +1586,22 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": "Domain whose DNS Records are to be replaced"
+        "description": "Domain whose DNS Records are to be replaced",
+        "example": "DOMAIN"
       },
       {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": "DNS Record Type for which DNS Records are to be replaced"
+        "description": "DNS Record Type for which DNS Records are to be replaced",
+        "example": "TYPE"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": "DNS Record Name for which DNS Records are to be replaced"
+        "description": "DNS Record Name for which DNS Records are to be replaced",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -1621,7 +1661,8 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": "Domain to renew"
+        "description": "Domain to renew",
+        "example": "DOMAIN"
       },
       {
         "name": "period",
@@ -1686,13 +1727,15 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": "Domain to transfer in"
+        "description": "Domain to transfer in",
+        "example": "DOMAIN"
       },
       {
         "name": "authCode",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "AUTHCODE"
       },
       {
         "name": "consent",
@@ -1728,19 +1771,22 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "period",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": 1
       },
       {
         "name": "privacy",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "renewAuto",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": true
       }
     ],
     "responses": [
@@ -1796,7 +1842,8 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": "Domain whose Contact E-mail should be verified."
+        "description": "Domain whose Contact E-mail should be verified.",
+        "example": "DOMAIN"
       }
     ],
     "responses": [
@@ -1850,13 +1897,15 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id."
+        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id.",
+        "example": "CUSTOMERID"
       },
       {
         "name": "fqdn",
         "schema": "string",
         "required": true,
-        "description": "The fully qualified domain name whose forwarding details are to be deleted."
+        "description": "The fully qualified domain name whose forwarding details are to be deleted.",
+        "example": "FQDN"
       }
     ],
     "responses": [
@@ -1906,13 +1955,15 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id."
+        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id.",
+        "example": "CUSTOMERID"
       },
       {
         "name": "fqdn",
         "schema": "string",
         "required": true,
-        "description": "The fully qualified domain name whose forwarding details are to be retrieved."
+        "description": "The fully qualified domain name whose forwarding details are to be retrieved.",
+        "example": "FQDN"
       },
       {
         "name": "includeSubs",
@@ -1964,13 +2015,15 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your own customer id."
+        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your own customer id.",
+        "example": "CUSTOMERID"
       },
       {
         "name": "fqdn",
         "schema": "string",
         "required": true,
-        "description": "The fully qualified domain name whose forwarding details are to be modified."
+        "description": "The fully qualified domain name whose forwarding details are to be modified.",
+        "example": "FQDN"
       },
       {
         "name": "mask",
@@ -1982,13 +2035,16 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TYPE",
+        "default": "REDIRECT_PERMANENT"
       },
       {
         "name": "url",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "URL"
       }
     ],
     "responses": [
@@ -2038,13 +2094,15 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id."
+        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id.",
+        "example": "CUSTOMERID"
       },
       {
         "name": "fqdn",
         "schema": "string",
         "required": true,
-        "description": "The fully qualified domain name whose forwarding details are to be modified."
+        "description": "The fully qualified domain name whose forwarding details are to be modified.",
+        "example": "FQDN"
       },
       {
         "name": "mask",
@@ -2056,13 +2114,16 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TYPE",
+        "default": "REDIRECT_PERMANENT"
       },
       {
         "name": "url",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "URL"
       }
     ],
     "responses": [
@@ -2118,7 +2179,8 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id."
+        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id.",
+        "example": "CUSTOMERID"
       }
     ],
     "responses": [
@@ -2166,7 +2228,8 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id."
+        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id.",
+        "example": "CUSTOMERID"
       }
     ],
     "responses": [
@@ -2214,7 +2277,8 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id."
+        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id.",
+        "example": "CUSTOMERID"
       },
       {
         "name": "types",
@@ -2272,13 +2336,15 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id."
+        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id.",
+        "example": "CUSTOMERID"
       },
       {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": "The notification type whose schema should be retrieved"
+        "description": "The notification type whose schema should be retrieved",
+        "example": "TYPE"
       }
     ],
     "responses": [
@@ -2330,13 +2396,15 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id."
+        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id.",
+        "example": "CUSTOMERID"
       },
       {
         "name": "notificationId",
         "schema": "string",
         "required": true,
-        "description": "The notification ID to acknowledge"
+        "description": "The notification ID to acknowledge",
+        "example": "NOTIFICATIONID"
       }
     ],
     "responses": [
@@ -2384,7 +2452,8 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id."
+        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id.",
+        "example": "CUSTOMERID"
       },
       {
         "name": "consent",
@@ -2402,7 +2471,8 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "DOMAIN"
       },
       {
         "name": "metadata",
@@ -2420,19 +2490,22 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "period",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": 1
       },
       {
         "name": "privacy",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "renewAuto",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": true
       }
     ],
     "responses": [
@@ -2488,13 +2561,15 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id."
+        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id.",
+        "example": "CUSTOMERID"
       },
       {
         "name": "tld",
         "schema": "string",
         "required": true,
-        "description": "The Top-Level Domain whose schema should be retrieved"
+        "description": "The Top-Level Domain whose schema should be retrieved",
+        "example": "TLD"
       }
     ],
     "responses": [
@@ -2546,7 +2621,8 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id."
+        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id.",
+        "example": "CUSTOMERID"
       },
       {
         "name": "consent",
@@ -2564,7 +2640,8 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "DOMAIN"
       },
       {
         "name": "metadata",
@@ -2582,19 +2659,22 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "period",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": 1
       },
       {
         "name": "privacy",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "renewAuto",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": true
       }
     ],
     "responses": [
@@ -2650,13 +2730,15 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id."
+        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id.",
+        "example": "CUSTOMERID"
       },
       {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": "Domain name whose details are to be retrieved"
+        "description": "Domain name whose details are to be retrieved",
+        "example": "DOMAIN"
       },
       {
         "name": "includes",
@@ -2718,13 +2800,15 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id."
+        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id.",
+        "example": "CUSTOMERID"
       },
       {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": "Domain whose actions are to be retrieved"
+        "description": "Domain whose actions are to be retrieved",
+        "example": "DOMAIN"
       }
     ],
     "responses": [
@@ -2772,19 +2856,22 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id."
+        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id.",
+        "example": "CUSTOMERID"
       },
       {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": "Domain whose action is to be cancelled"
+        "description": "Domain whose action is to be cancelled",
+        "example": "DOMAIN"
       },
       {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": "The type of action to cancel"
+        "description": "The type of action to cancel",
+        "example": "TYPE"
       }
     ],
     "responses": [
@@ -2836,19 +2923,22 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id."
+        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id.",
+        "example": "CUSTOMERID"
       },
       {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": "Domain whose action is to be retrieved"
+        "description": "Domain whose action is to be retrieved",
+        "example": "DOMAIN"
       },
       {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": "The type of action to retrieve"
+        "description": "The type of action to retrieve",
+        "example": "TYPE"
       }
     ],
     "responses": [
@@ -2900,13 +2990,15 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id."
+        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id.",
+        "example": "CUSTOMERID"
       },
       {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": "Domain to request redeem for"
+        "description": "Domain to request redeem for",
+        "example": "DOMAIN"
       },
       {
         "name": "consent",
@@ -2968,13 +3060,15 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id."
+        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id.",
+        "example": "CUSTOMERID"
       },
       {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": "Domain to be renewed"
+        "description": "Domain to be renewed",
+        "example": "DOMAIN"
       },
       {
         "name": "consent",
@@ -2986,7 +3080,8 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "expires",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "EXPIRES"
       },
       {
         "name": "period",
@@ -3052,19 +3147,22 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id."
+        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id.",
+        "example": "CUSTOMERID"
       },
       {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": "Domain to transfer in"
+        "description": "Domain to transfer in",
+        "example": "DOMAIN"
       },
       {
         "name": "authCode",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "AUTHCODE"
       },
       {
         "name": "consent",
@@ -3094,19 +3192,22 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "period",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": 1
       },
       {
         "name": "privacy",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "renewAuto",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": true
       }
     ],
     "responses": [
@@ -3166,19 +3267,22 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id."
+        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id.",
+        "example": "CUSTOMERID"
       },
       {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": "Domain to accept the transfer in for"
+        "description": "Domain to accept the transfer in for",
+        "example": "DOMAIN"
       },
       {
         "name": "authCode",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "AUTHCODE"
       }
     ],
     "responses": [
@@ -3238,13 +3342,15 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id."
+        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id.",
+        "example": "CUSTOMERID"
       },
       {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": "Domain to cancel the transfer in for"
+        "description": "Domain to cancel the transfer in for",
+        "example": "DOMAIN"
       }
     ],
     "responses": [
@@ -3296,13 +3402,15 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id."
+        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id.",
+        "example": "CUSTOMERID"
       },
       {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": "Domain to restart the transfer in"
+        "description": "Domain to restart the transfer in",
+        "example": "DOMAIN"
       }
     ],
     "responses": [
@@ -3354,19 +3462,22 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id."
+        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id.",
+        "example": "CUSTOMERID"
       },
       {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": "Domain to retry the transfer in"
+        "description": "Domain to retry the transfer in",
+        "example": "DOMAIN"
       },
       {
         "name": "authCode",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "AUTHCODE"
       }
     ],
     "responses": [
@@ -3426,19 +3537,22 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id."
+        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id.",
+        "example": "CUSTOMERID"
       },
       {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": "Domain to initiate the transfer out for"
+        "description": "Domain to initiate the transfer out for",
+        "example": "DOMAIN"
       },
       {
         "name": "registrar",
         "schema": "string",
         "required": true,
-        "description": "Registrar tag to push transfer to"
+        "description": "Registrar tag to push transfer to",
+        "example": "REGISTRAR"
       }
     ],
     "responses": [
@@ -3494,13 +3608,15 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id."
+        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id.",
+        "example": "CUSTOMERID"
       },
       {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": "Domain to accept the transfer out for"
+        "description": "Domain to accept the transfer out for",
+        "example": "DOMAIN"
       }
     ],
     "responses": [
@@ -3552,13 +3668,15 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "customerId",
         "schema": "string",
         "required": true,
-        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id."
+        "description": "The Customer identifier<br/> Note: For API Resellers, performing actions on behalf of your customers, you need to specify the Subaccount you're operating on behalf of; otherwise use your shopper id.",
+        "example": "CUSTOMERID"
       },
       {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": "Domain to reject the transfer out for"
+        "description": "Domain to reject the transfer out for",
+        "example": "DOMAIN"
       },
       {
         "name": "reason",
@@ -3634,7 +3752,8 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Maximum number of results to return"
+        "description": "Maximum number of results to return",
+        "default": 100
       }
     ],
     "responses": [
@@ -3686,7 +3805,8 @@ export default function GoDaddyDomainsTypeScriptSdk() {
         "name": "maintenanceId",
         "schema": "string",
         "required": true,
-        "description": "The identifier for the system maintenance"
+        "description": "The identifier for the system maintenance",
+        "example": "MAINTENANCEID"
       }
     ],
     "responses": [

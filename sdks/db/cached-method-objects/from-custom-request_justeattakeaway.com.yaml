@@ -11,6 +11,7 @@ methodObjects:
         schema: string
         required: true
         description: The identifier for the tenant
+        example: TENANT
       - name: xJetApplication
         schema: string
         required: false
@@ -19,10 +20,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: EMAILADDRESS
       - name: loginCode
         schema: string
         required: true
         description: ''
+        example: LOGINCODE
       - name: pushNotificationId
         schema: string
         required: false
@@ -49,6 +52,7 @@ methodObjects:
         schema: string
         required: true
         description: The identifier for the tenant
+        example: TENANT
       - name: xJetApplication
         schema: string
         required: false
@@ -57,6 +61,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: EMAILADDRESS
     responses:
       - statusCode: '204'
         description: Request received, no info about success or failure.
@@ -78,10 +83,12 @@ methodObjects:
         schema: string
         required: true
         description: The identifier for the tenant
+        example: TENANT
       - name: restaurantId
         schema: string
         required: true
         description: The restaurant Id
+        example: RESTAURANTID
       - name: xJetApplication
         schema: string
         required: false
@@ -139,6 +146,7 @@ methodObjects:
         schema: string
         required: true
         description: The brand slug to query.
+        example: BRAND_SLUG
       - name: from
         schema: string
         required: false
@@ -173,6 +181,7 @@ methodObjects:
         schema: integer
         required: false
         description: The size of the page.
+        default: 50
     responses:
       - statusCode: '200'
         description: ''
@@ -199,10 +208,12 @@ methodObjects:
         schema: string
         required: true
         description: The brand slug to query.
+        example: BRAND_SLUG
       - name: orderId
         schema: string
         required: true
         description: The order id to query.
+        example: ORDERID
     responses:
       - statusCode: '200'
         description: Order represents an order that was placed.
@@ -229,6 +240,7 @@ methodObjects:
         schema: string
         required: true
         description: Request tenant.
+        example: TENANT
       - name: xJetApplication
         schema: string
         required: false
@@ -257,10 +269,12 @@ methodObjects:
         schema: string
         required: true
         description: Request tenant.
+        example: TENANT
       - name: productType
         schema: string
         required: true
         description: Product type.
+        example: PRODUCTTYPE
       - name: xJetApplication
         schema: string
         required: false
@@ -316,6 +330,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: NAME
       - name: restaurants
         schema: array
         required: false
@@ -340,6 +355,7 @@ methodObjects:
         schema: string
         required: true
         description: Identifier for the pool
+        example: DELIVERYPOOLID
       - name: xJetApplication
         schema: string
         required: false
@@ -362,6 +378,7 @@ methodObjects:
         schema: string
         required: true
         description: Identifier for the pool
+        example: DELIVERYPOOLID
       - name: xJetApplication
         schema: string
         required: false
@@ -387,6 +404,7 @@ methodObjects:
         schema: string
         required: true
         description: Identifier for the pool
+        example: DELIVERYPOOLID
       - name: xJetApplication
         schema: string
         required: false
@@ -395,6 +413,7 @@ methodObjects:
         schema: number
         required: true
         description: ''
+        example: 0
     responses:
       - statusCode: '202'
         description: Accepted
@@ -421,6 +440,7 @@ methodObjects:
         schema: string
         required: true
         description: Identifier for the pool
+        example: DELIVERYPOOLID
       - name: xJetApplication
         schema: string
         required: false
@@ -445,6 +465,7 @@ methodObjects:
         schema: string
         required: true
         description: Identifier for the pool
+        example: DELIVERYPOOLID
       - name: xJetApplication
         schema: string
         required: false
@@ -469,6 +490,7 @@ methodObjects:
         schema: string
         required: true
         description: Identifier for the pool
+        example: DELIVERYPOOLID
       - name: xJetApplication
         schema: string
         required: false
@@ -503,6 +525,7 @@ methodObjects:
         schema: string
         required: true
         description: Identifier for the pool
+        example: DELIVERYPOOLID
       - name: xJetApplication
         schema: string
         required: false
@@ -511,6 +534,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: NAME
       - name: restaurants
         schema: array
         required: false
@@ -539,6 +563,7 @@ methodObjects:
         schema: string
         required: true
         description: Identifier for the pool
+        example: DELIVERYPOOLID
       - name: xJetApplication
         schema: string
         required: false
@@ -589,10 +614,12 @@ methodObjects:
         schema: string
         required: true
         description: Identifier for the pool
+        example: DELIVERYPOOLID
       - name: reason
         schema: string
         required: true
         description: Reason of the offline event. e.g. `?reason=manual`
+        example: REASON
       - name: xJetApplication
         schema: string
         required: false
@@ -625,6 +652,7 @@ methodObjects:
         schema: string
         required: true
         description: Identifier for the pool
+        example: DELIVERYPOOLID
       - name: xJetApplication
         schema: string
         required: false
@@ -660,6 +688,7 @@ methodObjects:
         schema: string
         required: true
         description: Identifier for the pool
+        example: DELIVERYPOOLID
       - name: xJetApplication
         schema: string
         required: false
@@ -689,6 +718,7 @@ methodObjects:
         schema: string
         required: true
         description: Identifier for the pool
+        example: DELIVERYPOOLID
       - name: xJetApplication
         schema: string
         required: false
@@ -719,6 +749,7 @@ methodObjects:
         schema: string
         required: true
         description: Identifier for the pool
+        example: DELIVERYPOOLID
       - name: xJetApplication
         schema: string
         required: false
@@ -777,16 +808,23 @@ methodObjects:
         schema: string
         required: true
         description: Tenant containing the restaurants.
+        example: uk
       - name: restaurantIds
         schema: array
         required: true
         description: >-
           Restaurant IDs which fees are requested for. e.g.
           `?restaurantIds=1,2,3,4`
+        example:
+          - '1'
+          - '2'
+          - '3'
+          - '4'
       - name: deliveryTime
         schema: string
         required: true
         description: Delivery date/time when fees are required (ISO8601 format).
+        example: '2019-09-05T12:43:48.431Z'
       - name: zone
         schema: string
         required: false
@@ -794,6 +832,7 @@ methodObjects:
           Postcode or other location name identifying the location to which
           delivery is required. For use when precise location is not available.
           This will be removed in future in favour of location.
+        example: BS1
       - name: latlong
         schema: array
         required: false
@@ -801,6 +840,9 @@ methodObjects:
           Point to which delivery is required (latitude, longitude). Supply this
           where possible as support for zone-only based lookups will be removed
           in future.
+        example:
+          - 51.3851513
+          - -2.0841275
       - name: xJetApplication
         schema: string
         required: false
@@ -825,13 +867,16 @@ methodObjects:
         schema: string
         required: true
         description: The tenant that the request is coming from.
+        example: uk
       - name: postcode
         schema: string
         required: true
         description: The postcode of the requested area.
+        example: bs14dj
       - name: ratingsOutOfFive
         schema: boolean
         description: Whether returned ratings are out of 5 stars
+        default: false
       - name: serviceType
         schema: string
         required: false
@@ -841,6 +886,7 @@ methodObjects:
           - `any`: Retrieve restaurants offering any service type (default).
           - `delivery`: Retrieve restaurants that offer delivery.
           - `collection`: Retrieve restaurants that offer collection.
+        default: any
       - name: xJetApplication
         schema: string
         required: false
@@ -865,15 +911,19 @@ methodObjects:
         schema: string
         required: true
         description: The tenant that the request is coming from.
+        example: uk
       - name: latitude
         schema: number
         description: The latitude of the requested area.
+        example: 51.451772
       - name: longitude
         schema: number
         description: The longitude of the requested area.
+        example: -2.596847
       - name: ratingsOutOfFive
         schema: boolean
         description: Whether returned ratings are out of 5 stars
+        default: false
       - name: serviceType
         schema: string
         required: false
@@ -883,6 +933,7 @@ methodObjects:
           - `any`: Retrieve restaurants offering any service type (default).
           - `delivery`: Retrieve restaurants that offer delivery.
           - `collection`: Retrieve restaurants that offer collection.
+        default: any
       - name: xJetApplication
         schema: string
         required: false
@@ -1064,6 +1115,9 @@ methodObjects:
       - name: Location
         schema: object
         description: ''
+        example:
+          Longitude: -0.103198
+          Latitude: 51.51641
     responses:
       - statusCode: '200'
         description: OK
@@ -1117,6 +1171,7 @@ methodObjects:
         schema: string
         required: true
         description: The endpoint you have provided to us.
+        example: https://www.your-base-url.com/finalPickedOrders
       - name: xJetApplication
         schema: string
         required: false
@@ -1129,18 +1184,22 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: ID
       - name: third_party_order_reference
         schema: string
         required: true
         description: ''
+        example: THIRD_PARTY_ORDER_REFERENCE
       - name: type
         schema: string
         required: true
         description: ''
+        example: TYPE
       - name: posLocationId
         schema: string
         required: true
         description: ''
+        example: POSLOCATIONID
       - name: location
         schema: object
         required: true
@@ -1149,6 +1208,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: MENU_REFERENCE
       - name: items
         schema: array
         required: true
@@ -1157,6 +1217,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: CREATED_AT
       - name: channel
         schema: object
         required: true
@@ -1185,6 +1246,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: PAYMENT_METHOD
       - name: tender_type
         schema: string
         required: false
@@ -1247,6 +1309,7 @@ methodObjects:
         schema: string
         required: true
         description: The endpoint you have provided to us.
+        example: https://www.your-base-url.com/receiveOrders
       - name: xJetConnectHash
         schema: string
         description: >-
@@ -1276,18 +1339,22 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: ID
       - name: third_party_order_reference
         schema: string
         required: true
         description: ''
+        example: THIRD_PARTY_ORDER_REFERENCE
       - name: type
         schema: string
         required: true
         description: ''
+        example: TYPE
       - name: posLocationId
         schema: string
         required: true
         description: ''
+        example: POSLOCATIONID
       - name: location
         schema: object
         required: true
@@ -1296,6 +1363,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: MENU_REFERENCE
       - name: items
         schema: array
         required: true
@@ -1304,6 +1372,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: CREATED_AT
       - name: channel
         schema: object
         required: true
@@ -1332,6 +1401,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: PAYMENT_METHOD
       - name: tender_type
         schema: string
         required: false
@@ -1398,6 +1468,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: UNAVAILABLE
       - name: itemReferences
         schema: array
         required: true
@@ -1406,14 +1477,17 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: RESTAURANT
       - name: happenedAt
         schema: string
         required: false
         description: ''
+        example: '2018-10-11T14:56:18.234284+01:00'
       - name: nextAvailableAt
         schema: string
         required: false
         description: ''
+        example: '2018-10-11T14:56:18.234284+01:00'
     responses:
       - statusCode: '202'
         description: Is returned when a request has been accepted and is processing
@@ -1511,6 +1585,7 @@ methodObjects:
         schema: string
         required: true
         description: The location ID to query by.
+        example: LOCATIONID
     responses:
       - statusCode: '200'
         description: ''
@@ -1583,6 +1658,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: https://example.com/menu_webhook
     responses:
       - statusCode: '202'
         description: Is returned when a request has been accepted and is processing
@@ -1608,6 +1684,7 @@ methodObjects:
           The identifier for the order for which the status should be updated.
           Note that this is the JET Connect order ID, received as id in the
           Receive Order endpoint body.
+        example: xsfkfwtowkm1mswn2gmjjq
       - name: xJetApplication
         schema: string
         required: false
@@ -1616,14 +1693,17 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: HAPPENEDAT
       - name: errorCode
         schema: string
         required: true
         description: ''
+        example: ERRORCODE
       - name: errorMessage
         schema: string
         required: true
         description: ''
+        example: ERRORMESSAGE
     responses:
       - statusCode: '204'
         description: >-
@@ -1647,6 +1727,7 @@ methodObjects:
           The identifier for the order for which the status should be updated.
           Note that this is the JET Connect order ID, received as id in the
           Receive Order endpoint body.
+        example: xsfkfwtowkm1mswn2gmjjq
       - name: xJetApplication
         schema: string
         required: false
@@ -1659,6 +1740,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: HAPPENEDAT
     responses:
       - statusCode: '204'
         description: >-
@@ -1984,14 +2066,17 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: ORDERID
       - name: orderReference
         schema: string
         required: true
         description: ''
+        example: ORDERREFERENCE
       - name: tenant
         schema: string
         required: true
         description: ''
+        example: TENANT
       - name: totalPrice
         schema: number
         required: false
@@ -2000,14 +2085,17 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: CURRENCY
       - name: placedDate
         schema: string
         required: true
         description: ''
+        example: PLACEDDATE
       - name: acceptanceDeadline
         schema: string
         required: true
         description: ''
+        example: ACCEPTANCEDEADLINE
       - name: status
         schema: object
         required: true
@@ -2052,6 +2140,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: SOURCE
     responses:
       - statusCode: '200'
         description: >-
@@ -2086,6 +2175,8 @@ methodObjects:
         schema: number
         required: false
         description: The api version to use. Version 2.0 is the only available version.
+        example: 2
+        default: 1
       - name: xJetApplication
         schema: string
         required: false
@@ -2098,6 +2189,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: ORDERREFERENCE
       - name: IsTest
         schema: boolean
         required: false
@@ -2110,14 +2202,36 @@ methodObjects:
         schema: object
         required: false
         description: ''
+        example:
+          NoteForDelivery: Red door
+          NoteForRestaurant: Make it spicy
       - name: Fulfilment
         schema: object
         required: true
         description: ''
+        example:
+          Method: Delivery
+          DueDate: '2020-01-01T09:00:00.000Z'
+          DueAsap: false
       - name: Payment
         schema: object
         required: true
         description: ''
+        example:
+          Tips:
+            - Value: 2.5
+              Type: driver
+          Lines:
+            - ServiceFee: 0
+              Type: Card
+              Paid: true
+              Value: 19.95
+              LastCardDigits: '1234'
+          Fees:
+            - Value: 0.25
+              Type: card
+            - Value: 3.5
+              Type: delivery
       - name: Items
         schema: array
         required: true
@@ -2130,6 +2244,7 @@ methodObjects:
         schema: number
         required: true
         description: ''
+        example: 0
     responses:
       - statusCode: '201'
         description: Describes a created order
@@ -2155,10 +2270,12 @@ methodObjects:
           The owning brand in the brand slug format e.g. `je-uk-example`
           (contact delivery manager if unsure). This field may be removed in a
           future version.
+        example: je-uk-example
       - name: orderId
         schema: string
         required: true
         description: The originating order ID as supplied by the ordering partner.
+        example: 00025doahk2txeo9ttd0ma
       - name: xJetApplication
         schema: string
         required: false
@@ -2190,10 +2307,12 @@ methodObjects:
           The owning brand in the brand slug format e.g. `je-uk-example`
           (contact delivery manager if unsure). This field may be removed in a
           future version.
+        example: je-uk-example
       - name: orderId
         schema: string
         required: true
         description: The originating order ID as supplied by the ordering partner.
+        example: 00025doahk2txeo9ttd0ma
       - name: xJetApplication
         schema: string
         required: false
@@ -2237,10 +2356,12 @@ methodObjects:
           The owning brand in the brand slug format e.g. `je-uk-example`
           (contact delivery manager if unsure). This field may be removed in a
           future version.
+        example: je-uk-example
       - name: orderId
         schema: string
         required: true
         description: The originating order ID as supplied by the ordering partner.
+        example: 00025doahk2txeo9ttd0ma
       - name: xJetApplication
         schema: string
         required: false
@@ -2249,6 +2370,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: REASON
     responses:
       - statusCode: '200'
         description: Information about this cancellation.
@@ -2279,6 +2401,7 @@ methodObjects:
         schema: string
         required: true
         description: The order id
+        example: ORDERID
       - name: xJeConversation
         schema: string
         required: false
@@ -2323,6 +2446,7 @@ methodObjects:
         schema: string
         required: true
         description: The order id
+        example: ORDERID
       - name: xJeConversation
         schema: string
         required: false
@@ -2353,6 +2477,7 @@ methodObjects:
         schema: string
         required: true
         description: The order id
+        example: ORDERID
       - name: xJeConversation
         schema: string
         required: false
@@ -2386,6 +2511,7 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the order to mark as complete
+        example: ORDERID
       - name: xJeConversation
         schema: string
         required: false
@@ -2418,6 +2544,7 @@ methodObjects:
         schema: string
         required: true
         description: Just Eat order identifier
+        example: ORDERID
       - name: xJetApplication
         schema: string
         required: false
@@ -2425,9 +2552,16 @@ methodObjects:
       - name: DriverId
         schema: string
         description: ''
+        example: '123456'
       - name: Location
         schema: object
         description: ''
+        example: &ref_0
+          Speed: 8.68
+          Latitude: 51.51641
+          Heading: 357.10382
+          Accuracy: 12.814
+          Longitude: -0.103198
       - name: TimeStampWithUtcOffset
         schema: string
         description: ''
@@ -2447,6 +2581,7 @@ methodObjects:
         schema: string
         required: true
         description: Just Eat order identifier
+        example: ORDERID
       - name: xJetApplication
         schema: string
         required: false
@@ -2454,6 +2589,7 @@ methodObjects:
       - name: Location
         schema: object
         description: ''
+        example: *ref_0
       - name: EtaAtDeliveryAddress
         schema: string
         description: ''
@@ -2476,6 +2612,7 @@ methodObjects:
         schema: string
         required: true
         description: Just Eat order identifier
+        example: ORDERID
       - name: xJetApplication
         schema: string
         required: false
@@ -2504,6 +2641,7 @@ methodObjects:
         schema: string
         required: true
         description: Just Eat order identifier
+        example: ORDERID
       - name: xJetApplication
         schema: string
         required: false
@@ -2511,9 +2649,11 @@ methodObjects:
       - name: DriverId
         schema: string
         description: ''
+        example: '123456'
       - name: Location
         schema: object
         description: ''
+        example: *ref_0
       - name: TimeStampWithUtcOffset
         schema: string
         description: ''
@@ -2533,6 +2673,7 @@ methodObjects:
         schema: string
         required: true
         description: Just Eat order identifier
+        example: ORDERID
       - name: xJetApplication
         schema: string
         required: false
@@ -2541,18 +2682,22 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: '123456'
       - name: EtaAtDeliveryAddress
         schema: string
         required: false
         description: ''
+        example: '2020-12-25T16:45:28.753Z'
       - name: TimeStampWithUtcOffset
         schema: string
         required: false
         description: ''
+        example: '2020-12-25T15:45:28.753Z'
       - name: DriverContactNumber
         schema: string
         required: false
         description: ''
+        example: '+447123456789'
       - name: VehicleDetails
         schema: object
         required: true
@@ -2561,14 +2706,17 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: David
       - name: Location
         schema: object
         required: false
         description: ''
+        example: *ref_0
       - name: EtaAtRestaurant
         schema: string
         required: false
         description: ''
+        example: '2020-12-25T15:30:28.753Z'
     responses:
       - statusCode: '200'
         description: OK
@@ -2587,6 +2735,7 @@ methodObjects:
         schema: string
         required: true
         description: Just Eat order identifier
+        example: ORDERID
       - name: xJetApplication
         schema: string
         required: false
@@ -2594,15 +2743,19 @@ methodObjects:
       - name: EtaAtRestaurant
         schema: string
         description: ''
+        example: '2020-12-25T16:30:28.753Z'
       - name: Location
         schema: object
         description: ''
+        example: *ref_0
       - name: EtaAtDeliveryAddress
         schema: string
         description: ''
+        example: '2020-12-25T16:45:28.753Z'
       - name: TimeStampWithUtcOffset
         schema: string
         description: ''
+        example: '2020-12-25T15:45:28.753Z'
     responses:
       - statusCode: '200'
         description: OK
@@ -2621,6 +2774,7 @@ methodObjects:
         schema: string
         required: true
         description: Just Eat order identifier
+        example: ORDERID
       - name: xJetApplication
         schema: string
         required: false
@@ -2628,30 +2782,39 @@ methodObjects:
       - name: EtaAtDeliveryAddress
         schema: string
         description: ''
+        example: '2020-12-25T16:45:28.753Z'
       - name: 'Location:'
         schema: object
         description: ''
+        example: *ref_0
       - name: TimeStampWithUtcOffset
         schema: string
         description: ''
+        example: '2020-12-25T15:30:28.753Z'
       - name: DriverContactNumber
         schema: string
         description: ''
+        example: '+447123456789'
       - name: UnassignedBy
         schema: string
         description: ''
+        example: operation
       - name: DriverName
         schema: string
         description: ''
+        example: David McDriverson
       - name: Reason
         schema: string
         description: ''
+        example: package_not_ready
       - name: Comment
         schema: string
         description: ''
+        example: Order was not ready
       - name: EtaAtRestaurant
         schema: string
         description: ''
+        example: '2020-12-25T16:30:28.753Z'
     responses:
       - statusCode: '200'
         description: OK
@@ -2670,6 +2833,7 @@ methodObjects:
         schema: string
         required: true
         description: The order id
+        example: ORDERID
       - name: xJetApplication
         schema: string
         required: false
@@ -2677,15 +2841,19 @@ methodObjects:
       - name: DriverId
         schema: string
         description: ''
+        example: '123456'
       - name: Location
         schema: object
         description: ''
+        example: *ref_0
       - name: EstimatedArrivalTime
         schema: string
         description: ''
+        example: '2020-12-25T16:45:28.753Z'
       - name: TimeStampWithUtcOffset
         schema: string
         description: ''
+        example: '2020-12-25T15:30:28.753Z'
     responses:
       - statusCode: '200'
         description: OK
@@ -2702,6 +2870,7 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the order to mark it as dispatched to customer
+        example: ORDERID
       - name: xJeConversation
         schema: string
         required: false
@@ -2734,6 +2903,7 @@ methodObjects:
         schema: string
         required: true
         description: The order id
+        example: ORDERID
       - name: xJeConversation
         schema: string
         required: false
@@ -2767,6 +2937,7 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the order to mark as ready for collection
+        example: ORDERID
       - name: xJeConversation
         schema: string
         required: false
@@ -2799,6 +2970,7 @@ methodObjects:
         schema: string
         required: true
         description: The order id
+        example: ORDERID
       - name: xJeConversation
         schema: string
         required: false
@@ -2929,12 +3101,14 @@ methodObjects:
         description: >-
           Filter search results to only include restaurants that deliver to the
           specified location
+        example: 0
       - name: longitude
         schema: number
         required: true
         description: >-
           Filter search results to only include restaurants that deliver to the
           specified location
+        example: 0
       - name: cuisine
         schema: string
         required: false
@@ -2957,6 +3131,7 @@ methodObjects:
         schema: boolean
         required: false
         description: Whether returned ratings are out of 5 stars
+        default: false
       - name: xJetApplication
         schema: string
         required: false
@@ -2992,6 +3167,7 @@ methodObjects:
         description: >-
           Filter search results to only include restaurants that deliver to the
           specified postcode
+        example: POSTCODE
       - name: cuisine
         schema: string
         required: false
@@ -3014,6 +3190,7 @@ methodObjects:
         schema: boolean
         required: false
         description: Whether returned ratings are out of 5 stars
+        default: false
       - name: xJetApplication
         schema: string
         required: false
@@ -3062,6 +3239,7 @@ methodObjects:
         description: >-
           Unique identifier of the restaurant as provided to and configured by
           JET Connect
+        example: RESTAURANTREFERENCE
       - name: xJetApplication
         schema: string
         required: false
@@ -3069,6 +3247,7 @@ methodObjects:
       - name: onlineAt
         schema: string
         description: ''
+        example: '2021-10-13T12:03:00'
     responses:
       - statusCode: '202'
         description: Is returned when a request has been accepted and is processing
@@ -3095,6 +3274,7 @@ methodObjects:
         description: >-
           Unique identifier of the restaurant as provided to and configured by
           JET Connect
+        example: RESTAURANTREFERENCE
       - name: xJetApplication
         schema: string
         required: false
@@ -3125,6 +3305,7 @@ methodObjects:
         description: >-
           Unique identifier of the restaurant as provided to and configured by
           JET Connect
+        example: RESTAURANTREFERENCE
       - name: xJetApplication
         schema: string
         required: false
@@ -3137,6 +3318,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: Europe/London
       - name: serviceTimes
         schema: array
         required: true
@@ -3165,6 +3347,7 @@ methodObjects:
         schema: string
         required: true
         description: Request tenant
+        example: TENANT
       - name: xJetApplication
         schema: string
         required: false
@@ -3193,10 +3376,12 @@ methodObjects:
         schema: string
         required: true
         description: The request tenant
+        example: TENANT
       - name: restaurantId
         schema: string
         required: true
         description: The restaurant identifier
+        example: RESTAURANTID
       - name: xJetApplication
         schema: string
         required: false
@@ -3225,10 +3410,12 @@ methodObjects:
         schema: string
         required: true
         description: The request tenant
+        example: TENANT
       - name: restaurantId
         schema: string
         required: true
         description: The restaurant identifier
+        example: RESTAURANTID
       - name: xJetApplication
         schema: string
         required: false
@@ -3237,6 +3424,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: STATUS
     responses:
       - statusCode: '200'
         description: OK
@@ -3263,10 +3451,12 @@ methodObjects:
         schema: string
         required: true
         description: A valid country code, e.g. "uk".
+        example: TENANT
       - name: searchTerm
         schema: string
         required: true
         description: User's search term - at least one character required
+        example: SEARCHTERM
       - name: latlong
         schema: array
         required: true
@@ -3275,6 +3465,9 @@ methodObjects:
           search.
 
           Specify the coordinates as latitude,longitude.
+        example:
+          - 51.501285
+          - -0.1424422
       - name: limit
         schema: number
         required: false
@@ -3324,18 +3517,22 @@ methodObjects:
         schema: string
         required: true
         description: A valid country code, e.g. "uk".
+        example: TENANT
       - name: restaurantId
         schema: string
         required: true
         description: The ID for a restaurant
+        example: RESTAURANTID
       - name: searchTerm
         schema: string
         required: true
         description: User's search term - at least one character required
+        example: SEARCHTERM
       - name: limit
         schema: number
         required: false
         description: Limit the number of terms returned by the API, defaults to 100
+        default: 100
       - name: serviceType
         schema: array
         required: false
@@ -3343,6 +3540,7 @@ methodObjects:
           Filter product results by service type.
           Valid values are "any", "delivery" and "collection".
           Defaults to "delivery".
+        default: delivery
       - name: excludedResultTypes
         schema: array
         required: false
@@ -3383,10 +3581,12 @@ methodObjects:
         schema: string
         required: true
         description: A valid country code, e.g. "uk".
+        example: TENANT
       - name: searchTerm
         schema: string
         required: true
         description: User's search term.
+        example: SEARCHTERM
       - name: latlong
         schema: array
         required: true
@@ -3395,6 +3595,9 @@ methodObjects:
           search.
 
           Specify the coordinates as latitude,longitude.
+        example:
+          - 51.501285
+          - -0.1424422
       - name: limit
         schema: number
         required: false
@@ -3476,6 +3679,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: ORDERID
       - name: reason
         schema: object
         required: true
@@ -3484,6 +3688,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: HAPPENEDAT
     responses:
       - statusCode: '200'
         description: Metadata about the order that was cancelled.
@@ -3512,6 +3717,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: ORDERID
       - name: driverStatus
         schema: object
         required: true
@@ -3520,6 +3726,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: HAPPENEDAT
     responses:
       - statusCode: '200'
         description: Metadata about the order and information about the new driver status.
@@ -3548,6 +3755,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: VALIDATIONERROR
       - name: unknownReference
         schema: string
         required: false
@@ -3588,10 +3796,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: RESTAURANTID
       - name: lastChangedTimeStampUtc
         schema: string
         required: true
         description: ''
+        example: LASTCHANGEDTIMESTAMPUTC
       - name: collection
         schema: object
         required: true

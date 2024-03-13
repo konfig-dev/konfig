@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function JustEatTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function JustEatTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/just-eat/logo.png"
       clientNameCamelCase="justEat"
       homepage="developers.just-eat.com/"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/just-eat/favicon.png"
       contactUrl="https://developers.just-eat.com/"
       contactEmail="david.handley@justeattakeaway.com"
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/just-eat/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["ecommerce","food_delivery","online_food_ordering"]}
       methods={[
   {
     "url": "/applications/orderpad-app/restaurants/{tenant}/device-tokens",
@@ -36,7 +39,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "tenant",
         "schema": "string",
         "required": true,
-        "description": "The identifier for the tenant"
+        "description": "The identifier for the tenant",
+        "example": "TENANT"
       },
       {
         "name": "xJetApplication",
@@ -48,13 +52,15 @@ export default function JustEatTypeScriptSdk() {
         "name": "emailAddress",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "EMAILADDRESS"
       },
       {
         "name": "loginCode",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "LOGINCODE"
       },
       {
         "name": "pushNotificationId",
@@ -98,7 +104,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "tenant",
         "schema": "string",
         "required": true,
-        "description": "The identifier for the tenant"
+        "description": "The identifier for the tenant",
+        "example": "TENANT"
       },
       {
         "name": "xJetApplication",
@@ -110,7 +117,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "emailAddress",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "EMAILADDRESS"
       }
     ],
     "responses": [
@@ -144,13 +152,15 @@ export default function JustEatTypeScriptSdk() {
         "name": "tenant",
         "schema": "string",
         "required": true,
-        "description": "The identifier for the tenant"
+        "description": "The identifier for the tenant",
+        "example": "TENANT"
       },
       {
         "name": "restaurantId",
         "schema": "string",
         "required": true,
-        "description": "The restaurant Id"
+        "description": "The restaurant Id",
+        "example": "RESTAURANTID"
       },
       {
         "name": "xJetApplication",
@@ -239,7 +249,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "brandSlug",
         "schema": "string",
         "required": true,
-        "description": "The brand slug to query."
+        "description": "The brand slug to query.",
+        "example": "BRAND_SLUG"
       },
       {
         "name": "from",
@@ -274,7 +285,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "size",
         "schema": "integer",
         "required": false,
-        "description": "The size of the page."
+        "description": "The size of the page.",
+        "default": 50
       }
     ],
     "responses": [
@@ -320,13 +332,15 @@ export default function JustEatTypeScriptSdk() {
         "name": "brandSlug",
         "schema": "string",
         "required": true,
-        "description": "The brand slug to query."
+        "description": "The brand slug to query.",
+        "example": "BRAND_SLUG"
       },
       {
         "name": "orderId",
         "schema": "string",
         "required": true,
-        "description": "The order id to query."
+        "description": "The order id to query.",
+        "example": "ORDERID"
       }
     ],
     "responses": [
@@ -372,7 +386,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "tenant",
         "schema": "string",
         "required": true,
-        "description": "Request tenant."
+        "description": "Request tenant.",
+        "example": "TENANT"
       },
       {
         "name": "xJetApplication",
@@ -420,13 +435,15 @@ export default function JustEatTypeScriptSdk() {
         "name": "tenant",
         "schema": "string",
         "required": true,
-        "description": "Request tenant."
+        "description": "Request tenant.",
+        "example": "TENANT"
       },
       {
         "name": "productType",
         "schema": "string",
         "required": true,
-        "description": "Product type."
+        "description": "Product type.",
+        "example": "PRODUCTTYPE"
       },
       {
         "name": "xJetApplication",
@@ -519,7 +536,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "restaurants",
@@ -559,7 +577,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "deliveryPoolId",
         "schema": "string",
         "required": true,
-        "description": "Identifier for the pool"
+        "description": "Identifier for the pool",
+        "example": "DELIVERYPOOLID"
       },
       {
         "name": "xJetApplication",
@@ -595,7 +614,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "deliveryPoolId",
         "schema": "string",
         "required": true,
-        "description": "Identifier for the pool"
+        "description": "Identifier for the pool",
+        "example": "DELIVERYPOOLID"
       },
       {
         "name": "xJetApplication",
@@ -636,7 +656,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "deliveryPoolId",
         "schema": "string",
         "required": true,
-        "description": "Identifier for the pool"
+        "description": "Identifier for the pool",
+        "example": "DELIVERYPOOLID"
       },
       {
         "name": "xJetApplication",
@@ -648,7 +669,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "riskLevel",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       }
     ],
     "responses": [
@@ -694,7 +716,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "deliveryPoolId",
         "schema": "string",
         "required": true,
-        "description": "Identifier for the pool"
+        "description": "Identifier for the pool",
+        "example": "DELIVERYPOOLID"
       },
       {
         "name": "xJetApplication",
@@ -734,7 +757,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "deliveryPoolId",
         "schema": "string",
         "required": true,
-        "description": "Identifier for the pool"
+        "description": "Identifier for the pool",
+        "example": "DELIVERYPOOLID"
       },
       {
         "name": "xJetApplication",
@@ -774,7 +798,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "deliveryPoolId",
         "schema": "string",
         "required": true,
-        "description": "Identifier for the pool"
+        "description": "Identifier for the pool",
+        "example": "DELIVERYPOOLID"
       },
       {
         "name": "xJetApplication",
@@ -832,7 +857,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "deliveryPoolId",
         "schema": "string",
         "required": true,
-        "description": "Identifier for the pool"
+        "description": "Identifier for the pool",
+        "example": "DELIVERYPOOLID"
       },
       {
         "name": "xJetApplication",
@@ -844,7 +870,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "restaurants",
@@ -892,7 +919,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "deliveryPoolId",
         "schema": "string",
         "required": true,
-        "description": "Identifier for the pool"
+        "description": "Identifier for the pool",
+        "example": "DELIVERYPOOLID"
       },
       {
         "name": "xJetApplication",
@@ -970,13 +998,15 @@ export default function JustEatTypeScriptSdk() {
         "name": "deliveryPoolId",
         "schema": "string",
         "required": true,
-        "description": "Identifier for the pool"
+        "description": "Identifier for the pool",
+        "example": "DELIVERYPOOLID"
       },
       {
         "name": "reason",
         "schema": "string",
         "required": true,
-        "description": "Reason of the offline event. e.g. `?reason=manual`"
+        "description": "Reason of the offline event. e.g. `?reason=manual`",
+        "example": "REASON"
       },
       {
         "name": "xJetApplication",
@@ -1032,7 +1062,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "deliveryPoolId",
         "schema": "string",
         "required": true,
-        "description": "Identifier for the pool"
+        "description": "Identifier for the pool",
+        "example": "DELIVERYPOOLID"
       },
       {
         "name": "xJetApplication",
@@ -1093,7 +1124,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "deliveryPoolId",
         "schema": "string",
         "required": true,
-        "description": "Identifier for the pool"
+        "description": "Identifier for the pool",
+        "example": "DELIVERYPOOLID"
       },
       {
         "name": "xJetApplication",
@@ -1138,7 +1170,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "deliveryPoolId",
         "schema": "string",
         "required": true,
-        "description": "Identifier for the pool"
+        "description": "Identifier for the pool",
+        "example": "DELIVERYPOOLID"
       },
       {
         "name": "xJetApplication",
@@ -1182,7 +1215,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "deliveryPoolId",
         "schema": "string",
         "required": true,
-        "description": "Identifier for the pool"
+        "description": "Identifier for the pool",
+        "example": "DELIVERYPOOLID"
       },
       {
         "name": "xJetApplication",
@@ -1276,31 +1310,44 @@ export default function JustEatTypeScriptSdk() {
         "name": "tenant",
         "schema": "string",
         "required": true,
-        "description": "Tenant containing the restaurants."
+        "description": "Tenant containing the restaurants.",
+        "example": "uk"
       },
       {
         "name": "restaurantIds",
         "schema": "array",
         "required": true,
-        "description": "Restaurant IDs which fees are requested for. e.g. `?restaurantIds=1,2,3,4`"
+        "description": "Restaurant IDs which fees are requested for. e.g. `?restaurantIds=1,2,3,4`",
+        "example": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
       },
       {
         "name": "deliveryTime",
         "schema": "string",
         "required": true,
-        "description": "Delivery date/time when fees are required (ISO8601 format)."
+        "description": "Delivery date/time when fees are required (ISO8601 format).",
+        "example": "2019-09-05T12:43:48.431Z"
       },
       {
         "name": "zone",
         "schema": "string",
         "required": false,
-        "description": "Postcode or other location name identifying the location to which delivery is required. For use when precise location is not available. This will be removed in future in favour of location."
+        "description": "Postcode or other location name identifying the location to which delivery is required. For use when precise location is not available. This will be removed in future in favour of location.",
+        "example": "BS1"
       },
       {
         "name": "latlong",
         "schema": "array",
         "required": false,
-        "description": "Point to which delivery is required (latitude, longitude). Supply this where possible as support for zone-only based lookups will be removed in future."
+        "description": "Point to which delivery is required (latitude, longitude). Supply this where possible as support for zone-only based lookups will be removed in future.",
+        "example": [
+          51.3851513,
+          -2.0841275
+        ]
       },
       {
         "name": "xJetApplication",
@@ -1340,24 +1387,28 @@ export default function JustEatTypeScriptSdk() {
         "name": "tenant",
         "schema": "string",
         "required": true,
-        "description": "The tenant that the request is coming from."
+        "description": "The tenant that the request is coming from.",
+        "example": "uk"
       },
       {
         "name": "postcode",
         "schema": "string",
         "required": true,
-        "description": "The postcode of the requested area."
+        "description": "The postcode of the requested area.",
+        "example": "bs14dj"
       },
       {
         "name": "ratingsOutOfFive",
         "schema": "boolean",
-        "description": "Whether returned ratings are out of 5 stars"
+        "description": "Whether returned ratings are out of 5 stars",
+        "default": false
       },
       {
         "name": "serviceType",
         "schema": "string",
         "required": false,
-        "description": "Retrieve restaurants based on the type of service they offer.\n\n- `any`: Retrieve restaurants offering any service type (default).\n- `delivery`: Retrieve restaurants that offer delivery.\n- `collection`: Retrieve restaurants that offer collection.\n"
+        "description": "Retrieve restaurants based on the type of service they offer.\n\n- `any`: Retrieve restaurants offering any service type (default).\n- `delivery`: Retrieve restaurants that offer delivery.\n- `collection`: Retrieve restaurants that offer collection.\n",
+        "default": "any"
       },
       {
         "name": "xJetApplication",
@@ -1397,28 +1448,33 @@ export default function JustEatTypeScriptSdk() {
         "name": "tenant",
         "schema": "string",
         "required": true,
-        "description": "The tenant that the request is coming from."
+        "description": "The tenant that the request is coming from.",
+        "example": "uk"
       },
       {
         "name": "latitude",
         "schema": "number",
-        "description": "The latitude of the requested area."
+        "description": "The latitude of the requested area.",
+        "example": 51.451772
       },
       {
         "name": "longitude",
         "schema": "number",
-        "description": "The longitude of the requested area."
+        "description": "The longitude of the requested area.",
+        "example": -2.596847
       },
       {
         "name": "ratingsOutOfFive",
         "schema": "boolean",
-        "description": "Whether returned ratings are out of 5 stars"
+        "description": "Whether returned ratings are out of 5 stars",
+        "default": false
       },
       {
         "name": "serviceType",
         "schema": "string",
         "required": false,
-        "description": "Retrieve restaurants based on the type of service they offer.\n\n- `any`: Retrieve restaurants offering any service type (default).\n- `delivery`: Retrieve restaurants that offer delivery.\n- `collection`: Retrieve restaurants that offer collection.\n"
+        "description": "Retrieve restaurants based on the type of service they offer.\n\n- `any`: Retrieve restaurants offering any service type (default).\n- `delivery`: Retrieve restaurants that offer delivery.\n- `collection`: Retrieve restaurants that offer collection.\n",
+        "default": "any"
       },
       {
         "name": "xJetApplication",
@@ -1717,7 +1773,11 @@ export default function JustEatTypeScriptSdk() {
       {
         "name": "Location",
         "schema": "object",
-        "description": ""
+        "description": "",
+        "example": {
+          "Longitude": -0.103198,
+          "Latitude": 51.51641
+        }
       }
     ],
     "responses": [
@@ -1804,7 +1864,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "finalPickedOrder",
         "schema": "string",
         "required": true,
-        "description": "The endpoint you have provided to us."
+        "description": "The endpoint you have provided to us.",
+        "example": "https://www.your-base-url.com/finalPickedOrders"
       },
       {
         "name": "xJetApplication",
@@ -1822,25 +1883,29 @@ export default function JustEatTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "third_party_order_reference",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "THIRD_PARTY_ORDER_REFERENCE"
       },
       {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TYPE"
       },
       {
         "name": "posLocationId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "POSLOCATIONID"
       },
       {
         "name": "location",
@@ -1852,7 +1917,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "menu_reference",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "MENU_REFERENCE"
       },
       {
         "name": "items",
@@ -1864,7 +1930,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "created_at",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CREATED_AT"
       },
       {
         "name": "channel",
@@ -1906,7 +1973,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "payment_method",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PAYMENT_METHOD"
       },
       {
         "name": "tender_type",
@@ -1986,7 +2054,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "receiveOrder",
         "schema": "string",
         "required": true,
-        "description": "The endpoint you have provided to us."
+        "description": "The endpoint you have provided to us.",
+        "example": "https://www.your-base-url.com/receiveOrders"
       },
       {
         "name": "xJetConnectHash",
@@ -2003,25 +2072,29 @@ export default function JustEatTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "third_party_order_reference",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "THIRD_PARTY_ORDER_REFERENCE"
       },
       {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TYPE"
       },
       {
         "name": "posLocationId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "POSLOCATIONID"
       },
       {
         "name": "location",
@@ -2033,7 +2106,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "menu_reference",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "MENU_REFERENCE"
       },
       {
         "name": "items",
@@ -2045,7 +2119,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "created_at",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CREATED_AT"
       },
       {
         "name": "channel",
@@ -2087,7 +2162,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "payment_method",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PAYMENT_METHOD"
       },
       {
         "name": "tender_type",
@@ -2173,7 +2249,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "event",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "UNAVAILABLE"
       },
       {
         "name": "itemReferences",
@@ -2185,19 +2262,22 @@ export default function JustEatTypeScriptSdk() {
         "name": "restaurant",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "RESTAURANT"
       },
       {
         "name": "happenedAt",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "2018-10-11T14:56:18.234284+01:00"
       },
       {
         "name": "nextAvailableAt",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "2018-10-11T14:56:18.234284+01:00"
       }
     ],
     "responses": [
@@ -2339,7 +2419,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "locationId",
         "schema": "string",
         "required": true,
-        "description": "The location ID to query by."
+        "description": "The location ID to query by.",
+        "example": "LOCATIONID"
       }
     ],
     "responses": [
@@ -2459,7 +2540,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "callback_url",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "https://example.com/menu_webhook"
       }
     ],
     "responses": [
@@ -2497,7 +2579,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The identifier for the order for which the status should be updated. Note that this is the JET Connect order ID, received as id in the Receive Order endpoint body."
+        "description": "The identifier for the order for which the status should be updated. Note that this is the JET Connect order ID, received as id in the Receive Order endpoint body.",
+        "example": "xsfkfwtowkm1mswn2gmjjq"
       },
       {
         "name": "xJetApplication",
@@ -2509,19 +2592,22 @@ export default function JustEatTypeScriptSdk() {
         "name": "happenedAt",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "HAPPENEDAT"
       },
       {
         "name": "errorCode",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ERRORCODE"
       },
       {
         "name": "errorMessage",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ERRORMESSAGE"
       }
     ],
     "responses": [
@@ -2551,7 +2637,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The identifier for the order for which the status should be updated. Note that this is the JET Connect order ID, received as id in the Receive Order endpoint body."
+        "description": "The identifier for the order for which the status should be updated. Note that this is the JET Connect order ID, received as id in the Receive Order endpoint body.",
+        "example": "xsfkfwtowkm1mswn2gmjjq"
       },
       {
         "name": "xJetApplication",
@@ -2569,7 +2656,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "happenedAt",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "HAPPENEDAT"
       }
     ],
     "responses": [
@@ -3066,19 +3154,22 @@ export default function JustEatTypeScriptSdk() {
         "name": "orderId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ORDERID"
       },
       {
         "name": "orderReference",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ORDERREFERENCE"
       },
       {
         "name": "tenant",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TENANT"
       },
       {
         "name": "totalPrice",
@@ -3090,19 +3181,22 @@ export default function JustEatTypeScriptSdk() {
         "name": "currency",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CURRENCY"
       },
       {
         "name": "placedDate",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PLACEDDATE"
       },
       {
         "name": "acceptanceDeadline",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ACCEPTANCEDEADLINE"
       },
       {
         "name": "status",
@@ -3168,7 +3262,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "source",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SOURCE"
       }
     ],
     "responses": [
@@ -3220,7 +3315,9 @@ export default function JustEatTypeScriptSdk() {
         "name": "xJeApiVersion",
         "schema": "number",
         "required": false,
-        "description": "The api version to use. Version 2.0 is the only available version."
+        "description": "The api version to use. Version 2.0 is the only available version.",
+        "example": 2,
+        "default": 1
       },
       {
         "name": "xJetApplication",
@@ -3238,7 +3335,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "OrderReference",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ORDERREFERENCE"
       },
       {
         "name": "IsTest",
@@ -3256,19 +3354,55 @@ export default function JustEatTypeScriptSdk() {
         "name": "CustomerNotes",
         "schema": "object",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": {
+          "NoteForDelivery": "Red door",
+          "NoteForRestaurant": "Make it spicy"
+        }
       },
       {
         "name": "Fulfilment",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "Method": "Delivery",
+          "DueDate": "2020-01-01T09:00:00.000Z",
+          "DueAsap": false
+        }
       },
       {
         "name": "Payment",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "Tips": [
+            {
+              "Value": 2.5,
+              "Type": "driver"
+            }
+          ],
+          "Lines": [
+            {
+              "ServiceFee": 0,
+              "Type": "Card",
+              "Paid": true,
+              "Value": 19.95,
+              "LastCardDigits": "1234"
+            }
+          ],
+          "Fees": [
+            {
+              "Value": 0.25,
+              "Type": "card"
+            },
+            {
+              "Value": 3.5,
+              "Type": "delivery"
+            }
+          ]
+        }
       },
       {
         "name": "Items",
@@ -3286,7 +3420,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "TotalPrice",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       }
     ],
     "responses": [
@@ -3320,13 +3455,15 @@ export default function JustEatTypeScriptSdk() {
         "name": "brandSlug",
         "schema": "string",
         "required": true,
-        "description": "The owning brand in the brand slug format e.g. `je-uk-example` (contact delivery manager if unsure). This field may be removed in a future version."
+        "description": "The owning brand in the brand slug format e.g. `je-uk-example` (contact delivery manager if unsure). This field may be removed in a future version.",
+        "example": "je-uk-example"
       },
       {
         "name": "orderId",
         "schema": "string",
         "required": true,
-        "description": "The originating order ID as supplied by the ordering partner."
+        "description": "The originating order ID as supplied by the ordering partner.",
+        "example": "00025doahk2txeo9ttd0ma"
       },
       {
         "name": "xJetApplication",
@@ -3374,13 +3511,15 @@ export default function JustEatTypeScriptSdk() {
         "name": "brandSlug",
         "schema": "string",
         "required": true,
-        "description": "The owning brand in the brand slug format e.g. `je-uk-example` (contact delivery manager if unsure). This field may be removed in a future version."
+        "description": "The owning brand in the brand slug format e.g. `je-uk-example` (contact delivery manager if unsure). This field may be removed in a future version.",
+        "example": "je-uk-example"
       },
       {
         "name": "orderId",
         "schema": "string",
         "required": true,
-        "description": "The originating order ID as supplied by the ordering partner."
+        "description": "The originating order ID as supplied by the ordering partner.",
+        "example": "00025doahk2txeo9ttd0ma"
       },
       {
         "name": "xJetApplication",
@@ -3442,13 +3581,15 @@ export default function JustEatTypeScriptSdk() {
         "name": "brandSlug",
         "schema": "string",
         "required": true,
-        "description": "The owning brand in the brand slug format e.g. `je-uk-example` (contact delivery manager if unsure). This field may be removed in a future version."
+        "description": "The owning brand in the brand slug format e.g. `je-uk-example` (contact delivery manager if unsure). This field may be removed in a future version.",
+        "example": "je-uk-example"
       },
       {
         "name": "orderId",
         "schema": "string",
         "required": true,
-        "description": "The originating order ID as supplied by the ordering partner."
+        "description": "The originating order ID as supplied by the ordering partner.",
+        "example": "00025doahk2txeo9ttd0ma"
       },
       {
         "name": "xJetApplication",
@@ -3460,7 +3601,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "reason",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "REASON"
       }
     ],
     "responses": [
@@ -3502,7 +3644,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "orderId",
         "schema": "string",
         "required": true,
-        "description": "The order id"
+        "description": "The order id",
+        "example": "ORDERID"
       },
       {
         "name": "xJeConversation",
@@ -3568,7 +3711,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "orderId",
         "schema": "string",
         "required": true,
-        "description": "The order id"
+        "description": "The order id",
+        "example": "ORDERID"
       },
       {
         "name": "xJeConversation",
@@ -3614,7 +3758,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "orderId",
         "schema": "string",
         "required": true,
-        "description": "The order id"
+        "description": "The order id",
+        "example": "ORDERID"
       },
       {
         "name": "xJeConversation",
@@ -3665,7 +3810,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "orderId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the order to mark as complete"
+        "description": "The ID of the order to mark as complete",
+        "example": "ORDERID"
       },
       {
         "name": "xJeConversation",
@@ -3715,7 +3861,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "orderId",
         "schema": "string",
         "required": true,
-        "description": "Just Eat order identifier"
+        "description": "Just Eat order identifier",
+        "example": "ORDERID"
       },
       {
         "name": "xJetApplication",
@@ -3726,12 +3873,20 @@ export default function JustEatTypeScriptSdk() {
       {
         "name": "DriverId",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "123456"
       },
       {
         "name": "Location",
         "schema": "object",
-        "description": ""
+        "description": "",
+        "example": {
+          "Speed": 8.68,
+          "Latitude": 51.51641,
+          "Heading": 357.10382,
+          "Accuracy": 12.814,
+          "Longitude": -0.103198
+        }
       },
       {
         "name": "TimeStampWithUtcOffset",
@@ -3762,7 +3917,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "orderId",
         "schema": "string",
         "required": true,
-        "description": "Just Eat order identifier"
+        "description": "Just Eat order identifier",
+        "example": "ORDERID"
       },
       {
         "name": "xJetApplication",
@@ -3773,7 +3929,14 @@ export default function JustEatTypeScriptSdk() {
       {
         "name": "Location",
         "schema": "object",
-        "description": ""
+        "description": "",
+        "example": {
+          "Speed": 8.68,
+          "Latitude": 51.51641,
+          "Heading": 357.10382,
+          "Accuracy": 12.814,
+          "Longitude": -0.103198
+        }
       },
       {
         "name": "EtaAtDeliveryAddress",
@@ -3809,7 +3972,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "orderId",
         "schema": "string",
         "required": true,
-        "description": "Just Eat order identifier"
+        "description": "Just Eat order identifier",
+        "example": "ORDERID"
       },
       {
         "name": "xJetApplication",
@@ -3855,7 +4019,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "orderId",
         "schema": "string",
         "required": true,
-        "description": "Just Eat order identifier"
+        "description": "Just Eat order identifier",
+        "example": "ORDERID"
       },
       {
         "name": "xJetApplication",
@@ -3866,12 +4031,20 @@ export default function JustEatTypeScriptSdk() {
       {
         "name": "DriverId",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "123456"
       },
       {
         "name": "Location",
         "schema": "object",
-        "description": ""
+        "description": "",
+        "example": {
+          "Speed": 8.68,
+          "Latitude": 51.51641,
+          "Heading": 357.10382,
+          "Accuracy": 12.814,
+          "Longitude": -0.103198
+        }
       },
       {
         "name": "TimeStampWithUtcOffset",
@@ -3902,7 +4075,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "orderId",
         "schema": "string",
         "required": true,
-        "description": "Just Eat order identifier"
+        "description": "Just Eat order identifier",
+        "example": "ORDERID"
       },
       {
         "name": "xJetApplication",
@@ -3914,25 +4088,29 @@ export default function JustEatTypeScriptSdk() {
         "name": "DriverId",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "123456"
       },
       {
         "name": "EtaAtDeliveryAddress",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "2020-12-25T16:45:28.753Z"
       },
       {
         "name": "TimeStampWithUtcOffset",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "2020-12-25T15:45:28.753Z"
       },
       {
         "name": "DriverContactNumber",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "+447123456789"
       },
       {
         "name": "VehicleDetails",
@@ -3944,19 +4122,28 @@ export default function JustEatTypeScriptSdk() {
         "name": "DriverName",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "David"
       },
       {
         "name": "Location",
         "schema": "object",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": {
+          "Speed": 8.68,
+          "Latitude": 51.51641,
+          "Heading": 357.10382,
+          "Accuracy": 12.814,
+          "Longitude": -0.103198
+        }
       },
       {
         "name": "EtaAtRestaurant",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "2020-12-25T15:30:28.753Z"
       }
     ],
     "responses": [
@@ -3986,7 +4173,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "orderId",
         "schema": "string",
         "required": true,
-        "description": "Just Eat order identifier"
+        "description": "Just Eat order identifier",
+        "example": "ORDERID"
       },
       {
         "name": "xJetApplication",
@@ -3997,22 +4185,32 @@ export default function JustEatTypeScriptSdk() {
       {
         "name": "EtaAtRestaurant",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "2020-12-25T16:30:28.753Z"
       },
       {
         "name": "Location",
         "schema": "object",
-        "description": ""
+        "description": "",
+        "example": {
+          "Speed": 8.68,
+          "Latitude": 51.51641,
+          "Heading": 357.10382,
+          "Accuracy": 12.814,
+          "Longitude": -0.103198
+        }
       },
       {
         "name": "EtaAtDeliveryAddress",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "2020-12-25T16:45:28.753Z"
       },
       {
         "name": "TimeStampWithUtcOffset",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "2020-12-25T15:45:28.753Z"
       }
     ],
     "responses": [
@@ -4042,7 +4240,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "orderId",
         "schema": "string",
         "required": true,
-        "description": "Just Eat order identifier"
+        "description": "Just Eat order identifier",
+        "example": "ORDERID"
       },
       {
         "name": "xJetApplication",
@@ -4053,47 +4252,62 @@ export default function JustEatTypeScriptSdk() {
       {
         "name": "EtaAtDeliveryAddress",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "2020-12-25T16:45:28.753Z"
       },
       {
         "name": "Location:",
         "schema": "object",
-        "description": ""
+        "description": "",
+        "example": {
+          "Speed": 8.68,
+          "Latitude": 51.51641,
+          "Heading": 357.10382,
+          "Accuracy": 12.814,
+          "Longitude": -0.103198
+        }
       },
       {
         "name": "TimeStampWithUtcOffset",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "2020-12-25T15:30:28.753Z"
       },
       {
         "name": "DriverContactNumber",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "+447123456789"
       },
       {
         "name": "UnassignedBy",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "operation"
       },
       {
         "name": "DriverName",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "David McDriverson"
       },
       {
         "name": "Reason",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "package_not_ready"
       },
       {
         "name": "Comment",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Order was not ready"
       },
       {
         "name": "EtaAtRestaurant",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "2020-12-25T16:30:28.753Z"
       }
     ],
     "responses": [
@@ -4123,7 +4337,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "orderId",
         "schema": "string",
         "required": true,
-        "description": "The order id"
+        "description": "The order id",
+        "example": "ORDERID"
       },
       {
         "name": "xJetApplication",
@@ -4134,22 +4349,32 @@ export default function JustEatTypeScriptSdk() {
       {
         "name": "DriverId",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "123456"
       },
       {
         "name": "Location",
         "schema": "object",
-        "description": ""
+        "description": "",
+        "example": {
+          "Speed": 8.68,
+          "Latitude": 51.51641,
+          "Heading": 357.10382,
+          "Accuracy": 12.814,
+          "Longitude": -0.103198
+        }
       },
       {
         "name": "EstimatedArrivalTime",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "2020-12-25T16:45:28.753Z"
       },
       {
         "name": "TimeStampWithUtcOffset",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "2020-12-25T15:30:28.753Z"
       }
     ],
     "responses": [
@@ -4175,7 +4400,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "orderId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the order to mark it as dispatched to customer"
+        "description": "The ID of the order to mark it as dispatched to customer",
+        "example": "ORDERID"
       },
       {
         "name": "xJeConversation",
@@ -4225,7 +4451,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "orderId",
         "schema": "string",
         "required": true,
-        "description": "The order id"
+        "description": "The order id",
+        "example": "ORDERID"
       },
       {
         "name": "xJeConversation",
@@ -4276,7 +4503,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "orderId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the order to mark as ready for collection"
+        "description": "The ID of the order to mark as ready for collection",
+        "example": "ORDERID"
       },
       {
         "name": "xJeConversation",
@@ -4326,7 +4554,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "orderId",
         "schema": "string",
         "required": true,
-        "description": "The order id"
+        "description": "The order id",
+        "example": "ORDERID"
       },
       {
         "name": "xJeConversation",
@@ -4521,13 +4750,15 @@ export default function JustEatTypeScriptSdk() {
         "name": "latitude",
         "schema": "number",
         "required": true,
-        "description": "Filter search results to only include restaurants that deliver to the specified location"
+        "description": "Filter search results to only include restaurants that deliver to the specified location",
+        "example": 0
       },
       {
         "name": "longitude",
         "schema": "number",
         "required": true,
-        "description": "Filter search results to only include restaurants that deliver to the specified location"
+        "description": "Filter search results to only include restaurants that deliver to the specified location",
+        "example": 0
       },
       {
         "name": "cuisine",
@@ -4551,7 +4782,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "ratingsOutOfFive",
         "schema": "boolean",
         "required": false,
-        "description": "Whether returned ratings are out of 5 stars"
+        "description": "Whether returned ratings are out of 5 stars",
+        "default": false
       },
       {
         "name": "xJetApplication",
@@ -4601,7 +4833,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "postcode",
         "schema": "string",
         "required": true,
-        "description": "Filter search results to only include restaurants that deliver to the specified postcode"
+        "description": "Filter search results to only include restaurants that deliver to the specified postcode",
+        "example": "POSTCODE"
       },
       {
         "name": "cuisine",
@@ -4625,7 +4858,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "ratingsOutOfFive",
         "schema": "boolean",
         "required": false,
-        "description": "Whether returned ratings are out of 5 stars"
+        "description": "Whether returned ratings are out of 5 stars",
+        "default": false
       },
       {
         "name": "xJetApplication",
@@ -4699,7 +4933,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "restaurantReference",
         "schema": "string",
         "required": true,
-        "description": "Unique identifier of the restaurant as provided to and configured by JET Connect"
+        "description": "Unique identifier of the restaurant as provided to and configured by JET Connect",
+        "example": "RESTAURANTREFERENCE"
       },
       {
         "name": "xJetApplication",
@@ -4710,7 +4945,8 @@ export default function JustEatTypeScriptSdk() {
       {
         "name": "onlineAt",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "2021-10-13T12:03:00"
       }
     ],
     "responses": [
@@ -4752,7 +4988,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "restaurantReference",
         "schema": "string",
         "required": true,
-        "description": "Unique identifier of the restaurant as provided to and configured by JET Connect"
+        "description": "Unique identifier of the restaurant as provided to and configured by JET Connect",
+        "example": "RESTAURANTREFERENCE"
       },
       {
         "name": "xJetApplication",
@@ -4800,7 +5037,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "restaurantReference",
         "schema": "string",
         "required": true,
-        "description": "Unique identifier of the restaurant as provided to and configured by JET Connect"
+        "description": "Unique identifier of the restaurant as provided to and configured by JET Connect",
+        "example": "RESTAURANTREFERENCE"
       },
       {
         "name": "xJetApplication",
@@ -4818,7 +5056,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "timezone",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Europe/London"
       },
       {
         "name": "serviceTimes",
@@ -4866,7 +5105,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "tenant",
         "schema": "string",
         "required": true,
-        "description": "Request tenant"
+        "description": "Request tenant",
+        "example": "TENANT"
       },
       {
         "name": "xJetApplication",
@@ -4914,13 +5154,15 @@ export default function JustEatTypeScriptSdk() {
         "name": "tenant",
         "schema": "string",
         "required": true,
-        "description": "The request tenant"
+        "description": "The request tenant",
+        "example": "TENANT"
       },
       {
         "name": "restaurantId",
         "schema": "string",
         "required": true,
-        "description": "The restaurant identifier"
+        "description": "The restaurant identifier",
+        "example": "RESTAURANTID"
       },
       {
         "name": "xJetApplication",
@@ -4968,13 +5210,15 @@ export default function JustEatTypeScriptSdk() {
         "name": "tenant",
         "schema": "string",
         "required": true,
-        "description": "The request tenant"
+        "description": "The request tenant",
+        "example": "TENANT"
       },
       {
         "name": "restaurantId",
         "schema": "string",
         "required": true,
-        "description": "The restaurant identifier"
+        "description": "The restaurant identifier",
+        "example": "RESTAURANTID"
       },
       {
         "name": "xJetApplication",
@@ -4986,7 +5230,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "status",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "STATUS"
       }
     ],
     "responses": [
@@ -5032,19 +5277,25 @@ export default function JustEatTypeScriptSdk() {
         "name": "tenant",
         "schema": "string",
         "required": true,
-        "description": "A valid country code, e.g. \"uk\"."
+        "description": "A valid country code, e.g. \"uk\".",
+        "example": "TENANT"
       },
       {
         "name": "searchTerm",
         "schema": "string",
         "required": true,
-        "description": "User's search term - at least one character required"
+        "description": "User's search term - at least one character required",
+        "example": "SEARCHTERM"
       },
       {
         "name": "latlong",
         "schema": "array",
         "required": true,
-        "description": "The latitude and longitude coordinates of the location in which to search.\nSpecify the coordinates as latitude,longitude."
+        "description": "The latitude and longitude coordinates of the location in which to search.\nSpecify the coordinates as latitude,longitude.",
+        "example": [
+          51.501285,
+          -0.1424422
+        ]
       },
       {
         "name": "limit",
@@ -5110,31 +5361,36 @@ export default function JustEatTypeScriptSdk() {
         "name": "tenant",
         "schema": "string",
         "required": true,
-        "description": "A valid country code, e.g. \"uk\"."
+        "description": "A valid country code, e.g. \"uk\".",
+        "example": "TENANT"
       },
       {
         "name": "restaurantId",
         "schema": "string",
         "required": true,
-        "description": "The ID for a restaurant"
+        "description": "The ID for a restaurant",
+        "example": "RESTAURANTID"
       },
       {
         "name": "searchTerm",
         "schema": "string",
         "required": true,
-        "description": "User's search term - at least one character required"
+        "description": "User's search term - at least one character required",
+        "example": "SEARCHTERM"
       },
       {
         "name": "limit",
         "schema": "number",
         "required": false,
-        "description": "Limit the number of terms returned by the API, defaults to 100"
+        "description": "Limit the number of terms returned by the API, defaults to 100",
+        "default": 100
       },
       {
         "name": "serviceType",
         "schema": "array",
         "required": false,
-        "description": "Filter product results by service type.\nValid values are \"any\", \"delivery\" and \"collection\".\nDefaults to \"delivery\"."
+        "description": "Filter product results by service type.\nValid values are \"any\", \"delivery\" and \"collection\".\nDefaults to \"delivery\".",
+        "default": "delivery"
       },
       {
         "name": "excludedResultTypes",
@@ -5196,19 +5452,25 @@ export default function JustEatTypeScriptSdk() {
         "name": "tenant",
         "schema": "string",
         "required": true,
-        "description": "A valid country code, e.g. \"uk\"."
+        "description": "A valid country code, e.g. \"uk\".",
+        "example": "TENANT"
       },
       {
         "name": "searchTerm",
         "schema": "string",
         "required": true,
-        "description": "User's search term."
+        "description": "User's search term.",
+        "example": "SEARCHTERM"
       },
       {
         "name": "latlong",
         "schema": "array",
         "required": true,
-        "description": "The latitude and longitude coordinates of the location in which to search.\nSpecify the coordinates as latitude,longitude."
+        "description": "The latitude and longitude coordinates of the location in which to search.\nSpecify the coordinates as latitude,longitude.",
+        "example": [
+          51.501285,
+          -0.1424422
+        ]
       },
       {
         "name": "limit",
@@ -5321,7 +5583,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "orderID",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ORDERID"
       },
       {
         "name": "reason",
@@ -5333,7 +5596,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "happenedAt",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "HAPPENEDAT"
       }
     ],
     "responses": [
@@ -5381,7 +5645,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "orderID",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ORDERID"
       },
       {
         "name": "driverStatus",
@@ -5393,7 +5658,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "happenedAt",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "HAPPENEDAT"
       }
     ],
     "responses": [
@@ -5441,7 +5707,8 @@ export default function JustEatTypeScriptSdk() {
         "name": "validationError",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "VALIDATIONERROR"
       },
       {
         "name": "unknownReference",
@@ -5507,13 +5774,15 @@ export default function JustEatTypeScriptSdk() {
         "name": "restaurantId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "RESTAURANTID"
       },
       {
         "name": "lastChangedTimeStampUtc",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "LASTCHANGEDTIMESTAMPUTC"
       },
       {
         "name": "collection",

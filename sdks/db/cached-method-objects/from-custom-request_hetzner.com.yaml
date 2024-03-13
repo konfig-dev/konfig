@@ -15,6 +15,7 @@ methodObjects:
           will only contain
 
           actions matching the specified IDs.
+        example: 42
       - name: sort
         schema: string
         required: false
@@ -37,12 +38,16 @@ methodObjects:
         description: >-
           Page number to return. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 2
+        default: 1
       - name: perPage
         schema: integer
         required: false
         description: >-
           Maximum number of entries returned per page. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 25
+        default: 25
     responses:
       - statusCode: '200'
         description: ''
@@ -57,6 +62,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Resource.
+        example: 42
     responses:
       - statusCode: '200'
         description: ''
@@ -104,12 +110,16 @@ methodObjects:
         description: >-
           Page number to return. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 2
+        default: 1
       - name: perPage
         schema: integer
         required: false
         description: >-
           Maximum number of entries returned per page. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 25
+        default: 25
     responses:
       - statusCode: '200'
         description: ''
@@ -124,10 +134,14 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: |-
+          -----BEGIN CERTIFICATE-----
+          ...
       - name: domain_names
         schema: array
         required: false
         description: ''
+        example: null
       - name: labels
         schema: object
         required: false
@@ -136,14 +150,20 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: my website cert
       - name: private_key
         schema: string
         required: false
         description: ''
+        example: |-
+          -----BEGIN PRIVATE KEY-----
+          ...
       - name: type
         schema: string
         required: false
         description: ''
+        example: uploaded
+        default: uploaded
     responses:
       - statusCode: '201'
         description: ''
@@ -162,6 +182,7 @@ methodObjects:
           will only contain
 
           actions matching the specified IDs.
+        example: 42
       - name: sort
         schema: string
         required: false
@@ -184,12 +205,16 @@ methodObjects:
         description: >-
           Page number to return. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 2
+        default: 1
       - name: perPage
         schema: integer
         required: false
         description: >-
           Maximum number of entries returned per page. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 25
+        default: 25
     responses:
       - statusCode: '200'
         description: ''
@@ -204,6 +229,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Action.
+        example: 42
     responses:
       - statusCode: '200'
         description: ''
@@ -218,6 +244,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Resource.
+        example: 42
     responses:
       - statusCode: '204'
         description: Certificate deleted
@@ -232,6 +259,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Resource.
+        example: 42
     responses:
       - statusCode: '200'
         description: ''
@@ -246,12 +274,16 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Resource.
+        example: 42
       - name: labels
         schema: object
         description: ''
+        example:
+          labelkey: value
       - name: name
         schema: string
         description: ''
+        example: my website cert
     responses:
       - statusCode: '200'
         description: ''
@@ -266,6 +298,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Resource.
+        example: 42
       - name: sort
         schema: string
         required: false
@@ -288,12 +321,16 @@ methodObjects:
         description: >-
           Page number to return. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 2
+        default: 1
       - name: perPage
         schema: integer
         required: false
         description: >-
           Maximum number of entries returned per page. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 25
+        default: 25
     responses:
       - statusCode: '200'
         description: ''
@@ -308,6 +345,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Certificate
+        example: 0
     responses:
       - statusCode: '201'
         description: ''
@@ -322,10 +360,12 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Certificate
+        example: 0
       - name: actionId
         schema: integer
         required: true
         description: ID of the Action
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -354,12 +394,16 @@ methodObjects:
         description: >-
           Page number to return. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 2
+        default: 1
       - name: perPage
         schema: integer
         required: false
         description: >-
           Maximum number of entries returned per page. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 25
+        default: 25
     responses:
       - statusCode: '200'
         description: ''
@@ -374,6 +418,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of Datacenter
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -415,12 +460,16 @@ methodObjects:
         description: >-
           Page number to return. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 2
+        default: 1
       - name: perPage
         schema: integer
         required: false
         description: >-
           Maximum number of entries returned per page. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 25
+        default: 25
     responses:
       - statusCode: '200'
         description: ''
@@ -443,10 +492,19 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: Corporate Intranet Protection
       - name: rules
         schema: array
         required: false
         description: ''
+        example:
+          - direction: in
+            port: '80'
+            protocol: tcp
+            source_ips:
+              - 28.239.13.1/32
+              - 28.239.14.0/24
+              - ff21:1eac:9a3b:ee58:5ca:990c:8bc9:c03b/128
     responses:
       - statusCode: '201'
         description: ''
@@ -465,6 +523,7 @@ methodObjects:
           will only contain
 
           actions matching the specified IDs.
+        example: 42
       - name: sort
         schema: string
         required: false
@@ -487,12 +546,16 @@ methodObjects:
         description: >-
           Page number to return. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 2
+        default: 1
       - name: perPage
         schema: integer
         required: false
         description: >-
           Maximum number of entries returned per page. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 25
+        default: 25
     responses:
       - statusCode: '200'
         description: ''
@@ -507,6 +570,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Action.
+        example: 42
     responses:
       - statusCode: '200'
         description: ''
@@ -521,6 +585,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Resource.
+        example: 42
     responses:
       - statusCode: '204'
         description: Firewall deleted
@@ -535,6 +600,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Resource.
+        example: 42
     responses:
       - statusCode: '200'
         description: ''
@@ -549,12 +615,16 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Resource.
+        example: 42
       - name: labels
         schema: object
         description: ''
+        example:
+          labelkey: value
       - name: name
         schema: string
         description: ''
+        example: new-name
     responses:
       - statusCode: '200'
         description: ''
@@ -569,6 +639,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Resource.
+        example: 42
       - name: sort
         schema: string
         required: false
@@ -591,12 +662,16 @@ methodObjects:
         description: >-
           Page number to return. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 2
+        default: 1
       - name: perPage
         schema: integer
         required: false
         description: >-
           Maximum number of entries returned per page. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 25
+        default: 25
     responses:
       - statusCode: '200'
         description: ''
@@ -611,6 +686,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Firewall
+        example: 0
       - name: apply_to
         schema: array
         required: true
@@ -629,6 +705,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Firewall
+        example: 0
       - name: remove_from
         schema: array
         required: true
@@ -647,6 +724,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Firewall
+        example: 0
       - name: rules
         schema: array
         required: true
@@ -665,10 +743,12 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Firewall
+        example: 0
       - name: actionId
         schema: integer
         required: true
         description: ID of the Action
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -708,12 +788,16 @@ methodObjects:
         description: >-
           Page number to return. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 2
+        default: 1
       - name: perPage
         schema: integer
         required: false
         description: >-
           Maximum number of entries returned per page. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 25
+        default: 25
     responses:
       - statusCode: '200'
         description: ''
@@ -728,26 +812,33 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: Web Frontend
       - name: home_location
         schema: string
         required: false
         description: ''
+        example: fsn1
       - name: labels
         schema: object
         required: false
         description: ''
+        example:
+          labelkey: value
       - name: name
         schema: string
         required: false
         description: ''
+        example: Web Frontend
       - name: server
         schema: integer
         required: false
         description: ''
+        example: 42
       - name: type
         schema: string
         required: true
         description: ''
+        example: TYPE
     responses:
       - statusCode: '201'
         description: ''
@@ -766,6 +857,7 @@ methodObjects:
           will only contain
 
           actions matching the specified IDs.
+        example: 42
       - name: sort
         schema: string
         required: false
@@ -788,12 +880,16 @@ methodObjects:
         description: >-
           Page number to return. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 2
+        default: 1
       - name: perPage
         schema: integer
         required: false
         description: >-
           Maximum number of entries returned per page. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 25
+        default: 25
     responses:
       - statusCode: '200'
         description: ''
@@ -808,6 +904,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Action.
+        example: 42
     responses:
       - statusCode: '200'
         description: ''
@@ -822,6 +919,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Floating IP
+        example: 0
     responses:
       - statusCode: '204'
         description: Floating IP deleted
@@ -836,6 +934,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Floating IP
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -850,15 +949,20 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Floating IP
+        example: 0
       - name: description
         schema: string
         description: ''
+        example: Web Frontend
       - name: labels
         schema: object
         description: ''
+        example:
+          labelkey: value
       - name: name
         schema: string
         description: ''
+        example: Web Frontend
     responses:
       - statusCode: '200'
         description: ''
@@ -873,6 +977,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Floating IP
+        example: 0
       - name: sort
         schema: string
         required: false
@@ -895,12 +1000,16 @@ methodObjects:
         description: >-
           Page number to return. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 2
+        default: 1
       - name: perPage
         schema: integer
         required: false
         description: >-
           Maximum number of entries returned per page. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 25
+        default: 25
     responses:
       - statusCode: '200'
         description: ''
@@ -915,10 +1024,12 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Floating IP
+        example: 0
       - name: server
         schema: integer
         required: true
         description: ''
+        example: 42
     responses:
       - statusCode: '201'
         description: ''
@@ -933,14 +1044,17 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Floating IP
+        example: 0
       - name: dns_ptr
         schema: string
         required: true
         description: ''
+        example: server02.example.com
       - name: ip
         schema: string
         required: true
         description: ''
+        example: 1.2.3.4
     responses:
       - statusCode: '201'
         description: ''
@@ -955,9 +1069,11 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Floating IP
+        example: 0
       - name: delete
         schema: boolean
         description: ''
+        example: true
     responses:
       - statusCode: '201'
         description: ''
@@ -972,6 +1088,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Floating IP
+        example: 0
     responses:
       - statusCode: '201'
         description: ''
@@ -986,10 +1103,12 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Floating IP
+        example: 0
       - name: actionId
         schema: integer
         required: true
         description: ID of the Action
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -1055,12 +1174,16 @@ methodObjects:
         description: >-
           Page number to return. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 2
+        default: 1
       - name: perPage
         schema: integer
         required: false
         description: >-
           Maximum number of entries returned per page. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 25
+        default: 25
     responses:
       - statusCode: '200'
         description: ''
@@ -1079,6 +1202,7 @@ methodObjects:
           will only contain
 
           actions matching the specified IDs.
+        example: 42
       - name: sort
         schema: string
         required: false
@@ -1101,12 +1225,16 @@ methodObjects:
         description: >-
           Page number to return. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 2
+        default: 1
       - name: perPage
         schema: integer
         required: false
         description: >-
           Maximum number of entries returned per page. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 25
+        default: 25
     responses:
       - statusCode: '200'
         description: ''
@@ -1121,6 +1249,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Action.
+        example: 42
     responses:
       - statusCode: '200'
         description: ''
@@ -1135,6 +1264,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Image
+        example: 0
     responses:
       - statusCode: '204'
         description: Image deleted
@@ -1149,6 +1279,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Image
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -1163,12 +1294,16 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Image
+        example: 0
       - name: description
         schema: string
         description: ''
+        example: My new Image description
       - name: labels
         schema: object
         description: ''
+        example:
+          labelkey: value
       - name: type
         schema: string
         description: ''
@@ -1186,6 +1321,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Image
+        example: 0
       - name: sort
         schema: string
         required: false
@@ -1208,12 +1344,16 @@ methodObjects:
         description: >-
           Page number to return. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 2
+        default: 1
       - name: perPage
         schema: integer
         required: false
         description: >-
           Maximum number of entries returned per page. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 25
+        default: 25
     responses:
       - statusCode: '200'
         description: ''
@@ -1228,9 +1368,11 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Image
+        example: 0
       - name: delete
         schema: boolean
         description: ''
+        example: true
     responses:
       - statusCode: '201'
         description: ''
@@ -1245,10 +1387,12 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Image
+        example: 0
       - name: actionId
         schema: integer
         required: true
         description: ID of the Action
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -1281,12 +1425,16 @@ methodObjects:
         description: >-
           Page number to return. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 2
+        default: 1
       - name: perPage
         schema: integer
         required: false
         description: >-
           Maximum number of entries returned per page. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 25
+        default: 25
     responses:
       - statusCode: '200'
         description: ''
@@ -1301,6 +1449,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the ISO
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -1323,12 +1472,16 @@ methodObjects:
         description: >-
           Page number to return. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 2
+        default: 1
       - name: perPage
         schema: integer
         required: false
         description: >-
           Maximum number of entries returned per page. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 25
+        default: 25
     responses:
       - statusCode: '200'
         description: ''
@@ -1343,6 +1496,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of Load Balancer type
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -1384,12 +1538,16 @@ methodObjects:
         description: >-
           Page number to return. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 2
+        default: 1
       - name: perPage
         schema: integer
         required: false
         description: >-
           Maximum number of entries returned per page. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 25
+        default: 25
     responses:
       - statusCode: '200'
         description: ''
@@ -1404,6 +1562,8 @@ methodObjects:
         schema: object
         required: false
         description: ''
+        default:
+          type: round_robin
       - name: labels
         schema: object
         required: false
@@ -1412,6 +1572,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: lb11
       - name: location
         schema: string
         required: false
@@ -1420,18 +1581,22 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: Web Frontend
       - name: network
         schema: integer
         required: false
         description: ''
+        example: 123
       - name: network_zone
         schema: string
         required: false
         description: ''
+        example: eu-central
       - name: public_interface
         schema: boolean
         required: false
         description: ''
+        example: true
       - name: services
         schema: array
         required: false
@@ -1458,6 +1623,7 @@ methodObjects:
           will only contain
 
           actions matching the specified IDs.
+        example: 42
       - name: sort
         schema: string
         required: false
@@ -1480,12 +1646,16 @@ methodObjects:
         description: >-
           Page number to return. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 2
+        default: 1
       - name: perPage
         schema: integer
         required: false
         description: >-
           Maximum number of entries returned per page. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 25
+        default: 25
     responses:
       - statusCode: '200'
         description: ''
@@ -1500,6 +1670,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Action.
+        example: 42
     responses:
       - statusCode: '200'
         description: ''
@@ -1514,6 +1685,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Load Balancer
+        example: 0
     responses:
       - statusCode: '204'
         description: Load Balancer deleted
@@ -1528,6 +1700,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Load Balancer
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -1542,12 +1715,16 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Load Balancer
+        example: 0
       - name: labels
         schema: object
         description: ''
+        example:
+          labelkey: value
       - name: name
         schema: string
         description: ''
+        example: new-name
     responses:
       - statusCode: '200'
         description: ''
@@ -1562,6 +1739,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Load Balancer
+        example: 0
       - name: sort
         schema: string
         required: false
@@ -1584,12 +1762,16 @@ methodObjects:
         description: >-
           Page number to return. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 2
+        default: 1
       - name: perPage
         schema: integer
         required: false
         description: >-
           Maximum number of entries returned per page. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 25
+        default: 25
     responses:
       - statusCode: '200'
         description: ''
@@ -1604,10 +1786,12 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Load Balancer
+        example: 0
       - name: destination_port
         schema: integer
         required: true
         description: ''
+        example: 80
       - name: health_check
         schema: object
         required: true
@@ -1620,14 +1804,17 @@ methodObjects:
         schema: integer
         required: true
         description: ''
+        example: 443
       - name: protocol
         schema: string
         required: true
         description: ''
+        example: https
       - name: proxyprotocol
         schema: boolean
         required: true
         description: ''
+        example: false
     responses:
       - statusCode: '201'
         description: ''
@@ -1642,6 +1829,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Load Balancer
+        example: 0
       - name: ip
         schema: object
         required: false
@@ -1658,10 +1846,13 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: TYPE
       - name: use_private_ip
         schema: boolean
         required: false
         description: ''
+        example: true
+        default: false
     responses:
       - statusCode: '201'
         description: ''
@@ -1676,14 +1867,17 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Load Balancer
+        example: 0
       - name: ip
         schema: string
         required: false
         description: ''
+        example: 10.0.1.1
       - name: network
         schema: integer
         required: true
         description: ''
+        example: 4711
     responses:
       - statusCode: '201'
         description: ''
@@ -1698,10 +1892,12 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Load Balancer
+        example: 0
       - name: type
         schema: string
         required: true
         description: ''
+        example: TYPE
     responses:
       - statusCode: '201'
         description: ''
@@ -1716,14 +1912,17 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Load Balancer
+        example: 0
       - name: dns_ptr
         schema: string
         required: true
         description: ''
+        example: lb1.example.com
       - name: ip
         schema: string
         required: true
         description: ''
+        example: 1.2.3.4
     responses:
       - statusCode: '201'
         description: ''
@@ -1738,9 +1937,11 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Load Balancer
+        example: 0
       - name: delete
         schema: boolean
         description: ''
+        example: true
     responses:
       - statusCode: '201'
         description: ''
@@ -1755,10 +1956,12 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Load Balancer
+        example: 0
       - name: load_balancer_type
         schema: string
         required: true
         description: ''
+        example: lb21
     responses:
       - statusCode: '201'
         description: ''
@@ -1773,10 +1976,12 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Load Balancer
+        example: 0
       - name: listen_port
         schema: integer
         required: true
         description: ''
+        example: 443
     responses:
       - statusCode: '201'
         description: ''
@@ -1791,10 +1996,12 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Load Balancer
+        example: 0
       - name: network
         schema: integer
         required: true
         description: ''
+        example: 4711
     responses:
       - statusCode: '201'
         description: ''
@@ -1809,6 +2016,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Load Balancer
+        example: 0
     responses:
       - statusCode: '201'
         description: ''
@@ -1823,6 +2031,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Load Balancer
+        example: 0
     responses:
       - statusCode: '201'
         description: ''
@@ -1837,6 +2046,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Load Balancer
+        example: 0
       - name: ip
         schema: object
         required: false
@@ -1853,6 +2063,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: TYPE
     responses:
       - statusCode: '201'
         description: ''
@@ -1867,10 +2078,12 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Load Balancer
+        example: 0
       - name: destination_port
         schema: integer
         required: false
         description: ''
+        example: 80
       - name: health_check
         schema: object
         required: false
@@ -1883,14 +2096,17 @@ methodObjects:
         schema: integer
         required: true
         description: ''
+        example: 443
       - name: protocol
         schema: string
         required: false
         description: ''
+        example: https
       - name: proxyprotocol
         schema: boolean
         required: false
         description: ''
+        example: false
     responses:
       - statusCode: '201'
         description: ''
@@ -1905,10 +2121,12 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Load Balancer
+        example: 0
       - name: actionId
         schema: integer
         required: true
         description: ID of the Action
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -1923,18 +2141,22 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Load Balancer
+        example: 0
       - name: type
         schema: string
         required: true
         description: Type of metrics to get
+        example: TYPE
       - name: start
         schema: string
         required: true
         description: Start of period to get Metrics for (in ISO-8601 format)
+        example: START
       - name: end
         schema: string
         required: true
         description: End of period to get Metrics for (in ISO-8601 format)
+        example: END
       - name: step
         schema: string
         required: false
@@ -1965,12 +2187,16 @@ methodObjects:
         description: >-
           Page number to return. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 2
+        default: 1
       - name: perPage
         schema: integer
         required: false
         description: >-
           Maximum number of entries returned per page. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 25
+        default: 25
     responses:
       - statusCode: '200'
         description: ''
@@ -1985,6 +2211,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of Location
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -2018,12 +2245,16 @@ methodObjects:
         description: >-
           Page number to return. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 2
+        default: 1
       - name: perPage
         schema: integer
         required: false
         description: >-
           Maximum number of entries returned per page. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 25
+        default: 25
     responses:
       - statusCode: '200'
         description: ''
@@ -2038,10 +2269,12 @@ methodObjects:
         schema: boolean
         required: false
         description: ''
+        example: false
       - name: ip_range
         schema: string
         required: true
         description: ''
+        example: 10.0.0.0/16
       - name: labels
         schema: object
         required: false
@@ -2050,6 +2283,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: mynet
       - name: routes
         schema: array
         required: false
@@ -2076,6 +2310,7 @@ methodObjects:
           will only contain
 
           actions matching the specified IDs.
+        example: 42
       - name: sort
         schema: string
         required: false
@@ -2098,12 +2333,16 @@ methodObjects:
         description: >-
           Page number to return. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 2
+        default: 1
       - name: perPage
         schema: integer
         required: false
         description: >-
           Maximum number of entries returned per page. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 25
+        default: 25
     responses:
       - statusCode: '200'
         description: ''
@@ -2118,6 +2357,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Action.
+        example: 42
     responses:
       - statusCode: '200'
         description: ''
@@ -2132,6 +2372,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the network
+        example: 0
     responses:
       - statusCode: '204'
         description: Network deleted
@@ -2146,6 +2387,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the network
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -2160,15 +2402,18 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the network
+        example: 0
       - name: expose_routes_to_vswitch
         schema: boolean
         description: ''
+        example: false
       - name: labels
         schema: object
         description: ''
       - name: name
         schema: string
         description: ''
+        example: new-name
     responses:
       - statusCode: '200'
         description: ''
@@ -2183,6 +2428,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Network
+        example: 0
       - name: sort
         schema: string
         required: false
@@ -2205,12 +2451,16 @@ methodObjects:
         description: >-
           Page number to return. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 2
+        default: 1
       - name: perPage
         schema: integer
         required: false
         description: >-
           Maximum number of entries returned per page. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 25
+        default: 25
     responses:
       - statusCode: '200'
         description: ''
@@ -2225,14 +2475,17 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Network
+        example: 0
       - name: destination
         schema: string
         required: true
         description: ''
+        example: 10.100.1.0/24
       - name: gateway
         schema: string
         required: true
         description: ''
+        example: 10.0.1.1
     responses:
       - statusCode: '201'
         description: ''
@@ -2247,22 +2500,27 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Network
+        example: 0
       - name: ip_range
         schema: string
         required: false
         description: ''
+        example: 10.0.1.0/24
       - name: network_zone
         schema: string
         required: true
         description: ''
+        example: eu-central
       - name: type
         schema: string
         required: true
         description: ''
+        example: TYPE
       - name: vswitch_id
         schema: integer
         required: false
         description: ''
+        example: 1000
     responses:
       - statusCode: '201'
         description: ''
@@ -2277,10 +2535,12 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Network
+        example: 0
       - name: ip_range
         schema: string
         required: true
         description: ''
+        example: 10.0.0.0/12
     responses:
       - statusCode: '201'
         description: ''
@@ -2295,9 +2555,11 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Network
+        example: 0
       - name: delete
         schema: boolean
         description: ''
+        example: true
     responses:
       - statusCode: '201'
         description: ''
@@ -2312,14 +2574,17 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Network
+        example: 0
       - name: destination
         schema: string
         required: true
         description: ''
+        example: 10.100.1.0/24
       - name: gateway
         schema: string
         required: true
         description: ''
+        example: 10.0.1.1
     responses:
       - statusCode: '201'
         description: ''
@@ -2334,10 +2599,12 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Network
+        example: 0
       - name: ip_range
         schema: string
         required: true
         description: ''
+        example: 10.0.1.0/24
     responses:
       - statusCode: '201'
         description: ''
@@ -2352,10 +2619,12 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Network
+        example: 0
       - name: actionId
         schema: integer
         required: true
         description: ID of the Action
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -2403,12 +2672,16 @@ methodObjects:
         description: >-
           Page number to return. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 2
+        default: 1
       - name: perPage
         schema: integer
         required: false
         description: >-
           Maximum number of entries returned per page. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 25
+        default: 25
     responses:
       - statusCode: '200'
         description: ''
@@ -2427,10 +2700,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: my Placement Group
       - name: type
         schema: string
         required: true
         description: ''
+        example: spread
     responses:
       - statusCode: '201'
         description: ''
@@ -2445,6 +2720,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Resource.
+        example: 42
     responses:
       - statusCode: '204'
         description: PlacementGroup deleted
@@ -2459,6 +2735,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Resource.
+        example: 42
     responses:
       - statusCode: '200'
         description: ''
@@ -2473,12 +2750,16 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Resource.
+        example: 42
       - name: labels
         schema: object
         description: ''
+        example:
+          labelkey: value
       - name: name
         schema: string
         description: ''
+        example: my Placement Group
     responses:
       - statusCode: '200'
         description: ''
@@ -2522,18 +2803,23 @@ methodObjects:
         description: >-
           Can be used to filter resources by their ip. The response will only
           contain the resources matching the specified ip.
+        example: 127.0.0.1
       - name: page
         schema: integer
         required: false
         description: >-
           Page number to return. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 2
+        default: 1
       - name: perPage
         schema: integer
         required: false
         description: >-
           Maximum number of entries returned per page. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 25
+        default: 25
       - name: sort
         schema: string
         required: false
@@ -2554,30 +2840,39 @@ methodObjects:
         schema: integer
         required: false
         description: ''
+        example: 17
       - name: assignee_type
         schema: string
         required: true
         description: ''
+        example: server
       - name: auto_delete
         schema: boolean
         required: false
         description: ''
+        example: false
+        default: false
       - name: datacenter
         schema: string
         required: false
         description: ''
+        example: fsn1-dc8
       - name: labels
         schema: object
         required: false
         description: ''
+        example:
+          labelkey: value
       - name: name
         schema: string
         required: true
         description: ''
+        example: my-ip
       - name: type
         schema: string
         required: true
         description: ''
+        example: TYPE
     responses:
       - statusCode: '201'
         description: ''
@@ -2596,6 +2891,7 @@ methodObjects:
           will only contain
 
           actions matching the specified IDs.
+        example: 42
       - name: sort
         schema: string
         required: false
@@ -2618,12 +2914,16 @@ methodObjects:
         description: >-
           Page number to return. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 2
+        default: 1
       - name: perPage
         schema: integer
         required: false
         description: >-
           Maximum number of entries returned per page. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 25
+        default: 25
     responses:
       - statusCode: '200'
         description: ''
@@ -2638,6 +2938,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Action.
+        example: 42
     responses:
       - statusCode: '200'
         description: ''
@@ -2652,6 +2953,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Resource.
+        example: 42
     responses:
       - statusCode: '204'
         description: Primary IP deleted
@@ -2666,6 +2968,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Resource.
+        example: 42
     responses:
       - statusCode: '200'
         description: ''
@@ -2680,15 +2983,20 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Resource.
+        example: 42
       - name: auto_delete
         schema: boolean
         description: ''
+        example: true
       - name: labels
         schema: object
         description: ''
+        example:
+          labelkey: value
       - name: name
         schema: string
         description: ''
+        example: my-ip
     responses:
       - statusCode: '200'
         description: ''
@@ -2703,14 +3011,17 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Primary IP
+        example: 0
       - name: assignee_id
         schema: integer
         required: true
         description: ''
+        example: 4711
       - name: assignee_type
         schema: string
         required: true
         description: ''
+        example: server
     responses:
       - statusCode: '201'
         description: ''
@@ -2725,14 +3036,17 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Primary IP
+        example: 0
       - name: dns_ptr
         schema: string
         required: true
         description: ''
+        example: server02.example.com
       - name: ip
         schema: string
         required: true
         description: ''
+        example: 1.2.3.4
     responses:
       - statusCode: '201'
         description: ''
@@ -2747,9 +3061,11 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Primary IP
+        example: 0
       - name: delete
         schema: boolean
         description: ''
+        example: true
     responses:
       - statusCode: '201'
         description: ''
@@ -2764,6 +3080,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Primary IP
+        example: 0
     responses:
       - statusCode: '201'
         description: ''
@@ -2786,12 +3103,16 @@ methodObjects:
         description: >-
           Page number to return. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 2
+        default: 1
       - name: perPage
         schema: integer
         required: false
         description: >-
           Maximum number of entries returned per page. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 25
+        default: 25
     responses:
       - statusCode: '200'
         description: ''
@@ -2806,6 +3127,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of Server Type
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -2853,12 +3175,16 @@ methodObjects:
         description: >-
           Page number to return. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 2
+        default: 1
       - name: perPage
         schema: integer
         required: false
         description: >-
           Maximum number of entries returned per page. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 25
+        default: 25
     responses:
       - statusCode: '200'
         description: ''
@@ -2873,18 +3199,23 @@ methodObjects:
         schema: boolean
         required: false
         description: ''
+        example: false
       - name: datacenter
         schema: string
         required: false
         description: ''
+        example: nbg1-dc3
       - name: firewalls
         schema: array
         required: false
         description: ''
+        example:
+          - firewall: 38
       - name: image
         schema: string
         required: true
         description: ''
+        example: ubuntu-20.04
       - name: labels
         schema: object
         required: false
@@ -2893,18 +3224,23 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: nbg1
       - name: name
         schema: string
         required: true
         description: ''
+        example: my-server
       - name: networks
         schema: array
         required: false
         description: ''
+        example:
+          - 456
       - name: placement_group
         schema: integer
         required: false
         description: ''
+        example: 1
       - name: public_net
         schema: object
         required: false
@@ -2913,22 +3249,33 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: cx11
       - name: ssh_keys
         schema: array
         required: false
         description: ''
+        example:
+          - my-ssh-key
       - name: start_after_create
         schema: boolean
         required: false
         description: ''
+        example: true
+        default: true
       - name: user_data
         schema: string
         required: false
         description: ''
+        example: |
+          #cloud-config
+          runcmd:
+          - [touch, /root/cloud-init-worked]
       - name: volumes
         schema: array
         required: false
         description: ''
+        example:
+          - 123
     responses:
       - statusCode: '201'
         description: ''
@@ -2947,6 +3294,7 @@ methodObjects:
           will only contain
 
           actions matching the specified IDs.
+        example: 42
       - name: sort
         schema: string
         required: false
@@ -2969,12 +3317,16 @@ methodObjects:
         description: >-
           Page number to return. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 2
+        default: 1
       - name: perPage
         schema: integer
         required: false
         description: >-
           Maximum number of entries returned per page. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 25
+        default: 25
     responses:
       - statusCode: '200'
         description: ''
@@ -2989,6 +3341,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Action.
+        example: 42
     responses:
       - statusCode: '200'
         description: ''
@@ -3003,6 +3356,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Server
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -3017,6 +3371,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Server
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -3031,12 +3386,16 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Server
+        example: 0
       - name: labels
         schema: object
         description: ''
+        example:
+          labelkey: value
       - name: name
         schema: string
         description: ''
+        example: my-server
     responses:
       - statusCode: '200'
         description: ''
@@ -3051,6 +3410,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Resource.
+        example: 42
       - name: sort
         schema: string
         required: false
@@ -3073,12 +3433,16 @@ methodObjects:
         description: >-
           Page number to return. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 2
+        default: 1
       - name: perPage
         schema: integer
         required: false
         description: >-
           Maximum number of entries returned per page. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 25
+        default: 25
     responses:
       - statusCode: '200'
         description: ''
@@ -3093,10 +3457,12 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Server
+        example: 0
       - name: placement_group
         schema: integer
         required: true
         description: ''
+        example: 1
     responses:
       - statusCode: '201'
         description: ''
@@ -3111,10 +3477,12 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Server
+        example: 0
       - name: iso
         schema: string
         required: true
         description: ''
+        example: FreeBSD-11.0-RELEASE-amd64-dvd1
     responses:
       - statusCode: '201'
         description: ''
@@ -3129,18 +3497,23 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Server
+        example: 0
       - name: alias_ips
         schema: array
         required: false
         description: ''
+        example:
+          - 10.0.1.2
       - name: ip
         schema: string
         required: false
         description: ''
+        example: 10.0.1.1
       - name: network
         schema: integer
         required: true
         description: ''
+        example: 4711
     responses:
       - statusCode: '201'
         description: ''
@@ -3155,14 +3528,18 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Server
+        example: 0
       - name: alias_ips
         schema: array
         required: true
         description: ''
+        example:
+          - 10.0.1.2
       - name: network
         schema: integer
         required: true
         description: ''
+        example: 4711
     responses:
       - statusCode: '201'
         description: ''
@@ -3177,14 +3554,17 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Server
+        example: 0
       - name: dns_ptr
         schema: string
         required: true
         description: ''
+        example: server01.example.com
       - name: ip
         schema: string
         required: true
         description: ''
+        example: 1.2.3.4
     responses:
       - statusCode: '201'
         description: ''
@@ -3199,12 +3579,15 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Server
+        example: 0
       - name: delete
         schema: boolean
         description: ''
+        example: true
       - name: rebuild
         schema: boolean
         description: ''
+        example: true
     responses:
       - statusCode: '201'
         description: ''
@@ -3219,14 +3602,17 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Server
+        example: 0
       - name: server_type
         schema: string
         required: true
         description: ''
+        example: cx11
       - name: upgrade_disk
         schema: boolean
         required: true
         description: ''
+        example: true
     responses:
       - statusCode: '201'
         description: ''
@@ -3241,15 +3627,19 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Server
+        example: 0
       - name: description
         schema: string
         description: ''
+        example: my image
       - name: labels
         schema: object
         description: ''
       - name: type
         schema: string
         description: ''
+        example: snapshot
+        default: snapshot
     responses:
       - statusCode: '201'
         description: ''
@@ -3264,10 +3654,12 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Server
+        example: 0
       - name: network
         schema: integer
         required: true
         description: ''
+        example: 4711
     responses:
       - statusCode: '201'
         description: ''
@@ -3282,6 +3674,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Server
+        example: 0
     responses:
       - statusCode: '201'
         description: ''
@@ -3296,6 +3689,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Server
+        example: 0
     responses:
       - statusCode: '201'
         description: ''
@@ -3310,6 +3704,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Server
+        example: 0
     responses:
       - statusCode: '201'
         description: ''
@@ -3324,6 +3719,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Server
+        example: 0
     responses:
       - statusCode: '201'
         description: ''
@@ -3338,12 +3734,16 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Server
+        example: 0
       - name: ssh_keys
         schema: array
         description: ''
+        example:
+          - 2323
       - name: type
         schema: string
         description: ''
+        default: linux64
     responses:
       - statusCode: '201'
         description: ''
@@ -3358,6 +3758,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Server
+        example: 0
     responses:
       - statusCode: '201'
         description: ''
@@ -3372,6 +3773,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Server
+        example: 0
     responses:
       - statusCode: '201'
         description: ''
@@ -3386,6 +3788,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Server
+        example: 0
     responses:
       - statusCode: '201'
         description: ''
@@ -3400,10 +3803,12 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Server
+        example: 0
       - name: image
         schema: string
         required: true
         description: ''
+        example: ubuntu-20.04
     responses:
       - statusCode: '201'
         description: ''
@@ -3418,6 +3823,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Server
+        example: 0
     responses:
       - statusCode: '201'
         description: ''
@@ -3432,6 +3838,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Server
+        example: 0
     responses:
       - statusCode: '201'
         description: ''
@@ -3446,6 +3853,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Server
+        example: 0
     responses:
       - statusCode: '201'
         description: ''
@@ -3460,6 +3868,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Server
+        example: 0
     responses:
       - statusCode: '201'
         description: ''
@@ -3474,6 +3883,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Server
+        example: 0
     responses:
       - statusCode: '201'
         description: ''
@@ -3488,10 +3898,12 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Server
+        example: 0
       - name: actionId
         schema: integer
         required: true
         description: ID of the Action
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -3506,18 +3918,22 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Server
+        example: 0
       - name: type
         schema: string
         required: true
         description: Type of metrics to get
+        example: TYPE
       - name: start
         schema: string
         required: true
         description: Start of period to get Metrics for (in ISO-8601 format)
+        example: START
       - name: end
         schema: string
         required: true
         description: End of period to get Metrics for (in ISO-8601 format)
+        example: END
       - name: step
         schema: string
         required: false
@@ -3565,12 +3981,16 @@ methodObjects:
         description: >-
           Page number to return. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 2
+        default: 1
       - name: perPage
         schema: integer
         required: false
         description: >-
           Maximum number of entries returned per page. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 25
+        default: 25
     responses:
       - statusCode: '200'
         description: ''
@@ -3589,10 +4009,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: My ssh key
       - name: public_key
         schema: string
         required: true
         description: ''
+        example: ssh-rsa AAAjjk76kgf...Xt
     responses:
       - statusCode: '201'
         description: ''
@@ -3607,6 +4029,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the SSH key
+        example: 0
     responses:
       - statusCode: '204'
         description: SSH key deleted
@@ -3621,6 +4044,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the SSH key
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -3635,12 +4059,16 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the SSH key
+        example: 0
       - name: labels
         schema: object
         description: ''
+        example:
+          labelkey: value
       - name: name
         schema: string
         description: ''
+        example: My ssh key
     responses:
       - statusCode: '200'
         description: ''
@@ -3688,12 +4116,16 @@ methodObjects:
         description: >-
           Page number to return. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 2
+        default: 1
       - name: perPage
         schema: integer
         required: false
         description: >-
           Maximum number of entries returned per page. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 25
+        default: 25
     responses:
       - statusCode: '200'
         description: ''
@@ -3708,22 +4140,28 @@ methodObjects:
         schema: boolean
         required: false
         description: ''
+        example: false
       - name: format
         schema: string
         required: false
         description: ''
+        example: xfs
       - name: labels
         schema: object
         required: false
         description: ''
+        example:
+          labelkey: value
       - name: location
         schema: string
         required: false
         description: ''
+        example: nbg1
       - name: name
         schema: string
         required: true
         description: ''
+        example: databases-storage
       - name: server
         schema: integer
         required: false
@@ -3732,6 +4170,7 @@ methodObjects:
         schema: integer
         required: true
         description: ''
+        example: 42
     responses:
       - statusCode: '201'
         description: ''
@@ -3750,6 +4189,7 @@ methodObjects:
           will only contain
 
           actions matching the specified IDs.
+        example: 42
       - name: sort
         schema: string
         required: false
@@ -3772,12 +4212,16 @@ methodObjects:
         description: >-
           Page number to return. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 2
+        default: 1
       - name: perPage
         schema: integer
         required: false
         description: >-
           Maximum number of entries returned per page. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 25
+        default: 25
     responses:
       - statusCode: '200'
         description: ''
@@ -3792,6 +4236,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Action.
+        example: 42
     responses:
       - statusCode: '200'
         description: ''
@@ -3806,6 +4251,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Volume
+        example: 0
     responses:
       - statusCode: '204'
         description: Volume deleted
@@ -3820,6 +4266,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Volume
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -3834,12 +4281,14 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Volume to update
+        example: 0
       - name: labels
         schema: object
         description: ''
       - name: name
         schema: string
         description: ''
+        example: database-storage
     responses:
       - statusCode: '200'
         description: ''
@@ -3854,6 +4303,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Volume
+        example: 0
       - name: sort
         schema: string
         required: false
@@ -3876,12 +4326,16 @@ methodObjects:
         description: >-
           Page number to return. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 2
+        default: 1
       - name: perPage
         schema: integer
         required: false
         description: >-
           Maximum number of entries returned per page. For more information, see
           "[Pagination](https://docs.hetzner.cloud)".
+        example: 25
+        default: 25
     responses:
       - statusCode: '200'
         description: ''
@@ -3896,14 +4350,17 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Volume
+        example: 0
       - name: automount
         schema: boolean
         required: false
         description: ''
+        example: false
       - name: server
         schema: integer
         required: true
         description: ''
+        example: 43
     responses:
       - statusCode: '201'
         description: ''
@@ -3918,9 +4375,11 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Volume
+        example: 0
       - name: delete
         schema: boolean
         description: ''
+        example: true
     responses:
       - statusCode: '201'
         description: ''
@@ -3935,6 +4394,7 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Volume
+        example: 0
     responses:
       - statusCode: '201'
         description: ''
@@ -3949,10 +4409,12 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Volume
+        example: 0
       - name: size
         schema: number
         required: true
         description: ''
+        example: 50
     responses:
       - statusCode: '201'
         description: ''
@@ -3967,10 +4429,12 @@ methodObjects:
         schema: integer
         required: true
         description: ID of the Volume
+        example: 0
       - name: actionId
         schema: integer
         required: true
         description: ID of the Action
+        example: 0
     responses:
       - statusCode: '200'
         description: ''

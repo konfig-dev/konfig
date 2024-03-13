@@ -11,10 +11,12 @@ methodObjects:
         schema: integer
         required: true
         description: Number of bounces to return per request. Max 500.
+        example: 0
       - name: offset
         schema: integer
         required: true
         description: Number of bounces to skip.
+        example: 0
       - name: type
         schema: string
         description: Filter by type of bounce
@@ -57,6 +59,7 @@ methodObjects:
         schema: integer
         required: true
         description: The ID of the bounce to retrieve.
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -75,6 +78,7 @@ methodObjects:
         schema: integer
         required: true
         description: The ID of the Bounce to activate.
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -93,6 +97,7 @@ methodObjects:
         schema: integer
         required: true
         description: The ID for the bounce dump to retrieve.
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -221,6 +226,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: FROM
       - name: Headers
         schema: array
         required: false
@@ -229,6 +235,7 @@ methodObjects:
         schema: boolean
         required: false
         description: ''
+        default: true
       - name: ReplyTo
         schema: string
         required: false
@@ -241,10 +248,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: TEMPLATEALIAS
       - name: TemplateId
         schema: integer
         required: true
         description: ''
+        example: 0
       - name: TemplateModel
         schema: object
         required: true
@@ -253,6 +262,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: TO
       - name: TrackLinks
         schema: string
         required: false
@@ -279,10 +289,12 @@ methodObjects:
         schema: integer
         required: true
         description: Number of messages to return per request. Max 500.
+        example: 0
       - name: offset
         schema: integer
         required: true
         description: Number of messages to skip
+        example: 0
       - name: recipient
         schema: string
         description: Filter by the user who was receiving the email
@@ -327,6 +339,7 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the message which should bypass inbound rules.
+        example: MESSAGEID
     responses:
       - statusCode: '200'
         description: A Postmark API error.
@@ -345,6 +358,7 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the message for which to details will be retrieved.
+        example: MESSAGEID
     responses:
       - statusCode: '200'
         description: ''
@@ -363,6 +377,7 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the inbound message on which we should retry processing.
+        example: MESSAGEID
     responses:
       - statusCode: '200'
         description: A Postmark API error.
@@ -381,10 +396,12 @@ methodObjects:
         schema: integer
         required: true
         description: Number of messages to return per request. Max 500.
+        example: 0
       - name: offset
         schema: integer
         required: true
         description: Number of messages to skip
+        example: 0
       - name: recipient
         schema: string
         description: Filter by the user who was receiving the email
@@ -421,10 +438,12 @@ methodObjects:
         schema: integer
         required: true
         description: Number of message clicks to return per request. Max 500.
+        example: 0
       - name: offset
         schema: integer
         required: true
         description: Number of messages to skip
+        example: 0
       - name: recipient
         schema: string
         required: false
@@ -501,14 +520,19 @@ methodObjects:
         description: >-
           The ID of the Outbound Message for which click statistics should be
           retrieved.
+        example: MESSAGEID
       - name: count
         schema: integer
         required: true
         description: Number of message clicks to return per request. Max 500.
+        example: 0
+        default: 1
       - name: offset
         schema: integer
         required: true
         description: Number of messages to skip.
+        example: 0
+        default: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -527,10 +551,12 @@ methodObjects:
         schema: integer
         required: true
         description: Number of message opens to return per request. Max 500.
+        example: 0
       - name: offset
         schema: integer
         required: true
         description: Number of messages to skip
+        example: 0
       - name: recipient
         schema: string
         required: false
@@ -607,14 +633,19 @@ methodObjects:
         description: >-
           The ID of the Outbound Message for which open statistics should be
           retrieved.
+        example: MESSAGEID
       - name: count
         schema: integer
         required: true
         description: Number of message opens to return per request. Max 500.
+        example: 0
+        default: 1
       - name: offset
         schema: integer
         required: true
         description: Number of messages to skip.
+        example: 0
+        default: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -633,6 +664,7 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the message for which to retrieve details.
+        example: MESSAGEID
     responses:
       - statusCode: '200'
         description: ''
@@ -651,6 +683,7 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the message for which to retrieve a dump.
+        example: MESSAGEID
     responses:
       - statusCode: '200'
         description: ''
@@ -1015,10 +1048,12 @@ methodObjects:
         schema: number
         required: true
         description: The number of Templates to return
+        example: 0
       - name: offset
         schema: number
         required: true
         description: The number of Templates to "skip" before returning results.
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -1045,10 +1080,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: NAME
       - name: Subject
         schema: string
         required: true
         description: ''
+        example: SUBJECT
       - name: TextBody
         schema: string
         required: false
@@ -1073,6 +1110,7 @@ methodObjects:
       - name: InlineCssForHtmlTestRender
         schema: boolean
         description: ''
+        default: true
       - name: Subject
         schema: string
         description: ''
@@ -1100,6 +1138,7 @@ methodObjects:
         schema: string
         required: true
         description: The 'TemplateID' or 'Alias' value for the Template you wish to delete.
+        example: TEMPLATEIDORALIAS
     responses:
       - statusCode: '200'
         description: ''
@@ -1120,6 +1159,7 @@ methodObjects:
         description: >-
           The 'TemplateID' or 'Alias' value for the Template you wish to
           retrieve.
+        example: TEMPLATEIDORALIAS
     responses:
       - statusCode: '200'
         description: ''
@@ -1138,6 +1178,7 @@ methodObjects:
         schema: string
         required: true
         description: The 'TemplateID' or 'Alias' value for the Template you wish to update.
+        example: TEMPLATEIDORALIAS
       - name: Alias
         schema: string
         required: false
@@ -1176,10 +1217,12 @@ methodObjects:
         schema: integer
         required: true
         description: Number of records to return per request.
+        example: 0
       - name: offset
         schema: integer
         required: true
         description: Number of records to skip.
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -1215,6 +1258,7 @@ methodObjects:
         schema: integer
         required: true
         description: The ID of the Inbound Rule that should be deleted.
+        example: 0
     responses:
       - statusCode: '200'
         description: A Postmark API error.

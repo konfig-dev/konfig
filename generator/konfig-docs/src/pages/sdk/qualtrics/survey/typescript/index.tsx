@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function QualtricsSurveyTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function QualtricsSurveyTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/qualtrics/survey/logo.svg"
       clientNameCamelCase="qualtrics"
       homepage="api.qualtrics.com"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/qualtrics/survey/favicon.png"
       contactUrl="https://www.qualtrics.com/support/"
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/qualtrics/survey/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["survey"]}
       methods={[
   {
     "url": "/survey-definitions",
@@ -67,7 +70,8 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYID"
       }
     ],
     "responses": [
@@ -109,7 +113,8 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYID"
       },
       {
         "name": "format",
@@ -152,7 +157,8 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYID"
       }
     ],
     "responses": [
@@ -190,7 +196,8 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYID"
       },
       {
         "name": "SurveyName",
@@ -253,7 +260,8 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYID"
       }
     ],
     "responses": [
@@ -291,13 +299,15 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYID"
       },
       {
         "name": "blockId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "BLOCKID"
       }
     ],
     "responses": [
@@ -339,13 +349,15 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYID"
       },
       {
         "name": "blockId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "BLOCKID"
       }
     ],
     "responses": [
@@ -387,13 +399,15 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYID"
       },
       {
         "name": "blockId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "BLOCKID"
       }
     ],
     "responses": [
@@ -435,7 +449,8 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYID"
       }
     ],
     "responses": [
@@ -473,7 +488,8 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYID"
       },
       {
         "name": "blockId",
@@ -520,13 +536,15 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYID"
       },
       {
         "name": "questionId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "QUESTIONID"
       }
     ],
     "responses": [
@@ -568,13 +586,15 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYID"
       },
       {
         "name": "questionId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "QUESTIONID"
       }
     ],
     "responses": [
@@ -616,13 +636,15 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYID"
       },
       {
         "name": "questionId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "QUESTIONID"
       }
     ],
     "responses": [
@@ -664,7 +686,8 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYID"
       }
     ],
     "responses": [
@@ -702,19 +725,22 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYID"
       },
       {
         "name": "FlowID",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "FLOWID"
       },
       {
         "name": "Type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TYPE"
       },
       {
         "name": "Flow",
@@ -764,13 +790,15 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYID"
       },
       {
         "name": "flowId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "FLOWID"
       }
     ],
     "responses": [
@@ -812,7 +840,8 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYID"
       }
     ],
     "responses": [
@@ -850,13 +879,15 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYID"
       },
       {
         "name": "AnonymizeResponse",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": "No"
       },
       {
         "name": "Autofocus",
@@ -886,31 +917,38 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "BackButton",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true,
+        "default": false
       },
       {
         "name": "BallotBoxStuffingPrevention",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true,
+        "default": false
       },
       {
         "name": "BallotBoxStuffingPreventionBehavior",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": "default"
       },
       {
         "name": "BallotBoxStuffingPreventionMessage",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "MS_abcdefg12345"
       },
       {
         "name": "BallotBoxStuffingPreventionMessageLibrary",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "UR_SomeUserId001"
       },
       {
         "name": "BallotBoxStuffingPreventionURL",
@@ -922,7 +960,8 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "CollectGeoLocation",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": "true"
       },
       {
         "name": "CustomStyles",
@@ -940,13 +979,15 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "EmailThankYou",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": "false"
       },
       {
         "name": "EOSMessage",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "MS_abcdefg12345"
       },
       {
         "name": "EOSRedirectURL",
@@ -964,25 +1005,29 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "headerMid",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "MS_abcdefg12345"
       },
       {
         "name": "Header",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "HEADER"
       },
       {
         "name": "footerMid",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "MS_abcdefg12345"
       },
       {
         "name": "Footer",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "FOOTER"
       },
       {
         "name": "InactiveSurvey",
@@ -994,43 +1039,53 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "InactiveMessage",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "MS_abcdefg12345"
       },
       {
         "name": "InactiveMessageLibrary",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "UR_SomeUserId001"
       },
       {
         "name": "NoIndex",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NOINDEX",
+        "default": "Yes"
       },
       {
         "name": "nextButtonMid",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "MS_abcdefg12345"
       },
       {
         "name": "NextButton",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NEXTBUTTON",
+        "default": " ← "
       },
       {
         "name": "PageTransition",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": "None"
       },
       {
         "name": "PartialData",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PARTIALDATA",
+        "default": "+1 week"
       },
       {
         "name": "PartialDataCloseAfter",
@@ -1048,25 +1103,31 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "PasswordProtection",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": "No"
       },
       {
         "name": "previousButtonMid",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "MS_abcdefg12345"
       },
       {
         "name": "PreviousButton",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PREVIOUSBUTTON",
+        "default": " ← "
       },
       {
         "name": "ProgressBarDisplay",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PROGRESSBARDISPLAY",
+        "default": "None"
       },
       {
         "name": "QuestionsPerPage",
@@ -1084,7 +1145,8 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "RefererCheck",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": "No"
       },
       {
         "name": "RefererURL",
@@ -1096,19 +1158,24 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "ResponseSummary",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": "No"
       },
       {
         "name": "SaveAndContinue",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true,
+        "default": true
       },
       {
         "name": "SecureResponseFiles",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SECURERESPONSEFILES",
+        "default": "true"
       },
       {
         "name": "Skin",
@@ -1120,7 +1187,9 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "SurveyExpiration",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYEXPIRATION",
+        "default": null
       },
       {
         "name": "SurveyExpirationDate",
@@ -1150,7 +1219,9 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "SurveyProtection",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYPROTECTION",
+        "default": "PublicSurvey"
       },
       {
         "name": "SurveyStartDate",
@@ -1162,7 +1233,9 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "SurveyTermination",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYTERMINATION",
+        "default": "DefaultMessage"
       },
       {
         "name": "SurveyTitle",
@@ -1174,31 +1247,36 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "ThankYouEmailMessage",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "MS_abcdefg12345"
       },
       {
         "name": "ThankYouEmailMessageLibrary",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "UR_SomeUserId001"
       },
       {
         "name": "ValidateMessage",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": "false"
       },
       {
         "name": "ValidationMessage",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "MS_abcdefg12345"
       },
       {
         "name": "ValidationMessageLibrary",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "UR_SomeUserId001"
       }
     ],
     "responses": [
@@ -1236,7 +1314,8 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYID"
       }
     ],
     "responses": [
@@ -1278,19 +1357,22 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYID"
       },
       {
         "name": "Description",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "DESCRIPTION"
       },
       {
         "name": "Published",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -1328,13 +1410,15 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYID"
       },
       {
         "name": "versionId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "VERSIONID"
       },
       {
         "name": "format",
@@ -1381,7 +1465,8 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYID"
       },
       {
         "name": "pageSize",
@@ -1433,7 +1518,8 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYID"
       },
       {
         "name": "quotaGroupId",
@@ -1444,13 +1530,15 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "Name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "Occurrences",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "Count",
@@ -1480,7 +1568,8 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "QuotaAction",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "QUOTAACTION"
       },
       {
         "name": "ActionElement",
@@ -1504,13 +1593,15 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "ID",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "QuotaRealm",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "QUOTAREALM"
       },
       {
         "name": "QuotaSchedule",
@@ -1582,13 +1673,15 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYID"
       },
       {
         "name": "quotaId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "QUOTAID"
       }
     ],
     "responses": [
@@ -1630,13 +1723,15 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYID"
       },
       {
         "name": "quotaId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "QUOTAID"
       }
     ],
     "responses": [
@@ -1678,25 +1773,29 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYID"
       },
       {
         "name": "quotaId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "QUOTAID"
       },
       {
         "name": "Name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "Occurrences",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "Count",
@@ -1726,7 +1825,8 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "QuotaAction",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "QUOTAACTION"
       },
       {
         "name": "ActionElement",
@@ -1750,13 +1850,15 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "ID",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "QuotaRealm",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "QUOTAREALM"
       },
       {
         "name": "QuotaSchedule",
@@ -1828,7 +1930,8 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYID"
       },
       {
         "name": "pageSize",
@@ -1880,13 +1983,15 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYID"
       },
       {
         "name": "ID",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "Id",
@@ -1964,13 +2069,15 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYID"
       },
       {
         "name": "quotaGroupId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "QUOTAGROUPID"
       }
     ],
     "responses": [
@@ -2012,13 +2119,15 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYID"
       },
       {
         "name": "quotaGroupId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "QUOTAGROUPID"
       }
     ],
     "responses": [
@@ -2060,19 +2169,22 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYID"
       },
       {
         "name": "quotaGroupId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "QUOTAGROUPID"
       },
       {
         "name": "ID",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "Id",
@@ -2150,7 +2262,8 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier of the survey."
+        "description": "The unique identifier of the survey.",
+        "example": "SURVEYID"
       }
     ],
     "responses": [
@@ -2188,7 +2301,8 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYID"
       },
       {
         "name": "AvailableLanguages",
@@ -2232,13 +2346,15 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYID"
       },
       {
         "name": "languageCode",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "LANGUAGECODE"
       }
     ],
     "responses": [
@@ -2276,13 +2392,15 @@ export default function QualtricsSurveyTypeScriptSdk() {
         "name": "surveyId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SURVEYID"
       },
       {
         "name": "languageCode",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "LANGUAGECODE"
       }
     ],
     "responses": [

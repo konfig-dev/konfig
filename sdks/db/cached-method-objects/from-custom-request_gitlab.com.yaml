@@ -13,10 +13,12 @@ methodObjects:
         description: >-
           The ID or URL-encoded path of the group owned by the authenticated
           user.
+        example: ID
       - name: badgeId
         schema: integer
         required: true
         description: The badge ID
+        example: 0
     responses: []
   - url: /api/v4/groups/{id}/badges/{badge_id}
     method: getGroupBadge
@@ -31,10 +33,12 @@ methodObjects:
         description: >-
           The ID or URL-encoded path of the group owned by the authenticated
           user.
+        example: ID
       - name: badgeId
         schema: integer
         required: true
         description: The badge ID
+        example: 0
     responses:
       - statusCode: '200'
         description: API_Entities_Badge model
@@ -51,10 +55,12 @@ methodObjects:
         description: >-
           The ID or URL-encoded path of the group owned by the authenticated
           user.
+        example: ID
       - name: badgeId
         schema: integer
         required: true
         description: ''
+        example: 0
       - name: link_url
         schema: string
         description: ''
@@ -80,12 +86,15 @@ methodObjects:
         description: >-
           The ID or URL-encoded path of the group owned by the authenticated
           user.
+        example: ID
       - name: page
         schema: integer
         description: Current page number
+        default: 1
       - name: perPage
         schema: integer
         description: Number of items per page
+        default: 20
       - name: name
         schema: string
         description: Name for the badge
@@ -105,14 +114,17 @@ methodObjects:
         description: >-
           The ID or URL-encoded path of the group owned by the authenticated
           user.
+        example: ID
       - name: link_url
         schema: string
         required: true
         description: ''
+        example: LINK_URL
       - name: image_url
         schema: string
         required: true
         description: ''
+        example: IMAGE_URL
       - name: name
         schema: string
         required: false
@@ -133,14 +145,17 @@ methodObjects:
         description: >-
           The ID or URL-encoded path of the group owned by the authenticated
           user.
+        example: ID
       - name: linkUrl
         schema: string
         required: true
         description: URL of the badge link
+        example: LINK_URL
       - name: imageUrl
         schema: string
         required: true
         description: URL of the badge image
+        example: IMAGE_URL
     responses:
       - statusCode: '200'
         description: API_Entities_BasicBadgeDetails model
@@ -157,10 +172,12 @@ methodObjects:
         description: >-
           The ID or URL-encoded path of the group owned by the authenticated
           user
+        example: ID
       - name: userId
         schema: integer
         required: true
         description: The user ID of the access requester
+        example: 0
     responses: []
   - url: /api/v4/groups/{id}/access_requests/{user_id}/approve
     method: approveForUser
@@ -175,13 +192,16 @@ methodObjects:
         description: >-
           The ID or URL-encoded path of the group owned by the authenticated
           user
+        example: ID
       - name: userId
         schema: integer
         required: true
         description: The user ID of the access requester
+        example: 0
       - name: access_level
         schema: integer
         description: ''
+        default: 30
     responses:
       - statusCode: '200'
         description: API_Entities_AccessRequester model
@@ -198,12 +218,15 @@ methodObjects:
         description: >-
           The ID or URL-encoded path of the group owned by the authenticated
           user
+        example: ID
       - name: page
         schema: integer
         description: Current page number
+        default: 1
       - name: perPage
         schema: integer
         description: Number of items per page
+        default: 20
     responses:
       - statusCode: '200'
         description: API_Entities_AccessRequester model
@@ -220,6 +243,7 @@ methodObjects:
         description: >-
           The ID or URL-encoded path of the group owned by the authenticated
           user
+        example: ID
     responses:
       - statusCode: '200'
         description: API_Entities_AccessRequester model
@@ -234,6 +258,7 @@ methodObjects:
         schema: string
         required: true
         description: The ID or URL-encoded path of the project
+        example: ID
     responses: []
   - url: /api/v4/projects/{id}/repository/branches/{branch}
     method: deleteBranch
@@ -246,10 +271,12 @@ methodObjects:
         schema: string
         required: true
         description: The ID or URL-encoded path of the project
+        example: ID
       - name: branch
         schema: string
         required: true
         description: The name of the branch
+        example: BRANCH
     responses: []
   - url: /api/v4/projects/{id}/repository/branches/{branch}
     method: getSingleBranch
@@ -262,10 +289,12 @@ methodObjects:
         schema: string
         required: true
         description: The ID or URL-encoded path of the project
+        example: ID
       - name: branch
         schema: integer
         required: true
         description: ''
+        example: 0
     responses:
       - statusCode: '200'
         description: API_Entities_Branch model
@@ -280,10 +309,12 @@ methodObjects:
         schema: string
         required: true
         description: The ID or URL-encoded path of the project
+        example: ID
       - name: branch
         schema: string
         required: true
         description: The name of the branch
+        example: BRANCH
     responses: []
   - url: /api/v4/projects/{id}/repository/branches
     method: getAll
@@ -296,12 +327,15 @@ methodObjects:
         schema: string
         required: true
         description: The ID or URL-encoded path of the project
+        example: ID
       - name: page
         schema: integer
         description: Current page number
+        default: 1
       - name: perPage
         schema: integer
         description: Number of items per page
+        default: 20
       - name: search
         schema: string
         description: Return list of branches matching the search criteria
@@ -328,14 +362,17 @@ methodObjects:
         schema: string
         required: true
         description: The ID or URL-encoded path of the project
+        example: ID
       - name: branch
         schema: string
         required: true
         description: The name of the branch
+        example: BRANCH
       - name: ref
         schema: string
         required: true
         description: Create branch from commit sha or existing branch
+        example: REF
     responses:
       - statusCode: '201'
         description: API_Entities_Branch model
@@ -350,10 +387,12 @@ methodObjects:
         schema: string
         required: true
         description: The ID or URL-encoded path of the project
+        example: ID
       - name: branch
         schema: string
         required: true
         description: The name of the branch
+        example: BRANCH
     responses:
       - statusCode: '200'
         description: API_Entities_Branch model
@@ -368,10 +407,12 @@ methodObjects:
         schema: string
         required: true
         description: The ID or URL-encoded path of the project
+        example: ID
       - name: branch
         schema: string
         required: true
         description: The name of the branch
+        example: BRANCH
       - name: developers_can_push
         schema: boolean
         description: ''
@@ -394,10 +435,12 @@ methodObjects:
         description: >-
           The ID or URL-encoded path of the project owned by the authenticated
           user.
+        example: ID
       - name: badgeId
         schema: integer
         required: true
         description: The badge ID
+        example: 0
     responses: []
   - url: /api/v4/projects/{id}/badges/{badge_id}
     method: getProjectBadge
@@ -412,10 +455,12 @@ methodObjects:
         description: >-
           The ID or URL-encoded path of the project owned by the authenticated
           user.
+        example: ID
       - name: badgeId
         schema: integer
         required: true
         description: The badge ID
+        example: 0
     responses:
       - statusCode: '200'
         description: API_Entities_Badge model
@@ -432,10 +477,12 @@ methodObjects:
         description: >-
           The ID or URL-encoded path of the project owned by the authenticated
           user.
+        example: ID
       - name: badgeId
         schema: integer
         required: true
         description: ''
+        example: 0
       - name: link_url
         schema: string
         description: ''
@@ -461,12 +508,15 @@ methodObjects:
         description: >-
           The ID or URL-encoded path of the project owned by the authenticated
           user.
+        example: ID
       - name: page
         schema: integer
         description: Current page number
+        default: 1
       - name: perPage
         schema: integer
         description: Number of items per page
+        default: 20
       - name: name
         schema: string
         description: Name for the badge
@@ -486,14 +536,17 @@ methodObjects:
         description: >-
           The ID or URL-encoded path of the project owned by the authenticated
           user.
+        example: ID
       - name: link_url
         schema: string
         required: true
         description: ''
+        example: LINK_URL
       - name: image_url
         schema: string
         required: true
         description: ''
+        example: IMAGE_URL
       - name: name
         schema: string
         required: false
@@ -514,14 +567,17 @@ methodObjects:
         description: >-
           The ID or URL-encoded path of the project owned by the authenticated
           user.
+        example: ID
       - name: linkUrl
         schema: string
         required: true
         description: URL of the badge link
+        example: LINK_URL
       - name: imageUrl
         schema: string
         required: true
         description: URL of the badge image
+        example: IMAGE_URL
     responses:
       - statusCode: '200'
         description: API_Entities_BasicBadgeDetails model
@@ -538,10 +594,12 @@ methodObjects:
         description: >-
           The ID or URL-encoded path of the project owned by the authenticated
           user
+        example: ID
       - name: userId
         schema: integer
         required: true
         description: The user ID of the access requester
+        example: 0
     responses: []
   - url: /api/v4/projects/{id}/access_requests/{user_id}/approve
     method: approveForUser
@@ -556,13 +614,16 @@ methodObjects:
         description: >-
           The ID or URL-encoded path of the project owned by the authenticated
           user
+        example: ID
       - name: userId
         schema: integer
         required: true
         description: The user ID of the access requester
+        example: 0
       - name: access_level
         schema: integer
         description: ''
+        default: 30
     responses:
       - statusCode: '200'
         description: API_Entities_AccessRequester model
@@ -579,12 +640,15 @@ methodObjects:
         description: >-
           The ID or URL-encoded path of the project owned by the authenticated
           user
+        example: ID
       - name: page
         schema: integer
         description: Current page number
+        default: 1
       - name: perPage
         schema: integer
         description: Number of items per page
+        default: 20
     responses:
       - statusCode: '200'
         description: API_Entities_AccessRequester model
@@ -601,6 +665,7 @@ methodObjects:
         description: >-
           The ID or URL-encoded path of the project owned by the authenticated
           user
+        example: ID
     responses:
       - statusCode: '200'
         description: API_Entities_AccessRequester model
@@ -616,14 +681,17 @@ methodObjects:
         schema: string
         required: true
         description: The ID or URL-encoded path of the project
+        example: ID
       - name: alertIid
         schema: integer
         required: true
         description: The IID of the Alert
+        example: 0
       - name: metricImageId
         schema: integer
         required: true
         description: The ID of metric image
+        example: 0
     responses:
       - statusCode: '204'
         description: API_Entities_MetricImage model
@@ -639,14 +707,17 @@ methodObjects:
         schema: string
         required: true
         description: The ID or URL-encoded path of the project
+        example: ID
       - name: alertIid
         schema: integer
         required: true
         description: The IID of the Alert
+        example: 0
       - name: metricImageId
         schema: integer
         required: true
         description: The ID of metric image
+        example: 0
       - name: url
         schema: string
         description: ''
@@ -667,10 +738,12 @@ methodObjects:
         schema: string
         required: true
         description: The ID or URL-encoded path of the project
+        example: ID
       - name: alertIid
         schema: integer
         required: true
         description: The IID of the Alert
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -685,14 +758,17 @@ methodObjects:
         schema: string
         required: true
         description: The ID or URL-encoded path of the project
+        example: ID
       - name: alertIid
         schema: integer
         required: true
         description: The IID of the Alert
+        example: 0
       - name: file
         schema: string
         required: true
         description: ''
+        example: FILE
       - name: url
         schema: string
         required: false
@@ -716,10 +792,12 @@ methodObjects:
         schema: string
         required: true
         description: The ID or URL-encoded path of the project
+        example: ID
       - name: alertIid
         schema: integer
         required: true
         description: The IID of the Alert
+        example: 0
     responses: []
   - url: /api/v4/admin/batched_background_migrations/{id}
     method: getMigration
@@ -731,10 +809,12 @@ methodObjects:
       - name: database
         schema: string
         description: The name of the database
+        default: main
       - name: id
         schema: integer
         required: true
         description: The batched background migration id
+        example: 0
     responses:
       - statusCode: '200'
         description: API_Entities_BatchedBackgroundMigration model
@@ -748,6 +828,7 @@ methodObjects:
       - name: database
         schema: string
         description: The name of the database, the default `main`
+        default: main
     responses:
       - statusCode: '200'
         description: ''
@@ -762,9 +843,11 @@ methodObjects:
         schema: integer
         required: true
         description: The batched background migration id
+        example: 0
       - name: database
         schema: string
         description: ''
+        default: main
     responses:
       - statusCode: '200'
         description: API_Entities_BatchedBackgroundMigration model
@@ -779,9 +862,11 @@ methodObjects:
         schema: integer
         required: true
         description: The batched background migration id
+        example: 0
       - name: database
         schema: string
         description: ''
+        default: main
     responses:
       - statusCode: '200'
         description: API_Entities_BatchedBackgroundMigration model
@@ -796,6 +881,7 @@ methodObjects:
         schema: string
         required: true
         description: The key of a variable
+        example: KEY
     responses:
       - statusCode: '204'
         description: API_Entities_Ci_Variable model
@@ -810,6 +896,7 @@ methodObjects:
         schema: string
         required: true
         description: The key of a variable
+        example: KEY
     responses:
       - statusCode: '200'
         description: API_Entities_Ci_Variable model
@@ -824,6 +911,7 @@ methodObjects:
         schema: string
         required: true
         description: The key of a variable
+        example: KEY
       - name: value
         schema: string
         description: ''
@@ -852,9 +940,11 @@ methodObjects:
       - name: page
         schema: integer
         description: Current page number
+        default: 1
       - name: perPage
         schema: integer
         description: Number of items per page
+        default: 20
     responses:
       - statusCode: '200'
         description: API_Entities_Ci_Variable model
@@ -869,10 +959,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: KEY
       - name: value
         schema: string
         required: true
         description: ''
+        example: VALUE
       - name: protected
         schema: boolean
         required: false
@@ -903,10 +995,12 @@ methodObjects:
         schema: string
         required: true
         description: The database name
+        example: DATABASE_NAME
       - name: tableName
         schema: string
         required: true
         description: The table name
+        example: TABLE_NAME
     responses:
       - statusCode: '200'
         description: API_Entities_Dictionary_Table model
@@ -921,6 +1015,7 @@ methodObjects:
         schema: integer
         required: true
         description: The cluster ID
+        example: 0
     responses:
       - statusCode: '204'
         description: API_Entities_Cluster model
@@ -935,6 +1030,7 @@ methodObjects:
         schema: integer
         required: true
         description: The cluster ID
+        example: 0
     responses:
       - statusCode: '200'
         description: API_Entities_Cluster model
@@ -949,6 +1045,7 @@ methodObjects:
         schema: integer
         required: true
         description: The cluster ID
+        example: 0
       - name: name
         schema: string
         description: ''
@@ -961,6 +1058,7 @@ methodObjects:
       - name: namespace_per_environment
         schema: boolean
         description: ''
+        default: true
       - name: domain
         schema: string
         description: ''
@@ -996,18 +1094,22 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: NAME
       - name: enabled
         schema: boolean
         required: false
         description: ''
+        default: true
       - name: environment_scope
         schema: string
         required: false
         description: ''
+        default: '*'
       - name: namespace_per_environment
         schema: boolean
         required: false
         description: ''
+        default: true
       - name: domain
         schema: string
         required: false
@@ -1020,14 +1122,17 @@ methodObjects:
         schema: boolean
         required: false
         description: ''
+        default: true
       - name: platform_kubernetes_attributes[api_url]
         schema: string
         required: true
         description: ''
+        example: PLATFORM_KUBERNETES_ATTRIBUTES[API_URL]
       - name: platform_kubernetes_attributes[token]
         schema: string
         required: true
         description: ''
+        example: PLATFORM_KUBERNETES_ATTRIBUTES[TOKEN]
       - name: platform_kubernetes_attributes[ca_cert]
         schema: string
         required: false
@@ -1040,6 +1145,7 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        default: rbac
     responses:
       - statusCode: '201'
         description: API_Entities_Cluster model
@@ -1064,9 +1170,11 @@ methodObjects:
         schema: integer
         required: true
         description: The migration version timestamp
+        example: 0
       - name: database
         schema: string
         description: ''
+        default: main
     responses: []
   - url: /api/v4/applications/{id}
     method: deleteSpecificApplication
@@ -1079,6 +1187,7 @@ methodObjects:
         schema: integer
         required: true
         description: The ID of the application (not the application_id)
+        example: 0
     responses: []
   - url: /api/v4/applications
     method: listAllRegistered
@@ -1101,18 +1210,22 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: NAME
       - name: redirect_uri
         schema: string
         required: true
         description: ''
+        example: REDIRECT_URI
       - name: scopes
         schema: string
         required: true
         description: ''
+        example: SCOPES
       - name: confidential
         schema: boolean
         required: false
         description: ''
+        default: true
     responses:
       - statusCode: '200'
         description: API_Entities_ApplicationWithSecret model
@@ -1127,6 +1240,7 @@ methodObjects:
         schema: string
         required: true
         description: Public email address of the user
+        example: EMAIL
       - name: size
         schema: integer
         description: Single pixel dimension for Gravatar images
@@ -1144,6 +1258,7 @@ methodObjects:
         schema: integer
         required: true
         description: Broadcast message ID
+        example: 0
     responses:
       - statusCode: '200'
         description: API_Entities_BroadcastMessage model
@@ -1158,6 +1273,7 @@ methodObjects:
         schema: integer
         required: true
         description: Broadcast message ID
+        example: 0
     responses:
       - statusCode: '200'
         description: API_Entities_BroadcastMessage model
@@ -1172,6 +1288,7 @@ methodObjects:
         schema: integer
         required: true
         description: Broadcast message ID
+        example: 0
       - name: message
         schema: string
         description: ''
@@ -1212,9 +1329,11 @@ methodObjects:
       - name: page
         schema: integer
         description: Current page number
+        default: 1
       - name: perPage
         schema: integer
         description: Number of items per page
+        default: 20
     responses:
       - statusCode: '200'
         description: API_Entities_BroadcastMessage model
@@ -1229,6 +1348,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: MESSAGE
       - name: starts_at
         schema: string
         required: false
@@ -1275,10 +1395,12 @@ methodObjects:
         schema: integer
         required: true
         description: The ID of user's GitLab Migration
+        example: 0
       - name: entityId
         schema: integer
         required: true
         description: The ID of GitLab Migration entity
+        example: 0
     responses:
       - statusCode: '200'
         description: API_Entities_BulkImports model
@@ -1293,15 +1415,18 @@ methodObjects:
         schema: integer
         required: true
         description: The ID of user's GitLab Migration
+        example: 0
       - name: status
         schema: string
         description: Return import entities with specified status
       - name: page
         schema: integer
         description: Current page number
+        default: 1
       - name: perPage
         schema: integer
         description: Number of items per page
+        default: 20
     responses:
       - statusCode: '200'
         description: ''
@@ -1316,6 +1441,7 @@ methodObjects:
         schema: integer
         required: true
         description: The ID of user's GitLab Migration
+        example: 0
     responses:
       - statusCode: '200'
         description: API_Entities_BulkImport model
@@ -1329,12 +1455,15 @@ methodObjects:
       - name: page
         schema: integer
         description: Current page number
+        default: 1
       - name: perPage
         schema: integer
         description: Number of items per page
+        default: 20
       - name: sort
         schema: string
         description: Return GitLab Migrations sorted in created by `asc` or `desc` order.
+        default: desc
       - name: status
         schema: string
         description: Return all GitLab Migrations' entities with specified status
@@ -1351,12 +1480,15 @@ methodObjects:
       - name: page
         schema: integer
         description: Current page number
+        default: 1
       - name: perPage
         schema: integer
         description: Number of items per page
+        default: 20
       - name: sort
         schema: string
         description: Return GitLab Migrations sorted in created by `asc` or `desc` order.
+        default: desc
       - name: status
         schema: string
         description: Return GitLab Migrations with specified status
@@ -1374,10 +1506,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: CONFIGURATION[URL]
       - name: configuration[access_token]
         schema: string
         required: true
         description: ''
+        example: CONFIGURATION[ACCESS_TOKEN]
       - name: entities[source_type]
         schema: array
         required: true
@@ -1483,6 +1617,7 @@ methodObjects:
       - name: planName
         schema: string
         description: 'Name of the plan to get the limits from. Default: default.'
+        default: default
     responses:
       - statusCode: '200'
         description: API_Entities_PlanLimit model
@@ -1497,6 +1632,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: PLAN_NAME
       - name: ci_pipeline_size
         schema: integer
         required: false
@@ -1607,6 +1743,7 @@ methodObjects:
         schema: integer
         required: true
         description: The ID of the project
+        example: 0
       - name: scope
         schema: array
         required: false
@@ -1625,10 +1762,12 @@ methodObjects:
         schema: integer
         required: true
         description: The ID of the project
+        example: 0
       - name: jobId
         schema: integer
         required: true
         description: The ID of the job
+        example: 0
     responses:
       - statusCode: '200'
         description: API_Entities_Job model
@@ -1643,10 +1782,12 @@ methodObjects:
         schema: integer
         required: true
         description: The ID of the project
+        example: 0
       - name: jobId
         schema: integer
         required: true
         description: The ID of the manual job to run
+        example: 0
       - name: jobVariablesAttributes
         schema: array
         required: false

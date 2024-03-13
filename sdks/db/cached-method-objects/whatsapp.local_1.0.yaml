@@ -11,18 +11,22 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: CC
       - name: cert
         schema: string
         required: true
         description: ''
+        example: CERT
       - name: method
         schema: string
         required: true
         description: ''
+        example: METHOD
       - name: phone_number
         schema: string
         required: true
         description: ''
+        example: PHONE_NUMBER
       - name: pin
         schema: string
         required: false
@@ -45,18 +49,22 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: CC
       - name: phone_number
         schema: string
         required: true
         description: ''
+        example: PHONE_NUMBER
       - name: pin
         schema: string
         required: true
         description: ''
+        example: PIN
       - name: shards
         schema: integer
         required: true
         description: ''
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -71,6 +79,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: CODE
     responses:
       - statusCode: '200'
         description: ''
@@ -135,6 +144,7 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        default: no_wait
       - name: contacts
         schema: array
         required: true
@@ -163,6 +173,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: SUBJECT
     responses:
       - statusCode: '200'
         description: ''
@@ -177,6 +188,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: GROUPID
     responses:
       - statusCode: '200'
         description: ''
@@ -191,10 +203,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: GROUPID
       - name: subject
         schema: string
         required: true
         description: ''
+        example: SUBJECT
     responses:
       - statusCode: '200'
         description: ''
@@ -209,6 +223,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: GROUPID
       - name: wa_ids
         schema: array
         required: true
@@ -227,6 +242,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: GROUPID
       - name: wa_ids
         schema: array
         required: true
@@ -245,10 +261,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: GROUPID
       - name: File
         schema: string
         required: true
         description: ''
+        example: FILE
     responses:
       - statusCode: '200'
         description: ''
@@ -263,6 +281,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: GROUPID
     responses:
       - statusCode: '200'
         description: ''
@@ -277,10 +296,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: GROUPID
       - name: File
         schema: string
         required: true
         description: ''
+        example: FILE
     responses:
       - statusCode: '200'
         description: ''
@@ -295,6 +316,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: GROUPID
     responses:
       - statusCode: '200'
         description: ''
@@ -309,6 +331,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: GROUPID
     responses:
       - statusCode: '200'
         description: ''
@@ -323,6 +346,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: GROUPID
     responses:
       - statusCode: '200'
         description: ''
@@ -337,6 +361,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: GROUPID
       - name: wa_ids
         schema: array
         required: true
@@ -375,6 +400,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: MEDIAID
     responses:
       - statusCode: '200'
         description: ''
@@ -389,6 +415,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: MEDIAID
     responses:
       - statusCode: '200'
         description: ''
@@ -415,6 +442,14 @@ methodObjects:
         schema: object
         required: false
         description: ''
+        example:
+          element_name: hello_world
+          language:
+            code: en
+            policy: deterministic
+          localizable_params:
+            - default: '1234'
+          namespace: business_a_namespace
       - name: image
         schema: object
         required: false
@@ -423,6 +458,11 @@ methodObjects:
         schema: object
         required: false
         description: ''
+        example:
+          address: <Location's Address>
+          latitude: <Latitude>
+          longitude: <Longitude>
+          name: <Location Name>
       - name: preview_url
         schema: boolean
         required: false
@@ -431,14 +471,18 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        default: individual
       - name: text
         schema: object
         required: false
         description: ''
+        example:
+          body: <Message Text>
       - name: to
         schema: string
         required: true
         description: ''
+        example: TO
       - name: ttl
         schema: object
         required: false
@@ -447,6 +491,7 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        default: text
       - name: video
         schema: object
         required: false
@@ -465,10 +510,13 @@ methodObjects:
         schema: string
         required: true
         description: Message ID from Webhook
+        example: MESSAGEID
       - name: status
         schema: string
         required: true
         description: ''
+        example: STATUS
+        default: read
     responses:
       - statusCode: '200'
         description: ''
@@ -482,6 +530,7 @@ methodObjects:
       - name: format
         schema: string
         description: ''
+        example: prometheus
     responses:
       - statusCode: '200'
         description: ''
@@ -506,6 +555,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: PIN
     responses:
       - statusCode: '200'
         description: ''
@@ -539,33 +589,48 @@ methodObjects:
       - name: callback_backoff_delay_ms
         schema: string
         description: ''
+        default: '3000'
       - name: callback_persist
         schema: boolean
         description: ''
+        default: true
       - name: heartbeat_interval
         schema: integer
         description: ''
+        default: 5
       - name: max_callback_backoff_delay_ms
         schema: string
         description: ''
+        default: '900000'
       - name: media
         schema: object
         description: ''
+        example:
+          auto_download:
+            - image
+            - document
+            - audio
       - name: on_call_pager
         schema: string
         description: ''
       - name: pass_through
         schema: boolean
         description: ''
+        default: true
       - name: sent_status
         schema: boolean
         description: ''
+        default: false
       - name: unhealthy_interval
         schema: integer
         description: ''
+        default: 30
       - name: webhooks
         schema: object
         description: ''
+        example:
+          max_concurrent_requests: 12
+          url: <Webhook URL, https>
     responses:
       - statusCode: '200'
         description: ''
@@ -600,6 +665,7 @@ methodObjects:
         schema: string
         required: true
         description: Provider Name
+        example: PROVIDERNAME
     responses:
       - statusCode: '200'
         description: ''
@@ -614,6 +680,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: PASSWORD
     responses:
       - statusCode: '200'
         description: >-
@@ -640,18 +707,22 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: DESCRIPTION
       - name: address
         schema: string
         required: true
         description: ''
+        example: ADDRESS
       - name: email
         schema: string
         required: true
         description: ''
+        example: EMAIL
       - name: vertical
         schema: string
         required: true
         description: ''
+        example: VERTICAL
       - name: websites
         schema: array
         required: true
@@ -680,6 +751,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: TEXT
     responses:
       - statusCode: '200'
         description: ''
@@ -703,6 +775,7 @@ methodObjects:
       - name: format
         schema: string
         description: ''
+        example: link
     responses:
       - statusCode: '200'
         description: ''
@@ -717,6 +790,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: FILE
     responses:
       - statusCode: '200'
         description: ''
@@ -731,10 +805,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: DATA
       - name: password
         schema: string
         required: true
         description: ''
+        example: PASSWORD
     responses:
       - statusCode: '200'
         description: ''
@@ -748,6 +824,7 @@ methodObjects:
       - name: format
         schema: string
         description: ''
+        example: prometheus
     responses:
       - statusCode: '200'
         description: ''
@@ -761,6 +838,7 @@ methodObjects:
       - name: format
         schema: string
         description: ''
+        example: prometheus
     responses:
       - statusCode: '200'
         description: ''
@@ -785,10 +863,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: PASSWORD
       - name: username
         schema: string
         required: true
         description: ''
+        example: USERNAME
     responses:
       - statusCode: '200'
         description: ''
@@ -803,6 +883,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: NEW_PASSWORD
     responses:
       - statusCode: '200'
         description: ''
@@ -827,6 +908,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: USERUSERNAME
     responses:
       - statusCode: '200'
         description: ''
@@ -841,6 +923,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: USERUSERNAME
     responses:
       - statusCode: '200'
         description: ''
@@ -855,10 +938,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: USERUSERNAME
       - name: password
         schema: string
         required: true
         description: ''
+        example: PASSWORD
     responses:
       - statusCode: '200'
         description: ''

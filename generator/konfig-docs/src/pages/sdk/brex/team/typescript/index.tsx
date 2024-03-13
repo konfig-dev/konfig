@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function BrexTeamTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function BrexTeamTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/team/logo.png"
       clientNameCamelCase="brexTeam"
       homepage="brex.com"
-      lastUpdated={new Date("2024-03-11T06:30:01.859Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/team/favicon.png"
       contactUrl="https://brex.com"
       contactEmail="developer-access@brex.com"
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/team/imagePreview.jpg"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["finance","payments","online_payments","fintech","automation","banking"]}
       methods={[
   {
     "url": "/v2/cards",
@@ -70,7 +73,8 @@ export default function BrexTeamTypeScriptSdk() {
         "name": "idempotencyKey",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "IDEMPOTENCY-KEY"
       },
       {
         "name": "owner",
@@ -82,19 +86,22 @@ export default function BrexTeamTypeScriptSdk() {
         "name": "card_name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CARD_NAME"
       },
       {
         "name": "card_type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CARD_TYPE"
       },
       {
         "name": "limit_type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "LIMIT_TYPE"
       },
       {
         "name": "spend_controls",
@@ -140,7 +147,8 @@ export default function BrexTeamTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -162,7 +170,8 @@ export default function BrexTeamTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "idempotencyKey",
@@ -200,7 +209,8 @@ export default function BrexTeamTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "idempotencyKey",
@@ -218,7 +228,8 @@ export default function BrexTeamTypeScriptSdk() {
         "name": "reason",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "REASON"
       }
     ],
     "responses": [
@@ -240,7 +251,8 @@ export default function BrexTeamTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -262,13 +274,15 @@ export default function BrexTeamTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "idempotencyKey",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "IDEMPOTENCY-KEY"
       },
       {
         "name": "recipient_email",
@@ -310,7 +324,8 @@ export default function BrexTeamTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "idempotencyKey",
@@ -328,7 +343,8 @@ export default function BrexTeamTypeScriptSdk() {
         "name": "reason",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "REASON"
       }
     ],
     "responses": [
@@ -356,7 +372,8 @@ export default function BrexTeamTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -439,7 +456,8 @@ export default function BrexTeamTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -461,7 +479,8 @@ export default function BrexTeamTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -529,7 +548,8 @@ export default function BrexTeamTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -551,7 +571,8 @@ export default function BrexTeamTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -613,7 +634,8 @@ export default function BrexTeamTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -635,7 +657,8 @@ export default function BrexTeamTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -709,19 +732,22 @@ export default function BrexTeamTypeScriptSdk() {
         "name": "first_name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "FIRST_NAME"
       },
       {
         "name": "last_name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "LAST_NAME"
       },
       {
         "name": "email",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "EMAIL"
       },
       {
         "name": "manager_id",
@@ -788,7 +814,8 @@ export default function BrexTeamTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -810,7 +837,8 @@ export default function BrexTeamTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "idempotencyKey",
@@ -868,7 +896,8 @@ export default function BrexTeamTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -890,7 +919,8 @@ export default function BrexTeamTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ID"
       },
       {
         "name": "idempotencyKey",

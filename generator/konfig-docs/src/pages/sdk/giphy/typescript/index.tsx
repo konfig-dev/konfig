@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function GiphyTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function GiphyTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/giphy/logo.png"
       clientNameCamelCase="giphy"
       homepage="giphy.com"
-      lastUpdated={new Date("2024-03-11T17:20:37.894Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/giphy/favicon.png"
       // Missing contactUrl
       contactEmail="support@giphy.com"
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/giphy/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["media","collaboration","social_media","animated_gifs","stickers","visual_content"]}
       methods={[
   {
     "url": "/gifs",
@@ -115,17 +118,20 @@ export default function GiphyTypeScriptSdk() {
         "name": "q",
         "schema": "string",
         "required": true,
-        "description": "Search query term or prhase."
+        "description": "Search query term or prhase.",
+        "example": "Q"
       },
       {
         "name": "limit",
         "schema": "integer",
-        "description": "The maximum number of records to return."
+        "description": "The maximum number of records to return.",
+        "default": 25
       },
       {
         "name": "offset",
         "schema": "integer",
-        "description": "An optional results offset."
+        "description": "An optional results offset.",
+        "default": 0
       },
       {
         "name": "rating",
@@ -173,7 +179,8 @@ export default function GiphyTypeScriptSdk() {
         "name": "s",
         "schema": "string",
         "required": true,
-        "description": "Search term."
+        "description": "Search term.",
+        "example": "S"
       }
     ],
     "responses": [
@@ -210,12 +217,14 @@ export default function GiphyTypeScriptSdk() {
       {
         "name": "limit",
         "schema": "integer",
-        "description": "The maximum number of records to return."
+        "description": "The maximum number of records to return.",
+        "default": 25
       },
       {
         "name": "offset",
         "schema": "integer",
-        "description": "An optional results offset."
+        "description": "An optional results offset.",
+        "default": 0
       },
       {
         "name": "rating",
@@ -258,7 +267,8 @@ export default function GiphyTypeScriptSdk() {
         "name": "gifId",
         "schema": "integer",
         "required": true,
-        "description": "Filters results by specified GIF ID."
+        "description": "Filters results by specified GIF ID.",
+        "example": 0
       }
     ],
     "responses": [
@@ -338,17 +348,20 @@ export default function GiphyTypeScriptSdk() {
         "name": "q",
         "schema": "string",
         "required": true,
-        "description": "Search query term or prhase."
+        "description": "Search query term or prhase.",
+        "example": "Q"
       },
       {
         "name": "limit",
         "schema": "integer",
-        "description": "The maximum number of records to return."
+        "description": "The maximum number of records to return.",
+        "default": 25
       },
       {
         "name": "offset",
         "schema": "integer",
-        "description": "An optional results offset."
+        "description": "An optional results offset.",
+        "default": 0
       },
       {
         "name": "rating",
@@ -396,7 +409,8 @@ export default function GiphyTypeScriptSdk() {
         "name": "s",
         "schema": "string",
         "required": true,
-        "description": "Search term."
+        "description": "Search term.",
+        "example": "S"
       }
     ],
     "responses": [
@@ -433,12 +447,14 @@ export default function GiphyTypeScriptSdk() {
       {
         "name": "limit",
         "schema": "integer",
-        "description": "The maximum number of records to return."
+        "description": "The maximum number of records to return.",
+        "default": 25
       },
       {
         "name": "offset",
         "schema": "integer",
-        "description": "An optional results offset."
+        "description": "An optional results offset.",
+        "default": 0
       },
       {
         "name": "rating",

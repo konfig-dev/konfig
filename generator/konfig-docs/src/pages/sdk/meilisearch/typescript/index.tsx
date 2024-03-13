@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function MeilisearchTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function MeilisearchTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/meilisearch/logo.png"
       clientNameCamelCase="meilisearch"
       homepage="www.meilisearch.com/"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/meilisearch/favicon.png"
       // Missing contactUrl
       contactEmail="bonjour@Meilisearch.com"
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/meilisearch/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["database","search","cloud","open_source","geosearch","nlp"]}
       methods={[
   {
     "url": "/dumps",
@@ -88,12 +91,14 @@ export default function MeilisearchTypeScriptSdk() {
       {
         "name": "limit",
         "schema": "number",
-        "description": "Maximum number of results to return."
+        "description": "Maximum number of results to return.",
+        "default": 20
       },
       {
         "name": "offset",
         "schema": "number",
-        "description": "Number of results to skip."
+        "description": "Number of results to skip.",
+        "default": 0
       }
     ],
     "responses": [
@@ -119,7 +124,8 @@ export default function MeilisearchTypeScriptSdk() {
         "name": "uid",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "UID"
       },
       {
         "name": "primaryKey",
@@ -201,7 +207,8 @@ export default function MeilisearchTypeScriptSdk() {
         "name": "primaryKey",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PRIMARYKEY"
       }
     ],
     "responses": [
@@ -257,23 +264,28 @@ export default function MeilisearchTypeScriptSdk() {
       {
         "name": "limit",
         "schema": "number",
-        "description": "Maximum number of results to return."
+        "description": "Maximum number of results to return.",
+        "default": 20
       },
       {
         "name": "offset",
         "schema": "number",
-        "description": "Number of results to skip."
+        "description": "Number of results to skip.",
+        "default": 0
       },
       {
         "name": "fields",
         "schema": "string",
-        "description": "Comma-separated list of fields to display for an API resource. By default it contains all fields of an API resource."
+        "description": "Comma-separated list of fields to display for an API resource. By default it contains all fields of an API resource.",
+        "example": "uid,createdAt",
+        "default": "*"
       },
       {
         "name": "filter",
         "schema": "undefined",
         "required": false,
-        "description": "Attribute(s) to filter on.\n\nCan be made of 3 syntaxes\n\n- Nested Array: `[\"something > 1\", \"genres=comedy\", [\"genres=horror\", \"title=batman\"]]`\n- String: `something > 1 AND genres=comedy AND (genres=horror OR title=batman)`\n- Mixed: `[\"something > 1 AND genres=comedy\", \"genres=horror OR title=batman\"]`\n\n> info\n> _geoRadius({lat}, {lng}, {distance_in_meters}) and _geoBoundingBox([{lat, lng}], [{lat}, {lng}]) built-in filter rules can be used to filter documents within geo shapes.\n\n> warn\n> Attribute(s) used in `filter` should be declared as filterable attributes. See [Filtering and Faceted Search](https://docs.meilisearch.com/reference/features/filtering_and_faceted_search.html).\n"
+        "description": "Attribute(s) to filter on.\n\nCan be made of 3 syntaxes\n\n- Nested Array: `[\"something > 1\", \"genres=comedy\", [\"genres=horror\", \"title=batman\"]]`\n- String: `something > 1 AND genres=comedy AND (genres=horror OR title=batman)`\n- Mixed: `[\"something > 1 AND genres=comedy\", \"genres=horror OR title=batman\"]`\n\n> info\n> _geoRadius({lat}, {lng}, {distance_in_meters}) and _geoBoundingBox([{lat, lng}], [{lat}, {lng}]) built-in filter rules can be used to filter documents within geo shapes.\n\n> warn\n> Attribute(s) used in `filter` should be declared as filterable attributes. See [Filtering and Faceted Search](https://docs.meilisearch.com/reference/features/filtering_and_faceted_search.html).\n",
+        "example": "something > 1 AND genres=comedy AND (genres=horror OR title=batman)"
       }
     ],
     "responses": [
@@ -307,7 +319,8 @@ export default function MeilisearchTypeScriptSdk() {
       {
         "name": "csvDelimiter",
         "schema": "string",
-        "description": "Customize the csv delimiter when importing CSV documents. By default its a comma \",\""
+        "description": "Customize the csv delimiter when importing CSV documents. By default its a comma \",\"",
+        "default": ","
       }
     ],
     "responses": [
@@ -341,7 +354,8 @@ export default function MeilisearchTypeScriptSdk() {
       {
         "name": "csvDelimiter",
         "schema": "string",
-        "description": "Customize the csv delimiter when importing CSV documents. By default its a comma \",\""
+        "description": "Customize the csv delimiter when importing CSV documents. By default its a comma \",\"",
+        "default": ","
       }
     ],
     "responses": [
@@ -370,12 +384,14 @@ export default function MeilisearchTypeScriptSdk() {
       {
         "name": "offset",
         "schema": "number",
-        "description": ""
+        "description": "",
+        "default": 0
       },
       {
         "name": "limit",
         "schema": "number",
-        "description": ""
+        "description": "",
+        "default": 20
       },
       {
         "name": "fields",
@@ -385,7 +401,14 @@ export default function MeilisearchTypeScriptSdk() {
       {
         "name": "filter",
         "schema": "undefined",
-        "description": ""
+        "description": "",
+        "example": [
+          "director:Mati Diop",
+          [
+            "genres:Comedy",
+            "genres:Romance"
+          ]
+        ]
       }
     ],
     "responses": [
@@ -437,7 +460,14 @@ export default function MeilisearchTypeScriptSdk() {
       {
         "name": "filter",
         "schema": "undefined",
-        "description": ""
+        "description": "",
+        "example": [
+          "director:Mati Diop",
+          [
+            "genres:Comedy",
+            "genres:Romance"
+          ]
+        ]
       }
     ],
     "responses": [
@@ -489,7 +519,9 @@ export default function MeilisearchTypeScriptSdk() {
       {
         "name": "fields",
         "schema": "string",
-        "description": "Comma-separated list of fields to display for an API resource. By default it contains all fields of an API resource."
+        "description": "Comma-separated list of fields to display for an API resource. By default it contains all fields of an API resource.",
+        "example": "uid,createdAt",
+        "default": "*"
       }
     ],
     "responses": [
@@ -518,96 +550,116 @@ export default function MeilisearchTypeScriptSdk() {
       {
         "name": "q",
         "schema": "string",
-        "description": "Query string."
+        "description": "Query string.",
+        "example": "back to the future",
+        "default": "\"\""
       },
       {
         "name": "attributesToRetrieve",
         "schema": "string",
-        "description": "Comma-separated list of attributes whose fields will be present in the returned documents. Defaults to the [displayedAttributes list](https://docs.meilisearch.com/reference/features/settings.html#displayed-attributes) which contains by default all attributes found in the documents."
+        "description": "Comma-separated list of attributes whose fields will be present in the returned documents. Defaults to the [displayedAttributes list](https://docs.meilisearch.com/reference/features/settings.html#displayed-attributes) which contains by default all attributes found in the documents.",
+        "example": "title,description",
+        "default": "*"
       },
       {
         "name": "attributesToHighlight",
         "schema": "string",
-        "description": "Comma-separated list of attributes whose values will contain highlighted matching terms. Highlighted attributes are returned in `_formatted` response object."
+        "description": "Comma-separated list of attributes whose values will contain highlighted matching terms. Highlighted attributes are returned in `_formatted` response object.",
+        "example": "title,description"
       },
       {
         "name": "highlightPreTag",
         "schema": "string",
         "required": false,
-        "description": "Specify the tag to put before the highlighted query terms."
+        "description": "Specify the tag to put before the highlighted query terms.",
+        "default": "<em>"
       },
       {
         "name": "highlightPostTag",
         "schema": "string",
         "required": false,
-        "description": "Specify the tag to put after the highlighted query terms."
+        "description": "Specify the tag to put after the highlighted query terms.",
+        "default": "</em>"
       },
       {
         "name": "attributesToCrop",
         "schema": "string",
         "required": false,
-        "description": "Comma-separated list of attributes whose values have to be cropped. Cropped attributes are returned in `_formatted` response object."
+        "description": "Comma-separated list of attributes whose values have to be cropped. Cropped attributes are returned in `_formatted` response object.",
+        "example": "overview:10"
       },
       {
         "name": "cropMarker",
         "schema": "string",
         "required": false,
-        "description": "Sets the crop marker to apply before and/or after cropped part selected within an attribute defined in `attributesToCrop` parameter."
+        "description": "Sets the crop marker to apply before and/or after cropped part selected within an attribute defined in `attributesToCrop` parameter.",
+        "default": "…"
       },
       {
         "name": "cropLength",
         "schema": "integer",
         "required": false,
-        "description": "Sets the total number of words to keep around the matched part of an attribute specified in the `attributesToCrop` parameter."
+        "description": "Sets the total number of words to keep around the matched part of an attribute specified in the `attributesToCrop` parameter.",
+        "example": 5,
+        "default": 10
       },
       {
         "name": "facets",
         "schema": "string",
-        "description": "Comma-separated list of attributes whose fields will be distributed as a facet. If you have [set up filterableAttributes](https://docs.meilisearch.com/reference/features/settings.html#filterable-attributes), you can retrieve the count of matching terms for each facets.[Learn more about facet distribution in the dedicated guide](https://docs.meilisearch.com/reference/features/search_parameters.html#facet-distribution)"
+        "description": "Comma-separated list of attributes whose fields will be distributed as a facet. If you have [set up filterableAttributes](https://docs.meilisearch.com/reference/features/settings.html#filterable-attributes), you can retrieve the count of matching terms for each facets.[Learn more about facet distribution in the dedicated guide](https://docs.meilisearch.com/reference/features/search_parameters.html#facet-distribution)",
+        "example": "genres,author"
       },
       {
         "name": "filter",
         "schema": "undefined",
         "required": false,
-        "description": "Attribute(s) to filter on.\n\nCan be made of 3 syntaxes\n\n- Nested Array: `[\"something > 1\", \"genres=comedy\", [\"genres=horror\", \"title=batman\"]]`\n- String: `something > 1 AND genres=comedy AND (genres=horror OR title=batman)`\n- Mixed: `[\"something > 1 AND genres=comedy\", \"genres=horror OR title=batman\"]`\n\n> info\n> _geoRadius({lat}, {lng}, {distance_in_meters}) and _geoBoundingBox([{lat, lng}], [{lat}, {lng}]) built-in filter rules can be used to filter documents within geo shapes.\n\n> warn\n> Attribute(s) used in `filter` should be declared as filterable attributes. See [Filtering and Faceted Search](https://docs.meilisearch.com/reference/features/filtering_and_faceted_search.html).\n"
+        "description": "Attribute(s) to filter on.\n\nCan be made of 3 syntaxes\n\n- Nested Array: `[\"something > 1\", \"genres=comedy\", [\"genres=horror\", \"title=batman\"]]`\n- String: `something > 1 AND genres=comedy AND (genres=horror OR title=batman)`\n- Mixed: `[\"something > 1 AND genres=comedy\", \"genres=horror OR title=batman\"]`\n\n> info\n> _geoRadius({lat}, {lng}, {distance_in_meters}) and _geoBoundingBox([{lat, lng}], [{lat}, {lng}]) built-in filter rules can be used to filter documents within geo shapes.\n\n> warn\n> Attribute(s) used in `filter` should be declared as filterable attributes. See [Filtering and Faceted Search](https://docs.meilisearch.com/reference/features/filtering_and_faceted_search.html).\n",
+        "example": "something > 1 AND genres=comedy AND (genres=horror OR title=batman)"
       },
       {
         "name": "offset",
         "schema": "number",
-        "description": "Number of results to skip."
+        "description": "Number of results to skip.",
+        "default": 0
       },
       {
         "name": "sort",
         "schema": "string",
         "required": false,
-        "description": "Fields on which you want to sort the results.\n\n> warn\n> Attribute(s) used in `sort` should be declared as sortable attributes. See [Sorting](https://docs.meilisearch.com/reference/features/sorting.html).\n\n> info\n> _geoPoint({lat}, {long}) built-in sort rule can be used to sort documents around a geo point.\n"
+        "description": "Fields on which you want to sort the results.\n\n> warn\n> Attribute(s) used in `sort` should be declared as sortable attributes. See [Sorting](https://docs.meilisearch.com/reference/features/sorting.html).\n\n> info\n> _geoPoint({lat}, {long}) built-in sort rule can be used to sort documents around a geo point.\n",
+        "example": "price:asc"
       },
       {
         "name": "limit",
         "schema": "number",
-        "description": "Maximum number of results to return."
+        "description": "Maximum number of results to return.",
+        "default": 20
       },
       {
         "name": "page",
         "schema": "number",
-        "description": "Sets the specific results page."
+        "description": "Sets the specific results page.",
+        "default": 1
       },
       {
         "name": "hitsPerPage",
         "schema": "number",
-        "description": "Sets the number of results returned for a query. If hitsPerPage is not provided as a query parameter, this parameter is ignored."
+        "description": "Sets the number of results returned for a query. If hitsPerPage is not provided as a query parameter, this parameter is ignored.",
+        "default": 20
       },
       {
         "name": "showMatchesPosition",
         "schema": "boolean",
         "required": false,
-        "description": "Defines whether an `_matchesPosition` object that contains information about the matches should be returned or not."
+        "description": "Defines whether an `_matchesPosition` object that contains information about the matches should be returned or not.",
+        "default": "false"
       },
       {
         "name": "matchingStrategy",
         "schema": "string",
         "required": false,
-        "description": "Defines which strategy to use to match the query terms within the documents as search results. Two different strategies are available, `last` and `all`. By default, the `last` strategy is chosen."
+        "description": "Defines which strategy to use to match the query terms within the documents as search results. Two different strategies are available, `last` and `all`. By default, the `last` strategy is chosen.",
+        "default": "last"
       }
     ],
     "responses": [
@@ -636,12 +688,16 @@ export default function MeilisearchTypeScriptSdk() {
       {
         "name": "q",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "\"Back to the future\"",
+        "default": "\"\""
       },
       {
         "name": "vector",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "example": "[0.8, 0.145, 0.26, 0.3]",
+        "default": "null"
       },
       {
         "name": "attributesToRetrieve",
@@ -656,12 +712,16 @@ export default function MeilisearchTypeScriptSdk() {
       {
         "name": "highlightPreTag",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "<mark>",
+        "default": "<em>"
       },
       {
         "name": "highlightPostTag",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "</mark>",
+        "default": "</em>"
       },
       {
         "name": "attributesToCrop",
@@ -671,42 +731,56 @@ export default function MeilisearchTypeScriptSdk() {
       {
         "name": "cropMarker",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "…"
       },
       {
         "name": "cropLength",
         "schema": "number",
-        "description": ""
+        "description": "",
+        "default": 10
       },
       {
         "name": "showMatchesPosition",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "showRankingScore",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "showRankingScoreDetails",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "matchingStrategy",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "last"
       },
       {
         "name": "attributesToSearchOn",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "default": "[\"*\"]"
       },
       {
         "name": "filter",
         "schema": "undefined",
-        "description": ""
+        "description": "",
+        "example": [
+          "director:Mati Diop",
+          [
+            "genres:Comedy",
+            "genres:Romance"
+          ]
+        ]
       },
       {
         "name": "facets",
@@ -716,27 +790,34 @@ export default function MeilisearchTypeScriptSdk() {
       {
         "name": "offset",
         "schema": "number",
-        "description": ""
+        "description": "",
+        "default": 0
       },
       {
         "name": "limit",
         "schema": "number",
-        "description": ""
+        "description": "",
+        "default": 20
       },
       {
         "name": "page",
         "schema": "number",
-        "description": ""
+        "description": "",
+        "example": 1
       },
       {
         "name": "hitsPerPage",
         "schema": "number",
-        "description": ""
+        "description": "",
+        "example": 20
       },
       {
         "name": "sort",
         "schema": "undefined",
-        "description": ""
+        "description": "",
+        "example": [
+          "price:desc"
+        ]
       }
     ],
     "responses": [
@@ -765,27 +846,40 @@ export default function MeilisearchTypeScriptSdk() {
       {
         "name": "facetName",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "\"genres\""
       },
       {
         "name": "facetQuery",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "\"Horror\"",
+        "default": "\"\""
       },
       {
         "name": "q",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "\"Back to the future\"",
+        "default": "\"\""
       },
       {
         "name": "matchingStrategy",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "last"
       },
       {
         "name": "filter",
         "schema": "undefined",
-        "description": ""
+        "description": "",
+        "example": [
+          "director:Mati Diop",
+          [
+            "genres:Comedy",
+            "genres:Romance"
+          ]
+        ]
       }
     ],
     "responses": [
@@ -860,17 +954,44 @@ export default function MeilisearchTypeScriptSdk() {
       {
         "name": "synonyms",
         "schema": "object",
-        "description": ""
+        "description": "",
+        "example": {
+          "wolverine": [
+            "xmen",
+            "logan"
+          ],
+          "logan": [
+            "wolverine",
+            "xmen"
+          ],
+          "wow": [
+            "world of warcraft"
+          ]
+        }
       },
       {
         "name": "stopWords",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "example": [
+          "of",
+          "the",
+          "to"
+        ]
       },
       {
         "name": "rankingRules",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "example": [
+          "words",
+          "typo",
+          "proximity",
+          "attribute",
+          "sort",
+          "exactness",
+          "release_date:asc"
+        ]
       },
       {
         "name": "distinctAttribute",
@@ -880,22 +1001,42 @@ export default function MeilisearchTypeScriptSdk() {
       {
         "name": "searchableAttributes",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "example": [
+          "title",
+          "description",
+          "genre"
+        ]
       },
       {
         "name": "displayedAttributes",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "example": [
+          "title",
+          "description",
+          "genre",
+          "release_date"
+        ]
       },
       {
         "name": "filterableAttributes",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "example": [
+          "genres",
+          "director"
+        ]
       },
       {
         "name": "sortableAttributes",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "example": [
+          "price",
+          "author",
+          "title"
+        ]
       },
       {
         "name": "typoTolerance",
@@ -1277,17 +1418,20 @@ export default function MeilisearchTypeScriptSdk() {
       {
         "name": "enabled",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "default": true
       },
       {
         "name": "disableOnAttributes",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "default": []
       },
       {
         "name": "disableOnWords",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "default": []
       },
       {
         "name": "minWordSizeForTypos",
@@ -1367,7 +1511,8 @@ export default function MeilisearchTypeScriptSdk() {
       {
         "name": "maxTotalHits",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "default": 1000
       }
     ],
     "responses": [
@@ -1442,12 +1587,17 @@ export default function MeilisearchTypeScriptSdk() {
       {
         "name": "maxValuesPerFacet",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "default": 100
       },
       {
         "name": "sortFacetValuesBy",
         "schema": "object",
-        "description": ""
+        "description": "",
+        "example": {
+          "*": "alpha",
+          "genres": "count"
+        }
       }
     ],
     "responses": [
@@ -1801,12 +1951,14 @@ export default function MeilisearchTypeScriptSdk() {
       {
         "name": "limit",
         "schema": "number",
-        "description": "Maximum number of results to return."
+        "description": "Maximum number of results to return.",
+        "default": 20
       },
       {
         "name": "offset",
         "schema": "number",
-        "description": "Number of results to skip."
+        "description": "Number of results to skip.",
+        "default": 0
       }
     ],
     "responses": [
@@ -1832,19 +1984,22 @@ export default function MeilisearchTypeScriptSdk() {
         "name": "description",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": null
       },
       {
         "name": "uid",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "01b4bc42-eb33-4041-b481-254d00cce834"
       },
       {
         "name": "key",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "d0552b41536279a0ad88bd595327b96f01176a60c2243e906c52ac02375f9bc4"
       },
       {
         "name": "actions",
@@ -1862,7 +2017,8 @@ export default function MeilisearchTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": null
       },
       {
         "name": "expiresAt",
@@ -1874,13 +2030,15 @@ export default function MeilisearchTypeScriptSdk() {
         "name": "createdAt",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "2021-11-12T10:00:00Z"
       },
       {
         "name": "updatedAt",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": null
       }
     ],
     "responses": [
@@ -1917,7 +2075,8 @@ export default function MeilisearchTypeScriptSdk() {
         "name": "uidOrKey",
         "schema": "string",
         "required": true,
-        "description": "The uid or the key field value of the API Key."
+        "description": "The uid or the key field value of the API Key.",
+        "example": "UIDORKEY"
       }
     ],
     "responses": [
@@ -2084,7 +2243,8 @@ export default function MeilisearchTypeScriptSdk() {
       {
         "name": "limit",
         "schema": "number",
-        "description": "Maximum number of results to return."
+        "description": "Maximum number of results to return.",
+        "default": 20
       },
       {
         "name": "from",
@@ -2177,7 +2337,8 @@ export default function MeilisearchTypeScriptSdk() {
         "name": "taskUid",
         "schema": "integer",
         "required": true,
-        "description": "The task identifier"
+        "description": "The task identifier",
+        "example": 0
       }
     ],
     "responses": [

@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function GriffinTypeScriptSdk() {
@@ -20,13 +21,15 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/griffin/logo.webp"
       clientNameCamelCase="griffin"
       homepage="griffin.com"
-      lastUpdated={new Date("2024-03-11T16:20:31.165Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/griffin/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/griffin/imagePreview.jpg"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["finance","banking","payments","online_payments","fintech","automation","open_banking","wealth_management","global_banking","retail_banking","commercial_banking","multinational_financial_services","financial_technology","financial_services"]}
       methods={[
   {
     "url": "/v0/index",
@@ -74,7 +77,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "admissionId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ADMISSION-ID"
       }
     ],
     "responses": [
@@ -112,7 +116,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "apiKeyId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "API-KEY-ID"
       }
     ],
     "responses": [
@@ -146,7 +151,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "apiKeyId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "API-KEY-ID"
       }
     ],
     "responses": [
@@ -180,7 +186,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "bankAccountId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "BANK-ACCOUNT-ID"
       }
     ],
     "responses": [
@@ -214,13 +221,15 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "bankAccountId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "BANK-ACCOUNT-ID"
       },
       {
         "name": "display-name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "DISPLAY-NAME"
       }
     ],
     "responses": [
@@ -254,7 +263,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "bankAccountId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "BANK-ACCOUNT-ID"
       }
     ],
     "responses": [
@@ -300,13 +310,15 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "page[before]",
         "schema": "string",
         "required": false,
-        "description": "A base64 encoded opaque string returned in paginated responses."
+        "description": "A base64 encoded opaque string returned in paginated responses.",
+        "example": "djE6NL0DfDTSUk67KJKCi-L5Zg"
       },
       {
         "name": "page[after]",
         "schema": "string",
         "required": false,
-        "description": "A base64 encoded opaque string returned in paginated responses."
+        "description": "A base64 encoded opaque string returned in paginated responses.",
+        "example": "djE6NL0DfDTSUk67KJKCi-L5Zg"
       },
       {
         "name": "filter[createdAt][lte]",
@@ -342,7 +354,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "bankAccountId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "BANK-ACCOUNT-ID"
       }
     ],
     "responses": [
@@ -388,19 +401,22 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "page[after]",
         "schema": "string",
         "required": false,
-        "description": "A base64 encoded opaque string returned in paginated responses."
+        "description": "A base64 encoded opaque string returned in paginated responses.",
+        "example": "djE6NL0DfDTSUk67KJKCi-L5Zg"
       },
       {
         "name": "page[before]",
         "schema": "string",
         "required": false,
-        "description": "A base64 encoded opaque string returned in paginated responses."
+        "description": "A base64 encoded opaque string returned in paginated responses.",
+        "example": "djE6NL0DfDTSUk67KJKCi-L5Zg"
       },
       {
         "name": "bankAccountId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "BANK-ACCOUNT-ID"
       }
     ],
     "responses": [
@@ -434,7 +450,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "bankAccountId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "BANK-ACCOUNT-ID"
       },
       {
         "name": "additions",
@@ -500,13 +517,15 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "page[before]",
         "schema": "string",
         "required": false,
-        "description": "A base64 encoded opaque string returned in paginated responses."
+        "description": "A base64 encoded opaque string returned in paginated responses.",
+        "example": "djE6NL0DfDTSUk67KJKCi-L5Zg"
       },
       {
         "name": "page[after]",
         "schema": "string",
         "required": false,
-        "description": "A base64 encoded opaque string returned in paginated responses."
+        "description": "A base64 encoded opaque string returned in paginated responses.",
+        "example": "djE6NL0DfDTSUk67KJKCi-L5Zg"
       },
       {
         "name": "filter[createdAt][lte]",
@@ -536,7 +555,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "bankAccountId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "BANK-ACCOUNT-ID"
       }
     ],
     "responses": [
@@ -566,7 +586,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "bankAccountId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "BANK-ACCOUNT-ID"
       },
       {
         "name": "creditor",
@@ -584,7 +605,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "payment-reference",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "test reference"
       }
     ],
     "responses": [
@@ -638,13 +660,15 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "page[before]",
         "schema": "string",
         "required": false,
-        "description": "A base64 encoded opaque string returned in paginated responses."
+        "description": "A base64 encoded opaque string returned in paginated responses.",
+        "example": "djE6NL0DfDTSUk67KJKCi-L5Zg"
       },
       {
         "name": "page[after]",
         "schema": "string",
         "required": false,
-        "description": "A base64 encoded opaque string returned in paginated responses."
+        "description": "A base64 encoded opaque string returned in paginated responses.",
+        "example": "djE6NL0DfDTSUk67KJKCi-L5Zg"
       },
       {
         "name": "filter[submissionStatus][in]",
@@ -680,7 +704,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "bankAccountId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "BANK-ACCOUNT-ID"
       }
     ],
     "responses": [
@@ -726,13 +751,15 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "page[before]",
         "schema": "string",
         "required": false,
-        "description": "A base64 encoded opaque string returned in paginated responses."
+        "description": "A base64 encoded opaque string returned in paginated responses.",
+        "example": "djE6NL0DfDTSUk67KJKCi-L5Zg"
       },
       {
         "name": "page[after]",
         "schema": "string",
         "required": false,
-        "description": "A base64 encoded opaque string returned in paginated responses."
+        "description": "A base64 encoded opaque string returned in paginated responses.",
+        "example": "djE6NL0DfDTSUk67KJKCi-L5Zg"
       },
       {
         "name": "include",
@@ -768,7 +795,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "bankAccountId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "BANK-ACCOUNT-ID"
       }
     ],
     "responses": [
@@ -802,7 +830,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "transactionId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TRANSACTION-ID"
       }
     ],
     "responses": [
@@ -836,7 +865,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "companyNumber",
         "schema": "string",
         "required": true,
-        "description": "UK Companies House company number"
+        "description": "UK Companies House company number",
+        "example": "10842931"
       }
     ],
     "responses": [
@@ -878,7 +908,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "eventId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "EVENT-ID"
       }
     ],
     "responses": [
@@ -908,7 +939,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "legalPersonId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "LEGAL-PERSON-ID"
       }
     ],
     "responses": [
@@ -938,13 +970,15 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "legalPersonId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "LEGAL-PERSON-ID"
       },
       {
         "name": "display-name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "DISPLAY-NAME"
       }
     ],
     "responses": [
@@ -994,19 +1028,22 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "page[after]",
         "schema": "string",
         "required": false,
-        "description": "A base64 encoded opaque string returned in paginated responses."
+        "description": "A base64 encoded opaque string returned in paginated responses.",
+        "example": "djE6NL0DfDTSUk67KJKCi-L5Zg"
       },
       {
         "name": "page[before]",
         "schema": "string",
         "required": false,
-        "description": "A base64 encoded opaque string returned in paginated responses."
+        "description": "A base64 encoded opaque string returned in paginated responses.",
+        "example": "djE6NL0DfDTSUk67KJKCi-L5Zg"
       },
       {
         "name": "legalPersonId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "LEGAL-PERSON-ID"
       }
     ],
     "responses": [
@@ -1036,25 +1073,29 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "legalPersonId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "LEGAL-PERSON-ID"
       },
       {
         "name": "account-holder",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ACCOUNT-HOLDER"
       },
       {
         "name": "account-number",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "12345678"
       },
       {
         "name": "bank-id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "123456"
       }
     ],
     "responses": [
@@ -1100,19 +1141,22 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "page[after]",
         "schema": "string",
         "required": false,
-        "description": "A base64 encoded opaque string returned in paginated responses."
+        "description": "A base64 encoded opaque string returned in paginated responses.",
+        "example": "djE6NL0DfDTSUk67KJKCi-L5Zg"
       },
       {
         "name": "page[before]",
         "schema": "string",
         "required": false,
-        "description": "A base64 encoded opaque string returned in paginated responses."
+        "description": "A base64 encoded opaque string returned in paginated responses.",
+        "example": "djE6NL0DfDTSUk67KJKCi-L5Zg"
       },
       {
         "name": "legalPersonId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "LEGAL-PERSON-ID"
       }
     ],
     "responses": [
@@ -1142,7 +1186,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "legalPersonId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "LEGAL-PERSON-ID"
       }
     ],
     "responses": [
@@ -1188,19 +1233,22 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "page[after]",
         "schema": "string",
         "required": false,
-        "description": "A base64 encoded opaque string returned in paginated responses."
+        "description": "A base64 encoded opaque string returned in paginated responses.",
+        "example": "djE6NL0DfDTSUk67KJKCi-L5Zg"
       },
       {
         "name": "page[before]",
         "schema": "string",
         "required": false,
-        "description": "A base64 encoded opaque string returned in paginated responses."
+        "description": "A base64 encoded opaque string returned in paginated responses.",
+        "example": "djE6NL0DfDTSUk67KJKCi-L5Zg"
       },
       {
         "name": "legalPersonId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "LEGAL-PERSON-ID"
       }
     ],
     "responses": [
@@ -1230,25 +1278,29 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "legalPersonId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "LEGAL-PERSON-ID"
       },
       {
         "name": "verification-url",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "/v0/verifications/vn.IHZlcmlmaWNhdGlvbi1pZA"
       },
       {
         "name": "decision-outcome",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "DECISION-OUTCOME"
       },
       {
         "name": "decision-notes",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "DECISION-NOTES"
       }
     ],
     "responses": [
@@ -1304,19 +1356,22 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "page[after]",
         "schema": "string",
         "required": false,
-        "description": "A base64 encoded opaque string returned in paginated responses."
+        "description": "A base64 encoded opaque string returned in paginated responses.",
+        "example": "djE6NL0DfDTSUk67KJKCi-L5Zg"
       },
       {
         "name": "page[before]",
         "schema": "string",
         "required": false,
-        "description": "A base64 encoded opaque string returned in paginated responses."
+        "description": "A base64 encoded opaque string returned in paginated responses.",
+        "example": "djE6NL0DfDTSUk67KJKCi-L5Zg"
       },
       {
         "name": "legalPersonId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "LEGAL-PERSON-ID"
       }
     ],
     "responses": [
@@ -1362,19 +1417,22 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "page[after]",
         "schema": "string",
         "required": false,
-        "description": "A base64 encoded opaque string returned in paginated responses."
+        "description": "A base64 encoded opaque string returned in paginated responses.",
+        "example": "djE6NL0DfDTSUk67KJKCi-L5Zg"
       },
       {
         "name": "page[before]",
         "schema": "string",
         "required": false,
-        "description": "A base64 encoded opaque string returned in paginated responses."
+        "description": "A base64 encoded opaque string returned in paginated responses.",
+        "example": "djE6NL0DfDTSUk67KJKCi-L5Zg"
       },
       {
         "name": "legalPersonId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "LEGAL-PERSON-ID"
       }
     ],
     "responses": [
@@ -1404,13 +1462,15 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "legalPersonId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "LEGAL-PERSON-ID"
       },
       {
         "name": "workflow-url",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "/v0/workflows/wf.ICAgICB3b3JrZmxvdy1pZA"
       }
     ],
     "responses": [
@@ -1460,7 +1520,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "membershipId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "MEMBERSHIP-ID"
       }
     ],
     "responses": [
@@ -1494,7 +1555,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "membershipId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "MEMBERSHIP-ID"
       }
     ],
     "responses": [
@@ -1528,7 +1590,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "membershipId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "MEMBERSHIP-ID"
       }
     ],
     "responses": [
@@ -1558,7 +1621,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "membershipId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "MEMBERSHIP-ID"
       },
       {
         "name": "role-urls",
@@ -1602,7 +1666,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "onboardingApplicationId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ONBOARDING-APPLICATION-ID"
       }
     ],
     "responses": [
@@ -1632,7 +1697,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "organizationId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ORGANIZATION-ID"
       }
     ],
     "responses": [
@@ -1678,19 +1744,22 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "page[after]",
         "schema": "string",
         "required": false,
-        "description": "A base64 encoded opaque string returned in paginated responses."
+        "description": "A base64 encoded opaque string returned in paginated responses.",
+        "example": "djE6NL0DfDTSUk67KJKCi-L5Zg"
       },
       {
         "name": "page[before]",
         "schema": "string",
         "required": false,
-        "description": "A base64 encoded opaque string returned in paginated responses."
+        "description": "A base64 encoded opaque string returned in paginated responses.",
+        "example": "djE6NL0DfDTSUk67KJKCi-L5Zg"
       },
       {
         "name": "organizationId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ORGANIZATION-ID"
       }
     ],
     "responses": [
@@ -1720,7 +1789,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "organizationId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ORGANIZATION-ID"
       },
       {
         "name": "api-key-name",
@@ -1764,13 +1834,15 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "filter[beneficiary][eq]",
         "schema": "string",
         "required": false,
-        "description": "Link to the [legal person](https://docs.griffin.com/api) that represents the [beneficiary](https://docs.griffin.com/api) of the account."
+        "description": "Link to the [legal person](https://docs.griffin.com/api) that represents the [beneficiary](https://docs.griffin.com/api) of the account.",
+        "example": "/v0/legal-persons/lp.IGxlZ2FsLXBlcnNvbi1pZA"
       },
       {
         "name": "filter[owner][eq]",
         "schema": "string",
         "required": false,
-        "description": "Link to the [legal person](https://docs.griffin.com/api) that represents the [owner](https://docs.griffin.com/api) of the account."
+        "description": "Link to the [legal person](https://docs.griffin.com/api) that represents the [owner](https://docs.griffin.com/api) of the account.",
+        "example": "/v0/legal-persons/lp.IGxlZ2FsLXBlcnNvbi1pZA"
       },
       {
         "name": "page[size]",
@@ -1800,7 +1872,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "page[after]",
         "schema": "string",
         "required": false,
-        "description": "A base64 encoded opaque string returned in paginated responses."
+        "description": "A base64 encoded opaque string returned in paginated responses.",
+        "example": "djE6NL0DfDTSUk67KJKCi-L5Zg"
       },
       {
         "name": "filter[accountRestricted][in][]",
@@ -1824,13 +1897,15 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "page[before]",
         "schema": "string",
         "required": false,
-        "description": "A base64 encoded opaque string returned in paginated responses."
+        "description": "A base64 encoded opaque string returned in paginated responses.",
+        "example": "djE6NL0DfDTSUk67KJKCi-L5Zg"
       },
       {
         "name": "organizationId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ORGANIZATION-ID"
       }
     ],
     "responses": [
@@ -1864,7 +1939,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "organizationId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ORGANIZATION-ID"
       }
     ],
     "responses": [
@@ -1914,13 +1990,15 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "page[before]",
         "schema": "string",
         "required": false,
-        "description": "A base64 encoded opaque string returned in paginated responses."
+        "description": "A base64 encoded opaque string returned in paginated responses.",
+        "example": "djE6NL0DfDTSUk67KJKCi-L5Zg"
       },
       {
         "name": "page[after]",
         "schema": "string",
         "required": false,
-        "description": "A base64 encoded opaque string returned in paginated responses."
+        "description": "A base64 encoded opaque string returned in paginated responses.",
+        "example": "djE6NL0DfDTSUk67KJKCi-L5Zg"
       },
       {
         "name": "filter[eventType][eq]",
@@ -1956,7 +2034,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "organizationId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ORGANIZATION-ID"
       }
     ],
     "responses": [
@@ -1986,13 +2065,15 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "organizationId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ORGANIZATION-ID"
       },
       {
         "name": "email-address",
         "schema": "undefined",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "user@example.com"
       }
     ],
     "responses": [
@@ -2060,19 +2141,22 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "page[after]",
         "schema": "string",
         "required": false,
-        "description": "A base64 encoded opaque string returned in paginated responses."
+        "description": "A base64 encoded opaque string returned in paginated responses.",
+        "example": "djE6NL0DfDTSUk67KJKCi-L5Zg"
       },
       {
         "name": "page[before]",
         "schema": "string",
         "required": false,
-        "description": "A base64 encoded opaque string returned in paginated responses."
+        "description": "A base64 encoded opaque string returned in paginated responses.",
+        "example": "djE6NL0DfDTSUk67KJKCi-L5Zg"
       },
       {
         "name": "organizationId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ORGANIZATION-ID"
       }
     ],
     "responses": [
@@ -2102,19 +2186,22 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "organizationId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ORGANIZATION-ID"
       },
       {
         "name": "display-name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "DISPLAY-NAME"
       },
       {
         "name": "legal-person-type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "LEGAL-PERSON-TYPE"
       },
       {
         "name": "claims",
@@ -2170,19 +2257,22 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "page[after]",
         "schema": "string",
         "required": false,
-        "description": "A base64 encoded opaque string returned in paginated responses."
+        "description": "A base64 encoded opaque string returned in paginated responses.",
+        "example": "djE6NL0DfDTSUk67KJKCi-L5Zg"
       },
       {
         "name": "page[before]",
         "schema": "string",
         "required": false,
-        "description": "A base64 encoded opaque string returned in paginated responses."
+        "description": "A base64 encoded opaque string returned in paginated responses.",
+        "example": "djE6NL0DfDTSUk67KJKCi-L5Zg"
       },
       {
         "name": "organizationId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ORGANIZATION-ID"
       }
     ],
     "responses": [
@@ -2212,13 +2302,15 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "organizationId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ORGANIZATION-ID"
       },
       {
         "name": "workflow-url",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "/v0/workflows/wf.ICAgICB3b3JrZmxvdy1pZA"
       },
       {
         "name": "subject-profile",
@@ -2268,7 +2360,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "organizationId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ORGANIZATION-ID"
       }
     ],
     "responses": [
@@ -2298,19 +2391,22 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "organizationId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ORGANIZATION-ID"
       },
       {
         "name": "webhook-destination-url",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "https://example.com/griffin/webhook/"
       },
       {
         "name": "webhook-description",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Griffin API webhook"
       }
     ],
     "responses": [
@@ -2352,19 +2448,22 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "page[after]",
         "schema": "string",
         "required": false,
-        "description": "A base64 encoded opaque string returned in paginated responses."
+        "description": "A base64 encoded opaque string returned in paginated responses.",
+        "example": "djE6NL0DfDTSUk67KJKCi-L5Zg"
       },
       {
         "name": "page[before]",
         "schema": "string",
         "required": false,
-        "description": "A base64 encoded opaque string returned in paginated responses."
+        "description": "A base64 encoded opaque string returned in paginated responses.",
+        "example": "djE6NL0DfDTSUk67KJKCi-L5Zg"
       },
       {
         "name": "organizationId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ORGANIZATION-ID"
       }
     ],
     "responses": [
@@ -2394,7 +2493,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "payeeId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PAYEE-ID"
       }
     ],
     "responses": [
@@ -2428,13 +2528,15 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "payeeId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PAYEE-ID"
       },
       {
         "name": "payee-status",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PAYEE-STATUS"
       }
     ],
     "responses": [
@@ -2468,7 +2570,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "paymentId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PAYMENT-ID"
       }
     ],
     "responses": [
@@ -2502,7 +2605,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "paymentId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PAYMENT-ID"
       }
     ],
     "responses": [
@@ -2532,7 +2636,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "paymentId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PAYMENT-ID"
       }
     ],
     "responses": [
@@ -2562,7 +2667,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "paymentId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PAYMENT-ID"
       },
       {
         "name": "payment-scheme",
@@ -2624,7 +2730,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "roleId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ROLE-ID"
       }
     ],
     "responses": [
@@ -2654,7 +2761,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "submissionId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SUBMISSION-ID"
       }
     ],
     "responses": [
@@ -2692,7 +2800,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "userId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USER-ID"
       }
     ],
     "responses": [
@@ -2738,19 +2847,22 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "page[after]",
         "schema": "string",
         "required": false,
-        "description": "A base64 encoded opaque string returned in paginated responses."
+        "description": "A base64 encoded opaque string returned in paginated responses.",
+        "example": "djE6NL0DfDTSUk67KJKCi-L5Zg"
       },
       {
         "name": "page[before]",
         "schema": "string",
         "required": false,
-        "description": "A base64 encoded opaque string returned in paginated responses."
+        "description": "A base64 encoded opaque string returned in paginated responses.",
+        "example": "djE6NL0DfDTSUk67KJKCi-L5Zg"
       },
       {
         "name": "userId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USER-ID"
       }
     ],
     "responses": [
@@ -2792,19 +2904,22 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "page[after]",
         "schema": "string",
         "required": false,
-        "description": "A base64 encoded opaque string returned in paginated responses."
+        "description": "A base64 encoded opaque string returned in paginated responses.",
+        "example": "djE6NL0DfDTSUk67KJKCi-L5Zg"
       },
       {
         "name": "page[before]",
         "schema": "string",
         "required": false,
-        "description": "A base64 encoded opaque string returned in paginated responses."
+        "description": "A base64 encoded opaque string returned in paginated responses.",
+        "example": "djE6NL0DfDTSUk67KJKCi-L5Zg"
       },
       {
         "name": "userId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USER-ID"
       }
     ],
     "responses": [
@@ -2834,7 +2949,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "verificationId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "VERIFICATION-ID"
       }
     ],
     "responses": [
@@ -2868,7 +2984,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "webhookId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "WEBHOOK-ID"
       }
     ],
     "responses": [
@@ -2898,7 +3015,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "webhookId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "WEBHOOK-ID"
       }
     ],
     "responses": [
@@ -2928,12 +3046,14 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "webhookId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "WEBHOOK-ID"
       },
       {
         "name": "webhook-description",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Griffin API webhook"
       }
     ],
     "responses": [
@@ -2963,7 +3083,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "webhookId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "WEBHOOK-ID"
       }
     ],
     "responses": [
@@ -2993,7 +3114,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "webhookId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "WEBHOOK-ID"
       }
     ],
     "responses": [
@@ -3023,7 +3145,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "webhookId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "WEBHOOK-ID"
       }
     ],
     "responses": [
@@ -3053,7 +3176,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "webhookId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "WEBHOOK-ID"
       }
     ],
     "responses": [
@@ -3083,7 +3207,8 @@ Griffin is authorised (with restrictions) by the PRA and FCA and backed by leadi
         "name": "workflowId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "WORKFLOW-ID"
       }
     ],
     "responses": [

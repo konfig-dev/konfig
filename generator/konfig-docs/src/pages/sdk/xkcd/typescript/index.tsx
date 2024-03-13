@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function XkcdTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function XkcdTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/xkcd/logo.png"
       clientNameCamelCase="xkcd"
       homepage="xkcd.com/"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/xkcd/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/xkcd/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["media"]}
       methods={[
   {
     "url": "/info.0.json",
@@ -51,7 +54,8 @@ export default function XkcdTypeScriptSdk() {
         "name": "comicId",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       }
     ],
     "responses": [

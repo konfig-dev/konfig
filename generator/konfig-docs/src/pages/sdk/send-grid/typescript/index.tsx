@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function SendGridTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function SendGridTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/sendgrid/logo.png"
       clientNameCamelCase="sendGrid"
       homepage="sendgrid.com/en-us"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/sendgrid/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/sendgrid/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["email","marketing"]}
       methods={[
   {
     "url": "/access_settings/activity",
@@ -35,12 +38,14 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "limit",
         "schema": "integer",
-        "description": "Limits the number of IPs to return."
+        "description": "Limits the number of IPs to return.",
+        "default": 20
       },
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -77,7 +82,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "ids",
@@ -119,7 +125,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -156,7 +163,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "ips",
@@ -199,7 +207,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -220,7 +229,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -241,7 +251,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -268,7 +279,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "email_to",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "EMAIL_TO"
       },
       {
         "name": "frequency",
@@ -286,7 +298,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TYPE"
       }
     ],
     "responses": [
@@ -311,7 +324,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -332,7 +346,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -353,7 +368,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "email_to",
@@ -394,7 +410,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -431,13 +448,15 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "scopes",
@@ -484,7 +503,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -525,7 +545,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -566,13 +587,15 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -613,13 +636,15 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "scopes",
@@ -671,7 +696,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -692,7 +718,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "description",
@@ -728,7 +755,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -749,7 +777,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -770,7 +799,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "description",
@@ -806,7 +836,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -827,7 +858,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "recipient_emails",
@@ -854,7 +886,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "recipient_emails",
@@ -881,7 +914,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -902,7 +936,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -923,7 +958,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "recipient_emails",
@@ -950,7 +986,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -971,7 +1008,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -992,7 +1030,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -1018,7 +1057,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "limit",
@@ -1042,7 +1082,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "startDate",
         "schema": "string",
         "required": true,
-        "description": "The starting date of the statistics to retrieve. Must follow format YYYY-MM-DD."
+        "description": "The starting date of the statistics to retrieve. Must follow format YYYY-MM-DD.",
+        "example": "START_DATE"
       },
       {
         "name": "endDate",
@@ -1069,17 +1110,20 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "limit",
         "schema": "integer",
-        "description": "The number of results you would like to receive at a time."
+        "description": "The number of results you would like to receive at a time.",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
-        "description": "The index of the first campaign to return, where 0 is the first campaign."
+        "description": "The index of the first campaign to return, where 0 is the first campaign.",
+        "default": 0
       },
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -1100,13 +1144,15 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "title",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TITLE"
       },
       {
         "name": "categories",
@@ -1201,7 +1247,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -1230,7 +1277,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -1259,13 +1307,15 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "title",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TITLE"
       },
       {
         "name": "categories",
@@ -1277,19 +1327,22 @@ export default function SendGridTypeScriptSdk() {
         "name": "html_content",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "HTML_CONTENT"
       },
       {
         "name": "plain_content",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PLAIN_CONTENT"
       },
       {
         "name": "subject",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SUBJECT"
       }
     ],
     "responses": [
@@ -1326,7 +1379,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -1355,7 +1409,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -1380,13 +1435,15 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "send_at",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       }
     ],
     "responses": [
@@ -1419,13 +1476,15 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "send_at",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       }
     ],
     "responses": [
@@ -1462,7 +1521,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -1499,13 +1559,15 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "to",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TO"
       }
     ],
     "responses": [
@@ -1534,7 +1596,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "limit",
         "schema": "integer",
-        "description": "The number of categories to display per page."
+        "description": "The number of categories to display per page.",
+        "default": 50
       },
       {
         "name": "category",
@@ -1544,12 +1607,14 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "offset",
         "schema": "integer",
-        "description": "The point in the list that you would like to begin displaying results."
+        "description": "The point in the list that you would like to begin displaying results.",
+        "default": 0
       },
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -1575,7 +1640,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "startDate",
         "schema": "string",
         "required": true,
-        "description": "The starting date of the statistics to retrieve. Must follow format YYYY-MM-DD"
+        "description": "The starting date of the statistics to retrieve. Must follow format YYYY-MM-DD",
+        "example": "START_DATE"
       },
       {
         "name": "endDate",
@@ -1587,13 +1653,15 @@ export default function SendGridTypeScriptSdk() {
         "name": "categories",
         "schema": "string",
         "required": true,
-        "description": "The individual categories that you want to retrieve statistics for. You may include up to 10 different categories."
+        "description": "The individual categories that you want to retrieve statistics for. You may include up to 10 different categories.",
+        "example": "CATEGORIES"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "The number of results to include."
+        "description": "The number of results to include.",
+        "default": 500
       },
       {
         "name": "offset",
@@ -1610,7 +1678,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -1632,19 +1701,22 @@ export default function SendGridTypeScriptSdk() {
         "name": "sortByMetric",
         "schema": "string",
         "required": false,
-        "description": "The metric that you want to sort by.  Must be a single metric."
+        "description": "The metric that you want to sort by.  Must be a single metric.",
+        "default": "delivered"
       },
       {
         "name": "sortByDirection",
         "schema": "string",
         "required": false,
-        "description": "The direction you want to sort."
+        "description": "The direction you want to sort.",
+        "default": "desc"
       },
       {
         "name": "startDate",
         "schema": "string",
         "required": true,
-        "description": "The starting date of the statistics to retrieve. Must follow format YYYY-MM-DD."
+        "description": "The starting date of the statistics to retrieve. Must follow format YYYY-MM-DD.",
+        "example": "START_DATE"
       },
       {
         "name": "endDate",
@@ -1656,13 +1728,15 @@ export default function SendGridTypeScriptSdk() {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Limits the number of results returned."
+        "description": "Limits the number of results returned.",
+        "default": 5
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "The point in the list to begin retrieving results."
+        "description": "The point in the list to begin retrieving results.",
+        "default": 0
       },
       {
         "name": "aggregatedBy",
@@ -1673,7 +1747,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -1694,13 +1769,15 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "startDate",
         "schema": "string",
         "required": true,
-        "description": "The starting date of the statistics to retrieve. Must follow format YYYY-MM-DD."
+        "description": "The starting date of the statistics to retrieve. Must follow format YYYY-MM-DD.",
+        "example": "START_DATE"
       },
       {
         "name": "endDate",
@@ -1733,13 +1810,15 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "startDate",
         "schema": "string",
         "required": true,
-        "description": "The starting date of the statistics to retrieve. Must follow format YYYY-MM-DD."
+        "description": "The starting date of the statistics to retrieve. Must follow format YYYY-MM-DD.",
+        "example": "START_DATE"
       },
       {
         "name": "endDate",
@@ -1772,7 +1851,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -1797,7 +1877,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "name",
@@ -1832,7 +1913,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -1865,7 +1947,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -1898,7 +1981,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -1927,7 +2011,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -1948,13 +2033,15 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -1988,7 +2075,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -2026,7 +2114,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -2060,18 +2149,21 @@ export default function SendGridTypeScriptSdk() {
         "name": "listId",
         "schema": "integer",
         "required": true,
-        "description": "The ID of the list you are updating."
+        "description": "The ID of the list you are updating.",
+        "example": 0
       },
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -2113,12 +2205,14 @@ export default function SendGridTypeScriptSdk() {
         "name": "listId",
         "schema": "integer",
         "required": true,
-        "description": "The ID of the list whose recipients you are requesting."
+        "description": "The ID of the list whose recipients you are requesting.",
+        "example": 0
       },
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -2147,7 +2241,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -2181,18 +2276,21 @@ export default function SendGridTypeScriptSdk() {
         "name": "listId",
         "schema": "integer",
         "required": true,
-        "description": "The ID of the list you are taking this recipient away from."
+        "description": "The ID of the list you are taking this recipient away from.",
+        "example": 0
       },
       {
         "name": "recipientId",
         "schema": "integer",
         "required": true,
-        "description": "The ID of the recipient to take off the list."
+        "description": "The ID of the recipient to take off the list.",
+        "example": 0
       },
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -2225,7 +2323,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -2258,7 +2357,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -2297,7 +2397,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -2326,7 +2427,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -2355,7 +2457,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -2384,7 +2487,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -2409,7 +2513,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -2439,7 +2544,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -2475,7 +2581,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "list_id",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       }
     ],
     "responses": [
@@ -2500,7 +2607,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -2533,7 +2641,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -2566,7 +2675,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -2599,7 +2709,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -2624,7 +2735,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -2649,7 +2761,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "conditions",
@@ -2667,7 +2780,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "recipient_count",
@@ -2707,7 +2821,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -2741,12 +2856,14 @@ export default function SendGridTypeScriptSdk() {
         "name": "segmentId",
         "schema": "integer",
         "required": true,
-        "description": "The ID of the segment you want to request."
+        "description": "The ID of the segment you want to request.",
+        "example": 0
       },
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -2784,7 +2901,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "conditions",
@@ -2802,7 +2920,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -2841,7 +2960,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -2874,7 +2994,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -2895,7 +3016,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "pageSize",
         "schema": "integer",
-        "description": "number of results to return"
+        "description": "number of results to return",
+        "default": 100
       },
       {
         "name": "pageToken",
@@ -2905,7 +3027,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "summary",
         "schema": "boolean",
-        "description": "set to false to return all fields"
+        "description": "set to false to return all fields",
+        "default": true
       }
     ],
     "responses": [
@@ -2945,7 +3068,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "pageSize",
         "schema": "integer",
-        "description": "number of results to return"
+        "description": "number of results to return",
+        "default": 100
       },
       {
         "name": "pageToken",
@@ -2955,7 +3079,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "summary",
         "schema": "boolean",
-        "description": "set to false to return all fields"
+        "description": "set to false to return all fields",
+        "default": true
       }
     ],
     "responses": [
@@ -3004,7 +3129,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "Duplicate: <original design name>"
       }
     ],
     "responses": [
@@ -3084,7 +3210,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "generate_plain_content",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "default": true
       },
       {
         "name": "html_content",
@@ -3094,12 +3221,14 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "My Design"
       },
       {
         "name": "plain_content",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "<generated from html_content if left empty>"
       },
       {
         "name": "subject",
@@ -3138,7 +3267,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "Duplicate: <original design name>"
       }
     ],
     "responses": [
@@ -3167,7 +3297,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "limit",
@@ -3191,7 +3322,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "startDate",
         "schema": "string",
         "required": true,
-        "description": "The starting date of the statistics to retrieve. Must follow format YYYY-MM-DD."
+        "description": "The starting date of the statistics to retrieve. Must follow format YYYY-MM-DD.",
+        "example": "START_DATE"
       },
       {
         "name": "endDate",
@@ -3223,7 +3355,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "limit",
@@ -3247,7 +3380,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "startDate",
         "schema": "string",
         "required": true,
-        "description": "The starting date of the statistics to retrieve. Must follow format YYYY-MM-DD."
+        "description": "The starting date of the statistics to retrieve. Must follow format YYYY-MM-DD.",
+        "example": "START_DATE"
       },
       {
         "name": "endDate",
@@ -3284,12 +3418,14 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "limit",
         "schema": "integer",
-        "description": "The number of IPs you want returned at the same time."
+        "description": "The number of IPs you want returned at the same time.",
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
-        "description": "The offset for the number of IPs that you are requesting."
+        "description": "The offset for the number of IPs that you are requesting.",
+        "default": 0
       },
       {
         "name": "subuser",
@@ -3321,7 +3457,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "count",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "subusers",
@@ -3333,7 +3470,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "warmup",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": false
       }
     ],
     "responses": [
@@ -3389,7 +3527,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -3625,7 +3764,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -3666,7 +3806,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -3744,7 +3885,11 @@ export default function SendGridTypeScriptSdk() {
         "name": "from",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "email": "jane_doe@example.com",
+          "name": "Jane Doe"
+        }
       },
       {
         "name": "headers",
@@ -3774,7 +3919,11 @@ export default function SendGridTypeScriptSdk() {
         "name": "reply_to",
         "schema": "object",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": {
+          "email": "jane_doe@example.com",
+          "name": "Jane Doe"
+        }
       },
       {
         "name": "reply_to_list",
@@ -3792,7 +3941,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "subject",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SUBJECT"
       },
       {
         "name": "template_id",
@@ -3859,7 +4009,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -3900,7 +4051,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -3941,7 +4093,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "enabled",
@@ -3992,7 +4145,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -4033,7 +4187,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "enabled",
@@ -4089,7 +4244,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -4130,7 +4286,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "enabled",
@@ -4186,7 +4343,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -4227,7 +4385,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "email",
@@ -4278,7 +4437,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -4319,7 +4479,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "email",
@@ -4370,7 +4531,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -4411,7 +4573,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "enabled",
@@ -4467,7 +4630,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "limit",
@@ -4491,7 +4655,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "startDate",
         "schema": "string",
         "required": true,
-        "description": "The starting date of the statistics to retrieve. Must follow format YYYY-MM-DD."
+        "description": "The starting date of the statistics to retrieve. Must follow format YYYY-MM-DD.",
+        "example": "START_DATE"
       },
       {
         "name": "endDate",
@@ -4753,7 +4918,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "file_type",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "csv"
       },
       {
         "name": "list_ids",
@@ -4763,7 +4929,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "max_file_size",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "default": 5000
       },
       {
         "name": "notifications",
@@ -4856,7 +5023,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "file_type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "FILE_TYPE"
       },
       {
         "name": "list_ids",
@@ -4939,7 +5107,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "query",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "QUERY"
       }
     ],
     "responses": [
@@ -5073,13 +5242,15 @@ export default function SendGridTypeScriptSdk() {
         "name": "field_type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "FIELD_TYPE"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -5124,7 +5295,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -5154,7 +5326,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "pageSize",
         "schema": "number",
         "required": false,
-        "description": "Maximum number of elements to return. Defaults to 100, returns 1000 max"
+        "description": "Maximum number of elements to return. Defaults to 100, returns 1000 max",
+        "default": 100
       },
       {
         "name": "pageToken",
@@ -5182,7 +5355,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -5208,7 +5382,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "deleteContacts",
         "schema": "boolean",
         "required": false,
-        "description": "Flag indicates that all contacts on the list are also to be deleted."
+        "description": "Flag indicates that all contacts on the list are also to be deleted.",
+        "default": false
       }
     ],
     "responses": [
@@ -5237,7 +5412,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "contactSample",
         "schema": "boolean",
-        "description": "Setting this parameter to the true  will cause the contact_sample to be returned"
+        "description": "Setting this parameter to the true  will cause the contact_sample to be returned",
+        "default": false
       }
     ],
     "responses": [
@@ -5292,7 +5468,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "contactIds",
         "schema": "string",
         "required": true,
-        "description": "comma separated list of contact ids"
+        "description": "comma separated list of contact ids",
+        "example": "CONTACT_IDS"
       }
     ],
     "responses": [
@@ -5345,7 +5522,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "noParentListId",
         "schema": "boolean",
-        "description": "If set to `true` segments with an empty value of `parent_list_id` will be returned in the filter.  If the value is not present it defaults to 'false'."
+        "description": "If set to `true` segments with an empty value of `parent_list_id` will be returned in the filter.  If the value is not present it defaults to 'false'.",
+        "default": false
       }
     ],
     "responses": [
@@ -5420,7 +5598,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "noParentListId",
         "schema": "boolean",
         "required": false,
-        "description": "If set to `true` segments with an empty value of `parent_list_id` will be returned in the filter.  If the value is not present it defaults to 'false'."
+        "description": "If set to `true` segments with an empty value of `parent_list_id` will be returned in the filter.  If the value is not present it defaults to 'false'.",
+        "default": false
       }
     ],
     "responses": [
@@ -5454,7 +5633,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "parent_list_ids",
@@ -5466,7 +5646,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "query_dsl",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "QUERY_DSL"
       }
     ],
     "responses": [
@@ -5715,7 +5896,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "parent_list_ids",
@@ -5727,7 +5909,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "query_dsl",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "QUERY_DSL"
       }
     ],
     "responses": [
@@ -5764,13 +5947,15 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "address",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ADDRESS"
       },
       {
         "name": "address_2",
@@ -5782,13 +5967,15 @@ export default function SendGridTypeScriptSdk() {
         "name": "city",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CITY"
       },
       {
         "name": "country",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "COUNTRY"
       },
       {
         "name": "from",
@@ -5800,7 +5987,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "nickname",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NICKNAME"
       },
       {
         "name": "reply_to",
@@ -5927,7 +6115,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "send_at",
@@ -6091,7 +6280,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "send_at",
@@ -6189,7 +6379,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "send_at",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SEND_AT"
       }
     ],
     "responses": [
@@ -6223,7 +6414,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "pageSize",
         "schema": "integer",
-        "description": "The number of elements you want returned on each page."
+        "description": "The number of elements you want returned on each page.",
+        "default": 50
       },
       {
         "name": "pageToken",
@@ -6258,7 +6450,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "timezone",
         "schema": "string",
-        "description": "The [IANA Area/Region](https://en.wikipedia.org/wiki/Tz_database#Names_of_time_zones) string representing the timezone in which the stats are to be presented; i.e. `\"America/Chicago\"`. This parameter changes the timezone format only; it does not alter which stats are returned."
+        "description": "The [IANA Area/Region](https://en.wikipedia.org/wiki/Tz_database#Names_of_time_zones) string representing the timezone in which the stats are to be presented; i.e. `\"America/Chicago\"`. This parameter changes the timezone format only; it does not alter which stats are returned.",
+        "default": "UTC"
       }
     ],
     "responses": [
@@ -6293,27 +6486,32 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "aggregatedBy",
         "schema": "string",
-        "description": "Dictates how the stats are time-sliced. Currently, `\"total\"` and `\"day\"` are supported."
+        "description": "Dictates how the stats are time-sliced. Currently, `\"total\"` and `\"day\"` are supported.",
+        "default": "total"
       },
       {
         "name": "startDate",
         "schema": "string",
-        "description": "Format: `YYYY-MM-DD`. If this parameter is included, the stats' start date is included in the search."
+        "description": "Format: `YYYY-MM-DD`. If this parameter is included, the stats' start date is included in the search.",
+        "default": ""
       },
       {
         "name": "endDate",
         "schema": "string",
-        "description": "Format: `YYYY-MM-DD`.If this parameter is included, the stats' end date is included in the search."
+        "description": "Format: `YYYY-MM-DD`.If this parameter is included, the stats' end date is included in the search.",
+        "default": ""
       },
       {
         "name": "timezone",
         "schema": "string",
-        "description": "[IANA Area/Region](https://en.wikipedia.org/wiki/Tz_database#Names_of_time_zones) string representing the timezone in which the stats are to be presented, e.g., \"America/Chicago\"."
+        "description": "[IANA Area/Region](https://en.wikipedia.org/wiki/Tz_database#Names_of_time_zones) string representing the timezone in which the stats are to be presented, e.g., \"America/Chicago\".",
+        "default": "UTC"
       },
       {
         "name": "pageSize",
         "schema": "integer",
-        "description": "The number of elements you want returned on each page."
+        "description": "The number of elements you want returned on each page.",
+        "default": 50
       },
       {
         "name": "pageToken",
@@ -6357,7 +6555,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "pageSize",
         "schema": "integer",
-        "description": "The number of elements you want returned on each page."
+        "description": "The number of elements you want returned on each page.",
+        "default": 50
       },
       {
         "name": "pageToken",
@@ -6396,7 +6595,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "pageSize",
         "schema": "integer",
-        "description": "The number of elements you want returned on each page."
+        "description": "The number of elements you want returned on each page.",
+        "default": 50
       },
       {
         "name": "pageToken",
@@ -6431,7 +6631,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "timezone",
         "schema": "string",
-        "description": "The [IANA Area/Region](https://en.wikipedia.org/wiki/Tz_database#Names_of_time_zones) string representing the timezone in which the stats are to be presented; i.e. `\"America/Chicago\"`. This parameter changes the timezone format only; it does not alter which stats are returned."
+        "description": "The [IANA Area/Region](https://en.wikipedia.org/wiki/Tz_database#Names_of_time_zones) string representing the timezone in which the stats are to be presented; i.e. `\"America/Chicago\"`. This parameter changes the timezone format only; it does not alter which stats are returned.",
+        "default": "UTC"
       }
     ],
     "responses": [
@@ -6456,27 +6657,32 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "aggregatedBy",
         "schema": "string",
-        "description": "Dictates how the stats are time-sliced. Currently, `\"total\"` and `\"day\"` are supported."
+        "description": "Dictates how the stats are time-sliced. Currently, `\"total\"` and `\"day\"` are supported.",
+        "default": "total"
       },
       {
         "name": "startDate",
         "schema": "string",
-        "description": "Format: `YYYY-MM-DD`. If this parameter is included, the stats' start date is included in the search."
+        "description": "Format: `YYYY-MM-DD`. If this parameter is included, the stats' start date is included in the search.",
+        "default": ""
       },
       {
         "name": "endDate",
         "schema": "string",
-        "description": "Format: `YYYY-MM-DD`.If this parameter is included, the stats' end date is included in the search."
+        "description": "Format: `YYYY-MM-DD`.If this parameter is included, the stats' end date is included in the search.",
+        "default": ""
       },
       {
         "name": "timezone",
         "schema": "string",
-        "description": "[IANA Area/Region](https://en.wikipedia.org/wiki/Tz_database#Names_of_time_zones) string representing the timezone in which the stats are to be presented, e.g., \"America/Chicago\"."
+        "description": "[IANA Area/Region](https://en.wikipedia.org/wiki/Tz_database#Names_of_time_zones) string representing the timezone in which the stats are to be presented, e.g., \"America/Chicago\".",
+        "default": "UTC"
       },
       {
         "name": "pageSize",
         "schema": "integer",
-        "description": "The number of elements you want returned on each page."
+        "description": "The number of elements you want returned on each page.",
+        "default": 50
       },
       {
         "name": "pageToken",
@@ -6515,7 +6721,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "pageSize",
         "schema": "integer",
-        "description": "The number of elements you want returned on each page."
+        "description": "The number of elements you want returned on each page.",
+        "default": 50
       },
       {
         "name": "pageToken",
@@ -6595,7 +6802,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "template_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TEMPLATE_ID"
       },
       {
         "name": "version_id_override",
@@ -6627,13 +6835,15 @@ export default function SendGridTypeScriptSdk() {
         "name": "query",
         "schema": "string",
         "required": true,
-        "description": "Use the query syntax  to filter your email activity."
+        "description": "Use the query syntax  to filter your email activity.",
+        "example": "QUERY"
       },
       {
         "name": "limit",
         "schema": "number",
         "required": false,
-        "description": "The number of messages returned. This parameter must be greater than 0 and less than or equal to 1000"
+        "description": "The number of messages returned. This parameter must be greater than 0 and less than or equal to 1000",
+        "default": 10
       },
       {
         "name": "xQueryId",
@@ -6768,7 +6978,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -6789,7 +7000,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -6810,7 +7022,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "enable_subuser_statistics",
@@ -6846,7 +7059,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -6883,12 +7097,14 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "limit",
         "schema": "integer",
-        "description": "Optional field to limit the number of results returned."
+        "description": "Optional field to limit the number of results returned.",
+        "default": 50
       },
       {
         "name": "offset",
         "schema": "integer",
-        "description": "Optional beginning point in the list to retrieve from."
+        "description": "Optional beginning point in the list to retrieve from.",
+        "default": 0
       }
     ],
     "responses": [
@@ -6955,7 +7171,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -6976,7 +7193,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -7001,7 +7219,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -7030,7 +7249,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -7055,7 +7275,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "address",
@@ -7133,7 +7354,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -7169,13 +7391,15 @@ export default function SendGridTypeScriptSdk() {
         "name": "integration_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "INTEGRATION_ID"
       },
       {
         "name": "public_certificate",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PUBLIC_CERTIFICATE"
       }
     ],
     "responses": [
@@ -7385,31 +7609,36 @@ export default function SendGridTypeScriptSdk() {
         "name": "enabled",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "entity_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ENTITY_ID"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "signin_url",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SIGNIN_URL"
       },
       {
         "name": "signout_url",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SIGNOUT_URL"
       }
     ],
     "responses": [
@@ -7538,31 +7767,36 @@ export default function SendGridTypeScriptSdk() {
         "name": "enabled",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "entity_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ENTITY_ID"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "signin_url",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SIGNIN_URL"
       },
       {
         "name": "signout_url",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SIGNOUT_URL"
       }
     ],
     "responses": [
@@ -7729,7 +7963,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "limit",
@@ -7753,7 +7988,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "startDate",
         "schema": "string",
         "required": true,
-        "description": "The starting date of the statistics to retrieve. Must follow format YYYY-MM-DD."
+        "description": "The starting date of the statistics to retrieve. Must follow format YYYY-MM-DD.",
+        "example": "START_DATE"
       },
       {
         "name": "endDate",
@@ -7816,7 +8052,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "email",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "EMAIL"
       },
       {
         "name": "ips",
@@ -7828,13 +8065,15 @@ export default function SendGridTypeScriptSdk() {
         "name": "password",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PASSWORD"
       },
       {
         "name": "username",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USERNAME"
       }
     ],
     "responses": [
@@ -7911,13 +8150,15 @@ export default function SendGridTypeScriptSdk() {
         "name": "subusers",
         "schema": "string",
         "required": true,
-        "description": "The subuser you want to retrieve statistics for. You may include this parameter up to 10 times to retrieve statistics for multiple subusers."
+        "description": "The subuser you want to retrieve statistics for. You may include this parameter up to 10 times to retrieve statistics for multiple subusers.",
+        "example": "SUBUSERS"
       },
       {
         "name": "startDate",
         "schema": "string",
         "required": true,
-        "description": "The starting date of the statistics to retrieve. Must follow format YYYY-MM-DD."
+        "description": "The starting date of the statistics to retrieve. Must follow format YYYY-MM-DD.",
+        "example": "START_DATE"
       },
       {
         "name": "endDate",
@@ -7945,7 +8186,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "date",
         "schema": "string",
         "required": true,
-        "description": "The date of the month to retrieve statistics for. Must be formatted YYYY-MM-DD"
+        "description": "The date of the month to retrieve statistics for. Must be formatted YYYY-MM-DD",
+        "example": "DATE"
       },
       {
         "name": "subuser",
@@ -7957,25 +8199,29 @@ export default function SendGridTypeScriptSdk() {
         "name": "sortByMetric",
         "schema": "string",
         "required": false,
-        "description": "The metric that you want to sort by. Metrics that you can sort by are: `blocks`, `bounces`, `clicks`, `delivered`, `opens`, `requests`, `unique_clicks`, `unique_opens`, and `unsubscribes`.'"
+        "description": "The metric that you want to sort by. Metrics that you can sort by are: `blocks`, `bounces`, `clicks`, `delivered`, `opens`, `requests`, `unique_clicks`, `unique_opens`, and `unsubscribes`.'",
+        "default": "delivered"
       },
       {
         "name": "sortByDirection",
         "schema": "string",
         "required": false,
-        "description": "The direction you want to sort."
+        "description": "The direction you want to sort.",
+        "default": "desc"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Optional field to limit the number of results returned."
+        "description": "Optional field to limit the number of results returned.",
+        "default": 5
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Optional beginning point in the list to retrieve from."
+        "description": "Optional beginning point in the list to retrieve from.",
+        "default": 0
       }
     ],
     "responses": [
@@ -7997,13 +8243,15 @@ export default function SendGridTypeScriptSdk() {
         "name": "sortByDirection",
         "schema": "string",
         "required": false,
-        "description": "The direction you want to sort. "
+        "description": "The direction you want to sort. ",
+        "default": "desc"
       },
       {
         "name": "startDate",
         "schema": "string",
         "required": true,
-        "description": "The starting date of the statistics to retrieve. Must follow format YYYY-MM-DD."
+        "description": "The starting date of the statistics to retrieve. Must follow format YYYY-MM-DD.",
+        "example": "START_DATE"
       },
       {
         "name": "endDate",
@@ -8015,13 +8263,15 @@ export default function SendGridTypeScriptSdk() {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Limits the number of results returned per page."
+        "description": "Limits the number of results returned per page.",
+        "default": 5
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "The point in the list to begin retrieving results from."
+        "description": "The point in the list to begin retrieving results from.",
+        "default": 0
       },
       {
         "name": "aggregatedBy",
@@ -8033,7 +8283,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "sortByMetric",
         "schema": "string",
         "required": false,
-        "description": "The metric that you want to sort by.  Must be a single metric."
+        "description": "The metric that you want to sort by.  Must be a single metric.",
+        "default": "delivered"
       }
     ],
     "responses": [
@@ -8172,13 +8423,15 @@ export default function SendGridTypeScriptSdk() {
         "name": "email",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "EMAIL"
       },
       {
         "name": "frequency",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       }
     ],
     "responses": [
@@ -8208,13 +8461,15 @@ export default function SendGridTypeScriptSdk() {
         "name": "email",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "EMAIL"
       },
       {
         "name": "frequency",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       }
     ],
     "responses": [
@@ -8244,31 +8499,36 @@ export default function SendGridTypeScriptSdk() {
         "name": "date",
         "schema": "string",
         "required": true,
-        "description": "The date of the month to retrieve statistics for. Must be formatted YYYY-MM-DD"
+        "description": "The date of the month to retrieve statistics for. Must be formatted YYYY-MM-DD",
+        "example": "DATE"
       },
       {
         "name": "sortByMetric",
         "schema": "string",
         "required": false,
-        "description": "The metric that you want to sort by. Metrics that you can sort by are: `blocks`, `bounces`, `clicks`, `delivered`, `opens`, `requests`, `unique_clicks`, `unique_opens`, and `unsubscribes`.'"
+        "description": "The metric that you want to sort by. Metrics that you can sort by are: `blocks`, `bounces`, `clicks`, `delivered`, `opens`, `requests`, `unique_clicks`, `unique_opens`, and `unsubscribes`.'",
+        "default": "delivered"
       },
       {
         "name": "sortByDirection",
         "schema": "string",
         "required": false,
-        "description": "The direction you want to sort."
+        "description": "The direction you want to sort.",
+        "default": "desc"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "Optional field to limit the number of results returned."
+        "description": "Optional field to limit the number of results returned.",
+        "default": 5
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "Optional beginning point in the list to retrieve from."
+        "description": "Optional beginning point in the list to retrieve from.",
+        "default": 0
       }
     ],
     "responses": [
@@ -8289,7 +8549,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "delete_all",
@@ -8340,7 +8601,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -8361,7 +8623,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -8382,7 +8645,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -8403,7 +8667,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "delete_all",
@@ -8448,7 +8713,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -8474,12 +8740,14 @@ export default function SendGridTypeScriptSdk() {
         "name": "emailAddress",
         "schema": "string",
         "required": true,
-        "description": "The email address you would like to remove from the bounce list."
+        "description": "The email address you would like to remove from the bounce list.",
+        "example": "EMAIL_ADDRESS"
       },
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -8504,7 +8772,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -8525,7 +8794,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "delete_all",
@@ -8576,7 +8846,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -8597,7 +8868,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -8618,7 +8890,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -8639,7 +8912,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "delete_all",
@@ -8690,7 +8964,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -8711,7 +8986,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -8732,7 +9008,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -8773,7 +9050,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -8794,17 +9072,20 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "limit",
         "schema": "integer",
-        "description": "Number of items to return"
+        "description": "Number of items to return",
+        "default": 500
       },
       {
         "name": "offset",
         "schema": "integer",
-        "description": "Paging offset"
+        "description": "Paging offset",
+        "default": 0
       },
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -8825,19 +9106,23 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "email",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "EMAIL"
       },
       {
         "name": "is_admin",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true,
+        "default": false
       },
       {
         "name": "scopes",
@@ -8868,7 +9153,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -8889,7 +9175,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -8914,7 +9201,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -8939,7 +9227,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -8964,7 +9253,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -8985,13 +9275,15 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "is_admin",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "scopes",
@@ -9027,13 +9319,15 @@ export default function SendGridTypeScriptSdk() {
         "name": "generations",
         "schema": "string",
         "required": false,
-        "description": "Comma-delimited list specifying which generations of templates to return. Options are `legacy`, `dynamic` or `legacy,dynamic`."
+        "description": "Comma-delimited list specifying which generations of templates to return. Options are `legacy`, `dynamic` or `legacy,dynamic`.",
+        "default": "legacy"
       },
       {
         "name": "pageSize",
         "schema": "number",
         "required": true,
-        "description": "The number of templates to be returned in each page of results"
+        "description": "The number of templates to be returned in each page of results",
+        "example": 0
       },
       {
         "name": "pageToken",
@@ -9044,7 +9338,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -9069,19 +9364,22 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "generation",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": "legacy"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       }
     ],
     "responses": [
@@ -9102,7 +9400,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -9123,7 +9422,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -9144,7 +9444,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "name",
@@ -9170,7 +9471,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "name",
@@ -9196,7 +9498,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "active",
@@ -9214,7 +9517,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "generate_plain_content",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": true
       },
       {
         "name": "html_content",
@@ -9226,19 +9530,22 @@ export default function SendGridTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "plain_content",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": "<generated from html_content if left empty>"
       },
       {
         "name": "subject",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SUBJECT"
       },
       {
         "name": "test_data",
@@ -9265,7 +9572,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -9286,7 +9594,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -9307,7 +9616,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "active",
@@ -9325,7 +9635,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "generate_plain_content",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": true
       },
       {
         "name": "html_content",
@@ -9337,19 +9648,22 @@ export default function SendGridTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "plain_content",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": "<generated from html_content if left empty>"
       },
       {
         "name": "subject",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SUBJECT"
       },
       {
         "name": "test_data",
@@ -9376,7 +9690,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -9397,7 +9712,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -9418,7 +9734,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -9439,7 +9756,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "enabled",
@@ -9465,7 +9783,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -9486,7 +9805,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "enabled",
@@ -9537,7 +9857,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -9558,7 +9879,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "enabled",
@@ -9584,7 +9906,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -9605,7 +9928,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "enabled",
@@ -9656,7 +9980,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -9677,7 +10002,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -9698,7 +10024,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -9719,7 +10046,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "email",
@@ -9745,19 +10073,22 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "new_password",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NEW_PASSWORD"
       },
       {
         "name": "old_password",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "OLD_PASSWORD"
       }
     ],
     "responses": [
@@ -9778,7 +10109,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -9799,7 +10131,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "address",
@@ -9879,7 +10212,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -9920,19 +10254,23 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "batch_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "BATCH_ID"
       },
       {
         "name": "status",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "STATUS",
+        "default": "pause"
       }
     ],
     "responses": [
@@ -9973,7 +10311,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -10014,7 +10353,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -10055,13 +10395,15 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "status",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "STATUS"
       }
     ],
     "responses": [
@@ -10102,7 +10444,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -10139,7 +10482,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "require_tls",
@@ -10186,7 +10530,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -10207,7 +10552,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "username",
@@ -10233,7 +10579,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -10254,55 +10601,64 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "bounce",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "click",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "deferred",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "delivered",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "dropped",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "enabled",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "group_resubscribe",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "group_unsubscribe",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "oauth_client_id",
@@ -10326,31 +10682,36 @@ export default function SendGridTypeScriptSdk() {
         "name": "open",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "processed",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "spam_report",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "unsubscribe",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "url",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "URL"
       }
     ],
     "responses": [
@@ -10371,7 +10732,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -10392,13 +10754,15 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "enabled",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -10431,7 +10795,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "oauth_client_id",
@@ -10472,7 +10837,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -10509,7 +10875,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "hostname",
@@ -10566,7 +10933,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -10603,7 +10971,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -10640,7 +11009,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "hostname",
@@ -10716,18 +11086,21 @@ export default function SendGridTypeScriptSdk() {
         "name": "startDate",
         "schema": "string",
         "required": true,
-        "description": "The starting date of the statistics you want to retrieve. Must be in the format YYYY-MM-DD"
+        "description": "The starting date of the statistics you want to retrieve. Must be in the format YYYY-MM-DD",
+        "example": "START_DATE"
       },
       {
         "name": "endDate",
         "schema": "string",
         "required": false,
-        "description": "The end date of the statistics you want to retrieve. Must be in the format YYYY-MM-DD"
+        "description": "The end date of the statistics you want to retrieve. Must be in the format YYYY-MM-DD",
+        "default": "The day the request is made."
       },
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -10749,7 +11122,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "email",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "EMAIL"
       },
       {
         "name": "source",
@@ -10848,7 +11222,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "from_email",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "FROM_EMAIL"
       },
       {
         "name": "from_name",
@@ -10860,13 +11235,15 @@ export default function SendGridTypeScriptSdk() {
         "name": "nickname",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NICKNAME"
       },
       {
         "name": "reply_to",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "REPLY_TO"
       },
       {
         "name": "reply_to_name",
@@ -11109,7 +11486,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "from_email",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "FROM_EMAIL"
       },
       {
         "name": "from_name",
@@ -11121,13 +11499,15 @@ export default function SendGridTypeScriptSdk() {
         "name": "nickname",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NICKNAME"
       },
       {
         "name": "reply_to",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "REPLY_TO"
       },
       {
         "name": "reply_to_name",
@@ -11187,25 +11567,29 @@ export default function SendGridTypeScriptSdk() {
         "name": "domain_id",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "email",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "EMAIL"
       },
       {
         "name": "link_id",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "message",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": "Please set these DNS records in our hosting solution."
       }
     ],
     "responses": [
@@ -11255,7 +11639,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -11276,7 +11661,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "automatic_security",
@@ -11306,7 +11692,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "DOMAIN"
       },
       {
         "name": "ips",
@@ -11350,7 +11737,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -11393,7 +11781,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "username",
         "schema": "string",
         "required": true,
-        "description": "Username for the subuser to find associated authenticated domain."
+        "description": "Username for the subuser to find associated authenticated domain.",
+        "example": "USERNAME"
       }
     ],
     "responses": [
@@ -11414,7 +11803,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -11435,7 +11825,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -11456,17 +11847,20 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "custom_spf",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "default",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "default": false
       }
     ],
     "responses": [
@@ -11488,7 +11882,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "username",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USERNAME"
       }
     ],
     "responses": [
@@ -11509,13 +11904,15 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "ip",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "IP"
       }
     ],
     "responses": [
@@ -11536,7 +11933,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -11557,7 +11955,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -11597,7 +11996,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -11618,19 +12018,22 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "DOMAIN"
       },
       {
         "name": "ip",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "IP"
       },
       {
         "name": "subdomain",
@@ -11657,7 +12060,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -11678,7 +12082,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -11699,7 +12104,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -11733,7 +12139,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -11754,7 +12161,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "default",
@@ -11766,7 +12174,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "DOMAIN"
       },
       {
         "name": "subdomain",
@@ -11798,7 +12207,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -11820,7 +12230,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "username",
         "schema": "string",
         "required": true,
-        "description": "The username of the subuser account that you want to disassociate a branded link from."
+        "description": "The username of the subuser account that you want to disassociate a branded link from.",
+        "example": "USERNAME"
       }
     ],
     "responses": [
@@ -11842,7 +12253,8 @@ export default function SendGridTypeScriptSdk() {
         "name": "username",
         "schema": "string",
         "required": true,
-        "description": "The username of the subuser to retrieve associated branded links for."
+        "description": "The username of the subuser to retrieve associated branded links for.",
+        "example": "USERNAME"
       }
     ],
     "responses": [
@@ -11863,7 +12275,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -11884,7 +12297,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [
@@ -11905,7 +12319,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       },
       {
         "name": "default",
@@ -11931,7 +12346,8 @@ export default function SendGridTypeScriptSdk() {
       {
         "name": "onBehalfOf",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "The subuser's username. This header generates the API call as if the subuser account was making the call."
       }
     ],
     "responses": [

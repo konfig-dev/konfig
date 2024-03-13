@@ -15,6 +15,7 @@ import { getLocalKonfigCliVersion } from "../src/get-local-konfig-cli-version";
 import { hashRawSpecString } from "../src/hash-raw-spec-string";
 import { REGEX_FOR_BROKEN_LINKS } from "../src/collect-from-custom-requests";
 import { generateRepositoryDescription } from "./generate-repository-description";
+import { generateTypescriptSdkFirstRequestCode } from "../src/generate-typescript-sdk-first-request-code";
 
 const publishJsonPath = path.join(path.dirname(__dirname), "publish.json");
 const specDataDirPath = path.join(path.dirname(__dirname), "db", "spec-data");
@@ -481,6 +482,14 @@ async function main() {
       throw Error(`❌ ERROR: apiDescription is empty for ${spec}`);
     }
 
+    const typescriptSdkFirstRequestCode = generateTypescriptSdkFirstRequestCode(
+      {
+        ...specData,
+        ...publishData,
+        methods,
+      }
+    );
+
     const serviceName = getServiceName({ publishData, specData });
     const repositoryDescription = await generateRepositoryDescription(
       publishData.company,
@@ -508,6 +517,7 @@ async function main() {
       clientNameCamelCase: camelcase(publishData.clientName),
       lastUpdated: now,
       typescriptSdkUsageCode,
+      typescriptSdkFirstRequestCode,
       fixedSpecFileName: fixedSpecFileNames[spec],
       serviceName,
     };

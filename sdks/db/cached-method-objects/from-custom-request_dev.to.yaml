@@ -11,6 +11,7 @@ methodObjects:
         schema: integer
         required: false
         description: Pagination page
+        default: 1
       - name: perPage
         schema: integer
         required: false
@@ -18,6 +19,7 @@ methodObjects:
           Page size (the number of items to return per page). The default
           maximum value can be overridden by "API_PER_PAGE_MAX" environment
           variable.
+        default: 30
       - name: tag
         schema: string
         required: false
@@ -27,6 +29,7 @@ methodObjects:
 
           will be ordered by descending popularity.This parameter can be used in
           conjuction with `top`.
+        example: discuss
       - name: tags
         schema: string
         required: false
@@ -35,6 +38,7 @@ methodObjects:
           comma-separated tags.
 
           Articles will be ordered by descending popularity.
+        example: javascript, css
       - name: tagsExclude
         schema: string
         required: false
@@ -44,6 +48,7 @@ methodObjects:
 
           of comma-separated tags. Articles will be ordered by descending
           popularity.
+        example: node, java
       - name: username
         schema: string
         required: false
@@ -52,6 +57,7 @@ methodObjects:
                       to a User or Organization ordered by descending publication date.
                       If `state=all` the number of items returned will be `1000` instead of the default `30`.
                       This parameter can be used in conjuction with `state`.
+        example: ben
       - name: state
         schema: string
         required: false
@@ -61,6 +67,7 @@ methodObjects:
                       If `state=fresh` the server will return fresh articles.
                       If `state=rising` the server will return rising articles.
                       This param can be used in conjuction with `username`, only if set to `all`.
+        example: fresh
       - name: top
         schema: integer
         required: false
@@ -74,6 +81,7 @@ methodObjects:
           returned.
 
           This param can be used in conjuction with `tag`.
+        example: 2
       - name: collectionId
         schema: integer
         required: false
@@ -82,6 +90,7 @@ methodObjects:
 
           belonging to the requested collection, ordered by ascending
           publication date.
+        example: 99
     responses:
       - statusCode: '200'
         description: ''
@@ -113,6 +122,7 @@ methodObjects:
         schema: integer
         required: false
         description: Pagination page
+        default: 1
       - name: perPage
         schema: integer
         required: false
@@ -120,6 +130,7 @@ methodObjects:
           Page size (the number of items to return per page). The default
           maximum value can be overridden by "API_PER_PAGE_MAX" environment
           variable.
+        default: 30
     responses:
       - statusCode: '200'
         description: ''
@@ -134,6 +145,7 @@ methodObjects:
         schema: integer
         required: true
         description: ''
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -150,6 +162,7 @@ methodObjects:
         schema: integer
         required: true
         description: The ID of the user to unpublish.
+        example: 123
       - name: article
         schema: object
         description: ''
@@ -173,10 +186,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: USERNAME
       - name: slug
         schema: string
         required: true
         description: ''
+        example: SLUG
     responses:
       - statusCode: '200'
         description: ''
@@ -193,6 +208,7 @@ methodObjects:
         schema: integer
         required: false
         description: Pagination page
+        default: 1
       - name: perPage
         schema: integer
         required: false
@@ -200,6 +216,7 @@ methodObjects:
           Page size (the number of items to return per page). The default
           maximum value can be overridden by "API_PER_PAGE_MAX" environment
           variable.
+        default: 30
     responses:
       - statusCode: '200'
         description: ''
@@ -216,6 +233,7 @@ methodObjects:
         schema: integer
         required: false
         description: Pagination page
+        default: 1
       - name: perPage
         schema: integer
         required: false
@@ -223,6 +241,7 @@ methodObjects:
           Page size (the number of items to return per page). The default
           maximum value can be overridden by "API_PER_PAGE_MAX" environment
           variable.
+        default: 30
     responses:
       - statusCode: '200'
         description: ''
@@ -239,6 +258,7 @@ methodObjects:
         schema: integer
         required: false
         description: Pagination page
+        default: 1
       - name: perPage
         schema: integer
         required: false
@@ -246,6 +266,7 @@ methodObjects:
           Page size (the number of items to return per page). The default
           maximum value can be overridden by "API_PER_PAGE_MAX" environment
           variable.
+        default: 30
     responses:
       - statusCode: '200'
         description: ''
@@ -262,6 +283,7 @@ methodObjects:
         schema: integer
         required: false
         description: Pagination page
+        default: 1
       - name: perPage
         schema: integer
         required: false
@@ -269,6 +291,7 @@ methodObjects:
           Page size (the number of items to return per page). The default
           maximum value can be overridden by "API_PER_PAGE_MAX" environment
           variable.
+        default: 30
     responses:
       - statusCode: '200'
         description: ''
@@ -285,10 +308,12 @@ methodObjects:
         schema: integer
         required: true
         description: The ID of the article to unpublish.
+        example: 1
       - name: note
         schema: string
         required: false
         description: Content for the note that's created along with unpublishing
+        example: Admin requested unpublishing all articles via API
     responses:
       - statusCode: '204'
         description: Article successfully unpublished
@@ -310,6 +335,7 @@ methodObjects:
           Page size (the number of items to return per page). The default
           maximum value can be overridden by "API_PER_PAGE_MAX" environment
           variable.
+        default: 30
     responses:
       - statusCode: '200'
         description: ''
@@ -338,6 +364,7 @@ methodObjects:
         schema: integer
         required: true
         description: ''
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -358,6 +385,7 @@ methodObjects:
         schema: integer
         required: true
         description: ''
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -376,6 +404,7 @@ methodObjects:
         schema: integer
         required: true
         description: ''
+        example: 0
       - name: perPage
         schema: integer
         required: false
@@ -383,6 +412,7 @@ methodObjects:
           Page size (the number of items to return per page). The default
           maximum value can be overridden by "API_PER_PAGE_MAX" environment
           variable.
+        default: 30
     responses:
       - statusCode: '200'
         description: ''
@@ -401,6 +431,7 @@ methodObjects:
         schema: integer
         required: true
         description: ''
+        example: 0
       - name: user_ids
         schema: array
         description: ''
@@ -424,6 +455,7 @@ methodObjects:
         schema: integer
         required: true
         description: ''
+        example: 0
       - name: user_ids
         schema: array
         description: ''
@@ -473,6 +505,7 @@ methodObjects:
         schema: integer
         required: true
         description: The ID of the billboard.
+        example: 123
     responses:
       - statusCode: '200'
         description: ''
@@ -491,6 +524,7 @@ methodObjects:
         schema: integer
         required: true
         description: The ID of the billboard.
+        example: 123
     responses:
       - statusCode: '200'
         description: ''
@@ -509,6 +543,7 @@ methodObjects:
         schema: integer
         required: true
         description: The ID of the billboard to unpublish.
+        example: 123
     responses:
       - statusCode: '204'
         description: no content
@@ -527,6 +562,7 @@ methodObjects:
         schema: integer
         required: false
         description: Pagination page
+        default: 1
       - name: perPage
         schema: integer
         required: false
@@ -534,18 +570,22 @@ methodObjects:
           Page size (the number of items to return per page). The default
           maximum value can be overridden by "API_PER_PAGE_MAX" environment
           variable.
+        default: 30
       - name: aId
         schema: string
         required: false
         description: Article identifier.
+        example: '321'
       - name: pId
         schema: string
         required: false
         description: Podcast Episode identifier.
+        example: '321'
       - name: page
         schema: string
         required: false
         description: Page
+        example: '321'
     responses:
       - statusCode: '200'
         description: ''
@@ -562,6 +602,7 @@ methodObjects:
         schema: integer
         required: true
         description: Comment identifier.
+        example: 321
     responses:
       - statusCode: '200'
         description: ''
@@ -590,6 +631,7 @@ methodObjects:
         schema: integer
         required: false
         description: Pagination page
+        default: 1
       - name: perPage
         schema: integer
         required: false
@@ -597,6 +639,7 @@ methodObjects:
           Page size (the number of items to return per page). The default
           maximum value can be overridden by "API_PER_PAGE_MAX" environment
           variable.
+        default: 30
       - name: sort
         schema: string
         required: false
@@ -605,6 +648,7 @@ methodObjects:
           param of the follow
                                           relationship. To sort by newest followers first (descending order) specify
                                           ?sort=-created_at.
+        example: created_at
     responses:
       - statusCode: '200'
         description: ''
@@ -621,6 +665,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: USERNAME
     responses:
       - statusCode: '200'
         description: ''
@@ -637,10 +682,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: ORGANIZATION_ID_OR_USERNAME
       - name: page
         schema: integer
         required: false
         description: Pagination page
+        default: 1
       - name: perPage
         schema: integer
         required: false
@@ -648,6 +695,7 @@ methodObjects:
           Page size (the number of items to return per page). The default
           maximum value can be overridden by "API_PER_PAGE_MAX" environment
           variable.
+        default: 30
     responses:
       - statusCode: '200'
         description: ''
@@ -664,10 +712,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: ORGANIZATION_ID_OR_USERNAME
       - name: page
         schema: integer
         required: false
         description: Pagination page
+        default: 1
       - name: perPage
         schema: integer
         required: false
@@ -675,6 +725,7 @@ methodObjects:
           Page size (the number of items to return per page). The default
           maximum value can be overridden by "API_PER_PAGE_MAX" environment
           variable.
+        default: 30
     responses:
       - statusCode: '200'
         description: ''
@@ -691,6 +742,7 @@ methodObjects:
         schema: integer
         required: false
         description: Pagination page
+        default: 1
       - name: perPage
         schema: integer
         required: false
@@ -698,6 +750,7 @@ methodObjects:
           Page size (the number of items to return per page). The default
           maximum value can be overridden by "API_PER_PAGE_MAX" environment
           variable.
+        default: 10
     responses:
       - statusCode: '200'
         description: ''
@@ -762,6 +815,7 @@ methodObjects:
         schema: integer
         required: true
         description: The ID of the organization.
+        example: 1
     responses:
       - statusCode: '200'
         description: ''
@@ -778,6 +832,7 @@ methodObjects:
         schema: integer
         required: true
         description: ''
+        example: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -794,6 +849,7 @@ methodObjects:
         schema: integer
         required: true
         description: The ID of the organization to update.
+        example: 123
       - name: summary
         schema: string
         description: ''
@@ -877,6 +933,7 @@ methodObjects:
       - name: template
         schema: string
         description: ''
+        default: contained
     responses:
       - statusCode: '200'
         description: ''
@@ -895,6 +952,7 @@ methodObjects:
         schema: integer
         required: true
         description: The ID of the page.
+        example: 1
     responses:
       - statusCode: '200'
         description: Representation of a page object
@@ -913,6 +971,7 @@ methodObjects:
         schema: integer
         required: true
         description: The ID of the page.
+        example: 1
     responses:
       - statusCode: '200'
         description: Representation of a page object
@@ -927,18 +986,22 @@ methodObjects:
         schema: integer
         required: true
         description: The ID of the page.
+        example: 1
       - name: title
         schema: string
         required: true
         description: ''
+        example: TITLE
       - name: description
         schema: string
         required: true
         description: ''
+        example: DESCRIPTION
       - name: slug
         schema: string
         required: true
         description: ''
+        example: SLUG
       - name: body_markdown
         schema: string
         required: false
@@ -959,6 +1022,8 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: TEMPLATE
+        default: contained
     responses:
       - statusCode: '200'
         description: Representation of a page object
@@ -977,6 +1042,7 @@ methodObjects:
         schema: integer
         required: false
         description: Pagination page
+        default: 1
       - name: perPage
         schema: integer
         required: false
@@ -984,12 +1050,14 @@ methodObjects:
           Page size (the number of items to return per page). The default
           maximum value can be overridden by "API_PER_PAGE_MAX" environment
           variable.
+        default: 30
       - name: username
         schema: string
         required: false
         description: >-
           Using this parameter will retrieve episodes belonging to a specific
           podcast.
+        example: codenewbie
     responses:
       - statusCode: '200'
         description: ''
@@ -1008,6 +1076,7 @@ methodObjects:
         description: >-
           The parameter is the username of the user or the username of the
           organization.
+        example: janedoe
     responses:
       - statusCode: '200'
         description: ''
@@ -1024,14 +1093,17 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: CATEGORY
       - name: reactableId
         schema: integer
         required: true
         description: ''
+        example: 0
       - name: reactableType
         schema: string
         required: true
         description: ''
+        example: REACTABLE_TYPE
     responses:
       - statusCode: '200'
         description: ''
@@ -1048,14 +1120,17 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: CATEGORY
       - name: reactableId
         schema: integer
         required: true
         description: ''
+        example: 0
       - name: reactableType
         schema: string
         required: true
         description: ''
+        example: REACTABLE_TYPE
     responses:
       - statusCode: '200'
         description: ''
@@ -1072,6 +1147,7 @@ methodObjects:
         schema: integer
         required: false
         description: Pagination page
+        default: 1
       - name: perPage
         schema: integer
         required: false
@@ -1079,6 +1155,7 @@ methodObjects:
           Page size (the number of items to return per page). The default
           maximum value can be overridden by "API_PER_PAGE_MAX" environment
           variable.
+        default: 30
     responses:
       - statusCode: '200'
         description: ''
@@ -1095,6 +1172,7 @@ methodObjects:
         schema: integer
         required: false
         description: Pagination page
+        default: 1
       - name: perPage
         schema: integer
         required: false
@@ -1102,6 +1180,7 @@ methodObjects:
           Page size (the number of items to return per page). The default
           maximum value can be overridden by "API_PER_PAGE_MAX" environment
           variable.
+        default: 10
     responses:
       - statusCode: '200'
         description: ''
@@ -1116,6 +1195,7 @@ methodObjects:
         schema: integer
         required: true
         description: The ID of the user to suspend.
+        example: 1
     responses:
       - statusCode: '204'
         description: User successfully unpublished
@@ -1134,6 +1214,7 @@ methodObjects:
         schema: integer
         required: true
         description: The ID of the user to un-limit.
+        example: 1
     responses:
       - statusCode: '204'
         description: User successfully un-limited
@@ -1152,6 +1233,7 @@ methodObjects:
         schema: integer
         required: true
         description: The ID of the user to limit.
+        example: 1
     responses:
       - statusCode: '204'
         description: User successfully limited
@@ -1170,6 +1252,7 @@ methodObjects:
         schema: integer
         required: true
         description: The ID of the user to remove the spam role from.
+        example: 1
     responses:
       - statusCode: '204'
         description: Successfully removed the spam role from a user
@@ -1188,6 +1271,7 @@ methodObjects:
         schema: integer
         required: true
         description: The ID of the user to assign the spam role.
+        example: 1
     responses:
       - statusCode: '204'
         description: Spam role assigned to the user successfully
@@ -1206,6 +1290,7 @@ methodObjects:
         schema: integer
         required: true
         description: The ID of the user to remove the trusted role from.
+        example: 1
     responses:
       - statusCode: '204'
         description: Successfully removed the trusted role from a user
@@ -1224,6 +1309,7 @@ methodObjects:
         schema: integer
         required: true
         description: The ID of the user to assign the trusted role.
+        example: 1
     responses:
       - statusCode: '204'
         description: Trusted role assigned to the user successfully
@@ -1254,6 +1340,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: ID
     responses:
       - statusCode: '200'
         description: ''
@@ -1268,6 +1355,7 @@ methodObjects:
         schema: integer
         required: true
         description: The ID of the user to unpublish.
+        example: 1
     responses:
       - statusCode: '204'
         description: User's articles and comments successfully unpublished
@@ -1306,6 +1394,7 @@ methodObjects:
         schema: integer
         required: false
         description: Pagination page
+        default: 1
       - name: perPage
         schema: integer
         required: false
@@ -1313,6 +1402,7 @@ methodObjects:
           Page size (the number of items to return per page). The default
           maximum value can be overridden by "API_PER_PAGE_MAX" environment
           variable.
+        default: 24
     responses:
       - statusCode: '200'
         description: ''

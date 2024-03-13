@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function VimeoTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function VimeoTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/vimeo/logo.avif"
       clientNameCamelCase="vimeo"
       homepage="developer.vimeo.com"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/vimeo/favicon.jpg"
       contactUrl="https://developer.vimeo.com/help"
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/vimeo/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["media"]}
       methods={[
   {
     "url": "/",
@@ -36,13 +39,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "openapi",
         "schema": "boolean",
         "required": false,
-        "description": "Return an OpenAPI specification."
+        "description": "Return an OpenAPI specification.",
+        "example": true
       },
       {
         "name": "version",
         "schema": "string",
         "required": false,
-        "description": "Return an OpenAPI specification for the specified API version. This overwrites the **version** field provided in the **Accept** header."
+        "description": "Return an OpenAPI specification for the specified API version. This overwrites the **version** field provided in the **Accept** header.",
+        "example": "3.4"
       }
     ],
     "responses": [
@@ -64,25 +69,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "albumId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the showcase."
+        "description": "The ID of the showcase.",
+        "example": 3706071
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "sort",
@@ -118,19 +127,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "sort",
@@ -158,7 +170,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "category",
         "schema": "string",
         "required": true,
-        "description": "The name of the category."
+        "description": "The name of the category.",
+        "example": "animation"
       }
     ],
     "responses": [
@@ -184,31 +197,36 @@ export default function VimeoTypeScriptSdk() {
         "name": "category",
         "schema": "string",
         "required": true,
-        "description": "The name of the category."
+        "description": "The name of the category.",
+        "example": "animation"
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -240,31 +258,36 @@ export default function VimeoTypeScriptSdk() {
         "name": "category",
         "schema": "string",
         "required": true,
-        "description": "The name of the category."
+        "description": "The name of the category.",
+        "example": "animation"
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -296,13 +319,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "category",
         "schema": "string",
         "required": true,
-        "description": "The name of the category."
+        "description": "The name of the category.",
+        "example": "animation"
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -314,25 +339,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "filterEmbeddable",
         "schema": "boolean",
         "required": false,
-        "description": "Whether to filter the results by embeddable videos (`true`) or non-embeddable videos (`false`). This parameter is required only when **filter** is `embeddable`."
+        "description": "Whether to filter the results by embeddable videos (`true`) or non-embeddable videos (`false`). This parameter is required only when **filter** is `embeddable`.",
+        "example": true
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -364,13 +393,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "category",
         "schema": "string",
         "required": true,
-        "description": "The name of the category."
+        "description": "The name of the category.",
+        "example": "animation"
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 273576296
       }
     ],
     "responses": [
@@ -396,7 +427,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -408,19 +440,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -452,25 +487,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "description",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "We really love videos, and these are the videos we really, really love."
       },
       {
         "name": "link",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "staffpicks"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Vimeo Staff Picks"
       },
       {
         "name": "privacy",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PRIVACY"
       }
     ],
     "responses": [
@@ -500,7 +539,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       }
     ],
     "responses": [
@@ -526,7 +566,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       }
     ],
     "responses": [
@@ -548,22 +589,26 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "description",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "We really love videos, and these are the videos we really, really love."
       },
       {
         "name": "link",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "staffpicks"
       },
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Vimeo Staff Picks"
       },
       {
         "name": "privacy",
@@ -594,7 +639,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       }
     ],
     "responses": [
@@ -620,7 +666,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "channels",
@@ -664,13 +711,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "category",
         "schema": "string",
         "required": true,
-        "description": "The name of the category."
+        "description": "The name of the category.",
+        "example": "animation"
       },
       {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       }
     ],
     "responses": [
@@ -704,13 +753,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "category",
         "schema": "string",
         "required": true,
-        "description": "The name of the category."
+        "description": "The name of the category.",
+        "example": "animation"
       },
       {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       }
     ],
     "responses": [
@@ -748,13 +799,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "user_uri",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "/users/152184"
       }
     ],
     "responses": [
@@ -784,31 +837,36 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -836,13 +894,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "user_uri",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "/users/152184"
       }
     ],
     "responses": [
@@ -876,7 +936,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       }
     ],
     "responses": [
@@ -910,13 +971,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -946,13 +1009,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -974,13 +1039,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -1010,25 +1077,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       }
     ],
     "responses": [
@@ -1058,7 +1129,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "users",
@@ -1102,13 +1174,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -1138,13 +1212,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -1174,7 +1250,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       }
     ],
     "responses": [
@@ -1200,7 +1277,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "tag",
@@ -1240,13 +1318,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "word",
         "schema": "string",
         "required": true,
-        "description": "The word to use as the tag."
+        "description": "The word to use as the tag.",
+        "example": "awesome"
       }
     ],
     "responses": [
@@ -1280,13 +1360,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "word",
         "schema": "string",
         "required": true,
-        "description": "The word to use as the tag."
+        "description": "The word to use as the tag.",
+        "example": "awesome"
       }
     ],
     "responses": [
@@ -1316,13 +1398,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "word",
         "schema": "string",
         "required": true,
-        "description": "The word to use as the tag."
+        "description": "The word to use as the tag.",
+        "example": "awesome"
       }
     ],
     "responses": [
@@ -1356,37 +1440,43 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
         "schema": "string",
         "required": true,
-        "description": "The attribute by which to filter the results.\n\nOption descriptions:\n * `moderators` - Return moderators.\n"
+        "description": "The attribute by which to filter the results.\n\nOption descriptions:\n * `moderators` - Return moderators.\n",
+        "example": "FILTER"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -1418,13 +1508,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "video_uri",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "/videos/258684937"
       }
     ],
     "responses": [
@@ -1454,19 +1546,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "containingUri",
         "schema": "string",
         "required": false,
-        "description": "The page that contains the video URI."
+        "description": "The page that contains the video URI.",
+        "example": "/videos/258684937"
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -1478,25 +1573,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "filterEmbeddable",
         "schema": "boolean",
         "required": false,
-        "description": "Whether to filter the results by embeddable videos (`true`) or non-embeddable videos (`false`). This parameter is required only when **filter** is `embeddable`."
+        "description": "Whether to filter the results by embeddable videos (`true`) or non-embeddable videos (`false`). This parameter is required only when **filter** is `embeddable`.",
+        "example": true
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -1536,13 +1635,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "video_uri",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "/videos/258684937"
       }
     ],
     "responses": [
@@ -1572,13 +1673,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -1608,13 +1711,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -1640,13 +1745,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -1676,31 +1783,36 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       }
     ],
     "responses": [
@@ -1722,19 +1834,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "text",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "I love this!"
       }
     ],
     "responses": [
@@ -1768,37 +1883,43 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -1826,37 +1947,43 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "email",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "user@example.com"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Sam Doe"
       },
       {
         "name": "role",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Producer"
       },
       {
         "name": "user_uri",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "/users/152184"
       }
     ],
     "responses": [
@@ -1886,31 +2013,36 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "sort",
@@ -1938,25 +2070,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       }
     ],
     "responses": [
@@ -1978,23 +2114,27 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "active",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "time",
         "schema": "number",
-        "description": ""
+        "description": "",
+        "example": 300
       }
     ],
     "responses": [
@@ -2016,25 +2156,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       }
     ],
     "responses": [
@@ -2060,13 +2204,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -2088,25 +2234,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       }
     ],
     "responses": [
@@ -2132,19 +2282,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "active",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "is_auto_generated",
@@ -2162,19 +2315,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "language",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "en-US"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Commentary"
       },
       {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TYPE"
       }
     ],
     "responses": [
@@ -2200,25 +2356,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       }
     ],
     "responses": [
@@ -2263,13 +2423,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       }
     ],
     "responses": [
@@ -2291,7 +2453,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "destinationId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event destination."
+        "description": "The ID of the event destination.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -2325,7 +2488,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "destinationId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event destination."
+        "description": "The ID of the event destination.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -2359,47 +2523,56 @@ export default function VimeoTypeScriptSdk() {
         "name": "destinationId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event destination."
+        "description": "The ID of the event destination.",
+        "example": 152184
       },
       {
         "name": "display_name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "My channel"
       },
       {
         "name": "is_enabled",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "privacy",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "public"
       },
       {
         "name": "provider_destination_id",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "bda55c6b3ba4"
       },
       {
         "name": "service_name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "youtube"
       },
       {
         "name": "stream_key",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "da056692-ba63-4749-a6eb-a476a22b3acd"
       },
       {
         "name": "stream_url",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "rtmp://mycooldomain.com/live"
       },
       {
         "name": "type",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "channel"
       }
     ],
     "responses": [
@@ -2437,7 +2610,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -2449,19 +2623,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -2489,13 +2666,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "description",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Want to participate in our weekly challenges? Join the group to receive messages and new challenges!"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Vimeo Weekend Challenge"
       }
     ],
     "responses": [
@@ -2525,7 +2704,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "groupId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the group."
+        "description": "The ID of the group.",
+        "example": 1108
       }
     ],
     "responses": [
@@ -2551,7 +2731,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "groupId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the group."
+        "description": "The ID of the group.",
+        "example": 1108
       }
     ],
     "responses": [
@@ -2573,13 +2754,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "groupId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the group."
+        "description": "The ID of the group.",
+        "example": 1108
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -2591,19 +2774,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -2635,13 +2821,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "groupId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the group."
+        "description": "The ID of the group.",
+        "example": 1108
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -2653,25 +2841,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "filterEmbeddable",
         "schema": "boolean",
         "required": false,
-        "description": "Whether to filter the results by embeddable videos (`true`) or non-embeddable videos (`false`). This parameter is required only when **filter** is `embeddable`."
+        "description": "Whether to filter the results by embeddable videos (`true`) or non-embeddable videos (`false`). This parameter is required only when **filter** is `embeddable`.",
+        "example": true
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -2707,13 +2899,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "groupId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the group."
+        "description": "The ID of the group.",
+        "example": 1108
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -2739,13 +2933,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "groupId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the group."
+        "description": "The ID of the group.",
+        "example": 1108
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -2771,13 +2967,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "groupId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the group."
+        "description": "The ID of the group.",
+        "example": 1108
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -2813,13 +3011,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       }
     ],
     "responses": [
@@ -2841,7 +3041,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "password",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "hunter1"
       }
     ],
     "responses": [
@@ -2863,7 +3064,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -2875,19 +3077,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -2899,7 +3104,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": false,
-        "description": "The type of event to return.\n\nOption descriptions:\n * `all` - Return all events.\n * `one_time` - Return one-time events only.\n * `recurring` - Return recurring events only.\n"
+        "description": "The type of event to return.\n\nOption descriptions:\n * `all` - Return all events.\n * `one_time` - Return one-time events only.\n * `recurring` - Return recurring events only.\n",
+        "example": "recurring"
       }
     ],
     "responses": [
@@ -2921,7 +3127,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "title",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Live Content"
       },
       {
         "name": "allow_share_link",
@@ -2933,31 +3140,36 @@ export default function VimeoTypeScriptSdk() {
         "name": "auto_cc_enabled",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "auto_cc_keywords",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "commonly-used words,phrases,technical terms"
       },
       {
         "name": "auto_cc_lang",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "en-US"
       },
       {
         "name": "automatically_title_stream",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "chat_enabled",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "content_rating",
@@ -2969,7 +3181,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "dvr",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "embed",
@@ -2981,7 +3194,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "folder_uri",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "/users/67890/folder/12345"
       },
       {
         "name": "interaction_tools_settings",
@@ -2999,7 +3213,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "playlist_sort",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "added_first"
       },
       {
         "name": "rtmp_preview",
@@ -3017,13 +3232,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "scheduled_playback",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "stream_description",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "In this episode, we interview a surprise guest"
       },
       {
         "name": "stream_embed",
@@ -3035,7 +3252,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "stream_password",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "hunter1"
       },
       {
         "name": "stream_privacy",
@@ -3047,13 +3265,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "stream_title",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Special Feature"
       },
       {
         "name": "time_zone",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "America/New_York"
       }
     ],
     "responses": [
@@ -3087,7 +3307,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 0
       }
     ],
     "responses": [
@@ -3117,7 +3338,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "password",
@@ -3157,17 +3379,20 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "title",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Live Content"
       },
       {
         "name": "auto_cc_enabled",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "auto_cc_keywords",
@@ -3177,17 +3402,20 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "auto_cc_language",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "en-US"
       },
       {
         "name": "automatically_title_stream",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "chat_enabled",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "content_rating",
@@ -3197,7 +3425,8 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "dvr",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "embed",
@@ -3212,7 +3441,8 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "playlist_sort",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "added_first"
       },
       {
         "name": "schedule",
@@ -3222,12 +3452,14 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "scheduled_playback",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "stream_description",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "In this episode, we interview a surprise guest"
       },
       {
         "name": "stream_embed",
@@ -3237,12 +3469,14 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "stream_mode",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "live"
       },
       {
         "name": "stream_password",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "hunter1"
       },
       {
         "name": "stream_privacy",
@@ -3252,12 +3486,14 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "stream_title",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Special Feature"
       },
       {
         "name": "time_zone",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "America/New_York"
       }
     ],
     "responses": [
@@ -3291,17 +3527,20 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "cloud_composing_streaming",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "streaming_start_requested",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -3347,25 +3586,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "auto_cc_enabled",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "auto_cc_keywords",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "commonly-used words,phrases,technical terms"
       },
       {
         "name": "auto_cc_lang",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "en-US"
       }
     ],
     "responses": [
@@ -3399,13 +3642,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "clipId",
         "schema": "number",
         "required": false,
-        "description": "The ID of the streamable video."
+        "description": "The ID of the streamable video.",
+        "example": 12345
       }
     ],
     "responses": [
@@ -3443,7 +3688,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "low_latency",
@@ -3478,7 +3724,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       }
     ],
     "responses": [
@@ -3504,12 +3751,14 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "active",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -3539,13 +3788,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "thumbnailId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the thumbnail."
+        "description": "The ID of the thumbnail.",
+        "example": 12345
       }
     ],
     "responses": [
@@ -3575,13 +3826,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "thumbnailId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the thumbnail."
+        "description": "The ID of the thumbnail.",
+        "example": 12345
       }
     ],
     "responses": [
@@ -3611,18 +3864,21 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "thumbnailId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the thumbnail."
+        "description": "The ID of the thumbnail.",
+        "example": 12345
       },
       {
         "name": "active",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -3652,7 +3908,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       }
     ],
     "responses": [
@@ -3690,7 +3947,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "allowed_domains",
@@ -3733,7 +3991,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "videos",
@@ -3772,19 +4031,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "containingUri",
         "schema": "string",
         "required": false,
-        "description": "The page that contains the video URI."
+        "description": "The page that contains the video URI.",
+        "example": "/videos/258684937"
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -3796,25 +4058,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "filterEmbeddable",
         "schema": "boolean",
         "required": false,
-        "description": "Whether to filter the results by embeddable videos (`true`) or non-embeddable videos (`false`). This parameter is required only when **filter** is `embeddable`."
+        "description": "Whether to filter the results by embeddable videos (`true`) or non-embeddable videos (`false`). This parameter is required only when **filter** is `embeddable`.",
+        "example": true
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -3854,7 +4120,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "videos",
@@ -3893,13 +4160,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -3947,7 +4216,8 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "bio",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "This is where you will find videos and news updates from the staff"
       },
       {
         "name": "content_filter",
@@ -3962,22 +4232,26 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "link",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "staff"
       },
       {
         "name": "location",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "New York City"
       },
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Vimeo Staff"
       },
       {
         "name": "password",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "hunter1"
       },
       {
         "name": "videos",
@@ -4008,25 +4282,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -4058,31 +4336,36 @@ export default function VimeoTypeScriptSdk() {
         "name": "description",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Vimeo holiday videos!"
       },
       {
         "name": "brand_color",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "ff66ee"
       },
       {
         "name": "hide_from_vimeo",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "hide_nav",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "hide_upcoming",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "layout",
@@ -4094,13 +4377,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Vimeo Holiday Videos!"
       },
       {
         "name": "password",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "hunter1"
       },
       {
         "name": "privacy",
@@ -4112,7 +4397,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "review_mode",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "sort",
@@ -4154,7 +4440,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "albumId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the showcase."
+        "description": "The ID of the showcase.",
+        "example": 3706071
       }
     ],
     "responses": [
@@ -4184,7 +4471,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "albumId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the showcase."
+        "description": "The ID of the showcase.",
+        "example": 3706071
       }
     ],
     "responses": [
@@ -4210,32 +4498,38 @@ export default function VimeoTypeScriptSdk() {
         "name": "albumId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the showcase."
+        "description": "The ID of the showcase.",
+        "example": 3706071
       },
       {
         "name": "description",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Vimeo holiday videos!"
       },
       {
         "name": "brand_color",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "ff66ee"
       },
       {
         "name": "domain",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "mycustomdomain.com"
       },
       {
         "name": "hide_nav",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "hide_upcoming",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "layout",
@@ -4245,12 +4539,14 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Vimeo Holiday Videos!"
       },
       {
         "name": "password",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "hunter1"
       },
       {
         "name": "privacy",
@@ -4260,7 +4556,8 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "review_mode",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "sort",
@@ -4275,12 +4572,14 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "url",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "my-custom-url"
       },
       {
         "name": "use_custom_domain",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -4314,19 +4613,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "albumId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the showcase."
+        "description": "The ID of the showcase.",
+        "example": 3706071
       },
       {
         "name": "containingUri",
         "schema": "string",
         "required": false,
-        "description": "The page containing the video URI."
+        "description": "The page containing the video URI.",
+        "example": "/videos/258684937"
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -4338,31 +4640,36 @@ export default function VimeoTypeScriptSdk() {
         "name": "filterEmbeddable",
         "schema": "boolean",
         "required": false,
-        "description": "Whether to filter the results by embeddable videos (`true`) or non-embeddable videos (`false`). This parameter is required only when **filter** is `embeddable`."
+        "description": "Whether to filter the results by embeddable videos (`true`) or non-embeddable videos (`false`). This parameter is required only when **filter** is `embeddable`.",
+        "example": true
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "password",
         "schema": "string",
         "required": false,
-        "description": "The password of the showcase."
+        "description": "The password of the showcase.",
+        "example": "hunter1"
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -4374,7 +4681,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "weakSearch",
         "schema": "boolean",
         "required": false,
-        "description": "Whether to include private videos in the search. Please note that a separate search service provides this functionality. The service performs a partial text search on the video's name."
+        "description": "Whether to include private videos in the search. Please note that a separate search service provides this functionality. The service performs a partial text search on the video's name.",
+        "example": false
       }
     ],
     "responses": [
@@ -4400,13 +4708,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "albumId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the showcase."
+        "description": "The ID of the showcase.",
+        "example": 3706071
       },
       {
         "name": "videos",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "/videos/258684937,/videos/273576296"
       }
     ],
     "responses": [
@@ -4436,13 +4746,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "albumId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the showcase."
+        "description": "The ID of the showcase.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 196367152
       }
     ],
     "responses": [
@@ -4472,19 +4784,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "albumId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the showcase."
+        "description": "The ID of the showcase.",
+        "example": 3706071
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 196367152
       },
       {
         "name": "password",
         "schema": "string",
         "required": false,
-        "description": "The password of the showcase."
+        "description": "The password of the showcase.",
+        "example": "hunter1"
       }
     ],
     "responses": [
@@ -4510,13 +4825,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "albumId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the showcase."
+        "description": "The ID of the showcase.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 196367152
       }
     ],
     "responses": [
@@ -4546,18 +4863,21 @@ export default function VimeoTypeScriptSdk() {
         "name": "albumId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the showcase."
+        "description": "The ID of the showcase.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 196367152
       },
       {
         "name": "time_code",
         "schema": "number",
-        "description": ""
+        "description": "",
+        "example": 300
       }
     ],
     "responses": [
@@ -4591,13 +4911,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "albumId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the showcase."
+        "description": "The ID of the showcase.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 196367152
       }
     ],
     "responses": [
@@ -4627,61 +4949,71 @@ export default function VimeoTypeScriptSdk() {
         "name": "dimension",
         "schema": "string",
         "required": true,
-        "description": "The data dimension by which to group the results.\n\nOption descriptions:\n * `country` - Group the results by country.\n * `device_type` - Group the results by device type.\n * `embed_domain` - Group the results by embed domain.\n * `total` - Group the results by the time range provided.\n * `video` - Group the results by video.\n"
+        "description": "The data dimension by which to group the results.\n\nOption descriptions:\n * `country` - Group the results by country.\n * `device_type` - Group the results by device type.\n * `embed_domain` - Group the results by embed domain.\n * `total` - Group the results by the time range provided.\n * `video` - Group the results by video.\n",
+        "example": "DIMENSION"
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filterContent",
         "schema": "string",
         "required": false,
-        "description": "A comma-separated list of video, folder, or event URIs to filter."
+        "description": "A comma-separated list of video, folder, or event URIs to filter.",
+        "example": "/folder/1233456,/video/7890123,/folder/123"
       },
       {
         "name": "filterCountries",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of country codes in ISO-3166 format to filter on."
+        "description": "A comma-separated list of country codes in ISO-3166 format to filter on.",
+        "example": "UK,US,IN"
       },
       {
         "name": "filterDeviceTypes",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of device types to filter on."
+        "description": "A comma-separated list of device types to filter on.",
+        "example": "android,ios"
       },
       {
         "name": "filterEmbedDomains",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of domain names to filter on."
+        "description": "A comma-separated list of domain names to filter on.",
+        "example": "abc.com,xyz.com"
       },
       {
         "name": "filterStreamingTypes",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of streaming types to filter on."
+        "description": "A comma-separated list of streaming types to filter on.",
+        "example": "live,video"
       },
       {
         "name": "from",
         "schema": "string",
         "required": true,
-        "description": "The start date of the range of results in ISO 8601 format."
+        "description": "The start date of the range of results in ISO 8601 format.",
+        "example": "2021-05-30T00:00:00+00:00"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The maximum number of items returned from the request, up to a limit of 1000 items. The default value is `50`."
+        "description": "The maximum number of items returned from the request, up to a limit of 1000 items. The default value is `50`.",
+        "example": 50
       },
       {
         "name": "sort",
@@ -4699,7 +5031,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "to",
         "schema": "string",
         "required": true,
-        "description": "The end date of the range of results in ISO 8601 format."
+        "description": "The end date of the range of results in ISO 8601 format.",
+        "example": "2021-06-30T23:59:59+00:00"
       }
     ],
     "responses": [
@@ -4721,7 +5054,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -4733,25 +5067,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "filterEmbeddable",
         "schema": "boolean",
         "required": false,
-        "description": "Whether to filter the results by embeddable videos (`true`) or non-embeddable videos (`false`). This parameter is required only when **filter** is `embeddable`."
+        "description": "Whether to filter the results by embeddable videos (`true`) or non-embeddable videos (`false`). This parameter is required only when **filter** is `embeddable`.",
+        "example": true
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -4779,19 +5117,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "sort",
@@ -4823,7 +5164,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "category",
         "schema": "string",
         "required": true,
-        "description": "The name of the category."
+        "description": "The name of the category.",
+        "example": "animation"
       }
     ],
     "responses": [
@@ -4845,7 +5187,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "category",
         "schema": "string",
         "required": true,
-        "description": "The name of the category."
+        "description": "The name of the category.",
+        "example": "animation"
       }
     ],
     "responses": [
@@ -4867,7 +5210,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "category",
         "schema": "number",
         "required": true,
-        "description": "The name of the category."
+        "description": "The name of the category.",
+        "example": 0
       }
     ],
     "responses": [
@@ -4889,7 +5233,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -4901,19 +5246,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -4945,7 +5293,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       }
     ],
     "responses": [
@@ -4971,7 +5320,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       }
     ],
     "responses": [
@@ -4997,7 +5347,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       }
     ],
     "responses": [
@@ -5061,7 +5412,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "logoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the custom logo."
+        "description": "The ID of the custom logo.",
+        "example": 12345
       }
     ],
     "responses": [
@@ -5087,7 +5439,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "logoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the custom logo."
+        "description": "The ID of the custom logo.",
+        "example": 12345
       }
     ],
     "responses": [
@@ -5136,19 +5489,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "offset",
         "schema": "string",
         "required": false,
-        "description": "The pagination offset. We recommend that you use the pagination links in the feed response instead of working with this value directly. For more details, see our [pagination documentation](https://developer.vimeo.com/api/common-formats#using-the-pagination-parameter)."
+        "description": "The pagination offset. We recommend that you use the pagination links in the feed response instead of working with this value directly. For more details, see our [pagination documentation](https://developer.vimeo.com/api/common-formats#using-the-pagination-parameter).",
+        "example": "280"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "type",
@@ -5176,25 +5532,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -5222,7 +5582,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -5234,19 +5595,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -5316,7 +5680,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "followUserId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user to unfollow."
+        "description": "The ID of the user to unfollow.",
+        "example": 3766357
       }
     ],
     "responses": [
@@ -5338,7 +5703,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "followUserId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user to follow."
+        "description": "The ID of the user to follow.",
+        "example": 3766357
       }
     ],
     "responses": [
@@ -5364,7 +5730,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "followUserId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user to follow."
+        "description": "The ID of the user to follow.",
+        "example": 3766357
       }
     ],
     "responses": [
@@ -5390,7 +5757,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -5402,19 +5770,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -5442,7 +5813,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "groupId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the group."
+        "description": "The ID of the group.",
+        "example": 1108
       }
     ],
     "responses": [
@@ -5468,7 +5840,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "groupId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the group."
+        "description": "The ID of the group.",
+        "example": 1108
       }
     ],
     "responses": [
@@ -5494,7 +5867,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "groupId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the group."
+        "description": "The ID of the group.",
+        "example": 1108
       }
     ],
     "responses": [
@@ -5526,25 +5900,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "filterEmbeddable",
         "schema": "boolean",
         "required": false,
-        "description": "Whether to filter the results by embeddable videos (`true`) or non-embeddable videos (`false`). This parameter is required only when **filter** is `embeddable`."
+        "description": "Whether to filter the results by embeddable videos (`true`) or non-embeddable videos (`false`). This parameter is required only when **filter** is `embeddable`.",
+        "example": true
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -5572,7 +5950,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -5598,7 +5977,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -5624,7 +6004,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -5654,7 +6035,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "password",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "hunter1"
       }
     ],
     "responses": [
@@ -5676,7 +6058,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -5688,19 +6071,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -5712,7 +6098,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": false,
-        "description": "The type of event to return.\n\nOption descriptions:\n * `all` - Return all events.\n * `one_time` - Return one-time events only.\n * `recurring` - Return recurring events only.\n"
+        "description": "The type of event to return.\n\nOption descriptions:\n * `all` - Return all events.\n * `one_time` - Return one-time events only.\n * `recurring` - Return recurring events only.\n",
+        "example": "recurring"
       }
     ],
     "responses": [
@@ -5734,7 +6121,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "title",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Live Content"
       },
       {
         "name": "allow_share_link",
@@ -5746,31 +6134,36 @@ export default function VimeoTypeScriptSdk() {
         "name": "auto_cc_enabled",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "auto_cc_keywords",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "commonly-used words,phrases,technical terms"
       },
       {
         "name": "auto_cc_lang",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "en-US"
       },
       {
         "name": "automatically_title_stream",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "chat_enabled",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "content_rating",
@@ -5782,7 +6175,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "dvr",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "embed",
@@ -5794,7 +6188,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "folder_uri",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "/users/67890/folder/12345"
       },
       {
         "name": "interaction_tools_settings",
@@ -5812,7 +6207,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "playlist_sort",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "added_first"
       },
       {
         "name": "rtmp_preview",
@@ -5830,13 +6226,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "scheduled_playback",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "stream_description",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "In this episode, we interview a surprise guest"
       },
       {
         "name": "stream_embed",
@@ -5848,7 +6246,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "stream_password",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "hunter1"
       },
       {
         "name": "stream_privacy",
@@ -5860,13 +6259,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "stream_title",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Special Feature"
       },
       {
         "name": "time_zone",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "America/New_York"
       }
     ],
     "responses": [
@@ -5900,7 +6301,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 0
       }
     ],
     "responses": [
@@ -5930,7 +6332,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "password",
@@ -5970,17 +6373,20 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "title",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Live Content"
       },
       {
         "name": "auto_cc_enabled",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "auto_cc_keywords",
@@ -5990,17 +6396,20 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "auto_cc_language",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "en-US"
       },
       {
         "name": "automatically_title_stream",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "chat_enabled",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "content_rating",
@@ -6010,7 +6419,8 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "dvr",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "embed",
@@ -6025,7 +6435,8 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "playlist_sort",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "added_first"
       },
       {
         "name": "schedule",
@@ -6035,12 +6446,14 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "scheduled_playback",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "stream_description",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "In this episode, we interview a surprise guest"
       },
       {
         "name": "stream_embed",
@@ -6050,12 +6463,14 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "stream_mode",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "live"
       },
       {
         "name": "stream_password",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "hunter1"
       },
       {
         "name": "stream_privacy",
@@ -6065,12 +6480,14 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "stream_title",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Special Feature"
       },
       {
         "name": "time_zone",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "America/New_York"
       }
     ],
     "responses": [
@@ -6104,17 +6521,20 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "cloud_composing_streaming",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "streaming_start_requested",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -6160,25 +6580,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "auto_cc_enabled",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "auto_cc_keywords",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "commonly-used words,phrases,technical terms"
       },
       {
         "name": "auto_cc_lang",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "en-US"
       }
     ],
     "responses": [
@@ -6212,7 +6636,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       }
     ],
     "responses": [
@@ -6250,67 +6675,78 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "display_name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "My channel"
       },
       {
         "name": "is_enabled",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "privacy",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "public"
       },
       {
         "name": "provider_destination_id",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "bda55c6b3ba4"
       },
       {
         "name": "provider_video_id",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "6817807391346708000"
       },
       {
         "name": "scheduled_at",
         "schema": "number",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 1625754461
       },
       {
         "name": "service_name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "youtube"
       },
       {
         "name": "stream_key",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "da056692-ba63-4749-a6eb-a476a22b3acd"
       },
       {
         "name": "stream_url",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "rtmp://mycooldomain.com/live"
       },
       {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "channel"
       }
     ],
     "responses": [
@@ -6348,13 +6784,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "clipId",
         "schema": "number",
         "required": false,
-        "description": "The ID of the streamable video."
+        "description": "The ID of the streamable video.",
+        "example": 12345
       }
     ],
     "responses": [
@@ -6392,7 +6830,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "low_latency",
@@ -6427,13 +6866,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "maxFpsFhd",
         "schema": "number",
         "required": false,
-        "description": "The requested maximum frames per second."
+        "description": "The requested maximum frames per second.",
+        "example": 30
       }
     ],
     "responses": [
@@ -6479,7 +6920,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       }
     ],
     "responses": [
@@ -6505,12 +6947,14 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "active",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -6540,13 +6984,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "thumbnailId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the thumbnail."
+        "description": "The ID of the thumbnail.",
+        "example": 12345
       }
     ],
     "responses": [
@@ -6576,13 +7022,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "thumbnailId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the thumbnail."
+        "description": "The ID of the thumbnail.",
+        "example": 12345
       }
     ],
     "responses": [
@@ -6612,18 +7060,21 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "thumbnailId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the thumbnail."
+        "description": "The ID of the thumbnail.",
+        "example": 12345
       },
       {
         "name": "active",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -6653,7 +7104,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       }
     ],
     "responses": [
@@ -6691,7 +7143,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "allowed_domains",
@@ -6734,7 +7187,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "videos",
@@ -6773,19 +7227,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "containingUri",
         "schema": "string",
         "required": false,
-        "description": "The page that contains the video URI."
+        "description": "The page that contains the video URI.",
+        "example": "/videos/258684937"
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -6797,25 +7254,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "filterEmbeddable",
         "schema": "boolean",
         "required": false,
-        "description": "Whether to filter the results by embeddable videos (`true`) or non-embeddable videos (`false`). This parameter is required only when **filter** is `embeddable`."
+        "description": "Whether to filter the results by embeddable videos (`true`) or non-embeddable videos (`false`). This parameter is required only when **filter** is `embeddable`.",
+        "example": true
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -6855,7 +7316,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "videos",
@@ -6894,13 +7356,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -6934,7 +7398,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -6946,13 +7411,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "sort",
@@ -6984,7 +7451,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "description",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "DARBY FOREVER follows the fantasies of Darby, a shopgirl at \"Bobbins & Notions\"."
       },
       {
         "name": "accepted_currencies",
@@ -7002,13 +7470,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "content_rating",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CONTENT_RATING"
       },
       {
         "name": "domain_link",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "https://example.com"
       },
       {
         "name": "episodes",
@@ -7020,13 +7490,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "link",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "darbyforever"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Darby Forever"
       },
       {
         "name": "rent",
@@ -7044,7 +7516,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TYPE"
       }
     ],
     "responses": [
@@ -7066,7 +7539,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -7078,13 +7552,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "sort",
@@ -7116,7 +7592,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       }
     ],
     "responses": [
@@ -7146,31 +7623,36 @@ export default function VimeoTypeScriptSdk() {
         "name": "cardmemberName",
         "schema": "string",
         "required": false,
-        "description": "The name of the card member."
+        "description": "The name of the card member.",
+        "example": "John Doe"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "showDisabled",
         "schema": "boolean",
         "required": false,
-        "description": "Whether to return disabled payment methods."
+        "description": "Whether to return disabled payment methods.",
+        "example": false
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 12345
       },
       {
         "name": "type",
@@ -7205,7 +7687,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "paymentMethodId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the payment method."
+        "description": "The ID of the payment method.",
+        "example": "abc12345"
       }
     ],
     "responses": [
@@ -7231,13 +7714,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       }
     ],
     "responses": [
@@ -7274,7 +7759,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "portraitsetId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the picture."
+        "description": "The ID of the picture.",
+        "example": 12345
       }
     ],
     "responses": [
@@ -7296,7 +7782,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "portraitsetId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the picture."
+        "description": "The ID of the picture.",
+        "example": 12345
       }
     ],
     "responses": [
@@ -7318,12 +7805,14 @@ export default function VimeoTypeScriptSdk() {
         "name": "portraitsetId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the picture."
+        "description": "The ID of the picture.",
+        "example": 12345
       },
       {
         "name": "active",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -7345,25 +7834,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -7391,7 +7884,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "portfolioId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the portfolio."
+        "description": "The ID of the portfolio.",
+        "example": 12345
       }
     ],
     "responses": [
@@ -7413,13 +7907,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "portfolioId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the portfolio."
+        "description": "The ID of the portfolio.",
+        "example": 12345
       },
       {
         "name": "containingUri",
         "schema": "string",
         "required": false,
-        "description": "The page that contains the video URI."
+        "description": "The page that contains the video URI.",
+        "example": "/videos/258684937"
       },
       {
         "name": "filter",
@@ -7431,19 +7927,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "filterEmbeddable",
         "schema": "boolean",
         "required": false,
-        "description": "Whether to filter the results by embeddable videos (`true`) or non-embeddable videos (`false`). This parameter is required only when **filter** is `embeddable`."
+        "description": "Whether to filter the results by embeddable videos (`true`) or non-embeddable videos (`false`). This parameter is required only when **filter** is `embeddable`.",
+        "example": true
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "sort",
@@ -7471,13 +7970,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "portfolioId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the portfolio."
+        "description": "The ID of the portfolio.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -7503,13 +8004,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "portfolioId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the portfolio."
+        "description": "The ID of the portfolio.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -7531,13 +8034,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "portfolioId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the portfolio."
+        "description": "The ID of the portfolio.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -7563,13 +8068,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       }
     ],
     "responses": [
@@ -7595,7 +8102,8 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "New preset"
       }
     ],
     "responses": [
@@ -7617,7 +8125,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "presetId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the preset."
+        "description": "The ID of the preset.",
+        "example": 12345
       }
     ],
     "responses": [
@@ -7639,7 +8148,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "presetId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the preset."
+        "description": "The ID of the preset.",
+        "example": 12345
       },
       {
         "name": "outro",
@@ -7674,19 +8184,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "presetId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the embed preset."
+        "description": "The ID of the embed preset.",
+        "example": 12345
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       }
     ],
     "responses": [
@@ -7708,25 +8221,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -7758,13 +8275,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Rough cuts"
       },
       {
         "name": "parent_folder_uri",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "/users/12345/projects/6789"
       }
     ],
     "responses": [
@@ -7798,13 +8317,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "projectId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the folder."
+        "description": "The ID of the folder.",
+        "example": 12345
       },
       {
         "name": "shouldDeleteClips",
         "schema": "boolean",
         "required": false,
-        "description": "Whether to delete all the videos in the folder along with the folder itself."
+        "description": "Whether to delete all the videos in the folder along with the folder itself.",
+        "example": true
       }
     ],
     "responses": [
@@ -7838,7 +8359,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "projectId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the folder."
+        "description": "The ID of the folder.",
+        "example": 12345
       }
     ],
     "responses": [
@@ -7868,13 +8390,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "projectId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the folder."
+        "description": "The ID of the folder.",
+        "example": 12345
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Rough cuts"
       }
     ],
     "responses": [
@@ -7912,19 +8436,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "projectId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the folder."
+        "description": "The ID of the folder.",
+        "example": 12345
       },
       {
         "name": "shouldDeleteItems",
         "schema": "boolean",
         "required": false,
-        "description": "Whether to delete the items when removing them from the folder."
+        "description": "Whether to delete the items when removing them from the folder.",
+        "example": false
       },
       {
         "name": "uris",
         "schema": "string",
         "required": true,
-        "description": "A comma-separated list of video or event URIs to remove."
+        "description": "A comma-separated list of video or event URIs to remove.",
+        "example": "/videos/258684937,/live_events/273576296"
       }
     ],
     "responses": [
@@ -7958,13 +8485,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "projectId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the folder."
+        "description": "The ID of the folder.",
+        "example": 12345
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -7976,13 +8505,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "sort",
@@ -8010,19 +8541,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "projectId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the folder."
+        "description": "The ID of the folder.",
+        "example": 12345
       },
       {
         "name": "shouldDeleteClips",
         "schema": "boolean",
         "required": false,
-        "description": "Whether to delete the videos when removing them from the folder."
+        "description": "Whether to delete the videos when removing them from the folder.",
+        "example": false
       },
       {
         "name": "uris",
         "schema": "string",
         "required": true,
-        "description": "A comma-separated list of the video URIs to remove."
+        "description": "A comma-separated list of the video URIs to remove.",
+        "example": "/videos/258684937,/videos/273576296"
       }
     ],
     "responses": [
@@ -8056,61 +8590,71 @@ export default function VimeoTypeScriptSdk() {
         "name": "projectId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the folder."
+        "description": "The ID of the folder.",
+        "example": 12345
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filterTag",
         "schema": "string",
         "required": false,
-        "description": "A comma-separated list of tags to filter on. All results must include at least one of these tags. The use of this parameter triggers a search."
+        "description": "A comma-separated list of tags to filter on. All results must include at least one of these tags. The use of this parameter triggers a search.",
+        "example": "abc,xyz"
       },
       {
         "name": "filterTagAllOf",
         "schema": "string",
         "required": false,
-        "description": "A comma-separated list of tags to filter on. All results must include all of these tags. The use of this parameter triggers a search."
+        "description": "A comma-separated list of tags to filter on. All results must include all of these tags. The use of this parameter triggers a search.",
+        "example": "abc,xyz"
       },
       {
         "name": "filterTagExclude",
         "schema": "string",
         "required": false,
-        "description": "A comma-separated list of tags to exclude. The use of this parameter triggers a search."
+        "description": "A comma-separated list of tags to exclude. The use of this parameter triggers a search.",
+        "example": "abc,xyz"
       },
       {
         "name": "includeSubfolders",
         "schema": "boolean",
         "required": false,
-        "description": "Whether to include subfolders."
+        "description": "Whether to include subfolders.",
+        "example": false
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "queryFields",
         "schema": "string",
         "required": false,
-        "description": "A comma-separated list of fields to query over. The default value is `title,description,chapters,tags`."
+        "description": "A comma-separated list of fields to query over. The default value is `title,description,chapters,tags`.",
+        "example": "title,description"
       },
       {
         "name": "sort",
@@ -8146,13 +8690,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "projectId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the folder."
+        "description": "The ID of the folder.",
+        "example": 12345
       },
       {
         "name": "uris",
         "schema": "string",
         "required": true,
-        "description": "A comma-separated list of video URIs to add."
+        "description": "A comma-separated list of video URIs to add.",
+        "example": "/videos/258684937,/videos/273576296"
       }
     ],
     "responses": [
@@ -8186,13 +8732,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "projectId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the folder."
+        "description": "The ID of the folder.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -8226,13 +8774,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "projectId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the folder."
+        "description": "The ID of the folder.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -8258,7 +8808,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "uris",
         "schema": "string",
         "required": true,
-        "description": "A comma-separated list of the video URIs to delete."
+        "description": "A comma-separated list of the video URIs to delete.",
+        "example": "/videos/258684937,/videos/258684546"
       }
     ],
     "responses": [
@@ -8292,13 +8843,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "containingUri",
         "schema": "string",
         "required": false,
-        "description": "The page that contains the video URI. The field is available only when not paired with **query**."
+        "description": "The page that contains the video URI. The field is available only when not paired with **query**.",
+        "example": "/videos/258684937"
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -8310,67 +8863,78 @@ export default function VimeoTypeScriptSdk() {
         "name": "filterEmbeddable",
         "schema": "boolean",
         "required": false,
-        "description": "Whether to filter the results by embeddable videos (`true`) or non-embeddable videos (`false`). This parameter is required only when **filter** is `embeddable`."
+        "description": "Whether to filter the results by embeddable videos (`true`) or non-embeddable videos (`false`). This parameter is required only when **filter** is `embeddable`.",
+        "example": true
       },
       {
         "name": "filterPlayable",
         "schema": "boolean",
         "required": false,
-        "description": "Whether to filter the results by playable videos (`true`) or non-playable videos (`false`)."
+        "description": "Whether to filter the results by playable videos (`true`) or non-playable videos (`false`).",
+        "example": true
       },
       {
         "name": "filterScreenRecorded",
         "schema": "boolean",
         "required": false,
-        "description": "Whether to filter the results by screen-recorded videos (`true`) or non-screen-recorded videos (`false`)."
+        "description": "Whether to filter the results by screen-recorded videos (`true`) or non-screen-recorded videos (`false`).",
+        "example": true
       },
       {
         "name": "filterTag",
         "schema": "string",
         "required": false,
-        "description": "A comma-separated list of tags to filter on. All results must include at least one of these tags."
+        "description": "A comma-separated list of tags to filter on. All results must include at least one of these tags.",
+        "example": "abc,xyz"
       },
       {
         "name": "filterTagAllOf",
         "schema": "string",
         "required": false,
-        "description": "A comma-separated list of tags to filter on. All results must include all of these tags."
+        "description": "A comma-separated list of tags to filter on. All results must include all of these tags.",
+        "example": "abc,xyz"
       },
       {
         "name": "filterTagExclude",
         "schema": "string",
         "required": false,
-        "description": "A comma-separated list of tags to exclude. All results must exclude all of these tags."
+        "description": "A comma-separated list of tags to exclude. All results must exclude all of these tags.",
+        "example": "abc,xyz"
       },
       {
         "name": "includeTeamContent",
         "schema": "string",
         "required": false,
-        "description": "Whether to include content from the user's teams when searching. _This field is deprecated._"
+        "description": "Whether to include content from the user's teams when searching. _This field is deprecated._",
+        "example": "true"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "queryFields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of fields to query over. The default value is `title,description,chapters,tags`.\n\nOption descriptions:\n * `chapters` - Query by chapter titles that have been added to the video.\n * `description` - Query by the description of the video.\n * `tags` - Query by tag names that have been added to the video.\n * `title` - Query by the title of the video.\n"
+        "description": "A comma-separated list of fields to query over. The default value is `title,description,chapters,tags`.\n\nOption descriptions:\n * `chapters` - Query by chapter titles that have been added to the video.\n * `description` - Query by the description of the video.\n * `tags` - Query by tag names that have been added to the video.\n * `title` - Query by the title of the video.\n",
+        "example": "title,description"
       },
       {
         "name": "sort",
@@ -8402,7 +8966,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "description",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "A celebration of 10 years of Staff Picks."
       },
       {
         "name": "content_rating",
@@ -8426,13 +8991,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "folder_uri",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "/users/12345/folders/6789"
       },
       {
         "name": "hide_from_vimeo",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "license",
@@ -8444,19 +9011,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "locale",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "en_US"
       },
       {
         "name": "name",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Celebrating 10 Years of Staff Picks"
       },
       {
         "name": "password",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "hunter1"
       },
       {
         "name": "privacy",
@@ -8518,7 +9088,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -8544,7 +9115,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 12345
       }
     ],
     "responses": [
@@ -8578,67 +9150,78 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 12345
       },
       {
         "name": "display_name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "My channel"
       },
       {
         "name": "is_enabled",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "privacy",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "public"
       },
       {
         "name": "provider_destination_id",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "bda55c6b3ba4"
       },
       {
         "name": "provider_video_id",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "6817807391346708000"
       },
       {
         "name": "scheduled_at",
         "schema": "number",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 1625754461
       },
       {
         "name": "service_name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "youtube"
       },
       {
         "name": "stream_key",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "da056692-ba63-4749-a6eb-a476a22b3acd"
       },
       {
         "name": "stream_url",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "rtmp://mycooldomain.com/live"
       },
       {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "channel"
       }
     ],
     "responses": [
@@ -8676,7 +9259,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 12345
       }
     ],
     "responses": [
@@ -8725,13 +9309,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       }
     ],
     "responses": [
@@ -8757,7 +9343,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -8779,7 +9366,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -8791,25 +9379,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "filterEmbeddable",
         "schema": "boolean",
         "required": false,
-        "description": "Whether to filter the results by embeddable videos (`true`) or non-embeddable videos (`false`). This parameter is required only when **filter** is `embeddable`."
+        "description": "Whether to filter the results by embeddable videos (`true`) or non-embeddable videos (`false`). This parameter is required only when **filter** is `embeddable`.",
+        "example": true
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -8841,7 +9433,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -8863,7 +9456,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -8889,7 +9483,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -8911,13 +9506,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "title",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Interviews Daily"
       },
       {
         "name": "description",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "In this episode, we interview a surprise guest"
       },
       {
         "name": "email_settings",
@@ -8929,13 +9526,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "folder_uri",
         "schema": "number",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "password",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "gogo"
       },
       {
         "name": "privacy",
@@ -8953,7 +9552,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "time_zone",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "America/New_York"
       }
     ],
     "responses": [
@@ -8987,7 +9587,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "webinarId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the webinar."
+        "description": "The ID of the webinar.",
+        "example": "f19bfa08-b266-4f20-bfce-db1d0719b52f"
       }
     ],
     "responses": [
@@ -9013,17 +9614,20 @@ export default function VimeoTypeScriptSdk() {
         "name": "webinarId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the webinar."
+        "description": "The ID of the webinar.",
+        "example": "f19bfa08-b266-4f20-bfce-db1d0719b52f"
       },
       {
         "name": "title",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Interviews Daily"
       },
       {
         "name": "description",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "In this episode, we interview a surprise guest"
       },
       {
         "name": "email_settings",
@@ -9033,7 +9637,8 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "password",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "gogo"
       },
       {
         "name": "privacy",
@@ -9048,12 +9653,14 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "status",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "started"
       },
       {
         "name": "time_zone",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "America/New_York"
       }
     ],
     "responses": [
@@ -9087,7 +9694,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "webinarId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the webinar."
+        "description": "The ID of the webinar.",
+        "example": "f19bfa08-b266-4f20-bfce-db1d0719b52f"
       }
     ],
     "responses": [
@@ -9117,17 +9725,20 @@ export default function VimeoTypeScriptSdk() {
         "name": "webinarId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the webinar."
+        "description": "The ID of the webinar.",
+        "example": "f19bfa08-b266-4f20-bfce-db1d0719b52f"
       },
       {
         "name": "accent_color",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "#000fff"
       },
       {
         "name": "custom_link",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "https://xyz.com"
       },
       {
         "name": "email_event_reminder_24_hrs",
@@ -9152,47 +9763,56 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "from",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Vimeo"
       },
       {
         "name": "logo_uri",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "/users/123/team_logos_2343"
       },
       {
         "name": "reply_email",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "test@vimeo.com"
       },
       {
         "name": "sender_address",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Bangalore, India"
       },
       {
         "name": "sender_policy_url",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "vimeo.com/policy"
       },
       {
         "name": "use_custom_link",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "use_reply_email",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "use_sender_address",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "use_sender_policy_url",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       }
     ],
     "responses": [
@@ -9222,25 +9842,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "webinarId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the webinar."
+        "description": "The ID of the webinar.",
+        "example": "f19bfa08-b266-4f20-bfce-db1d0719b52f"
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "sort",
@@ -9280,7 +9904,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "webinarId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the webinar."
+        "description": "The ID of the webinar.",
+        "example": "f19bfa08-b266-4f20-bfce-db1d0719b52f"
       },
       {
         "name": "registrants",
@@ -9315,13 +9940,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "registrantId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the webinar registrant."
+        "description": "The ID of the webinar registrant.",
+        "example": "f19bfa08-b266-4f20-bfce-db1d0719b52f"
       },
       {
         "name": "webinarId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the webinar."
+        "description": "The ID of the webinar.",
+        "example": "f19bfa08-b266-4f20-bfce-db1d0719b52f"
       }
     ],
     "responses": [
@@ -9359,18 +9986,21 @@ export default function VimeoTypeScriptSdk() {
         "name": "registrantId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the webinar registrant."
+        "description": "The ID of the webinar registrant.",
+        "example": "f19bfa08-b266-4f20-bfce-db1d0719b52f"
       },
       {
         "name": "webinarId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the webinar."
+        "description": "The ID of the webinar.",
+        "example": "f19bfa08-b266-4f20-bfce-db1d0719b52f"
       },
       {
         "name": "is_blocked",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -9404,19 +10034,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "code",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "1234abcd"
       },
       {
         "name": "grant_type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "GRANT_TYPE"
       },
       {
         "name": "redirect_uri",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "https://example.com"
       }
     ],
     "responses": [
@@ -9442,13 +10075,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "grant_type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "GRANT_TYPE"
       },
       {
         "name": "scope",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "public"
       }
     ],
     "responses": [
@@ -9474,19 +10109,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "grant_type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "GRANT_TYPE"
       },
       {
         "name": "token",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "58037c0078d5f54e15e638cc0dd882a570b13c50"
       },
       {
         "name": "token_secret",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NTgwMzdjMDA3OGQ1ZjU0ZTE1ZTYzOGNjMGRkODgyYTU3MGIxM2M1MA=="
       }
     ],
     "responses": [
@@ -9546,7 +10184,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "genreId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the genre."
+        "description": "The ID of the genre.",
+        "example": "animation"
       }
     ],
     "responses": [
@@ -9572,13 +10211,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "genreId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the genre."
+        "description": "The ID of the genre.",
+        "example": "animation"
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -9590,19 +10231,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -9630,13 +10274,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "genreId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the genre."
+        "description": "The ID of the genre.",
+        "example": "animation"
       },
       {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       }
     ],
     "responses": [
@@ -9662,7 +10308,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       }
     ],
     "responses": [
@@ -9692,7 +10339,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       }
     ],
     "responses": [
@@ -9718,12 +10366,14 @@ export default function VimeoTypeScriptSdk() {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       },
       {
         "name": "link",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "darbyforever"
       },
       {
         "name": "preorder",
@@ -9738,7 +10388,8 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "publish_when_ready",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -9768,19 +10419,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       }
     ],
     "responses": [
@@ -9806,7 +10460,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       }
     ],
     "responses": [
@@ -9836,13 +10491,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "backgroundId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the background image."
+        "description": "The ID of the background image.",
+        "example": 12345
       },
       {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       }
     ],
     "responses": [
@@ -9872,13 +10529,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "backgroundId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the background image."
+        "description": "The ID of the background image.",
+        "example": 12345
       },
       {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       }
     ],
     "responses": [
@@ -9908,18 +10567,21 @@ export default function VimeoTypeScriptSdk() {
         "name": "backgroundId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the background image."
+        "description": "The ID of the background image.",
+        "example": 12345
       },
       {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       },
       {
         "name": "active",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -9949,7 +10611,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       }
     ],
     "responses": [
@@ -9975,13 +10638,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "genreId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the genre."
+        "description": "The ID of the genre.",
+        "example": "animation"
       },
       {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       }
     ],
     "responses": [
@@ -10015,13 +10680,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "genreId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the genre."
+        "description": "The ID of the genre.",
+        "example": "animation"
       },
       {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       }
     ],
     "responses": [
@@ -10047,13 +10714,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "genreId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the genre."
+        "description": "The ID of the genre.",
+        "example": "animation"
       },
       {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       }
     ],
     "responses": [
@@ -10087,13 +10756,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -10105,13 +10776,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "sort",
@@ -10139,19 +10812,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       }
     ],
     "responses": [
@@ -10177,7 +10853,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       }
     ],
     "responses": [
@@ -10203,13 +10880,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       },
       {
         "name": "posterId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the poster."
+        "description": "The ID of the poster.",
+        "example": 12345
       }
     ],
     "responses": [
@@ -10231,18 +10910,21 @@ export default function VimeoTypeScriptSdk() {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       },
       {
         "name": "posterId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the poster."
+        "description": "The ID of the poster.",
+        "example": 12345
       },
       {
         "name": "active",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -10264,25 +10946,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       },
       {
         "name": "filter",
         "schema": "string",
         "required": true,
-        "description": "The type of filter to apply to the results.\n\nOption descriptions:\n * `batch` - Filter the results by the `batch` promotion.\n * `default` - Filter the results by the default promotion.\n * `single` - Filter the results by the `single` promotion.\n * `vip` - Filter the results by the `vip` promotion.\n"
+        "description": "The type of filter to apply to the results.\n\nOption descriptions:\n * `batch` - Filter the results by the `batch` promotion.\n * `default` - Filter the results by the default promotion.\n * `single` - Filter the results by the `single` promotion.\n * `vip` - Filter the results by the `vip` promotion.\n",
+        "example": "FILTER"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       }
     ],
     "responses": [
@@ -10316,7 +11002,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       },
       {
         "name": "access_type",
@@ -10328,7 +11015,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "code",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "sxsw2018"
       },
       {
         "name": "discount_type",
@@ -10340,25 +11028,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "download",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "end_time",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "1526089920"
       },
       {
         "name": "label",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "sxsw"
       },
       {
         "name": "percent_off",
         "schema": "number",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 50
       },
       {
         "name": "product_type",
@@ -10370,25 +11062,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "start_time",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "1526089920"
       },
       {
         "name": "stream_period",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "STREAM_PERIOD"
       },
       {
         "name": "total",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 9
       },
       {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TYPE"
       }
     ],
     "responses": [
@@ -10422,13 +11118,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       },
       {
         "name": "promotionId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the promotion."
+        "description": "The ID of the promotion.",
+        "example": 12345
       }
     ],
     "responses": [
@@ -10458,13 +11156,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       },
       {
         "name": "promotionId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the promotion."
+        "description": "The ID of the promotion.",
+        "example": 12345
       }
     ],
     "responses": [
@@ -10494,25 +11194,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       },
       {
         "name": "promotionId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the promotion."
+        "description": "The ID of the promotion.",
+        "example": 12345
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       }
     ],
     "responses": [
@@ -10542,7 +11246,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       },
       {
         "name": "countries",
@@ -10577,7 +11282,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       }
     ],
     "responses": [
@@ -10603,7 +11309,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       },
       {
         "name": "countries",
@@ -10639,13 +11346,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "country",
         "schema": "string",
         "required": true,
-        "description": "The country code of the region to remove."
+        "description": "The country code of the region to remove.",
+        "example": "US"
       },
       {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       }
     ],
     "responses": [
@@ -10675,13 +11384,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "country",
         "schema": "string",
         "required": true,
-        "description": "The country code of the region to return."
+        "description": "The country code of the region to return.",
+        "example": "US"
       },
       {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       }
     ],
     "responses": [
@@ -10707,13 +11418,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "country",
         "schema": "string",
         "required": true,
-        "description": "The country code of the region to add."
+        "description": "The country code of the region to add.",
+        "example": "US"
       },
       {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       }
     ],
     "responses": [
@@ -10743,13 +11456,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -10761,13 +11476,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "sort",
@@ -10799,13 +11516,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       },
       {
         "name": "seasonId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the season."
+        "description": "The ID of the season.",
+        "example": 12345
       }
     ],
     "responses": [
@@ -10831,13 +11550,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       },
       {
         "name": "seasonId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the season."
+        "description": "The ID of the season.",
+        "example": 12345
       },
       {
         "name": "filter",
@@ -10849,13 +11570,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "sort",
@@ -10883,13 +11606,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -10901,13 +11626,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "sort",
@@ -10935,13 +11662,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 12345
       }
     ],
     "responses": [
@@ -10967,13 +11696,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 12345
       }
     ],
     "responses": [
@@ -10995,13 +11726,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "ondemandId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the On Demand page."
+        "description": "The ID of the On Demand page.",
+        "example": 61326
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 12345
       },
       {
         "name": "buy",
@@ -11013,13 +11746,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "position",
         "schema": "number",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 10
       },
       {
         "name": "release_year",
         "schema": "number",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 2018
       },
       {
         "name": "rent",
@@ -11031,7 +11766,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TYPE"
       }
     ],
     "responses": [
@@ -11076,7 +11812,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "country",
         "schema": "string",
         "required": true,
-        "description": "The country code of the region to return."
+        "description": "The country code of the region to return.",
+        "example": "US"
       }
     ],
     "responses": [
@@ -11102,7 +11839,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "tier",
         "schema": "string",
         "required": true,
-        "description": "The type of subscription plan.\n\nOption descriptions:\n * `advanced` - The plan type is Vimeo Advanced.\n * `business` - The plan type is Vimeo Business.\n * `free` - The plan type is Vimeo Free.\n * `live_premium` - The plan type is Vimeo Premium.\n * `plus` - The plan type is Vimeo Plus.\n * `pro` - The plan type is Vimeo Pro.\n * `pro_unlimited` - The plan type is Vimeo Pro Unlimited.\n * `standard` - The plan type is Vimeo Standard.\n * `starter` - The plan type is Vimeo Starter.\n"
+        "description": "The type of subscription plan.\n\nOption descriptions:\n * `advanced` - The plan type is Vimeo Advanced.\n * `business` - The plan type is Vimeo Business.\n * `free` - The plan type is Vimeo Free.\n * `live_premium` - The plan type is Vimeo Premium.\n * `plus` - The plan type is Vimeo Plus.\n * `pro` - The plan type is Vimeo Pro.\n * `pro_unlimited` - The plan type is Vimeo Pro Unlimited.\n * `standard` - The plan type is Vimeo Standard.\n * `starter` - The plan type is Vimeo Starter.\n",
+        "example": "pro"
       }
     ],
     "responses": [
@@ -11124,7 +11862,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "word",
         "schema": "string",
         "required": true,
-        "description": "The tag to return."
+        "description": "The tag to return.",
+        "example": "awesome"
       }
     ],
     "responses": [
@@ -11146,25 +11885,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "word",
         "schema": "string",
         "required": true,
-        "description": "The tag word."
+        "description": "The tag word.",
+        "example": "awesome"
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "sort",
@@ -11196,7 +11939,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "code",
         "schema": "string",
         "required": true,
-        "description": "The code corresponding to the desired team. This value appears under `TeamUser` > `code`."
+        "description": "The code corresponding to the desired team. This value appears under `TeamUser` > `code`.",
+        "example": "q3u4mrqoc3u4hcnqo34"
       }
     ],
     "responses": [
@@ -11252,25 +11996,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -11306,7 +12054,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "ownerId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the owner."
+        "description": "The ID of the owner.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -11336,7 +12085,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -11358,12 +12108,14 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "bio",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "This is where you will find videos and news updates from the staff"
       },
       {
         "name": "content_filter",
@@ -11378,22 +12130,26 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "link",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "staff"
       },
       {
         "name": "location",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "New York City"
       },
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Vimeo Staff"
       },
       {
         "name": "password",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "hunter1"
       },
       {
         "name": "videos",
@@ -11424,31 +12180,36 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -11480,19 +12241,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "albumItemUris",
         "schema": "string",
         "required": true,
-        "description": "A comma-separated list of video or event URIs."
+        "description": "A comma-separated list of video or event URIs.",
+        "example": "/videos/258684937,/live_events/273576296"
       },
       {
         "name": "albumUris",
         "schema": "string",
         "required": true,
-        "description": "A comma-separated list of showcase URIs."
+        "description": "A comma-separated list of showcase URIs.",
+        "example": "/showcases/258684873, /showcases/356684937"
       }
     ],
     "responses": [
@@ -11514,37 +12278,43 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "description",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Vimeo holiday videos!"
       },
       {
         "name": "brand_color",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "ff66ee"
       },
       {
         "name": "hide_from_vimeo",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "hide_nav",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "hide_upcoming",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "layout",
@@ -11556,13 +12326,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Vimeo Holiday Videos!"
       },
       {
         "name": "password",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "hunter1"
       },
       {
         "name": "privacy",
@@ -11574,7 +12346,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "review_mode",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "sort",
@@ -11616,13 +12389,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "albumId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the showcase."
+        "description": "The ID of the showcase.",
+        "example": 3706071
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -11652,13 +12427,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "albumId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the showcase."
+        "description": "The ID of the showcase.",
+        "example": 3706071
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -11684,38 +12461,45 @@ export default function VimeoTypeScriptSdk() {
         "name": "albumId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the showcase."
+        "description": "The ID of the showcase.",
+        "example": 3706071
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "description",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Vimeo holiday videos!"
       },
       {
         "name": "brand_color",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "ff66ee"
       },
       {
         "name": "domain",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "mycustomdomain.com"
       },
       {
         "name": "hide_nav",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "hide_upcoming",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "layout",
@@ -11725,12 +12509,14 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Vimeo Holiday Videos!"
       },
       {
         "name": "password",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "hunter1"
       },
       {
         "name": "privacy",
@@ -11740,7 +12526,8 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "review_mode",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "sort",
@@ -11755,12 +12542,14 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "url",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "my-custom-url"
       },
       {
         "name": "use_custom_domain",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -11794,25 +12583,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "albumId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the showcase."
+        "description": "The ID of the showcase.",
+        "example": 3706071
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       }
     ],
     "responses": [
@@ -11842,13 +12635,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "albumId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the showcase."
+        "description": "The ID of the showcase.",
+        "example": 3706071
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -11878,19 +12673,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "albumId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the showcase."
+        "description": "The ID of the showcase.",
+        "example": 3706071
       },
       {
         "name": "thumbnailId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the custom thumbnail."
+        "description": "The ID of the custom thumbnail.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -11920,19 +12718,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "albumId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the showcase."
+        "description": "The ID of the showcase.",
+        "example": 3706071
       },
       {
         "name": "thumbnailId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the custom thumbnail."
+        "description": "The ID of the custom thumbnail.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -11962,24 +12763,28 @@ export default function VimeoTypeScriptSdk() {
         "name": "albumId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the showcase."
+        "description": "The ID of the showcase.",
+        "example": 3706071
       },
       {
         "name": "thumbnailId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the custom thumbnail."
+        "description": "The ID of the custom thumbnail.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "active",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -12009,25 +12814,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "albumId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the showcase."
+        "description": "The ID of the showcase.",
+        "example": 3706071
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       }
     ],
     "responses": [
@@ -12053,13 +12862,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "albumId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the showcase."
+        "description": "The ID of the showcase.",
+        "example": 3706071
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -12089,19 +12900,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "albumId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the showcase."
+        "description": "The ID of the showcase.",
+        "example": 3706071
       },
       {
         "name": "logoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the custom logo."
+        "description": "The ID of the custom logo.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -12131,19 +12945,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "albumId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the showcase."
+        "description": "The ID of the showcase.",
+        "example": 3706071
       },
       {
         "name": "logoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the custom logo."
+        "description": "The ID of the custom logo.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -12173,24 +12990,28 @@ export default function VimeoTypeScriptSdk() {
         "name": "albumId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the showcase."
+        "description": "The ID of the showcase.",
+        "example": 3706071
       },
       {
         "name": "logoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the custom logo."
+        "description": "The ID of the custom logo.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "active",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -12220,25 +13041,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "albumId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the showcase."
+        "description": "The ID of the showcase.",
+        "example": 3706071
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "containingUri",
         "schema": "string",
         "required": false,
-        "description": "The page containing the video URI."
+        "description": "The page containing the video URI.",
+        "example": "/videos/258684937"
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -12250,31 +13075,36 @@ export default function VimeoTypeScriptSdk() {
         "name": "filterEmbeddable",
         "schema": "boolean",
         "required": false,
-        "description": "Whether to filter the results by embeddable videos (`true`) or non-embeddable videos (`false`). This parameter is required only when **filter** is `embeddable`."
+        "description": "Whether to filter the results by embeddable videos (`true`) or non-embeddable videos (`false`). This parameter is required only when **filter** is `embeddable`.",
+        "example": true
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "password",
         "schema": "string",
         "required": false,
-        "description": "The password of the showcase."
+        "description": "The password of the showcase.",
+        "example": "hunter1"
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -12286,7 +13116,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "weakSearch",
         "schema": "boolean",
         "required": false,
-        "description": "Whether to include private videos in the search. Please note that a separate search service provides this functionality. The service performs a partial text search on the video's name."
+        "description": "Whether to include private videos in the search. Please note that a separate search service provides this functionality. The service performs a partial text search on the video's name.",
+        "example": false
       }
     ],
     "responses": [
@@ -12312,19 +13143,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "albumId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the showcase."
+        "description": "The ID of the showcase.",
+        "example": 3706071
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "videos",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "/videos/258684937,/videos/273576296"
       }
     ],
     "responses": [
@@ -12354,19 +13188,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "albumId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the showcase."
+        "description": "The ID of the showcase.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 196367152
       }
     ],
     "responses": [
@@ -12396,25 +13233,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "albumId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the showcase."
+        "description": "The ID of the showcase.",
+        "example": 3706071
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 196367152
       },
       {
         "name": "password",
         "schema": "string",
         "required": false,
-        "description": "The password of the showcase."
+        "description": "The password of the showcase.",
+        "example": "hunter1"
       }
     ],
     "responses": [
@@ -12440,19 +13281,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "albumId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the showcase."
+        "description": "The ID of the showcase.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 196367152
       }
     ],
     "responses": [
@@ -12482,24 +13326,28 @@ export default function VimeoTypeScriptSdk() {
         "name": "albumId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the showcase."
+        "description": "The ID of the showcase.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 196367152
       },
       {
         "name": "time_code",
         "schema": "number",
-        "description": ""
+        "description": "",
+        "example": 300
       }
     ],
     "responses": [
@@ -12533,19 +13381,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "albumId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the showcase."
+        "description": "The ID of the showcase.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 196367152
       }
     ],
     "responses": [
@@ -12575,67 +13426,78 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 123456
       },
       {
         "name": "dimension",
         "schema": "string",
         "required": true,
-        "description": "The data dimension by which to group the results.\n\nOption descriptions:\n * `country` - Group the results by country.\n * `device_type` - Group the results by device type.\n * `embed_domain` - Group the results by embed domain.\n * `total` - Group the results by the time range provided.\n * `video` - Group the results by video.\n"
+        "description": "The data dimension by which to group the results.\n\nOption descriptions:\n * `country` - Group the results by country.\n * `device_type` - Group the results by device type.\n * `embed_domain` - Group the results by embed domain.\n * `total` - Group the results by the time range provided.\n * `video` - Group the results by video.\n",
+        "example": "DIMENSION"
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filterContent",
         "schema": "string",
         "required": false,
-        "description": "A comma-separated list of video, folder, or event URIs to filter."
+        "description": "A comma-separated list of video, folder, or event URIs to filter.",
+        "example": "/folder/1233456,/video/7890123,/folder/123"
       },
       {
         "name": "filterCountries",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of country codes in ISO-3166 format to filter on."
+        "description": "A comma-separated list of country codes in ISO-3166 format to filter on.",
+        "example": "UK,US,IN"
       },
       {
         "name": "filterDeviceTypes",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of device types to filter on."
+        "description": "A comma-separated list of device types to filter on.",
+        "example": "android,ios"
       },
       {
         "name": "filterEmbedDomains",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of domain names to filter on."
+        "description": "A comma-separated list of domain names to filter on.",
+        "example": "abc.com,xyz.com"
       },
       {
         "name": "filterStreamingTypes",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of streaming types to filter on."
+        "description": "A comma-separated list of streaming types to filter on.",
+        "example": "live,video"
       },
       {
         "name": "from",
         "schema": "string",
         "required": true,
-        "description": "The start date of the range of results in ISO 8601 format."
+        "description": "The start date of the range of results in ISO 8601 format.",
+        "example": "2021-05-30T00:00:00+00:00"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The maximum number of items returned from the request, up to a limit of 1000 items. The default value is `50`."
+        "description": "The maximum number of items returned from the request, up to a limit of 1000 items. The default value is `50`.",
+        "example": 50
       },
       {
         "name": "sort",
@@ -12653,7 +13515,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "to",
         "schema": "string",
         "required": true,
-        "description": "The end date of the range of results in ISO 8601 format."
+        "description": "The end date of the range of results in ISO 8601 format.",
+        "example": "2021-06-30T23:59:59+00:00"
       }
     ],
     "responses": [
@@ -12675,13 +13538,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -12693,25 +13558,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "filterEmbeddable",
         "schema": "boolean",
         "required": false,
-        "description": "Whether to filter the results by embeddable videos (`true`) or non-embeddable videos (`false`). This parameter is required only when **filter** is `embeddable`."
+        "description": "Whether to filter the results by embeddable videos (`true`) or non-embeddable videos (`false`). This parameter is required only when **filter** is `embeddable`.",
+        "example": true
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -12739,25 +13608,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "sort",
@@ -12789,13 +13662,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "category",
         "schema": "string",
         "required": true,
-        "description": "The name of the category."
+        "description": "The name of the category.",
+        "example": "animation"
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -12817,13 +13692,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "category",
         "schema": "string",
         "required": true,
-        "description": "The name of the category."
+        "description": "The name of the category.",
+        "example": "animation"
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -12845,13 +13722,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "category",
         "schema": "number",
         "required": true,
-        "description": "The name of the category."
+        "description": "The name of the category.",
+        "example": 0
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -12873,13 +13752,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -12891,19 +13772,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -12935,13 +13819,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -12967,13 +13853,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -12999,13 +13887,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "channelId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the channel."
+        "description": "The ID of the channel.",
+        "example": 927
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -13031,7 +13921,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -13057,7 +13948,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -13083,13 +13975,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "logoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the custom logo."
+        "description": "The ID of the custom logo.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -13115,13 +14009,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "logoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the custom logo."
+        "description": "The ID of the custom logo.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -13147,7 +14043,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -13177,25 +14074,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "offset",
         "schema": "string",
         "required": false,
-        "description": "The pagination offset. We recommend that you use the pagination links in the feed response instead of working with this value directly. For more details, see our [pagination documentation](https://developer.vimeo.com/api/common-formats#using-the-pagination-parameter)."
+        "description": "The pagination offset. We recommend that you use the pagination links in the feed response instead of working with this value directly. For more details, see our [pagination documentation](https://developer.vimeo.com/api/common-formats#using-the-pagination-parameter).",
+        "example": "280"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "type",
@@ -13223,31 +14124,36 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -13275,13 +14181,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -13293,19 +14201,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -13333,7 +14244,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "users",
@@ -13381,13 +14293,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "followUserId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user to unfollow."
+        "description": "The ID of the user to unfollow.",
+        "example": 3766357
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -13409,13 +14323,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "followUserId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user to follow."
+        "description": "The ID of the user to follow.",
+        "example": 3766357
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -13441,13 +14357,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "followUserId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user to follow."
+        "description": "The ID of the user to follow.",
+        "example": 3766357
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -13473,13 +14391,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -13491,19 +14411,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -13531,13 +14454,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "groupId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the group."
+        "description": "The ID of the group.",
+        "example": 1108
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -13563,13 +14488,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "groupId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the group."
+        "description": "The ID of the group.",
+        "example": 1108
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -13595,13 +14522,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "groupId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the group."
+        "description": "The ID of the group.",
+        "example": 1108
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -13627,7 +14556,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "filter",
@@ -13639,25 +14569,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "filterEmbeddable",
         "schema": "boolean",
         "required": false,
-        "description": "Whether to filter the results by embeddable videos (`true`) or non-embeddable videos (`false`). This parameter is required only when **filter** is `embeddable`."
+        "description": "Whether to filter the results by embeddable videos (`true`) or non-embeddable videos (`false`). This parameter is required only when **filter** is `embeddable`.",
+        "example": true
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -13685,13 +14619,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -13717,13 +14653,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -13749,13 +14687,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -13785,13 +14725,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "password",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "hunter1"
       }
     ],
     "responses": [
@@ -13813,13 +14755,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -13831,19 +14775,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -13855,7 +14802,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": false,
-        "description": "The type of event to return.\n\nOption descriptions:\n * `all` - Return all events.\n * `one_time` - Return one-time events only.\n * `recurring` - Return recurring events only.\n"
+        "description": "The type of event to return.\n\nOption descriptions:\n * `all` - Return all events.\n * `one_time` - Return one-time events only.\n * `recurring` - Return recurring events only.\n",
+        "example": "recurring"
       }
     ],
     "responses": [
@@ -13877,13 +14825,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "title",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Live Content"
       },
       {
         "name": "allow_share_link",
@@ -13895,31 +14845,36 @@ export default function VimeoTypeScriptSdk() {
         "name": "auto_cc_enabled",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "auto_cc_keywords",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "commonly-used words,phrases,technical terms"
       },
       {
         "name": "auto_cc_lang",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "en-US"
       },
       {
         "name": "automatically_title_stream",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "chat_enabled",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "content_rating",
@@ -13931,7 +14886,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "dvr",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "embed",
@@ -13943,7 +14899,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "folder_uri",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "/users/67890/folder/12345"
       },
       {
         "name": "interaction_tools_settings",
@@ -13961,7 +14918,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "playlist_sort",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "added_first"
       },
       {
         "name": "rtmp_preview",
@@ -13979,13 +14937,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "scheduled_playback",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "stream_description",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "In this episode, we interview a surprise guest"
       },
       {
         "name": "stream_embed",
@@ -13997,7 +14957,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "stream_password",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "hunter1"
       },
       {
         "name": "stream_privacy",
@@ -14009,13 +14970,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "stream_title",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Special Feature"
       },
       {
         "name": "time_zone",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "America/New_York"
       }
     ],
     "responses": [
@@ -14049,13 +15012,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 0
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 0
       }
     ],
     "responses": [
@@ -14085,13 +15050,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "password",
@@ -14131,23 +15098,27 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "title",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Live Content"
       },
       {
         "name": "auto_cc_enabled",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "auto_cc_keywords",
@@ -14157,17 +15128,20 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "auto_cc_language",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "en-US"
       },
       {
         "name": "automatically_title_stream",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "chat_enabled",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "content_rating",
@@ -14177,7 +15151,8 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "dvr",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "embed",
@@ -14192,7 +15167,8 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "playlist_sort",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "added_first"
       },
       {
         "name": "schedule",
@@ -14202,12 +15178,14 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "scheduled_playback",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "stream_description",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "In this episode, we interview a surprise guest"
       },
       {
         "name": "stream_embed",
@@ -14217,12 +15195,14 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "stream_mode",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "live"
       },
       {
         "name": "stream_password",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "hunter1"
       },
       {
         "name": "stream_privacy",
@@ -14232,12 +15212,14 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "stream_title",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Special Feature"
       },
       {
         "name": "time_zone",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "America/New_York"
       }
     ],
     "responses": [
@@ -14271,23 +15253,27 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "cloud_composing_streaming",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "streaming_start_requested",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -14333,31 +15319,36 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "auto_cc_enabled",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "auto_cc_keywords",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "commonly-used words,phrases,technical terms"
       },
       {
         "name": "auto_cc_lang",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "en-US"
       }
     ],
     "responses": [
@@ -14391,13 +15382,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -14435,73 +15428,85 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "display_name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "My channel"
       },
       {
         "name": "is_enabled",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "privacy",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "public"
       },
       {
         "name": "provider_destination_id",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "bda55c6b3ba4"
       },
       {
         "name": "provider_video_id",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "6817807391346708000"
       },
       {
         "name": "scheduled_at",
         "schema": "number",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 1625754461
       },
       {
         "name": "service_name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "youtube"
       },
       {
         "name": "stream_key",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "da056692-ba63-4749-a6eb-a476a22b3acd"
       },
       {
         "name": "stream_url",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "rtmp://mycooldomain.com/live"
       },
       {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "channel"
       }
     ],
     "responses": [
@@ -14539,13 +15544,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "clipId",
         "schema": "number",
         "required": false,
-        "description": "The ID of the streamable video."
+        "description": "The ID of the streamable video.",
+        "example": 12345
       }
     ],
     "responses": [
@@ -14583,13 +15590,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "low_latency",
@@ -14624,19 +15633,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "maxFpsFhd",
         "schema": "number",
         "required": false,
-        "description": "The requested maximum frames per second."
+        "description": "The requested maximum frames per second.",
+        "example": 30
       }
     ],
     "responses": [
@@ -14682,13 +15694,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -14726,13 +15740,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -14766,13 +15782,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -14810,13 +15828,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -14842,18 +15862,21 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "active",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -14883,19 +15906,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "thumbnailId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the thumbnail."
+        "description": "The ID of the thumbnail.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -14925,19 +15951,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "thumbnailId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the thumbnail."
+        "description": "The ID of the thumbnail.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -14967,24 +15996,28 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "thumbnailId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the thumbnail."
+        "description": "The ID of the thumbnail.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "active",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -15014,13 +16047,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -15058,13 +16093,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "allowed_domains",
@@ -15107,13 +16144,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "videos",
@@ -15152,25 +16191,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "containingUri",
         "schema": "string",
         "required": false,
-        "description": "The page that contains the video URI."
+        "description": "The page that contains the video URI.",
+        "example": "/videos/258684937"
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -15182,25 +16225,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "filterEmbeddable",
         "schema": "boolean",
         "required": false,
-        "description": "Whether to filter the results by embeddable videos (`true`) or non-embeddable videos (`false`). This parameter is required only when **filter** is `embeddable`."
+        "description": "Whether to filter the results by embeddable videos (`true`) or non-embeddable videos (`false`). This parameter is required only when **filter** is `embeddable`.",
+        "example": true
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -15240,13 +16287,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "videos",
@@ -15285,19 +16334,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "liveEventId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -15331,13 +16383,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -15349,13 +16403,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "sort",
@@ -15387,13 +16443,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "description",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "DARBY FOREVER follows the fantasies of Darby, a shopgirl at \"Bobbins & Notions\"."
       },
       {
         "name": "accepted_currencies",
@@ -15411,13 +16469,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "content_rating",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CONTENT_RATING"
       },
       {
         "name": "domain_link",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "https://example.com"
       },
       {
         "name": "episodes",
@@ -15429,13 +16489,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "link",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "darbyforever"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Darby Forever"
       },
       {
         "name": "rent",
@@ -15453,7 +16515,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TYPE"
       }
     ],
     "responses": [
@@ -15475,13 +16538,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -15493,13 +16558,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "sort",
@@ -15531,19 +16598,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       }
     ],
     "responses": [
@@ -15565,7 +16635,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -15587,13 +16658,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "portraitsetId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the picture."
+        "description": "The ID of the picture.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -15615,13 +16688,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "portraitsetId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the picture."
+        "description": "The ID of the picture.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -15643,18 +16718,21 @@ export default function VimeoTypeScriptSdk() {
         "name": "portraitsetId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the picture."
+        "description": "The ID of the picture.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "active",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -15676,31 +16754,36 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -15728,13 +16811,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "portfolioId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the portfolio."
+        "description": "The ID of the portfolio.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -15756,19 +16841,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "portfolioId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the portfolio."
+        "description": "The ID of the portfolio.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "containingUri",
         "schema": "string",
         "required": false,
-        "description": "The page that contains the video URI."
+        "description": "The page that contains the video URI.",
+        "example": "/videos/258684937"
       },
       {
         "name": "filter",
@@ -15780,19 +16868,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "filterEmbeddable",
         "schema": "boolean",
         "required": false,
-        "description": "Whether to filter the results by embeddable videos (`true`) or non-embeddable videos (`false`). This parameter is required only when **filter** is `embeddable`."
+        "description": "Whether to filter the results by embeddable videos (`true`) or non-embeddable videos (`false`). This parameter is required only when **filter** is `embeddable`.",
+        "example": true
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "sort",
@@ -15820,19 +16911,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "portfolioId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the portfolio."
+        "description": "The ID of the portfolio.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -15858,19 +16952,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "portfolioId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the portfolio."
+        "description": "The ID of the portfolio.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -15892,19 +16989,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "portfolioId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the portfolio."
+        "description": "The ID of the portfolio.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -15930,19 +17030,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       }
     ],
     "responses": [
@@ -15964,7 +17067,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "embed",
@@ -15974,7 +17078,8 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "New preset"
       }
     ],
     "responses": [
@@ -15996,13 +17101,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "presetId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the preset."
+        "description": "The ID of the preset.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -16024,13 +17131,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "presetId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the preset."
+        "description": "The ID of the preset.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "outro",
@@ -16065,25 +17174,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "presetId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the embed preset."
+        "description": "The ID of the embed preset.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       }
     ],
     "responses": [
@@ -16105,31 +17218,36 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -16161,19 +17279,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Rough cuts"
       },
       {
         "name": "parent_folder_uri",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "/users/12345/projects/6789"
       }
     ],
     "responses": [
@@ -16207,19 +17328,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "projectId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the folder."
+        "description": "The ID of the folder.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "shouldDeleteClips",
         "schema": "boolean",
         "required": false,
-        "description": "Whether to delete all the videos in the folder along with the folder itself."
+        "description": "Whether to delete all the videos in the folder along with the folder itself.",
+        "example": true
       }
     ],
     "responses": [
@@ -16253,13 +17377,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "projectId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the folder."
+        "description": "The ID of the folder.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -16289,19 +17415,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "projectId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the folder."
+        "description": "The ID of the folder.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Rough cuts"
       }
     ],
     "responses": [
@@ -16339,19 +17468,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "projectId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the folder."
+        "description": "The ID of the folder.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -16363,13 +17495,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "sort",
@@ -16397,25 +17531,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "projectId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the folder."
+        "description": "The ID of the folder.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "shouldDeleteClips",
         "schema": "boolean",
         "required": false,
-        "description": "Whether to delete the videos when removing them from the folder."
+        "description": "Whether to delete the videos when removing them from the folder.",
+        "example": false
       },
       {
         "name": "uris",
         "schema": "string",
         "required": true,
-        "description": "A comma-separated list of the video URIs to remove."
+        "description": "A comma-separated list of the video URIs to remove.",
+        "example": "/videos/258684937,/videos/273576296"
       }
     ],
     "responses": [
@@ -16449,67 +17587,78 @@ export default function VimeoTypeScriptSdk() {
         "name": "projectId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the folder."
+        "description": "The ID of the folder.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filterTag",
         "schema": "string",
         "required": false,
-        "description": "A comma-separated list of tags to filter on. All results must include at least one of these tags. The use of this parameter triggers a search."
+        "description": "A comma-separated list of tags to filter on. All results must include at least one of these tags. The use of this parameter triggers a search.",
+        "example": "abc,xyz"
       },
       {
         "name": "filterTagAllOf",
         "schema": "string",
         "required": false,
-        "description": "A comma-separated list of tags to filter on. All results must include all of these tags. The use of this parameter triggers a search."
+        "description": "A comma-separated list of tags to filter on. All results must include all of these tags. The use of this parameter triggers a search.",
+        "example": "abc,xyz"
       },
       {
         "name": "filterTagExclude",
         "schema": "string",
         "required": false,
-        "description": "A comma-separated list of tags to exclude. The use of this parameter triggers a search."
+        "description": "A comma-separated list of tags to exclude. The use of this parameter triggers a search.",
+        "example": "abc,xyz"
       },
       {
         "name": "includeSubfolders",
         "schema": "boolean",
         "required": false,
-        "description": "Whether to include subfolders."
+        "description": "Whether to include subfolders.",
+        "example": false
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "queryFields",
         "schema": "string",
         "required": false,
-        "description": "A comma-separated list of fields to query over. The default value is `title,description,chapters,tags`."
+        "description": "A comma-separated list of fields to query over. The default value is `title,description,chapters,tags`.",
+        "example": "title,description"
       },
       {
         "name": "sort",
@@ -16545,19 +17694,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "projectId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the folder."
+        "description": "The ID of the folder.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "uris",
         "schema": "string",
         "required": true,
-        "description": "A comma-separated list of video URIs to add."
+        "description": "A comma-separated list of video URIs to add.",
+        "example": "/videos/258684937,/videos/273576296"
       }
     ],
     "responses": [
@@ -16591,19 +17743,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "projectId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the folder."
+        "description": "The ID of the folder.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -16637,19 +17792,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "projectId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the folder."
+        "description": "The ID of the folder.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -16675,7 +17833,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the team owner."
+        "description": "The ID of the team owner.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -16697,13 +17856,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "teamUserId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the team user."
+        "description": "The ID of the team user.",
+        "example": 0
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the team owner."
+        "description": "The ID of the team owner.",
+        "example": 0
       }
     ],
     "responses": [
@@ -16725,25 +17886,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "uploadId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the streaming upload."
+        "description": "The ID of the streaming upload.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "signature",
         "schema": "string",
         "required": true,
-        "description": "The crypto signature of the completed upload."
+        "description": "The crypto signature of the completed upload.",
+        "example": "cd89a20adde7a608f3331e71c37bdfa087bacbf3"
       },
       {
         "name": "videoFileId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the uploaded file."
+        "description": "The ID of the uploaded file.",
+        "example": 1234
       }
     ],
     "responses": [
@@ -16777,13 +17942,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "uploadId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the upload attempt."
+        "description": "The ID of the upload attempt.",
+        "example": 12345
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       }
     ],
     "responses": [
@@ -16805,13 +17972,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "uris",
         "schema": "string",
         "required": true,
-        "description": "A comma-separated list of the video URIs to delete."
+        "description": "A comma-separated list of the video URIs to delete.",
+        "example": "/videos/258684937,/videos/258684546"
       }
     ],
     "responses": [
@@ -16845,19 +18014,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "containingUri",
         "schema": "string",
         "required": false,
-        "description": "The page that contains the video URI. The field is available only when not paired with **query**."
+        "description": "The page that contains the video URI. The field is available only when not paired with **query**.",
+        "example": "/videos/258684937"
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -16869,67 +18041,78 @@ export default function VimeoTypeScriptSdk() {
         "name": "filterEmbeddable",
         "schema": "boolean",
         "required": false,
-        "description": "Whether to filter the results by embeddable videos (`true`) or non-embeddable videos (`false`). This parameter is required only when **filter** is `embeddable`."
+        "description": "Whether to filter the results by embeddable videos (`true`) or non-embeddable videos (`false`). This parameter is required only when **filter** is `embeddable`.",
+        "example": true
       },
       {
         "name": "filterPlayable",
         "schema": "boolean",
         "required": false,
-        "description": "Whether to filter the results by playable videos (`true`) or non-playable videos (`false`)."
+        "description": "Whether to filter the results by playable videos (`true`) or non-playable videos (`false`).",
+        "example": true
       },
       {
         "name": "filterScreenRecorded",
         "schema": "boolean",
         "required": false,
-        "description": "Whether to filter the results by screen-recorded videos (`true`) or non-screen-recorded videos (`false`)."
+        "description": "Whether to filter the results by screen-recorded videos (`true`) or non-screen-recorded videos (`false`).",
+        "example": true
       },
       {
         "name": "filterTag",
         "schema": "string",
         "required": false,
-        "description": "A comma-separated list of tags to filter on. All results must include at least one of these tags."
+        "description": "A comma-separated list of tags to filter on. All results must include at least one of these tags.",
+        "example": "abc,xyz"
       },
       {
         "name": "filterTagAllOf",
         "schema": "string",
         "required": false,
-        "description": "A comma-separated list of tags to filter on. All results must include all of these tags."
+        "description": "A comma-separated list of tags to filter on. All results must include all of these tags.",
+        "example": "abc,xyz"
       },
       {
         "name": "filterTagExclude",
         "schema": "string",
         "required": false,
-        "description": "A comma-separated list of tags to exclude. All results must exclude all of these tags."
+        "description": "A comma-separated list of tags to exclude. All results must exclude all of these tags.",
+        "example": "abc,xyz"
       },
       {
         "name": "includeTeamContent",
         "schema": "string",
         "required": false,
-        "description": "Whether to include content from the user's teams when searching. _This field is deprecated._"
+        "description": "Whether to include content from the user's teams when searching. _This field is deprecated._",
+        "example": "true"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "queryFields",
         "schema": "array",
         "required": false,
-        "description": "A comma-separated list of fields to query over. The default value is `title,description,chapters,tags`.\n\nOption descriptions:\n * `chapters` - Query by chapter titles that have been added to the video.\n * `description` - Query by the description of the video.\n * `tags` - Query by tag names that have been added to the video.\n * `title` - Query by the title of the video.\n"
+        "description": "A comma-separated list of fields to query over. The default value is `title,description,chapters,tags`.\n\nOption descriptions:\n * `chapters` - Query by chapter titles that have been added to the video.\n * `description` - Query by the description of the video.\n * `tags` - Query by tag names that have been added to the video.\n * `title` - Query by the title of the video.\n",
+        "example": "title,description"
       },
       {
         "name": "sort",
@@ -16961,13 +18144,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "description",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "A celebration of 10 years of Staff Picks."
       },
       {
         "name": "content_rating",
@@ -16991,13 +18176,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "folder_uri",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "/users/12345/folders/6789"
       },
       {
         "name": "hide_from_vimeo",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "license",
@@ -17009,19 +18196,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "locale",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "en_US"
       },
       {
         "name": "name",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Celebrating 10 Years of Staff Picks"
       },
       {
         "name": "password",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "hunter1"
       },
       {
         "name": "privacy",
@@ -17083,13 +18273,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -17115,13 +18307,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 12345
       }
     ],
     "responses": [
@@ -17155,73 +18349,85 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 12345
       },
       {
         "name": "display_name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "My channel"
       },
       {
         "name": "is_enabled",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "privacy",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "public"
       },
       {
         "name": "provider_destination_id",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "bda55c6b3ba4"
       },
       {
         "name": "provider_video_id",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "6817807391346708000"
       },
       {
         "name": "scheduled_at",
         "schema": "number",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 1625754461
       },
       {
         "name": "service_name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "youtube"
       },
       {
         "name": "stream_key",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "da056692-ba63-4749-a6eb-a476a22b3acd"
       },
       {
         "name": "stream_url",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "rtmp://mycooldomain.com/live"
       },
       {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "channel"
       }
     ],
     "responses": [
@@ -17259,13 +18465,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 12345
       }
     ],
     "responses": [
@@ -17299,13 +18507,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -17317,25 +18527,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "filterEmbeddable",
         "schema": "boolean",
         "required": false,
-        "description": "Whether to filter the results by embeddable videos (`true`) or non-embeddable videos (`false`). This parameter is required only when **filter** is `embeddable`."
+        "description": "Whether to filter the results by embeddable videos (`true`) or non-embeddable videos (`false`). This parameter is required only when **filter** is `embeddable`.",
+        "example": true
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -17367,13 +18581,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -17395,13 +18611,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -17427,13 +18645,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -17455,19 +18675,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "title",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Interviews Daily"
       },
       {
         "name": "description",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "In this episode, we interview a surprise guest"
       },
       {
         "name": "email_settings",
@@ -17479,13 +18702,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "folder_uri",
         "schema": "number",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "password",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "gogo"
       },
       {
         "name": "privacy",
@@ -17503,7 +18728,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "time_zone",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "America/New_York"
       }
     ],
     "responses": [
@@ -17537,13 +18763,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "webinarId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the webinar."
+        "description": "The ID of the webinar.",
+        "example": "f19bfa08-b266-4f20-bfce-db1d0719b52f"
       }
     ],
     "responses": [
@@ -17569,23 +18797,27 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "webinarId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the webinar."
+        "description": "The ID of the webinar.",
+        "example": "f19bfa08-b266-4f20-bfce-db1d0719b52f"
       },
       {
         "name": "title",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Interviews Daily"
       },
       {
         "name": "description",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "In this episode, we interview a surprise guest"
       },
       {
         "name": "email_settings",
@@ -17595,7 +18827,8 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "password",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "gogo"
       },
       {
         "name": "privacy",
@@ -17610,12 +18843,14 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "status",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "started"
       },
       {
         "name": "time_zone",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "America/New_York"
       }
     ],
     "responses": [
@@ -17649,13 +18884,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "webinarId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the webinar."
+        "description": "The ID of the webinar.",
+        "example": "f19bfa08-b266-4f20-bfce-db1d0719b52f"
       }
     ],
     "responses": [
@@ -17685,23 +18922,27 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "webinarId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the webinar."
+        "description": "The ID of the webinar.",
+        "example": "f19bfa08-b266-4f20-bfce-db1d0719b52f"
       },
       {
         "name": "accent_color",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "#000fff"
       },
       {
         "name": "custom_link",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "https://xyz.com"
       },
       {
         "name": "email_event_reminder_24_hrs",
@@ -17726,47 +18967,56 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "from",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Vimeo"
       },
       {
         "name": "logo_uri",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "/users/123/team_logos_2343"
       },
       {
         "name": "reply_email",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "test@vimeo.com"
       },
       {
         "name": "sender_address",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Bangalore, India"
       },
       {
         "name": "sender_policy_url",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "vimeo.com/policy"
       },
       {
         "name": "use_custom_link",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "use_reply_email",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "use_sender_address",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "use_sender_policy_url",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       }
     ],
     "responses": [
@@ -17796,31 +19046,36 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "webinarId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the webinar."
+        "description": "The ID of the webinar.",
+        "example": "f19bfa08-b266-4f20-bfce-db1d0719b52f"
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "sort",
@@ -17860,13 +19115,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "webinarId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the webinar."
+        "description": "The ID of the webinar.",
+        "example": "f19bfa08-b266-4f20-bfce-db1d0719b52f"
       },
       {
         "name": "registrants",
@@ -17901,19 +19158,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "registrantId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the webinar registrant."
+        "description": "The ID of the webinar registrant.",
+        "example": "f19bfa08-b266-4f20-bfce-db1d0719b52f"
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "webinarId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the webinar."
+        "description": "The ID of the webinar.",
+        "example": "f19bfa08-b266-4f20-bfce-db1d0719b52f"
       }
     ],
     "responses": [
@@ -17951,24 +19211,28 @@ export default function VimeoTypeScriptSdk() {
         "name": "registrantId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the webinar registrant."
+        "description": "The ID of the webinar registrant.",
+        "example": "f19bfa08-b266-4f20-bfce-db1d0719b52f"
       },
       {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "webinarId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the webinar."
+        "description": "The ID of the webinar.",
+        "example": "f19bfa08-b266-4f20-bfce-db1d0719b52f"
       },
       {
         "name": "is_blocked",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -18002,7 +19266,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "filter",
@@ -18014,25 +19279,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "links",
         "schema": "string",
         "required": false,
-        "description": "A comma-separated list of video URLs to find. Querying, filtering, and sorting aren't supported when using this field."
+        "description": "A comma-separated list of video URLs to find. Querying, filtering, and sorting aren't supported when using this field.",
+        "example": "https://vimeo.com/122375452,https://vimeo.com/273576296"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": true,
-        "description": "The search query."
+        "description": "The search query.",
+        "example": "staff picks"
       },
       {
         "name": "sort",
@@ -18044,7 +19313,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "uris",
         "schema": "string",
         "required": false,
-        "description": "A comma-separated list of video URIs to find. Querying, filtering, and sorting aren't supported when using this field."
+        "description": "A comma-separated list of video URIs to find. Querying, filtering, and sorting aren't supported when using this field.",
+        "example": "/videos/122375452,/videos/273576296"
       }
     ],
     "responses": [
@@ -18074,7 +19344,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -18100,7 +19371,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -18126,12 +19398,14 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "description",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "A celebration of 10 years of Staff Picks."
       },
       {
         "name": "content_rating",
@@ -18141,7 +19415,8 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "custom_url",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "puppies"
       },
       {
         "name": "embed",
@@ -18166,7 +19441,8 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "hide_from_vimeo",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "license",
@@ -18176,17 +19452,20 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "locale",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "en-US"
       },
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Celebrating 10 Years of Staff Picks"
       },
       {
         "name": "password",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "hunter1"
       },
       {
         "name": "privacy",
@@ -18231,19 +19510,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       }
     ],
     "responses": [
@@ -18269,7 +19551,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "add",
@@ -18305,19 +19588,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       }
     ],
     "responses": [
@@ -18343,19 +19629,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "duration",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 5
       },
       {
         "name": "start_time",
         "schema": "number",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 2
       }
     ],
     "responses": [
@@ -18389,13 +19678,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "pictureId",
         "schema": "string",
         "required": true,
-        "description": "The UUID of the set of animated thumbnails."
+        "description": "The UUID of the set of animated thumbnails.",
+        "example": "23f34-b34h4-34hb3"
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -18421,13 +19712,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "pictureId",
         "schema": "string",
         "required": true,
-        "description": "The UUID of the set of animated thumbnails."
+        "description": "The UUID of the set of animated thumbnails.",
+        "example": "23few-h4hw4t-45j5"
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -18453,13 +19746,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "pictureId",
         "schema": "string",
         "required": true,
-        "description": "The UUID of the set of animated thumbnails."
+        "description": "The UUID of the set of animated thumbnails.",
+        "example": "23few-h4hw4t-45j5"
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -18485,19 +19780,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       }
     ],
     "responses": [
@@ -18523,7 +19821,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -18553,19 +19852,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       }
     ],
     "responses": [
@@ -18591,7 +19893,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "category",
@@ -18627,19 +19930,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       }
     ],
     "responses": [
@@ -18665,17 +19971,20 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "title",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Chapter 1"
       },
       {
         "name": "active_thumbnail_uri",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "/videos/12345678/chapters/12345/pictures/24kjh4h4g38175db9f59fae9f7g9ekhg"
       },
       {
         "name": "thumbnail_uris",
@@ -18685,7 +19994,8 @@ export default function VimeoTypeScriptSdk() {
       {
         "name": "timecode",
         "schema": "number",
-        "description": ""
+        "description": "",
+        "example": 140
       }
     ],
     "responses": [
@@ -18711,12 +20021,14 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "timecode",
         "schema": "number",
-        "description": ""
+        "description": "",
+        "example": 140
       }
     ],
     "responses": [
@@ -18742,7 +20054,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -18768,13 +20081,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "chapterId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the chapter."
+        "description": "The ID of the chapter.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -18800,13 +20115,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "chapterId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the chapter."
+        "description": "The ID of the chapter.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -18832,28 +20149,33 @@ export default function VimeoTypeScriptSdk() {
         "name": "chapterId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the chapter."
+        "description": "The ID of the chapter.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "title",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Chapter 1"
       },
       {
         "name": "active_thumbnail_uri",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "/videos/12345678/chapters/12345/pictures/24kjh4h4g38175db9f59fae9f7g9ekhg"
       },
       {
         "name": "timecode",
         "schema": "number",
-        "description": ""
+        "description": "",
+        "example": 140
       }
     ],
     "responses": [
@@ -18883,13 +20205,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "chapterId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the chapter."
+        "description": "The ID of the chapter.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -18915,18 +20239,21 @@ export default function VimeoTypeScriptSdk() {
         "name": "chapterId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the chapter."
+        "description": "The ID of the chapter.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "timecode",
         "schema": "number",
-        "description": ""
+        "description": "",
+        "example": 140
       }
     ],
     "responses": [
@@ -18952,19 +20279,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "chapterId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the chapter."
+        "description": "The ID of the chapter.",
+        "example": 12345
       },
       {
         "name": "uid",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of the thumbnail."
+        "description": "The unique ID of the thumbnail.",
+        "example": "24kjh4h4g38175db9f59fae9f7g9ekhg"
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -18990,13 +20320,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "chapterId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the chapter."
+        "description": "The ID of the chapter.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -19022,18 +20354,21 @@ export default function VimeoTypeScriptSdk() {
         "name": "chapterId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the chapter."
+        "description": "The ID of the chapter.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "active",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -19059,25 +20394,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       }
     ],
     "responses": [
@@ -19099,13 +20438,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "text",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "I love this!"
       }
     ],
     "responses": [
@@ -19139,13 +20480,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "commentId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the comment."
+        "description": "The ID of the comment.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -19175,13 +20518,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "commentId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the comment."
+        "description": "The ID of the comment.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -19207,19 +20552,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "commentId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the comment."
+        "description": "The ID of the comment.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "text",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "I love this!"
       }
     ],
     "responses": [
@@ -19249,25 +20597,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "commentId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the comment."
+        "description": "The ID of the comment.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       }
     ],
     "responses": [
@@ -19293,19 +20645,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "commentId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the comment."
+        "description": "The ID of the comment.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "text",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "I love this!"
       }
     ],
     "responses": [
@@ -19335,31 +20690,36 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -19387,31 +20747,36 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "email",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "user@example.com"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Sam Doe"
       },
       {
         "name": "role",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Producer"
       },
       {
         "name": "user_uri",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "/users/152184"
       }
     ],
     "responses": [
@@ -19441,31 +20806,36 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "query",
         "schema": "string",
         "required": false,
-        "description": "The search query to use to filter the results."
+        "description": "The search query to use to filter the results.",
+        "example": "Stop motion"
       },
       {
         "name": "sort",
@@ -19493,13 +20863,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "creditId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the credit."
+        "description": "The ID of the credit.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -19525,13 +20897,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "creditId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the credit."
+        "description": "The ID of the credit.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -19557,23 +20931,27 @@ export default function VimeoTypeScriptSdk() {
         "name": "creditId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the credit."
+        "description": "The ID of the credit.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Sam Doe"
       },
       {
         "name": "role",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Producer"
       }
     ],
     "responses": [
@@ -19603,7 +20981,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 699033361
       }
     ],
     "responses": [
@@ -19625,7 +21004,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 699033361
       }
     ],
     "responses": [
@@ -19647,7 +21027,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 699033361
       }
     ],
     "responses": [
@@ -19669,25 +21050,29 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "direction",
         "schema": "string",
         "required": false,
-        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n"
+        "description": "The sort direction of the results.\n\nOption descriptions:\n * `asc` - Sort the results in ascending order.\n * `desc` - Sort the results in descending order.\n",
+        "example": "asc"
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       },
       {
         "name": "sort",
@@ -19715,19 +21100,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       }
     ],
     "responses": [
@@ -19749,17 +21137,20 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "active",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "time",
         "schema": "number",
-        "description": ""
+        "description": "",
+        "example": 300
       }
     ],
     "responses": [
@@ -19781,13 +21172,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "pictureId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the thumbnail."
+        "description": "The ID of the thumbnail.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -19809,13 +21202,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "pictureId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the thumbnail."
+        "description": "The ID of the thumbnail.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -19837,18 +21232,21 @@ export default function VimeoTypeScriptSdk() {
         "name": "pictureId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the thumbnail."
+        "description": "The ID of the thumbnail.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "active",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -19870,13 +21268,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "presetId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the embed preset."
+        "description": "The ID of the embed preset.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -19902,13 +21302,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "presetId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the embed preset."
+        "description": "The ID of the embed preset.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -19934,13 +21336,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "presetId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the embed preset."
+        "description": "The ID of the embed preset.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -19962,19 +21366,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       }
     ],
     "responses": [
@@ -20000,13 +21407,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": "The domain name."
+        "description": "The domain name.",
+        "example": "example.com"
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -20036,13 +21445,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": "The domain name."
+        "description": "The domain name.",
+        "example": "example.com"
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -20068,19 +21479,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       }
     ],
     "responses": [
@@ -20106,7 +21520,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -20128,13 +21543,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -20164,13 +21581,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "userId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the user."
+        "description": "The ID of the user.",
+        "example": 152184
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -20200,7 +21619,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the event."
+        "description": "The ID of the event.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -20222,19 +21642,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       }
     ],
     "responses": [
@@ -20256,19 +21679,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       }
     ],
     "responses": [
@@ -20298,13 +21724,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "word",
         "schema": "string",
         "required": true,
-        "description": "The tag word."
+        "description": "The tag word.",
+        "example": "awesome"
       }
     ],
     "responses": [
@@ -20330,13 +21758,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "word",
         "schema": "string",
         "required": true,
-        "description": "The tag word."
+        "description": "The tag word.",
+        "example": "awesome"
       }
     ],
     "responses": [
@@ -20366,13 +21796,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "word",
         "schema": "string",
         "required": true,
-        "description": "The tag word."
+        "description": "The tag word.",
+        "example": "awesome"
       }
     ],
     "responses": [
@@ -20402,19 +21834,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       }
     ],
     "responses": [
@@ -20440,13 +21875,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "active",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "is_auto_generated",
@@ -20464,19 +21901,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "language",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "en-US"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "Commentary"
       },
       {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TYPE"
       }
     ],
     "responses": [
@@ -20502,13 +21942,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "texttrackId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the text track."
+        "description": "The ID of the text track.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -20538,13 +21980,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "texttrackId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the text track."
+        "description": "The ID of the text track.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -20574,28 +22018,33 @@ export default function VimeoTypeScriptSdk() {
         "name": "texttrackId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the text track."
+        "description": "The ID of the text track.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "active",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "language",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "en-US"
       },
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Commentary"
       },
       {
         "name": "type",
@@ -20630,7 +22079,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -20660,13 +22110,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "thumbnailId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the timeline event thumbnail."
+        "description": "The ID of the timeline event thumbnail.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -20692,13 +22144,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "texttrackId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the text track."
+        "description": "The ID of the text track.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -20724,7 +22178,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -20754,17 +22209,20 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "trim_end",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "2.0"
       },
       {
         "name": "trim_start",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "1.0"
       }
     ],
     "responses": [
@@ -20794,19 +22252,22 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       }
     ],
     "responses": [
@@ -20836,13 +22297,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "file_name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "untitled.mp4"
       },
       {
         "name": "upload",
@@ -20882,13 +22345,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "versionId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video version."
+        "description": "The ID of the video version.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -20914,13 +22379,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "versionId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video version."
+        "description": "The ID of the video version.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       }
     ],
     "responses": [
@@ -20946,23 +22413,27 @@ export default function VimeoTypeScriptSdk() {
         "name": "versionId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video version."
+        "description": "The ID of the video version.",
+        "example": 12345
       },
       {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "description",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "description with emoji"
       },
       {
         "name": "is_current",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -20992,7 +22463,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "videoId",
         "schema": "number",
         "required": true,
-        "description": "The ID of the video."
+        "description": "The ID of the video.",
+        "example": 258684937
       },
       {
         "name": "filter",
@@ -21004,13 +22476,15 @@ export default function VimeoTypeScriptSdk() {
         "name": "page",
         "schema": "number",
         "required": false,
-        "description": "The page number of the results to show."
+        "description": "The page number of the results to show.",
+        "example": 1
       },
       {
         "name": "perPage",
         "schema": "number",
         "required": false,
-        "description": "The number of items to show on each page of results, up to a maximum of 100."
+        "description": "The number of items to show on each page of results, up to a maximum of 100.",
+        "example": 10
       }
     ],
     "responses": [
@@ -21036,7 +22510,8 @@ export default function VimeoTypeScriptSdk() {
         "name": "webinarId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the webinar."
+        "description": "The ID of the webinar.",
+        "example": "f19bfa08-b266-4f20-bfce-db1d0719b52f"
       }
     ],
     "responses": [

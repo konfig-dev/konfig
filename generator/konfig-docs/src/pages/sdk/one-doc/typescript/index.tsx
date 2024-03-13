@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function OneDocTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function OneDocTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/onedoc/logo.png"
       clientNameCamelCase="oneDoc"
       homepage="onedoc.com"
-      lastUpdated={new Date("2024-03-11T16:54:22.452Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/onedoc/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/onedoc/imagePreview.webp"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["developer_tools","documentation","pdf_generation","react"]}
       methods={[
   {
     "url": "/api/docs/generate",
@@ -35,7 +38,8 @@ export default function OneDocTypeScriptSdk() {
       {
         "name": "title",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "document"
       },
       {
         "name": "bucket",
@@ -55,12 +59,14 @@ export default function OneDocTypeScriptSdk() {
       {
         "name": "test",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "default": true
       },
       {
         "name": "save",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "expiresIn",

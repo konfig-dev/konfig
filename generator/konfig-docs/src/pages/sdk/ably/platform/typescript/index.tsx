@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function AblyPlatformTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function AblyPlatformTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/ably/platform/logo.png"
       clientNameCamelCase="ably"
       homepage="ably.com"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/ably/platform/favicon.ico"
       contactUrl="https://www.ably.io/contact"
       contactEmail="support@ably.io"
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/ably/platform/imagePreview.jpeg"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["cloud"]}
       methods={[
   {
     "url": "/channels",
@@ -35,7 +38,8 @@ export default function AblyPlatformTypeScriptSdk() {
       {
         "name": "limit",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "default": 100
       },
       {
         "name": "prefix",
@@ -71,7 +75,8 @@ export default function AblyPlatformTypeScriptSdk() {
         "name": "channelId",
         "schema": "string",
         "required": true,
-        "description": "The [Channel's ID](https://www.ably.io/documentation/rest/channels)."
+        "description": "The [Channel's ID](https://www.ably.io/documentation/rest/channels).",
+        "example": "CHANNEL_ID"
       }
     ],
     "responses": [
@@ -97,7 +102,8 @@ export default function AblyPlatformTypeScriptSdk() {
         "name": "channelId",
         "schema": "string",
         "required": true,
-        "description": "The [Channel's ID](https://www.ably.io/documentation/rest/channels)."
+        "description": "The [Channel's ID](https://www.ably.io/documentation/rest/channels).",
+        "example": "CHANNEL_ID"
       },
       {
         "name": "start",
@@ -107,17 +113,20 @@ export default function AblyPlatformTypeScriptSdk() {
       {
         "name": "limit",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "default": "100"
       },
       {
         "name": "end",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "now"
       },
       {
         "name": "direction",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "backwards"
       }
     ],
     "responses": [
@@ -143,7 +152,8 @@ export default function AblyPlatformTypeScriptSdk() {
         "name": "channelId",
         "schema": "string",
         "required": true,
-        "description": "The [Channel's ID](https://www.ably.io/documentation/rest/channels)."
+        "description": "The [Channel's ID](https://www.ably.io/documentation/rest/channels).",
+        "example": "CHANNEL_ID"
       },
       {
         "name": "clientId",
@@ -209,7 +219,8 @@ export default function AblyPlatformTypeScriptSdk() {
         "name": "channelId",
         "schema": "string",
         "required": true,
-        "description": "The [Channel's ID](https://www.ably.io/documentation/rest/channels)."
+        "description": "The [Channel's ID](https://www.ably.io/documentation/rest/channels).",
+        "example": "CHANNEL_ID"
       },
       {
         "name": "clientId",
@@ -224,7 +235,8 @@ export default function AblyPlatformTypeScriptSdk() {
       {
         "name": "limit",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "default": 100
       }
     ],
     "responses": [
@@ -250,7 +262,8 @@ export default function AblyPlatformTypeScriptSdk() {
         "name": "channelId",
         "schema": "string",
         "required": true,
-        "description": "The [Channel's ID](https://www.ably.io/documentation/rest/channels)."
+        "description": "The [Channel's ID](https://www.ably.io/documentation/rest/channels).",
+        "example": "CHANNEL_ID"
       },
       {
         "name": "start",
@@ -260,17 +273,20 @@ export default function AblyPlatformTypeScriptSdk() {
       {
         "name": "limit",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "default": "100"
       },
       {
         "name": "end",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "now"
       },
       {
         "name": "direction",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "backwards"
       }
     ],
     "responses": [
@@ -296,7 +312,8 @@ export default function AblyPlatformTypeScriptSdk() {
         "name": "keyName",
         "schema": "string",
         "required": true,
-        "description": "The [key name](https://www.ably.io/documentation/rest-api/token-request-spec#api-key-format) comprises of the app ID and key ID of an API key."
+        "description": "The [key name](https://www.ably.io/documentation/rest-api/token-request-spec#api-key-format) comprises of the app ID and key ID of an API key.",
+        "example": "KEYNAME"
       }
     ],
     "responses": [
@@ -371,7 +388,8 @@ export default function AblyPlatformTypeScriptSdk() {
       {
         "name": "limit",
         "schema": "integer",
-        "description": "The maximum number of records to return."
+        "description": "The maximum number of records to return.",
+        "default": 100
       }
     ],
     "responses": [
@@ -474,7 +492,8 @@ export default function AblyPlatformTypeScriptSdk() {
       {
         "name": "limit",
         "schema": "integer",
-        "description": "The maximum number of records to return."
+        "description": "The maximum number of records to return.",
+        "default": 100
       }
     ],
     "responses": [
@@ -560,7 +579,8 @@ export default function AblyPlatformTypeScriptSdk() {
         "name": "deviceId",
         "schema": "string",
         "required": true,
-        "description": "Device's ID."
+        "description": "Device's ID.",
+        "example": "DEVICE_ID"
       }
     ],
     "responses": [
@@ -586,7 +606,8 @@ export default function AblyPlatformTypeScriptSdk() {
         "name": "deviceId",
         "schema": "string",
         "required": true,
-        "description": "Device's ID."
+        "description": "Device's ID.",
+        "example": "DEVICE_ID"
       }
     ],
     "responses": [
@@ -612,7 +633,8 @@ export default function AblyPlatformTypeScriptSdk() {
         "name": "deviceId",
         "schema": "string",
         "required": true,
-        "description": "Device's ID."
+        "description": "Device's ID.",
+        "example": "DEVICE_ID"
       },
       {
         "name": "clientId",
@@ -678,7 +700,8 @@ export default function AblyPlatformTypeScriptSdk() {
         "name": "deviceId",
         "schema": "string",
         "required": true,
-        "description": "Device's ID."
+        "description": "Device's ID.",
+        "example": "DEVICE_ID"
       },
       {
         "name": "clientId",
@@ -744,7 +767,8 @@ export default function AblyPlatformTypeScriptSdk() {
         "name": "deviceId",
         "schema": "string",
         "required": true,
-        "description": "Device's ID."
+        "description": "Device's ID.",
+        "example": "DEVICE_ID"
       }
     ],
     "responses": [
@@ -806,22 +830,26 @@ export default function AblyPlatformTypeScriptSdk() {
       {
         "name": "limit",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "default": "100"
       },
       {
         "name": "end",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "now"
       },
       {
         "name": "direction",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "backwards"
       },
       {
         "name": "unit",
         "schema": "string",
-        "description": "Specifies the unit of aggregation in the returned results."
+        "description": "Specifies the unit of aggregation in the returned results.",
+        "default": "minute"
       }
     ],
     "responses": [

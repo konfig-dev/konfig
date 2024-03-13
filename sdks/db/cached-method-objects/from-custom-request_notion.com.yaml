@@ -11,14 +11,18 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: CODE
       - name: grant_type
         schema: string
         required: true
         description: ''
+        example: GRANT_TYPE
+        default: '"authorization_code"'
       - name: redirect_uri
         schema: string
         required: true
         description: ''
+        example: REDIRECT_URI
       - name: external_account
         schema: object
         required: false
@@ -39,6 +43,7 @@ methodObjects:
         schema: string
         required: true
         description: Identifier for a [block](ref:block)
+        example: BLOCK_ID
       - name: startCursor
         schema: string
         description: >-
@@ -50,10 +55,13 @@ methodObjects:
         description: >-
           The number of items from the full list desired in the response.
           Maximum: 100
+        default: 100
       - name: notionVersion
         schema: string
         required: true
         description: ''
+        example: NOTION-VERSION
+        default: '2022-06-28'
     responses:
       - statusCode: '200'
         description: ''
@@ -72,10 +80,13 @@ methodObjects:
         description: >-
           Identifier for a [block](ref:block). Also accepts a [page](ref:page)
           ID.
+        example: BLOCK_ID
       - name: notionVersion
         schema: string
         required: true
         description: ''
+        example: NOTION-VERSION
+        default: '2022-06-28'
       - name: children
         schema: array
         required: true
@@ -100,9 +111,11 @@ methodObjects:
         schema: string
         required: true
         description: Identifier for a Notion block
+        example: BLOCK_ID
       - name: notionVersion
         schema: string
         description: ''
+        default: '2022-06-28'
     responses:
       - statusCode: '200'
         description: ''
@@ -119,9 +132,11 @@ methodObjects:
         schema: string
         required: true
         description: Identifier for a Notion block
+        example: BLOCK_ID
       - name: notionVersion
         schema: string
         description: ''
+        default: '2022-06-28'
     responses:
       - statusCode: '200'
         description: ''
@@ -138,15 +153,18 @@ methodObjects:
         schema: string
         required: true
         description: Identifier for a Notion block
+        example: BLOCK_ID
       - name: notionVersion
         schema: string
         description: ''
+        default: '2022-06-28'
       - name: '{type}'
         schema: object
         description: ''
       - name: archived
         schema: boolean
         description: ''
+        default: true
     responses:
       - statusCode: '200'
         description: ''
@@ -163,14 +181,18 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: NOTION-VERSION
+        default: '2022-06-28'
       - name: parent
         schema: string
         required: true
         description: ''
+        example: PARENT
       - name: properties
         schema: string
         required: true
         description: ''
+        example: PROPERTIES
       - name: children
         schema: array
         required: false
@@ -203,6 +225,7 @@ methodObjects:
         schema: string
         required: true
         description: Identifier for a Notion page
+        example: PAGE_ID
       - name: filterProperties
         schema: string
         description: >-
@@ -214,6 +237,8 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: NOTION-VERSION
+        default: '2022-06-28'
     responses:
       - statusCode: '200'
         description: ''
@@ -230,9 +255,11 @@ methodObjects:
         schema: string
         required: true
         description: The identifier for the Notion page to be updated.
+        example: PAGE_ID
       - name: notionVersion
         schema: string
         description: ''
+        default: '2022-06-28'
       - name: properties
         schema: string
         description: ''
@@ -265,12 +292,14 @@ methodObjects:
         schema: string
         required: true
         description: Identifier for a Notion page
+        example: PAGE_ID
       - name: propertyId
         schema: string
         required: true
         description: >-
           Identifier for a page
           [property](https://developers.notion.com/reference/page#all-property-values)
+        example: PROPERTY_ID
       - name: pageSize
         schema: integer
         description: >-
@@ -282,6 +311,7 @@ methodObjects:
       - name: notionVersion
         schema: string
         description: ''
+        default: '2022-06-28'
     responses:
       - statusCode: '200'
         description: ''
@@ -296,6 +326,8 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: NOTION-VERSION
+        default: '2022-06-28'
       - name: title
         schema: array
         required: false
@@ -304,10 +336,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: PARENT
       - name: properties
         schema: string
         required: true
         description: ''
+        example: PROPERTIES
     responses:
       - statusCode: '200'
         description: ''
@@ -324,6 +358,7 @@ methodObjects:
         schema: string
         required: true
         description: Identifier for a Notion database.
+        example: DATABASE_ID
       - name: filterProperties
         schema: string
         description: >-
@@ -334,6 +369,8 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: NOTION-VERSION
+        default: '2022-06-28'
       - name: filter
         schema: string
         description: ''
@@ -346,6 +383,7 @@ methodObjects:
       - name: page_size
         schema: integer
         description: ''
+        default: 100
     responses:
       - statusCode: '200'
         description: ''
@@ -362,10 +400,13 @@ methodObjects:
         schema: string
         required: true
         description: An identifier for the Notion database.
+        example: DATABASE_ID
       - name: notionVersion
         schema: string
         required: true
         description: ''
+        example: NOTION-VERSION
+        default: '2022-06-28'
     responses:
       - statusCode: '200'
         description: ''
@@ -386,9 +427,11 @@ methodObjects:
         schema: string
         required: true
         description: identifier for a Notion database
+        example: DATABASE_ID
       - name: notionVersion
         schema: string
         description: ''
+        default: '2022-06-28'
       - name: title
         schema: array
         description: ''
@@ -425,10 +468,13 @@ methodObjects:
         description: >-
           The number of items from the full list desired in the response.
           Maximum: 100
+        default: 100
       - name: notionVersion
         schema: string
         required: true
         description: ''
+        example: NOTION-VERSION
+        default: '2022-06-28'
     responses:
       - statusCode: '200'
         description: ''
@@ -445,10 +491,13 @@ methodObjects:
         schema: string
         required: true
         description: Identifier for a Notion user
+        example: USER_ID
       - name: notionVersion
         schema: string
         required: true
         description: ''
+        example: NOTION-VERSION
+        default: '2022-06-28'
     responses:
       - statusCode: '200'
         description: ''
@@ -465,6 +514,8 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: NOTION-VERSION
+        default: '2022-06-28'
     responses:
       - statusCode: '200'
         description: ''
@@ -481,10 +532,13 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: NOTION-VERSION
+        default: '2022-06-28'
       - name: blockId
         schema: string
         required: true
         description: Identifier for a Notion block or page
+        example: BLOCK_ID
       - name: startCursor
         schema: string
         description: >-
@@ -512,6 +566,8 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: NOTION-VERSION
+        default: '2022-06-28'
       - name: parent
         schema: string
         required: false
@@ -524,6 +580,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: RICH_TEXT
     responses:
       - statusCode: '200'
         description: ''
@@ -540,6 +597,8 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: NOTION-VERSION
+        default: '2022-06-28'
       - name: query
         schema: string
         description: ''
@@ -555,6 +614,7 @@ methodObjects:
       - name: page_size
         schema: integer
         description: ''
+        default: 100
     responses:
       - statusCode: '200'
         description: ''

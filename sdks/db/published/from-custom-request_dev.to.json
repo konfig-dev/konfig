@@ -61,55 +61,64 @@
           "name": "page",
           "schema": "integer",
           "required": false,
-          "description": "Pagination page"
+          "description": "Pagination page",
+          "default": 1
         },
         {
           "name": "perPage",
           "schema": "integer",
           "required": false,
-          "description": "Page size (the number of items to return per page). The default maximum value can be overridden by \"API_PER_PAGE_MAX\" environment variable."
+          "description": "Page size (the number of items to return per page). The default maximum value can be overridden by \"API_PER_PAGE_MAX\" environment variable.",
+          "default": 30
         },
         {
           "name": "tag",
           "schema": "string",
           "required": false,
-          "description": "Using this parameter will retrieve articles that contain the requested tag. Articles\nwill be ordered by descending popularity.This parameter can be used in conjuction with `top`."
+          "description": "Using this parameter will retrieve articles that contain the requested tag. Articles\nwill be ordered by descending popularity.This parameter can be used in conjuction with `top`.",
+          "example": "discuss"
         },
         {
           "name": "tags",
           "schema": "string",
           "required": false,
-          "description": "Using this parameter will retrieve articles with any of the comma-separated tags.\nArticles will be ordered by descending popularity."
+          "description": "Using this parameter will retrieve articles with any of the comma-separated tags.\nArticles will be ordered by descending popularity.",
+          "example": "javascript, css"
         },
         {
           "name": "tagsExclude",
           "schema": "string",
           "required": false,
-          "description": "Using this parameter will retrieve articles that do _not_ contain _any_\nof comma-separated tags. Articles will be ordered by descending popularity."
+          "description": "Using this parameter will retrieve articles that do _not_ contain _any_\nof comma-separated tags. Articles will be ordered by descending popularity.",
+          "example": "node, java"
         },
         {
           "name": "username",
           "schema": "string",
           "required": false,
-          "description": "Using this parameter will retrieve articles belonging\n            to a User or Organization ordered by descending publication date.\n            If `state=all` the number of items returned will be `1000` instead of the default `30`.\n            This parameter can be used in conjuction with `state`."
+          "description": "Using this parameter will retrieve articles belonging\n            to a User or Organization ordered by descending publication date.\n            If `state=all` the number of items returned will be `1000` instead of the default `30`.\n            This parameter can be used in conjuction with `state`.",
+          "example": "ben"
         },
         {
           "name": "state",
           "schema": "string",
           "required": false,
-          "description": "Using this parameter will allow the client to check which articles are fresh or rising.\n            If `state=fresh` the server will return fresh articles.\n            If `state=rising` the server will return rising articles.\n            This param can be used in conjuction with `username`, only if set to `all`."
+          "description": "Using this parameter will allow the client to check which articles are fresh or rising.\n            If `state=fresh` the server will return fresh articles.\n            If `state=rising` the server will return rising articles.\n            This param can be used in conjuction with `username`, only if set to `all`.",
+          "example": "fresh"
         },
         {
           "name": "top",
           "schema": "integer",
           "required": false,
-          "description": "Using this parameter will allow the client to return the most popular articles\nin the last `N` days.\n`top` indicates the number of days since publication of the articles returned.\nThis param can be used in conjuction with `tag`."
+          "description": "Using this parameter will allow the client to return the most popular articles\nin the last `N` days.\n`top` indicates the number of days since publication of the articles returned.\nThis param can be used in conjuction with `tag`.",
+          "example": 2
         },
         {
           "name": "collectionId",
           "schema": "integer",
           "required": false,
-          "description": "Adding this will allow the client to return the list of articles\nbelonging to the requested collection, ordered by ascending publication date."
+          "description": "Adding this will allow the client to return the list of articles\nbelonging to the requested collection, ordered by ascending publication date.",
+          "example": 99
         }
       ],
       "responses": [
@@ -160,13 +169,15 @@
           "name": "page",
           "schema": "integer",
           "required": false,
-          "description": "Pagination page"
+          "description": "Pagination page",
+          "default": 1
         },
         {
           "name": "perPage",
           "schema": "integer",
           "required": false,
-          "description": "Page size (the number of items to return per page). The default maximum value can be overridden by \"API_PER_PAGE_MAX\" environment variable."
+          "description": "Page size (the number of items to return per page). The default maximum value can be overridden by \"API_PER_PAGE_MAX\" environment variable.",
+          "default": 30
         }
       ],
       "responses": [
@@ -188,7 +199,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": ""
+          "description": "",
+          "example": 0
         }
       ],
       "responses": [
@@ -214,7 +226,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "The ID of the user to unpublish."
+          "description": "The ID of the user to unpublish.",
+          "example": 123
         },
         {
           "name": "article",
@@ -253,13 +266,15 @@
           "name": "username",
           "schema": "string",
           "required": true,
-          "description": ""
+          "description": "",
+          "example": "USERNAME"
         },
         {
           "name": "slug",
           "schema": "string",
           "required": true,
-          "description": ""
+          "description": "",
+          "example": "SLUG"
         }
       ],
       "responses": [
@@ -285,13 +300,15 @@
           "name": "page",
           "schema": "integer",
           "required": false,
-          "description": "Pagination page"
+          "description": "Pagination page",
+          "default": 1
         },
         {
           "name": "perPage",
           "schema": "integer",
           "required": false,
-          "description": "Page size (the number of items to return per page). The default maximum value can be overridden by \"API_PER_PAGE_MAX\" environment variable."
+          "description": "Page size (the number of items to return per page). The default maximum value can be overridden by \"API_PER_PAGE_MAX\" environment variable.",
+          "default": 30
         }
       ],
       "responses": [
@@ -317,13 +334,15 @@
           "name": "page",
           "schema": "integer",
           "required": false,
-          "description": "Pagination page"
+          "description": "Pagination page",
+          "default": 1
         },
         {
           "name": "perPage",
           "schema": "integer",
           "required": false,
-          "description": "Page size (the number of items to return per page). The default maximum value can be overridden by \"API_PER_PAGE_MAX\" environment variable."
+          "description": "Page size (the number of items to return per page). The default maximum value can be overridden by \"API_PER_PAGE_MAX\" environment variable.",
+          "default": 30
         }
       ],
       "responses": [
@@ -349,13 +368,15 @@
           "name": "page",
           "schema": "integer",
           "required": false,
-          "description": "Pagination page"
+          "description": "Pagination page",
+          "default": 1
         },
         {
           "name": "perPage",
           "schema": "integer",
           "required": false,
-          "description": "Page size (the number of items to return per page). The default maximum value can be overridden by \"API_PER_PAGE_MAX\" environment variable."
+          "description": "Page size (the number of items to return per page). The default maximum value can be overridden by \"API_PER_PAGE_MAX\" environment variable.",
+          "default": 30
         }
       ],
       "responses": [
@@ -381,13 +402,15 @@
           "name": "page",
           "schema": "integer",
           "required": false,
-          "description": "Pagination page"
+          "description": "Pagination page",
+          "default": 1
         },
         {
           "name": "perPage",
           "schema": "integer",
           "required": false,
-          "description": "Page size (the number of items to return per page). The default maximum value can be overridden by \"API_PER_PAGE_MAX\" environment variable."
+          "description": "Page size (the number of items to return per page). The default maximum value can be overridden by \"API_PER_PAGE_MAX\" environment variable.",
+          "default": 30
         }
       ],
       "responses": [
@@ -413,13 +436,15 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "The ID of the article to unpublish."
+          "description": "The ID of the article to unpublish.",
+          "example": 1
         },
         {
           "name": "note",
           "schema": "string",
           "required": false,
-          "description": "Content for the note that's created along with unpublishing"
+          "description": "Content for the note that's created along with unpublishing",
+          "example": "Admin requested unpublishing all articles via API"
         }
       ],
       "responses": [
@@ -449,7 +474,8 @@
           "name": "perPage",
           "schema": "integer",
           "required": false,
-          "description": "Page size (the number of items to return per page). The default maximum value can be overridden by \"API_PER_PAGE_MAX\" environment variable."
+          "description": "Page size (the number of items to return per page). The default maximum value can be overridden by \"API_PER_PAGE_MAX\" environment variable.",
+          "default": 30
         }
       ],
       "responses": [
@@ -494,7 +520,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": ""
+          "description": "",
+          "example": 0
         }
       ],
       "responses": [
@@ -528,7 +555,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": ""
+          "description": "",
+          "example": 0
         }
       ],
       "responses": [
@@ -558,13 +586,15 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": ""
+          "description": "",
+          "example": 0
         },
         {
           "name": "perPage",
           "schema": "integer",
           "required": false,
-          "description": "Page size (the number of items to return per page). The default maximum value can be overridden by \"API_PER_PAGE_MAX\" environment variable."
+          "description": "Page size (the number of items to return per page). The default maximum value can be overridden by \"API_PER_PAGE_MAX\" environment variable.",
+          "default": 30
         }
       ],
       "responses": [
@@ -594,7 +624,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": ""
+          "description": "",
+          "example": 0
         },
         {
           "name": "user_ids",
@@ -633,7 +664,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": ""
+          "description": "",
+          "example": 0
         },
         {
           "name": "user_ids",
@@ -714,7 +746,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "The ID of the billboard."
+          "description": "The ID of the billboard.",
+          "example": 123
         }
       ],
       "responses": [
@@ -744,7 +777,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "The ID of the billboard."
+          "description": "The ID of the billboard.",
+          "example": 123
         }
       ],
       "responses": [
@@ -774,7 +808,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "The ID of the billboard to unpublish."
+          "description": "The ID of the billboard to unpublish.",
+          "example": 123
         }
       ],
       "responses": [
@@ -804,31 +839,36 @@
           "name": "page",
           "schema": "integer",
           "required": false,
-          "description": "Pagination page"
+          "description": "Pagination page",
+          "default": 1
         },
         {
           "name": "perPage",
           "schema": "integer",
           "required": false,
-          "description": "Page size (the number of items to return per page). The default maximum value can be overridden by \"API_PER_PAGE_MAX\" environment variable."
+          "description": "Page size (the number of items to return per page). The default maximum value can be overridden by \"API_PER_PAGE_MAX\" environment variable.",
+          "default": 30
         },
         {
           "name": "aId",
           "schema": "string",
           "required": false,
-          "description": "Article identifier."
+          "description": "Article identifier.",
+          "example": "321"
         },
         {
           "name": "pId",
           "schema": "string",
           "required": false,
-          "description": "Podcast Episode identifier."
+          "description": "Podcast Episode identifier.",
+          "example": "321"
         },
         {
           "name": "page",
           "schema": "string",
           "required": false,
-          "description": "Page"
+          "description": "Page",
+          "example": "321"
         }
       ],
       "responses": [
@@ -854,7 +894,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "Comment identifier."
+          "description": "Comment identifier.",
+          "example": 321
         }
       ],
       "responses": [
@@ -899,19 +940,22 @@
           "name": "page",
           "schema": "integer",
           "required": false,
-          "description": "Pagination page"
+          "description": "Pagination page",
+          "default": 1
         },
         {
           "name": "perPage",
           "schema": "integer",
           "required": false,
-          "description": "Page size (the number of items to return per page). The default maximum value can be overridden by \"API_PER_PAGE_MAX\" environment variable."
+          "description": "Page size (the number of items to return per page). The default maximum value can be overridden by \"API_PER_PAGE_MAX\" environment variable.",
+          "default": 30
         },
         {
           "name": "sort",
           "schema": "string",
           "required": false,
-          "description": "Default is 'created_at'. Specifies the sort order for the created_at param of the follow\n                                relationship. To sort by newest followers first (descending order) specify\n                                ?sort=-created_at."
+          "description": "Default is 'created_at'. Specifies the sort order for the created_at param of the follow\n                                relationship. To sort by newest followers first (descending order) specify\n                                ?sort=-created_at.",
+          "example": "created_at"
         }
       ],
       "responses": [
@@ -937,7 +981,8 @@
           "name": "username",
           "schema": "string",
           "required": true,
-          "description": ""
+          "description": "",
+          "example": "USERNAME"
         }
       ],
       "responses": [
@@ -963,19 +1008,22 @@
           "name": "organizationIdOrUsername",
           "schema": "string",
           "required": true,
-          "description": ""
+          "description": "",
+          "example": "ORGANIZATION_ID_OR_USERNAME"
         },
         {
           "name": "page",
           "schema": "integer",
           "required": false,
-          "description": "Pagination page"
+          "description": "Pagination page",
+          "default": 1
         },
         {
           "name": "perPage",
           "schema": "integer",
           "required": false,
-          "description": "Page size (the number of items to return per page). The default maximum value can be overridden by \"API_PER_PAGE_MAX\" environment variable."
+          "description": "Page size (the number of items to return per page). The default maximum value can be overridden by \"API_PER_PAGE_MAX\" environment variable.",
+          "default": 30
         }
       ],
       "responses": [
@@ -1001,19 +1049,22 @@
           "name": "organizationIdOrUsername",
           "schema": "string",
           "required": true,
-          "description": ""
+          "description": "",
+          "example": "ORGANIZATION_ID_OR_USERNAME"
         },
         {
           "name": "page",
           "schema": "integer",
           "required": false,
-          "description": "Pagination page"
+          "description": "Pagination page",
+          "default": 1
         },
         {
           "name": "perPage",
           "schema": "integer",
           "required": false,
-          "description": "Page size (the number of items to return per page). The default maximum value can be overridden by \"API_PER_PAGE_MAX\" environment variable."
+          "description": "Page size (the number of items to return per page). The default maximum value can be overridden by \"API_PER_PAGE_MAX\" environment variable.",
+          "default": 30
         }
       ],
       "responses": [
@@ -1039,13 +1090,15 @@
           "name": "page",
           "schema": "integer",
           "required": false,
-          "description": "Pagination page"
+          "description": "Pagination page",
+          "default": 1
         },
         {
           "name": "perPage",
           "schema": "integer",
           "required": false,
-          "description": "Page size (the number of items to return per page). The default maximum value can be overridden by \"API_PER_PAGE_MAX\" environment variable."
+          "description": "Page size (the number of items to return per page). The default maximum value can be overridden by \"API_PER_PAGE_MAX\" environment variable.",
+          "default": 10
         }
       ],
       "responses": [
@@ -1151,7 +1204,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "The ID of the organization."
+          "description": "The ID of the organization.",
+          "example": 1
         }
       ],
       "responses": [
@@ -1177,7 +1231,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": ""
+          "description": "",
+          "example": 0
         }
       ],
       "responses": [
@@ -1203,7 +1258,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "The ID of the organization to update."
+          "description": "The ID of the organization to update.",
+          "example": 123
         },
         {
           "name": "summary",
@@ -1341,7 +1397,8 @@
         {
           "name": "template",
           "schema": "string",
-          "description": ""
+          "description": "",
+          "default": "contained"
         }
       ],
       "responses": [
@@ -1371,7 +1428,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "The ID of the page."
+          "description": "The ID of the page.",
+          "example": 1
         }
       ],
       "responses": [
@@ -1401,7 +1459,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "The ID of the page."
+          "description": "The ID of the page.",
+          "example": 1
         }
       ],
       "responses": [
@@ -1423,25 +1482,29 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "The ID of the page."
+          "description": "The ID of the page.",
+          "example": 1
         },
         {
           "name": "title",
           "schema": "string",
           "required": true,
-          "description": ""
+          "description": "",
+          "example": "TITLE"
         },
         {
           "name": "description",
           "schema": "string",
           "required": true,
-          "description": ""
+          "description": "",
+          "example": "DESCRIPTION"
         },
         {
           "name": "slug",
           "schema": "string",
           "required": true,
-          "description": ""
+          "description": "",
+          "example": "SLUG"
         },
         {
           "name": "body_markdown",
@@ -1471,7 +1534,9 @@
           "name": "template",
           "schema": "string",
           "required": true,
-          "description": ""
+          "description": "",
+          "example": "TEMPLATE",
+          "default": "contained"
         }
       ],
       "responses": [
@@ -1501,19 +1566,22 @@
           "name": "page",
           "schema": "integer",
           "required": false,
-          "description": "Pagination page"
+          "description": "Pagination page",
+          "default": 1
         },
         {
           "name": "perPage",
           "schema": "integer",
           "required": false,
-          "description": "Page size (the number of items to return per page). The default maximum value can be overridden by \"API_PER_PAGE_MAX\" environment variable."
+          "description": "Page size (the number of items to return per page). The default maximum value can be overridden by \"API_PER_PAGE_MAX\" environment variable.",
+          "default": 30
         },
         {
           "name": "username",
           "schema": "string",
           "required": false,
-          "description": "Using this parameter will retrieve episodes belonging to a specific podcast."
+          "description": "Using this parameter will retrieve episodes belonging to a specific podcast.",
+          "example": "codenewbie"
         }
       ],
       "responses": [
@@ -1539,7 +1607,8 @@
           "name": "username",
           "schema": "string",
           "required": true,
-          "description": "The parameter is the username of the user or the username of the organization."
+          "description": "The parameter is the username of the user or the username of the organization.",
+          "example": "janedoe"
         }
       ],
       "responses": [
@@ -1565,19 +1634,22 @@
           "name": "category",
           "schema": "string",
           "required": true,
-          "description": ""
+          "description": "",
+          "example": "CATEGORY"
         },
         {
           "name": "reactableId",
           "schema": "integer",
           "required": true,
-          "description": ""
+          "description": "",
+          "example": 0
         },
         {
           "name": "reactableType",
           "schema": "string",
           "required": true,
-          "description": ""
+          "description": "",
+          "example": "REACTABLE_TYPE"
         }
       ],
       "responses": [
@@ -1603,19 +1675,22 @@
           "name": "category",
           "schema": "string",
           "required": true,
-          "description": ""
+          "description": "",
+          "example": "CATEGORY"
         },
         {
           "name": "reactableId",
           "schema": "integer",
           "required": true,
-          "description": ""
+          "description": "",
+          "example": 0
         },
         {
           "name": "reactableType",
           "schema": "string",
           "required": true,
-          "description": ""
+          "description": "",
+          "example": "REACTABLE_TYPE"
         }
       ],
       "responses": [
@@ -1641,13 +1716,15 @@
           "name": "page",
           "schema": "integer",
           "required": false,
-          "description": "Pagination page"
+          "description": "Pagination page",
+          "default": 1
         },
         {
           "name": "perPage",
           "schema": "integer",
           "required": false,
-          "description": "Page size (the number of items to return per page). The default maximum value can be overridden by \"API_PER_PAGE_MAX\" environment variable."
+          "description": "Page size (the number of items to return per page). The default maximum value can be overridden by \"API_PER_PAGE_MAX\" environment variable.",
+          "default": 30
         }
       ],
       "responses": [
@@ -1673,13 +1750,15 @@
           "name": "page",
           "schema": "integer",
           "required": false,
-          "description": "Pagination page"
+          "description": "Pagination page",
+          "default": 1
         },
         {
           "name": "perPage",
           "schema": "integer",
           "required": false,
-          "description": "Page size (the number of items to return per page). The default maximum value can be overridden by \"API_PER_PAGE_MAX\" environment variable."
+          "description": "Page size (the number of items to return per page). The default maximum value can be overridden by \"API_PER_PAGE_MAX\" environment variable.",
+          "default": 10
         }
       ],
       "responses": [
@@ -1701,7 +1780,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "The ID of the user to suspend."
+          "description": "The ID of the user to suspend.",
+          "example": 1
         }
       ],
       "responses": [
@@ -1731,7 +1811,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "The ID of the user to un-limit."
+          "description": "The ID of the user to un-limit.",
+          "example": 1
         }
       ],
       "responses": [
@@ -1761,7 +1842,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "The ID of the user to limit."
+          "description": "The ID of the user to limit.",
+          "example": 1
         }
       ],
       "responses": [
@@ -1791,7 +1873,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "The ID of the user to remove the spam role from."
+          "description": "The ID of the user to remove the spam role from.",
+          "example": 1
         }
       ],
       "responses": [
@@ -1821,7 +1904,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "The ID of the user to assign the spam role."
+          "description": "The ID of the user to assign the spam role.",
+          "example": 1
         }
       ],
       "responses": [
@@ -1851,7 +1935,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "The ID of the user to remove the trusted role from."
+          "description": "The ID of the user to remove the trusted role from.",
+          "example": 1
         }
       ],
       "responses": [
@@ -1881,7 +1966,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "The ID of the user to assign the trusted role."
+          "description": "The ID of the user to assign the trusted role.",
+          "example": 1
         }
       ],
       "responses": [
@@ -1930,7 +2016,8 @@
           "name": "id",
           "schema": "string",
           "required": true,
-          "description": ""
+          "description": "",
+          "example": "ID"
         }
       ],
       "responses": [
@@ -1952,7 +2039,8 @@
           "name": "id",
           "schema": "integer",
           "required": true,
-          "description": "The ID of the user to unpublish."
+          "description": "The ID of the user to unpublish.",
+          "example": 1
         }
       ],
       "responses": [
@@ -2016,13 +2104,15 @@
           "name": "page",
           "schema": "integer",
           "required": false,
-          "description": "Pagination page"
+          "description": "Pagination page",
+          "default": 1
         },
         {
           "name": "perPage",
           "schema": "integer",
           "required": false,
-          "description": "Page size (the number of items to return per page). The default maximum value can be overridden by \"API_PER_PAGE_MAX\" environment variable."
+          "description": "Page size (the number of items to return per page). The default maximum value can be overridden by \"API_PER_PAGE_MAX\" environment variable.",
+          "default": 24
         }
       ],
       "responses": [
@@ -2039,7 +2129,8 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/dev/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/dev/favicon.png",
   "clientNameCamelCase": "dev",
-  "lastUpdated": "2024-03-12T19:51:34.858Z",
+  "lastUpdated": "2024-03-13T01:24:30.233Z",
   "typescriptSdkUsageCode": "import { Dev } from 'dev-typescript-sdk';\n\nconst dev = new Dev({\n    /*\n     * API Key authentication.\n     * \n     * Authentication for some endpoints, like write operations on the\n     * Articles API require a DEV API key.\n     * \n     * All authenticated endpoints are CORS disabled, the API key is intended for non-browser scripts.\n     * \n     * ### Getting an API key\n     * \n     * To obtain one, please follow these steps:\n     * \n     *   - visit https://dev.to/settings/extensions\n     *   - in the \"DEV API Keys\" section create a new key by adding a\n     *     description and clicking on \"Generate API Key\"\n     * \n     *     ![obtain a DEV API Key](https://user-images.githubusercontent.com/37842/172718105-bd93664e-76e0-477d-99c4-265dda0b06c5.png)\n     * \n     *   - You'll see the newly generated key in the same view\n     *     ![generated DEV API Key](https://user-images.githubusercontent.com/37842/172718151-e7fe26a0-9937-42e8-96c6-333acdab9e49.png)\n     */\n    apiKey: \"API_KEY\",\n})",
+  "typescriptSdkFirstRequestCode": "// Published articles\nconst listPublishedArticlesResponse = dev.articles.listPublishedArticles({\n    page: 1\n    perPage: 30\n    tag: discuss\n    tags: javascript, css\n    tagsExclude: node, java\n    username: ben\n    state: fresh\n    top: 2\n    collectionId: 99\n})",
   "fixedSpecFileName": "dev-fixed-spec.yaml"
 }

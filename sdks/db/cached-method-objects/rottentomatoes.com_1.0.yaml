@@ -39,16 +39,19 @@ methodObjects:
         schema: string
         required: false
         description: The amount of new release dvds to show per page
+        default: '16'
       - name: page
         schema: string
         required: false
         description: The selected page of current DVD releases
+        default: '1'
       - name: country
         schema: string
         required: false
         description: >-
           Provides localized data for the selected country (ISO 3166-1 alpha-2)
           if available. Otherwise, returns US data.
+        default: us
     responses:
       - statusCode: '200'
         description: Success
@@ -67,16 +70,19 @@ methodObjects:
         schema: string
         required: false
         description: The amount of new release dvds to show per page
+        default: '16'
       - name: page
         schema: string
         required: false
         description: The selected page of new release DVDs
+        default: '1'
       - name: country
         schema: string
         required: false
         description: >-
           Provides localized data for the selected country (ISO 3166-1 alpha-2)
           if available. Otherwise, returns US data.
+        default: us
     responses:
       - statusCode: '200'
         description: Success
@@ -95,12 +101,14 @@ methodObjects:
         schema: string
         required: false
         description: Limits the number of top rentals returned
+        default: '10'
       - name: country
         schema: string
         required: false
         description: >-
           Provides localized data for the selected country (ISO 3166-1 alpha-2)
           if available. Otherwise, returns US data.
+        default: us
     responses:
       - statusCode: '200'
         description: Success
@@ -119,16 +127,19 @@ methodObjects:
         schema: string
         required: false
         description: The amount of upcoming dvds to show per page
+        default: '16'
       - name: page
         schema: string
         required: false
         description: The selected page of upcoming DVDs
+        default: '1'
       - name: country
         schema: string
         required: false
         description: >-
           Provides localized data for the selected country (ISO 3166-1 alpha-2)
           if available. Otherwise, returns US data.
+        default: us
     responses:
       - statusCode: '200'
         description: Success
@@ -161,12 +172,14 @@ methodObjects:
         schema: string
         required: false
         description: Limits the number of movies returned
+        default: '16'
       - name: country
         schema: string
         required: false
         description: >-
           Provides localized data for the selected country (ISO 3166-1 alpha-2)
           if available. Otherwise, returns US data.
+        default: us
     responses:
       - statusCode: '200'
         description: Success
@@ -185,16 +198,19 @@ methodObjects:
         schema: string
         required: false
         description: The amount of movies in theaters to show per page
+        default: '16'
       - name: page
         schema: string
         required: false
         description: The selected page of in theaters movies
+        default: '1'
       - name: country
         schema: string
         required: false
         description: >-
           Provides localized data for the selected country (ISO 3166-1 alpha-2)
           if available. Otherwise, returns US data.
+        default: us
     responses:
       - statusCode: '200'
         description: Success
@@ -213,12 +229,14 @@ methodObjects:
         schema: string
         required: false
         description: Limits the number of opening movies returned
+        default: '16'
       - name: country
         schema: string
         required: false
         description: >-
           Provides localized data for the selected country (ISO 3166-1 alpha-2)
           if available. Otherwise, returns US data.
+        default: us
     responses:
       - statusCode: '200'
         description: Success
@@ -237,16 +255,19 @@ methodObjects:
         schema: string
         required: false
         description: The amount of upcoming movies to show per page
+        default: '16'
       - name: page
         schema: string
         required: false
         description: The selected page of upcoming movies
+        default: '1'
       - name: country
         schema: string
         required: false
         description: >-
           Provides localized data for the selected country (ISO 3166-1 alpha-2)
           if available. Otherwise, returns US data.
+        default: us
     responses:
       - statusCode: '200'
         description: Success
@@ -267,10 +288,12 @@ methodObjects:
         description: >-
           Movie ID. You can use the movies search endpoint or peruse the lists
           of movies/dvds to get the Movie ID
+        default: '0031381'
       - name: type
         schema: string
         required: false
         description: Only supports imdb lookup at this time
+        default: imdb
     responses:
       - statusCode: '200'
         description: Success
@@ -295,10 +318,12 @@ methodObjects:
         schema: string
         required: false
         description: The amount of movie search results to show per page
+        default: '10'
       - name: page
         schema: string
         required: false
         description: The selected page of movie search results
+        default: '1'
     responses:
       - statusCode: '200'
         description: Success
@@ -319,6 +344,8 @@ methodObjects:
         description: >-
           Movie ID. You can use the movies search endpoint or peruse the lists
           of movies/dvds to get the Movie ID
+        example: ID
+        default: '770672122'
     responses:
       - statusCode: '200'
         description: Success
@@ -339,6 +366,8 @@ methodObjects:
         description: >-
           Movie ID. You can use the movies search endpoint or peruse the lists
           of movies/dvds to get the Movie ID
+        example: ID
+        default: '770672122'
     responses:
       - statusCode: '200'
         description: Success
@@ -359,6 +388,8 @@ methodObjects:
         description: >-
           Movie ID. You can use the movies search endpoint or peruse the lists
           of movies/dvds to get the Movie ID
+        example: ID
+        default: '770672122'
     responses:
       - statusCode: '200'
         description: Success
@@ -379,6 +410,8 @@ methodObjects:
         description: >-
           Movie ID. You can use the movies search endpoint or peruse the lists
           of movies/dvds to get the Movie ID
+        example: ID
+        default: '770672122'
       - name: reviewType
         schema: string
         required: false
@@ -387,20 +420,24 @@ methodObjects:
           'top_critic' shows all the Rotten Tomatoes designated top critics.
           'dvd' pulls the reviews given on the DVD of the movie. 'all' as the
           name implies retrieves all reviews.
+        default: top_critic
       - name: pageLimit
         schema: string
         required: false
         description: The number of reviews to show per page
+        default: '20'
       - name: page
         schema: string
         required: false
         description: The selected page of reviews
+        default: '1'
       - name: country
         schema: string
         required: false
         description: >-
           Provides localized data for the selected country (ISO 3166-1 alpha-2)
           if available. Otherwise, returns US data.
+        default: us
     responses:
       - statusCode: '200'
         description: Success
@@ -421,10 +458,13 @@ methodObjects:
         description: >-
           Movie ID. You can use the movies search endpoint or peruse the lists
           of movies/dvds to get the Movie ID
+        example: ID
+        default: '770672122'
       - name: limit
         schema: string
         required: false
         description: Limit the number of similar movies to show
+        default: '5'
     responses:
       - statusCode: '200'
         description: Success

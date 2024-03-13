@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function DigitalOceanTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function DigitalOceanTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/digitalocean/logo.png"
       clientNameCamelCase="digitalOcean"
       homepage="digitalocean.com"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/digitalocean/favicon.png"
       // Missing contactUrl
       contactEmail="api-engineering@digitalocean.com"
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/digitalocean/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["cloud","data_center","storage","virtual_private_servers","developer_tools","automation","collaboration"]}
       methods={[
   {
     "url": "/v2/1-clicks",
@@ -36,7 +39,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": false,
-        "description": "Restrict results to a certain type of 1-Click."
+        "description": "Restrict results to a certain type of 1-Click.",
+        "example": "kubernetes"
       }
     ],
     "responses": [
@@ -74,13 +78,19 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "addon_slugs",
         "schema": "array",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": [
+          "kube-state-metrics",
+          "loki"
+        ],
+        "default": []
       },
       {
         "name": "cluster_uuid",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "50a994b6-c303-438f-9495-7e896cfe6b08"
       }
     ],
     "responses": [
@@ -149,13 +159,17 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -193,25 +207,29 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "id",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 512189
       },
       {
         "name": "fingerprint",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "3b:16:bf:e4:8b:00:8b:b8:59:8c:a9:d3:f0:19:45:fa"
       },
       {
         "name": "public_key",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ssh-rsa AEXAMPLEaC1yc2EAAAADAQABAAAAQQDDHr/jh2Jy4yALcK4JyWbVkPRaWmhck3IgCoeOO3z1e2dBowLh64QAM+Qb72pxekALga2oi4GvT+TlWNhzPH4V example"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "My SSH Public Key"
       }
     ],
     "responses": [
@@ -249,7 +267,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "sshKeyIdentifier",
         "schema": "undefined",
         "required": true,
-        "description": "Either the ID or the fingerprint of an existing SSH key."
+        "description": "Either the ID or the fingerprint of an existing SSH key.",
+        "example": 512189
       }
     ],
     "responses": [
@@ -291,7 +310,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "sshKeyIdentifier",
         "schema": "undefined",
         "required": true,
-        "description": "Either the ID or the fingerprint of an existing SSH key."
+        "description": "Either the ID or the fingerprint of an existing SSH key.",
+        "example": 512189
       }
     ],
     "responses": [
@@ -333,12 +353,14 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "sshKeyIdentifier",
         "schema": "undefined",
         "required": true,
-        "description": "Either the ID or the fingerprint of an existing SSH key."
+        "description": "Either the ID or the fingerprint of an existing SSH key.",
+        "example": 512189
       },
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "My SSH Public Key"
       }
     ],
     "responses": [
@@ -380,13 +402,17 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -424,7 +450,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "actionId",
         "schema": "integer",
         "required": true,
-        "description": "A unique numeric ID that can be used to identify and reference an action."
+        "description": "A unique numeric ID that can be used to identify and reference an action.",
+        "example": 36804636
       }
     ],
     "responses": [
@@ -466,18 +493,23 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "withProjects",
         "schema": "boolean",
-        "description": "Whether the project_id of listed apps should be fetched and included."
+        "description": "Whether the project_id of listed apps should be fetched and included.",
+        "example": true
       }
     ],
     "responses": [
@@ -559,7 +591,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the app"
+        "description": "The ID of the app",
+        "example": "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
       }
     ],
     "responses": [
@@ -601,12 +634,14 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the app"
+        "description": "The ID of the app",
+        "example": "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
       },
       {
         "name": "name",
         "schema": "string",
-        "description": "The name of the app to retrieve."
+        "description": "The name of the app to retrieve.",
+        "example": "myApp"
       }
     ],
     "responses": [
@@ -648,7 +683,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the app"
+        "description": "The ID of the app",
+        "example": "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
       },
       {
         "name": "spec",
@@ -696,29 +732,35 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "appId",
         "schema": "string",
         "required": true,
-        "description": "The app ID"
+        "description": "The app ID",
+        "example": "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
       },
       {
         "name": "componentName",
         "schema": "string",
         "required": true,
-        "description": "An optional component name. If set, logs will be limited to this component only."
+        "description": "An optional component name. If set, logs will be limited to this component only.",
+        "example": "component"
       },
       {
         "name": "follow",
         "schema": "boolean",
-        "description": "Whether the logs should follow live updates."
+        "description": "Whether the logs should follow live updates.",
+        "example": true
       },
       {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": "The type of logs to retrieve\n- BUILD: Build-time logs\n- DEPLOY: Deploy-time logs\n- RUN: Live run-time logs\n- RUN_RESTARTED: Logs of crashed/restarted instances during runtime"
+        "description": "The type of logs to retrieve\n- BUILD: Build-time logs\n- DEPLOY: Deploy-time logs\n- RUN: Live run-time logs\n- RUN_RESTARTED: Logs of crashed/restarted instances during runtime",
+        "example": "BUILD",
+        "default": "UNSPECIFIED"
       },
       {
         "name": "podConnectionTimeout",
         "schema": "string",
-        "description": "An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`."
+        "description": "An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`.",
+        "example": "3m"
       }
     ],
     "responses": [
@@ -760,19 +802,24 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "appId",
         "schema": "string",
         "required": true,
-        "description": "The app ID"
+        "description": "The app ID",
+        "example": "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       }
     ],
     "responses": [
@@ -814,12 +861,14 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "appId",
         "schema": "string",
         "required": true,
-        "description": "The app ID"
+        "description": "The app ID",
+        "example": "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
       },
       {
         "name": "force_build",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -861,13 +910,15 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "appId",
         "schema": "string",
         "required": true,
-        "description": "The app ID"
+        "description": "The app ID",
+        "example": "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
       },
       {
         "name": "deploymentId",
         "schema": "string",
         "required": true,
-        "description": "The deployment ID"
+        "description": "The deployment ID",
+        "example": "3aa4d20e-5527-4c00-b496-601fbd22520a"
       }
     ],
     "responses": [
@@ -909,13 +960,15 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "appId",
         "schema": "string",
         "required": true,
-        "description": "The app ID"
+        "description": "The app ID",
+        "example": "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
       },
       {
         "name": "deploymentId",
         "schema": "string",
         "required": true,
-        "description": "The deployment ID"
+        "description": "The deployment ID",
+        "example": "3aa4d20e-5527-4c00-b496-601fbd22520a"
       }
     ],
     "responses": [
@@ -957,35 +1010,42 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "appId",
         "schema": "string",
         "required": true,
-        "description": "The app ID"
+        "description": "The app ID",
+        "example": "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
       },
       {
         "name": "deploymentId",
         "schema": "string",
         "required": true,
-        "description": "The deployment ID"
+        "description": "The deployment ID",
+        "example": "3aa4d20e-5527-4c00-b496-601fbd22520a"
       },
       {
         "name": "componentName",
         "schema": "string",
         "required": true,
-        "description": "An optional component name. If set, logs will be limited to this component only."
+        "description": "An optional component name. If set, logs will be limited to this component only.",
+        "example": "component"
       },
       {
         "name": "follow",
         "schema": "boolean",
-        "description": "Whether the logs should follow live updates."
+        "description": "Whether the logs should follow live updates.",
+        "example": true
       },
       {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": "The type of logs to retrieve\n- BUILD: Build-time logs\n- DEPLOY: Deploy-time logs\n- RUN: Live run-time logs\n- RUN_RESTARTED: Logs of crashed/restarted instances during runtime"
+        "description": "The type of logs to retrieve\n- BUILD: Build-time logs\n- DEPLOY: Deploy-time logs\n- RUN: Live run-time logs\n- RUN_RESTARTED: Logs of crashed/restarted instances during runtime",
+        "example": "BUILD",
+        "default": "UNSPECIFIED"
       },
       {
         "name": "podConnectionTimeout",
         "schema": "string",
-        "description": "An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`."
+        "description": "An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`.",
+        "example": "3m"
       }
     ],
     "responses": [
@@ -1027,29 +1087,35 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "appId",
         "schema": "string",
         "required": true,
-        "description": "The app ID"
+        "description": "The app ID",
+        "example": "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
       },
       {
         "name": "deploymentId",
         "schema": "string",
         "required": true,
-        "description": "The deployment ID"
+        "description": "The deployment ID",
+        "example": "3aa4d20e-5527-4c00-b496-601fbd22520a"
       },
       {
         "name": "follow",
         "schema": "boolean",
-        "description": "Whether the logs should follow live updates."
+        "description": "Whether the logs should follow live updates.",
+        "example": true
       },
       {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": "The type of logs to retrieve\n- BUILD: Build-time logs\n- DEPLOY: Deploy-time logs\n- RUN: Live run-time logs\n- RUN_RESTARTED: Logs of crashed/restarted instances during runtime"
+        "description": "The type of logs to retrieve\n- BUILD: Build-time logs\n- DEPLOY: Deploy-time logs\n- RUN: Live run-time logs\n- RUN_RESTARTED: Logs of crashed/restarted instances during runtime",
+        "example": "BUILD",
+        "default": "UNSPECIFIED"
       },
       {
         "name": "podConnectionTimeout",
         "schema": "string",
-        "description": "An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`."
+        "description": "An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`.",
+        "example": "3m"
       }
     ],
     "responses": [
@@ -1091,23 +1157,28 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "appId",
         "schema": "string",
         "required": true,
-        "description": "The app ID"
+        "description": "The app ID",
+        "example": "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
       },
       {
         "name": "follow",
         "schema": "boolean",
-        "description": "Whether the logs should follow live updates."
+        "description": "Whether the logs should follow live updates.",
+        "example": true
       },
       {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": "The type of logs to retrieve\n- BUILD: Build-time logs\n- DEPLOY: Deploy-time logs\n- RUN: Live run-time logs\n- RUN_RESTARTED: Logs of crashed/restarted instances during runtime"
+        "description": "The type of logs to retrieve\n- BUILD: Build-time logs\n- DEPLOY: Deploy-time logs\n- RUN: Live run-time logs\n- RUN_RESTARTED: Logs of crashed/restarted instances during runtime",
+        "example": "BUILD",
+        "default": "UNSPECIFIED"
       },
       {
         "name": "podConnectionTimeout",
         "schema": "string",
-        "description": "An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`."
+        "description": "An optional time duration to wait if the underlying component instance is not immediately available. Default: `3m`.",
+        "example": "3m"
       }
     ],
     "responses": [
@@ -1180,7 +1251,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "slug",
         "schema": "string",
         "required": true,
-        "description": "The slug of the tier"
+        "description": "The slug of the tier",
+        "example": "basic"
       }
     ],
     "responses": [
@@ -1253,7 +1325,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "slug",
         "schema": "string",
         "required": true,
-        "description": "The slug of the instance size"
+        "description": "The slug of the instance size",
+        "example": "basic-xxs"
       }
     ],
     "responses": [
@@ -1332,7 +1405,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "app_id",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "b6bdf840-2854-4f87-a36c-5f231c617c84"
       }
     ],
     "responses": [
@@ -1370,7 +1444,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "appId",
         "schema": "string",
         "required": true,
-        "description": "The app ID"
+        "description": "The app ID",
+        "example": "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
       }
     ],
     "responses": [
@@ -1412,18 +1487,23 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "appId",
         "schema": "string",
         "required": true,
-        "description": "The app ID"
+        "description": "The app ID",
+        "example": "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
       },
       {
         "name": "alertId",
         "schema": "string",
         "required": true,
-        "description": "The alert ID"
+        "description": "The alert ID",
+        "example": "5a624ab5-dd58-4b39-b7dd-8b7c36e8a91d"
       },
       {
         "name": "emails",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "example": [
+          "sammy@digitalocean.com"
+        ]
       },
       {
         "name": "slack_webhooks",
@@ -1470,17 +1550,20 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "appId",
         "schema": "string",
         "required": true,
-        "description": "The app ID"
+        "description": "The app ID",
+        "example": "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
       },
       {
         "name": "deployment_id",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "3aa4d20e-5527-4c00-b496-601fbd22520a"
       },
       {
         "name": "skip_pin",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       }
     ],
     "responses": [
@@ -1522,17 +1605,20 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "appId",
         "schema": "string",
         "required": true,
-        "description": "The app ID"
+        "description": "The app ID",
+        "example": "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
       },
       {
         "name": "deployment_id",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "3aa4d20e-5527-4c00-b496-601fbd22520a"
       },
       {
         "name": "skip_pin",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       }
     ],
     "responses": [
@@ -1574,7 +1660,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "appId",
         "schema": "string",
         "required": true,
-        "description": "The app ID"
+        "description": "The app ID",
+        "example": "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
       }
     ],
     "responses": [
@@ -1616,7 +1703,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "appId",
         "schema": "string",
         "required": true,
-        "description": "The app ID"
+        "description": "The app ID",
+        "example": "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
       }
     ],
     "responses": [
@@ -1658,12 +1746,14 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "appId",
         "schema": "string",
         "required": true,
-        "description": "The app ID"
+        "description": "The app ID",
+        "example": "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
       },
       {
         "name": "date",
         "schema": "string",
-        "description": "Optional day to query. Only the date component of the timestamp will be considered. Default: yesterday."
+        "description": "Optional day to query. Only the date component of the timestamp will be considered. Default: yesterday.",
+        "example": "2023-01-17T00:00:00Z"
       }
     ],
     "responses": [
@@ -1705,13 +1795,18 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "app_ids",
         "schema": "array",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": [
+          "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf",
+          "c2a93513-8d9b-4223-9d61-5e7272c81cf5"
+        ]
       },
       {
         "name": "date",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "2023-01-17T00:00:00Z"
       }
     ],
     "responses": [
@@ -1753,13 +1848,17 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -1797,43 +1896,51 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "892071a0-bb95-49bc-8021-3afd67a210bf"
       },
       {
         "name": "origin",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "static-images.nyc3.digitaloceanspaces.com"
       },
       {
         "name": "endpoint",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "static-images.nyc3.cdn.digitaloceanspaces.com"
       },
       {
         "name": "ttl",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 3600,
+        "default": 3600
       },
       {
         "name": "certificate_id",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "892071a0-bb95-49bc-8021-3afd67a210bf"
       },
       {
         "name": "custom_domain",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "static.example.com"
       },
       {
         "name": "created_at",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "2018-03-21T16:02:37Z"
       }
     ],
     "responses": [
@@ -1871,7 +1978,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "cdnId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a CDN endpoint."
+        "description": "A unique identifier for a CDN endpoint.",
+        "example": "19f06b6a-3ace-4315-b086-499a0e521b76"
       }
     ],
     "responses": [
@@ -1913,7 +2021,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "cdnId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a CDN endpoint."
+        "description": "A unique identifier for a CDN endpoint.",
+        "example": "19f06b6a-3ace-4315-b086-499a0e521b76"
       }
     ],
     "responses": [
@@ -1955,22 +2064,27 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "cdnId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a CDN endpoint."
+        "description": "A unique identifier for a CDN endpoint.",
+        "example": "19f06b6a-3ace-4315-b086-499a0e521b76"
       },
       {
         "name": "ttl",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 3600,
+        "default": 3600
       },
       {
         "name": "certificate_id",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "892071a0-bb95-49bc-8021-3afd67a210bf"
       },
       {
         "name": "custom_domain",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "static.example.com"
       }
     ],
     "responses": [
@@ -2012,13 +2126,18 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "cdnId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a CDN endpoint."
+        "description": "A unique identifier for a CDN endpoint.",
+        "example": "19f06b6a-3ace-4315-b086-499a0e521b76"
       },
       {
         "name": "files",
         "schema": "array",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": [
+          "path/to/image.png",
+          "path/to/css/*"
+        ]
       }
     ],
     "responses": [
@@ -2060,19 +2179,25 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       },
       {
         "name": "name",
         "schema": "string",
         "required": false,
-        "description": "Name of expected certificate"
+        "description": "Name of expected certificate",
+        "example": "certificate-name",
+        "default": ""
       }
     ],
     "responses": [
@@ -2141,7 +2266,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "certificateId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a certificate."
+        "description": "A unique identifier for a certificate.",
+        "example": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
       }
     ],
     "responses": [
@@ -2183,7 +2309,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "certificateId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a certificate."
+        "description": "A unique identifier for a certificate.",
+        "example": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
       }
     ],
     "responses": [
@@ -2295,13 +2422,17 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -2339,7 +2470,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "invoiceUuid",
         "schema": "string",
         "required": true,
-        "description": "UUID of the invoice"
+        "description": "UUID of the invoice",
+        "example": "22737513-0ea7-4206-8ceb-98a575af7681"
       }
     ],
     "responses": [
@@ -2381,7 +2513,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "invoiceUuid",
         "schema": "string",
         "required": true,
-        "description": "UUID of the invoice"
+        "description": "UUID of the invoice",
+        "example": "22737513-0ea7-4206-8ceb-98a575af7681"
       }
     ],
     "responses": [
@@ -2423,7 +2556,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "invoiceUuid",
         "schema": "string",
         "required": true,
-        "description": "UUID of the invoice"
+        "description": "UUID of the invoice",
+        "example": "22737513-0ea7-4206-8ceb-98a575af7681"
       }
     ],
     "responses": [
@@ -2465,7 +2599,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "invoiceUuid",
         "schema": "string",
         "required": true,
-        "description": "UUID of the invoice"
+        "description": "UUID of the invoice",
+        "example": "22737513-0ea7-4206-8ceb-98a575af7681"
       }
     ],
     "responses": [
@@ -2542,7 +2677,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "tagName",
         "schema": "string",
         "required": false,
-        "description": "Limits the results to database clusters with a specific tag."
+        "description": "Limits the results to database clusters with a specific tag.",
+        "example": "production"
       }
     ],
     "responses": [
@@ -2619,7 +2755,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       }
     ],
     "responses": [
@@ -2661,7 +2798,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       }
     ],
     "responses": [
@@ -2703,7 +2841,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       }
     ],
     "responses": [
@@ -2745,7 +2884,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       },
       {
         "name": "config",
@@ -2792,7 +2932,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       }
     ],
     "responses": [
@@ -2834,7 +2975,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       }
     ],
     "responses": [
@@ -2876,7 +3018,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       },
       {
         "name": "source",
@@ -2886,12 +3029,18 @@ export default function DigitalOceanTypeScriptSdk() {
       {
         "name": "disable_ssl",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "ignore_dbs",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "example": [
+          "db0",
+          "db1"
+        ],
+        "default": []
       }
     ],
     "responses": [
@@ -2933,13 +3082,15 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       },
       {
         "name": "migrationId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier assigned to the online migration."
+        "description": "A unique identifier assigned to the online migration.",
+        "example": "77b28fc8-19ff-11eb-8c9c-c68e24557488"
       }
     ],
     "responses": [
@@ -2981,13 +3132,15 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       },
       {
         "name": "region",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "lon1"
       }
     ],
     "responses": [
@@ -3029,25 +3182,29 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       },
       {
         "name": "size",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "db-s-4vcpu-8gb"
       },
       {
         "name": "num_nodes",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 3
       },
       {
         "name": "storage_size_mib",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 61440
       }
     ],
     "responses": [
@@ -3089,7 +3246,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       }
     ],
     "responses": [
@@ -3131,7 +3289,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       },
       {
         "name": "rules",
@@ -3178,31 +3337,39 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       },
       {
         "name": "description",
         "schema": "array",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": [
+          "Update TimescaleDB to version 1.2.1",
+          "Upgrade to PostgreSQL 11.2 and 10.7 bugfix releases"
+        ]
       },
       {
         "name": "day",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "tuesday"
       },
       {
         "name": "hour",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "14:00"
       },
       {
         "name": "pending",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -3244,7 +3411,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       }
     ],
     "responses": [
@@ -3286,7 +3454,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       }
     ],
     "responses": [
@@ -3328,55 +3497,66 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       },
       {
         "name": "tags",
         "schema": "array",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": [
+          "production"
+        ]
       },
       {
         "name": "id",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "read-nyc3-01"
       },
       {
         "name": "region",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "nyc3"
       },
       {
         "name": "size",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "db-s-2vcpu-4gb"
       },
       {
         "name": "status",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "creating"
       },
       {
         "name": "created_at",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "2019-01-11T18:37:36Z"
       },
       {
         "name": "private_network_uuid",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "9423cbad-9211-442f-820b-ef6915e99b5f"
       },
       {
         "name": "connection",
@@ -3394,7 +3574,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "storage_size_mib",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 61440
       }
     ],
     "responses": [
@@ -3436,7 +3617,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       }
     ],
     "responses": [
@@ -3478,13 +3660,15 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       },
       {
         "name": "replicaName",
         "schema": "string",
         "required": true,
-        "description": "The name of the database replica."
+        "description": "The name of the database replica.",
+        "example": "read-nyc3-01"
       }
     ],
     "responses": [
@@ -3526,13 +3710,15 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       },
       {
         "name": "replicaName",
         "schema": "string",
         "required": true,
-        "description": "The name of the database replica."
+        "description": "The name of the database replica.",
+        "example": "read-nyc3-01"
       }
     ],
     "responses": [
@@ -3574,13 +3760,15 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       },
       {
         "name": "replicaName",
         "schema": "string",
         "required": true,
-        "description": "The name of the database replica."
+        "description": "The name of the database replica.",
+        "example": "read-nyc3-01"
       }
     ],
     "responses": [
@@ -3622,7 +3810,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       }
     ],
     "responses": [
@@ -3664,7 +3853,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       }
     ],
     "responses": [
@@ -3706,13 +3896,15 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       },
       {
         "name": "username",
         "schema": "string",
         "required": true,
-        "description": "The name of the database user."
+        "description": "The name of the database user.",
+        "example": "app-01"
       }
     ],
     "responses": [
@@ -3754,13 +3946,15 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       },
       {
         "name": "username",
         "schema": "string",
         "required": true,
-        "description": "The name of the database user."
+        "description": "The name of the database user.",
+        "example": "app-01"
       }
     ],
     "responses": [
@@ -3802,13 +3996,15 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       },
       {
         "name": "username",
         "schema": "string",
         "required": true,
-        "description": "The name of the database user."
+        "description": "The name of the database user.",
+        "example": "app-01"
       }
     ],
     "responses": [
@@ -3850,13 +4046,15 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       },
       {
         "name": "username",
         "schema": "string",
         "required": true,
-        "description": "The name of the database user."
+        "description": "The name of the database user.",
+        "example": "app-01"
       },
       {
         "name": "mysql_settings",
@@ -3903,7 +4101,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       }
     ],
     "responses": [
@@ -3945,13 +4144,15 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "alpha"
       }
     ],
     "responses": [
@@ -3993,13 +4194,15 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       },
       {
         "name": "databaseName",
         "schema": "string",
         "required": true,
-        "description": "The name of the database."
+        "description": "The name of the database.",
+        "example": "alpha"
       }
     ],
     "responses": [
@@ -4041,13 +4244,15 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       },
       {
         "name": "databaseName",
         "schema": "string",
         "required": true,
-        "description": "The name of the database."
+        "description": "The name of the database.",
+        "example": "alpha"
       }
     ],
     "responses": [
@@ -4089,7 +4294,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       }
     ],
     "responses": [
@@ -4131,37 +4337,43 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "backend-pool"
       },
       {
         "name": "mode",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "transaction"
       },
       {
         "name": "size",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 10
       },
       {
         "name": "db",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "defaultdb"
       },
       {
         "name": "user",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "doadmin"
       },
       {
         "name": "connection",
@@ -4227,13 +4439,15 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       },
       {
         "name": "poolName",
         "schema": "string",
         "required": true,
-        "description": "The name used to identify the connection pool."
+        "description": "The name used to identify the connection pool.",
+        "example": "backend-pool"
       }
     ],
     "responses": [
@@ -4275,13 +4489,15 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       },
       {
         "name": "poolName",
         "schema": "string",
         "required": true,
-        "description": "The name used to identify the connection pool."
+        "description": "The name used to identify the connection pool.",
+        "example": "backend-pool"
       }
     ],
     "responses": [
@@ -4323,37 +4539,43 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       },
       {
         "name": "poolName",
         "schema": "string",
         "required": true,
-        "description": "The name used to identify the connection pool."
+        "description": "The name used to identify the connection pool.",
+        "example": "backend-pool"
       },
       {
         "name": "mode",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "transaction"
       },
       {
         "name": "size",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 10
       },
       {
         "name": "db",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "defaultdb"
       },
       {
         "name": "user",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "doadmin"
       }
     ],
     "responses": [
@@ -4395,7 +4617,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       }
     ],
     "responses": [
@@ -4437,13 +4660,15 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       },
       {
         "name": "eviction_policy",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "allkeys_lru"
       }
     ],
     "responses": [
@@ -4485,7 +4710,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       }
     ],
     "responses": [
@@ -4527,13 +4753,15 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       },
       {
         "name": "sql_mode",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES"
       }
     ],
     "responses": [
@@ -4575,12 +4803,14 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       },
       {
         "name": "version",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "8"
       }
     ],
     "responses": [
@@ -4622,7 +4852,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       }
     ],
     "responses": [
@@ -4664,22 +4895,26 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       },
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "customer-events"
       },
       {
         "name": "partitions",
         "schema": "number",
-        "description": ""
+        "description": "",
+        "example": 3
       },
       {
         "name": "replication",
         "schema": "number",
-        "description": ""
+        "description": "",
+        "example": 2
       },
       {
         "name": "config",
@@ -4726,13 +4961,15 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       },
       {
         "name": "topicName",
         "schema": "string",
         "required": true,
-        "description": "The name used to identify the Kafka topic."
+        "description": "The name used to identify the Kafka topic.",
+        "example": "customer-events"
       }
     ],
     "responses": [
@@ -4774,13 +5011,15 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       },
       {
         "name": "topicName",
         "schema": "string",
         "required": true,
-        "description": "The name used to identify the Kafka topic."
+        "description": "The name used to identify the Kafka topic.",
+        "example": "customer-events"
       }
     ],
     "responses": [
@@ -4822,23 +5061,27 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "databaseClusterUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a database cluster."
+        "description": "A unique identifier for a database cluster.",
+        "example": "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
       },
       {
         "name": "topicName",
         "schema": "string",
         "required": true,
-        "description": "The name used to identify the Kafka topic."
+        "description": "The name used to identify the Kafka topic.",
+        "example": "customer-events"
       },
       {
         "name": "replication_factor",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 2
       },
       {
         "name": "partition_count",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 3
       },
       {
         "name": "config",
@@ -4885,13 +5128,17 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -4928,22 +5175,26 @@ export default function DigitalOceanTypeScriptSdk() {
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "example.com"
       },
       {
         "name": "ip_address",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "192.0.2.1"
       },
       {
         "name": "ttl",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 1800
       },
       {
         "name": "zone_file",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "$ORIGIN example.com.\n$TTL 1800\nexample.com. IN SOA ns1.digitalocean.com. hostmaster.example.com. 1415982609 10800 3600 604800 1800\nexample.com. 1800 IN NS ns1.digitalocean.com.\nexample.com. 1800 IN NS ns2.digitalocean.com.\nexample.com. 1800 IN NS ns3.digitalocean.com.\nexample.com. 1800 IN A 1.2.3.4\n"
       }
     ],
     "responses": [
@@ -4981,7 +5232,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "domainName",
         "schema": "string",
         "required": true,
-        "description": "The name of the domain itself."
+        "description": "The name of the domain itself.",
+        "example": "example.com"
       }
     ],
     "responses": [
@@ -5023,7 +5275,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "domainName",
         "schema": "string",
         "required": true,
-        "description": "The name of the domain itself."
+        "description": "The name of the domain itself.",
+        "example": "example.com"
       }
     ],
     "responses": [
@@ -5065,29 +5318,36 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "domainName",
         "schema": "string",
         "required": true,
-        "description": "The name of the domain itself."
+        "description": "The name of the domain itself.",
+        "example": "example.com"
       },
       {
         "name": "name",
         "schema": "string",
-        "description": "A fully qualified record name. For example, to only include records matching sub.example.com, send a GET request to `/v2/domains/$DOMAIN_NAME/records?name=sub.example.com`."
+        "description": "A fully qualified record name. For example, to only include records matching sub.example.com, send a GET request to `/v2/domains/$DOMAIN_NAME/records?name=sub.example.com`.",
+        "example": "sub.example.com"
       },
       {
         "name": "type",
         "schema": "string",
-        "description": "The type of the DNS record. For example: A, CNAME, TXT, ..."
+        "description": "The type of the DNS record. For example: A, CNAME, TXT, ...",
+        "example": "A"
       },
       {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -5129,7 +5389,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "domainName",
         "schema": "string",
         "required": true,
-        "description": "The name of the domain itself."
+        "description": "The name of the domain itself.",
+        "example": "example.com"
       }
     ],
     "responses": [
@@ -5171,13 +5432,15 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "domainName",
         "schema": "string",
         "required": true,
-        "description": "The name of the domain itself."
+        "description": "The name of the domain itself.",
+        "example": "example.com"
       },
       {
         "name": "domainRecordId",
         "schema": "integer",
         "required": true,
-        "description": "The unique identifier of the domain record."
+        "description": "The unique identifier of the domain record.",
+        "example": 3352896
       }
     ],
     "responses": [
@@ -5219,13 +5482,15 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "domainName",
         "schema": "string",
         "required": true,
-        "description": "The name of the domain itself."
+        "description": "The name of the domain itself.",
+        "example": "example.com"
       },
       {
         "name": "domainRecordId",
         "schema": "integer",
         "required": true,
-        "description": "The unique identifier of the domain record."
+        "description": "The unique identifier of the domain record.",
+        "example": 3352896
       }
     ],
     "responses": [
@@ -5267,73 +5532,85 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "domainName",
         "schema": "string",
         "required": true,
-        "description": "The name of the domain itself."
+        "description": "The name of the domain itself.",
+        "example": "example.com"
       },
       {
         "name": "domainRecordId",
         "schema": "integer",
         "required": true,
-        "description": "The unique identifier of the domain record."
+        "description": "The unique identifier of the domain record.",
+        "example": 3352896
       },
       {
         "name": "id",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 28448429
       },
       {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NS"
       },
       {
         "name": "name",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "@"
       },
       {
         "name": "data",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "ns1.digitalocean.com"
       },
       {
         "name": "priority",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": null
       },
       {
         "name": "port",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": null
       },
       {
         "name": "ttl",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 1800
       },
       {
         "name": "weight",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": null
       },
       {
         "name": "flags",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": null
       },
       {
         "name": "tag",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": null
       }
     ],
     "responses": [
@@ -5375,73 +5652,85 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "domainName",
         "schema": "string",
         "required": true,
-        "description": "The name of the domain itself."
+        "description": "The name of the domain itself.",
+        "example": "example.com"
       },
       {
         "name": "domainRecordId",
         "schema": "integer",
         "required": true,
-        "description": "The unique identifier of the domain record."
+        "description": "The unique identifier of the domain record.",
+        "example": 3352896
       },
       {
         "name": "id",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 28448429
       },
       {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NS"
       },
       {
         "name": "name",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "@"
       },
       {
         "name": "data",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "ns1.digitalocean.com"
       },
       {
         "name": "priority",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": null
       },
       {
         "name": "port",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": null
       },
       {
         "name": "ttl",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 1800
       },
       {
         "name": "weight",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": null
       },
       {
         "name": "flags",
         "schema": "integer",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": null
       },
       {
         "name": "tag",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": null
       }
     ],
     "responses": [
@@ -5483,7 +5772,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "tagName",
         "schema": "string",
         "required": true,
-        "description": "Specifies Droplets to be deleted by tag."
+        "description": "Specifies Droplets to be deleted by tag.",
+        "example": "env:test"
       }
     ],
     "responses": [
@@ -5525,25 +5815,31 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       },
       {
         "name": "tagName",
         "schema": "string",
         "required": false,
-        "description": "Used to filter Droplets by a specific tag. Can not be combined with `name`."
+        "description": "Used to filter Droplets by a specific tag. Can not be combined with `name`.",
+        "example": "env:prod"
       },
       {
         "name": "name",
         "schema": "string",
         "required": false,
-        "description": "Used to filter list response by Droplet name returning only exact matches. It is case-insensitive and can not be combined with `tag_name`."
+        "description": "Used to filter list response by Droplet name returning only exact matches. It is case-insensitive and can not be combined with `tag_name`.",
+        "example": "web-01"
       }
     ],
     "responses": [
@@ -5612,7 +5908,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "dropletId",
         "schema": "integer",
         "required": true,
-        "description": "A unique identifier for a Droplet instance."
+        "description": "A unique identifier for a Droplet instance.",
+        "example": 3164444
       }
     ],
     "responses": [
@@ -5654,7 +5951,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "dropletId",
         "schema": "integer",
         "required": true,
-        "description": "A unique identifier for a Droplet instance."
+        "description": "A unique identifier for a Droplet instance.",
+        "example": 3164444
       }
     ],
     "responses": [
@@ -5696,19 +5994,24 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "dropletId",
         "schema": "integer",
         "required": true,
-        "description": "A unique identifier for a Droplet instance."
+        "description": "A unique identifier for a Droplet instance.",
+        "example": 3164444
       },
       {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -5750,19 +6053,24 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "dropletId",
         "schema": "integer",
         "required": true,
-        "description": "A unique identifier for a Droplet instance."
+        "description": "A unique identifier for a Droplet instance.",
+        "example": 3164444
       },
       {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -5804,19 +6112,24 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "dropletId",
         "schema": "integer",
         "required": true,
-        "description": "A unique identifier for a Droplet instance."
+        "description": "A unique identifier for a Droplet instance.",
+        "example": 3164444
       },
       {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -5858,7 +6171,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "dropletId",
         "schema": "integer",
         "required": true,
-        "description": "A unique identifier for a Droplet instance."
+        "description": "A unique identifier for a Droplet instance.",
+        "example": 3164444
       }
     ],
     "responses": [
@@ -5900,7 +6214,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "tagName",
         "schema": "string",
         "required": false,
-        "description": "Used to filter Droplets by a specific tag. Can not be combined with `name`."
+        "description": "Used to filter Droplets by a specific tag. Can not be combined with `name`.",
+        "example": "env:prod"
       }
     ],
     "responses": [
@@ -5938,13 +6253,15 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "dropletId",
         "schema": "integer",
         "required": true,
-        "description": "A unique identifier for a Droplet instance."
+        "description": "A unique identifier for a Droplet instance.",
+        "example": 3164444
       },
       {
         "name": "actionId",
         "schema": "integer",
         "required": true,
-        "description": "A unique numeric ID that can be used to identify and reference an action."
+        "description": "A unique numeric ID that can be used to identify and reference an action.",
+        "example": 36804636
       }
     ],
     "responses": [
@@ -5986,19 +6303,24 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "dropletId",
         "schema": "integer",
         "required": true,
-        "description": "A unique identifier for a Droplet instance."
+        "description": "A unique identifier for a Droplet instance.",
+        "example": 3164444
       },
       {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -6040,19 +6362,24 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "dropletId",
         "schema": "integer",
         "required": true,
-        "description": "A unique identifier for a Droplet instance."
+        "description": "A unique identifier for a Droplet instance.",
+        "example": 3164444
       },
       {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -6094,7 +6421,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "dropletId",
         "schema": "integer",
         "required": true,
-        "description": "A unique identifier for a Droplet instance."
+        "description": "A unique identifier for a Droplet instance.",
+        "example": 3164444
       }
     ],
     "responses": [
@@ -6136,7 +6464,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "dropletId",
         "schema": "integer",
         "required": true,
-        "description": "A unique identifier for a Droplet instance."
+        "description": "A unique identifier for a Droplet instance.",
+        "example": 3164444
       }
     ],
     "responses": [
@@ -6178,32 +6507,48 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "dropletId",
         "schema": "integer",
         "required": true,
-        "description": "A unique identifier for a Droplet instance."
+        "description": "A unique identifier for a Droplet instance.",
+        "example": 3164444
       },
       {
         "name": "floating_ips",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "example": [
+          "6186916"
+        ]
       },
       {
         "name": "reserved_ips",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "example": [
+          "6186916"
+        ]
       },
       {
         "name": "snapshots",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "example": [
+          "61486916"
+        ]
       },
       {
         "name": "volumes",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "example": [
+          "ba49449a-7435-11ea-b89e-0a58ac14480f"
+        ]
       },
       {
         "name": "volume_snapshots",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "example": [
+          "edb0478d-7436-11ea-86e6-0a58ac144b91"
+        ]
       }
     ],
     "responses": [
@@ -6245,13 +6590,15 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "dropletId",
         "schema": "integer",
         "required": true,
-        "description": "A unique identifier for a Droplet instance."
+        "description": "A unique identifier for a Droplet instance.",
+        "example": 3164444
       },
       {
         "name": "xDangerous",
         "schema": "boolean",
         "required": true,
-        "description": "Acknowledge this action will destroy the Droplet and all associated resources and _can not_ be reversed."
+        "description": "Acknowledge this action will destroy the Droplet and all associated resources and _can not_ be reversed.",
+        "example": true
       }
     ],
     "responses": [
@@ -6293,7 +6640,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "dropletId",
         "schema": "integer",
         "required": true,
-        "description": "A unique identifier for a Droplet instance."
+        "description": "A unique identifier for a Droplet instance.",
+        "example": 3164444
       }
     ],
     "responses": [
@@ -6335,7 +6683,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "dropletId",
         "schema": "integer",
         "required": true,
-        "description": "A unique identifier for a Droplet instance."
+        "description": "A unique identifier for a Droplet instance.",
+        "example": 3164444
       }
     ],
     "responses": [
@@ -6381,13 +6730,17 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -6460,7 +6813,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "firewallId",
         "schema": "string",
         "required": true,
-        "description": "A unique ID that can be used to identify and reference a firewall."
+        "description": "A unique ID that can be used to identify and reference a firewall.",
+        "example": "bb4b2611-3d72-467b-8602-280330ecd65c"
       }
     ],
     "responses": [
@@ -6502,7 +6856,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "firewallId",
         "schema": "string",
         "required": true,
-        "description": "A unique ID that can be used to identify and reference a firewall."
+        "description": "A unique ID that can be used to identify and reference a firewall.",
+        "example": "bb4b2611-3d72-467b-8602-280330ecd65c"
       }
     ],
     "responses": [
@@ -6544,7 +6899,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "firewallId",
         "schema": "string",
         "required": true,
-        "description": "A unique ID that can be used to identify and reference a firewall."
+        "description": "A unique ID that can be used to identify and reference a firewall.",
+        "example": "bb4b2611-3d72-467b-8602-280330ecd65c"
       }
     ],
     "responses": [
@@ -6590,13 +6946,17 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "firewallId",
         "schema": "string",
         "required": true,
-        "description": "A unique ID that can be used to identify and reference a firewall."
+        "description": "A unique ID that can be used to identify and reference a firewall.",
+        "example": "bb4b2611-3d72-467b-8602-280330ecd65c"
       },
       {
         "name": "droplet_ids",
         "schema": "array",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": [
+          49696269
+        ]
       }
     ],
     "responses": [
@@ -6642,13 +7002,17 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "firewallId",
         "schema": "string",
         "required": true,
-        "description": "A unique ID that can be used to identify and reference a firewall."
+        "description": "A unique ID that can be used to identify and reference a firewall.",
+        "example": "bb4b2611-3d72-467b-8602-280330ecd65c"
       },
       {
         "name": "droplet_ids",
         "schema": "array",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": [
+          49696269
+        ]
       }
     ],
     "responses": [
@@ -6694,7 +7058,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "firewallId",
         "schema": "string",
         "required": true,
-        "description": "A unique ID that can be used to identify and reference a firewall."
+        "description": "A unique ID that can be used to identify and reference a firewall.",
+        "example": "bb4b2611-3d72-467b-8602-280330ecd65c"
       },
       {
         "name": "tags",
@@ -6746,7 +7111,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "firewallId",
         "schema": "string",
         "required": true,
-        "description": "A unique ID that can be used to identify and reference a firewall."
+        "description": "A unique ID that can be used to identify and reference a firewall.",
+        "example": "bb4b2611-3d72-467b-8602-280330ecd65c"
       },
       {
         "name": "tags",
@@ -6798,7 +7164,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "firewallId",
         "schema": "string",
         "required": true,
-        "description": "A unique ID that can be used to identify and reference a firewall."
+        "description": "A unique ID that can be used to identify and reference a firewall.",
+        "example": "bb4b2611-3d72-467b-8602-280330ecd65c"
       }
     ],
     "responses": [
@@ -6844,7 +7211,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "firewallId",
         "schema": "string",
         "required": true,
-        "description": "A unique ID that can be used to identify and reference a firewall."
+        "description": "A unique ID that can be used to identify and reference a firewall.",
+        "example": "bb4b2611-3d72-467b-8602-280330ecd65c"
       }
     ],
     "responses": [
@@ -6890,13 +7258,17 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -6965,7 +7337,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "floatingIp",
         "schema": "string",
         "required": true,
-        "description": "A floating IP address."
+        "description": "A floating IP address.",
+        "example": "45.55.96.47"
       }
     ],
     "responses": [
@@ -7007,7 +7380,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "floatingIp",
         "schema": "string",
         "required": true,
-        "description": "A floating IP address."
+        "description": "A floating IP address.",
+        "example": "45.55.96.47"
       }
     ],
     "responses": [
@@ -7049,7 +7423,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "floatingIp",
         "schema": "string",
         "required": true,
-        "description": "A floating IP address."
+        "description": "A floating IP address.",
+        "example": "45.55.96.47"
       }
     ],
     "responses": [
@@ -7091,7 +7466,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "floatingIp",
         "schema": "string",
         "required": true,
-        "description": "A floating IP address."
+        "description": "A floating IP address.",
+        "example": "45.55.96.47"
       }
     ],
     "responses": [
@@ -7133,13 +7509,15 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "floatingIp",
         "schema": "string",
         "required": true,
-        "description": "A floating IP address."
+        "description": "A floating IP address.",
+        "example": "45.55.96.47"
       },
       {
         "name": "actionId",
         "schema": "integer",
         "required": true,
-        "description": "A unique numeric ID that can be used to identify and reference an action."
+        "description": "A unique numeric ID that can be used to identify and reference an action.",
+        "example": 36804636
       }
     ],
     "responses": [
@@ -7212,13 +7590,15 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "region",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "nyc1"
       },
       {
         "name": "label",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "my namespace"
       }
     ],
     "responses": [
@@ -7264,7 +7644,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "namespaceId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the namespace to be managed."
+        "description": "The ID of the namespace to be managed.",
+        "example": "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
       }
     ],
     "responses": [
@@ -7306,7 +7687,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "namespaceId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the namespace to be managed."
+        "description": "The ID of the namespace to be managed.",
+        "example": "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
       }
     ],
     "responses": [
@@ -7352,7 +7734,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "namespaceId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the namespace to be managed."
+        "description": "The ID of the namespace to be managed.",
+        "example": "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
       }
     ],
     "responses": [
@@ -7394,31 +7777,36 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "namespaceId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the namespace to be managed."
+        "description": "The ID of the namespace to be managed.",
+        "example": "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "my trigger"
       },
       {
         "name": "function",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "hello"
       },
       {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SCHEDULED"
       },
       {
         "name": "is_enabled",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "scheduled_details",
@@ -7474,13 +7862,15 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "namespaceId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the namespace to be managed."
+        "description": "The ID of the namespace to be managed.",
+        "example": "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
       },
       {
         "name": "triggerName",
         "schema": "string",
         "required": true,
-        "description": "The name of the trigger to be managed."
+        "description": "The name of the trigger to be managed.",
+        "example": "my trigger"
       }
     ],
     "responses": [
@@ -7522,13 +7912,15 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "namespaceId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the namespace to be managed."
+        "description": "The ID of the namespace to be managed.",
+        "example": "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
       },
       {
         "name": "triggerName",
         "schema": "string",
         "required": true,
-        "description": "The name of the trigger to be managed."
+        "description": "The name of the trigger to be managed.",
+        "example": "my trigger"
       }
     ],
     "responses": [
@@ -7570,18 +7962,21 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "namespaceId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the namespace to be managed."
+        "description": "The ID of the namespace to be managed.",
+        "example": "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
       },
       {
         "name": "triggerName",
         "schema": "string",
         "required": true,
-        "description": "The name of the trigger to be managed."
+        "description": "The name of the trigger to be managed.",
+        "example": "my trigger"
       },
       {
         "name": "is_enabled",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "scheduled_details",
@@ -7632,31 +8027,38 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": false,
-        "description": "Filters results based on image type which can be either `application` or `distribution`."
+        "description": "Filters results based on image type which can be either `application` or `distribution`.",
+        "example": "distribution"
       },
       {
         "name": "private",
         "schema": "boolean",
         "required": false,
-        "description": "Used to filter only user images."
+        "description": "Used to filter only user images.",
+        "example": true
       },
       {
         "name": "tagName",
         "schema": "string",
         "required": false,
-        "description": "Used to filter images by a specific tag."
+        "description": "Used to filter images by a specific tag.",
+        "example": "base-image"
       },
       {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -7700,31 +8102,36 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "description",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Cloud-optimized image w/ small footprint"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ubuntu-18.04-minimal"
       },
       {
         "name": "url",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "http://cloud-images.ubuntu.com/minimal/releases/bionic/release/ubuntu-18.04-minimal-cloudimg-amd64.img"
       },
       {
         "name": "distribution",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "Ubuntu"
       },
       {
         "name": "region",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "nyc3"
       }
     ],
     "responses": [
@@ -7762,7 +8169,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "imageId",
         "schema": "integer",
         "required": true,
-        "description": "A unique number that can be used to identify and reference a specific image."
+        "description": "A unique number that can be used to identify and reference a specific image.",
+        "example": 62137902
       }
     ],
     "responses": [
@@ -7846,22 +8254,26 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "imageId",
         "schema": "integer",
         "required": true,
-        "description": "A unique number that can be used to identify and reference a specific image."
+        "description": "A unique number that can be used to identify and reference a specific image.",
+        "example": 62137902
       },
       {
         "name": "description",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": " "
       },
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Nifty New Snapshot"
       },
       {
         "name": "distribution",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Ubuntu"
       }
     ],
     "responses": [
@@ -7903,7 +8315,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "imageId",
         "schema": "integer",
         "required": true,
-        "description": "A unique number that can be used to identify and reference a specific image."
+        "description": "A unique number that can be used to identify and reference a specific image.",
+        "example": 62137902
       }
     ],
     "responses": [
@@ -7945,7 +8358,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "imageId",
         "schema": "integer",
         "required": true,
-        "description": "A unique number that can be used to identify and reference a specific image."
+        "description": "A unique number that can be used to identify and reference a specific image.",
+        "example": 62137902
       }
     ],
     "responses": [
@@ -7987,13 +8401,15 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "imageId",
         "schema": "integer",
         "required": true,
-        "description": "A unique number that can be used to identify and reference a specific image."
+        "description": "A unique number that can be used to identify and reference a specific image.",
+        "example": 62137902
       },
       {
         "name": "actionId",
         "schema": "integer",
         "required": true,
-        "description": "A unique numeric ID that can be used to identify and reference an action."
+        "description": "A unique numeric ID that can be used to identify and reference an action.",
+        "example": 36804636
       }
     ],
     "responses": [
@@ -8035,13 +8451,17 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -8079,61 +8499,76 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "tags",
         "schema": "array",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": [
+          "k8s",
+          "k8s:bd5f5959-5e1e-4205-a714-a914373942af",
+          "production",
+          "web-team"
+        ]
       },
       {
         "name": "version",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "1.18.6-do.0"
       },
       {
         "name": "id",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "bd5f5959-5e1e-4205-a714-a914373942af"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "prod-cluster-01"
       },
       {
         "name": "region",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "nyc1"
       },
       {
         "name": "cluster_subnet",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "10.244.0.0/16"
       },
       {
         "name": "service_subnet",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "10.245.0.0/16"
       },
       {
         "name": "vpc_uuid",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "c33931f2-a26a-4e61-b85c-4e95a2ec431b"
       },
       {
         "name": "ipv4",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "68.183.121.157"
       },
       {
         "name": "endpoint",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "https://bd5f5959-5e1e-4205-a714-a914373942af.k8s.ondigitalocean.com"
       },
       {
         "name": "node_pools",
@@ -8151,7 +8586,9 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "auto_upgrade",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true,
+        "default": false
       },
       {
         "name": "status",
@@ -8163,31 +8600,38 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "created_at",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "2018-11-15T16:00:11Z"
       },
       {
         "name": "updated_at",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "2018-11-15T16:00:11Z"
       },
       {
         "name": "surge_upgrade",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true,
+        "default": false
       },
       {
         "name": "ha",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true,
+        "default": false
       },
       {
         "name": "registry_enabled",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -8225,7 +8669,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "clusterId",
         "schema": "string",
         "required": true,
-        "description": "A unique ID that can be used to reference a Kubernetes cluster."
+        "description": "A unique ID that can be used to reference a Kubernetes cluster.",
+        "example": "bd5f5959-5e1e-4205-a714-a914373942af"
       }
     ],
     "responses": [
@@ -8267,7 +8712,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "clusterId",
         "schema": "string",
         "required": true,
-        "description": "A unique ID that can be used to reference a Kubernetes cluster."
+        "description": "A unique ID that can be used to reference a Kubernetes cluster.",
+        "example": "bd5f5959-5e1e-4205-a714-a914373942af"
       }
     ],
     "responses": [
@@ -8309,19 +8755,27 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "clusterId",
         "schema": "string",
         "required": true,
-        "description": "A unique ID that can be used to reference a Kubernetes cluster."
+        "description": "A unique ID that can be used to reference a Kubernetes cluster.",
+        "example": "bd5f5959-5e1e-4205-a714-a914373942af"
       },
       {
         "name": "tags",
         "schema": "array",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": [
+          "k8s",
+          "k8s:bd5f5959-5e1e-4205-a714-a914373942af",
+          "production",
+          "web-team"
+        ]
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "prod-cluster-01"
       },
       {
         "name": "maintenance_policy",
@@ -8333,19 +8787,25 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "auto_upgrade",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true,
+        "default": false
       },
       {
         "name": "surge_upgrade",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true,
+        "default": false
       },
       {
         "name": "ha",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true,
+        "default": false
       }
     ],
     "responses": [
@@ -8387,7 +8847,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "clusterId",
         "schema": "string",
         "required": true,
-        "description": "A unique ID that can be used to reference a Kubernetes cluster."
+        "description": "A unique ID that can be used to reference a Kubernetes cluster.",
+        "example": "bd5f5959-5e1e-4205-a714-a914373942af"
       }
     ],
     "responses": [
@@ -8429,22 +8890,32 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "clusterId",
         "schema": "string",
         "required": true,
-        "description": "A unique ID that can be used to reference a Kubernetes cluster."
+        "description": "A unique ID that can be used to reference a Kubernetes cluster.",
+        "example": "bd5f5959-5e1e-4205-a714-a914373942af"
       },
       {
         "name": "load_balancers",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "example": [
+          "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+        ]
       },
       {
         "name": "volumes",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "example": [
+          "ba49449a-7435-11ea-b89e-0a58ac14480f"
+        ]
       },
       {
         "name": "volume_snapshots",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "example": [
+          "edb0478d-7436-11ea-86e6-0a58ac144b91"
+        ]
       }
     ],
     "responses": [
@@ -8486,7 +8957,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "clusterId",
         "schema": "string",
         "required": true,
-        "description": "A unique ID that can be used to reference a Kubernetes cluster."
+        "description": "A unique ID that can be used to reference a Kubernetes cluster.",
+        "example": "bd5f5959-5e1e-4205-a714-a914373942af"
       }
     ],
     "responses": [
@@ -8528,13 +9000,16 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "clusterId",
         "schema": "string",
         "required": true,
-        "description": "A unique ID that can be used to reference a Kubernetes cluster."
+        "description": "A unique ID that can be used to reference a Kubernetes cluster.",
+        "example": "bd5f5959-5e1e-4205-a714-a914373942af"
       },
       {
         "name": "expirySeconds",
         "schema": "integer",
         "required": false,
-        "description": "The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry."
+        "description": "The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.",
+        "example": 300,
+        "default": 0
       }
     ],
     "responses": [
@@ -8576,13 +9051,16 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "clusterId",
         "schema": "string",
         "required": true,
-        "description": "A unique ID that can be used to reference a Kubernetes cluster."
+        "description": "A unique ID that can be used to reference a Kubernetes cluster.",
+        "example": "bd5f5959-5e1e-4205-a714-a914373942af"
       },
       {
         "name": "expirySeconds",
         "schema": "integer",
         "required": false,
-        "description": "The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry."
+        "description": "The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.",
+        "example": 300,
+        "default": 0
       }
     ],
     "responses": [
@@ -8624,7 +9102,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "clusterId",
         "schema": "string",
         "required": true,
-        "description": "A unique ID that can be used to reference a Kubernetes cluster."
+        "description": "A unique ID that can be used to reference a Kubernetes cluster.",
+        "example": "bd5f5959-5e1e-4205-a714-a914373942af"
       }
     ],
     "responses": [
@@ -8666,12 +9145,14 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "clusterId",
         "schema": "string",
         "required": true,
-        "description": "A unique ID that can be used to reference a Kubernetes cluster."
+        "description": "A unique ID that can be used to reference a Kubernetes cluster.",
+        "example": "bd5f5959-5e1e-4205-a714-a914373942af"
       },
       {
         "name": "version",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "1.16.13-do.0"
       }
     ],
     "responses": [
@@ -8713,7 +9194,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "clusterId",
         "schema": "string",
         "required": true,
-        "description": "A unique ID that can be used to reference a Kubernetes cluster."
+        "description": "A unique ID that can be used to reference a Kubernetes cluster.",
+        "example": "bd5f5959-5e1e-4205-a714-a914373942af"
       }
     ],
     "responses": [
@@ -8755,7 +9237,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "clusterId",
         "schema": "string",
         "required": true,
-        "description": "A unique ID that can be used to reference a Kubernetes cluster."
+        "description": "A unique ID that can be used to reference a Kubernetes cluster.",
+        "example": "bd5f5959-5e1e-4205-a714-a914373942af"
       },
       {
         "name": "tags",
@@ -8767,37 +9250,43 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "size",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "s-1vcpu-2gb"
       },
       {
         "name": "count",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 3
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "new-pool"
       },
       {
         "name": "auto_scale",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "min_nodes",
         "schema": "number",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 3
       },
       {
         "name": "max_nodes",
         "schema": "number",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": 6
       }
     ],
     "responses": [
@@ -8839,13 +9328,15 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "clusterId",
         "schema": "string",
         "required": true,
-        "description": "A unique ID that can be used to reference a Kubernetes cluster."
+        "description": "A unique ID that can be used to reference a Kubernetes cluster.",
+        "example": "bd5f5959-5e1e-4205-a714-a914373942af"
       },
       {
         "name": "nodePoolId",
         "schema": "string",
         "required": true,
-        "description": "A unique ID that can be used to reference a Kubernetes node pool."
+        "description": "A unique ID that can be used to reference a Kubernetes node pool.",
+        "example": "cdda885e-7663-40c8-bc74-3a036c66545d"
       }
     ],
     "responses": [
@@ -8887,13 +9378,15 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "clusterId",
         "schema": "string",
         "required": true,
-        "description": "A unique ID that can be used to reference a Kubernetes cluster."
+        "description": "A unique ID that can be used to reference a Kubernetes cluster.",
+        "example": "bd5f5959-5e1e-4205-a714-a914373942af"
       },
       {
         "name": "nodePoolId",
         "schema": "string",
         "required": true,
-        "description": "A unique ID that can be used to reference a Kubernetes node pool."
+        "description": "A unique ID that can be used to reference a Kubernetes node pool.",
+        "example": "cdda885e-7663-40c8-bc74-3a036c66545d"
       }
     ],
     "responses": [
@@ -8935,38 +9428,51 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "clusterId",
         "schema": "string",
         "required": true,
-        "description": "A unique ID that can be used to reference a Kubernetes cluster."
+        "description": "A unique ID that can be used to reference a Kubernetes cluster.",
+        "example": "bd5f5959-5e1e-4205-a714-a914373942af"
       },
       {
         "name": "nodePoolId",
         "schema": "string",
         "required": true,
-        "description": "A unique ID that can be used to reference a Kubernetes node pool."
+        "description": "A unique ID that can be used to reference a Kubernetes node pool.",
+        "example": "cdda885e-7663-40c8-bc74-3a036c66545d"
       },
       {
         "name": "tags",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "example": [
+          "k8s",
+          "k8s:bd5f5959-5e1e-4205-a714-a914373942af",
+          "k8s-worker",
+          "production",
+          "web-team"
+        ]
       },
       {
         "name": "id",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "cdda885e-7663-40c8-bc74-3a036c66545d"
       },
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "frontend-pool"
       },
       {
         "name": "count",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 3
       },
       {
         "name": "labels",
         "schema": "object",
-        "description": ""
+        "description": "",
+        "example": null
       },
       {
         "name": "taints",
@@ -8976,17 +9482,20 @@ export default function DigitalOceanTypeScriptSdk() {
       {
         "name": "auto_scale",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "min_nodes",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 3
       },
       {
         "name": "max_nodes",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 6
       },
       {
         "name": "nodes",
@@ -9033,31 +9542,38 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "clusterId",
         "schema": "string",
         "required": true,
-        "description": "A unique ID that can be used to reference a Kubernetes cluster."
+        "description": "A unique ID that can be used to reference a Kubernetes cluster.",
+        "example": "bd5f5959-5e1e-4205-a714-a914373942af"
       },
       {
         "name": "nodePoolId",
         "schema": "string",
         "required": true,
-        "description": "A unique ID that can be used to reference a Kubernetes node pool."
+        "description": "A unique ID that can be used to reference a Kubernetes node pool.",
+        "example": "cdda885e-7663-40c8-bc74-3a036c66545d"
       },
       {
         "name": "nodeId",
         "schema": "string",
         "required": true,
-        "description": "A unique ID that can be used to reference a node in a Kubernetes node pool."
+        "description": "A unique ID that can be used to reference a node in a Kubernetes node pool.",
+        "example": "478247f8-b1bb-4f7a-8db9-2a5f8d4b8f8f"
       },
       {
         "name": "skipDrain",
         "schema": "integer",
         "required": false,
-        "description": "Specifies whether or not to drain workloads from a node before it is deleted. Setting it to `1` causes node draining to be skipped. Omitting the query parameter or setting its value to `0` carries out draining prior to deletion."
+        "description": "Specifies whether or not to drain workloads from a node before it is deleted. Setting it to `1` causes node draining to be skipped. Omitting the query parameter or setting its value to `0` carries out draining prior to deletion.",
+        "example": 1,
+        "default": 0
       },
       {
         "name": "replace",
         "schema": "integer",
         "required": false,
-        "description": "Specifies whether or not to replace a node after it has been deleted. Setting it to `1` causes the node to be replaced by a new one after deletion. Omitting the query parameter or setting its value to `0` deletes without replacement."
+        "description": "Specifies whether or not to replace a node after it has been deleted. Setting it to `1` causes the node to be replaced by a new one after deletion. Omitting the query parameter or setting its value to `0` deletes without replacement.",
+        "example": 1,
+        "default": 0
       }
     ],
     "responses": [
@@ -9099,18 +9615,23 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "clusterId",
         "schema": "string",
         "required": true,
-        "description": "A unique ID that can be used to reference a Kubernetes cluster."
+        "description": "A unique ID that can be used to reference a Kubernetes cluster.",
+        "example": "bd5f5959-5e1e-4205-a714-a914373942af"
       },
       {
         "name": "nodePoolId",
         "schema": "string",
         "required": true,
-        "description": "A unique ID that can be used to reference a Kubernetes node pool."
+        "description": "A unique ID that can be used to reference a Kubernetes node pool.",
+        "example": "cdda885e-7663-40c8-bc74-3a036c66545d"
       },
       {
         "name": "nodes",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "example": [
+          "d8db5e1a-6103-43b5-a7b3-8a948210a9fc"
+        ]
       }
     ],
     "responses": [
@@ -9152,7 +9673,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "clusterId",
         "schema": "string",
         "required": true,
-        "description": "A unique ID that can be used to reference a Kubernetes cluster."
+        "description": "A unique ID that can be used to reference a Kubernetes cluster.",
+        "example": "bd5f5959-5e1e-4205-a714-a914373942af"
       }
     ],
     "responses": [
@@ -9229,13 +9751,15 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "clusterId",
         "schema": "string",
         "required": true,
-        "description": "A unique ID that can be used to reference a Kubernetes cluster."
+        "description": "A unique ID that can be used to reference a Kubernetes cluster.",
+        "example": "bd5f5959-5e1e-4205-a714-a914373942af"
       },
       {
         "name": "runId",
         "schema": "string",
         "required": false,
-        "description": "Specifies the clusterlint run whose results will be retrieved."
+        "description": "Specifies the clusterlint run whose results will be retrieved.",
+        "example": "50c2f44c-011d-493e-aee5-361a4a0d1844"
       }
     ],
     "responses": [
@@ -9277,27 +9801,43 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "clusterId",
         "schema": "string",
         "required": true,
-        "description": "A unique ID that can be used to reference a Kubernetes cluster."
+        "description": "A unique ID that can be used to reference a Kubernetes cluster.",
+        "example": "bd5f5959-5e1e-4205-a714-a914373942af"
       },
       {
         "name": "include_groups",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "example": [
+          "basic",
+          "doks",
+          "security"
+        ]
       },
       {
         "name": "include_checks",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "example": [
+          "bare-pods",
+          "resource-requirements"
+        ]
       },
       {
         "name": "exclude_groups",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "example": [
+          "workload-health"
+        ]
       },
       {
         "name": "exclude_checks",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "example": [
+          "default-namespace"
+        ]
       }
     ],
     "responses": [
@@ -9338,7 +9878,11 @@ export default function DigitalOceanTypeScriptSdk() {
       {
         "name": "cluster_uuids",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "example": [
+          "bd5f5959-5e1e-4205-a714-a914373942af",
+          "50c2f44c-011d-493e-aee5-361a4a0d1844"
+        ]
       }
     ],
     "responses": [
@@ -9375,7 +9919,11 @@ export default function DigitalOceanTypeScriptSdk() {
       {
         "name": "cluster_uuids",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "example": [
+          "bd5f5959-5e1e-4205-a714-a914373942af",
+          "50c2f44c-011d-493e-aee5-361a4a0d1844"
+        ]
       }
     ],
     "responses": [
@@ -9413,13 +9961,17 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -9488,7 +10040,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "lbId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a load balancer."
+        "description": "A unique identifier for a load balancer.",
+        "example": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
       }
     ],
     "responses": [
@@ -9530,7 +10083,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "lbId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a load balancer."
+        "description": "A unique identifier for a load balancer.",
+        "example": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
       }
     ],
     "responses": [
@@ -9572,7 +10126,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "lbId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a load balancer."
+        "description": "A unique identifier for a load balancer.",
+        "example": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
       }
     ],
     "responses": [
@@ -9614,13 +10169,18 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "lbId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a load balancer."
+        "description": "A unique identifier for a load balancer.",
+        "example": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
       },
       {
         "name": "droplet_ids",
         "schema": "array",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": [
+          3164444,
+          3164445
+        ]
       }
     ],
     "responses": [
@@ -9662,13 +10222,18 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "lbId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a load balancer."
+        "description": "A unique identifier for a load balancer.",
+        "example": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
       },
       {
         "name": "droplet_ids",
         "schema": "array",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": [
+          3164444,
+          3164445
+        ]
       }
     ],
     "responses": [
@@ -9710,7 +10275,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "lbId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a load balancer."
+        "description": "A unique identifier for a load balancer.",
+        "example": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
       },
       {
         "name": "forwarding_rules",
@@ -9758,7 +10324,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "lbId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a load balancer."
+        "description": "A unique identifier for a load balancer.",
+        "example": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
       },
       {
         "name": "forwarding_rules",
@@ -9806,13 +10373,17 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -9850,13 +10421,17 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "tags",
         "schema": "array",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": [
+          "droplet_tag"
+        ]
       },
       {
         "name": "description",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CPU Alert"
       },
       {
         "name": "alerts",
@@ -9868,37 +10443,45 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "compare",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "GreaterThan"
       },
       {
         "name": "enabled",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "entities",
         "schema": "array",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": [
+          "192018292"
+        ]
       },
       {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "v1/insights/droplet/cpu"
       },
       {
         "name": "value",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 80
       },
       {
         "name": "window",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "5m"
       }
     ],
     "responses": [
@@ -9936,7 +10519,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "alertUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for an alert policy."
+        "description": "A unique identifier for an alert policy.",
+        "example": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
       }
     ],
     "responses": [
@@ -9978,7 +10562,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "alertUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for an alert policy."
+        "description": "A unique identifier for an alert policy.",
+        "example": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
       }
     ],
     "responses": [
@@ -10020,19 +10605,24 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "alertUuid",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for an alert policy."
+        "description": "A unique identifier for an alert policy.",
+        "example": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
       },
       {
         "name": "tags",
         "schema": "array",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": [
+          "droplet_tag"
+        ]
       },
       {
         "name": "description",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CPU Alert"
       },
       {
         "name": "alerts",
@@ -10044,37 +10634,45 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "compare",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "GreaterThan"
       },
       {
         "name": "enabled",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "entities",
         "schema": "array",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": [
+          "192018292"
+        ]
       },
       {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "v1/insights/droplet/cpu"
       },
       {
         "name": "value",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 80
       },
       {
         "name": "window",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "5m"
       }
     ],
     "responses": [
@@ -10116,31 +10714,36 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "hostId",
         "schema": "string",
         "required": true,
-        "description": "The droplet ID."
+        "description": "The droplet ID.",
+        "example": "17209102"
       },
       {
         "name": "interface",
         "schema": "string",
         "required": true,
-        "description": "The network interface."
+        "description": "The network interface.",
+        "example": "private"
       },
       {
         "name": "direction",
         "schema": "string",
         "required": true,
-        "description": "The traffic direction."
+        "description": "The traffic direction.",
+        "example": "inbound"
       },
       {
         "name": "start",
         "schema": "string",
         "required": true,
-        "description": "Timestamp to start metric window."
+        "description": "Timestamp to start metric window.",
+        "example": "1620683817"
       },
       {
         "name": "end",
         "schema": "string",
         "required": true,
-        "description": "Timestamp to end metric window."
+        "description": "Timestamp to end metric window.",
+        "example": "1620705417"
       }
     ],
     "responses": [
@@ -10178,19 +10781,22 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "hostId",
         "schema": "string",
         "required": true,
-        "description": "The droplet ID."
+        "description": "The droplet ID.",
+        "example": "17209102"
       },
       {
         "name": "start",
         "schema": "string",
         "required": true,
-        "description": "Timestamp to start metric window."
+        "description": "Timestamp to start metric window.",
+        "example": "1620683817"
       },
       {
         "name": "end",
         "schema": "string",
         "required": true,
-        "description": "Timestamp to end metric window."
+        "description": "Timestamp to end metric window.",
+        "example": "1620705417"
       }
     ],
     "responses": [
@@ -10228,19 +10834,22 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "hostId",
         "schema": "string",
         "required": true,
-        "description": "The droplet ID."
+        "description": "The droplet ID.",
+        "example": "17209102"
       },
       {
         "name": "start",
         "schema": "string",
         "required": true,
-        "description": "Timestamp to start metric window."
+        "description": "Timestamp to start metric window.",
+        "example": "1620683817"
       },
       {
         "name": "end",
         "schema": "string",
         "required": true,
-        "description": "Timestamp to end metric window."
+        "description": "Timestamp to end metric window.",
+        "example": "1620705417"
       }
     ],
     "responses": [
@@ -10278,19 +10887,22 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "hostId",
         "schema": "string",
         "required": true,
-        "description": "The droplet ID."
+        "description": "The droplet ID.",
+        "example": "17209102"
       },
       {
         "name": "start",
         "schema": "string",
         "required": true,
-        "description": "Timestamp to start metric window."
+        "description": "Timestamp to start metric window.",
+        "example": "1620683817"
       },
       {
         "name": "end",
         "schema": "string",
         "required": true,
-        "description": "Timestamp to end metric window."
+        "description": "Timestamp to end metric window.",
+        "example": "1620705417"
       }
     ],
     "responses": [
@@ -10328,19 +10940,22 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "hostId",
         "schema": "string",
         "required": true,
-        "description": "The droplet ID."
+        "description": "The droplet ID.",
+        "example": "17209102"
       },
       {
         "name": "start",
         "schema": "string",
         "required": true,
-        "description": "Timestamp to start metric window."
+        "description": "Timestamp to start metric window.",
+        "example": "1620683817"
       },
       {
         "name": "end",
         "schema": "string",
         "required": true,
-        "description": "Timestamp to end metric window."
+        "description": "Timestamp to end metric window.",
+        "example": "1620705417"
       }
     ],
     "responses": [
@@ -10378,19 +10993,22 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "hostId",
         "schema": "string",
         "required": true,
-        "description": "The droplet ID."
+        "description": "The droplet ID.",
+        "example": "17209102"
       },
       {
         "name": "start",
         "schema": "string",
         "required": true,
-        "description": "Timestamp to start metric window."
+        "description": "Timestamp to start metric window.",
+        "example": "1620683817"
       },
       {
         "name": "end",
         "schema": "string",
         "required": true,
-        "description": "Timestamp to end metric window."
+        "description": "Timestamp to end metric window.",
+        "example": "1620705417"
       }
     ],
     "responses": [
@@ -10428,19 +11046,22 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "hostId",
         "schema": "string",
         "required": true,
-        "description": "The droplet ID."
+        "description": "The droplet ID.",
+        "example": "17209102"
       },
       {
         "name": "start",
         "schema": "string",
         "required": true,
-        "description": "Timestamp to start metric window."
+        "description": "Timestamp to start metric window.",
+        "example": "1620683817"
       },
       {
         "name": "end",
         "schema": "string",
         "required": true,
-        "description": "Timestamp to end metric window."
+        "description": "Timestamp to end metric window.",
+        "example": "1620705417"
       }
     ],
     "responses": [
@@ -10478,19 +11099,22 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "hostId",
         "schema": "string",
         "required": true,
-        "description": "The droplet ID."
+        "description": "The droplet ID.",
+        "example": "17209102"
       },
       {
         "name": "start",
         "schema": "string",
         "required": true,
-        "description": "Timestamp to start metric window."
+        "description": "Timestamp to start metric window.",
+        "example": "1620683817"
       },
       {
         "name": "end",
         "schema": "string",
         "required": true,
-        "description": "Timestamp to end metric window."
+        "description": "Timestamp to end metric window.",
+        "example": "1620705417"
       }
     ],
     "responses": [
@@ -10528,19 +11152,22 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "hostId",
         "schema": "string",
         "required": true,
-        "description": "The droplet ID."
+        "description": "The droplet ID.",
+        "example": "17209102"
       },
       {
         "name": "start",
         "schema": "string",
         "required": true,
-        "description": "Timestamp to start metric window."
+        "description": "Timestamp to start metric window.",
+        "example": "1620683817"
       },
       {
         "name": "end",
         "schema": "string",
         "required": true,
-        "description": "Timestamp to end metric window."
+        "description": "Timestamp to end metric window.",
+        "example": "1620705417"
       }
     ],
     "responses": [
@@ -10578,19 +11205,22 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "hostId",
         "schema": "string",
         "required": true,
-        "description": "The droplet ID."
+        "description": "The droplet ID.",
+        "example": "17209102"
       },
       {
         "name": "start",
         "schema": "string",
         "required": true,
-        "description": "Timestamp to start metric window."
+        "description": "Timestamp to start metric window.",
+        "example": "1620683817"
       },
       {
         "name": "end",
         "schema": "string",
         "required": true,
-        "description": "Timestamp to end metric window."
+        "description": "Timestamp to end metric window.",
+        "example": "1620705417"
       }
     ],
     "responses": [
@@ -10628,19 +11258,22 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "hostId",
         "schema": "string",
         "required": true,
-        "description": "The droplet ID."
+        "description": "The droplet ID.",
+        "example": "17209102"
       },
       {
         "name": "start",
         "schema": "string",
         "required": true,
-        "description": "Timestamp to start metric window."
+        "description": "Timestamp to start metric window.",
+        "example": "1620683817"
       },
       {
         "name": "end",
         "schema": "string",
         "required": true,
-        "description": "Timestamp to end metric window."
+        "description": "Timestamp to end metric window.",
+        "example": "1620705417"
       }
     ],
     "responses": [
@@ -10678,25 +11311,29 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "appId",
         "schema": "string",
         "required": true,
-        "description": "The app UUID."
+        "description": "The app UUID.",
+        "example": "2db3c021-15ad-4088-bfe8-99dc972b9cf6"
       },
       {
         "name": "appComponent",
         "schema": "string",
         "required": false,
-        "description": "The app component name."
+        "description": "The app component name.",
+        "example": "sample-application"
       },
       {
         "name": "start",
         "schema": "string",
         "required": true,
-        "description": "Timestamp to start metric window."
+        "description": "Timestamp to start metric window.",
+        "example": "1620683817"
       },
       {
         "name": "end",
         "schema": "string",
         "required": true,
-        "description": "Timestamp to end metric window."
+        "description": "Timestamp to end metric window.",
+        "example": "1620705417"
       }
     ],
     "responses": [
@@ -10734,25 +11371,29 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "appId",
         "schema": "string",
         "required": true,
-        "description": "The app UUID."
+        "description": "The app UUID.",
+        "example": "2db3c021-15ad-4088-bfe8-99dc972b9cf6"
       },
       {
         "name": "appComponent",
         "schema": "string",
         "required": false,
-        "description": "The app component name."
+        "description": "The app component name.",
+        "example": "sample-application"
       },
       {
         "name": "start",
         "schema": "string",
         "required": true,
-        "description": "Timestamp to start metric window."
+        "description": "Timestamp to start metric window.",
+        "example": "1620683817"
       },
       {
         "name": "end",
         "schema": "string",
         "required": true,
-        "description": "Timestamp to end metric window."
+        "description": "Timestamp to end metric window.",
+        "example": "1620705417"
       }
     ],
     "responses": [
@@ -10790,25 +11431,29 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "appId",
         "schema": "string",
         "required": true,
-        "description": "The app UUID."
+        "description": "The app UUID.",
+        "example": "2db3c021-15ad-4088-bfe8-99dc972b9cf6"
       },
       {
         "name": "appComponent",
         "schema": "string",
         "required": false,
-        "description": "The app component name."
+        "description": "The app component name.",
+        "example": "sample-application"
       },
       {
         "name": "start",
         "schema": "string",
         "required": true,
-        "description": "Timestamp to start metric window."
+        "description": "Timestamp to start metric window.",
+        "example": "1620683817"
       },
       {
         "name": "end",
         "schema": "string",
         "required": true,
-        "description": "Timestamp to end metric window."
+        "description": "Timestamp to end metric window.",
+        "example": "1620705417"
       }
     ],
     "responses": [
@@ -10846,13 +11491,17 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -10889,47 +11538,56 @@ export default function DigitalOceanTypeScriptSdk() {
       {
         "name": "description",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "My website API"
       },
       {
         "name": "id",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "4e1bfbc3-dc3e-41f2-a18f-1b4d7ba71679"
       },
       {
         "name": "owner_uuid",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "99525febec065ca37b2ffe4f852fd2b2581895e7"
       },
       {
         "name": "owner_id",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 258992
       },
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "my-web-api"
       },
       {
         "name": "purpose",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Service or API"
       },
       {
         "name": "environment",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Production"
       },
       {
         "name": "created_at",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "2018-09-27T20:10:35Z"
       },
       {
         "name": "updated_at",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "2018-09-27T20:10:35Z"
       }
     ],
     "responses": [
@@ -11072,7 +11730,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "projectId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a project."
+        "description": "A unique identifier for a project.",
+        "example": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
       }
     ],
     "responses": [
@@ -11118,7 +11777,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "projectId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a project."
+        "description": "A unique identifier for a project.",
+        "example": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
       }
     ],
     "responses": [
@@ -11160,7 +11820,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "projectId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a project."
+        "description": "A unique identifier for a project.",
+        "example": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
       }
     ],
     "responses": [
@@ -11202,7 +11863,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "projectId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a project."
+        "description": "A unique identifier for a project.",
+        "example": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
       }
     ],
     "responses": [
@@ -11244,19 +11906,24 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "projectId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a project."
+        "description": "A unique identifier for a project.",
+        "example": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
       },
       {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -11298,12 +11965,16 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "projectId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a project."
+        "description": "A unique identifier for a project.",
+        "example": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
       },
       {
         "name": "resources",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "example": [
+          "do:droplet:13457723"
+        ]
       }
     ],
     "responses": [
@@ -11379,7 +12050,10 @@ export default function DigitalOceanTypeScriptSdk() {
       {
         "name": "resources",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "example": [
+          "do:droplet:13457723"
+        ]
       }
     ],
     "responses": [
@@ -11421,13 +12095,17 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -11531,19 +12209,22 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "example"
       },
       {
         "name": "subscription_tier_slug",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "basic"
       },
       {
         "name": "region",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "fra1"
       }
     ],
     "responses": [
@@ -11611,7 +12292,8 @@ export default function DigitalOceanTypeScriptSdk() {
       {
         "name": "tier_slug",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "basic"
       }
     ],
     "responses": [
@@ -11649,13 +12331,17 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "expirySeconds",
         "schema": "integer",
         "required": false,
-        "description": "The duration in seconds that the returned registry credentials will be valid. If not set or 0, the credentials will not expire."
+        "description": "The duration in seconds that the returned registry credentials will be valid. If not set or 0, the credentials will not expire.",
+        "example": 3600,
+        "default": 0
       },
       {
         "name": "readWrite",
         "schema": "boolean",
         "required": false,
-        "description": "By default, the registry credentials allow for read-only access. Set this query parameter to `true` to obtain read-write credentials."
+        "description": "By default, the registry credentials allow for read-only access. Set this query parameter to `true` to obtain read-write credentials.",
+        "example": true,
+        "default": false
       }
     ],
     "responses": [
@@ -11693,7 +12379,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "example"
       }
     ],
     "responses": [
@@ -11735,19 +12422,24 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       },
       {
         "name": "registryName",
         "schema": "string",
         "required": true,
-        "description": "The name of a container registry."
+        "description": "The name of a container registry.",
+        "example": "example"
       }
     ],
     "responses": [
@@ -11789,25 +12481,31 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return. Ignored when 'page_token' is provided."
+        "description": "Which 'page' of paginated results to return. Ignored when 'page_token' is provided.",
+        "example": 1,
+        "default": 1
       },
       {
         "name": "pageToken",
         "schema": "string",
         "required": false,
-        "description": "Token to retrieve of the next or previous set of results more quickly than using 'page'."
+        "description": "Token to retrieve of the next or previous set of results more quickly than using 'page'.",
+        "example": "eyJUb2tlbiI6IkNnZGpiMjlz"
       },
       {
         "name": "registryName",
         "schema": "string",
         "required": true,
-        "description": "The name of a container registry."
+        "description": "The name of a container registry.",
+        "example": "example"
       }
     ],
     "responses": [
@@ -11853,25 +12551,31 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       },
       {
         "name": "registryName",
         "schema": "string",
         "required": true,
-        "description": "The name of a container registry."
+        "description": "The name of a container registry.",
+        "example": "example"
       },
       {
         "name": "repositoryName",
         "schema": "string",
         "required": true,
-        "description": "The name of a container registry repository. If the name contains `/` characters, they must be URL-encoded, e.g. `%2F`."
+        "description": "The name of a container registry repository. If the name contains `/` characters, they must be URL-encoded, e.g. `%2F`.",
+        "example": "repo-1"
       }
     ],
     "responses": [
@@ -11913,19 +12617,22 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "registryName",
         "schema": "string",
         "required": true,
-        "description": "The name of a container registry."
+        "description": "The name of a container registry.",
+        "example": "example"
       },
       {
         "name": "repositoryName",
         "schema": "string",
         "required": true,
-        "description": "The name of a container registry repository. If the name contains `/` characters, they must be URL-encoded, e.g. `%2F`."
+        "description": "The name of a container registry repository. If the name contains `/` characters, they must be URL-encoded, e.g. `%2F`.",
+        "example": "repo-1"
       },
       {
         "name": "repositoryTag",
         "schema": "string",
         "required": true,
-        "description": "The name of a container registry repository tag."
+        "description": "The name of a container registry repository tag.",
+        "example": "06a447a"
       }
     ],
     "responses": [
@@ -11967,25 +12674,31 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       },
       {
         "name": "registryName",
         "schema": "string",
         "required": true,
-        "description": "The name of a container registry."
+        "description": "The name of a container registry.",
+        "example": "example"
       },
       {
         "name": "repositoryName",
         "schema": "string",
         "required": true,
-        "description": "The name of a container registry repository. If the name contains `/` characters, they must be URL-encoded, e.g. `%2F`."
+        "description": "The name of a container registry repository. If the name contains `/` characters, they must be URL-encoded, e.g. `%2F`.",
+        "example": "repo-1"
       }
     ],
     "responses": [
@@ -12027,19 +12740,22 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "registryName",
         "schema": "string",
         "required": true,
-        "description": "The name of a container registry."
+        "description": "The name of a container registry.",
+        "example": "example"
       },
       {
         "name": "repositoryName",
         "schema": "string",
         "required": true,
-        "description": "The name of a container registry repository. If the name contains `/` characters, they must be URL-encoded, e.g. `%2F`."
+        "description": "The name of a container registry repository. If the name contains `/` characters, they must be URL-encoded, e.g. `%2F`.",
+        "example": "repo-1"
       },
       {
         "name": "manifestDigest",
         "schema": "string",
         "required": true,
-        "description": "The manifest digest of a container registry repository tag."
+        "description": "The manifest digest of a container registry repository tag.",
+        "example": "sha256:cb8a924afdf0229ef7515d9e5b3024e23b3eb03ddbba287f4a19c6ac90b8d221"
       }
     ],
     "responses": [
@@ -12081,7 +12797,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "registryName",
         "schema": "string",
         "required": true,
-        "description": "The name of a container registry."
+        "description": "The name of a container registry.",
+        "example": "example"
       }
     ],
     "responses": [
@@ -12123,7 +12840,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "registryName",
         "schema": "string",
         "required": true,
-        "description": "The name of a container registry."
+        "description": "The name of a container registry.",
+        "example": "example"
       }
     ],
     "responses": [
@@ -12165,19 +12883,24 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "registryName",
         "schema": "string",
         "required": true,
-        "description": "The name of a container registry."
+        "description": "The name of a container registry.",
+        "example": "example"
       },
       {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -12219,18 +12942,21 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "registryName",
         "schema": "string",
         "required": true,
-        "description": "The name of a container registry."
+        "description": "The name of a container registry.",
+        "example": "example"
       },
       {
         "name": "garbageCollectionUuid",
         "schema": "string",
         "required": true,
-        "description": "The UUID of a garbage collection run."
+        "description": "The UUID of a garbage collection run.",
+        "example": "eff0feee-49c7-4e8f-ba5c-a320c109c8a8"
       },
       {
         "name": "cancel",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -12338,13 +13064,17 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -12413,7 +13143,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "reservedIp",
         "schema": "string",
         "required": true,
-        "description": "A reserved IP address."
+        "description": "A reserved IP address.",
+        "example": "45.55.96.47"
       }
     ],
     "responses": [
@@ -12455,7 +13186,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "reservedIp",
         "schema": "string",
         "required": true,
-        "description": "A reserved IP address."
+        "description": "A reserved IP address.",
+        "example": "45.55.96.47"
       }
     ],
     "responses": [
@@ -12497,7 +13229,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "reservedIp",
         "schema": "string",
         "required": true,
-        "description": "A reserved IP address."
+        "description": "A reserved IP address.",
+        "example": "45.55.96.47"
       }
     ],
     "responses": [
@@ -12539,7 +13272,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "reservedIp",
         "schema": "string",
         "required": true,
-        "description": "A reserved IP address."
+        "description": "A reserved IP address.",
+        "example": "45.55.96.47"
       }
     ],
     "responses": [
@@ -12581,13 +13315,15 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "reservedIp",
         "schema": "string",
         "required": true,
-        "description": "A reserved IP address."
+        "description": "A reserved IP address.",
+        "example": "45.55.96.47"
       },
       {
         "name": "actionId",
         "schema": "integer",
         "required": true,
-        "description": "A unique numeric ID that can be used to identify and reference an action."
+        "description": "A unique numeric ID that can be used to identify and reference an action.",
+        "example": 36804636
       }
     ],
     "responses": [
@@ -12629,13 +13365,17 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -12673,19 +13413,24 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       },
       {
         "name": "resourceType",
         "schema": "string",
         "required": false,
-        "description": "Used to filter snapshots by a resource type."
+        "description": "Used to filter snapshots by a resource type.",
+        "example": "droplet"
       }
     ],
     "responses": [
@@ -12723,7 +13468,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "snapshotId",
         "schema": "undefined",
         "required": true,
-        "description": "Either the ID of an existing snapshot. This will be an integer for a Droplet snapshot or a string for a volume snapshot."
+        "description": "Either the ID of an existing snapshot. This will be an integer for a Droplet snapshot or a string for a volume snapshot.",
+        "example": 6372321
       }
     ],
     "responses": [
@@ -12765,7 +13511,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "snapshotId",
         "schema": "undefined",
         "required": true,
-        "description": "Either the ID of an existing snapshot. This will be an integer for a Droplet snapshot or a string for a volume snapshot."
+        "description": "Either the ID of an existing snapshot. This will be an integer for a Droplet snapshot or a string for a volume snapshot.",
+        "example": 6372321
       }
     ],
     "responses": [
@@ -12807,13 +13554,17 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -12850,12 +13601,37 @@ export default function DigitalOceanTypeScriptSdk() {
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "extra-awesome"
       },
       {
         "name": "resources",
         "schema": "object",
-        "description": ""
+        "description": "",
+        "example": {
+          "count": 5,
+          "last_tagged_uri": "https://api.digitalocean.com/v2/images/7555620",
+          "droplets": {
+            "count": 1,
+            "last_tagged_uri": "https://api.digitalocean.com/v2/droplets/3164444"
+          },
+          "images": {
+            "count": 1,
+            "last_tagged_uri": "https://api.digitalocean.com/v2/images/7555620"
+          },
+          "volumes": {
+            "count": 1,
+            "last_tagged_uri": "https://api.digitalocean.com/v2/volumes/3d80cb72-342b-4aaa-b92e-4e4abb24a933"
+          },
+          "volume_snapshots": {
+            "count": 1,
+            "last_tagged_uri": "https://api.digitalocean.com/v2/snapshots/1f6f46e8-6b60-11e9-be4e-0a58ac144519"
+          },
+          "databases": {
+            "count": 1,
+            "last_tagged_uri": "https://api.digitalocean.com/v2/databases/b92438f6-ba03-416c-b642-e9236db91976"
+          }
+        }
       }
     ],
     "responses": [
@@ -12897,7 +13673,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "tagId",
         "schema": "string",
         "required": true,
-        "description": "The name of the tag. Tags may contain letters, numbers, colons, dashes, and underscores. There is a limit of 255 characters per tag."
+        "description": "The name of the tag. Tags may contain letters, numbers, colons, dashes, and underscores. There is a limit of 255 characters per tag.",
+        "example": "awesome"
       }
     ],
     "responses": [
@@ -12939,7 +13716,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "tagId",
         "schema": "string",
         "required": true,
-        "description": "The name of the tag. Tags may contain letters, numbers, colons, dashes, and underscores. There is a limit of 255 characters per tag."
+        "description": "The name of the tag. Tags may contain letters, numbers, colons, dashes, and underscores. There is a limit of 255 characters per tag.",
+        "example": "awesome"
       }
     ],
     "responses": [
@@ -12981,13 +13759,28 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "tagId",
         "schema": "string",
         "required": true,
-        "description": "The name of the tag. Tags may contain letters, numbers, colons, dashes, and underscores. There is a limit of 255 characters per tag."
+        "description": "The name of the tag. Tags may contain letters, numbers, colons, dashes, and underscores. There is a limit of 255 characters per tag.",
+        "example": "awesome"
       },
       {
         "name": "resources",
         "schema": "array",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": [
+          {
+            "resource_id": "9569411",
+            "resource_type": "droplet"
+          },
+          {
+            "resource_id": "7555620",
+            "resource_type": "image"
+          },
+          {
+            "resource_id": "3d80cb72-342b-4aaa-b92e-4e4abb24a933",
+            "resource_type": "volume"
+          }
+        ]
       }
     ],
     "responses": [
@@ -13029,13 +13822,28 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "tagId",
         "schema": "string",
         "required": true,
-        "description": "The name of the tag. Tags may contain letters, numbers, colons, dashes, and underscores. There is a limit of 255 characters per tag."
+        "description": "The name of the tag. Tags may contain letters, numbers, colons, dashes, and underscores. There is a limit of 255 characters per tag.",
+        "example": "awesome"
       },
       {
         "name": "resources",
         "schema": "array",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": [
+          {
+            "resource_id": "9569411",
+            "resource_type": "droplet"
+          },
+          {
+            "resource_id": "7555620",
+            "resource_type": "image"
+          },
+          {
+            "resource_id": "3d80cb72-342b-4aaa-b92e-4e4abb24a933",
+            "resource_type": "volume"
+          }
+        ]
       }
     ],
     "responses": [
@@ -13076,12 +13884,14 @@ export default function DigitalOceanTypeScriptSdk() {
       {
         "name": "name",
         "schema": "string",
-        "description": "The block storage volume's name."
+        "description": "The block storage volume's name.",
+        "example": "example"
       },
       {
         "name": "region",
         "schema": "string",
-        "description": "The slug identifier for the region where the resource is available."
+        "description": "The slug identifier for the region where the resource is available.",
+        "example": "nyc3"
       }
     ],
     "responses": [
@@ -13122,24 +13932,30 @@ export default function DigitalOceanTypeScriptSdk() {
       {
         "name": "name",
         "schema": "string",
-        "description": "The block storage volume's name."
+        "description": "The block storage volume's name.",
+        "example": "example"
       },
       {
         "name": "region",
         "schema": "string",
-        "description": "The slug identifier for the region where the resource is available."
+        "description": "The slug identifier for the region where the resource is available.",
+        "example": "nyc3"
       },
       {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -13216,13 +14032,17 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -13264,7 +14084,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "snapshotId",
         "schema": "undefined",
         "required": true,
-        "description": "Either the ID of an existing snapshot. This will be an integer for a Droplet snapshot or a string for a volume snapshot."
+        "description": "Either the ID of an existing snapshot. This will be an integer for a Droplet snapshot or a string for a volume snapshot.",
+        "example": 6372321
       }
     ],
     "responses": [
@@ -13306,7 +14127,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "snapshotId",
         "schema": "undefined",
         "required": true,
-        "description": "Either the ID of an existing snapshot. This will be an integer for a Droplet snapshot or a string for a volume snapshot."
+        "description": "Either the ID of an existing snapshot. This will be an integer for a Droplet snapshot or a string for a volume snapshot.",
+        "example": 6372321
       }
     ],
     "responses": [
@@ -13348,7 +14170,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "volumeId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the block storage volume."
+        "description": "The ID of the block storage volume.",
+        "example": "7724db7c-e098-11e5-b522-000f53304e51"
       }
     ],
     "responses": [
@@ -13390,7 +14213,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "volumeId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the block storage volume."
+        "description": "The ID of the block storage volume.",
+        "example": "7724db7c-e098-11e5-b522-000f53304e51"
       }
     ],
     "responses": [
@@ -13432,19 +14256,24 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "volumeId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the block storage volume."
+        "description": "The ID of the block storage volume.",
+        "example": "7724db7c-e098-11e5-b522-000f53304e51"
       },
       {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -13486,19 +14315,24 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "volumeId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the block storage volume."
+        "description": "The ID of the block storage volume.",
+        "example": "7724db7c-e098-11e5-b522-000f53304e51"
       },
       {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -13540,25 +14374,31 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "volumeId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the block storage volume."
+        "description": "The ID of the block storage volume.",
+        "example": "7724db7c-e098-11e5-b522-000f53304e51"
       },
       {
         "name": "actionId",
         "schema": "integer",
         "required": true,
-        "description": "A unique numeric ID that can be used to identify and reference an action."
+        "description": "A unique numeric ID that can be used to identify and reference an action.",
+        "example": 36804636
       },
       {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -13600,19 +14440,24 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "volumeId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the block storage volume."
+        "description": "The ID of the block storage volume.",
+        "example": "7724db7c-e098-11e5-b522-000f53304e51"
       },
       {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -13654,19 +14499,25 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "volumeId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the block storage volume."
+        "description": "The ID of the block storage volume.",
+        "example": "7724db7c-e098-11e5-b522-000f53304e51"
       },
       {
         "name": "tags",
         "schema": "array",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": [
+          "base-image",
+          "prod"
+        ]
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "big-data-snapshot1475261774"
       }
     ],
     "responses": [
@@ -13712,13 +14563,17 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -13791,7 +14646,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "vpcId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a VPC."
+        "description": "A unique identifier for a VPC.",
+        "example": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
       }
     ],
     "responses": [
@@ -13833,7 +14689,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "vpcId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a VPC."
+        "description": "A unique identifier for a VPC.",
+        "example": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
       }
     ],
     "responses": [
@@ -13875,7 +14732,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "vpcId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a VPC."
+        "description": "A unique identifier for a VPC.",
+        "example": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
       }
     ],
     "responses": [
@@ -13917,7 +14775,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "vpcId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a VPC."
+        "description": "A unique identifier for a VPC.",
+        "example": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
       }
     ],
     "responses": [
@@ -13959,25 +14818,31 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "vpcId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a VPC."
+        "description": "A unique identifier for a VPC.",
+        "example": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
       },
       {
         "name": "resourceType",
         "schema": "string",
         "required": false,
-        "description": "Used to filter VPC members by a resource type."
+        "description": "Used to filter VPC members by a resource type.",
+        "example": "droplet"
       },
       {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -14019,13 +14884,17 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -14066,27 +14935,36 @@ export default function DigitalOceanTypeScriptSdk() {
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Landing page check"
       },
       {
         "name": "type",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "https"
       },
       {
         "name": "target",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "https://www.landingpage.com"
       },
       {
         "name": "regions",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "example": [
+          "us_east",
+          "eu_west"
+        ]
       },
       {
         "name": "enabled",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true,
+        "default": true
       }
     ],
     "responses": [
@@ -14124,7 +15002,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "checkId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a check."
+        "description": "A unique identifier for a check.",
+        "example": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
       }
     ],
     "responses": [
@@ -14166,7 +15045,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "checkId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a check."
+        "description": "A unique identifier for a check.",
+        "example": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
       }
     ],
     "responses": [
@@ -14208,32 +15088,42 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "checkId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a check."
+        "description": "A unique identifier for a check.",
+        "example": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
       },
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Landing page check"
       },
       {
         "name": "type",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "https"
       },
       {
         "name": "target",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "https://www.landingpage.com"
       },
       {
         "name": "regions",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "example": [
+          "us_east",
+          "eu_west"
+        ]
       },
       {
         "name": "enabled",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": true,
+        "default": true
       }
     ],
     "responses": [
@@ -14275,7 +15165,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "checkId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a check."
+        "description": "A unique identifier for a check.",
+        "example": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
       }
     ],
     "responses": [
@@ -14317,19 +15208,24 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "checkId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a check."
+        "description": "A unique identifier for a check.",
+        "example": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
       },
       {
         "name": "perPage",
         "schema": "integer",
         "required": false,
-        "description": "Number of items returned per page"
+        "description": "Number of items returned per page",
+        "example": 2,
+        "default": 20
       },
       {
         "name": "page",
         "schema": "integer",
         "required": false,
-        "description": "Which 'page' of paginated results to return."
+        "description": "Which 'page' of paginated results to return.",
+        "example": 1,
+        "default": 1
       }
     ],
     "responses": [
@@ -14371,7 +15267,8 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "checkId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a check."
+        "description": "A unique identifier for a check.",
+        "example": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
       }
     ],
     "responses": [
@@ -14413,13 +15310,15 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "checkId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a check."
+        "description": "A unique identifier for a check.",
+        "example": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
       },
       {
         "name": "alertId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for an alert."
+        "description": "A unique identifier for an alert.",
+        "example": "17f0f0ae-b7e5-4ef6-86e3-aa569db58284"
       }
     ],
     "responses": [
@@ -14461,13 +15360,15 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "checkId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a check."
+        "description": "A unique identifier for a check.",
+        "example": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
       },
       {
         "name": "alertId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for an alert."
+        "description": "A unique identifier for an alert.",
+        "example": "17f0f0ae-b7e5-4ef6-86e3-aa569db58284"
       }
     ],
     "responses": [
@@ -14509,33 +15410,39 @@ export default function DigitalOceanTypeScriptSdk() {
         "name": "checkId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for a check."
+        "description": "A unique identifier for a check.",
+        "example": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
       },
       {
         "name": "alertId",
         "schema": "string",
         "required": true,
-        "description": "A unique identifier for an alert."
+        "description": "A unique identifier for an alert.",
+        "example": "17f0f0ae-b7e5-4ef6-86e3-aa569db58284"
       },
       {
         "name": "name",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Landing page degraded performance"
       },
       {
         "name": "type",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "latency"
       },
       {
         "name": "threshold",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "example": 300
       },
       {
         "name": "comparison",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "greater_than"
       },
       {
         "name": "notifications",
@@ -14545,7 +15452,8 @@ export default function DigitalOceanTypeScriptSdk() {
       {
         "name": "period",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "2m"
       }
     ],
     "responses": [

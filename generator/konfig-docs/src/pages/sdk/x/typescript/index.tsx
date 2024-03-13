@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function XTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function XTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/x/logo.jpg"
       clientNameCamelCase="x"
       homepage="developer.x.com"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/x/favicon.ico"
       contactUrl="https://developer.twitter.com/"
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/x/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["social"]}
       methods={[
   {
     "url": "/2/compliance/jobs",
@@ -36,7 +39,8 @@ export default function XTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": "Type of Compliance Job to list."
+        "description": "Type of Compliance Job to list.",
+        "example": "TYPE"
       },
       {
         "name": "status",
@@ -48,7 +52,19 @@ export default function XTypeScriptSdk() {
         "name": "complianceJobFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of ComplianceJob fields to display."
+        "description": "A comma separated list of ComplianceJob fields to display.",
+        "example": [
+          "created_at",
+          "download_expires_at",
+          "download_url",
+          "id",
+          "name",
+          "resumable",
+          "status",
+          "type",
+          "upload_expires_at",
+          "upload_url"
+        ]
       }
     ],
     "responses": [
@@ -74,7 +90,8 @@ export default function XTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": "my-job"
       },
       {
         "name": "resumable",
@@ -86,7 +103,8 @@ export default function XTypeScriptSdk() {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "TYPE"
       }
     ],
     "responses": [
@@ -112,13 +130,26 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the Compliance Job to retrieve."
+        "description": "The ID of the Compliance Job to retrieve.",
+        "example": "1372966999991541762"
       },
       {
         "name": "complianceJobFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of ComplianceJob fields to display."
+        "description": "A comma separated list of ComplianceJob fields to display.",
+        "example": [
+          "created_at",
+          "download_expires_at",
+          "download_url",
+          "id",
+          "name",
+          "resumable",
+          "status",
+          "type",
+          "upload_expires_at",
+          "upload_url"
+        ]
       }
     ],
     "responses": [
@@ -144,7 +175,8 @@ export default function XTypeScriptSdk() {
         "name": "conversation_type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CONVERSATION_TYPE"
       },
       {
         "name": "message",
@@ -182,13 +214,15 @@ export default function XTypeScriptSdk() {
         "name": "participantId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the participant user for the One to One DM conversation."
+        "description": "The ID of the participant user for the One to One DM conversation.",
+        "example": "2244994945"
       },
       {
         "name": "maxResults",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of results."
+        "description": "The maximum number of results.",
+        "default": 100
       },
       {
         "name": "paginationToken",
@@ -200,36 +234,118 @@ export default function XTypeScriptSdk() {
         "name": "eventTypes",
         "schema": "array",
         "required": false,
-        "description": "The set of event_types to include in the results."
+        "description": "The set of event_types to include in the results.",
+        "example": [
+          "MessageCreate",
+          "ParticipantsLeave"
+        ],
+        "default": [
+          "MessageCreate",
+          "ParticipantsLeave",
+          "ParticipantsJoin"
+        ]
       },
       {
         "name": "dmEventFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of DmEvent fields to display."
+        "description": "A comma separated list of DmEvent fields to display.",
+        "example": [
+          "attachments",
+          "created_at",
+          "dm_conversation_id",
+          "event_type",
+          "id",
+          "participant_ids",
+          "referenced_tweets",
+          "sender_id",
+          "text"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "attachments.media_keys",
+          "participant_ids",
+          "referenced_tweets.id",
+          "sender_id"
+        ]
       },
       {
         "name": "mediaFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Media fields to display."
+        "description": "A comma separated list of Media fields to display.",
+        "example": [
+          "alt_text",
+          "duration_ms",
+          "height",
+          "media_key",
+          "non_public_metrics",
+          "organic_metrics",
+          "preview_image_url",
+          "promoted_metrics",
+          "public_metrics",
+          "type",
+          "url",
+          "variants",
+          "width"
+        ]
       },
       {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "tweetFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Tweet fields to display."
+        "description": "A comma separated list of Tweet fields to display.",
+        "example": [
+          "attachments",
+          "author_id",
+          "context_annotations",
+          "conversation_id",
+          "created_at",
+          "edit_controls",
+          "edit_history_tweet_ids",
+          "entities",
+          "geo",
+          "id",
+          "in_reply_to_user_id",
+          "lang",
+          "non_public_metrics",
+          "organic_metrics",
+          "possibly_sensitive",
+          "promoted_metrics",
+          "public_metrics",
+          "referenced_tweets",
+          "reply_settings",
+          "source",
+          "text",
+          "withheld"
+        ]
       }
     ],
     "responses": [
@@ -255,7 +371,8 @@ export default function XTypeScriptSdk() {
         "name": "participantId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the recipient user that will receive the DM."
+        "description": "The ID of the recipient user that will receive the DM.",
+        "example": "2244994945"
       }
     ],
     "responses": [
@@ -281,7 +398,8 @@ export default function XTypeScriptSdk() {
         "name": "dmConversationId",
         "schema": "string",
         "required": true,
-        "description": "The DM Conversation ID."
+        "description": "The DM Conversation ID.",
+        "example": "DM_CONVERSATION_ID"
       }
     ],
     "responses": [
@@ -307,13 +425,15 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The DM Conversation ID."
+        "description": "The DM Conversation ID.",
+        "example": "123123123-456456456"
       },
       {
         "name": "maxResults",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of results."
+        "description": "The maximum number of results.",
+        "default": 100
       },
       {
         "name": "paginationToken",
@@ -325,36 +445,118 @@ export default function XTypeScriptSdk() {
         "name": "eventTypes",
         "schema": "array",
         "required": false,
-        "description": "The set of event_types to include in the results."
+        "description": "The set of event_types to include in the results.",
+        "example": [
+          "MessageCreate",
+          "ParticipantsLeave"
+        ],
+        "default": [
+          "MessageCreate",
+          "ParticipantsLeave",
+          "ParticipantsJoin"
+        ]
       },
       {
         "name": "dmEventFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of DmEvent fields to display."
+        "description": "A comma separated list of DmEvent fields to display.",
+        "example": [
+          "attachments",
+          "created_at",
+          "dm_conversation_id",
+          "event_type",
+          "id",
+          "participant_ids",
+          "referenced_tweets",
+          "sender_id",
+          "text"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "attachments.media_keys",
+          "participant_ids",
+          "referenced_tweets.id",
+          "sender_id"
+        ]
       },
       {
         "name": "mediaFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Media fields to display."
+        "description": "A comma separated list of Media fields to display.",
+        "example": [
+          "alt_text",
+          "duration_ms",
+          "height",
+          "media_key",
+          "non_public_metrics",
+          "organic_metrics",
+          "preview_image_url",
+          "promoted_metrics",
+          "public_metrics",
+          "type",
+          "url",
+          "variants",
+          "width"
+        ]
       },
       {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "tweetFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Tweet fields to display."
+        "description": "A comma separated list of Tweet fields to display.",
+        "example": [
+          "attachments",
+          "author_id",
+          "context_annotations",
+          "conversation_id",
+          "created_at",
+          "edit_controls",
+          "edit_history_tweet_ids",
+          "entities",
+          "geo",
+          "id",
+          "in_reply_to_user_id",
+          "lang",
+          "non_public_metrics",
+          "organic_metrics",
+          "possibly_sensitive",
+          "promoted_metrics",
+          "public_metrics",
+          "referenced_tweets",
+          "reply_settings",
+          "source",
+          "text",
+          "withheld"
+        ]
       }
     ],
     "responses": [
@@ -380,7 +582,8 @@ export default function XTypeScriptSdk() {
         "name": "maxResults",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of results."
+        "description": "The maximum number of results.",
+        "default": 100
       },
       {
         "name": "paginationToken",
@@ -392,36 +595,118 @@ export default function XTypeScriptSdk() {
         "name": "eventTypes",
         "schema": "array",
         "required": false,
-        "description": "The set of event_types to include in the results."
+        "description": "The set of event_types to include in the results.",
+        "example": [
+          "MessageCreate",
+          "ParticipantsLeave"
+        ],
+        "default": [
+          "MessageCreate",
+          "ParticipantsLeave",
+          "ParticipantsJoin"
+        ]
       },
       {
         "name": "dmEventFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of DmEvent fields to display."
+        "description": "A comma separated list of DmEvent fields to display.",
+        "example": [
+          "attachments",
+          "created_at",
+          "dm_conversation_id",
+          "event_type",
+          "id",
+          "participant_ids",
+          "referenced_tweets",
+          "sender_id",
+          "text"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "attachments.media_keys",
+          "participant_ids",
+          "referenced_tweets.id",
+          "sender_id"
+        ]
       },
       {
         "name": "mediaFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Media fields to display."
+        "description": "A comma separated list of Media fields to display.",
+        "example": [
+          "alt_text",
+          "duration_ms",
+          "height",
+          "media_key",
+          "non_public_metrics",
+          "organic_metrics",
+          "preview_image_url",
+          "promoted_metrics",
+          "public_metrics",
+          "type",
+          "url",
+          "variants",
+          "width"
+        ]
       },
       {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "tweetFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Tweet fields to display."
+        "description": "A comma separated list of Tweet fields to display.",
+        "example": [
+          "attachments",
+          "author_id",
+          "context_annotations",
+          "conversation_id",
+          "created_at",
+          "edit_controls",
+          "edit_history_tweet_ids",
+          "entities",
+          "geo",
+          "id",
+          "in_reply_to_user_id",
+          "lang",
+          "non_public_metrics",
+          "organic_metrics",
+          "possibly_sensitive",
+          "promoted_metrics",
+          "public_metrics",
+          "referenced_tweets",
+          "reply_settings",
+          "source",
+          "text",
+          "withheld"
+        ]
       }
     ],
     "responses": [
@@ -453,13 +738,15 @@ export default function XTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "private",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": false
       }
     ],
     "responses": [
@@ -485,7 +772,8 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the List to delete."
+        "description": "The ID of the List to delete.",
+        "example": "1146654567674912769"
       }
     ],
     "responses": [
@@ -511,24 +799,55 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the List."
+        "description": "The ID of the List.",
+        "example": "1146654567674912769"
       },
       {
         "name": "listFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of List fields to display."
+        "description": "A comma separated list of List fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "follower_count",
+          "id",
+          "member_count",
+          "name",
+          "owner_id",
+          "private"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "owner_id"
+        ]
       },
       {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       }
     ],
     "responses": [
@@ -554,7 +873,8 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the List to modify."
+        "description": "The ID of the List to modify.",
+        "example": "1146654567674912769"
       },
       {
         "name": "description",
@@ -595,13 +915,15 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the List."
+        "description": "The ID of the List.",
+        "example": "1146654567674912769"
       },
       {
         "name": "maxResults",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of results."
+        "description": "The maximum number of results.",
+        "default": 100
       },
       {
         "name": "paginationToken",
@@ -613,18 +935,62 @@ export default function XTypeScriptSdk() {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "pinned_tweet_id"
+        ]
       },
       {
         "name": "tweetFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Tweet fields to display."
+        "description": "A comma separated list of Tweet fields to display.",
+        "example": [
+          "attachments",
+          "author_id",
+          "context_annotations",
+          "conversation_id",
+          "created_at",
+          "edit_controls",
+          "edit_history_tweet_ids",
+          "entities",
+          "geo",
+          "id",
+          "in_reply_to_user_id",
+          "lang",
+          "non_public_metrics",
+          "organic_metrics",
+          "possibly_sensitive",
+          "promoted_metrics",
+          "public_metrics",
+          "referenced_tweets",
+          "reply_settings",
+          "source",
+          "text",
+          "withheld"
+        ]
       }
     ],
     "responses": [
@@ -650,13 +1016,15 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the List."
+        "description": "The ID of the List.",
+        "example": "1146654567674912769"
       },
       {
         "name": "maxResults",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of results."
+        "description": "The maximum number of results.",
+        "default": 100
       },
       {
         "name": "paginationToken",
@@ -668,18 +1036,62 @@ export default function XTypeScriptSdk() {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "pinned_tweet_id"
+        ]
       },
       {
         "name": "tweetFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Tweet fields to display."
+        "description": "A comma separated list of Tweet fields to display.",
+        "example": [
+          "attachments",
+          "author_id",
+          "context_annotations",
+          "conversation_id",
+          "created_at",
+          "edit_controls",
+          "edit_history_tweet_ids",
+          "entities",
+          "geo",
+          "id",
+          "in_reply_to_user_id",
+          "lang",
+          "non_public_metrics",
+          "organic_metrics",
+          "possibly_sensitive",
+          "promoted_metrics",
+          "public_metrics",
+          "referenced_tweets",
+          "reply_settings",
+          "source",
+          "text",
+          "withheld"
+        ]
       }
     ],
     "responses": [
@@ -705,13 +1117,15 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the List for which to add a member."
+        "description": "The ID of the List for which to add a member.",
+        "example": "1146654567674912769"
       },
       {
         "name": "user_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "2244994945"
       }
     ],
     "responses": [
@@ -737,13 +1151,15 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the List to remove a member."
+        "description": "The ID of the List to remove a member.",
+        "example": "1146654567674912769"
       },
       {
         "name": "userId",
         "schema": "string",
         "required": true,
-        "description": "The ID of User that will be removed from the List."
+        "description": "The ID of User that will be removed from the List.",
+        "example": "2244994945"
       }
     ],
     "responses": [
@@ -769,13 +1185,15 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the List."
+        "description": "The ID of the List.",
+        "example": "1146654567674912769"
       },
       {
         "name": "maxResults",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of results."
+        "description": "The maximum number of results.",
+        "default": 100
       },
       {
         "name": "paginationToken",
@@ -787,36 +1205,120 @@ export default function XTypeScriptSdk() {
         "name": "tweetFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Tweet fields to display."
+        "description": "A comma separated list of Tweet fields to display.",
+        "example": [
+          "attachments",
+          "author_id",
+          "context_annotations",
+          "conversation_id",
+          "created_at",
+          "edit_controls",
+          "edit_history_tweet_ids",
+          "entities",
+          "geo",
+          "id",
+          "in_reply_to_user_id",
+          "lang",
+          "non_public_metrics",
+          "organic_metrics",
+          "possibly_sensitive",
+          "promoted_metrics",
+          "public_metrics",
+          "referenced_tweets",
+          "reply_settings",
+          "source",
+          "text",
+          "withheld"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "attachments.media_keys",
+          "attachments.poll_ids",
+          "author_id",
+          "edit_history_tweet_ids",
+          "entities.mentions.username",
+          "geo.place_id",
+          "in_reply_to_user_id",
+          "referenced_tweets.id",
+          "referenced_tweets.id.author_id"
+        ]
       },
       {
         "name": "mediaFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Media fields to display."
+        "description": "A comma separated list of Media fields to display.",
+        "example": [
+          "alt_text",
+          "duration_ms",
+          "height",
+          "media_key",
+          "non_public_metrics",
+          "organic_metrics",
+          "preview_image_url",
+          "promoted_metrics",
+          "public_metrics",
+          "type",
+          "url",
+          "variants",
+          "width"
+        ]
       },
       {
         "name": "pollFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Poll fields to display."
+        "description": "A comma separated list of Poll fields to display.",
+        "example": [
+          "duration_minutes",
+          "end_datetime",
+          "id",
+          "options",
+          "voting_status"
+        ]
       },
       {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "placeFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Place fields to display."
+        "description": "A comma separated list of Place fields to display.",
+        "example": [
+          "contained_within",
+          "country",
+          "country_code",
+          "full_name",
+          "geo",
+          "id",
+          "name",
+          "place_type"
+        ]
       }
     ],
     "responses": [
@@ -863,24 +1365,72 @@ export default function XTypeScriptSdk() {
         "name": "spaceFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Space fields to display."
+        "description": "A comma separated list of Space fields to display.",
+        "example": [
+          "created_at",
+          "creator_id",
+          "ended_at",
+          "host_ids",
+          "id",
+          "invited_user_ids",
+          "is_ticketed",
+          "lang",
+          "participant_count",
+          "scheduled_start",
+          "speaker_ids",
+          "started_at",
+          "state",
+          "subscriber_count",
+          "title",
+          "topic_ids",
+          "updated_at"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "creator_id",
+          "host_ids",
+          "invited_user_ids",
+          "speaker_ids",
+          "topic_ids"
+        ]
       },
       {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "topicFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Topic fields to display."
+        "description": "A comma separated list of Topic fields to display.",
+        "example": [
+          "description",
+          "id",
+          "name"
+        ]
       }
     ],
     "responses": [
@@ -912,24 +1462,72 @@ export default function XTypeScriptSdk() {
         "name": "spaceFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Space fields to display."
+        "description": "A comma separated list of Space fields to display.",
+        "example": [
+          "created_at",
+          "creator_id",
+          "ended_at",
+          "host_ids",
+          "id",
+          "invited_user_ids",
+          "is_ticketed",
+          "lang",
+          "participant_count",
+          "scheduled_start",
+          "speaker_ids",
+          "started_at",
+          "state",
+          "subscriber_count",
+          "title",
+          "topic_ids",
+          "updated_at"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "creator_id",
+          "host_ids",
+          "invited_user_ids",
+          "speaker_ids",
+          "topic_ids"
+        ]
       },
       {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "topicFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Topic fields to display."
+        "description": "A comma separated list of Topic fields to display.",
+        "example": [
+          "description",
+          "id",
+          "name"
+        ]
       }
     ],
     "responses": [
@@ -955,42 +1553,93 @@ export default function XTypeScriptSdk() {
         "name": "query",
         "schema": "string",
         "required": true,
-        "description": "The search query."
+        "description": "The search query.",
+        "example": "crypto"
       },
       {
         "name": "state",
         "schema": "string",
         "required": false,
-        "description": "The state of Spaces to search for."
+        "description": "The state of Spaces to search for.",
+        "default": "all"
       },
       {
         "name": "maxResults",
         "schema": "integer",
         "required": false,
-        "description": "The number of results to return."
+        "description": "The number of results to return.",
+        "default": 100
       },
       {
         "name": "spaceFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Space fields to display."
+        "description": "A comma separated list of Space fields to display.",
+        "example": [
+          "created_at",
+          "creator_id",
+          "ended_at",
+          "host_ids",
+          "id",
+          "invited_user_ids",
+          "is_ticketed",
+          "lang",
+          "participant_count",
+          "scheduled_start",
+          "speaker_ids",
+          "started_at",
+          "state",
+          "subscriber_count",
+          "title",
+          "topic_ids",
+          "updated_at"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "creator_id",
+          "host_ids",
+          "invited_user_ids",
+          "speaker_ids",
+          "topic_ids"
+        ]
       },
       {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "topicFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Topic fields to display."
+        "description": "A comma separated list of Topic fields to display.",
+        "example": [
+          "description",
+          "id",
+          "name"
+        ]
       }
     ],
     "responses": [
@@ -1016,30 +1665,79 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the Space to be retrieved."
+        "description": "The ID of the Space to be retrieved.",
+        "example": "1YqKDqWqdPLsV"
       },
       {
         "name": "spaceFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Space fields to display."
+        "description": "A comma separated list of Space fields to display.",
+        "example": [
+          "created_at",
+          "creator_id",
+          "ended_at",
+          "host_ids",
+          "id",
+          "invited_user_ids",
+          "is_ticketed",
+          "lang",
+          "participant_count",
+          "scheduled_start",
+          "speaker_ids",
+          "started_at",
+          "state",
+          "subscriber_count",
+          "title",
+          "topic_ids",
+          "updated_at"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "creator_id",
+          "host_ids",
+          "invited_user_ids",
+          "speaker_ids",
+          "topic_ids"
+        ]
       },
       {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "topicFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Topic fields to display."
+        "description": "A comma separated list of Topic fields to display.",
+        "example": [
+          "description",
+          "id",
+          "name"
+        ]
       }
     ],
     "responses": [
@@ -1065,7 +1763,8 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the Space to be retrieved."
+        "description": "The ID of the Space to be retrieved.",
+        "example": "1YqKDqWqdPLsV"
       },
       {
         "name": "paginationToken",
@@ -1077,24 +1776,69 @@ export default function XTypeScriptSdk() {
         "name": "maxResults",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of results."
+        "description": "The maximum number of results.",
+        "default": 100
       },
       {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "pinned_tweet_id"
+        ]
       },
       {
         "name": "tweetFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Tweet fields to display."
+        "description": "A comma separated list of Tweet fields to display.",
+        "example": [
+          "attachments",
+          "author_id",
+          "context_annotations",
+          "conversation_id",
+          "created_at",
+          "edit_controls",
+          "edit_history_tweet_ids",
+          "entities",
+          "geo",
+          "id",
+          "in_reply_to_user_id",
+          "lang",
+          "non_public_metrics",
+          "organic_metrics",
+          "possibly_sensitive",
+          "promoted_metrics",
+          "public_metrics",
+          "referenced_tweets",
+          "reply_settings",
+          "source",
+          "text",
+          "withheld"
+        ]
       }
     ],
     "responses": [
@@ -1120,48 +1864,135 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the Space to be retrieved."
+        "description": "The ID of the Space to be retrieved.",
+        "example": "1YqKDqWqdPLsV"
       },
       {
         "name": "maxResults",
         "schema": "integer",
         "required": false,
-        "description": "The number of Tweets to fetch from the provided space. If not provided, the value will default to the maximum of 100."
+        "description": "The number of Tweets to fetch from the provided space. If not provided, the value will default to the maximum of 100.",
+        "example": 25,
+        "default": 100
       },
       {
         "name": "tweetFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Tweet fields to display."
+        "description": "A comma separated list of Tweet fields to display.",
+        "example": [
+          "attachments",
+          "author_id",
+          "context_annotations",
+          "conversation_id",
+          "created_at",
+          "edit_controls",
+          "edit_history_tweet_ids",
+          "entities",
+          "geo",
+          "id",
+          "in_reply_to_user_id",
+          "lang",
+          "non_public_metrics",
+          "organic_metrics",
+          "possibly_sensitive",
+          "promoted_metrics",
+          "public_metrics",
+          "referenced_tweets",
+          "reply_settings",
+          "source",
+          "text",
+          "withheld"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "attachments.media_keys",
+          "attachments.poll_ids",
+          "author_id",
+          "edit_history_tweet_ids",
+          "entities.mentions.username",
+          "geo.place_id",
+          "in_reply_to_user_id",
+          "referenced_tweets.id",
+          "referenced_tweets.id.author_id"
+        ]
       },
       {
         "name": "mediaFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Media fields to display."
+        "description": "A comma separated list of Media fields to display.",
+        "example": [
+          "alt_text",
+          "duration_ms",
+          "height",
+          "media_key",
+          "non_public_metrics",
+          "organic_metrics",
+          "preview_image_url",
+          "promoted_metrics",
+          "public_metrics",
+          "type",
+          "url",
+          "variants",
+          "width"
+        ]
       },
       {
         "name": "pollFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Poll fields to display."
+        "description": "A comma separated list of Poll fields to display.",
+        "example": [
+          "duration_minutes",
+          "end_datetime",
+          "id",
+          "options",
+          "voting_status"
+        ]
       },
       {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "placeFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Place fields to display."
+        "description": "A comma separated list of Place fields to display.",
+        "example": [
+          "contained_within",
+          "country",
+          "country_code",
+          "full_name",
+          "geo",
+          "id",
+          "name",
+          "place_type"
+        ]
       }
     ],
     "responses": [
@@ -1193,36 +2024,120 @@ export default function XTypeScriptSdk() {
         "name": "tweetFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Tweet fields to display."
+        "description": "A comma separated list of Tweet fields to display.",
+        "example": [
+          "attachments",
+          "author_id",
+          "context_annotations",
+          "conversation_id",
+          "created_at",
+          "edit_controls",
+          "edit_history_tweet_ids",
+          "entities",
+          "geo",
+          "id",
+          "in_reply_to_user_id",
+          "lang",
+          "non_public_metrics",
+          "organic_metrics",
+          "possibly_sensitive",
+          "promoted_metrics",
+          "public_metrics",
+          "referenced_tweets",
+          "reply_settings",
+          "source",
+          "text",
+          "withheld"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "attachments.media_keys",
+          "attachments.poll_ids",
+          "author_id",
+          "edit_history_tweet_ids",
+          "entities.mentions.username",
+          "geo.place_id",
+          "in_reply_to_user_id",
+          "referenced_tweets.id",
+          "referenced_tweets.id.author_id"
+        ]
       },
       {
         "name": "mediaFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Media fields to display."
+        "description": "A comma separated list of Media fields to display.",
+        "example": [
+          "alt_text",
+          "duration_ms",
+          "height",
+          "media_key",
+          "non_public_metrics",
+          "organic_metrics",
+          "preview_image_url",
+          "promoted_metrics",
+          "public_metrics",
+          "type",
+          "url",
+          "variants",
+          "width"
+        ]
       },
       {
         "name": "pollFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Poll fields to display."
+        "description": "A comma separated list of Poll fields to display.",
+        "example": [
+          "duration_minutes",
+          "end_datetime",
+          "id",
+          "options",
+          "voting_status"
+        ]
       },
       {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "placeFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Place fields to display."
+        "description": "A comma separated list of Place fields to display.",
+        "example": [
+          "contained_within",
+          "country",
+          "country_code",
+          "full_name",
+          "geo",
+          "id",
+          "name",
+          "place_type"
+        ]
       }
     ],
     "responses": [
@@ -1257,7 +2172,8 @@ export default function XTypeScriptSdk() {
       {
         "name": "for_super_followers_only",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "geo",
@@ -1272,7 +2188,8 @@ export default function XTypeScriptSdk() {
       {
         "name": "nullcast",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "default": false
       },
       {
         "name": "poll",
@@ -1282,7 +2199,8 @@ export default function XTypeScriptSdk() {
       {
         "name": "quote_tweet_id",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "1346889436626259968"
       },
       {
         "name": "reply",
@@ -1297,7 +2215,8 @@ export default function XTypeScriptSdk() {
       {
         "name": "text",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "Learn how to use the user Tweet timeline and user mention timeline endpoints in the Twitter API v2 to explore Tweet\\u2026 https:\\/\\/t.co\\/56a0vZUx7i"
       }
     ],
     "responses": [
@@ -1329,19 +2248,22 @@ export default function XTypeScriptSdk() {
         "name": "partition",
         "schema": "integer",
         "required": true,
-        "description": "The partition number."
+        "description": "The partition number.",
+        "example": 0
       },
       {
         "name": "startTime",
         "schema": "string",
         "required": false,
-        "description": "YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweet Compliance events will be provided."
+        "description": "YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweet Compliance events will be provided.",
+        "example": "2021-02-01T18:40:40.000Z"
       },
       {
         "name": "endTime",
         "schema": "string",
         "required": false,
-        "description": "YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweet Compliance events will be provided."
+        "description": "YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweet Compliance events will be provided.",
+        "example": "2021-02-14T18:40:40.000Z"
       }
     ],
     "responses": [
@@ -1367,7 +2289,8 @@ export default function XTypeScriptSdk() {
         "name": "query",
         "schema": "string",
         "required": true,
-        "description": "One query/rule/filter for matching Tweets. Refer to https://t.co/rulelength to identify the max query length."
+        "description": "One query/rule/filter for matching Tweets. Refer to https://t.co/rulelength to identify the max query length.",
+        "example": "(from:TwitterDev OR from:TwitterAPI) has:media -is:retweet"
       },
       {
         "name": "startTime",
@@ -1385,13 +2308,15 @@ export default function XTypeScriptSdk() {
         "name": "sinceId",
         "schema": "string",
         "required": false,
-        "description": "Returns results with a Tweet ID greater than (that is, more recent than) the specified ID."
+        "description": "Returns results with a Tweet ID greater than (that is, more recent than) the specified ID.",
+        "example": "1346889436626259968"
       },
       {
         "name": "untilId",
         "schema": "string",
         "required": false,
-        "description": "Returns results with a Tweet ID less than (that is, older than) the specified ID."
+        "description": "Returns results with a Tweet ID less than (that is, older than) the specified ID.",
+        "example": "1346889436626259968"
       },
       {
         "name": "nextToken",
@@ -1409,13 +2334,19 @@ export default function XTypeScriptSdk() {
         "name": "granularity",
         "schema": "string",
         "required": false,
-        "description": "The granularity for the search counts results."
+        "description": "The granularity for the search counts results.",
+        "default": "hour"
       },
       {
         "name": "searchCountFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of SearchCount fields to display."
+        "description": "A comma separated list of SearchCount fields to display.",
+        "example": [
+          "end",
+          "start",
+          "tweet_count"
+        ]
       }
     ],
     "responses": [
@@ -1441,7 +2372,8 @@ export default function XTypeScriptSdk() {
         "name": "query",
         "schema": "string",
         "required": true,
-        "description": "One query/rule/filter for matching Tweets. Refer to https://t.co/rulelength to identify the max query length."
+        "description": "One query/rule/filter for matching Tweets. Refer to https://t.co/rulelength to identify the max query length.",
+        "example": "(from:TwitterDev OR from:TwitterAPI) has:media -is:retweet"
       },
       {
         "name": "startTime",
@@ -1459,13 +2391,15 @@ export default function XTypeScriptSdk() {
         "name": "sinceId",
         "schema": "string",
         "required": false,
-        "description": "Returns results with a Tweet ID greater than (that is, more recent than) the specified ID."
+        "description": "Returns results with a Tweet ID greater than (that is, more recent than) the specified ID.",
+        "example": "1346889436626259968"
       },
       {
         "name": "untilId",
         "schema": "string",
         "required": false,
-        "description": "Returns results with a Tweet ID less than (that is, older than) the specified ID."
+        "description": "Returns results with a Tweet ID less than (that is, older than) the specified ID.",
+        "example": "1346889436626259968"
       },
       {
         "name": "nextToken",
@@ -1483,13 +2417,19 @@ export default function XTypeScriptSdk() {
         "name": "granularity",
         "schema": "string",
         "required": false,
-        "description": "The granularity for the search counts results."
+        "description": "The granularity for the search counts results.",
+        "default": "hour"
       },
       {
         "name": "searchCountFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of SearchCount fields to display."
+        "description": "A comma separated list of SearchCount fields to display.",
+        "example": [
+          "end",
+          "start",
+          "tweet_count"
+        ]
       }
     ],
     "responses": [
@@ -1521,54 +2461,141 @@ export default function XTypeScriptSdk() {
         "name": "partition",
         "schema": "integer",
         "required": true,
-        "description": "The partition number."
+        "description": "The partition number.",
+        "example": 0
       },
       {
         "name": "startTime",
         "schema": "string",
         "required": false,
-        "description": "YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp to which the Tweets will be provided."
+        "description": "YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp to which the Tweets will be provided.",
+        "example": "2021-02-14T18:40:40.000Z"
       },
       {
         "name": "endTime",
         "schema": "string",
         "required": false,
-        "description": "YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided."
+        "description": "YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided.",
+        "example": "2021-02-14T18:40:40.000Z"
       },
       {
         "name": "tweetFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Tweet fields to display."
+        "description": "A comma separated list of Tweet fields to display.",
+        "example": [
+          "attachments",
+          "author_id",
+          "context_annotations",
+          "conversation_id",
+          "created_at",
+          "edit_controls",
+          "edit_history_tweet_ids",
+          "entities",
+          "geo",
+          "id",
+          "in_reply_to_user_id",
+          "lang",
+          "non_public_metrics",
+          "organic_metrics",
+          "possibly_sensitive",
+          "promoted_metrics",
+          "public_metrics",
+          "referenced_tweets",
+          "reply_settings",
+          "source",
+          "text",
+          "withheld"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "attachments.media_keys",
+          "attachments.poll_ids",
+          "author_id",
+          "edit_history_tweet_ids",
+          "entities.mentions.username",
+          "geo.place_id",
+          "in_reply_to_user_id",
+          "referenced_tweets.id",
+          "referenced_tweets.id.author_id"
+        ]
       },
       {
         "name": "mediaFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Media fields to display."
+        "description": "A comma separated list of Media fields to display.",
+        "example": [
+          "alt_text",
+          "duration_ms",
+          "height",
+          "media_key",
+          "non_public_metrics",
+          "organic_metrics",
+          "preview_image_url",
+          "promoted_metrics",
+          "public_metrics",
+          "type",
+          "url",
+          "variants",
+          "width"
+        ]
       },
       {
         "name": "pollFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Poll fields to display."
+        "description": "A comma separated list of Poll fields to display.",
+        "example": [
+          "duration_minutes",
+          "end_datetime",
+          "id",
+          "options",
+          "voting_status"
+        ]
       },
       {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "placeFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Place fields to display."
+        "description": "A comma separated list of Place fields to display.",
+        "example": [
+          "contained_within",
+          "country",
+          "country_code",
+          "full_name",
+          "geo",
+          "id",
+          "name",
+          "place_type"
+        ]
       }
     ],
     "responses": [
@@ -1600,13 +2627,15 @@ export default function XTypeScriptSdk() {
         "name": "startTime",
         "schema": "string",
         "required": false,
-        "description": "YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweet labels will be provided."
+        "description": "YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweet labels will be provided.",
+        "example": "2021-02-01T18:40:40.000Z"
       },
       {
         "name": "endTime",
         "schema": "string",
         "required": false,
-        "description": "YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp from which the Tweet labels will be provided."
+        "description": "YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp from which the Tweet labels will be provided.",
+        "example": "2021-02-01T18:40:40.000Z"
       }
     ],
     "responses": [
@@ -1638,36 +2667,120 @@ export default function XTypeScriptSdk() {
         "name": "tweetFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Tweet fields to display."
+        "description": "A comma separated list of Tweet fields to display.",
+        "example": [
+          "attachments",
+          "author_id",
+          "context_annotations",
+          "conversation_id",
+          "created_at",
+          "edit_controls",
+          "edit_history_tweet_ids",
+          "entities",
+          "geo",
+          "id",
+          "in_reply_to_user_id",
+          "lang",
+          "non_public_metrics",
+          "organic_metrics",
+          "possibly_sensitive",
+          "promoted_metrics",
+          "public_metrics",
+          "referenced_tweets",
+          "reply_settings",
+          "source",
+          "text",
+          "withheld"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "attachments.media_keys",
+          "attachments.poll_ids",
+          "author_id",
+          "edit_history_tweet_ids",
+          "entities.mentions.username",
+          "geo.place_id",
+          "in_reply_to_user_id",
+          "referenced_tweets.id",
+          "referenced_tweets.id.author_id"
+        ]
       },
       {
         "name": "mediaFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Media fields to display."
+        "description": "A comma separated list of Media fields to display.",
+        "example": [
+          "alt_text",
+          "duration_ms",
+          "height",
+          "media_key",
+          "non_public_metrics",
+          "organic_metrics",
+          "preview_image_url",
+          "promoted_metrics",
+          "public_metrics",
+          "type",
+          "url",
+          "variants",
+          "width"
+        ]
       },
       {
         "name": "pollFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Poll fields to display."
+        "description": "A comma separated list of Poll fields to display.",
+        "example": [
+          "duration_minutes",
+          "end_datetime",
+          "id",
+          "options",
+          "voting_status"
+        ]
       },
       {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "placeFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Place fields to display."
+        "description": "A comma separated list of Place fields to display.",
+        "example": [
+          "contained_within",
+          "country",
+          "country_code",
+          "full_name",
+          "geo",
+          "id",
+          "name",
+          "place_type"
+        ]
       }
     ],
     "responses": [
@@ -1699,54 +2812,141 @@ export default function XTypeScriptSdk() {
         "name": "partition",
         "schema": "integer",
         "required": true,
-        "description": "The partition number."
+        "description": "The partition number.",
+        "example": 0
       },
       {
         "name": "startTime",
         "schema": "string",
         "required": false,
-        "description": "YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp to which the Tweets will be provided."
+        "description": "YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp to which the Tweets will be provided.",
+        "example": "2021-02-14T18:40:40.000Z"
       },
       {
         "name": "endTime",
         "schema": "string",
         "required": false,
-        "description": "YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided."
+        "description": "YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided.",
+        "example": "2021-02-14T18:40:40.000Z"
       },
       {
         "name": "tweetFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Tweet fields to display."
+        "description": "A comma separated list of Tweet fields to display.",
+        "example": [
+          "attachments",
+          "author_id",
+          "context_annotations",
+          "conversation_id",
+          "created_at",
+          "edit_controls",
+          "edit_history_tweet_ids",
+          "entities",
+          "geo",
+          "id",
+          "in_reply_to_user_id",
+          "lang",
+          "non_public_metrics",
+          "organic_metrics",
+          "possibly_sensitive",
+          "promoted_metrics",
+          "public_metrics",
+          "referenced_tweets",
+          "reply_settings",
+          "source",
+          "text",
+          "withheld"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "attachments.media_keys",
+          "attachments.poll_ids",
+          "author_id",
+          "edit_history_tweet_ids",
+          "entities.mentions.username",
+          "geo.place_id",
+          "in_reply_to_user_id",
+          "referenced_tweets.id",
+          "referenced_tweets.id.author_id"
+        ]
       },
       {
         "name": "mediaFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Media fields to display."
+        "description": "A comma separated list of Media fields to display.",
+        "example": [
+          "alt_text",
+          "duration_ms",
+          "height",
+          "media_key",
+          "non_public_metrics",
+          "organic_metrics",
+          "preview_image_url",
+          "promoted_metrics",
+          "public_metrics",
+          "type",
+          "url",
+          "variants",
+          "width"
+        ]
       },
       {
         "name": "pollFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Poll fields to display."
+        "description": "A comma separated list of Poll fields to display.",
+        "example": [
+          "duration_minutes",
+          "end_datetime",
+          "id",
+          "options",
+          "voting_status"
+        ]
       },
       {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "placeFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Place fields to display."
+        "description": "A comma separated list of Place fields to display.",
+        "example": [
+          "contained_within",
+          "country",
+          "country_code",
+          "full_name",
+          "geo",
+          "id",
+          "name",
+          "place_type"
+        ]
       }
     ],
     "responses": [
@@ -1772,7 +2972,8 @@ export default function XTypeScriptSdk() {
         "name": "query",
         "schema": "string",
         "required": true,
-        "description": "One query/rule/filter for matching Tweets. Refer to https://t.co/rulelength to identify the max query length."
+        "description": "One query/rule/filter for matching Tweets. Refer to https://t.co/rulelength to identify the max query length.",
+        "example": "(from:TwitterDev OR from:TwitterAPI) has:media -is:retweet"
       },
       {
         "name": "startTime",
@@ -1790,19 +2991,22 @@ export default function XTypeScriptSdk() {
         "name": "sinceId",
         "schema": "string",
         "required": false,
-        "description": "Returns results with a Tweet ID greater than (that is, more recent than) the specified ID."
+        "description": "Returns results with a Tweet ID greater than (that is, more recent than) the specified ID.",
+        "example": "1346889436626259968"
       },
       {
         "name": "untilId",
         "schema": "string",
         "required": false,
-        "description": "Returns results with a Tweet ID less than (that is, older than) the specified ID."
+        "description": "Returns results with a Tweet ID less than (that is, older than) the specified ID.",
+        "example": "1346889436626259968"
       },
       {
         "name": "maxResults",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of search results to be returned by a request."
+        "description": "The maximum number of search results to be returned by a request.",
+        "default": 10
       },
       {
         "name": "nextToken",
@@ -1826,36 +3030,120 @@ export default function XTypeScriptSdk() {
         "name": "tweetFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Tweet fields to display."
+        "description": "A comma separated list of Tweet fields to display.",
+        "example": [
+          "attachments",
+          "author_id",
+          "context_annotations",
+          "conversation_id",
+          "created_at",
+          "edit_controls",
+          "edit_history_tweet_ids",
+          "entities",
+          "geo",
+          "id",
+          "in_reply_to_user_id",
+          "lang",
+          "non_public_metrics",
+          "organic_metrics",
+          "possibly_sensitive",
+          "promoted_metrics",
+          "public_metrics",
+          "referenced_tweets",
+          "reply_settings",
+          "source",
+          "text",
+          "withheld"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "attachments.media_keys",
+          "attachments.poll_ids",
+          "author_id",
+          "edit_history_tweet_ids",
+          "entities.mentions.username",
+          "geo.place_id",
+          "in_reply_to_user_id",
+          "referenced_tweets.id",
+          "referenced_tweets.id.author_id"
+        ]
       },
       {
         "name": "mediaFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Media fields to display."
+        "description": "A comma separated list of Media fields to display.",
+        "example": [
+          "alt_text",
+          "duration_ms",
+          "height",
+          "media_key",
+          "non_public_metrics",
+          "organic_metrics",
+          "preview_image_url",
+          "promoted_metrics",
+          "public_metrics",
+          "type",
+          "url",
+          "variants",
+          "width"
+        ]
       },
       {
         "name": "pollFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Poll fields to display."
+        "description": "A comma separated list of Poll fields to display.",
+        "example": [
+          "duration_minutes",
+          "end_datetime",
+          "id",
+          "options",
+          "voting_status"
+        ]
       },
       {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "placeFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Place fields to display."
+        "description": "A comma separated list of Place fields to display.",
+        "example": [
+          "contained_within",
+          "country",
+          "country_code",
+          "full_name",
+          "geo",
+          "id",
+          "name",
+          "place_type"
+        ]
       }
     ],
     "responses": [
@@ -1881,7 +3169,8 @@ export default function XTypeScriptSdk() {
         "name": "query",
         "schema": "string",
         "required": true,
-        "description": "One query/rule/filter for matching Tweets. Refer to https://t.co/rulelength to identify the max query length."
+        "description": "One query/rule/filter for matching Tweets. Refer to https://t.co/rulelength to identify the max query length.",
+        "example": "(from:TwitterDev OR from:TwitterAPI) has:media -is:retweet"
       },
       {
         "name": "startTime",
@@ -1899,19 +3188,22 @@ export default function XTypeScriptSdk() {
         "name": "sinceId",
         "schema": "string",
         "required": false,
-        "description": "Returns results with a Tweet ID greater than (that is, more recent than) the specified ID."
+        "description": "Returns results with a Tweet ID greater than (that is, more recent than) the specified ID.",
+        "example": "1346889436626259968"
       },
       {
         "name": "untilId",
         "schema": "string",
         "required": false,
-        "description": "Returns results with a Tweet ID less than (that is, older than) the specified ID."
+        "description": "Returns results with a Tweet ID less than (that is, older than) the specified ID.",
+        "example": "1346889436626259968"
       },
       {
         "name": "maxResults",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of search results to be returned by a request."
+        "description": "The maximum number of search results to be returned by a request.",
+        "default": 10
       },
       {
         "name": "nextToken",
@@ -1935,36 +3227,120 @@ export default function XTypeScriptSdk() {
         "name": "tweetFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Tweet fields to display."
+        "description": "A comma separated list of Tweet fields to display.",
+        "example": [
+          "attachments",
+          "author_id",
+          "context_annotations",
+          "conversation_id",
+          "created_at",
+          "edit_controls",
+          "edit_history_tweet_ids",
+          "entities",
+          "geo",
+          "id",
+          "in_reply_to_user_id",
+          "lang",
+          "non_public_metrics",
+          "organic_metrics",
+          "possibly_sensitive",
+          "promoted_metrics",
+          "public_metrics",
+          "referenced_tweets",
+          "reply_settings",
+          "source",
+          "text",
+          "withheld"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "attachments.media_keys",
+          "attachments.poll_ids",
+          "author_id",
+          "edit_history_tweet_ids",
+          "entities.mentions.username",
+          "geo.place_id",
+          "in_reply_to_user_id",
+          "referenced_tweets.id",
+          "referenced_tweets.id.author_id"
+        ]
       },
       {
         "name": "mediaFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Media fields to display."
+        "description": "A comma separated list of Media fields to display.",
+        "example": [
+          "alt_text",
+          "duration_ms",
+          "height",
+          "media_key",
+          "non_public_metrics",
+          "organic_metrics",
+          "preview_image_url",
+          "promoted_metrics",
+          "public_metrics",
+          "type",
+          "url",
+          "variants",
+          "width"
+        ]
       },
       {
         "name": "pollFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Poll fields to display."
+        "description": "A comma separated list of Poll fields to display.",
+        "example": [
+          "duration_minutes",
+          "end_datetime",
+          "id",
+          "options",
+          "voting_status"
+        ]
       },
       {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "placeFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Place fields to display."
+        "description": "A comma separated list of Place fields to display.",
+        "example": [
+          "contained_within",
+          "country",
+          "country_code",
+          "full_name",
+          "geo",
+          "id",
+          "name",
+          "place_type"
+        ]
       }
     ],
     "responses": [
@@ -1996,48 +3372,134 @@ export default function XTypeScriptSdk() {
         "name": "startTime",
         "schema": "string",
         "required": false,
-        "description": "YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided."
+        "description": "YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided.",
+        "example": "2021-02-01T18:40:40.000Z"
       },
       {
         "name": "endTime",
         "schema": "string",
         "required": false,
-        "description": "YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided."
+        "description": "YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided.",
+        "example": "2021-02-14T18:40:40.000Z"
       },
       {
         "name": "tweetFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Tweet fields to display."
+        "description": "A comma separated list of Tweet fields to display.",
+        "example": [
+          "attachments",
+          "author_id",
+          "context_annotations",
+          "conversation_id",
+          "created_at",
+          "edit_controls",
+          "edit_history_tweet_ids",
+          "entities",
+          "geo",
+          "id",
+          "in_reply_to_user_id",
+          "lang",
+          "non_public_metrics",
+          "organic_metrics",
+          "possibly_sensitive",
+          "promoted_metrics",
+          "public_metrics",
+          "referenced_tweets",
+          "reply_settings",
+          "source",
+          "text",
+          "withheld"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "attachments.media_keys",
+          "attachments.poll_ids",
+          "author_id",
+          "edit_history_tweet_ids",
+          "entities.mentions.username",
+          "geo.place_id",
+          "in_reply_to_user_id",
+          "referenced_tweets.id",
+          "referenced_tweets.id.author_id"
+        ]
       },
       {
         "name": "mediaFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Media fields to display."
+        "description": "A comma separated list of Media fields to display.",
+        "example": [
+          "alt_text",
+          "duration_ms",
+          "height",
+          "media_key",
+          "non_public_metrics",
+          "organic_metrics",
+          "preview_image_url",
+          "promoted_metrics",
+          "public_metrics",
+          "type",
+          "url",
+          "variants",
+          "width"
+        ]
       },
       {
         "name": "pollFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Poll fields to display."
+        "description": "A comma separated list of Poll fields to display.",
+        "example": [
+          "duration_minutes",
+          "end_datetime",
+          "id",
+          "options",
+          "voting_status"
+        ]
       },
       {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "placeFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Place fields to display."
+        "description": "A comma separated list of Place fields to display.",
+        "example": [
+          "contained_within",
+          "country",
+          "country_code",
+          "full_name",
+          "geo",
+          "id",
+          "name",
+          "place_type"
+        ]
       }
     ],
     "responses": [
@@ -2069,7 +3531,8 @@ export default function XTypeScriptSdk() {
         "name": "maxResults",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of results."
+        "description": "The maximum number of results.",
+        "default": 1000
       },
       {
         "name": "paginationToken",
@@ -2127,7 +3590,8 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the Tweet to be deleted."
+        "description": "The ID of the Tweet to be deleted.",
+        "example": "1346889436626259968"
       }
     ],
     "responses": [
@@ -2153,42 +3617,127 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "A single Tweet ID."
+        "description": "A single Tweet ID.",
+        "example": "1346889436626259968"
       },
       {
         "name": "tweetFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Tweet fields to display."
+        "description": "A comma separated list of Tweet fields to display.",
+        "example": [
+          "attachments",
+          "author_id",
+          "context_annotations",
+          "conversation_id",
+          "created_at",
+          "edit_controls",
+          "edit_history_tweet_ids",
+          "entities",
+          "geo",
+          "id",
+          "in_reply_to_user_id",
+          "lang",
+          "non_public_metrics",
+          "organic_metrics",
+          "possibly_sensitive",
+          "promoted_metrics",
+          "public_metrics",
+          "referenced_tweets",
+          "reply_settings",
+          "source",
+          "text",
+          "withheld"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "attachments.media_keys",
+          "attachments.poll_ids",
+          "author_id",
+          "edit_history_tweet_ids",
+          "entities.mentions.username",
+          "geo.place_id",
+          "in_reply_to_user_id",
+          "referenced_tweets.id",
+          "referenced_tweets.id.author_id"
+        ]
       },
       {
         "name": "mediaFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Media fields to display."
+        "description": "A comma separated list of Media fields to display.",
+        "example": [
+          "alt_text",
+          "duration_ms",
+          "height",
+          "media_key",
+          "non_public_metrics",
+          "organic_metrics",
+          "preview_image_url",
+          "promoted_metrics",
+          "public_metrics",
+          "type",
+          "url",
+          "variants",
+          "width"
+        ]
       },
       {
         "name": "pollFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Poll fields to display."
+        "description": "A comma separated list of Poll fields to display.",
+        "example": [
+          "duration_minutes",
+          "end_datetime",
+          "id",
+          "options",
+          "voting_status"
+        ]
       },
       {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "placeFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Place fields to display."
+        "description": "A comma separated list of Place fields to display.",
+        "example": [
+          "contained_within",
+          "country",
+          "country_code",
+          "full_name",
+          "geo",
+          "id",
+          "name",
+          "place_type"
+        ]
       }
     ],
     "responses": [
@@ -2214,13 +3763,15 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "A single Tweet ID."
+        "description": "A single Tweet ID.",
+        "example": "1346889436626259968"
       },
       {
         "name": "maxResults",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of results."
+        "description": "The maximum number of results.",
+        "default": 100
       },
       {
         "name": "paginationToken",
@@ -2232,18 +3783,62 @@ export default function XTypeScriptSdk() {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "pinned_tweet_id"
+        ]
       },
       {
         "name": "tweetFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Tweet fields to display."
+        "description": "A comma separated list of Tweet fields to display.",
+        "example": [
+          "attachments",
+          "author_id",
+          "context_annotations",
+          "conversation_id",
+          "created_at",
+          "edit_controls",
+          "edit_history_tweet_ids",
+          "entities",
+          "geo",
+          "id",
+          "in_reply_to_user_id",
+          "lang",
+          "non_public_metrics",
+          "organic_metrics",
+          "possibly_sensitive",
+          "promoted_metrics",
+          "public_metrics",
+          "referenced_tweets",
+          "reply_settings",
+          "source",
+          "text",
+          "withheld"
+        ]
       }
     ],
     "responses": [
@@ -2269,13 +3864,15 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "A single Tweet ID."
+        "description": "A single Tweet ID.",
+        "example": "1346889436626259968"
       },
       {
         "name": "maxResults",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of results to be returned."
+        "description": "The maximum number of results to be returned.",
+        "default": 10
       },
       {
         "name": "paginationToken",
@@ -2287,42 +3884,130 @@ export default function XTypeScriptSdk() {
         "name": "exclude",
         "schema": "array",
         "required": false,
-        "description": "The set of entities to exclude (e.g. 'replies' or 'retweets')."
+        "description": "The set of entities to exclude (e.g. 'replies' or 'retweets').",
+        "example": [
+          "replies",
+          "retweets"
+        ]
       },
       {
         "name": "tweetFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Tweet fields to display."
+        "description": "A comma separated list of Tweet fields to display.",
+        "example": [
+          "attachments",
+          "author_id",
+          "context_annotations",
+          "conversation_id",
+          "created_at",
+          "edit_controls",
+          "edit_history_tweet_ids",
+          "entities",
+          "geo",
+          "id",
+          "in_reply_to_user_id",
+          "lang",
+          "non_public_metrics",
+          "organic_metrics",
+          "possibly_sensitive",
+          "promoted_metrics",
+          "public_metrics",
+          "referenced_tweets",
+          "reply_settings",
+          "source",
+          "text",
+          "withheld"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "attachments.media_keys",
+          "attachments.poll_ids",
+          "author_id",
+          "edit_history_tweet_ids",
+          "entities.mentions.username",
+          "geo.place_id",
+          "in_reply_to_user_id",
+          "referenced_tweets.id",
+          "referenced_tweets.id.author_id"
+        ]
       },
       {
         "name": "mediaFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Media fields to display."
+        "description": "A comma separated list of Media fields to display.",
+        "example": [
+          "alt_text",
+          "duration_ms",
+          "height",
+          "media_key",
+          "non_public_metrics",
+          "organic_metrics",
+          "preview_image_url",
+          "promoted_metrics",
+          "public_metrics",
+          "type",
+          "url",
+          "variants",
+          "width"
+        ]
       },
       {
         "name": "pollFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Poll fields to display."
+        "description": "A comma separated list of Poll fields to display.",
+        "example": [
+          "duration_minutes",
+          "end_datetime",
+          "id",
+          "options",
+          "voting_status"
+        ]
       },
       {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "placeFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Place fields to display."
+        "description": "A comma separated list of Place fields to display.",
+        "example": [
+          "contained_within",
+          "country",
+          "country_code",
+          "full_name",
+          "geo",
+          "id",
+          "name",
+          "place_type"
+        ]
       }
     ],
     "responses": [
@@ -2348,13 +4033,15 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "A single Tweet ID."
+        "description": "A single Tweet ID.",
+        "example": "1346889436626259968"
       },
       {
         "name": "maxResults",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of results."
+        "description": "The maximum number of results.",
+        "default": 100
       },
       {
         "name": "paginationToken",
@@ -2366,18 +4053,62 @@ export default function XTypeScriptSdk() {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "pinned_tweet_id"
+        ]
       },
       {
         "name": "tweetFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Tweet fields to display."
+        "description": "A comma separated list of Tweet fields to display.",
+        "example": [
+          "attachments",
+          "author_id",
+          "context_annotations",
+          "conversation_id",
+          "created_at",
+          "edit_controls",
+          "edit_history_tweet_ids",
+          "entities",
+          "geo",
+          "id",
+          "in_reply_to_user_id",
+          "lang",
+          "non_public_metrics",
+          "organic_metrics",
+          "possibly_sensitive",
+          "promoted_metrics",
+          "public_metrics",
+          "referenced_tweets",
+          "reply_settings",
+          "source",
+          "text",
+          "withheld"
+        ]
       }
     ],
     "responses": [
@@ -2403,13 +4134,15 @@ export default function XTypeScriptSdk() {
         "name": "tweetId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the reply that you want to hide or unhide."
+        "description": "The ID of the reply that you want to hide or unhide.",
+        "example": "1346889436626259968"
       },
       {
         "name": "hidden",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       }
     ],
     "responses": [
@@ -2435,24 +4168,69 @@ export default function XTypeScriptSdk() {
         "name": "ids",
         "schema": "array",
         "required": true,
-        "description": "A list of User IDs, comma-separated. You can specify up to 100 IDs."
+        "description": "A list of User IDs, comma-separated. You can specify up to 100 IDs.",
+        "example": "2244994945,6253282,12"
       },
       {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "pinned_tweet_id"
+        ]
       },
       {
         "name": "tweetFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Tweet fields to display."
+        "description": "A comma separated list of Tweet fields to display.",
+        "example": [
+          "attachments",
+          "author_id",
+          "context_annotations",
+          "conversation_id",
+          "created_at",
+          "edit_controls",
+          "edit_history_tweet_ids",
+          "entities",
+          "geo",
+          "id",
+          "in_reply_to_user_id",
+          "lang",
+          "non_public_metrics",
+          "organic_metrics",
+          "possibly_sensitive",
+          "promoted_metrics",
+          "public_metrics",
+          "referenced_tweets",
+          "reply_settings",
+          "source",
+          "text",
+          "withheld"
+        ]
       }
     ],
     "responses": [
@@ -2478,24 +4256,69 @@ export default function XTypeScriptSdk() {
         "name": "usernames",
         "schema": "array",
         "required": true,
-        "description": "A list of usernames, comma-separated."
+        "description": "A list of usernames, comma-separated.",
+        "example": "TwitterDev,TwitterAPI"
       },
       {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "pinned_tweet_id"
+        ]
       },
       {
         "name": "tweetFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Tweet fields to display."
+        "description": "A comma separated list of Tweet fields to display.",
+        "example": [
+          "attachments",
+          "author_id",
+          "context_annotations",
+          "conversation_id",
+          "created_at",
+          "edit_controls",
+          "edit_history_tweet_ids",
+          "entities",
+          "geo",
+          "id",
+          "in_reply_to_user_id",
+          "lang",
+          "non_public_metrics",
+          "organic_metrics",
+          "possibly_sensitive",
+          "promoted_metrics",
+          "public_metrics",
+          "referenced_tweets",
+          "reply_settings",
+          "source",
+          "text",
+          "withheld"
+        ]
       }
     ],
     "responses": [
@@ -2521,24 +4344,69 @@ export default function XTypeScriptSdk() {
         "name": "username",
         "schema": "string",
         "required": true,
-        "description": "A username."
+        "description": "A username.",
+        "example": "TwitterDev"
       },
       {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "pinned_tweet_id"
+        ]
       },
       {
         "name": "tweetFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Tweet fields to display."
+        "description": "A comma separated list of Tweet fields to display.",
+        "example": [
+          "attachments",
+          "author_id",
+          "context_annotations",
+          "conversation_id",
+          "created_at",
+          "edit_controls",
+          "edit_history_tweet_ids",
+          "entities",
+          "geo",
+          "id",
+          "in_reply_to_user_id",
+          "lang",
+          "non_public_metrics",
+          "organic_metrics",
+          "possibly_sensitive",
+          "promoted_metrics",
+          "public_metrics",
+          "referenced_tweets",
+          "reply_settings",
+          "source",
+          "text",
+          "withheld"
+        ]
       }
     ],
     "responses": [
@@ -2570,19 +4438,22 @@ export default function XTypeScriptSdk() {
         "name": "partition",
         "schema": "integer",
         "required": true,
-        "description": "The partition number."
+        "description": "The partition number.",
+        "example": 0
       },
       {
         "name": "startTime",
         "schema": "string",
         "required": false,
-        "description": "YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the User Compliance events will be provided."
+        "description": "YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the User Compliance events will be provided.",
+        "example": "2021-02-01T18:40:40.000Z"
       },
       {
         "name": "endTime",
         "schema": "string",
         "required": false,
-        "description": "YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp from which the User Compliance events will be provided."
+        "description": "YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp from which the User Compliance events will be provided.",
+        "example": "2021-02-01T18:40:40.000Z"
       }
     ],
     "responses": [
@@ -2608,18 +4479,62 @@ export default function XTypeScriptSdk() {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "pinned_tweet_id"
+        ]
       },
       {
         "name": "tweetFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Tweet fields to display."
+        "description": "A comma separated list of Tweet fields to display.",
+        "example": [
+          "attachments",
+          "author_id",
+          "context_annotations",
+          "conversation_id",
+          "created_at",
+          "edit_controls",
+          "edit_history_tweet_ids",
+          "entities",
+          "geo",
+          "id",
+          "in_reply_to_user_id",
+          "lang",
+          "non_public_metrics",
+          "organic_metrics",
+          "possibly_sensitive",
+          "promoted_metrics",
+          "public_metrics",
+          "referenced_tweets",
+          "reply_settings",
+          "source",
+          "text",
+          "withheld"
+        ]
       }
     ],
     "responses": [
@@ -2645,24 +4560,69 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the User to lookup."
+        "description": "The ID of the User to lookup.",
+        "example": "2244994945"
       },
       {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "pinned_tweet_id"
+        ]
       },
       {
         "name": "tweetFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Tweet fields to display."
+        "description": "A comma separated list of Tweet fields to display.",
+        "example": [
+          "attachments",
+          "author_id",
+          "context_annotations",
+          "conversation_id",
+          "created_at",
+          "edit_controls",
+          "edit_history_tweet_ids",
+          "entities",
+          "geo",
+          "id",
+          "in_reply_to_user_id",
+          "lang",
+          "non_public_metrics",
+          "organic_metrics",
+          "possibly_sensitive",
+          "promoted_metrics",
+          "public_metrics",
+          "referenced_tweets",
+          "reply_settings",
+          "source",
+          "text",
+          "withheld"
+        ]
       }
     ],
     "responses": [
@@ -2688,7 +4648,8 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the authenticated source User for whom to return results."
+        "description": "The ID of the authenticated source User for whom to return results.",
+        "example": "2244994945"
       },
       {
         "name": "maxResults",
@@ -2706,18 +4667,62 @@ export default function XTypeScriptSdk() {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "pinned_tweet_id"
+        ]
       },
       {
         "name": "tweetFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Tweet fields to display."
+        "description": "A comma separated list of Tweet fields to display.",
+        "example": [
+          "attachments",
+          "author_id",
+          "context_annotations",
+          "conversation_id",
+          "created_at",
+          "edit_controls",
+          "edit_history_tweet_ids",
+          "entities",
+          "geo",
+          "id",
+          "in_reply_to_user_id",
+          "lang",
+          "non_public_metrics",
+          "organic_metrics",
+          "possibly_sensitive",
+          "promoted_metrics",
+          "public_metrics",
+          "referenced_tweets",
+          "reply_settings",
+          "source",
+          "text",
+          "withheld"
+        ]
       }
     ],
     "responses": [
@@ -2743,13 +4748,15 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the authenticated source User that is requesting to block the target User."
+        "description": "The ID of the authenticated source User that is requesting to block the target User.",
+        "example": "2244994945"
       },
       {
         "name": "target_user_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "2244994945"
       }
     ],
     "responses": [
@@ -2775,7 +4782,8 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the authenticated source User for whom to return results."
+        "description": "The ID of the authenticated source User for whom to return results.",
+        "example": "2244994945"
       },
       {
         "name": "maxResults",
@@ -2793,36 +4801,120 @@ export default function XTypeScriptSdk() {
         "name": "tweetFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Tweet fields to display."
+        "description": "A comma separated list of Tweet fields to display.",
+        "example": [
+          "attachments",
+          "author_id",
+          "context_annotations",
+          "conversation_id",
+          "created_at",
+          "edit_controls",
+          "edit_history_tweet_ids",
+          "entities",
+          "geo",
+          "id",
+          "in_reply_to_user_id",
+          "lang",
+          "non_public_metrics",
+          "organic_metrics",
+          "possibly_sensitive",
+          "promoted_metrics",
+          "public_metrics",
+          "referenced_tweets",
+          "reply_settings",
+          "source",
+          "text",
+          "withheld"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "attachments.media_keys",
+          "attachments.poll_ids",
+          "author_id",
+          "edit_history_tweet_ids",
+          "entities.mentions.username",
+          "geo.place_id",
+          "in_reply_to_user_id",
+          "referenced_tweets.id",
+          "referenced_tweets.id.author_id"
+        ]
       },
       {
         "name": "mediaFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Media fields to display."
+        "description": "A comma separated list of Media fields to display.",
+        "example": [
+          "alt_text",
+          "duration_ms",
+          "height",
+          "media_key",
+          "non_public_metrics",
+          "organic_metrics",
+          "preview_image_url",
+          "promoted_metrics",
+          "public_metrics",
+          "type",
+          "url",
+          "variants",
+          "width"
+        ]
       },
       {
         "name": "pollFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Poll fields to display."
+        "description": "A comma separated list of Poll fields to display.",
+        "example": [
+          "duration_minutes",
+          "end_datetime",
+          "id",
+          "options",
+          "voting_status"
+        ]
       },
       {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "placeFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Place fields to display."
+        "description": "A comma separated list of Place fields to display.",
+        "example": [
+          "contained_within",
+          "country",
+          "country_code",
+          "full_name",
+          "geo",
+          "id",
+          "name",
+          "place_type"
+        ]
       }
     ],
     "responses": [
@@ -2848,13 +4940,15 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the authenticated source User for whom to add bookmarks."
+        "description": "The ID of the authenticated source User for whom to add bookmarks.",
+        "example": "2244994945"
       },
       {
         "name": "tweet_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "1346889436626259968"
       }
     ],
     "responses": [
@@ -2880,13 +4974,15 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the authenticated source User whose bookmark is to be removed."
+        "description": "The ID of the authenticated source User whose bookmark is to be removed.",
+        "example": "2244994945"
       },
       {
         "name": "tweetId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the Tweet that the source User is removing from bookmarks."
+        "description": "The ID of the Tweet that the source User is removing from bookmarks.",
+        "example": "1346889436626259968"
       }
     ],
     "responses": [
@@ -2912,13 +5008,15 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the User to lookup."
+        "description": "The ID of the User to lookup.",
+        "example": "2244994945"
       },
       {
         "name": "maxResults",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of results."
+        "description": "The maximum number of results.",
+        "default": 100
       },
       {
         "name": "paginationToken",
@@ -2930,18 +5028,48 @@ export default function XTypeScriptSdk() {
         "name": "listFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of List fields to display."
+        "description": "A comma separated list of List fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "follower_count",
+          "id",
+          "member_count",
+          "name",
+          "owner_id",
+          "private"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "owner_id"
+        ]
       },
       {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       }
     ],
     "responses": [
@@ -2967,13 +5095,15 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the authenticated source User that will follow the List."
+        "description": "The ID of the authenticated source User that will follow the List.",
+        "example": "2244994945"
       },
       {
         "name": "list_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "1146654567674912769"
       }
     ],
     "responses": [
@@ -2999,13 +5129,15 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the authenticated source User that will unfollow the List."
+        "description": "The ID of the authenticated source User that will unfollow the List.",
+        "example": "2244994945"
       },
       {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the List to unfollow."
+        "description": "The ID of the List to unfollow.",
+        "example": "1146654567674912769"
       }
     ],
     "responses": [
@@ -3031,7 +5163,8 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the User to lookup."
+        "description": "The ID of the User to lookup.",
+        "example": "2244994945"
       },
       {
         "name": "maxResults",
@@ -3049,18 +5182,62 @@ export default function XTypeScriptSdk() {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "pinned_tweet_id"
+        ]
       },
       {
         "name": "tweetFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Tweet fields to display."
+        "description": "A comma separated list of Tweet fields to display.",
+        "example": [
+          "attachments",
+          "author_id",
+          "context_annotations",
+          "conversation_id",
+          "created_at",
+          "edit_controls",
+          "edit_history_tweet_ids",
+          "entities",
+          "geo",
+          "id",
+          "in_reply_to_user_id",
+          "lang",
+          "non_public_metrics",
+          "organic_metrics",
+          "possibly_sensitive",
+          "promoted_metrics",
+          "public_metrics",
+          "referenced_tweets",
+          "reply_settings",
+          "source",
+          "text",
+          "withheld"
+        ]
       }
     ],
     "responses": [
@@ -3086,7 +5263,8 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the User to lookup."
+        "description": "The ID of the User to lookup.",
+        "example": "2244994945"
       },
       {
         "name": "maxResults",
@@ -3104,18 +5282,62 @@ export default function XTypeScriptSdk() {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "pinned_tweet_id"
+        ]
       },
       {
         "name": "tweetFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Tweet fields to display."
+        "description": "A comma separated list of Tweet fields to display.",
+        "example": [
+          "attachments",
+          "author_id",
+          "context_annotations",
+          "conversation_id",
+          "created_at",
+          "edit_controls",
+          "edit_history_tweet_ids",
+          "entities",
+          "geo",
+          "id",
+          "in_reply_to_user_id",
+          "lang",
+          "non_public_metrics",
+          "organic_metrics",
+          "possibly_sensitive",
+          "promoted_metrics",
+          "public_metrics",
+          "referenced_tweets",
+          "reply_settings",
+          "source",
+          "text",
+          "withheld"
+        ]
       }
     ],
     "responses": [
@@ -3141,13 +5363,15 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the authenticated source User that is requesting to follow the target User."
+        "description": "The ID of the authenticated source User that is requesting to follow the target User.",
+        "example": "2244994945"
       },
       {
         "name": "target_user_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "2244994945"
       }
     ],
     "responses": [
@@ -3173,7 +5397,8 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the User to lookup."
+        "description": "The ID of the User to lookup.",
+        "example": "2244994945"
       },
       {
         "name": "maxResults",
@@ -3191,36 +5416,120 @@ export default function XTypeScriptSdk() {
         "name": "tweetFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Tweet fields to display."
+        "description": "A comma separated list of Tweet fields to display.",
+        "example": [
+          "attachments",
+          "author_id",
+          "context_annotations",
+          "conversation_id",
+          "created_at",
+          "edit_controls",
+          "edit_history_tweet_ids",
+          "entities",
+          "geo",
+          "id",
+          "in_reply_to_user_id",
+          "lang",
+          "non_public_metrics",
+          "organic_metrics",
+          "possibly_sensitive",
+          "promoted_metrics",
+          "public_metrics",
+          "referenced_tweets",
+          "reply_settings",
+          "source",
+          "text",
+          "withheld"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "attachments.media_keys",
+          "attachments.poll_ids",
+          "author_id",
+          "edit_history_tweet_ids",
+          "entities.mentions.username",
+          "geo.place_id",
+          "in_reply_to_user_id",
+          "referenced_tweets.id",
+          "referenced_tweets.id.author_id"
+        ]
       },
       {
         "name": "mediaFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Media fields to display."
+        "description": "A comma separated list of Media fields to display.",
+        "example": [
+          "alt_text",
+          "duration_ms",
+          "height",
+          "media_key",
+          "non_public_metrics",
+          "organic_metrics",
+          "preview_image_url",
+          "promoted_metrics",
+          "public_metrics",
+          "type",
+          "url",
+          "variants",
+          "width"
+        ]
       },
       {
         "name": "pollFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Poll fields to display."
+        "description": "A comma separated list of Poll fields to display.",
+        "example": [
+          "duration_minutes",
+          "end_datetime",
+          "id",
+          "options",
+          "voting_status"
+        ]
       },
       {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "placeFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Place fields to display."
+        "description": "A comma separated list of Place fields to display.",
+        "example": [
+          "contained_within",
+          "country",
+          "country_code",
+          "full_name",
+          "geo",
+          "id",
+          "name",
+          "place_type"
+        ]
       }
     ],
     "responses": [
@@ -3246,13 +5555,15 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the authenticated source User that is requesting to like the Tweet."
+        "description": "The ID of the authenticated source User that is requesting to like the Tweet.",
+        "example": "2244994945"
       },
       {
         "name": "tweet_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "1346889436626259968"
       }
     ],
     "responses": [
@@ -3278,13 +5589,15 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the authenticated source User that is requesting to unlike the Tweet."
+        "description": "The ID of the authenticated source User that is requesting to unlike the Tweet.",
+        "example": "2244994945"
       },
       {
         "name": "tweetId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the Tweet that the User is requesting to unlike."
+        "description": "The ID of the Tweet that the User is requesting to unlike.",
+        "example": "1346889436626259968"
       }
     ],
     "responses": [
@@ -3310,13 +5623,15 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the User to lookup."
+        "description": "The ID of the User to lookup.",
+        "example": "2244994945"
       },
       {
         "name": "maxResults",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of results."
+        "description": "The maximum number of results.",
+        "default": 100
       },
       {
         "name": "paginationToken",
@@ -3328,18 +5643,48 @@ export default function XTypeScriptSdk() {
         "name": "listFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of List fields to display."
+        "description": "A comma separated list of List fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "follower_count",
+          "id",
+          "member_count",
+          "name",
+          "owner_id",
+          "private"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "owner_id"
+        ]
       },
       {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       }
     ],
     "responses": [
@@ -3365,19 +5710,22 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the User to lookup."
+        "description": "The ID of the User to lookup.",
+        "example": "2244994945"
       },
       {
         "name": "sinceId",
         "schema": "string",
         "required": false,
-        "description": "The minimum Tweet ID to be included in the result set. This parameter takes precedence over start_time if both are specified."
+        "description": "The minimum Tweet ID to be included in the result set. This parameter takes precedence over start_time if both are specified.",
+        "example": "1346889436626259968"
       },
       {
         "name": "untilId",
         "schema": "string",
         "required": false,
-        "description": "The maximum Tweet ID to be included in the result set. This parameter takes precedence over end_time if both are specified."
+        "description": "The maximum Tweet ID to be included in the result set. This parameter takes precedence over end_time if both are specified.",
+        "example": "1346889436626259968"
       },
       {
         "name": "maxResults",
@@ -3395,48 +5743,134 @@ export default function XTypeScriptSdk() {
         "name": "startTime",
         "schema": "string",
         "required": false,
-        "description": "YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided. The since_id parameter takes precedence if it is also specified."
+        "description": "YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided. The since_id parameter takes precedence if it is also specified.",
+        "example": "2021-02-01T18:40:40.000Z"
       },
       {
         "name": "endTime",
         "schema": "string",
         "required": false,
-        "description": "YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. The until_id parameter takes precedence if it is also specified."
+        "description": "YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. The until_id parameter takes precedence if it is also specified.",
+        "example": "2021-02-14T18:40:40.000Z"
       },
       {
         "name": "tweetFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Tweet fields to display."
+        "description": "A comma separated list of Tweet fields to display.",
+        "example": [
+          "attachments",
+          "author_id",
+          "context_annotations",
+          "conversation_id",
+          "created_at",
+          "edit_controls",
+          "edit_history_tweet_ids",
+          "entities",
+          "geo",
+          "id",
+          "in_reply_to_user_id",
+          "lang",
+          "non_public_metrics",
+          "organic_metrics",
+          "possibly_sensitive",
+          "promoted_metrics",
+          "public_metrics",
+          "referenced_tweets",
+          "reply_settings",
+          "source",
+          "text",
+          "withheld"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "attachments.media_keys",
+          "attachments.poll_ids",
+          "author_id",
+          "edit_history_tweet_ids",
+          "entities.mentions.username",
+          "geo.place_id",
+          "in_reply_to_user_id",
+          "referenced_tweets.id",
+          "referenced_tweets.id.author_id"
+        ]
       },
       {
         "name": "mediaFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Media fields to display."
+        "description": "A comma separated list of Media fields to display.",
+        "example": [
+          "alt_text",
+          "duration_ms",
+          "height",
+          "media_key",
+          "non_public_metrics",
+          "organic_metrics",
+          "preview_image_url",
+          "promoted_metrics",
+          "public_metrics",
+          "type",
+          "url",
+          "variants",
+          "width"
+        ]
       },
       {
         "name": "pollFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Poll fields to display."
+        "description": "A comma separated list of Poll fields to display.",
+        "example": [
+          "duration_minutes",
+          "end_datetime",
+          "id",
+          "options",
+          "voting_status"
+        ]
       },
       {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "placeFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Place fields to display."
+        "description": "A comma separated list of Place fields to display.",
+        "example": [
+          "contained_within",
+          "country",
+          "country_code",
+          "full_name",
+          "geo",
+          "id",
+          "name",
+          "place_type"
+        ]
       }
     ],
     "responses": [
@@ -3462,13 +5896,15 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the authenticated source User for whom to return results."
+        "description": "The ID of the authenticated source User for whom to return results.",
+        "example": "2244994945"
       },
       {
         "name": "maxResults",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of results."
+        "description": "The maximum number of results.",
+        "default": 100
       },
       {
         "name": "paginationToken",
@@ -3480,18 +5916,62 @@ export default function XTypeScriptSdk() {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "pinned_tweet_id"
+        ]
       },
       {
         "name": "tweetFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Tweet fields to display."
+        "description": "A comma separated list of Tweet fields to display.",
+        "example": [
+          "attachments",
+          "author_id",
+          "context_annotations",
+          "conversation_id",
+          "created_at",
+          "edit_controls",
+          "edit_history_tweet_ids",
+          "entities",
+          "geo",
+          "id",
+          "in_reply_to_user_id",
+          "lang",
+          "non_public_metrics",
+          "organic_metrics",
+          "possibly_sensitive",
+          "promoted_metrics",
+          "public_metrics",
+          "referenced_tweets",
+          "reply_settings",
+          "source",
+          "text",
+          "withheld"
+        ]
       }
     ],
     "responses": [
@@ -3517,13 +5997,15 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the authenticated source User that is requesting to mute the target User."
+        "description": "The ID of the authenticated source User that is requesting to mute the target User.",
+        "example": "2244994945"
       },
       {
         "name": "target_user_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "2244994945"
       }
     ],
     "responses": [
@@ -3549,13 +6031,15 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the User to lookup."
+        "description": "The ID of the User to lookup.",
+        "example": "2244994945"
       },
       {
         "name": "maxResults",
         "schema": "integer",
         "required": false,
-        "description": "The maximum number of results."
+        "description": "The maximum number of results.",
+        "default": 100
       },
       {
         "name": "paginationToken",
@@ -3567,18 +6051,48 @@ export default function XTypeScriptSdk() {
         "name": "listFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of List fields to display."
+        "description": "A comma separated list of List fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "follower_count",
+          "id",
+          "member_count",
+          "name",
+          "owner_id",
+          "private"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "owner_id"
+        ]
       },
       {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       }
     ],
     "responses": [
@@ -3604,24 +6118,55 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the authenticated source User for whom to return results."
+        "description": "The ID of the authenticated source User for whom to return results.",
+        "example": "2244994945"
       },
       {
         "name": "listFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of List fields to display."
+        "description": "A comma separated list of List fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "follower_count",
+          "id",
+          "member_count",
+          "name",
+          "owner_id",
+          "private"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "owner_id"
+        ]
       },
       {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       }
     ],
     "responses": [
@@ -3647,13 +6192,15 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the authenticated source User that will pin the List."
+        "description": "The ID of the authenticated source User that will pin the List.",
+        "example": "2244994945"
       },
       {
         "name": "list_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "1146654567674912769"
       }
     ],
     "responses": [
@@ -3679,13 +6226,15 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the authenticated source User for whom to return results."
+        "description": "The ID of the authenticated source User for whom to return results.",
+        "example": "2244994945"
       },
       {
         "name": "listId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the List to unpin."
+        "description": "The ID of the List to unpin.",
+        "example": "1146654567674912769"
       }
     ],
     "responses": [
@@ -3711,13 +6260,15 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the authenticated source User that is requesting to retweet the Tweet."
+        "description": "The ID of the authenticated source User that is requesting to retweet the Tweet.",
+        "example": "2244994945"
       },
       {
         "name": "tweet_id",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "1346889436626259968"
       }
     ],
     "responses": [
@@ -3743,13 +6294,15 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the authenticated source User that is requesting to retweet the Tweet."
+        "description": "The ID of the authenticated source User that is requesting to retweet the Tweet.",
+        "example": "2244994945"
       },
       {
         "name": "sourceTweetId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the Tweet that the User is requesting to unretweet."
+        "description": "The ID of the Tweet that the User is requesting to unretweet.",
+        "example": "1346889436626259968"
       }
     ],
     "responses": [
@@ -3775,19 +6328,22 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the authenticated source User to list Reverse Chronological Timeline Tweets of."
+        "description": "The ID of the authenticated source User to list Reverse Chronological Timeline Tweets of.",
+        "example": "2244994945"
       },
       {
         "name": "sinceId",
         "schema": "string",
         "required": false,
-        "description": "The minimum Tweet ID to be included in the result set. This parameter takes precedence over start_time if both are specified."
+        "description": "The minimum Tweet ID to be included in the result set. This parameter takes precedence over start_time if both are specified.",
+        "example": "791775337160081409"
       },
       {
         "name": "untilId",
         "schema": "string",
         "required": false,
-        "description": "The maximum Tweet ID to be included in the result set. This parameter takes precedence over end_time if both are specified."
+        "description": "The maximum Tweet ID to be included in the result set. This parameter takes precedence over end_time if both are specified.",
+        "example": "1346889436626259968"
       },
       {
         "name": "maxResults",
@@ -3805,54 +6361,144 @@ export default function XTypeScriptSdk() {
         "name": "exclude",
         "schema": "array",
         "required": false,
-        "description": "The set of entities to exclude (e.g. 'replies' or 'retweets')."
+        "description": "The set of entities to exclude (e.g. 'replies' or 'retweets').",
+        "example": [
+          "replies",
+          "retweets"
+        ]
       },
       {
         "name": "startTime",
         "schema": "string",
         "required": false,
-        "description": "YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided. The since_id parameter takes precedence if it is also specified."
+        "description": "YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided. The since_id parameter takes precedence if it is also specified.",
+        "example": "2021-02-01T18:40:40.000Z"
       },
       {
         "name": "endTime",
         "schema": "string",
         "required": false,
-        "description": "YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. The until_id parameter takes precedence if it is also specified."
+        "description": "YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. The until_id parameter takes precedence if it is also specified.",
+        "example": "2021-02-14T18:40:40.000Z"
       },
       {
         "name": "tweetFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Tweet fields to display."
+        "description": "A comma separated list of Tweet fields to display.",
+        "example": [
+          "attachments",
+          "author_id",
+          "context_annotations",
+          "conversation_id",
+          "created_at",
+          "edit_controls",
+          "edit_history_tweet_ids",
+          "entities",
+          "geo",
+          "id",
+          "in_reply_to_user_id",
+          "lang",
+          "non_public_metrics",
+          "organic_metrics",
+          "possibly_sensitive",
+          "promoted_metrics",
+          "public_metrics",
+          "referenced_tweets",
+          "reply_settings",
+          "source",
+          "text",
+          "withheld"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "attachments.media_keys",
+          "attachments.poll_ids",
+          "author_id",
+          "edit_history_tweet_ids",
+          "entities.mentions.username",
+          "geo.place_id",
+          "in_reply_to_user_id",
+          "referenced_tweets.id",
+          "referenced_tweets.id.author_id"
+        ]
       },
       {
         "name": "mediaFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Media fields to display."
+        "description": "A comma separated list of Media fields to display.",
+        "example": [
+          "alt_text",
+          "duration_ms",
+          "height",
+          "media_key",
+          "non_public_metrics",
+          "organic_metrics",
+          "preview_image_url",
+          "promoted_metrics",
+          "public_metrics",
+          "type",
+          "url",
+          "variants",
+          "width"
+        ]
       },
       {
         "name": "pollFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Poll fields to display."
+        "description": "A comma separated list of Poll fields to display.",
+        "example": [
+          "duration_minutes",
+          "end_datetime",
+          "id",
+          "options",
+          "voting_status"
+        ]
       },
       {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "placeFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Place fields to display."
+        "description": "A comma separated list of Place fields to display.",
+        "example": [
+          "contained_within",
+          "country",
+          "country_code",
+          "full_name",
+          "geo",
+          "id",
+          "name",
+          "place_type"
+        ]
       }
     ],
     "responses": [
@@ -3878,19 +6524,22 @@ export default function XTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID of the User to lookup."
+        "description": "The ID of the User to lookup.",
+        "example": "2244994945"
       },
       {
         "name": "sinceId",
         "schema": "string",
         "required": false,
-        "description": "The minimum Tweet ID to be included in the result set. This parameter takes precedence over start_time if both are specified."
+        "description": "The minimum Tweet ID to be included in the result set. This parameter takes precedence over start_time if both are specified.",
+        "example": "791775337160081409"
       },
       {
         "name": "untilId",
         "schema": "string",
         "required": false,
-        "description": "The maximum Tweet ID to be included in the result set. This parameter takes precedence over end_time if both are specified."
+        "description": "The maximum Tweet ID to be included in the result set. This parameter takes precedence over end_time if both are specified.",
+        "example": "1346889436626259968"
       },
       {
         "name": "maxResults",
@@ -3908,54 +6557,144 @@ export default function XTypeScriptSdk() {
         "name": "exclude",
         "schema": "array",
         "required": false,
-        "description": "The set of entities to exclude (e.g. 'replies' or 'retweets')."
+        "description": "The set of entities to exclude (e.g. 'replies' or 'retweets').",
+        "example": [
+          "replies",
+          "retweets"
+        ]
       },
       {
         "name": "startTime",
         "schema": "string",
         "required": false,
-        "description": "YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided. The since_id parameter takes precedence if it is also specified."
+        "description": "YYYY-MM-DDTHH:mm:ssZ. The earliest UTC timestamp from which the Tweets will be provided. The since_id parameter takes precedence if it is also specified.",
+        "example": "2021-02-01T18:40:40.000Z"
       },
       {
         "name": "endTime",
         "schema": "string",
         "required": false,
-        "description": "YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. The until_id parameter takes precedence if it is also specified."
+        "description": "YYYY-MM-DDTHH:mm:ssZ. The latest UTC timestamp to which the Tweets will be provided. The until_id parameter takes precedence if it is also specified.",
+        "example": "2021-02-14T18:40:40.000Z"
       },
       {
         "name": "tweetFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Tweet fields to display."
+        "description": "A comma separated list of Tweet fields to display.",
+        "example": [
+          "attachments",
+          "author_id",
+          "context_annotations",
+          "conversation_id",
+          "created_at",
+          "edit_controls",
+          "edit_history_tweet_ids",
+          "entities",
+          "geo",
+          "id",
+          "in_reply_to_user_id",
+          "lang",
+          "non_public_metrics",
+          "organic_metrics",
+          "possibly_sensitive",
+          "promoted_metrics",
+          "public_metrics",
+          "referenced_tweets",
+          "reply_settings",
+          "source",
+          "text",
+          "withheld"
+        ]
       },
       {
         "name": "expansions",
         "schema": "array",
-        "description": "A comma separated list of fields to expand."
+        "description": "A comma separated list of fields to expand.",
+        "example": [
+          "attachments.media_keys",
+          "attachments.poll_ids",
+          "author_id",
+          "edit_history_tweet_ids",
+          "entities.mentions.username",
+          "geo.place_id",
+          "in_reply_to_user_id",
+          "referenced_tweets.id",
+          "referenced_tweets.id.author_id"
+        ]
       },
       {
         "name": "mediaFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Media fields to display."
+        "description": "A comma separated list of Media fields to display.",
+        "example": [
+          "alt_text",
+          "duration_ms",
+          "height",
+          "media_key",
+          "non_public_metrics",
+          "organic_metrics",
+          "preview_image_url",
+          "promoted_metrics",
+          "public_metrics",
+          "type",
+          "url",
+          "variants",
+          "width"
+        ]
       },
       {
         "name": "pollFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Poll fields to display."
+        "description": "A comma separated list of Poll fields to display.",
+        "example": [
+          "duration_minutes",
+          "end_datetime",
+          "id",
+          "options",
+          "voting_status"
+        ]
       },
       {
         "name": "userFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of User fields to display."
+        "description": "A comma separated list of User fields to display.",
+        "example": [
+          "created_at",
+          "description",
+          "entities",
+          "id",
+          "location",
+          "name",
+          "pinned_tweet_id",
+          "profile_image_url",
+          "protected",
+          "public_metrics",
+          "url",
+          "username",
+          "verified",
+          "verified_type",
+          "withheld"
+        ]
       },
       {
         "name": "placeFields",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of Place fields to display."
+        "description": "A comma separated list of Place fields to display.",
+        "example": [
+          "contained_within",
+          "country",
+          "country_code",
+          "full_name",
+          "geo",
+          "id",
+          "name",
+          "place_type"
+        ]
       }
     ],
     "responses": [
@@ -3981,13 +6720,15 @@ export default function XTypeScriptSdk() {
         "name": "sourceUserId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the authenticated source User that is requesting to unblock the target User."
+        "description": "The ID of the authenticated source User that is requesting to unblock the target User.",
+        "example": "2244994945"
       },
       {
         "name": "targetUserId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the User that the source User is requesting to unblock."
+        "description": "The ID of the User that the source User is requesting to unblock.",
+        "example": "2244994945"
       }
     ],
     "responses": [
@@ -4013,13 +6754,15 @@ export default function XTypeScriptSdk() {
         "name": "sourceUserId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the authenticated source User that is requesting to unfollow the target User."
+        "description": "The ID of the authenticated source User that is requesting to unfollow the target User.",
+        "example": "2244994945"
       },
       {
         "name": "targetUserId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the User that the source User is requesting to unfollow."
+        "description": "The ID of the User that the source User is requesting to unfollow.",
+        "example": "2244994945"
       }
     ],
     "responses": [
@@ -4045,13 +6788,15 @@ export default function XTypeScriptSdk() {
         "name": "sourceUserId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the authenticated source User that is requesting to unmute the target User."
+        "description": "The ID of the authenticated source User that is requesting to unmute the target User.",
+        "example": "2244994945"
       },
       {
         "name": "targetUserId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the User that the source User is requesting to unmute."
+        "description": "The ID of the User that the source User is requesting to unmute.",
+        "example": "2244994945"
       }
     ],
     "responses": [

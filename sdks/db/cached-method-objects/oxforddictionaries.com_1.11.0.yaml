@@ -11,10 +11,12 @@ methodObjects:
         schema: string
         required: true
         description: IANA language code
+        example: SOURCE_DOMAINS_LANGUAGE
       - name: targetDomainsLanguage
         schema: string
         required: true
         description: IANA language code
+        example: TARGET_DOMAINS_LANGUAGE
     responses:
       - statusCode: '200'
         description: Schema for lexicalcategories, registers utility endpoints.
@@ -33,6 +35,7 @@ methodObjects:
         schema: string
         required: true
         description: IANA language code
+        example: SOURCE_LANGUAGE
     responses:
       - statusCode: '200'
         description: Schema for lexicalcategories, registers utility endpoints.
@@ -49,10 +52,13 @@ methodObjects:
         schema: string
         required: true
         description: IANA language code
+        example: SOURCE_LANGUAGE
       - name: wordId
         schema: string
         required: true
         description: An Entry identifier. Case-sensitive.
+        example: WORD_ID
+        default: ace
     responses:
       - statusCode: '200'
         description: Schema for the 'sentences' endpoint
@@ -73,10 +79,13 @@ methodObjects:
         schema: string
         required: true
         description: IANA language code
+        example: SOURCE_LANG
       - name: wordId
         schema: string
         required: true
         description: An Entry identifier. Case-sensitive.
+        example: WORD_ID
+        default: ace
     responses:
       - statusCode: '200'
         description: Schema for the 'entries' endpoints
@@ -98,10 +107,13 @@ methodObjects:
         schema: string
         required: true
         description: IANA language code
+        example: SOURCE_LANG
       - name: wordId
         schema: string
         required: true
         description: An Entry identifier. Case-sensitive.
+        example: WORD_ID
+        default: ace
     responses:
       - statusCode: '200'
         description: Schema for thesaurus endpoint
@@ -123,16 +135,20 @@ methodObjects:
         schema: string
         required: true
         description: IANA language code
+        example: SOURCE_LANG
       - name: wordId
         schema: string
         required: true
         description: An Entry identifier. Case-sensitive.
+        example: WORD_ID
+        default: ace
       - name: region
         schema: string
         required: true
         description: >-
           Region filter parameter. gb = Oxford Dictionary of English. us = New
           Oxford American Dictionary.
+        example: REGION
     responses:
       - statusCode: '200'
         description: Schema for the 'entries' endpoints
@@ -156,10 +172,13 @@ methodObjects:
         schema: string
         required: true
         description: IANA language code
+        example: SOURCE_LANG
       - name: wordId
         schema: string
         required: true
         description: An Entry identifier. Case-sensitive.
+        example: WORD_ID
+        default: ace
     responses:
       - statusCode: '200'
         description: Schema for thesaurus endpoint
@@ -181,10 +200,13 @@ methodObjects:
         schema: string
         required: true
         description: IANA language code
+        example: SOURCE_LANG
       - name: wordId
         schema: string
         required: true
         description: An Entry identifier. Case-sensitive.
+        example: WORD_ID
+        default: ace
     responses:
       - statusCode: '200'
         description: Schema for thesaurus endpoint
@@ -206,10 +228,13 @@ methodObjects:
         schema: string
         required: true
         description: IANA language code
+        example: SOURCE_LANG
       - name: wordId
         schema: string
         required: true
         description: An Entry identifier. Case-sensitive.
+        example: WORD_ID
+        default: ace
       - name: filters
         schema: string
         required: true
@@ -218,6 +243,8 @@ methodObjects:
           values grammaticalFeatures and/or lexicalCategory and are
           case-sensitive. To list multiple values in single condition divide
           them with comma.
+        example: FILTERS
+        default: grammaticalFeatures=singular,past;lexicalCategory=noun
     responses:
       - statusCode: '200'
         description: Schema for the 'entries' endpoints
@@ -242,14 +269,18 @@ methodObjects:
         schema: string
         required: true
         description: IANA language code
+        example: SOURCE_TRANSLATION_LANGUAGE
       - name: wordId
         schema: string
         required: true
         description: The source word
+        example: WORD_ID
+        default: change
       - name: targetTranslationLanguage
         schema: string
         required: true
         description: IANA language code
+        example: TARGET_TRANSLATION_LANGUAGE
     responses:
       - statusCode: '200'
         description: Schema for the 'entries' endpoints
@@ -287,6 +318,7 @@ methodObjects:
         schema: string
         required: true
         description: Name of the endpoint.
+        example: ENDPOINT
     responses:
       - statusCode: '200'
         description: Schema for the Filters endpoint.
@@ -307,6 +339,7 @@ methodObjects:
         description: >-
           IANA language code. If provided output will be filtered by
           sourceLanguage.
+        example: SOURCE_LANGUAGE
     responses:
       - statusCode: '200'
         description: Schema for lexicalcategories, registers utility endpoints.
@@ -323,6 +356,7 @@ methodObjects:
         schema: string
         required: true
         description: IANA language code
+        example: SOURCE_LANG
       - name: filters
         schema: string
         required: true
@@ -331,10 +365,14 @@ methodObjects:
           values grammaticalFeatures and/or lexicalCategory and are
           case-sensitive. To list multiple values in single condition divide
           them with comma.
+        example: FILTERS
+        default: grammaticalFeatures=singular,past;lexicalCategory=noun
       - name: wordId
         schema: string
         required: true
         description: The input word
+        example: WORD_ID
+        default: swimming
     responses:
       - statusCode: '200'
         description: Schema for the inflections endpoint.
@@ -378,6 +416,7 @@ methodObjects:
         schema: string
         required: true
         description: IANA language code
+        example: LANGUAGE
     responses:
       - statusCode: '200'
         description: Schema for lexicalcategories, registers utility endpoints.
@@ -396,6 +435,7 @@ methodObjects:
         schema: string
         required: true
         description: IANA language code
+        example: SOURCE_LANGUAGE
     responses:
       - statusCode: '200'
         description: Schema for region endpoint.
@@ -412,6 +452,7 @@ methodObjects:
         schema: string
         required: true
         description: IANA language code
+        example: SOURCE_LANGUAGE
     responses:
       - statusCode: '200'
         description: Schema for lexicalcategories, registers utility endpoints.
@@ -430,10 +471,12 @@ methodObjects:
         schema: string
         required: true
         description: IANA language code
+        example: SOURCE_REGISTER_LANGUAGE
       - name: targetRegisterLanguage
         schema: string
         required: true
         description: IANA language code
+        example: TARGET_REGISTER_LANGUAGE
     responses:
       - statusCode: '200'
         description: Schema for lexicalcategories, registers utility endpoints.
@@ -454,16 +497,19 @@ methodObjects:
         schema: string
         required: true
         description: IANA language code
+        example: SOURCE_LANG
       - name: q
         schema: string
         required: false
         description: Search string
+        default: eye
       - name: prefix
         schema: boolean
         required: false
         description: >-
           Set prefix to true if you'd like to get results only starting with
           search string.
+        default: 'false'
       - name: regions
         schema: string
         required: false
@@ -501,20 +547,24 @@ methodObjects:
         schema: string
         required: true
         description: IANA language code
+        example: SOURCE_SEARCH_LANGUAGE
       - name: targetSearchLanguage
         schema: string
         required: true
         description: IANA language code
+        example: TARGET_SEARCH_LANGUAGE
       - name: q
         schema: string
         required: false
         description: Search string.
+        default: eye
       - name: prefix
         schema: boolean
         required: false
         description: >-
           Set prefix to true if you'd like to get results only starting with
           search string.
+        default: 'false'
       - name: regions
         schema: string
         required: false
@@ -552,6 +602,7 @@ methodObjects:
         schema: string
         required: true
         description: IANA language code
+        example: SOURCE_LANG
       - name: filtersAdvanced
         schema: string
         required: true
@@ -561,6 +612,8 @@ methodObjects:
           take comma separated list of values. E.g.,
           lexicalCategory=noun,adjective;domains=sport. Number of values limited
           to 5.
+        example: FILTERS_ADVANCED
+        default: lexicalCategory=Noun;domains=sport
       - name: exclude
         schema: string
         required: false
@@ -591,10 +644,12 @@ methodObjects:
           Parameter to speficy the minimum (>), exact or maximum (<) length of
           the words required. E.g., >5 - more than 5 chars; <4 - less than 4
           chars; >5<10 - from 5 to 10 chars; 3 - exactly 3 chars.
+        default: '>5,<10'
       - name: prefix
         schema: string
         required: false
         description: Filter words that start with prefix parameter
+        default: goal
       - name: exact
         schema: boolean
         required: false
@@ -602,6 +657,7 @@ methodObjects:
           If exact=true wordlist returns a list of entries that exactly matches
           the search string. Otherwise wordlist lists entries that start with
           prefix string.
+        default: 'false'
       - name: limit
         schema: string
         required: false
@@ -639,6 +695,7 @@ methodObjects:
         schema: string
         required: true
         description: IANA language code
+        example: SOURCE_LANG
       - name: filtersBasic
         schema: string
         required: true
@@ -648,6 +705,8 @@ methodObjects:
           take comma separated list of values. E.g.,
           lexicalCategory=noun,adjective;domains=sport. Number of values limited
           to 5.
+        example: FILTERS_BASIC
+        default: registers=Rare;domains=Art
       - name: limit
         schema: string
         required: false
@@ -681,16 +740,22 @@ methodObjects:
         schema: string
         required: true
         description: IANA language code
+        example: SOURCE_LANG
+        default: en
       - name: corpus
         schema: string
         required: true
         description: >-
           For corpora other than 'nmc' (New Monitor Corpus) please contact
           api@oxforddictionaries.com
+        example: CORPUS
+        default: nmc
       - name: ngramSize
         schema: string
         required: true
         description: the size of ngrams requested (1-4)
+        example: NGRAM-SIZE
+        default: 2
       - name: tokens
         schema: string
         required: false
@@ -698,6 +763,7 @@ methodObjects:
           List of tokens to filter. The tokens are separated by spaces, the list
           items are separated by comma (e.g., for bigrams (n=2) tokens=this
           is,this was, this will)
+        default: a word
       - name: contains
         schema: string
         required: false
@@ -716,6 +782,7 @@ methodObjects:
         description: >-
           Option specifying whether tokens should be returned as a single string
           (option "google") or as a list of strings (option "oup")
+        default: oup
       - name: minFrequency
         schema: integer
         required: false
@@ -757,10 +824,12 @@ methodObjects:
         schema: integer
         required: false
         description: pagination - results offset
+        default: 0
       - name: limit
         schema: integer
         required: false
         description: pagination - results limit
+        default: 100
     responses:
       - statusCode: '200'
         description: Schema for corpus ngrams.
@@ -784,12 +853,15 @@ methodObjects:
         schema: string
         required: true
         description: IANA language code
+        example: SOURCE_LANG
+        default: en
       - name: corpus
         schema: string
         required: false
         description: >-
           For corpora other than 'nmc' (New Monitor Corpus) please contact
           api@oxforddictionaries.com
+        default: nmc
       - name: wordform
         schema: string
         required: false
@@ -808,6 +880,7 @@ methodObjects:
         description: >-
           The lemma of the word to look up (e.g., Book, booked, books all have
           the lemma "book")
+        default: test
       - name: lexicalCategory
         schema: string
         required: false
@@ -838,12 +911,15 @@ methodObjects:
         schema: string
         required: true
         description: IANA language code
+        example: SOURCE_LANG
+        default: en
       - name: corpus
         schema: string
         required: false
         description: >-
           For corpora other than 'nmc' (New Monitor Corpus) please contact
           api@oxforddictionaries.com
+        default: nmc
       - name: wordform
         schema: string
         required: false
@@ -862,6 +938,7 @@ methodObjects:
         description: >-
           The lemma of the word to look up (e.g., Book, booked, books all have
           the lemma "book")
+        default: test
       - name: lexicalCategory
         schema: string
         required: false
@@ -915,10 +992,12 @@ methodObjects:
         schema: integer
         required: false
         description: pagination - results offset
+        default: 0
       - name: limit
         schema: integer
         required: false
         description: pagination - results limit
+        default: 100
     responses:
       - statusCode: '200'
         description: >-

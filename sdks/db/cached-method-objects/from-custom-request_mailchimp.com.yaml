@@ -41,6 +41,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -49,6 +50,7 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
     responses:
       - statusCode: '200'
         description: >-
@@ -83,6 +85,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -91,6 +94,7 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
     responses:
       - statusCode: '200'
         description: An array of objects, each representing an account export.
@@ -109,10 +113,12 @@ methodObjects:
         schema: array
         required: true
         description: ''
+        example: '["audiences", "gallery_files"]'
       - name: since_timestamp
         schema: string
         required: false
         description: ''
+        example: '2021-08-23T14:15:09Z'
     responses:
       - statusCode: '200'
         description: An account export.
@@ -143,6 +149,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the account export.
+        example: EXPORT_ID
     responses:
       - statusCode: '200'
         description: An account export.
@@ -175,6 +182,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -183,6 +191,7 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
     responses:
       - statusCode: '200'
         description: An array of objects, each representing an authorized application.
@@ -213,6 +222,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the connected authorized application.
+        example: APP_ID
     responses:
       - statusCode: '200'
         description: An authorized app.
@@ -233,6 +243,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -241,6 +252,7 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: fields
         schema: array
         required: false
@@ -337,6 +349,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the Automation workflow.
+        example: WORKFLOW_ID
     responses:
       - statusCode: '200'
         description: A summary of an individual Automation workflow's settings and content.
@@ -355,6 +368,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the Automation workflow.
+        example: WORKFLOW_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -373,6 +387,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the Automation workflow.
+        example: WORKFLOW_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -391,6 +406,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the Automation workflow.
+        example: WORKFLOW_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -409,6 +425,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the Automation workflow.
+        example: WORKFLOW_ID
     responses:
       - statusCode: '200'
         description: A summary of the emails in an Automation workflow.
@@ -427,10 +444,12 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the Automation workflow.
+        example: WORKFLOW_ID
       - name: workflowEmailId
         schema: string
         required: true
         description: The unique id for the Automation workflow email.
+        example: WORKFLOW_EMAIL_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -449,10 +468,12 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the Automation workflow.
+        example: WORKFLOW_ID
       - name: workflowEmailId
         schema: string
         required: true
         description: The unique id for the Automation workflow email.
+        example: WORKFLOW_EMAIL_ID
     responses:
       - statusCode: '200'
         description: A summary of an individual Automation workflow email.
@@ -471,10 +492,12 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the Automation workflow.
+        example: WORKFLOW_ID
       - name: workflowEmailId
         schema: string
         required: true
         description: The unique id for the Automation workflow email.
+        example: WORKFLOW_EMAIL_ID
       - name: settings
         schema: object
         description: ''
@@ -499,10 +522,12 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the Automation workflow.
+        example: WORKFLOW_ID
       - name: workflowEmailId
         schema: string
         required: true
         description: The unique id for the Automation workflow email.
+        example: WORKFLOW_EMAIL_ID
     responses:
       - statusCode: '200'
         description: An automation workflow
@@ -521,14 +546,17 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the Automation workflow.
+        example: WORKFLOW_ID
       - name: workflowEmailId
         schema: string
         required: true
         description: The unique id for the Automation workflow email.
+        example: WORKFLOW_EMAIL_ID
       - name: email_address
         schema: string
         required: true
         description: ''
+        example: EMAIL_ADDRESS
     responses:
       - statusCode: '200'
         description: Information about subscribers in an Automation email queue.
@@ -548,16 +576,19 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the Automation workflow.
+        example: WORKFLOW_ID
       - name: workflowEmailId
         schema: string
         required: true
         description: The unique id for the Automation workflow email.
+        example: WORKFLOW_EMAIL_ID
       - name: subscriberHash
         schema: string
         required: true
         description: >-
           The MD5 hash of the lowercase version of the list member's email
           address.
+        example: SUBSCRIBER_HASH
     responses:
       - statusCode: '200'
         description: Information about subscribers in an Automation email queue.
@@ -576,10 +607,12 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the Automation workflow.
+        example: WORKFLOW_ID
       - name: workflowEmailId
         schema: string
         required: true
         description: The unique id for the Automation workflow email.
+        example: WORKFLOW_EMAIL_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -598,10 +631,12 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the Automation workflow.
+        example: WORKFLOW_ID
       - name: workflowEmailId
         schema: string
         required: true
         description: The unique id for the Automation workflow email.
+        example: WORKFLOW_EMAIL_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -620,6 +655,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the Automation workflow.
+        example: WORKFLOW_ID
     responses:
       - statusCode: '200'
         description: >-
@@ -640,10 +676,12 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the Automation workflow.
+        example: WORKFLOW_ID
       - name: email_address
         schema: string
         required: true
         description: ''
+        example: EMAIL_ADDRESS
     responses:
       - statusCode: '200'
         description: A summary of a subscriber removed from an Automation workflow.
@@ -662,12 +700,14 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the Automation workflow.
+        example: WORKFLOW_ID
       - name: subscriberHash
         schema: string
         required: true
         description: >-
           The MD5 hash of the lowercase version of the list member's email
           address.
+        example: SUBSCRIBER_HASH
     responses:
       - statusCode: '200'
         description: A summary of a subscriber removed from an Automation workflow.
@@ -700,6 +740,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -708,6 +749,7 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
     responses:
       - statusCode: '200'
         description: A summary of batch requests that have been made.
@@ -744,6 +786,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the batch operation.
+        example: BATCH_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -774,6 +817,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the batch operation.
+        example: BATCH_ID
     responses:
       - statusCode: '200'
         description: The status of a batch request
@@ -806,6 +850,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -814,6 +859,7 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
     responses:
       - statusCode: '200'
         description: Manage webhooks for batch requests.
@@ -832,10 +878,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: http://yourdomain.com/webhook
       - name: enabled
         schema: boolean
         required: false
         description: ''
+        example: true
     responses:
       - statusCode: '200'
         description: A webhook configured for batch status updates.
@@ -854,6 +902,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the batch webhook.
+        example: BATCH_WEBHOOK_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -884,6 +933,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the batch webhook.
+        example: BATCH_WEBHOOK_ID
     responses:
       - statusCode: '200'
         description: A webhook configured for batch status updates.
@@ -902,12 +952,15 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the batch webhook.
+        example: BATCH_WEBHOOK_ID
       - name: url
         schema: string
         description: ''
+        example: http://yourdomain.com/webhook
       - name: enabled
         schema: boolean
         description: ''
+        example: true
     responses:
       - statusCode: '200'
         description: A webhook configured for batch status updates.
@@ -940,6 +993,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -948,6 +1002,7 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
     responses:
       - statusCode: '200'
         description: A list of template folders
@@ -966,6 +1021,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: NAME
     responses:
       - statusCode: '200'
         description: A folder used to organize templates.
@@ -984,6 +1040,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the template folder.
+        example: FOLDER_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -1014,6 +1071,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the template folder.
+        example: FOLDER_ID
     responses:
       - statusCode: '200'
         description: A folder used to organize templates.
@@ -1032,10 +1090,12 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the template folder.
+        example: FOLDER_ID
       - name: name
         schema: string
         required: true
         description: ''
+        example: NAME
     responses:
       - statusCode: '200'
         description: A folder used to organize templates.
@@ -1068,6 +1128,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -1076,6 +1137,7 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
     responses:
       - statusCode: '200'
         description: A list of campaign folders
@@ -1094,6 +1156,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: NAME
     responses:
       - statusCode: '200'
         description: A folder used to organize campaigns.
@@ -1112,6 +1175,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign folder.
+        example: FOLDER_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -1142,6 +1206,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign folder.
+        example: FOLDER_ID
     responses:
       - statusCode: '200'
         description: A folder used to organize campaigns.
@@ -1160,10 +1225,12 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign folder.
+        example: FOLDER_ID
       - name: name
         schema: string
         required: true
         description: ''
+        example: NAME
     responses:
       - statusCode: '200'
         description: A folder used to organize campaigns.
@@ -1196,6 +1263,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -1204,6 +1272,7 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: type
         schema: string
         required: false
@@ -1283,6 +1352,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: TYPE
       - name: recipients
         schema: object
         required: false
@@ -1311,6 +1381,7 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: template
     responses:
       - statusCode: '200'
         description: A summary of an individual campaign's settings and content.
@@ -1329,6 +1400,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -1359,6 +1431,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
       - name: includeResendShortcutEligibility
         schema: boolean
         required: false
@@ -1384,6 +1457,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
       - name: recipients
         schema: object
         required: false
@@ -1426,6 +1500,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -1444,6 +1519,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
     responses:
       - statusCode: '200'
         description: A summary of an individual campaign's settings and content.
@@ -1462,6 +1538,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -1480,10 +1557,12 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
       - name: schedule_time
         schema: string
         required: true
         description: ''
+        example: SCHEDULE_TIME
       - name: timewarp
         schema: boolean
         required: false
@@ -1510,6 +1589,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -1528,6 +1608,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
       - name: test_emails
         schema: array
         required: true
@@ -1536,6 +1617,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: SEND_TYPE
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -1554,6 +1636,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -1572,6 +1655,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -1590,6 +1674,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
       - name: shortcut_type
         schema: string
         description: ''
@@ -1623,6 +1708,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
     responses:
       - statusCode: '200'
         description: The HTML and plain-text content for a campaign.
@@ -1641,6 +1727,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
       - name: plain_text
         schema: string
         description: ''
@@ -1689,6 +1776,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
     responses:
       - statusCode: '200'
         description: A summary of the comment feedback for a specific campaign.
@@ -1707,6 +1795,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
       - name: block_id
         schema: integer
         required: false
@@ -1715,6 +1804,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: MESSAGE
       - name: is_complete
         schema: boolean
         required: false
@@ -1737,10 +1827,12 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
       - name: feedbackId
         schema: string
         required: true
         description: The unique id for the feedback message.
+        example: FEEDBACK_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -1771,10 +1863,12 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
       - name: feedbackId
         schema: string
         required: true
         description: The unique id for the feedback message.
+        example: FEEDBACK_ID
     responses:
       - statusCode: '200'
         description: A specific feedback message from a specific campaign.
@@ -1793,10 +1887,12 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
       - name: feedbackId
         schema: string
         required: true
         description: The unique id for the feedback message.
+        example: FEEDBACK_ID
       - name: block_id
         schema: integer
         description: ''
@@ -1836,6 +1932,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
     responses:
       - statusCode: '200'
         description: The send checklist for the campaign.
@@ -1868,6 +1965,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -1876,6 +1974,7 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
     responses:
       - statusCode: '200'
         description: A collection of connected sites in the account.
@@ -1894,10 +1993,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: MC001
       - name: domain
         schema: string
         required: true
         description: ''
+        example: example.com
     responses:
       - statusCode: '200'
         description: Information about a specific connected site.
@@ -1916,6 +2017,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique identifier for the site.
+        example: CONNECTED_SITE_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -1946,6 +2048,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique identifier for the site.
+        example: CONNECTED_SITE_ID
     responses:
       - statusCode: '200'
         description: Information about a specific connected site.
@@ -1964,6 +2067,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique identifier for the site.
+        example: CONNECTED_SITE_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -1996,6 +2100,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -2004,6 +2109,7 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: hasUnreadMessages
         schema: string
         required: false
@@ -2046,6 +2152,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the conversation.
+        example: CONVERSATION_ID
     responses:
       - statusCode: '200'
         description: >-
@@ -2079,6 +2186,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the conversation.
+        example: CONVERSATION_ID
       - name: isRead
         schema: string
         required: false
@@ -2125,10 +2233,12 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the conversation.
+        example: CONVERSATION_ID
       - name: messageId
         schema: string
         required: true
         description: The unique id for the conversation message.
+        example: MESSAGE_ID
     responses:
       - statusCode: '200'
         description: >-
@@ -2150,14 +2260,17 @@ methodObjects:
         schema: integer
         required: true
         description: The id for the Journey.
+        example: 0
       - name: stepId
         schema: integer
         required: true
         description: The id for the Step.
+        example: 0
       - name: email_address
         schema: string
         required: true
         description: ''
+        example: EMAIL_ADDRESS
     responses:
       - statusCode: '204'
         description: ''
@@ -2190,6 +2303,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -2198,6 +2312,7 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: type
         schema: string
         required: false
@@ -2250,10 +2365,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: NAME
       - name: file_data
         schema: string
         required: true
         description: ''
+        example: FILE_DATA
     responses:
       - statusCode: '200'
         description: An individual file listed in the File Manager.
@@ -2272,6 +2389,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the File Manager file.
+        example: FILE_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -2302,6 +2420,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the File Manager file.
+        example: FILE_ID
     responses:
       - statusCode: '200'
         description: An individual file listed in the File Manager.
@@ -2320,6 +2439,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the File Manager file.
+        example: FILE_ID
       - name: folder_id
         schema: integer
         description: ''
@@ -2358,6 +2478,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -2366,6 +2487,7 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: createdBy
         schema: string
         required: false
@@ -2400,6 +2522,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: NAME
     responses:
       - statusCode: '200'
         description: An individual folder listed in the File Manager.
@@ -2418,6 +2541,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the File Manager folder.
+        example: FOLDER_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -2448,6 +2572,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the File Manager folder.
+        example: FOLDER_ID
     responses:
       - statusCode: '200'
         description: An individual folder listed in the File Manager.
@@ -2466,10 +2591,12 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the File Manager folder.
+        example: FOLDER_ID
       - name: name
         schema: string
         required: true
         description: ''
+        example: NAME
     responses:
       - statusCode: '200'
         description: An individual folder listed in the File Manager.
@@ -2488,6 +2615,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the File Manager folder.
+        example: FOLDER_ID
       - name: fields
         schema: array
         required: false
@@ -2506,6 +2634,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -2514,6 +2643,7 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: type
         schema: string
         required: false
@@ -2576,6 +2706,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -2584,6 +2715,7 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: beforeDateCreated
         schema: string
         required: false
@@ -2655,6 +2787,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: NAME
       - name: contact
         schema: object
         required: true
@@ -2663,10 +2796,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: PERMISSION_REMINDER
       - name: use_archive_bar
         schema: boolean
         required: false
         description: ''
+        default: false
       - name: campaign_defaults
         schema: object
         required: true
@@ -2675,22 +2810,27 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        default: false
       - name: notify_on_unsubscribe
         schema: string
         required: false
         description: ''
+        default: false
       - name: email_type_option
         schema: boolean
         required: true
         description: ''
+        example: true
       - name: double_optin
         schema: boolean
         required: false
         description: ''
+        default: false
       - name: marketing_permissions
         schema: boolean
         required: false
         description: ''
+        default: false
     responses:
       - statusCode: '200'
         description: Information about a specific list.
@@ -2709,6 +2849,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -2739,6 +2880,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: includeTotalContacts
         schema: boolean
         required: false
@@ -2763,10 +2905,12 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: name
         schema: string
         required: true
         description: ''
+        example: NAME
       - name: contact
         schema: object
         required: true
@@ -2775,10 +2919,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: PERMISSION_REMINDER
       - name: use_archive_bar
         schema: boolean
         required: false
         description: ''
+        default: false
       - name: campaign_defaults
         schema: object
         required: true
@@ -2787,22 +2933,27 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        default: false
       - name: notify_on_unsubscribe
         schema: string
         required: false
         description: ''
+        default: false
       - name: email_type_option
         schema: boolean
         required: true
         description: ''
+        example: true
       - name: double_optin
         schema: boolean
         required: false
         description: ''
+        default: false
       - name: marketing_permissions
         schema: boolean
         required: false
         description: ''
+        default: false
     responses:
       - statusCode: '200'
         description: Information about a specific list.
@@ -2821,6 +2972,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: skipMergeValidation
         schema: boolean
         required: false
@@ -2880,6 +3032,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -2888,10 +3041,12 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: listId
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
     responses:
       - statusCode: '200'
         description: >-
@@ -2927,6 +3082,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -2935,14 +3091,17 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: listId
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: reportId
         schema: string
         required: true
         description: The id for the abuse report.
+        example: REPORT_ID
     responses:
       - statusCode: '200'
         description: >-
@@ -2966,6 +3125,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -2974,6 +3134,7 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: fields
         schema: array
         required: false
@@ -2990,6 +3151,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
     responses:
       - statusCode: '200'
         description: >-
@@ -3023,6 +3185,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
     responses:
       - statusCode: '200'
         description: The top email clients based on user-agent strings.
@@ -3055,6 +3218,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -3063,10 +3227,12 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: listId
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: sortField
         schema: string
         required: false
@@ -3105,10 +3271,12 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: month
         schema: string
         required: true
         description: A specific month of list growth history.
+        example: MONTH
     responses:
       - statusCode: '200'
         description: >-
@@ -3129,6 +3297,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: fields
         schema: array
         required: false
@@ -3147,6 +3316,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -3155,6 +3325,7 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: type
         schema: string
         required: false
@@ -3177,10 +3348,12 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: title
         schema: string
         required: true
         description: ''
+        example: TITLE
       - name: display_order
         schema: integer
         required: false
@@ -3189,6 +3362,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: TYPE
     responses:
       - statusCode: '200'
         description: >-
@@ -3210,10 +3384,12 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: interestCategoryId
         schema: string
         required: true
         description: The unique ID for the interest category.
+        example: INTEREST_CATEGORY_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -3232,10 +3408,12 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: interestCategoryId
         schema: string
         required: true
         description: The unique ID for the interest category.
+        example: INTEREST_CATEGORY_ID
       - name: fields
         schema: array
         required: false
@@ -3269,14 +3447,17 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: interestCategoryId
         schema: string
         required: true
         description: The unique ID for the interest category.
+        example: INTEREST_CATEGORY_ID
       - name: title
         schema: string
         required: true
         description: ''
+        example: TITLE
       - name: display_order
         schema: integer
         required: false
@@ -3285,6 +3466,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: TYPE
     responses:
       - statusCode: '200'
         description: >-
@@ -3306,10 +3488,12 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: interestCategoryId
         schema: string
         required: true
         description: The unique ID for the interest category.
+        example: INTEREST_CATEGORY_ID
       - name: fields
         schema: array
         required: false
@@ -3328,6 +3512,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -3336,6 +3521,7 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
     responses:
       - statusCode: '200'
         description: A list of this category's interests
@@ -3354,14 +3540,17 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: interestCategoryId
         schema: string
         required: true
         description: The unique ID for the interest category.
+        example: INTEREST_CATEGORY_ID
       - name: name
         schema: string
         required: true
         description: ''
+        example: NAME
       - name: display_order
         schema: integer
         required: false
@@ -3387,14 +3576,17 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: interestCategoryId
         schema: string
         required: true
         description: The unique ID for the interest category.
+        example: INTEREST_CATEGORY_ID
       - name: interestId
         schema: string
         required: true
         description: The specific interest or 'group name'.
+        example: INTEREST_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -3414,14 +3606,17 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: interestCategoryId
         schema: string
         required: true
         description: The unique ID for the interest category.
+        example: INTEREST_CATEGORY_ID
       - name: interestId
         schema: string
         required: true
         description: The specific interest or 'group name'.
+        example: INTEREST_ID
       - name: fields
         schema: array
         required: false
@@ -3455,18 +3650,22 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: interestCategoryId
         schema: string
         required: true
         description: The unique ID for the interest category.
+        example: INTEREST_CATEGORY_ID
       - name: interestId
         schema: string
         required: true
         description: The specific interest or 'group name'.
+        example: INTEREST_ID
       - name: name
         schema: string
         required: true
         description: ''
+        example: NAME
       - name: display_order
         schema: integer
         required: false
@@ -3505,6 +3704,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -3513,10 +3713,12 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: listId
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: type
         schema: string
         required: false
@@ -3537,14 +3739,17 @@ methodObjects:
         schema: boolean
         required: false
         description: Include cleaned members in response
+        example: false
       - name: includeTransactional
         schema: boolean
         required: false
         description: Include transactional members in response
+        example: false
       - name: includeUnsubscribed
         schema: boolean
         required: false
         description: Include unsubscribed members in response
+        example: false
       - name: sinceUpdatedAt
         schema: string
         required: false
@@ -3575,10 +3780,12 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: name
         schema: string
         required: true
         description: ''
+        example: NAME
       - name: static_segment
         schema: array
         required: false
@@ -3605,10 +3812,12 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: segmentId
         schema: string
         required: true
         description: The unique id for the segment.
+        example: SEGMENT_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -3639,22 +3848,27 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: segmentId
         schema: string
         required: true
         description: The unique id for the segment.
+        example: SEGMENT_ID
       - name: includeCleaned
         schema: boolean
         required: false
         description: Include cleaned members in response
+        example: false
       - name: includeTransactional
         schema: boolean
         required: false
         description: Include transactional members in response
+        example: false
       - name: includeUnsubscribed
         schema: boolean
         required: false
         description: Include unsubscribed members in response
+        example: false
     responses:
       - statusCode: '200'
         description: Information about a specific segment.
@@ -3673,14 +3887,17 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: segmentId
         schema: string
         required: true
         description: The unique id for the segment.
+        example: SEGMENT_ID
       - name: name
         schema: string
         required: true
         description: ''
+        example: NAME
       - name: static_segment
         schema: array
         required: false
@@ -3707,10 +3924,12 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: segmentId
         schema: string
         required: true
         description: The unique id for the segment.
+        example: SEGMENT_ID
       - name: members_to_add
         schema: array
         description: ''
@@ -3749,6 +3968,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -3757,26 +3977,32 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: listId
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: segmentId
         schema: string
         required: true
         description: The unique id for the segment.
+        example: SEGMENT_ID
       - name: includeCleaned
         schema: boolean
         required: false
         description: Include cleaned members in response
+        example: false
       - name: includeTransactional
         schema: boolean
         required: false
         description: Include transactional members in response
+        example: false
       - name: includeUnsubscribed
         schema: boolean
         required: false
         description: Include unsubscribed members in response
+        example: false
     responses:
       - statusCode: '200'
         description: View members in a specific list segment.
@@ -3795,14 +4021,17 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: segmentId
         schema: string
         required: true
         description: The unique id for the segment.
+        example: SEGMENT_ID
       - name: email_address
         schema: string
         required: true
         description: ''
+        example: EMAIL_ADDRESS
     responses:
       - statusCode: '200'
         description: >-
@@ -3823,16 +4052,19 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: segmentId
         schema: string
         required: true
         description: The unique id for the segment.
+        example: SEGMENT_ID
       - name: subscriberHash
         schema: string
         required: true
         description: >-
           The MD5 hash of the lowercase version of the list member's email
           address.
+        example: SUBSCRIBER_HASH
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -3851,6 +4083,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: name
         schema: string
         required: false
@@ -3890,6 +4123,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -3898,10 +4132,12 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: listId
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: emailType
         schema: string
         required: false
@@ -4008,6 +4244,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: skipMergeValidation
         schema: boolean
         required: false
@@ -4023,6 +4260,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: EMAIL_ADDRESS
       - name: email_type
         schema: string
         required: false
@@ -4031,6 +4269,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: STATUS
       - name: merge_fields
         schema: object
         required: false
@@ -4091,6 +4330,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: subscriberHash
         schema: string
         required: true
@@ -4098,6 +4338,7 @@ methodObjects:
           The MD5 hash of the lowercase version of the list member's email
           address. This endpoint also accepts a list member's email address or
           contact_id.
+        example: SUBSCRIBER_HASH
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -4128,6 +4369,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: subscriberHash
         schema: string
         required: true
@@ -4135,6 +4377,7 @@ methodObjects:
           The MD5 hash of the lowercase version of the list member's email
           address. This endpoint also accepts a list member's email address or
           contact_id.
+        example: SUBSCRIBER_HASH
     responses:
       - statusCode: '200'
         description: >-
@@ -4155,6 +4398,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: subscriberHash
         schema: string
         required: true
@@ -4162,6 +4406,7 @@ methodObjects:
           The MD5 hash of the lowercase version of the list member's email
           address. This endpoint also accepts a list member's email address or
           contact_id.
+        example: SUBSCRIBER_HASH
       - name: skipMergeValidation
         schema: boolean
         required: false
@@ -4228,6 +4473,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: subscriberHash
         schema: string
         required: true
@@ -4235,6 +4481,7 @@ methodObjects:
           The MD5 hash of the lowercase version of the list member's email
           address. This endpoint also accepts a list member's email address or
           contact_id.
+        example: SUBSCRIBER_HASH
       - name: skipMergeValidation
         schema: boolean
         required: false
@@ -4246,10 +4493,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: EMAIL_ADDRESS
       - name: status_if_new
         schema: string
         required: true
         description: ''
+        example: STATUS_IF_NEW
       - name: email_type
         schema: string
         required: false
@@ -4318,6 +4567,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: subscriberHash
         schema: string
         required: true
@@ -4325,6 +4575,7 @@ methodObjects:
           The MD5 hash of the lowercase version of the list member's email
           address. This endpoint also accepts a list member's email address or
           contact_id.
+        example: SUBSCRIBER_HASH
       - name: fields
         schema: array
         required: false
@@ -4359,6 +4610,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: subscriberHash
         schema: string
         required: true
@@ -4366,6 +4618,7 @@ methodObjects:
           The MD5 hash of the lowercase version of the list member's email
           address. This endpoint also accepts a list member's email address or
           contact_id.
+        example: SUBSCRIBER_HASH
       - name: fields
         schema: array
         required: false
@@ -4384,6 +4637,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -4392,6 +4646,7 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: activityFilters
         schema: array
         required: false
@@ -4416,6 +4671,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: subscriberHash
         schema: string
         required: true
@@ -4423,6 +4679,7 @@ methodObjects:
           The MD5 hash of the lowercase version of the list member's email
           address. This endpoint also accepts a list member's email address or
           contact_id.
+        example: SUBSCRIBER_HASH
       - name: fields
         schema: array
         required: false
@@ -4441,6 +4698,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -4449,6 +4707,7 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
     responses:
       - statusCode: '200'
         description: A list of tags assigned to a list member.
@@ -4467,12 +4726,14 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: subscriberHash
         schema: string
         required: true
         description: >-
           The MD5 hash of the lowercase version of the list member's email
           address.
+        example: SUBSCRIBER_HASH
       - name: tags
         schema: array
         required: true
@@ -4499,6 +4760,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: subscriberHash
         schema: string
         required: true
@@ -4506,12 +4768,14 @@ methodObjects:
           The MD5 hash of the lowercase version of the list member's email
           address. This endpoint also accepts a list member's email address or
           contact_id.
+        example: SUBSCRIBER_HASH
       - name: count
         schema: integer
         required: false
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -4520,6 +4784,7 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: fields
         schema: array
         required: false
@@ -4550,6 +4815,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: subscriberHash
         schema: string
         required: true
@@ -4557,10 +4823,12 @@ methodObjects:
           The MD5 hash of the lowercase version of the list member's email
           address. This endpoint also accepts a list member's email address or
           contact_id.
+        example: SUBSCRIBER_HASH
       - name: name
         schema: string
         required: true
         description: ''
+        example: NAME
       - name: properties
         schema: object
         required: false
@@ -4591,6 +4859,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: subscriberHash
         schema: string
         required: true
@@ -4598,6 +4867,7 @@ methodObjects:
           The MD5 hash of the lowercase version of the list member's email
           address. This endpoint also accepts a list member's email address or
           contact_id.
+        example: SUBSCRIBER_HASH
       - name: fields
         schema: array
         required: false
@@ -4628,12 +4898,14 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: subscriberHash
         schema: string
         required: true
         description: >-
           The MD5 hash of the lowercase version of the list member's email
           address.
+        example: SUBSCRIBER_HASH
       - name: sortField
         schema: string
         required: false
@@ -4660,6 +4932,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -4668,6 +4941,7 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
     responses:
       - statusCode: '200'
         description: The last 10 notes for a specific list member, based on date created.
@@ -4686,12 +4960,14 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: subscriberHash
         schema: string
         required: true
         description: >-
           The MD5 hash of the lowercase version of the list member's email
           address.
+        example: SUBSCRIBER_HASH
       - name: note
         schema: string
         description: ''
@@ -4713,6 +4989,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: subscriberHash
         schema: string
         required: true
@@ -4720,10 +4997,12 @@ methodObjects:
           The MD5 hash of the lowercase version of the list member's email
           address. This endpoint also accepts a list member's email address or
           contact_id.
+        example: SUBSCRIBER_HASH
       - name: noteId
         schema: string
         required: true
         description: The id for the note.
+        example: NOTE_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -4742,6 +5021,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: subscriberHash
         schema: string
         required: true
@@ -4749,10 +5029,12 @@ methodObjects:
           The MD5 hash of the lowercase version of the list member's email
           address. This endpoint also accepts a list member's email address or
           contact_id.
+        example: SUBSCRIBER_HASH
       - name: noteId
         schema: string
         required: true
         description: The id for the note.
+        example: NOTE_ID
       - name: fields
         schema: array
         required: false
@@ -4783,6 +5065,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: subscriberHash
         schema: string
         required: true
@@ -4790,10 +5073,12 @@ methodObjects:
           The MD5 hash of the lowercase version of the list member's email
           address. This endpoint also accepts a list member's email address or
           contact_id.
+        example: SUBSCRIBER_HASH
       - name: noteId
         schema: string
         required: true
         description: The id for the note.
+        example: NOTE_ID
       - name: note
         schema: string
         description: ''
@@ -4815,12 +5100,14 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: subscriberHash
         schema: string
         required: true
         description: >-
           The MD5 hash of the lowercase version of the list member's email
           address.
+        example: SUBSCRIBER_HASH
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -4839,6 +5126,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: fields
         schema: array
         required: false
@@ -4857,6 +5145,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -4865,6 +5154,7 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: type
         schema: string
         required: false
@@ -4894,6 +5184,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: tag
         schema: string
         required: false
@@ -4902,10 +5193,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: NAME
       - name: type
         schema: string
         required: true
         description: ''
+        example: TYPE
       - name: required
         schema: boolean
         required: false
@@ -4951,10 +5244,12 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: mergeId
         schema: string
         required: true
         description: The id for the merge field.
+        example: MERGE_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -4973,10 +5268,12 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: mergeId
         schema: string
         required: true
         description: The id for the merge field.
+        example: MERGE_ID
       - name: excludeFields
         schema: array
         required: false
@@ -5010,10 +5307,12 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: mergeId
         schema: string
         required: true
         description: The id for the merge field.
+        example: MERGE_ID
       - name: tag
         schema: string
         required: false
@@ -5022,6 +5321,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: NAME
       - name: required
         schema: boolean
         required: false
@@ -5067,6 +5367,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
     responses:
       - statusCode: '200'
         description: Manage webhooks for a specific list.
@@ -5085,9 +5386,11 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: url
         schema: string
         description: ''
+        example: http://yourdomain.com/webhook
       - name: events
         schema: object
         description: ''
@@ -5112,10 +5415,12 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: webhookId
         schema: string
         required: true
         description: The webhook's id.
+        example: WEBHOOK_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -5134,10 +5439,12 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: webhookId
         schema: string
         required: true
         description: The webhook's id.
+        example: WEBHOOK_ID
     responses:
       - statusCode: '200'
         description: Webhook configured for the given list.
@@ -5156,13 +5463,16 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: webhookId
         schema: string
         required: true
         description: The webhook's id.
+        example: WEBHOOK_ID
       - name: url
         schema: string
         description: ''
+        example: http://yourdomain.com/webhook
       - name: events
         schema: object
         description: ''
@@ -5187,6 +5497,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
     responses:
       - statusCode: '200'
         description: List Signup Forms.
@@ -5205,6 +5516,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: header
         schema: object
         description: ''
@@ -5244,6 +5556,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
     responses:
       - statusCode: '200'
         description: A summary of List's locations.
@@ -5262,6 +5575,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
     responses:
       - statusCode: '200'
         description: ''
@@ -5280,10 +5594,12 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: surveyId
         schema: string
         required: true
         description: The ID of the survey.
+        example: SURVEY_ID
     responses:
       - statusCode: '200'
         description: ''
@@ -5302,10 +5618,12 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: surveyId
         schema: string
         required: true
         description: The ID of the survey.
+        example: SURVEY_ID
     responses:
       - statusCode: '200'
         description: Survey Published
@@ -5324,10 +5642,12 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: surveyId
         schema: string
         required: true
         description: The ID of the survey.
+        example: SURVEY_ID
     responses:
       - statusCode: '200'
         description: Survey Instance
@@ -5346,10 +5666,12 @@ methodObjects:
         schema: string
         required: true
         description: The unique ID for the list.
+        example: LIST_ID
       - name: surveyId
         schema: string
         required: true
         description: The ID of the survey.
+        example: SURVEY_ID
     responses:
       - statusCode: '200'
         description: A summary of an individual campaign's settings and content.
@@ -5390,6 +5712,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
     responses:
       - statusCode: '200'
         description: A collection of landing pages.
@@ -5428,9 +5751,11 @@ methodObjects:
       - name: type
         schema: string
         description: ''
+        example: signup
       - name: template_id
         schema: integer
         description: ''
+        example: 1001
       - name: tracking
         schema: object
         description: ''
@@ -5452,6 +5777,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the page.
+        example: PAGE_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -5482,6 +5808,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the page.
+        example: PAGE_ID
     responses:
       - statusCode: '200'
         description: A summary of an individual landing page's settings and content.
@@ -5500,6 +5827,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the page.
+        example: PAGE_ID
       - name: title
         schema: string
         description: ''
@@ -5536,6 +5864,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the page.
+        example: PAGE_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -5554,6 +5883,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the page.
+        example: PAGE_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -5584,6 +5914,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the page.
+        example: PAGE_ID
     responses:
       - statusCode: '200'
         description: The HTML content for a landing page.
@@ -5616,6 +5947,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -5624,6 +5956,7 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: type
         schema: string
         required: false
@@ -5670,6 +6003,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
     responses:
       - statusCode: '200'
         description: Report details about a sent campaign.
@@ -5700,6 +6034,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
     responses:
       - statusCode: '200'
         description: A list of abuse complaints for a specific list.
@@ -5730,10 +6065,12 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
       - name: reportId
         schema: string
         required: true
         description: The id for the abuse report.
+        example: REPORT_ID
     responses:
       - statusCode: '200'
         description: >-
@@ -5767,6 +6104,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
     responses:
       - statusCode: '200'
         description: A list of feedback based on a campaign's statistics.
@@ -5799,6 +6137,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -5807,10 +6146,12 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: campaignId
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
       - name: sortField
         schema: string
         required: false
@@ -5851,10 +6192,12 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
       - name: linkId
         schema: string
         required: true
         description: The id for the link.
+        example: LINK_ID
     responses:
       - statusCode: '200'
         description: A report of links clicked in a specific campaign.
@@ -5887,6 +6230,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -5895,14 +6239,17 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: campaignId
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
       - name: linkId
         schema: string
         required: true
         description: The id for the link.
+        example: LINK_ID
     responses:
       - statusCode: '200'
         description: >-
@@ -5935,16 +6282,19 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
       - name: linkId
         schema: string
         required: true
         description: The id for the link.
+        example: LINK_ID
       - name: subscriberHash
         schema: string
         required: true
         description: >-
           The MD5 hash of the lowercase version of the list member's email
           address.
+        example: SUBSCRIBER_HASH
     responses:
       - statusCode: '200'
         description: A subscriber who clicked a specific URL in a specific campaign.
@@ -5977,6 +6327,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -5985,16 +6336,19 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: campaignId
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
       - name: since
         schema: string
         required: false
         description: >-
           Restrict results to campaign open events that occur after a specific
           time. Uses ISO 8601 time format: 2015-10-21T15:41:36+00:00.
+        example: '2016-04-12 12:00:00'
       - name: sortField
         schema: string
         required: false
@@ -6035,12 +6389,14 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
       - name: subscriberHash
         schema: string
         required: true
         description: >-
           The MD5 hash of the lowercase version of the list member's email
           address.
+        example: SUBSCRIBER_HASH
     responses:
       - statusCode: '200'
         description: A list of a member's opens activity in a specific campaign.
@@ -6071,6 +6427,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
     responses:
       - statusCode: '200'
         description: Statistics for the top-performing email domains in a campaign.
@@ -6101,6 +6458,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
     responses:
       - statusCode: '200'
         description: A summary of social activity for the campaign, tracked by EepURL.
@@ -6133,6 +6491,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -6141,10 +6500,12 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: campaignId
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
       - name: since
         schema: string
         required: false
@@ -6181,12 +6542,14 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
       - name: subscriberHash
         schema: string
         required: true
         description: >-
           The MD5 hash of the lowercase version of the list member's email
           address.
+        example: SUBSCRIBER_HASH
       - name: since
         schema: string
         required: false
@@ -6225,12 +6588,14 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
       - name: count
         schema: integer
         required: false
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -6239,6 +6604,7 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
     responses:
       - statusCode: '200'
         description: Top open locations for a specific campaign.
@@ -6271,6 +6637,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -6279,10 +6646,12 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: campaignId
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
     responses:
       - statusCode: '200'
         description: A list of subscribers who were sent a specific campaign.
@@ -6313,12 +6682,14 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
       - name: subscriberHash
         schema: string
         required: true
         description: >-
           The MD5 hash of the lowercase version of the list member's email
           address.
+        example: SUBSCRIBER_HASH
     responses:
       - statusCode: '200'
         description: A subscriber's status for a specific campaign.
@@ -6349,6 +6720,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
     responses:
       - statusCode: '200'
         description: A list of reports containing child campaigns for a specific campaign.
@@ -6381,6 +6753,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -6389,10 +6762,12 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: campaignId
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
     responses:
       - statusCode: '200'
         description: A list of members who have unsubscribed from a specific campaign.
@@ -6423,12 +6798,14 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
       - name: subscriberHash
         schema: string
         required: true
         description: >-
           The MD5 hash of the lowercase version of the list member's email
           address.
+        example: SUBSCRIBER_HASH
     responses:
       - statusCode: '200'
         description: A member who unsubscribed from a specific campaign.
@@ -6461,6 +6838,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -6469,10 +6847,12 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: campaignId
         schema: string
         required: true
         description: The unique id for the campaign.
+        example: CAMPAIGN_ID
       - name: sortField
         schema: string
         required: false
@@ -6509,6 +6889,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -6517,6 +6898,7 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: createdBy
         schema: string
         required: false
@@ -6581,14 +6963,17 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: Freddie's Jokes
       - name: folder_id
         schema: string
         required: false
         description: ''
+        example: a4b830b
       - name: html
         schema: string
         required: true
         description: ''
+        example: HTML
     responses:
       - statusCode: '200'
         description: Information about a specific template.
@@ -6607,6 +6992,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the template.
+        example: TEMPLATE_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -6637,6 +7023,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the template.
+        example: TEMPLATE_ID
     responses:
       - statusCode: '200'
         description: Information about a specific template.
@@ -6655,18 +7042,22 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the template.
+        example: TEMPLATE_ID
       - name: name
         schema: string
         required: true
         description: ''
+        example: Freddie's Jokes
       - name: folder_id
         schema: string
         required: false
         description: ''
+        example: a4b830b
       - name: html
         schema: string
         required: true
         description: ''
+        example: HTML
     responses:
       - statusCode: '200'
         description: Information about a specific template.
@@ -6697,6 +7088,7 @@ methodObjects:
         schema: string
         required: true
         description: The unique id for the template.
+        example: TEMPLATE_ID
     responses:
       - statusCode: '200'
         description: Default content for a template.
@@ -6729,6 +7121,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -6737,6 +7130,7 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: campaignId
         schema: string
         required: false
@@ -6787,6 +7181,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -6795,6 +7190,7 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
     responses:
       - statusCode: '200'
         description: A collection of stores in the account.
@@ -6813,14 +7209,17 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: example_store
       - name: list_id
         schema: string
         required: true
         description: ''
+        example: 1a2df69511
       - name: name
         schema: string
         required: true
         description: ''
+        example: Freddie's Cat Hat Emporium
       - name: platform
         schema: string
         required: false
@@ -6829,6 +7228,7 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: example.com
       - name: is_syncing
         schema: boolean
         required: false
@@ -6837,26 +7237,32 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: freddie@mailchimp.com
       - name: currency_code
         schema: string
         required: true
         description: ''
+        example: USD
       - name: money_format
         schema: string
         required: false
         description: ''
+        example: $
       - name: primary_locale
         schema: string
         required: false
         description: ''
+        example: fr
       - name: timezone
         schema: string
         required: false
         description: ''
+        example: Eastern
       - name: phone
         schema: string
         required: false
         description: ''
+        example: 404-444-4444
       - name: address
         schema: object
         required: false
@@ -6879,6 +7285,7 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
     responses:
       - statusCode: '204'
         description: ''
@@ -6909,6 +7316,7 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
     responses:
       - statusCode: '200'
         description: An individual store in an account.
@@ -6927,36 +7335,45 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: name
         schema: string
         description: ''
+        example: Freddie's Cat Hat Emporium
       - name: platform
         schema: string
         description: ''
       - name: domain
         schema: string
         description: ''
+        example: example.com
       - name: is_syncing
         schema: boolean
         description: ''
       - name: email_address
         schema: string
         description: ''
+        example: freddie@mailchimp.com
       - name: currency_code
         schema: string
         description: ''
+        example: USD
       - name: money_format
         schema: string
         description: ''
+        example: $
       - name: primary_locale
         schema: string
         description: ''
+        example: fr
       - name: timezone
         schema: string
         description: ''
+        example: Eastern
       - name: phone
         schema: string
         description: ''
+        example: 404-444-4444
       - name: address
         schema: object
         description: ''
@@ -6992,6 +7409,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -7000,10 +7418,12 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: storeId
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
     responses:
       - statusCode: '200'
         description: A collection of a store's carts.
@@ -7022,10 +7442,12 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: id
         schema: string
         required: true
         description: ''
+        example: ID
       - name: customer
         schema: object
         required: true
@@ -7034,6 +7456,7 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: 839488a60b
       - name: checkout_url
         schema: string
         required: false
@@ -7042,10 +7465,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: CURRENCY_CODE
       - name: order_total
         schema: number
         required: true
         description: ''
+        example: 0
       - name: tax_total
         schema: number
         required: false
@@ -7072,10 +7497,12 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: cartId
         schema: string
         required: true
         description: The id for the cart.
+        example: CART_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -7106,10 +7533,12 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: cartId
         schema: string
         required: true
         description: The id for the cart.
+        example: CART_ID
     responses:
       - statusCode: '200'
         description: Information about a specific cart.
@@ -7128,16 +7557,19 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: cartId
         schema: string
         required: true
         description: The id for the cart.
+        example: CART_ID
       - name: customer
         schema: object
         description: ''
       - name: campaign_id
         schema: string
         description: ''
+        example: 839488a60b
       - name: checkout_url
         schema: string
         description: ''
@@ -7185,6 +7617,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -7193,14 +7626,17 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: storeId
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: cartId
         schema: string
         required: true
         description: The id for the cart.
+        example: CART_ID
     responses:
       - statusCode: '200'
         description: A collection of a cart's line items.
@@ -7219,30 +7655,37 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: cartId
         schema: string
         required: true
         description: The id for the cart.
+        example: CART_ID
       - name: id
         schema: string
         required: true
         description: ''
+        example: ID
       - name: product_id
         schema: string
         required: true
         description: ''
+        example: PRODUCT_ID
       - name: product_variant_id
         schema: string
         required: true
         description: ''
+        example: PRODUCT_VARIANT_ID
       - name: quantity
         schema: integer
         required: true
         description: ''
+        example: 0
       - name: price
         schema: number
         required: true
         description: ''
+        example: 0
     responses:
       - statusCode: '200'
         description: Information about a specific cart line item.
@@ -7261,14 +7704,17 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: cartId
         schema: string
         required: true
         description: The id for the cart.
+        example: CART_ID
       - name: lineId
         schema: string
         required: true
         description: The id for the line item of a cart.
+        example: LINE_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -7299,14 +7745,17 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: cartId
         schema: string
         required: true
         description: The id for the cart.
+        example: CART_ID
       - name: lineId
         schema: string
         required: true
         description: The id for the line item of a cart.
+        example: LINE_ID
     responses:
       - statusCode: '200'
         description: Information about a specific cart line item.
@@ -7325,14 +7774,17 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: cartId
         schema: string
         required: true
         description: The id for the cart.
+        example: CART_ID
       - name: lineId
         schema: string
         required: true
         description: The id for the line item of a cart.
+        example: LINE_ID
       - name: product_id
         schema: string
         description: ''
@@ -7377,6 +7829,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -7385,10 +7838,12 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: storeId
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: emailAddress
         schema: string
         required: false
@@ -7411,18 +7866,22 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: id
         schema: string
         required: true
         description: ''
+        example: ID
       - name: email_address
         schema: string
         required: true
         description: ''
+        example: EMAIL_ADDRESS
       - name: opt_in_status
         schema: boolean
         required: true
         description: ''
+        example: true
       - name: company
         schema: string
         required: false
@@ -7457,10 +7916,12 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: customerId
         schema: string
         required: true
         description: The id for the customer of a store.
+        example: CUSTOMER_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -7491,10 +7952,12 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: customerId
         schema: string
         required: true
         description: The id for the customer of a store.
+        example: CUSTOMER_ID
     responses:
       - statusCode: '200'
         description: Information about a specific customer.
@@ -7513,10 +7976,12 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: customerId
         schema: string
         required: true
         description: The id for the customer of a store.
+        example: CUSTOMER_ID
       - name: opt_in_status
         schema: boolean
         description: ''
@@ -7550,22 +8015,27 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: customerId
         schema: string
         required: true
         description: The id for the customer of a store.
+        example: CUSTOMER_ID
       - name: id
         schema: string
         required: true
         description: ''
+        example: ID
       - name: email_address
         schema: string
         required: true
         description: ''
+        example: EMAIL_ADDRESS
       - name: opt_in_status
         schema: boolean
         required: true
         description: ''
+        example: true
       - name: company
         schema: string
         required: false
@@ -7614,6 +8084,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -7622,10 +8093,12 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: storeId
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
     responses:
       - statusCode: '200'
         description: A collection of the store's promo rules.
@@ -7644,18 +8117,22 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: title
         schema: string
         required: false
         description: ''
+        example: 50% off Total Order
       - name: description
         schema: string
         required: true
         description: ''
+        example: Save BIG during our summer sale!
       - name: id
         schema: string
         required: true
         description: ''
+        example: ID
       - name: starts_at
         schema: string
         required: false
@@ -7668,18 +8145,22 @@ methodObjects:
         schema: number
         required: true
         description: ''
+        example: 0.5
       - name: type
         schema: string
         required: true
         description: ''
+        example: TYPE
       - name: target
         schema: string
         required: true
         description: ''
+        example: TARGET
       - name: enabled
         schema: boolean
         required: false
         description: ''
+        example: true
       - name: created_at_foreign
         schema: string
         required: false
@@ -7706,10 +8187,12 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: promoRuleId
         schema: string
         required: true
         description: The id for the promo rule of a store.
+        example: PROMO_RULE_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -7740,10 +8223,12 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: promoRuleId
         schema: string
         required: true
         description: The id for the promo rule of a store.
+        example: PROMO_RULE_ID
     responses:
       - statusCode: '200'
         description: Information about an Ecommerce Store's specific Promo Rule
@@ -7762,16 +8247,20 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: promoRuleId
         schema: string
         required: true
         description: The id for the promo rule of a store.
+        example: PROMO_RULE_ID
       - name: title
         schema: string
         description: ''
+        example: 50% off Total Order
       - name: description
         schema: string
         description: ''
+        example: Save BIG during our summer sale!
       - name: starts_at
         schema: string
         description: ''
@@ -7781,6 +8270,7 @@ methodObjects:
       - name: amount
         schema: number
         description: ''
+        example: 0.5
       - name: type
         schema: string
         description: ''
@@ -7790,6 +8280,7 @@ methodObjects:
       - name: enabled
         schema: boolean
         description: ''
+        example: true
       - name: created_at_foreign
         schema: string
         description: ''
@@ -7828,6 +8319,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -7836,14 +8328,17 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: promoRuleId
         schema: string
         required: true
         description: The id for the promo rule of a store.
+        example: PROMO_RULE_ID
       - name: storeId
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
     responses:
       - statusCode: '200'
         description: A collection of the store's promo codes.
@@ -7862,22 +8357,29 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: promoRuleId
         schema: string
         required: true
         description: The id for the promo rule of a store.
+        example: PROMO_RULE_ID
       - name: id
         schema: string
         required: true
         description: ''
+        example: ID
       - name: code
         schema: string
         required: true
         description: ''
+        example: summersale
       - name: redemption_url
         schema: string
         required: true
         description: ''
+        example: >-
+          A url that applies promo code directly at checkout or a url that
+          points to sale page or store url
       - name: usage_count
         schema: integer
         required: false
@@ -7886,6 +8388,7 @@ methodObjects:
         schema: boolean
         required: false
         description: ''
+        example: true
       - name: created_at_foreign
         schema: string
         required: false
@@ -7913,14 +8416,17 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: promoRuleId
         schema: string
         required: true
         description: The id for the promo rule of a store.
+        example: PROMO_RULE_ID
       - name: promoCodeId
         schema: string
         required: true
         description: The id for the promo code of a store.
+        example: PROMO_CODE_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -7952,14 +8458,17 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: promoRuleId
         schema: string
         required: true
         description: The id for the promo rule of a store.
+        example: PROMO_RULE_ID
       - name: promoCodeId
         schema: string
         required: true
         description: The id for the promo code of a store.
+        example: PROMO_CODE_ID
     responses:
       - statusCode: '200'
         description: Information about an Ecommerce Store's specific Promo Code
@@ -7979,26 +8488,34 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: promoRuleId
         schema: string
         required: true
         description: The id for the promo rule of a store.
+        example: PROMO_RULE_ID
       - name: promoCodeId
         schema: string
         required: true
         description: The id for the promo code of a store.
+        example: PROMO_CODE_ID
       - name: code
         schema: string
         description: ''
+        example: summersale
       - name: redemption_url
         schema: string
         description: ''
+        example: >-
+          A url that applies promo code directly at checkout or a url that
+          points to sale page or store url
       - name: usage_count
         schema: integer
         description: ''
       - name: enabled
         schema: boolean
         description: ''
+        example: true
       - name: created_at_foreign
         schema: string
         description: ''
@@ -8037,6 +8554,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -8045,10 +8563,12 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: storeId
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: customerId
         schema: string
         required: false
@@ -8085,10 +8605,12 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: id
         schema: string
         required: true
         description: ''
+        example: ID
       - name: customer
         schema: object
         required: true
@@ -8097,10 +8619,12 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: 839488a60b
       - name: landing_site
         schema: string
         required: false
         description: ''
+        example: http://www.example.com?source=abc
       - name: financial_status
         schema: string
         required: false
@@ -8113,10 +8637,12 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: CURRENCY_CODE
       - name: order_total
         schema: number
         required: true
         description: ''
+        example: 0
       - name: order_url
         schema: string
         required: false
@@ -8141,14 +8667,17 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: '2015-07-15T19:28:00+00:00'
       - name: cancelled_at_foreign
         schema: string
         required: false
         description: ''
+        example: '2015-07-15T19:28:00+00:00'
       - name: updated_at_foreign
         schema: string
         required: false
         description: ''
+        example: '2015-07-15T19:28:00+00:00'
       - name: shipping_address
         schema: object
         required: false
@@ -8199,10 +8728,12 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: orderId
         schema: string
         required: true
         description: The id for the order in a store.
+        example: ORDER_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -8233,10 +8764,12 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: orderId
         schema: string
         required: true
         description: The id for the order in a store.
+        example: ORDER_ID
     responses:
       - statusCode: '200'
         description: Information about a specific order.
@@ -8255,19 +8788,23 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: orderId
         schema: string
         required: true
         description: The id for the order in a store.
+        example: ORDER_ID
       - name: customer
         schema: object
         description: ''
       - name: campaign_id
         schema: string
         description: ''
+        example: 839488a60b
       - name: landing_site
         schema: string
         description: ''
+        example: http://www.example.com?source=abc
       - name: financial_status
         schema: string
         description: ''
@@ -8298,12 +8835,15 @@ methodObjects:
       - name: processed_at_foreign
         schema: string
         description: ''
+        example: '2015-07-15T19:28:00+00:00'
       - name: cancelled_at_foreign
         schema: string
         description: ''
+        example: '2015-07-15T19:28:00+00:00'
       - name: updated_at_foreign
         schema: string
         description: ''
+        example: '2015-07-15T19:28:00+00:00'
       - name: shipping_address
         schema: object
         description: ''
@@ -8360,6 +8900,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -8368,14 +8909,17 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: storeId
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: orderId
         schema: string
         required: true
         description: The id for the order in a store.
+        example: ORDER_ID
     responses:
       - statusCode: '200'
         description: A collection of an order's line items.
@@ -8394,30 +8938,37 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: orderId
         schema: string
         required: true
         description: The id for the order in a store.
+        example: ORDER_ID
       - name: id
         schema: string
         required: true
         description: ''
+        example: ID
       - name: product_id
         schema: string
         required: true
         description: ''
+        example: PRODUCT_ID
       - name: product_variant_id
         schema: string
         required: true
         description: ''
+        example: PRODUCT_VARIANT_ID
       - name: quantity
         schema: integer
         required: true
         description: ''
+        example: 0
       - name: price
         schema: number
         required: true
         description: ''
+        example: 0
       - name: discount
         schema: number
         required: false
@@ -8440,14 +8991,17 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: orderId
         schema: string
         required: true
         description: The id for the order in a store.
+        example: ORDER_ID
       - name: lineId
         schema: string
         required: true
         description: The id for the line item of an order.
+        example: LINE_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -8478,14 +9032,17 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: orderId
         schema: string
         required: true
         description: The id for the order in a store.
+        example: ORDER_ID
       - name: lineId
         schema: string
         required: true
         description: The id for the line item of an order.
+        example: LINE_ID
     responses:
       - statusCode: '200'
         description: Information about a specific order line.
@@ -8504,14 +9061,17 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: orderId
         schema: string
         required: true
         description: The id for the order in a store.
+        example: ORDER_ID
       - name: lineId
         schema: string
         required: true
         description: The id for the line item of an order.
+        example: LINE_ID
       - name: product_id
         schema: string
         description: ''
@@ -8559,6 +9119,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -8567,10 +9128,12 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: storeId
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
     responses:
       - statusCode: '200'
         description: A collection of a store's products.
@@ -8589,22 +9152,27 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: title
         schema: string
         required: true
         description: ''
+        example: Cat Hat
       - name: description
         schema: string
         required: false
         description: ''
+        example: This is a cat hat.
       - name: id
         schema: string
         required: true
         description: ''
+        example: ID
       - name: handle
         schema: string
         required: false
         description: ''
+        example: cat-hat
       - name: url
         schema: string
         required: false
@@ -8613,6 +9181,7 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: Accessories
       - name: vendor
         schema: string
         required: false
@@ -8633,6 +9202,7 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: '2015-07-15T19:28:00+00:00'
     responses:
       - statusCode: '200'
         description: Information about a specific product.
@@ -8651,10 +9221,12 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: productId
         schema: string
         required: true
         description: The id for the product of a store.
+        example: PRODUCT_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -8685,10 +9257,12 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: productId
         schema: string
         required: true
         description: The id for the product of a store.
+        example: PRODUCT_ID
     responses:
       - statusCode: '200'
         description: Information about a specific product.
@@ -8707,25 +9281,31 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: productId
         schema: string
         required: true
         description: The id for the product of a store.
+        example: PRODUCT_ID
       - name: title
         schema: string
         description: ''
+        example: Cat Hat
       - name: description
         schema: string
         description: ''
+        example: This is a cat hat.
       - name: handle
         schema: string
         description: ''
+        example: cat-hat
       - name: url
         schema: string
         description: ''
       - name: type
         schema: string
         description: ''
+        example: Accessories
       - name: vendor
         schema: string
         description: ''
@@ -8741,6 +9321,7 @@ methodObjects:
       - name: published_at_foreign
         schema: string
         description: ''
+        example: '2015-07-15T19:28:00+00:00'
     responses:
       - statusCode: '200'
         description: Information about a specific product.
@@ -8773,6 +9354,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -8781,14 +9363,17 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: storeId
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: productId
         schema: string
         required: true
         description: The id for the product of a store.
+        example: PRODUCT_ID
     responses:
       - statusCode: '200'
         description: A collection of a product's variants.
@@ -8807,18 +9392,22 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: productId
         schema: string
         required: true
         description: The id for the product of a store.
+        example: PRODUCT_ID
       - name: title
         schema: string
         required: true
         description: ''
+        example: Cat Hat
       - name: id
         schema: string
         required: true
         description: ''
+        example: ID
       - name: url
         schema: string
         required: false
@@ -8865,14 +9454,17 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: productId
         schema: string
         required: true
         description: The id for the product of a store.
+        example: PRODUCT_ID
       - name: variantId
         schema: string
         required: true
         description: The id for the product variant.
+        example: VARIANT_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -8903,14 +9495,17 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: productId
         schema: string
         required: true
         description: The id for the product of a store.
+        example: PRODUCT_ID
       - name: variantId
         schema: string
         required: true
         description: The id for the product variant.
+        example: VARIANT_ID
     responses:
       - statusCode: '200'
         description: Information about a specific product variant.
@@ -8929,17 +9524,21 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: productId
         schema: string
         required: true
         description: The id for the product of a store.
+        example: PRODUCT_ID
       - name: variantId
         schema: string
         required: true
         description: The id for the product variant.
+        example: VARIANT_ID
       - name: title
         schema: string
         description: ''
+        example: Cat Hat
       - name: url
         schema: string
         description: ''
@@ -8979,22 +9578,27 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: productId
         schema: string
         required: true
         description: The id for the product of a store.
+        example: PRODUCT_ID
       - name: variantId
         schema: string
         required: true
         description: The id for the product variant.
+        example: VARIANT_ID
       - name: title
         schema: string
         required: true
         description: ''
+        example: Cat Hat
       - name: id
         schema: string
         required: true
         description: ''
+        example: ID
       - name: url
         schema: string
         required: false
@@ -9055,6 +9659,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -9063,14 +9668,17 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: storeId
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: productId
         schema: string
         required: true
         description: The id for the product of a store.
+        example: PRODUCT_ID
     responses:
       - statusCode: '200'
         description: A collection of a product's images.
@@ -9089,18 +9697,22 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: productId
         schema: string
         required: true
         description: The id for the product of a store.
+        example: PRODUCT_ID
       - name: id
         schema: string
         required: true
         description: ''
+        example: ID
       - name: url
         schema: string
         required: true
         description: ''
+        example: URL
       - name: variant_ids
         schema: array
         required: false
@@ -9123,14 +9735,17 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: productId
         schema: string
         required: true
         description: The id for the product of a store.
+        example: PRODUCT_ID
       - name: imageId
         schema: string
         required: true
         description: The id for the product image.
+        example: IMAGE_ID
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -9161,14 +9776,17 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: productId
         schema: string
         required: true
         description: The id for the product of a store.
+        example: PRODUCT_ID
       - name: imageId
         schema: string
         required: true
         description: The id for the product image.
+        example: IMAGE_ID
     responses:
       - statusCode: '200'
         description: Information about a specific product image.
@@ -9187,14 +9805,17 @@ methodObjects:
         schema: string
         required: true
         description: The store id.
+        example: STORE_ID
       - name: productId
         schema: string
         required: true
         description: The id for the product of a store.
+        example: PRODUCT_ID
       - name: imageId
         schema: string
         required: true
         description: The id for the product image.
+        example: IMAGE_ID
       - name: id
         schema: string
         description: ''
@@ -9234,6 +9855,7 @@ methodObjects:
         schema: string
         required: true
         description: The search query used to filter results.
+        example: QUERY
     responses:
       - statusCode: '200'
         description: Campaigns and Snippets found for given search term.
@@ -9266,6 +9888,7 @@ methodObjects:
         description: >-
           The search query used to filter results. Query should be a valid
           email, or a string representing a contact's first or last name.
+        example: QUERY
       - name: listId
         schema: string
         required: false
@@ -9316,6 +9939,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -9324,6 +9948,7 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: sortField
         schema: string
         required: false
@@ -9356,6 +9981,7 @@ methodObjects:
         schema: string
         required: true
         description: The outreach id.
+        example: OUTREACH_ID
       - name: excludeFields
         schema: array
         required: false
@@ -9394,6 +10020,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -9402,6 +10029,7 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: sortField
         schema: string
         required: false
@@ -9434,6 +10062,7 @@ methodObjects:
         schema: string
         required: true
         description: The outreach id.
+        example: OUTREACH_ID
       - name: excludeFields
         schema: array
         required: false
@@ -9472,6 +10101,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -9480,10 +10110,12 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
       - name: outreachId
         schema: string
         required: true
         description: The outreach id.
+        example: OUTREACH_ID
       - name: sortField
         schema: string
         required: false
@@ -9512,6 +10144,7 @@ methodObjects:
         schema: string
         required: true
         description: The outreach id.
+        example: OUTREACH_ID
       - name: excludeFields
         schema: array
         required: false
@@ -9550,6 +10183,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -9558,6 +10192,7 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
     responses:
       - statusCode: '200'
         description: A collection of landing pages.
@@ -9590,6 +10225,7 @@ methodObjects:
         description: >-
           The number of records to return. Default value is 10. Maximum value is
           1000
+        default: 10
       - name: offset
         schema: integer
         required: false
@@ -9598,6 +10234,7 @@ methodObjects:
           [pagination](https://mailchimp.com/developer/marketing/docs/methods-parameters/#pagination),
           this it the number of records from a collection to skip. Default value
           is 0.
+        default: 0
     responses:
       - statusCode: '200'
         description: ''
@@ -9628,6 +10265,7 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the survey.
+        example: SURVEY_ID
     responses:
       - statusCode: '200'
         description: The report for a survey.
@@ -9658,6 +10296,7 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the survey.
+        example: SURVEY_ID
     responses:
       - statusCode: '200'
         description: ''
@@ -9688,10 +10327,12 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the survey.
+        example: SURVEY_ID
       - name: questionId
         schema: string
         required: true
         description: The ID of the survey question.
+        example: QUESTION_ID
     responses:
       - statusCode: '200'
         description: The details of a survey question's report.
@@ -9722,10 +10363,12 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the survey.
+        example: SURVEY_ID
       - name: questionId
         schema: string
         required: true
         description: The ID of the survey question.
+        example: QUESTION_ID
       - name: respondentFamiliarityIs
         schema: string
         required: false
@@ -9760,6 +10403,7 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the survey.
+        example: SURVEY_ID
       - name: answeredQuestion
         schema: integer
         required: false
@@ -9790,10 +10434,12 @@ methodObjects:
         schema: string
         required: true
         description: The ID of the survey.
+        example: SURVEY_ID
       - name: responseId
         schema: string
         required: true
         description: The ID of the survey response.
+        example: RESPONSE_ID
     responses:
       - statusCode: '200'
         description: A single survey response.
@@ -9812,6 +10458,7 @@ methodObjects:
         schema: string
         required: true
         description: The domain name.
+        example: DOMAIN_NAME
     responses:
       - statusCode: '204'
         description: Empty Response
@@ -9830,6 +10477,7 @@ methodObjects:
         schema: string
         required: true
         description: The domain name.
+        example: DOMAIN_NAME
     responses:
       - statusCode: '200'
         description: The verified domains currently on the account.
@@ -9848,10 +10496,12 @@ methodObjects:
         schema: string
         required: true
         description: The domain name.
+        example: DOMAIN_NAME
       - name: code
         schema: string
         required: true
         description: ''
+        example: CODE
     responses:
       - statusCode: '200'
         description: The verified domains currently on the account.
@@ -9884,6 +10534,7 @@ methodObjects:
         schema: string
         required: true
         description: ''
+        example: VERIFICATION_EMAIL
     responses:
       - statusCode: '200'
         description: The verified domains currently on the account.

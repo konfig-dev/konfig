@@ -10,6 +10,7 @@ methodObjects:
       - name: limit
         schema: integer
         description: ''
+        default: 100
       - name: prefix
         schema: string
         description: >-
@@ -36,6 +37,7 @@ methodObjects:
         schema: string
         required: true
         description: The [Channel's ID](https://www.ably.io/documentation/rest/channels).
+        example: CHANNEL_ID
     responses:
       - statusCode: '200'
         description: ''
@@ -52,18 +54,22 @@ methodObjects:
         schema: string
         required: true
         description: The [Channel's ID](https://www.ably.io/documentation/rest/channels).
+        example: CHANNEL_ID
       - name: start
         schema: string
         description: ''
       - name: limit
         schema: integer
         description: ''
+        default: '100'
       - name: end
         schema: string
         description: ''
+        default: now
       - name: direction
         schema: string
         description: ''
+        default: backwards
     responses:
       - statusCode: 2XX
         description: ''
@@ -80,6 +86,7 @@ methodObjects:
         schema: string
         required: true
         description: The [Channel's ID](https://www.ably.io/documentation/rest/channels).
+        example: CHANNEL_ID
       - name: clientId
         schema: string
         description: ''
@@ -120,6 +127,7 @@ methodObjects:
         schema: string
         required: true
         description: The [Channel's ID](https://www.ably.io/documentation/rest/channels).
+        example: CHANNEL_ID
       - name: clientId
         schema: string
         description: ''
@@ -129,6 +137,7 @@ methodObjects:
       - name: limit
         schema: integer
         description: ''
+        default: 100
     responses:
       - statusCode: '200'
         description: ''
@@ -145,18 +154,22 @@ methodObjects:
         schema: string
         required: true
         description: The [Channel's ID](https://www.ably.io/documentation/rest/channels).
+        example: CHANNEL_ID
       - name: start
         schema: string
         description: ''
       - name: limit
         schema: integer
         description: ''
+        default: '100'
       - name: end
         schema: string
         description: ''
+        default: now
       - name: direction
         schema: string
         description: ''
+        default: backwards
     responses:
       - statusCode: 2XX
         description: ''
@@ -176,6 +189,7 @@ methodObjects:
           The [key
           name](https://www.ably.io/documentation/rest-api/token-request-spec#api-key-format)
           comprises of the app ID and key ID of an API key.
+        example: KEYNAME
     responses:
       - statusCode: 2XX
         description: ''
@@ -225,6 +239,7 @@ methodObjects:
       - name: limit
         schema: integer
         description: The maximum number of records to return.
+        default: 100
     responses:
       - statusCode: 2XX
         description: ''
@@ -292,6 +307,7 @@ methodObjects:
       - name: limit
         schema: integer
         description: The maximum number of records to return.
+        default: 100
     responses:
       - statusCode: 2XX
         description: ''
@@ -344,6 +360,7 @@ methodObjects:
         schema: string
         required: true
         description: Device's ID.
+        example: DEVICE_ID
     responses:
       - statusCode: 2XX
         description: OK
@@ -360,6 +377,7 @@ methodObjects:
         schema: string
         required: true
         description: Device's ID.
+        example: DEVICE_ID
     responses:
       - statusCode: 2XX
         description: ''
@@ -376,6 +394,7 @@ methodObjects:
         schema: string
         required: true
         description: Device's ID.
+        example: DEVICE_ID
       - name: clientId
         schema: string
         description: ''
@@ -416,6 +435,7 @@ methodObjects:
         schema: string
         required: true
         description: Device's ID.
+        example: DEVICE_ID
       - name: clientId
         schema: string
         description: ''
@@ -456,6 +476,7 @@ methodObjects:
         schema: string
         required: true
         description: Device's ID.
+        example: DEVICE_ID
     responses:
       - statusCode: 2XX
         description: ''
@@ -494,15 +515,19 @@ methodObjects:
       - name: limit
         schema: integer
         description: ''
+        default: '100'
       - name: end
         schema: string
         description: ''
+        default: now
       - name: direction
         schema: string
         description: ''
+        default: backwards
       - name: unit
         schema: string
         description: Specifies the unit of aggregation in the returned results.
+        default: minute
     responses:
       - statusCode: 2XX
         description: ''

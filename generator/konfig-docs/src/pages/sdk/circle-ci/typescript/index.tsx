@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function CircleCiTypeScriptSdk() {
@@ -21,13 +22,15 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/circleci/logo.png"
       clientNameCamelCase="circleCi"
       homepage="circleci.com"
-      lastUpdated={new Date("2024-03-11T06:18:06.947Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/circleci/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/circleci/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["developer_tools","automation","collaboration","continuous_integration","continuous_delivery","continuous_integration","continuous_delivery","continuous_deployment","containers","devops","cicd","ci","cd","software_delivery","ci_platform","software_testing","developer_experience"]}
       methods={[
   {
     "url": "/context",
@@ -85,7 +88,8 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "owner",
@@ -117,7 +121,8 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "contextId",
         "schema": "string",
         "required": true,
-        "description": "ID of the context (UUID)"
+        "description": "ID of the context (UUID)",
+        "example": "CONTEXT-ID"
       }
     ],
     "responses": [
@@ -143,7 +148,8 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "contextId",
         "schema": "string",
         "required": true,
-        "description": "ID of the context (UUID)"
+        "description": "ID of the context (UUID)",
+        "example": "CONTEXT-ID"
       }
     ],
     "responses": [
@@ -169,7 +175,8 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "contextId",
         "schema": "string",
         "required": true,
-        "description": "ID of the context (UUID)"
+        "description": "ID of the context (UUID)",
+        "example": "CONTEXT-ID"
       },
       {
         "name": "pageToken",
@@ -201,13 +208,15 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "envVarName",
         "schema": "string",
         "required": true,
-        "description": "The name of the environment variable"
+        "description": "The name of the environment variable",
+        "example": "POSTGRES_USER"
       },
       {
         "name": "contextId",
         "schema": "string",
         "required": true,
-        "description": "ID of the context (UUID)"
+        "description": "ID of the context (UUID)",
+        "example": "CONTEXT-ID"
       }
     ],
     "responses": [
@@ -233,19 +242,22 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "contextId",
         "schema": "string",
         "required": true,
-        "description": "ID of the context (UUID)"
+        "description": "ID of the context (UUID)",
+        "example": "CONTEXT-ID"
       },
       {
         "name": "envVarName",
         "schema": "string",
         "required": true,
-        "description": "The name of the environment variable"
+        "description": "The name of the environment variable",
+        "example": "POSTGRES_USER"
       },
       {
         "name": "value",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "some-secret-value"
       }
     ],
     "responses": [
@@ -271,25 +283,29 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "projectSlug",
         "schema": "string",
         "required": true,
-        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings)."
+        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings).",
+        "example": "gh/CircleCI-Public/api-preview-docs"
       },
       {
         "name": "reportingWindow",
         "schema": "string",
         "required": false,
-        "description": "The time window used to calculate summary metrics. If not provided, defaults to last-90-days"
+        "description": "The time window used to calculate summary metrics. If not provided, defaults to last-90-days",
+        "example": "last-90-days"
       },
       {
         "name": "branches",
         "schema": "object",
         "required": false,
-        "description": "The names of VCS branches to include in branch-level workflow metrics."
+        "description": "The names of VCS branches to include in branch-level workflow metrics.",
+        "example": "A single branch: ?branches=main or for multiple branches: ?branches=main&branches=feature&branches=dev"
       },
       {
         "name": "workflowNames",
         "schema": "object",
         "required": false,
-        "description": "The names of workflows to include in workflow-level metrics."
+        "description": "The names of workflows to include in workflow-level metrics.",
+        "example": "A single workflow name: ?workflow-names=build-test-deploy or\n    for multiple workflow names: ?workflow-names=build&workflow-names=test-and-deploy."
       }
     ],
     "responses": [
@@ -315,13 +331,15 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "projectSlug",
         "schema": "string",
         "required": true,
-        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings)."
+        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings).",
+        "example": "gh/CircleCI-Public/api-preview-docs"
       },
       {
         "name": "workflowName",
         "schema": "string",
         "required": true,
-        "description": "The name of the workflow."
+        "description": "The name of the workflow.",
+        "example": "build-and-test"
       },
       {
         "name": "branch",
@@ -333,19 +351,22 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "granularity",
         "schema": "string",
         "required": false,
-        "description": "The granularity for which to query timeseries data."
+        "description": "The granularity for which to query timeseries data.",
+        "example": "hourly"
       },
       {
         "name": "startDate",
         "schema": "string",
         "required": false,
-        "description": "Include only executions that started at or after this date. This must be specified if an end-date is provided."
+        "description": "Include only executions that started at or after this date. This must be specified if an end-date is provided.",
+        "example": "2020-08-21T13:26:29Z"
       },
       {
         "name": "endDate",
         "schema": "string",
         "required": false,
-        "description": "Include only executions that started before this date. This date can be at most 90 days after the start-date."
+        "description": "Include only executions that started before this date. This date can be at most 90 days after the start-date.",
+        "example": "2020-09-04T13:26:29Z"
       }
     ],
     "responses": [
@@ -371,19 +392,22 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "orgSlug",
         "schema": "string",
         "required": true,
-        "description": "Org slug in the form `vcs-slug/org-name`. The `/` characters may be URL-escaped."
+        "description": "Org slug in the form `vcs-slug/org-name`. The `/` characters may be URL-escaped.",
+        "example": "gh/CircleCI-Public"
       },
       {
         "name": "reportingWindow",
         "schema": "string",
         "required": false,
-        "description": "The time window used to calculate summary metrics. If not provided, defaults to last-90-days"
+        "description": "The time window used to calculate summary metrics. If not provided, defaults to last-90-days",
+        "example": "last-90-days"
       },
       {
         "name": "projectNames",
         "schema": "object",
         "required": false,
-        "description": "List of project names."
+        "description": "List of project names.",
+        "example": "For a single project: ?project-names=some-project or for multiple projects: ?project-names=some-project1&project-names=some-project2"
       }
     ],
     "responses": [
@@ -409,13 +433,15 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "projectSlug",
         "schema": "string",
         "required": true,
-        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings)."
+        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings).",
+        "example": "gh/CircleCI-Public/api-preview-docs"
       },
       {
         "name": "workflowName",
         "schema": "string",
         "required": false,
-        "description": "The name of a workflow. If not passed we will scope the API call to the project."
+        "description": "The name of a workflow. If not passed we will scope the API call to the project.",
+        "example": "build-and-test"
       }
     ],
     "responses": [
@@ -441,7 +467,8 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "projectSlug",
         "schema": "string",
         "required": true,
-        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings)."
+        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings).",
+        "example": "gh/CircleCI-Public/api-preview-docs"
       }
     ],
     "responses": [
@@ -467,7 +494,8 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "projectSlug",
         "schema": "string",
         "required": true,
-        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings)."
+        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings).",
+        "example": "gh/CircleCI-Public/api-preview-docs"
       },
       {
         "name": "pageToken",
@@ -491,7 +519,8 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "reportingWindow",
         "schema": "string",
         "required": false,
-        "description": "The time window used to calculate summary metrics. If not provided, defaults to last-90-days"
+        "description": "The time window used to calculate summary metrics. If not provided, defaults to last-90-days",
+        "example": "last-90-days"
       }
     ],
     "responses": [
@@ -517,13 +546,15 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "projectSlug",
         "schema": "string",
         "required": true,
-        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings)."
+        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings).",
+        "example": "gh/CircleCI-Public/api-preview-docs"
       },
       {
         "name": "workflowName",
         "schema": "string",
         "required": true,
-        "description": "The name of the workflow."
+        "description": "The name of the workflow.",
+        "example": "build-and-test"
       },
       {
         "name": "allBranches",
@@ -547,13 +578,15 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "startDate",
         "schema": "string",
         "required": false,
-        "description": "Include only executions that started at or after this date. This must be specified if an end-date is provided."
+        "description": "Include only executions that started at or after this date. This must be specified if an end-date is provided.",
+        "example": "2020-08-21T13:26:29Z"
       },
       {
         "name": "endDate",
         "schema": "string",
         "required": false,
-        "description": "Include only executions that started before this date. This date can be at most 90 days after the start-date."
+        "description": "Include only executions that started before this date. This date can be at most 90 days after the start-date.",
+        "example": "2020-09-04T13:26:29Z"
       }
     ],
     "responses": [
@@ -579,13 +612,15 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "projectSlug",
         "schema": "string",
         "required": true,
-        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings)."
+        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings).",
+        "example": "gh/CircleCI-Public/api-preview-docs"
       },
       {
         "name": "workflowName",
         "schema": "string",
         "required": true,
-        "description": "The name of the workflow."
+        "description": "The name of the workflow.",
+        "example": "build-and-test"
       },
       {
         "name": "pageToken",
@@ -609,7 +644,8 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "reportingWindow",
         "schema": "string",
         "required": false,
-        "description": "The time window used to calculate summary metrics. If not provided, defaults to last-90-days"
+        "description": "The time window used to calculate summary metrics. If not provided, defaults to last-90-days",
+        "example": "last-90-days"
       }
     ],
     "responses": [
@@ -635,13 +671,15 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "projectSlug",
         "schema": "string",
         "required": true,
-        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings)."
+        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings).",
+        "example": "gh/CircleCI-Public/api-preview-docs"
       },
       {
         "name": "workflowName",
         "schema": "string",
         "required": true,
-        "description": "The name of the workflow."
+        "description": "The name of the workflow.",
+        "example": "build-and-test"
       },
       {
         "name": "allBranches",
@@ -679,13 +717,15 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "projectSlug",
         "schema": "string",
         "required": true,
-        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings)."
+        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings).",
+        "example": "gh/CircleCI-Public/api-preview-docs"
       },
       {
         "name": "workflowName",
         "schema": "string",
         "required": true,
-        "description": "The name of the workflow."
+        "description": "The name of the workflow.",
+        "example": "build-and-test"
       },
       {
         "name": "branch",
@@ -761,7 +801,8 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "orgSlug",
         "schema": "string",
         "required": false,
-        "description": "Org slug in the form `vcs-slug/org-name`. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug` and replace the `org-name` with the organization ID (found in Organization Settings)."
+        "description": "Org slug in the form `vcs-slug/org-name`. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug` and replace the `org-name` with the organization ID (found in Organization Settings).",
+        "example": "gh/CircleCI-Public"
       },
       {
         "name": "pageToken",
@@ -799,19 +840,24 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "parameters",
         "schema": "object",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": {
+          "deploy_prod": true
+        }
       },
       {
         "name": "continuation-key",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CONTINUATION-KEY"
       },
       {
         "name": "configuration",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CONFIGURATION"
       }
     ],
     "responses": [
@@ -837,7 +883,8 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "pipelineId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of the pipeline."
+        "description": "The unique ID of the pipeline.",
+        "example": "5034460f-c7c4-4c43-9457-de07e2029e7b"
       }
     ],
     "responses": [
@@ -863,7 +910,8 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "pipelineId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of the pipeline."
+        "description": "The unique ID of the pipeline.",
+        "example": "5034460f-c7c4-4c43-9457-de07e2029e7b"
       }
     ],
     "responses": [
@@ -889,7 +937,8 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "pipelineId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of the pipeline."
+        "description": "The unique ID of the pipeline.",
+        "example": "5034460f-c7c4-4c43-9457-de07e2029e7b"
       },
       {
         "name": "pageToken",
@@ -921,7 +970,8 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "projectSlug",
         "schema": "string",
         "required": true,
-        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings)."
+        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings).",
+        "example": "gh/CircleCI-Public/api-preview-docs"
       }
     ],
     "responses": [
@@ -947,7 +997,8 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "projectSlug",
         "schema": "string",
         "required": true,
-        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings)."
+        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings).",
+        "example": "gh/CircleCI-Public/api-preview-docs"
       },
       {
         "name": "digest",
@@ -979,13 +1030,15 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "projectSlug",
         "schema": "string",
         "required": true,
-        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings)."
+        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings).",
+        "example": "gh/CircleCI-Public/api-preview-docs"
       },
       {
         "name": "type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "deploy-key"
       }
     ],
     "responses": [
@@ -1011,13 +1064,15 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "projectSlug",
         "schema": "string",
         "required": true,
-        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings)."
+        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings).",
+        "example": "gh/CircleCI-Public/api-preview-docs"
       },
       {
         "name": "fingerprint",
         "schema": "string",
         "required": true,
-        "description": "An SSH key fingerprint."
+        "description": "An SSH key fingerprint.",
+        "example": "c9:0b:1c:4f:d5:65:56:b9:ad:88:f9:81:2b:37:74:2f"
       }
     ],
     "responses": [
@@ -1043,13 +1098,15 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "projectSlug",
         "schema": "string",
         "required": true,
-        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings)."
+        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings).",
+        "example": "gh/CircleCI-Public/api-preview-docs"
       },
       {
         "name": "fingerprint",
         "schema": "string",
         "required": true,
-        "description": "An SSH key fingerprint."
+        "description": "An SSH key fingerprint.",
+        "example": "c9:0b:1c:4f:d5:65:56:b9:ad:88:f9:81:2b:37:74:2f"
       }
     ],
     "responses": [
@@ -1075,7 +1132,8 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "projectSlug",
         "schema": "string",
         "required": true,
-        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings)."
+        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings).",
+        "example": "gh/CircleCI-Public/api-preview-docs"
       }
     ],
     "responses": [
@@ -1101,19 +1159,22 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "projectSlug",
         "schema": "string",
         "required": true,
-        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings)."
+        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings).",
+        "example": "gh/CircleCI-Public/api-preview-docs"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "foo"
       },
       {
         "name": "value",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "xxxx1234"
       }
     ],
     "responses": [
@@ -1139,13 +1200,15 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "projectSlug",
         "schema": "string",
         "required": true,
-        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings)."
+        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings).",
+        "example": "gh/CircleCI-Public/api-preview-docs"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": "The name of the environment variable."
+        "description": "The name of the environment variable.",
+        "example": "foo"
       }
     ],
     "responses": [
@@ -1171,13 +1234,15 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "projectSlug",
         "schema": "string",
         "required": true,
-        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings)."
+        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings).",
+        "example": "gh/CircleCI-Public/api-preview-docs"
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": "The name of the environment variable."
+        "description": "The name of the environment variable.",
+        "example": "foo"
       }
     ],
     "responses": [
@@ -1203,13 +1268,15 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "jobNumber",
         "schema": "undefined",
         "required": true,
-        "description": "The number of the job."
+        "description": "The number of the job.",
+        "example": "123"
       },
       {
         "name": "projectSlug",
         "schema": "string",
         "required": true,
-        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings)."
+        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings).",
+        "example": "gh/CircleCI-Public/api-preview-docs"
       }
     ],
     "responses": [
@@ -1235,13 +1302,15 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "jobNumber",
         "schema": "undefined",
         "required": true,
-        "description": "The number of the job."
+        "description": "The number of the job.",
+        "example": "123"
       },
       {
         "name": "projectSlug",
         "schema": "string",
         "required": true,
-        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings)."
+        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings).",
+        "example": "gh/CircleCI-Public/api-preview-docs"
       }
     ],
     "responses": [
@@ -1267,7 +1336,8 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "projectSlug",
         "schema": "string",
         "required": true,
-        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings)."
+        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings).",
+        "example": "gh/CircleCI-Public/api-preview-docs"
       },
       {
         "name": "branch",
@@ -1305,22 +1375,28 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "projectSlug",
         "schema": "string",
         "required": true,
-        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings)."
+        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings).",
+        "example": "gh/CircleCI-Public/api-preview-docs"
       },
       {
         "name": "parameters",
         "schema": "object",
-        "description": ""
+        "description": "",
+        "example": {
+          "deploy_prod": true
+        }
       },
       {
         "name": "branch",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "feature/design-new-api"
       },
       {
         "name": "tag",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "v3.1.4159"
       }
     ],
     "responses": [
@@ -1346,7 +1422,8 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "projectSlug",
         "schema": "string",
         "required": true,
-        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings)."
+        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings).",
+        "example": "gh/CircleCI-Public/api-preview-docs"
       },
       {
         "name": "pageToken",
@@ -1378,13 +1455,15 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "projectSlug",
         "schema": "string",
         "required": true,
-        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings)."
+        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings).",
+        "example": "gh/CircleCI-Public/api-preview-docs"
       },
       {
         "name": "pipelineNumber",
         "schema": "undefined",
         "required": true,
-        "description": "The number of the pipeline."
+        "description": "The number of the pipeline.",
+        "example": "123"
       }
     ],
     "responses": [
@@ -1410,7 +1489,8 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "projectSlug",
         "schema": "string",
         "required": true,
-        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings)."
+        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings).",
+        "example": "gh/CircleCI-Public/api-preview-docs"
       },
       {
         "name": "pageToken",
@@ -1442,7 +1522,8 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "projectSlug",
         "schema": "string",
         "required": true,
-        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings)."
+        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings).",
+        "example": "gh/CircleCI-Public/api-preview-docs"
       },
       {
         "name": "description",
@@ -1454,13 +1535,18 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "parameters",
         "schema": "object",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": {
+          "deploy_prod": true,
+          "branch": "feature/design-new-api"
+        }
       },
       {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "timetable",
@@ -1472,7 +1558,8 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "attribution-actor",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "current"
       }
     ],
     "responses": [
@@ -1498,13 +1585,15 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "jobNumber",
         "schema": "undefined",
         "required": true,
-        "description": "The number of the job."
+        "description": "The number of the job.",
+        "example": "123"
       },
       {
         "name": "projectSlug",
         "schema": "string",
         "required": true,
-        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings)."
+        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings).",
+        "example": "gh/CircleCI-Public/api-preview-docs"
       }
     ],
     "responses": [
@@ -1530,13 +1619,15 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "jobNumber",
         "schema": "undefined",
         "required": true,
-        "description": "The number of the job."
+        "description": "The number of the job.",
+        "example": "123"
       },
       {
         "name": "projectSlug",
         "schema": "string",
         "required": true,
-        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings)."
+        "description": "Project slug in the form `vcs-slug/org-name/repo-name`. The `/` characters may be URL-escaped. For projects that use GitLab or GitHub App, use `circleci` as the `vcs-slug`, replace `org-name` with the organization ID (found in Organization Settings), and replace `repo-name` with the project ID (found in Project Settings).",
+        "example": "gh/CircleCI-Public/api-preview-docs"
       }
     ],
     "responses": [
@@ -1562,7 +1653,8 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "scheduleId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of the schedule."
+        "description": "The unique ID of the schedule.",
+        "example": "SCHEDULE-ID"
       }
     ],
     "responses": [
@@ -1588,7 +1680,8 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "scheduleId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of the schedule."
+        "description": "The unique ID of the schedule.",
+        "example": "SCHEDULE-ID"
       }
     ],
     "responses": [
@@ -1614,7 +1707,8 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "scheduleId",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of the schedule."
+        "description": "The unique ID of the schedule.",
+        "example": "SCHEDULE-ID"
       },
       {
         "name": "description",
@@ -1624,7 +1718,11 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
       {
         "name": "parameters",
         "schema": "object",
-        "description": ""
+        "description": "",
+        "example": {
+          "deploy_prod": true,
+          "branch": "feature/design-new-api"
+        }
       },
       {
         "name": "name",
@@ -1639,7 +1737,8 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
       {
         "name": "attribution-actor",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "example": "current"
       }
     ],
     "responses": [
@@ -1665,7 +1764,8 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of the user."
+        "description": "The unique ID of the user.",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -1691,13 +1791,15 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "scopeId",
         "schema": "string",
         "required": true,
-        "description": "ID of the scope being used (at the moment, only project ID is supported)"
+        "description": "ID of the scope being used (at the moment, only project ID is supported)",
+        "example": "SCOPE-ID"
       },
       {
         "name": "scopeType",
         "schema": "string",
         "required": true,
-        "description": "Type of the scope being used"
+        "description": "Type of the scope being used",
+        "example": "SCOPE-TYPE"
       }
     ],
     "responses": [
@@ -1723,7 +1825,8 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "events",
@@ -1735,19 +1838,22 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "url",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "URL"
       },
       {
         "name": "verify-tls",
         "schema": "boolean",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": true
       },
       {
         "name": "signing-secret",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SIGNING-SECRET"
       },
       {
         "name": "scope",
@@ -1779,7 +1885,8 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "webhookId",
         "schema": "string",
         "required": true,
-        "description": "ID of the webhook (UUID)"
+        "description": "ID of the webhook (UUID)",
+        "example": "WEBHOOK-ID"
       }
     ],
     "responses": [
@@ -1805,7 +1912,8 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "webhookId",
         "schema": "string",
         "required": true,
-        "description": "ID of the webhook (UUID)"
+        "description": "ID of the webhook (UUID)",
+        "example": "WEBHOOK-ID"
       }
     ],
     "responses": [
@@ -1831,7 +1939,8 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "webhookId",
         "schema": "string",
         "required": true,
-        "description": "ID of the webhook (UUID)"
+        "description": "ID of the webhook (UUID)",
+        "example": "WEBHOOK-ID"
       },
       {
         "name": "name",
@@ -1882,7 +1991,8 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of the workflow."
+        "description": "The unique ID of the workflow.",
+        "example": "5034460f-c7c4-4c43-9457-de07e2029e7b"
       }
     ],
     "responses": [
@@ -1908,13 +2018,15 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "approvalRequestId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the job being approved."
+        "description": "The ID of the job being approved.",
+        "example": "APPROVAL_REQUEST_ID"
       },
       {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of the workflow."
+        "description": "The unique ID of the workflow.",
+        "example": "5034460f-c7c4-4c43-9457-de07e2029e7b"
       }
     ],
     "responses": [
@@ -1940,7 +2052,8 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of the workflow."
+        "description": "The unique ID of the workflow.",
+        "example": "5034460f-c7c4-4c43-9457-de07e2029e7b"
       }
     ],
     "responses": [
@@ -1966,7 +2079,8 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of the workflow."
+        "description": "The unique ID of the workflow.",
+        "example": "5034460f-c7c4-4c43-9457-de07e2029e7b"
       }
     ],
     "responses": [
@@ -1992,27 +2106,35 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The unique ID of the workflow."
+        "description": "The unique ID of the workflow.",
+        "example": "5034460f-c7c4-4c43-9457-de07e2029e7b"
       },
       {
         "name": "enable_ssh",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "from_failed",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       },
       {
         "name": "jobs",
         "schema": "array",
-        "description": ""
+        "description": "",
+        "example": [
+          "c65b68ef-e73b-4bf2-be9a-7a322a9df150",
+          "5e957edd-5e8c-4985-9178-5d0d69561822"
+        ]
       },
       {
         "name": "sparse_tree",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "example": false
       }
     ],
     "responses": [
@@ -2038,13 +2160,15 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "orgId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ORGID"
       },
       {
         "name": "claims",
         "schema": "string",
         "required": true,
-        "description": "comma separated list of claims to delete. Valid values are \"audience\" and \"ttl\"."
+        "description": "comma separated list of claims to delete. Valid values are \"audience\" and \"ttl\".",
+        "example": "CLAIMS"
       }
     ],
     "responses": [
@@ -2078,7 +2202,8 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "orgId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ORGID"
       }
     ],
     "responses": [
@@ -2112,7 +2237,8 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "orgId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ORGID"
       },
       {
         "name": "audience",
@@ -2156,19 +2282,22 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "orgId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ORGID"
       },
       {
         "name": "projectId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PROJECTID"
       },
       {
         "name": "claims",
         "schema": "string",
         "required": true,
-        "description": "comma separated list of claims to delete. Valid values are \"audience\" and \"ttl\"."
+        "description": "comma separated list of claims to delete. Valid values are \"audience\" and \"ttl\".",
+        "example": "CLAIMS"
       }
     ],
     "responses": [
@@ -2202,13 +2331,15 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "orgId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ORGID"
       },
       {
         "name": "projectId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PROJECTID"
       }
     ],
     "responses": [
@@ -2242,13 +2373,15 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "orgId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ORGID"
       },
       {
         "name": "projectId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PROJECTID"
       },
       {
         "name": "audience",
@@ -2292,13 +2425,15 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "ownerId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "OWNERID"
       },
       {
         "name": "context",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CONTEXT"
       },
       {
         "name": "status",
@@ -2378,19 +2513,22 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "ownerId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "OWNERID"
       },
       {
         "name": "context",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CONTEXT"
       },
       {
         "name": "input",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "INPUT"
       },
       {
         "name": "metadata",
@@ -2430,13 +2568,15 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "ownerId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "OWNERID"
       },
       {
         "name": "context",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CONTEXT"
       }
     ],
     "responses": [
@@ -2474,13 +2614,15 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "ownerId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "OWNERID"
       },
       {
         "name": "context",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CONTEXT"
       },
       {
         "name": "enabled",
@@ -2523,19 +2665,22 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "ownerId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "OWNERID"
       },
       {
         "name": "context",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CONTEXT"
       },
       {
         "name": "decisionId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "DECISIONID"
       }
     ],
     "responses": [
@@ -2577,19 +2722,22 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "ownerId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "OWNERID"
       },
       {
         "name": "context",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CONTEXT"
       },
       {
         "name": "decisionId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "DECISIONID"
       }
     ],
     "responses": [
@@ -2631,13 +2779,15 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "ownerId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "OWNERID"
       },
       {
         "name": "context",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CONTEXT"
       }
     ],
     "responses": [
@@ -2675,13 +2825,15 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
         "name": "ownerId",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "OWNERID"
       },
       {
         "name": "context",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CONTEXT"
       },
       {
         "name": "dry",

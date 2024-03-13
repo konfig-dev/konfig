@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function GitLabTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function GitLabTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/gitlab/logo.png"
       clientNameCamelCase="gitLab"
       homepage="gitlab.com"
-      lastUpdated={new Date("2024-03-11T06:04:39.099Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/gitlab/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/gitlab/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["developer_tools","automation","collaboration","version_control","continuous_integration","continuous_delivery"]}
       methods={[
   {
     "url": "/api/v4/groups/{id}/badges/{badge_id}",
@@ -36,13 +39,15 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID or URL-encoded path of the group owned by the authenticated user."
+        "description": "The ID or URL-encoded path of the group owned by the authenticated user.",
+        "example": "ID"
       },
       {
         "name": "badgeId",
         "schema": "integer",
         "required": true,
-        "description": "The badge ID"
+        "description": "The badge ID",
+        "example": 0
       }
     ],
     "responses": []
@@ -59,13 +64,15 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID or URL-encoded path of the group owned by the authenticated user."
+        "description": "The ID or URL-encoded path of the group owned by the authenticated user.",
+        "example": "ID"
       },
       {
         "name": "badgeId",
         "schema": "integer",
         "required": true,
-        "description": "The badge ID"
+        "description": "The badge ID",
+        "example": 0
       }
     ],
     "responses": [
@@ -87,13 +94,15 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID or URL-encoded path of the group owned by the authenticated user."
+        "description": "The ID or URL-encoded path of the group owned by the authenticated user.",
+        "example": "ID"
       },
       {
         "name": "badgeId",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "link_url",
@@ -130,17 +139,20 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID or URL-encoded path of the group owned by the authenticated user."
+        "description": "The ID or URL-encoded path of the group owned by the authenticated user.",
+        "example": "ID"
       },
       {
         "name": "page",
         "schema": "integer",
-        "description": "Current page number"
+        "description": "Current page number",
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of items per page"
+        "description": "Number of items per page",
+        "default": 20
       },
       {
         "name": "name",
@@ -167,19 +179,22 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID or URL-encoded path of the group owned by the authenticated user."
+        "description": "The ID or URL-encoded path of the group owned by the authenticated user.",
+        "example": "ID"
       },
       {
         "name": "link_url",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "LINK_URL"
       },
       {
         "name": "image_url",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "IMAGE_URL"
       },
       {
         "name": "name",
@@ -207,19 +222,22 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID or URL-encoded path of the group owned by the authenticated user."
+        "description": "The ID or URL-encoded path of the group owned by the authenticated user.",
+        "example": "ID"
       },
       {
         "name": "linkUrl",
         "schema": "string",
         "required": true,
-        "description": "URL of the badge link"
+        "description": "URL of the badge link",
+        "example": "LINK_URL"
       },
       {
         "name": "imageUrl",
         "schema": "string",
         "required": true,
-        "description": "URL of the badge image"
+        "description": "URL of the badge image",
+        "example": "IMAGE_URL"
       }
     ],
     "responses": [
@@ -241,13 +259,15 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID or URL-encoded path of the group owned by the authenticated user"
+        "description": "The ID or URL-encoded path of the group owned by the authenticated user",
+        "example": "ID"
       },
       {
         "name": "userId",
         "schema": "integer",
         "required": true,
-        "description": "The user ID of the access requester"
+        "description": "The user ID of the access requester",
+        "example": 0
       }
     ],
     "responses": []
@@ -264,18 +284,21 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID or URL-encoded path of the group owned by the authenticated user"
+        "description": "The ID or URL-encoded path of the group owned by the authenticated user",
+        "example": "ID"
       },
       {
         "name": "userId",
         "schema": "integer",
         "required": true,
-        "description": "The user ID of the access requester"
+        "description": "The user ID of the access requester",
+        "example": 0
       },
       {
         "name": "access_level",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "default": 30
       }
     ],
     "responses": [
@@ -297,17 +320,20 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID or URL-encoded path of the group owned by the authenticated user"
+        "description": "The ID or URL-encoded path of the group owned by the authenticated user",
+        "example": "ID"
       },
       {
         "name": "page",
         "schema": "integer",
-        "description": "Current page number"
+        "description": "Current page number",
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of items per page"
+        "description": "Number of items per page",
+        "default": 20
       }
     ],
     "responses": [
@@ -329,7 +355,8 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID or URL-encoded path of the group owned by the authenticated user"
+        "description": "The ID or URL-encoded path of the group owned by the authenticated user",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -351,7 +378,8 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID or URL-encoded path of the project"
+        "description": "The ID or URL-encoded path of the project",
+        "example": "ID"
       }
     ],
     "responses": []
@@ -368,13 +396,15 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID or URL-encoded path of the project"
+        "description": "The ID or URL-encoded path of the project",
+        "example": "ID"
       },
       {
         "name": "branch",
         "schema": "string",
         "required": true,
-        "description": "The name of the branch"
+        "description": "The name of the branch",
+        "example": "BRANCH"
       }
     ],
     "responses": []
@@ -391,13 +421,15 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID or URL-encoded path of the project"
+        "description": "The ID or URL-encoded path of the project",
+        "example": "ID"
       },
       {
         "name": "branch",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       }
     ],
     "responses": [
@@ -419,13 +451,15 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID or URL-encoded path of the project"
+        "description": "The ID or URL-encoded path of the project",
+        "example": "ID"
       },
       {
         "name": "branch",
         "schema": "string",
         "required": true,
-        "description": "The name of the branch"
+        "description": "The name of the branch",
+        "example": "BRANCH"
       }
     ],
     "responses": []
@@ -442,17 +476,20 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID or URL-encoded path of the project"
+        "description": "The ID or URL-encoded path of the project",
+        "example": "ID"
       },
       {
         "name": "page",
         "schema": "integer",
-        "description": "Current page number"
+        "description": "Current page number",
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of items per page"
+        "description": "Number of items per page",
+        "default": 20
       },
       {
         "name": "search",
@@ -494,19 +531,22 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID or URL-encoded path of the project"
+        "description": "The ID or URL-encoded path of the project",
+        "example": "ID"
       },
       {
         "name": "branch",
         "schema": "string",
         "required": true,
-        "description": "The name of the branch"
+        "description": "The name of the branch",
+        "example": "BRANCH"
       },
       {
         "name": "ref",
         "schema": "string",
         "required": true,
-        "description": "Create branch from commit sha or existing branch"
+        "description": "Create branch from commit sha or existing branch",
+        "example": "REF"
       }
     ],
     "responses": [
@@ -528,13 +568,15 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID or URL-encoded path of the project"
+        "description": "The ID or URL-encoded path of the project",
+        "example": "ID"
       },
       {
         "name": "branch",
         "schema": "string",
         "required": true,
-        "description": "The name of the branch"
+        "description": "The name of the branch",
+        "example": "BRANCH"
       }
     ],
     "responses": [
@@ -556,13 +598,15 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID or URL-encoded path of the project"
+        "description": "The ID or URL-encoded path of the project",
+        "example": "ID"
       },
       {
         "name": "branch",
         "schema": "string",
         "required": true,
-        "description": "The name of the branch"
+        "description": "The name of the branch",
+        "example": "BRANCH"
       },
       {
         "name": "developers_can_push",
@@ -594,13 +638,15 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID or URL-encoded path of the project owned by the authenticated user."
+        "description": "The ID or URL-encoded path of the project owned by the authenticated user.",
+        "example": "ID"
       },
       {
         "name": "badgeId",
         "schema": "integer",
         "required": true,
-        "description": "The badge ID"
+        "description": "The badge ID",
+        "example": 0
       }
     ],
     "responses": []
@@ -617,13 +663,15 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID or URL-encoded path of the project owned by the authenticated user."
+        "description": "The ID or URL-encoded path of the project owned by the authenticated user.",
+        "example": "ID"
       },
       {
         "name": "badgeId",
         "schema": "integer",
         "required": true,
-        "description": "The badge ID"
+        "description": "The badge ID",
+        "example": 0
       }
     ],
     "responses": [
@@ -645,13 +693,15 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID or URL-encoded path of the project owned by the authenticated user."
+        "description": "The ID or URL-encoded path of the project owned by the authenticated user.",
+        "example": "ID"
       },
       {
         "name": "badgeId",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "link_url",
@@ -688,17 +738,20 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID or URL-encoded path of the project owned by the authenticated user."
+        "description": "The ID or URL-encoded path of the project owned by the authenticated user.",
+        "example": "ID"
       },
       {
         "name": "page",
         "schema": "integer",
-        "description": "Current page number"
+        "description": "Current page number",
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of items per page"
+        "description": "Number of items per page",
+        "default": 20
       },
       {
         "name": "name",
@@ -725,19 +778,22 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID or URL-encoded path of the project owned by the authenticated user."
+        "description": "The ID or URL-encoded path of the project owned by the authenticated user.",
+        "example": "ID"
       },
       {
         "name": "link_url",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "LINK_URL"
       },
       {
         "name": "image_url",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "IMAGE_URL"
       },
       {
         "name": "name",
@@ -765,19 +821,22 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID or URL-encoded path of the project owned by the authenticated user."
+        "description": "The ID or URL-encoded path of the project owned by the authenticated user.",
+        "example": "ID"
       },
       {
         "name": "linkUrl",
         "schema": "string",
         "required": true,
-        "description": "URL of the badge link"
+        "description": "URL of the badge link",
+        "example": "LINK_URL"
       },
       {
         "name": "imageUrl",
         "schema": "string",
         "required": true,
-        "description": "URL of the badge image"
+        "description": "URL of the badge image",
+        "example": "IMAGE_URL"
       }
     ],
     "responses": [
@@ -799,13 +858,15 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+        "example": "ID"
       },
       {
         "name": "userId",
         "schema": "integer",
         "required": true,
-        "description": "The user ID of the access requester"
+        "description": "The user ID of the access requester",
+        "example": 0
       }
     ],
     "responses": []
@@ -822,18 +883,21 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+        "example": "ID"
       },
       {
         "name": "userId",
         "schema": "integer",
         "required": true,
-        "description": "The user ID of the access requester"
+        "description": "The user ID of the access requester",
+        "example": 0
       },
       {
         "name": "access_level",
         "schema": "integer",
-        "description": ""
+        "description": "",
+        "default": 30
       }
     ],
     "responses": [
@@ -855,17 +919,20 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+        "example": "ID"
       },
       {
         "name": "page",
         "schema": "integer",
-        "description": "Current page number"
+        "description": "Current page number",
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of items per page"
+        "description": "Number of items per page",
+        "default": 20
       }
     ],
     "responses": [
@@ -887,7 +954,8 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID or URL-encoded path of the project owned by the authenticated user"
+        "description": "The ID or URL-encoded path of the project owned by the authenticated user",
+        "example": "ID"
       }
     ],
     "responses": [
@@ -909,19 +977,22 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID or URL-encoded path of the project"
+        "description": "The ID or URL-encoded path of the project",
+        "example": "ID"
       },
       {
         "name": "alertIid",
         "schema": "integer",
         "required": true,
-        "description": "The IID of the Alert"
+        "description": "The IID of the Alert",
+        "example": 0
       },
       {
         "name": "metricImageId",
         "schema": "integer",
         "required": true,
-        "description": "The ID of metric image"
+        "description": "The ID of metric image",
+        "example": 0
       }
     ],
     "responses": [
@@ -943,19 +1014,22 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID or URL-encoded path of the project"
+        "description": "The ID or URL-encoded path of the project",
+        "example": "ID"
       },
       {
         "name": "alertIid",
         "schema": "integer",
         "required": true,
-        "description": "The IID of the Alert"
+        "description": "The IID of the Alert",
+        "example": 0
       },
       {
         "name": "metricImageId",
         "schema": "integer",
         "required": true,
-        "description": "The ID of metric image"
+        "description": "The ID of metric image",
+        "example": 0
       },
       {
         "name": "url",
@@ -987,13 +1061,15 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID or URL-encoded path of the project"
+        "description": "The ID or URL-encoded path of the project",
+        "example": "ID"
       },
       {
         "name": "alertIid",
         "schema": "integer",
         "required": true,
-        "description": "The IID of the Alert"
+        "description": "The IID of the Alert",
+        "example": 0
       }
     ],
     "responses": [
@@ -1015,19 +1091,22 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID or URL-encoded path of the project"
+        "description": "The ID or URL-encoded path of the project",
+        "example": "ID"
       },
       {
         "name": "alertIid",
         "schema": "integer",
         "required": true,
-        "description": "The IID of the Alert"
+        "description": "The IID of the Alert",
+        "example": 0
       },
       {
         "name": "file",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "FILE"
       },
       {
         "name": "url",
@@ -1061,13 +1140,15 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The ID or URL-encoded path of the project"
+        "description": "The ID or URL-encoded path of the project",
+        "example": "ID"
       },
       {
         "name": "alertIid",
         "schema": "integer",
         "required": true,
-        "description": "The IID of the Alert"
+        "description": "The IID of the Alert",
+        "example": 0
       }
     ],
     "responses": []
@@ -1083,13 +1164,15 @@ export default function GitLabTypeScriptSdk() {
       {
         "name": "database",
         "schema": "string",
-        "description": "The name of the database"
+        "description": "The name of the database",
+        "default": "main"
       },
       {
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "The batched background migration id"
+        "description": "The batched background migration id",
+        "example": 0
       }
     ],
     "responses": [
@@ -1110,7 +1193,8 @@ export default function GitLabTypeScriptSdk() {
       {
         "name": "database",
         "schema": "string",
-        "description": "The name of the database, the default `main`"
+        "description": "The name of the database, the default `main`",
+        "default": "main"
       }
     ],
     "responses": [
@@ -1132,12 +1216,14 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "The batched background migration id"
+        "description": "The batched background migration id",
+        "example": 0
       },
       {
         "name": "database",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "main"
       }
     ],
     "responses": [
@@ -1159,12 +1245,14 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "The batched background migration id"
+        "description": "The batched background migration id",
+        "example": 0
       },
       {
         "name": "database",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "main"
       }
     ],
     "responses": [
@@ -1186,7 +1274,8 @@ export default function GitLabTypeScriptSdk() {
         "name": "key",
         "schema": "string",
         "required": true,
-        "description": "The key of a variable"
+        "description": "The key of a variable",
+        "example": "KEY"
       }
     ],
     "responses": [
@@ -1208,7 +1297,8 @@ export default function GitLabTypeScriptSdk() {
         "name": "key",
         "schema": "string",
         "required": true,
-        "description": "The key of a variable"
+        "description": "The key of a variable",
+        "example": "KEY"
       }
     ],
     "responses": [
@@ -1230,7 +1320,8 @@ export default function GitLabTypeScriptSdk() {
         "name": "key",
         "schema": "string",
         "required": true,
-        "description": "The key of a variable"
+        "description": "The key of a variable",
+        "example": "KEY"
       },
       {
         "name": "value",
@@ -1276,12 +1367,14 @@ export default function GitLabTypeScriptSdk() {
       {
         "name": "page",
         "schema": "integer",
-        "description": "Current page number"
+        "description": "Current page number",
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of items per page"
+        "description": "Number of items per page",
+        "default": 20
       }
     ],
     "responses": [
@@ -1303,13 +1396,15 @@ export default function GitLabTypeScriptSdk() {
         "name": "key",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "KEY"
       },
       {
         "name": "value",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "VALUE"
       },
       {
         "name": "protected",
@@ -1355,13 +1450,15 @@ export default function GitLabTypeScriptSdk() {
         "name": "databaseName",
         "schema": "string",
         "required": true,
-        "description": "The database name"
+        "description": "The database name",
+        "example": "DATABASE_NAME"
       },
       {
         "name": "tableName",
         "schema": "string",
         "required": true,
-        "description": "The table name"
+        "description": "The table name",
+        "example": "TABLE_NAME"
       }
     ],
     "responses": [
@@ -1383,7 +1480,8 @@ export default function GitLabTypeScriptSdk() {
         "name": "clusterId",
         "schema": "integer",
         "required": true,
-        "description": "The cluster ID"
+        "description": "The cluster ID",
+        "example": 0
       }
     ],
     "responses": [
@@ -1405,7 +1503,8 @@ export default function GitLabTypeScriptSdk() {
         "name": "clusterId",
         "schema": "integer",
         "required": true,
-        "description": "The cluster ID"
+        "description": "The cluster ID",
+        "example": 0
       }
     ],
     "responses": [
@@ -1427,7 +1526,8 @@ export default function GitLabTypeScriptSdk() {
         "name": "clusterId",
         "schema": "integer",
         "required": true,
-        "description": "The cluster ID"
+        "description": "The cluster ID",
+        "example": 0
       },
       {
         "name": "name",
@@ -1447,7 +1547,8 @@ export default function GitLabTypeScriptSdk() {
       {
         "name": "namespace_per_environment",
         "schema": "boolean",
-        "description": ""
+        "description": "",
+        "default": true
       },
       {
         "name": "domain",
@@ -1504,25 +1605,29 @@ export default function GitLabTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "enabled",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": true
       },
       {
         "name": "environment_scope",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": "*"
       },
       {
         "name": "namespace_per_environment",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": true
       },
       {
         "name": "domain",
@@ -1540,19 +1645,22 @@ export default function GitLabTypeScriptSdk() {
         "name": "managed",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": true
       },
       {
         "name": "platform_kubernetes_attributes[api_url]",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PLATFORM_KUBERNETES_ATTRIBUTES[API_URL]"
       },
       {
         "name": "platform_kubernetes_attributes[token]",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PLATFORM_KUBERNETES_ATTRIBUTES[TOKEN]"
       },
       {
         "name": "platform_kubernetes_attributes[ca_cert]",
@@ -1570,7 +1678,8 @@ export default function GitLabTypeScriptSdk() {
         "name": "platform_kubernetes_attributes[authorization_type]",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": "rbac"
       }
     ],
     "responses": [
@@ -1607,12 +1716,14 @@ export default function GitLabTypeScriptSdk() {
         "name": "timestamp",
         "schema": "integer",
         "required": true,
-        "description": "The migration version timestamp"
+        "description": "The migration version timestamp",
+        "example": 0
       },
       {
         "name": "database",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "main"
       }
     ],
     "responses": []
@@ -1629,7 +1740,8 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "The ID of the application (not the application_id)"
+        "description": "The ID of the application (not the application_id)",
+        "example": 0
       }
     ],
     "responses": []
@@ -1661,25 +1773,29 @@ export default function GitLabTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "redirect_uri",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "REDIRECT_URI"
       },
       {
         "name": "scopes",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SCOPES"
       },
       {
         "name": "confidential",
         "schema": "boolean",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": true
       }
     ],
     "responses": [
@@ -1701,7 +1817,8 @@ export default function GitLabTypeScriptSdk() {
         "name": "email",
         "schema": "string",
         "required": true,
-        "description": "Public email address of the user"
+        "description": "Public email address of the user",
+        "example": "EMAIL"
       },
       {
         "name": "size",
@@ -1728,7 +1845,8 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "Broadcast message ID"
+        "description": "Broadcast message ID",
+        "example": 0
       }
     ],
     "responses": [
@@ -1750,7 +1868,8 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "Broadcast message ID"
+        "description": "Broadcast message ID",
+        "example": 0
       }
     ],
     "responses": [
@@ -1772,7 +1891,8 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "Broadcast message ID"
+        "description": "Broadcast message ID",
+        "example": 0
       },
       {
         "name": "message",
@@ -1838,12 +1958,14 @@ export default function GitLabTypeScriptSdk() {
       {
         "name": "page",
         "schema": "integer",
-        "description": "Current page number"
+        "description": "Current page number",
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of items per page"
+        "description": "Number of items per page",
+        "default": 20
       }
     ],
     "responses": [
@@ -1865,7 +1987,8 @@ export default function GitLabTypeScriptSdk() {
         "name": "message",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "MESSAGE"
       },
       {
         "name": "starts_at",
@@ -1935,13 +2058,15 @@ export default function GitLabTypeScriptSdk() {
         "name": "importId",
         "schema": "integer",
         "required": true,
-        "description": "The ID of user's GitLab Migration"
+        "description": "The ID of user's GitLab Migration",
+        "example": 0
       },
       {
         "name": "entityId",
         "schema": "integer",
         "required": true,
-        "description": "The ID of GitLab Migration entity"
+        "description": "The ID of GitLab Migration entity",
+        "example": 0
       }
     ],
     "responses": [
@@ -1963,7 +2088,8 @@ export default function GitLabTypeScriptSdk() {
         "name": "importId",
         "schema": "integer",
         "required": true,
-        "description": "The ID of user's GitLab Migration"
+        "description": "The ID of user's GitLab Migration",
+        "example": 0
       },
       {
         "name": "status",
@@ -1973,12 +2099,14 @@ export default function GitLabTypeScriptSdk() {
       {
         "name": "page",
         "schema": "integer",
-        "description": "Current page number"
+        "description": "Current page number",
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of items per page"
+        "description": "Number of items per page",
+        "default": 20
       }
     ],
     "responses": [
@@ -2000,7 +2128,8 @@ export default function GitLabTypeScriptSdk() {
         "name": "importId",
         "schema": "integer",
         "required": true,
-        "description": "The ID of user's GitLab Migration"
+        "description": "The ID of user's GitLab Migration",
+        "example": 0
       }
     ],
     "responses": [
@@ -2021,17 +2150,20 @@ export default function GitLabTypeScriptSdk() {
       {
         "name": "page",
         "schema": "integer",
-        "description": "Current page number"
+        "description": "Current page number",
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of items per page"
+        "description": "Number of items per page",
+        "default": 20
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "Return GitLab Migrations sorted in created by `asc` or `desc` order."
+        "description": "Return GitLab Migrations sorted in created by `asc` or `desc` order.",
+        "default": "desc"
       },
       {
         "name": "status",
@@ -2057,17 +2189,20 @@ export default function GitLabTypeScriptSdk() {
       {
         "name": "page",
         "schema": "integer",
-        "description": "Current page number"
+        "description": "Current page number",
+        "default": 1
       },
       {
         "name": "perPage",
         "schema": "integer",
-        "description": "Number of items per page"
+        "description": "Number of items per page",
+        "default": 20
       },
       {
         "name": "sort",
         "schema": "string",
-        "description": "Return GitLab Migrations sorted in created by `asc` or `desc` order."
+        "description": "Return GitLab Migrations sorted in created by `asc` or `desc` order.",
+        "default": "desc"
       },
       {
         "name": "status",
@@ -2094,13 +2229,15 @@ export default function GitLabTypeScriptSdk() {
         "name": "configuration[url]",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CONFIGURATION[URL]"
       },
       {
         "name": "configuration[access_token]",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "CONFIGURATION[ACCESS_TOKEN]"
       },
       {
         "name": "entities[source_type]",
@@ -2268,7 +2405,8 @@ export default function GitLabTypeScriptSdk() {
       {
         "name": "planName",
         "schema": "string",
-        "description": "Name of the plan to get the limits from. Default: default."
+        "description": "Name of the plan to get the limits from. Default: default.",
+        "default": "default"
       }
     ],
     "responses": [
@@ -2290,7 +2428,8 @@ export default function GitLabTypeScriptSdk() {
         "name": "plan_name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "PLAN_NAME"
       },
       {
         "name": "ci_pipeline_size",
@@ -2456,7 +2595,8 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "The ID of the project"
+        "description": "The ID of the project",
+        "example": 0
       },
       {
         "name": "scope",
@@ -2484,13 +2624,15 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "The ID of the project"
+        "description": "The ID of the project",
+        "example": 0
       },
       {
         "name": "jobId",
         "schema": "integer",
         "required": true,
-        "description": "The ID of the job"
+        "description": "The ID of the job",
+        "example": 0
       }
     ],
     "responses": [
@@ -2512,13 +2654,15 @@ export default function GitLabTypeScriptSdk() {
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "The ID of the project"
+        "description": "The ID of the project",
+        "example": 0
       },
       {
         "name": "jobId",
         "schema": "integer",
         "required": true,
-        "description": "The ID of the manual job to run"
+        "description": "The ID of the manual job to run",
+        "example": 0
       },
       {
         "name": "jobVariablesAttributes",

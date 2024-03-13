@@ -4,6 +4,7 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
+
 import { Sdk } from "@site/src/components/Sdk";
 
 export default function LobTypeScriptSdk() {
@@ -16,13 +17,15 @@ export default function LobTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/lob/logo.svg"
       clientNameCamelCase="lob"
       homepage="lob.com"
-      lastUpdated={new Date("2024-03-11T16:37:37.247Z")}
+      lastUpdated={new Date("2024-03-13T01:24:30.233Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/lob/favicon.png"
       contactUrl="https://support.lob.com/"
       contactEmail="lob-openapi@lob.com"
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/lob/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
+      
+      categories={["printing","mail"]}
       methods={[
   {
     "url": "/accounts",
@@ -51,7 +54,9 @@ export default function LobTypeScriptSdk() {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "How many results to return."
+        "description": "How many results to return.",
+        "example": 10,
+        "default": 10
       },
       {
         "name": "before/after",
@@ -219,7 +224,9 @@ export default function LobTypeScriptSdk() {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "How many results to return."
+        "description": "How many results to return.",
+        "example": 10,
+        "default": 10
       },
       {
         "name": "before/after",
@@ -272,25 +279,29 @@ export default function LobTypeScriptSdk() {
         "name": "routing_number",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ROUTING_NUMBER"
       },
       {
         "name": "account_number",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ACCOUNT_NUMBER"
       },
       {
         "name": "account_type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ACCOUNT_TYPE"
       },
       {
         "name": "signatory",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SIGNATORY"
       },
       {
         "name": "check_template",
@@ -401,13 +412,16 @@ export default function LobTypeScriptSdk() {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "How many results to return."
+        "description": "How many results to return.",
+        "example": 10,
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "An integer that designates the offset at which to begin returning results. Defaults to 0."
+        "description": "An integer that designates the offset at which to begin returning results. Defaults to 0.",
+        "default": 0
       },
       {
         "name": "include",
@@ -472,7 +486,9 @@ export default function LobTypeScriptSdk() {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "How many results to return."
+        "description": "How many results to return.",
+        "example": 10,
+        "default": 10
       },
       {
         "name": "before/after",
@@ -601,13 +617,16 @@ export default function LobTypeScriptSdk() {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "How many results to return."
+        "description": "How many results to return.",
+        "example": 10,
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "An integer that designates the offset at which to begin returning results. Defaults to 0."
+        "description": "An integer that designates the offset at which to begin returning results. Defaults to 0.",
+        "default": 0
       }
     ],
     "responses": [
@@ -633,7 +652,8 @@ export default function LobTypeScriptSdk() {
         "name": "quantity",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       }
     ],
     "responses": [
@@ -659,7 +679,8 @@ export default function LobTypeScriptSdk() {
         "name": "case",
         "schema": "string",
         "required": false,
-        "description": "Casing of the verified address. Possible values are `upper` and `proper` for uppercased (e.g. \"PO BOX\") and proper-cased (e.g. \"PO Box\"), respectively. Only affects `recipient`, `primary_line`, `secondary_line`, `urbanization`, and `last_line`. Default casing is `upper`."
+        "description": "Casing of the verified address. Possible values are `upper` and `proper` for uppercased (e.g. \"PO BOX\") and proper-cased (e.g. \"PO Box\"), respectively. Only affects `recipient`, `primary_line`, `secondary_line`, `urbanization`, and `last_line`. Default casing is `upper`.",
+        "default": "upper"
       },
       {
         "name": "addresses",
@@ -717,7 +738,9 @@ export default function LobTypeScriptSdk() {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "How many results to return."
+        "description": "How many results to return.",
+        "example": 10,
+        "default": 10
       },
       {
         "name": "include",
@@ -768,13 +791,15 @@ export default function LobTypeScriptSdk() {
         "name": "name",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "NAME"
       },
       {
         "name": "schedule_type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "SCHEDULE_TYPE"
       },
       {
         "name": "target_delivery_date",
@@ -804,7 +829,8 @@ export default function LobTypeScriptSdk() {
         "name": "use_type",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "USE_TYPE"
       },
       {
         "name": "auto_cancel_if_ncoa",
@@ -963,7 +989,9 @@ export default function LobTypeScriptSdk() {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "How many results to return."
+        "description": "How many results to return.",
+        "example": 10,
+        "default": 10
       },
       {
         "name": "before/after",
@@ -1092,13 +1120,16 @@ export default function LobTypeScriptSdk() {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "How many results to return."
+        "description": "How many results to return.",
+        "example": 10,
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "An integer that designates the offset at which to begin returning results. Defaults to 0."
+        "description": "An integer that designates the offset at which to begin returning results. Defaults to 0.",
+        "default": 0
       }
     ],
     "responses": [
@@ -1124,7 +1155,8 @@ export default function LobTypeScriptSdk() {
         "name": "quantity",
         "schema": "integer",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       }
     ],
     "responses": [
@@ -1150,7 +1182,9 @@ export default function LobTypeScriptSdk() {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "How many results to return."
+        "description": "How many results to return.",
+        "example": 10,
+        "default": 10
       },
       {
         "name": "before/after",
@@ -1186,7 +1220,8 @@ export default function LobTypeScriptSdk() {
       {
         "name": "mailType",
         "schema": "string",
-        "description": "A string designating the mail postage type: * `usps_first_class` - (default) * `usps_standard` - a <a href=\"https://lob.com/pricing/print-mail#compare\" target=\"_blank\">cheaper option</a> which is less predictable and takes longer to deliver. `usps_standard` cannot be used with `4x6` postcards or for any postcards sent outside of the United States.\n"
+        "description": "A string designating the mail postage type: * `usps_first_class` - (default) * `usps_standard` - a <a href=\"https://lob.com/pricing/print-mail#compare\" target=\"_blank\">cheaper option</a> which is less predictable and takes longer to deliver. `usps_standard` cannot be used with `4x6` postcards or for any postcards sent outside of the United States.\n",
+        "default": "usps_first_class"
       },
       {
         "name": "sortBy",
@@ -1222,13 +1257,15 @@ export default function LobTypeScriptSdk() {
         "name": "idempotencyKey",
         "schema": "string",
         "required": false,
-        "description": "A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our <a href=\"https://help.lob.com/print-and-mail/building-a-mail-strategy/managing-mail-settings#idempotent-requests-12\" target=\"_blank\">implementation guide</a>.\n"
+        "description": "A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our <a href=\"https://help.lob.com/print-and-mail/building-a-mail-strategy/managing-mail-settings#idempotent-requests-12\" target=\"_blank\">implementation guide</a>.\n",
+        "example": "026e7634-24d7-486c-a0bb-4a17fd0eebc5"
       },
       {
         "name": "idempotencyKey",
         "schema": "string",
         "required": false,
-        "description": "A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our <a href=\"https://help.lob.com/print-and-mail/building-a-mail-strategy/managing-mail-settings#idempotent-requests-12\" target=\"_blank\">implementation guide</a>.\n"
+        "description": "A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our <a href=\"https://help.lob.com/print-and-mail/building-a-mail-strategy/managing-mail-settings#idempotent-requests-12\" target=\"_blank\">implementation guide</a>.\n",
+        "example": "026e7634-24d7-486c-a0bb-4a17fd0eebc5"
       }
     ],
     "responses": [
@@ -1397,7 +1434,8 @@ export default function LobTypeScriptSdk() {
         "name": "address_prefix",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ADDRESS_PREFIX"
       },
       {
         "name": "city",
@@ -1421,7 +1459,8 @@ export default function LobTypeScriptSdk() {
         "name": "country",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "COUNTRY"
       },
       {
         "name": "geo_ip_sort",
@@ -1517,7 +1556,9 @@ export default function LobTypeScriptSdk() {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "How many results to return."
+        "description": "How many results to return.",
+        "example": 10,
+        "default": 10
       },
       {
         "name": "before/after",
@@ -1569,7 +1610,8 @@ export default function LobTypeScriptSdk() {
       {
         "name": "mailType",
         "schema": "string",
-        "description": "A string designating the mail postage type: * `usps_first_class` - (default) * `usps_standard` - a <a href=\"https://lob.com/pricing/print-mail#compare\" target=\"_blank\">cheaper option</a> which is less predictable and takes longer to deliver. `usps_standard` cannot be used with `4x6` postcards or for any postcards sent outside of the United States.\n"
+        "description": "A string designating the mail postage type: * `usps_first_class` - (default) * `usps_standard` - a <a href=\"https://lob.com/pricing/print-mail#compare\" target=\"_blank\">cheaper option</a> which is less predictable and takes longer to deliver. `usps_standard` cannot be used with `4x6` postcards or for any postcards sent outside of the United States.\n",
+        "default": "usps_first_class"
       },
       {
         "name": "sortBy",
@@ -1600,19 +1642,22 @@ export default function LobTypeScriptSdk() {
         "name": "idempotencyKey",
         "schema": "string",
         "required": false,
-        "description": "A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our <a href=\"https://help.lob.com/print-and-mail/building-a-mail-strategy/managing-mail-settings#idempotent-requests-12\" target=\"_blank\">implementation guide</a>.\n"
+        "description": "A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our <a href=\"https://help.lob.com/print-and-mail/building-a-mail-strategy/managing-mail-settings#idempotent-requests-12\" target=\"_blank\">implementation guide</a>.\n",
+        "example": "026e7634-24d7-486c-a0bb-4a17fd0eebc5"
       },
       {
         "name": "idempotencyKey",
         "schema": "string",
         "required": false,
-        "description": "A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our <a href=\"https://help.lob.com/print-and-mail/building-a-mail-strategy/managing-mail-settings#idempotent-requests-12\" target=\"_blank\">implementation guide</a>.\n"
+        "description": "A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our <a href=\"https://help.lob.com/print-and-mail/building-a-mail-strategy/managing-mail-settings#idempotent-requests-12\" target=\"_blank\">implementation guide</a>.\n",
+        "example": "026e7634-24d7-486c-a0bb-4a17fd0eebc5"
       },
       {
         "name": "lobVersion",
         "schema": "string",
         "required": false,
-        "description": "A string representing the version of the API being used. For more information on versioning, refer to our [Versioning and Changelog](https://docs.lob.com/#tag/Versioning-and-Changelog) documentation.\n"
+        "description": "A string representing the version of the API being used. For more information on versioning, refer to our [Versioning and Changelog](https://docs.lob.com/#tag/Versioning-and-Changelog) documentation.\n",
+        "example": "2024-01-01"
       }
     ],
     "responses": [
@@ -1676,7 +1721,9 @@ export default function LobTypeScriptSdk() {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "How many results to return."
+        "description": "How many results to return.",
+        "example": 10,
+        "default": 10
       },
       {
         "name": "before/after",
@@ -1728,7 +1775,8 @@ export default function LobTypeScriptSdk() {
       {
         "name": "mailType",
         "schema": "string",
-        "description": "A string designating the mail postage type: * `usps_first_class` - (default) * `usps_standard` - a <a href=\"https://lob.com/pricing/print-mail#compare\" target=\"_blank\">cheaper option</a> which is less predictable and takes longer to deliver. `usps_standard` cannot be used with `4x6` postcards or for any postcards sent outside of the United States.\n"
+        "description": "A string designating the mail postage type: * `usps_first_class` - (default) * `usps_standard` - a <a href=\"https://lob.com/pricing/print-mail#compare\" target=\"_blank\">cheaper option</a> which is less predictable and takes longer to deliver. `usps_standard` cannot be used with `4x6` postcards or for any postcards sent outside of the United States.\n",
+        "default": "usps_first_class"
       },
       {
         "name": "sortBy",
@@ -1759,13 +1807,15 @@ export default function LobTypeScriptSdk() {
         "name": "idempotencyKey",
         "schema": "string",
         "required": false,
-        "description": "A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our <a href=\"https://help.lob.com/print-and-mail/building-a-mail-strategy/managing-mail-settings#idempotent-requests-12\" target=\"_blank\">implementation guide</a>.\n"
+        "description": "A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our <a href=\"https://help.lob.com/print-and-mail/building-a-mail-strategy/managing-mail-settings#idempotent-requests-12\" target=\"_blank\">implementation guide</a>.\n",
+        "example": "026e7634-24d7-486c-a0bb-4a17fd0eebc5"
       },
       {
         "name": "idempotencyKey",
         "schema": "string",
         "required": false,
-        "description": "A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our <a href=\"https://help.lob.com/print-and-mail/building-a-mail-strategy/managing-mail-settings#idempotent-requests-12\" target=\"_blank\">implementation guide</a>.\n"
+        "description": "A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our <a href=\"https://help.lob.com/print-and-mail/building-a-mail-strategy/managing-mail-settings#idempotent-requests-12\" target=\"_blank\">implementation guide</a>.\n",
+        "example": "026e7634-24d7-486c-a0bb-4a17fd0eebc5"
       }
     ],
     "responses": [
@@ -1791,13 +1841,16 @@ export default function LobTypeScriptSdk() {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "How many results to return."
+        "description": "How many results to return.",
+        "example": 10,
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "An integer that designates the offset at which to begin returning results. Defaults to 0."
+        "description": "An integer that designates the offset at which to begin returning results. Defaults to 0.",
+        "default": 0
       },
       {
         "name": "include",
@@ -1817,7 +1870,8 @@ export default function LobTypeScriptSdk() {
       {
         "name": "resourceIds",
         "schema": "array",
-        "description": "Filter by the resource ID."
+        "description": "Filter by the resource ID.",
+        "default": []
       }
     ],
     "responses": [
@@ -1896,7 +1950,8 @@ export default function LobTypeScriptSdk() {
         "name": "domain",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "DOMAIN"
       }
     ],
     "responses": [
@@ -1941,13 +1996,16 @@ export default function LobTypeScriptSdk() {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "How many results to return."
+        "description": "How many results to return.",
+        "example": 10,
+        "default": 10
       },
       {
         "name": "offset",
         "schema": "integer",
         "required": false,
-        "description": "An integer that designates the offset at which to begin returning results. Defaults to 0."
+        "description": "An integer that designates the offset at which to begin returning results. Defaults to 0.",
+        "default": 0
       },
       {
         "name": "include",
@@ -2041,7 +2099,8 @@ export default function LobTypeScriptSdk() {
         "name": "redirect_link",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "REDIRECT_LINK"
       },
       {
         "name": "domain",
@@ -2091,7 +2150,8 @@ export default function LobTypeScriptSdk() {
         "name": "redirect_link",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "REDIRECT_LINK"
       },
       {
         "name": "domain",
@@ -2198,7 +2258,9 @@ export default function LobTypeScriptSdk() {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "How many results to return."
+        "description": "How many results to return.",
+        "example": 10,
+        "default": 10
       },
       {
         "name": "before/after",
@@ -2239,7 +2301,8 @@ export default function LobTypeScriptSdk() {
       {
         "name": "mailType",
         "schema": "string",
-        "description": "A string designating the mail postage type: * `usps_first_class` - (default) * `usps_standard` - a <a href=\"https://lob.com/pricing/print-mail#compare\" target=\"_blank\">cheaper option</a> which is less predictable and takes longer to deliver. `usps_standard` cannot be used with `4x6` postcards or for any postcards sent outside of the United States.\n"
+        "description": "A string designating the mail postage type: * `usps_first_class` - (default) * `usps_standard` - a <a href=\"https://lob.com/pricing/print-mail#compare\" target=\"_blank\">cheaper option</a> which is less predictable and takes longer to deliver. `usps_standard` cannot be used with `4x6` postcards or for any postcards sent outside of the United States.\n",
+        "default": "usps_first_class"
       },
       {
         "name": "sortBy",
@@ -2281,13 +2344,15 @@ export default function LobTypeScriptSdk() {
         "name": "idempotencyKey",
         "schema": "string",
         "required": false,
-        "description": "A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our <a href=\"https://help.lob.com/print-and-mail/building-a-mail-strategy/managing-mail-settings#idempotent-requests-12\" target=\"_blank\">implementation guide</a>.\n"
+        "description": "A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our <a href=\"https://help.lob.com/print-and-mail/building-a-mail-strategy/managing-mail-settings#idempotent-requests-12\" target=\"_blank\">implementation guide</a>.\n",
+        "example": "026e7634-24d7-486c-a0bb-4a17fd0eebc5"
       },
       {
         "name": "idempotencyKey",
         "schema": "string",
         "required": false,
-        "description": "A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our <a href=\"https://help.lob.com/print-and-mail/building-a-mail-strategy/managing-mail-settings#idempotent-requests-12\" target=\"_blank\">implementation guide</a>.\n"
+        "description": "A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our <a href=\"https://help.lob.com/print-and-mail/building-a-mail-strategy/managing-mail-settings#idempotent-requests-12\" target=\"_blank\">implementation guide</a>.\n",
+        "example": "026e7634-24d7-486c-a0bb-4a17fd0eebc5"
       }
     ],
     "responses": [
@@ -2313,13 +2378,15 @@ export default function LobTypeScriptSdk() {
         "name": "idempotencyKey",
         "schema": "string",
         "required": false,
-        "description": "A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our <a href=\"https://help.lob.com/print-and-mail/building-a-mail-strategy/managing-mail-settings#idempotent-requests-12\" target=\"_blank\">implementation guide</a>.\n"
+        "description": "A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our <a href=\"https://help.lob.com/print-and-mail/building-a-mail-strategy/managing-mail-settings#idempotent-requests-12\" target=\"_blank\">implementation guide</a>.\n",
+        "example": "026e7634-24d7-486c-a0bb-4a17fd0eebc5"
       },
       {
         "name": "idempotencyKey",
         "schema": "string",
         "required": false,
-        "description": "A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our <a href=\"https://help.lob.com/print-and-mail/building-a-mail-strategy/managing-mail-settings#idempotent-requests-12\" target=\"_blank\">implementation guide</a>.\n"
+        "description": "A string of no longer than 256 characters that uniquely identifies this resource. For more help integrating idempotency keys, refer to our <a href=\"https://help.lob.com/print-and-mail/building-a-mail-strategy/managing-mail-settings#idempotent-requests-12\" target=\"_blank\">implementation guide</a>.\n",
+        "example": "026e7634-24d7-486c-a0bb-4a17fd0eebc5"
       }
     ],
     "responses": [
@@ -2387,7 +2454,8 @@ export default function LobTypeScriptSdk() {
       {
         "name": "engine",
         "schema": "string",
-        "description": ""
+        "description": "",
+        "default": "legacy"
       },
       {
         "name": "required_vars",
@@ -2418,13 +2486,16 @@ export default function LobTypeScriptSdk() {
         "name": "tmplId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the template associated with the retrieved versions"
+        "description": "The ID of the template associated with the retrieved versions",
+        "example": "TMPL_ID"
       },
       {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "How many results to return."
+        "description": "How many results to return.",
+        "example": 10,
+        "default": 10
       },
       {
         "name": "before/after",
@@ -2466,7 +2537,8 @@ export default function LobTypeScriptSdk() {
         "name": "tmplId",
         "schema": "string",
         "required": true,
-        "description": "The ID of the template the new version will be attached to"
+        "description": "The ID of the template the new version will be attached to",
+        "example": "TMPL_ID"
       },
       {
         "name": "description",
@@ -2478,13 +2550,15 @@ export default function LobTypeScriptSdk() {
         "name": "html",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "HTML"
       },
       {
         "name": "engine",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": "legacy"
       },
       {
         "name": "required_vars",
@@ -2584,7 +2658,9 @@ export default function LobTypeScriptSdk() {
         "name": "limit",
         "schema": "integer",
         "required": false,
-        "description": "How many results to return."
+        "description": "How many results to return.",
+        "example": 10,
+        "default": 10
       },
       {
         "name": "before/after",
@@ -2637,7 +2713,8 @@ export default function LobTypeScriptSdk() {
         "name": "html",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "HTML"
       },
       {
         "name": "metadata",
@@ -2649,7 +2726,8 @@ export default function LobTypeScriptSdk() {
         "name": "engine",
         "schema": "string",
         "required": false,
-        "description": ""
+        "description": "",
+        "default": "legacy"
       },
       {
         "name": "required_vars",
@@ -2709,25 +2787,50 @@ export default function LobTypeScriptSdk() {
         "name": "requiredAddressColumnMapping",
         "schema": "object",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": {
+          "name": "recipient_name",
+          "address_line1": "primary_line",
+          "address_city": "city",
+          "address_state": "state",
+          "address_zip": "zip_code"
+        }
       },
       {
         "name": "optionalAddressColumnMapping",
         "schema": "object",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": {
+          "address_line2": "secondary_line",
+          "company": "company",
+          "address_country": "country,"
+        }
       },
       {
         "name": "metadata",
         "schema": "object",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": {
+          "columns": [
+            "recipient_name"
+          ]
+        },
+        "default": {
+          "columns": []
+        }
       },
       {
         "name": "mergeVariableColumnMapping",
         "schema": "object",
         "required": false,
-        "description": ""
+        "description": "",
+        "example": {
+          "name": "recipient_name",
+          "gift_code": "code"
+        },
+        "default": null
       }
     ],
     "responses": [
@@ -2795,22 +2898,47 @@ export default function LobTypeScriptSdk() {
       {
         "name": "requiredAddressColumnMapping",
         "schema": "object",
-        "description": ""
+        "description": "",
+        "example": {
+          "name": "recipient_name",
+          "address_line1": "primary_line",
+          "address_city": "city",
+          "address_state": "state",
+          "address_zip": "zip_code"
+        }
       },
       {
         "name": "optionalAddressColumnMapping",
         "schema": "object",
-        "description": ""
+        "description": "",
+        "example": {
+          "address_line2": "secondary_line",
+          "company": "company",
+          "address_country": "country,"
+        }
       },
       {
         "name": "metadata",
         "schema": "object",
-        "description": ""
+        "description": "",
+        "example": {
+          "columns": [
+            "recipient_name"
+          ]
+        },
+        "default": {
+          "columns": []
+        }
       },
       {
         "name": "mergeVariableColumnMapping",
         "schema": "object",
-        "description": ""
+        "description": "",
+        "example": {
+          "name": "recipient_name",
+          "gift_code": "code"
+        },
+        "default": null
       }
     ],
     "responses": [
@@ -2928,19 +3056,22 @@ export default function LobTypeScriptSdk() {
         "name": "case",
         "schema": "string",
         "required": false,
-        "description": "Casing of the verified address. Possible values are `upper` and `proper` for uppercased (e.g. \"PO BOX\") and proper-cased (e.g. \"PO Box\"), respectively. Only affects `primary_line`, `city`, and `state`. Default casing is `upper`."
+        "description": "Casing of the verified address. Possible values are `upper` and `proper` for uppercased (e.g. \"PO BOX\") and proper-cased (e.g. \"PO Box\"), respectively. Only affects `primary_line`, `city`, and `state`. Default casing is `upper`.",
+        "default": "upper"
       },
       {
         "name": "validAddresses",
         "schema": "boolean",
         "required": false,
-        "description": "Possible values are `true` and `false`. If false, not all of the suggestions in the response will be valid addresses; they'll need to be verified in order to determine the deliverability. The valid_addresses flag will greatly reduce the number of keystrokes needed before reaching an intended address."
+        "description": "Possible values are `true` and `false`. If false, not all of the suggestions in the response will be valid addresses; they'll need to be verified in order to determine the deliverability. The valid_addresses flag will greatly reduce the number of keystrokes needed before reaching an intended address.",
+        "default": false
       },
       {
         "name": "address_prefix",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "ADDRESS_PREFIX"
       },
       {
         "name": "city",
@@ -2990,19 +3121,23 @@ export default function LobTypeScriptSdk() {
         "name": "size",
         "schema": "integer",
         "required": false,
-        "description": "Determines the number of locations returned. Possible values are between 1 and 50 and any number higher will be rounded down to 50. Default size is a list of 5 reverse geocoded locations."
+        "description": "Determines the number of locations returned. Possible values are between 1 and 50 and any number higher will be rounded down to 50. Default size is a list of 5 reverse geocoded locations.",
+        "example": 5,
+        "default": 5
       },
       {
         "name": "latitude",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       },
       {
         "name": "longitude",
         "schema": "number",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": 0
       }
     ],
     "responses": [
@@ -3028,7 +3163,8 @@ export default function LobTypeScriptSdk() {
         "name": "case",
         "schema": "string",
         "required": false,
-        "description": "Casing of the verified address. Possible values are `upper` and `proper` for uppercased (e.g. \"PO BOX\") and proper-cased (e.g. \"PO Box\"), respectively. Only affects `recipient`, `primary_line`, `secondary_line`, `urbanization`, and `last_line`. Default casing is `upper`."
+        "description": "Casing of the verified address. Possible values are `upper` and `proper` for uppercased (e.g. \"PO BOX\") and proper-cased (e.g. \"PO Box\"), respectively. Only affects `recipient`, `primary_line`, `secondary_line`, `urbanization`, and `last_line`. Default casing is `upper`.",
+        "default": "upper"
       }
     ],
     "responses": [
@@ -3054,7 +3190,8 @@ export default function LobTypeScriptSdk() {
         "name": "zip_code",
         "schema": "string",
         "required": true,
-        "description": ""
+        "description": "",
+        "example": "94107"
       }
     ],
     "responses": [
