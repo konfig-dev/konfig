@@ -22,7 +22,7 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/circleci/logo.png"
       clientNameCamelCase="circleCi"
       homepage="circleci.com"
-      lastUpdated={new Date("2024-03-13T01:42:38.840Z")}
+      lastUpdated={new Date("2024-03-13T01:51:56.035Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/circleci/favicon.png"
       // Missing contactUrl
       // Missing contactEmail

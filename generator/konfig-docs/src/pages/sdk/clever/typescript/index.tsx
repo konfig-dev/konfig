@@ -4,12 +4,13 @@ import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
 import Description from "./_description.mdx";
 // @ts-ignore
 import GettingStarted from "./_getting-started.mdx";
-
-import { Sdk } from "@site/src/components/Sdk";
+// @ts-ignore
+import FirstRequest from "./_first-request.mdx"
+import { SdkNew } from "@site/src/components/SdkNew";
 
 export default function CleverTypeScriptSdk() {
   return (
-    <Sdk
+    <SdkNew
       sdkName="clever-typescript-sdk"
       metaDescription="We believe technology is a powerful lever to make education equitable for all and the fastest way to improve educational outcomes now. 
 
@@ -23,14 +24,14 @@ We go to work every day striving to improve education for millions of kids. Join
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/clever/logo.png"
       clientNameCamelCase="clever"
       homepage="clever.com"
-      lastUpdated={new Date("2024-03-13T01:42:38.840Z")}
+      lastUpdated={new Date("2024-03-13T01:51:56.035Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/clever/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
       previewLinkImage="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/clever/imagePreview.png"
       GettingStarted={GettingStarted}
       Description={Description}
-      
+      FirstRequest={FirstRequest}
       categories={["education","collaboration","developer_tools","learning_platform","educational_equity","educational_technology","education","k_12_education","application_platforms","enterprise_software","information_technology"]}
       methods={[
   {

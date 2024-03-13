@@ -295,7 +295,7 @@ function MakeYourFirstRequest({
       <p className="px-8 text-lg sm:text-xl text-center text-slate-600">
         It only takes a few lines of code.
       </p>
-      <div className="px-8 sm:w-fit sm:max-w-[720px] mx-auto">
+      <div className="px-8 sm:max-w-[640px] mx-auto">
         <GettingStarted />
       </div>
       <h2 className="mt-16 mb-0 text-2xl sm:text-3xl text-slate-800 text-center font-bold">
@@ -304,7 +304,7 @@ function MakeYourFirstRequest({
       <p className="px-8 text-lg sm:text-xl text-center text-slate-600">
         We made it really easy.
       </p>
-      <div className="sm:w-fit sm:max-w-[720px] px-8 mx-auto">
+      <div className="sm:max-w-[640px] px-8 mx-auto">
         <FirstRequest />
       </div>
       <h2 className="mt-16 mb-4 text-2xl sm:text-3xl text-slate-800 text-center font-bold">

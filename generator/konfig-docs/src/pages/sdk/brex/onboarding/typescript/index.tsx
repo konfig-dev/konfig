@@ -17,7 +17,7 @@ export default function BrexOnboardingTypeScriptSdk() {
       logo="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/onboarding/logo.png"
       clientNameCamelCase="brexOnboarding"
       homepage="brex.com"
-      lastUpdated={new Date("2024-03-13T01:42:38.840Z")}
+      lastUpdated={new Date("2024-03-13T01:51:56.035Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/onboarding/favicon.png"
       contactUrl="https://brex.com"
       contactEmail="developer-access@brex.com"
