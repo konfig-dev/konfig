@@ -1,5 +1,51 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`fix-oas broken markdown links with whitespace between the [text] and (link) the whitespace is removed 1`] = `
+{
+  "components": {
+    "schemas": {
+      "TagGetResponse": {
+        "type": "string",
+      },
+      "Test": {
+        "description": "Test [link](https://example.com)",
+      },
+    },
+  },
+  "info": {
+    "description": "Test [link](https://example.com)",
+    "title": "Test API",
+    "version": "1.0.0",
+  },
+  "openapi": "3.0.0",
+  "paths": {
+    "/": {
+      "get": {
+        "description": "Test [link](https://example.com). Then [another link](https://example.com)",
+        "operationId": "Tag_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TagGetResponse",
+                },
+              },
+            },
+            "description": "OK",
+          },
+        },
+      },
+    },
+  },
+  "tags": [
+    {
+      "name": "Tag",
+    },
+  ],
+}
+`;
+
 exports[`fix-oas custom modifications simple 1`] = `
 {
   "components": {},

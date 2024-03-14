@@ -287,6 +287,52 @@ describe('fix-oas', () => {
       expect(spec.spec).toMatchSnapshot()
     })
   })
+  describe('broken markdown links with whitespace between the [text] and (link)', () => {
+    it('the whitespace is removed', async () => {
+      const oas: Spec['spec'] = {
+        openapi: '3.0.0',
+        info: {
+          title: 'Test API',
+          description: 'Test [link]  (https://example.com)',
+          version: '1.0.0',
+        },
+        tags: [{ name: 'Tag' }],
+        paths: {
+          '/': {
+            get: {
+              operationId: 'Tag_get',
+              description: `Test [link]
+  (https://example.com). Then [another link]    (https://example.com)`,
+              responses,
+            },
+          },
+        },
+        components: {
+          schemas: {
+            Test: {
+              description: `Test [link]     (https://example.com)`,
+            }
+          }
+        },
+      }
+      const spec = await parseSpec(JSON.stringify(oas))
+      const progress = new Progress({
+        progress: {},
+        noSave: true,
+      })
+      await fixOas({
+        spec,
+        progress,
+        alwaysYes: true,
+        auto: true,
+        ci: false,
+        useAIForOperationId: false,
+        useAIForTags: false,
+        noInput: false,
+      })
+      expect(spec.spec).toMatchSnapshot()
+    })
+  })
   describe('ignore potential-incorrect-type', () => {
     const oas: Spec['spec'] = {
       openapi: '3.0.0',

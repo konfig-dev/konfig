@@ -38,6 +38,7 @@ import { fixAdditionalPropertiesFalse } from './fix-additional-properties-false'
 import { fixFlattenSingletonAllOf } from './fix-flatten-singleton-all-of'
 import { fixPassthroughRefs } from './fix-passthrough-refs'
 import { fixDuplicateEntriesInEnum } from './fix-duplicate-entries-in-enum'
+import { fixBrokenMarkdownLinks } from './fix-broken-markdown-links'
 
 export async function fixOas({
   spec,
@@ -69,6 +70,8 @@ export async function fixOas({
    * Order matters here! Do not mess with order unless you know what you are
    * doing.
    */
+
+  let numberOfFixedMarkdownLinks = await fixBrokenMarkdownLinks({ spec })
 
   let numberOfParametersConvertedToSecurityRequirements =
     await overrideSecuritySchemes(spec, konfigYaml?.securitySchemeOverride)
@@ -323,6 +326,7 @@ export async function fixOas({
     numberOfSingletonAllOfUsagesFlattened,
     numberOfPassthroughRefsFixed,
     numberOfDuplicateEntriesInEnumFixed,
+    numberOfFixedMarkdownLinks,
   }
   const issuesFixed = Object.values(result).reduce((a, b) => a + b)
   return {
