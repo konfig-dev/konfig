@@ -168,8 +168,12 @@ export function AboutCompany({
   return (
     <div className="py-20 px-8 md:px-32 bg-white">
       <div className="w-fit">
-        <div className="shadow-inner max-w-[200px] max-h-[80px] rounded-md border p-4">
-          <img className="w-full h-full" src={logo} alt={company} />
+        <div className="relative shadow-inner w-fit rounded-md border p-4">
+          <img
+            className="max-h-[80px] max-w-[200px]"
+            src={logo}
+            alt={company}
+          />
         </div>
         <h2 className="mt-4 mb-0 text-3xl text-slate-800">About {company}</h2>
         <p className="mt-2 max-w-[800px]">{metaDescription}</p>
