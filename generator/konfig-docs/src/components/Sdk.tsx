@@ -1,9 +1,9 @@
-import React, { FormEventHandler, PropsWithChildren, useState } from "react";
-import Layout from "@theme/Layout";
-import { HttpMethodsEnum } from "konfig-lib/dist/forEachOperation";
-import moment from "moment";
-import clsx from "clsx";
-import Head from "@docusaurus/Head";
+import React, { FormEventHandler, PropsWithChildren, useState } from 'react'
+import Layout from '@theme/Layout'
+import { HttpMethodsEnum } from 'konfig-lib/dist/forEachOperation'
+import moment from 'moment'
+import clsx from 'clsx'
+import Head from '@docusaurus/Head'
 import {
   IconAdjustments,
   IconApi,
@@ -15,26 +15,27 @@ import {
   IconPencil,
   IconPlayerPlay,
   TablerIconsProps,
-} from "@tabler/icons-react";
-import { Markdown } from "./Markdown";
+} from '@tabler/icons-react'
+import { Markdown } from './Markdown'
 import type {
   SdkPageProps,
   Parameter,
   Method,
   HttpMethods,
-} from "./SdkComponentProps";
-import { TsIcon } from "./TsIcon";
-import { useSdkSignup } from "../util/use-sdk-signup";
-import { LoadingIcon } from "./LoadingIcon";
+} from './SdkComponentProps'
+import { TsIcon } from './TsIcon'
+import { useSdkSignup } from '../util/use-sdk-signup'
+import { LoadingIcon } from './LoadingIcon'
 
 type ReactProps = {
-  GettingStarted: React.ComponentType;
-  Description: React.ComponentType;
-  FirstRequest?: React.ComponentType;
-  language?: string;
-  doesNotHaveApiDescription?: boolean;
-  categories?: string[];
-};
+  GettingStarted: React.ComponentType
+  Description: React.ComponentType
+  FirstRequest?: React.ComponentType
+  language?: string
+  doesNotHaveApiDescription?: boolean
+  categories?: string[]
+  companyKebabCase: string
+}
 
 export function Sdk({
   metaDescription,
@@ -61,16 +62,16 @@ export function Sdk({
   faviconUrl,
   GettingStarted,
   Description,
-  language = "TypeScript",
+  language = 'TypeScript',
   doesNotHaveApiDescription,
-}: Omit<SdkPageProps, "difficultyScore" | "providerName"> & ReactProps) {
+}: Omit<SdkPageProps, 'difficultyScore' | 'providerName'> & ReactProps) {
   const serviceNameSubstring =
-    serviceName !== undefined ? ` ${serviceName}` : "";
-  const description = `Explore the ${company}${serviceNameSubstring} TypeScript SDK. Dive into comprehensive documentation and utilize ${methods.length} methods to integrate ${company}'s${serviceNameSubstring} API into your application.`;
+    serviceName !== undefined ? ` ${serviceName}` : ''
+  const description = `Explore the ${company}${serviceNameSubstring} TypeScript SDK. Dive into comprehensive documentation and utilize ${methods.length} methods to integrate ${company}'s${serviceNameSubstring} API into your application.`
   const homepageWithHttpScheme =
-    homepage.startsWith("https://") || homepage.startsWith("http://")
+    homepage.startsWith('https://') || homepage.startsWith('http://')
       ? homepage
-      : `https://${homepage}`;
+      : `https://${homepage}`
   return (
     <Layout
       title={`${company}${serviceNameSubstring} API - ${language} SDK, Documentation, and OpenAPI Specification`}
@@ -122,7 +123,7 @@ export function Sdk({
                 </div>
                 <Dot />
                 <div className="font-mono text-slate-500">
-                  Updated {moment(lastUpdated).format("MMMM Do, YYYY")}
+                  Updated {moment(lastUpdated).format('MMMM Do, YYYY')}
                 </div>
               </div>
             </div>
@@ -210,8 +211,8 @@ export function Sdk({
                           responses={responses}
                           company={company}
                         />
-                      );
-                    }
+                      )
+                    },
                   )}
                 </div>
               </AboutSection>
@@ -235,14 +236,14 @@ export function Sdk({
         </BigSection>
       </div>
     </Layout>
-  );
+  )
 }
 
 function AboutContentSection({
   children,
   noBottomMargin,
 }: PropsWithChildren<{ noBottomMargin?: boolean }>) {
-  return <div className={clsx({ "mb-10": !noBottomMargin })}>{children}</div>;
+  return <div className={clsx({ 'mb-10': !noBottomMargin })}>{children}</div>
 }
 
 export function SdkMethod({
@@ -256,102 +257,102 @@ export function SdkMethod({
   clientNameCamelCase,
   typeScriptTag,
 }: Method & {
-  company: string;
-  clientNameCamelCase: string;
+  company: string
+  clientNameCamelCase: string
 }) {
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(false)
   return (
     <div
       className={clsx(
-        "text-slate-700 ring-1 ring-slate-200  rounded-md block w-full overflow-x-auto px-3 py-2 transition-all text-xs lg:text-sm bg-slate-100 hover:bg-slate-50",
+        'text-slate-700 ring-1 ring-slate-200  rounded-md block w-full overflow-x-auto px-3 py-2 transition-all text-xs lg:text-sm bg-slate-100 hover:bg-slate-50',
         {
-          "bg-slate-50": expanded,
+          'bg-slate-50': expanded,
         },
         {
-          "scale-[1.01] shadow-xl": expanded,
-        }
+          'scale-[1.01] shadow-xl': expanded,
+        },
       )}
     >
       <button
         className="w-full text-left"
         onClick={() => {
-          setExpanded(!expanded);
+          setExpanded(!expanded)
         }}
       >
         <div className="flex flex-col items-start">
           <div className="text-slate-500 font-mono font-semibold">{tag}</div>
           <h4
             className={clsx(
-              "font-bold mb-1 text-base md:text-lg text-slate-800"
+              'font-bold mb-1 text-base md:text-lg text-slate-800',
             )}
           >
             {<Markdown markdownText={description} />}
           </h4>
-          <div className={clsx("mb-0 flex w-full justify-between")}>
+          <div className={clsx('mb-0 flex w-full justify-between')}>
             <span className="font-mono whitespace-nowrap">
               {typeScriptTag !== undefined
                 ? `${clientNameCamelCase}.${typeScriptTag}.${method}()`
                 : `${clientNameCamelCase}.${method}()`}
             </span>
             <IconChevronDown
-              className={clsx("h-4 transition-transform shrink-0", {
-                "rotate-180": expanded,
+              className={clsx('h-4 transition-transform shrink-0', {
+                'rotate-180': expanded,
               })}
             />
           </div>
         </div>
       </button>
       <div
-        className={clsx("text-left w-full", {
-          "h-0 overflow-hidden": !expanded,
-          "h-auto": expanded,
+        className={clsx('text-left w-full', {
+          'h-0 overflow-hidden': !expanded,
+          'h-auto': expanded,
         })}
       >
         <SdkMethodSection
           Icon={IconAdjustments}
-          header={parameters.length === 0 ? "No Parameters" : "Parameter"}
+          header={parameters.length === 0 ? 'No Parameters' : 'Parameter'}
         >
           <div className="space-y-2">
             {parameters.map((parameter) => {
-              return <SdkMethodParameter key={parameter.name} {...parameter} />;
+              return <SdkMethodParameter key={parameter.name} {...parameter} />
             })}
           </div>
         </SdkMethodSection>
         <SdkMethodSection
-          header={responses.length === 0 ? "No Responses" : "Response"}
+          header={responses.length === 0 ? 'No Responses' : 'Response'}
           Icon={IconCube}
         >
           <div className="space-y-2 w-full">
             {responses.map((response) => {
               return (
                 <SdkMethodResponse key={response.statusCode} {...response} />
-              );
+              )
             })}
           </div>
         </SdkMethodSection>
         <SdkMethodSection header="Endpoint" Icon={IconLink}>
           <div className="flex items-center gap-2 mb-3">
             <HttpMethodBadge httpMethod={httpMethod} />
-            <div className={clsx("font-mono")}>{url}</div>
+            <div className={clsx('font-mono')}>{url}</div>
           </div>
         </SdkMethodSection>
       </div>
     </div>
-  );
+  )
 }
 
 function SdkMethodResponse({
   statusCode,
   description,
 }: {
-  statusCode: string;
-  description?: string;
+  statusCode: string
+  description?: string
 }) {
   return (
     <div
-      className={clsx("p-2 w-full border rounded-md", {
-        "bg-blue-50 border-blue-100 text-blue-600": statusCode.startsWith("2"),
-        "bg-red-50 border-red-100 text-red-600": !statusCode.startsWith("2"),
+      className={clsx('p-2 w-full border rounded-md', {
+        'bg-blue-50 border-blue-100 text-blue-600': statusCode.startsWith('2'),
+        'bg-red-50 border-red-100 text-red-600': !statusCode.startsWith('2'),
       })}
     >
       <span className="font-semibold">{statusCode}</span>
@@ -359,7 +360,7 @@ function SdkMethodResponse({
         <div className="mb-1">{<Markdown markdownText={description} />}</div>
       )}
     </div>
-  );
+  )
 }
 
 function SdkMethodParameter({
@@ -377,7 +378,7 @@ function SdkMethodParameter({
       </div>
       <div className="mt-1">{<Markdown markdownText={description} />}</div>
     </div>
-  );
+  )
 }
 
 function SdkMethodParameterRequired() {
@@ -385,23 +386,23 @@ function SdkMethodParameterRequired() {
     <span className="font-mono text-red-600 p-1 rounded-md border-red-300 bg-red-100">
       required
     </span>
-  );
+  )
 }
 
 function SdkMethodParameterName({ children }: PropsWithChildren<{}>) {
   return (
     <span
       className={clsx(
-        "font-semibold p-1 rounded-md border font-mono bg-slate-200 text-slate-700 border-slate-400"
+        'font-semibold p-1 rounded-md border font-mono bg-slate-200 text-slate-700 border-slate-400',
       )}
     >
       {children}
     </span>
-  );
+  )
 }
 
 function SdkMethodParameterSchema({ children }: PropsWithChildren<{}>) {
-  return <span className="font-mono">{children}</span>;
+  return <span className="font-mono">{children}</span>
 }
 
 function SdkMethodSection({
@@ -409,12 +410,12 @@ function SdkMethodSection({
   children,
   Icon,
 }: PropsWithChildren<{
-  header: string;
-  Icon: (props: TablerIconsProps) => JSX.Element;
+  header: string
+  Icon: (props: TablerIconsProps) => JSX.Element
 }>) {
   return (
     <div className="flex w-full gap-2 mt-6">
-      <Icon className={clsx("shrink-0 h-4 text-slate-500")} />
+      <Icon className={clsx('shrink-0 h-4 text-slate-500')} />
       <div className="flex flex-col grow items-start">
         <SdkMethodHeader className="font-semibold font-sans mb-2 uppercase">
           {header}
@@ -422,31 +423,31 @@ function SdkMethodSection({
         <div className="text-xs w-full">{children}</div>
       </div>
     </div>
-  );
+  )
 }
 
 function SdkMethodHeader({
   children,
   className,
 }: PropsWithChildren<{
-  className?: string;
+  className?: string
 }>) {
   return (
     <h5
       className={clsx(
-        "font-bold whitespace-nowrap mb-1 text-xs font-mono text-slate-600",
-        className
+        'font-bold whitespace-nowrap mb-1 text-xs font-mono text-slate-600',
+        className,
       )}
     >
       {children}
     </h5>
-  );
+  )
 }
 
 function BigSection({ children }: PropsWithChildren<{}>) {
   return (
     <div className="mx-4 lg:mx-auto lg:w-[960px] xl:w-[1152px]">{children}</div>
-  );
+  )
 }
 
 function AboutSection({ children }: PropsWithChildren<{}>) {
@@ -454,11 +455,11 @@ function AboutSection({ children }: PropsWithChildren<{}>) {
     <div className="mb-10 ring-1 ring-slate-200 bg-white rounded-md shadow-md p-8">
       {children}
     </div>
-  );
+  )
 }
 
 function AboutTitle({ children }: PropsWithChildren<{}>) {
-  return <h3 className="text-slate-500 uppercase text-xs mb-2">{children}</h3>;
+  return <h3 className="text-slate-500 uppercase text-xs mb-2">{children}</h3>
 }
 
 function SignupForm({
@@ -466,16 +467,22 @@ function SignupForm({
   serviceName,
   language,
 }: {
-  company: string;
-  serviceName?: string;
-  language: string;
+  company: string
+  serviceName?: string
+  language: string
 }) {
-  const { setEmail, signedUp, signedUpEmail, loading, handleSubmit, email } =
-    useSdkSignup({
-      company,
-      serviceName,
-      language,
-    });
+  const {
+    setEmail,
+    signedUp,
+    signedUpEmail,
+    loading,
+    handleSubmit,
+    email,
+  } = useSdkSignup({
+    company,
+    serviceName,
+    language,
+  })
 
   return (
     <form
@@ -485,8 +492,8 @@ function SignupForm({
     >
       <div className="flex flex-col">
         <h2
-          className={clsx("text-lg lg:text-xl text-emerald-900 font-bold", {
-            "mb-3": !signedUp,
+          className={clsx('text-lg lg:text-xl text-emerald-900 font-bold', {
+            'mb-3': !signedUp,
           })}
         >
           {signedUp
@@ -497,7 +504,7 @@ function SignupForm({
           <>
             <p className="mb-4">{`Your email, ${signedUpEmail}, has been successfully registered for access to the ${language} SDK. We will notify you by email soon.`}</p>
             <p className="mb-0">
-              For inquiries or support, please contact us at{" "}
+              For inquiries or support, please contact us at{' '}
               <a href="mailto:sdks@konfigthis.com">sdks@konfigthis.com</a>
             </p>
           </>
@@ -534,7 +541,7 @@ function SignupForm({
         )}
       </div>
     </form>
-  );
+  )
 }
 
 function Sidebar({
@@ -552,19 +559,19 @@ function Sidebar({
   openApiRaw,
   homepage,
 }: {
-  homepage: string;
-  serviceName: string;
-  apiTitle: string;
-  apiBaseUrl: string;
-  apiVersion: string;
-  endpoints: number;
-  sdkMethods: number;
-  schemas: number;
-  parameters: number;
-  difficulty: string;
-  contactUrl: string;
-  contactEmail: string;
-  openApiRaw?: string;
+  homepage: string
+  serviceName: string
+  apiTitle: string
+  apiBaseUrl: string
+  apiVersion: string
+  endpoints: number
+  sdkMethods: number
+  schemas: number
+  parameters: number
+  difficulty: string
+  contactUrl: string
+  contactEmail: string
+  openApiRaw?: string
 }) {
   return (
     <div className="top-20 sticky w-full lg:w-fit">
@@ -644,7 +651,7 @@ function Sidebar({
           <SidebarSectionTitle>Homepage</SidebarSectionTitle>
           <SidebarSectionContent>
             <a href={homepage} target="_blank">
-              {homepage.replace("https://", "").replace("http://", "")}
+              {homepage.replace('https://', '').replace('http://', '')}
             </a>
           </SidebarSectionContent>
         </SidebarSection>
@@ -653,7 +660,7 @@ function Sidebar({
             <SidebarSectionTitle>Contact URL</SidebarSectionTitle>
             <SidebarSectionContent>
               <a href={contactUrl} target="_blank">
-                {contactUrl.replace("https://", "").replace("http://", "")}
+                {contactUrl.replace('https://', '').replace('http://', '')}
               </a>
             </SidebarSectionContent>
           </SidebarSection>
@@ -688,14 +695,14 @@ function Sidebar({
         )}
       </div>
     </div>
-  );
+  )
 }
 
 function SidebarSection({
   children,
   noBorder,
 }: PropsWithChildren<{ noBorder?: boolean }>) {
-  return <div className={clsx("py-2 lg:py-3 mb-1")}>{children}</div>;
+  return <div className={clsx('py-2 lg:py-3 mb-1')}>{children}</div>
 }
 
 function SidebarSectionTitle({
@@ -704,57 +711,55 @@ function SidebarSectionTitle({
 }: PropsWithChildren<{ large?: boolean }>) {
   return (
     <h3
-      className={clsx("mb-1 text-slate-500 uppercase text-xs", {
-        "text-lg text-black": large,
+      className={clsx('mb-1 text-slate-500 uppercase text-xs', {
+        'text-lg text-black': large,
       })}
     >
       {children}
     </h3>
-  );
+  )
 }
 
 function SidebarSectionContent({
   children,
   className,
 }: PropsWithChildren<{ className?: string }>) {
-  return (
-    <div className={clsx("text font-semibold", className)}>{children}</div>
-  );
+  return <div className={clsx('text font-semibold', className)}>{children}</div>
 }
 
 function Dot() {
-  return <div className="h-[3px] w-[3px] bg-slate-300 rounded-full" />;
+  return <div className="h-[3px] w-[3px] bg-slate-300 rounded-full" />
 }
 
 export function HttpMethodBadge({ httpMethod }: { httpMethod: HttpMethods }) {
-  const color = httpMethodColor(httpMethod);
+  const color = httpMethodColor(httpMethod)
   return (
     <div
-      className={clsx("px-2 text-xs rounded-xl uppercase font-semibold", {
-        "bg-green-100 text-green-700 border border-green-300":
-          color === "green",
-        "bg-blue-100 text-blue-700 border border-blue-300": color === "blue",
-        "bg-red-100 text-red-700 border border-red-300": color === "red",
-        "bg-yellow-100 text-yellow-700 border border-yellow-300":
-          color === "yellow",
-        "bg-slate-100 text-slate-700 border border-slate-300":
-          color === "slate",
+      className={clsx('px-2 text-xs rounded-xl uppercase font-semibold', {
+        'bg-green-100 text-green-700 border border-green-300':
+          color === 'green',
+        'bg-blue-100 text-blue-700 border border-blue-300': color === 'blue',
+        'bg-red-100 text-red-700 border border-red-300': color === 'red',
+        'bg-yellow-100 text-yellow-700 border border-yellow-300':
+          color === 'yellow',
+        'bg-slate-100 text-slate-700 border border-slate-300':
+          color === 'slate',
       })}
     >
       {httpMethod}
     </div>
-  );
+  )
 }
 
 function httpMethodColor(
-  method: HttpMethods
-): "green" | "blue" | "red" | "yellow" | "slate" {
-  if (method === HttpMethodsEnum.GET) return "green";
-  if (method === HttpMethodsEnum.POST) return "blue";
-  if (method === HttpMethodsEnum.PUT) return "blue";
-  if (method === HttpMethodsEnum.DELETE) return "red";
-  if (method === HttpMethodsEnum.PATCH) return "yellow";
-  if (method === HttpMethodsEnum.OPTIONS) return "yellow";
-  if (method === HttpMethodsEnum.TRACE) return "yellow";
-  return "slate";
+  method: HttpMethods,
+): 'green' | 'blue' | 'red' | 'yellow' | 'slate' {
+  if (method === HttpMethodsEnum.GET) return 'green'
+  if (method === HttpMethodsEnum.POST) return 'blue'
+  if (method === HttpMethodsEnum.PUT) return 'blue'
+  if (method === HttpMethodsEnum.DELETE) return 'red'
+  if (method === HttpMethodsEnum.PATCH) return 'yellow'
+  if (method === HttpMethodsEnum.OPTIONS) return 'yellow'
+  if (method === HttpMethodsEnum.TRACE) return 'yellow'
+  return 'slate'
 }

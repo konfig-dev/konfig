@@ -60,7 +60,6 @@ export type SdkPageProps = {
   previewLinkImage: string
   sdkName: string
   language?: string
-  companyKebabCase: string
 }
 
 export enum HttpMethods {
