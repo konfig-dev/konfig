@@ -158,7 +158,7 @@ export function AboutCompany({
   metaDescription: string
   homepage: string
   categories: string[]
-  openApiGitHubUi: string
+  openApiGitHubUi?: string
   developerDocumentation?: string
 }) {
   return (
@@ -172,7 +172,9 @@ export function AboutCompany({
       </div>
       <div className="mt-4 flex gap-2">
         <ExternalLinkButton label={homepage} url={homepage} />
-        <ExternalLinkButton label={'OpenAPI'} url={openApiGitHubUi} />
+        {openApiGitHubUi && (
+          <ExternalLinkButton label={'OpenAPI'} url={openApiGitHubUi} />
+        )}
         {developerDocumentation && (
           <ExternalLinkButton
             label="API Documentation"
@@ -201,10 +203,11 @@ export function AboutCompany({
 
 function ExternalLinkButton({ url, label }: { url: string; label: string }) {
   const withHttps = url.startsWith('https://') ? url : `https://${url}`
+  const withoutHttps = label.startsWith('https://') ? label.slice(8) : label
   return (
     <a href={withHttps} className="hover:no-underline" target="_blank">
       <button className="border hover:shadow-xl hover:bg-blue-50 border-blue-700 text-blue-700 transition-all hover:border-blue-900 hover:text-blue-900 rounded-md px-2 py-1 items-center flex gap-2">
-        <span className="font-semibold">{label}</span>
+        <span className="font-semibold">{withoutHttps}</span>
         <IconExternalLink className="h-5" />
       </button>
     </a>

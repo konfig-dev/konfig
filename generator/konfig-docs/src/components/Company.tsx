@@ -7,7 +7,6 @@ import { useSdkSignup } from '../util/use-sdk-signup'
 import clsx from 'clsx'
 import { LoadingIcon } from './LoadingIcon'
 import {
-  IconCheck,
   IconChevronDown,
   IconChevronRight,
   IconExternalLink,
@@ -24,14 +23,15 @@ type APIProps = {
   favicon: string
   homepage: string
   categories: string[]
-  openApiGitHubUi: string
   metaDescription: string
-  services: {
+  sdks: {
     name: string
     numberOfMethods: number
     categories: string[]
     index: string
     link: string
+    openapiGitHubUi?: string
+    developerDocumentation?: string
   }[]
 }
 
@@ -39,11 +39,10 @@ export function Company({
   company,
   previewLinkImage,
   logo,
-  services,
+  sdks,
   favicon,
   homepage,
   categories,
-  openApiGitHubUi,
   metaDescription,
 }: APIProps) {
   const title = `Integrate ${company}'s API using Konfig's SDKs`
@@ -68,7 +67,7 @@ export function Company({
             metaDescription={description}
           />
         </div>
-        <SDKs favicon={favicon} services={services} />
+        <SDKs favicon={favicon} sdks={sdks} />
         <BottomCTA company={company} />
         <AboutCompany
           company={company}
@@ -76,7 +75,6 @@ export function Company({
           metaDescription={metaDescription}
           homepage={homepage}
           categories={categories}
-          openApiGitHubUi={openApiGitHubUi}
         />
       </div>
     </Layout>
@@ -86,38 +84,55 @@ export function Company({
 function BottomCTA({ company }: { company: string }) {
   return (
     <div className="py-32 px-8 md:px-48 bg-gradient-to-tl from-[var(--ifm-color-primary-darkest)] to-[var(--ifm-color-primary)]">
-      <h2 className="text-3xl sm:text-4xl text-white">
-        Start integrating {company} with Konfig
-      </h2>
-      <SignupForm company={company} doNotShowQuestion />
+      <div className="max-w-[600px] mx-auto">
+        <h2 className="text-3xl mb-2 sm:text-4xl text-white">
+          Start integrating {company} with Konfig
+        </h2>
+        <SignupForm bottomCTA company={company} doNotShowQuestion />
+      </div>
     </div>
   )
 }
 
-function SDKs({
-  services,
-  favicon,
-}: {
-  services: APIProps['services']
-  favicon: string
-}) {
+function SDKs({ sdks, favicon }: { sdks: APIProps['sdks']; favicon: string }) {
+  const [amountToShow, setAmountToShow] = useState(3)
+  const numberOfSdks = sdks.length
+  sdks = sdks.slice(0, amountToShow)
   return (
     <div className="mx-3 sm:mx-auto sm:w-[480px] md:w-[600px] lg:w-[768px] flex flex-col bg-gradient-to-b from-slate-50 to-white relative px-8 py-10 top-[-75px] rounded-sm bg-white shadow-xl">
       <div className="absolute flex flex-col z-0 inset-0 m-auto w-fit text-blue-300 font-bold text-sm top-[-50px]">
-        <div>Explore {services.length * 3} SDKs 👀</div>
+        <div>Explore {numberOfSdks} SDKs 👀</div>
         <IconChevronDown className="mx-auto" />
       </div>
-      {services.flatMap(({ index, link, categories }, i) => {
-        return (
-          <SdkLinkItem
-            index={index}
-            link={link}
-            favicon={favicon}
-            categories={categories}
-            isLastItem={i === services.length - 1}
-          />
-        )
-      })}
+      {sdks.flatMap(
+        (
+          { index, link, categories, openapiGitHubUi, developerDocumentation },
+          i,
+        ) => {
+          return (
+            <SdkLinkItem
+              index={index}
+              link={link}
+              favicon={favicon}
+              categories={categories}
+              openApiGitHubUi={openapiGitHubUi}
+              developerDocumentation={developerDocumentation}
+              isLastItem={i === sdks.length - 1}
+            />
+          )
+        },
+      )}
+      {amountToShow < numberOfSdks && (
+        <button
+          onClick={() => {
+            setAmountToShow((amount) => amount + 3)
+          }}
+          aria-hidden={amountToShow >= numberOfSdks}
+          className="aria-hidden:hidden mt-4 mx-auto group flex gap-3 hover:gap-2 items-center transition-all bg-gradient-to-br text-white w-fit text-center font-semibold px-3 py-2 from-blue-600 to-blue-800 rounded-md text-1xl cursor-pointer z-10"
+        >
+          Show More
+        </button>
+      )}
     </div>
   )
 }
@@ -126,7 +141,7 @@ function CategoryFilter({ category }: { category: string }) {
   return (
     <button
       className={clsx(
-        'z-10 flex items-center gap-1 border font-medium rounded-md text-xs px-2 py-1 transition-all bg-slate-50 hover:bg-slate-100 border-slate-300 text-slate-600 hover:text-slate-800',
+        'z-10 flex items-center gap-1 border font-medium rounded-md text-xs px-2 py-1 transition-all bg-slate-50 border-slate-300 text-slate-600',
       )}
     >
       <span>{category}</span>
@@ -140,12 +155,16 @@ function SdkLinkItem({
   favicon,
   categories,
   isLastItem,
+  openApiGitHubUi,
+  developerDocumentation,
 }: {
   index: string
   link: string
   favicon: string
   categories: string[]
   isLastItem: boolean
+  openApiGitHubUi?: string
+  developerDocumentation?: string
 }) {
   return (
     <a className="hover:no-underline z-10" href={link}>
@@ -173,6 +192,26 @@ function SdkLinkItem({
             {categories.map((category) => {
               return <CategoryFilter category={category} />
             })}
+            {openApiGitHubUi && (
+              <a
+                className="flex w-fit items-center group/link text-slate-400 hover:text-slate-700 text-xs sm:text-sm hover:no-underline"
+                target="_blank"
+                href={openApiGitHubUi}
+              >
+                <div>OpenAPI</div>
+                <IconExternalLink height="11.5" />
+              </a>
+            )}
+            {developerDocumentation && (
+              <a
+                className="flex w-fit items-center group/link text-slate-400 hover:text-slate-700 text-xs sm:text-sm hover:no-underline"
+                target="_blank"
+                href={developerDocumentation}
+              >
+                <div>API Docs</div>
+                <IconExternalLink height="11.5" />
+              </a>
+            )}
           </div>
         </div>
         <IconChevronRight className="shrink-0 text-slate-400 group-hover:text-slate-500 relative group-hover:translate-x-1 group-hover:scale-110 transition-all" />
@@ -222,9 +261,11 @@ function HeroSection({
 function SignupForm({
   company,
   doNotShowQuestion,
+  bottomCTA,
 }: {
   company: string
   doNotShowQuestion?: boolean
+  bottomCTA?: boolean
 }) {
   const {
     setEmail,
@@ -241,26 +282,43 @@ function SignupForm({
     <form
       onSubmit={handleSubmit}
       id="signup"
-      className="py-4 px-8 rounded-md bg-blue-100 ring-1 transition-all hover:scale-[1.01] hover:shadow-lg shadow-md my-8"
+      data-windowed={!bottomCTA}
+      className="data-[windowed=true]:py-4 data-[windowed=true]:px-8 rounded-md data-[windowed=true]:bg-blue-100 data-[windowed=true]:ring-1 data-[windowed=true]:transition-all data-[windowed=true]:hover:scale-[1.01] data-[windowed=true]:hover:shadow-lg data-[windowed=true]:shadow-md data-[windowed=true]:my-8"
     >
       <div className="flex flex-col">
         {((!signedUp && !doNotShowQuestion) || signedUp) && (
           <h2
-            className={clsx('text-base md:text-lg text-blue-900 font-bold', {
-              'mb-3': !signedUp,
-            })}
+            data-bottom={bottomCTA}
+            className={clsx(
+              'text-base md:text-lg text-blue-900 data-[bottom=true]:text-white font-bold',
+              {
+                'mb-3': !signedUp,
+              },
+            )}
           >
             {signedUp
-              ? `Thanks for signing up for access to ${company}'s SDKs 🎉!`
+              ? `Thanks for signing up for access to ${company} SDKs 🎉!`
               : `Want SDKs for ${company}?`}
           </h2>
         )}
         {signedUp ? (
           <>
-            <p className="mb-4">{`Your email, ${signedUpEmail}, has been successfully registered for access to ${company}'s SDKs. We will notify you by email soon.`}</p>
-            <p className="mb-0">
+            <p
+              data-bottom={bottomCTA}
+              className="mb-4 data-[bottom=true]:text-white"
+            >{`Your email, ${signedUpEmail}, has been successfully registered for access to ${company} SDKs. We will notify you by email soon.`}</p>
+            <p
+              data-bottom={bottomCTA}
+              className="mb-0 data-[bottom=true]:text-white"
+            >
               For inquiries or support, please contact us at{' '}
-              <a href="mailto:sdks@konfigthis.com">sdks@konfigthis.com</a>
+              <a
+                data-bottom={bottomCTA}
+                href="mailto:sdks@konfigthis.com"
+                className="data-[bottom=true]:text-white font-bold"
+              >
+                sdks@konfigthis.com
+              </a>
             </p>
           </>
         ) : null}
@@ -268,7 +326,7 @@ function SignupForm({
           <input
             type="email"
             name="email"
-            className="rounded-md px-2 py-1 w-full mb-2"
+            className="rounded-md border px-2 py-1 w-full mb-2"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
