@@ -935,87 +935,102 @@ async function downloadOpenApiSpecFromRedoclyEmbedded({
     closeSelector: string;
   };
 }) {
-  const page = await browser.newPage();
+  let retries = 0;
+  while (retries < 3) {
+    try {
+      const page = await browser.newPage();
 
-  if (enableAdBlock) {
-    PuppeteerBlocker.fromPrebuiltAdsAndTracking(fetch).then((blocker) => {
-      blocker.enableBlockingInPage(page);
-    });
+      if (enableAdBlock) {
+        PuppeteerBlocker.fromPrebuiltAdsAndTracking(fetch).then((blocker) => {
+          blocker.enableBlockingInPage(page);
+        });
+      }
+
+      // Set the download options
+      const client = await page.target().createCDPSession();
+
+      // extract domain without scheme from URL (e.g. https://apidocs.launchdarkly.com -> apidocs.launchdarkly.com)
+      // or (e.g. https://docs.klarna.com/api/payments/ -> docs.klarna.com/api/payments)
+      const domainWithoutScheme = new URL(url).hostname + new URL(url).pathname;
+
+      const removeTrailingSlash = (str: string) =>
+        str.endsWith("/") ? str.slice(0, -1) : str;
+
+      // replace all slashes with underscores
+      const domainWithoutSlashes = removeTrailingSlash(
+        domainWithoutScheme
+      ).replaceAll("/", "_");
+
+      const downloadPath = path.join(
+        browserDownloadsFolder,
+        domainWithoutSlashes
+      );
+
+      // need to clear directory so we can properly wait for download to finish
+      fs.rmdirSync(downloadPath, { recursive: true });
+
+      fs.ensureDirSync(downloadPath);
+      await client.send("Page.setDownloadBehavior", {
+        behavior: "allow",
+        downloadPath,
+      });
+
+      // Navigate to the page
+      console.log(`Navigating to ${url}`);
+      await page.goto(url, {
+        waitUntil: "networkidle2",
+      });
+      console.log(`Finished navigating to ${url}`);
+
+      if (closeModal !== undefined) {
+        console.log("Closing modal...");
+        await page.waitForSelector(closeModal.modalSelector);
+        console.log("Modal found");
+        await page.waitForSelector(closeModal.closeSelector);
+        console.log("Modal close button found");
+        await page.click(closeModal.closeSelector);
+
+        // wait for modalSelector to disappear
+        await page.waitForFunction(
+          (modalSelector) => !document.querySelector(modalSelector),
+          {},
+          closeModal.modalSelector
+        );
+
+        console.log("Finished closing modal");
+      }
+
+      // Click the download button
+      const downloadButtonSelector = `a[download="${filename}"]`;
+      await page.waitForSelector(downloadButtonSelector);
+      // wait for page to fully load as well
+      await page.click(downloadButtonSelector);
+
+      // wait until download finishes by checking if the size of files the
+      // download folder have stopped increasing after the file appears
+      console.log(`Waiting for download to finish for ${url}...`);
+      await waitForDownloadToFinishByFileSize(downloadPath);
+      console.log(`Finished waiting for download to finish for ${url}`);
+
+      let rawSpecString = fs.readFileSync(
+        path.join(downloadPath, filename),
+        "utf-8"
+      );
+      const regex = /(\((\/|#).*?\))/g;
+      rawSpecString = rawSpecString.replaceAll(regex, `(${url})`);
+      return rawSpecString;
+    } catch (e) {
+      console.error(`Error encountered, retrying...`);
+      retries++;
+    }
   }
-
-  // Set the download options
-  const client = await page.target().createCDPSession();
-
-  // extract domain without scheme from URL (e.g. https://apidocs.launchdarkly.com -> apidocs.launchdarkly.com)
-  // or (e.g. https://docs.klarna.com/api/payments/ -> docs.klarna.com/api/payments)
-  const domainWithoutScheme = new URL(url).hostname + new URL(url).pathname;
-
-  const removeTrailingSlash = (str: string) =>
-    str.endsWith("/") ? str.slice(0, -1) : str;
-
-  // replace all slashes with underscores
-  const domainWithoutSlashes = removeTrailingSlash(
-    domainWithoutScheme
-  ).replaceAll("/", "_");
-
-  const downloadPath = path.join(browserDownloadsFolder, domainWithoutSlashes);
-
-  // need to clear directory so we can properly wait for download to finish
-  fs.rmdirSync(downloadPath, { recursive: true });
-
-  fs.ensureDirSync(downloadPath);
-  await client.send("Page.setDownloadBehavior", {
-    behavior: "allow",
-    downloadPath,
-  });
-
-  // Navigate to the page
-  console.log(`Navigating to ${url}`);
-  await page.goto(url, {
-    waitUntil: "networkidle2",
-  });
-  console.log(`Finished navigating to ${url}`);
-
-  if (closeModal !== undefined) {
-    console.log("Closing modal...");
-    await page.waitForSelector(closeModal.modalSelector);
-    console.log("Modal found");
-    await page.waitForSelector(closeModal.closeSelector);
-    console.log("Modal close button found");
-    await page.click(closeModal.closeSelector);
-
-    // wait for modalSelector to disappear
-    await page.waitForFunction(
-      (modalSelector) => !document.querySelector(modalSelector),
-      {},
-      closeModal.modalSelector
-    );
-
-    console.log("Finished closing modal");
-  }
-
-  // Click the download button
-  const downloadButtonSelector = `a[download="${filename}"]`;
-  await page.waitForSelector(downloadButtonSelector);
-  // wait for page to fully load as well
-  await page.click(downloadButtonSelector);
-
-  // wait until download finishes by checking if the size of files the
-  // download folder have stopped increasing after the file appears
-  console.log(`Waiting for download to finish for ${url}...`);
-  await waitForDownloadToFinishByFileSize(downloadPath);
-  console.log(`Finished waiting for download to finish for ${url}`);
-
-  let rawSpecString = fs.readFileSync(
-    path.join(downloadPath, filename),
-    "utf-8"
-  );
-  const regex = /(\((\/|#).*?\))/g;
-  rawSpecString = rawSpecString.replaceAll(regex, `(${url})`);
-  return rawSpecString;
+  throw Error("Exceeded maximum retries");
 }
 
 async function waitForDownloadToFinishByFileSize(downloadPath: string) {
+  let timeout = setTimeout(() => {
+    throw new Error("Timeout: File download took longer than 20 seconds");
+  }, 20000);
   console.log(`Waiting for file to appear under ${downloadPath}...`);
   // wait for the file to appear
   while (true) {
@@ -1046,6 +1061,7 @@ async function waitForDownloadToFinishByFileSize(downloadPath: string) {
     previousSize = stats.size;
     await new Promise((resolve) => setTimeout(resolve, 500));
   }
+  clearTimeout(timeout);
 }
 
 type CachedProcessedRequest = {

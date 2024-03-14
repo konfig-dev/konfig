@@ -25,7 +25,7 @@ We go to work every day striving to improve education for millions of kids. Join
       companyKebabCase="clever"
       clientNameCamelCase="clever"
       homepage="clever.com"
-      lastUpdated={new Date("2024-03-13T17:47:38.295Z")}
+      lastUpdated={new Date("2024-03-14T08:10:33.678Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/clever/favicon.png"
       // Missing contactUrl
       // Missing contactEmail

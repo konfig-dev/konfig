@@ -22,7 +22,7 @@ The service handles the end-to-end workflow, from video ingestion to worldwide v
       companyKebabCase="api-video"
       clientNameCamelCase="apiVideo"
       homepage="api.video"
-      lastUpdated={new Date("2024-03-13T02:25:22.175Z")}
+      lastUpdated={new Date("2024-03-14T08:10:33.678Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/api-video/favicon.png"
       // Missing contactUrl
       // Missing contactEmail

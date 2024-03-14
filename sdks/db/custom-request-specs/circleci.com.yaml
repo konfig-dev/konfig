@@ -3642,102 +3642,6 @@ paths:
           example: gh/CircleCI-Public/api-preview-docs
           allowReserved: true
   /project/{project-slug}/checkout-key:
-    post:
-      summary: Create a new checkout key
-      description: >-
-        Not available to projects that use GitLab or GitHub App. Creates a new
-        checkout key. This API request is only usable with a user API token.
-                                   Please ensure that you have authorized your account with GitHub before creating user keys.
-                                   This is necessary to give CircleCI the permission to create a user key associated with
-                                   your GitHub user account. You can find this page by visiting Project Settings > Checkout SSH Keys
-      tags:
-        - Project
-      operationId: createCheckoutKey
-      responses:
-        '201':
-          description: The checkout key.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  public-key:
-                    type: string
-                    description: A public SSH key.
-                    example: ssh-rsa ...
-                  type:
-                    enum:
-                      - deploy-key
-                      - github-user-key
-                    type: string
-                    description: >-
-                      The type of checkout key. This may be either `deploy-key`
-                      or `github-user-key`.
-                    title: CheckoutKeyType
-                    example: deploy-key
-                  fingerprint:
-                    type: string
-                    description: An SSH key fingerprint.
-                    example: c9:0b:1c:4f:d5:65:56:b9:ad:88:f9:81:2b:37:74:2f
-                  preferred:
-                    type: boolean
-                    description: A boolean value that indicates if this key is preferred.
-                    example: true
-                  created-at:
-                    type: string
-                    format: date-time
-                    description: The date and time the checkout key was created.
-                    example: '2015-09-21T17:29:21.042Z'
-                required:
-                  - public-key
-                  - type
-                  - fingerprint
-                  - preferred
-                  - created-at
-                description: A checkout key
-                title: CheckoutKey
-        default:
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-          description: Error response.
-      parameters:
-        - in: path
-          name: project-slug
-          description: >-
-            Project slug in the form `vcs-slug/org-name/repo-name`. The `/`
-            characters may be URL-escaped. For projects that use GitLab or
-            GitHub App, use `circleci` as the `vcs-slug`, replace `org-name`
-            with the organization ID (found in Organization Settings), and
-            replace `repo-name` with the project ID (found in Project Settings).
-          schema:
-            type: string
-          required: true
-          example: gh/CircleCI-Public/api-preview-docs
-          allowReserved: true
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                type:
-                  enum:
-                    - user-key
-                    - deploy-key
-                  type: string
-                  description: >-
-                    The type of checkout key to create. This may be either
-                    `deploy-key` or `user-key`.
-                  title: CheckoutKeyInputType
-                  example: deploy-key
-              required:
-                - type
-              title: CheckoutKeyInput
     get:
       summary: Get all checkout keys
       description: Returns a sequence of checkout keys for `:project`.
@@ -3838,6 +3742,102 @@ paths:
               - sha256
               - md5
           required: false
+    post:
+      summary: Create a new checkout key
+      description: >-
+        Not available to projects that use GitLab or GitHub App. Creates a new
+        checkout key. This API request is only usable with a user API token.
+                                   Please ensure that you have authorized your account with GitHub before creating user keys.
+                                   This is necessary to give CircleCI the permission to create a user key associated with
+                                   your GitHub user account. You can find this page by visiting Project Settings > Checkout SSH Keys
+      tags:
+        - Project
+      operationId: createCheckoutKey
+      responses:
+        '201':
+          description: The checkout key.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  public-key:
+                    type: string
+                    description: A public SSH key.
+                    example: ssh-rsa ...
+                  type:
+                    enum:
+                      - deploy-key
+                      - github-user-key
+                    type: string
+                    description: >-
+                      The type of checkout key. This may be either `deploy-key`
+                      or `github-user-key`.
+                    title: CheckoutKeyType
+                    example: deploy-key
+                  fingerprint:
+                    type: string
+                    description: An SSH key fingerprint.
+                    example: c9:0b:1c:4f:d5:65:56:b9:ad:88:f9:81:2b:37:74:2f
+                  preferred:
+                    type: boolean
+                    description: A boolean value that indicates if this key is preferred.
+                    example: true
+                  created-at:
+                    type: string
+                    format: date-time
+                    description: The date and time the checkout key was created.
+                    example: '2015-09-21T17:29:21.042Z'
+                required:
+                  - public-key
+                  - type
+                  - fingerprint
+                  - preferred
+                  - created-at
+                description: A checkout key
+                title: CheckoutKey
+        default:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+          description: Error response.
+      parameters:
+        - in: path
+          name: project-slug
+          description: >-
+            Project slug in the form `vcs-slug/org-name/repo-name`. The `/`
+            characters may be URL-escaped. For projects that use GitLab or
+            GitHub App, use `circleci` as the `vcs-slug`, replace `org-name`
+            with the organization ID (found in Organization Settings), and
+            replace `repo-name` with the project ID (found in Project Settings).
+          schema:
+            type: string
+          required: true
+          example: gh/CircleCI-Public/api-preview-docs
+          allowReserved: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                type:
+                  enum:
+                    - user-key
+                    - deploy-key
+                  type: string
+                  description: >-
+                    The type of checkout key to create. This may be either
+                    `deploy-key` or `user-key`.
+                  title: CheckoutKeyInputType
+                  example: deploy-key
+              required:
+                - type
+              title: CheckoutKeyInput
   /project/{project-slug}/checkout-key/{fingerprint}:
     delete:
       summary: Delete a checkout key
@@ -6255,6 +6255,234 @@ paths:
           example: gh/CircleCI-Public/api-preview-docs
           allowReserved: true
   /schedule/{schedule-id}:
+    get:
+      summary: Get a schedule
+      description: Get a schedule by id.
+      tags:
+        - Schedule
+      operationId: getScheduleById
+      responses:
+        '200':
+          description: A schedule object.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                    description: The unique ID of the schedule.
+                  timetable:
+                    anyOf:
+                      - type: object
+                        properties:
+                          per-hour:
+                            type: integer
+                            format: integer
+                            description: >-
+                              Number of times a schedule triggers per hour,
+                              value must be between 1 and 60
+                          hours-of-day:
+                            type: array
+                            items:
+                              type: integer
+                              format: integer
+                              description: >-
+                                Hour in a day in UTC, value must be between 0
+                                and 24
+                            description: Hours in a day in which the schedule triggers.
+                          days-of-week:
+                            type: array
+                            items:
+                              enum:
+                                - TUE
+                                - SAT
+                                - SUN
+                                - MON
+                                - THU
+                                - WED
+                                - FRI
+                              type: string
+                              description: Day in a week, in three letters format
+                            description: Days in a week in which the schedule triggers.
+                          days-of-month:
+                            type: array
+                            items:
+                              type: integer
+                              format: integer
+                              description: Day in a month, between 1 and 31.
+                            description: >-
+                              Days in a month in which the schedule triggers.
+                              This is mutually exclusive with days in a week.
+                          months:
+                            type: array
+                            items:
+                              enum:
+                                - MAR
+                                - NOV
+                                - DEC
+                                - JUN
+                                - MAY
+                                - OCT
+                                - FEB
+                                - APR
+                                - SEP
+                                - AUG
+                                - JAN
+                                - JUL
+                              type: string
+                              description: Month, in three letters format.
+                            description: Months in which the schedule triggers.
+                        required:
+                          - per-hour
+                          - hours-of-day
+                          - days-of-week
+                      - type: object
+                        properties:
+                          per-hour:
+                            type: integer
+                            format: integer
+                            description: >-
+                              Number of times a schedule triggers per hour,
+                              value must be between 1 and 60
+                          hours-of-day:
+                            type: array
+                            items:
+                              type: integer
+                              format: integer
+                              description: >-
+                                Hour in a day in UTC, value must be between 0
+                                and 24
+                            description: Hours in a day in which the schedule triggers.
+                          days-of-month:
+                            type: array
+                            items:
+                              type: integer
+                              format: integer
+                              description: Day in a month, between 1 and 31.
+                            description: >-
+                              Days in a month in which the schedule triggers.
+                              This is mutually exclusive with days in a week.
+                          days-of-week:
+                            type: array
+                            items:
+                              enum:
+                                - TUE
+                                - SAT
+                                - SUN
+                                - MON
+                                - THU
+                                - WED
+                                - FRI
+                              type: string
+                              description: Day in a week, in three letters format
+                            description: Days in a week in which the schedule triggers.
+                          months:
+                            type: array
+                            items:
+                              enum:
+                                - MAR
+                                - NOV
+                                - DEC
+                                - JUN
+                                - MAY
+                                - OCT
+                                - FEB
+                                - APR
+                                - SEP
+                                - AUG
+                                - JAN
+                                - JUL
+                              type: string
+                              description: Month, in three letters format.
+                            description: Months in which the schedule triggers.
+                        required:
+                          - per-hour
+                          - hours-of-day
+                          - days-of-month
+                    description: Timetable that specifies when a schedule triggers.
+                  updated-at:
+                    type: string
+                    format: date-time
+                    description: The date and time the pipeline was last updated.
+                  name:
+                    type: string
+                    description: Name of the schedule.
+                  created-at:
+                    type: string
+                    format: date-time
+                    description: The date and time the pipeline was created.
+                  project-slug:
+                    type: string
+                    description: The project-slug for the schedule
+                    example: gh/CircleCI-Public/api-preview-docs
+                  parameters:
+                    type: object
+                    additionalProperties:
+                      anyOf:
+                        - type: integer
+                        - type: string
+                        - type: boolean
+                    description: >-
+                      Pipeline parameters represented as key-value pairs. Must
+                      contain branch or tag.
+                    example:
+                      deploy_prod: true
+                      branch: feature/design-new-api
+                  actor:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                        description: The unique ID of the user.
+                      login:
+                        type: string
+                        description: The login information for the user on the VCS.
+                        title: Login
+                      name:
+                        type: string
+                        description: The name of the user.
+                    required:
+                      - id
+                      - login
+                      - name
+                    title: User
+                    description: The attribution actor who will run the scheduled pipeline.
+                  description:
+                    type: string
+                    x-nullable: true
+                    description: Description of the schedule.
+                required:
+                  - id
+                  - name
+                  - timetable
+                  - description
+                  - project-slug
+                  - actor
+                  - created-at
+                  - updated-at
+                  - parameters
+                description: A schedule response
+                title: Schedule
+        default:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+          description: Error response.
+      parameters:
+        - in: path
+          name: schedule-id
+          description: The unique ID of the schedule.
+          schema:
+            type: string
+            format: uuid
+          required: true
     patch:
       summary: Update a schedule
       description: >-

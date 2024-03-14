@@ -4,7 +4,7 @@ import { Company } from '../../../components/Company';
 const sdks = [
   {
     "name": "Baremetrics",
-    "numberOfMethods": 61,
+    "numberOfMethods": 63,
     "categories": [
       "finance",
       "payments",
@@ -25,7 +25,7 @@ const sdks = [
   },
   {
     "name": "Baremetrics",
-    "numberOfMethods": 61,
+    "numberOfMethods": 63,
     "categories": [
       "finance",
       "payments",
@@ -46,7 +46,7 @@ const sdks = [
   },
   {
     "name": "Baremetrics",
-    "numberOfMethods": 61,
+    "numberOfMethods": 63,
     "categories": [
       "finance",
       "payments",

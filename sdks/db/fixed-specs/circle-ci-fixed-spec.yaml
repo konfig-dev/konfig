@@ -1251,49 +1251,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProjectGetBySlugdefaultResponse'
   /project/{project-slug}/checkout-key:
-    post:
-      tags:
-        - Project
-      summary: Create a new checkout key
-      operationId: Project_createCheckoutKey
-      description: >-
-        Not available to projects that use GitLab or GitHub App. Creates a new
-        checkout key. This API request is only usable with a user API token.
-                                   Please ensure that you have authorized your account with GitHub before creating user keys.
-                                   This is necessary to give CircleCI the permission to create a user key associated with
-                                   your GitHub user account. You can find this page by visiting Project Settings > Checkout SSH Keys
-      parameters:
-        - description: >-
-            Project slug in the form `vcs-slug/org-name/repo-name`. The `/`
-            characters may be URL-escaped. For projects that use GitLab or
-            GitHub App, use `circleci` as the `vcs-slug`, replace `org-name`
-            with the organization ID (found in Organization Settings), and
-            replace `repo-name` with the project ID (found in Project Settings).
-          in: path
-          name: project-slug
-          schema:
-            type: string
-          required: true
-          example: gh/CircleCI-Public/api-preview-docs
-          allowReserved: true
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ProjectCreateCheckoutKeyRequest'
-      responses:
-        '201':
-          description: The checkout key.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProjectCreateCheckoutKeyResponse'
-        default:
-          description: Error response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProjectCreateCheckoutKeydefaultResponse'
     get:
       tags:
         - Project
@@ -1338,6 +1295,49 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProjectListCheckoutKeysdefaultResponse'
+    post:
+      tags:
+        - Project
+      summary: Create a new checkout key
+      operationId: Project_createCheckoutKey
+      description: >-
+        Not available to projects that use GitLab or GitHub App. Creates a new
+        checkout key. This API request is only usable with a user API token.
+                                   Please ensure that you have authorized your account with GitHub before creating user keys.
+                                   This is necessary to give CircleCI the permission to create a user key associated with
+                                   your GitHub user account. You can find this page by visiting Project Settings > Checkout SSH Keys
+      parameters:
+        - description: >-
+            Project slug in the form `vcs-slug/org-name/repo-name`. The `/`
+            characters may be URL-escaped. For projects that use GitLab or
+            GitHub App, use `circleci` as the `vcs-slug`, replace `org-name`
+            with the organization ID (found in Organization Settings), and
+            replace `repo-name` with the project ID (found in Project Settings).
+          in: path
+          name: project-slug
+          schema:
+            type: string
+          required: true
+          example: gh/CircleCI-Public/api-preview-docs
+          allowReserved: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectCreateCheckoutKeyRequest'
+      responses:
+        '201':
+          description: The checkout key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectCreateCheckoutKeyResponse'
+        default:
+          description: Error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectCreateCheckoutKeydefaultResponse'
   /project/{project-slug}/checkout-key/{fingerprint}:
     delete:
       tags:
@@ -2016,6 +2016,33 @@ paths:
               schema:
                 $ref: '#/components/schemas/JobGetTestMetadatadefaultResponse'
   /schedule/{schedule-id}:
+    get:
+      tags:
+        - Schedule
+      summary: Get a schedule
+      operationId: Schedule_getById
+      description: Get a schedule by id.
+      parameters:
+        - description: The unique ID of the schedule.
+          in: path
+          name: schedule-id
+          schema:
+            type: string
+            format: uuid
+          required: true
+      responses:
+        '200':
+          description: A schedule object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScheduleGetByIdResponse'
+        default:
+          description: Error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScheduleGetByIddefaultResponse'
     patch:
       tags:
         - Schedule

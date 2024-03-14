@@ -19,7 +19,7 @@ export default function LaunchDarklyTypeScriptSdk() {
       companyKebabCase="launch-darkly"
       clientNameCamelCase="launchDarkly"
       homepage="launchdarkly.com"
-      lastUpdated={new Date("2024-03-13T17:47:38.295Z")}
+      lastUpdated={new Date("2024-03-14T08:38:56.572Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/launchdarkly/favicon.png"
       contactUrl="https://support.launchdarkly.com"
       contactEmail="support@launchdarkly.com"
@@ -14036,7 +14036,7 @@ export default function LaunchDarklyTypeScriptSdk() {
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Insights charts (beta)",
     "typeScriptTag": "insightsChartsBeta",
-    "description": "Get replease frequency chart data",
+    "description": "Get release frequency chart data",
     "parameters": [
       {
         "name": "projectKey",

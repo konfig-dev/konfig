@@ -27,7 +27,7 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
       companyKebabCase="baremetrics"
       clientNameCamelCase="baremetrics"
       homepage="baremetrics.com"
-      lastUpdated={new Date("2024-03-13T17:55:08.060Z")}
+      lastUpdated={new Date("2024-03-14T08:38:56.572Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/baremetrics/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -64,6 +64,121 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
     "typeScriptTag": "source",
     "description": "List Sources",
     "parameters": [],
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "url": "/v1/{source_id}/plans",
+    "method": "getPlansList",
+    "httpMethod": HttpMethodsEnum.GET,
+    "tag": "Source",
+    "typeScriptTag": "source",
+    "description": "List Plans",
+    "parameters": [
+      {
+        "name": "search",
+        "schema": "string",
+        "description": "Allows you to search based on the name or oid fields"
+      },
+      {
+        "name": "sourceId",
+        "schema": "string",
+        "required": true,
+        "description": "Please see [Sources](ref:sources)",
+        "example": "SOURCE_ID"
+      }
+    ],
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "url": "/v1/{source_id}/plans",
+    "method": "createPlan",
+    "httpMethod": HttpMethodsEnum.POST,
+    "tag": "Source",
+    "typeScriptTag": "source",
+    "description": "Create Plan",
+    "parameters": [
+      {
+        "name": "sourceId",
+        "schema": "string",
+        "required": true,
+        "description": "Please see [Sources](ref:sources)",
+        "example": "SOURCE_ID"
+      },
+      {
+        "name": "oid",
+        "schema": "string",
+        "required": true,
+        "description": "",
+        "example": "OID"
+      },
+      {
+        "name": "name",
+        "schema": "string",
+        "required": true,
+        "description": "",
+        "example": "NAME"
+      },
+      {
+        "name": "currency",
+        "schema": "string",
+        "required": true,
+        "description": "",
+        "example": "CURRENCY"
+      },
+      {
+        "name": "amount",
+        "schema": "integer",
+        "required": true,
+        "description": "",
+        "example": 0
+      },
+      {
+        "name": "interval",
+        "schema": "string",
+        "required": true,
+        "description": "",
+        "example": "INTERVAL"
+      },
+      {
+        "name": "interval_count",
+        "schema": "integer",
+        "required": true,
+        "description": "",
+        "example": 0
+      },
+      {
+        "name": "trial_duration",
+        "schema": "integer",
+        "required": false,
+        "description": "",
+        "default": 0
+      },
+      {
+        "name": "trial_duration_unit",
+        "schema": "string",
+        "required": false,
+        "description": "",
+        "default": "day"
+      }
+    ],
     "responses": [
       {
         "statusCode": "200",
@@ -185,12 +300,56 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
     ]
   },
   {
-    "url": "/v1/{source_id}/plans",
-    "method": "createPlan",
+    "url": "/v1/{source_id}/customers",
+    "method": "getCustomerList",
+    "httpMethod": HttpMethodsEnum.GET,
+    "tag": "Source",
+    "typeScriptTag": "source",
+    "description": "List Customers",
+    "parameters": [
+      {
+        "name": "search",
+        "schema": "string",
+        "description": "Allows you to search for a customer based on: oid, email, notes and name"
+      },
+      {
+        "name": "sourceId",
+        "schema": "string",
+        "required": true,
+        "description": "Please see [Sources](ref:sources)",
+        "example": "SOURCE_ID"
+      },
+      {
+        "name": "sort",
+        "schema": "string",
+        "description": "Allows you to sort the results. You can use ltv or created",
+        "default": "created"
+      },
+      {
+        "name": "order",
+        "schema": "string",
+        "description": "",
+        "default": "asc"
+      }
+    ],
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      },
+      {
+        "statusCode": "400",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "url": "/v1/{source_id}/customers",
+    "method": "createCustomerRecord",
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Source",
     "typeScriptTag": "source",
-    "description": "Create Plan",
+    "description": "Create Customer",
     "parameters": [
       {
         "name": "sourceId",
@@ -200,6 +359,24 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "example": "SOURCE_ID"
       },
       {
+        "name": "name",
+        "schema": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "notes",
+        "schema": "string",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "email",
+        "schema": "string",
+        "required": false,
+        "description": ""
+      },
+      {
         "name": "oid",
         "schema": "string",
         "required": true,
@@ -207,53 +384,11 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "example": "OID"
       },
       {
-        "name": "name",
-        "schema": "string",
-        "required": true,
-        "description": "",
-        "example": "NAME"
-      },
-      {
-        "name": "currency",
-        "schema": "string",
-        "required": true,
-        "description": "",
-        "example": "CURRENCY"
-      },
-      {
-        "name": "amount",
-        "schema": "integer",
-        "required": true,
-        "description": "",
-        "example": 0
-      },
-      {
-        "name": "interval",
-        "schema": "string",
-        "required": true,
-        "description": "",
-        "example": "INTERVAL"
-      },
-      {
-        "name": "interval_count",
-        "schema": "integer",
-        "required": true,
-        "description": "",
-        "example": 0
-      },
-      {
-        "name": "trial_duration",
-        "schema": "integer",
-        "required": false,
-        "description": "",
-        "default": 0
-      },
-      {
-        "name": "trial_duration_unit",
+        "name": "created",
         "schema": "string",
         "required": false,
         "description": "",
-        "default": "day"
+        "default": "NOW"
       }
     ],
     "responses": [
@@ -410,65 +545,6 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
         "name": "email",
         "schema": "string",
         "description": ""
-      }
-    ],
-    "responses": [
-      {
-        "statusCode": "200",
-        "description": ""
-      },
-      {
-        "statusCode": "400",
-        "description": ""
-      }
-    ]
-  },
-  {
-    "url": "/v1/{source_id}/customers",
-    "method": "createCustomerRecord",
-    "httpMethod": HttpMethodsEnum.POST,
-    "tag": "Source",
-    "typeScriptTag": "source",
-    "description": "Create Customer",
-    "parameters": [
-      {
-        "name": "sourceId",
-        "schema": "string",
-        "required": true,
-        "description": "Please see [Sources](ref:sources)",
-        "example": "SOURCE_ID"
-      },
-      {
-        "name": "name",
-        "schema": "string",
-        "required": false,
-        "description": ""
-      },
-      {
-        "name": "notes",
-        "schema": "string",
-        "required": false,
-        "description": ""
-      },
-      {
-        "name": "email",
-        "schema": "string",
-        "required": false,
-        "description": ""
-      },
-      {
-        "name": "oid",
-        "schema": "string",
-        "required": true,
-        "description": "",
-        "example": "OID"
-      },
-      {
-        "name": "created",
-        "schema": "string",
-        "required": false,
-        "description": "",
-        "default": "NOW"
       }
     ],
     "responses": [
@@ -2308,9 +2384,9 @@ Flightpath: Plan for the future with flexible financial modeling tools built for
       apiBaseUrl="https://api.baremetrics.com"
       apiVersion="1.0"
       endpoints={41}
-      sdkMethods={61}
-      schemas={144}
-      parameters={158}
+      sdkMethods={63}
+      schemas={148}
+      parameters={164}
       difficulty="Medium"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/baremetrics/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/baremetrics/openapi.yaml"

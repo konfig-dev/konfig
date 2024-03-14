@@ -24,7 +24,7 @@ CircleCI is proud to be an Equal Opportunity and Affirmative Action employer. We
       companyKebabCase="circle-ci"
       clientNameCamelCase="circleCi"
       homepage="circleci.com"
-      lastUpdated={new Date("2024-03-13T17:47:38.295Z")}
+      lastUpdated={new Date("2024-03-14T08:10:33.678Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/circleci/favicon.png"
       // Missing contactUrl
       // Missing contactEmail

@@ -4,7 +4,7 @@ import { Company } from '../../../components/Company';
 const sdks = [
   {
     "name": "Notion",
-    "numberOfMethods": 19,
+    "numberOfMethods": 20,
     "categories": [
       "all_in_one",
       "planning",
@@ -40,7 +40,7 @@ const sdks = [
   },
   {
     "name": "Notion",
-    "numberOfMethods": 19,
+    "numberOfMethods": 20,
     "categories": [
       "all_in_one",
       "planning",
@@ -76,7 +76,7 @@ const sdks = [
   },
   {
     "name": "Notion",
-    "numberOfMethods": 19,
+    "numberOfMethods": 20,
     "categories": [
       "all_in_one",
       "planning",

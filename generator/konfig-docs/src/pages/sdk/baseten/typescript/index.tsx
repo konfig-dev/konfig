@@ -19,7 +19,7 @@ export default function BasetenTypeScriptSdk() {
       companyKebabCase="baseten"
       clientNameCamelCase="baseten"
       homepage="baseten.co"
-      lastUpdated={new Date("2024-03-13T17:47:38.295Z")}
+      lastUpdated={new Date("2024-03-14T08:10:33.678Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/baseten/favicon.png"
       // Missing contactUrl
       // Missing contactEmail

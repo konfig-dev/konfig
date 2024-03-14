@@ -19,7 +19,7 @@ export default function ClickUpTypeScriptSdk() {
       companyKebabCase="click-up"
       clientNameCamelCase="clickUp"
       homepage="clickup.com"
-      lastUpdated={new Date("2024-03-13T16:59:14.076Z")}
+      lastUpdated={new Date("2024-03-14T08:38:56.572Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/clickup/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -3415,6 +3415,11 @@ export default function ClickUpTypeScriptSdk() {
         "schema": "boolean",
         "description": "To return task descriptions in Markdown format, use `?include_markdown_description=true`.",
         "example": true
+      },
+      {
+        "name": "customItems",
+        "schema": "array",
+        "description": "Filter by custom task types. For example: \\\n \\\n`?custom_items[]=0&custom_items[]=1300` \\\n \\\nIncluding `0` returns tasks. Including `1` returns Milestones. Including any other number returns the custom task type as defined in your Workspace."
       }
     ],
     "responses": [
@@ -5687,7 +5692,7 @@ export default function ClickUpTypeScriptSdk() {
       endpoints={72}
       sdkMethods={197}
       schemas={335}
-      parameters={541}
+      parameters={542}
       difficulty="Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/clickup/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/clickup/openapi.yaml"

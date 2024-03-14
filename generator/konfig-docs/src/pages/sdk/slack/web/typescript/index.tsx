@@ -19,7 +19,7 @@ export default function SlackWebTypeScriptSdk() {
       companyKebabCase="slack"
       clientNameCamelCase="slackWeb"
       homepage="slack.dev"
-      lastUpdated={new Date("2024-03-13T02:25:22.175Z")}
+      lastUpdated={new Date("2024-03-14T08:10:33.678Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/slack/web/favicon.png"
       contactUrl="https://api.slack.com/support"
       // Missing contactEmail
