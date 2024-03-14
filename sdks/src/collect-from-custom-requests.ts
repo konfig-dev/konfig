@@ -1019,11 +1019,11 @@ async function processCustomRequest({
   ) {
     console.log(`Skip fetching ${key} due to last fetched being recent`);
     const cachedProcessedCustomRequest = getCachedProcessedCustomRequest({
-      key,
+    key,
     });
     if (cachedProcessedCustomRequest !== undefined) {
-      console.log(`Using cached processed custom request for ${key}`);
-      return cachedProcessedCustomRequest.processed;
+    console.log(`Using cached processed custom request for ${key}`);
+    return cachedProcessedCustomRequest.processed;
     }
   } else {
     rawSpecStringCurrent = await executeCustomRequest(
