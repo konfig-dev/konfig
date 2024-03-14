@@ -35,7 +35,11 @@ function main() {
   // delete everything under sdkDir except for "index.tsx" and "sdk-links.json"
   const sdkFiles = fs.readdirSync(sdkDir)
   for (const file of sdkFiles) {
-    if (file !== 'index.tsx' && file !== 'sdk-links.json') {
+    if (
+      file !== 'index.tsx' &&
+      file !== 'sdk-links.json' &&
+      (process.env.FILTER === undefined || file.includes(process.env.FILTER))
+    ) {
       fs.rmSync(path.join(sdkDir, file), { recursive: true })
     }
   }
@@ -43,10 +47,23 @@ function main() {
   const redirectsJson: Record<string, string> = {}
   const sdkLinks: SdkLinks = []
 
+  const companyApis: Record<string, Published[]> = {}
+
   for (const file of files) {
+    if (
+      process.env.FILTER !== undefined &&
+      !file.includes(process.env.FILTER)
+    ) {
+      continue
+    }
     const filePath = path.join(publishedDirPath, file)
     const fileContent = fs.readFileSync(filePath, 'utf-8')
     const json: Published = JSON.parse(fileContent)
+
+    if (!companyApis[json.company]) {
+      companyApis[json.company] = []
+    }
+    companyApis[json.company].push(json)
 
     // set all pages to refactored page
     json.useNewPage = true
@@ -96,6 +113,15 @@ function main() {
         firstRequestMdx,
       )
     }
+  }
+
+  for (const company in companyApis) {
+    const apis = companyApis[company]
+    const indexTsx = generateApiIndexTsx({ apis, company })
+    fs.writeFileSync(
+      path.join(sdkDir, kebabcase(company), 'index.tsx'),
+      indexTsx,
+    )
   }
 
   // write redirects.json
@@ -247,7 +273,7 @@ function generateApiIndexTsx({
    */
   for (const api of apis) {
     const languages = ['TypeScript', 'Python', 'Java']
-    const name = kebabcase(api.serviceName ?? company)
+    const name = api.serviceName ?? company
     for (const language of languages) {
       const sdk: Sdk = {
         name,
@@ -257,7 +283,7 @@ function generateApiIndexTsx({
         language,
         link: `/sdk/${kebabcase(company)}${
           api.serviceName ? `/${kebabcase(api.serviceName)}` : ''
-        }/${language.toLowerCase()}`,
+        }/${language.toLowerCase()}/`,
         developerDocumentation: api.developerDocumentation,
         openapiGitHubUi: api.openApiGitHubUi,
       }
