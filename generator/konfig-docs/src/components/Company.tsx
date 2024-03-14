@@ -17,6 +17,7 @@ import { TsIcon } from './TsIcon'
 import { AboutCompany } from './SdkNew'
 import PythonIcon from './PythonIcon'
 import JavaIcon from './JavaIcon'
+import { Sdk } from '../util/Sdk'
 
 type APIProps = {
   company: string
@@ -26,16 +27,7 @@ type APIProps = {
   homepage: string
   categories: string[]
   metaDescription: string
-  sdks: {
-    name: string
-    numberOfMethods: number
-    categories: string[]
-    index: string
-    link: string
-    openapiGitHubUi?: string
-    developerDocumentation?: string
-    language: string
-  }[]
+  sdks: Sdk[]
 }
 
 export function Company({
