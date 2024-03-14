@@ -15,6 +15,7 @@ import {
 import useContentLoaded from '../util/use-content-loaded'
 import { TsIcon } from './TsIcon'
 import { AboutCompany } from './SdkNew'
+import PythonIcon from './PythonIcon'
 
 type APIProps = {
   company: string
@@ -32,6 +33,7 @@ type APIProps = {
     link: string
     openapiGitHubUi?: string
     developerDocumentation?: string
+    language: string
   }[]
 }
 
@@ -106,7 +108,14 @@ function SDKs({ sdks, favicon }: { sdks: APIProps['sdks']; favicon: string }) {
       </div>
       {sdks.flatMap(
         (
-          { index, link, categories, openapiGitHubUi, developerDocumentation },
+          {
+            index,
+            link,
+            categories,
+            openapiGitHubUi,
+            developerDocumentation,
+            language,
+          },
           i,
         ) => {
           return (
@@ -117,6 +126,7 @@ function SDKs({ sdks, favicon }: { sdks: APIProps['sdks']; favicon: string }) {
               categories={categories}
               openApiGitHubUi={openapiGitHubUi}
               developerDocumentation={developerDocumentation}
+              language={language}
               isLastItem={i === sdks.length - 1}
             />
           )
@@ -157,6 +167,7 @@ function SdkLinkItem({
   isLastItem,
   openApiGitHubUi,
   developerDocumentation,
+  language,
 }: {
   index: string
   link: string
@@ -165,9 +176,15 @@ function SdkLinkItem({
   isLastItem: boolean
   openApiGitHubUi?: string
   developerDocumentation?: string
+  language: string
 }) {
   return (
-    <a className="hover:no-underline z-10" href={link}>
+    <a
+      className={clsx('hover:no-underline z-10', {
+        'cursor-not-allowed': language !== 'TypeScript',
+      })}
+      href={language === 'TypeScript' ? link : undefined}
+    >
       <div
         className={clsx(
           'group hover:bg-slate-200 px-4 py-6 flex items-center gap-6 justify-between',
@@ -185,7 +202,7 @@ function SdkLinkItem({
               {index}
             </div>
             <div className="shrink-0 h-5 w-5">
-              <TsIcon />
+              {language === 'Python' ? <PythonIcon /> : <TsIcon />}
             </div>
           </div>
           <div className="flex gap-2 items-center flex-wrap">
@@ -211,6 +228,11 @@ function SdkLinkItem({
                 <div>API Docs</div>
                 <IconExternalLink height="11.5" />
               </a>
+            )}
+            {language !== 'TypeScript' && (
+              <div className="text-slate-400 text-xs sm:text-sm">
+                Coming soon!
+              </div>
             )}
           </div>
         </div>
