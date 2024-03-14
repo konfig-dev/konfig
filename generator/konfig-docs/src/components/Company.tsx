@@ -350,7 +350,7 @@ function SignupForm({
               <a
                 data-bottom={bottomCTA}
                 href="mailto:sdks@konfigthis.com"
-                className="data-[bottom=true]:text-white font-bold"
+                className="data-[bottom=true]:text-blue-100 font-bold"
               >
                 sdks@konfigthis.com
               </a>
