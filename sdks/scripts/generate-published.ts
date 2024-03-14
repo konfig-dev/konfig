@@ -16,6 +16,7 @@ import { hashRawSpecString } from "../src/hash-raw-spec-string";
 import { REGEX_FOR_BROKEN_LINKS } from "../src/collect-from-custom-requests";
 import { generateRepositoryDescription } from "./generate-repository-description";
 import { generateTypescriptSdkFirstRequestCode } from "../src/generate-typescript-sdk-first-request-code";
+import { assignCategoryToApi } from "../src/assign-category-to-api";
 
 const publishJsonPath = path.join(path.dirname(__dirname), "publish.json");
 const specDataDirPath = path.join(path.dirname(__dirname), "db", "spec-data");
@@ -505,12 +506,26 @@ async function main() {
       metaDescription
     );
 
+    const keywords = publishData.categories ?? specData.categories;
+    if (keywords === undefined) {
+      throw new Error(`❌ ERROR: No keywords for ${spec}`);
+    }
+    const { category } = await assignCategoryToApi({
+      api: {
+        company: publishData.company,
+        service: serviceName,
+        metaDescription,
+        keywords,
+      },
+    });
+
     /**
      * 2.c Prepare to write to published/
      */
     const merged: Published = {
       ...specData,
       ...publishData,
+      category,
       apiDescription: apiDescription ?? publishData.apiDescription,
       schemas: numberOfSchemas,
       categories: nonEmptyCategories,
