@@ -134,6 +134,7 @@ function BottomCTA({
         Start integrating {company}'s{serviceNameSubString} API with Konfig
       </h2>
       <SignupForm
+        bottomCTA
         company={company}
         language={language}
         serviceName={serviceName}
@@ -466,12 +467,14 @@ function SignupForm({
   language,
   serviceNameSubString,
   doNotShowQuestion,
+  bottomCTA,
 }: {
   company: string
   serviceName?: string
   language: string
   serviceNameSubString?: string
   doNotShowQuestion?: boolean
+  bottomCTA?: boolean
 }) {
   const {
     setEmail,
@@ -490,14 +493,19 @@ function SignupForm({
     <form
       onSubmit={handleSubmit}
       id="signup"
-      className="p-8 rounded-md bg-blue-100 ring-1 transition-all hover:scale-[1.01] hover:shadow-lg shadow-md mb-8"
+      data-windowed={!bottomCTA}
+      className="data-[windowed=true]:py-4 data-[windowed=true]:px-8 rounded-md data-[windowed=true]:bg-blue-100 data-[windowed=true]:ring-1 data-[windowed=true]:transition-all data-[windowed=true]:hover:scale-[1.01] data-[windowed=true]:hover:shadow-lg data-[windowed=true]:shadow-md data-[windowed=true]:my-8"
     >
       <div className="flex flex-col">
         {((!signedUp && !doNotShowQuestion) || signedUp) && (
           <h2
-            className={clsx('text-base md:text-lg text-blue-900 font-bold', {
-              'mb-3': !signedUp,
-            })}
+            data-bottom={bottomCTA}
+            className={clsx(
+              'text-base md:text-lg text-blue-900 data-[bottom=true]:text-white font-bold',
+              {
+                'mb-3': !signedUp,
+              },
+            )}
           >
             {signedUp
               ? `Thanks for signing up for access to ${company}'s ${language} SDK 🎉!`
@@ -506,10 +514,22 @@ function SignupForm({
         )}
         {signedUp ? (
           <>
-            <p className="mb-4">{`Your email, ${signedUpEmail}, has been successfully registered for access to the ${language} SDK. We will notify you by email soon.`}</p>
-            <p className="mb-0">
+            <p
+              data-bottom={bottomCTA}
+              className="mb-4 data-[bottom=true]:text-white"
+            >{`Your email, ${signedUpEmail}, has been successfully registered for access to the ${language} SDK. We will notify you by email soon.`}</p>
+            <p
+              data-bottom={bottomCTA}
+              className="mb-0 data-[bottom=true]:text-white"
+            >
               For inquiries or support, please contact us at{' '}
-              <a href="mailto:sdks@konfigthis.com">sdks@konfigthis.com</a>
+              <a
+                data-bottom={bottomCTA}
+                href="mailto:sdks@konfigthis.com"
+                className="data-[bottom=true]:text-white font-bold"
+              >
+                sdks@konfigthis.com
+              </a>
             </p>
           </>
         ) : null}
@@ -517,7 +537,7 @@ function SignupForm({
           <input
             type="email"
             name="email"
-            className="rounded-md px-2 py-1 w-full mb-2"
+            className="rounded-md border px-2 py-1 w-full mb-2"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}

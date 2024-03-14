@@ -16,6 +16,7 @@ import useContentLoaded from '../util/use-content-loaded'
 import { TsIcon } from './TsIcon'
 import { AboutCompany } from './SdkNew'
 import PythonIcon from './PythonIcon'
+import JavaIcon from './JavaIcon'
 
 type APIProps = {
   company: string
@@ -103,7 +104,9 @@ function SDKs({ sdks, favicon }: { sdks: APIProps['sdks']; favicon: string }) {
   return (
     <div className="mx-3 sm:mx-auto sm:w-[480px] md:w-[600px] lg:w-[768px] flex flex-col bg-gradient-to-b from-slate-50 to-white relative px-8 py-10 top-[-75px] rounded-sm bg-white shadow-xl">
       <div className="absolute flex flex-col z-0 inset-0 m-auto w-fit text-blue-300 font-bold text-sm top-[-50px]">
-        <div>Explore {numberOfSdks} SDKs 👀</div>
+        <div>
+          Explore {numberOfSdks} SDKs for {numberOfSdks / 3} APIs 👀
+        </div>
         <IconChevronDown className="mx-auto" />
       </div>
       {sdks.flatMap(
@@ -206,7 +209,13 @@ function SdkLinkItem({
               {index}
             </div>
             <div className="shrink-0 h-5 w-5">
-              {language === 'Python' ? <PythonIcon /> : <TsIcon />}
+              {language === 'Python' ? (
+                <PythonIcon />
+              ) : language === 'Java' ? (
+                <JavaIcon />
+              ) : (
+                <TsIcon />
+              )}
             </div>
           </div>
           <div className="flex gap-2 items-center flex-wrap">
