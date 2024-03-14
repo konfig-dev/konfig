@@ -18,6 +18,11 @@ import { AboutCompany } from './SdkNew'
 import PythonIcon from './PythonIcon'
 import JavaIcon from './JavaIcon'
 import { Sdk } from '../util/Sdk'
+import { HowKonfigWorks } from './HowKonfigWorks'
+
+/**
+ * https://zapier.com/apps/salesforce/integrations
+ */
 
 type APIProps = {
   company: string
@@ -40,8 +45,8 @@ export function Company({
   categories,
   metaDescription,
 }: APIProps) {
-  const title = `Integrate ${company}'s API using Konfig's SDKs`
-  const description = `Explore SDKs for ${company}'s API. Discover 100 ways to easily integrate ${company}'s API using Konfig.`
+  const title = `${company} SDKs`
+  const description = `Explore SDKs for ${company}. Start using Konfig SDKs, the easiest way to integrate ${company} into your application.`
   return (
     <Layout title={title} description={description}>
       <Head>
@@ -63,7 +68,7 @@ export function Company({
           />
         </div>
         <SDKs favicon={favicon} sdks={sdks} />
-        <BottomCTA company={company} />
+        <HowKonfigWorks />
         <AboutCompany
           company={company}
           logo={logo}
@@ -71,6 +76,7 @@ export function Company({
           homepage={homepage}
           categories={categories}
         />
+        <BottomCTA company={company} />
       </div>
     </Layout>
   )
