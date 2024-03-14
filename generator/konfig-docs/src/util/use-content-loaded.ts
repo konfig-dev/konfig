@@ -7,10 +7,14 @@ import { useEffect } from 'react'
  */
 const useContentLoaded = (onContentLoaded: () => void) => {
   useEffect(() => {
-    window.addEventListener('load', onContentLoaded)
+    if (document.readyState === 'complete') {
+      onContentLoaded()
+    } else {
+      window.addEventListener('load', onContentLoaded)
 
-    return () => {
-      window.removeEventListener('load', onContentLoaded)
+      return () => {
+        window.removeEventListener('load', onContentLoaded)
+      }
     }
   }, [onContentLoaded])
 }

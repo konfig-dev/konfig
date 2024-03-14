@@ -110,7 +110,7 @@ Easily Integrate
       <BottomCTA
         company={company}
         language={language}
-        serviceNane={serviceName}
+        serviceName={serviceName}
         serviceNameSubString={serviceNameSubstring}
       />
     </Layout>
@@ -120,23 +120,23 @@ Easily Integrate
 function BottomCTA({
   company,
   language,
-  serviceNane,
+  serviceName,
   serviceNameSubString,
 }: {
   company: string
   language: string
-  serviceNane?: string
+  serviceName?: string
   serviceNameSubString?: string
 }) {
   return (
-    <div className="py-16 px-8 md:px-48 bg-gradient-to-tl from-[var(--ifm-color-primary-darkest)] to-[var(--ifm-color-primary)]">
-      <h2 className="text-3xl text-white">
+    <div className="py-32 px-8 md:px-48 bg-gradient-to-tl from-[var(--ifm-color-primary-darkest)] to-[var(--ifm-color-primary)]">
+      <h2 className="text-3xl sm:text-4xl text-white">
         Start integrating {company}'s{serviceNameSubString} API with Konfig
       </h2>
       <SignupForm
         company={company}
         language={language}
-        serviceName={serviceNane}
+        serviceName={serviceName}
         serviceNameSubString={serviceNameSubString}
         doNotShowQuestion
       />
@@ -144,7 +144,7 @@ function BottomCTA({
   )
 }
 
-function AboutCompany({
+export function AboutCompany({
   company,
   logo,
   metaDescription,
@@ -162,14 +162,10 @@ function AboutCompany({
   developerDocumentation?: string
 }) {
   return (
-    <div className="py-20 px-8 md:px-32">
+    <div className="py-20 px-8 md:px-32 bg-white">
       <div className="w-fit">
         <div className="shadow-inner max-w-[200px] max-h-[80px] rounded-md border p-4">
-          <img
-            className="max-w-[200px] max-h-[80px]"
-            src={logo}
-            alt={company}
-          />
+          <img className="w-full h-full" src={logo} alt={company} />
         </div>
         <h2 className="mt-4 mb-0 text-3xl text-slate-800">About {company}</h2>
         <p className="mt-2 max-w-[800px]">{metaDescription}</p>
@@ -441,8 +437,8 @@ function HeroSection({
         >
           <LogoBox logo={logo} company={company} />
           <IconArrowsDownUp className="text-blue-200" />
-          <div className="my-5 flex items-center bg-white shadow-xl rounded-sm">
-            <div className="bg-blue-200 rounded-sm">
+          <div className="my-5 flex items-center bg-white shadow-xl rounded-md">
+            <div className="bg-blue-200 rounded-tl-md rounded-bl-md">
               <TsIcon className="h-36" />
             </div>
             <div className="px-4 text-sm md:text-base lg:text-xl">
