@@ -69,12 +69,11 @@ function Category() {
       onOpenChange={setIsOpen}
       className="w-[350px] space-y-2"
     >
-      <CollapsibleTrigger>
+      <CollapsibleTrigger className="group">
         <li>
           <div className="flex items-center justify-between gap-x-2">
             <ChevronDown
-              className={`text-slate-400 aria-expanded:-rotate-180 duration-150 transition-transform`}
-              aria-expanded={isOpen}
+              className={`text-slate-400 group-aria-expanded:-rotate-180 duration-150 transition-transform`}
             />
             <div className="font-semibold">Artificial Intelligence</div>
           </div>
