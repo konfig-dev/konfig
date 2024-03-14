@@ -67,7 +67,7 @@ export function Company({
             metaDescription={description}
           />
         </div>
-        <SDKs favicon={favicon} sdks={sdks} />
+        <SDKs favicon={favicon} sdks={sdks} company={company} />
         <HowKonfigWorks />
         <AboutCompany
           company={company}
@@ -95,7 +95,15 @@ function BottomCTA({ company }: { company: string }) {
   )
 }
 
-function SDKs({ sdks, favicon }: { sdks: APIProps['sdks']; favicon: string }) {
+function SDKs({
+  sdks,
+  favicon,
+  company,
+}: {
+  sdks: APIProps['sdks']
+  favicon: string
+  company: string
+}) {
   const [amountToShow, setAmountToShow] = useState(3)
   const numberOfSdks = sdks.length
   sdks = sdks.slice(0, amountToShow)
@@ -103,7 +111,9 @@ function SDKs({ sdks, favicon }: { sdks: APIProps['sdks']; favicon: string }) {
     <div className="mx-3 sm:mx-auto sm:w-[480px] md:w-[600px] lg:w-[768px] flex flex-col bg-gradient-to-b from-slate-50 to-white relative px-8 py-10 top-[-75px] rounded-sm bg-white shadow-xl">
       <div className="absolute flex flex-col z-0 inset-0 m-auto w-fit text-blue-300 font-bold text-sm top-[-50px]">
         <div>
-          Explore {numberOfSdks} SDKs for {numberOfSdks / 3} APIs 👀
+          Explore {numberOfSdks} SDKs for{' '}
+          {numberOfSdks === 3 ? '' : numberOfSdks / 3}
+          {numberOfSdks === 3 ? company : ' APIs'} 👀
         </div>
         <IconChevronDown className="mx-auto" />
       </div>
