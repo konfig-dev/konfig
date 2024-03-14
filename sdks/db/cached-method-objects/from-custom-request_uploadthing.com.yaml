@@ -1,0 +1,542 @@
+hash: cc936d1a25f2ee35412b8f31a19cf892d2dcfd3551703f4fc0cf751af753d635
+methodObjects:
+  - url: /serverCallback
+    method: getData
+    httpMethod: get
+    tag: ServerCallback
+    typeScriptTag: serverCallback
+    description: >-
+      Poll for server callback data. This is used to retrieve the data returned
+      from `onUploadComplete` callback.
+    parameters:
+      - name: authorization
+        schema: string
+        required: true
+        description: ''
+        example: AUTHORIZATION
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '500'
+        description: ''
+  - url: /serverCallback
+    method: setData
+    httpMethod: post
+    tag: ServerCallback
+    typeScriptTag: serverCallback
+    description: >-
+      Set server callback data. This is used to set the data returned from
+      `onUploadComplete` callback.
+    parameters:
+      - name: xUploadthingVersion
+        schema: string
+        required: true
+        description: ''
+        example: 6.4.0
+      - name: xUploadthingFePackage
+        schema: string
+        required: false
+        description: ''
+        example: '@uploadthing/react'
+      - name: xUploadthingBeAdapter
+        schema: string
+        required: false
+        description: ''
+        example: express
+      - name: fileKey
+        schema: string
+        required: true
+        description: ''
+        example: FILEKEY
+      - name: callbackData
+        schema: undefined
+        required: false
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '500'
+        description: ''
+  - url: /listFiles
+    method: listFiles
+    httpMethod: post
+    tag: File
+    typeScriptTag: file
+    description: List files for the current app. Response is paginated.
+    parameters:
+      - name: xUploadthingVersion
+        schema: string
+        required: true
+        description: ''
+        example: 6.4.0
+      - name: xUploadthingFePackage
+        schema: string
+        required: false
+        description: ''
+        example: '@uploadthing/react'
+      - name: xUploadthingBeAdapter
+        schema: string
+        required: false
+        description: ''
+        example: express
+      - name: limit
+        schema: number
+        required: true
+        description: ''
+        example: 0
+        default: 500
+      - name: offset
+        schema: number
+        required: true
+        description: ''
+        example: 0
+        default: 0
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '500'
+        description: ''
+  - url: /renameFiles
+    method: renameFiles
+    httpMethod: post
+    tag: File
+    typeScriptTag: file
+    description: Rename files.
+    parameters:
+      - name: xUploadthingVersion
+        schema: string
+        required: true
+        description: ''
+        example: 6.4.0
+      - name: xUploadthingFePackage
+        schema: string
+        required: false
+        description: ''
+        example: '@uploadthing/react'
+      - name: xUploadthingBeAdapter
+        schema: string
+        required: false
+        description: ''
+        example: express
+      - name: updates
+        schema: array
+        required: true
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '500'
+        description: ''
+  - url: /renameFile
+    method: updateFileName
+    httpMethod: post
+    tag: File
+    typeScriptTag: file
+    description: Use /renameFiles instead.
+    parameters:
+      - name: xUploadthingVersion
+        schema: string
+        required: true
+        description: ''
+        example: 6.4.0
+      - name: xUploadthingFePackage
+        schema: string
+        required: false
+        description: ''
+        example: '@uploadthing/react'
+      - name: xUploadthingBeAdapter
+        schema: string
+        required: false
+        description: ''
+        example: express
+      - name: updates
+        schema: array
+        required: true
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '500'
+        description: ''
+  - url: /deleteFile
+    method: markForDeletion
+    httpMethod: post
+    tag: File
+    typeScriptTag: file
+    description: >-
+      Mark files for deletion. The files will be deleted at the storage provider
+      shortly after.
+    parameters:
+      - name: xUploadthingVersion
+        schema: string
+        required: true
+        description: ''
+        example: 6.4.0
+      - name: xUploadthingFePackage
+        schema: string
+        required: false
+        description: ''
+        example: '@uploadthing/react'
+      - name: xUploadthingBeAdapter
+        schema: string
+        required: false
+        description: ''
+        example: express
+      - name: files
+        schema: array
+        description: ''
+      - name: fileKeys
+        schema: array
+        description: ''
+      - name: customIds
+        schema: array
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '500'
+        description: ''
+  - url: /getFileUrl
+    method: getFileUrls
+    httpMethod: post
+    tag: File
+    typeScriptTag: file
+    description: >-
+      Get a list of URLs for given file keys. This API is deprecated, use
+      `https://utfs.io/f/FILE_KEY`.
+    parameters:
+      - name: xUploadthingVersion
+        schema: string
+        required: true
+        description: ''
+        example: 6.4.0
+      - name: xUploadthingFePackage
+        schema: string
+        required: false
+        description: ''
+        example: '@uploadthing/react'
+      - name: xUploadthingBeAdapter
+        schema: string
+        required: false
+        description: ''
+        example: express
+      - name: files
+        schema: array
+        description: ''
+      - name: fileKeys
+        schema: array
+        description: ''
+      - name: customIds
+        schema: array
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '500'
+        description: ''
+  - url: /getUsageInfo
+    method: getUsageInfo
+    httpMethod: post
+    tag: UsageInfo
+    typeScriptTag: usageInfo
+    description: Retrieve usage info for the app associated with the provided API key.
+    parameters:
+      - name: xUploadthingVersion
+        schema: string
+        required: true
+        description: ''
+        example: 6.4.0
+      - name: xUploadthingFePackage
+        schema: string
+        required: false
+        description: ''
+        example: '@uploadthing/react'
+      - name: xUploadthingBeAdapter
+        schema: string
+        required: false
+        description: ''
+        example: express
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '500'
+        description: ''
+  - url: /completeMultipart
+    method: completeUpload
+    httpMethod: post
+    tag: Multipart
+    typeScriptTag: multipart
+    description: >-
+      Complete a multipart upload. This will finalize the upload and make the
+      file available for download.
+    parameters:
+      - name: xUploadthingVersion
+        schema: string
+        required: true
+        description: ''
+        example: 6.4.0
+      - name: xUploadthingFePackage
+        schema: string
+        required: false
+        description: ''
+        example: '@uploadthing/react'
+      - name: xUploadthingBeAdapter
+        schema: string
+        required: false
+        description: ''
+        example: express
+      - name: fileKey
+        schema: string
+        required: true
+        description: ''
+        example: FILEKEY
+      - name: uploadId
+        schema: string
+        required: true
+        description: ''
+        example: UPLOADID
+      - name: etags
+        schema: array
+        required: true
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '500'
+        description: ''
+  - url: /failureCallback
+    method: markUploadFailed
+    httpMethod: post
+    tag: Callback
+    typeScriptTag: callback
+    description: >-
+      Mark an upload as failed, or abort a multipart upload. This will free up
+      resources and revert the storage quota.
+    parameters:
+      - name: xUploadthingVersion
+        schema: string
+        required: true
+        description: ''
+        example: 6.4.0
+      - name: xUploadthingFePackage
+        schema: string
+        required: false
+        description: ''
+        example: '@uploadthing/react'
+      - name: xUploadthingBeAdapter
+        schema: string
+        required: false
+        description: ''
+        example: express
+      - name: fileKey
+        schema: string
+        required: true
+        description: ''
+        example: FILEKEY
+      - name: uploadId
+        schema: string
+        required: false
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '500'
+        description: ''
+  - url: /requestFileAccess
+    method: requestPresignedUrl
+    httpMethod: post
+    tag: File
+    typeScriptTag: file
+    description: Request a presigned GET url for a private file.
+    parameters:
+      - name: xUploadthingVersion
+        schema: string
+        required: true
+        description: ''
+        example: 6.4.0
+      - name: xUploadthingFePackage
+        schema: string
+        required: false
+        description: ''
+        example: '@uploadthing/react'
+      - name: xUploadthingBeAdapter
+        schema: string
+        required: false
+        description: ''
+        example: express
+      - name: fileKey
+        schema: string
+        description: ''
+      - name: customId
+        schema: string
+        description: ''
+      - name: expiresIn
+        schema: number
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '404'
+        description: ''
+      - statusCode: '500'
+        description: ''
+  - url: /prepareUpload
+    method: requestPresignedUrls
+    httpMethod: post
+    tag: Upload
+    typeScriptTag: upload
+    description: >-
+      Request presigned URLs for file uploads through based on your file router.
+      NOTE: This spec complies with SDK versions ^6.4. Response may vary for
+      older versions.
+    parameters:
+      - name: xUploadthingVersion
+        schema: string
+        required: true
+        description: ''
+        example: 6.4.0
+      - name: xUploadthingFePackage
+        schema: string
+        required: false
+        description: ''
+        example: '@uploadthing/react'
+      - name: xUploadthingBeAdapter
+        schema: string
+        required: false
+        description: ''
+        example: express
+      - name: callbackUrl
+        schema: string
+        required: true
+        description: ''
+        example: CALLBACKURL
+      - name: callbackSlug
+        schema: string
+        required: true
+        description: ''
+        example: CALLBACKSLUG
+      - name: files
+        schema: array
+        required: true
+        description: ''
+      - name: routeConfig
+        schema: undefined
+        required: true
+        description: ''
+      - name: metadata
+        schema: undefined
+        required: false
+        description: ''
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '403'
+        description: ''
+      - statusCode: '500'
+        description: ''
+  - url: /uploadFiles
+    method: requestPresignedUrls
+    httpMethod: post
+    tag: File
+    typeScriptTag: file
+    description: >-
+      Request presigned URLs for file uploads without file routes. NOTE: This
+      spec complies with SDK versions ^6.4. Response may vary for older
+      versions.
+    parameters:
+      - name: xUploadthingVersion
+        schema: string
+        required: true
+        description: ''
+        example: 6.4.0
+      - name: xUploadthingFePackage
+        schema: string
+        required: false
+        description: ''
+        example: '@uploadthing/react'
+      - name: xUploadthingBeAdapter
+        schema: string
+        required: false
+        description: ''
+        example: express
+      - name: files
+        schema: array
+        required: true
+        description: ''
+      - name: acl
+        schema: string
+        required: false
+        description: ''
+      - name: metadata
+        schema: undefined
+        required: false
+        description: ''
+      - name: contentDisposition
+        schema: string
+        required: true
+        description: ''
+        example: CONTENTDISPOSITION
+        default: inline
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '400'
+        description: ''
+      - statusCode: '401'
+        description: ''
+      - statusCode: '500'
+        description: ''
+numberOfSchemas: 32
+apiDescription: >-
+  UploadThing is the easiest way to add file uploads to your full stack
+  TypeScript application. Many services have tried to build a "better S3", but
+  in our opinion, none found the right compromise of ownership, flexibility and
+  safety.

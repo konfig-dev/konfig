@@ -722,6 +722,10 @@ const customRequests: Record<string, CustomRequest> = {
     type: "GET",
     url: "https://raw.githubusercontent.com/Clever/swagger-api/master/v3.1.yml",
   },
+  "uploadthing.com": {
+    type: "GET",
+    url: "https://uploadthing.com/api/openapi-spec.json",
+  },
   "digitalocean.com": {
     type: "GET",
     url: "https://api-engineering.nyc3.cdn.digitaloceanspaces.com/spec-ci/DigitalOcean-public.v2.yaml",
