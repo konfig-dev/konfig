@@ -1071,6 +1071,7 @@ async function processCustomRequest({
     categories: getCategories(spec),
     homepage: getProviderName(spec),
     apiBaseUrl,
+
     serviceName: getServiceName(spec),
     apiVersion: getVersion(spec),
     apiDescription: spec.spec.info.description,
