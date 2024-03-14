@@ -115,6 +115,7 @@ function SDKs({ sdks, favicon }: { sdks: APIProps['sdks']; favicon: string }) {
             openapiGitHubUi,
             developerDocumentation,
             language,
+            name,
           },
           i,
         ) => {
@@ -128,6 +129,7 @@ function SDKs({ sdks, favicon }: { sdks: APIProps['sdks']; favicon: string }) {
               developerDocumentation={developerDocumentation}
               language={language}
               isLastItem={i === sdks.length - 1}
+              service={name}
             />
           )
         },
@@ -168,6 +170,7 @@ function SdkLinkItem({
   openApiGitHubUi,
   developerDocumentation,
   language,
+  service,
 }: {
   index: string
   link: string
@@ -177,6 +180,7 @@ function SdkLinkItem({
   openApiGitHubUi?: string
   developerDocumentation?: string
   language: string
+  service?: string
 }) {
   return (
     <a
@@ -209,6 +213,16 @@ function SdkLinkItem({
             {categories.map((category) => {
               return <CategoryFilter category={category} />
             })}
+            {developerDocumentation && (
+              <a
+                className="flex w-fit items-center group/link text-slate-400 hover:text-slate-700 text-xs sm:text-sm hover:no-underline"
+                target="_blank"
+                href={developerDocumentation}
+              >
+                <div>{service !== undefined ? `${service} ` : ``}API Docs</div>
+                <IconExternalLink height="11.5" />
+              </a>
+            )}
             {openApiGitHubUi && (
               <a
                 className="flex w-fit items-center group/link text-slate-400 hover:text-slate-700 text-xs sm:text-sm hover:no-underline"
@@ -216,16 +230,6 @@ function SdkLinkItem({
                 href={openApiGitHubUi}
               >
                 <div>OpenAPI</div>
-                <IconExternalLink height="11.5" />
-              </a>
-            )}
-            {developerDocumentation && (
-              <a
-                className="flex w-fit items-center group/link text-slate-400 hover:text-slate-700 text-xs sm:text-sm hover:no-underline"
-                target="_blank"
-                href={developerDocumentation}
-              >
-                <div>API Docs</div>
                 <IconExternalLink height="11.5" />
               </a>
             )}
