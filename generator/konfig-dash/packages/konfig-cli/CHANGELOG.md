@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.38.30
+
+### Patch Changes
+
+- [#643](https://github.com/konfig-dev/konfig/pull/643) [`b5106442`](https://github.com/konfig-dev/konfig/commit/b5106442cf995e0adf8a9c9de593c81a6d704510) Thanks [@eddiechayes](https://github.com/eddiechayes)! - Implement konfig fix rule to fix broken markdown links
+
 ## 1.38.29
 
 ### Patch Changes
