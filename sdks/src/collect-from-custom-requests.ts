@@ -1004,7 +1004,7 @@ async function processCustomRequest({
   let rawSpecStringCurrent: string | null = null;
   if (
     lastFetched !== undefined &&
-    process.env.FILTER_CUSTOMER === undefined &&
+    process.env.FILTER_CUSTOM === undefined &&
     lastFetched > new Date(Date.now() - 1000 * 60 * 60 * 24)
   ) {
     console.log(`Skip fetching ${key} due to last fetched being recent`);
