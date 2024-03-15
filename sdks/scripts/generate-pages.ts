@@ -49,6 +49,7 @@ function main() {
 
   const redirectsJson: Record<string, string> = {};
   const sdkLinks: SdkLinks = [];
+  const categories: Record<string, string[]> = {};
 
   const companyApis: Record<string, Published[]> = {};
 
@@ -83,13 +84,19 @@ function main() {
     );
 
     addToRedirectsJson({ redirectsJson, company, service });
+    const subCategory = json.category;
+    const parentCategory = getParentCategoryFromCategory(json.category);
+    categories[parentCategory] = categories[parentCategory] ?? [];
+    if (!categories[parentCategory].includes(json.category)) {
+      categories[parentCategory].push(json.category);
+    }
     addToSdkLinks({
       sdkLinks,
       company,
       service,
       homepage: json.homepage,
-      parentCategory: getParentCategoryFromCategory(json.category),
-      subCategory: json.category,
+      parentCategory,
+      subCategory,
       categories: json.categories,
       favicon: json.faviconUrl,
       apiVersion: json.apiVersion,
@@ -139,6 +146,18 @@ function main() {
   fs.writeFileSync(
     path.join(sdkDir, "sdk-links.json"),
     JSON.stringify(sdkLinks, null, 2)
+  );
+
+  // write categories.json
+  const sortedCategories = Object.entries(categories).sort(([a], [b]) =>
+    a.localeCompare(b)
+  );
+  const formattedCategories = sortedCategories.map(
+    ([parentCategory, subCategories]) => ({ parentCategory, subCategories })
+  );
+  fs.writeFileSync(
+    path.join(sdkDir, "categories.json"),
+    JSON.stringify(formattedCategories, null, 2)
   );
 }
 

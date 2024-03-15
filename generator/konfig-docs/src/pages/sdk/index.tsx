@@ -2,6 +2,7 @@ import Head from "@docusaurus/Head";
 import Layout from "@theme/Layout";
 import React, { useState } from "react";
 import sdkLinksJson from "./sdk-links.json";
+import categories from "./categories.json";
 import { ChevronDown } from "lucide-react";
 
 import {
@@ -34,14 +35,7 @@ export default function Sdks() {
       </Head>
       <div className="px-3 py-8 md:px-8 md:max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row gap-4 items-start">
-          <CategoryFilters
-            categories={{
-              "Artificial Intelligence": [
-                "Computer Vision",
-                "Natural Language Processing",
-              ],
-            }}
-          />
+          <CategoryFilters categories={categories} />
           <div>
             <div>search</div>
             <div>1 - 22 of 7063 APIs</div>
@@ -57,7 +51,7 @@ export default function Sdks() {
 }
 
 type CategoryFiltersProps = {
-  categories: Record<string, string[]>;
+  categories: { parentCategory: string; subCategories: string[] }[];
 };
 
 function CategoryFilters({ categories }: CategoryFiltersProps) {
@@ -65,8 +59,11 @@ function CategoryFilters({ categories }: CategoryFiltersProps) {
     <div>
       <h3>API Categories</h3>
       <ul className="pl-0 mb-0 list-none">
-        {Object.entries(categories).map(([parentCategory, categories]) => (
-          <Category parentCategory={parentCategory} categories={categories} />
+        {categories.map(({ parentCategory, subCategories }) => (
+          <Category
+            parentCategory={parentCategory}
+            subCategories={subCategories}
+          />
         ))}
       </ul>
     </div>
@@ -75,9 +72,9 @@ function CategoryFilters({ categories }: CategoryFiltersProps) {
 
 type CategoryProps = {
   parentCategory: string;
-  categories: string[];
+  subCategories: string[];
 };
-function Category({ parentCategory, categories }: CategoryProps) {
+function Category({ parentCategory, subCategories }: CategoryProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -94,7 +91,7 @@ function Category({ parentCategory, categories }: CategoryProps) {
       </CollapsibleTrigger>
       <CollapsibleContent className="mt-0">
         <ul className="mb-0 pl-0 list-none">
-          {categories.map((category) => (
+          {subCategories.map((category) => (
             <SubCategory category={category} />
           ))}
         </ul>
