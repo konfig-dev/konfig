@@ -33,15 +33,17 @@ export default function Sdks() {
       <Head>
         <meta property="og:image" content="/img/sdk-explore-link-preview.png" />
       </Head>
-      <div className="px-3 py-16 md:px-8 md:max-w-6xl mx-auto">
-        <div>search</div>
-        <div className="flex flex-col md:flex-row gap-4 items-start">
-          <CategoryFilters categories={categories} />
-          <div>
-            <div>1 - 22 of 7063 APIs</div>
+      <div className="border-b">
+        <div className="px-3 py-16 md:px-8 md:max-w-6xl mx-auto">
+          <div className="mb-6">search</div>
+          <div className="flex flex-col md:flex-row gap-4 items-start">
+            <CategoryFilters categories={categories} />
             <div>
-              <div>results</div>
-              <button>load more</button>
+              <div>1 - 22 of 7063 APIs</div>
+              <div>
+                <div>results</div>
+                <button>load more</button>
+              </div>
             </div>
           </div>
         </div>
