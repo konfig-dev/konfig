@@ -61,18 +61,48 @@ export function CommandMenu({ ...props }: DialogProps) {
         <CommandInput placeholder="Type to search..." />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
-          <CommandGroup>
-            <CommandItem value="One">One</CommandItem>
-            <CommandItem value="Two">Two</CommandItem>
-            <CommandItem value="Three">Three</CommandItem>
-            <CommandItem value="Four">Four</CommandItem>
-            <CommandItem value="Five">Five</CommandItem>
-            <CommandItem value="Six">Six</CommandItem>
-            <CommandItem value="Seven">Seven</CommandItem>
-            <CommandItem value="Eight">Eight</CommandItem>
-            <CommandItem value="Nine">Nine</CommandItem>
-            <CommandItem value="Ten">Ten</CommandItem>
-          </CommandGroup>
+          <CommandItem>API 1</CommandItem>
+          <CommandItem>API 2</CommandItem>
+          <CommandItem>API 3</CommandItem>
+          <CommandItem>API 4</CommandItem>
+          <CommandItem>API 5</CommandItem>
+          <CommandItem>API 6</CommandItem>
+          <CommandItem>API 7</CommandItem>
+          <CommandItem>API 8</CommandItem>
+          <CommandItem>API 9</CommandItem>
+          <CommandItem>API 10</CommandItem>
+          <CommandItem>API 11</CommandItem>
+          <CommandItem>API 12</CommandItem>
+          <CommandItem>API 13</CommandItem>
+          <CommandItem>API 14</CommandItem>
+          <CommandItem>API 15</CommandItem>
+          <CommandItem>API 16</CommandItem>
+          <CommandItem>API 17</CommandItem>
+          <CommandItem>API 18</CommandItem>
+          <CommandItem>API 19</CommandItem>
+          <CommandItem>API 20</CommandItem>
+          <CommandItem>API 21</CommandItem>
+          <CommandItem>API 22</CommandItem>
+          <CommandItem>API 23</CommandItem>
+          <CommandItem>API 24</CommandItem>
+          <CommandItem>API 25</CommandItem>
+          <CommandItem>API 26</CommandItem>
+          <CommandItem>API 27</CommandItem>
+          <CommandItem>API 28</CommandItem>
+          <CommandItem>API 29</CommandItem>
+          <CommandItem>API 30</CommandItem>
+          <CommandItem>API 31</CommandItem>
+          <CommandItem>API 32</CommandItem>
+          <CommandItem>API 33</CommandItem>
+          <CommandItem>API 34</CommandItem>
+          <CommandItem>API 35</CommandItem>
+          <CommandItem>API 36</CommandItem>
+          <CommandItem>API 37</CommandItem>
+          <CommandItem>API 38</CommandItem>
+          <CommandItem>API 39</CommandItem>
+          <CommandItem>API 40</CommandItem>
+          <CommandItem>API 41</CommandItem>
+          <CommandItem>API 42</CommandItem>
         </CommandList>
       </CommandDialog>
     </>
