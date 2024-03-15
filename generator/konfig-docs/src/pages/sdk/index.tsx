@@ -33,7 +33,7 @@ export default function Sdks() {
       <Head>
         <meta property="og:image" content="/img/sdk-explore-link-preview.png" />
       </Head>
-      <div className="px-3 py-8 md:px-8 md:max-w-6xl mx-auto">
+      <div className="px-3 py-16 md:px-8 md:max-w-6xl mx-auto">
         <div>search</div>
         <div className="flex flex-col md:flex-row gap-4 items-start">
           <CategoryFilters categories={categories} />
@@ -91,6 +91,10 @@ function Category({ parentCategory, subCategories }: CategoryProps) {
       </CollapsibleTrigger>
       <CollapsibleContent className="mt-0">
         <ul className="mb-0 pl-0 list-none">
+          <SubCategory
+            label={`All ${parentCategory}`}
+            category={parentCategory}
+          />
           {subCategories.map((category) => (
             <SubCategory category={category} />
           ))}
@@ -102,15 +106,16 @@ function Category({ parentCategory, subCategories }: CategoryProps) {
 
 type SubCategoryProps = {
   category: string;
+  label?: string;
 };
-function SubCategory({ category }: SubCategoryProps) {
+function SubCategory({ category, label }: SubCategoryProps) {
   return (
     <li>
       <a
         className="pl-12 rounded-md text-slate-500 hover:text-slate-800 hover:no-underline block py-2 hover:bg-slate-100 transition-all"
         href=""
       >
-        {category}
+        {label ?? category}
       </a>
     </li>
   );
