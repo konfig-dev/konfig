@@ -159,6 +159,12 @@ function main() {
     path.join(sdkDir, "categories.json"),
     JSON.stringify(formattedCategories, null, 2)
   );
+
+  // write companies.json
+  // fs.writeFileSync(
+  //   path.join(sdkDir, "companies.json"),
+  //   JSON.stringify(companies, null, 2)
+  // );
 }
 
 function addToSdkLinks({

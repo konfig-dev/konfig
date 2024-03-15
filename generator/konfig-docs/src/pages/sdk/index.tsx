@@ -34,10 +34,10 @@ export default function Sdks() {
         <meta property="og:image" content="/img/sdk-explore-link-preview.png" />
       </Head>
       <div className="px-3 py-8 md:px-8 md:max-w-6xl mx-auto">
+        <div>search</div>
         <div className="flex flex-col md:flex-row gap-4 items-start">
           <CategoryFilters categories={categories} />
           <div>
-            <div>search</div>
             <div>1 - 22 of 7063 APIs</div>
             <div>
               <div>results</div>
