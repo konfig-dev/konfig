@@ -19,7 +19,7 @@ export default function WikimediaTypeScriptSdk() {
       companyKebabCase="wikimedia"
       clientNameCamelCase="wikimedia"
       homepage="wikimedia.org"
-      lastUpdated={new Date("2024-03-14T08:10:33.678Z")}
+      lastUpdated={new Date("2024-03-15T00:48:29.728Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/wikimedia/favicon.ico"
       contactUrl="http://mediawiki.org/wiki/REST_API"
       // Missing contactEmail

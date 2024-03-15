@@ -7,7 +7,7 @@ import * as fs from "fs";
 
 const categoryCacheJsonPath = path.join(dbFolder, "category-cache.json");
 
-const categoriesToMapTo = {
+export const categoriesToMapTo = {
   "Artificial Intelligence": [
     "AI Tools",
     "Text-to-Speech",
@@ -53,7 +53,12 @@ const categoriesToMapTo = {
     "Security & Identity Tools",
     "Server Monitoring",
   ],
-  "Lifestyle & Entertainment": ["Fitness", "Gaming", "News & Lifestyle"],
+  "Lifestyle & Entertainment": [
+    "Fitness",
+    "Gaming",
+    "News & Lifestyle",
+    "Music",
+  ],
   Marketing: [
     "Ads & Conversion",
     "Drip Emails",
@@ -82,6 +87,7 @@ const categoriesToMapTo = {
     "Scheduling & Booking",
     "Signatures",
   ],
+  Data: ["Science", "Knowledge"],
   Support: ["Customer Appreciation", "Customer Support"],
   "Website & App Building": ["App Builder", "Website Builders"],
 };
@@ -89,7 +95,7 @@ const categoriesToMapTo = {
 const allSubcategories = Object.values(categoriesToMapTo).flatMap(
   (subCategories) => subCategories
 );
-const subCategoryEnumSchema = z.enum(["Other", ...allSubcategories]);
+const subCategoryEnumSchema = z.enum([...allSubcategories] as any);
 
 const categoryResultSchema = z.object({
   category: subCategoryEnumSchema.describe("The category assigned to an API"),

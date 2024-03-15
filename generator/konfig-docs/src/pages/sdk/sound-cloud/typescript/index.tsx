@@ -19,7 +19,7 @@ export default function SoundCloudTypeScriptSdk() {
       companyKebabCase="sound-cloud"
       clientNameCamelCase="soundCloud"
       homepage="developers.soundcloud.com"
-      lastUpdated={new Date("2024-03-14T08:10:33.678Z")}
+      lastUpdated={new Date("2024-03-15T00:48:29.728Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/soundcloud/favicon.jpeg"
       contactUrl="https://github.com/soundcloud/api"
       // Missing contactEmail
