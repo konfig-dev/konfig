@@ -64,6 +64,9 @@ function CategoryFilters({ categories }: CategoryFiltersProps) {
     <div>
       <h3>API Categories</h3>
       <ul className="pl-0 mb-0 list-none">
+        <li>
+          <CategoryLink selected indented={false} category="All Categories" />
+        </li>
         {categories.map(({ parentCategory, subCategories }, i) => (
           <Category
             key={i}
@@ -117,12 +120,32 @@ type SubCategoryProps = {
 function SubCategory({ category, label }: SubCategoryProps) {
   return (
     <li>
-      <a
-        className="pl-12 rounded-md text-slate-500 hover:text-slate-800 hover:no-underline block py-2 hover:bg-slate-100 transition-all"
-        href=""
-      >
-        {label ?? category}
-      </a>
+      <CategoryLink category={category} label={label} />
     </li>
+  );
+}
+
+function CategoryLink({
+  category,
+  label,
+  indented,
+  selected = false,
+}: {
+  category: string;
+  label?: string;
+  selected?: boolean;
+  indented?: boolean;
+}) {
+  return (
+    <a
+      aria-selected={selected}
+      data-indent={indented}
+      className={
+        "pl-12 rounded-md data-[indent=false]:pl-2 aria text-slate-500 hover:text-slate-800 hover:no-underline block py-2 hover:bg-slate-100 transition-all aria-selected:hover:bg-blue-100 aria-selected:bg-blue-100 aria-selected:text-blue-800"
+      }
+      href=""
+    >
+      {label ?? category}
+    </a>
   );
 }
