@@ -10,6 +10,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@site/src/components/ui/collapsible";
+import { CommandMenu } from "@site/src/components/CommandMenu";
 
 /*
  * https://zapier.com/apps
@@ -35,7 +36,9 @@ export default function Sdks() {
       </Head>
       <div className="border-b">
         <div className="px-3 py-16 md:px-8 md:max-w-6xl mx-auto">
-          <div className="mb-6">search</div>
+          <div className="mb-4">
+            <CommandMenu />
+          </div>
           <div className="flex flex-col md:flex-row gap-4 items-start">
             <CategoryFilters categories={categories} />
             <div>
