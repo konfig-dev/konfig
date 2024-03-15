@@ -22,7 +22,7 @@ export default function Sdks() {
       title={`Explore 50 public APIs`}
       description={`Discover and access over ${sdkLinksJson.length} up-to-date SDKs for 50 public APIs.`}
     >
-      <head>
+      <Head>
         <style>
           {`
           .navbar__search {
@@ -30,7 +30,7 @@ export default function Sdks() {
           }
           `}
         </style>
-      </head>
+      </Head>
       <Head>
         <meta property="og:image" content="/img/sdk-explore-link-preview.png" />
       </Head>
@@ -64,8 +64,9 @@ function CategoryFilters({ categories }: CategoryFiltersProps) {
     <div>
       <h3>API Categories</h3>
       <ul className="pl-0 mb-0 list-none">
-        {categories.map(({ parentCategory, subCategories }) => (
+        {categories.map(({ parentCategory, subCategories }, i) => (
           <Category
+            key={i}
             parentCategory={parentCategory}
             subCategories={subCategories}
           />
@@ -101,7 +102,7 @@ function Category({ parentCategory, subCategories }: CategoryProps) {
             category={parentCategory}
           />
           {subCategories.map((category) => (
-            <SubCategory category={category} />
+            <SubCategory key={category} category={category} />
           ))}
         </ul>
       </CollapsibleContent>
