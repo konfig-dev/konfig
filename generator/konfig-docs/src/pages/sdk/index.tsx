@@ -11,6 +11,7 @@ import {
   CollapsibleTrigger,
 } from "@site/src/components/ui/collapsible";
 import { CommandMenu } from "@site/src/components/CommandMenu";
+import { Button } from "@site/src/components/ui/button";
 
 /*
  * https://zapier.com/apps
@@ -35,23 +36,55 @@ export default function Sdks() {
         <meta property="og:image" content="/img/sdk-explore-link-preview.png" />
       </Head>
       <div className="border-b">
-        <div className="px-3 py-16 md:px-8 md:max-w-6xl mx-auto">
+        <div className="px-3 py-3 md:px-8 md:max-w-6xl mx-auto">
           <div className="mb-4">
             <CommandMenu />
           </div>
           <div className="flex flex-col md:flex-row gap-4 items-start">
             <CategoryFilters categories={categories} />
-            <div>
-              <div>1 - 22 of 7063 APIs</div>
-              <div>
-                <div>results</div>
-                <button>load more</button>
+            <div className="flex-grow">
+              <div className="mb-5">1 - 22 of 7063 APIs</div>
+              <div className="grid grid-cols-2 gap-4 mb-5">
+                <Api />
+                <Api />
+                <Api />
+                <Api />
+                <Api />
+                <Api />
               </div>
+              <LoadMoreButton />
             </div>
           </div>
         </div>
       </div>
     </Layout>
+  );
+}
+
+function LoadMoreButton() {
+  return (
+    <Button variant="secondary" className="w-full">
+      Load More
+    </Button>
+  );
+}
+
+function Api() {
+  return (
+    <div className="flex-grow rounded-md p-4">
+      <div className="flex items-start gap-4">
+        <div className="block h-5 w-5 p-3 border rounded-sm">
+          <img
+            className="w-full"
+            src="https://github.com/konfig-sdks/openapi-examples/blob/main/asana/favicon.png?raw=true"
+          />
+        </div>
+        <div>
+          <h3 className="mb-2">API Name</h3>
+          <p className="m-0">API Description</p>
+        </div>
+      </div>
+    </div>
   );
 }
 
