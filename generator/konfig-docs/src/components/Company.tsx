@@ -212,9 +212,9 @@ function SdkLinkItem({
         )}
       >
         <div className="flex flex-col gap-2 text-left w-full">
-          <div className="flex flex-row gap-2 items-center">
-            <div className="shrink-0 h-4 w-4">
-              <img className="w-full h-full object-cover" src={favicon} />
+          <div className="flex flex-row gap-2 shrink-0 items-center">
+            <div className="h-4 w-4">
+              <img className="w-full h-auto" src={favicon} />
             </div>
             <div className="font-mono font-semibold text-sm sm:text-base">
               {index}
