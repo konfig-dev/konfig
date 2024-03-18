@@ -41,16 +41,63 @@ import { missingDataTimeFormat } from './functions/missingDateTimeFormat'
 import { missingDateFormat } from './functions/missingDateFormat '
 import { invalidRequiredPropertySyntax } from './functions/invalidRequiredPropertySyntax'
 import { duplicateSdkMethodName } from './functions/duplicateSdkMethodName'
+import { parameterMissingDescription } from './functions/parameterMissingDescription'
 
 export default {
   extends: oas,
   aliases: rulesetJsonPaths,
   rules: {
-    'operation-description': 'off',
     'operation-success-response': 'off',
     'info-contact': 'off',
     'oas2-schema': 'off',
     'oas3-unused-component': 'off',
+    'component-schema-missing-description': {
+      description: 'All schemas should have a non-empty description',
+      given: rulesetJsonPaths.ComponentSchemas,
+      then: {
+        field: 'description',
+        function: truthy,
+      },
+      severity: DiagnosticSeverity.Information,
+    },
+    'array-items-schema-missing-description': {
+      description: 'All schemas should have a non-empty description',
+      given: rulesetJsonPaths.AllArraySchemaItems,
+      then: {
+        field: 'description',
+        function: truthy,
+      },
+      severity: DiagnosticSeverity.Information,
+    },
+    'object-property-schema-missing-description': {
+      description: 'All schemas should have a non-empty description',
+      given: rulesetJsonPaths.AllObjectSchemaProperties,
+      then: {
+        field: 'description',
+        function: truthy,
+      },
+      severity: DiagnosticSeverity.Information,
+    },
+    'operation-description': {
+      description: 'All operations should have a non-empty description',
+      given: '#OperationObject',
+      then: {
+        field: 'description',
+        function: truthy,
+      },
+      severity: DiagnosticSeverity.Information,
+    },
+    'parameter-missing-description': {
+      description: `Parameter "description" or parameter's schema "description" must be present and non-empty string`,
+      given: [
+        '#PathItem.parameters[?(@ && @.in)]',
+        '#OperationObject.parameters[?(@ && @.in)]',
+        '$.components.parameters[?(@ && @.in)]',
+      ],
+      then: {
+        function: parameterMissingDescription,
+      },
+    },
     'konfig-oas2-schema': {
       description: 'Validate structure of OpenAPI v2 specification.',
       message: '{{error}}.',

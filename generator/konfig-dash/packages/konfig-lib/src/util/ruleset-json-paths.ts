@@ -21,6 +21,9 @@ export const rulesetJsonPaths = {
     '#ResponseSchemaObject',
     '#ParameterSchemaObject',
   ],
+  AllObjectSchemaProperties: ['#AllSchemaObjects..properties.*'],
+  AllArraySchemaItems: ['#AllSchemaObjects..items'],
+  ComponentSchemas: ['$.components.schemas.*'],
 }
 
 export const givenPaths = {
