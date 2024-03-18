@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.37.0
+
+### Minor Changes
+
+- [#649](https://github.com/konfig-dev/konfig/pull/649) [`f7074d8f`](https://github.com/konfig-dev/konfig/commit/f7074d8fd19ca86c35280cbef45b32044d4f23f7) Thanks [@dphuang2](https://github.com/dphuang2)! - add rules for missing description's in konfig's lint rules with Info level severity
+
 ## 1.36.13
 
 ### Patch Changes
