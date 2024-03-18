@@ -44,7 +44,7 @@ export default function Sdks() {
             <CategoryFilters categories={categories} />
             <div className="flex-grow">
               <div className="mb-5">1 - 22 of 7063 APIs</div>
-              <div className="grid grid-cols-2 gap-4 mb-5">
+              <div className="grid grid-cols-2 gap-3 mb-5">
                 <Api />
                 <Api />
                 <Api />
@@ -70,21 +70,31 @@ function LoadMoreButton() {
 }
 
 function Api() {
+  const metaDescription =
+    "Asana helps teams orchestrate their work, from small projects to strategic initiatives. Headquartered in San Francisco, CA, Asana has more than 131,000 paying customers and millions of free organizations across 190 countries. Global customers such as Amazon, Japan Airlines, Sky, and Affirm rely on Asana to manage everything from company objectives to digital transformation to product launches and marketing campaigns. For more information, visit www.asana.com.";
+  const maxLength = 105;
+  const limitedMetaDescription =
+    metaDescription.length > maxLength
+      ? `${metaDescription.substring(0, maxLength)}...`
+      : metaDescription;
   return (
-    <div className="flex-grow rounded-md p-4">
-      <div className="flex items-start gap-4">
-        <div className="block h-5 w-5 p-3 border rounded-sm">
+    <a
+      href="#"
+      className="flex-grow rounded-md hover:no-underline p-4 hover:shadow-xl hover:ring-1 ring-slate-200 transition-shadow"
+    >
+      <div className="flex flex-row items-start gap-4">
+        <div className="h-16 w-16">
           <img
-            className="w-full"
+            className="h-auto w-full"
             src="https://github.com/konfig-sdks/openapi-examples/blob/main/asana/favicon.png?raw=true"
           />
         </div>
         <div>
           <h3 className="mb-2">API Name</h3>
-          <p className="m-0">API Description</p>
+          <p className="m-0 text-sm text-slate-600">{limitedMetaDescription}</p>
         </div>
       </div>
-    </div>
+    </a>
   );
 }
 
