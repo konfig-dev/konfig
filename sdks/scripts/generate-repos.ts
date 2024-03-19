@@ -37,6 +37,15 @@ function handleErrors(fn: () => void, result: GenerateSdkResult, action: string,
   return result;
 }
 
+function updateExisting(key: string, language: string, allExistingRepos: string[]): GenerateSdkResult {
+  const data: Published = JSON.parse(fs.readFileSync(path.join(publishedDir, `${key}.json`), "utf-8"));
+  const sdkName = data.sdkName.replace("{language}", language);
+  if (!allExistingRepos.includes(sdkName)) {
+    return { key, language, result: "skip", reason: "Repository does not exist" };
+  }
+  return generateSdkRepository(key, language, false, true, false);
+}
+
 function generateSdkRepository(
   key: string,
   language: string,
@@ -134,7 +143,6 @@ function generateSdkRepository(
   }
   if (result.reason) return result;
 
-  // Remove local directory
   result.result = "success";
   return result;
 }
@@ -292,11 +300,17 @@ function displayResults(results: GenerateSdkResult[]) {
 }
 
 type Arguments = {
+  // Flags
   debug: boolean; // If true, repository is not created and code is not pushed to remote
   updateExisting: boolean; // If true, existing repositories are updated. If false, they are skipped
   verbose: boolean; // If true, more detailed logs are printed for sdks with errors
   companyFilter: string | undefined; // If defined, only the company keys that include this string are generated. Otherwise, generate for all companies
   languageFilter: string | undefined; // If defined, only generate for this language. Otherwise, generate for all languages
+
+  // Functions
+  updateAllExisting: boolean; // If true, all existing repositories are updated
+  deleteAllEmpty: boolean; // If true, all empty repositories are deleted. All other arguments are ignored
+  listStatus: boolean; // If true, list the status of all existing sdk repos. All other arguments are ignored
 };
 
 function parseArguments(args: string[]): Arguments {
@@ -305,7 +319,10 @@ function parseArguments(args: string[]): Arguments {
   const verbose = args.includes("--verbose") || args.includes("-v");
   const languageFilter = args.find((arg) => arg.startsWith("--language="))?.split("=")[1];
   const companyFilter = args.find((arg) => !arg.startsWith("-"));
-  return { debug, updateExisting, verbose, companyFilter, languageFilter };
+  const updateAllExisting = args.includes("--update-all");
+  const deleteAllEmpty = args.includes("--delete-empty");
+  const listStatus = args.includes("--list-status");
+  return { debug, updateExisting, verbose, companyFilter, languageFilter, updateAllExisting, deleteAllEmpty, listStatus };
 }
 
 function logArguments(args: Arguments) {
@@ -318,8 +335,55 @@ function logArguments(args: Arguments) {
   console.log("\n--------------------------------------------\n");
 }
 
+function listAllExistingRepositories(): string[] {
+  const filter = [".github", "openapi-examples"];
+  const { stdout } = execa.sync("gh", ["repo", "list", "konfig-sdks", "--json", "name", "--limit", "10000"]);
+  const repoNames = JSON.parse(stdout).map((repo: any) => repo.name).filter((name: string) => !filter.includes(name));
+  return repoNames;
+}
+
+async function listRepoStatus() {
+  const publishedJsons = fs.readdirSync(publishedDir);
+  await Promise.all(
+    publishedJsons.map(async (file) => {
+      const key = file.replace(".json", "");
+      const data: Published = JSON.parse(fs.readFileSync(path.join(publishedDir, file), "utf-8"));
+      let result = `- ${key}`;
+      LANGUAGES.forEach((lang) => {
+        const sdkName = data.sdkName.replace("{language}", lang);
+        if (repositoryExists(sdkName))
+          result += `\n   - ${lang}: ✅`;
+        else
+          result += `\n   - ${lang}: ❌`;
+      });
+      result += "\n";
+      console.log(result);
+    })
+  );
+}
+
+async function deleteAllEmptyRepositories() {
+  const { stdout } = execa.sync("gh", ["repo", "list", "konfig-sdks", "--json", "name,isEmpty", "--limit", "10000"]);
+  const repos = JSON.parse(stdout);
+  const emptyRepos = repos.filter((repo: any) => repo.isEmpty).map((repo: any) => repo.name);
+  console.log(`Found ${emptyRepos.length} empty repositories: ${emptyRepos.join(", ")}`)
+  emptyRepos.forEach((repo: string) => {
+    console.log(`Deleting ${repo}...`);
+    deleteRepository(repo);
+  });
+}
+
 async function main() {
   const args = parseArguments(process.argv.slice(2));
+  if (args.listStatus) {
+    await listRepoStatus();
+    return;
+  }
+  if (args.deleteAllEmpty) {
+    await deleteAllEmptyRepositories();
+    return;
+  }
+  const allExistingRepos = listAllExistingRepositories();
   const publishedJsons = fs.readdirSync(publishedDir);
   const result: GenerateSdkResult[] = [];
   logArguments(args);
@@ -330,7 +394,11 @@ async function main() {
       LANGUAGES.forEach((lang) => {
         if (args.languageFilter && lang !== args.languageFilter) return;
         console.log(`💻 Generating ${lang} SDK for ${key}`);
-        result.push(generateSdkRepository(key, lang, args.debug, args.updateExisting, args.verbose));
+        if (args.updateAllExisting) {
+          result.push(updateExisting(key, lang, allExistingRepos));
+        } else {
+          result.push(generateSdkRepository(key, lang, args.debug, args.updateExisting, args.verbose));
+        }
       });
     })
   );
