@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.37.1
+
+### Patch Changes
+
+- [#653](https://github.com/konfig-dev/konfig/pull/653) [`58fd128a`](https://github.com/konfig-dev/konfig/commit/58fd128a55f552adeb62ae237c45d6c8db6c754e) Thanks [@dphuang2](https://github.com/dphuang2)! - add support for customSnippet for custom code in docs portal
+
 ## 1.37.0
 
 ### Minor Changes
