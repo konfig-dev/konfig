@@ -43,6 +43,28 @@ export type FormInputValues = {
   [parameter: string]: FormInputValue
 }
 
+export type SecurityFormValue =
+  | {
+      [SECURITY_TYPE_PROPERTY]: 'oauth2-client-credentials'
+      [OAUTH2_CLIENT_ID_PROPERTY]: string
+      [OAUTH2_CLIENT_SECRET_PROPERTY]: string
+    }
+  | {
+      [SECURITY_TYPE_PROPERTY]: 'apiKey'
+      [API_KEY_IN_PROPERTY]: string
+      [API_KEY_NAME_PROPERTY]: string
+      [API_KEY_VALUE_PROPERTY]: string
+    }
+  | {
+      [SECURITY_TYPE_PROPERTY]: 'bearer'
+      [BEARER_VALUE_PROPERTY]: string
+    }
+  | {
+      [SECURITY_TYPE_PROPERTY]: 'clientState'
+      [CLIENT_STATE_NAME_PROPERTY]: string
+      [CLIENT_STATE_VALUE_PROPERTY]: string
+    }
+
 export type FormDataType = {
   [PARAMETER_FORM_NAME_PREFIX]: FormInputValues
 
@@ -54,29 +76,7 @@ export type FormDataType = {
    */
   [REQUEST_BODY_FORM_NAME_PREFIX]: FormInputValue
 
-  [SECURITY_FORM_NAME_PREFIX]: Record<
-    string,
-    | {
-        [SECURITY_TYPE_PROPERTY]: 'oauth2-client-credentials'
-        [OAUTH2_CLIENT_ID_PROPERTY]: string
-        [OAUTH2_CLIENT_SECRET_PROPERTY]: string
-      }
-    | {
-        [SECURITY_TYPE_PROPERTY]: 'apiKey'
-        [API_KEY_IN_PROPERTY]: string
-        [API_KEY_NAME_PROPERTY]: string
-        [API_KEY_VALUE_PROPERTY]: string
-      }
-    | {
-        [SECURITY_TYPE_PROPERTY]: 'bearer'
-        [BEARER_VALUE_PROPERTY]: string
-      }
-    | {
-        [SECURITY_TYPE_PROPERTY]: 'clientState'
-        [CLIENT_STATE_NAME_PROPERTY]: string
-        [CLIENT_STATE_VALUE_PROPERTY]: string
-      }
-  >
+  [SECURITY_FORM_NAME_PREFIX]: Record<string, SecurityFormValue>
 }
 type FormValues = UseFormInput<
   FormDataType,

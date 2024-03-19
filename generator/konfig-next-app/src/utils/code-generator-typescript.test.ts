@@ -292,6 +292,140 @@ test('nested objects does not have empty properties', async () => {
   expect(code).toMatchSnapshot()
 })
 
+test('empty form values', async () => {
+  const args: CodeGeneratorConstructorArgs = {
+    contentType: 'application/json',
+    httpMethod: HttpMethodsEnum.POST,
+    path: '/v1/runs',
+    parameters: [
+      {
+        name: 'workflow_id',
+        in: 'body',
+        schema: {
+          description: 'The ID of the workflow to be run.',
+          type: 'string',
+          format: '',
+          example: 'wkf_i3F5UjpZ2Vg',
+        },
+        required: true,
+      },
+      {
+        name: 'webhook_url',
+        in: 'body',
+        schema: {
+          description:
+            'The URL to which the workflow results should be sent to on completion.',
+          type: 'string',
+          example: 'https://myapp.com/webhook',
+        },
+        required: false,
+      },
+      {
+        name: 'input',
+        in: 'body',
+        schema: {
+          description:
+            'Variables that the workflow can use globally and their values.',
+          type: 'object',
+          additionalProperties: true,
+          example: {
+            first_name: 'Sam',
+            last_name: 'Altman',
+          },
+        },
+        required: false,
+      },
+    ],
+    requestBody: {
+      name: '',
+      in: 'body',
+      schema: {
+        type: 'object',
+        properties: {
+          workflow_id: {
+            description: 'The ID of the workflow to be run.',
+            type: 'string',
+            format: '',
+            example: 'wkf_i3F5UjpZ2Vg',
+          },
+          webhook_url: {
+            description:
+              'The URL to which the workflow results should be sent to on completion.',
+            type: 'string',
+            example: 'https://myapp.com/webhook',
+          },
+          input: {
+            description:
+              'Variables that the workflow can use globally and their values.',
+            type: 'object',
+            additionalProperties: true,
+            example: {
+              first_name: 'Sam',
+              last_name: 'Altman',
+            },
+          },
+        },
+        required: ['workflow_id'],
+      },
+      isRequestBody: true,
+      required: true,
+    },
+    securitySchemes: {
+      api_key: {
+        type: 'apiKey',
+        in: 'header',
+        name: 'X-Api-Key',
+      },
+    },
+    formData: {
+      parameters: {
+        workflow_id: '',
+        webhook_url: '',
+        input: '',
+      },
+      security: {
+        api_key: {
+          type: 'apiKey',
+          in: 'header',
+          key: 'X-Api-Key',
+          value: '',
+        },
+      },
+      requestBody: '',
+    },
+    languageConfigurations: {
+      typescript: {
+        clientName: 'Leap',
+        packageName: '@leap-ai/workflows',
+        git: {
+          owner: 'leap-ai',
+          path: 'workflows-sdks/tree/main/sdks/typescript',
+        },
+      },
+      python: {
+        disabled: false,
+        clientName: 'Leap',
+        packageName: 'leap_workflows',
+        projectName: 'leap-workflows-python-sdk',
+        git: {
+          owner: 'leap-ai',
+          path: 'workflows-sdks/tree/main/sdks/python',
+        },
+      },
+    },
+    servers: ['https://api.workflows.tryleap.ai'],
+    operationId: 'run_workflow',
+    tag: 'Workflow Runs',
+    basePath: 'https://api.workflows.tryleap.ai',
+    oauthTokenUrl: null,
+    originalOauthTokenUrl: null,
+    requestBodyRequired: true,
+    mode: 'copy',
+  }
+  const code = await new CodeGeneratorTypeScript(args).snippet()
+  expect(code).toMatchSnapshot()
+})
+
 test('request body with blob values', async () => {
   const args: CodeGeneratorConstructorArgs = {
     parameters: [],

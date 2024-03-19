@@ -23,6 +23,27 @@ console.log(response.data);
 "
 `;
 
+exports[`empty form values 1`] = `
+"import { Leap } from \\"@leap-ai/workflows\\";
+
+const leap = new Leap({
+  apiKey: \\"API_KEY\\",
+});
+
+const response = await leap.workflowRuns.workflow(
+  {
+    workflow_id: \\"wkf_i3F5UjpZ2Vg\\",
+    webhook_url: \\"https://myapp.com/webhook\\",
+    input: {
+      first_name: \\"Sam\\",
+      last_name: \\"Altman\\",
+    },
+  },
+);
+console.log(response.data);
+"
+`;
+
 exports[`example with boolean 1`] = `
 "import { Test } from \\"test\\";
 
