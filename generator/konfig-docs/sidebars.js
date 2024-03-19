@@ -123,6 +123,11 @@ const sidebars = {
             },
             {
               type: "doc",
+              label: "Configuring Custom Code",
+              id: "portal/tutorials/configuring-custom-code",
+            },
+            {
+              type: "doc",
               label: "Styling Your Portal",
               id: "portal/tutorials/styling-your-portal",
             },
