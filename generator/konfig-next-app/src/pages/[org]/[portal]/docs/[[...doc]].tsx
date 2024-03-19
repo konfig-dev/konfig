@@ -90,6 +90,7 @@ const DocumentationPage = observer(
     docId,
     docConfig,
     googleAnalyticsId,
+    customSnippet,
     operations,
     owner,
     defaultBranch,
@@ -146,7 +147,10 @@ const DocumentationPage = observer(
 
     return (
       <>
-        <GoogleAnalyticsProvider googleAnalyticsId={googleAnalyticsId} />
+        <GoogleAnalyticsProvider
+          customSnippet={customSnippet}
+          googleAnalyticsId={googleAnalyticsId}
+        />
         <Head>
           {faviconLink ? (
             <link rel="icon" href={faviconLink} />

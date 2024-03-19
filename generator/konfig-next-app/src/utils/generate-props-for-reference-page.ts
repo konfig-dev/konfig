@@ -22,6 +22,8 @@ import { MarkdownPageProps } from './generate-props-for-markdown-page'
 import { computeDocumentProps } from './compute-document-props'
 import { createOctokitInstance } from './octokit'
 import { transformSpecForReferencePage } from './transform-spec-for-reference-page'
+import { githubGetFileContent } from './github-get-file-content'
+import { githubGetCustomSnippet } from './github-get-custom-snippet'
 
 export type ReferencePageProps = Omit<GithubResources, 'spec'> & {
   spec: Spec['spec']
@@ -47,6 +49,7 @@ export type ReferencePageProps = Omit<GithubResources, 'spec'> & {
   requestBodyProperties: Record<string, SchemaObject> | null
   requestBodyRequired: string[] | null
   googleAnalyticsId: string | null
+  customSnippet: string | null
   allMarkdown: MarkdownPageProps['allMarkdown']
   responses: Record<string, ResponseObject>
   securityRequirements: Record<string, string[]> | null
@@ -286,6 +289,13 @@ export async function generatePropsForReferencePage({
       operation.path
     }" at ${title}'s API`
 
+  const customSnippet = await githubGetCustomSnippet({
+    owner,
+    repo,
+    octokit,
+    konfigYaml: props.konfigYaml,
+  })
+
   return {
     props: {
       ...props,
@@ -310,6 +320,7 @@ export async function generatePropsForReferencePage({
       cookieParameters,
       omitOwnerAndRepo: omitOwnerAndRepo ?? false,
       googleAnalyticsId: props.konfigYaml.portal.googleAnalyticsId ?? null,
+      customSnippet,
       hasDocumentation: props.konfigYaml.portal?.documentation !== undefined,
       requestBodyProperties,
       demos:

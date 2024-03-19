@@ -87,6 +87,7 @@ const Operation = ({
   omitOwnerAndRepo,
   hideNonSdkSnippets,
   googleAnalyticsId,
+  customSnippet,
   responses,
   allMarkdown,
   logo,
@@ -118,7 +119,10 @@ const Operation = ({
         primaryColor: 'brand',
       }}
     >
-      <GoogleAnalyticsProvider googleAnalyticsId={googleAnalyticsId} />
+      <GoogleAnalyticsProvider
+        customSnippet={customSnippet}
+        googleAnalyticsId={googleAnalyticsId}
+      />
       <Head>
         <title>{metaTitle}</title>
         <meta property="og:title" content={metaTitle} />

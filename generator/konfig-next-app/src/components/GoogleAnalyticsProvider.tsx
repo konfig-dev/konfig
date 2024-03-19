@@ -3,14 +3,14 @@ import React, { PropsWithChildren } from 'react'
 
 interface GoogleAnalyticsProviderProps {
   googleAnalyticsId: string | null | undefined
+  customSnippet: string | null | undefined
 }
 
 export const GoogleAnalyticsProvider: React.FC<
   GoogleAnalyticsProviderProps
-> = ({ googleAnalyticsId }) => {
-  if (!googleAnalyticsId) return null
-  return (
-    <Head>
+> = ({ googleAnalyticsId, customSnippet }) => {
+  const googleAnalyticsSnippet = googleAnalyticsId ? (
+    <>
       <script
         async
         src={`https://www.googletagmanager.com/gtag/js?id=G-${googleAnalyticsId}`}
@@ -22,6 +22,32 @@ export const GoogleAnalyticsProvider: React.FC<
 
             gtag('config', '${googleAnalyticsId}');`}
       </script>
+    </>
+  ) : null
+  const customSnippetComponent = customSnippet ? (
+    <Head>
+      {customSnippet.startsWith('<script') ? (
+        <script
+          id="custom-snippet"
+          dangerouslySetInnerHTML={{
+            __html:
+              customSnippet.match(/<script.*?>(.*?)<\/script>/s)?.[1] || '',
+          }}
+        />
+      ) : (
+        <script
+          id="custom-snippet"
+          dangerouslySetInnerHTML={{ __html: customSnippet }}
+        />
+      )}
     </Head>
+  ) : null
+  console.log(customSnippetComponent)
+  console.log(customSnippet)
+  return (
+    <>
+      <Head>{googleAnalyticsSnippet}</Head>
+      {customSnippetComponent}
+    </>
   )
 }

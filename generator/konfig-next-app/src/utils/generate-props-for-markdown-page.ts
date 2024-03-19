@@ -21,6 +21,7 @@ import { generateLogoLink } from './generate-logo-link'
 import { computeDocumentProps } from './compute-document-props'
 import { githubGetKonfigYamlsSafe } from './github-get-konfig-yamls-safe'
 import { extractMetaDescription } from './extract-meta-description'
+import { githubGetCustomSnippet } from './github-get-custom-snippet'
 
 export type MarkdownPageProps = {
   konfigYaml: KonfigYamlType
@@ -34,6 +35,7 @@ export type MarkdownPageProps = {
   repo: string
   operations: OperationObject[]
   googleAnalyticsId: string | null
+  customSnippet: string | null
   markdown: string
   defaultBranch: string
   metaDescription: string
@@ -200,6 +202,13 @@ export async function generatePropsForMarkdownPage({
   // Truncate content of markdown to 110 to 160 characters. Try to find a stopping point that isn't the middle of a line
   const metaDescription = await extractMetaDescription({ markdown })
 
+  const customSnippet = await githubGetCustomSnippet({
+    owner,
+    repo,
+    octokit,
+    konfigYaml: konfigYaml.content,
+  })
+
   return {
     props: {
       title: konfigYaml.content.portal?.title,
@@ -207,6 +216,7 @@ export async function generatePropsForMarkdownPage({
       konfigYaml: konfigYaml.content,
       markdown,
       googleAnalyticsId: konfigYaml.content.portal?.googleAnalyticsId ?? null,
+      customSnippet,
       faviconLink,
       docTitle,
       logo: logoLink,

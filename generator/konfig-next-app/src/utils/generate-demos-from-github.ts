@@ -11,6 +11,7 @@ import { MarkdownPageProps } from './generate-props-for-markdown-page'
 import { computeDocumentProps } from './compute-document-props'
 import { githubGetKonfigYamlsSafe } from './github-get-konfig-yamls-safe'
 import { extractMetaDescription } from './extract-meta-description'
+import { githubGetCustomSnippet } from './github-get-custom-snippet'
 
 /**
  * Custom mappings to preserve existing links for SnapTrade
@@ -31,6 +32,7 @@ export type FetchResult = {
   primaryColor?: string
   portalTitle?: string
   googleAnalyticsId: string | null
+  customSnippet: string | null
   organization: Organization
   portal: Portal
   demos: Demo[]
@@ -81,6 +83,7 @@ export async function generateDemosDataFromGithub({
       portal: Portal
       mainBranch: string
       googleAnalyticsId: string | null
+      customSnippet: string | null
       demo: Demo
       /**
        * Have to make this nullable because of the following error:
@@ -118,6 +121,7 @@ export async function generateDemosDataFromGithub({
     organization,
     portal,
     googleAnalyticsId: fetchResult.googleAnalyticsId,
+    customSnippet: fetchResult.customSnippet,
     demo,
     allMarkdown: fetchResult.allMarkdown,
     portalTitle: fetchResult.portalTitle ?? null,
@@ -204,6 +208,13 @@ async function _fetch({
     })
   ).allMarkdown
 
+  const customSnippet = await githubGetCustomSnippet({
+    owner,
+    repo,
+    octokit,
+    konfigYaml: konfigYaml.content,
+  })
+
   return {
     organization,
     portal,
@@ -211,6 +222,7 @@ async function _fetch({
     allMarkdown,
     hasDocumentation: konfigYaml.content.portal.documentation !== undefined,
     googleAnalyticsId: konfigYaml.content.portal?.googleAnalyticsId ?? null,
+    customSnippet,
     portalTitle: konfigYaml.content.portal.title,
     primaryColor: konfigYaml.content.portal.primaryColor,
     mainBranch: repository.data.default_branch,

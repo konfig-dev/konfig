@@ -56,6 +56,7 @@ const DemoPage = observer(
     primaryColor,
     omitOwnerAndRepo,
     googleAnalyticsId,
+    customSnippet,
     hasDocumentation,
     allMarkdown,
     owner,
@@ -99,7 +100,10 @@ const DemoPage = observer(
           primaryColor: 'brand',
         }}
       >
-        <GoogleAnalyticsProvider googleAnalyticsId={googleAnalyticsId} />
+        <GoogleAnalyticsProvider
+          customSnippet={customSnippet}
+          googleAnalyticsId={googleAnalyticsId}
+        />
         <Head>
           {faviconLink ? (
             <link rel="icon" href={faviconLink} />

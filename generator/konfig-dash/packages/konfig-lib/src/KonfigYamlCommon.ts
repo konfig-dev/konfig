@@ -148,6 +148,12 @@ export const defaultChangesetBumpType = z
 export const portal = z
   .object({
     primaryColor,
+    customSnippet: z
+      .string()
+      .optional()
+      .describe(
+        'Path to file containing HTML to be added in the <head> of the docs. This is useful if you want to include a custom snippets in the docs.'
+      ),
     googleAnalyticsId: z
       .string()
       .optional()
