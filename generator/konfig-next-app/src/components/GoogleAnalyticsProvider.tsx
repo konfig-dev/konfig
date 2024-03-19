@@ -42,8 +42,6 @@ export const GoogleAnalyticsProvider: React.FC<
       )}
     </Head>
   ) : null
-  console.log(customSnippetComponent)
-  console.log(customSnippet)
   return (
     <>
       <Head>{googleAnalyticsSnippet}</Head>
