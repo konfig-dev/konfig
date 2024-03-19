@@ -200,7 +200,7 @@ export abstract class CodeGenerator {
 
   /**
    * This is different than parameter with "in" === "body".  In the case where
-   * the request body is a scalar object or array, then this value will be
+   * the request body is a scalar value or array, then this value will be
    * non-empty. The reason why this is a different case is because SDKs are
    * ergonomic in that request bodies are flattened if possible. In the case of
    * a scalar or array request body, the request body cannot be flattened so it
@@ -345,12 +345,16 @@ export abstract class CodeGenerator {
   }
 
   allFormValuesAreEmpty(): boolean {
-    const allParametersAreEmpty = Object.values(
+    const parameters = Object.entries(
       this._formData[PARAMETER_FORM_NAME_PREFIX]
-    ).every((value) => {
+    ).filter(([name]) => {
+      return this.isInThisOperation(name)
+    })
+    const allParametersAreEmpty = parameters.every(([_name, value]) => {
       return value === ''
     })
-    const requestBodyIsEmpty = this.requestBodyValue() === ''
+    const requestBodyIsEmpty =
+      this.configuration.requestBody == null || this.requestBodyValue() === ''
     const securityIsEmpty = Object.values(
       this._formData[SECURITY_FORM_NAME_PREFIX]
     ).every((securityValue) => {

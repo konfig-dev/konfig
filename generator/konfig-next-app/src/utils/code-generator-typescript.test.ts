@@ -1135,6 +1135,79 @@ it('example with inner object', async () => {
   expect(code).toMatchSnapshot()
 })
 
+it('saved values are filtered from all values empty check', async () => {
+  const args: CodeGeneratorConstructorArgs = {
+    contentType: null,
+    httpMethod: HttpMethodsEnum.GET,
+    path: '/v1/runs/{workflow_run_id}',
+    parameters: [
+      {
+        description: 'The ID of the workflow run to retrieve.',
+        name: 'workflow_run_id',
+        required: true,
+        in: 'path',
+        example: 'rnp_x3p27VQk6MyJfLe',
+        schema: {
+          type: 'string',
+        },
+      },
+    ],
+    requestBody: null,
+    securitySchemes: {
+      api_key: {
+        type: 'apiKey',
+        in: 'header',
+        name: 'X-Api-Key',
+      },
+    },
+    formData: {
+      parameters: {
+        workflow_run_id: '',
+        workflow_id: '321',
+      },
+      security: {
+        api_key: {
+          type: 'apiKey',
+          in: 'header',
+          key: 'X-Api-Key',
+          value: '',
+        },
+      },
+      requestBody: '',
+    },
+    languageConfigurations: {
+      typescript: {
+        clientName: 'Leap',
+        packageName: '@leap-ai/workflows',
+        git: {
+          owner: 'leap-ai',
+          path: 'workflows-sdks/tree/main/sdks/typescript',
+        },
+      },
+      python: {
+        disabled: false,
+        clientName: 'Leap',
+        packageName: 'leap_workflows',
+        projectName: 'leap-workflows-python-sdk',
+        git: {
+          owner: 'leap-ai',
+          path: 'workflows-sdks/tree/main/sdks/python',
+        },
+      },
+    },
+    servers: ['https://api.workflows.tryleap.ai'],
+    operationId: 'WorkflowRuns_getWorkflowRun',
+    tag: 'Workflow Runs',
+    basePath: 'https://api.workflows.tryleap.ai',
+    oauthTokenUrl: null,
+    originalOauthTokenUrl: null,
+    requestBodyRequired: false,
+    mode: 'copy',
+  }
+  const code = await new CodeGeneratorTypeScript(args).snippet()
+  expect(code).toMatchSnapshot()
+})
+
 it('example with no setup', async () => {
   const code = await new CodeGeneratorTypeScript({
     path: '',
