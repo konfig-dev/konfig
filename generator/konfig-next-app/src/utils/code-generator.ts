@@ -252,7 +252,9 @@ export abstract class CodeGenerator {
   nonEmptyParameters(): NonEmptyParameters {
     const parameters = Object.entries(
       this._formData[PARAMETER_FORM_NAME_PREFIX]
-    )
+    ).filter(([name]) => {
+      return this.isInThisOperation(name)
+    })
 
     if (this.allFormValuesAreEmpty()) {
       return parameters
@@ -272,9 +274,6 @@ export abstract class CodeGenerator {
     }
 
     return parameters
-      .filter(([name]) => {
-        return this.isInThisOperation(name)
-      })
       .filter(([_name, value]) => {
         return isNonEmpty(value)
       })
@@ -293,7 +292,8 @@ export abstract class CodeGenerator {
    */
   parameterStrict(name: string) {
     const parameter = this.parameter(name)
-    if (parameter === undefined) throw Error("Parameter doesn't exist")
+    if (parameter === undefined)
+      throw Error(`Parameter with name "${name} doesn't exist`)
     return parameter
   }
 
@@ -403,7 +403,6 @@ export abstract class CodeGenerator {
                 newSecurity[API_KEY_VALUE_PROPERTY] === '' ||
                 newSecurity[API_KEY_VALUE_PROPERTY] === undefined
               ) {
-                console.log('SETTING DEFAULT', name, newSecurity)
                 newSecurity[API_KEY_VALUE_PROPERTY] =
                   snakecase(name).toUpperCase()
               }
@@ -413,7 +412,6 @@ export abstract class CodeGenerator {
                 newSecurity[BEARER_VALUE_PROPERTY] === '' ||
                 newSecurity[BEARER_VALUE_PROPERTY] === undefined
               ) {
-                console.log('SETTING DEFAULT', name, newSecurity)
                 newSecurity[BEARER_VALUE_PROPERTY] =
                   snakecase(name).toUpperCase()
               }
@@ -423,7 +421,6 @@ export abstract class CodeGenerator {
                 newSecurity[CLIENT_STATE_VALUE_PROPERTY] === '' ||
                 newSecurity[CLIENT_STATE_VALUE_PROPERTY] === undefined
               ) {
-                console.log('SETTING DEFAULT', name, newSecurity)
                 newSecurity[CLIENT_STATE_VALUE_PROPERTY] =
                   snakecase(name).toUpperCase()
               }
@@ -435,7 +432,6 @@ export abstract class CodeGenerator {
                 newSecurity[OAUTH2_CLIENT_SECRET_PROPERTY] === '' ||
                 newSecurity[OAUTH2_CLIENT_SECRET_PROPERTY] === undefined
               ) {
-                console.log('SETTING DEFAULT', name, newSecurity)
                 newSecurity[OAUTH2_CLIENT_ID_PROPERTY] =
                   snakecase(name).toUpperCase()
                 newSecurity[OAUTH2_CLIENT_SECRET_PROPERTY] =
