@@ -236,12 +236,48 @@ export abstract class CodeGenerator {
           return snakecase(name).toUpperCase()
         case 'number':
           return 0
+        case 'integer':
+          return 0
+        case 'null':
+          return null
         case 'boolean':
           return true
         case 'object':
+          if (parameter.schema.properties)
+            return Object.fromEntries(
+              Object.entries(parameter.schema.properties).map(
+                ([name, property]) => {
+                  const propertyParameter: Parameter = {
+                    ...parameter,
+                    name,
+                    schema: property,
+                  }
+                  return [
+                    name,
+                    this.parameterDummyPlaceholder({
+                      name,
+                      parameter: propertyParameter,
+                    }),
+                  ]
+                }
+              )
+            )
           return {}
         case 'array':
-          return []
+          const items = parameter.schema.items
+          if ('$ref' in items) {
+            return []
+          }
+          const itemsParameter: Parameter = {
+            ...parameter,
+            schema: items,
+          }
+          return [
+            this.parameterDummyPlaceholder({
+              name,
+              parameter: itemsParameter,
+            }),
+          ]
       }
     }
   }
@@ -347,14 +383,21 @@ export abstract class CodeGenerator {
   allFormValuesAreEmpty(): boolean {
     const parameters = Object.entries(
       this._formData[PARAMETER_FORM_NAME_PREFIX]
-    ).filter(([name]) => {
-      return this.isInThisOperation(name)
-    })
+    )
+      .filter(([name]) => {
+        return this.isInThisOperation(name)
+      })
+      .map(([name, value]) => {
+        return [name, recursivelyRemoveEmptyValues(value)]
+      })
     const allParametersAreEmpty = parameters.every(([_name, value]) => {
-      return value === ''
+      return value === '' || (Array.isArray(value) && value.length === 0)
     })
+    const requestBodyValue = this.requestBodyValue()
     const requestBodyIsEmpty =
-      this.configuration.requestBody == null || this.requestBodyValue() === ''
+      this.configuration.requestBody == null ||
+      this.requestBodyValue() === '' ||
+      (Array.isArray(requestBodyValue) && requestBodyValue.length === 0)
     const securityIsEmpty = Object.values(
       this._formData[SECURITY_FORM_NAME_PREFIX]
     ).every((securityValue) => {

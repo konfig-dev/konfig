@@ -1135,6 +1135,317 @@ it('example with inner object', async () => {
   expect(code).toMatchSnapshot()
 })
 
+it('empty array as request body should count as empty', async () => {
+  const args: CodeGeneratorConstructorArgs = {
+    contentType: 'multipart/form-data',
+    httpMethod: HttpMethodsEnum.POST,
+    path: '/v1/ingest/documents/local',
+    parameters: [],
+    requestBody: {
+      name: '',
+      in: 'body',
+      schema: {
+        type: 'array',
+        items: {
+          type: 'object',
+          required: ['blob', 'metadata'],
+          properties: {
+            blob: {
+              description: 'The actual file being uploaded.',
+              type: 'string',
+              format: 'binary',
+            },
+            metadata: {
+              type: 'object',
+              required: ['bucketId', 'fileName', 'fileType'],
+              properties: {
+                bucketId: {
+                  description:
+                    'the bucketId of the bucket which this local file will be uploaded to.',
+                  type: 'integer',
+                  example: 1234,
+                },
+                fileName: {
+                  description: 'The name of the file being uploaded',
+                  type: 'string',
+                  example: 'my_file.txt',
+                },
+                fileType: {
+                  description:
+                    'The type of document (one of the seven currently supported file types)',
+                  type: 'string',
+                  enum: [
+                    'txt',
+                    'docx',
+                    'pptx',
+                    'xlsx',
+                    'pdf',
+                    'png',
+                    'jpg',
+                    'csv',
+                    'tsv',
+                    'json',
+                  ],
+                },
+                searchData: {
+                  description:
+                    "Custom metadata which can be used to influence GroundX's search functionality. This data can be used to further hone GroundX search.",
+                  type: 'object',
+                  example: {
+                    key: 'value',
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+      isRequestBody: true,
+      required: false,
+    },
+    securitySchemes: {
+      ApiKeyAuth: {
+        type: 'apiKey',
+        in: 'header',
+        name: 'X-API-Key',
+      },
+    },
+    formData: {
+      parameters: {},
+      security: {
+        ApiKeyAuth: {
+          type: 'apiKey',
+          in: 'header',
+          key: 'X-API-Key',
+          value: '',
+        },
+      },
+      requestBody: [],
+    },
+    languageConfigurations: {
+      typescript: {
+        clientName: 'Groundx',
+        packageName: 'groundx-typescript-sdk',
+        git: {
+          owner: 'groundxai',
+          path: 'groundx-sdks/tree/main/sdks/typescript',
+        },
+      },
+      python: {
+        disabled: false,
+        clientName: 'Groundx',
+        packageName: 'groundx',
+        projectName: 'groundx-python-sdk',
+        git: {
+          owner: 'groundxai',
+          path: 'groundx-sdks/tree/main/sdks/python',
+        },
+      },
+    },
+    servers: ['https://api.groundx.ai/api'],
+    operationId: 'Document_uploadLocal',
+    tag: 'Documents',
+    basePath: 'https://api.groundx.ai/api',
+    oauthTokenUrl: null,
+    originalOauthTokenUrl: null,
+    requestBodyRequired: false,
+    mode: 'copy',
+  }
+  const code = await new CodeGeneratorTypeScript(args).snippet()
+  expect(code).toMatchSnapshot()
+})
+
+it('empty values should be removed before checking if all form values are empty', async () => {
+  const args: CodeGeneratorConstructorArgs = {
+    contentType: 'application/json',
+    httpMethod: HttpMethodsEnum.POST,
+    path: '/v1/ingest/documents/remote',
+    parameters: [
+      {
+        name: 'documents',
+        in: 'body',
+        schema: {
+          type: 'array',
+          items: {
+            type: 'object',
+            required: ['bucketId', 'sourceUrl'],
+            properties: {
+              bucketId: {
+                description:
+                  'the bucketId of the bucket which this remote file will be uploaded to.',
+                type: 'integer',
+                example: 1234,
+              },
+              fileName: {
+                description: 'The name of the file being uploaded',
+                type: 'string',
+                example: 'my_file.txt',
+              },
+              fileType: {
+                description:
+                  'The type of document (one of the seven currently supported file types)',
+                type: 'string',
+                enum: [
+                  'txt',
+                  'docx',
+                  'pptx',
+                  'xlsx',
+                  'pdf',
+                  'png',
+                  'jpg',
+                  'csv',
+                  'tsv',
+                  'json',
+                ],
+              },
+              searchData: {
+                description:
+                  "Custom metadata which can be used to influence GroundX's search functionality. This data can be used to further hone GroundX search.",
+                type: 'object',
+                example: {
+                  key: 'value',
+                },
+              },
+              sourceUrl: {
+                type: 'string',
+                description:
+                  'The URL of the document being uploaded to GroundX.',
+                format: 'uri',
+                example: 'https://my.source.url.com/file.txt',
+              },
+            },
+          },
+        },
+        required: true,
+      },
+    ],
+    requestBody: {
+      name: '',
+      in: 'body',
+      schema: {
+        type: 'object',
+        required: ['documents'],
+        properties: {
+          documents: {
+            type: 'array',
+            items: {
+              type: 'object',
+              required: ['bucketId', 'sourceUrl'],
+              properties: {
+                bucketId: {
+                  description:
+                    'the bucketId of the bucket which this remote file will be uploaded to.',
+                  type: 'integer',
+                  example: 1234,
+                },
+                fileName: {
+                  description: 'The name of the file being uploaded',
+                  type: 'string',
+                  example: 'my_file.txt',
+                },
+                fileType: {
+                  description:
+                    'The type of document (one of the seven currently supported file types)',
+                  type: 'string',
+                  enum: [
+                    'txt',
+                    'docx',
+                    'pptx',
+                    'xlsx',
+                    'pdf',
+                    'png',
+                    'jpg',
+                    'csv',
+                    'tsv',
+                    'json',
+                  ],
+                },
+                searchData: {
+                  description:
+                    "Custom metadata which can be used to influence GroundX's search functionality. This data can be used to further hone GroundX search.",
+                  type: 'object',
+                  example: {
+                    key: 'value',
+                  },
+                },
+                sourceUrl: {
+                  type: 'string',
+                  description:
+                    'The URL of the document being uploaded to GroundX.',
+                  format: 'uri',
+                  example: 'https://my.source.url.com/file.txt',
+                },
+              },
+            },
+          },
+        },
+      },
+      isRequestBody: true,
+      required: false,
+    },
+    securitySchemes: {
+      ApiKeyAuth: {
+        type: 'apiKey',
+        in: 'header',
+        name: 'X-API-Key',
+      },
+    },
+    formData: {
+      parameters: {
+        documents: [
+          {
+            bucketId: '',
+            fileName: '',
+            fileType: '',
+            searchData: '',
+            sourceUrl: '',
+          },
+        ],
+      },
+      security: {
+        ApiKeyAuth: {
+          type: 'apiKey',
+          in: 'header',
+          key: 'X-API-Key',
+          value: '',
+        },
+      },
+      requestBody: '',
+    },
+    languageConfigurations: {
+      typescript: {
+        clientName: 'Groundx',
+        packageName: 'groundx-typescript-sdk',
+        git: {
+          owner: 'groundxai',
+          path: 'groundx-sdks/tree/main/sdks/typescript',
+        },
+      },
+      python: {
+        disabled: false,
+        clientName: 'Groundx',
+        packageName: 'groundx',
+        projectName: 'groundx-python-sdk',
+        git: {
+          owner: 'groundxai',
+          path: 'groundx-sdks/tree/main/sdks/python',
+        },
+      },
+    },
+    servers: ['https://api.groundx.ai/api'],
+    operationId: 'Document_uploadRemote',
+    tag: 'Documents',
+    basePath: 'https://api.groundx.ai/api',
+    oauthTokenUrl: null,
+    originalOauthTokenUrl: null,
+    requestBodyRequired: false,
+    mode: 'copy',
+  }
+
+  const code = await new CodeGeneratorTypeScript(args).snippet()
+  expect(code).toMatchSnapshot()
+})
+
 it('saved values are filtered from all values empty check', async () => {
   const args: CodeGeneratorConstructorArgs = {
     contentType: null,

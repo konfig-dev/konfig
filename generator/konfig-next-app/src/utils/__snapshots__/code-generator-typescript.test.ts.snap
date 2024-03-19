@@ -23,6 +23,19 @@ console.log(response.data);
 "
 `;
 
+exports[`empty array as request body should count as empty 1`] = `
+"import { Groundx } from \\"groundx-typescript-sdk\\";
+
+const groundx = new Groundx({
+  apiKey: \\"API_KEY_AUTH\\",
+});
+
+const response =
+  await groundx.documents.uploadLocal([]);
+console.log(response.data);
+"
+`;
+
 exports[`empty form values 1`] = `
 "import { Leap } from \\"@leap-ai/workflows\\";
 
@@ -40,6 +53,30 @@ const response = await leap.workflowRuns.workflow(
     },
   },
 );
+console.log(response.data);
+"
+`;
+
+exports[`empty values should be removed before checking if all form values are empty 1`] = `
+"import { Groundx } from \\"groundx-typescript-sdk\\";
+
+const groundx = new Groundx({
+  apiKey: \\"API_KEY_AUTH\\",
+});
+
+const response =
+  await groundx.documents.uploadRemote({
+    documents: [
+      {
+        bucketId: 1234,
+        fileName: \\"my_file.txt\\",
+        fileType: \\"FILE_TYPE\\",
+        searchData: { key: \\"value\\" },
+        sourceUrl:
+          \\"https://my.source.url.com/file.txt\\",
+      },
+    ],
+  });
 console.log(response.data);
 "
 `;
