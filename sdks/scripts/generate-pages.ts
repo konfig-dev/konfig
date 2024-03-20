@@ -160,11 +160,38 @@ function main() {
     JSON.stringify(formattedCategories, null, 2)
   );
 
+  const companies: {
+    parentCategories: string[];
+    subCategories: string[];
+    favicon: string;
+    metaDescription: string;
+    company: string;
+    numberOfApis: number;
+  }[] = Object.entries(companyApis).map(([company, apis]) => {
+    const parentCategories: string[] = [];
+    const subCategories: string[] = [];
+    for (const api of apis) {
+      const subCategory = api.category;
+      const parentCategory = getParentCategoryFromCategory(subCategory);
+      parentCategories.push(parentCategory);
+      subCategories.push(subCategory);
+    }
+    // deduplicate parentCategories and subCategories
+    return {
+      parentCategories: [...new Set(parentCategories)],
+      subCategories: [...new Set(subCategories)],
+      favicon: apis[0].faviconUrl,
+      metaDescription: apis[0].metaDescription,
+      company,
+      numberOfApis: apis.length,
+    };
+  });
+
   // write companies.json
-  // fs.writeFileSync(
-  //   path.join(sdkDir, "companies.json"),
-  //   JSON.stringify(companies, null, 2)
-  // );
+  fs.writeFileSync(
+    path.join(sdkDir, "companies.json"),
+    JSON.stringify(companies, null, 2)
+  );
 }
 
 function addToSdkLinks({
