@@ -46,7 +46,7 @@ function getCurrentTestName(): string {
 export async function e2e(
   mockServerPort: number,
   options?: {
-    customAssertions?: () => void;
+    customAssertions?: ({ testOutput }: { testOutput: string }) => void;
     customServer?: ServerConfig;
   }
 ) {
@@ -91,8 +91,9 @@ export async function e2e(
     });
   }
 
+  let testOutput: string | null = null;
   try {
-    await callAndLogExeca(KONFIG_CLI_PATH, ["test", ...testArgs], {
+    testOutput = await callAndLogExeca(KONFIG_CLI_PATH, ["test", ...testArgs], {
       cwd: sdkDir,
       env,
     });
@@ -154,7 +155,7 @@ export async function e2e(
   }
 
   if (options?.customAssertions) {
-    options.customAssertions();
+    options.customAssertions({ testOutput });
   }
 }
 
@@ -173,7 +174,7 @@ type ServerConfig = {
   routes: RouteConfig[];
 };
 
-const spawnServer = (config: ServerConfigWithPort): number => {
+function spawnServer(config: ServerConfigWithPort): number {
   const serverPath = path.resolve(__dirname, "apiServer.cjs");
 
   // escape the quotes in the config
@@ -204,20 +205,32 @@ const spawnServer = (config: ServerConfigWithPort): number => {
     throw new Error("Unable to get server process pid");
   }
   return pid;
-};
+}
 
-async function callAndLogExeca(command: string, args: string[], options: any) {
+async function callAndLogExeca(
+  command: string,
+  args: string[],
+  options: any
+): Promise<string> {
   console.log(`Running: ${command} ${args.join(" ")}`);
 
-  // Stream that simply console.logs everything from the child process
-
+  let output = "";
   const p = execa(command, args, {
     ...options,
+    all: true,
   });
-  p.stdout?.pipe(process.stdout);
-  p.stderr?.pipe(process.stderr);
+
+  if (p.all) {
+    p.all.on("data", (chunk) => {
+      const text = chunk.toString();
+      process.stdout.write(text);
+      output += text;
+    });
+  }
 
   await p;
+
+  return output;
 }
 
 // Removes the [GitHub last commit] line from the README

@@ -27,6 +27,8 @@ class {{classname}}(BaseModel):
     pass
     {{/unless}}
     {{/unless}}
-    class Config:
-        arbitrary_types_allowed = True
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbtrary_types_allowed=True
+    )
 {{/if}}

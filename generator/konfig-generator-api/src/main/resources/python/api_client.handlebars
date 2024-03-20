@@ -18,7 +18,7 @@ import typing_extensions
 import aiohttp
 import urllib3
 {{#if prstv2}}
-from pydantic import BaseModel, RootModel, ValidationError
+from pydantic import BaseModel, RootModel, ValidationError, ConfigDict
 {{/if}}
 from urllib3._collections import HTTPHeaderDict
 from urllib.parse import urlparse, quote
@@ -149,8 +149,9 @@ class Dictionary(BaseModel):
     For free-form objects that can have any keys and values
     (i.e. "type: object" with no properties)
     """
-    class Config:
-        extra = 'allow'
+    model_config = ConfigDict(
+        extra="allow"
+    )
 
 
 {{/if}}
