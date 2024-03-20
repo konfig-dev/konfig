@@ -33,6 +33,9 @@ class ProblematicSchema(
 
 
     class MetaOapg:
+        nullable = {
+            "nullable_property"
+        }
         
         class properties:
         

@@ -1528,6 +1528,7 @@ class DictBase(Discriminable, ValidatorBase):
         path_to_schemas = {}
         additional_properties = getattr(cls.MetaOapg, 'additional_properties', UnsetAnyTypeSchema)
         properties = getattr(cls.MetaOapg, 'properties', {})
+        nullable_properties = getattr(cls.MetaOapg, 'nullable', {})
         property_annotations = getattr(properties, '__annotations__', {})
         validation_errors = []
         for property_name, value in arg.items():
@@ -1558,6 +1559,7 @@ class DictBase(Discriminable, ValidatorBase):
             if arg_validation_metadata.validation_ran_earlier(schema):
                 continue
             try:
+                is_nullable = property_name in nullable_properties and isinstance(value, NoneClass)
                 other_path_to_schemas = schema._validate_oapg(value, validation_metadata=arg_validation_metadata)
                 update(path_to_schemas, other_path_to_schemas)
             except (ApiTypeError, ApiValueError, MissingRequiredPropertiesError) as e:
