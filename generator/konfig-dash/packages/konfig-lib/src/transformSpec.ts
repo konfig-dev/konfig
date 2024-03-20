@@ -180,8 +180,6 @@ export const transformSpec = async ({
     // inner-object, the inner-object must be a "$ref" to generate explicit
     // types for the array items in the Python SDK.
     transformInnerSchemas({ spec })
-
-    handleAllOfWithNullable({ spec })
   }
 
   // Since "list" is a reserved keyword in PHP lets convert all operation IDs from "list" to "all"
