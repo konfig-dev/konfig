@@ -18,7 +18,8 @@ export async function fixFlattenSingletonAllOf({
       schema === undefined ||
       !Array.isArray(schema['allOf']) ||
       schema['allOf'].length !== 1 ||
-      schema['allOf'][0]['$ref'] === undefined
+      schema['allOf'][0]['$ref'] === undefined ||
+      Object.keys(schema).length !== 1
     )
       return
     schema['$ref'] = schema['allOf'][0]['$ref']

@@ -37,14 +37,14 @@ class ProblematicSchema(
         class properties:
         
             @staticmethod
-            def nullable_property() -> typing.Type['RegularObject']:
-                return RegularObject
+            def nullable_property() -> typing.Type['RegularObjectNullable']:
+                return RegularObjectNullable
             __annotations__ = {
                 "nullable_property": nullable_property,
             }
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["nullable_property"]) -> 'RegularObject': ...
+    def __getitem__(self, name: typing_extensions.Literal["nullable_property"]) -> 'RegularObjectNullable': ...
     
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
@@ -55,7 +55,7 @@ class ProblematicSchema(
     
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["nullable_property"]) -> typing.Union['RegularObject', schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["nullable_property"]) -> typing.Union['RegularObjectNullable', schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
@@ -67,7 +67,7 @@ class ProblematicSchema(
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
-        nullable_property: typing.Union['RegularObject', schemas.Unset] = schemas.unset,
+        nullable_property: typing.Union['RegularObjectNullable', schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'ProblematicSchema':
@@ -79,4 +79,4 @@ class ProblematicSchema(
             **kwargs,
         )
 
-from python_allow_none_for_nullable_ref.model.regular_object import RegularObject
+from python_allow_none_for_nullable_ref.model.regular_object_nullable import RegularObjectNullable

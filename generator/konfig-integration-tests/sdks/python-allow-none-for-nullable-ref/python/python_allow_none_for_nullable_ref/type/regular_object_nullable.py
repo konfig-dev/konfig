@@ -16,12 +16,12 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 
-class RequiredRegularObject(TypedDict):
+class RequiredRegularObjectNullable(TypedDict):
     pass
 
-class OptionalRegularObject(TypedDict, total=False):
+class OptionalRegularObjectNullable(TypedDict, total=False):
     regular_property: str
 
 
-class RegularObject(RequiredRegularObject, OptionalRegularObject):
+class RegularObjectNullable(RequiredRegularObjectNullable, OptionalRegularObjectNullable):
     pass

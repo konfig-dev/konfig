@@ -15,13 +15,14 @@ import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
-from python_allow_none_for_nullable_ref.type.regular_object import RegularObject
+from python_allow_none_for_nullable_ref.type.regular_object_nullable import RegularObjectNullable
 
 class RequiredProblematicSchema(TypedDict):
     pass
 
 class OptionalProblematicSchema(TypedDict, total=False):
-    nullable_property: typing.Optional[RegularObject]
+    nullable_property: typing.Optional[RegularObjectNullable]
+
 
 class ProblematicSchema(RequiredProblematicSchema, OptionalProblematicSchema):
     pass

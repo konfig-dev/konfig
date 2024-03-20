@@ -16,10 +16,10 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel, ConfigDict
 
-from python_allow_none_for_nullable_ref.pydantic.regular_object import RegularObject
+from python_allow_none_for_nullable_ref.pydantic.regular_object_nullable import RegularObjectNullable
 
 class ProblematicSchema(BaseModel):
-    nullable_property: typing.Optional[RegularObject] = Field(None, alias='nullable_property')
+    nullable_property: typing.Optional[RegularObjectNullable] = Field(None, alias='nullable_property')
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

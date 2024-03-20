@@ -13,4 +13,5 @@
 
 from python_allow_none_for_nullable_ref.model.problematic_schema import ProblematicSchema
 from python_allow_none_for_nullable_ref.model.regular_object import RegularObject
+from python_allow_none_for_nullable_ref.model.regular_object_nullable import RegularObjectNullable
 from python_allow_none_for_nullable_ref.model.request_body import RequestBody
