@@ -13,7 +13,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from carbon.pydantic.embedding_generators import EmbeddingGenerators
 from carbon.pydantic.single_chunks_and_embeddings_upload_input import SingleChunksAndEmbeddingsUploadInput
@@ -24,5 +24,7 @@ class ChunksAndEmbeddingsUploadInput(BaseModel):
     chunks_and_embeddings: typing.List[SingleChunksAndEmbeddingsUploadInput] = Field(alias='chunks_and_embeddings')
 
     overwrite_existing: typing.Optional[bool] = Field(None, alias='overwrite_existing')
-    class Config:
-        arbitrary_types_allowed = True
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbitrary_types_allowed=True
+    )

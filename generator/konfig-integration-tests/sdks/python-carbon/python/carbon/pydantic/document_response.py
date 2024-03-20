@@ -13,7 +13,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from carbon.pydantic.data_source_type_nullable import DataSourceTypeNullable
 from carbon.pydantic.document_response_tags import DocumentResponseTags
@@ -41,5 +41,7 @@ class DocumentResponse(BaseModel):
     rank: typing.Union[typing.Union[int, float], int] = Field(alias='rank')
 
     content_metadata: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(alias='content_metadata')
-    class Config:
-        arbitrary_types_allowed = True
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbitrary_types_allowed=True
+    )

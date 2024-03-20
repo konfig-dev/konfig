@@ -13,7 +13,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from carbon.pydantic.delete_files_query_input_file_ids import DeleteFilesQueryInputFileIds
 from carbon.pydantic.external_file_sync_statuses import ExternalFileSyncStatuses
@@ -24,5 +24,7 @@ class DeleteFilesQueryInput(BaseModel):
     sync_statuses: typing.Optional[typing.Optional[typing.List[ExternalFileSyncStatuses]]] = Field(None, alias='sync_statuses')
 
     delete_non_synced_only: typing.Optional[bool] = Field(None, alias='delete_non_synced_only')
-    class Config:
-        arbitrary_types_allowed = True
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbitrary_types_allowed=True
+    )

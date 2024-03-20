@@ -13,7 +13,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from carbon.pydantic.fetch_urls_response_urls import FetchURLsResponseUrls
 
@@ -21,5 +21,7 @@ class FetchURLsResponse(BaseModel):
     urls: FetchURLsResponseUrls = Field(alias='urls')
 
     html_content: str = Field(alias='html_content')
-    class Config:
-        arbitrary_types_allowed = True
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbitrary_types_allowed=True
+    )

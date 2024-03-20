@@ -13,7 +13,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from carbon.pydantic.embeddings_and_chunks_filters import EmbeddingsAndChunksFilters
 from carbon.pydantic.embeddings_and_chunks_order_by_columns import EmbeddingsAndChunksOrderByColumns
@@ -30,5 +30,7 @@ class EmbeddingsAndChunksQueryInput(BaseModel):
     order_dir: typing.Optional[OrderDir] = Field(None, alias='order_dir')
 
     include_vectors: typing.Optional[bool] = Field(None, alias='include_vectors')
-    class Config:
-        arbitrary_types_allowed = True
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbitrary_types_allowed=True
+    )

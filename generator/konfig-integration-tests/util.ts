@@ -228,6 +228,9 @@ async function callAndLogExeca(
     });
   }
 
+  p.stdout?.pipe(process.stdout);
+  p.stderr?.pipe(process.stderr);
+
   await p;
 
   return output;

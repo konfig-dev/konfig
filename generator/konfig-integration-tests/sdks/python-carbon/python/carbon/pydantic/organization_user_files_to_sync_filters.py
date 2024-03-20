@@ -13,7 +13,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from carbon.pydantic.data_source_type import DataSourceType
 from carbon.pydantic.embedding_generators import EmbeddingGenerators
@@ -44,5 +44,7 @@ class OrganizationUserFilesToSyncFilters(BaseModel):
     organization_user_data_source_id: typing.Optional[OrganizationUserFilesToSyncFiltersOrganizationUserDataSourceId] = Field(None, alias='organization_user_data_source_id')
 
     embedding_generators: typing.Optional[typing.Optional[typing.List[EmbeddingGenerators]]] = Field(None, alias='embedding_generators')
-    class Config:
-        arbitrary_types_allowed = True
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbitrary_types_allowed=True
+    )

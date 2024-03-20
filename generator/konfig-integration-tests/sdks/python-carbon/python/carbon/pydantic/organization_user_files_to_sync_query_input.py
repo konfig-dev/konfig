@@ -13,7 +13,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from carbon.pydantic.order_dir import OrderDir
 from carbon.pydantic.organization_user_files_to_sync_filters import OrganizationUserFilesToSyncFilters
@@ -34,5 +34,7 @@ class OrganizationUserFilesToSyncQueryInput(BaseModel):
     include_parsed_text_file: typing.Optional[typing.Optional[bool]] = Field(None, alias='include_parsed_text_file')
 
     include_additional_files: typing.Optional[typing.Optional[bool]] = Field(None, alias='include_additional_files')
-    class Config:
-        arbitrary_types_allowed = True
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbitrary_types_allowed=True
+    )

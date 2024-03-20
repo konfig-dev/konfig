@@ -13,7 +13,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from carbon.pydantic.webscrape_request_css_classes_to_skip import WebscrapeRequestCssClassesToSkip
 from carbon.pydantic.webscrape_request_css_selectors_to_skip import WebscrapeRequestCssSelectorsToSkip
@@ -46,5 +46,7 @@ class WebscrapeRequest(BaseModel):
     css_classes_to_skip: typing.Optional[WebscrapeRequestCssClassesToSkip] = Field(None, alias='css_classes_to_skip')
 
     css_selectors_to_skip: typing.Optional[WebscrapeRequestCssSelectorsToSkip] = Field(None, alias='css_selectors_to_skip')
-    class Config:
-        arbitrary_types_allowed = True
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbitrary_types_allowed=True
+    )

@@ -13,7 +13,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 
 ExternalFileSyncStatuses = Literal["DELAYED", "QUEUED_FOR_SYNC", "SYNCING", "READY", "SYNC_ERROR", "EVALUATING_RESYNC", "RATE_LIMITED", "SYNC_ABORTED", "QUEUED_FOR_OCR"]
