@@ -11,6 +11,8 @@ info:
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
+  x-konfig-ignore:
+    object-with-no-properties: true
 servers:
   - description: Live API server
     url: https://python-allow-none-for-nullable-ref.konfigthis.com
@@ -55,8 +57,9 @@ components:
       type: object
       properties:
         nullable_property:
-          allOf:
-            - $ref: '#/components/schemas/RegularObject'
+          $ref: '#/components/schemas/RegularObject'
+      x-konfig-properties:
+        nullable_property:
           nullable: true
     RegularObject:
       type: object

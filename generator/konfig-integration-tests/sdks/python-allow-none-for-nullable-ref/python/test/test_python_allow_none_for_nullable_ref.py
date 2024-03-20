@@ -13,7 +13,13 @@ class TestPythonAllowNoneForNullableRef(unittest.TestCase):
             host="http://127.0.0.1:4078",
             api_key='YOUR_API_KEY',
         )
-        resp = client.test.fetch()
+        resp = client.test.fetch(
+            problematic_property=[
+                {
+                    "nullable_property": None
+                }
+            ]
+        )
         self.assertIsNotNone(resp)
 
     def tearDown(self):
