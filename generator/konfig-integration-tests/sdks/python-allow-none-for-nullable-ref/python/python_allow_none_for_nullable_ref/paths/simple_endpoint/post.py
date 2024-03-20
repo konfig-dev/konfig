@@ -43,6 +43,8 @@ from ...api_client import Dictionary
 from python_allow_none_for_nullable_ref.pydantic.problematic_schema import ProblematicSchema as ProblematicSchemaPydantic
 from python_allow_none_for_nullable_ref.pydantic.request_body import RequestBody as RequestBodyPydantic
 
+from . import path
+
 # body param
 SchemaForRequestBodyApplicationJson = RequestBodySchema
 
@@ -54,6 +56,9 @@ request_body_request_body = api_client.RequestBody(
     },
     required=True,
 )
+_auth = [
+    'ApiKey',
+]
 SchemaFor200ResponseBodyApplicationJson = schemas.DictSchema
 
 
@@ -75,6 +80,9 @@ _response_for_200 = api_client.OpenApiResponse(
             schema=SchemaFor200ResponseBodyApplicationJson),
     },
 )
+_status_code_to_response = {
+    '200': _response_for_200,
+}
 _all_accept_content_types = (
     'application/json',
 )
@@ -120,7 +128,7 @@ class BaseApi(api_client.Api):
         if accept_content_types:
             for accept_content_type in accept_content_types:
                 _headers.add('Accept', accept_content_type)
-        method = 'get'.upper()
+        method = 'post'.upper()
         _headers.add('Content-Type', content_type)
     
         if body is schemas.unset:
@@ -234,7 +242,7 @@ class BaseApi(api_client.Api):
         if accept_content_types:
             for accept_content_type in accept_content_types:
                 _headers.add('Accept', accept_content_type)
-        method = 'get'.upper()
+        method = 'post'.upper()
         _headers.add('Content-Type', content_type)
     
         if body is schemas.unset:
@@ -356,10 +364,10 @@ class Fetch(BaseApi):
         return api_client.construct_model_instance(Dictionary, raw_response.body)
 
 
-class ApiForget(BaseApi):
+class ApiForpost(BaseApi):
     # this class is used by api classes that refer to endpoints by path and http method names
 
-    async def aget(
+    async def apost(
         self,
         problematic_property: typing.Optional[typing.List[ProblematicSchema]] = None,
         **kwargs,
@@ -376,7 +384,7 @@ class ApiForget(BaseApi):
             **kwargs,
         )
     
-    def get(
+    def post(
         self,
         problematic_property: typing.Optional[typing.List[ProblematicSchema]] = None,
     ) -> typing.Union[

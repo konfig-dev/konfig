@@ -148,7 +148,7 @@ fetch_response = pythonallownonefornullablerefclient.test.fetch(
 [`RequestBody`](./python_allow_none_for_nullable_ref/type/request_body.py)
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
-`/simple-endpoint` `get`
+`/simple-endpoint` `post`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

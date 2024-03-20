@@ -1,7 +1,7 @@
-from python_allow_none_for_nullable_ref.paths.simple_endpoint.get import ApiForget
+from python_allow_none_for_nullable_ref.paths.simple_endpoint.post import ApiForpost
 
 
 class SimpleEndpoint(
-    ApiForget,
+    ApiForpost,
 ):
     pass

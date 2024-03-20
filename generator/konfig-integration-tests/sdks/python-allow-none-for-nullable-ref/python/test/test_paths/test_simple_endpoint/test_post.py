@@ -16,7 +16,7 @@ from unittest.mock import patch
 import urllib3
 
 import python_allow_none_for_nullable_ref
-from python_allow_none_for_nullable_ref.paths.simple_endpoint import get
+from python_allow_none_for_nullable_ref.paths.simple_endpoint import post
 from python_allow_none_for_nullable_ref import configuration, schemas, api_client
 
 from .. import ApiTestMixin

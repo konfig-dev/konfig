@@ -10,7 +10,7 @@
     Created by: http://example.com/support
 """
 
-from python_allow_none_for_nullable_ref.paths.simple_endpoint.get import Fetch
+from python_allow_none_for_nullable_ref.paths.simple_endpoint.post import Fetch
 from python_allow_none_for_nullable_ref.apis.tags.test_api_raw import TestApiRaw
 
 

@@ -1,5 +1,5 @@
 operation_parameter_map = {
-    '/simple-endpoint-GET': {
+    '/simple-endpoint-POST': {
         'parameters': [
             {
                 'name': 'problematic_property'
