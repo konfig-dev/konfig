@@ -1560,7 +1560,10 @@ class DictBase(Discriminable, ValidatorBase):
                 continue
             try:
                 is_nullable = property_name in nullable_properties and isinstance(value, NoneClass)
-                other_path_to_schemas = schema._validate_oapg(value, validation_metadata=arg_validation_metadata)
+                if is_nullable:
+                    other_path_to_schemas = {path_to_item: {NoneSchema}}
+                else:
+                    other_path_to_schemas = schema._validate_oapg(value, validation_metadata=arg_validation_metadata)
                 update(path_to_schemas, other_path_to_schemas)
             except (ApiTypeError, ApiValueError, MissingRequiredPropertiesError) as e:
                 validation_errors.append(e)
