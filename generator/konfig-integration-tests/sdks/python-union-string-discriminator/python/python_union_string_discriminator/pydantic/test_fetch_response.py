@@ -14,7 +14,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from python_union_string_discriminator.pydantic.a import A
 from python_union_string_discriminator.pydantic.b import B
@@ -22,5 +22,7 @@ from python_union_string_discriminator.pydantic.generic_schema import GenericSch
 
 class TestFetchResponse(BaseModel):
     value: typing.Optional[typing.Union[A, B, GenericSchema]] = Field(None, alias='value')
-    class Config:
-        arbitrary_types_allowed = True
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbitrary_types_allowed=True
+    )

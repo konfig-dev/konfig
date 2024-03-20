@@ -18,6 +18,7 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 class RequiredSyncDirectoryRequest(TypedDict):
     data_source_id: int
 
+
 class OptionalSyncDirectoryRequest(TypedDict, total=False):
     pass
 

@@ -21,7 +21,9 @@ class RequiredS3GetFileInput(TypedDict):
 class OptionalS3GetFileInput(TypedDict, total=False):
     id: typing.Optional[str]
 
+
     bucket: typing.Optional[str]
+
 
 class S3GetFileInput(RequiredS3GetFileInput, OptionalS3GetFileInput):
     pass

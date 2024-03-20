@@ -25,24 +25,34 @@ from python_splitit_client.type.shopper_data import ShopperData
 class RequiredInstallmentPlanCreateRequest(TypedDict):
     AutoCapture: bool
 
+
     TermsAndConditionsAccepted: bool
+
 
 class OptionalInstallmentPlanCreateRequest(TypedDict, total=False):
     Attempt3dSecure: bool
 
+
     Shopper: ShopperData
+
 
     PlanData: PlanDataModel
 
+
     BillingAddress: AddressDataModel
+
 
     PaymentMethod: PaymentMethodModel
 
+
     RedirectUrls: RedirectionEndpointsModel
+
 
     ProcessingData: ProcessingData
 
+
     EventsEndpoints: EventsEndpointsModel
+
 
 class InstallmentPlanCreateRequest(RequiredInstallmentPlanCreateRequest, OptionalInstallmentPlanCreateRequest):
     pass

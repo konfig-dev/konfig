@@ -23,8 +23,10 @@ class OptionalGenericImageContent(TypedDict, total=False):
     # URL of the test image.
     imageUrl: str
 
+
     # A brief description of the image.
     imageDescription: str
+
 
 class GenericImageContent(RequiredGenericImageContent, OptionalGenericImageContent):
     pass

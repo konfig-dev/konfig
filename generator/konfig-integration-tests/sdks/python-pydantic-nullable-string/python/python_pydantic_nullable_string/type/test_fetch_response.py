@@ -22,5 +22,6 @@ class RequiredTestFetchResponse(TypedDict):
 class OptionalTestFetchResponse(TypedDict, total=False):
     value: typing.Optional[str]
 
+
 class TestFetchResponse(RequiredTestFetchResponse, OptionalTestFetchResponse):
     pass

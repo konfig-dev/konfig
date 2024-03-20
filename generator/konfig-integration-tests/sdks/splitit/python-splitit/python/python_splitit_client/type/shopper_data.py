@@ -21,11 +21,15 @@ class RequiredShopperData(TypedDict):
 class OptionalShopperData(TypedDict, total=False):
     FullName: str
 
+
     Email: str
+
 
     PhoneNumber: str
 
+
     Culture: str
+
 
 class ShopperData(RequiredShopperData, OptionalShopperData):
     pass

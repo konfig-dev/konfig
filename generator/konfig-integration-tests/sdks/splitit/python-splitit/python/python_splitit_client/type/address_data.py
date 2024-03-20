@@ -21,15 +21,21 @@ class RequiredAddressData(TypedDict):
 class OptionalAddressData(TypedDict, total=False):
     AddressLine: str
 
+
     AddressLine2: str
+
 
     City: str
 
+
     Country: str
+
 
     State: str
 
+
     Zip: str
+
 
 class AddressData(RequiredAddressData, OptionalAddressData):
     pass

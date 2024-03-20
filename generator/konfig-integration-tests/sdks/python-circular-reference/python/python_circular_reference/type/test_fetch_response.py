@@ -22,10 +22,13 @@ if TYPE_CHECKING:
 class RequiredTestFetchResponse(TypedDict):
     required: 'TestInfiniteLoop'
 
+
 class OptionalTestFetchResponse(TypedDict, total=False):
     value: 'TestInfiniteLoop'
 
+
     array: typing.List[Item]
+
 
 class TestFetchResponse(RequiredTestFetchResponse, OptionalTestFetchResponse):
     pass

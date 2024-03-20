@@ -23,7 +23,9 @@ class RequiredAttack(TypedDict):
 class OptionalAttack(TypedDict, total=False):
     monster: str
 
+
     sword: Sword
+
 
 class Attack(RequiredAttack, OptionalAttack):
     pass

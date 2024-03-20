@@ -22,11 +22,15 @@ class RequiredValidateUpiHandle400Response(TypedDict):
 class OptionalValidateUpiHandle400Response(TypedDict, total=False):
     decentroTxnId: str
 
+
     status: str
+
 
     responseCode: str
 
+
     message: str
+
 
 class ValidateUpiHandle400Response(RequiredValidateUpiHandle400Response, OptionalValidateUpiHandle400Response):
     pass

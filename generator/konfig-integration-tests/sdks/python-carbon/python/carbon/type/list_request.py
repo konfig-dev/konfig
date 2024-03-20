@@ -18,8 +18,10 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 class RequiredListRequest(TypedDict):
     data_source_id: int
 
+
 class OptionalListRequest(TypedDict, total=False):
     parent_id: typing.Optional[str]
+
 
 class ListRequest(RequiredListRequest, OptionalListRequest):
     pass

@@ -19,7 +19,9 @@ from carbon.type.organization_user_file_tag_create_tags import OrganizationUserF
 class RequiredOrganizationUserFileTagCreate(TypedDict):
     tags: OrganizationUserFileTagCreateTags
 
+
     organization_user_file_id: int
+
 
 class OptionalOrganizationUserFileTagCreate(TypedDict, total=False):
     pass

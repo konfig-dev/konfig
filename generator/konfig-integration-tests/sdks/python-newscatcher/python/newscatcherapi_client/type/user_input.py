@@ -22,7 +22,9 @@ class RequiredUserInput(TypedDict):
 class OptionalUserInput(TypedDict, total=False):
     lang: typing.Union[typing.List[str], str]
 
+
     countries: typing.Union[typing.List[str], str]
+
 
 class UserInput(RequiredUserInput, OptionalUserInput):
     pass

@@ -22,5 +22,6 @@ class RequiredInner(TypedDict):
 class OptionalInner(TypedDict, total=False):
     id: int
 
+
 class Inner(RequiredInner, OptionalInner):
     pass

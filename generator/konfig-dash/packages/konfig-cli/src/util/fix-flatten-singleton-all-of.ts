@@ -16,10 +16,17 @@ export async function fixFlattenSingletonAllOf({
     if (
       schema === null ||
       schema === undefined ||
+      /**
+       * Dylan: I added this line because we completely lose "nullable"
+       * information if we flatten a schema with "allOf" and "nullable" is true.
+       * And since "nullable" has functional implications, we should not flatten
+       * it. Instead, we can handle this in transformSpec.ts by calling
+       * "handleAllOfWithNullable"
+       */
+      schema['nullable'] === true ||
       !Array.isArray(schema['allOf']) ||
       schema['allOf'].length !== 1 ||
-      schema['allOf'][0]['$ref'] === undefined ||
-      Object.keys(schema).length !== 1
+      schema['allOf'][0]['$ref'] === undefined
     )
       return
     schema['$ref'] = schema['allOf'][0]['$ref']

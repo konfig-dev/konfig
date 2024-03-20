@@ -22,7 +22,9 @@ class RequiredFailedResponse(TypedDict):
 class OptionalFailedResponse(TypedDict, total=False):
     TraceId: str
 
+
     Error: ErrorExtended
+
 
 class FailedResponse(RequiredFailedResponse, OptionalFailedResponse):
     pass

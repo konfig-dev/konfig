@@ -19,18 +19,25 @@ from python_splitit_client.type.links_model import LinksModel
 class RequiredPaymentPlanOptionModel(TypedDict):
     NumberOfInstallments: int
 
+
     FirstInstallmentAmount: typing.Union[int, float]
+
 
     InstallmentAmount: typing.Union[int, float]
 
+
     LastInstallmentAmount: typing.Union[int, float]
+
 
 class OptionalPaymentPlanOptionModel(TypedDict, total=False):
     Links: LinksModel
 
+
     TermsAndConditionsBrief: str
 
+
     InstallmentFrequency: str
+
 
 class PaymentPlanOptionModel(RequiredPaymentPlanOptionModel, OptionalPaymentPlanOptionModel):
     pass

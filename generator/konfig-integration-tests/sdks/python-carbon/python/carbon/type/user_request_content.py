@@ -18,6 +18,7 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 class RequiredUserRequestContent(TypedDict):
     customer_id: str
 
+
 class OptionalUserRequestContent(TypedDict, total=False):
     pass
 

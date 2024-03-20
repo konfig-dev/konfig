@@ -123,6 +123,7 @@ export * from './text-chat-content';
 export * from './time-unit';
 export * from './tool-call';
 export * from './tool-call-property';
+export * from './tool-call-property1';
 export * from './tool-choice';
 export * from './tool-choice-property';
 export * from './tool-config-request';

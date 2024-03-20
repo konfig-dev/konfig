@@ -22,7 +22,9 @@ class RequiredGetTransactionStatusResponseError(TypedDict):
 class OptionalGetTransactionStatusResponseError(TypedDict, total=False):
     message: str
 
+
     response_code: str
+
 
 class GetTransactionStatusResponseError(RequiredGetTransactionStatusResponseError, OptionalGetTransactionStatusResponseError):
     pass

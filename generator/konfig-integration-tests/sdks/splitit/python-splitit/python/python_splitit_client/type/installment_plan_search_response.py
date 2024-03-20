@@ -22,5 +22,6 @@ class RequiredInstallmentPlanSearchResponse(TypedDict):
 class OptionalInstallmentPlanSearchResponse(TypedDict, total=False):
     PlanList: typing.List[SearchInstallmentPlanResponseItem]
 
+
 class InstallmentPlanSearchResponse(RequiredInstallmentPlanSearchResponse, OptionalInstallmentPlanSearchResponse):
     pass

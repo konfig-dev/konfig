@@ -19,22 +19,31 @@ from carbon.type.embedding_generators import EmbeddingGenerators
 class RequiredOutlookSyncInput(TypedDict):
     filters: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
 
+
 class OptionalOutlookSyncInput(TypedDict, total=False):
     tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
 
+
     folder: typing.Optional[str]
+
 
     chunk_size: typing.Optional[int]
 
+
     chunk_overlap: typing.Optional[int]
+
 
     skip_embedding_generation: typing.Optional[bool]
 
+
     embedding_model: EmbeddingGenerators
+
 
     generate_sparse_vectors: typing.Optional[bool]
 
+
     prepend_filename_to_chunks: typing.Optional[bool]
+
 
 class OutlookSyncInput(RequiredOutlookSyncInput, OptionalOutlookSyncInput):
     pass

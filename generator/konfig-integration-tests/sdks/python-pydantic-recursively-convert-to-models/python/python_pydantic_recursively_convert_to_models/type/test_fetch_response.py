@@ -24,7 +24,9 @@ class RequiredTestFetchResponse(TypedDict):
 class OptionalTestFetchResponse(TypedDict, total=False):
     a: Inner
 
+
     b: ListInner
+
 
 class TestFetchResponse(RequiredTestFetchResponse, OptionalTestFetchResponse):
     pass

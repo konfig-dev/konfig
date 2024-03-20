@@ -17,15 +17,20 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from carbon.type.file_formats_nullable import FileFormatsNullable
 
 class RequiredFileStatisticsNullable(TypedDict):
-    file_format: FileFormatsNullable
+    file_format: typing.Optional[FileFormatsNullable]
+
 
     file_size: typing.Optional[int]
 
+
     num_characters: typing.Optional[int]
+
 
     num_tokens: typing.Optional[int]
 
+
     num_embeddings: typing.Optional[int]
+
 
 class OptionalFileStatisticsNullable(TypedDict, total=False):
     pass

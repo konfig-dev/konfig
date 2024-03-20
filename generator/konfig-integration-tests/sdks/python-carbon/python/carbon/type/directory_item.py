@@ -18,11 +18,15 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 class RequiredDirectoryItem(TypedDict):
     id: str
 
+
     name: str
+
 
     is_synced: bool
 
+
     has_children: bool
+
 
 class OptionalDirectoryItem(TypedDict, total=False):
     pass

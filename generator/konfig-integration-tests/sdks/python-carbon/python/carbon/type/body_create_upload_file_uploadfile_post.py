@@ -18,6 +18,7 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 class RequiredBodyCreateUploadFileUploadfilePost(TypedDict):
     file: typing.IO
 
+
 class OptionalBodyCreateUploadFileUploadfilePost(TypedDict, total=False):
     pass
 

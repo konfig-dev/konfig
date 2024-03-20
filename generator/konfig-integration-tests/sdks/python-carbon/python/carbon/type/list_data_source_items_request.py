@@ -19,10 +19,13 @@ from carbon.type.pagination import Pagination
 class RequiredListDataSourceItemsRequest(TypedDict):
     data_source_id: int
 
+
 class OptionalListDataSourceItemsRequest(TypedDict, total=False):
     parent_id: typing.Optional[str]
 
+
     pagination: Pagination
+
 
 class ListDataSourceItemsRequest(RequiredListDataSourceItemsRequest, OptionalListDataSourceItemsRequest):
     pass

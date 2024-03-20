@@ -19,20 +19,28 @@ from carbon.type.embedding_generators_nullable import EmbeddingGeneratorsNullabl
 class RequiredRawTextInput(TypedDict):
     contents: str
 
+
 class OptionalRawTextInput(TypedDict, total=False):
     name: typing.Optional[str]
 
+
     chunk_size: typing.Optional[int]
+
 
     chunk_overlap: typing.Optional[int]
 
+
     skip_embedding_generation: bool
+
 
     overwrite_file_id: typing.Optional[int]
 
-    embedding_model: EmbeddingGeneratorsNullable
+
+    embedding_model: typing.Optional[EmbeddingGeneratorsNullable]
+
 
     generate_sparse_vectors: typing.Optional[bool]
+
 
 class RawTextInput(RequiredRawTextInput, OptionalRawTextInput):
     pass

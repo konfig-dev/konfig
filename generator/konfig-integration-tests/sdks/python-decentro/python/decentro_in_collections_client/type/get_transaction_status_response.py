@@ -24,15 +24,21 @@ class RequiredGetTransactionStatusResponse(TypedDict):
 class OptionalGetTransactionStatusResponse(TypedDict, total=False):
     decentroTxnId: str
 
+
     status: str
+
 
     responseCode: str
 
+
     message: str
+
 
     data: GetTransactionStatusResponseData
 
+
     error: GetTransactionStatusResponseError
+
 
 class GetTransactionStatusResponse(RequiredGetTransactionStatusResponse, OptionalGetTransactionStatusResponse):
     pass

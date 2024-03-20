@@ -26,38 +26,52 @@ class RequiredGetEmbeddingDocumentsBody(TypedDict):
     # Query for which to get related chunks and embeddings.
     query: str
 
+
     # Number of related chunks to return.
     k: int
 
+
 class OptionalGetEmbeddingDocumentsBody(TypedDict, total=False):
-    tags: GetEmbeddingDocumentsBodyTags
+    tags: typing.Optional[GetEmbeddingDocumentsBodyTags]
 
-    query_vector: GetEmbeddingDocumentsBodyQueryVector
 
-    file_ids: GetEmbeddingDocumentsBodyFileIds
+    query_vector: typing.Optional[GetEmbeddingDocumentsBodyQueryVector]
 
-    parent_file_ids: GetEmbeddingDocumentsBodyParentFileIds
+
+    file_ids: typing.Optional[GetEmbeddingDocumentsBodyFileIds]
+
+
+    parent_file_ids: typing.Optional[GetEmbeddingDocumentsBodyParentFileIds]
+
 
     # A set of tags to limit the search to. Use this instead of `tags`, which is deprecated.
     tags_v2: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
 
+
     # Flag to control whether or not to include tags for each chunk in the response.
     include_tags: typing.Optional[bool]
+
 
     # Flag to control whether or not to include embedding vectors in the response.
     include_vectors: typing.Optional[bool]
 
+
     # Flag to control whether or not to include a signed URL to the raw file containing each chunk         in the response.
     include_raw_file: typing.Optional[bool]
+
 
     # Flag to control whether or not to perform hybrid search.
     hybrid_search: typing.Optional[bool]
 
-    hybrid_search_tuning_parameters: HybridSearchTuningParamsNullable
 
-    media_type: FileContentTypesNullable
+    hybrid_search_tuning_parameters: typing.Optional[HybridSearchTuningParamsNullable]
 
-    embedding_model: EmbeddingGeneratorsNullable
+
+    media_type: typing.Optional[FileContentTypesNullable]
+
+
+    embedding_model: typing.Optional[EmbeddingGeneratorsNullable]
+
 
 class GetEmbeddingDocumentsBody(RequiredGetEmbeddingDocumentsBody, OptionalGetEmbeddingDocumentsBody):
     pass

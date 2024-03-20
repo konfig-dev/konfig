@@ -19,25 +19,36 @@ from carbon.type.user_response_unique_file_tags import UserResponseUniqueFileTag
 class RequiredUserResponse(TypedDict):
     id: int
 
+
     organization_id: int
+
 
     organization_supplied_user_id: str
 
+
     created_at: datetime
+
 
     updated_at: datetime
 
+
     deleted_at: typing.Optional[datetime]
+
 
     num_files_synced: int
 
+
     num_characters_synced: int
+
 
     num_tokens_synced: int
 
+
     unique_file_tags: UserResponseUniqueFileTags
 
+
     enabled_features: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
+
 
 class OptionalUserResponse(TypedDict, total=False):
     pass

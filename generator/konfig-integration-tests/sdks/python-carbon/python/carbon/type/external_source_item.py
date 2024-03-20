@@ -19,35 +19,51 @@ from carbon.type.data_source_type import DataSourceType
 class RequiredExternalSourceItem(TypedDict):
     id: int
 
+
     external_id: str
+
 
     source: DataSourceType
 
+
     name: str
+
 
     synced_at: datetime
 
+
     is_selectable: typing.Optional[bool]
+
 
     is_expandable: typing.Optional[bool]
 
+
     organization_id: int
+
 
     organization_supplied_user_id: str
 
+
     organization_user_id: int
+
 
     organization_user_data_source_id: int
 
+
     organization_user_file_to_sync_id: typing.Optional[int]
+
 
     parent_external_id: typing.Optional[str]
 
+
     item_type: typing.Optional[str]
+
 
     created_at: datetime
 
+
     updated_at: datetime
+
 
 class OptionalExternalSourceItem(TypedDict, total=False):
     pass

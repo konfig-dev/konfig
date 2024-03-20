@@ -21,7 +21,8 @@ RequiredInvalidScalar = TypedDict("RequiredInvalidScalar", {
 
 OptionalInvalidScalar = TypedDict("OptionalInvalidScalar", {
     # The value of the JSON response
-    "str": str,
+    "str": str
+,
     }, total=False)
 
 class InvalidScalar(RequiredInvalidScalar, OptionalInvalidScalar):

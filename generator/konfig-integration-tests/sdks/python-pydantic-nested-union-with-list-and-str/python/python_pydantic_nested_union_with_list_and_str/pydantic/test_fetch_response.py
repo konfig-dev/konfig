@@ -14,11 +14,13 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from python_pydantic_nested_union_with_list_and_str.pydantic.test_chat_message import TestChatMessage
 
 class TestFetchResponse(BaseModel):
     test_messages: typing.Optional[typing.List[TestChatMessage]] = Field(None, alias='testMessages')
-    class Config:
-        arbitrary_types_allowed = True
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbitrary_types_allowed=True
+    )

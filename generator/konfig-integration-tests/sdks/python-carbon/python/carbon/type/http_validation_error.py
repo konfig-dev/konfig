@@ -22,5 +22,6 @@ class RequiredHTTPValidationError(TypedDict):
 class OptionalHTTPValidationError(TypedDict, total=False):
     detail: typing.List[ValidationError]
 
+
 class HTTPValidationError(RequiredHTTPValidationError, OptionalHTTPValidationError):
     pass

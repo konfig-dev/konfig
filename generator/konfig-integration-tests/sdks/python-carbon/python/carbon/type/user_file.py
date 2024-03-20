@@ -23,59 +23,87 @@ from carbon.type.user_file_embedding_properties import UserFileEmbeddingProperti
 class RequiredUserFile(TypedDict):
     tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
 
+
     id: int
+
 
     source: DataSourceType
 
+
     organization_id: int
+
 
     organization_supplied_user_id: str
 
+
     organization_user_data_source_id: typing.Optional[int]
+
 
     external_file_id: str
 
+
     external_url: typing.Optional[str]
+
 
     sync_status: ExternalFileSyncStatuses
 
+
     sync_error_message: typing.Optional[str]
+
 
     last_sync: typing.Optional[datetime]
 
-    file_statistics: FileStatisticsNullable
+
+    file_statistics: typing.Optional[FileStatisticsNullable]
+
 
     file_metadata: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
 
-    embedding_properties: UserFileEmbeddingProperties
+
+    embedding_properties: typing.Optional[UserFileEmbeddingProperties]
+
 
     chunk_size: typing.Optional[int]
 
+
     chunk_overlap: typing.Optional[int]
 
-    chunk_properties: ChunkPropertiesNullable
+
+    chunk_properties: typing.Optional[ChunkPropertiesNullable]
+
 
     name: typing.Optional[str]
 
+
     parent_id: typing.Optional[int]
+
 
     enable_auto_sync: typing.Optional[bool]
 
+
     presigned_url: typing.Optional[str]
+
 
     parsed_text_url: typing.Optional[str]
 
+
     additional_presigned_urls: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
+
 
     skip_embedding_generation: bool
 
+
     source_created_at: typing.Optional[datetime]
+
 
     generate_sparse_vectors: typing.Optional[bool]
 
+
     created_at: datetime
 
+
     updated_at: datetime
+
 
 class OptionalUserFile(TypedDict, total=False):
     pass

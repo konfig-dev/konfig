@@ -19,7 +19,9 @@ from carbon.type.webhook_no_key import WebhookNoKey
 class RequiredWebhookQueryResponse(TypedDict):
     results: typing.List[WebhookNoKey]
 
+
     count: int
+
 
 class OptionalWebhookQueryResponse(TypedDict, total=False):
     pass

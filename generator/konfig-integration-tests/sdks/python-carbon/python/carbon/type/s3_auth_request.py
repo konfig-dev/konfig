@@ -18,7 +18,9 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 class RequiredS3AuthRequest(TypedDict):
     access_key: str
 
+
     access_key_secret: str
+
 
 class OptionalS3AuthRequest(TypedDict, total=False):
     pass

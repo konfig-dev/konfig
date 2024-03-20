@@ -14,7 +14,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from newscatcherapi_client.pydantic.dto_responses_more_like_this_response_failed_search_response import DtoResponsesMoreLikeThisResponseFailedSearchResponse
 from newscatcherapi_client.pydantic.dto_responses_more_like_this_response_search_response import DtoResponsesMoreLikeThisResponseSearchResponse

@@ -14,7 +14,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from newscatcherapi_client.pydantic.dto_responses_search_response_search_response_articles import DtoResponsesSearchResponseSearchResponseArticles
 
@@ -32,5 +32,7 @@ class DtoResponsesSearchResponseSearchResponse(BaseModel):
     user_input: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='user_input')
 
     status: typing.Optional[str] = Field(None, alias='status')
-    class Config:
-        arbitrary_types_allowed = True
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbitrary_types_allowed=True
+    )

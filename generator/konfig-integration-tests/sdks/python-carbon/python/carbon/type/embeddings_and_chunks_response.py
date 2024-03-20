@@ -19,7 +19,9 @@ from carbon.type.embedding_and_chunk import EmbeddingAndChunk
 class RequiredEmbeddingsAndChunksResponse(TypedDict):
     results: typing.List[EmbeddingAndChunk]
 
+
     count: int
+
 
 class OptionalEmbeddingsAndChunksResponse(TypedDict, total=False):
     pass

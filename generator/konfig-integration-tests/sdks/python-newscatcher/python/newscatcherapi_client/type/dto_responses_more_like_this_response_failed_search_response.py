@@ -20,18 +20,25 @@ from newscatcherapi_client.type.dto_responses_more_like_this_response_article_re
 class RequiredDtoResponsesMoreLikeThisResponseFailedSearchResponse(TypedDict):
     user_input: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
 
+
 class OptionalDtoResponsesMoreLikeThisResponseFailedSearchResponse(TypedDict, total=False):
     status: str
 
+
     total_hits: int
+
 
     page: int
 
+
     total_pages: int
+
 
     page_size: int
 
+
     articles: typing.List[DtoResponsesMoreLikeThisResponseArticleResult]
+
 
 class DtoResponsesMoreLikeThisResponseFailedSearchResponse(RequiredDtoResponsesMoreLikeThisResponseFailedSearchResponse, OptionalDtoResponsesMoreLikeThisResponseFailedSearchResponse):
     pass

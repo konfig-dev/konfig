@@ -22,15 +22,21 @@ class RequiredInstallmentPlanRefundResponse(TypedDict):
 class OptionalInstallmentPlanRefundResponse(TypedDict, total=False):
     RefundId: str
 
+
     InstallmentPlanNumber: str
+
 
     Currency: str
 
+
     NonCreditRefundAmount: typing.Union[int, float]
+
 
     CreditRefundAmount: typing.Union[int, float]
 
+
     Summary: RefundSummary
+
 
 class InstallmentPlanRefundResponse(RequiredInstallmentPlanRefundResponse, OptionalInstallmentPlanRefundResponse):
     pass

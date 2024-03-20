@@ -19,12 +19,16 @@ from python_splitit_client.type.installment_status import InstallmentStatus
 class RequiredInstallment(TypedDict):
     InstallmentNumber: int
 
+
     Amount: typing.Union[int, float]
+
 
     Status: InstallmentStatus
 
+
 class OptionalInstallment(TypedDict, total=False):
     ProcessDateTime: datetime
+
 
 class Installment(RequiredInstallment, OptionalInstallment):
     pass

@@ -20,20 +20,28 @@ from newscatcherapi_client.type.cluster import Cluster
 class RequiredClusteringSearchResponse(TypedDict):
     total_hits: int
 
+
     page: int
+
 
     total_pages: int
 
+
     page_size: int
+
 
     clusters_count: int
 
+
     clusters: typing.List[Cluster]
+
 
     user_input: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
 
+
 class OptionalClusteringSearchResponse(TypedDict, total=False):
     status: str
+
 
 class ClusteringSearchResponse(RequiredClusteringSearchResponse, OptionalClusteringSearchResponse):
     pass

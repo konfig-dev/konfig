@@ -22,69 +22,102 @@ class RequiredLatestHeadlinesRequest(TypedDict):
 class OptionalLatestHeadlinesRequest(TypedDict, total=False):
     when: str
 
+
     by_parse_date: bool
+
 
     lang: str
 
+
     not_lang: str
+
 
     countries: str
 
+
     not_countries: str
+
 
     sources: str
 
+
     predefined_sources: str
+
 
     not_sources: str
 
+
     ranked_only: str
+
 
     is_headline: bool
 
+
     is_paid_content: bool
+
 
     parent_url: str
 
+
     theme: str
+
 
     all_links: str
 
+
     all_domain_links: str
+
 
     word_count_min: int
 
+
     word_count_max: int
+
 
     page: int
 
+
     page_size: int
+
 
     clustering_enabled: bool
 
+
     clustering_threshold: typing.Union[int, float]
+
 
     clustering_variable: str
 
+
     include_nlp_data: bool
+
 
     has_nlp: bool
 
+
     ORG_entity_name: str
+
 
     PER_entity_name: str
 
+
     LOC_entity_name: str
+
 
     MISC_entity_name: str
 
+
     title_sentiment_min: typing.Union[int, float]
+
 
     title_sentiment_max: typing.Union[int, float]
 
+
     content_sentiment_min: typing.Union[int, float]
 
+
     content_sentiment_max: typing.Union[int, float]
+
 
 class LatestHeadlinesRequest(RequiredLatestHeadlinesRequest, OptionalLatestHeadlinesRequest):
     pass

@@ -19,8 +19,10 @@ from python_splitit_client.type.refund_strategy import RefundStrategy
 class RequiredInstallmentPlanRefundRequest(TypedDict):
     Amount: typing.Union[int, float]
 
+
 class OptionalInstallmentPlanRefundRequest(TypedDict, total=False):
     RefundStrategy: RefundStrategy
+
 
 class InstallmentPlanRefundRequest(RequiredInstallmentPlanRefundRequest, OptionalInstallmentPlanRefundRequest):
     pass

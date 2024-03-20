@@ -22,5 +22,6 @@ class RequiredObj(TypedDict):
 class OptionalObj(TypedDict, total=False):
     value: str
 
+
 class Obj(RequiredObj, OptionalObj):
     pass

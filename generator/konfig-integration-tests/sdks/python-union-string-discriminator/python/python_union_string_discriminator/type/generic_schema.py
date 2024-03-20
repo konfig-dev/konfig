@@ -22,5 +22,6 @@ class RequiredGenericSchema(TypedDict):
 class OptionalGenericSchema(TypedDict, total=False):
     type: str
 
+
 class GenericSchema(RequiredGenericSchema, OptionalGenericSchema):
     pass

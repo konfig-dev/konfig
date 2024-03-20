@@ -19,11 +19,15 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 class RequiredSimilarDocument(TypedDict):
     title: str
 
+
     id: str
+
 
     score: typing.Union[int, float]
 
+
     link: str
+
 
 class OptionalSimilarDocument(TypedDict, total=False):
     pass

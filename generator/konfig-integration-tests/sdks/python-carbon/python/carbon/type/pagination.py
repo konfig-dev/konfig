@@ -21,7 +21,9 @@ class RequiredPagination(TypedDict):
 class OptionalPagination(TypedDict, total=False):
     limit: int
 
+
     offset: int
+
 
 class Pagination(RequiredPagination, OptionalPagination):
     pass

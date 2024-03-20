@@ -28,36 +28,52 @@ from python_splitit_client.type.shopper_data import ShopperData
 class RequiredInstallmentPlanGetResponse(TypedDict):
     DateCreated: datetime
 
+
     Status: PlanStatus
+
 
 class OptionalInstallmentPlanGetResponse(TypedDict, total=False):
     InstallmentPlanNumber: str
 
+
     RefOrderNumber: str
+
 
     PurchaseMethod: PurchaseMethod
 
+
     Currency: str
+
 
     OriginalAmount: typing.Union[int, float]
 
+
     Amount: typing.Union[int, float]
+
 
     Authorization: AuthorizationModel
 
+
     Shopper: ShopperData
+
 
     BillingAddress: AddressData
 
+
     PaymentMethod: PaymentMethodModel
+
 
     ExtendedParams: InstallmentPlanGetResponseExtendedParams
 
+
     Installments: typing.List[Installment]
+
 
     Refunds: typing.List[RefundModel]
 
+
     Links: LinksData
+
 
 class InstallmentPlanGetResponse(RequiredInstallmentPlanGetResponse, OptionalInstallmentPlanGetResponse):
     pass

@@ -18,7 +18,9 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 class RequiredHybridSearchTuningParamsNullable(TypedDict):
     weight_a: typing.Union[int, float]
 
+
     weight_b: typing.Union[int, float]
+
 
 class OptionalHybridSearchTuningParamsNullable(TypedDict, total=False):
     pass

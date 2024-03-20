@@ -20,10 +20,13 @@ from carbon.type.single_chunks_and_embeddings_upload_input import SingleChunksAn
 class RequiredChunksAndEmbeddingsUploadInput(TypedDict):
     embedding_model: EmbeddingGenerators
 
+
     chunks_and_embeddings: typing.List[SingleChunksAndEmbeddingsUploadInput]
+
 
 class OptionalChunksAndEmbeddingsUploadInput(TypedDict, total=False):
     overwrite_existing: bool
+
 
 class ChunksAndEmbeddingsUploadInput(RequiredChunksAndEmbeddingsUploadInput, OptionalChunksAndEmbeddingsUploadInput):
     pass

@@ -19,26 +19,37 @@ from carbon.type.embedding_generators import EmbeddingGenerators
 class RequiredUploadFileFromUrlInput(TypedDict):
     url: str
 
+
 class OptionalUploadFileFromUrlInput(TypedDict, total=False):
     file_name: typing.Optional[str]
 
+
     chunk_size: typing.Optional[int]
+
 
     chunk_overlap: typing.Optional[int]
 
+
     skip_embedding_generation: bool
+
 
     set_page_as_boundary: bool
 
+
     embedding_model: EmbeddingGenerators
+
 
     generate_sparse_vectors: bool
 
+
     use_textract: bool
+
 
     prepend_filename_to_chunks: bool
 
+
     max_items_per_chunk: typing.Optional[int]
+
 
 class UploadFileFromUrlInput(RequiredUploadFileFromUrlInput, OptionalUploadFileFromUrlInput):
     pass

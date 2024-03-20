@@ -18,7 +18,9 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 class RequiredEmbeddingProperties(TypedDict):
     chunk_size: typing.Optional[int]
 
+
     chunk_overlap: typing.Optional[int]
+
 
 class OptionalEmbeddingProperties(TypedDict, total=False):
     pass

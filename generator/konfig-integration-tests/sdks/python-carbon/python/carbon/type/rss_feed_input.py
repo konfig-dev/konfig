@@ -19,20 +19,28 @@ from carbon.type.embedding_generators import EmbeddingGenerators
 class RequiredRSSFeedInput(TypedDict):
     url: str
 
+
 class OptionalRSSFeedInput(TypedDict, total=False):
     tags: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
 
+
     chunk_size: typing.Optional[int]
+
 
     chunk_overlap: typing.Optional[int]
 
+
     skip_embedding_generation: typing.Optional[bool]
+
 
     embedding_model: EmbeddingGenerators
 
+
     generate_sparse_vectors: typing.Optional[bool]
 
+
     prepend_filename_to_chunks: typing.Optional[bool]
+
 
 class RSSFeedInput(RequiredRSSFeedInput, OptionalRSSFeedInput):
     pass

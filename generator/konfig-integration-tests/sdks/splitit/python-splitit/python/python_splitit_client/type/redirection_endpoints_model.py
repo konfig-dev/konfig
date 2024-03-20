@@ -21,11 +21,15 @@ class RequiredRedirectionEndpointsModel(TypedDict):
 class OptionalRedirectionEndpointsModel(TypedDict, total=False):
     AuthorizeSucceeded: str
 
+
     Succeeded: str
+
 
     AuthorizeFailed: str
 
+
     Failed: str
+
 
 class RedirectionEndpointsModel(RequiredRedirectionEndpointsModel, OptionalRedirectionEndpointsModel):
     pass

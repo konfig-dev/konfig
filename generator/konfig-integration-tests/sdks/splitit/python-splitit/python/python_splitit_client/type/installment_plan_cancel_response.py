@@ -21,5 +21,6 @@ class RequiredInstallmentPlanCancelResponse(TypedDict):
 class OptionalInstallmentPlanCancelResponse(TypedDict, total=False):
     InstallmentPlanNumber: str
 
+
 class InstallmentPlanCancelResponse(RequiredInstallmentPlanCancelResponse, OptionalInstallmentPlanCancelResponse):
     pass

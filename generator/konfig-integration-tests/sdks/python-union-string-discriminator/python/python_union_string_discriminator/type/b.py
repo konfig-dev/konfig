@@ -22,7 +22,9 @@ class RequiredB(TypedDict):
 class OptionalB(TypedDict, total=False):
     type: str
 
+
     b: str
+
 
 class B(RequiredB, OptionalB):
     pass

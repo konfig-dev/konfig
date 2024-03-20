@@ -23,13 +23,18 @@ class RequiredIssueCollectRequestResponse(TypedDict):
 class OptionalIssueCollectRequestResponse(TypedDict, total=False):
     decentroTxnId: str
 
+
     status: str
+
 
     responseCode: str
 
+
     message: str
 
+
     data: IssueCollectRequestResponseData
+
 
 class IssueCollectRequestResponse(RequiredIssueCollectRequestResponse, OptionalIssueCollectRequestResponse):
     pass

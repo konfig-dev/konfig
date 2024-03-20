@@ -19,10 +19,13 @@ from python_splitit_client.type.authorization_model import AuthorizationModel
 class RequiredVerifyAuthorizationResponse(TypedDict):
     IsAuthorized: bool
 
+
 class OptionalVerifyAuthorizationResponse(TypedDict, total=False):
     AuthorizationAmount: typing.Union[int, float]
 
+
     Authorization: AuthorizationModel
+
 
 class VerifyAuthorizationResponse(RequiredVerifyAuthorizationResponse, OptionalVerifyAuthorizationResponse):
     pass

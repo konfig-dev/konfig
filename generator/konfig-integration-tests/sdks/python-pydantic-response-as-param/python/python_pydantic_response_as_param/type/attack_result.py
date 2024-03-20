@@ -22,5 +22,6 @@ class RequiredAttackResult(TypedDict):
 class OptionalAttackResult(TypedDict, total=False):
     message: str
 
+
 class AttackResult(RequiredAttackResult, OptionalAttackResult):
     pass

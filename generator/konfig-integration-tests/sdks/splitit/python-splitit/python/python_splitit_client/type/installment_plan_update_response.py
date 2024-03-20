@@ -20,12 +20,16 @@ from python_splitit_client.type.shipping_status import ShippingStatus
 class RequiredInstallmentPlanUpdateResponse(TypedDict):
     Status: PlanStatus
 
+
     ShippingStatus: ShippingStatus
+
 
 class OptionalInstallmentPlanUpdateResponse(TypedDict, total=False):
     RefOrderNumber: str
 
+
     InstallmentPlanNumber: str
+
 
 class InstallmentPlanUpdateResponse(RequiredInstallmentPlanUpdateResponse, OptionalInstallmentPlanUpdateResponse):
     pass

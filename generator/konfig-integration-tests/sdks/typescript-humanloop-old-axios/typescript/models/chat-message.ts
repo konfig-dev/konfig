@@ -30,8 +30,8 @@ import type * as buffer from "buffer"
 
 import { ChatRole } from './chat-role';
 import { ContentProperty } from './content-property';
-import { FunctionTool } from './function-tool';
 import { ToolCall } from './tool-call';
+import { ToolCallProperty1 } from './tool-call-property1';
 
 /**
  * 
@@ -64,11 +64,12 @@ export interface ChatMessage {
      */
     'role': ChatRole;
     /**
-     * NB: Deprecated in favour of tool_calls. A tool call requested by the assistant.
-     * @type {FunctionTool}
+     * 
+     * @type {ToolCallProperty1}
      * @memberof ChatMessage
+     * @deprecated
      */
-    'tool_call'?: FunctionTool;
+    'tool_call'?: ToolCallProperty1 | null;
     /**
      * A list of tool calls requested by the assistant.
      * @type {Array<ToolCall>}

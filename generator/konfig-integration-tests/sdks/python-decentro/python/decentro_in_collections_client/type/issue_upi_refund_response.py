@@ -23,13 +23,18 @@ class RequiredIssueUpiRefundResponse(TypedDict):
 class OptionalIssueUpiRefundResponse(TypedDict, total=False):
     decentroTxnId: str
 
+
     status: str
+
 
     responseCode: str
 
+
     message: str
 
+
     data: IssueUpiRefundResponseData
+
 
 class IssueUpiRefundResponse(RequiredIssueUpiRefundResponse, OptionalIssueUpiRefundResponse):
     pass

@@ -19,16 +19,22 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 class RequiredSubscriptionResponse(TypedDict):
     active: bool
 
+
     plan_name: str
+
 
 class OptionalSubscriptionResponse(TypedDict, total=False):
     calls_per_seconds: int
 
+
     usage_assigned_calls: int
+
 
     usage_remaining_calls: int
 
+
     historical_days: int
+
 
 class SubscriptionResponse(RequiredSubscriptionResponse, OptionalSubscriptionResponse):
     pass

@@ -18,6 +18,7 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 class RequiredRevokeAccessTokenInput(TypedDict):
     data_source_id: int
 
+
 class OptionalRevokeAccessTokenInput(TypedDict, total=False):
     pass
 

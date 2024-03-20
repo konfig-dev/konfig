@@ -19,7 +19,9 @@ from carbon.type.fetch_urls_response_urls import FetchURLsResponseUrls
 class RequiredFetchURLsResponse(TypedDict):
     urls: FetchURLsResponseUrls
 
+
     html_content: str
+
 
 class OptionalFetchURLsResponse(TypedDict, total=False):
     pass

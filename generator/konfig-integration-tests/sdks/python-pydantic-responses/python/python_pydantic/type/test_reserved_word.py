@@ -21,7 +21,8 @@ RequiredTestReservedWord = TypedDict("RequiredTestReservedWord", {
 
 OptionalTestReservedWord = TypedDict("OptionalTestReservedWord", {
     # Reserved word in Python
-    "class": str,
+    "class": str
+,
     }, total=False)
 
 class TestReservedWord(RequiredTestReservedWord, OptionalTestReservedWord):

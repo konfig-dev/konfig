@@ -19,11 +19,15 @@ from carbon.type.youtube_transcript_response_raw_transcript import YoutubeTransc
 class RequiredYoutubeTranscriptResponse(TypedDict):
     status: str
 
+
     error: typing.Optional[str]
+
 
     data: typing.Optional[str]
 
-    raw_transcript: YoutubeTranscriptResponseRawTranscript
+
+    raw_transcript: typing.Optional[YoutubeTranscriptResponseRawTranscript]
+
 
 class OptionalYoutubeTranscriptResponse(TypedDict, total=False):
     pass

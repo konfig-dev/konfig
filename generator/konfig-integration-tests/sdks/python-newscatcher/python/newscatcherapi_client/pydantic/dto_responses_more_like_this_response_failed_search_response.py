@@ -14,7 +14,7 @@ from datetime import datetime, date
 import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
-from pydantic import BaseModel, Field, RootModel
+from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 from newscatcherapi_client.pydantic.dto_responses_more_like_this_response_article_result import DtoResponsesMoreLikeThisResponseArticleResult
 
@@ -32,5 +32,7 @@ class DtoResponsesMoreLikeThisResponseFailedSearchResponse(BaseModel):
     page_size: typing.Optional[int] = Field(None, alias='page_size')
 
     articles: typing.Optional[typing.List[DtoResponsesMoreLikeThisResponseArticleResult]] = Field(None, alias='articles')
-    class Config:
-        arbitrary_types_allowed = True
+    model_config = ConfigDict(
+        protected_namespaces=(),
+        arbitrary_types_allowed=True
+    )

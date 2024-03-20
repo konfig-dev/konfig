@@ -21,11 +21,14 @@ class RequiredDeleteFilesQueryInput(TypedDict):
     pass
 
 class OptionalDeleteFilesQueryInput(TypedDict, total=False):
-    file_ids: DeleteFilesQueryInputFileIds
+    file_ids: typing.Optional[DeleteFilesQueryInputFileIds]
+
 
     sync_statuses: typing.Optional[typing.List[ExternalFileSyncStatuses]]
 
+
     delete_non_synced_only: bool
+
 
 class DeleteFilesQueryInput(RequiredDeleteFilesQueryInput, OptionalDeleteFilesQueryInput):
     pass

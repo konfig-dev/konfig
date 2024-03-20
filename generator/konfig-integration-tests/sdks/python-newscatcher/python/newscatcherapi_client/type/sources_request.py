@@ -22,7 +22,9 @@ class RequiredSourcesRequest(TypedDict):
 class OptionalSourcesRequest(TypedDict, total=False):
     lang: str
 
+
     countries: str
+
 
 class SourcesRequest(RequiredSourcesRequest, OptionalSourcesRequest):
     pass

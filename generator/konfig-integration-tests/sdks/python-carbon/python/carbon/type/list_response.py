@@ -19,6 +19,7 @@ from carbon.type.directory_item import DirectoryItem
 class RequiredListResponse(TypedDict):
     data: typing.List[DirectoryItem]
 
+
 class OptionalListResponse(TypedDict, total=False):
     pass
 

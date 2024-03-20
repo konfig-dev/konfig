@@ -20,7 +20,8 @@ RequiredInvalidObjectObject = TypedDict("RequiredInvalidObjectObject", {
     })
 
 OptionalInvalidObjectObject = TypedDict("OptionalInvalidObjectObject", {
-    "str": str,
+    "str": str
+,
     }, total=False)
 
 class InvalidObjectObject(RequiredInvalidObjectObject, OptionalInvalidObjectObject):

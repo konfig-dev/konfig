@@ -19,12 +19,16 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 class RequiredIssueUpiRefundRequest(TypedDict):
     reference_id: str
 
+
 class OptionalIssueUpiRefundRequest(TypedDict, total=False):
     transaction_id: str
 
+
     bank_reference_number: str
 
+
     purpose_message: str
+
 
 class IssueUpiRefundRequest(RequiredIssueUpiRefundRequest, OptionalIssueUpiRefundRequest):
     pass

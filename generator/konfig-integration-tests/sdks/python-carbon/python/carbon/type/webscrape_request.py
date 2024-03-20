@@ -22,30 +22,43 @@ from carbon.type.webscrape_request_tags import WebscrapeRequestTags
 class RequiredWebscrapeRequest(TypedDict):
     url: str
 
+
 class OptionalWebscrapeRequest(TypedDict, total=False):
-    tags: WebscrapeRequestTags
+    tags: typing.Optional[WebscrapeRequestTags]
+
 
     recursion_depth: typing.Optional[int]
 
+
     max_pages_to_scrape: typing.Optional[int]
+
 
     chunk_size: typing.Optional[int]
 
+
     chunk_overlap: typing.Optional[int]
+
 
     skip_embedding_generation: typing.Optional[bool]
 
+
     enable_auto_sync: typing.Optional[bool]
+
 
     generate_sparse_vectors: typing.Optional[bool]
 
+
     prepend_filename_to_chunks: typing.Optional[bool]
 
-    html_tags_to_skip: WebscrapeRequestHtmlTagsToSkip
 
-    css_classes_to_skip: WebscrapeRequestCssClassesToSkip
+    html_tags_to_skip: typing.Optional[WebscrapeRequestHtmlTagsToSkip]
 
-    css_selectors_to_skip: WebscrapeRequestCssSelectorsToSkip
+
+    css_classes_to_skip: typing.Optional[WebscrapeRequestCssClassesToSkip]
+
+
+    css_selectors_to_skip: typing.Optional[WebscrapeRequestCssSelectorsToSkip]
+
 
 class WebscrapeRequest(RequiredWebscrapeRequest, OptionalWebscrapeRequest):
     pass

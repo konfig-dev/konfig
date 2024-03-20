@@ -19,11 +19,15 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 class RequiredTestFetchResponse(TypedDict):
     date: datetime
 
+
     missingDate: datetime
+
 
     value: str
 
+
     missingValue: str
+
 
 class OptionalTestFetchResponse(TypedDict, total=False):
     pass

@@ -22,7 +22,9 @@ class RequiredOnlyOnePropertyIsInvalid(TypedDict):
 class OptionalOnlyOnePropertyIsInvalid(TypedDict, total=False):
     string: str
 
+
     number: typing.Union[int, float]
+
 
 class OnlyOnePropertyIsInvalid(RequiredOnlyOnePropertyIsInvalid, OptionalOnlyOnePropertyIsInvalid):
     pass

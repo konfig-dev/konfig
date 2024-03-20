@@ -21,9 +21,12 @@ from newscatcherapi_client.type.user_input import UserInput
 class RequiredSourceResponse(TypedDict):
     message: str
 
+
     sources: SourceResponseSources
 
+
     user_input: UserInput
+
 
 class OptionalSourceResponse(TypedDict, total=False):
     pass

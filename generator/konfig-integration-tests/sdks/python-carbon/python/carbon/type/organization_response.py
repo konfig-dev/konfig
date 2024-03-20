@@ -18,27 +18,39 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 class RequiredOrganizationResponse(TypedDict):
     id: int
 
+
     name: str
+
 
     nickname: typing.Optional[str]
 
+
     remove_branding: bool
+
 
     custom_branding: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
 
+
     custom_limits: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
+
 
     aggregate_file_size: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
 
+
     aggregate_num_characters: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
+
 
     aggregate_num_tokens: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
 
+
     aggregate_num_embeddings: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
+
 
     created_at: datetime
 
+
     updated_at: datetime
+
 
 class OptionalOrganizationResponse(TypedDict, total=False):
     pass

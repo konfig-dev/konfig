@@ -22,9 +22,12 @@ class RequiredIssueUpiRefundResponseData(TypedDict):
 class OptionalIssueUpiRefundResponseData(TypedDict, total=False):
     transactionId: str
 
+
     transactionStatus: str
 
+
     transactionStatusDescription: str
+
 
 class IssueUpiRefundResponseData(RequiredIssueUpiRefundResponseData, OptionalIssueUpiRefundResponseData):
     pass

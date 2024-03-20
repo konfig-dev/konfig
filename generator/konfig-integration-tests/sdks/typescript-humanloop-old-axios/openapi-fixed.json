@@ -4431,7 +4431,15 @@
             "$ref": "#/components/schemas/ChatRole"
           },
           "tool_call": {
-            "$ref": "#/components/schemas/FunctionTool"
+            "title": "Tool call",
+            "description": "NB: Deprecated in favour of tool_calls. A tool call requested by the assistant.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/FunctionTool"
+              }
+            ],
+            "deprecated": true,
+            "nullable": true
           },
           "tool_calls": {
             "title": "Tool calls",
@@ -4451,12 +4459,6 @@
           "role": {
             "title": "Role",
             "description": "Role of the message author."
-          },
-          "tool_call": {
-            "title": "Tool call",
-            "description": "NB: Deprecated in favour of tool_calls. A tool call requested by the assistant.",
-            "deprecated": true,
-            "nullable": true
           }
         }
       },

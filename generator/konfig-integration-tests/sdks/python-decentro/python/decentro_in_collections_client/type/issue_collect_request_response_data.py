@@ -22,13 +22,18 @@ class RequiredIssueCollectRequestResponseData(TypedDict):
 class OptionalIssueCollectRequestResponseData(TypedDict, total=False):
     transactionId: str
 
+
     transactionStatus: str
+
 
     transactionStatusDescription: str
 
+
     bankReferenceNumber: str
 
+
     npciTransactionId: str
+
 
 class IssueCollectRequestResponseData(RequiredIssueCollectRequestResponseData, OptionalIssueCollectRequestResponseData):
     pass

@@ -21,5 +21,6 @@ class RequiredEventsEndpointsModel(TypedDict):
 class OptionalEventsEndpointsModel(TypedDict, total=False):
     CreateSucceeded: str
 
+
 class EventsEndpointsModel(RequiredEventsEndpointsModel, OptionalEventsEndpointsModel):
     pass

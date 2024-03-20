@@ -20,18 +20,25 @@ from newscatcherapi_client.type.latest_headlines_response_articles import Latest
 class RequiredLatestHeadlinesResponse(TypedDict):
     total_hits: int
 
+
     page: int
+
 
     total_pages: int
 
+
     page_size: int
+
 
     articles: LatestHeadlinesResponseArticles
 
+
     user_input: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
+
 
 class OptionalLatestHeadlinesResponse(TypedDict, total=False):
     status: str
+
 
 class LatestHeadlinesResponse(RequiredLatestHeadlinesResponse, OptionalLatestHeadlinesResponse):
     pass

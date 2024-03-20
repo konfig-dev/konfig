@@ -19,12 +19,16 @@ from carbon.type.chunks_and_embeddings import ChunksAndEmbeddings
 class RequiredSingleChunksAndEmbeddingsUploadInput(TypedDict):
     file_id: int
 
+
     chunks_and_embeddings: typing.List[ChunksAndEmbeddings]
+
 
 class OptionalSingleChunksAndEmbeddingsUploadInput(TypedDict, total=False):
     chunk_size: typing.Optional[int]
 
+
     chunk_overlap: typing.Optional[int]
+
 
 class SingleChunksAndEmbeddingsUploadInput(RequiredSingleChunksAndEmbeddingsUploadInput, OptionalSingleChunksAndEmbeddingsUploadInput):
     pass

@@ -24,9 +24,12 @@ class RequiredCheckInstallmentsEligibilityRequest(TypedDict):
 class OptionalCheckInstallmentsEligibilityRequest(TypedDict, total=False):
     PlanData: PlanData
 
+
     CardDetails: CardData
 
+
     BillingAddress: AddressData
+
 
 class CheckInstallmentsEligibilityRequest(RequiredCheckInstallmentsEligibilityRequest, OptionalCheckInstallmentsEligibilityRequest):
     pass

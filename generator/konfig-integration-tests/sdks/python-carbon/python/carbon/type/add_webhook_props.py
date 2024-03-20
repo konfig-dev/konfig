@@ -18,6 +18,7 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 class RequiredAddWebhookProps(TypedDict):
     url: str
 
+
 class OptionalAddWebhookProps(TypedDict, total=False):
     pass
 

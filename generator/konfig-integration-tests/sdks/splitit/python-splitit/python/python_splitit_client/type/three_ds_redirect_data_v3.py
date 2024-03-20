@@ -22,9 +22,12 @@ class RequiredThreeDsRedirectDataV3(TypedDict):
 class OptionalThreeDsRedirectDataV3(TypedDict, total=False):
     Url: str
 
+
     Verb: str
 
+
     Params: ThreeDsRedirectDataV3Params
+
 
 class ThreeDsRedirectDataV3(RequiredThreeDsRedirectDataV3, OptionalThreeDsRedirectDataV3):
     pass

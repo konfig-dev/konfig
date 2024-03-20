@@ -23,7 +23,9 @@ class RequiredEquipment(TypedDict):
 class OptionalEquipment(TypedDict, total=False):
     sword: Sword
 
+
     armor: str
+
 
 class Equipment(RequiredEquipment, OptionalEquipment):
     pass

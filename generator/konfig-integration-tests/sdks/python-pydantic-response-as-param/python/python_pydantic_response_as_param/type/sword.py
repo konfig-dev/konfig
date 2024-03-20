@@ -22,7 +22,9 @@ class RequiredSword(TypedDict):
 class OptionalSword(TypedDict, total=False):
     name: str
 
+
     damage: int
+
 
 class Sword(RequiredSword, OptionalSword):
     pass

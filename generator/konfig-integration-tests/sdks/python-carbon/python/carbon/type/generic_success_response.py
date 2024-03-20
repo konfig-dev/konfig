@@ -18,6 +18,7 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 class RequiredGenericSuccessResponse(TypedDict):
     success: bool
 
+
 class OptionalGenericSuccessResponse(TypedDict, total=False):
     pass
 
