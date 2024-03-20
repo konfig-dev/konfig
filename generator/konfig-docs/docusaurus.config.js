@@ -6,54 +6,7 @@ const { themes } = require("prism-react-renderer");
 const lightCodeTheme = themes.github;
 const darkCodeTheme = themes.dracula;
 
-const { remarkCodeHike } = require("konfig-code-hike-mdx");
-
-/**
- * mdx-mermaid plugin.
- *
- * @param config Config passed in from parser.
- * @returns Function to transform mdxast.
- */
-function mermaid(config) {
-  return async function transformer(ast) {
-    const visit = await import("unist-util-visit").then((mod) =>
-      typeof mod.default === "function" ? mod.default : mod.visit
-    );
-
-    // Find all the mermaid diagram code blocks. i.e. ```mermaid
-    const instances = [];
-    visit(ast, { type: "code", lang: "mermaid" }, (node, index, parent) => {
-      instances.push([node, index, parent]);
-    });
-
-    // Replace each Mermaid code block with the Mermaid component
-    for (let i = 0; i < instances.length; i++) {
-      const [node, index, parent] = instances[i];
-      const result = createMermaidNode(
-        node,
-        "Mermaid",
-        i === 0 ? config : undefined
-      );
-      Array.prototype.splice.apply(parent.children, [index, 1, ...result]);
-    }
-    return ast;
-  };
-}
-
-function createMermaidNode(node, hName, config) {
-  return [
-    {
-      type: "mermaidCodeBlock",
-      data: {
-        hName,
-        hProperties: {
-          config: JSON.stringify(config),
-          chart: node.value,
-        },
-      },
-    },
-  ];
-}
+const { remarkCodeHike } = require("@code-hike/mdx");
 
 const beforeRemarkPlugins = [
   [
@@ -93,15 +46,7 @@ const beforeRemarkPluginsForPages = [
  * @returns {Promise<import('@docusaurus/types').Config>}
  */
 async function createConfig() {
-  const remarkPlugins = [
-    (await import("remark-gfm")).default,
-    [
-      mermaid,
-      {
-        theme: { light: "default", dark: "dark" },
-      },
-    ],
-  ];
+  const remarkPlugins = [(await import("remark-gfm")).default];
   return {
     title: "Konfig",
     tagline: "Generate SDKs for your REST API",
@@ -118,8 +63,12 @@ async function createConfig() {
         async: true,
       },
     ],
+    markdown: {
+      mermaid: true,
+    },
     themes: [
       "docusaurus-json-schema-plugin",
+      "@docusaurus/theme-mermaid",
       [
         require.resolve("@easyops-cn/docusaurus-search-local"),
         {
@@ -128,7 +77,6 @@ async function createConfig() {
           docsRouteBasePath: "/",
         },
       ],
-      "mdx-v2",
     ],
     plugins: [
       async function docusaurus(context, options) {

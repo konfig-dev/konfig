@@ -1,7 +1,6 @@
 import React from "react";
 import { MDXProvider } from "@mdx-js/react";
 import MDXComponents from "@theme/MDXComponents";
-import { Mermaid } from "@site/src/components/Mermaid/Mermaid";
 import { Tooltip } from "@site/src/components/Tooltip";
 import { Stats } from "@site/src/components/Stats/Stats";
 import { Carousel } from "@site/src/components/Carousel";
@@ -21,7 +20,6 @@ export default function MDXContent({ children }) {
     <MDXProvider
       components={{
         ...MDXComponents,
-        Mermaid,
         Stats,
         Tooltip,
         Figure,
