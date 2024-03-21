@@ -9,6 +9,7 @@ import { makeAutoObservable } from "mobx";
 import { observer } from "mobx-react-lite";
 import { makePersistable } from "mobx-persist-store";
 import Link from "@docusaurus/Link";
+import { Button } from "./ui/button";
 
 export type Filter = "all" | string;
 
@@ -36,6 +37,10 @@ class AllCategories {
       storage: window.localStorage,
     });
   }
+
+  get anyCategoryIsOpen() {
+    return Object.values(this.categories).some((category) => category.isOpen);
+  }
 }
 
 class ParentCategorySection {
@@ -46,34 +51,49 @@ class ParentCategorySection {
   }
 }
 
-export function CategoryFilters({ categories, filter }: CategoryFiltersProps) {
-  const [allCategories] = useState(() => new AllCategories(categories));
-  return (
-    <div>
-      <h3>Categories</h3>
-      <ul className="pl-0 mb-0 list-none">
-        <li>
-          <CategoryLink
-            selected={filter === "all"}
-            indented={false}
-            category="All Categories"
-            subpath="/sdk/category/all"
-          />
-        </li>
-        {categories.map(({ parentCategory, subCategories, subpath }, i) => (
-          <Category
-            allCategories={allCategories}
-            filter={filter}
-            key={i}
-            parentCategory={parentCategory}
-            subCategories={subCategories}
-            subpath={subpath}
-          />
-        ))}
-      </ul>
-    </div>
-  );
-}
+export const CategoryFilters = observer(
+  ({ categories, filter }: CategoryFiltersProps) => {
+    const [allCategories] = useState(() => new AllCategories(categories));
+    return (
+      <div>
+        <h3>Categories</h3>
+        <Button
+          variant="ghost"
+          size="sm"
+          className="mb-1"
+          onClick={() => {
+            const anyCategoryIsOpen = allCategories.anyCategoryIsOpen;
+            Object.values(allCategories.categories).forEach((category) => {
+              category.isOpen = !anyCategoryIsOpen;
+            });
+          }}
+        >
+          {allCategories.anyCategoryIsOpen ? "Close All" : "Expand All"}
+        </Button>
+        <ul className="pl-0 mb-0 list-none">
+          <li>
+            <CategoryLink
+              selected={filter === "all"}
+              indented={false}
+              category="All Categories"
+              subpath="/sdk/category/all"
+            />
+          </li>
+          {categories.map(({ parentCategory, subCategories, subpath }, i) => (
+            <Category
+              allCategories={allCategories}
+              filter={filter}
+              key={i}
+              parentCategory={parentCategory}
+              subCategories={subCategories}
+              subpath={subpath}
+            />
+          ))}
+        </ul>
+      </div>
+    );
+  }
+);
 
 type CategoryProps = {
   parentCategory: string;
