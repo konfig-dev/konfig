@@ -45,7 +45,7 @@ export function SdkDirectory({ filter }: { filter: Filter }) {
   return (
     <Layout
       title={`Explore ${numberOfApis} public APIs`}
-      description={`Discover and access over ${sdkLinksJson.length} up-to-date SDKs for ${numberOfApis} public APIs.`}
+      description={`Discover over ${sdkLinksJson.length} up-to-date SDKs for ${numberOfApis} public APIs.`}
     >
       <Head>
         <style>
@@ -65,7 +65,7 @@ export function SdkDirectory({ filter }: { filter: Filter }) {
             <CommandMenu />
           </div>
           <div className="flex flex-col md:flex-row gap-4 items-start">
-            <CategoryFilters categories={categories} />
+            <CategoryFilters filter={filter} categories={categories} />
             <div className="flex-grow">
               <div className="mb-5">
                 1 - {numberOfCompaniesToShow} of {companies.length} Companies
@@ -140,18 +140,24 @@ function Company({
 
 type CategoryFiltersProps = {
   categories: { parentCategory: string; subCategories: string[] }[];
+  filter: Filter;
 };
 
-function CategoryFilters({ categories }: CategoryFiltersProps) {
+function CategoryFilters({ categories, filter }: CategoryFiltersProps) {
   return (
     <div>
       <h3>API Categories</h3>
       <ul className="pl-0 mb-0 list-none">
         <li>
-          <CategoryLink selected indented={false} category="All Categories" />
+          <CategoryLink
+            selected={filter === "all"}
+            indented={false}
+            category="All Categories"
+          />
         </li>
         {categories.map(({ parentCategory, subCategories }, i) => (
           <Category
+            filter={filter}
             key={i}
             parentCategory={parentCategory}
             subCategories={subCategories}
@@ -165,8 +171,9 @@ function CategoryFilters({ categories }: CategoryFiltersProps) {
 type CategoryProps = {
   parentCategory: string;
   subCategories: string[];
+  filter: Filter;
 };
-function Category({ parentCategory, subCategories }: CategoryProps) {
+function Category({ parentCategory, subCategories, filter }: CategoryProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -184,11 +191,12 @@ function Category({ parentCategory, subCategories }: CategoryProps) {
       <CollapsibleContent className="mt-0">
         <ul className="mb-0 pl-0 list-none">
           <SubCategory
+            filter={filter}
             label={`All ${parentCategory}`}
             category={parentCategory}
           />
           {subCategories.map((category) => (
-            <SubCategory key={category} category={category} />
+            <SubCategory filter={filter} key={category} category={category} />
           ))}
         </ul>
       </CollapsibleContent>
@@ -199,11 +207,16 @@ function Category({ parentCategory, subCategories }: CategoryProps) {
 type SubCategoryProps = {
   category: string;
   label?: string;
+  filter: string;
 };
-function SubCategory({ category, label }: SubCategoryProps) {
+function SubCategory({ category, label, filter }: SubCategoryProps) {
   return (
     <li>
-      <CategoryLink category={category} label={label} />
+      <CategoryLink
+        selected={filter === category}
+        category={category}
+        label={label}
+      />
     </li>
   );
 }
