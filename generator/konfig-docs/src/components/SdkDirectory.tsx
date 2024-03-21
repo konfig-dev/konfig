@@ -68,18 +68,22 @@ export function SdkDirectory({ filter }: { filter: Filter }) {
             <CategoryFilters filter={filter} categories={categories} />
             <div className="flex-grow">
               <div className="mb-5">
-                1 - {numberOfCompaniesToShow} of {companies.length} Companies
+                1 -{" "}
+                {Math.min(numberOfCompaniesToShow, filteredCompanies.length)} of{" "}
+                {filteredCompanies.length} Companies
               </div>
               <div className="grid grid-cols-2 gap-3 mb-5">
                 {visibleCompanies.map((company) => (
                   <Company key={company.company} {...company} />
                 ))}
               </div>
-              <LoadMoreButton
-                onClick={() =>
-                  setNumberOfCompaniesToShow(numberOfCompaniesToShow + 6)
-                }
-              />
+              {filteredCompanies.length > numberOfCompaniesToShow && (
+                <LoadMoreButton
+                  onClick={() =>
+                    setNumberOfCompaniesToShow(numberOfCompaniesToShow + 6)
+                  }
+                />
+              )}
             </div>
           </div>
         </div>
@@ -150,7 +154,7 @@ type CategoryFiltersProps = {
 function CategoryFilters({ categories, filter }: CategoryFiltersProps) {
   return (
     <div>
-      <h3>API Categories</h3>
+      <h3>Categories</h3>
       <ul className="pl-0 mb-0 list-none">
         <li>
           <CategoryLink
