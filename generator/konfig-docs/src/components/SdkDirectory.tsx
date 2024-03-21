@@ -112,7 +112,7 @@ function Company({
       className="select-none flex-grow rounded-md hover:no-underline p-4 hover:shadow-xl hover:ring-1 ring-slate-200 transition-shadow"
     >
       <div className="flex flex-row items-start gap-4">
-        <div className="h-16 w-16">
+        <div className="h-8 w-8 shrink-0">
           <img className="h-auto w-full" src={favicon} />
         </div>
         <div>

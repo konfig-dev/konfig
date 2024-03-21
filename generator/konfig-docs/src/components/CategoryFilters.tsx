@@ -10,6 +10,7 @@ import { observer } from "mobx-react-lite";
 import { makePersistable } from "mobx-persist-store";
 import Link from "@docusaurus/Link";
 import { Button } from "./ui/button";
+import { cn } from "../util/util";
 
 export type Filter = "all" | string;
 
@@ -20,6 +21,7 @@ type CategoryFiltersProps = {
     subpath: string;
   }[];
   filter: Filter;
+  className?: string;
 };
 
 class AllCategories {
@@ -51,11 +53,34 @@ class ParentCategorySection {
   }
 }
 
-export const CategoryFilters = observer(
-  ({ categories, filter }: CategoryFiltersProps) => {
+export const CategoryFilters = observer((props: CategoryFiltersProps) => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <Collapsible
+        className="md:hidden w-full relative"
+        open={isOpen}
+        onOpenChange={setIsOpen}
+      >
+        <CollapsibleTrigger asChild>
+          <Button className="w-full mb-2">
+            {isOpen ? "Hide" : "Show"} Categories
+          </Button>
+        </CollapsibleTrigger>
+        <CollapsibleContent>
+          <CategoryFilterControls {...props} />
+        </CollapsibleContent>
+      </Collapsible>
+      <CategoryFilterControls className="hidden md:block" {...props} />
+    </>
+  );
+});
+
+export const CategoryFilterControls = observer(
+  ({ categories, filter, className }: CategoryFiltersProps) => {
     const [allCategories] = useState(() => new AllCategories(categories));
     return (
-      <div className="w-full md:w-[300px]">
+      <div className={cn("w-full md:w-[300px]", className)}>
         <h3>Categories</h3>
         <Button
           variant="outline"
