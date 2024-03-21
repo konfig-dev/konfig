@@ -121,13 +121,19 @@ const Category = observer(
         }}
         className="w-[300px]"
       >
-        <CollapsibleTrigger className="group text-slate-500 hover:text-slate-800 rounded-md py-2 px-2 w-full hover:bg-slate-100 transition-all">
+        <CollapsibleTrigger
+          aria-selected={
+            filter === parentCategory ||
+            subCategories.map((sub) => sub.category).includes(filter)
+          }
+          className="group aria-selected:hover:bg-blue-100 aria-selected:bg-blue-100 aria-selected:text-blue-800 text-slate-500 hover:text-slate-800 rounded-md py-2 px-2 w-full hover:bg-slate-100 transition-all"
+        >
           <li>
             <div className="flex items-center gap-x-2">
               {category.isOpen ? (
-                <ChevronUp className="text-slate-400" />
+                <ChevronUp className="text-slate-400 group-aria-selected:text-blue-400" />
               ) : (
-                <ChevronDown className="text-slate-400" />
+                <ChevronDown className="text-slate-400 group-aria-selected:text-blue-400" />
               )}
               <div className="font-semibold">{parentCategory}</div>
             </div>
