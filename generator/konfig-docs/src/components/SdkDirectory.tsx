@@ -20,7 +20,7 @@ export function SdkDirectory({ filter }: { filter: Filter }) {
     0
   );
 
-  const [numberOfCompaniesToShow, setNumberOfCompaniesToShow] = useState(6);
+  const [numberOfCompaniesToShow, setNumberOfCompaniesToShow] = useState(22);
 
   // filter companies by provided filter
   const filteredCompanies = companies.filter((company) => {
@@ -72,7 +72,7 @@ export function SdkDirectory({ filter }: { filter: Filter }) {
               {filteredCompanies.length > numberOfCompaniesToShow && (
                 <LoadMoreButton
                   onClick={() =>
-                    setNumberOfCompaniesToShow(numberOfCompaniesToShow + 6)
+                    setNumberOfCompaniesToShow(numberOfCompaniesToShow + 22)
                   }
                 />
               )}
