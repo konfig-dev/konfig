@@ -23,6 +23,7 @@ class ValidationError(BaseModel):
     msg: str = Field(alias='msg')
 
     type: str = Field(alias='type')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

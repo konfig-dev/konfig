@@ -20,31 +20,22 @@ from python_splitit_client.type.purchase_method import PurchaseMethod
 class RequiredPlanDataModel(TypedDict):
     TotalAmount: typing.Union[int, float]
 
-
     PurchaseMethod: PurchaseMethod
-
 
 class OptionalPlanDataModel(TypedDict, total=False):
     Currency: str
 
-
     NumberOfInstallments: int
-
 
     TerminalId: str
 
-
     RefOrderNumber: str
-
 
     ExtendedParams: PlanDataModelExtendedParams
 
-
     FirstInstallmentAmount: typing.Union[int, float]
 
-
     FirstInstallmentDate: datetime
-
 
 class PlanDataModel(RequiredPlanDataModel, OptionalPlanDataModel):
     pass

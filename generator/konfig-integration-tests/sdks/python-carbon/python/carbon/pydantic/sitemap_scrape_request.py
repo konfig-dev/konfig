@@ -44,6 +44,7 @@ class SitemapScrapeRequest(BaseModel):
     css_classes_to_skip: typing.Optional[SitemapScrapeRequestCssClassesToSkip] = Field(None, alias='css_classes_to_skip')
 
     css_selectors_to_skip: typing.Optional[SitemapScrapeRequestCssSelectorsToSkip] = Field(None, alias='css_selectors_to_skip')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

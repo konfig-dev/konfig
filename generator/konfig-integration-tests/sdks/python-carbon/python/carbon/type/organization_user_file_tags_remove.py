@@ -19,9 +19,7 @@ from carbon.type.organization_user_file_tags_remove_tags import OrganizationUser
 class RequiredOrganizationUserFileTagsRemove(TypedDict):
     tags: OrganizationUserFileTagsRemoveTags
 
-
     organization_user_file_id: int
-
 
 class OptionalOrganizationUserFileTagsRemove(TypedDict, total=False):
     pass

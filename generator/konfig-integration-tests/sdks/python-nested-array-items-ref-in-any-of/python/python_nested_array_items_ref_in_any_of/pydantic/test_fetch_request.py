@@ -20,6 +20,7 @@ from python_nested_array_items_ref_in_any_of.pydantic.simple_schema import Simpl
 
 class TestFetchRequest(BaseModel):
     problematic_property: typing.Optional[typing.Union[typing.List[SimpleSchema], typing.List[str]]] = Field(None, alias='problematicProperty')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

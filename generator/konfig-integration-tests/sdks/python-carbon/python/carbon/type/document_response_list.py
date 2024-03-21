@@ -19,7 +19,6 @@ from carbon.type.document_response import DocumentResponse
 class RequiredDocumentResponseList(TypedDict):
     documents: typing.List[DocumentResponse]
 
-
 class OptionalDocumentResponseList(TypedDict, total=False):
     pass
 

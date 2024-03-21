@@ -25,15 +25,11 @@ class RequiredOrganizationUserDataSourceQueryInput(TypedDict):
 class OptionalOrganizationUserDataSourceQueryInput(TypedDict, total=False):
     pagination: Pagination
 
-
     order_by: OrganizationUserDataSourceOrderByColumns
-
 
     order_dir: OrderDir
 
-
     filters: OrganizationUserDataSourceFilters
-
 
 class OrganizationUserDataSourceQueryInput(RequiredOrganizationUserDataSourceQueryInput, OptionalOrganizationUserDataSourceQueryInput):
     pass

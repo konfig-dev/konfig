@@ -23,6 +23,5 @@ class RequiredInvalidObject(TypedDict):
 class OptionalInvalidObject(TypedDict, total=False):
     object: InvalidObjectObject
 
-
 class InvalidObject(RequiredInvalidObject, OptionalInvalidObject):
     pass

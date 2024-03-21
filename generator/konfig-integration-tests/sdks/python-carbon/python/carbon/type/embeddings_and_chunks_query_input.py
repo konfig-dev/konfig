@@ -22,19 +22,14 @@ from carbon.type.pagination import Pagination
 class RequiredEmbeddingsAndChunksQueryInput(TypedDict):
     filters: EmbeddingsAndChunksFilters
 
-
 class OptionalEmbeddingsAndChunksQueryInput(TypedDict, total=False):
     pagination: Pagination
 
-
     order_by: EmbeddingsAndChunksOrderByColumns
-
 
     order_dir: OrderDir
 
-
     include_vectors: bool
-
 
 class EmbeddingsAndChunksQueryInput(RequiredEmbeddingsAndChunksQueryInput, OptionalEmbeddingsAndChunksQueryInput):
     pass

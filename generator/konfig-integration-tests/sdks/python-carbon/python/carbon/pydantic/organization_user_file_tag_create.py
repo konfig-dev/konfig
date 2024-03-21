@@ -21,6 +21,7 @@ class OrganizationUserFileTagCreate(BaseModel):
     tags: OrganizationUserFileTagCreateTags = Field(alias='tags')
 
     organization_user_file_id: int = Field(alias='organization_user_file_id')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

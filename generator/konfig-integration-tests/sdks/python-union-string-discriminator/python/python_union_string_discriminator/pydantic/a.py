@@ -21,6 +21,7 @@ class A(BaseModel):
     type: typing.Optional[Literal["A"]] = Field(None, alias='type')
 
     a: typing.Optional[str] = Field(None, alias='a')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

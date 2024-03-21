@@ -22,6 +22,5 @@ class RequiredUxSettingsModel(TypedDict):
 class OptionalUxSettingsModel(TypedDict, total=False):
     DisplayedInstallmentOptions: UxSettingsModelDisplayedInstallmentOptions
 
-
 class UxSettingsModel(RequiredUxSettingsModel, OptionalUxSettingsModel):
     pass

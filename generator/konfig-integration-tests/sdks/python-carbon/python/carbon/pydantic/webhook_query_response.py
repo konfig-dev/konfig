@@ -21,6 +21,7 @@ class WebhookQueryResponse(BaseModel):
     results: typing.List[WebhookNoKey] = Field(alias='results')
 
     count: int = Field(alias='count')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

@@ -22,9 +22,7 @@ class RequiredInstallmentsEligibilityResponse(TypedDict):
 class OptionalInstallmentsEligibilityResponse(TypedDict, total=False):
     InstallmentProvider: str
 
-
     PaymentPlanOptions: typing.List[PaymentPlanOptionModel]
-
 
 class InstallmentsEligibilityResponse(RequiredInstallmentsEligibilityResponse, OptionalInstallmentsEligibilityResponse):
     pass

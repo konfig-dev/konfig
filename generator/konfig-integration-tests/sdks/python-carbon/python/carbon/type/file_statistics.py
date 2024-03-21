@@ -19,18 +19,13 @@ from carbon.type.file_formats_nullable import FileFormatsNullable
 class RequiredFileStatistics(TypedDict):
     file_format: typing.Optional[FileFormatsNullable]
 
-
     file_size: typing.Optional[int]
-
 
     num_characters: typing.Optional[int]
 
-
     num_tokens: typing.Optional[int]
 
-
     num_embeddings: typing.Optional[int]
-
 
 class OptionalFileStatistics(TypedDict, total=False):
     pass

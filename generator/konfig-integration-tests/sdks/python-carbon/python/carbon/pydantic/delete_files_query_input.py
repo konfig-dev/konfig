@@ -24,6 +24,7 @@ class DeleteFilesQueryInput(BaseModel):
     sync_statuses: typing.Optional[typing.Optional[typing.List[ExternalFileSyncStatuses]]] = Field(None, alias='sync_statuses')
 
     delete_non_synced_only: typing.Optional[bool] = Field(None, alias='delete_non_synced_only')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

@@ -27,6 +27,7 @@ class FileStatistics(BaseModel):
     num_tokens: typing.Optional[int] = Field(alias='num_tokens')
 
     num_embeddings: typing.Optional[int] = Field(alias='num_embeddings')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

@@ -20,6 +20,7 @@ from python_pydantic_enum_str.pydantic.enum import Enum
 
 class TestFetchResponse(BaseModel):
     value: typing.Optional[typing.Union[Enum, str]] = Field(None, alias='value')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

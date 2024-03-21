@@ -21,6 +21,7 @@ class UserInput(BaseModel):
     lang: typing.Optional[typing.Union[typing.List[str], str]] = Field(None, alias='lang')
 
     countries: typing.Optional[typing.Union[typing.List[str], str]] = Field(None, alias='countries')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

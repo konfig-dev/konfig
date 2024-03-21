@@ -21,15 +21,11 @@ class RequiredRefundSummary(TypedDict):
 class OptionalRefundSummary(TypedDict, total=False):
     TotalAmount: typing.Union[int, float]
 
-
     FailedAmount: typing.Union[int, float]
-
 
     SucceededAmount: typing.Union[int, float]
 
-
     PendingAmount: typing.Union[int, float]
-
 
 class RefundSummary(RequiredRefundSummary, OptionalRefundSummary):
     pass

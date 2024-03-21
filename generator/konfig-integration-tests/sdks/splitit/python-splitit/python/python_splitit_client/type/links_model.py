@@ -21,12 +21,9 @@ class RequiredLinksModel(TypedDict):
 class OptionalLinksModel(TypedDict, total=False):
     PrivacyPolicyUrl: str
 
-
     TermsAndConditionsUrl: str
 
-
     LearnMoreUrl: str
-
 
 class LinksModel(RequiredLinksModel, OptionalLinksModel):
     pass

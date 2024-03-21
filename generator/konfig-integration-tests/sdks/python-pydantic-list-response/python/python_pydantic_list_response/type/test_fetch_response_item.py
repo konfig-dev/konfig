@@ -20,7 +20,6 @@ class RequiredTestFetchResponseItem(TypedDict):
     # A unique identifier
     id: str
 
-
 class OptionalTestFetchResponseItem(TypedDict, total=False):
     pass
 

@@ -29,6 +29,7 @@ class IssueCollectRequestRequest(BaseModel):
     purpose_message: str = Field(alias='purpose_message')
 
     expiry_time: typing.Optional[int] = Field(None, alias='expiry_time')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

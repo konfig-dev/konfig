@@ -19,9 +19,7 @@ from carbon.type.organization_user_data_source_api import OrganizationUserDataSo
 class RequiredOrganizationUserDataSourceResponse(TypedDict):
     results: typing.List[OrganizationUserDataSourceAPI]
 
-
     count: int
-
 
 class OptionalOrganizationUserDataSourceResponse(TypedDict, total=False):
     pass

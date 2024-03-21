@@ -23,24 +23,17 @@ class RequiredCardData(TypedDict):
 class OptionalCardData(TypedDict, total=False):
     CardHolderFullName: str
 
-
     CardNumber: str
-
 
     CardExpYear: str
 
-
     CardExpMonth: str
-
 
     CardCvv: str
 
-
     CardBrand: CardBrand
 
-
     CardType: CardType
-
 
 class CardData(RequiredCardData, OptionalCardData):
     pass

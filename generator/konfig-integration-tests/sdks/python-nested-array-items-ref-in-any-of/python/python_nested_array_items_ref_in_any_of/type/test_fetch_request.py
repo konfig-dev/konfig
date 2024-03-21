@@ -23,6 +23,5 @@ class RequiredTestFetchRequest(TypedDict):
 class OptionalTestFetchRequest(TypedDict, total=False):
     problematicProperty: typing.Union[typing.List[SimpleSchema], typing.List[str]]
 
-
 class TestFetchRequest(RequiredTestFetchRequest, OptionalTestFetchRequest):
     pass

@@ -21,6 +21,7 @@ class FetchURLsResponse(BaseModel):
     urls: FetchURLsResponseUrls = Field(alias='urls')
 
     html_content: str = Field(alias='html_content')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

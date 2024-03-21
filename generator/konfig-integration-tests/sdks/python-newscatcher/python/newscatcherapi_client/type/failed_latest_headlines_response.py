@@ -20,25 +20,18 @@ from newscatcherapi_client.type.dto_responses_latest_headlines_response_article_
 class RequiredFailedLatestHeadlinesResponse(TypedDict):
     user_input: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
 
-
 class OptionalFailedLatestHeadlinesResponse(TypedDict, total=False):
     status: str
 
-
     total_hits: int
-
 
     page: int
 
-
     total_pages: int
-
 
     page_size: int
 
-
     articles: typing.List[DtoResponsesLatestHeadlinesResponseArticleResult]
-
 
 class FailedLatestHeadlinesResponse(RequiredFailedLatestHeadlinesResponse, OptionalFailedLatestHeadlinesResponse):
     pass

@@ -18,21 +18,15 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 class RequiredWebhook(TypedDict):
     id: int
 
-
     organization_id: int
-
 
     url: str
 
-
     signing_key: str
-
 
     created_at: datetime
 
-
     updated_at: datetime
-
 
 class OptionalWebhook(TypedDict, total=False):
     pass

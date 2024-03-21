@@ -18,9 +18,7 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 class RequiredTokenResponse(TypedDict):
     access_token: str
 
-
     refresh_token: str
-
 
 class OptionalTokenResponse(TypedDict, total=False):
     pass

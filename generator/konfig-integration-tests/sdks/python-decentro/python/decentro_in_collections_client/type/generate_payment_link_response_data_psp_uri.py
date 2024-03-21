@@ -22,15 +22,11 @@ class RequiredGeneratePaymentLinkResponseDataPspUri(TypedDict):
 class OptionalGeneratePaymentLinkResponseDataPspUri(TypedDict, total=False):
     commonUri: str
 
-
     gpayUri: str
-
 
     phonepeUri: str
 
-
     paytmUri: str
-
 
 class GeneratePaymentLinkResponseDataPspUri(RequiredGeneratePaymentLinkResponseDataPspUri, OptionalGeneratePaymentLinkResponseDataPspUri):
     pass

@@ -25,15 +25,11 @@ class RequiredWebhookQueryInput(TypedDict):
 class OptionalWebhookQueryInput(TypedDict, total=False):
     pagination: Pagination
 
-
     order_by: WebhookOrderByColumns
-
 
     order_dir: OrderDir
 
-
     filters: WebhookFilters
-
 
 class WebhookQueryInput(RequiredWebhookQueryInput, OptionalWebhookQueryInput):
     pass

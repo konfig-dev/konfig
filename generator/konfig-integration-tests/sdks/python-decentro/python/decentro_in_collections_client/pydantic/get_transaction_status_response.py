@@ -31,6 +31,7 @@ class GetTransactionStatusResponse(BaseModel):
     data: typing.Optional[GetTransactionStatusResponseData] = Field(None, alias='data')
 
     error: typing.Optional[GetTransactionStatusResponseError] = Field(None, alias='error')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

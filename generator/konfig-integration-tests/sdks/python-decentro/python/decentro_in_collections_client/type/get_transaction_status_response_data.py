@@ -22,12 +22,9 @@ class RequiredGetTransactionStatusResponseData(TypedDict):
 class OptionalGetTransactionStatusResponseData(TypedDict, total=False):
     transactionStatus: str
 
-
     bankReferenceNumber: str
 
-
     npciTxnId: str
-
 
 class GetTransactionStatusResponseData(RequiredGetTransactionStatusResponseData, OptionalGetTransactionStatusResponseData):
     pass

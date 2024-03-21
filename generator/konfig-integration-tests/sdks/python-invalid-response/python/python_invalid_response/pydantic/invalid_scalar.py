@@ -20,6 +20,7 @@ from pydantic import BaseModel, Field, RootModel, ConfigDict
 class InvalidScalar(BaseModel):
     # The value of the JSON response
     str_: typing.Optional[str] = Field(None, alias='str')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

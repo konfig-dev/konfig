@@ -20,6 +20,7 @@ class HybridSearchTuningParams(BaseModel):
     weight_a: typing.Union[int, float] = Field(alias='weight_a')
 
     weight_b: typing.Union[int, float] = Field(alias='weight_b')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

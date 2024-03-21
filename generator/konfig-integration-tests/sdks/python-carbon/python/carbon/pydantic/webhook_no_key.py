@@ -26,6 +26,7 @@ class WebhookNoKey(BaseModel):
     created_at: datetime = Field(alias='created_at')
 
     updated_at: datetime = Field(alias='updated_at')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

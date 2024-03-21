@@ -33,6 +33,7 @@ class RawTextInput(BaseModel):
     embedding_model: typing.Optional[EmbeddingGeneratorsNullable] = Field(None, alias='embedding_model')
 
     generate_sparse_vectors: typing.Optional[typing.Optional[bool]] = Field(None, alias='generate_sparse_vectors')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

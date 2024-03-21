@@ -22,6 +22,5 @@ class RequiredTestFetch400Response(TypedDict):
 class OptionalTestFetch400Response(TypedDict, total=False):
     error: str
 
-
 class TestFetch400Response(RequiredTestFetch400Response, OptionalTestFetch400Response):
     pass

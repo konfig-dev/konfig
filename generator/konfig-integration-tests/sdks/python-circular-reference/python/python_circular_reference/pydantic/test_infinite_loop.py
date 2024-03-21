@@ -23,6 +23,7 @@ class TestInfiniteLoop(BaseModel):
     required: 'TestFetchResponse' = Field(alias='required')
 
     value: typing.Optional['TestFetchResponse'] = Field(None, alias='value')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

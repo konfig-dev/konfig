@@ -23,34 +23,24 @@ from python_splitit_client.type.shopper_data import ShopperData
 class RequiredInitiatePlanResponse(TypedDict):
     Status: PlanStatus
 
-
 class OptionalInitiatePlanResponse(TypedDict, total=False):
     InstallmentPlanNumber: str
 
-
     RefOrderNumber: str
-
 
     PurchaseMethod: PurchaseMethod
 
-
     Currency: str
-
 
     Amount: typing.Union[int, float]
 
-
     ExtendedParams: InitiatePlanResponseExtendedParams
-
 
     Shopper: ShopperData
 
-
     BillingAddress: AddressData
 
-
     CheckoutUrl: str
-
 
 class InitiatePlanResponse(RequiredInitiatePlanResponse, OptionalInitiatePlanResponse):
     pass

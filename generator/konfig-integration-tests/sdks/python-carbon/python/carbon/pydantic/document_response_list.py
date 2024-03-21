@@ -19,6 +19,7 @@ from carbon.pydantic.document_response import DocumentResponse
 
 class DocumentResponseList(BaseModel):
     documents: typing.List[DocumentResponse] = Field(alias='documents')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

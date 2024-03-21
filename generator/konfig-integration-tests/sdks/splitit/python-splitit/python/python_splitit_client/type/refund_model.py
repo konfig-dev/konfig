@@ -19,22 +19,16 @@ from python_splitit_client.type.refund_status import RefundStatus
 class RequiredRefundModel(TypedDict):
     SubmitDate: datetime
 
-
     TotalAmount: typing.Union[int, float]
-
 
     Status: RefundStatus
 
-
     NonCreditRefundAmount: typing.Union[int, float]
-
 
     CreditRefundAmount: typing.Union[int, float]
 
-
 class OptionalRefundModel(TypedDict, total=False):
     RefundId: str
-
 
 class RefundModel(RequiredRefundModel, OptionalRefundModel):
     pass

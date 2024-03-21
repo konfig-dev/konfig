@@ -23,18 +23,13 @@ class RequiredValidateUpiHandleResponse(TypedDict):
 class OptionalValidateUpiHandleResponse(TypedDict, total=False):
     decentroTxnId: str
 
-
     status: str
-
 
     responseCode: str
 
-
     message: str
 
-
     data: ValidateUpiHandleResponseData
-
 
 class ValidateUpiHandleResponse(RequiredValidateUpiHandleResponse, OptionalValidateUpiHandleResponse):
     pass

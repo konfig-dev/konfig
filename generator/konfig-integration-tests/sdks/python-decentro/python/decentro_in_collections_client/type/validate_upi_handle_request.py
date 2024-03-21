@@ -19,13 +19,10 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 class RequiredValidateUpiHandleRequest(TypedDict):
     reference_id: str
 
-
     upi_id: str
-
 
 class OptionalValidateUpiHandleRequest(TypedDict, total=False):
     type: str
-
 
 class ValidateUpiHandleRequest(RequiredValidateUpiHandleRequest, OptionalValidateUpiHandleRequest):
     pass

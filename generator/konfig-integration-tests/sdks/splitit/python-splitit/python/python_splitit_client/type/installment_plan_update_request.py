@@ -22,15 +22,11 @@ class RequiredInstallmentPlanUpdateRequest(TypedDict):
 class OptionalInstallmentPlanUpdateRequest(TypedDict, total=False):
     RefOrderNumber: str
 
-
     TrackingNumber: str
-
 
     Capture: bool
 
-
     ShippingStatus: ShippingStatus2
-
 
 class InstallmentPlanUpdateRequest(RequiredInstallmentPlanUpdateRequest, OptionalInstallmentPlanUpdateRequest):
     pass

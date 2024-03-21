@@ -20,34 +20,24 @@ from python_splitit_client.type.three_ds_redirect_data_v3 import ThreeDsRedirect
 class RequiredAuthorizationModel(TypedDict):
     Status: GwAuthorizationStatus
 
-
 class OptionalAuthorizationModel(TypedDict, total=False):
     Date: datetime
 
-
     SplititErrorResultCode: str
-
 
     GatewayTransactionID: str
 
-
     GatewayResultCode: str
-
 
     GatewayResultMessage: str
 
-
     ThreeDSRedirect: ThreeDsRedirectDataV3
-
 
     CAVV: str
 
-
     ECI: str
 
-
     GatewaySourceResponse: str
-
 
 class AuthorizationModel(RequiredAuthorizationModel, OptionalAuthorizationModel):
     pass

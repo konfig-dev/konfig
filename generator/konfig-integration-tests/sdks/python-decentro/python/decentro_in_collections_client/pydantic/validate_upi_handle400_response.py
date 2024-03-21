@@ -25,6 +25,7 @@ class ValidateUpiHandle400Response(BaseModel):
     response_code: typing.Optional[str] = Field(None, alias='responseCode')
 
     message: typing.Optional[str] = Field(None, alias='message')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

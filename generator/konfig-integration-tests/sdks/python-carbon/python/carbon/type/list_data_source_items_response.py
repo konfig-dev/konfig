@@ -19,9 +19,7 @@ from carbon.type.external_source_item import ExternalSourceItem
 class RequiredListDataSourceItemsResponse(TypedDict):
     items: typing.List[ExternalSourceItem]
 
-
     count: int
-
 
 class OptionalListDataSourceItemsResponse(TypedDict, total=False):
     pass

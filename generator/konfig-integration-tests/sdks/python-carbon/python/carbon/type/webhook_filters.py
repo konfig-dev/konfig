@@ -22,6 +22,5 @@ class RequiredWebhookFilters(TypedDict):
 class OptionalWebhookFilters(TypedDict, total=False):
     ids: typing.Optional[WebhookFiltersIds]
 
-
 class WebhookFilters(RequiredWebhookFilters, OptionalWebhookFilters):
     pass

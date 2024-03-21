@@ -19,6 +19,7 @@ from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 class TestFetchResponse(BaseModel):
     value: typing.Optional[typing.Optional[str]] = Field(None, alias='value')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

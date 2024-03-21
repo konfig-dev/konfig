@@ -19,6 +19,7 @@ from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 class TestFetchResponse(BaseModel):
     free_form_object: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='freeFormObject')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

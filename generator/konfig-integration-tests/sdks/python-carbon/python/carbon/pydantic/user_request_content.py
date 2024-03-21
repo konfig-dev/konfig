@@ -18,6 +18,7 @@ from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 class UserRequestContent(BaseModel):
     customer_id: str = Field(alias='customer_id')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

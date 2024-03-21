@@ -19,6 +19,7 @@ from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 class GenericSchema(BaseModel):
     type: typing.Optional[Literal["generic"]] = Field(None, alias='type')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

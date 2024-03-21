@@ -29,6 +29,7 @@ class SubscriptionResponse(BaseModel):
     usage_remaining_calls: typing.Optional[int] = Field(None, alias='usage_remaining_calls')
 
     historical_days: typing.Optional[int] = Field(None, alias='historical_days')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

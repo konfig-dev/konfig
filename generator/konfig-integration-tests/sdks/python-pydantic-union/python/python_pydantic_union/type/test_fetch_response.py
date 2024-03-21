@@ -22,6 +22,5 @@ class RequiredTestFetchResponse(TypedDict):
 class OptionalTestFetchResponse(TypedDict, total=False):
     value: typing.Union[str, int]
 
-
 class TestFetchResponse(RequiredTestFetchResponse, OptionalTestFetchResponse):
     pass

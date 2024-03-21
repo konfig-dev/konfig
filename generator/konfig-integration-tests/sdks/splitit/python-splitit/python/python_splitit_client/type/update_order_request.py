@@ -22,15 +22,11 @@ class RequiredUpdateOrderRequest(TypedDict):
 class OptionalUpdateOrderRequest(TypedDict, total=False):
     TrackingNumber: str
 
-
     RefOrderNumber: str
-
 
     ShippingStatus: ShippingStatus
 
-
     Capture: bool
-
 
 class UpdateOrderRequest(RequiredUpdateOrderRequest, OptionalUpdateOrderRequest):
     pass

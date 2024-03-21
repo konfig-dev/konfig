@@ -20,25 +20,18 @@ from newscatcherapi_client.type.dto_responses_search_response_article_result imp
 class RequiredDtoResponsesSearchResponseFailedSearchResponse(TypedDict):
     user_input: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
 
-
 class OptionalDtoResponsesSearchResponseFailedSearchResponse(TypedDict, total=False):
     status: str
 
-
     total_hits: int
-
 
     page: int
 
-
     total_pages: int
-
 
     page_size: int
 
-
     articles: typing.List[DtoResponsesSearchResponseArticleResult]
-
 
 class DtoResponsesSearchResponseFailedSearchResponse(RequiredDtoResponsesSearchResponseFailedSearchResponse, OptionalDtoResponsesSearchResponseFailedSearchResponse):
     pass

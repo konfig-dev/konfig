@@ -23,6 +23,5 @@ class RequiredInvalidArray(TypedDict):
 class OptionalInvalidArray(TypedDict, total=False):
     array: InvalidArrayArray
 
-
 class InvalidArray(RequiredInvalidArray, OptionalInvalidArray):
     pass

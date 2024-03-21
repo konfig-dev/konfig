@@ -18,6 +18,7 @@ from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 class GenericSuccessResponse(BaseModel):
     success: bool = Field(alias='success')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

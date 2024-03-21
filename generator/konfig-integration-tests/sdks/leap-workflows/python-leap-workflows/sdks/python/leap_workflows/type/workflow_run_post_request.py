@@ -21,14 +21,11 @@ class RequiredWorkflowRunPostRequest(TypedDict):
     # The UUID of the workflow to be run.
     workflow_id: str
 
-
 class OptionalWorkflowRunPostRequest(TypedDict, total=False):
     # The URL to which the workflow results should be sent to on completion.
     webhook_url: str
 
-
     input: WorkflowRunPostRequestInput
-
 
 class WorkflowRunPostRequest(RequiredWorkflowRunPostRequest, OptionalWorkflowRunPostRequest):
     pass

@@ -24,6 +24,7 @@ class DirectoryItem(BaseModel):
     is_synced: bool = Field(alias='is_synced')
 
     has_children: bool = Field(alias='has_children')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

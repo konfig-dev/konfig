@@ -22,6 +22,5 @@ class RequiredSimpleSchema(TypedDict):
 class OptionalSimpleSchema(TypedDict, total=False):
     value: str
 
-
 class SimpleSchema(RequiredSimpleSchema, OptionalSimpleSchema):
     pass

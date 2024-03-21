@@ -23,6 +23,7 @@ class ChunksAndEmbeddings(BaseModel):
     chunk: str = Field(alias='chunk')
 
     embedding: ChunksAndEmbeddingsEmbedding = Field(alias='embedding')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

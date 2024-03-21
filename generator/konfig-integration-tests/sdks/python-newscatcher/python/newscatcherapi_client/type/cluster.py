@@ -20,12 +20,9 @@ from newscatcherapi_client.type.cluster_articles import ClusterArticles
 class RequiredCluster(TypedDict):
     cluster_id: str
 
-
     cluster_size: int
 
-
     articles: ClusterArticles
-
 
 class OptionalCluster(TypedDict, total=False):
     pass

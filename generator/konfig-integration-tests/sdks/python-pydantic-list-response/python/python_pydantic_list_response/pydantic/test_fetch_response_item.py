@@ -20,6 +20,7 @@ from pydantic import BaseModel, Field, RootModel, ConfigDict
 class TestFetchResponseItem(BaseModel):
     # A unique identifier
     id: str = Field(alias='id')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

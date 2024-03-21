@@ -21,9 +21,7 @@ class RequiredGatewayTokenData(TypedDict):
 class OptionalGatewayTokenData(TypedDict, total=False):
     Token: str
 
-
     Last4Digit: str
-
 
 class GatewayTokenData(RequiredGatewayTokenData, OptionalGatewayTokenData):
     pass

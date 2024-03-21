@@ -18,18 +18,13 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 class RequiredWebhookNoKey(TypedDict):
     id: int
 
-
     organization_id: int
-
 
     url: str
 
-
     created_at: datetime
 
-
     updated_at: datetime
-
 
 class OptionalWebhookNoKey(TypedDict, total=False):
     pass

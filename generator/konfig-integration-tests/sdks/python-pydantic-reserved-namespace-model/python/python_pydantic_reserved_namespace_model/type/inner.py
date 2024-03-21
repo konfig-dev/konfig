@@ -22,6 +22,5 @@ class RequiredInner(TypedDict):
 class OptionalInner(TypedDict, total=False):
     a: str
 
-
 class Inner(RequiredInner, OptionalInner):
     pass

@@ -22,15 +22,11 @@ class RequiredIssueCollectRequest400Response(TypedDict):
 class OptionalIssueCollectRequest400Response(TypedDict, total=False):
     decentroTxnId: str
 
-
     status: str
-
 
     responseCode: str
 
-
     message: str
-
 
 class IssueCollectRequest400Response(RequiredIssueCollectRequest400Response, OptionalIssueCollectRequest400Response):
     pass

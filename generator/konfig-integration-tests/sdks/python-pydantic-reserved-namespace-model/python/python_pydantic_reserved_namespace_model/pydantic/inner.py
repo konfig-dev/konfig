@@ -19,6 +19,7 @@ from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 class Inner(BaseModel):
     a: typing.Optional[str] = Field(None, alias='a')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

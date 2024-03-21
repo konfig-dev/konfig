@@ -26,6 +26,7 @@ class TestFetchResponse(BaseModel):
     value: typing.Optional['TestInfiniteLoop'] = Field(None, alias='value')
 
     array: typing.Optional[typing.List[Item]] = Field(None, alias='array')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

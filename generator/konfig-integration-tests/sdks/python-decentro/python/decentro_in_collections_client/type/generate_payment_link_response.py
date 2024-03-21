@@ -23,21 +23,15 @@ class RequiredGeneratePaymentLinkResponse(TypedDict):
 class OptionalGeneratePaymentLinkResponse(TypedDict, total=False):
     decentroTxnId: str
 
-
     status: str
-
 
     responseCode: str
 
-
     message: str
-
 
     data: GeneratePaymentLinkResponseData
 
-
     responseKey: str
-
 
 class GeneratePaymentLinkResponse(RequiredGeneratePaymentLinkResponse, OptionalGeneratePaymentLinkResponse):
     pass

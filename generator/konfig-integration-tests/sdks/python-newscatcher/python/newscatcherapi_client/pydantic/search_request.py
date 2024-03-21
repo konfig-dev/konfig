@@ -97,6 +97,7 @@ class SearchRequest(BaseModel):
     content_sentiment_min: typing.Optional[typing.Union[int, float]] = Field(None, alias='content_sentiment_min')
 
     content_sentiment_max: typing.Optional[typing.Union[int, float]] = Field(None, alias='content_sentiment_max')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

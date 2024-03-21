@@ -20,6 +20,7 @@ from python_pydantic_reserved_namespace_model.pydantic.inner import Inner
 
 class TestFetchResponse(BaseModel):
     model_config_: typing.Optional[Inner] = Field(None, alias='model_config')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

@@ -18,9 +18,7 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 class RequiredModifyUserConfigurationInput(TypedDict):
     configuration_key_name: str
 
-
     value: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
-
 
 class OptionalModifyUserConfigurationInput(TypedDict, total=False):
     pass

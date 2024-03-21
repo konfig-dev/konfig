@@ -18,6 +18,7 @@ from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 class BodyCreateUploadFileUploadfilePost(BaseModel):
     file: typing.IO = Field(alias='file')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

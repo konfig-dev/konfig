@@ -19,9 +19,7 @@ from carbon.type.user_file import UserFile
 class RequiredUserFilesV2(TypedDict):
     results: typing.List[UserFile]
 
-
     count: int
-
 
 class OptionalUserFilesV2(TypedDict, total=False):
     pass

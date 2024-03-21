@@ -23,21 +23,15 @@ class RequiredGeneratePaymentLinkResponseData(TypedDict):
 class OptionalGeneratePaymentLinkResponseData(TypedDict, total=False):
     generatedLink: str
 
-
     transactionId: str
-
 
     transactionStatus: str
 
-
     encodedDynamicQrCode: str
-
 
     upiUri: str
 
-
     pspUri: GeneratePaymentLinkResponseDataPspUri
-
 
 class GeneratePaymentLinkResponseData(RequiredGeneratePaymentLinkResponseData, OptionalGeneratePaymentLinkResponseData):
     pass

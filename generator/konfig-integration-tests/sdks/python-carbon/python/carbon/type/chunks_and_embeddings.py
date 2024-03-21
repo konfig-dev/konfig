@@ -19,12 +19,9 @@ from carbon.type.chunks_and_embeddings_embedding import ChunksAndEmbeddingsEmbed
 class RequiredChunksAndEmbeddings(TypedDict):
     chunk_number: typing.Optional[int]
 
-
     chunk: str
 
-
     embedding: ChunksAndEmbeddingsEmbedding
-
 
 class OptionalChunksAndEmbeddings(TypedDict, total=False):
     pass

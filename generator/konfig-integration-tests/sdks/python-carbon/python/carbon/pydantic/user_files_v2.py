@@ -21,6 +21,7 @@ class UserFilesV2(BaseModel):
     results: typing.List[UserFile] = Field(alias='results')
 
     count: int = Field(alias='count')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

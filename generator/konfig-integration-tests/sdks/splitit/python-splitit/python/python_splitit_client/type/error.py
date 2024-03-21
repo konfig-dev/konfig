@@ -21,12 +21,9 @@ class RequiredError(TypedDict):
 class OptionalError(TypedDict, total=False):
     Code: str
 
-
     Message: str
 
-
     AdditionalInfo: str
-
 
 class Error(RequiredError, OptionalError):
     pass

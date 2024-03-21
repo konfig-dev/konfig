@@ -97,6 +97,7 @@ export interface ChatDataResponse {
      * JSON definition of the tool to call and the corresponding argument values. Will be populated when finish_reason=\'tool_call\'.
      * @type {FunctionTool}
      * @memberof ChatDataResponse
+     * @deprecated
      */
     'tool_call'?: FunctionTool;
     /**

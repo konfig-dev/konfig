@@ -22,6 +22,7 @@ class ResyncFileQueryInput(BaseModel):
     chunk_size: typing.Optional[typing.Optional[int]] = Field(None, alias='chunk_size')
 
     chunk_overlap: typing.Optional[typing.Optional[int]] = Field(None, alias='chunk_overlap')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

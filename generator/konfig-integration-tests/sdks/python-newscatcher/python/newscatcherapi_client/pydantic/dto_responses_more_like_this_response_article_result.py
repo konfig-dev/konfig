@@ -82,6 +82,7 @@ class DtoResponsesMoreLikeThisResponseArticleResult(BaseModel):
     nlp: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(None, alias='nlp')
 
     similar_documents: typing.Optional[typing.List[SimilarDocument]] = Field(None, alias='similar_documents')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

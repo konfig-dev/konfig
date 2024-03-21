@@ -18,7 +18,6 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 class RequiredPresignedURLResponse(TypedDict):
     presigned_url: str
 
-
 class OptionalPresignedURLResponse(TypedDict, total=False):
     pass
 

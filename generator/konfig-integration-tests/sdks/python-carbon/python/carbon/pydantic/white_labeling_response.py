@@ -20,6 +20,7 @@ class WhiteLabelingResponse(BaseModel):
     remove_branding: bool = Field(alias='remove_branding')
 
     integrations: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]] = Field(alias='integrations')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

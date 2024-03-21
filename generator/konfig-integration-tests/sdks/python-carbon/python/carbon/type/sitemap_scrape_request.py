@@ -22,40 +22,28 @@ from carbon.type.sitemap_scrape_request_tags import SitemapScrapeRequestTags
 class RequiredSitemapScrapeRequest(TypedDict):
     url: str
 
-
 class OptionalSitemapScrapeRequest(TypedDict, total=False):
     tags: typing.Optional[SitemapScrapeRequestTags]
 
-
     max_pages_to_scrape: typing.Optional[int]
-
 
     chunk_size: typing.Optional[int]
 
-
     chunk_overlap: typing.Optional[int]
-
 
     skip_embedding_generation: typing.Optional[bool]
 
-
     enable_auto_sync: typing.Optional[bool]
-
 
     generate_sparse_vectors: typing.Optional[bool]
 
-
     prepend_filename_to_chunks: typing.Optional[bool]
-
 
     html_tags_to_skip: typing.Optional[SitemapScrapeRequestHtmlTagsToSkip]
 
-
     css_classes_to_skip: typing.Optional[SitemapScrapeRequestCssClassesToSkip]
 
-
     css_selectors_to_skip: typing.Optional[SitemapScrapeRequestCssSelectorsToSkip]
-
 
 class SitemapScrapeRequest(RequiredSitemapScrapeRequest, OptionalSitemapScrapeRequest):
     pass

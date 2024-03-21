@@ -21,6 +21,7 @@ class ListDataSourceItemsResponse(BaseModel):
     items: typing.List[ExternalSourceItem] = Field(alias='items')
 
     count: int = Field(alias='count')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

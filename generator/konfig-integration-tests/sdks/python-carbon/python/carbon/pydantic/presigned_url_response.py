@@ -18,6 +18,7 @@ from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 class PresignedURLResponse(BaseModel):
     presigned_url: str = Field(alias='presigned_url')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

@@ -21,10 +21,8 @@ if TYPE_CHECKING:
 class RequiredTestInfiniteLoop(TypedDict):
     required: 'TestFetchResponse'
 
-
 class OptionalTestInfiniteLoop(TypedDict, total=False):
     value: 'TestFetchResponse'
-
 
 class TestInfiniteLoop(RequiredTestInfiniteLoop, OptionalTestInfiniteLoop):
     pass

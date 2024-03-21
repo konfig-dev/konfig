@@ -22,37 +22,26 @@ from python_splitit_client.type.purchase_method import PurchaseMethod
 class RequiredPlanData(TypedDict):
     TotalAmount: typing.Union[int, float]
 
-
     NumberOfInstallments: int
 
-
     PurchaseMethod: PurchaseMethod
-
 
 class OptionalPlanData(TypedDict, total=False):
     TerminalId: str
 
-
     FirstInstallmentAmount: typing.Union[int, float]
-
 
     Currency: str
 
-
     RefOrderNumber: str
-
 
     AllowedInstallmentOptions: PlanDataAllowedInstallmentOptions
 
-
     Tags: PlanDataTags
-
 
     ProcessingData: ProcessingData2
 
-
     FirstInstallmentDate: datetime
-
 
 class PlanData(RequiredPlanData, OptionalPlanData):
     pass

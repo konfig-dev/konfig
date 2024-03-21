@@ -28,6 +28,7 @@ class OrganizationUserDataSourceQueryInput(BaseModel):
     order_dir: typing.Optional[OrderDir] = Field(None, alias='order_dir')
 
     filters: typing.Optional[OrganizationUserDataSourceFilters] = Field(None, alias='filters')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

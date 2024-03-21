@@ -20,6 +20,7 @@ from python_invalid_response.pydantic.invalid_object_object import InvalidObject
 
 class InvalidObject(BaseModel):
     object: typing.Optional[InvalidObjectObject] = Field(None, alias='object')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

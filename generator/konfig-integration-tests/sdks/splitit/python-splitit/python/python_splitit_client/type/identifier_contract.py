@@ -22,12 +22,9 @@ class RequiredIdentifierContract(TypedDict):
 class OptionalIdentifierContract(TypedDict, total=False):
     RefOrderNumber: str
 
-
     InstallmentPlanNumber: str
 
-
     ExtendedParams: IdentifierContractExtendedParams
-
 
 class IdentifierContract(RequiredIdentifierContract, OptionalIdentifierContract):
     pass

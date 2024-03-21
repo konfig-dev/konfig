@@ -25,24 +25,17 @@ class RequiredOrganizationUserFilesToSyncQueryInput(TypedDict):
 class OptionalOrganizationUserFilesToSyncQueryInput(TypedDict, total=False):
     pagination: Pagination
 
-
     order_by: OrganizationUserFilesToSyncOrderByTypes
-
 
     order_dir: OrderDir
 
-
     filters: OrganizationUserFilesToSyncFilters
-
 
     include_raw_file: typing.Optional[bool]
 
-
     include_parsed_text_file: typing.Optional[bool]
 
-
     include_additional_files: typing.Optional[bool]
-
 
 class OrganizationUserFilesToSyncQueryInput(RequiredOrganizationUserFilesToSyncQueryInput, OptionalOrganizationUserFilesToSyncQueryInput):
     pass

@@ -20,6 +20,7 @@ from pydantic import BaseModel, Field, RootModel, ConfigDict
 class GenericTextContent(BaseModel):
     # Generic text content for testing.
     text: typing.Optional[str] = Field(None, alias='text')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

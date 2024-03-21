@@ -23,22 +23,16 @@ from python_splitit_client.type.spreedly_token import SpreedlyToken
 class RequiredPaymentMethodModel(TypedDict):
     Type: PaymentMethodType
 
-
 class OptionalPaymentMethodModel(TypedDict, total=False):
     Card: CardData
 
-
     Token: str
-
 
     BluesnapVaultedShopperToken: BluesnapVaultedShopperToken
 
-
     MockerShopperToken: MockerShopperToken
 
-
     SpreedlyToken: SpreedlyToken
-
 
 class PaymentMethodModel(RequiredPaymentMethodModel, OptionalPaymentMethodModel):
     pass

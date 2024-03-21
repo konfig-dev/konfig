@@ -32,6 +32,7 @@ class DtoResponsesSearchResponseFailedSearchResponse(BaseModel):
     page_size: typing.Optional[int] = Field(None, alias='page_size')
 
     articles: typing.Optional[typing.List[DtoResponsesSearchResponseArticleResult]] = Field(None, alias='articles')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

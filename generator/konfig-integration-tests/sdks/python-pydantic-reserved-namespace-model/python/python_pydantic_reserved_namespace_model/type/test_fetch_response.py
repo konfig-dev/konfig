@@ -23,6 +23,5 @@ class RequiredTestFetchResponse(TypedDict):
 class OptionalTestFetchResponse(TypedDict, total=False):
     model_config: Inner
 
-
 class TestFetchResponse(RequiredTestFetchResponse, OptionalTestFetchResponse):
     pass

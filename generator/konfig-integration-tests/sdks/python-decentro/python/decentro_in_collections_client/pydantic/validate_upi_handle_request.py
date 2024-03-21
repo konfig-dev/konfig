@@ -23,6 +23,7 @@ class ValidateUpiHandleRequest(BaseModel):
     upi_id: str = Field(alias='upi_id')
 
     type: typing.Optional[str] = Field(None, alias='type')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

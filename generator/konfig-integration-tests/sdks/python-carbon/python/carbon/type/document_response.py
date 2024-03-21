@@ -21,36 +21,25 @@ from carbon.type.document_response_vector import DocumentResponseVector
 class RequiredDocumentResponse(TypedDict):
     tags: typing.Optional[DocumentResponseTags]
 
-
     content: str
-
 
     file_id: int
 
-
     source: typing.Optional[str]
-
 
     source_url: typing.Optional[str]
 
-
     source_type: typing.Optional[DataSourceTypeNullable]
-
 
     presigned_url: typing.Optional[str]
 
-
     vector: typing.Optional[DocumentResponseVector]
-
 
     score: typing.Optional[typing.Union[int, float]]
 
-
     rank: typing.Union[typing.Union[int, float], int]
 
-
     content_metadata: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
-
 
 class OptionalDocumentResponse(TypedDict, total=False):
     pass

@@ -25,6 +25,7 @@ class GeneratePaymentLinkResponseDataPspUri(BaseModel):
     phonepe_uri: typing.Optional[str] = Field(None, alias='phonepeUri')
 
     paytm_uri: typing.Optional[str] = Field(None, alias='paytmUri')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

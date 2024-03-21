@@ -22,6 +22,5 @@ class RequiredItem(TypedDict):
 class OptionalItem(TypedDict, total=False):
     value: str
 
-
 class Item(RequiredItem, OptionalItem):
     pass

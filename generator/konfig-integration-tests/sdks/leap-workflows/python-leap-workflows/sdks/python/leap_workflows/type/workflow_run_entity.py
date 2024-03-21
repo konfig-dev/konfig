@@ -19,33 +19,23 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 class RequiredWorkflowRunEntity(TypedDict):
     id: str
 
-
     version_id: str
-
 
     status: str
 
-
     created_at: datetime
-
 
     started_at: datetime
 
-
     ended_at: datetime
-
 
     workflow_id: str
 
-
     error: str
-
 
     input: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
 
-
     output: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
-
 
 class OptionalWorkflowRunEntity(TypedDict, total=False):
     pass

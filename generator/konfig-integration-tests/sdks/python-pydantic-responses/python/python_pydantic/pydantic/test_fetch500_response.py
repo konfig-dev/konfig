@@ -19,6 +19,7 @@ from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 class TestFetch500Response(BaseModel):
     error: typing.Optional[str] = Field(None, alias='error')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

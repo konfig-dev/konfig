@@ -25,6 +25,7 @@ class TestFetchResponse(BaseModel):
     value: str = Field(alias='value')
 
     missing_value: str = Field(alias='missingValue')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

@@ -22,6 +22,7 @@ class Equipment(BaseModel):
     sword: typing.Optional[Sword] = Field(None, alias='sword')
 
     armor: typing.Optional[str] = Field(None, alias='armor')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

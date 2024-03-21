@@ -25,6 +25,7 @@ class SourceResponse(BaseModel):
     sources: SourceResponseSources = Field(alias='sources')
 
     user_input: UserInput = Field(alias='user_input')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

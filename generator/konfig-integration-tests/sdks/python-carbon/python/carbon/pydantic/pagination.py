@@ -20,6 +20,7 @@ class Pagination(BaseModel):
     limit: typing.Optional[int] = Field(None, alias='limit')
 
     offset: typing.Optional[int] = Field(None, alias='offset')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

@@ -21,12 +21,9 @@ class RequiredInitiateRedirectionEndpointsModel(TypedDict):
 class OptionalInitiateRedirectionEndpointsModel(TypedDict, total=False):
     Succeeded: str
 
-
     Failed: str
 
-
     Cancel: str
-
 
 class InitiateRedirectionEndpointsModel(RequiredInitiateRedirectionEndpointsModel, OptionalInitiateRedirectionEndpointsModel):
     pass

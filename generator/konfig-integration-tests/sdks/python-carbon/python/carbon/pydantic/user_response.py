@@ -39,6 +39,7 @@ class UserResponse(BaseModel):
     unique_file_tags: UserResponseUniqueFileTags = Field(alias='unique_file_tags')
 
     enabled_features: typing.Optional[typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]] = Field(alias='enabled_features')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

@@ -19,22 +19,16 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 class RequiredIssueCollectRequestRequest(TypedDict):
     reference_id: str
 
-
     payer_upi: str
-
 
     payee_account: str
 
-
     amount: typing.Union[int, float]
-
 
     purpose_message: str
 
-
 class OptionalIssueCollectRequestRequest(TypedDict, total=False):
     expiry_time: int
-
 
 class IssueCollectRequestRequest(RequiredIssueCollectRequestRequest, OptionalIssueCollectRequestRequest):
     pass

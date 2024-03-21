@@ -24,6 +24,7 @@ class Cluster(BaseModel):
     cluster_size: int = Field(alias='cluster_size')
 
     articles: ClusterArticles = Field(alias='articles')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

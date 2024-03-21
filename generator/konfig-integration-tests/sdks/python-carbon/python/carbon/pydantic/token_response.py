@@ -20,6 +20,7 @@ class TokenResponse(BaseModel):
     access_token: str = Field(alias='access_token')
 
     refresh_token: str = Field(alias='refresh_token')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

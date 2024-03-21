@@ -18,13 +18,10 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 class RequiredResyncFileQueryInput(TypedDict):
     file_id: int
 
-
 class OptionalResyncFileQueryInput(TypedDict, total=False):
     chunk_size: typing.Optional[int]
 
-
     chunk_overlap: typing.Optional[int]
-
 
 class ResyncFileQueryInput(RequiredResyncFileQueryInput, OptionalResyncFileQueryInput):
     pass

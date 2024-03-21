@@ -21,21 +21,15 @@ class RequiredThreeDSData(TypedDict):
 class OptionalThreeDSData(TypedDict, total=False):
     ECI: str
 
-
     CAVV: str
-
 
     XID: str
 
-
     DirectoryServerTxnId: str
-
 
     ThreeDSVersion: str
 
-
     TransactionId: str
-
 
 class ThreeDSData(RequiredThreeDSData, OptionalThreeDSData):
     pass

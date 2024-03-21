@@ -22,15 +22,11 @@ class RequiredValidateUpiHandleResponseData(TypedDict):
 class OptionalValidateUpiHandleResponseData(TypedDict, total=False):
     upiId: str
 
-
     name: str
-
 
     status: str
 
-
     statusDescription: str
-
 
 class ValidateUpiHandleResponseData(RequiredValidateUpiHandleResponseData, OptionalValidateUpiHandleResponseData):
     pass

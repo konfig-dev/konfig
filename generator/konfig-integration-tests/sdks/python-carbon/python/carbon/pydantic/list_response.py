@@ -19,6 +19,7 @@ from carbon.pydantic.directory_item import DirectoryItem
 
 class ListResponse(BaseModel):
     data: typing.List[DirectoryItem] = Field(alias='data')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

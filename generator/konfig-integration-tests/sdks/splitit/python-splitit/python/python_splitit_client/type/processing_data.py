@@ -22,12 +22,9 @@ class RequiredProcessingData(TypedDict):
 class OptionalProcessingData(TypedDict, total=False):
     AttemptThreeDSecured: bool
 
-
     SoftDescriptor: str
 
-
     ThreeDSData: ThreeDSData
-
 
 class ProcessingData(RequiredProcessingData, OptionalProcessingData):
     pass

@@ -21,42 +21,29 @@ from carbon.type.data_source_type import DataSourceType
 class RequiredOrganizationUserDataSourceAPI(TypedDict):
     id: int
 
-
     data_source_external_id: typing.Optional[str]
-
 
     data_source_type: DataSourceType
 
-
     sync_status: DataSourceSyncStatuses
-
 
     source_items_synced_at: typing.Optional[datetime]
 
-
     organization_user_id: int
-
 
     organization_id: int
 
-
     organization_supplied_user_id: str
-
 
     revoked_access: bool
 
-
     last_synced_at: datetime
-
 
     last_sync_action: DataSourceLastSyncActions
 
-
     created_at: datetime
 
-
     updated_at: datetime
-
 
 class OptionalOrganizationUserDataSourceAPI(TypedDict, total=False):
     pass

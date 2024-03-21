@@ -30,6 +30,7 @@ class EmbeddingsAndChunksQueryInput(BaseModel):
     order_dir: typing.Optional[OrderDir] = Field(None, alias='order_dir')
 
     include_vectors: typing.Optional[bool] = Field(None, alias='include_vectors')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

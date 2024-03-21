@@ -21,15 +21,11 @@ class RequiredLinksData(TypedDict):
 class OptionalLinksData(TypedDict, total=False):
     Checkout: str
 
-
     LearnMore: str
-
 
     TermsConditions: str
 
-
     PrivacyPolicy: str
-
 
 class LinksData(RequiredLinksData, OptionalLinksData):
     pass

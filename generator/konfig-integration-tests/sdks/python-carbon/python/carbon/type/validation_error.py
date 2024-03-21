@@ -19,12 +19,9 @@ from carbon.type.validation_error_loc import ValidationErrorLoc
 class RequiredValidationError(TypedDict):
     loc: ValidationErrorLoc
 
-
     msg: str
 
-
     type: str
-
 
 class OptionalValidationError(TypedDict, total=False):
     pass

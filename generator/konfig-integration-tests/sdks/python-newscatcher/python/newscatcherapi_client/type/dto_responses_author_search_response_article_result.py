@@ -19,97 +19,66 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 class RequiredDtoResponsesAuthorSearchResponseArticleResult(TypedDict):
     title: str
 
-
     link: str
-
 
     domain_url: str
 
-
     full_domain_url: str
-
 
     extraction_data: str
 
-
     rank: int
-
 
     content: str
 
-
     id: str
 
-
     score: typing.Union[int, float]
-
 
 class OptionalDtoResponsesAuthorSearchResponseArticleResult(TypedDict, total=False):
     description: str
 
-
     author: str
-
 
     authors: typing.Union[typing.List[str], str]
 
-
     journalists: typing.Union[typing.List[str], str]
-
 
     published_date: str
 
-
     published_date_precision: str
-
 
     updated_date: str
 
-
     updated_date_precision: str
-
 
     parse_date: str
 
-
     name_source: str
-
 
     is_headline: str
 
-
     paid_content: bool
-
 
     country: str
 
-
     rights: str
-
 
     media: str
 
-
     language: str
-
 
     word_count: int
 
-
     is_opinion: bool
-
 
     twitter_account: str
 
-
     all_links: typing.Union[typing.List[str], str]
-
 
     all_domain_links: typing.Union[typing.List[str], str]
 
-
     nlp: typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]
-
 
 class DtoResponsesAuthorSearchResponseArticleResult(RequiredDtoResponsesAuthorSearchResponseArticleResult, OptionalDtoResponsesAuthorSearchResponseArticleResult):
     pass

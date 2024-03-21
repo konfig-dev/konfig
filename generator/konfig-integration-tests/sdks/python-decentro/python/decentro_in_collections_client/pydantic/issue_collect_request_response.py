@@ -28,6 +28,7 @@ class IssueCollectRequestResponse(BaseModel):
     message: typing.Optional[str] = Field(None, alias='message')
 
     data: typing.Optional[IssueCollectRequestResponseData] = Field(None, alias='data')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

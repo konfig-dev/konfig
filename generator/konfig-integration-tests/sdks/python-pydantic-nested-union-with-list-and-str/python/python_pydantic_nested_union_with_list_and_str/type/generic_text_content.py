@@ -23,6 +23,5 @@ class OptionalGenericTextContent(TypedDict, total=False):
     # Generic text content for testing.
     text: str
 
-
 class GenericTextContent(RequiredGenericTextContent, OptionalGenericTextContent):
     pass

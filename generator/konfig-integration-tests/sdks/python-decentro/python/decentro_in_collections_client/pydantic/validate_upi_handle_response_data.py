@@ -25,6 +25,7 @@ class ValidateUpiHandleResponseData(BaseModel):
     status: typing.Optional[str] = Field(None, alias='status')
 
     status_description: typing.Optional[str] = Field(None, alias='statusDescription')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

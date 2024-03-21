@@ -19,6 +19,7 @@ from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 class AttackResult(BaseModel):
     message: typing.Optional[str] = Field(None, alias='message')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

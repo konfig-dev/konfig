@@ -23,14 +23,11 @@ class OptionalTestFetchResponse(TypedDict, total=False):
     # Description of property A.
     propertyA: str
 
-
     # Description of property B.
     propertyB: int
 
-
     # Description of property C.
     propertyC: bool
-
 
 class TestFetchResponse(RequiredTestFetchResponse, OptionalTestFetchResponse):
     pass
