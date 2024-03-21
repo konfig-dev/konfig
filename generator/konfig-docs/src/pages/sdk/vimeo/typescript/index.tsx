@@ -19,7 +19,7 @@ export default function VimeoTypeScriptSdk() {
       companyKebabCase="vimeo"
       clientNameCamelCase="vimeo"
       homepage="developer.vimeo.com"
-      lastUpdated={new Date("2024-03-15T18:50:00.907Z")}
+      lastUpdated={new Date("2024-03-21T22:25:20.313Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/vimeo/favicon.jpg"
       contactUrl="https://developer.vimeo.com/help"
       // Missing contactEmail
