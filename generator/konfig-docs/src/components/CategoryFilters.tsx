@@ -3,8 +3,12 @@ import {
   CollapsibleTrigger,
   CollapsibleContent,
 } from "@radix-ui/react-collapsible";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
+import { makeAutoObservable } from "mobx";
+import { observer } from "mobx-react-lite";
+import { makePersistable } from "mobx-persist-store";
+import Link from "@docusaurus/Link";
 
 export type Filter = "all" | string;
 
@@ -17,7 +21,33 @@ type CategoryFiltersProps = {
   filter: Filter;
 };
 
+class AllCategories {
+  categories: Record<string, ParentCategorySection>;
+
+  constructor(categories: CategoryFiltersProps["categories"]) {
+    this.categories = categories.reduce((acc, category) => {
+      acc[category.parentCategory] = new ParentCategorySection();
+      return acc;
+    }, {});
+    makeAutoObservable(this, {}, { autoBind: true });
+    makePersistable(this, {
+      name: "AllCategories",
+      properties: ["categories"],
+      storage: window.localStorage,
+    });
+  }
+}
+
+class ParentCategorySection {
+  isOpen: boolean = false;
+
+  constructor() {
+    makeAutoObservable(this);
+  }
+}
+
 export function CategoryFilters({ categories, filter }: CategoryFiltersProps) {
+  const [allCategories] = useState(() => new AllCategories(categories));
   return (
     <div>
       <h3>Categories</h3>
@@ -32,6 +62,7 @@ export function CategoryFilters({ categories, filter }: CategoryFiltersProps) {
         </li>
         {categories.map(({ parentCategory, subCategories, subpath }, i) => (
           <Category
+            allCategories={allCategories}
             filter={filter}
             key={i}
             parentCategory={parentCategory}
@@ -49,48 +80,61 @@ type CategoryProps = {
   subCategories: { category: string; subpath: string }[];
   filter: Filter;
   subpath: string;
+  allCategories: AllCategories;
 };
-function Category({
-  parentCategory,
-  subCategories,
-  filter,
-  subpath,
-}: CategoryProps) {
-  const [isOpen, setIsOpen] = useState(false);
 
-  return (
-    <Collapsible open={isOpen} onOpenChange={setIsOpen} className="w-[300px]">
-      <CollapsibleTrigger className="group text-slate-500 hover:text-slate-800 rounded-md py-2 px-2 w-full hover:bg-slate-100 transition-all">
-        <li>
-          <div className="flex items-center gap-x-2">
-            <ChevronDown
-              className={`text-slate-400 group-aria-expanded:-rotate-180 duration-150 transition-transform`}
-            />
-            <div className="font-semibold">{parentCategory}</div>
-          </div>
-        </li>
-      </CollapsibleTrigger>
-      <CollapsibleContent className="mt-0">
-        <ul className="mb-0 pl-0 list-none">
-          <SubCategory
-            filter={filter}
-            label={`All ${parentCategory}`}
-            category={parentCategory}
-            subpath={subpath}
-          />
-          {subCategories.map(({ category, subpath }) => (
+const Category = observer(
+  ({
+    parentCategory,
+    subCategories,
+    filter,
+    subpath,
+    allCategories,
+  }: CategoryProps) => {
+    const category = allCategories.categories[parentCategory];
+
+    return (
+      <Collapsible
+        open={category.isOpen}
+        onOpenChange={(open) => {
+          category.isOpen = open;
+        }}
+        className="w-[300px]"
+      >
+        <CollapsibleTrigger className="group text-slate-500 hover:text-slate-800 rounded-md py-2 px-2 w-full hover:bg-slate-100 transition-all">
+          <li>
+            <div className="flex items-center gap-x-2">
+              {category.isOpen ? (
+                <ChevronUp className="text-slate-400" />
+              ) : (
+                <ChevronDown className="text-slate-400" />
+              )}
+              <div className="font-semibold">{parentCategory}</div>
+            </div>
+          </li>
+        </CollapsibleTrigger>
+        <CollapsibleContent className="mt-0">
+          <ul className="mb-0 pl-0 list-none">
             <SubCategory
-              subpath={subpath}
               filter={filter}
-              key={category}
-              category={category}
+              label={`All ${parentCategory}`}
+              category={parentCategory}
+              subpath={subpath}
             />
-          ))}
-        </ul>
-      </CollapsibleContent>
-    </Collapsible>
-  );
-}
+            {subCategories.map(({ category, subpath }) => (
+              <SubCategory
+                subpath={subpath}
+                filter={filter}
+                key={category}
+                category={category}
+              />
+            ))}
+          </ul>
+        </CollapsibleContent>
+      </Collapsible>
+    );
+  }
+);
 
 type SubCategoryProps = {
   category: string;
@@ -125,7 +169,7 @@ function CategoryLink({
   subpath: string;
 }) {
   return (
-    <a
+    <Link
       aria-selected={selected}
       data-indent={indented}
       className={
@@ -134,6 +178,6 @@ function CategoryLink({
       href={subpath}
     >
       {label ?? category}
-    </a>
+    </Link>
   );
 }
