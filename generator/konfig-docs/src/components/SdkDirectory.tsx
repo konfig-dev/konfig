@@ -1,6 +1,6 @@
 import Head from "@docusaurus/Head";
 import Layout from "@theme/Layout";
-import React, { useState } from "react";
+import React, { PropsWithChildren, useState } from "react";
 import sdkLinksJson from "@site/src/pages/sdk/sdk-links.json";
 import categories from "@site/src/pages/sdk/categories.json";
 import { ChevronDown } from "lucide-react";
@@ -12,16 +12,26 @@ import {
 } from "@site/src/components/ui/collapsible";
 import { CommandMenu } from "@site/src/components/CommandMenu";
 import { Button } from "@site/src/components/ui/button";
+import companies from "@site/src/pages/sdk/companies.json";
+
+type Company = (typeof companies)[number];
 
 /*
  * https://zapier.com/apps
  */
 
-export default function Sdks() {
+export function SdkDirectory() {
+  const numberOfApis = companies.reduce(
+    (acc, company) => acc + company.numberOfApis,
+    0
+  );
+
+  const [numberOfCompaniesToShow, setNumberOfCompaniesToShow] = useState(6);
+  const visibleCompanies = companies.slice(0, numberOfCompaniesToShow);
   return (
     <Layout
-      title={`Explore 50 public APIs`}
-      description={`Discover and access over ${sdkLinksJson.length} up-to-date SDKs for 50 public APIs.`}
+      title={`Explore ${numberOfApis} public APIs`}
+      description={`Discover and access over ${sdkLinksJson.length} up-to-date SDKs for ${numberOfApis} public APIs.`}
     >
       <Head>
         <style>
@@ -43,16 +53,19 @@ export default function Sdks() {
           <div className="flex flex-col md:flex-row gap-4 items-start">
             <CategoryFilters categories={categories} />
             <div className="flex-grow">
-              <div className="mb-5">1 - 22 of 7063 APIs</div>
-              <div className="grid grid-cols-2 gap-3 mb-5">
-                <Api />
-                <Api />
-                <Api />
-                <Api />
-                <Api />
-                <Api />
+              <div className="mb-5">
+                1 - {numberOfCompaniesToShow} of {companies.length} Companies
               </div>
-              <LoadMoreButton />
+              <div className="grid grid-cols-2 gap-3 mb-5">
+                {visibleCompanies.map((company) => (
+                  <Company key={company.company} {...company} />
+                ))}
+              </div>
+              <LoadMoreButton
+                onClick={() =>
+                  setNumberOfCompaniesToShow(numberOfCompaniesToShow + 6)
+                }
+              />
             </div>
           </div>
         </div>
@@ -61,19 +74,22 @@ export default function Sdks() {
   );
 }
 
-function LoadMoreButton() {
+function LoadMoreButton({ onClick }: { onClick: () => void }) {
   return (
-    <Button variant="secondary" className="w-full">
+    <Button variant="secondary" className="w-full" onClick={onClick}>
       Load More
     </Button>
   );
 }
 
-function Api() {
-  const metaDescription =
-    "Asana helps teams orchestrate their work, from small projects to strategic initiatives. Headquartered in San Francisco, CA, Asana has more than 131,000 paying customers and millions of free organizations across 190 countries. Global customers such as Amazon, Japan Airlines, Sky, and Affirm rely on Asana to manage everything from company objectives to digital transformation to product launches and marketing campaigns. For more information, visit www.asana.com.";
-  const maxLength = 105;
-  const limitedMetaDescription =
+function Company({
+  metaDescription,
+  company,
+  favicon,
+  subCategories,
+}: Company) {
+  const maxLength = 120;
+  const shortenedDescription =
     metaDescription.length > maxLength
       ? `${metaDescription.substring(0, maxLength)}...`
       : metaDescription;
@@ -84,14 +100,23 @@ function Api() {
     >
       <div className="flex flex-row items-start gap-4">
         <div className="h-16 w-16">
-          <img
-            className="h-auto w-full"
-            src="https://github.com/konfig-sdks/openapi-examples/blob/main/asana/favicon.png?raw=true"
-          />
+          <img className="h-auto w-full" src={favicon} />
         </div>
         <div>
-          <h3 className="mb-2">API Name</h3>
-          <p className="m-0 text-sm text-slate-600">{limitedMetaDescription}</p>
+          <h3 className="mb-2">{company}</h3>
+          <p className="m-0 mb-2 text-sm text-slate-600">
+            {shortenedDescription}
+          </p>
+          <div className="flex flex-row flex-wrap gap-2">
+            {subCategories.map((category) => (
+              <button
+                key={category}
+                className="z-10 flex text-xs items-center gap-1 border font-medium rounded-md px-2 py-1 transition-all bg-slate-50 hover:bg-slate-100 border-slate-300 text-slate-600 hover:text-slate-800"
+              >
+                <span>{category}</span>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </a>
@@ -130,7 +155,7 @@ function Category({ parentCategory, subCategories }: CategoryProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <Collapsible open={isOpen} onOpenChange={setIsOpen} className="w-[350px]">
+    <Collapsible open={isOpen} onOpenChange={setIsOpen} className="w-[300px]">
       <CollapsibleTrigger className="group text-slate-500 hover:text-slate-800 rounded-md py-2 px-2 w-full hover:bg-slate-100 transition-all">
         <li>
           <div className="flex items-center gap-x-2">

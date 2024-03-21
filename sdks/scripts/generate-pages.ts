@@ -167,25 +167,31 @@ function main() {
     metaDescription: string;
     company: string;
     numberOfApis: number;
-  }[] = Object.entries(companyApis).map(([company, apis]) => {
-    const parentCategories: string[] = [];
-    const subCategories: string[] = [];
-    for (const api of apis) {
-      const subCategory = api.category;
-      const parentCategory = getParentCategoryFromCategory(subCategory);
-      parentCategories.push(parentCategory);
-      subCategories.push(subCategory);
-    }
-    // deduplicate parentCategories and subCategories
-    return {
-      parentCategories: [...new Set(parentCategories)],
-      subCategories: [...new Set(subCategories)],
-      favicon: apis[0].faviconUrl,
-      metaDescription: apis[0].metaDescription,
-      company,
-      numberOfApis: apis.length,
-    };
-  });
+    difficultyScore: number;
+  }[] = Object.entries(companyApis)
+    .map(([company, apis]) => {
+      const parentCategories: string[] = [];
+      const subCategories: string[] = [];
+      for (const api of apis) {
+        const subCategory = api.category;
+        const parentCategory = getParentCategoryFromCategory(subCategory);
+        parentCategories.push(parentCategory);
+        subCategories.push(subCategory);
+      }
+      const averageDifficultyScore =
+        apis.reduce((acc, api) => acc + api.difficultyScore, 0) / apis.length;
+      // deduplicate parentCategories and subCategories
+      return {
+        parentCategories: [...new Set(parentCategories)],
+        subCategories: [...new Set(subCategories)],
+        favicon: apis[0].faviconUrl,
+        metaDescription: apis[0].metaDescription,
+        company,
+        numberOfApis: apis.length,
+        difficultyScore: averageDifficultyScore,
+      };
+    })
+    .sort((a, b) => b.difficultyScore - a.difficultyScore);
 
   // write companies.json
   fs.writeFileSync(
