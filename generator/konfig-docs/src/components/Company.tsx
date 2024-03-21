@@ -229,11 +229,11 @@ function SdkLinkItem({
               )}
             </div>
           </div>
-          <div className="flex flex-row gap-2 items-center flex-wrap">
+          {/* <div className="flex flex-row gap-2 items-center flex-wrap">
             {categories.map((category) => {
               return <CategoryFilter category={category} />;
             })}
-          </div>
+          </div> */}
           <div className="flex flex-row gap-2 items-center flex-wrap">
             {developerDocumentation && (
               <a
