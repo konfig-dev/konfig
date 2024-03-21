@@ -168,6 +168,7 @@ function main() {
     company: string;
     numberOfApis: number;
     difficultyScore: number;
+    subpath: string;
   }[] = Object.entries(companyApis)
     .map(([company, apis]) => {
       const parentCategories: string[] = [];
@@ -189,6 +190,7 @@ function main() {
         company,
         numberOfApis: apis.length,
         difficultyScore: averageDifficultyScore,
+        subpath: `/sdk/${kebabcase(company)}`,
       };
     })
     .sort((a, b) => b.difficultyScore - a.difficultyScore);

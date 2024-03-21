@@ -87,6 +87,7 @@ function Company({
   company,
   favicon,
   subCategories,
+  subpath,
 }: Company) {
   const maxLength = 120;
   const shortenedDescription =
@@ -95,8 +96,8 @@ function Company({
       : metaDescription;
   return (
     <a
-      href="#"
-      className="flex-grow rounded-md hover:no-underline p-4 hover:shadow-xl hover:ring-1 ring-slate-200 transition-shadow"
+      href={subpath}
+      className="select-none flex-grow rounded-md hover:no-underline p-4 hover:shadow-xl hover:ring-1 ring-slate-200 transition-shadow"
     >
       <div className="flex flex-row items-start gap-4">
         <div className="h-16 w-16">
