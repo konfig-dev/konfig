@@ -22,6 +22,5 @@ class RequiredRegularObjectNullable(TypedDict):
 class OptionalRegularObjectNullable(TypedDict, total=False):
     regular_property: str
 
-
 class RegularObjectNullable(RequiredRegularObjectNullable, OptionalRegularObjectNullable):
     pass

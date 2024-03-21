@@ -19,7 +19,10 @@ from pydantic import BaseModel, Field, RootModel, ConfigDict
 from python_allow_none_for_nullable_ref.pydantic.regular_object_nullable import RegularObjectNullable
 
 class ProblematicSchema(BaseModel):
+    # WARNING: This property is deprecated
+    # This property is tested to ensure that we can pass a None value
     nullable_property: typing.Optional[RegularObjectNullable] = Field(None, alias='nullable_property')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

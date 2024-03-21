@@ -22,6 +22,5 @@ class RequiredRegularObject(TypedDict):
 class OptionalRegularObject(TypedDict, total=False):
     regular_property: str
 
-
 class RegularObject(RequiredRegularObject, OptionalRegularObject):
     pass

@@ -2,6 +2,9 @@
 {{#if useDictionaryBasedTypedDict}}
 Required{{classname}} = TypedDict("Required{{classname}}", {
     {{#each requiredVars}}
+    {{#if deprecated}}
+    # WARNING: This property is deprecated
+    {{/if}}
         {{#if description}}
     # {{{description}}}
         {{/if}}
@@ -14,6 +17,9 @@ Required{{classname}} = TypedDict("Required{{classname}}", {
 {{else}}
 class Required{{classname}}(TypedDict):
     {{#each requiredVars}}
+    {{#if deprecated}}
+    # WARNING: This property is deprecated
+    {{/if}}
         {{#if description}}
     # {{{description}}}
         {{/if}}
@@ -30,6 +36,9 @@ class Required{{classname}}(TypedDict):
 {{#if useDictionaryBasedTypedDict}}
 Optional{{classname}} = TypedDict("Optional{{classname}}", {
     {{#each optionalVars}}
+    {{#if deprecated}}
+    # WARNING: This property is deprecated
+    {{/if}}
         {{#if description}}
     # {{{description}}}
         {{/if}}
@@ -42,6 +51,9 @@ Optional{{classname}} = TypedDict("Optional{{classname}}", {
 {{else}}
 class Optional{{classname}}(TypedDict, total=False):
     {{#each optionalVars}}
+    {{#if deprecated}}
+    # WARNING: This property is deprecated
+    {{/if}}
         {{#if description}}
     # {{{description}}}
         {{/if}}

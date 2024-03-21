@@ -23,6 +23,5 @@ class RequiredRequestBody(TypedDict):
 class OptionalRequestBody(TypedDict, total=False):
     problematic_property: typing.List[ProblematicSchema]
 
-
 class RequestBody(RequiredRequestBody, OptionalRequestBody):
     pass

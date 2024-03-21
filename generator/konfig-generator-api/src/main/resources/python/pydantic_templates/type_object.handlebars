@@ -1,6 +1,9 @@
 {{#if hasVars}}
 class {{classname}}(BaseModel):
     {{#each requiredVars}}
+    {{#if deprecated}}
+    # WARNING: This property is deprecated
+    {{/if}}
     {{#if description}}
     # {{{description}}}
     {{/if}}
@@ -14,6 +17,9 @@ class {{classname}}(BaseModel):
     {{/unless}}
     {{/each}}
     {{#each optionalVars}}
+    {{#if deprecated}}
+    # WARNING: This property is deprecated
+    {{/if}}
     {{#if description}}
     # {{{description}}}
     {{/if}}
@@ -27,6 +33,7 @@ class {{classname}}(BaseModel):
     pass
     {{/unless}}
     {{/unless}}
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True

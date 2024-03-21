@@ -21,8 +21,9 @@ class RequiredProblematicSchema(TypedDict):
     pass
 
 class OptionalProblematicSchema(TypedDict, total=False):
+    # WARNING: This property is deprecated
+    # This property is tested to ensure that we can pass a None value
     nullable_property: typing.Optional[RegularObjectNullable]
-
 
 class ProblematicSchema(RequiredProblematicSchema, OptionalProblematicSchema):
     pass

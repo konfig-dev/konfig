@@ -20,6 +20,7 @@ from python_allow_none_for_nullable_ref.pydantic.problematic_schema import Probl
 
 class RequestBody(BaseModel):
     problematic_property: typing.Optional[typing.List[ProblematicSchema]] = Field(None, alias='problematic_property')
+
     model_config = ConfigDict(
         protected_namespaces=(),
         arbitrary_types_allowed=True
