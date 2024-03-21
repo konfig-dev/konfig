@@ -44,8 +44,8 @@ export function SdkDirectory({ filter }: { filter: Filter }) {
 
   return (
     <Layout
-      title={`Explore ${numberOfApis} public APIs`}
-      description={`Discover over ${sdkLinksJson.length} up-to-date SDKs for ${numberOfApis} public APIs.`}
+      title={filter === "all" ? "Explore All APIs" : `${filter} APIs`}
+      description={`Discover ${sdkLinksJson.length} up-to-date SDKs for ${numberOfApis} public APIs.`}
     >
       <Head>
         <style>

@@ -1,5 +1,5 @@
 import * as path from "path";
-import * as fs from "fs";
+import * as fs from "fs-extra";
 import kebabcase from "lodash.kebabcase";
 import { Published } from "./util";
 import camelcase from "konfig-lib/dist/util/camelcase";
@@ -34,6 +34,8 @@ function main() {
   );
 
   const sdkDir = path.join(docsDir, "src", "pages", "sdk");
+
+  const categoryDir = path.join(sdkDir, "category");
 
   // delete everything under sdkDir except for "index.tsx" and "sdk-links.json"
   const sdkFiles = fs.readdirSync(sdkDir);
@@ -157,8 +159,10 @@ function main() {
       parentCategory,
       subCategories: subCategories.map((category) => ({
         category: category,
+        page: generateSubpathForCategory(category),
         subpath: `/sdk/category/${generateSubpathForCategory(category)}`,
       })),
+      page: generateSubpathForCategory(parentCategory),
       subpath: `/sdk/category/${generateSubpathForCategory(parentCategory)}`,
     })
   );
@@ -166,6 +170,27 @@ function main() {
     path.join(sdkDir, "categories.json"),
     JSON.stringify(formattedCategories, null, 2)
   );
+
+  // ensure categoryDir exists
+  fs.ensureDirSync(categoryDir);
+
+  // generate all /sdk/category/{category} pages
+  const allPage = generateCategoryPage({ filter: "all" });
+  fs.writeFileSync(path.join(categoryDir, "all.tsx"), allPage);
+  for (const parentCategory of formattedCategories) {
+    const page = generateCategoryPage({
+      filter: parentCategory.parentCategory,
+    });
+    fs.writeFileSync(
+      path.join(categoryDir, `${parentCategory.page}.tsx`),
+      page
+    );
+
+    for (const subCategory of parentCategory.subCategories) {
+      const page = generateCategoryPage({ filter: subCategory.category });
+      fs.writeFileSync(path.join(categoryDir, `${subCategory.page}.tsx`), page);
+    }
+  }
 
   const companies: {
     parentCategories: string[];
@@ -271,6 +296,14 @@ function addToRedirectsJson({
       serviceRedirectPath + "/"
     ] = `${serviceRedirectPath}/typescript/`;
   }
+}
+
+function generateCategoryPage({ filter }: { filter: string }) {
+  return `import { SdkDirectory } from "@site/src/components/SdkDirectory";
+
+export default function Sdks() {
+  return <SdkDirectory filter="${filter}" />;
+}`;
 }
 
 function generateGettingStartedMdx({
