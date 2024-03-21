@@ -7,6 +7,7 @@ import { CommandMenu } from "@site/src/components/CommandMenu";
 import { Button } from "@site/src/components/ui/button";
 import companies from "@site/src/pages/sdk/companies.json";
 import { CategoryFilters, Filter } from "./CategoryFilters";
+import { useMediaQuery } from "../util/use-media-query";
 
 type Company = (typeof companies)[number];
 
@@ -52,10 +53,10 @@ export function SdkDirectory({ filter }: { filter: Filter }) {
         <meta property="og:image" content="/img/sdk-explore-link-preview.png" />
       </Head>
       <div className="border-b">
-        <div className="px-3 pt-3 pb-16 md:px-8 md:max-w-6xl mx-auto">
-          <div className="mb-4">
+        <div className="px-3 pt-7 pb-16 md:px-8 md:max-w-6xl mx-auto">
+          {/* <div className="mb-4">
             <CommandMenu />
-          </div>
+          </div> */}
           <div className="flex flex-col md:flex-row gap-4 items-start">
             <CategoryFilters filter={filter} categories={categories} />
             <div className="flex-grow">
@@ -64,7 +65,7 @@ export function SdkDirectory({ filter }: { filter: Filter }) {
                 {Math.min(numberOfCompaniesToShow, filteredCompanies.length)} of{" "}
                 {filteredCompanies.length} Companies
               </div>
-              <div className="grid grid-cols-2 gap-3 mb-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-5">
                 {visibleCompanies.map((company) => (
                   <Company key={company.company} {...company} />
                 ))}
@@ -99,7 +100,8 @@ function Company({
   subCategories,
   subpath,
 }: Company) {
-  const maxLength = 120;
+  const mdBreakpoint = useMediaQuery("(min-width: 768px)");
+  const maxLength = mdBreakpoint ? 120 : 200;
   const shortenedDescription =
     metaDescription.length > maxLength
       ? `${metaDescription.substring(0, maxLength)}...`

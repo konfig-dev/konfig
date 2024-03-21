@@ -55,12 +55,12 @@ export const CategoryFilters = observer(
   ({ categories, filter }: CategoryFiltersProps) => {
     const [allCategories] = useState(() => new AllCategories(categories));
     return (
-      <div>
+      <div className="w-full md:w-[300px]">
         <h3>Categories</h3>
         <Button
-          variant="ghost"
+          variant="outline"
           size="sm"
-          className="mb-1"
+          className="mb-1 w-full"
           onClick={() => {
             const anyCategoryIsOpen = allCategories.anyCategoryIsOpen;
             Object.values(allCategories.categories).forEach((category) => {
@@ -119,7 +119,7 @@ const Category = observer(
         onOpenChange={(open) => {
           category.isOpen = open;
         }}
-        className="w-[300px]"
+        className="w-full md:w-[300px]"
       >
         <CollapsibleTrigger
           aria-selected={
