@@ -1,5 +1,16 @@
 # konfig-cli
 
+## 1.38.33
+
+### Patch Changes
+
+- [#659](https://github.com/konfig-dev/konfig/pull/659) [`afe70974`](https://github.com/konfig-dev/konfig/commit/afe70974f0d316807f883ed7d2d6502c5a86f719) Thanks [@dphuang2](https://github.com/dphuang2)! - handle allOf with nullable for Python
+
+- Updated dependencies [[`afe70974`](https://github.com/konfig-dev/konfig/commit/afe70974f0d316807f883ed7d2d6502c5a86f719)]:
+  - konfig-lib@1.37.2
+  - konfig-openapi-spec@1.8.21
+  - konfig-postman-to-openapi@3.1.21
+
 ## 1.38.32
 
 ### Patch Changes
