@@ -153,7 +153,14 @@ function main() {
     a.localeCompare(b)
   );
   const formattedCategories = sortedCategories.map(
-    ([parentCategory, subCategories]) => ({ parentCategory, subCategories })
+    ([parentCategory, subCategories]) => ({
+      parentCategory,
+      subCategories: subCategories.map((category) => ({
+        category: category,
+        subpath: `/sdk/category/${generateSubpathForCategory(category)}`,
+      })),
+      subpath: `/sdk/category/${generateSubpathForCategory(parentCategory)}`,
+    })
   );
   fs.writeFileSync(
     path.join(sdkDir, "categories.json"),
@@ -200,6 +207,10 @@ function main() {
     path.join(sdkDir, "companies.json"),
     JSON.stringify(companies, null, 2)
   );
+}
+
+function generateSubpathForCategory(category: string) {
+  return kebabcase(category.replace(/&/g, ""));
 }
 
 function addToSdkLinks({

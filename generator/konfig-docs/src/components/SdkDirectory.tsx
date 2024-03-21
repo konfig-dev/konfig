@@ -139,7 +139,11 @@ function Company({
 }
 
 type CategoryFiltersProps = {
-  categories: { parentCategory: string; subCategories: string[] }[];
+  categories: {
+    parentCategory: string;
+    subCategories: { category: string; subpath: string }[];
+    subpath: string;
+  }[];
   filter: Filter;
 };
 
@@ -153,14 +157,16 @@ function CategoryFilters({ categories, filter }: CategoryFiltersProps) {
             selected={filter === "all"}
             indented={false}
             category="All Categories"
+            subpath="/sdk/category/all"
           />
         </li>
-        {categories.map(({ parentCategory, subCategories }, i) => (
+        {categories.map(({ parentCategory, subCategories, subpath }, i) => (
           <Category
             filter={filter}
             key={i}
             parentCategory={parentCategory}
             subCategories={subCategories}
+            subpath={subpath}
           />
         ))}
       </ul>
@@ -170,10 +176,16 @@ function CategoryFilters({ categories, filter }: CategoryFiltersProps) {
 
 type CategoryProps = {
   parentCategory: string;
-  subCategories: string[];
+  subCategories: { category: string; subpath: string }[];
   filter: Filter;
+  subpath: string;
 };
-function Category({ parentCategory, subCategories, filter }: CategoryProps) {
+function Category({
+  parentCategory,
+  subCategories,
+  filter,
+  subpath,
+}: CategoryProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -194,9 +206,15 @@ function Category({ parentCategory, subCategories, filter }: CategoryProps) {
             filter={filter}
             label={`All ${parentCategory}`}
             category={parentCategory}
+            subpath={subpath}
           />
-          {subCategories.map((category) => (
-            <SubCategory filter={filter} key={category} category={category} />
+          {subCategories.map(({ category, subpath }) => (
+            <SubCategory
+              subpath={subpath}
+              filter={filter}
+              key={category}
+              category={category}
+            />
           ))}
         </ul>
       </CollapsibleContent>
@@ -208,11 +226,13 @@ type SubCategoryProps = {
   category: string;
   label?: string;
   filter: string;
+  subpath: string;
 };
-function SubCategory({ category, label, filter }: SubCategoryProps) {
+function SubCategory({ category, label, filter, subpath }: SubCategoryProps) {
   return (
     <li>
       <CategoryLink
+        subpath={subpath}
         selected={filter === category}
         category={category}
         label={label}
@@ -226,11 +246,13 @@ function CategoryLink({
   label,
   indented,
   selected = false,
+  subpath,
 }: {
   category: string;
   label?: string;
   selected?: boolean;
   indented?: boolean;
+  subpath: string;
 }) {
   return (
     <a
@@ -239,7 +261,7 @@ function CategoryLink({
       className={
         "pl-12 rounded-md data-[indent=false]:pl-2 aria text-slate-500 hover:text-slate-800 hover:no-underline block py-2 hover:bg-slate-100 transition-all aria-selected:hover:bg-blue-100 aria-selected:bg-blue-100 aria-selected:text-blue-800"
       }
-      href=""
+      href={subpath}
     >
       {label ?? category}
     </a>
