@@ -16,18 +16,32 @@ import companies from "@site/src/pages/sdk/companies.json";
 
 type Company = (typeof companies)[number];
 
+type Filter = "all" | string;
+
 /*
  * https://zapier.com/apps
  */
 
-export function SdkDirectory() {
+export function SdkDirectory({ filter }: { filter: Filter }) {
   const numberOfApis = companies.reduce(
     (acc, company) => acc + company.numberOfApis,
     0
   );
 
   const [numberOfCompaniesToShow, setNumberOfCompaniesToShow] = useState(6);
-  const visibleCompanies = companies.slice(0, numberOfCompaniesToShow);
+
+  // filter companies by provided filter
+  const filteredCompanies = companies.filter((company) => {
+    if (filter === "all") return true;
+    return (
+      company.subCategories.includes(filter) ||
+      company.parentCategories.includes(filter)
+    );
+  });
+
+  // show a limited number of companies
+  const visibleCompanies = filteredCompanies.slice(0, numberOfCompaniesToShow);
+
   return (
     <Layout
       title={`Explore ${numberOfApis} public APIs`}
