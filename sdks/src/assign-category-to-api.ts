@@ -35,6 +35,7 @@ export const categoriesToMapTo = {
     "Team Chat",
     "Team Collaboration",
     "Video Conferencing",
+    "Community",
   ],
   "Content & Files": [
     "Documents",
