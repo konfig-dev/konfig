@@ -34,9 +34,6 @@ export function handleAllOfWithNullable({ spec }: { spec: Spec }): void {
     }
     const propertyName = path[path.length - 1]
 
-    console.log(schema)
-    console.log(parent)
-
     if (parent.type === 'object') {
       const parentSchema = parent
       if (parentSchema['x-konfig-properties'] === undefined) {
@@ -50,7 +47,6 @@ export function handleAllOfWithNullable({ spec }: { spec: Spec }): void {
           parentSchema['x-konfig-properties'][propertyName][key] = schema[key]
         }
       }
-      console.log(parentSchema)
     }
 
     const componentName =
