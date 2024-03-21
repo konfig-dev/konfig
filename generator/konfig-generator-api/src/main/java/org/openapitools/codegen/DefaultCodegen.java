@@ -314,6 +314,12 @@ public class DefaultCodegen implements CodegenConfig {
     // `toModelName()`.
     private Map<String, Schema> modelNameToSchemaCache;
 
+    // When fromProperty is called with an array schema, we recursively call fromProperty on the items' schema.
+    // This is used in multipart form data, where the template needs to know the schema of the items in the array.
+    // However, this will cause a stackOverflow if the schema is cyclic (i.e. following the refs eventually refers back to itself).
+    // We use this set so that we do not recurse into a schema which is already on the callstack to avoid a stackoverflow.
+    private Set<Schema> doNotRecursivelyProcessItems = new HashSet<>();
+
     // A cache to efficiently lookup schema `toModelName()` based on the schema Key
     private final Map<String, String> schemaKeyToModelNameCache = new HashMap<>();
 
@@ -4201,9 +4207,15 @@ public class DefaultCodegen implements CodegenConfig {
             ArraySchema arraySchema = (ArraySchema) p;
             Schema innerSchema = unaliasSchema(getSchemaItems(arraySchema));
             CodegenProperty cp = fromProperty(itemName, innerSchema, false);
-            Schema innerSchemaDereferenced = ModelUtils.getReferencedSchema(this.openAPI, innerSchema);
-            CodegenProperty cpDereferenced = fromProperty(itemName, innerSchemaDereferenced, false);
-            updatePropertyForArray(property, cp, cpDereferenced);
+            if (doNotRecursivelyProcessItems.contains(innerSchema)) {
+                updatePropertyForArray(property, cp, null);
+            } else {
+                doNotRecursivelyProcessItems.add(innerSchema);
+                Schema innerSchemaDereferenced = ModelUtils.getReferencedSchema(this.openAPI, innerSchema);
+                CodegenProperty cpDereferenced = fromProperty(itemName, innerSchemaDereferenced, false);
+                updatePropertyForArray(property, cp, cpDereferenced);
+                doNotRecursivelyProcessItems.remove(innerSchema);
+            }
         } else if (ModelUtils.isTypeObjectSchema(p)) {
             updatePropertyForObject(property, p);
         } else if (ModelUtils.isAnyType(p)) {
