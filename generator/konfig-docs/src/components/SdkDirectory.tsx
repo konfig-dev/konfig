@@ -46,7 +46,7 @@ export function SdkDirectory() {
         <meta property="og:image" content="/img/sdk-explore-link-preview.png" />
       </Head>
       <div className="border-b">
-        <div className="px-3 py-3 md:px-8 md:max-w-6xl mx-auto">
+        <div className="px-3 pt-3 pb-16 md:px-8 md:max-w-6xl mx-auto">
           <div className="mb-4">
             <CommandMenu />
           </div>
