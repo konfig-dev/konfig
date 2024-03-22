@@ -57,10 +57,8 @@ export function SdkDirectory({ filter }: { filter: Filter }) {
         <meta property="og:image" content="/img/sdk-explore-link-preview.png" />
       </Head>
       <div className="border-b">
-        <div className="mt-8">
-          <Breadcrumbs dark company={filter} />
-        </div>
         <div className="px-3 pt-5 pb-16 md:px-8 md:max-w-6xl mx-auto">
+          <Breadcrumbs className="px-0 sm:px-0 mb-4" dark company={filter} />
           {/* <div className="mb-4">
             <CommandMenu />
           </div> */}
@@ -74,7 +72,7 @@ export function SdkDirectory({ filter }: { filter: Filter }) {
                 {filter === "all" ? "" : `${filter} `}API
                 {numberOfApis > 1 ? "s" : ""}
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-5">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 mb-5">
                 {visibleCompanies.map((company) => (
                   <Company key={company.company} {...company} />
                 ))}

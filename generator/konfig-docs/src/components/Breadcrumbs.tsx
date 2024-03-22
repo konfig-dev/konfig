@@ -6,6 +6,7 @@ import React, {
   useContext,
   useState,
 } from "react";
+import { cn } from "../util/util";
 
 /**
  * Responsive breadcrumbs for the pSEO page.
@@ -16,12 +17,14 @@ export function Breadcrumbs({
   language,
   serviceName,
   dark,
+  className,
 }: {
   company: string;
   companyKebabCase?: string;
   language?: string;
   serviceName?: string;
   dark?: boolean;
+  className?: string;
 }) {
   if (company === "all") {
     return null;
@@ -30,7 +33,10 @@ export function Breadcrumbs({
     <DarkModeContext.Provider value={{ dark }}>
       <div
         data-dark={dark}
-        className="data-[dark=true]:text-black text-white mx-0 sm:mx-auto px-3 max-w-[375px] sm:max-w-none sm:px-24 text-lg font-semibold"
+        className={cn(
+          "data-[dark=true]:text-black text-white mx-0 sm:mx-auto px-3 max-w-[375px] sm:max-w-none sm:px-24 text-lg font-semibold",
+          className
+        )}
       >
         <nav>
           <ol className="px-0 mb-0 flex gap-1 list-none items-center">
