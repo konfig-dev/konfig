@@ -4,10 +4,10 @@ import {
   CollapsibleContent,
 } from "@radix-ui/react-collapsible";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { makeAutoObservable } from "mobx";
 import { observer } from "mobx-react-lite";
-import { makePersistable } from "mobx-persist-store";
+import { makePersistable, stopPersisting } from "mobx-persist-store";
 import Link from "@docusaurus/Link";
 import { Button } from "./ui/button";
 import { cn } from "../util/util";
@@ -43,6 +43,10 @@ class AllCategories {
 
   get anyCategoryIsOpen() {
     return Object.values(this.categories).some((category) => category.isOpen);
+  }
+
+  stopStore() {
+    stopPersisting(this);
   }
 }
 
@@ -80,6 +84,11 @@ export const CategoryFilters = observer((props: CategoryFiltersProps) => {
 export const CategoryFilterControls = observer(
   ({ categories, filter, className }: CategoryFiltersProps) => {
     const [allCategories] = useState(() => new AllCategories(categories));
+    useEffect(() => {
+      return () => {
+        allCategories.stopStore();
+      };
+    }, []);
     return (
       <div className={cn("w-full md:w-[300px]", className)}>
         <h3>Categories</h3>
