@@ -16,11 +16,6 @@ type Company = (typeof companies)[number];
  */
 
 export function SdkDirectory({ filter }: { filter: Filter }) {
-  const numberOfApis = companies.reduce(
-    (acc, company) => acc + company.numberOfApis,
-    0
-  );
-
   const [numberOfCompaniesToShow, setNumberOfCompaniesToShow] = useState(22);
 
   // filter companies by provided filter
@@ -32,13 +27,22 @@ export function SdkDirectory({ filter }: { filter: Filter }) {
     );
   });
 
+  const numberOfApis = filteredCompanies.reduce(
+    (acc, company) => acc + company.numberOfApis,
+    0
+  );
+
   // show a limited number of companies
   const visibleCompanies = filteredCompanies.slice(0, numberOfCompaniesToShow);
 
   return (
     <Layout
       title={filter === "all" ? "Explore All APIs" : `${filter} APIs`}
-      description={`Discover ${sdkLinksJson.length} up-to-date SDKs for ${numberOfApis} public APIs.`}
+      description={`Discover ${
+        numberOfApis * 3
+      } up-to-date SDKs for ${numberOfApis} ${
+        filter !== "all" ? filter : "public"
+      } API${numberOfApis > 1 ? "s" : ""}.`}
     >
       <Head>
         <style>
