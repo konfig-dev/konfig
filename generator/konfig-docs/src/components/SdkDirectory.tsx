@@ -1,6 +1,6 @@
 import Head from "@docusaurus/Head";
 import Layout from "@theme/Layout";
-import React, { PropsWithChildren, useState } from "react";
+import React, { useState } from "react";
 import sdkLinksJson from "@site/src/pages/sdk/sdk-links.json";
 import categories from "@site/src/pages/sdk/categories.json";
 import { CommandMenu } from "@site/src/components/CommandMenu";

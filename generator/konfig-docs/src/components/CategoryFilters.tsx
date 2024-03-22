@@ -33,6 +33,7 @@ class AllCategories {
       return acc;
     }, {});
     makeAutoObservable(this, {}, { autoBind: true });
+    if (typeof window === "undefined") return;
     makePersistable(this, {
       name: "AllCategories",
       properties: ["categories"],
