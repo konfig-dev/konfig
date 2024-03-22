@@ -1,6 +1,6 @@
 import Head from "@docusaurus/Head";
 import Layout from "@theme/Layout";
-import React, { useEffect, useState } from "react";
+import React, { PropsWithChildren, useEffect, useState } from "react";
 import { Breadcrumbs } from "./Breadcrumbs";
 import { LogoBox } from "./LogoBox";
 import { useSdkSignup } from "../util/use-sdk-signup";
@@ -136,6 +136,7 @@ function SDKs({
         ) => {
           return (
             <SdkLinkItem
+              key={i}
               index={index}
               link={link}
               favicon={favicon}
@@ -237,24 +238,22 @@ function SdkLinkItem({
           </div> */}
           <div className="flex flex-row gap-2 items-center flex-wrap">
             {developerDocumentation && (
-              <a
+              <JavaScriptAnchorTag
                 className="flex w-fit items-center group/link text-slate-400 hover:text-slate-700 text-xs sm:text-sm hover:no-underline"
-                target="_blank"
                 href={`https://${developerDocumentation}`}
               >
                 <div>{service !== undefined ? `${service} ` : ``}API Docs</div>
                 <IconExternalLink height="11.5" />
-              </a>
+              </JavaScriptAnchorTag>
             )}
             {openApiGitHubUi && (
-              <a
+              <JavaScriptAnchorTag
                 className="flex w-fit items-center group/link text-slate-400 hover:text-slate-700 text-xs sm:text-sm hover:no-underline"
-                target="_blank"
                 href={openApiGitHubUi}
               >
                 <div>OpenAPI</div>
                 <IconExternalLink height="11.5" />
-              </a>
+              </JavaScriptAnchorTag>
             )}
             {language !== "TypeScript" && (
               <div className="text-slate-400 text-xs sm:text-sm">
@@ -266,6 +265,24 @@ function SdkLinkItem({
         <IconChevronRight className="shrink-0 text-slate-400 group-hover:text-slate-500 relative group-hover:translate-x-1 group-hover:scale-110 transition-all" />
       </div>
     </Link>
+  );
+}
+
+function JavaScriptAnchorTag({
+  href,
+  children,
+  className,
+}: PropsWithChildren<{ href: string; className: string }>) {
+  return (
+    <div
+      className={className}
+      onClick={(e) => {
+        e.preventDefault();
+        window.open(href, "_blank");
+      }}
+    >
+      {children}
+    </div>
   );
 }
 
