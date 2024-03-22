@@ -42,6 +42,7 @@ import { fixBrokenMarkdownLinks } from './fix-broken-markdown-links'
 import { fixUpperCaseSecurityInFields } from './fix-upper-case-security-in-fields'
 import { fixRequestMediaTypeObjectMissingSchema } from './fix-request-media-type-object-missing-schema'
 import { fixArraySchemaMissingItems } from './fix-array-schema-missing-items'
+import { fixEnumWithIncorrectType } from './fix-enum-with-incorrect-type'
 
 export async function fixOas({
   spec,
@@ -300,6 +301,8 @@ export async function fixOas({
     spec,
   })
 
+  const numberOfFixedEnumTypes = await fixEnumWithIncorrectType({ spec })
+
   // Monkey patch here!
   fixFalseOas3ValidSchemaExample({ spec: spec.spec })
 
@@ -345,6 +348,7 @@ export async function fixOas({
     numberOfSecurityInFieldsLowercased,
     numberOfFixedRequestMediaTypeObjectsMissingSchema,
     numberOfFixedArraySchemasMissingItems,
+    numberOfFixedEnumTypes,
   }
   const issuesFixed = Object.values(result).reduce((a, b) => a + b)
   return {

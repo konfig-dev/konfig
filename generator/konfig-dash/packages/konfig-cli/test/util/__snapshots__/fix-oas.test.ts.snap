@@ -373,6 +373,85 @@ exports[`fix-oas duplicate-tag-names deduplicate 1`] = `
 }
 `;
 
+exports[`fix-oas enums with incorrect type are fixed 1`] = `
+{
+  "components": {
+    "schemas": {
+      "TagGetRequest": {
+        "properties": {
+          "enum1": {
+            "enum": [
+              "1",
+              "two",
+              "3",
+            ],
+            "type": "string",
+          },
+          "enum2": {
+            "enum": [
+              1,
+              2,
+              3,
+            ],
+            "type": "number",
+          },
+          "enum3": {
+            "enum": [
+              true,
+            ],
+            "type": "boolean",
+          },
+        },
+        "type": "object",
+      },
+      "TagGetResponse": {
+        "type": "string",
+      },
+    },
+  },
+  "info": {
+    "description": "Test",
+    "title": "Test API",
+    "version": "1.0.0",
+  },
+  "openapi": "3.0.0",
+  "paths": {
+    "/": {
+      "get": {
+        "description": "Test",
+        "operationId": "Tag_get",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TagGetRequest",
+              },
+            },
+          },
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TagGetResponse",
+                },
+              },
+            },
+            "description": "OK",
+          },
+        },
+      },
+    },
+  },
+  "tags": [
+    {
+      "name": "Tag",
+    },
+  ],
+}
+`;
+
 exports[`fix-oas ignore potential-incorrect-type updates spec in place 1`] = `
 {
   "components": {

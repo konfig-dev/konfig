@@ -691,4 +691,65 @@ describe('fix-oas', () => {
       expect(spec.spec).toMatchSnapshot()
     })
   })
+  describe('enums with incorrect type', () => {
+    it('are fixed', async () => {
+      const oas: Spec['spec'] = {
+        openapi: '3.0.0',
+        info: {
+          title: 'Test API',
+          description: 'Test',
+          version: '1.0.0',
+        },
+        tags: [{ name: 'Tag' }],
+        paths: {
+          '/': {
+            get: {
+              operationId: 'Tag_get',
+              description: `Test`,
+              requestBody: {
+                content: {
+                  'application/json': {
+                    schema: {
+                      type: 'object',
+                      properties: {
+                        enum1: {
+                          type: 'number',
+                          enum: [1, 'two', 3],
+                        },
+                        enum2: {
+                          type: 'string',
+                          enum: [1, 2, 3],
+                        },
+                        enum3: {
+                          type: 'string',
+                          enum: [true],
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+              responses,
+            },
+          },
+        },
+      }
+      const spec = await parseSpec(JSON.stringify(oas))
+      const progress = new Progress({
+        progress: {},
+        noSave: true,
+      })
+      await fixOas({
+        spec,
+        progress,
+        alwaysYes: true,
+        auto: true,
+        ci: false,
+        useAIForOperationId: false,
+        useAIForTags: false,
+        noInput: false,
+      })
+      expect(spec.spec).toMatchSnapshot()
+    })
+  })
 })
