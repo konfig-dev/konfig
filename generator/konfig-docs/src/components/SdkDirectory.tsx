@@ -8,6 +8,7 @@ import companies from "@site/src/pages/sdk/companies.json";
 import { CategoryFilters, Filter } from "./CategoryFilters";
 import { useMediaQuery } from "../util/use-media-query";
 import { Breadcrumbs } from "./Breadcrumbs";
+import Link from "@docusaurus/Link";
 
 type Company = (typeof companies)[number];
 
@@ -115,8 +116,8 @@ function Company({
       ? `${metaDescription.substring(0, maxLength)}...`
       : metaDescription;
   return (
-    <a
-      href={subpath}
+    <Link
+      to={subpath}
       className="select-none flex-grow rounded-md hover:no-underline p-4 hover:shadow-xl hover:ring-1 ring-slate-200 transition-shadow"
     >
       <div className="flex flex-row items-start gap-4">
@@ -140,6 +141,6 @@ function Company({
           </div>
         </div>
       </div>
-    </a>
+    </Link>
   );
 }
