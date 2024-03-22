@@ -201,6 +201,7 @@ function main() {
     numberOfApis: number;
     difficultyScore: number;
     subpath: string;
+    keywords: string[];
   }[] = Object.entries(companyApis)
     .map(([company, apis]) => {
       const parentCategories: string[] = [];
@@ -213,6 +214,7 @@ function main() {
       }
       const averageDifficultyScore =
         apis.reduce((acc, api) => acc + api.difficultyScore, 0) / apis.length;
+      const keywords = apis.flatMap((api) => api.categories);
       // deduplicate parentCategories and subCategories
       return {
         parentCategories: [...new Set(parentCategories)],
@@ -220,6 +222,7 @@ function main() {
         favicon: apis[0].faviconUrl,
         metaDescription: apis[0].metaDescription,
         company,
+        keywords,
         numberOfApis: apis.length,
         difficultyScore: averageDifficultyScore,
         subpath: `/sdk/${kebabcase(company)}`,
