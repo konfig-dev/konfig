@@ -11,6 +11,8 @@ export async function fixEnumWithIncorrectType({
       if (typeof schema !== 'object') return
       if (schema.enum === undefined) return
       if (!Array.isArray(schema.enum)) return
+      if (schema.enum.length === 0) return
+      if (schema.$ref !== undefined) return // If it has a $ref, just let it be, because that could get a little compilcated
       const enums = schema.enum as any[];
       if (!enums.every((value) => isType(value, schema.type))) {
         // If all enum values are the same type, set schema type to that type

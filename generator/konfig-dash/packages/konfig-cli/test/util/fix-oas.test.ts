@@ -732,12 +732,23 @@ describe('fix-oas', () => {
                           type: 'integer',
                           enum: [1, 2, 3.14],
                         },
+                        enum6: {
+                          enum: ["1", "2", "3"],
+                          $ref: '#/components/schemas/StringSchema',
+                        },
                       },
                     },
                   },
                 },
               },
               responses,
+            },
+          },
+        },
+        components: {
+          schemas: {
+            StringSchema: {
+              type: 'string',
             },
           },
         },
