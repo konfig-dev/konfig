@@ -12,10 +12,12 @@ export async function fixEnumWithIncorrectType({
       if (schema.enum === undefined) return
       if (!Array.isArray(schema.enum)) return
       const enums = schema.enum as any[];
-      if (!enums.every((value) => typeof value === schema.type)) {
+      if (!enums.every((value) => isType(value, schema.type))) {
         // If all enum values are the same type, set schema type to that type
         if (enums.every((value) => typeof value === typeof enums[0])) {
-          schema.type = typeof enums[0];
+          // edge case: Use integer instead of number if all enums are integers
+          if (enums.every((value) => Number.isInteger(value))) schema.type = 'integer';
+          else schema.type = typeof enums[0];
           numberOfEnumWithIncorrectType++;
         }
         // Otherwise, set schema type to string and convert all values in schema.enum to string
@@ -28,3 +30,9 @@ export async function fixEnumWithIncorrectType({
     });
     return numberOfEnumWithIncorrectType;
   }
+
+// This function is like typeof but supports openAPI "integer" type
+function isType(value: any, type: string): boolean {
+  if (type === 'integer') return Number.isInteger(value);
+  return typeof value === type;
+}

@@ -724,6 +724,14 @@ describe('fix-oas', () => {
                           type: 'string',
                           enum: [true],
                         },
+                        enum4: {
+                          type: 'integer',
+                          enum: [1, 2, 3],
+                        },
+                        enum5: {
+                          type: 'integer',
+                          enum: [1, 2, 3.14],
+                        },
                       },
                     },
                   },
