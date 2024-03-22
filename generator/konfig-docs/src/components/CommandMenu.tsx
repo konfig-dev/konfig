@@ -12,6 +12,8 @@ import {
 } from "@site/src/components/ui/command";
 import { DialogProps } from "@radix-ui/react-dialog";
 import companies from "@site/src/pages/sdk/companies.json";
+import { defaultFilter } from "../util/default-filter";
+import { useRef } from "react";
 
 type Company = (typeof companies)[number];
 
@@ -44,19 +46,9 @@ export function CommandMenu({ ...props }: DialogProps) {
     command();
   }, []);
 
-  const groupedByParentCategories = React.useMemo(() => {
-    return companies.reduce((acc, company) => {
-      if (company.parentCategories) {
-        company.parentCategories.forEach((parentCategory) => {
-          if (!acc[parentCategory]) {
-            acc[parentCategory] = [];
-          }
-          acc[parentCategory].push(company);
-        });
-      }
-      return acc;
-    }, {} as Record<string, Company[]>);
-  }, [companies]);
+  // https://github.com/pacocoursey/cmdk/issues/233#issuecomment-1991365294
+  const listRef = useRef<HTMLDivElement>(null);
+  const scrollId = useRef<ReturnType<typeof setTimeout>>();
 
   return (
     <>
@@ -76,27 +68,52 @@ export function CommandMenu({ ...props }: DialogProps) {
           <span className="text-xs">⌘</span>K
         </kbd>
       </Button>
-      <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Type to search..." />
-        <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
-          {Object.entries(groupedByParentCategories).map(
-            ([parentCategory, companies], index) => {
-              return (
-                <React.Fragment key={index}>
-                  <CommandGroup heading={parentCategory}>
-                    {companies.map((company) => {
-                      return <CompanyItem key={company.company} {...company} />;
-                    })}
-                  </CommandGroup>
-                  {index <
-                    Object.keys(groupedByParentCategories).length - 1 && (
-                    <CommandSeparator />
-                  )}
-                </React.Fragment>
-              );
+      <CommandDialog
+        commandProps={{
+          filter: (value, search, keywords) => {
+            let score = defaultFilter(value, search, keywords) * 0.5;
+
+            // if lowercased value equals search or keywords include substring match of search then add 0.5
+            if (
+              value.toLowerCase() === search.toLowerCase() ||
+              keywords.some((keyword) =>
+                keyword.toLowerCase().includes(search.toLowerCase())
+              )
+            ) {
+              score += 0.5;
             }
-          )}
+
+            return score;
+          },
+        }}
+        open={open}
+        onOpenChange={setOpen}
+      >
+        <CommandInput
+          onValueChange={() => {
+            // https://github.com/pacocoursey/cmdk/issues/233#issuecomment-1991365294
+
+            // clear pending scroll
+            clearTimeout(scrollId.current);
+
+            // the setTimeout is used to create a new task
+            // this is to make sure that we don't scroll until the user is done typing
+            // you can tweak the timeout duration ofc
+            scrollId.current = setTimeout(() => {
+              // inside your list select the first group and scroll to the top
+              const div = listRef.current;
+              div?.scrollTo({ top: 0 });
+            }, 0);
+          }}
+          placeholder="Type to search APIs by name, use case, and more..."
+        />
+        <CommandList ref={listRef}>
+          <CommandEmpty>No results found.</CommandEmpty>
+          <CommandGroup>
+            {companies.map((company) => {
+              return <CompanyItem key={company.company} {...company} />;
+            })}
+          </CommandGroup>
         </CommandList>
       </CommandDialog>
     </>
@@ -112,15 +129,14 @@ function CompanyItem({
 }: Company) {
   const allKeywords = [
     company,
+    ...keywords,
     ...parentCategories,
     ...subCategories,
-    ...keywords,
   ];
-  console.log(company, allKeywords);
   return (
     <CommandItem
-      onSelect={(value) => console.log(value)}
       keywords={allKeywords}
+      onSelect={(value) => console.log(value)}
     >
       <img className="h-4 w-4 mr-2" src={favicon} alt={company} />
       {company}
