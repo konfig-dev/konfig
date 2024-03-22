@@ -67,7 +67,8 @@ export function SdkDirectory({ filter }: { filter: Filter }) {
               <div className="mb-5">
                 1 -{" "}
                 {Math.min(numberOfCompaniesToShow, filteredCompanies.length)} of{" "}
-                {filteredCompanies.length} Companies
+                {filteredCompanies.length}{" "}
+                {filter === "all" ? "" : `${filter} `}APIs
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-5">
                 {visibleCompanies.map((company) => (
