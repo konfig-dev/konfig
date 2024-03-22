@@ -39,6 +39,7 @@ import { fixFlattenSingletonAllOf } from './fix-flatten-singleton-all-of'
 import { fixPassthroughRefs } from './fix-passthrough-refs'
 import { fixDuplicateEntriesInEnum } from './fix-duplicate-entries-in-enum'
 import { fixBrokenMarkdownLinks } from './fix-broken-markdown-links'
+import { fixUpperCaseSecurityInFields } from './fix-upper-case-security-in-fields'
 
 export async function fixOas({
   spec,
@@ -285,6 +286,10 @@ export async function fixOas({
     spec,
   })
 
+  const numberOfSecurityInFieldsLowercased = await fixUpperCaseSecurityInFields({
+    spec,
+  })
+
   // Monkey patch here!
   fixFalseOas3ValidSchemaExample({ spec: spec.spec })
 
@@ -327,6 +332,7 @@ export async function fixOas({
     numberOfPassthroughRefsFixed,
     numberOfDuplicateEntriesInEnumFixed,
     numberOfFixedMarkdownLinks,
+    numberOfSecurityInFieldsLowercased,
   }
   const issuesFixed = Object.values(result).reduce((a, b) => a + b)
   return {
