@@ -1,13 +1,13 @@
 import Head from "@docusaurus/Head";
 import Layout from "@theme/Layout";
 import React, { useState } from "react";
-import sdkLinksJson from "@site/src/pages/sdk/sdk-links.json";
 import categories from "@site/src/pages/sdk/categories.json";
 import { CommandMenu } from "@site/src/components/CommandMenu";
 import { Button } from "@site/src/components/ui/button";
 import companies from "@site/src/pages/sdk/companies.json";
 import { CategoryFilters, Filter } from "./CategoryFilters";
 import { useMediaQuery } from "../util/use-media-query";
+import { Breadcrumbs } from "./Breadcrumbs";
 
 type Company = (typeof companies)[number];
 
@@ -57,7 +57,10 @@ export function SdkDirectory({ filter }: { filter: Filter }) {
         <meta property="og:image" content="/img/sdk-explore-link-preview.png" />
       </Head>
       <div className="border-b">
-        <div className="px-3 pt-7 pb-16 md:px-8 md:max-w-6xl mx-auto">
+        <div className="mt-8">
+          <Breadcrumbs dark company={filter} />
+        </div>
+        <div className="px-3 pt-5 pb-16 md:px-8 md:max-w-6xl mx-auto">
           {/* <div className="mb-4">
             <CommandMenu />
           </div> */}
@@ -68,7 +71,8 @@ export function SdkDirectory({ filter }: { filter: Filter }) {
                 1 -{" "}
                 {Math.min(numberOfCompaniesToShow, filteredCompanies.length)} of{" "}
                 {filteredCompanies.length}{" "}
-                {filter === "all" ? "" : `${filter} `}APIs
+                {filter === "all" ? "" : `${filter} `}API
+                {numberOfApis > 1 ? "s" : ""}
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-5">
                 {visibleCompanies.map((company) => (
