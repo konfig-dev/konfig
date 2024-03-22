@@ -1,6 +1,7 @@
 import * as React from "react";
 import { cn } from "@site/src/util/util";
 import { Button } from "@site/src/components/ui/button";
+import { useHistory, useLocation } from "@docusaurus/router";
 import {
   CommandDialog,
   CommandEmpty,
@@ -8,12 +9,13 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-  CommandSeparator,
 } from "@site/src/components/ui/command";
 import { DialogProps } from "@radix-ui/react-dialog";
 import companies from "@site/src/pages/sdk/companies.json";
 import { defaultFilter } from "../util/default-filter";
 import { useRef } from "react";
+import Link from "@docusaurus/Link";
+import useRouteContext from "@docusaurus/useRouteContext";
 
 type Company = (typeof companies)[number];
 
@@ -39,11 +41,6 @@ export function CommandMenu({ ...props }: DialogProps) {
 
     document.addEventListener("keydown", down);
     return () => document.removeEventListener("keydown", down);
-  }, []);
-
-  const runCommand = React.useCallback((command: () => unknown) => {
-    setOpen(false);
-    command();
   }, []);
 
   // https://github.com/pacocoursey/cmdk/issues/233#issuecomment-1991365294
@@ -126,6 +123,7 @@ function CompanyItem({
   parentCategories,
   subCategories,
   keywords,
+  subpath,
 }: Company) {
   const allKeywords = [
     company,
@@ -133,11 +131,15 @@ function CompanyItem({
     ...parentCategories,
     ...subCategories,
   ];
+  const history = useHistory();
+
   return (
     <CommandItem
+      onSelect={() => {
+        history.push(subpath);
+      }}
       keywords={allKeywords}
       className="justify-between"
-      onSelect={(value) => console.log(value)}
     >
       <div className="flex flex-row">
         <img className="h-4 w-4 mr-2" src={favicon} alt={company} />

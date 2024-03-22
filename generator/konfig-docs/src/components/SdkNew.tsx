@@ -6,7 +6,7 @@
  * For an explanation of the new pSEO page, see the ticket here:
  * https://www.notion.so/konfigthis/Restructure-pSEO-pages-based-on-Zapier-5ff64f53351a4ae2bf728e338b56e57d?pvs=4
  */
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Sdk, SdkMethod } from "./Sdk";
 import Layout from "@theme/Layout";
 import Head from "@docusaurus/Head";
@@ -22,7 +22,6 @@ import { LoadingIcon } from "./LoadingIcon";
 import { Method } from "./SdkComponentProps";
 import { Breadcrumbs } from "./Breadcrumbs";
 import { LogoBox } from "./LogoBox";
-import useContentLoaded from "../util/use-content-loaded";
 import { HowKonfigWorks } from "./HowKonfigWorks";
 
 type InputPropsFromOriginalSdkComponent = React.ComponentProps<typeof Sdk>;
@@ -336,9 +335,6 @@ function HeroSection({
   logo: string;
 }) {
   const [showGraphic, setShowGraphic] = useState(false);
-  useContentLoaded(() => {
-    setShowGraphic(true);
-  });
   return (
     <div className="mx-auto max-w-[375px] px-3 sm:max-w-none sm:px-8 lg:px-20 py-12">
       <div className="mx-auto flex flex-col items-center sm:max-w-[625px] lg:max-w-none lg:flex-row gap-2 lg:gap-20">
@@ -363,7 +359,13 @@ function HeroSection({
           aria-hidden={!showGraphic}
           className="opacity-1 aria-hidden:opacity-0 flex items-center flex-col lg:min-w-[400px] xl:min-w-[540px] transition-all duration-1000"
         >
-          <LogoBox logo={logo} company={company} />
+          <LogoBox
+            onLoad={() => {
+              setShowGraphic(true);
+            }}
+            logo={logo}
+            company={company}
+          />
           <IconArrowsDownUp className="text-blue-200" />
           <div className="my-5 flex items-center bg-white shadow-xl rounded-md">
             <div className="bg-blue-200 rounded-tl-md rounded-bl-md">

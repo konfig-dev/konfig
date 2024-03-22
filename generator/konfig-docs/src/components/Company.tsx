@@ -1,6 +1,6 @@
 import Head from "@docusaurus/Head";
 import Layout from "@theme/Layout";
-import React, { PropsWithChildren, useEffect, useState } from "react";
+import React, { PropsWithChildren, useState } from "react";
 import { Breadcrumbs } from "./Breadcrumbs";
 import { LogoBox } from "./LogoBox";
 import { useSdkSignup } from "../util/use-sdk-signup";
@@ -12,7 +12,6 @@ import {
   IconExternalLink,
   IconPencil,
 } from "@tabler/icons-react";
-import useContentLoaded from "../util/use-content-loaded";
 import { TsIcon } from "./TsIcon";
 import { AboutCompany } from "./SdkNew";
 import PythonIcon from "./PythonIcon";
@@ -296,9 +295,6 @@ function HeroSection({
   metaDescription: string;
 }) {
   const [showContent, setShowContent] = useState(false);
-  useContentLoaded(() => {
-    setShowContent(true);
-  });
 
   return (
     <div
@@ -307,7 +303,13 @@ function HeroSection({
     >
       <div className="w-fit mx-auto text-center">
         <div className="w-fit mx-auto text-center rounded-md">
-          <LogoBox logo={logo} company={company} />
+          <LogoBox
+            onLoad={() => {
+              setShowContent(true);
+            }}
+            logo={logo}
+            company={company}
+          />
         </div>
         <h1 className="mt-8 text-white text-5xl sm:text-6xl leading-tight">
           Move faster with {company} SDKs
