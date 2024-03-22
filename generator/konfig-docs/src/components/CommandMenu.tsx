@@ -1,7 +1,7 @@
 import * as React from "react";
 import { cn } from "@site/src/util/util";
 import { Button } from "@site/src/components/ui/button";
-import { useHistory, useLocation } from "@docusaurus/router";
+import { useHistory } from "@docusaurus/router";
 import {
   CommandDialog,
   CommandEmpty,
@@ -14,8 +14,6 @@ import { DialogProps } from "@radix-ui/react-dialog";
 import companies from "@site/src/pages/sdk/companies.json";
 import { defaultFilter } from "../util/default-filter";
 import { useRef } from "react";
-import Link from "@docusaurus/Link";
-import useRouteContext from "@docusaurus/useRouteContext";
 
 type Company = (typeof companies)[number];
 
