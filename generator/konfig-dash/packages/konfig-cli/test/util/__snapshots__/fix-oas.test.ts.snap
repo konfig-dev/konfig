@@ -1,5 +1,74 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`fix-oas array schema with missing "items" property items propety is added 1`] = `
+{
+  "components": {
+    "schemas": {
+      "MyArraySchema": {
+        "items": {
+          "description": "WARNING: Missing items property in array schema. Missing items property has been filled with this AnyType schema.",
+        },
+        "type": "array",
+      },
+      "TagGetRequest": {
+        "properties": {
+          "arrayProp": {
+            "items": {
+              "description": "WARNING: Missing items property in array schema. Missing items property has been filled with this AnyType schema.",
+            },
+            "type": "array",
+          },
+        },
+        "type": "object",
+      },
+      "TagGetResponse": {
+        "type": "string",
+      },
+    },
+  },
+  "info": {
+    "description": "Test",
+    "title": "Test API",
+    "version": "1.0.0",
+  },
+  "openapi": "3.0.0",
+  "paths": {
+    "/": {
+      "get": {
+        "description": "Test",
+        "operationId": "Tag_get",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TagGetRequest",
+              },
+            },
+          },
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TagGetResponse",
+                },
+              },
+            },
+            "description": "OK",
+          },
+        },
+      },
+    },
+  },
+  "tags": [
+    {
+      "name": "Tag",
+    },
+  ],
+}
+`;
+
 exports[`fix-oas broken markdown links with whitespace between the [text] and (link) the whitespace is removed 1`] = `
 {
   "components": {
@@ -656,7 +725,9 @@ exports[`fix-oas request media type objects with missing "schema" property are f
         "content": {
           "application/json": {
             "example": "Should have a schema",
-            "schema": {},
+            "schema": {
+              "description": "WARNING: Missing schema in media type object. Missing schema has been filled with this AnyType schema.",
+            },
           },
         },
       },

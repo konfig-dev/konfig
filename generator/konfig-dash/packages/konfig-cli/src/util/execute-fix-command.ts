@@ -149,6 +149,7 @@ export async function executeFixCommand(options: FixOptions): Promise<void> {
     numberOfFixedMarkdownLinks,
     numberOfSecurityInFieldsLowercased,
     numberOfFixedRequestMediaTypeObjectsMissingSchema,
+    numberOfFixedArraySchemasMissingItems,
   } = await fixOas({
     spec,
     progress,
@@ -205,7 +206,8 @@ Fixed ${numberOfDuplicateEntriesInEnumFixed} duplicate entries in enum
 Fixed ${numberOfPassthroughRefsFixed} passthrough refs
 Fixed ${numberOfFixedMarkdownLinks} broken markdown links
 Fixed ${numberOfSecurityInFieldsLowercased} "in" fields in security schemes that were not in lowercase
-Fixed ${numberOfFixedRequestMediaTypeObjectsMissingSchema} request media type objects missing schema property`,
+Fixed ${numberOfFixedRequestMediaTypeObjectsMissingSchema} request media type objects missing schema property
+Fixed ${numberOfFixedArraySchemasMissingItems} array schemas missing items property`,
       {
         title: `Fixed ${issuesFixed} Issues`,
         borderColor: issuesFixed === 0 ? 'gray' : 'green',

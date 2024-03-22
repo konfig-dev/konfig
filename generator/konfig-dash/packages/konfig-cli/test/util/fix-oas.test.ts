@@ -632,4 +632,63 @@ describe('fix-oas', () => {
       expect(spec.spec).toMatchSnapshot()
     })
   })
+  describe('array schema with missing "items" property', () => {
+    it('items propety is added', async () => {
+      const oas: Spec['spec'] = {
+        openapi: '3.0.0',
+        info: {
+          title: 'Test API',
+          description: 'Test',
+          version: '1.0.0',
+        },
+        tags: [{ name: 'Tag' }],
+        paths: {
+          '/': {
+            get: {
+              operationId: 'Tag_get',
+              description: `Test`,
+              requestBody: {
+                content: {
+                  'application/json': {
+                    schema: {
+                      type: 'object',
+                      properties: {
+                        arrayProp: {
+                          type: 'array',
+                        } as any,
+                      },
+                    },
+                  },
+                },
+              },
+              responses,
+            },
+          },
+        },
+        components: {
+          schemas: {
+            MyArraySchema: {
+              type: 'array',
+            },
+          } as any,
+        },
+      }
+      const spec = await parseSpec(JSON.stringify(oas))
+      const progress = new Progress({
+        progress: {},
+        noSave: true,
+      })
+      await fixOas({
+        spec,
+        progress,
+        alwaysYes: true,
+        auto: true,
+        ci: false,
+        useAIForOperationId: false,
+        useAIForTags: false,
+        noInput: false,
+      })
+      expect(spec.spec).toMatchSnapshot()
+    })
+  })
 })

@@ -11,7 +11,7 @@ export async function fixRequestMediaTypeObjectMissingSchema({
         const requestBody = resolveRef({refOrObject: operation.requestBody, $ref: spec.$ref})
         Object.values(requestBody.content).forEach((mediaTypeObject) => {
           if (!mediaTypeObject.schema) {
-            mediaTypeObject.schema = {}
+            mediaTypeObject.schema = { description: "WARNING: Missing schema in media type object. Missing schema has been filled with this AnyType schema." }
             numberOfMissingRequestSchemasInMediaTypeObjects++
           }
         })
