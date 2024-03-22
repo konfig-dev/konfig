@@ -136,10 +136,16 @@ function CompanyItem({
   return (
     <CommandItem
       keywords={allKeywords}
+      className="justify-between"
       onSelect={(value) => console.log(value)}
     >
-      <img className="h-4 w-4 mr-2" src={favicon} alt={company} />
-      {company}
+      <div className="flex flex-row">
+        <img className="h-4 w-4 mr-2" src={favicon} alt={company} />
+        {company}
+      </div>
+      <div className="overflow-x-scroll text-xs text-muted-foreground">
+        {parentCategories.join(", ")}
+      </div>
     </CommandItem>
   );
 }
