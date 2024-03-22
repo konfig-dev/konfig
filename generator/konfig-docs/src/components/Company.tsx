@@ -17,7 +17,6 @@ import { AboutCompany } from "./SdkNew";
 import PythonIcon from "./PythonIcon";
 import JavaIcon from "./JavaIcon";
 import { Sdk } from "../util/Sdk";
-import { HowKonfigWorks } from "./HowKonfigWorks";
 import Link from "@docusaurus/Link";
 
 /**
@@ -70,13 +69,13 @@ export function Company({
           />
         </div>
         <SDKs favicon={favicon} sdks={sdks} company={company} />
-        <HowKonfigWorks />
         <AboutCompany
           company={company}
           logo={logo}
           metaDescription={metaDescription}
           homepage={homepage}
           categories={categories}
+          className="border-t"
         />
         <BottomCTA company={company} />
       </div>

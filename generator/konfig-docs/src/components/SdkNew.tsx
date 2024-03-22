@@ -23,6 +23,7 @@ import { Method } from "./SdkComponentProps";
 import { Breadcrumbs } from "./Breadcrumbs";
 import { LogoBox } from "./LogoBox";
 import { HowKonfigWorks } from "./HowKonfigWorks";
+import { cn } from "../util/util";
 
 type InputPropsFromOriginalSdkComponent = React.ComponentProps<typeof Sdk>;
 
@@ -155,6 +156,7 @@ export function AboutCompany({
   categories,
   openApiGitHubUi,
   developerDocumentation,
+  className,
 }: {
   company: string;
   logo: string;
@@ -163,9 +165,10 @@ export function AboutCompany({
   categories: string[];
   openApiGitHubUi?: string;
   developerDocumentation?: string;
+  className?: string;
 }) {
   return (
-    <div className="py-20 px-8 md:px-32 bg-white">
+    <div className={cn("py-20 px-8 md:px-32 bg-white", className)}>
       <div className="w-fit">
         <div className="relative shadow-inner w-fit rounded-md border p-4">
           <img
