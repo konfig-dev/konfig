@@ -58,13 +58,14 @@ export function SdkDirectory({ filter }: { filter: Filter }) {
       </Head>
       <div className="border-b">
         <div className="px-3 pt-5 pb-16 md:px-8 md:max-w-6xl mx-auto">
-          <Breadcrumbs className="px-0 sm:px-0 mb-4" dark company={filter} />
+          <Breadcrumbs className="px-0 sm:px-0 mb-8" dark company={filter} />
           <div className="mb-4">
             <CommandMenu />
           </div>
-          <div className="flex flex-col md:flex-row gap-4 items-start">
+          <div className="flex flex-col md:flex-row gap-4 md:gap-8 items-start">
             <CategoryFilters filter={filter} categories={categories} />
             <div className="flex-grow">
+              {filter !== "all" && <h1>{filter} APIs</h1>}
               <div className="mb-5">
                 1 -{" "}
                 {Math.min(numberOfCompaniesToShow, filteredCompanies.length)} of{" "}
@@ -131,7 +132,7 @@ function Company({
             {subCategories.map((category) => (
               <button
                 key={category}
-                className="z-10 flex text-xs items-center gap-1 border font-medium rounded-md px-2 py-1 transition-all bg-slate-50 hover:bg-slate-100 border-slate-300 text-slate-600 hover:text-slate-800"
+                className="z-10 text-xs border border-slate-200 rounded-md font-medium px-2 py-1 text-slate-500"
               >
                 <span>{category}</span>
               </button>

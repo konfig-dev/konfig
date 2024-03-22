@@ -55,15 +55,15 @@ export function CommandMenu({ ...props }: DialogProps) {
       <Button
         variant="outline"
         className={cn(
-          "relative w-full justify-start rounded-[0.5rem] bg-background text-muted-foreground shadow-none sm:pr-12 lg:w-[640px]"
+          "relative w-full justify-start rounded-[0.5rem] bg-background text-muted-foreground shadow-none sm:pr-12 lg:w-[400px]"
         )}
         onClick={() => setOpen(true)}
         {...props}
       >
         <span className="hidden lg:inline-flex">
-          Search APIs by name, use case, and more...
+          Search all APIs by name, use case, and more...
         </span>
-        <span className="inline-flex lg:hidden">Search...</span>
+        <span className="inline-flex lg:hidden">Search all APIs...</span>
         <kbd className="pointer-events-none absolute right-[0.3rem] hidden select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
           <span className="text-xs">⌘</span>K
         </kbd>
@@ -105,7 +105,7 @@ export function CommandMenu({ ...props }: DialogProps) {
               div?.scrollTo({ top: 0 });
             }, 0);
           }}
-          placeholder="Type to search APIs by name, use case, and more..."
+          placeholder="Type to search all APIs..."
         />
         <CommandList ref={listRef}>
           <CommandEmpty>No results found.</CommandEmpty>

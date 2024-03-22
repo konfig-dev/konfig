@@ -103,7 +103,9 @@ export const CategoryFilterControls = observer(
             });
           }}
         >
-          {allCategories.anyCategoryIsOpen ? "Close All" : "Expand All"}
+          {allCategories.anyCategoryIsOpen
+            ? "Close All Categories"
+            : "Expand All Categories"}
         </Button>
         <ul className="pl-0 mb-0 list-none">
           <li>
