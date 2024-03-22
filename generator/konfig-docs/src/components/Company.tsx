@@ -19,6 +19,7 @@ import PythonIcon from "./PythonIcon";
 import JavaIcon from "./JavaIcon";
 import { Sdk } from "../util/Sdk";
 import { HowKonfigWorks } from "./HowKonfigWorks";
+import Link from "@docusaurus/Link";
 
 /**
  * https://zapier.com/apps/salesforce/integrations
@@ -197,11 +198,11 @@ function SdkLinkItem({
   service?: string;
 }) {
   return (
-    <a
+    <Link
       className={clsx("hover:no-underline z-10", {
         "cursor-not-allowed": language !== "TypeScript",
       })}
-      href={language === "TypeScript" ? link : undefined}
+      to={language === "TypeScript" ? link : undefined}
     >
       <div
         className={clsx(
@@ -264,7 +265,7 @@ function SdkLinkItem({
         </div>
         <IconChevronRight className="shrink-0 text-slate-400 group-hover:text-slate-500 relative group-hover:translate-x-1 group-hover:scale-110 transition-all" />
       </div>
-    </a>
+    </Link>
   );
 }
 
