@@ -214,7 +214,7 @@ function main() {
       }
       const averageDifficultyScore =
         apis.reduce((acc, api) => acc + api.difficultyScore, 0) / apis.length;
-      const keywords = apis.flatMap((api) => api.categories);
+      const keywords = [...new Set(apis.flatMap((api) => api.categories))];
       // deduplicate parentCategories and subCategories
       return {
         parentCategories: [...new Set(parentCategories)],
