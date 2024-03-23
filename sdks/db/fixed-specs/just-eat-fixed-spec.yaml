@@ -11131,6 +11131,10 @@ components:
                   description: The link to the user.
                   type: string
               type: array
+              items:
+                description: >-
+                  WARNING: Missing items property in array schema. Missing items
+                  property has been filled with this AnyType schema.
             truncated:
               description: >-
                 true or false to indicate whether Bitbucket truncated the
@@ -20047,6 +20051,10 @@ components:
           description: List of notification events partner is subscribed to.
           type: array
           nullable: true
+          items:
+            description: >-
+              WARNING: Missing items property in array schema. Missing items
+              property has been filled with this AnyType schema.
       example:
         email: email@partner.com
         endpoint: endpoint-partner.ca/webhook
@@ -30324,6 +30332,7 @@ components:
                 - rejected
                 - complete
                 - cancelled
+              type: string
           required:
             - orderStatus
           type: object
@@ -30361,6 +30370,7 @@ components:
                       - cash
                       - credit
                       - voucher
+                    type: string
                   lastFourCardDigits:
                     description: >-
                       If the type is "card", the last four digits of the number
@@ -30444,6 +30454,7 @@ components:
                 - collection
                 - delivery
                 - dineIn
+              type: string
             dineInInfo:
               description: >-
                 Information on how to fulfil the dine-in order. This will only
@@ -30532,6 +30543,7 @@ components:
                       - delivery
                       - bag
                       - itemDepositGroup
+                    type: string
                   name:
                     description: Charge name
                     type: string
@@ -30555,6 +30567,7 @@ components:
                     enum:
                       - restaurant
                       - stampCard
+                    type: string
                   name:
                     description: Discount name
                     type: string
@@ -30577,6 +30590,7 @@ components:
                     description: Tips details
                     enum:
                       - driver
+                    type: string
                   name:
                     description: Tips name
                     type: string
@@ -34347,6 +34361,7 @@ components:
             - solved
             - hold
             - deleted
+          type: string
         id:
           description: The Id of the request
           type: string
@@ -35271,6 +35286,7 @@ components:
             - Percent
             - FirstTimeCustomer
             - StampCard
+          type: string
         discountAmount:
           description: The discount value in smallest unit of relevant currency
           format: integer
@@ -35303,6 +35319,7 @@ components:
           enum:
             - Card
             - Cash
+          type: string
         paymentInfo:
           description: Information about a payment
           $ref: >-
@@ -35336,6 +35353,7 @@ components:
             - SystemError
             - RestaurantIsBusy
             - TestOrder
+          type: string
         previousRestaurantOrderCount:
           description: >-
             The customer's previous total number of orders made to this
@@ -35364,6 +35382,7 @@ components:
           enum:
             - Completed
             - Cancelled
+          type: string
         orderItems:
           description: List of restaurant order items
           items:
@@ -35392,6 +35411,7 @@ components:
             - Delivery
             - Collection
             - DineIn
+          type: string
         appliedDiscounts:
           description: List of restaurant applied discounts
           items:
@@ -35586,6 +35606,7 @@ components:
             - Product
             - MealPart
             - Accessory
+          type: string
         subItems:
           description: The sub items of item, such as meal parts of the meal or accessories
           items:
@@ -35722,6 +35743,7 @@ components:
           enum:
             - Completed
             - Cancelled
+          type: string
         placedDate:
           description: The order placed date
           format: date-time
@@ -35746,6 +35768,7 @@ components:
           enum:
             - Card
             - Cash
+          type: string
         id:
           description: The Id of the order
           type: string
@@ -35755,6 +35778,7 @@ components:
             - Collection
             - Delivery
             - DineIn
+          type: string
         friendlyId:
           description: The friendly order Id
           type: string
@@ -41699,6 +41723,10 @@ components:
                   id:
                     description: Category id
                     type: integer
+              items:
+                description: >-
+                  WARNING: Missing items property in array schema. Missing items
+                  property has been filled with this AnyType schema.
             baseUrl:
               description: Webshop URL
               type: string
@@ -50498,6 +50526,7 @@ components:
                   - approved
                   - rejected
                   - pending
+                type: string
               moderationRejectionReasons:
                 description: >-
                   If the image was rejected the reasons for rejection will be
