@@ -1,5 +1,60 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`fix-oas OAS with 2xx response code 1`] = `
+{
+  "components": {
+    "schemas": {
+      "TestGetResponse": {
+        "type": "string",
+      },
+    },
+  },
+  "info": {
+    "description": "Test",
+    "title": "Test API",
+    "version": "1.0.0",
+  },
+  "openapi": "3.0.0",
+  "paths": {
+    "/test": {
+      "get": {
+        "description": "Test",
+        "operationId": "Test_get",
+        "responses": {
+          "200": {
+            "description": "OK",
+          },
+          "2XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TestGetResponse",
+                },
+              },
+            },
+            "description": "OK",
+          },
+          "4XX": {
+            "description": "Client Error",
+          },
+          "5XX": {
+            "description": "Server Error",
+          },
+        },
+        "tags": [
+          "Test",
+        ],
+      },
+    },
+  },
+  "tags": [
+    {
+      "name": "Test",
+    },
+  ],
+}
+`;
+
 exports[`fix-oas array schema with missing "items" property items propety is added 1`] = `
 {
   "components": {
