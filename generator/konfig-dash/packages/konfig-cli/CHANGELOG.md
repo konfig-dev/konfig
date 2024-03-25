@@ -1,5 +1,26 @@
 # konfig-cli
 
+## 1.38.34
+
+### Patch Changes
+
+- [#669](https://github.com/konfig-dev/konfig/pull/669) [`57cc4b6f`](https://github.com/konfig-dev/konfig/commit/57cc4b6fd6b2323671e4e9a92abaf88cdf7bc5c2) Thanks [@dphuang2](https://github.com/dphuang2)! - handle "[1-5]XX" response codes and sort by default first
+
+- [#666](https://github.com/konfig-dev/konfig/pull/666) [`a48addfc`](https://github.com/konfig-dev/konfig/commit/a48addfca63de5d8195413215fc05d9d91709ec6) Thanks [@eddiechayes](https://github.com/eddiechayes)! - Add fix rule to add items with AnyType schema for array schemas missing item property
+
+- [`ec16586a`](https://github.com/konfig-dev/konfig/commit/ec16586a831eab4bbc81187328b68775073d726e) Thanks [@dphuang2](https://github.com/dphuang2)! - set empty undefined or null ResponsesObject as {} in "konfig fix"
+
+- [#667](https://github.com/konfig-dev/konfig/pull/667) [`d30ea23f`](https://github.com/konfig-dev/konfig/commit/d30ea23f44469934a85071f1dd90dc101368836d) Thanks [@eddiechayes](https://github.com/eddiechayes)! - Add fix rule to correct enum type if enumerated values don’t match given data type
+
+- [#662](https://github.com/konfig-dev/konfig/pull/662) [`0ec929f4`](https://github.com/konfig-dev/konfig/commit/0ec929f429bce8977c57b984064498051f917de3) Thanks [@eddiechayes](https://github.com/eddiechayes)! - add fix rule that lowercases security “in” field
+
+- [#665](https://github.com/konfig-dev/konfig/pull/665) [`14a1c5f8`](https://github.com/konfig-dev/konfig/commit/14a1c5f89d9d0b88f080537880231f6216f72f18) Thanks [@eddiechayes](https://github.com/eddiechayes)! - Add fix rule for missing schema in request body content
+
+- Updated dependencies [[`57cc4b6f`](https://github.com/konfig-dev/konfig/commit/57cc4b6fd6b2323671e4e9a92abaf88cdf7bc5c2)]:
+  - konfig-lib@1.37.3
+  - konfig-openapi-spec@1.8.22
+  - konfig-postman-to-openapi@3.1.22
+
 ## 1.38.33
 
 ### Patch Changes

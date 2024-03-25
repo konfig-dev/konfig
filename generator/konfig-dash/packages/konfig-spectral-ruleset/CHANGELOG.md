@@ -1,5 +1,16 @@
 # konfig-spectral-ruleset
 
+## 1.6.3
+
+### Patch Changes
+
+- [`525e36bf`](https://github.com/konfig-dev/konfig/commit/525e36bfb3e3b15cd194c4d271613cfac084bbe9) Thanks [@dphuang2](https://github.com/dphuang2)! - set list-usage-of-security to info level
+
+- [`7141f2b7`](https://github.com/konfig-dev/konfig/commit/7141f2b767368c378778c1d7a1982c4f8072ddc2) Thanks [@dphuang2](https://github.com/dphuang2)! - set parameter-missing-description to info level
+
+- Updated dependencies [[`57cc4b6f`](https://github.com/konfig-dev/konfig/commit/57cc4b6fd6b2323671e4e9a92abaf88cdf7bc5c2)]:
+  - konfig-lib@1.37.3
+
 ## 1.6.2
 
 ### Patch Changes

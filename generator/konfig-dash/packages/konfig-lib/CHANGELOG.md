@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.37.3
+
+### Patch Changes
+
+- [#669](https://github.com/konfig-dev/konfig/pull/669) [`57cc4b6f`](https://github.com/konfig-dev/konfig/commit/57cc4b6fd6b2323671e4e9a92abaf88cdf7bc5c2) Thanks [@dphuang2](https://github.com/dphuang2)! - handle "[1-5]XX" response codes and sort by default first
+
 ## 1.37.2
 
 ### Patch Changes
