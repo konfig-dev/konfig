@@ -1,9 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`fix-oas OAS with 2xx response code 1`] = `
+exports[`fix-oas (2|3|4|5)XX response codes 1`] = `
 {
   "components": {
     "schemas": {
+      "TestGet4XXResponse": {
+        "type": "string",
+      },
+      "TestGet5XXResponse": {
+        "type": "string",
+      },
       "TestGetResponse": {
         "type": "string",
       },
@@ -21,9 +27,6 @@ exports[`fix-oas OAS with 2xx response code 1`] = `
         "description": "Test",
         "operationId": "Test_get",
         "responses": {
-          "200": {
-            "description": "OK",
-          },
           "2XX": {
             "content": {
               "application/json": {
@@ -35,9 +38,23 @@ exports[`fix-oas OAS with 2xx response code 1`] = `
             "description": "OK",
           },
           "4XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TestGet4XXResponse",
+                },
+              },
+            },
             "description": "Client Error",
           },
           "5XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TestGet5XXResponse",
+                },
+              },
+            },
             "description": "Server Error",
           },
         },
@@ -873,6 +890,78 @@ exports[`fix-oas object-with-no-properties generate schemas if not ignored 1`] =
   "tags": [
     {
       "name": "Tag",
+    },
+  ],
+}
+`;
+
+exports[`fix-oas prioritize default response code 1`] = `
+{
+  "components": {
+    "schemas": {
+      "TestGet4XXResponse": {
+        "type": "string",
+      },
+      "TestGet5XXResponse": {
+        "type": "string",
+      },
+      "TestGetResponse": {
+        "type": "string",
+      },
+    },
+  },
+  "info": {
+    "description": "Test",
+    "title": "Test API",
+    "version": "1.0.0",
+  },
+  "openapi": "3.0.0",
+  "paths": {
+    "/test": {
+      "get": {
+        "description": "Test",
+        "operationId": "Test_get",
+        "responses": {
+          "4XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TestGet4XXResponse",
+                },
+              },
+            },
+            "description": "Client Error",
+          },
+          "5XX": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TestGet5XXResponse",
+                },
+              },
+            },
+            "description": "Server Error",
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TestGetResponse",
+                },
+              },
+            },
+            "description": "OK",
+          },
+        },
+        "tags": [
+          "Test",
+        ],
+      },
+    },
+  },
+  "tags": [
+    {
+      "name": "Test",
     },
   ],
 }

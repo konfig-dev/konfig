@@ -691,7 +691,7 @@ describe('fix-oas', () => {
       expect(spec.spec).toMatchSnapshot()
     })
   })
-  it('OAS with 2xx response code', async () => {
+  it('prioritize default response code', async () => {
     const oas: Spec['spec'] = {
       openapi: '3.0.0',
       info: {
@@ -707,8 +707,8 @@ describe('fix-oas', () => {
             operationId: 'Test_get',
             description: `Test`,
             responses: {
-              '2XX': {
-                description: 'OK',
+              '4XX': {
+                description: 'Client Error',
                 content: {
                   'application/json': {
                     schema: {
@@ -717,11 +717,25 @@ describe('fix-oas', () => {
                   },
                 },
               },
-              '4XX': {
-                description: 'Client Error',
-              },
               '5XX': {
                 description: 'Server Error',
+                content: {
+                  'application/json': {
+                    schema: {
+                      type: 'string',
+                    },
+                  },
+                },
+              },
+              default: {
+                description: 'OK',
+                content: {
+                  'application/json': {
+                    schema: {
+                      type: 'string',
+                    },
+                  },
+                },
               },
             },
           },
@@ -741,7 +755,75 @@ describe('fix-oas', () => {
       ci: false,
       useAIForOperationId: false,
       useAIForTags: false,
-      noInput: false,
+      noInput: true,
+    })
+    expect(spec.spec).toMatchSnapshot()
+  })
+  it('(2|3|4|5)XX response codes', async () => {
+    const oas: Spec['spec'] = {
+      openapi: '3.0.0',
+      info: {
+        title: 'Test API',
+        description: 'Test',
+        version: '1.0.0',
+      },
+      tags: [{ name: 'Test' }],
+      paths: {
+        '/test': {
+          get: {
+            tags: ['Test'],
+            operationId: 'Test_get',
+            description: `Test`,
+            responses: {
+              '4XX': {
+                description: 'Client Error',
+                content: {
+                  'application/json': {
+                    schema: {
+                      type: 'string',
+                    },
+                  },
+                },
+              },
+              '5XX': {
+                description: 'Server Error',
+                content: {
+                  'application/json': {
+                    schema: {
+                      type: 'string',
+                    },
+                  },
+                },
+              },
+              '2XX': {
+                description: 'OK',
+                content: {
+                  'application/json': {
+                    schema: {
+                      type: 'string',
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    }
+    const spec = await parseSpec(JSON.stringify(oas))
+    const progress = new Progress({
+      progress: {},
+      noSave: true,
+    })
+    await fixOas({
+      spec,
+      progress,
+      alwaysYes: true,
+      auto: true,
+      ci: false,
+      useAIForOperationId: false,
+      useAIForTags: false,
+      noInput: true,
     })
     expect(spec.spec).toMatchSnapshot()
   })

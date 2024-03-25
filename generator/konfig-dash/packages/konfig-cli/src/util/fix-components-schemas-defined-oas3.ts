@@ -91,7 +91,12 @@ export async function fixComponentsSchemasDefinedOas3({
   // Responses
   for (const { operation, path, method } of operations) {
     logOperationDetails({ operation: { operation, path, method } })
-    for (const statusCode of Object.keys(operation.responses)) {
+    const responseCodes = Object.keys(operation.responses).sort((a, b) => {
+      if (a === 'default') return -1
+      if (b === 'default') return 1
+      return a.localeCompare(b)
+    })
+    for (const statusCode of responseCodes) {
       const responseObjectOrRef = operation.responses[statusCode]
       const responseObject = resolveRef({
         refOrObject: responseObjectOrRef,
