@@ -6,7 +6,7 @@ const { themes } = require("prism-react-renderer");
 const lightCodeTheme = themes.github;
 const darkCodeTheme = themes.dracula;
 
-const { remarkCodeHike } = require("@code-hike/mdx");
+const { remarkCodeHike } = require("konfig-code-hike-mdx");
 
 const beforeRemarkPlugins = [
   [
