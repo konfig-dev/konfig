@@ -4,6 +4,7 @@ export type Demo = {
   markdown: string
   showCode: boolean | null
   metaDescription: string
+  path: string
 }
 export type Portal = {
   id: string

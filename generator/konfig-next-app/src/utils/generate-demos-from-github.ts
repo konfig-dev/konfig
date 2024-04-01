@@ -12,6 +12,7 @@ import { computeDocumentProps } from './compute-document-props'
 import { githubGetKonfigYamlsSafe } from './github-get-konfig-yamls-safe'
 import { extractMetaDescription } from './extract-meta-description'
 import { githubGetCustomSnippet } from './github-get-custom-snippet'
+import { transformImageLinks } from './transform-image-links'
 
 /**
  * Custom mappings to preserve existing links for SnapTrade
@@ -215,6 +216,16 @@ async function _fetch({
     konfigYaml: konfigYaml.content,
   })
 
+  for (const demo of portal.demos) {
+    demo.markdown = transformImageLinks({
+      markdown: demo.markdown,
+      owner,
+      repo,
+      docPath: demo.path,
+      defaultBranch: repository.data.default_branch,
+    })
+  }
+
   return {
     organization,
     portal,
@@ -256,6 +267,7 @@ export async function getDemos({
       return {
         content: await githubGetFileContent({ path, repo, owner, octokit }),
         ...rest,
+        path,
       }
     })
   )
