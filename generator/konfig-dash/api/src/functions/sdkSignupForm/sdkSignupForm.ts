@@ -74,16 +74,6 @@ async function createPageInDatabase({
     [databaseProperties.Email.name]: {
       email: email,
     },
-    [databaseProperties.Company.name]: {
-      rich_text: [
-        {
-          type: 'text',
-          text: {
-            content: company,
-          },
-        },
-      ],
-    },
     [databaseProperties.Name.name]: {
       title: [
         {
@@ -94,6 +84,18 @@ async function createPageInDatabase({
         },
       ],
     },
+  }
+  if (company !== undefined) {
+    properties[databaseProperties.Company.name] = {
+      rich_text: [
+        {
+          type: 'text',
+          text: {
+            content: company,
+          },
+        },
+      ],
+    }
   }
   if (language !== undefined) {
     properties[databaseProperties.Language.name] = {
@@ -198,7 +200,7 @@ const databaseProperties = {
 
 const sdkSignupFormSchema = z.object({
   email: z.string(),
-  company: z.string(),
+  company: z.string().optional(),
   service: z.string().optional(),
   language: z.union([z.literal('TypeScript'), z.literal('Python')]).optional(),
 })

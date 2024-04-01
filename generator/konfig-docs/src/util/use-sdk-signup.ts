@@ -5,7 +5,7 @@ export function useSdkSignup({
   serviceName,
   language,
 }: {
-  company: string;
+  company?: string;
   serviceName?: string;
   language?: string;
 }) {
