@@ -23,6 +23,10 @@ export const domainToRepoMappings: Record<
     owner: 'konfig-dev',
     repo: 'bellhop-sdks',
   },
+  'humanloop.localhost:3000': {
+    owner: 'humanloop',
+    repo: 'humanloop-sdks',
+  },
   'dev.konfigthis.com:3000': {
     owner: 'konfig-dev',
     repo: 'acme-sdks',
@@ -52,6 +56,10 @@ export const domainToRepoMappings: Record<
   'snaptrade.onkonfig.com': {
     owner: 'passiv',
     repo: 'snaptrade-sdks',
+  },
+  'humanloop.onkonfig.com': {
+    owner: 'humanloop',
+    repo: 'humanloop-sdks',
   },
   'groundx.onkonfig.com': {
     owner: 'groundxai',
