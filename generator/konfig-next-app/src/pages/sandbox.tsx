@@ -82,6 +82,7 @@ async function generateDemos(files: FileOrDirInfo[]): Promise<Demo[]> {
         id: demo.id,
         content: await (await demoFile.handle.getFile()).text(),
         showCode: demo.showCode,
+        path: demoFile.path,
       })
     }
   }
