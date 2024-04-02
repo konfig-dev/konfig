@@ -114,7 +114,7 @@ export async function generateInitialFormValuesWithStorage(
         : storedValue
     ) as FormDataType
 
-    if (pruned) {
+    if (pruned && pruned[PARAMETER_FORM_NAME_PREFIX]) {
       // remove any irrelevant values from pruned (i.e. values that potentially
       // have the same parameter name but different schemas)
       const filtered: [string, FormInputValue][] = []

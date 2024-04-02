@@ -81,13 +81,16 @@ export function LinksGroup({
     }
   }, [router.query])
 
-  useEffect(() => {
-    ref.current?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'center',
-      inline: 'nearest',
-    })
-  }, [])
+  /**
+   * This was causing issues when opening Humanloop's reference navbar
+   */
+  // useEffect(() => {
+  //   ref.current?.scrollIntoView({
+  //     behavior: 'smooth',
+  //     block: 'center',
+  //     inline: 'nearest',
+  //   })
+  // }, [])
   const items = (hasLinks ? links : []).map((link, i) => {
     return (
       <Box className={classes.linkWrapper} key={`${link.label}:${i}`}>

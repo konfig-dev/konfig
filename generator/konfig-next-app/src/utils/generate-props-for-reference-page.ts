@@ -283,7 +283,7 @@ export async function generatePropsForReferencePage({
       owner,
       repo,
       octokit,
-      konfigYamlDir: nodePath.dirname(props.konfigYamlDir),
+      konfigYamlDir: props.konfigYamlDir,
     })
   ).allMarkdown
 
