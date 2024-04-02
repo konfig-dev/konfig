@@ -6,7 +6,7 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel, StrictBool, StrictStr, StrictInt, StrictFloat
 import uuid
 from IPython.terminal.interactiveshell import TerminalInteractiveShell
-from fastapi_utils.tasks import repeat_every
+from fastapi_restful.tasks import repeat_every
 from io import StringIO
 import sys
 from anyio.streams.file import FileWriteStream
@@ -33,10 +33,10 @@ class BoxedFloat(BaseModel):
 class SessionExecuteRequest(BaseModel):
     session_id: str
     code: str
-    environment_variables: Optional[dict[str, str]]
+    environment_variables: Optional[dict[str, str]] = None
     local_variables: Optional[
         dict[str, Union[StrictStr, StrictBool, StrictInt, StrictFloat, BoxedFloat]]
-    ]
+    ] = None
 
 
 class SessionCloseRequest(BaseModel):
@@ -129,6 +129,8 @@ async def ping_session(request: SessionPingRequest):
 async def execute_code(request: SessionExecuteRequest):
     session_id = request.session_id
     code = request.code
+
+    print(request)
 
     if session_id in sessions:
         shell, _ = sessions[session_id]

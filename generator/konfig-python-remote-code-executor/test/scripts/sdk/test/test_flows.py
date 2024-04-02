@@ -138,7 +138,7 @@ pprint(deleted_response.body)""",
         s = api.session.create()
         for snippet in snippets:
             r = api.session.execute(session_id=s.body["session_id"], code=snippet)
-            assert r.body["result"] == "Code executed"
+            assert r.body["result"] == "Success"
             pprint(r.body)
 
 

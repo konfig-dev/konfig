@@ -177,12 +177,14 @@ export const appRouter = router({
       }
       const code = toText(matchingNode, { whitespace: 'pre' })
 
-      const { data } = await axios.post(url, {
+      const request = {
         session_id: input.sessionId,
         code: code,
         environment_variables: input.environmentVariables,
         local_variables: input.localVariables,
-      })
+      }
+
+      const { data } = await axios.post(url, request)
 
       const response = ExecuteCodeResponse.parse(data)
 

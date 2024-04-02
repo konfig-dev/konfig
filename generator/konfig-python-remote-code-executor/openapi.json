@@ -1,5 +1,5 @@
 {
-    "openapi": "3.0.2",
+    "openapi": "3.1.0",
     "info": {
         "title": "FastAPI",
         "version": "0.1.0"
@@ -225,270 +225,281 @@
     "components": {
         "schemas": {
             "BoxedFloat": {
-                "title": "BoxedFloat",
+                "properties": {
+                    "type": {
+                        "const": "float",
+                        "title": "Type"
+                    },
+                    "data": {
+                        "type": "string",
+                        "title": "Data"
+                    },
+                    "precision": {
+                        "type": "integer",
+                        "title": "Precision"
+                    }
+                },
+                "type": "object",
                 "required": [
                     "type",
                     "data",
                     "precision"
                 ],
-                "type": "object",
-                "properties": {
-                    "type": {
-                        "title": "Type",
-                        "enum": [
-                            "float"
-                        ],
-                        "type": "string"
-                    },
-                    "data": {
-                        "title": "Data",
-                        "type": "string"
-                    },
-                    "precision": {
-                        "title": "Precision",
-                        "type": "integer"
-                    }
-                },
+                "title": "BoxedFloat",
                 "description": "This class preserves all information for float that could be lost in the client (Browser) or in transit (NodeJS)"
             },
             "ExecutionResult": {
-                "title": "ExecutionResult",
+                "properties": {
+                    "result": {
+                        "type": "string",
+                        "enum": [
+                            "Success",
+                            "Error"
+                        ],
+                        "title": "Result"
+                    },
+                    "output": {
+                        "type": "string",
+                        "title": "Output"
+                    },
+                    "error": {
+                        "type": "string",
+                        "title": "Error"
+                    }
+                },
+                "type": "object",
                 "required": [
                     "result",
                     "output",
                     "error"
                 ],
-                "type": "object",
-                "properties": {
-                    "result": {
-                        "title": "Result",
-                        "enum": [
-                            "Success",
-                            "Error"
-                        ],
-                        "type": "string"
-                    },
-                    "output": {
-                        "title": "Output",
-                        "type": "string"
-                    },
-                    "error": {
-                        "title": "Error",
-                        "type": "string"
-                    }
-                }
+                "title": "ExecutionResult"
             },
             "HTTPValidationError": {
-                "title": "HTTPValidationError",
-                "type": "object",
                 "properties": {
                     "detail": {
-                        "title": "Detail",
-                        "type": "array",
                         "items": {
                             "$ref": "#/components/schemas/ValidationError"
-                        }
+                        },
+                        "type": "array",
+                        "title": "Detail"
                     }
-                }
+                },
+                "type": "object",
+                "title": "HTTPValidationError"
             },
             "SessionCloseRequest": {
-                "title": "SessionCloseRequest",
+                "properties": {
+                    "session_id": {
+                        "type": "string",
+                        "title": "Session Id"
+                    }
+                },
+                "type": "object",
                 "required": [
                     "session_id"
                 ],
-                "type": "object",
-                "properties": {
-                    "session_id": {
-                        "title": "Session Id",
-                        "type": "string"
-                    }
-                }
+                "title": "SessionCloseRequest"
             },
             "SessionCloseResponse": {
-                "title": "SessionCloseResponse",
+                "properties": {
+                    "message": {
+                        "type": "string",
+                        "title": "Message"
+                    }
+                },
+                "type": "object",
                 "required": [
                     "message"
                 ],
-                "type": "object",
-                "properties": {
-                    "message": {
-                        "title": "Message",
-                        "type": "string"
-                    }
-                }
+                "title": "SessionCloseResponse"
             },
             "SessionCreateResponse": {
-                "title": "SessionCreateResponse",
+                "properties": {
+                    "session_id": {
+                        "type": "string",
+                        "title": "Session Id"
+                    }
+                },
+                "type": "object",
                 "required": [
                     "session_id"
                 ],
-                "type": "object",
-                "properties": {
-                    "session_id": {
-                        "title": "Session Id",
-                        "type": "string"
-                    }
-                }
+                "title": "SessionCreateResponse"
             },
             "SessionExecuteRequest": {
-                "title": "SessionExecuteRequest",
+                "properties": {
+                    "session_id": {
+                        "type": "string",
+                        "title": "Session Id"
+                    },
+                    "code": {
+                        "type": "string",
+                        "title": "Code"
+                    },
+                    "environment_variables": {
+                        "anyOf": [
+                            {
+                                "additionalProperties": {
+                                    "type": "string"
+                                },
+                                "type": "object"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Environment Variables"
+                    },
+                    "local_variables": {
+                        "anyOf": [
+                            {
+                                "additionalProperties": {
+                                    "anyOf": [
+                                        {
+                                            "type": "string"
+                                        },
+                                        {
+                                            "type": "boolean"
+                                        },
+                                        {
+                                            "type": "integer"
+                                        },
+                                        {
+                                            "type": "number"
+                                        },
+                                        {
+                                            "$ref": "#/components/schemas/BoxedFloat"
+                                        }
+                                    ]
+                                },
+                                "type": "object"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ],
+                        "title": "Local Variables"
+                    }
+                },
+                "type": "object",
                 "required": [
                     "session_id",
                     "code"
                 ],
-                "type": "object",
+                "title": "SessionExecuteRequest"
+            },
+            "SessionInfo": {
                 "properties": {
                     "session_id": {
-                        "title": "Session Id",
-                        "type": "string"
+                        "type": "string",
+                        "title": "Session Id"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "session_id"
+                ],
+                "title": "SessionInfo"
+            },
+            "SessionListResponse": {
+                "properties": {
+                    "sessions": {
+                        "items": {
+                            "$ref": "#/components/schemas/SessionInfo"
+                        },
+                        "type": "array",
+                        "title": "Sessions"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "sessions"
+                ],
+                "title": "SessionListResponse"
+            },
+            "SessionNotFoundError": {
+                "properties": {
+                    "session_id": {
+                        "type": "string",
+                        "title": "Session Id"
                     },
-                    "code": {
-                        "title": "Code",
-                        "type": "string"
-                    },
-                    "environment_variables": {
-                        "title": "Environment Variables",
-                        "type": "object",
-                        "additionalProperties": {
+                    "error": {
+                        "type": "string",
+                        "title": "Error"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "session_id",
+                    "error"
+                ],
+                "title": "SessionNotFoundError"
+            },
+            "SessionPingRequest": {
+                "properties": {
+                    "session_ids": {
+                        "items": {
                             "type": "string"
-                        }
-                    },
-                    "local_variables": {
-                        "title": "Local Variables",
-                        "type": "object",
-                        "additionalProperties": {
+                        },
+                        "type": "array",
+                        "title": "Session Ids"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "session_ids"
+                ],
+                "title": "SessionPingRequest"
+            },
+            "SessionPingResponse": {
+                "properties": {
+                    "session_infos": {
+                        "items": {
+                            "$ref": "#/components/schemas/SessionInfo"
+                        },
+                        "type": "array",
+                        "title": "Session Infos"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "session_infos"
+                ],
+                "title": "SessionPingResponse"
+            },
+            "ValidationError": {
+                "properties": {
+                    "loc": {
+                        "items": {
                             "anyOf": [
                                 {
                                     "type": "string"
                                 },
                                 {
-                                    "type": "boolean"
-                                },
-                                {
                                     "type": "integer"
-                                },
-                                {
-                                    "type": "number"
-                                },
-                                {
-                                    "$ref": "#/components/schemas/BoxedFloat"
                                 }
                             ]
-                        }
-                    }
-                }
-            },
-            "SessionInfo": {
-                "title": "SessionInfo",
-                "required": [
-                    "session_id"
-                ],
-                "type": "object",
-                "properties": {
-                    "session_id": {
-                        "title": "Session Id",
-                        "type": "string"
-                    }
-                }
-            },
-            "SessionListResponse": {
-                "title": "SessionListResponse",
-                "required": [
-                    "sessions"
-                ],
-                "type": "object",
-                "properties": {
-                    "sessions": {
-                        "title": "Sessions",
+                        },
                         "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/SessionInfo"
-                        }
-                    }
-                }
-            },
-            "SessionNotFoundError": {
-                "title": "SessionNotFoundError",
-                "required": [
-                    "session_id",
-                    "error"
-                ],
-                "type": "object",
-                "properties": {
-                    "session_id": {
-                        "title": "Session Id",
-                        "type": "string"
+                        "title": "Location"
                     },
-                    "error": {
-                        "title": "Error",
-                        "type": "string"
+                    "msg": {
+                        "type": "string",
+                        "title": "Message"
+                    },
+                    "type": {
+                        "type": "string",
+                        "title": "Error Type"
                     }
-                }
-            },
-            "SessionPingRequest": {
-                "title": "SessionPingRequest",
-                "required": [
-                    "session_ids"
-                ],
+                },
                 "type": "object",
-                "properties": {
-                    "session_ids": {
-                        "title": "Session Ids",
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
-                    }
-                }
-            },
-            "SessionPingResponse": {
-                "title": "SessionPingResponse",
-                "required": [
-                    "session_infos"
-                ],
-                "type": "object",
-                "properties": {
-                    "session_infos": {
-                        "title": "Session Infos",
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/components/schemas/SessionInfo"
-                        }
-                    }
-                }
-            },
-            "ValidationError": {
-                "title": "ValidationError",
                 "required": [
                     "loc",
                     "msg",
                     "type"
                 ],
-                "type": "object",
-                "properties": {
-                    "loc": {
-                        "title": "Location",
-                        "type": "array",
-                        "items": {
-                            "anyOf": [
-                                {
-                                    "type": "string"
-                                },
-                                {
-                                    "type": "integer"
-                                }
-                            ]
-                        }
-                    },
-                    "msg": {
-                        "title": "Message",
-                        "type": "string"
-                    },
-                    "type": {
-                        "title": "Error Type",
-                        "type": "string"
-                    }
-                }
+                "title": "ValidationError"
             }
         }
     }
