@@ -21,15 +21,31 @@ development faster, your code cleaner, and your integrations more robust.
 
 ```mermaid
 graph BT
-  D[Developers] <--> D1[API #1]
-  D <--> D2[API #...]
-  D <--> D3[API #N]
+  D[Developers 😤] --> D1{API #1}
+  D --> D2[API #2]
+  D --> D3((API #3))
+  style D1 fill:#f9f,stroke:#333
+  style D2 fill:#f96,stroke:#666
+  style D3 fill:#f99,stroke:#999
 ```
 
 Developers often grapple with the challenges of integrating multiple external
 APIs. The inconsistencies in documentation, the need for continuous updates, and
 the tedious task of translating these documents into usable SDKs consume
 valuable time and resources.
+
+```mermaid
+graph BT
+  D[Developers 🤩] --> S1[SDK #1] --> D1{API #1}
+  D --> S2[SDK #2] --> D2[API #2]
+  D --> S3[SDK #3] --> D3((API #3))
+  style D1 fill:#f9f,stroke:#333
+  style D2 fill:#f96,stroke:#666
+  style D3 fill:#f99,stroke:#999
+```
+
+With Konfig, you let us do the parsing and translation to SDKs, so you can focus
+on core business logic.
 
 ## Features and Benefits
 
@@ -44,44 +60,63 @@ code, and expand your app's capabilities with more external integrations.
 
 ## How does it work?
 
+![konfig-sdk-how-it-works](/img/konfig-sdks-how-it-works.png)
 
-First, we maintain the highest quality collection of OpenAPI Specifications on
-the internet. This collection is open and MIT-licensed so you can use it
-freely.
+1. We maintain the [highest quality collection of OpenAPI Specifications
+on the internet](https://github.com/konfig-sdks/openapi-examples). This collection
+is open and MIT-licensed so you can use it freely.
+2. Generate SDKs from the OpenAPI Specifications.
+3. Distribute the SDKs to you through standard package managers
 
-![openapi-examples](/img/openapi-examples.png)
+Finally, whenever an SDK is updated, we will notify you.
 
-We then generate SDKs from the OpenAPI Specifications.
-
-!
-
-![konfig-sdk](/img/konfig-sdk.png)
-
-By signing up, you get an access token that grants you access to your SDKs. You
-can then use the SDKs to integrate the APIs you need into your projects.
-
+By signing up, you will receive an access token that grants you access to our
+SDKs. You can then use the SDKs to integrate the APIs you need into your
+projects.
 
 ## Konfig SDKs vs. Universal API Solutions
 
-Konfig SDKs offer two key advantages over universal API solutions: **pricing and
-security**.
+Konfig SDKs offer three key advantages over universal API solutions: **pricing,
+security, and comprehensiveness**.
 
-### Expensive
+### Pricing
+
+![Cost Comparison](./assets/cost_comparison.png)
 
 Unlike costly universal API solutions that charge $100s per connected account
 per month, Konfig SDKs offer a transparent and affordable pricing model. At just
 [$50 per month](/sdk/#pricing), you get unlimited access to our SDKs, ensuring
 your projects stay within budget.
 
-### Insecure
+### Security
 
-Moreover, existing universal API solutions also introduce potential security
-concerns for data-sensitive applications. By adding a universal API layer to
-your infrastructure, you introduce a potential security risk to your data by
-potentially storing sensitive information in the provider's infrastructure or
-leaking information in-transit. Konfig SDKs, on the other hand, ensure your data
-remains secure and private by connecting you directly to the API provider's
-infrastructure.
+```mermaid
+graph TD
+  D[Developer] --> A1[API Provider]
+  DD[Developer] --> UA((Universal API)) --> A2[API Provider]
+  style UA fill:#930,stroke:#999,stroke-width:2px,color:#fff;
+```
+
+Universal API solutions introduce potential security concerns for data-sensitive
+applications. By adding a universal API layer to your infrastructure, you
+introduce a potential security risk to your data by passing sensitive
+information through the provider's infrastructure, possibly leaking information
+in-transit. Konfig SDKs, on the other hand, ensure your data remains secure and
+private by connecting you directly to the API provider's infrastructure.
+
+### Comprehensiveness
+
+We simply offer connections to more APIs than universal API solutions.
+
+<Figure caption={<a href="/sdk/category/all">Checkout our selection of SDKs</a>}>
+![Selection](./assets/sdks.png)
+</Figure>
+
+## What if I stop using Konfig SDKs?
+
+If you stop using Konfig SDKs, you will no longer have access to updates. But we
+offer a way to export your SDKs so your applications can continue to operate
+without a subscription.
 
 ## The Future
 
