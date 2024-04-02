@@ -10,7 +10,7 @@ import { cloudflareImageFromGitHub } from './cloudflare-image-from-github'
 import { Octokit } from '@octokit/rest'
 
 /**
- * Transforms image links in markdown to point to the raw image on GitHub
+ * Transforms image links in markdown to point to the image on Cloudflare Images
  * @returns The markdown with image links transformed
  */
 export async function transformImageLinks(
