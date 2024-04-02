@@ -6,6 +6,7 @@ import { generateFaviconLink } from './generate-favicon-link'
 import { generateLogoLink } from './generate-logo-link'
 import { githubGetOpenApiSpec } from './github-get-openapi-spec'
 import { githubGetKonfigYaml } from './github-get-konfig-yaml'
+import * as nodePath from 'path'
 
 export type GithubResources = UnwrapPromise<
   ReturnType<typeof githubGetReferenceResources>
@@ -72,5 +73,6 @@ export async function githubGetReferenceResources({
     logo: logoLink,
     spec,
     konfigYaml: konfigYaml.content,
+    konfigYamlDir: nodePath.dirname(konfigYaml.info.path),
   }
 }

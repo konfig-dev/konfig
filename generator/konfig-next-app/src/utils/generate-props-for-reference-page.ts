@@ -24,6 +24,7 @@ import { createOctokitInstance } from './octokit'
 import { transformSpecForReferencePage } from './transform-spec-for-reference-page'
 import { githubGetFileContent } from './github-get-file-content'
 import { githubGetCustomSnippet } from './github-get-custom-snippet'
+import * as nodePath from 'path'
 
 export type ReferencePageProps = Omit<GithubResources, 'spec'> & {
   spec: Spec['spec']
@@ -279,6 +280,7 @@ export async function generatePropsForReferencePage({
       owner,
       repo,
       octokit,
+      konfigYamlDir: nodePath.dirname(props.konfigYamlDir),
     })
   ).allMarkdown
 

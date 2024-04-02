@@ -147,7 +147,7 @@ export async function generatePropsForMarkdownPage({
     octokit,
     owner,
     repo,
-    path: doc.path,
+    path: path.join(path.dirname(konfigYaml.info.path), doc.path),
   })
 
   const specPath = konfigYaml.content.specPath
@@ -193,6 +193,7 @@ export async function generatePropsForMarkdownPage({
       owner,
       repo,
       octokit,
+      konfigYamlDir: path.dirname(konfigYaml.info.path),
     })
 
   const breadcrumb = idToBreadcrumbs[documentId]

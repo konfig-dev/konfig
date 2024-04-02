@@ -10,9 +10,9 @@ import { generateLogoLink } from './generate-logo-link'
 import { MarkdownPageProps } from './generate-props-for-markdown-page'
 import { computeDocumentProps } from './compute-document-props'
 import { githubGetKonfigYamlsSafe } from './github-get-konfig-yamls-safe'
-import { extractMetaDescription } from './extract-meta-description'
 import { githubGetCustomSnippet } from './github-get-custom-snippet'
 import { transformImageLinks } from './transform-image-links'
+import * as nodePath from 'path'
 
 /**
  * Custom mappings to preserve existing links for SnapTrade
@@ -186,6 +186,7 @@ async function _fetch({
       repo,
       owner,
       konfigYaml: konfigYaml.content,
+      konfigYamlDir: nodePath.dirname(konfigYaml.info.path),
     })) ?? []
 
   const portal: Portal = {
@@ -206,6 +207,7 @@ async function _fetch({
       owner,
       repo,
       octokit,
+      konfigYamlDir: nodePath.dirname(konfigYaml.info.path),
     })
   ).allMarkdown
 
@@ -250,11 +252,13 @@ export async function getDemos({
   repo,
   owner,
   octokit,
+  konfigYamlDir,
 }: {
   konfigYaml: KonfigYamlType
   repo: string
   owner: string
   octokit: Octokit
+  konfigYamlDir: string
 }) {
   if (konfigYaml?.portal?.demos === undefined) {
     return null
@@ -265,9 +269,14 @@ export async function getDemos({
   const content = await Promise.all(
     markdownFiles.map(async ({ path, ...rest }) => {
       return {
-        content: await githubGetFileContent({ path, repo, owner, octokit }),
+        content: await githubGetFileContent({
+          path: nodePath.join(konfigYamlDir, path),
+          repo,
+          owner,
+          octokit,
+        }),
         ...rest,
-        path,
+        path: nodePath.join(konfigYamlDir, path),
       }
     })
   )

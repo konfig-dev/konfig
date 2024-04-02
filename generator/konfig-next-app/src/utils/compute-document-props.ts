@@ -8,6 +8,7 @@ import { githubGetOpenApiSpec } from './github-get-openapi-spec'
 import { isOperationHidden } from './is-operation-hidden'
 import { TABS, TabType } from '@/components/HeaderButton'
 import { getDemos } from './generate-demos-from-github'
+import * as nodePath from 'path'
 
 type SearchRecordBase = {
   id: string
@@ -35,11 +36,13 @@ export async function computeDocumentProps({
   owner,
   repo,
   octokit,
+  konfigYamlDir,
 }: {
   documentationConfig?: DocumentationConfig
   octokit: Octokit
   owner: string
   repo: string
+  konfigYamlDir: string
 }) {
   // get all docs with collectAllDocumentation and generate a map of id to label from first heading text
   const docs = documentationConfig
@@ -52,7 +55,7 @@ export async function computeDocumentProps({
       octokit,
       owner,
       repo,
-      path,
+      path: nodePath.join(konfigYamlDir, path),
     })
     idToContent[id] = content
     const docTitle = findFirstHeadingText({ markdown: content })
@@ -123,6 +126,7 @@ export async function computeDocumentProps({
     octokit,
     repo,
     owner,
+    konfigYamlDir: nodePath.dirname(konfigYaml.info.path),
   })
 
   if (demos !== null) {
