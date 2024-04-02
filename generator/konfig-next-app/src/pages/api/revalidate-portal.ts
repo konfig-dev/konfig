@@ -22,6 +22,10 @@ export default async function handler(
   const { owner, repo } = requestBodySchema.parse(req.body)
   const domains = findDomainsForOwnerAndRepo({ owner, repo })
 
+  /**
+   * This has to be cleared before recomputing pages
+   * because the pages depend on the cache
+   */
   await clearGithubApiCache()
 
   const toRevalidate = [

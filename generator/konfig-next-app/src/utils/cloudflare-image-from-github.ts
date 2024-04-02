@@ -17,9 +17,16 @@ export async function cloudflareImageFromGitHub({
   path: string
   octokit: Octokit
 }): Promise<{ cdnUrl: string }> {
+  const base64 = await githubGetFileContent({
+    owner,
+    repo,
+    path,
+    octokit,
+    base64: true,
+  })
   const cache = await getCloudflareImagesRedisCache({
     namespace: 'cloudflare-images-from-github',
-    imagePath: path,
+    base64,
     owner,
     repo,
   })
@@ -28,13 +35,6 @@ export async function cloudflareImageFromGitHub({
   }
   const client = new Cloudflare({
     apiToken: process.env.CLOUDFLARE_IMAGES_API_KEY,
-  })
-  const base64 = await githubGetFileContent({
-    owner,
-    repo,
-    path,
-    octokit,
-    base64: true,
   })
 
   // base64 to File object
@@ -59,7 +59,7 @@ export async function cloudflareImageFromGitHub({
   const url = cdnUrl(image.id)
   await setCloudflareImagesRedisCache({
     namespace: 'cloudflare-images-from-github',
-    imagePath: path,
+    base64,
     owner,
     repo,
     value: url,

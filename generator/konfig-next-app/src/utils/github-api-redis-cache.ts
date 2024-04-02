@@ -1,4 +1,5 @@
 import { createClient } from 'redis'
+import crypto from 'crypto'
 
 function redisUrl() {
   if (process.env.GITHUB_API_REDIS_CACHE) {
@@ -91,7 +92,7 @@ export async function setOpenAiRedisCache({
 
 export async function setCloudflareImagesRedisCache({
   namespace,
-  imagePath,
+  base64,
   value,
   owner,
   repo,
@@ -99,26 +100,29 @@ export async function setCloudflareImagesRedisCache({
   namespace: CloudflareNamespaces
   owner: string
   repo: string
-  imagePath: string
+  base64: string
   value: string
 }) {
   await _setCache({
     namespace,
-    key: computeCloudflareImagesCacheKey({ imagePath, owner, repo }),
+    key: computeCloudflareImagesCacheKey({ base64, owner, repo }),
     value,
   })
 }
 
 function computeCloudflareImagesCacheKey({
-  imagePath,
+  base64,
   owner,
   repo,
 }: {
-  imagePath: string
+  base64: string
   owner: string
   repo: string
 }) {
-  return `${owner}:${repo}:${imagePath}`
+  const hash = crypto.createHash('sha256')
+  hash.update(base64)
+  const shortenedBase64 = hash.digest('hex')
+  return `${owner}:${repo}:${shortenedBase64}`
 }
 
 export async function setGithubApiCache({
@@ -173,18 +177,18 @@ export async function getOpenAiRedisCache({
 
 export async function getCloudflareImagesRedisCache({
   namespace,
-  imagePath,
+  base64,
   owner,
   repo,
 }: {
   namespace: CloudflareNamespaces
-  imagePath: string
+  base64: string
   owner: string
   repo: string
 }) {
   return await _getCache({
     namespace,
-    key: computeCloudflareImagesCacheKey({ imagePath, owner, repo }),
+    key: computeCloudflareImagesCacheKey({ base64, owner, repo }),
   })
 }
 
