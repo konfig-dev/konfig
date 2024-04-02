@@ -1,6 +1,10 @@
 import { Octokit } from '@octokit/rest'
 import { githubGetFileContent } from './github-get-file-content'
 import Cloudflare from 'cloudflare'
+import {
+  getCloudflareImagesRedisCache,
+  setCloudflareImagesRedisCache,
+} from './github-api-redis-cache'
 
 export async function cloudflareImageFromGitHub({
   owner,
@@ -13,10 +17,18 @@ export async function cloudflareImageFromGitHub({
   path: string
   octokit: Octokit
 }): Promise<{ cdnUrl: string }> {
+  const cache = await getCloudflareImagesRedisCache({
+    namespace: 'cloudflare-images-from-github',
+    imagePath: path,
+    owner,
+    repo,
+  })
+  if (cache !== null) {
+    return { cdnUrl: cache }
+  }
   const client = new Cloudflare({
     apiToken: process.env.CLOUDFLARE_IMAGES_API_KEY,
   })
-  console.log('cloudfiare-images-from-github/path:', path)
   const file = await githubGetFileContent({
     owner,
     repo,
@@ -24,14 +36,31 @@ export async function cloudflareImageFromGitHub({
     octokit,
   })
 
+  const account_id = 'ea6df732f6c006b5d1f0742e77d04bad'
   const image = await client.images.v1.create({
-    account_id: 'ea6df732f6c006b5d1f0742e77d04bad',
-    file: file,
+    account_id,
+    file,
   })
   if (image.id === undefined) {
     throw new Error('Failed to create image')
   }
-  return { cdnUrl: cdnUrl(image.id) }
+  await client.images.v1.edit(image.id, {
+    account_id,
+    metadata: {
+      owner,
+      repo,
+      path,
+    },
+  })
+  const url = cdnUrl(image.id)
+  await setCloudflareImagesRedisCache({
+    namespace: 'cloudflare-images-from-github',
+    imagePath: path,
+    owner,
+    repo,
+    value: url,
+  })
+  return { cdnUrl: url }
 }
 
 function cdnUrl(id: string) {
