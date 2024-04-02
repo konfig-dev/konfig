@@ -42,12 +42,13 @@ export async function githubGetReferenceResources({
     owner,
     repo,
   })
-  const logoLink = generateLogoLink({
+  const logoLink = await generateLogoLink({
     konfigYaml: konfigYaml.content,
     defaultBranch: repoData.default_branch,
     konfigYamlPath: konfigYaml.info.path,
     owner,
     repo,
+    octokit,
   })
 
   // time the next three lines

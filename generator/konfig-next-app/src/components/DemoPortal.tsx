@@ -39,7 +39,7 @@ import { FlexCenter } from '@/components/FlexCenter'
 import { navLinkColor } from '@/utils/nav-link-color'
 import { asideOffsetBreakpoint } from '@/utils/aside-offset-breakpoint'
 import { navbarOffsetBreakpoint } from '@/utils/navbar-offset-breakpoint'
-import type { generateLogoLink } from '@/utils/generate-logo-link'
+import type { GenerateLogoLinkResponse } from '@/utils/generate-logo-link'
 import { useNavbarStyles } from '@/utils/use-navbar-styles'
 import { NavbarSectionLabel } from './NavbarSectionLabel'
 import { navbarLinkColor } from './NavbarLink'
@@ -185,7 +185,7 @@ export const DemoPortal = observer(
     owner: string
     allMarkdown: MarkdownPageProps['allMarkdown']
     repo: string
-    logo: ReturnType<typeof generateLogoLink>
+    logo: GenerateLogoLinkResponse
   }) => {
     const theme = useMantineTheme()
     const { colorScheme, toggleColorScheme } = useMantineColorScheme()

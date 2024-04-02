@@ -3,7 +3,7 @@ import { Dispatch, SetStateAction } from 'react'
 import { HeaderWrapper } from './HeaderWrapper'
 import { TABS } from './HeaderButton'
 import { HeaderTabs } from './HeaderTabs'
-import type { generateLogoLink } from '@/utils/generate-logo-link'
+import type { GenerateLogoLinkResponse } from '@/utils/generate-logo-link'
 import { MarkdownPageProps } from '@/utils/generate-props-for-markdown-page'
 
 export function ReferenceHeader({
@@ -27,7 +27,7 @@ export function ReferenceHeader({
   owner: string
   allMarkdown: MarkdownPageProps['allMarkdown']
   repo: string
-  logo: ReturnType<typeof generateLogoLink>
+  logo: GenerateLogoLinkResponse
 }) {
   return (
     <HeaderWrapper

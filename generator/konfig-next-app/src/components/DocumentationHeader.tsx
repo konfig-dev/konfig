@@ -4,7 +4,7 @@ import { HeaderWrapper } from './HeaderWrapper'
 import { navbarOffsetBreakpoint } from '@/utils/navbar-offset-breakpoint'
 import { HeaderTabs } from './HeaderTabs'
 import { TABS } from './HeaderButton'
-import type { generateLogoLink } from '@/utils/generate-logo-link'
+import type { GenerateLogoLinkResponse } from '@/utils/generate-logo-link'
 import { MarkdownPageProps } from '@/utils/generate-props-for-markdown-page'
 
 export function DocumentationHeader({
@@ -25,7 +25,7 @@ export function DocumentationHeader({
   omitOwnerAndRepo?: boolean
   owner: string
   repo: string
-  logo: ReturnType<typeof generateLogoLink>
+  logo: GenerateLogoLinkResponse
   allMarkdown: MarkdownPageProps['allMarkdown']
 }) {
   return (

@@ -15,7 +15,7 @@ import { Dispatch, SetStateAction } from 'react'
 import Image from 'next/image'
 import { useBaseUrl } from '@/utils/use-base-url'
 import Link from 'next/link'
-import type { generateLogoLink } from '@/utils/generate-logo-link'
+import type { GenerateLogoLinkResponse } from '@/utils/generate-logo-link'
 import { useHeaderColor } from '@/utils/use-header-color'
 import { MarkdownPageProps } from '@/utils/generate-props-for-markdown-page'
 import { Search } from './Search'
@@ -39,7 +39,7 @@ export const LayoutHeader = observer(
     opened: boolean
     setOpened: Dispatch<SetStateAction<boolean>>
     breakpoint: MantineNumberSize
-    logo: ReturnType<typeof generateLogoLink>
+    logo: GenerateLogoLinkResponse
     allMarkdown: MarkdownPageProps['allMarkdown']
   }) => {
     const theme = useMantineTheme()

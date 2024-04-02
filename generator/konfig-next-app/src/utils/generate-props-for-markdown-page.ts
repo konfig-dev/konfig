@@ -17,7 +17,10 @@ import { createOctokitInstance } from './octokit'
 import { transformImageLinks } from './transform-image-links'
 import { transformInternalLinks } from './transform-internal-links'
 import { generateFaviconLink } from './generate-favicon-link'
-import { generateLogoLink } from './generate-logo-link'
+import {
+  GenerateLogoLinkResponse,
+  generateLogoLink,
+} from './generate-logo-link'
 import { computeDocumentProps } from './compute-document-props'
 import { githubGetKonfigYamlsSafe } from './github-get-konfig-yamls-safe'
 import { extractMetaDescription } from './extract-meta-description'
@@ -54,7 +57,7 @@ export type MarkdownPageProps = {
 
   omitOwnerAndRepo: boolean
   faviconLink: string | null
-  logo: ReturnType<typeof generateLogoLink>
+  logo: GenerateLogoLinkResponse
 }
 
 export async function generatePropsForMarkdownPage({
@@ -101,12 +104,13 @@ export async function generatePropsForMarkdownPage({
     repo,
   })
 
-  const logoLink = generateLogoLink({
+  const logoLink = await generateLogoLink({
     konfigYaml: konfigYaml.content,
     defaultBranch,
     konfigYamlPath: konfigYaml.info.path,
     owner,
     repo,
+    octokit,
   })
 
   const documentationConfig = konfigYaml?.content.portal?.documentation

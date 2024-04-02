@@ -6,7 +6,10 @@ import { githubGetRepository } from './github-get-repository'
 import type { KonfigYamlType, SocialObject } from 'konfig-lib'
 import { Octokit } from '@octokit/rest'
 import { generateFaviconLink } from './generate-favicon-link'
-import { generateLogoLink } from './generate-logo-link'
+import {
+  GenerateLogoLinkResponse,
+  generateLogoLink,
+} from './generate-logo-link'
 import { MarkdownPageProps } from './generate-props-for-markdown-page'
 import { computeDocumentProps } from './compute-document-props'
 import { githubGetKonfigYamlsSafe } from './github-get-konfig-yamls-safe'
@@ -42,7 +45,7 @@ export type FetchResult = {
   mainBranch: string
   hasDocumentation: boolean
   faviconLink: string | null
-  logo: ReturnType<typeof generateLogoLink>
+  logo: GenerateLogoLinkResponse
 }
 
 export type GenerationResult =
@@ -96,7 +99,7 @@ export async function generateDemosDataFromGithub({
       hasDocumentation: boolean
       allMarkdown: MarkdownPageProps['allMarkdown']
       faviconLink: string | null
-      logo: ReturnType<typeof generateLogoLink>
+      logo: GenerateLogoLinkResponse
     }
   | { result: 'error'; reason: 'no demos' }
   | { result: 'error'; reason: 'demo not found' }
@@ -172,12 +175,13 @@ async function _fetch({
     owner,
     repo,
   })
-  const logoLink = generateLogoLink({
+  const logoLink = await generateLogoLink({
     konfigYaml: konfigYaml.content,
     defaultBranch: repository.data.default_branch,
     konfigYamlPath: konfigYaml.info.path,
     owner,
     repo,
+    octokit,
   })
 
   const demos =
