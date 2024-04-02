@@ -156,7 +156,7 @@ const useStyles = createStyles((theme) => ({
       ...(theme.colorScheme === 'dark'
         ? {}
         : {
-            boxShadow: theme.shadows.xs,
+            // boxShadow: theme.shadows.xs,
           }),
     },
   },
