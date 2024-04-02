@@ -223,12 +223,13 @@ async function _fetch({
   })
 
   for (const demo of portal.demos) {
-    demo.markdown = transformImageLinks({
+    demo.markdown = await transformImageLinks({
       markdown: demo.markdown,
       owner,
       repo,
       docPath: demo.path,
-      defaultBranch: repository.data.default_branch,
+      octokit,
+      konfigYamlDir: '',
     })
   }
 

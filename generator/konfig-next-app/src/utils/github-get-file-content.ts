@@ -47,11 +47,13 @@ export async function githubGetFileContent({
   owner,
   repo,
   path,
+  base64,
 }: {
   octokit: Octokit
   owner: string
   repo: string
   path: string
+  base64?: boolean
 }): Promise<string> {
   const cacheKey = computeCacheKey({ owner, repo, path })
   const cached = await getGithubApiCache({
@@ -76,9 +78,9 @@ export async function githubGetFileContent({
       'content' in response.data
     ) {
       // Decode the file content from Base64
-      const content = Buffer.from(response.data.content, 'base64').toString(
-        'utf-8'
-      )
+      const content = base64
+        ? response.data.content
+        : Buffer.from(response.data.content, 'base64').toString('utf-8')
       await setGithubApiCache({
         namespace: 'content',
         key: cacheKey,

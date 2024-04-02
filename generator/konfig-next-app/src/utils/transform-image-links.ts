@@ -6,14 +6,16 @@ import { Node } from 'unist'
 import directive from 'remark-directive'
 import { visit } from 'unist-util-visit'
 import path from 'path'
+import { cloudflareImageFromGitHub } from './cloudflare-image-from-github'
+import { Octokit } from '@octokit/rest'
 
 /**
  * Transforms image links in markdown to point to the raw image on GitHub
  * @returns The markdown with image links transformed
  */
-export function transformImageLinks(
+export async function transformImageLinks(
   input: TransformLinksInput & { markdown: string }
-): string {
+): Promise<string> {
   // Use Unified to parse, transform, and stringify the markdown
   const processor = unified()
     .use(parse)
@@ -22,7 +24,7 @@ export function transformImageLinks(
     .use(transformLinks(input))
     .use(stringify)
 
-  const result = processor.processSync(input.markdown).toString()
+  const result = (await processor.process(input.markdown)).toString()
   return result
 }
 
@@ -34,58 +36,95 @@ interface ImageNode extends Node {
 type TransformLinksInput = {
   owner: string
   repo: string
-  defaultBranch: string
   docPath: string
+  octokit: Octokit
+  konfigYamlDir: string
 }
 
 function transformLinks({
   owner,
   repo,
-  defaultBranch,
   docPath,
-}: TransformLinksInput): () => (tree: Node) => void {
-  return () => (tree) => {
+  octokit,
+  konfigYamlDir,
+}: TransformLinksInput): () => (tree: Node) => Promise<void> {
+  return () => async (tree) => {
+    const promises: Promise<void>[] = []
     visit(tree, 'image', (node: ImageNode) => {
       if (isImageNode(node)) {
-        node.url = generateRawGitHubUserContentLink({
-          owner,
-          repo,
-          defaultBranch,
-          docPath,
-          url: node.url,
-        })
+        promises.push(
+          (async () => {
+            node.url = await generateRawGitHubUserContentLink({
+              owner,
+              repo,
+              docPath,
+              url: node.url,
+              octokit,
+              konfigYamlDir,
+            })
+          })()
+        )
       }
     })
     visit(tree, 'html', (node: any) => {
       if (node.value.includes('<img')) {
-        node.value = (node.value as string).replace(
-          /src="([^"]*)"/,
-          (_match, src) => {
-            return `src="${generateRawGitHubUserContentLink({
-              owner,
-              repo,
-              defaultBranch,
-              docPath,
-              url: src,
-            })}"`
-          }
-        )
+        const replaceValue = async () => {
+          node.value = await replaceAsync(
+            node.value as string,
+            /src="([^"]*)"/,
+            async (_match, src) => {
+              return `src="${await generateRawGitHubUserContentLink({
+                owner,
+                repo,
+                docPath,
+                url: src,
+                octokit,
+                konfigYamlDir,
+              })}"`
+            }
+          )
+        }
+        promises.push(replaceValue())
       }
     })
+
+    await Promise.all(promises)
   }
 }
 
-function generateRawGitHubUserContentLink({
+async function replaceAsync(
+  str: string,
+  regex: RegExp,
+  asyncFn: (full: string, ...args: any[]) => Promise<string>
+) {
+  const promises: Promise<string>[] = []
+  str.replace(regex, (full, ...args) => {
+    promises.push(asyncFn(full, ...args))
+    return full
+  })
+  const data = await Promise.all(promises)
+  return str.replace(regex, () => data.shift() || '')
+}
+
+async function generateRawGitHubUserContentLink({
   owner,
   repo,
-  defaultBranch,
   docPath,
   url,
+  octokit,
+  konfigYamlDir,
 }: TransformLinksInput & { url: string }) {
-  return `https://raw.githubusercontent.com/${owner}/${repo}/${defaultBranch}/${path.join(
-    path.dirname(docPath),
-    url
-  )}`
+  const relativePath = path.join(
+    konfigYamlDir,
+    path.join(path.dirname(docPath), url)
+  )
+  const image = await cloudflareImageFromGitHub({
+    owner,
+    repo,
+    path: relativePath,
+    octokit,
+  })
+  return image.cdnUrl
 }
 
 function isImageNode(node: Node): node is ImageNode {

@@ -29,12 +29,16 @@ export async function cloudflareImageFromGitHub({
   const client = new Cloudflare({
     apiToken: process.env.CLOUDFLARE_IMAGES_API_KEY,
   })
-  const file = await githubGetFileContent({
+  const base64 = await githubGetFileContent({
     owner,
     repo,
     path,
     octokit,
+    base64: true,
   })
+
+  // base64 to File object
+  const file = new File([Buffer.from(base64, 'base64')], path)
 
   const account_id = 'ea6df732f6c006b5d1f0742e77d04bad'
   const image = await client.images.v1.create({

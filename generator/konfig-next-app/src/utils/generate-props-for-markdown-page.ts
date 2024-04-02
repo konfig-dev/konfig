@@ -167,7 +167,7 @@ export async function generatePropsForMarkdownPage({
   const spec = await parseSpec(openapi)
   const operations = getOperations({ spec: spec.spec })
 
-  const markdown = transformImageLinks({
+  const markdown = await transformImageLinks({
     markdown: transformInternalLinks({
       markdown: originalMarkdown,
       owner,
@@ -178,7 +178,8 @@ export async function generatePropsForMarkdownPage({
     owner,
     repo,
     docPath: doc.path,
-    defaultBranch,
+    octokit,
+    konfigYamlDir: path.dirname(konfigYaml.info.path),
   })
 
   const demos = await generateDemosDataFromGithub({
