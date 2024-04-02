@@ -20,6 +20,7 @@ export async function generateDemosFromFilenameAndContentWithoutMetaDescriptions
       markdown: content,
       showCode: showCode ?? null,
       metaDescription: '',
+      path: '',
     })
   }
 
