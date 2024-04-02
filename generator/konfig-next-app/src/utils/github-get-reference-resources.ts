@@ -35,12 +35,12 @@ export async function githubGetReferenceResources({
     octokit,
   })
 
-  const faviconLink = generateFaviconLink({
+  const faviconLink = await generateFaviconLink({
     konfigYaml: konfigYaml.content,
-    defaultBranch: repoData.default_branch,
     konfigYamlPath: konfigYaml.info.path,
     owner,
     repo,
+    octokit,
   })
   const logoLink = await generateLogoLink({
     konfigYaml: konfigYaml.content,

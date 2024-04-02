@@ -1,26 +1,31 @@
 import { KonfigYamlType } from 'konfig-lib'
 import path from 'path'
+import { cloudflareImageFromGitHub } from './cloudflare-image-from-github'
+import { Octokit } from '@octokit/rest'
 
-export function generateFaviconLink({
+export async function generateFaviconLink({
   konfigYaml,
-  defaultBranch,
   konfigYamlPath,
   owner,
   repo,
+  octokit,
 }: {
   konfigYaml: KonfigYamlType
-  defaultBranch: string
   konfigYamlPath: string
   owner: string
   repo: string
-}): string | null {
+  octokit: Octokit
+}): Promise<string | null> {
   const faviconRelativePath = konfigYaml.portal?.favicon
   if (faviconRelativePath === undefined) {
     return null
   }
-  const url = `https://raw.githubusercontent.com/${owner}/${repo}/${defaultBranch}/${path.join(
-    path.dirname(konfigYamlPath),
-    faviconRelativePath
-  )}`
-  return url
+  const konfigYamlDir = path.dirname(konfigYamlPath)
+  const image = await cloudflareImageFromGitHub({
+    owner,
+    repo,
+    path: path.join(konfigYamlDir, faviconRelativePath),
+    octokit,
+  })
+  return image.cdnUrl
 }

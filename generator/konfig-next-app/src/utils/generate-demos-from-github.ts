@@ -168,12 +168,12 @@ async function _fetch({
   if (konfigYaml.content.portal === undefined)
     throw Error('No portal configuration found')
 
-  const faviconLink = generateFaviconLink({
+  const faviconLink = await generateFaviconLink({
     konfigYaml: konfigYaml.content,
-    defaultBranch: repository.data.default_branch,
     konfigYamlPath: konfigYaml.info.path,
     owner,
     repo,
+    octokit,
   })
   const logoLink = await generateLogoLink({
     konfigYaml: konfigYaml.content,

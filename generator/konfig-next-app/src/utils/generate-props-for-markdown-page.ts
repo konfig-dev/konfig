@@ -96,12 +96,12 @@ export async function generatePropsForMarkdownPage({
   // TODO: handle multiple konfig.yaml
   const konfigYaml = konfigYamls[0]
 
-  const faviconLink = generateFaviconLink({
+  const faviconLink = await generateFaviconLink({
     konfigYaml: konfigYaml.content,
-    defaultBranch,
     konfigYamlPath: konfigYaml.info.path,
     owner,
     repo,
+    octokit,
   })
 
   const logoLink = await generateLogoLink({
