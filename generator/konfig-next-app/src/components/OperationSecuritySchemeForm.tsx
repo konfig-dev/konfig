@@ -69,12 +69,18 @@ export function OperationSecuritySchemeForm({
   )
 }
 
-export function OperationClientStateForm({ name }: { name: string }) {
+export function OperationClientStateForm({
+  name,
+  required,
+}: {
+  name: string
+  required?: boolean
+}) {
   const form = useFormContext()
   const formInputName = `${SECURITY_FORM_NAME_PREFIX}.${name}.${CLIENT_STATE_VALUE_PROPERTY}`
   return (
     <PasswordInput
-      withAsterisk
+      withAsterisk={required !== false}
       label={name}
       placeholder={name}
       {...form.getInputProps(formInputName)}

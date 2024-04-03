@@ -118,6 +118,10 @@ export function OperationReferenceMain({
     () => typecriptConfig.clientState ?? [],
     [typecriptConfig]
   )
+  const clientStateWithExamples = useMemo(
+    () => typecriptConfig.clientStateWithExamples ?? [],
+    [typecriptConfig]
+  )
 
   const hideSecurity = konfigYaml.portal?.hideSecurity ?? []
 
@@ -127,6 +131,7 @@ export function OperationReferenceMain({
     clientState,
     hideSecurity,
     requestBodyParameter,
+    clientStateWithExamples,
   })
 
   console.debug('OperationReferenceMain.formValues', formValues)
@@ -151,6 +156,7 @@ export function OperationReferenceMain({
         repo,
         hideSecurity,
         requestBodyParameter,
+        clientStateWithExamples,
       })
       console.debug(initialValues)
       if (initialValues) {
@@ -429,6 +435,15 @@ export function OperationReferenceMain({
                   })}
                 {clientState.map((name) => {
                   return <OperationClientStateForm key={name} name={name} />
+                })}
+                {clientStateWithExamples.map(({ name, required }) => {
+                  return (
+                    <OperationClientStateForm
+                      required={required}
+                      key={name}
+                      name={name}
+                    />
+                  )
                 })}
               </div>
             )}

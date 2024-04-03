@@ -20,6 +20,7 @@ describe('generateInitialFormValues', () => {
       securitySchemes: {},
       hideSecurity: [],
       clientState: [],
+      clientStateWithExamples: [],
     })
     expect(initialValues).toMatchInlineSnapshot(`
       {
@@ -75,6 +76,7 @@ describe('generateInitialFormValues', () => {
       securitySchemes: {},
       hideSecurity: [],
       clientState: [],
+      clientStateWithExamples: [],
     })
 
     expect(initialValues).toMatchInlineSnapshot(`
@@ -138,6 +140,7 @@ describe('generateInitialFormValues', () => {
       securitySchemes: {},
       hideSecurity: [],
       clientState: [],
+      clientStateWithExamples: [],
     })
     expect(initialValues).toMatchInlineSnapshot(`
       {
@@ -189,6 +192,7 @@ describe('generateInitialFormValues', () => {
       securitySchemes: {},
       hideSecurity: [],
       clientState: [],
+      clientStateWithExamples: [],
     })
     expect(initialValues).toMatchInlineSnapshot(`
       {
@@ -235,6 +239,7 @@ describe('generateInitialFormValues', () => {
       securitySchemes: {},
       hideSecurity: [],
       clientState: [],
+      clientStateWithExamples: [],
     })
     expect(initialValues).toMatchInlineSnapshot(`
       {
@@ -271,6 +276,7 @@ describe('generateInitialFormValues', () => {
       securitySchemes: {},
       hideSecurity: [],
       clientState: [],
+      clientStateWithExamples: [],
     })
     expect(initialValues).toMatchInlineSnapshot(`
       {
