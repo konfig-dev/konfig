@@ -1,5 +1,21 @@
 # konfig-cli
 
+## 1.38.35
+
+### Patch Changes
+
+- [`867d8803c`](https://github.com/konfig-dev/konfig/commit/867d8803c762ea89f764ef4f36eaba83483d72cd) Thanks [@dphuang2](https://github.com/dphuang2)! - fix 400 error code from openai when generating operation id / set seed to 0
+
+- [`4388544d5`](https://github.com/konfig-dev/konfig/commit/4388544d58ab7790cd3441f13a9185f7aad5d990) Thanks [@dphuang2](https://github.com/dphuang2)! - handle null value in enum when fixing enum with incorrect type
+
+- [`9227f741d`](https://github.com/konfig-dev/konfig/commit/9227f741d5d7709f354a713d63f8df7ba6a6a76e) Thanks [@dphuang2](https://github.com/dphuang2)! - fix references to non-existent security schemes in "konfig fix"
+
+- [`8d2489de`](https://github.com/konfig-dev/konfig/commit/8d2489de65132cda28da334f9c33636ff10ea3c6) Thanks [@dphuang2](https://github.com/dphuang2)! - trim operation ID suffix when updating operation's operationId
+
+- [`0584afec`](https://github.com/konfig-dev/konfig/commit/0584afecd6bb3956c1014f4da0fb802e59f4b227) Thanks [@dphuang2](https://github.com/dphuang2)! - fix paths without leading slash
+
+- [`6c4fab0c`](https://github.com/konfig-dev/konfig/commit/6c4fab0c082124cc9e57695c7cd727fef45a71dc) Thanks [@eddiechayes](https://github.com/eddiechayes)! - add allow warnings flag to swift publish script
+
 ## 1.38.34
 
 ### Patch Changes
