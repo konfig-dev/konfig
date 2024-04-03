@@ -486,6 +486,19 @@ public interface GenerateApi {
                     }).collect(Collectors.toList())); // added for CSharp setter in {{clientName}}.cs
         }
 
+        /**
+         * Set example to upper snake case if empty
+         */
+        if (additionalProperties.getClientStateWithExamples() != null) {
+            additionalProperties.getClientStateWithExamples().forEach(state -> {
+                if (state.getExample() != null) return;
+
+                String upperSnakeCase = StringUtils.underscore(state.getName()).toUpperCase();
+
+                state.setExample(upperSnakeCase);
+            });
+        }
+
         putIfPresent(map, "clientStateWithExamples", additionalProperties.getClientStateWithExamples());
         if (additionalProperties.getClientStateWithExamples() != null) {
             putIfPresent(map, "clientStateWithExamplesWithUpperSnakeCase",
