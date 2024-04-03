@@ -387,7 +387,7 @@ function generateFormInputValues({
               value: (value) => {
                 console.log(`Validating ${name}`, value, 'required', required)
                 if (required === false) {
-                  return true
+                  return null
                 }
                 return isNotEmpty(`${name} is required`)(value)
               },
