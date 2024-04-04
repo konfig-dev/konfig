@@ -1727,7 +1727,7 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
                 for (int i = 0; i < p.getAnyOf().size(); i++) {
                     List<Schema> anyOf = p.getAnyOf();
                     Schema s = anyOf.get(i);
-                    sb.append(getTypeString(s, prefix, suffix, referencedModelNames));
+                    sb.append(getTypeString(s, "", "", referencedModelNames));
                     if (i < p.getAnyOf().size() - 1) {
                         sb.append(", ");
                     }
