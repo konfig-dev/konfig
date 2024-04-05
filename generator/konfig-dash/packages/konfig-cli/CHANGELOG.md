@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.38.36
+
+### Patch Changes
+
+- [#679](https://github.com/konfig-dev/konfig/pull/679) [`791e38b2`](https://github.com/konfig-dev/konfig/commit/791e38b2d3dcb852ab098f43434adee38d1d334c) Thanks [@eddiechayes](https://github.com/eddiechayes)! - fix publishing for go sdk
+
 ## 1.38.35
 
 ### Patch Changes
