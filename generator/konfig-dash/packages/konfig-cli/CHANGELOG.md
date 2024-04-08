@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.38.37
+
+### Patch Changes
+
+- [`51c0eaeb`](https://github.com/konfig-dev/konfig/commit/51c0eaeb4f869683c66f4aa7d12dc86a6622b139) Thanks [@eddiechayes](https://github.com/eddiechayes)! - fix go publish command
+
 ## 1.38.36
 
 ### Patch Changes
