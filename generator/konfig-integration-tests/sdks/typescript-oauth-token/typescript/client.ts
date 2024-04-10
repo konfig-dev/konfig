@@ -17,12 +17,17 @@ import { Configuration, ConfigurationParameters } from "./configuration";
 import { TypescriptOauthTokenClientCustom } from "./client-custom";
 
 export class TypescriptOauthTokenClient extends TypescriptOauthTokenClientCustom {
-  readonly test: TestApi;
+  test: TestApi;
+  config: Configuration;
 
   constructor(configurationParameters: ConfigurationParameters) {
     super(configurationParameters);
-    const configuration = new Configuration(configurationParameters);
-    this.test = new TestApi(configuration);
+    this.config = new Configuration(configurationParameters);
+    this.test = new TestApi(this.config);
   }
 
+  setOauthTokenUrl(url: string) {
+    this.config.oauthTokenUrl = url;
+    this.test = new TestApi(this.config);
+  }
 }
