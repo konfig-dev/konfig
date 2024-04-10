@@ -167,8 +167,12 @@ export const setOAuthToObject = async function (object: any, name: string, scope
             decodedToken = jwtDecode(previousToken);
         } catch (e) {}
         if (decodedToken !== undefined && decodedToken.exp !== undefined && decodedToken.exp < currentTime
-            || configuration.accessTokenExpiresIn !== undefined && configuration.accessTokenExpiresIn < currentTime)
+            || configuration.accessTokenExpiresIn !== undefined && configuration.accessTokenExpiresIn < currentTime) {
+
+            configuration.accessToken = undefined;
+            configuration.accessTokenExpiresIn = undefined;
             await authenticate();
+        }
     }
 
     /**
