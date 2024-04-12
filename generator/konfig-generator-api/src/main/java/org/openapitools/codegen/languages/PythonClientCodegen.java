@@ -2614,6 +2614,8 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
         } else if (ModelUtils.isBinarySchema(schema)) {
             // format stores that this is binary
             model.isString = true;
+        } else {
+            model.isPrimitiveType = true;
         }
     }
 
