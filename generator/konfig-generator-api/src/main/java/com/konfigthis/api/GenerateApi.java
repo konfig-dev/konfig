@@ -286,7 +286,7 @@ public interface GenerateApi {
                     additionalProperties.getRemoveDefaultConfigurationParameters());
         putIfPresent(map, "apiPackage", additionalProperties.getApiPackage());
         putIfPresent(map, "omitSecurityRequirementsFromTopLevelClient",
-                additionalProperties.getomitSecurityRequirementsFromTopLevelClient());
+                additionalProperties.getOmitSecurityRequirementsFromTopLevelClient());
         if (additionalProperties.getReadmeOperation() != null)
             putIfPresent(map, "readmeOperationId", additionalProperties.getReadmeOperation().getOperationId());
         putIfPresent(map, "useDescriptionInOperationTableDocumentation",
@@ -314,6 +314,7 @@ public interface GenerateApi {
         putIfPresent(map, "pubRepository", additionalProperties.getPubRepository());
         putIfPresent(map, "pubVersion", additionalProperties.getPubVersion());
         putIfPresent(map, "supportPhp7", additionalProperties.getSupportPhp7());
+        putIfPresent(map, "guzzle6", additionalProperties.getGuzzle6());
         putIfPresent(map, "projectName", additionalProperties.getProjectName());
         putIfPresent(map, "dependencies", additionalProperties.getDependencies());
         putIfPresent(map, "disallowAdditionalPropertiesIfNotPresent",
