@@ -29,7 +29,7 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use GuzzleHttp\BodySummarizer;
+use GuzzleHttp\Handler\CurlHandler;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Utils;
@@ -105,8 +105,8 @@ class AccountInformationApi extends \SnapTrade\CustomApi
 
         // Do not truncate error messages
         // https://github.com/guzzle/guzzle/issues/2185#issuecomment-800293420
-        $stack = new HandlerStack(Utils::chooseHandler());
-        $stack->push(Middleware::httpErrors(new BodySummarizer(10000)), 'http_errors');
+        $stack = new HandlerStack(new CurlHandler());
+        $stack->push(Middleware::httpErrors(), 'http_errors');
         $stack->push(Middleware::redirect(), 'allow_redirects');
         $stack->push(Middleware::cookies(), 'cookies');
         $stack->push(Middleware::prepareBody(), 'prepare_body');
