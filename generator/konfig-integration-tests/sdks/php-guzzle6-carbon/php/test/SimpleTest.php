@@ -63,13 +63,13 @@ class SimpleTest extends TestCase
         $carbon = new \Carbon\Client(
             apiKey: "API_KEY",
             customerId: "CUSTOMER_ID",
-            host: "http://127.0.0.1:4067"
+            host: "http://127.0.0.1:4119"
         );
         $token = $carbon->auth->getAccessToken();
         $this->assertNotEmpty($token);
         $carbon = new \Carbon\Client(
             accessToken: $token->getAccessToken(),
-            host: "http://127.0.0.1:4067"
+            host: "http://127.0.0.1:4119"
         );
         $whiteLabeling = $carbon->auth->getWhiteLabeling();
         $this->assertNotEmpty($whiteLabeling);
@@ -80,7 +80,7 @@ class SimpleTest extends TestCase
         $carbon = new \Carbon\Client(
             apiKey: "API_KEY",
             customerId: "CUSTOMER_ID",
-            host: "http://127.0.0.1:4067"
+            host: "http://127.0.0.1:4119"
         );
         $result = $carbon->utilities->fetchYoutubeTranscripts(
             id: "id_example",

@@ -47,7 +47,7 @@ class GettingStartedTest extends TestCase
         $snaptrade = new \SnapTrade\Client(
             clientId: "SNAPTRADE_CLIENT_ID",
             consumerKey: "SNAPTRADE_CONSUMER_KEY",
-            host: "http://127.0.0.1:4070"
+            host: "http://127.0.0.1:4131"
         );
 
         // 2) Check that the client is able to make a request to the API server.
@@ -74,7 +74,7 @@ class GettingStartedTest extends TestCase
         $snaptrade = new \SnapTrade\Client(
             clientId: "SNAPTRADE_CLIENT_ID",
             consumerKey: "SNAPTRADE_CONSUMER_KEY",
-            host: "http://127.0.0.1:4070",
+            host: "http://127.0.0.1:4131",
             verifySsl: false,
         );
         $result = $snaptrade->apiStatus->check();
@@ -86,7 +86,7 @@ class GettingStartedTest extends TestCase
         $snaptrade = new \SnapTrade\Client(
             clientId: "SNAPTRADE_CLIENT_ID",
             consumerKey: "SNAPTRADE_CONSUMER_KEY",
-            host: "http://127.0.0.1:4070"
+            host: "http://127.0.0.1:4131"
         );
         $user_id = "SNAPTRADE_TEST_USER_ID";
         $user_secret = "SNAPTRADE_TEST_USER_SECRET";
@@ -109,7 +109,7 @@ class GettingStartedTest extends TestCase
         $snaptrade = new \SnapTrade\Client(
             clientId: "SNAPTRADE_CLIENT_ID",
             consumerKey: "SNAPTRADE_CONSUMER_KEY",
-            host: "http://127.0.0.1:4070"
+            host: "http://127.0.0.1:4131"
         );
         $userId = "SNAPTRADE_TEST_USER_ID";
         $userSecret = "SNAPTRADE_TEST_USER_SECRET";
@@ -133,7 +133,7 @@ class GettingStartedTest extends TestCase
         $snaptrade = new \SnapTrade\Client(
             clientId: "SNAPTRADE_CLIENT_ID",
             consumerKey: "SNAPTRADE_CONSUMER_KEY",
-            host: "http://127.0.0.1:4070"
+            host: "http://127.0.0.1:4131"
         );
 
         // 2) Check that the client is able to make a request to the API server.
