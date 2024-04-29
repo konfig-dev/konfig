@@ -1,5 +1,12 @@
 # konfig-spectral-ruleset
 
+## 1.6.4
+
+### Patch Changes
+
+- Updated dependencies [[`953129f5a`](https://github.com/konfig-dev/konfig/commit/953129f5a2696cabde4c573fe74c2888efa24d39)]:
+  - konfig-lib@1.37.4
+
 ## 1.6.3
 
 ### Patch Changes
