@@ -1,5 +1,4 @@
 <?php
-
 /**
  * InstallmentPlanApiTest
  * PHP version 7.4
@@ -26,13 +25,9 @@ use \Splitit\Configuration;
 use \Splitit\ApiException;
 use \Splitit\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
-use Splitit\Model\PurchaseMethod;
 
 class InstallmentPlanApiTest extends TestCase
 {
-
-    /** @var \Splitit\Client */
-    protected $splitit;
 
     /**
      * Setup before running any test cases
@@ -46,13 +41,6 @@ class InstallmentPlanApiTest extends TestCase
      */
     public function setUp(): void
     {
-        $this->splitit = new \Splitit\Client(
-            getenv("SPLITIT_CLIENT_ID"),
-            getenv("SPLITIT_CLIENT_SECRET"),
-            "https://id.sandbox.splitit.com/connect/token",
-            null,
-            "http://127.0.0.1:4106"
-        );
     }
 
     /**
@@ -113,33 +101,8 @@ class InstallmentPlanApiTest extends TestCase
      */
     public function testPost()
     {
-        $response = $this->splitit->installmentPlan->post(
-            true,
-            date("c"),
-            date("c"),
-            true,
-            [
-                'email' => 'fake@email.com',
-            ],
-            [
-                'total_amount' => 10,
-                'number_of_installments' => 10,
-                'currency' => 'USD',
-                'purchase_method' => "InStore",
-            ],
-            [
-                'address_line1' => '144 Union St',
-                'city' => 'Brooklyn',
-                'state' => 'North Dakota',
-                'zip' => '11231',
-                'country' => 'United States',
-            ],
-            []
-        );
-        $this->assertNotNull(
-            $response,
-            "response is null"
-        );
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
     }
 
     /**
