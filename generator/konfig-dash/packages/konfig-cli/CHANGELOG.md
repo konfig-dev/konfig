@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.38.39
+
+### Patch Changes
+
+- [#687](https://github.com/konfig-dev/konfig/pull/687) [`d12d57a66`](https://github.com/konfig-dev/konfig/commit/d12d57a66563bec09371e71d08e23e50554c47df) Thanks [@eddiechayes](https://github.com/eddiechayes)! - fix top-level readme links
+
 ## 1.38.38
 
 ### Patch Changes
