@@ -4,6 +4,13 @@ import { Spec, recurseObject, resolveRef } from 'konfig-lib'
  * Handle the quirks that come with OpenAPI specification so the rest of the
  * front-end React code isn't so convoluted. Instead all the convoluted junk can
  * be handled here.
+ *
+ * 5/14/2024 (Dylan): Fixing a bug with grabbing the schema and description from
+ * an allOf schema for SnapTrade and saw that I commented out code here that
+ * converts allOf to a nicer schema so the React code is less convoluted. I am
+ * not sure what is the best way moving forward but for now i'll just edit the
+ * places that need to handle the complexity such as grabbing the schema name
+ * and move on.
  */
 export function transformSpecForReferencePage({ spec }: { spec: Spec }) {
   if (spec.specDereferenced === null) throw Error("This shouldn't happen")

@@ -2,8 +2,15 @@ import { SchemaObject } from 'konfig-lib'
 import { pluralize } from './pluralize'
 
 export function schemaTypeLabel({ schema }: { schema: SchemaObject }) {
-  const type = schema.type && schema.type
   const nullable = 'nullable' in schema && schema.nullable ? ' or null' : ''
+  if (!('type' in schema)) {
+    if ('allOf' in schema) {
+      if (schema.allOf?.length === 1) {
+        schema = schema.allOf[0] as SchemaObject
+      }
+    }
+  }
+  const type = schema.type && schema.type
   const innerType =
     schema.type === 'array' ? (schema.items as SchemaObject).type : null
   const arrayOf =

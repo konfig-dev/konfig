@@ -7,11 +7,12 @@ import {
   rem,
   useMantineTheme,
 } from '@mantine/core'
-import type { ParameterObject, SchemaObject } from 'konfig-lib'
+import { type ParameterObject, type SchemaObject } from 'konfig-lib'
 import { ParameterInput } from './ParameterInput'
 import { schemaTypeLabel } from '@/utils/schema-type-label'
 import dynamic from 'next/dynamic'
 import { OperationParameterObjectForm } from './OperationParameterObjectForm'
+import { getParameterDescription } from '@/utils/get-parameter-description'
 
 /**
  * dynamic import to avoid SSR hydration errors where server-rendered HTML does not match client-rendered HTML
@@ -44,7 +45,7 @@ export function OperationParameter({
   repo: string
   noLabel?: boolean
 }) {
-  const description = getDescription(param)
+  const description = getParameterDescription(param)
   const theme = useMantineTheme()
   return (
     <Stack pb="lg">
@@ -134,12 +135,4 @@ export function OperationParameter({
       />
     </Stack>
   )
-}
-
-function getDescription(param: Parameter) {
-  if (param.description !== undefined) return param.description
-  if (param.schema !== undefined) {
-    if ('$ref' in param.schema) throw Error('Did not expect $ref in schema')
-    return param.schema.description
-  }
 }
