@@ -17,7 +17,7 @@ export default function WorkableTypeScriptSdk() {
       companyKebabCase="workable"
       clientNameCamelCase="workable"
       homepage="workable.com"
-      lastUpdated={new Date("2024-03-28T16:58:37.353Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/workable/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -2085,11 +2085,11 @@ export default function WorkableTypeScriptSdk() {
       language="TypeScript"
       apiTitle="public"
       apiBaseUrl="https://www.workable.com/api"
-      apiVersion="3.7"
-      endpoints={49}
-      sdkMethods={54}
+      apiVersion="3.8"
+      endpoints={50}
+      sdkMethods={55}
       schemas={153}
-      parameters={139}
+      parameters={141}
       difficulty="Easy"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/workable/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/workable/openapi.yaml"

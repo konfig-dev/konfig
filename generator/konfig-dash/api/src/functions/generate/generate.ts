@@ -772,6 +772,7 @@ async function queuePhpGeneration({
         clientState: generatorConfig.clientState,
         clientStateWithExamples: generatorConfig.clientStateWithExamples,
         supportPhp7: generatorConfig.supportPhp7,
+        guzzle6: generatorConfig.guzzle6,
       },
       packageName: generatorConfig.packageName,
       artifactVersion: generatorConfig.version,

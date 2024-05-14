@@ -17,7 +17,7 @@ export default function RatedTypeScriptSdk() {
       companyKebabCase="rated"
       clientNameCamelCase="rated"
       homepage="rated.network"
-      lastUpdated={new Date("2024-03-29T22:55:31.557Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/rated/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -4223,11 +4223,11 @@ export default function RatedTypeScriptSdk() {
       apiTitle="Rated API Beta"
       apiBaseUrl="https://api.rated.network"
       apiVersion="0.0.1"
-      endpoints={77}
-      sdkMethods={80}
+      endpoints={49}
+      sdkMethods={49}
       schemas={133}
-      parameters={408}
-      difficulty="Hard"
+      parameters={149}
+      difficulty="Medium"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/rated/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/rated/openapi.yaml"
       developerDocumentation="api-docs.rated.network/rated-api/api-reference"

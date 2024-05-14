@@ -25,7 +25,7 @@ With Secoda, data teams save time and enable revenue teams with better data, fas
       companyKebabCase="secoda"
       clientNameCamelCase="secoda"
       homepage="secoda.co"
-      lastUpdated={new Date("2024-03-29T23:26:19.590Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/secoda/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -5515,10 +5515,10 @@ With Secoda, data teams save time and enable revenue teams with better data, fas
       apiTitle="Secoda API"
       apiBaseUrl="https://api.secoda.co"
       apiVersion="1.0.0"
-      endpoints={51}
-      sdkMethods={105}
+      endpoints={54}
+      sdkMethods={111}
       schemas={66}
-      parameters={289}
+      parameters={305}
       difficulty="Medium"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/secoda/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/secoda/openapi.yaml"

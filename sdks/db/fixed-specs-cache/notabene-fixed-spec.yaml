@@ -6270,6 +6270,8 @@ rawSpecString: |
             $ref: '#/components/schemas/Text'
           nationalIdentification:
             $ref: '#/components/schemas/NationalIdentification'
+          dateOfRegistration:
+            $ref: '#/components/schemas/Date'
           countryOfRegistration:
             $ref: '#/components/schemas/ivms101_CountryCode'
       ivms101_Person:
@@ -6675,6 +6677,8 @@ rawSpecString: |
             $ref: '#/components/schemas/Text'
           nationalIdentification:
             $ref: '#/components/schemas/pii_NationalIdentification'
+          dateOfRegistration:
+            $ref: '#/components/schemas/Text'
           countryOfRegistration:
             $ref: '#/components/schemas/Text'
       pii_Person:
@@ -7549,7 +7553,7 @@ rawSpecString: |
             description: >-
               Autopopulate originator and beneficiary fields with institution's
               information
-          blockchainTransactionDate:
+          blockchainTransactionTimestamp:
             $ref: '#/components/schemas/DateTime'
       NotabeneCryptoAssetNotAvailable:
         type: object
@@ -7724,6 +7728,9 @@ rawSpecString: |
             $ref: '#/components/schemas/OwnershipProof'
           protocol:
             $ref: '#/components/schemas/tr_TravelRuleProtocol'
+          skipBeneficiaryDataValidation:
+            type: boolean
+            description: Disable beneficiary data validation (opportunistic compliance)
           isNonCustodial:
             type: boolean
             description: Is a Non Custodial Transfer
@@ -7734,7 +7741,7 @@ rawSpecString: |
             description: >-
               Autopopulate originator and beneficiary fields with institution's
               information
-          blockchainTransactionDate:
+          blockchainTransactionTimestamp:
             $ref: '#/components/schemas/DateTime'
       TransactionNotifyRequest:
         type: object
@@ -8219,4 +8226,4 @@ rawSpecString: |
           actionData:
             type: string
             description: Action Data
-konfigCliVersion: 1.38.34
+konfigCliVersion: 1.38.37

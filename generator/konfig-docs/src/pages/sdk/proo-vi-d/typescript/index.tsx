@@ -17,7 +17,7 @@ export default function ProoViDTypeScriptSdk() {
       companyKebabCase="proo-vi-d"
       clientNameCamelCase="prooViD"
       homepage="www.proovid.com/"
-      lastUpdated={new Date("2024-03-27T01:23:25.425Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/proovid/favicon.png"
       contactUrl="http://www.proovid.com"
       contactEmail="info@proovid.com"
@@ -1266,10 +1266,10 @@ export default function ProoViDTypeScriptSdk() {
       apiTitle="Proovid Electronic Verification"
       apiBaseUrl="https://proovidapi.azurewebsites.net/"
       apiVersion="v1"
-      endpoints={27}
-      sdkMethods={31}
+      endpoints={29}
+      sdkMethods={33}
       schemas={93}
-      parameters={106}
+      parameters={109}
       difficulty="Easy"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/proovid/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/proovid/openapi.yaml"

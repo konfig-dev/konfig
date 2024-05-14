@@ -1,0 +1,17 @@
+{% if current_chat %}
+  <div class="pt-2.5 pb-0.5 px-0">
+    <a href="{% url 'chat_view' %}">Create Chat</a>
+  </div>
+{% endif %}
+{% if chats %}
+  <div class="pt-0.5 pr-2.5 pb-2.5 pl-0">
+    <label>Select Chat</label>
+    <ul>
+      {% for chat in chats %}
+        <li class="{% if chat.id == current_chat.id %}font-bold{% endif %}">
+          <a href="{% url 'specific_chat_view' chat_id=chat.chat_id %}">{{ chat.name }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}

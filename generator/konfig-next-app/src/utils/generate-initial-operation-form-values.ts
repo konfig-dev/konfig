@@ -8,6 +8,7 @@ import { ReferencePageProps } from './generate-props-for-reference-page'
 import { recursivelyRemoveEmptyValues } from './recursively-remove-empty-values'
 import { generatePropertiesForSchemaObject } from './generate-properties-for-schema-object'
 import { validateValueForParameter } from './validate-value-for-parameter'
+import type { KonfigYamlType } from 'konfig-lib'
 
 export const FORM_VALUES_LOCAL_STORAGE_KEY = ({
   owner,
@@ -88,6 +89,9 @@ type GenerateInitialFormValuesInput = {
   requestBodyParameter?: Parameter | null
   securitySchemes: ReferencePageProps['securitySchemes']
   clientState: string[]
+  clientStateWithExamples: NonNullable<
+    KonfigYamlType['generators']['typescript']
+  >['clientStateWithExamples']
   hideSecurity: { name: string }[]
   owner: string
   repo: string
@@ -172,6 +176,7 @@ export type GenerateFormInputValuesInput = Pick<
   | 'hideSecurity'
   | 'clientState'
   | 'requestBodyParameter'
+  | 'clientStateWithExamples'
 >
 /**
  * See https://v6.mantine.dev/form/use-form/
@@ -181,6 +186,7 @@ function generateFormInputValues({
   securitySchemes,
   hideSecurity,
   clientState,
+  clientStateWithExamples,
   requestBodyParameter,
 }: GenerateFormInputValuesInput): Required<
   Pick<FormValues, 'initialValues' | 'validate'>
@@ -217,6 +223,7 @@ function generateFormInputValues({
         hideSecurity,
         clientState,
         requestBodyParameter,
+        clientStateWithExamples,
       }
 
       // TODO: handle nested field validation
@@ -255,6 +262,7 @@ function generateFormInputValues({
         hideSecurity,
         clientState,
         requestBodyParameter,
+        clientStateWithExamples,
       }
       const innerInitialValues = generateFormInputValues(innerInput)
       initialValues.parameters[parameter.name] = [
@@ -369,6 +377,29 @@ function generateFormInputValues({
         [SECURITY_TYPE_PROPERTY]: 'clientState',
         [CLIENT_STATE_NAME_PROPERTY]: state,
         [CLIENT_STATE_VALUE_PROPERTY]: '',
+      }
+    }
+    if (clientStateWithExamples !== undefined) {
+      for (const { name, required } of clientStateWithExamples) {
+        const validation: FormValues['validate'] = {
+          [SECURITY_FORM_NAME_PREFIX]: {
+            [name]: {
+              value: (value) => {
+                console.log(`Validating ${name}`, value, 'required', required)
+                if (required === false) {
+                  return null
+                }
+                return isNotEmpty(`${name} is required`)(value)
+              },
+            },
+          },
+        }
+        validate = deepmerge(validation, validate)
+        initialValues.security[name] = {
+          [SECURITY_TYPE_PROPERTY]: 'clientState',
+          [CLIENT_STATE_NAME_PROPERTY]: name,
+          [CLIENT_STATE_VALUE_PROPERTY]: '',
+        }
       }
     }
   }

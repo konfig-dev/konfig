@@ -800,15 +800,15 @@ processed:
 
     ```
 
-    LD-API-Version: 20220603
+    LD-API-Version: 20240415
 
     ```
 
 
     The header value is the version number of the API version you would like to
     request. The number for each version corresponds to the date the version was
-    released in `yyyymmdd` format. In the example above the version `20220603`
-    corresponds to June 03, 2022.
+    released in `yyyymmdd` format. In the example above the version `20240415`
+    corresponds to April 15, 2024.
 
 
     ### Setting the API version per access token
@@ -848,6 +848,33 @@ processed:
 
     |---|---|---|
 
+    | `20240415` | <ul><li>Changed several endpoints from unpaginated to
+    paginated. Use the `limit` and `offset` query parameters to page through the
+    results.</li> <li>Changed the [list access
+    tokens](https://apidocs.launchdarkly.com) endpoint: <ul><li>Response is now
+    paginated with a default limit of `25`</li></ul></li> <li>Changed the [list
+    account members](https://apidocs.launchdarkly.com) endpoint: <ul><li>The
+    `accessCheck` filter is no longer available</li></ul></li> <li>Changed the
+    [list custom roles](https://apidocs.launchdarkly.com) endpoint:
+    <ul><li>Response is now paginated with a default limit of
+    `20`</li></ul></li> <li>Changed the [list feature
+    flags](https://apidocs.launchdarkly.com) endpoint: <ul><li>Response is now
+    paginated with a default limit of `20`</li><li>The `environments` field is
+    now only returned if the request is filtered by environment, using the
+    `filterEnv` query parameter</li><li>The `filterEnv` query parameter supports
+    a maximum of three environments</li><li>The `followerId`, `hasDataExport`,
+    `status`, `contextKindTargeted`, and `segmentTargeted` filters are no longer
+    available</li></ul></li> <li>Changed the [list
+    segments](https://apidocs.launchdarkly.com) endpoint: <ul><li>Response is
+    now paginated with a default limit of `20`</li></ul></li> <li>Changed the
+    [list teams](https://apidocs.launchdarkly.com) endpoint: <ul><li>The
+    `expand` parameter no longer supports including `projects` or
+    `roles`</li><li>In paginated results, the maximum page size is now
+    100</li></ul></li> <li>Changed the [get
+    workflows](https://apidocs.launchdarkly.com) endpoint: <ul><li>Response is
+    now paginated with a default limit of `20`</li><li>The `_conflicts` field in
+    the response is no longer available</li></ul></li> </ul>  | Current |
+
     | `20220603` | <ul><li>Changed the [list
     projects](https://apidocs.launchdarkly.com) return value:<ul><li>Response is
     now paginated with a default limit of `20`.</li><li>Added support for filter
@@ -855,7 +882,7 @@ processed:
     field is omitted by default.</li></ul></li><li>Changed the [get
     project](https://apidocs.launchdarkly.com) return value:<ul><li>The
     `environments` field is now expandable. This field is omitted by
-    default.</li></ul></li></ul> | Current |
+    default.</li></ul></li></ul> | 2025-04-15 |
 
     | `20210729` | <ul><li>Changed the [create approval
     request](https://apidocs.launchdarkly.com) return value. It now returns HTTP
@@ -881,14 +908,18 @@ processed:
 
     | `20160426` | <ul><li>Initial versioning of API. Tokens created before
     versioning have their version set to this.</li></ul> | 2020-12-12 |
+
+
+    To learn more about how EOL is determined, read LaunchDarkly's [End of Life
+    (EOL) Policy](https://launchdarkly.com/policies/end-of-life-policy/).
   apiTitle: LaunchDarkly REST API
-  endpoints: 164
-  sdkMethods: 257
+  endpoints: 166
+  sdkMethods: 259
   schemas: 444
-  parameters: 982
+  parameters: 992
   contactUrl: https://support.launchdarkly.com
   contactEmail: support@launchdarkly.com
   originalCustomRequest:
     lambda: true
   customRequestSpecFilename: launchdarkly.com.yaml
-  difficultyScore: 724.5
+  difficultyScore: 729

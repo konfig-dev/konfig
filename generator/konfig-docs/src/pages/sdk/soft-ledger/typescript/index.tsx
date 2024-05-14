@@ -19,7 +19,7 @@ Our cloud-native accounting software and APIs help organizations manage their di
       companyKebabCase="soft-ledger"
       clientNameCamelCase="softLedger"
       homepage="softledger.com/"
-      lastUpdated={new Date("2024-03-27T21:35:27.963Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/softledger/favicon.png"
       // Missing contactUrl
       contactEmail="support@softledger.com"
@@ -3030,7 +3030,7 @@ Our cloud-native accounting software and APIs help organizations manage their di
       {
         "name": "locationId",
         "schema": "string",
-        "description": "Filters for Wallets (https://api-docs.softledger.com/ in the specified location. Defaults to Global Location when not set."
+        "description": "Filters for Wallets (Receive, Sent, Fee) in the specified location. Defaults to Global Location when not set."
       },
       {
         "name": "filter",
@@ -3090,7 +3090,7 @@ Our cloud-native accounting software and APIs help organizations manage their di
       {
         "name": "locationId",
         "schema": "string",
-        "description": "Filters for Wallets (https://api-docs.softledger.com/ in the specified location. Defaults to Global Location when not set."
+        "description": "Filters for Wallets (Receive, Sent, Fee) in the specified location. Defaults to Global Location when not set."
       },
       {
         "name": "consolidated",
@@ -3151,7 +3151,7 @@ Our cloud-native accounting software and APIs help organizations manage their di
       {
         "name": "locationId",
         "schema": "string",
-        "description": "Filters for Wallets (https://api-docs.softledger.com/ in the specified location. Defaults to Global Location when not set."
+        "description": "Filters for Wallets (Receive, Sent, Fee) in the specified location. Defaults to Global Location when not set."
       },
       {
         "name": "filter",
@@ -3375,7 +3375,7 @@ Our cloud-native accounting software and APIs help organizations manage their di
       {
         "name": "locationId",
         "schema": "string",
-        "description": "Filters for Wallets (https://api-docs.softledger.com/ in the specified location. Defaults to Global Location when not set."
+        "description": "Filters for Wallets (Receive, Sent, Fee) in the specified location. Defaults to Global Location when not set."
       },
       {
         "name": "consolidated",
@@ -4122,7 +4122,7 @@ Our cloud-native accounting software and APIs help organizations manage their di
       {
         "name": "locationId",
         "schema": "string",
-        "description": "Filters for Wallets (https://api-docs.softledger.com/ in the specified location. Defaults to Global Location when not set."
+        "description": "Filters for Wallets (Receive, Sent, Fee) in the specified location. Defaults to Global Location when not set."
       },
       {
         "name": "costLayers",
@@ -4170,7 +4170,7 @@ Our cloud-native accounting software and APIs help organizations manage their di
       {
         "name": "locationId",
         "schema": "string",
-        "description": "Filters for Wallets (https://api-docs.softledger.com/ in the specified location. Defaults to Global Location when not set."
+        "description": "Filters for Wallets (Receive, Sent, Fee) in the specified location. Defaults to Global Location when not set."
       },
       {
         "name": "costLayers",
@@ -11110,7 +11110,7 @@ Our cloud-native accounting software and APIs help organizations manage their di
       {
         "name": "status",
         "schema": "string",
-        "description": "A CSV string containing the statuses you'd like to filter for \njoined with commas (https://api-docs.softledger.com/. ex: 'quote,pending,order'. This \nquery param is optional. \n\n- If you pass this param in addition to a \"status\" filter both will be used. \n- If you pass nothing for this param and a \"status\" filter, the filter will be used. \n- If you pass no status filter and you pass this param, this param will be used.\n"
+        "description": "A CSV string containing the statuses you'd like to filter for \njoined with commas (No spaces). ex: 'quote,pending,order'. This \nquery param is optional. \n\n- If you pass this param in addition to a \"status\" filter both will be used. \n- If you pass nothing for this param and a \"status\" filter, the filter will be used. \n- If you pass no status filter and you pass this param, this param will be used.\n"
       }
     ],
     "responses": [
@@ -15982,7 +15982,7 @@ Our cloud-native accounting software and APIs help organizations manage their di
       {
         "name": "locationId",
         "schema": "string",
-        "description": "Filters for Wallets (https://api-docs.softledger.com/ in the specified location. Defaults to Global Location when not set."
+        "description": "Filters for Wallets (Receive, Sent, Fee) in the specified location. Defaults to Global Location when not set."
       },
       {
         "name": "filter",
@@ -16132,7 +16132,7 @@ Our cloud-native accounting software and APIs help organizations manage their di
       {
         "name": "locationId",
         "schema": "string",
-        "description": "Filters for Wallets (https://api-docs.softledger.com/ in the specified location. Defaults to Global Location when not set."
+        "description": "Filters for Wallets (Receive, Sent, Fee) in the specified location. Defaults to Global Location when not set."
       }
     ],
     "responses": [
@@ -16989,10 +16989,10 @@ Our cloud-native accounting software and APIs help organizations manage their di
       apiTitle="SoftLedger Accounting API v2"
       apiBaseUrl="https://api.softledger.com/v2"
       apiVersion="1.0.0"
-      endpoints={252}
-      sdkMethods={373}
+      endpoints={256}
+      sdkMethods={375}
       schemas={356}
-      parameters={1876}
+      parameters={1885}
       difficulty="Very Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/softledger/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/softledger/openapi.yaml"

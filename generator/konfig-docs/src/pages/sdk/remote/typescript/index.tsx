@@ -21,7 +21,7 @@ Whether you're just starting your global journey, or looking to optimize your ex
       companyKebabCase="remote"
       clientNameCamelCase="remote"
       homepage="remote.com"
-      lastUpdated={new Date("2024-03-28T16:48:14.533Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/remote/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -4625,10 +4625,10 @@ Whether you're just starting your global journey, or looking to optimize your ex
       apiTitle="Remote API"
       apiBaseUrl="https://gateway.remote.com/"
       apiVersion="0.1.0"
-      endpoints={56}
-      sdkMethods={79}
+      endpoints={60}
+      sdkMethods={83}
       schemas={187}
-      parameters={249}
+      parameters={254}
       difficulty="Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/remote/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/remote/openapi.yaml"

@@ -1,19 +1,6 @@
 {
   "securitySchemes": {
     "basicAuth": {
-      "type": "apiKey",
-      "name": "US-CUSTOMER-API-KEY",
-      "in": "header",
-      "scheme": "basic"
-    },
-    "basic": {
-      "type": "http",
-      "name": "US-CUSTOMER-API-KEY",
-      "in": "header",
-      "description": "Basic HTTP Authentication",
-      "scheme": "basic"
-    },
-    "BasicAuth": {
       "type": "http",
       "scheme": "basic"
     },
@@ -24,26 +11,69 @@
           "authorizationUrl": "https://login-dev.ultipro.com/introspect",
           "tokenUrl": "https://identity.mia.ucloud.int/t/ulticonnect/token",
           "scopes": {
+            "": "",
             "recruiting.domain.third-party-job-board-integrations.auto-feed": "Needed for all read requests"
           }
         }
       }
+    },
+    "OPPAuthN": {
+      "type": "oauth2",
+      "flows": {
+        "clientCredentials": {
+          "scopes": {
+            "recruiting.domain.applications.read": "recruiting.domain.applications.read",
+            "recruiting.domain.applications.write": "recruiting.domain.applications.write",
+            "recruiting.domain.candidates.read": "recruiting.domain.candidates.read",
+            "recruiting.domain.candidates.write": "recruiting.domain.candidates.write",
+            "recruiting.domain.opportunities.read": "recruiting.domain.opportunities.read",
+            "recruiting.domain.opportunities.write": "recruiting.domain.opportunities.write",
+            "recruiting.domain.configuration.read": "recruiting.domain.configuration.read",
+            "recruiting.domain.configuration.write": "recruiting.domain.configuration.write",
+            "recruiting.domain.offers.read": "recruiting.domain.offers.read",
+            "recruiting.domain.offers.write": "recruiting.domain.offers.write",
+            "recruiting.domain.candidates.name-email": "recruiting.domain.candidates.name-email",
+            "recruiting.domain.physical-locations.read": "recruiting.domain.physical-locations.read",
+            "recruiting.domain.application-import.read": "recruiting.domain.application-import.read",
+            "recruiting.domain.application-import.create": "recruiting.domain.application-import.create",
+            "recruiting.domain.candidate-import.read": "recruiting.domain.candidate-import.read",
+            "recruiting.domain.candidate-import.create": "recruiting.domain.candidate-import.create",
+            "recruiting.domain.candidates.assessments.read": "recruiting.domain.candidates.assessments.read",
+            "recruiting.domain.candidates.assessments.create": "recruiting.domain.candidates.assessments.create",
+            "recruiting.domain.candidates.background-checks": "recruiting.domain.candidates.background-checks",
+            "recruiting.easy-apply": "recruiting.easy-apply",
+            "recruiting.domain.candidates.assessment.update": "recruiting.domain.candidates.assessment.update",
+            "recruiting.domain.third-party-job-board-integrations.auto-feed": "recruiting.domain.third-party-job-board-integrations.auto-feed",
+            "recruiting.third-party-job-board-integration-application-disposition-events.read": "recruiting.third-party-job-board-integration-application-disposition-events.read"
+          },
+          "tokenUrl": "/signin/oauth2/t/tenantalias/access_token"
+        }
+      }
+    },
+    "BasicAuthentication": {
+      "type": "http",
+      "scheme": "basic"
+    },
+    "Bearer": {
+      "name": "Token",
+      "type": "apiKey",
+      "in": "header"
     }
   },
-  "apiBaseUrl": "{hostname}",
+  "apiBaseUrl": "{tenantId}.{hostname}",
   "apiVersion": "v1",
   "apiDescription": "This API is for UTA customers only.",
-  "apiTitle": "User Defined Fields",
-  "endpoints": 171,
-  "sdkMethods": 203,
+  "apiTitle": "User Profile Details",
+  "endpoints": 239,
+  "sdkMethods": 374,
   "schemas": 488,
-  "parameters": 932,
+  "parameters": 1389,
   "originalCustomRequest": {
     "lambda": true
   },
   "customRequestSpecFilename": "ukg.com.yaml",
-  "difficultyScore": 521,
-  "difficulty": "Hard",
+  "difficultyScore": 794.25,
+  "difficulty": "Very Hard",
   "company": "UKG",
   "sdkName": "ukg-{language}-sdk",
   "clientName": "Ukg",
@@ -51,7 +81,11 @@
   "apiStatusUrls": false,
   "homepage": "ukg.com",
   "developerDocumentation": "developer.ukg.com/hcm/reference",
-  "categories": ["hr", "workforce_management", "payroll"],
+  "categories": [
+    "hr",
+    "workforce_management",
+    "payroll"
+  ],
   "category": "HR Talent & Recruitment",
   "methods": [
     {
@@ -10763,8 +10797,8 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/ukg/imagePreview.jpg",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/ukg/favicon.png",
   "clientNameCamelCase": "ukg",
-  "lastUpdated": "2024-03-28T19:01:23.743Z",
-  "typescriptSdkUsageCode": "import { Ukg } from 'ukg-typescript-sdk';\n\nconst ukg = new Ukg({\n    basicAuth: \"US_CUSTOMER_API_KEY\",\n    // Basic HTTP Authentication\n    username: \"USERNAME\",\n    password: \"PASSWORD\",\n    // username: \"USERNAME\"\n    // password: \"PASSWORD\"\n    clientId: \"CLIENT_ID\",\n    clientSecret: \"CLIENT_SECRET\",\n    redirectUri: \"REDIRECT_URI\"\n})",
+  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "typescriptSdkUsageCode": "import { Ukg } from 'ukg-typescript-sdk';\n\nconst ukg = new Ukg({\n    username: \"USERNAME\",\n    password: \"PASSWORD\",\n    clientId: \"CLIENT_ID\",\n    clientSecret: \"CLIENT_SECRET\",\n    redirectUri: \"REDIRECT_URI\",\n    // clientId: \"CLIENT_ID\"\n    // clientSecret: \"CLIENT_SECRET\"\n    // username: \"USERNAME\"\n    // password: \"PASSWORD\"\n    bearer: \"TOKEN\"\n})",
   "typescriptSdkFirstRequestCode": "// Get Audit Details Data\nconst getDataResponse = ukg.auditDetails.getData({\n    startDateTime: \"STARTDATETIME\"\n    endDateTime: \"ENDDATETIME\"\n    tableName: \"TABLENAME\"\n    fieldName: \"FIELDNAME\"\n})",
   "fixedSpecFileName": "ukg-fixed-spec.yaml"
 }

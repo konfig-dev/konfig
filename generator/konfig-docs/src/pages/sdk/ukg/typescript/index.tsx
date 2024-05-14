@@ -19,7 +19,7 @@ UKG Social Media Guidelines available at https://www.ukg.com/ukg-social-media-gu
       companyKebabCase="ukg"
       clientNameCamelCase="ukg"
       homepage="ukg.com"
-      lastUpdated={new Date("2024-03-28T19:01:23.743Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/ukg/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -10732,14 +10732,14 @@ UKG Social Media Guidelines available at https://www.ukg.com/ukg-social-media-gu
 ]
     }
       language="TypeScript"
-      apiTitle="User Defined Fields"
-      apiBaseUrl="{hostname}"
+      apiTitle="User Profile Details"
+      apiBaseUrl="{tenantId}.{hostname}"
       apiVersion="v1"
-      endpoints={171}
-      sdkMethods={203}
+      endpoints={239}
+      sdkMethods={374}
       schemas={488}
-      parameters={932}
-      difficulty="Hard"
+      parameters={1389}
+      difficulty="Very Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/ukg/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/ukg/openapi.yaml"
       developerDocumentation="developer.ukg.com/hcm/reference"

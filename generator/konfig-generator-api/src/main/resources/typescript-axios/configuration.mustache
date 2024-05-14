@@ -104,6 +104,10 @@ export class Configuration {
      */
     accessToken?: string | Promise<string> | ((name?: string, scopes?: string[]) => string) | ((name?: string, scopes?: string[]) => Promise<string>);
     /**
+     * When the access token expires, measured in Unix time in seconds
+     */
+    accessTokenExpiresIn?: number;
+    /**
      * override base path
      *
      * @type {string}
@@ -135,7 +139,8 @@ export class Configuration {
         this.{{{.}}} = param.{{{.}}}
 {{/clientState}}
 {{#clientStateWithExamples}}
-        this.{{{name}}} = param.{{{name}}}{{/clientStateWithExamples}}{{#removeDefaultConfigurationParameters}}
+        this.{{{name}}} = param.{{{name}}}
+{{/clientStateWithExamples}}{{#removeDefaultConfigurationParameters}}
 {{^hasMultipleApiKeys}}
 {{#apiKeyMethods}}
         this.apiKey = param.apiKey

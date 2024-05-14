@@ -21,7 +21,7 @@ Founded in 2011 and backed by leading venture capitalists, including Kleiner Per
       companyKebabCase="intercom"
       clientNameCamelCase="intercom"
       homepage="intercom.com"
-      lastUpdated={new Date("2024-03-27T21:57:00.629Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/intercom/favicon.png"
       contactUrl="https://developers.intercom.com"
       // Missing contactEmail

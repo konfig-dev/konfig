@@ -21,7 +21,7 @@ With our easy-to-use platform, proven expertise, and focus on user-friendly solu
       companyKebabCase="get-response"
       clientNameCamelCase="getResponse"
       homepage="getresponse.com"
-      lastUpdated={new Date("2024-03-28T22:38:39.499Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/getresponse/favicon.jpg"
       contactUrl="https://app.getresponse.com/feedback.html?devzone=yes"
       contactEmail="getresponse-devzone@cs.getresponse.com"
@@ -11569,7 +11569,7 @@ With our easy-to-use platform, proven expertise, and focus on user-friendly solu
       language="TypeScript"
       apiTitle="GetResponse APIv3"
       apiBaseUrl="https://api.getresponse.com/v3"
-      apiVersion="3.2024-03-04T09:53:07+0000"
+      apiVersion="3.2024-04-12T09:53:44+0000"
       endpoints={134}
       sdkMethods={280}
       schemas={310}

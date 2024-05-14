@@ -19,7 +19,7 @@ For builders, traders, and operators, Fordefi's comprehensive MPC wallet platfor
       companyKebabCase="fordefi"
       clientNameCamelCase="fordefi"
       homepage="fordefi.com"
-      lastUpdated={new Date("2024-03-29T22:11:39.095Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/fordefi/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -3038,10 +3038,10 @@ For builders, traders, and operators, Fordefi's comprehensive MPC wallet platfor
       apiTitle="Fordefi API"
       apiBaseUrl="https://api.fordefi.com/"
       apiVersion="0.2.0"
-      endpoints={38}
-      sdkMethods={44}
+      endpoints={37}
+      sdkMethods={43}
       schemas={526}
-      parameters={146}
+      parameters={160}
       difficulty="Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/fordefi/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/fordefi/openapi.yaml"

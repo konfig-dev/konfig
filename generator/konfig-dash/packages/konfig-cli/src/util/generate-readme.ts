@@ -39,7 +39,14 @@ export async function generateReadme({
           'generator' in config
             ? (config as KonfigYamlAdditionalGeneratorConfig).generator
             : generatorName
-        const sourceUrl = `https://${config.git.host}/${config.git.userId}/${config.git.repoName}/tree/HEAD/${config.outputDirectory}`
+        const generatorIsInSubmodule = await isSubmodule({ 
+          git: config.git,
+          configDir: process.cwd(),
+          directory: config.outputDirectory,
+        })
+        // If the generator is in a submodule, the source URL should not include the output directory
+        const sourceUrlSuffix = generatorIsInSubmodule ? '' : `/${config.outputDirectory}`
+        const sourceUrl = `https://${config.git.host}/${config.git.userId}/${config.git.repoName}/tree/HEAD${sourceUrlSuffix}`
         return {
           language: generatorNameAsDisplayName({
             generatorConfig: config,

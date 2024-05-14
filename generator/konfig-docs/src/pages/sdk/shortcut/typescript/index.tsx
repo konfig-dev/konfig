@@ -19,7 +19,7 @@ Visit https://www.shortcut.com to learn more.`}
       companyKebabCase="shortcut"
       clientNameCamelCase="shortcut"
       homepage="shortcut.com"
-      lastUpdated={new Date("2024-03-27T22:36:36.651Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/shortcut/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -6423,7 +6423,7 @@ Visit https://www.shortcut.com to learn more.`}
       endpoints={72}
       sdkMethods={123}
       schemas={203}
-      parameters={498}
+      parameters={496}
       difficulty="Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/shortcut/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/shortcut/openapi.yaml"

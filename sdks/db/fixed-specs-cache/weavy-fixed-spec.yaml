@@ -21,7 +21,7 @@ rawSpecString: |
   openapi: 3.0.1
   info:
     title: Weavy API
-    version: 22.0.0
+    version: 22.1.0
   paths:
     /api/apps:
       post:
@@ -2115,6 +2115,13 @@ rawSpecString: |
         summary: List conversations
         description: List conversations for the authenticated user.
         parameters:
+          - name: member
+            in: query
+            description: >-
+              User identifier (`id` or `uid`). Used to return conversations where
+              specified user is member.
+            schema:
+              type: string
           - name: unread
             in: query
             description: "`true` lists unread conversations, `false` list read conversations and `null` lists all conversations;\r\n            default is `null`."
@@ -11079,4 +11086,4 @@ rawSpecString: |
       description: "The Webhooks API enable you to register and manage webhooks.\r\nYou can also use the API to list webhook deliveries for a webhook."
   servers:
     - url: https://{WEAVY-SERVER}
-konfigCliVersion: 1.38.34
+konfigCliVersion: 1.38.37

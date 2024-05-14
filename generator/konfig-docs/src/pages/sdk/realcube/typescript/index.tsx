@@ -26,7 +26,7 @@ info@realcube.com`}
       companyKebabCase="realcube"
       clientNameCamelCase="realcube"
       homepage="realcube.com"
-      lastUpdated={new Date("2024-03-29T23:25:02.951Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/realcube/favicon.png"
       // Missing contactUrl
       contactEmail="uwe.forgber@realcube.com"
@@ -18544,10 +18544,10 @@ info@realcube.com`}
       apiTitle="REALCUBE API"
       apiBaseUrl="api.realcube.com/api"
       apiVersion="1.0.0"
-      endpoints={214}
-      sdkMethods={387}
+      endpoints={216}
+      sdkMethods={390}
       schemas={2377}
-      parameters={770}
+      parameters={777}
       difficulty="Very Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/realcube/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/realcube/openapi.yaml"

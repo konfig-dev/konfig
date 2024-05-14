@@ -17,7 +17,7 @@ export default function ChatKittyTypeScriptSdk() {
       companyKebabCase="chat-kitty"
       clientNameCamelCase="chatKitty"
       homepage="chatkitty.com"
-      lastUpdated={new Date("2024-03-29T20:55:24.918Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/chatkitty/favicon.png"
       contactUrl="mailto:support@chatkitty.com"
       // Missing contactEmail
@@ -3372,7 +3372,7 @@ export default function ChatKittyTypeScriptSdk() {
       language="TypeScript"
       apiTitle="ChatKitty Platform API"
       apiBaseUrl="https://api.chatkitty.com"
-      apiVersion="2.57.0"
+      apiVersion="2.58.3"
       endpoints={48}
       sdkMethods={68}
       schemas={125}

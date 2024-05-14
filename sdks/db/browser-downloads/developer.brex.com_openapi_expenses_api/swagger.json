@@ -57,7 +57,10 @@
                 "type": "string"
               }
             },
-            "example": "\n?expand[]=merchant&expand[]=location\n"
+            "example": [
+              "merchant",
+              "location"
+            ]
           },
           {
             "name": "user_id[]",
@@ -131,7 +134,7 @@
               "format": "date-time",
               "nullable": true
             },
-            "example": "\n2023-01-01T23:59:59.999\n"
+            "example": "2023-01-01T23:59:59.999"
           },
           {
             "name": "purchased_at_end",
@@ -143,7 +146,18 @@
               "format": "date-time",
               "nullable": true
             },
-            "example": "\n2023-01-10T23:59:59.999\n"
+            "example": "2023-01-10T23:59:59.999"
+          },
+          {
+            "name": "load_custom_fields",
+            "in": "query",
+            "description": "Load custom fields for the expenses.",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "nullable": true,
+              "default": false
+            }
           },
           {
             "name": "cursor",
@@ -265,7 +279,21 @@
                 "type": "string"
               }
             },
-            "example": "\n?expand[]=merchant&expand[]=location\n"
+            "example": [
+              "merchant",
+              "location"
+            ]
+          },
+          {
+            "name": "load_custom_fields",
+            "in": "query",
+            "description": "Load custom fields for the expense.",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "nullable": true,
+              "default": false
+            }
           }
         ],
         "responses": {
@@ -507,7 +535,8 @@
           "REFUNDED",
           "CASH_ADVANCE",
           "CREDITED",
-          "AWAITING_PAYMENT"
+          "AWAITING_PAYMENT",
+          "SCHEDULED"
         ]
       },
       "ExpenseStatus": {
@@ -521,6 +550,43 @@
           "CANCELED",
           "SPLIT",
           "SETTLED"
+        ]
+      },
+      "PaymentStatusReason": {
+        "type": "string",
+        "description": "The reason for the payment's status.",
+        "enum": [
+          "OTHER",
+          "APPROVED",
+          "EXCEEDED_BUDGET_LIMIT",
+          "BUDGET_EXPIRED",
+          "NO_BUDGET",
+          "BUDGET_NOT_YET_STARTED",
+          "BUDGET_CATEGORY_RESTRICTION",
+          "BUDGET_MERCHANT_RESTRICTION",
+          "SUSPECTED_FRAUD",
+          "EXCEEDED_GLOBAL_LIMIT",
+          "EXCEEDED_USER_LIMIT",
+          "EXCEEDED_CARD_LIMIT",
+          "INVALID_EXPIRATION_DATE",
+          "CARD_NOT_ACTIVE",
+          "INVALID_CARD_CREDENTIALS",
+          "INVALID_BILLING_ADDRESS",
+          "CARD_SUSPENDED",
+          "CARD_TERMINATED",
+          "CARD_EXPIRED",
+          "MCC_BLOCKED",
+          "USER_SUSPENDED",
+          "INVALID_PIN",
+          "INVALID_CVV",
+          "EXCEEDED_PIN_ATTEMPTS",
+          "INSIDE_SANCTIONED_COUNTRY",
+          "SOFT_EXPIRATION",
+          "TRANSFERRED_CARD_NEW_MERCHANT",
+          "EXCEEDED_ANCESTOR_BUDGET_LIMIT",
+          "EXCEEDED_BUDGET_TRANSACTION_LIMIT",
+          "TOS_BLOCKED",
+          "COMPLIANCE_BLOCKED"
         ]
       },
       "CreateAsyncFileUploadResponse": {
@@ -673,8 +739,20 @@
             ]
           },
           "original_amount": {
-            "$ref": "#/components/schemas/Money",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Money"
+              }
+            ],
             "description": "The original amount of the expense is the amount that the employee submitted or incurred for reimbursements or card spends."
+          },
+          "billing_amount": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Money"
+              }
+            ],
+            "description": "The billing amount of the expense is the amount that the entity is charged, on the entity's currency, for reimbursements or card spends."
           },
           "purchased_at": {
             "required": [
@@ -785,8 +863,20 @@
             "nullable": true
           },
           "original_amount": {
-            "$ref": "#/components/schemas/Money",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Money"
+              }
+            ],
             "description": "The original amount of the expense is the amount that the employee submitted or incurred for reimbursements or card spends."
+          },
+          "billing_amount": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Money"
+              }
+            ],
+            "description": "The billing amount of the expense is the amount that the entity is charged, on the entity's currency, for reimbursements or card spends."
           },
           "purchased_at": {
             "required": [
@@ -845,7 +935,8 @@
       "Merchant": {
         "required": [
           "mcc",
-          "raw_descriptor"
+          "raw_descriptor",
+          "country"
         ],
         "type": "object",
         "properties": {
@@ -854,14 +945,21 @@
               "true"
             ],
             "type": "string",
-            "description": "Merchant descriptor"
+            "description": "Merchant descriptor, it can be the merchant name."
           },
           "mcc": {
             "required": [
               "true"
             ],
             "type": "string",
-            "description": "https://en.wikipedia.org/wiki/Merchant_category_code"
+            "description": "A four-digit number listed in ISO 18245 for retail financial services, e.g. 4121 for Taxicabs and Rideshares. Please refer to https://en.wikipedia.org/wiki/Merchant_category_code for more details."
+          },
+          "country": {
+            "required": [
+              "true"
+            ],
+            "type": "string",
+            "description": "Merchant's country, in ISO 3166-1 alpha-3 format."
           }
         }
       },
@@ -902,7 +1000,8 @@
       "Payment": {
         "required": [
           "id",
-          "payment_instrument"
+          "payment_instrument",
+          "status_reason"
         ],
         "type": "object",
         "properties": {
@@ -915,8 +1014,16 @@
           },
           "payment_instrument": {
             "$ref": "#/components/schemas/PaymentInstrument"
+          },
+          "status_reason": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PaymentStatusReason"
+              }
+            ]
           }
-        }
+        },
+        "description": "The payment associated with the expense."
       },
       "PaymentInstrument": {
         "type": "object",

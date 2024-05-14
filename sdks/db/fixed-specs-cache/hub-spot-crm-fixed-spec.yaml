@@ -43,13 +43,13 @@ rawSpecString: |
       - name: Import CRM Guide
         url: https://hubspot.dev/guides/api/crm/imports
       - name: Custom Object Guide
-        url: https://hubspot.dev/guides/api/crm/crm-custom-objects
+        url: https://hubspot.dev/guides/api/crm/objects/crm-custom-objects
       - name: Properties Guide
         url: https://hubspot.dev/guides/api/crm/properties
       - name: Owners Guide
         url: https://hubspot.dev/guides/api/crm/owners
       - name: Timeline Events Guide
-        url: https://hubspot.dev/guides/api/crm/timeline
+        url: https://hubspot.dev/guides/api/crm/extensions/timeline
       - name: Contacts Guide
         url: https://hubspot.dev/guides/api/crm/contacts
       - name: Feedback Submissions Guide
@@ -677,18 +677,26 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - media_bridge.read
+          - private_apps_legacy:
+              - tickets.sensitive
           - private_apps:
               - crm.objects.deals.read
           - private_apps_legacy:
               - timeline
+          - private_apps:
+              - crm.objects.subscriptions.read
           - private_apps_legacy:
               - crm.objects.marketing_events.read
           - oauth2_legacy:
               - crm.objects.marketing_events.write
           - oauth2:
               - crm.objects.deals.read
+          - private_apps:
+              - crm.objects.contacts.sensitive.write
           - private_apps_legacy:
               - contacts
+          - oauth2:
+              - crm.objects.subscriptions.read
           - private_apps:
               - crm.objects.owners.read
           - oauth2:
@@ -705,10 +713,14 @@ rawSpecString: |
               - crm.objects.companies.read
           - oauth2_legacy:
               - crm.objects.marketing_events.read
+          - private_apps:
+              - crm.objects.companies.sensitive.read
           - private_apps_legacy:
               - crm.objects.marketing_events.write
           - private_apps_legacy:
               - crm.schemas.custom.read
+          - private_apps:
+              - crm.objects.deals.sensitive.write
           - private_apps_legacy:
               - crm.objects.goals.read
           - oauth2_legacy:
@@ -721,22 +733,32 @@ rawSpecString: |
               - crm.objects.companies.write
           - oauth2_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.read
           - private_apps_legacy:
               - crm.objects.custom.write
+          - oauth2:
+              - crm.objects.users.read
           - oauth2_legacy:
               - crm.objects.feedback_submissions.read
           - private_apps_legacy:
               - e-commerce
+          - oauth2:
+              - crm.schemas.subscriptions.read
+          - private_apps:
+              - crm.schemas.subscriptions.read
           - private_apps:
               - crm.schemas.companies.read
           - oauth2:
               - crm.schemas.companies.read
+          - private_apps:
+              - crm.objects.deals.sensitive.read
           - oauth2_legacy:
               - e-commerce
           - private_apps_legacy:
-              - crm.objects.feedback_submissions.read
-          - private_apps_legacy:
               - tickets
+          - private_apps_legacy:
+              - crm.objects.feedback_submissions.read
           - oauth2_legacy:
               - crm.objects.goals.read
           - private_apps:
@@ -750,17 +772,23 @@ rawSpecString: |
           - private_apps:
               - crm.objects.contacts.read
           - private_apps:
+              - crm.objects.companies.sensitive.write
+          - private_apps:
               - crm.objects.deals.write
           - oauth2:
               - crm.objects.deals.write
+          - oauth2:
+              - crm.objects.invoices.read
           - private_apps:
               - crm.schemas.deals.read
+          - private_apps:
+              - crm.objects.invoices.read
           - oauth2:
               - crm.schemas.deals.read
           - oauth2:
-              - crm.objects.quotes.write
-          - oauth2:
               - crm.schemas.contacts.read
+          - oauth2:
+              - crm.objects.quotes.write
           - private_apps:
               - crm.objects.quotes.write
           - private_apps:
@@ -770,17 +798,31 @@ rawSpecString: |
           - oauth2:
               - crm.objects.contacts.write
           - private_apps:
+              - crm.schemas.commercepayments.read
+          - private_apps:
               - crm.objects.contacts.write
           - oauth2:
               - crm.objects.line_items.read
+          - private_apps:
+              - crm.objects.custom.sensitive.read
           - oauth2_legacy:
               - crm.objects.custom.read
+          - oauth2:
+              - crm.schemas.commercepayments.read
           - private_apps_legacy:
               - crm.objects.custom.read
           - oauth2:
               - crm.objects.line_items.write
           - private_apps:
               - crm.objects.line_items.write
+          - private_apps:
+              - crm.objects.custom.sensitive.write
+          - oauth2:
+              - crm.schemas.invoices.read
+          - private_apps:
+              - crm.schemas.invoices.read
+          - private_apps:
+              - crm.objects.contacts.sensitive.read
           - oauth2:
               - crm.objects.quotes.read
           - private_apps:
@@ -819,18 +861,26 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - media_bridge.read
+          - private_apps_legacy:
+              - tickets.sensitive
           - private_apps:
               - crm.objects.deals.read
           - private_apps_legacy:
               - timeline
+          - private_apps:
+              - crm.objects.subscriptions.read
           - private_apps_legacy:
               - crm.objects.marketing_events.read
           - oauth2_legacy:
               - crm.objects.marketing_events.write
           - oauth2:
               - crm.objects.deals.read
+          - private_apps:
+              - crm.objects.contacts.sensitive.write
           - private_apps_legacy:
               - contacts
+          - oauth2:
+              - crm.objects.subscriptions.read
           - private_apps:
               - crm.objects.owners.read
           - oauth2:
@@ -847,10 +897,14 @@ rawSpecString: |
               - crm.objects.companies.read
           - oauth2_legacy:
               - crm.objects.marketing_events.read
+          - private_apps:
+              - crm.objects.companies.sensitive.read
           - private_apps_legacy:
               - crm.objects.marketing_events.write
           - private_apps_legacy:
               - crm.schemas.custom.read
+          - private_apps:
+              - crm.objects.deals.sensitive.write
           - private_apps_legacy:
               - crm.objects.goals.read
           - oauth2_legacy:
@@ -863,22 +917,32 @@ rawSpecString: |
               - crm.objects.companies.write
           - oauth2_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.read
           - private_apps_legacy:
               - crm.objects.custom.write
+          - oauth2:
+              - crm.objects.users.read
           - oauth2_legacy:
               - crm.objects.feedback_submissions.read
           - private_apps_legacy:
               - e-commerce
+          - oauth2:
+              - crm.schemas.subscriptions.read
+          - private_apps:
+              - crm.schemas.subscriptions.read
           - private_apps:
               - crm.schemas.companies.read
           - oauth2:
               - crm.schemas.companies.read
+          - private_apps:
+              - crm.objects.deals.sensitive.read
           - oauth2_legacy:
               - e-commerce
           - private_apps_legacy:
-              - crm.objects.feedback_submissions.read
-          - private_apps_legacy:
               - tickets
+          - private_apps_legacy:
+              - crm.objects.feedback_submissions.read
           - oauth2_legacy:
               - crm.objects.goals.read
           - private_apps:
@@ -892,17 +956,23 @@ rawSpecString: |
           - private_apps:
               - crm.objects.contacts.read
           - private_apps:
+              - crm.objects.companies.sensitive.write
+          - private_apps:
               - crm.objects.deals.write
           - oauth2:
               - crm.objects.deals.write
+          - oauth2:
+              - crm.objects.invoices.read
           - private_apps:
               - crm.schemas.deals.read
+          - private_apps:
+              - crm.objects.invoices.read
           - oauth2:
               - crm.schemas.deals.read
           - oauth2:
-              - crm.objects.quotes.write
-          - oauth2:
               - crm.schemas.contacts.read
+          - oauth2:
+              - crm.objects.quotes.write
           - private_apps:
               - crm.objects.quotes.write
           - private_apps:
@@ -912,17 +982,31 @@ rawSpecString: |
           - oauth2:
               - crm.objects.contacts.write
           - private_apps:
+              - crm.schemas.commercepayments.read
+          - private_apps:
               - crm.objects.contacts.write
           - oauth2:
               - crm.objects.line_items.read
+          - private_apps:
+              - crm.objects.custom.sensitive.read
           - oauth2_legacy:
               - crm.objects.custom.read
+          - oauth2:
+              - crm.schemas.commercepayments.read
           - private_apps_legacy:
               - crm.objects.custom.read
           - oauth2:
               - crm.objects.line_items.write
           - private_apps:
               - crm.objects.line_items.write
+          - private_apps:
+              - crm.objects.custom.sensitive.write
+          - oauth2:
+              - crm.schemas.invoices.read
+          - private_apps:
+              - crm.schemas.invoices.read
+          - private_apps:
+              - crm.objects.contacts.sensitive.read
           - oauth2:
               - crm.objects.quotes.read
           - private_apps:
@@ -985,8 +1069,12 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - tickets
+          - private_apps_legacy:
+              - tickets.sensitive
           - oauth2:
               - crm.schemas.deals.write
+          - oauth2:
+              - crm.objects.users.write
           - private_apps_legacy:
               - e-commerce
           - oauth2:
@@ -1003,6 +1091,8 @@ rawSpecString: |
               - e-commerce
           - private_apps_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.write
           - private_apps_legacy:
               - crm.schemas.custom.write
           - private_apps:
@@ -1053,8 +1143,12 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - tickets
+          - private_apps_legacy:
+              - tickets.sensitive
           - oauth2:
               - crm.schemas.deals.write
+          - oauth2:
+              - crm.objects.users.write
           - private_apps_legacy:
               - e-commerce
           - oauth2:
@@ -1071,6 +1165,8 @@ rawSpecString: |
               - e-commerce
           - private_apps_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.write
           - private_apps_legacy:
               - crm.schemas.custom.write
           - private_apps:
@@ -1132,8 +1228,12 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - tickets
+          - private_apps_legacy:
+              - tickets.sensitive
           - oauth2:
               - crm.schemas.deals.write
+          - oauth2:
+              - crm.objects.users.write
           - private_apps_legacy:
               - e-commerce
           - oauth2:
@@ -1150,6 +1250,8 @@ rawSpecString: |
               - e-commerce
           - private_apps_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.write
           - private_apps_legacy:
               - crm.schemas.custom.write
           - private_apps:
@@ -1190,18 +1292,26 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - media_bridge.read
+          - private_apps_legacy:
+              - tickets.sensitive
           - private_apps:
               - crm.objects.deals.read
           - private_apps_legacy:
               - timeline
+          - private_apps:
+              - crm.objects.subscriptions.read
           - private_apps_legacy:
               - crm.objects.marketing_events.read
           - oauth2_legacy:
               - crm.objects.marketing_events.write
           - oauth2:
               - crm.objects.deals.read
+          - private_apps:
+              - crm.objects.contacts.sensitive.write
           - private_apps_legacy:
               - contacts
+          - oauth2:
+              - crm.objects.subscriptions.read
           - private_apps:
               - crm.objects.owners.read
           - oauth2:
@@ -1218,10 +1328,14 @@ rawSpecString: |
               - crm.objects.companies.read
           - oauth2_legacy:
               - crm.objects.marketing_events.read
+          - private_apps:
+              - crm.objects.companies.sensitive.read
           - private_apps_legacy:
               - crm.objects.marketing_events.write
           - private_apps_legacy:
               - crm.schemas.custom.read
+          - private_apps:
+              - crm.objects.deals.sensitive.write
           - private_apps_legacy:
               - crm.objects.goals.read
           - oauth2_legacy:
@@ -1234,22 +1348,32 @@ rawSpecString: |
               - crm.objects.companies.write
           - oauth2_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.read
           - private_apps_legacy:
               - crm.objects.custom.write
+          - oauth2:
+              - crm.objects.users.read
           - oauth2_legacy:
               - crm.objects.feedback_submissions.read
           - private_apps_legacy:
               - e-commerce
+          - oauth2:
+              - crm.schemas.subscriptions.read
+          - private_apps:
+              - crm.schemas.subscriptions.read
           - private_apps:
               - crm.schemas.companies.read
           - oauth2:
               - crm.schemas.companies.read
+          - private_apps:
+              - crm.objects.deals.sensitive.read
           - oauth2_legacy:
               - e-commerce
           - private_apps_legacy:
-              - crm.objects.feedback_submissions.read
-          - private_apps_legacy:
               - tickets
+          - private_apps_legacy:
+              - crm.objects.feedback_submissions.read
           - oauth2_legacy:
               - crm.objects.goals.read
           - private_apps:
@@ -1263,17 +1387,23 @@ rawSpecString: |
           - private_apps:
               - crm.objects.contacts.read
           - private_apps:
+              - crm.objects.companies.sensitive.write
+          - private_apps:
               - crm.objects.deals.write
           - oauth2:
               - crm.objects.deals.write
+          - oauth2:
+              - crm.objects.invoices.read
           - private_apps:
               - crm.schemas.deals.read
+          - private_apps:
+              - crm.objects.invoices.read
           - oauth2:
               - crm.schemas.deals.read
           - oauth2:
-              - crm.objects.quotes.write
-          - oauth2:
               - crm.schemas.contacts.read
+          - oauth2:
+              - crm.objects.quotes.write
           - private_apps:
               - crm.objects.quotes.write
           - private_apps:
@@ -1283,17 +1413,31 @@ rawSpecString: |
           - oauth2:
               - crm.objects.contacts.write
           - private_apps:
+              - crm.schemas.commercepayments.read
+          - private_apps:
               - crm.objects.contacts.write
           - oauth2:
               - crm.objects.line_items.read
+          - private_apps:
+              - crm.objects.custom.sensitive.read
           - oauth2_legacy:
               - crm.objects.custom.read
+          - oauth2:
+              - crm.schemas.commercepayments.read
           - private_apps_legacy:
               - crm.objects.custom.read
           - oauth2:
               - crm.objects.line_items.write
           - private_apps:
               - crm.objects.line_items.write
+          - private_apps:
+              - crm.objects.custom.sensitive.write
+          - oauth2:
+              - crm.schemas.invoices.read
+          - private_apps:
+              - crm.schemas.invoices.read
+          - private_apps:
+              - crm.objects.contacts.sensitive.read
           - oauth2:
               - crm.objects.quotes.read
           - private_apps:
@@ -1334,18 +1478,26 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - media_bridge.read
+          - private_apps_legacy:
+              - tickets.sensitive
           - private_apps:
               - crm.objects.deals.read
           - private_apps_legacy:
               - timeline
+          - private_apps:
+              - crm.objects.subscriptions.read
           - private_apps_legacy:
               - crm.objects.marketing_events.read
           - oauth2_legacy:
               - crm.objects.marketing_events.write
           - oauth2:
               - crm.objects.deals.read
+          - private_apps:
+              - crm.objects.contacts.sensitive.write
           - private_apps_legacy:
               - contacts
+          - oauth2:
+              - crm.objects.subscriptions.read
           - private_apps:
               - crm.objects.owners.read
           - oauth2:
@@ -1362,10 +1514,14 @@ rawSpecString: |
               - crm.objects.companies.read
           - oauth2_legacy:
               - crm.objects.marketing_events.read
+          - private_apps:
+              - crm.objects.companies.sensitive.read
           - private_apps_legacy:
               - crm.objects.marketing_events.write
           - private_apps_legacy:
               - crm.schemas.custom.read
+          - private_apps:
+              - crm.objects.deals.sensitive.write
           - private_apps_legacy:
               - crm.objects.goals.read
           - oauth2_legacy:
@@ -1378,22 +1534,32 @@ rawSpecString: |
               - crm.objects.companies.write
           - oauth2_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.read
           - private_apps_legacy:
               - crm.objects.custom.write
+          - oauth2:
+              - crm.objects.users.read
           - oauth2_legacy:
               - crm.objects.feedback_submissions.read
           - private_apps_legacy:
               - e-commerce
+          - oauth2:
+              - crm.schemas.subscriptions.read
+          - private_apps:
+              - crm.schemas.subscriptions.read
           - private_apps:
               - crm.schemas.companies.read
           - oauth2:
               - crm.schemas.companies.read
+          - private_apps:
+              - crm.objects.deals.sensitive.read
           - oauth2_legacy:
               - e-commerce
           - private_apps_legacy:
-              - crm.objects.feedback_submissions.read
-          - private_apps_legacy:
               - tickets
+          - private_apps_legacy:
+              - crm.objects.feedback_submissions.read
           - oauth2_legacy:
               - crm.objects.goals.read
           - private_apps:
@@ -1407,17 +1573,23 @@ rawSpecString: |
           - private_apps:
               - crm.objects.contacts.read
           - private_apps:
+              - crm.objects.companies.sensitive.write
+          - private_apps:
               - crm.objects.deals.write
           - oauth2:
               - crm.objects.deals.write
+          - oauth2:
+              - crm.objects.invoices.read
           - private_apps:
               - crm.schemas.deals.read
+          - private_apps:
+              - crm.objects.invoices.read
           - oauth2:
               - crm.schemas.deals.read
           - oauth2:
-              - crm.objects.quotes.write
-          - oauth2:
               - crm.schemas.contacts.read
+          - oauth2:
+              - crm.objects.quotes.write
           - private_apps:
               - crm.objects.quotes.write
           - private_apps:
@@ -1427,17 +1599,31 @@ rawSpecString: |
           - oauth2:
               - crm.objects.contacts.write
           - private_apps:
+              - crm.schemas.commercepayments.read
+          - private_apps:
               - crm.objects.contacts.write
           - oauth2:
               - crm.objects.line_items.read
+          - private_apps:
+              - crm.objects.custom.sensitive.read
           - oauth2_legacy:
               - crm.objects.custom.read
+          - oauth2:
+              - crm.schemas.commercepayments.read
           - private_apps_legacy:
               - crm.objects.custom.read
           - oauth2:
               - crm.objects.line_items.write
           - private_apps:
               - crm.objects.line_items.write
+          - private_apps:
+              - crm.objects.custom.sensitive.write
+          - oauth2:
+              - crm.schemas.invoices.read
+          - private_apps:
+              - crm.schemas.invoices.read
+          - private_apps:
+              - crm.objects.contacts.sensitive.read
           - oauth2:
               - crm.objects.quotes.read
           - private_apps:
@@ -1484,8 +1670,12 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - tickets
+          - private_apps_legacy:
+              - tickets.sensitive
           - oauth2:
               - crm.schemas.deals.write
+          - oauth2:
+              - crm.objects.users.write
           - private_apps_legacy:
               - e-commerce
           - oauth2:
@@ -1502,6 +1692,8 @@ rawSpecString: |
               - e-commerce
           - private_apps_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.write
           - private_apps_legacy:
               - crm.schemas.custom.write
           - private_apps:
@@ -1533,18 +1725,26 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - media_bridge.read
+          - private_apps_legacy:
+              - tickets.sensitive
           - private_apps:
               - crm.objects.deals.read
           - private_apps_legacy:
               - timeline
+          - private_apps:
+              - crm.objects.subscriptions.read
           - private_apps_legacy:
               - crm.objects.marketing_events.read
           - oauth2_legacy:
               - crm.objects.marketing_events.write
           - oauth2:
               - crm.objects.deals.read
+          - private_apps:
+              - crm.objects.contacts.sensitive.write
           - private_apps_legacy:
               - contacts
+          - oauth2:
+              - crm.objects.subscriptions.read
           - private_apps:
               - crm.objects.owners.read
           - oauth2:
@@ -1561,10 +1761,14 @@ rawSpecString: |
               - crm.objects.companies.read
           - oauth2_legacy:
               - crm.objects.marketing_events.read
+          - private_apps:
+              - crm.objects.companies.sensitive.read
           - private_apps_legacy:
               - crm.objects.marketing_events.write
           - private_apps_legacy:
               - crm.schemas.custom.read
+          - private_apps:
+              - crm.objects.deals.sensitive.write
           - private_apps_legacy:
               - crm.objects.goals.read
           - oauth2_legacy:
@@ -1577,22 +1781,32 @@ rawSpecString: |
               - crm.objects.companies.write
           - oauth2_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.read
           - private_apps_legacy:
               - crm.objects.custom.write
+          - oauth2:
+              - crm.objects.users.read
           - oauth2_legacy:
               - crm.objects.feedback_submissions.read
           - private_apps_legacy:
               - e-commerce
+          - oauth2:
+              - crm.schemas.subscriptions.read
+          - private_apps:
+              - crm.schemas.subscriptions.read
           - private_apps:
               - crm.schemas.companies.read
           - oauth2:
               - crm.schemas.companies.read
+          - private_apps:
+              - crm.objects.deals.sensitive.read
           - oauth2_legacy:
               - e-commerce
           - private_apps_legacy:
-              - crm.objects.feedback_submissions.read
-          - private_apps_legacy:
               - tickets
+          - private_apps_legacy:
+              - crm.objects.feedback_submissions.read
           - oauth2_legacy:
               - crm.objects.goals.read
           - private_apps:
@@ -1606,17 +1820,23 @@ rawSpecString: |
           - private_apps:
               - crm.objects.contacts.read
           - private_apps:
+              - crm.objects.companies.sensitive.write
+          - private_apps:
               - crm.objects.deals.write
           - oauth2:
               - crm.objects.deals.write
+          - oauth2:
+              - crm.objects.invoices.read
           - private_apps:
               - crm.schemas.deals.read
+          - private_apps:
+              - crm.objects.invoices.read
           - oauth2:
               - crm.schemas.deals.read
           - oauth2:
-              - crm.objects.quotes.write
-          - oauth2:
               - crm.schemas.contacts.read
+          - oauth2:
+              - crm.objects.quotes.write
           - private_apps:
               - crm.objects.quotes.write
           - private_apps:
@@ -1626,17 +1846,31 @@ rawSpecString: |
           - oauth2:
               - crm.objects.contacts.write
           - private_apps:
+              - crm.schemas.commercepayments.read
+          - private_apps:
               - crm.objects.contacts.write
           - oauth2:
               - crm.objects.line_items.read
+          - private_apps:
+              - crm.objects.custom.sensitive.read
           - oauth2_legacy:
               - crm.objects.custom.read
+          - oauth2:
+              - crm.schemas.commercepayments.read
           - private_apps_legacy:
               - crm.objects.custom.read
           - oauth2:
               - crm.objects.line_items.write
           - private_apps:
               - crm.objects.line_items.write
+          - private_apps:
+              - crm.objects.custom.sensitive.write
+          - oauth2:
+              - crm.schemas.invoices.read
+          - private_apps:
+              - crm.schemas.invoices.read
+          - private_apps:
+              - crm.objects.contacts.sensitive.read
           - oauth2:
               - crm.objects.quotes.read
           - private_apps:
@@ -1676,8 +1910,12 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - tickets
+          - private_apps_legacy:
+              - tickets.sensitive
           - oauth2:
               - crm.schemas.deals.write
+          - oauth2:
+              - crm.objects.users.write
           - private_apps_legacy:
               - e-commerce
           - oauth2:
@@ -1694,6 +1932,8 @@ rawSpecString: |
               - e-commerce
           - private_apps_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.write
           - private_apps_legacy:
               - crm.schemas.custom.write
           - private_apps:
@@ -1741,18 +1981,26 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - media_bridge.read
+          - private_apps_legacy:
+              - tickets.sensitive
           - private_apps:
               - crm.objects.deals.read
           - private_apps_legacy:
               - timeline
+          - private_apps:
+              - crm.objects.subscriptions.read
           - private_apps_legacy:
               - crm.objects.marketing_events.read
           - oauth2_legacy:
               - crm.objects.marketing_events.write
           - oauth2:
               - crm.objects.deals.read
+          - private_apps:
+              - crm.objects.contacts.sensitive.write
           - private_apps_legacy:
               - contacts
+          - oauth2:
+              - crm.objects.subscriptions.read
           - private_apps:
               - crm.objects.owners.read
           - oauth2:
@@ -1769,10 +2017,14 @@ rawSpecString: |
               - crm.objects.companies.read
           - oauth2_legacy:
               - crm.objects.marketing_events.read
+          - private_apps:
+              - crm.objects.companies.sensitive.read
           - private_apps_legacy:
               - crm.objects.marketing_events.write
           - private_apps_legacy:
               - crm.schemas.custom.read
+          - private_apps:
+              - crm.objects.deals.sensitive.write
           - private_apps_legacy:
               - crm.objects.goals.read
           - oauth2_legacy:
@@ -1785,22 +2037,32 @@ rawSpecString: |
               - crm.objects.companies.write
           - oauth2_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.read
           - private_apps_legacy:
               - crm.objects.custom.write
+          - oauth2:
+              - crm.objects.users.read
           - oauth2_legacy:
               - crm.objects.feedback_submissions.read
           - private_apps_legacy:
               - e-commerce
+          - oauth2:
+              - crm.schemas.subscriptions.read
+          - private_apps:
+              - crm.schemas.subscriptions.read
           - private_apps:
               - crm.schemas.companies.read
           - oauth2:
               - crm.schemas.companies.read
+          - private_apps:
+              - crm.objects.deals.sensitive.read
           - oauth2_legacy:
               - e-commerce
           - private_apps_legacy:
-              - crm.objects.feedback_submissions.read
-          - private_apps_legacy:
               - tickets
+          - private_apps_legacy:
+              - crm.objects.feedback_submissions.read
           - oauth2_legacy:
               - crm.objects.goals.read
           - private_apps:
@@ -1814,17 +2076,23 @@ rawSpecString: |
           - private_apps:
               - crm.objects.contacts.read
           - private_apps:
+              - crm.objects.companies.sensitive.write
+          - private_apps:
               - crm.objects.deals.write
           - oauth2:
               - crm.objects.deals.write
+          - oauth2:
+              - crm.objects.invoices.read
           - private_apps:
               - crm.schemas.deals.read
+          - private_apps:
+              - crm.objects.invoices.read
           - oauth2:
               - crm.schemas.deals.read
           - oauth2:
-              - crm.objects.quotes.write
-          - oauth2:
               - crm.schemas.contacts.read
+          - oauth2:
+              - crm.objects.quotes.write
           - private_apps:
               - crm.objects.quotes.write
           - private_apps:
@@ -1834,17 +2102,31 @@ rawSpecString: |
           - oauth2:
               - crm.objects.contacts.write
           - private_apps:
+              - crm.schemas.commercepayments.read
+          - private_apps:
               - crm.objects.contacts.write
           - oauth2:
               - crm.objects.line_items.read
+          - private_apps:
+              - crm.objects.custom.sensitive.read
           - oauth2_legacy:
               - crm.objects.custom.read
+          - oauth2:
+              - crm.schemas.commercepayments.read
           - private_apps_legacy:
               - crm.objects.custom.read
           - oauth2:
               - crm.objects.line_items.write
           - private_apps:
               - crm.objects.line_items.write
+          - private_apps:
+              - crm.objects.custom.sensitive.write
+          - oauth2:
+              - crm.schemas.invoices.read
+          - private_apps:
+              - crm.schemas.invoices.read
+          - private_apps:
+              - crm.objects.contacts.sensitive.read
           - oauth2:
               - crm.objects.quotes.read
           - private_apps:
@@ -1897,8 +2179,12 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - tickets
+          - private_apps_legacy:
+              - tickets.sensitive
           - oauth2:
               - crm.schemas.deals.write
+          - oauth2:
+              - crm.objects.users.write
           - private_apps_legacy:
               - e-commerce
           - oauth2:
@@ -1915,6 +2201,8 @@ rawSpecString: |
               - e-commerce
           - private_apps_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.write
           - private_apps_legacy:
               - crm.schemas.custom.write
           - private_apps:
@@ -1959,8 +2247,12 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - tickets
+          - private_apps_legacy:
+              - tickets.sensitive
           - oauth2:
               - crm.schemas.deals.write
+          - oauth2:
+              - crm.objects.users.write
           - private_apps_legacy:
               - e-commerce
           - oauth2:
@@ -1977,6 +2269,8 @@ rawSpecString: |
               - e-commerce
           - private_apps_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.write
           - private_apps_legacy:
               - crm.schemas.custom.write
           - private_apps:
@@ -2032,8 +2326,12 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - tickets
+          - private_apps_legacy:
+              - tickets.sensitive
           - oauth2:
               - crm.schemas.deals.write
+          - oauth2:
+              - crm.objects.users.write
           - private_apps_legacy:
               - e-commerce
           - oauth2:
@@ -2050,6 +2348,8 @@ rawSpecString: |
               - e-commerce
           - private_apps_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.write
           - private_apps_legacy:
               - crm.schemas.custom.write
           - private_apps:
@@ -4035,6 +4335,8 @@ rawSpecString: |
               - crm.objects.custom.read
           - private_apps_legacy:
               - crm.schemas.custom.read
+          - private_apps:
+              - crm.objects.custom.sensitive.read
           - oauth2_legacy:
               - crm.objects.custom.read
           - oauth2_legacy:
@@ -4108,9 +4410,6 @@ rawSpecString: |
         security:
           - private_apps_legacy:
               - crm.schemas.custom.write
-              - crm.objects.custom.write
-          - private_apps_legacy:
-              - crm.schemas.custom.write
     /crm/v3/schemas/{objectType}/associations:
       post:
         tags:
@@ -4146,9 +4445,6 @@ rawSpecString: |
           default:
             $ref: '#/components/responses/Error'
         security:
-          - private_apps_legacy:
-              - crm.schemas.custom.write
-              - crm.objects.custom.write
           - private_apps_legacy:
               - crm.schemas.custom.write
     /crm/v3/schemas/{objectType}/purge:
@@ -4239,6 +4535,8 @@ rawSpecString: |
               - crm.objects.custom.read
           - private_apps_legacy:
               - crm.schemas.custom.read
+          - private_apps:
+              - crm.objects.custom.sensitive.read
           - oauth2_legacy:
               - crm.objects.custom.read
           - oauth2_legacy:
@@ -4269,9 +4567,6 @@ rawSpecString: |
           default:
             $ref: '#/components/responses/Error'
         security:
-          - private_apps_legacy:
-              - crm.schemas.custom.write
-              - crm.objects.custom.write
           - private_apps_legacy:
               - crm.schemas.custom.write
     /crm/v3/properties/{objectType}/batch/archive:
@@ -4307,8 +4602,12 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - tickets
+          - private_apps_legacy:
+              - tickets.sensitive
           - oauth2:
               - crm.schemas.deals.write
+          - oauth2:
+              - crm.objects.users.write
           - private_apps_legacy:
               - e-commerce
           - oauth2:
@@ -4325,6 +4624,8 @@ rawSpecString: |
               - e-commerce
           - private_apps_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.write
           - private_apps_legacy:
               - crm.schemas.custom.write
           - private_apps:
@@ -4363,18 +4664,26 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - media_bridge.read
+          - private_apps_legacy:
+              - tickets.sensitive
           - private_apps:
               - crm.objects.deals.read
           - private_apps_legacy:
               - timeline
+          - private_apps:
+              - crm.objects.subscriptions.read
           - private_apps_legacy:
               - crm.objects.marketing_events.read
           - oauth2_legacy:
               - crm.objects.marketing_events.write
           - oauth2:
               - crm.objects.deals.read
+          - private_apps:
+              - crm.objects.contacts.sensitive.write
           - private_apps_legacy:
               - contacts
+          - oauth2:
+              - crm.objects.subscriptions.read
           - private_apps:
               - crm.objects.owners.read
           - oauth2:
@@ -4391,10 +4700,14 @@ rawSpecString: |
               - crm.objects.companies.read
           - oauth2_legacy:
               - crm.objects.marketing_events.read
+          - private_apps:
+              - crm.objects.companies.sensitive.read
           - private_apps_legacy:
               - crm.objects.marketing_events.write
           - private_apps_legacy:
               - crm.schemas.custom.read
+          - private_apps:
+              - crm.objects.deals.sensitive.write
           - private_apps_legacy:
               - crm.objects.goals.read
           - oauth2_legacy:
@@ -4407,16 +4720,26 @@ rawSpecString: |
               - crm.objects.companies.write
           - oauth2_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.read
           - private_apps_legacy:
               - crm.objects.custom.write
+          - oauth2:
+              - crm.objects.users.read
           - oauth2_legacy:
               - crm.objects.feedback_submissions.read
           - private_apps_legacy:
               - e-commerce
+          - oauth2:
+              - crm.schemas.subscriptions.read
+          - private_apps:
+              - crm.schemas.subscriptions.read
           - private_apps:
               - crm.schemas.companies.read
           - oauth2:
               - crm.schemas.companies.read
+          - private_apps:
+              - crm.objects.deals.sensitive.read
           - oauth2_legacy:
               - e-commerce
           - private_apps_legacy:
@@ -4434,13 +4757,19 @@ rawSpecString: |
           - oauth2:
               - crm.objects.contacts.read
           - private_apps:
+              - crm.objects.companies.sensitive.write
+          - private_apps:
               - crm.objects.contacts.read
           - private_apps:
               - crm.objects.deals.write
           - oauth2:
               - crm.objects.deals.write
+          - oauth2:
+              - crm.objects.invoices.read
           - private_apps:
               - crm.schemas.deals.read
+          - private_apps:
+              - crm.objects.invoices.read
           - oauth2:
               - crm.schemas.deals.read
           - oauth2:
@@ -4457,16 +4786,30 @@ rawSpecString: |
               - crm.objects.contacts.write
           - private_apps:
               - crm.objects.contacts.write
+          - private_apps:
+              - crm.schemas.commercepayments.read
           - oauth2:
               - crm.objects.line_items.read
+          - private_apps:
+              - crm.objects.custom.sensitive.read
           - oauth2_legacy:
               - crm.objects.custom.read
+          - oauth2:
+              - crm.schemas.commercepayments.read
           - private_apps_legacy:
               - crm.objects.custom.read
           - oauth2:
               - crm.objects.line_items.write
           - private_apps:
               - crm.objects.line_items.write
+          - private_apps:
+              - crm.objects.custom.sensitive.write
+          - oauth2:
+              - crm.schemas.invoices.read
+          - private_apps:
+              - crm.objects.contacts.sensitive.read
+          - private_apps:
+              - crm.schemas.invoices.read
           - oauth2:
               - crm.objects.quotes.read
           - private_apps:
@@ -4501,8 +4844,12 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - tickets
+          - private_apps_legacy:
+              - tickets.sensitive
           - oauth2:
               - crm.schemas.deals.write
+          - oauth2:
+              - crm.objects.users.write
           - private_apps_legacy:
               - e-commerce
           - oauth2:
@@ -4519,6 +4866,8 @@ rawSpecString: |
               - e-commerce
           - private_apps_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.write
           - private_apps_legacy:
               - crm.schemas.custom.write
           - private_apps:
@@ -4564,8 +4913,12 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - tickets
+          - private_apps_legacy:
+              - tickets.sensitive
           - oauth2:
               - crm.schemas.deals.write
+          - oauth2:
+              - crm.objects.users.write
           - private_apps_legacy:
               - e-commerce
           - oauth2:
@@ -4582,6 +4935,8 @@ rawSpecString: |
               - e-commerce
           - private_apps_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.write
           - private_apps_legacy:
               - crm.schemas.custom.write
           - private_apps:
@@ -4636,18 +4991,26 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - media_bridge.read
+          - private_apps_legacy:
+              - tickets.sensitive
           - private_apps:
               - crm.objects.deals.read
           - private_apps_legacy:
               - timeline
+          - private_apps:
+              - crm.objects.subscriptions.read
           - private_apps_legacy:
               - crm.objects.marketing_events.read
           - oauth2_legacy:
               - crm.objects.marketing_events.write
           - oauth2:
               - crm.objects.deals.read
+          - private_apps:
+              - crm.objects.contacts.sensitive.write
           - private_apps_legacy:
               - contacts
+          - oauth2:
+              - crm.objects.subscriptions.read
           - private_apps:
               - crm.objects.owners.read
           - oauth2:
@@ -4664,10 +5027,14 @@ rawSpecString: |
               - crm.objects.companies.read
           - oauth2_legacy:
               - crm.objects.marketing_events.read
+          - private_apps:
+              - crm.objects.companies.sensitive.read
           - private_apps_legacy:
               - crm.objects.marketing_events.write
           - private_apps_legacy:
               - crm.schemas.custom.read
+          - private_apps:
+              - crm.objects.deals.sensitive.write
           - private_apps_legacy:
               - crm.objects.goals.read
           - oauth2_legacy:
@@ -4680,16 +5047,26 @@ rawSpecString: |
               - crm.objects.companies.write
           - oauth2_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.read
           - private_apps_legacy:
               - crm.objects.custom.write
+          - oauth2:
+              - crm.objects.users.read
           - oauth2_legacy:
               - crm.objects.feedback_submissions.read
           - private_apps_legacy:
               - e-commerce
+          - oauth2:
+              - crm.schemas.subscriptions.read
+          - private_apps:
+              - crm.schemas.subscriptions.read
           - private_apps:
               - crm.schemas.companies.read
           - oauth2:
               - crm.schemas.companies.read
+          - private_apps:
+              - crm.objects.deals.sensitive.read
           - oauth2_legacy:
               - e-commerce
           - private_apps_legacy:
@@ -4707,13 +5084,19 @@ rawSpecString: |
           - oauth2:
               - crm.objects.contacts.read
           - private_apps:
+              - crm.objects.companies.sensitive.write
+          - private_apps:
               - crm.objects.contacts.read
           - private_apps:
               - crm.objects.deals.write
           - oauth2:
               - crm.objects.deals.write
+          - oauth2:
+              - crm.objects.invoices.read
           - private_apps:
               - crm.schemas.deals.read
+          - private_apps:
+              - crm.objects.invoices.read
           - oauth2:
               - crm.schemas.deals.read
           - oauth2:
@@ -4730,16 +5113,30 @@ rawSpecString: |
               - crm.objects.contacts.write
           - private_apps:
               - crm.objects.contacts.write
+          - private_apps:
+              - crm.schemas.commercepayments.read
           - oauth2:
               - crm.objects.line_items.read
+          - private_apps:
+              - crm.objects.custom.sensitive.read
           - oauth2_legacy:
               - crm.objects.custom.read
+          - oauth2:
+              - crm.schemas.commercepayments.read
           - private_apps_legacy:
               - crm.objects.custom.read
           - oauth2:
               - crm.objects.line_items.write
           - private_apps:
               - crm.objects.line_items.write
+          - private_apps:
+              - crm.objects.custom.sensitive.write
+          - oauth2:
+              - crm.schemas.invoices.read
+          - private_apps:
+              - crm.objects.contacts.sensitive.read
+          - private_apps:
+              - crm.schemas.invoices.read
           - oauth2:
               - crm.objects.quotes.read
           - private_apps:
@@ -4774,8 +5171,12 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - tickets
+          - private_apps_legacy:
+              - tickets.sensitive
           - oauth2:
               - crm.schemas.deals.write
+          - oauth2:
+              - crm.objects.users.write
           - private_apps_legacy:
               - e-commerce
           - oauth2:
@@ -4792,6 +5193,8 @@ rawSpecString: |
               - e-commerce
           - private_apps_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.write
           - private_apps_legacy:
               - crm.schemas.custom.write
           - private_apps:
@@ -4837,8 +5240,12 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - tickets
+          - private_apps_legacy:
+              - tickets.sensitive
           - oauth2:
               - crm.schemas.deals.write
+          - oauth2:
+              - crm.objects.users.write
           - private_apps_legacy:
               - e-commerce
           - oauth2:
@@ -4855,6 +5262,8 @@ rawSpecString: |
               - e-commerce
           - private_apps_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.write
           - private_apps_legacy:
               - crm.schemas.custom.write
           - private_apps:
@@ -4898,18 +5307,26 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - media_bridge.read
+          - private_apps_legacy:
+              - tickets.sensitive
           - private_apps:
               - crm.objects.deals.read
           - private_apps_legacy:
               - timeline
+          - private_apps:
+              - crm.objects.subscriptions.read
           - private_apps_legacy:
               - crm.objects.marketing_events.read
           - oauth2_legacy:
               - crm.objects.marketing_events.write
           - oauth2:
               - crm.objects.deals.read
+          - private_apps:
+              - crm.objects.contacts.sensitive.write
           - private_apps_legacy:
               - contacts
+          - oauth2:
+              - crm.objects.subscriptions.read
           - private_apps:
               - crm.objects.owners.read
           - oauth2:
@@ -4926,10 +5343,14 @@ rawSpecString: |
               - crm.objects.companies.read
           - oauth2_legacy:
               - crm.objects.marketing_events.read
+          - private_apps:
+              - crm.objects.companies.sensitive.read
           - private_apps_legacy:
               - crm.objects.marketing_events.write
           - private_apps_legacy:
               - crm.schemas.custom.read
+          - private_apps:
+              - crm.objects.deals.sensitive.write
           - private_apps_legacy:
               - crm.objects.goals.read
           - oauth2_legacy:
@@ -4942,16 +5363,26 @@ rawSpecString: |
               - crm.objects.companies.write
           - oauth2_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.read
           - private_apps_legacy:
               - crm.objects.custom.write
+          - oauth2:
+              - crm.objects.users.read
           - oauth2_legacy:
               - crm.objects.feedback_submissions.read
           - private_apps_legacy:
               - e-commerce
+          - oauth2:
+              - crm.schemas.subscriptions.read
+          - private_apps:
+              - crm.schemas.subscriptions.read
           - private_apps:
               - crm.schemas.companies.read
           - oauth2:
               - crm.schemas.companies.read
+          - private_apps:
+              - crm.objects.deals.sensitive.read
           - oauth2_legacy:
               - e-commerce
           - private_apps_legacy:
@@ -4969,13 +5400,19 @@ rawSpecString: |
           - oauth2:
               - crm.objects.contacts.read
           - private_apps:
+              - crm.objects.companies.sensitive.write
+          - private_apps:
               - crm.objects.contacts.read
           - private_apps:
               - crm.objects.deals.write
           - oauth2:
               - crm.objects.deals.write
+          - oauth2:
+              - crm.objects.invoices.read
           - private_apps:
               - crm.schemas.deals.read
+          - private_apps:
+              - crm.objects.invoices.read
           - oauth2:
               - crm.schemas.deals.read
           - oauth2:
@@ -4992,16 +5429,30 @@ rawSpecString: |
               - crm.objects.contacts.write
           - private_apps:
               - crm.objects.contacts.write
+          - private_apps:
+              - crm.schemas.commercepayments.read
           - oauth2:
               - crm.objects.line_items.read
+          - private_apps:
+              - crm.objects.custom.sensitive.read
           - oauth2_legacy:
               - crm.objects.custom.read
+          - oauth2:
+              - crm.schemas.commercepayments.read
           - private_apps_legacy:
               - crm.objects.custom.read
           - oauth2:
               - crm.objects.line_items.write
           - private_apps:
               - crm.objects.line_items.write
+          - private_apps:
+              - crm.objects.custom.sensitive.write
+          - oauth2:
+              - crm.schemas.invoices.read
+          - private_apps:
+              - crm.objects.contacts.sensitive.read
+          - private_apps:
+              - crm.schemas.invoices.read
           - oauth2:
               - crm.objects.quotes.read
           - private_apps:
@@ -5047,8 +5498,12 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - tickets
+          - private_apps_legacy:
+              - tickets.sensitive
           - oauth2:
               - crm.schemas.deals.write
+          - oauth2:
+              - crm.objects.users.write
           - private_apps_legacy:
               - e-commerce
           - oauth2:
@@ -5065,6 +5520,8 @@ rawSpecString: |
               - e-commerce
           - private_apps_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.write
           - private_apps_legacy:
               - crm.schemas.custom.write
           - private_apps:
@@ -5114,18 +5571,26 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - media_bridge.read
+          - private_apps_legacy:
+              - tickets.sensitive
           - private_apps:
               - crm.objects.deals.read
           - private_apps_legacy:
               - timeline
+          - private_apps:
+              - crm.objects.subscriptions.read
           - private_apps_legacy:
               - crm.objects.marketing_events.read
           - oauth2_legacy:
               - crm.objects.marketing_events.write
           - oauth2:
               - crm.objects.deals.read
+          - private_apps:
+              - crm.objects.contacts.sensitive.write
           - private_apps_legacy:
               - contacts
+          - oauth2:
+              - crm.objects.subscriptions.read
           - private_apps:
               - crm.objects.owners.read
           - oauth2:
@@ -5142,10 +5607,14 @@ rawSpecString: |
               - crm.objects.companies.read
           - oauth2_legacy:
               - crm.objects.marketing_events.read
+          - private_apps:
+              - crm.objects.companies.sensitive.read
           - private_apps_legacy:
               - crm.objects.marketing_events.write
           - private_apps_legacy:
               - crm.schemas.custom.read
+          - private_apps:
+              - crm.objects.deals.sensitive.write
           - private_apps_legacy:
               - crm.objects.goals.read
           - oauth2_legacy:
@@ -5158,16 +5627,26 @@ rawSpecString: |
               - crm.objects.companies.write
           - oauth2_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.read
           - private_apps_legacy:
               - crm.objects.custom.write
+          - oauth2:
+              - crm.objects.users.read
           - oauth2_legacy:
               - crm.objects.feedback_submissions.read
           - private_apps_legacy:
               - e-commerce
+          - oauth2:
+              - crm.schemas.subscriptions.read
+          - private_apps:
+              - crm.schemas.subscriptions.read
           - private_apps:
               - crm.schemas.companies.read
           - oauth2:
               - crm.schemas.companies.read
+          - private_apps:
+              - crm.objects.deals.sensitive.read
           - oauth2_legacy:
               - e-commerce
           - private_apps_legacy:
@@ -5185,13 +5664,19 @@ rawSpecString: |
           - oauth2:
               - crm.objects.contacts.read
           - private_apps:
+              - crm.objects.companies.sensitive.write
+          - private_apps:
               - crm.objects.contacts.read
           - private_apps:
               - crm.objects.deals.write
           - oauth2:
               - crm.objects.deals.write
+          - oauth2:
+              - crm.objects.invoices.read
           - private_apps:
               - crm.schemas.deals.read
+          - private_apps:
+              - crm.objects.invoices.read
           - oauth2:
               - crm.schemas.deals.read
           - oauth2:
@@ -5208,16 +5693,30 @@ rawSpecString: |
               - crm.objects.contacts.write
           - private_apps:
               - crm.objects.contacts.write
+          - private_apps:
+              - crm.schemas.commercepayments.read
           - oauth2:
               - crm.objects.line_items.read
+          - private_apps:
+              - crm.objects.custom.sensitive.read
           - oauth2_legacy:
               - crm.objects.custom.read
+          - oauth2:
+              - crm.schemas.commercepayments.read
           - private_apps_legacy:
               - crm.objects.custom.read
           - oauth2:
               - crm.objects.line_items.write
           - private_apps:
               - crm.objects.line_items.write
+          - private_apps:
+              - crm.objects.custom.sensitive.write
+          - oauth2:
+              - crm.schemas.invoices.read
+          - private_apps:
+              - crm.objects.contacts.sensitive.read
+          - private_apps:
+              - crm.schemas.invoices.read
           - oauth2:
               - crm.objects.quotes.read
           - private_apps:
@@ -5256,8 +5755,12 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - tickets
+          - private_apps_legacy:
+              - tickets.sensitive
           - oauth2:
               - crm.schemas.deals.write
+          - oauth2:
+              - crm.objects.users.write
           - private_apps_legacy:
               - e-commerce
           - oauth2:
@@ -5274,6 +5777,8 @@ rawSpecString: |
               - e-commerce
           - private_apps_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.write
           - private_apps_legacy:
               - crm.schemas.custom.write
           - private_apps:
@@ -5307,18 +5812,26 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - media_bridge.read
+          - private_apps_legacy:
+              - tickets.sensitive
           - private_apps:
               - crm.objects.deals.read
           - private_apps_legacy:
               - timeline
+          - private_apps:
+              - crm.objects.subscriptions.read
           - private_apps_legacy:
               - crm.objects.marketing_events.read
           - oauth2_legacy:
               - crm.objects.marketing_events.write
           - oauth2:
               - crm.objects.deals.read
+          - private_apps:
+              - crm.objects.contacts.sensitive.write
           - private_apps_legacy:
               - contacts
+          - oauth2:
+              - crm.objects.subscriptions.read
           - private_apps:
               - crm.objects.owners.read
           - oauth2:
@@ -5335,10 +5848,14 @@ rawSpecString: |
               - crm.objects.companies.read
           - oauth2_legacy:
               - crm.objects.marketing_events.read
+          - private_apps:
+              - crm.objects.companies.sensitive.read
           - private_apps_legacy:
               - crm.objects.marketing_events.write
           - private_apps_legacy:
               - crm.schemas.custom.read
+          - private_apps:
+              - crm.objects.deals.sensitive.write
           - private_apps_legacy:
               - crm.objects.goals.read
           - oauth2_legacy:
@@ -5351,16 +5868,26 @@ rawSpecString: |
               - crm.objects.companies.write
           - oauth2_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.read
           - private_apps_legacy:
               - crm.objects.custom.write
+          - oauth2:
+              - crm.objects.users.read
           - oauth2_legacy:
               - crm.objects.feedback_submissions.read
           - private_apps_legacy:
               - e-commerce
+          - oauth2:
+              - crm.schemas.subscriptions.read
+          - private_apps:
+              - crm.schemas.subscriptions.read
           - private_apps:
               - crm.schemas.companies.read
           - oauth2:
               - crm.schemas.companies.read
+          - private_apps:
+              - crm.objects.deals.sensitive.read
           - oauth2_legacy:
               - e-commerce
           - private_apps_legacy:
@@ -5378,13 +5905,19 @@ rawSpecString: |
           - oauth2:
               - crm.objects.contacts.read
           - private_apps:
+              - crm.objects.companies.sensitive.write
+          - private_apps:
               - crm.objects.contacts.read
           - private_apps:
               - crm.objects.deals.write
           - oauth2:
               - crm.objects.deals.write
+          - oauth2:
+              - crm.objects.invoices.read
           - private_apps:
               - crm.schemas.deals.read
+          - private_apps:
+              - crm.objects.invoices.read
           - oauth2:
               - crm.schemas.deals.read
           - oauth2:
@@ -5401,16 +5934,30 @@ rawSpecString: |
               - crm.objects.contacts.write
           - private_apps:
               - crm.objects.contacts.write
+          - private_apps:
+              - crm.schemas.commercepayments.read
           - oauth2:
               - crm.objects.line_items.read
+          - private_apps:
+              - crm.objects.custom.sensitive.read
           - oauth2_legacy:
               - crm.objects.custom.read
+          - oauth2:
+              - crm.schemas.commercepayments.read
           - private_apps_legacy:
               - crm.objects.custom.read
           - oauth2:
               - crm.objects.line_items.write
           - private_apps:
               - crm.objects.line_items.write
+          - private_apps:
+              - crm.objects.custom.sensitive.write
+          - oauth2:
+              - crm.schemas.invoices.read
+          - private_apps:
+              - crm.objects.contacts.sensitive.read
+          - private_apps:
+              - crm.schemas.invoices.read
           - oauth2:
               - crm.objects.quotes.read
           - private_apps:
@@ -5447,8 +5994,12 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - tickets
+          - private_apps_legacy:
+              - tickets.sensitive
           - oauth2:
               - crm.schemas.deals.write
+          - oauth2:
+              - crm.objects.users.write
           - private_apps_legacy:
               - e-commerce
           - oauth2:
@@ -5465,6 +6016,8 @@ rawSpecString: |
               - e-commerce
           - private_apps_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.write
           - private_apps_legacy:
               - crm.schemas.custom.write
           - private_apps:
@@ -5677,6 +6230,8 @@ rawSpecString: |
           - oauth2:
               - crm.schemas.deals.write
           - private_apps_legacy:
+              - tickets.sensitive
+          - private_apps_legacy:
               - timeline
           - oauth2:
               - crm.schemas.contacts.write
@@ -5686,6 +6241,8 @@ rawSpecString: |
               - crm.objects.contacts.write
           - oauth2:
               - crm.schemas.companies.write
+          - private_apps:
+              - crm.objects.contacts.sensitive.write
           - private_apps_legacy:
               - contacts
           - private_apps:
@@ -5693,9 +6250,13 @@ rawSpecString: |
           - private_apps:
               - crm.schemas.companies.write
           - private_apps:
+              - crm.objects.companies.sensitive.write
+          - private_apps:
               - crm.objects.deals.write
           - oauth2:
               - crm.objects.deals.write
+          - private_apps:
+              - crm.objects.deals.sensitive.write
           - private_apps_legacy:
               - tickets
           - oauth2_legacy:
@@ -5990,6 +6551,8 @@ rawSpecString: |
           - oauth2:
               - crm.schemas.deals.write
           - private_apps_legacy:
+              - tickets.sensitive
+          - private_apps_legacy:
               - timeline
           - oauth2:
               - crm.schemas.contacts.write
@@ -5999,6 +6562,8 @@ rawSpecString: |
               - crm.objects.contacts.write
           - oauth2:
               - crm.schemas.companies.write
+          - private_apps:
+              - crm.objects.contacts.sensitive.write
           - private_apps_legacy:
               - contacts
           - private_apps:
@@ -6006,9 +6571,13 @@ rawSpecString: |
           - private_apps:
               - crm.schemas.companies.write
           - private_apps:
+              - crm.objects.companies.sensitive.write
+          - private_apps:
               - crm.objects.deals.write
           - oauth2:
               - crm.objects.deals.write
+          - private_apps:
+              - crm.objects.deals.sensitive.write
           - private_apps_legacy:
               - tickets
           - oauth2_legacy:
@@ -6254,6 +6823,8 @@ rawSpecString: |
               - tickets
           - oauth2:
               - crm.objects.contacts.read
+          - private_apps_legacy:
+              - tickets.sensitive
           - private_apps:
               - crm.objects.deals.read
           - private_apps_legacy:
@@ -6269,9 +6840,15 @@ rawSpecString: |
           - oauth2:
               - crm.objects.companies.read
           - private_apps:
+              - crm.objects.companies.sensitive.read
+          - private_apps:
               - crm.schemas.companies.read
           - oauth2:
               - crm.schemas.companies.read
+          - private_apps:
+              - crm.objects.deals.sensitive.read
+          - private_apps:
+              - crm.objects.contacts.sensitive.read
           - private_apps_legacy:
               - tickets
           - private_apps:
@@ -6324,6 +6901,8 @@ rawSpecString: |
               - tickets
           - oauth2:
               - crm.objects.contacts.read
+          - private_apps_legacy:
+              - tickets.sensitive
           - private_apps:
               - crm.objects.deals.read
           - private_apps_legacy:
@@ -6339,9 +6918,15 @@ rawSpecString: |
           - oauth2:
               - crm.objects.companies.read
           - private_apps:
+              - crm.objects.companies.sensitive.read
+          - private_apps:
               - crm.schemas.companies.read
           - oauth2:
               - crm.schemas.companies.read
+          - private_apps:
+              - crm.objects.deals.sensitive.read
+          - private_apps:
+              - crm.objects.contacts.sensitive.read
           - private_apps_legacy:
               - tickets
           - private_apps:
@@ -6608,6 +7193,8 @@ rawSpecString: |
               - tickets
           - oauth2:
               - crm.objects.contacts.read
+          - private_apps_legacy:
+              - tickets.sensitive
           - private_apps:
               - crm.objects.deals.read
           - private_apps_legacy:
@@ -6623,9 +7210,15 @@ rawSpecString: |
           - oauth2:
               - crm.objects.companies.read
           - private_apps:
+              - crm.objects.companies.sensitive.read
+          - private_apps:
               - crm.schemas.companies.read
           - oauth2:
               - crm.schemas.companies.read
+          - private_apps:
+              - crm.objects.deals.sensitive.read
+          - private_apps:
+              - crm.objects.contacts.sensitive.read
           - private_apps_legacy:
               - tickets
           - private_apps:
@@ -7653,68 +8246,106 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - media_bridge.read
-          - oauth2:
-              - crm.objects.contacts.read
+          - private_apps_legacy:
+              - tickets.sensitive
           - private_apps:
               - crm.objects.deals.read
+          - private_apps:
+              - crm.objects.subscriptions.read
           - oauth2:
               - crm.objects.deals.read
+          - private_apps:
+              - crm.objects.contacts.sensitive.write
           - private_apps_legacy:
               - contacts
-          - private_apps:
-              - crm.objects.contacts.read
+          - oauth2:
+              - crm.objects.subscriptions.read
           - private_apps:
               - crm.objects.companies.read
-          - private_apps:
-              - crm.objects.deals.write
           - oauth2:
               - crm.objects.companies.read
-          - oauth2:
-              - crm.objects.deals.write
+          - private_apps:
+              - crm.objects.companies.sensitive.read
+          - private_apps:
+              - crm.objects.deals.sensitive.write
           - private_apps_legacy:
               - crm.objects.goals.read
+          - private_apps:
+              - crm.objects.users.write
           - private_apps_legacy:
               - media_bridge.read
           - private_apps:
               - crm.objects.companies.write
           - oauth2:
               - crm.objects.companies.write
-          - oauth2:
-              - crm.objects.quotes.write
-          - private_apps:
-              - crm.objects.quotes.write
           - oauth2_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.read
           - private_apps_legacy:
               - crm.objects.custom.write
+          - oauth2:
+              - crm.objects.users.read
+          - oauth2:
+              - crm.objects.users.write
           - private_apps_legacy:
               - e-commerce
           - private_apps:
-              - crm.objects.line_items.read
-          - oauth2:
-              - crm.objects.contacts.write
-          - private_apps:
-              - crm.objects.contacts.write
-          - oauth2:
-              - crm.objects.line_items.read
-          - oauth2_legacy:
-              - crm.objects.custom.read
-          - private_apps_legacy:
-              - crm.objects.custom.read
-          - oauth2:
-              - crm.objects.line_items.write
-          - private_apps:
-              - crm.objects.line_items.write
+              - crm.objects.deals.sensitive.read
           - oauth2_legacy:
               - e-commerce
           - private_apps_legacy:
               - tickets
           - oauth2_legacy:
               - crm.objects.goals.read
-          - oauth2:
-              - crm.objects.quotes.read
           - oauth2_legacy:
               - crm.objects.custom.write
+          - oauth2:
+              - crm.objects.contacts.read
+          - oauth2:
+              - crm.objects.commercepayments.read
+          - private_apps:
+              - crm.objects.commercepayments.read
+          - private_apps:
+              - crm.objects.companies.sensitive.write
+          - private_apps:
+              - crm.objects.contacts.read
+          - private_apps:
+              - crm.objects.deals.write
+          - oauth2:
+              - crm.objects.deals.write
+          - oauth2:
+              - crm.objects.invoices.read
+          - private_apps:
+              - crm.objects.invoices.read
+          - oauth2:
+              - crm.objects.quotes.write
+          - private_apps:
+              - crm.objects.quotes.write
+          - private_apps:
+              - crm.objects.line_items.read
+          - oauth2:
+              - crm.objects.contacts.write
+          - private_apps:
+              - crm.objects.contacts.write
+          - oauth2:
+              - crm.objects.line_items.read
+          - private_apps:
+              - crm.objects.custom.sensitive.read
+          - oauth2_legacy:
+              - crm.objects.custom.read
+          - private_apps_legacy:
+              - crm.objects.custom.read
+          - oauth2:
+              - crm.objects.line_items.write
+          - private_apps:
+              - crm.objects.line_items.write
+          - private_apps:
+              - crm.objects.custom.sensitive.write
+          - private_apps:
+              - crm.objects.contacts.sensitive.read
+          - oauth2:
+              - crm.objects.quotes.read
           - private_apps:
               - crm.objects.quotes.read
     /crm/v3/objects/{objectType}/{objectId}:
@@ -7811,68 +8442,106 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - media_bridge.read
-          - oauth2:
-              - crm.objects.contacts.read
+          - private_apps_legacy:
+              - tickets.sensitive
           - private_apps:
               - crm.objects.deals.read
+          - private_apps:
+              - crm.objects.subscriptions.read
           - oauth2:
               - crm.objects.deals.read
+          - private_apps:
+              - crm.objects.contacts.sensitive.write
           - private_apps_legacy:
               - contacts
-          - private_apps:
-              - crm.objects.contacts.read
+          - oauth2:
+              - crm.objects.subscriptions.read
           - private_apps:
               - crm.objects.companies.read
-          - private_apps:
-              - crm.objects.deals.write
           - oauth2:
               - crm.objects.companies.read
-          - oauth2:
-              - crm.objects.deals.write
+          - private_apps:
+              - crm.objects.companies.sensitive.read
+          - private_apps:
+              - crm.objects.deals.sensitive.write
           - private_apps_legacy:
               - crm.objects.goals.read
+          - private_apps:
+              - crm.objects.users.write
           - private_apps_legacy:
               - media_bridge.read
           - private_apps:
               - crm.objects.companies.write
           - oauth2:
               - crm.objects.companies.write
-          - oauth2:
-              - crm.objects.quotes.write
-          - private_apps:
-              - crm.objects.quotes.write
           - oauth2_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.read
           - private_apps_legacy:
               - crm.objects.custom.write
+          - oauth2:
+              - crm.objects.users.read
+          - oauth2:
+              - crm.objects.users.write
           - private_apps_legacy:
               - e-commerce
           - private_apps:
-              - crm.objects.line_items.read
-          - oauth2:
-              - crm.objects.contacts.write
-          - private_apps:
-              - crm.objects.contacts.write
-          - oauth2:
-              - crm.objects.line_items.read
-          - oauth2_legacy:
-              - crm.objects.custom.read
-          - private_apps_legacy:
-              - crm.objects.custom.read
-          - oauth2:
-              - crm.objects.line_items.write
-          - private_apps:
-              - crm.objects.line_items.write
+              - crm.objects.deals.sensitive.read
           - oauth2_legacy:
               - e-commerce
           - private_apps_legacy:
               - tickets
           - oauth2_legacy:
               - crm.objects.goals.read
-          - oauth2:
-              - crm.objects.quotes.read
           - oauth2_legacy:
               - crm.objects.custom.write
+          - oauth2:
+              - crm.objects.contacts.read
+          - oauth2:
+              - crm.objects.commercepayments.read
+          - private_apps:
+              - crm.objects.commercepayments.read
+          - private_apps:
+              - crm.objects.companies.sensitive.write
+          - private_apps:
+              - crm.objects.contacts.read
+          - private_apps:
+              - crm.objects.deals.write
+          - oauth2:
+              - crm.objects.deals.write
+          - oauth2:
+              - crm.objects.invoices.read
+          - private_apps:
+              - crm.objects.invoices.read
+          - oauth2:
+              - crm.objects.quotes.write
+          - private_apps:
+              - crm.objects.quotes.write
+          - private_apps:
+              - crm.objects.line_items.read
+          - oauth2:
+              - crm.objects.contacts.write
+          - private_apps:
+              - crm.objects.contacts.write
+          - oauth2:
+              - crm.objects.line_items.read
+          - private_apps:
+              - crm.objects.custom.sensitive.read
+          - oauth2_legacy:
+              - crm.objects.custom.read
+          - private_apps_legacy:
+              - crm.objects.custom.read
+          - oauth2:
+              - crm.objects.line_items.write
+          - private_apps:
+              - crm.objects.line_items.write
+          - private_apps:
+              - crm.objects.custom.sensitive.write
+          - private_apps:
+              - crm.objects.contacts.sensitive.read
+          - oauth2:
+              - crm.objects.quotes.read
           - private_apps:
               - crm.objects.quotes.read
       delete:
@@ -7905,68 +8574,106 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - media_bridge.read
-          - oauth2:
-              - crm.objects.contacts.read
+          - private_apps_legacy:
+              - tickets.sensitive
           - private_apps:
               - crm.objects.deals.read
+          - private_apps:
+              - crm.objects.subscriptions.read
           - oauth2:
               - crm.objects.deals.read
+          - private_apps:
+              - crm.objects.contacts.sensitive.write
           - private_apps_legacy:
               - contacts
-          - private_apps:
-              - crm.objects.contacts.read
+          - oauth2:
+              - crm.objects.subscriptions.read
           - private_apps:
               - crm.objects.companies.read
-          - private_apps:
-              - crm.objects.deals.write
           - oauth2:
               - crm.objects.companies.read
-          - oauth2:
-              - crm.objects.deals.write
+          - private_apps:
+              - crm.objects.companies.sensitive.read
+          - private_apps:
+              - crm.objects.deals.sensitive.write
           - private_apps_legacy:
               - crm.objects.goals.read
+          - private_apps:
+              - crm.objects.users.write
           - private_apps_legacy:
               - media_bridge.read
           - private_apps:
               - crm.objects.companies.write
           - oauth2:
               - crm.objects.companies.write
-          - oauth2:
-              - crm.objects.quotes.write
-          - private_apps:
-              - crm.objects.quotes.write
           - oauth2_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.read
           - private_apps_legacy:
               - crm.objects.custom.write
+          - oauth2:
+              - crm.objects.users.read
+          - oauth2:
+              - crm.objects.users.write
           - private_apps_legacy:
               - e-commerce
           - private_apps:
-              - crm.objects.line_items.read
-          - oauth2:
-              - crm.objects.contacts.write
-          - private_apps:
-              - crm.objects.contacts.write
-          - oauth2:
-              - crm.objects.line_items.read
-          - oauth2_legacy:
-              - crm.objects.custom.read
-          - private_apps_legacy:
-              - crm.objects.custom.read
-          - oauth2:
-              - crm.objects.line_items.write
-          - private_apps:
-              - crm.objects.line_items.write
+              - crm.objects.deals.sensitive.read
           - oauth2_legacy:
               - e-commerce
           - private_apps_legacy:
               - tickets
           - oauth2_legacy:
               - crm.objects.goals.read
-          - oauth2:
-              - crm.objects.quotes.read
           - oauth2_legacy:
               - crm.objects.custom.write
+          - oauth2:
+              - crm.objects.contacts.read
+          - oauth2:
+              - crm.objects.commercepayments.read
+          - private_apps:
+              - crm.objects.commercepayments.read
+          - private_apps:
+              - crm.objects.companies.sensitive.write
+          - private_apps:
+              - crm.objects.contacts.read
+          - private_apps:
+              - crm.objects.deals.write
+          - oauth2:
+              - crm.objects.deals.write
+          - oauth2:
+              - crm.objects.invoices.read
+          - private_apps:
+              - crm.objects.invoices.read
+          - oauth2:
+              - crm.objects.quotes.write
+          - private_apps:
+              - crm.objects.quotes.write
+          - private_apps:
+              - crm.objects.line_items.read
+          - oauth2:
+              - crm.objects.contacts.write
+          - private_apps:
+              - crm.objects.contacts.write
+          - oauth2:
+              - crm.objects.line_items.read
+          - private_apps:
+              - crm.objects.custom.sensitive.read
+          - oauth2_legacy:
+              - crm.objects.custom.read
+          - private_apps_legacy:
+              - crm.objects.custom.read
+          - oauth2:
+              - crm.objects.line_items.write
+          - private_apps:
+              - crm.objects.line_items.write
+          - private_apps:
+              - crm.objects.custom.sensitive.write
+          - private_apps:
+              - crm.objects.contacts.sensitive.read
+          - oauth2:
+              - crm.objects.quotes.read
           - private_apps:
               - crm.objects.quotes.read
       patch:
@@ -8022,68 +8729,106 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - media_bridge.read
-          - oauth2:
-              - crm.objects.contacts.read
+          - private_apps_legacy:
+              - tickets.sensitive
           - private_apps:
               - crm.objects.deals.read
+          - private_apps:
+              - crm.objects.subscriptions.read
           - oauth2:
               - crm.objects.deals.read
+          - private_apps:
+              - crm.objects.contacts.sensitive.write
           - private_apps_legacy:
               - contacts
-          - private_apps:
-              - crm.objects.contacts.read
+          - oauth2:
+              - crm.objects.subscriptions.read
           - private_apps:
               - crm.objects.companies.read
-          - private_apps:
-              - crm.objects.deals.write
           - oauth2:
               - crm.objects.companies.read
-          - oauth2:
-              - crm.objects.deals.write
+          - private_apps:
+              - crm.objects.companies.sensitive.read
+          - private_apps:
+              - crm.objects.deals.sensitive.write
           - private_apps_legacy:
               - crm.objects.goals.read
+          - private_apps:
+              - crm.objects.users.write
           - private_apps_legacy:
               - media_bridge.read
           - private_apps:
               - crm.objects.companies.write
           - oauth2:
               - crm.objects.companies.write
-          - oauth2:
-              - crm.objects.quotes.write
-          - private_apps:
-              - crm.objects.quotes.write
           - oauth2_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.read
           - private_apps_legacy:
               - crm.objects.custom.write
+          - oauth2:
+              - crm.objects.users.read
+          - oauth2:
+              - crm.objects.users.write
           - private_apps_legacy:
               - e-commerce
           - private_apps:
-              - crm.objects.line_items.read
-          - oauth2:
-              - crm.objects.contacts.write
-          - private_apps:
-              - crm.objects.contacts.write
-          - oauth2:
-              - crm.objects.line_items.read
-          - oauth2_legacy:
-              - crm.objects.custom.read
-          - private_apps_legacy:
-              - crm.objects.custom.read
-          - oauth2:
-              - crm.objects.line_items.write
-          - private_apps:
-              - crm.objects.line_items.write
+              - crm.objects.deals.sensitive.read
           - oauth2_legacy:
               - e-commerce
           - private_apps_legacy:
               - tickets
           - oauth2_legacy:
               - crm.objects.goals.read
-          - oauth2:
-              - crm.objects.quotes.read
           - oauth2_legacy:
               - crm.objects.custom.write
+          - oauth2:
+              - crm.objects.contacts.read
+          - oauth2:
+              - crm.objects.commercepayments.read
+          - private_apps:
+              - crm.objects.commercepayments.read
+          - private_apps:
+              - crm.objects.companies.sensitive.write
+          - private_apps:
+              - crm.objects.contacts.read
+          - private_apps:
+              - crm.objects.deals.write
+          - oauth2:
+              - crm.objects.deals.write
+          - oauth2:
+              - crm.objects.invoices.read
+          - private_apps:
+              - crm.objects.invoices.read
+          - oauth2:
+              - crm.objects.quotes.write
+          - private_apps:
+              - crm.objects.quotes.write
+          - private_apps:
+              - crm.objects.line_items.read
+          - oauth2:
+              - crm.objects.contacts.write
+          - private_apps:
+              - crm.objects.contacts.write
+          - oauth2:
+              - crm.objects.line_items.read
+          - private_apps:
+              - crm.objects.custom.sensitive.read
+          - oauth2_legacy:
+              - crm.objects.custom.read
+          - private_apps_legacy:
+              - crm.objects.custom.read
+          - oauth2:
+              - crm.objects.line_items.write
+          - private_apps:
+              - crm.objects.line_items.write
+          - private_apps:
+              - crm.objects.custom.sensitive.write
+          - private_apps:
+              - crm.objects.contacts.sensitive.read
+          - oauth2:
+              - crm.objects.quotes.read
           - private_apps:
               - crm.objects.quotes.read
     /crm/v3/objects/{objectType}/merge:
@@ -8118,68 +8863,106 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - media_bridge.read
-          - oauth2:
-              - crm.objects.contacts.read
+          - private_apps_legacy:
+              - tickets.sensitive
           - private_apps:
               - crm.objects.deals.read
+          - private_apps:
+              - crm.objects.subscriptions.read
           - oauth2:
               - crm.objects.deals.read
+          - private_apps:
+              - crm.objects.contacts.sensitive.write
           - private_apps_legacy:
               - contacts
-          - private_apps:
-              - crm.objects.contacts.read
+          - oauth2:
+              - crm.objects.subscriptions.read
           - private_apps:
               - crm.objects.companies.read
-          - private_apps:
-              - crm.objects.deals.write
           - oauth2:
               - crm.objects.companies.read
-          - oauth2:
-              - crm.objects.deals.write
+          - private_apps:
+              - crm.objects.companies.sensitive.read
+          - private_apps:
+              - crm.objects.deals.sensitive.write
           - private_apps_legacy:
               - crm.objects.goals.read
+          - private_apps:
+              - crm.objects.users.write
           - private_apps_legacy:
               - media_bridge.read
           - private_apps:
               - crm.objects.companies.write
           - oauth2:
               - crm.objects.companies.write
-          - oauth2:
-              - crm.objects.quotes.write
-          - private_apps:
-              - crm.objects.quotes.write
           - oauth2_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.read
           - private_apps_legacy:
               - crm.objects.custom.write
+          - oauth2:
+              - crm.objects.users.read
+          - oauth2:
+              - crm.objects.users.write
           - private_apps_legacy:
               - e-commerce
           - private_apps:
-              - crm.objects.line_items.read
-          - oauth2:
-              - crm.objects.contacts.write
-          - private_apps:
-              - crm.objects.contacts.write
-          - oauth2:
-              - crm.objects.line_items.read
-          - oauth2_legacy:
-              - crm.objects.custom.read
-          - private_apps_legacy:
-              - crm.objects.custom.read
-          - oauth2:
-              - crm.objects.line_items.write
-          - private_apps:
-              - crm.objects.line_items.write
+              - crm.objects.deals.sensitive.read
           - oauth2_legacy:
               - e-commerce
           - private_apps_legacy:
               - tickets
           - oauth2_legacy:
               - crm.objects.goals.read
-          - oauth2:
-              - crm.objects.quotes.read
           - oauth2_legacy:
               - crm.objects.custom.write
+          - oauth2:
+              - crm.objects.contacts.read
+          - oauth2:
+              - crm.objects.commercepayments.read
+          - private_apps:
+              - crm.objects.commercepayments.read
+          - private_apps:
+              - crm.objects.companies.sensitive.write
+          - private_apps:
+              - crm.objects.contacts.read
+          - private_apps:
+              - crm.objects.deals.write
+          - oauth2:
+              - crm.objects.deals.write
+          - oauth2:
+              - crm.objects.invoices.read
+          - private_apps:
+              - crm.objects.invoices.read
+          - oauth2:
+              - crm.objects.quotes.write
+          - private_apps:
+              - crm.objects.quotes.write
+          - private_apps:
+              - crm.objects.line_items.read
+          - oauth2:
+              - crm.objects.contacts.write
+          - private_apps:
+              - crm.objects.contacts.write
+          - oauth2:
+              - crm.objects.line_items.read
+          - private_apps:
+              - crm.objects.custom.sensitive.read
+          - oauth2_legacy:
+              - crm.objects.custom.read
+          - private_apps_legacy:
+              - crm.objects.custom.read
+          - oauth2:
+              - crm.objects.line_items.write
+          - private_apps:
+              - crm.objects.line_items.write
+          - private_apps:
+              - crm.objects.custom.sensitive.write
+          - private_apps:
+              - crm.objects.contacts.sensitive.read
+          - oauth2:
+              - crm.objects.quotes.read
           - private_apps:
               - crm.objects.quotes.read
     /crm/v3/objects/{objectType}/batch/archive:
@@ -8211,68 +8994,106 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - media_bridge.read
-          - oauth2:
-              - crm.objects.contacts.read
+          - private_apps_legacy:
+              - tickets.sensitive
           - private_apps:
               - crm.objects.deals.read
+          - private_apps:
+              - crm.objects.subscriptions.read
           - oauth2:
               - crm.objects.deals.read
+          - private_apps:
+              - crm.objects.contacts.sensitive.write
           - private_apps_legacy:
               - contacts
-          - private_apps:
-              - crm.objects.contacts.read
+          - oauth2:
+              - crm.objects.subscriptions.read
           - private_apps:
               - crm.objects.companies.read
-          - private_apps:
-              - crm.objects.deals.write
           - oauth2:
               - crm.objects.companies.read
-          - oauth2:
-              - crm.objects.deals.write
+          - private_apps:
+              - crm.objects.companies.sensitive.read
+          - private_apps:
+              - crm.objects.deals.sensitive.write
           - private_apps_legacy:
               - crm.objects.goals.read
+          - private_apps:
+              - crm.objects.users.write
           - private_apps_legacy:
               - media_bridge.read
           - private_apps:
               - crm.objects.companies.write
           - oauth2:
               - crm.objects.companies.write
-          - oauth2:
-              - crm.objects.quotes.write
-          - private_apps:
-              - crm.objects.quotes.write
           - oauth2_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.read
           - private_apps_legacy:
               - crm.objects.custom.write
+          - oauth2:
+              - crm.objects.users.read
+          - oauth2:
+              - crm.objects.users.write
           - private_apps_legacy:
               - e-commerce
           - private_apps:
-              - crm.objects.line_items.read
-          - oauth2:
-              - crm.objects.contacts.write
-          - private_apps:
-              - crm.objects.contacts.write
-          - oauth2:
-              - crm.objects.line_items.read
-          - oauth2_legacy:
-              - crm.objects.custom.read
-          - private_apps_legacy:
-              - crm.objects.custom.read
-          - oauth2:
-              - crm.objects.line_items.write
-          - private_apps:
-              - crm.objects.line_items.write
+              - crm.objects.deals.sensitive.read
           - oauth2_legacy:
               - e-commerce
           - private_apps_legacy:
               - tickets
           - oauth2_legacy:
               - crm.objects.goals.read
-          - oauth2:
-              - crm.objects.quotes.read
           - oauth2_legacy:
               - crm.objects.custom.write
+          - oauth2:
+              - crm.objects.contacts.read
+          - oauth2:
+              - crm.objects.commercepayments.read
+          - private_apps:
+              - crm.objects.commercepayments.read
+          - private_apps:
+              - crm.objects.companies.sensitive.write
+          - private_apps:
+              - crm.objects.contacts.read
+          - private_apps:
+              - crm.objects.deals.write
+          - oauth2:
+              - crm.objects.deals.write
+          - oauth2:
+              - crm.objects.invoices.read
+          - private_apps:
+              - crm.objects.invoices.read
+          - oauth2:
+              - crm.objects.quotes.write
+          - private_apps:
+              - crm.objects.quotes.write
+          - private_apps:
+              - crm.objects.line_items.read
+          - oauth2:
+              - crm.objects.contacts.write
+          - private_apps:
+              - crm.objects.contacts.write
+          - oauth2:
+              - crm.objects.line_items.read
+          - private_apps:
+              - crm.objects.custom.sensitive.read
+          - oauth2_legacy:
+              - crm.objects.custom.read
+          - private_apps_legacy:
+              - crm.objects.custom.read
+          - oauth2:
+              - crm.objects.line_items.write
+          - private_apps:
+              - crm.objects.line_items.write
+          - private_apps:
+              - crm.objects.custom.sensitive.write
+          - private_apps:
+              - crm.objects.contacts.sensitive.read
+          - oauth2:
+              - crm.objects.quotes.read
           - private_apps:
               - crm.objects.quotes.read
     /crm/v3/objects/{objectType}/batch/create:
@@ -8313,68 +9134,106 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - media_bridge.read
-          - oauth2:
-              - crm.objects.contacts.read
+          - private_apps_legacy:
+              - tickets.sensitive
           - private_apps:
               - crm.objects.deals.read
+          - private_apps:
+              - crm.objects.subscriptions.read
           - oauth2:
               - crm.objects.deals.read
+          - private_apps:
+              - crm.objects.contacts.sensitive.write
           - private_apps_legacy:
               - contacts
-          - private_apps:
-              - crm.objects.contacts.read
+          - oauth2:
+              - crm.objects.subscriptions.read
           - private_apps:
               - crm.objects.companies.read
-          - private_apps:
-              - crm.objects.deals.write
           - oauth2:
               - crm.objects.companies.read
-          - oauth2:
-              - crm.objects.deals.write
+          - private_apps:
+              - crm.objects.companies.sensitive.read
+          - private_apps:
+              - crm.objects.deals.sensitive.write
           - private_apps_legacy:
               - crm.objects.goals.read
+          - private_apps:
+              - crm.objects.users.write
           - private_apps_legacy:
               - media_bridge.read
           - private_apps:
               - crm.objects.companies.write
           - oauth2:
               - crm.objects.companies.write
-          - oauth2:
-              - crm.objects.quotes.write
-          - private_apps:
-              - crm.objects.quotes.write
           - oauth2_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.read
           - private_apps_legacy:
               - crm.objects.custom.write
+          - oauth2:
+              - crm.objects.users.read
+          - oauth2:
+              - crm.objects.users.write
           - private_apps_legacy:
               - e-commerce
           - private_apps:
-              - crm.objects.line_items.read
-          - oauth2:
-              - crm.objects.contacts.write
-          - private_apps:
-              - crm.objects.contacts.write
-          - oauth2:
-              - crm.objects.line_items.read
-          - oauth2_legacy:
-              - crm.objects.custom.read
-          - private_apps_legacy:
-              - crm.objects.custom.read
-          - oauth2:
-              - crm.objects.line_items.write
-          - private_apps:
-              - crm.objects.line_items.write
+              - crm.objects.deals.sensitive.read
           - oauth2_legacy:
               - e-commerce
           - private_apps_legacy:
               - tickets
           - oauth2_legacy:
               - crm.objects.goals.read
-          - oauth2:
-              - crm.objects.quotes.read
           - oauth2_legacy:
               - crm.objects.custom.write
+          - oauth2:
+              - crm.objects.contacts.read
+          - oauth2:
+              - crm.objects.commercepayments.read
+          - private_apps:
+              - crm.objects.commercepayments.read
+          - private_apps:
+              - crm.objects.companies.sensitive.write
+          - private_apps:
+              - crm.objects.contacts.read
+          - private_apps:
+              - crm.objects.deals.write
+          - oauth2:
+              - crm.objects.deals.write
+          - oauth2:
+              - crm.objects.invoices.read
+          - private_apps:
+              - crm.objects.invoices.read
+          - oauth2:
+              - crm.objects.quotes.write
+          - private_apps:
+              - crm.objects.quotes.write
+          - private_apps:
+              - crm.objects.line_items.read
+          - oauth2:
+              - crm.objects.contacts.write
+          - private_apps:
+              - crm.objects.contacts.write
+          - oauth2:
+              - crm.objects.line_items.read
+          - private_apps:
+              - crm.objects.custom.sensitive.read
+          - oauth2_legacy:
+              - crm.objects.custom.read
+          - private_apps_legacy:
+              - crm.objects.custom.read
+          - oauth2:
+              - crm.objects.line_items.write
+          - private_apps:
+              - crm.objects.line_items.write
+          - private_apps:
+              - crm.objects.custom.sensitive.write
+          - private_apps:
+              - crm.objects.contacts.sensitive.read
+          - oauth2:
+              - crm.objects.quotes.read
           - private_apps:
               - crm.objects.quotes.read
     /crm/v3/objects/{objectType}/batch/update:
@@ -8415,140 +9274,82 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - media_bridge.read
-          - oauth2:
-              - crm.objects.contacts.read
+          - private_apps_legacy:
+              - tickets.sensitive
           - private_apps:
               - crm.objects.deals.read
+          - private_apps:
+              - crm.objects.subscriptions.read
           - oauth2:
               - crm.objects.deals.read
+          - private_apps:
+              - crm.objects.contacts.sensitive.write
           - private_apps_legacy:
               - contacts
-          - private_apps:
-              - crm.objects.contacts.read
+          - oauth2:
+              - crm.objects.subscriptions.read
           - private_apps:
               - crm.objects.companies.read
-          - private_apps:
-              - crm.objects.deals.write
           - oauth2:
               - crm.objects.companies.read
-          - oauth2:
-              - crm.objects.deals.write
+          - private_apps:
+              - crm.objects.companies.sensitive.read
+          - private_apps:
+              - crm.objects.deals.sensitive.write
           - private_apps_legacy:
               - crm.objects.goals.read
+          - private_apps:
+              - crm.objects.users.write
           - private_apps_legacy:
               - media_bridge.read
           - private_apps:
               - crm.objects.companies.write
           - oauth2:
               - crm.objects.companies.write
-          - oauth2:
-              - crm.objects.quotes.write
-          - private_apps:
-              - crm.objects.quotes.write
           - oauth2_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.read
           - private_apps_legacy:
               - crm.objects.custom.write
+          - oauth2:
+              - crm.objects.users.read
+          - oauth2:
+              - crm.objects.users.write
           - private_apps_legacy:
               - e-commerce
           - private_apps:
-              - crm.objects.line_items.read
-          - oauth2:
-              - crm.objects.contacts.write
-          - private_apps:
-              - crm.objects.contacts.write
-          - oauth2:
-              - crm.objects.line_items.read
-          - oauth2_legacy:
-              - crm.objects.custom.read
-          - private_apps_legacy:
-              - crm.objects.custom.read
-          - oauth2:
-              - crm.objects.line_items.write
-          - private_apps:
-              - crm.objects.line_items.write
+              - crm.objects.deals.sensitive.read
           - oauth2_legacy:
               - e-commerce
           - private_apps_legacy:
               - tickets
           - oauth2_legacy:
               - crm.objects.goals.read
-          - oauth2:
-              - crm.objects.quotes.read
           - oauth2_legacy:
               - crm.objects.custom.write
-          - private_apps:
-              - crm.objects.quotes.read
-    /crm/v3/objects/{objectType}/gdpr-delete:
-      post:
-        tags:
-          - GDPR
-        summary: GDPR DELETE
-        description: >-
-          Permanently delete a contact and all associated content to follow GDPR.
-          Use optional property 'idProperty' set to 'email' to identify contact by
-          email address. If email address is not found, the email address will be
-          added to a blocklist and prevent it from being used in the future.
-        operationId: post-/crm/v3/objects/{objectType}/gdpr-delete_purge
-        parameters:
-          - name: objectType
-            in: path
-            required: true
-            style: simple
-            explode: false
-            schema:
-              type: string
-        requestBody:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PublicGdprDeleteInput'
-          required: true
-        responses:
-          '204':
-            description: No content
-            content: {}
-          default:
-            $ref: '#/components/responses/Error'
-        security:
-          - oauth2_legacy:
-              - media_bridge.read
           - oauth2:
               - crm.objects.contacts.read
-          - private_apps:
-              - crm.objects.deals.read
           - oauth2:
-              - crm.objects.deals.read
-          - private_apps_legacy:
-              - contacts
+              - crm.objects.commercepayments.read
+          - private_apps:
+              - crm.objects.commercepayments.read
+          - private_apps:
+              - crm.objects.companies.sensitive.write
           - private_apps:
               - crm.objects.contacts.read
           - private_apps:
-              - crm.objects.companies.read
-          - private_apps:
               - crm.objects.deals.write
           - oauth2:
-              - crm.objects.companies.read
-          - oauth2:
               - crm.objects.deals.write
-          - private_apps_legacy:
-              - crm.objects.goals.read
-          - private_apps_legacy:
-              - media_bridge.read
-          - private_apps:
-              - crm.objects.companies.write
           - oauth2:
-              - crm.objects.companies.write
+              - crm.objects.invoices.read
+          - private_apps:
+              - crm.objects.invoices.read
           - oauth2:
               - crm.objects.quotes.write
           - private_apps:
               - crm.objects.quotes.write
-          - oauth2_legacy:
-              - tickets
-          - private_apps_legacy:
-              - crm.objects.custom.write
-          - private_apps_legacy:
-              - e-commerce
           - private_apps:
               - crm.objects.line_items.read
           - oauth2:
@@ -8557,6 +9358,8 @@ rawSpecString: |
               - crm.objects.contacts.write
           - oauth2:
               - crm.objects.line_items.read
+          - private_apps:
+              - crm.objects.custom.sensitive.read
           - oauth2_legacy:
               - crm.objects.custom.read
           - private_apps_legacy:
@@ -8565,16 +9368,12 @@ rawSpecString: |
               - crm.objects.line_items.write
           - private_apps:
               - crm.objects.line_items.write
-          - oauth2_legacy:
-              - e-commerce
-          - private_apps_legacy:
-              - tickets
-          - oauth2_legacy:
-              - crm.objects.goals.read
+          - private_apps:
+              - crm.objects.custom.sensitive.write
+          - private_apps:
+              - crm.objects.contacts.sensitive.read
           - oauth2:
               - crm.objects.quotes.read
-          - oauth2_legacy:
-              - crm.objects.custom.write
           - private_apps:
               - crm.objects.quotes.read
     /crm/v3/objects/{objectType}:
@@ -8678,68 +9477,106 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - media_bridge.read
-          - oauth2:
-              - crm.objects.contacts.read
+          - private_apps_legacy:
+              - tickets.sensitive
           - private_apps:
               - crm.objects.deals.read
+          - private_apps:
+              - crm.objects.subscriptions.read
           - oauth2:
               - crm.objects.deals.read
+          - private_apps:
+              - crm.objects.contacts.sensitive.write
           - private_apps_legacy:
               - contacts
-          - private_apps:
-              - crm.objects.contacts.read
+          - oauth2:
+              - crm.objects.subscriptions.read
           - private_apps:
               - crm.objects.companies.read
-          - private_apps:
-              - crm.objects.deals.write
           - oauth2:
               - crm.objects.companies.read
-          - oauth2:
-              - crm.objects.deals.write
+          - private_apps:
+              - crm.objects.companies.sensitive.read
+          - private_apps:
+              - crm.objects.deals.sensitive.write
           - private_apps_legacy:
               - crm.objects.goals.read
+          - private_apps:
+              - crm.objects.users.write
           - private_apps_legacy:
               - media_bridge.read
           - private_apps:
               - crm.objects.companies.write
           - oauth2:
               - crm.objects.companies.write
-          - oauth2:
-              - crm.objects.quotes.write
-          - private_apps:
-              - crm.objects.quotes.write
           - oauth2_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.read
           - private_apps_legacy:
               - crm.objects.custom.write
+          - oauth2:
+              - crm.objects.users.read
+          - oauth2:
+              - crm.objects.users.write
           - private_apps_legacy:
               - e-commerce
           - private_apps:
-              - crm.objects.line_items.read
-          - oauth2:
-              - crm.objects.contacts.write
-          - private_apps:
-              - crm.objects.contacts.write
-          - oauth2:
-              - crm.objects.line_items.read
-          - oauth2_legacy:
-              - crm.objects.custom.read
-          - private_apps_legacy:
-              - crm.objects.custom.read
-          - oauth2:
-              - crm.objects.line_items.write
-          - private_apps:
-              - crm.objects.line_items.write
+              - crm.objects.deals.sensitive.read
           - oauth2_legacy:
               - e-commerce
           - private_apps_legacy:
               - tickets
           - oauth2_legacy:
               - crm.objects.goals.read
-          - oauth2:
-              - crm.objects.quotes.read
           - oauth2_legacy:
               - crm.objects.custom.write
+          - oauth2:
+              - crm.objects.contacts.read
+          - oauth2:
+              - crm.objects.commercepayments.read
+          - private_apps:
+              - crm.objects.commercepayments.read
+          - private_apps:
+              - crm.objects.companies.sensitive.write
+          - private_apps:
+              - crm.objects.contacts.read
+          - private_apps:
+              - crm.objects.deals.write
+          - oauth2:
+              - crm.objects.deals.write
+          - oauth2:
+              - crm.objects.invoices.read
+          - private_apps:
+              - crm.objects.invoices.read
+          - oauth2:
+              - crm.objects.quotes.write
+          - private_apps:
+              - crm.objects.quotes.write
+          - private_apps:
+              - crm.objects.line_items.read
+          - oauth2:
+              - crm.objects.contacts.write
+          - private_apps:
+              - crm.objects.contacts.write
+          - oauth2:
+              - crm.objects.line_items.read
+          - private_apps:
+              - crm.objects.custom.sensitive.read
+          - oauth2_legacy:
+              - crm.objects.custom.read
+          - private_apps_legacy:
+              - crm.objects.custom.read
+          - oauth2:
+              - crm.objects.line_items.write
+          - private_apps:
+              - crm.objects.line_items.write
+          - private_apps:
+              - crm.objects.custom.sensitive.write
+          - private_apps:
+              - crm.objects.contacts.sensitive.read
+          - oauth2:
+              - crm.objects.quotes.read
           - private_apps:
               - crm.objects.quotes.read
       post:
@@ -8777,68 +9614,106 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - media_bridge.read
-          - oauth2:
-              - crm.objects.contacts.read
+          - private_apps_legacy:
+              - tickets.sensitive
           - private_apps:
               - crm.objects.deals.read
+          - private_apps:
+              - crm.objects.subscriptions.read
           - oauth2:
               - crm.objects.deals.read
+          - private_apps:
+              - crm.objects.contacts.sensitive.write
           - private_apps_legacy:
               - contacts
-          - private_apps:
-              - crm.objects.contacts.read
+          - oauth2:
+              - crm.objects.subscriptions.read
           - private_apps:
               - crm.objects.companies.read
-          - private_apps:
-              - crm.objects.deals.write
           - oauth2:
               - crm.objects.companies.read
-          - oauth2:
-              - crm.objects.deals.write
+          - private_apps:
+              - crm.objects.companies.sensitive.read
+          - private_apps:
+              - crm.objects.deals.sensitive.write
           - private_apps_legacy:
               - crm.objects.goals.read
+          - private_apps:
+              - crm.objects.users.write
           - private_apps_legacy:
               - media_bridge.read
           - private_apps:
               - crm.objects.companies.write
           - oauth2:
               - crm.objects.companies.write
-          - oauth2:
-              - crm.objects.quotes.write
-          - private_apps:
-              - crm.objects.quotes.write
           - oauth2_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.read
           - private_apps_legacy:
               - crm.objects.custom.write
+          - oauth2:
+              - crm.objects.users.read
+          - oauth2:
+              - crm.objects.users.write
           - private_apps_legacy:
               - e-commerce
           - private_apps:
-              - crm.objects.line_items.read
-          - oauth2:
-              - crm.objects.contacts.write
-          - private_apps:
-              - crm.objects.contacts.write
-          - oauth2:
-              - crm.objects.line_items.read
-          - oauth2_legacy:
-              - crm.objects.custom.read
-          - private_apps_legacy:
-              - crm.objects.custom.read
-          - oauth2:
-              - crm.objects.line_items.write
-          - private_apps:
-              - crm.objects.line_items.write
+              - crm.objects.deals.sensitive.read
           - oauth2_legacy:
               - e-commerce
           - private_apps_legacy:
               - tickets
           - oauth2_legacy:
               - crm.objects.goals.read
-          - oauth2:
-              - crm.objects.quotes.read
           - oauth2_legacy:
               - crm.objects.custom.write
+          - oauth2:
+              - crm.objects.contacts.read
+          - oauth2:
+              - crm.objects.commercepayments.read
+          - private_apps:
+              - crm.objects.commercepayments.read
+          - private_apps:
+              - crm.objects.companies.sensitive.write
+          - private_apps:
+              - crm.objects.contacts.read
+          - private_apps:
+              - crm.objects.deals.write
+          - oauth2:
+              - crm.objects.deals.write
+          - oauth2:
+              - crm.objects.invoices.read
+          - private_apps:
+              - crm.objects.invoices.read
+          - oauth2:
+              - crm.objects.quotes.write
+          - private_apps:
+              - crm.objects.quotes.write
+          - private_apps:
+              - crm.objects.line_items.read
+          - oauth2:
+              - crm.objects.contacts.write
+          - private_apps:
+              - crm.objects.contacts.write
+          - oauth2:
+              - crm.objects.line_items.read
+          - private_apps:
+              - crm.objects.custom.sensitive.read
+          - oauth2_legacy:
+              - crm.objects.custom.read
+          - private_apps_legacy:
+              - crm.objects.custom.read
+          - oauth2:
+              - crm.objects.line_items.write
+          - private_apps:
+              - crm.objects.line_items.write
+          - private_apps:
+              - crm.objects.custom.sensitive.write
+          - private_apps:
+              - crm.objects.contacts.sensitive.read
+          - oauth2:
+              - crm.objects.quotes.read
           - private_apps:
               - crm.objects.quotes.read
     /crm/v3/objects/{objectType}/search:
@@ -8873,68 +9748,106 @@ rawSpecString: |
         security:
           - oauth2_legacy:
               - media_bridge.read
-          - oauth2:
-              - crm.objects.contacts.read
+          - private_apps_legacy:
+              - tickets.sensitive
           - private_apps:
               - crm.objects.deals.read
+          - private_apps:
+              - crm.objects.subscriptions.read
           - oauth2:
               - crm.objects.deals.read
+          - private_apps:
+              - crm.objects.contacts.sensitive.write
           - private_apps_legacy:
               - contacts
-          - private_apps:
-              - crm.objects.contacts.read
+          - oauth2:
+              - crm.objects.subscriptions.read
           - private_apps:
               - crm.objects.companies.read
-          - private_apps:
-              - crm.objects.deals.write
           - oauth2:
               - crm.objects.companies.read
-          - oauth2:
-              - crm.objects.deals.write
+          - private_apps:
+              - crm.objects.companies.sensitive.read
+          - private_apps:
+              - crm.objects.deals.sensitive.write
           - private_apps_legacy:
               - crm.objects.goals.read
+          - private_apps:
+              - crm.objects.users.write
           - private_apps_legacy:
               - media_bridge.read
           - private_apps:
               - crm.objects.companies.write
           - oauth2:
               - crm.objects.companies.write
-          - oauth2:
-              - crm.objects.quotes.write
-          - private_apps:
-              - crm.objects.quotes.write
           - oauth2_legacy:
               - tickets
+          - private_apps:
+              - crm.objects.users.read
           - private_apps_legacy:
               - crm.objects.custom.write
+          - oauth2:
+              - crm.objects.users.read
+          - oauth2:
+              - crm.objects.users.write
           - private_apps_legacy:
               - e-commerce
           - private_apps:
-              - crm.objects.line_items.read
-          - oauth2:
-              - crm.objects.contacts.write
-          - private_apps:
-              - crm.objects.contacts.write
-          - oauth2:
-              - crm.objects.line_items.read
-          - oauth2_legacy:
-              - crm.objects.custom.read
-          - private_apps_legacy:
-              - crm.objects.custom.read
-          - oauth2:
-              - crm.objects.line_items.write
-          - private_apps:
-              - crm.objects.line_items.write
+              - crm.objects.deals.sensitive.read
           - oauth2_legacy:
               - e-commerce
           - private_apps_legacy:
               - tickets
           - oauth2_legacy:
               - crm.objects.goals.read
-          - oauth2:
-              - crm.objects.quotes.read
           - oauth2_legacy:
               - crm.objects.custom.write
+          - oauth2:
+              - crm.objects.contacts.read
+          - oauth2:
+              - crm.objects.commercepayments.read
+          - private_apps:
+              - crm.objects.commercepayments.read
+          - private_apps:
+              - crm.objects.companies.sensitive.write
+          - private_apps:
+              - crm.objects.contacts.read
+          - private_apps:
+              - crm.objects.deals.write
+          - oauth2:
+              - crm.objects.deals.write
+          - oauth2:
+              - crm.objects.invoices.read
+          - private_apps:
+              - crm.objects.invoices.read
+          - oauth2:
+              - crm.objects.quotes.write
+          - private_apps:
+              - crm.objects.quotes.write
+          - private_apps:
+              - crm.objects.line_items.read
+          - oauth2:
+              - crm.objects.contacts.write
+          - private_apps:
+              - crm.objects.contacts.write
+          - oauth2:
+              - crm.objects.line_items.read
+          - private_apps:
+              - crm.objects.custom.sensitive.read
+          - oauth2_legacy:
+              - crm.objects.custom.read
+          - private_apps_legacy:
+              - crm.objects.custom.read
+          - oauth2:
+              - crm.objects.line_items.write
+          - private_apps:
+              - crm.objects.line_items.write
+          - private_apps:
+              - crm.objects.custom.sensitive.write
+          - private_apps:
+              - crm.objects.contacts.sensitive.read
+          - oauth2:
+              - crm.objects.quotes.read
           - private_apps:
               - crm.objects.quotes.read
         x-hubspot-rate-limit-exemptions:
@@ -11180,6 +12093,53 @@ rawSpecString: |
           updatedAt: '2019-12-07T16:50:06.678Z'
           archived: false
           id: '1234912'
+      PipelineStageInput:
+        required:
+          - displayOrder
+          - label
+          - metadata
+        type: object
+        properties:
+          metadata:
+            type: object
+            additionalProperties:
+              type: string
+            description: >-
+              A JSON object containing properties that are not present on all
+              object pipelines.
+
+
+              For `deals` pipelines, the `probability` field is required (`{
+              "probability": 0.5 }`), and represents the likelihood a deal will
+              close. Possible values are between 0.0 and 1.0 in increments of 0.1.
+
+
+              For `tickets` pipelines, the `ticketState` field is optional (`{
+              "ticketState": "OPEN" }`), and represents whether the ticket remains
+              open or has been closed by a member of your Support team. Possible
+              values are `OPEN` or `CLOSED`.
+            example:
+              ticketState: CLOSED
+          displayOrder:
+            type: integer
+            description: >-
+              The order for displaying this pipeline stage. If two pipeline stages
+              have a matching `displayOrder`, they will be sorted alphabetically
+              by label.
+            format: int32
+            example: 1
+          label:
+            type: string
+            description: >-
+              A label used to organize pipeline stages in HubSpot's UI. Each
+              pipeline stage's label must be unique within that pipeline.
+            example: Done
+        description: An input used to create or replace a pipeline stage's definition.
+        example:
+          label: Done
+          displayOrder: 1
+          metadata:
+            ticketState: CLOSED
       CollectionResponsePipelineStageNoPaging:
         required:
           - results
@@ -11214,6 +12174,63 @@ rawSpecString: |
           timestamp:
             type: string
             format: date-time
+      PipelineInput:
+        required:
+          - displayOrder
+          - label
+          - stages
+        type: object
+        properties:
+          displayOrder:
+            type: integer
+            description: >-
+              The order for displaying this pipeline. If two pipelines have a
+              matching `displayOrder`, they will be sorted alphabetically by
+              label.
+            format: int32
+            example: 0
+          stages:
+            type: array
+            description: >-
+              Pipeline stage inputs used to create the new or replacement
+              pipeline.
+            example:
+              - label: In Progress
+                metadata:
+                  ticketState: OPEN
+                displayOrder: 0
+              - label: Done
+                metadata:
+                  ticketState: CLOSED
+                displayOrder: 1
+            items:
+              $ref: '#/components/schemas/PipelineStageInput'
+          label:
+            type: string
+            description: A unique label used to organize pipelines in HubSpot's UI
+            example: My replaced pipeline
+        description: An input used to create or replace a pipeline's definition.
+        example:
+          label: My replaced pipeline
+          displayOrder: 0
+          stages:
+            - label: In Progress
+              displayOrder: 0
+              metadata:
+                ticketState: OPEN
+            - label: Done
+              displayOrder: 1
+              metadata:
+                ticketState: CLOSED
+      CollectionResponsePipelineNoPaging:
+        required:
+          - results
+        type: object
+        properties:
+          results:
+            type: array
+            items:
+              $ref: '#/components/schemas/Pipeline'
       CollectionResponsePublicAuditInfoNoPaging:
         required:
           - results
@@ -11321,110 +12338,6 @@ rawSpecString: |
               updatedAt: '2019-12-07T16:50:06.678Z'
               archived: false
               id: '1234914'
-      PipelineStageInput:
-        required:
-          - displayOrder
-          - label
-          - metadata
-        type: object
-        properties:
-          metadata:
-            type: object
-            additionalProperties:
-              type: string
-            description: >-
-              A JSON object containing properties that are not present on all
-              object pipelines.
-
-
-              For `deals` pipelines, the `probability` field is required (`{
-              "probability": 0.5 }`), and represents the likelihood a deal will
-              close. Possible values are between 0.0 and 1.0 in increments of 0.1.
-
-
-              For `tickets` pipelines, the `ticketState` field is optional (`{
-              "ticketState": "OPEN" }`), and represents whether the ticket remains
-              open or has been closed by a member of your Support team. Possible
-              values are `OPEN` or `CLOSED`.
-            example:
-              ticketState: CLOSED
-          displayOrder:
-            type: integer
-            description: >-
-              The order for displaying this pipeline stage. If two pipeline stages
-              have a matching `displayOrder`, they will be sorted alphabetically
-              by label.
-            format: int32
-            example: 1
-          label:
-            type: string
-            description: >-
-              A label used to organize pipeline stages in HubSpot's UI. Each
-              pipeline stage's label must be unique within that pipeline.
-            example: Done
-        description: An input used to create or replace a pipeline stage's definition.
-        example:
-          label: Done
-          displayOrder: 1
-          metadata:
-            ticketState: CLOSED
-      PipelineInput:
-        required:
-          - displayOrder
-          - label
-          - stages
-        type: object
-        properties:
-          displayOrder:
-            type: integer
-            description: >-
-              The order for displaying this pipeline. If two pipelines have a
-              matching `displayOrder`, they will be sorted alphabetically by
-              label.
-            format: int32
-            example: 0
-          stages:
-            type: array
-            description: >-
-              Pipeline stage inputs used to create the new or replacement
-              pipeline.
-            example:
-              - label: In Progress
-                metadata:
-                  ticketState: OPEN
-                displayOrder: 0
-              - label: Done
-                metadata:
-                  ticketState: CLOSED
-                displayOrder: 1
-            items:
-              $ref: '#/components/schemas/PipelineStageInput'
-          label:
-            type: string
-            description: A unique label used to organize pipelines in HubSpot's UI
-            example: My replaced pipeline
-        description: An input used to create or replace a pipeline's definition.
-        example:
-          label: My replaced pipeline
-          displayOrder: 0
-          stages:
-            - label: In Progress
-              displayOrder: 0
-              metadata:
-                ticketState: OPEN
-            - label: Done
-              displayOrder: 1
-              metadata:
-                ticketState: CLOSED
-      CollectionResponsePipelineNoPaging:
-        required:
-          - results
-        type: object
-        properties:
-          results:
-            type: array
-            items:
-              $ref: '#/components/schemas/Pipeline'
       SettingsResponse:
         required:
           - createdAt
@@ -14345,11 +15258,11 @@ rawSpecString: |
               crm.objects.custom.read: View custom object records
               e-commerce: e-commerce
               crm.objects.custom.write: Change custom object records
+              crm.objects.feedback_submissions.read: View feedback survey submissions
+              crm.objects.marketing_events.write: Write marketing events
               timeline: Create timeline events
               crm.schemas.custom.read: View custom object definitions
               crm.objects.marketing_events.read: Read marketing events
-              crm.objects.feedback_submissions.read: View feedback survey submissions
-              crm.objects.marketing_events.write: Write marketing events
               crm.import: Create or modify all your CRM data through bulk imports
       oauth2:
         type: oauth2
@@ -14368,15 +15281,23 @@ rawSpecString: |
               crm.objects.companies.write: ' '
               crm.objects.contacts.write: ' '
               crm.objects.contacts.read: ' '
-              crm.schemas.companies.read: ' '
+              crm.schemas.quotes.read: Quotes schemas
+              crm.schemas.subscriptions.read: Read subscriptions schema
+              crm.objects.users.read: Read User CRM objects
+              crm.objects.subscriptions.read: Read Commerce Subscriptions
               crm.schemas.deals.read: ' '
               crm.schemas.contacts.read: ' '
+              crm.schemas.commercepayments.read: Read the COMMERCE_PAYMENT properties.
+              crm.objects.invoices.read: Read invoices objects
+              crm.schemas.invoices.read: Read invoices schema
+              crm.schemas.companies.read: ' '
               crm.schemas.line_items.read: Line Items schemas
-              crm.schemas.quotes.read: Quotes schemas
               crm.objects.owners.read: ' '
-              crm.schemas.contacts.write: ' '
-              crm.schemas.companies.write: ' '
               crm.schemas.deals.write: ' '
+              crm.schemas.companies.write: ' '
+              crm.schemas.contacts.write: ' '
+              crm.objects.users.write: Write User CRM objects
+              crm.objects.commercepayments.read: Read the COMMERCE_PAYMENT object.
       private_apps_legacy:
         type: apiKey
         name: private-app-legacy
@@ -14400,4 +15321,4 @@ rawSpecString: |
     service: FREE
     cms: FREE
   x-hubspot-documentation-banner: NONE
-konfigCliVersion: 1.38.34
+konfigCliVersion: 1.38.37

@@ -28,7 +28,7 @@ rawSpecString: |
   info:
     title: Lambda Cloud API
     description: API for interacting with the Lambda GPU Cloud
-    version: 1.5.1
+    version: 1.5.3
   paths:
     /instance-types:
       get:
@@ -442,6 +442,7 @@ rawSpecString: |
         required:
           - name
           - description
+          - gpu_description
           - price_cents_per_hour
           - specs
         properties:
@@ -451,6 +452,10 @@ rawSpecString: |
             type: string
             example: 1x RTX A100 (24 GB)
             description: Long name of the instance type
+          gpu_description:
+            type: string
+            example: RTX A100 (24 GB)
+            description: Description of the GPU(s) in the instance type
           price_cents_per_hour:
             type: integer
             description: Price of the instance type, in US cents per hour
@@ -462,6 +467,7 @@ rawSpecString: |
               - vcpus
               - memory_gib
               - storage_gib
+              - gpus
             properties:
               vcpus:
                 type: integer
@@ -475,6 +481,10 @@ rawSpecString: |
                 type: integer
                 example: 512
                 description: Amount of storage, in gibibytes (GiB).
+              gpus:
+                type: integer
+                example: 4
+                description: Number of GPUs
       instance:
         type: object
         description: Virtual machine (VM) in Lambda Cloud
@@ -883,4 +893,4 @@ rawSpecString: |
   security:
     - basicAuth: []
     - bearerAuth: []
-konfigCliVersion: 1.38.34
+konfigCliVersion: 1.38.37

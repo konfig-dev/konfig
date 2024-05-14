@@ -17,7 +17,7 @@ export default function GoliothTypeScriptSdk() {
       companyKebabCase="golioth"
       clientNameCamelCase="golioth"
       homepage="golioth.io"
-      lastUpdated={new Date("2024-03-29T21:57:13.775Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/golioth/favicon.png"
       // Missing contactUrl
       // Missing contactEmail

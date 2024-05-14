@@ -152,9 +152,9 @@ rawSpecString: |
         deprecated: false
     /alt-transactions:
       post:
-        summary: Create SEPA DD Transaction
+        summary: Create Sofort Transaction
         description: ''
-        operationId: create-sepa-dd-transaction
+        operationId: create-sofort-transaction
         requestBody:
           content:
             application/json:
@@ -176,7 +176,7 @@ rawSpecString: |
                         format: int32
                   amount:
                     type: number
-                    default: 9.65
+                    default: 42
                     format: float
                   payerInfo:
                     type: object
@@ -195,7 +195,7 @@ rawSpecString: |
                         default: '1234567890'
                       country:
                         type: string
-                        default: CA
+                        default: uk
                   softDescriptor:
                     type: string
                     default: ABC COMPANY
@@ -273,6 +273,12 @@ rawSpecString: |
                       iban:
                         type: string
                         default: DE09100100101234567893
+                  sofortTransaction:
+                    type: object
+                    properties:
+                      returnUrl:
+                        type: string
+                        default: http://www.returnURL.com
         deprecated: false
       put:
         summary: Update PayPal Transaction
@@ -312,7 +318,7 @@ rawSpecString: |
             description: transaction ID received in the response from BlueSnap
             schema:
               type: string
-              default: '1014672453'
+              default: '1105235763'
             required: true
         deprecated: false
     /alt-transactions/resolve:
@@ -330,7 +336,7 @@ rawSpecString: |
             schema:
               type: integer
               format: int32
-              default: 20922493
+              default: 140803713
         deprecated: false
     /agreements/debit/{region}/{type}:
       post:
@@ -365,35 +371,17 @@ rawSpecString: |
             schema:
               type: string
         deprecated: false
-    /agreements/{agreementId}:
+    /agreements/28521:
       get:
         summary: Get Debit Agreement
         description: for Australia and Canada
         operationId: get-debit-agreement
-        parameters:
-          - name: agreementId
-            in: query
-            description: >-
-              Argument included in the response for the Create Debit Agreement
-              request
-            schema:
-              type: string
-              default: '1065'
         deprecated: false
-    /agreements/prenotification/{transactionId}:
+    /agreements/prenotification/1105235763:
       get:
         summary: Get Pre-Notification Debit Agreement
         description: for Australia and Canada
         operationId: get-pre-notification-debit-agreement
-        parameters:
-          - name: transactionId
-            in: query
-            description: >-
-              Argument included in the response for the Create Debit Agreement
-              request
-            schema:
-              type: string
-              default: '38943468'
         deprecated: false
     /alt-transactions/resolve?orderId={orderId}:
       get:
@@ -472,6 +460,20 @@ rawSpecString: |
                                 '':
                                   type: string
                           type: object
+        deprecated: false
+    /batch-transactions/{batchId}:
+      get:
+        summary: Retrieve Batch Transaction
+        description: ''
+        operationId: retrieve-batch-transaction
+        parameters:
+          - name: batchId
+            in: path
+            description: batch ID sent in the Create Batch Transaction request
+            required: true
+            schema:
+              type: string
+              default: '567890'
         deprecated: false
     /transactions/refund/{transactionId}:
       post:
@@ -637,7 +639,7 @@ rawSpecString: |
             required: true
             schema:
               type: string
-              default: '20769005'
+              default: '51008305'
         deprecated: false
       delete:
         summary: Delete Vaulted Shopper
@@ -709,7 +711,7 @@ rawSpecString: |
             schema:
               type: integer
               format: int32
-              default: 2111111
+              default: 3068869
         requestBody:
           content:
             application/json:
@@ -733,7 +735,7 @@ rawSpecString: |
                     default: USD
                   recurringChargeAmount:
                     type: string
-                    default: '19'
+                    default: '29.99'
         deprecated: false
       get:
         summary: Retrieve Specific Plan
@@ -747,7 +749,7 @@ rawSpecString: |
             schema:
               type: integer
               format: int32
-              default: 2283845
+              default: 3068673
         deprecated: false
     /recurring/plans?{parameters}:
       get:
@@ -865,7 +867,7 @@ rawSpecString: |
             schema:
               type: integer
               format: int32
-              default: 8491535
+              default: 55296773
         deprecated: false
     /recurring/ondemand:
       post:
@@ -957,6 +959,55 @@ rawSpecString: |
                   taxReference:
                     type: string
                     default: 048deff0-a285-47e1-bc39-42f79bf0095b
+        deprecated: false
+    /recurring/subscriptions?{parameters}:
+      get:
+        summary: Retrieve All Subscriptions
+        description: ''
+        operationId: retrieve-all-subscriptions
+        parameters:
+          - name: pagesize
+            in: query
+            schema:
+              type: string
+              default: '5'
+          - name: after
+            in: query
+            schema:
+              type: string
+              default: '34567'
+          - name: gettotal
+            in: query
+            schema:
+              type: boolean
+              default: true
+          - name: fulldescription
+            in: query
+            schema:
+              type: boolean
+              default: false
+        deprecated: false
+    /recurring/subscriptions/:subscriptionId /charges?{parameters}:
+      get:
+        summary: Retrieve All Charges for a Subscription
+        description: ''
+        operationId: retrieve-all-subscription-charges
+        parameters:
+          - name: pagesize
+            in: query
+            schema:
+              type: string
+              default: '3'
+          - name: after
+            in: query
+            schema:
+              type: string
+              default: '55296773'
+          - name: fulldescription
+            in: query
+            schema:
+              type: boolean
+              default: false
         deprecated: false
     /recurring/subscriptions/:subscriptionId/switch-charge-amount:
       get:
@@ -1260,7 +1311,19 @@ rawSpecString: |
             schema:
               type: integer
               format: int32
-              default: 837389
+              default: 1198611
+        deprecated: false
+    /vendors?{parameters}:
+      get:
+        summary: Retrieve All Vendors
+        description: ''
+        operationId: retrieve-all-vendors
+        parameters:
+          - name: gettotal
+            in: query
+            schema:
+              type: boolean
+              default: true
         deprecated: false
   x-readme:
     headers:
@@ -1270,7 +1333,6 @@ rawSpecString: |
         value: '3.0'
     explorer-enabled: true
     proxy-enabled: true
-    samples-enabled: true
   x-readme-fauxas: true
   _id: 62ffeaab608d58fdd9a7a0c5:62ffe86f6cde99007824149e
-konfigCliVersion: 1.38.34
+konfigCliVersion: 1.38.37

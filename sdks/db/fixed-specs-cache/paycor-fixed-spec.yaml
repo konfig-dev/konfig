@@ -331,7 +331,7 @@ rawSpecString: >
             content:
               application/json:
                 schema:
-                  $ref: '#/components/schemas/ATSAccount'
+                  $ref: '#/components/schemas/PagedResultOfATSAccount'
           '404':
             description: ''
             content:
@@ -547,14 +547,7 @@ rawSpecString: >
             content:
               application/json:
                 schema:
-                  type: array
-                  xml:
-                    name: ArrayOfEmployeeCustomField
-                    wrapped: true
-                  items:
-                    xml:
-                      name: EmployeeCustomField
-                    $ref: '#/components/schemas/EmployeeCustomField'
+                  $ref: '#/components/schemas/PagedResultOfEmployeeCustomField'
           '404':
             description: ''
             content:
@@ -2279,6 +2272,13 @@ rawSpecString: >
                   name: Includes
                 $ref: '#/components/schemas/Includes12'
             x-position: 3
+          - name: continuationToken
+            in: query
+            schema:
+              type: string
+              format: guid
+              nullable: true
+            x-position: 4
         responses:
           '200':
             description: >-
@@ -2498,6 +2498,50 @@ rawSpecString: >
         responses:
           '204':
             description: ''
+          '404':
+            description: ''
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/PaycorError'
+          '500':
+            description: ''
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/PaycorError'
+    /v1/legalentities/{legalEntityId}/SchedulingJobs:
+      get:
+        tags:
+          - Employee Scheduling
+        summary: Get Scheduling Jobs by LegalEntityID
+        description: 'Data Access: View Legal Entity Scheduling Jobs'
+        operationId: Get Scheduling Jobs by LegalEntityID
+        parameters:
+          - name: legalEntityId
+            in: path
+            required: true
+            description: Legal Entity ID
+            schema:
+              type: integer
+              format: int32
+              maximum: 2147483647
+              minimum: 1
+            x-position: 1
+          - name: continuationToken
+            in: query
+            schema:
+              type: string
+              format: guid
+              nullable: true
+            x-position: 2
+        responses:
+          '200':
+            description: Collection of Legal Entity Scheduling Jobs.
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/PagedResultOfSchedulingJob'
           '404':
             description: ''
             content:
@@ -3333,14 +3377,7 @@ rawSpecString: >
             content:
               application/json:
                 schema:
-                  type: array
-                  xml:
-                    name: ArrayOfEmployeeTax
-                    wrapped: true
-                  items:
-                    xml:
-                      name: EmployeeTax
-                    $ref: '#/components/schemas/EmployeeTax'
+                  $ref: '#/components/schemas/PagedResultOfEmployeeTax'
           '404':
             description: ''
             content:
@@ -4209,7 +4246,7 @@ rawSpecString: >
             content:
               application/json:
                 schema:
-                  $ref: '#/components/schemas/LaborCode4'
+                  $ref: '#/components/schemas/PagedResultOfLaborCode'
           '404':
             description: ''
             content:
@@ -4432,7 +4469,7 @@ rawSpecString: >
             content:
               application/json:
                 schema:
-                  $ref: '#/components/schemas/TenantCertification'
+                  $ref: '#/components/schemas/PagedResultOfTenantCertification'
           '404':
             description: ''
             content:
@@ -4715,14 +4752,7 @@ rawSpecString: >
             content:
               application/json:
                 schema:
-                  type: array
-                  xml:
-                    name: ArrayOfLegalEntityEarning
-                    wrapped: true
-                  items:
-                    xml:
-                      name: LegalEntityEarning
-                    $ref: '#/components/schemas/LegalEntityEarning'
+                  $ref: '#/components/schemas/PagedResultOfLegalEntityEarning'
           '404':
             description: ''
             content:
@@ -5315,14 +5345,219 @@ rawSpecString: >
             content:
               application/json:
                 schema:
-                  type: array
+                  $ref: '#/components/schemas/PagedResultOfLegalEntityTax'
+          '404':
+            description: ''
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/PaycorError'
+          '500':
+            description: ''
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/PaycorError'
+    /v1/legalentities/{legalEntityId}/CreatePunches:
+      post:
+        tags:
+          - Legal Entity Time Data
+        summary: Create Punches for Employee(s) under Legal Entity
+        description: 'Data access: Create Punches for Employee(s)'
+        operationId: Create Punches for Employee(s)
+        parameters:
+          - name: legalEntityId
+            in: path
+            required: true
+            description: >-
+              ID of the Legal Entity for whose employees you want to create
+              punches
+            schema:
+              type: integer
+              format: int32
+              maximum: 2147483647
+              minimum: 1
+            x-position: 1
+        requestBody:
+          x-name: employeePunch
+          content:
+            application/json:
+              schema:
+                type: array
+                xml:
+                  name: ArrayOfEmployeePunch
+                  wrapped: true
+                items:
                   xml:
-                    name: ArrayOfLegalEntityTax
-                    wrapped: true
-                  items:
-                    xml:
-                      name: LegalEntityTax
-                    $ref: '#/components/schemas/LegalEntityTax'
+                    name: EmployeePunch
+                  $ref: '#/components/schemas/EmployeePunch'
+          required: true
+          x-position: 2
+        responses:
+          '202':
+            description: Returns a CreateOrUpdateResponse object.
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/CreateOrUpdateResponse'
+          '404':
+            description: ''
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/PaycorError'
+          '500':
+            description: ''
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/PaycorError'
+    /v1/legalentities/{legalEntityId}/CreateHours:
+      post:
+        tags:
+          - Legal Entity Time Data
+        summary: Create Hours for Employee(s) under Legal Entity
+        description: 'Data access: Create Hours for Employee(s)'
+        operationId: Create Hours for Employee(s)
+        parameters:
+          - name: legalEntityId
+            in: path
+            required: true
+            description: ID of the Legal Entity for whose employees you want to create hours
+            schema:
+              type: integer
+              format: int32
+              maximum: 2147483647
+              minimum: 1
+            x-position: 1
+        requestBody:
+          x-name: employeeHours
+          content:
+            application/json:
+              schema:
+                type: array
+                xml:
+                  name: ArrayOfEmployeeHour
+                  wrapped: true
+                items:
+                  xml:
+                    name: EmployeeHour
+                  $ref: '#/components/schemas/EmployeeHour'
+          required: true
+          x-position: 2
+        responses:
+          '202':
+            description: Returns a CreateOrUpdateResponse object.
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/CreateOrUpdateResponse'
+          '404':
+            description: ''
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/PaycorError'
+          '500':
+            description: ''
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/PaycorError'
+    /v1/legalentities/{legalEntityId}/punchErrorLog/{trackingId}:
+      get:
+        tags:
+          - Legal Entity Time Data
+        summary: Get Punch error logs by Legal Entity Id And Tracking Id
+        description: 'Data Access: View Punch Error log'
+        operationId: Get Punch Error log by Legal Entity ID And Tracking ID
+        parameters:
+          - name: legalEntityId
+            in: path
+            required: true
+            description: >-
+              ID of the Legal Entity for which you want to get the Punch Error
+              log.
+            schema:
+              type: integer
+              format: int32
+              maximum: 2147483647
+              minimum: 1
+            x-position: 1
+          - name: trackingId
+            in: path
+            required: true
+            description: ID of the Punch Create api failure result.
+            schema:
+              type: string
+              format: guid
+            x-position: 2
+          - name: continuationToken
+            in: query
+            schema:
+              type: string
+              format: guid
+              nullable: true
+            x-position: 3
+        responses:
+          '200':
+            description: Returns Punch Error log for specific Legal Entity and tracking ID.
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/PagedResultOfPunchErrorLog'
+          '404':
+            description: ''
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/PaycorError'
+          '500':
+            description: ''
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/PaycorError'
+    /v1/legalentities/{legalEntityId}/HourErrorLog/{trackingId}:
+      get:
+        tags:
+          - Legal Entity Time Data
+        summary: Get Employee Hour error logs by Legal Entity Id And Tracking Id
+        description: 'Data Access: View Hour Error log.'
+        operationId: Get Employee Hour Error log by Legal Entity ID And Tracking ID
+        parameters:
+          - name: legalEntityId
+            in: path
+            required: true
+            description: ID of the Legal Entity for which you want to get the Hour Error log.
+            schema:
+              type: integer
+              format: int32
+              maximum: 2147483647
+              minimum: 1
+            x-position: 1
+          - name: trackingId
+            in: path
+            required: true
+            description: ID of the Hour Request Create api failure result.
+            schema:
+              type: string
+              format: guid
+            x-position: 2
+          - name: continuationToken
+            in: query
+            schema:
+              type: string
+              format: guid
+              nullable: true
+            x-position: 3
+        responses:
+          '200':
+            description: Returns Hour Error log for specific Legal Entity and tracking ID.
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/PagedResultOfHourErrorLog'
           '404':
             description: ''
             content:
@@ -5452,22 +5687,26 @@ rawSpecString: >
               application/json:
                 schema:
                   $ref: '#/components/schemas/PaycorError'
-    /v1/legalentities/{legalEntityId}/timeoffRequestserrorlog/{trackingId}:
+    /v1/legalentities/{legalEntityId}/timeOffRequestsErrorLog/{trackingId}:
       get:
         tags:
-          - Legal Entity Time Data
+          - Time Off Requests
         summary: >-
           Get Employee Timeoff Request error logs by Legal Entity Id And Tracking
           Id
-        description: 'Data Access: View Timeoff Requests by Timeoff Request Id'
-        operationId: Get Employee Timeoff Request by Legal Entity ID And Timeoff Request ID2
+        description: >-
+          Data Access: View Timeoff Requests Error log by Legal entity Id and
+          Tracking Id
+        operationId: >-
+          Get Employee Timeoff Request Error log by Legal Entity ID And Tracking
+          ID
         parameters:
           - name: legalEntityId
             in: path
             required: true
             description: >-
-              ID of the Legal Entity for which you want to get the Timeoff
-              Request.
+              ID of the Legal Entity for which you want to get the Timeoff Request
+              Error log.
             schema:
               type: integer
               format: int32
@@ -5477,20 +5716,27 @@ rawSpecString: >
           - name: trackingId
             in: path
             required: true
-            description: ID of the Employee Timeoff Request failure result.
+            description: ID of the Timeoff Request Create api failure result.
             schema:
               type: string
               format: guid
             x-position: 2
         responses:
           '200':
-            description: |2-
-                         Returns Timeoff Request Error log for specific Legal Entity and tracking ID
-                         
+            description: >-
+              Returns Timeoff Request Error log for specific Legal Entity and
+              tracking ID.
             content:
               application/json:
                 schema:
-                  $ref: '#/components/schemas/TimeOffRequestsErrorLog'
+                  type: array
+                  xml:
+                    name: ArrayOfTimeOffRequestsErrorLog
+                    wrapped: true
+                  items:
+                    xml:
+                      name: TimeOffRequestsErrorLog
+                    $ref: '#/components/schemas/TimeOffRequestsErrorLog'
           '404':
             description: ''
             content:
@@ -6699,6 +6945,50 @@ rawSpecString: >
           - Recruiters
           - TeamMembers
           - Executives
+      PagedResultOfATSAccount:
+        type: object
+        description: >-
+          The Paged Result model enables pagination of results if maximum of 100
+          records per response is exceeded. Additional
+
+          results can be requested by providing calling the AdditionalResultsUrl
+          endpoint containing the continuation token, or
+
+          by building your own URL using the provided continuation token.
+        additionalProperties: false
+        properties:
+          HasMoreResults:
+            type: boolean
+            description: Whether additional API result records exist on the Paycor system.
+            example: 'True'
+          ContinuationToken:
+            type: string
+            description: >-
+              Paycor generated token string which may be provided in a subsequent
+              request to  release additional records past the maximum. 
+
+              Used when partner is building their own URL.
+            format: guid
+            nullable: true
+            example: 3ac2fca9-09f2-49fb-86d7-b1b84ed6ca74
+          AdditionalResultsUrl:
+            type: string
+            description: >-
+              Provides URL to call with the continuation token included for
+              additional results. 
+            nullable: true
+            example: >-
+              /v1/myresources/xyz?continuationTokenId=3ac2fca9-09f2-49fb-86d7-b1b84ed6ca74
+          Records:
+            type: array
+            description: 'List of the API response records. '
+            nullable: true
+            xml:
+              wrapped: true
+            items:
+              xml:
+                name: ATSAccount
+              $ref: '#/components/schemas/ATSAccount'
       ATSAccount:
         type: object
         description: Details about the ATS Account
@@ -7060,6 +7350,50 @@ rawSpecString: >
                           
             nullable: true
             example: 'note: expires soon'
+      PagedResultOfEmployeeCustomField:
+        type: object
+        description: >-
+          The Paged Result model enables pagination of results if maximum of 100
+          records per response is exceeded. Additional
+
+          results can be requested by providing calling the AdditionalResultsUrl
+          endpoint containing the continuation token, or
+
+          by building your own URL using the provided continuation token.
+        additionalProperties: false
+        properties:
+          HasMoreResults:
+            type: boolean
+            description: Whether additional API result records exist on the Paycor system.
+            example: 'True'
+          ContinuationToken:
+            type: string
+            description: >-
+              Paycor generated token string which may be provided in a subsequent
+              request to  release additional records past the maximum. 
+
+              Used when partner is building their own URL.
+            format: guid
+            nullable: true
+            example: 3ac2fca9-09f2-49fb-86d7-b1b84ed6ca74
+          AdditionalResultsUrl:
+            type: string
+            description: >-
+              Provides URL to call with the continuation token included for
+              additional results. 
+            nullable: true
+            example: >-
+              /v1/myresources/xyz?continuationTokenId=3ac2fca9-09f2-49fb-86d7-b1b84ed6ca74
+          Records:
+            type: array
+            description: 'List of the API response records. '
+            nullable: true
+            xml:
+              wrapped: true
+            items:
+              xml:
+                name: EmployeeCustomField
+              $ref: '#/components/schemas/EmployeeCustomField'
       EmployeeCustomField:
         type: object
         description: >-
@@ -11648,6 +11982,65 @@ rawSpecString: >
             format: guid
             nullable: true
             example: 2f28bd9c-a39e-41f1-b40f-b44bf2e9c265
+      PagedResultOfSchedulingJob:
+        type: object
+        description: >-
+          The Paged Result model enables pagination of results if maximum of 100
+          records per response is exceeded. Additional
+
+          results can be requested by providing calling the AdditionalResultsUrl
+          endpoint containing the continuation token, or
+
+          by building your own URL using the provided continuation token.
+        additionalProperties: false
+        properties:
+          HasMoreResults:
+            type: boolean
+            description: Whether additional API result records exist on the Paycor system.
+            example: 'True'
+          ContinuationToken:
+            type: string
+            description: >-
+              Paycor generated token string which may be provided in a subsequent
+              request to  release additional records past the maximum. 
+
+              Used when partner is building their own URL.
+            format: guid
+            nullable: true
+            example: 3ac2fca9-09f2-49fb-86d7-b1b84ed6ca74
+          AdditionalResultsUrl:
+            type: string
+            description: >-
+              Provides URL to call with the continuation token included for
+              additional results. 
+            nullable: true
+            example: >-
+              /v1/myresources/xyz?continuationTokenId=3ac2fca9-09f2-49fb-86d7-b1b84ed6ca74
+          Records:
+            type: array
+            description: 'List of the API response records. '
+            nullable: true
+            xml:
+              wrapped: true
+            items:
+              xml:
+                name: SchedulingJob
+              $ref: '#/components/schemas/SchedulingJob'
+      SchedulingJob:
+        type: object
+        description: Paycor Scheduling Job.
+        additionalProperties: false
+        properties:
+          SchedulingJobId:
+            type: string
+            description: Unique identifier of the Scheduling Job.
+            format: guid
+            example: df5566ef-196c-0000-0000-0007d5268Sa2
+          SchedulingJobName:
+            type: string
+            description: Name of the Scheduling Job.
+            nullable: true
+            example: Software Engineer
       EmployeeReturnItem:
         allOf:
           - $ref: '#/components/schemas/Employee'
@@ -13632,6 +14025,50 @@ rawSpecString: >
             format: guid
             nullable: true
             example: a332bab4-9b53-ed11-913a-0050569fc0c9
+      PagedResultOfEmployeeTax:
+        type: object
+        description: >-
+          The Paged Result model enables pagination of results if maximum of 100
+          records per response is exceeded. Additional
+
+          results can be requested by providing calling the AdditionalResultsUrl
+          endpoint containing the continuation token, or
+
+          by building your own URL using the provided continuation token.
+        additionalProperties: false
+        properties:
+          HasMoreResults:
+            type: boolean
+            description: Whether additional API result records exist on the Paycor system.
+            example: 'True'
+          ContinuationToken:
+            type: string
+            description: >-
+              Paycor generated token string which may be provided in a subsequent
+              request to  release additional records past the maximum. 
+
+              Used when partner is building their own URL.
+            format: guid
+            nullable: true
+            example: 3ac2fca9-09f2-49fb-86d7-b1b84ed6ca74
+          AdditionalResultsUrl:
+            type: string
+            description: >-
+              Provides URL to call with the continuation token included for
+              additional results. 
+            nullable: true
+            example: >-
+              /v1/myresources/xyz?continuationTokenId=3ac2fca9-09f2-49fb-86d7-b1b84ed6ca74
+          Records:
+            type: array
+            description: 'List of the API response records. '
+            nullable: true
+            xml:
+              wrapped: true
+            items:
+              xml:
+                name: EmployeeTax
+              $ref: '#/components/schemas/EmployeeTax'
       EmployeeTax:
         type: object
         description: The Employee Tax model represents Employee level Tax information.
@@ -14064,10 +14501,12 @@ rawSpecString: >
             example: LivesIn
             $ref: '#/components/schemas/ReciprocityType'
           FilingStatus:
-            description: Enumeration of valid filing status values.
+            type: string
+            description: |-
+              Filing status code.
+              Retrieve a value by calling "Get Filing Status by Tax Code
             nullable: true
             example: S
-            $ref: '#/components/schemas/FilingStatus2'
           WithholdingEffectiveStartDate:
             type: string
             description: |-
@@ -14193,47 +14632,6 @@ rawSpecString: >
               other Tax Credits.
             nullable: true
             $ref: '#/components/schemas/EmployeeTaxCredit'
-      FilingStatus2:
-        type: string
-        description: Enumeration of valid Filing Status values.
-        x-enumNames:
-          - A
-          - B
-          - C
-          - D
-          - E
-          - F
-          - H
-          - J
-          - J2
-          - M
-          - MJS
-          - MFS
-          - M2
-          - MS
-          - MJ
-          - O
-          - S
-          - SM
-        enum:
-          - A
-          - B
-          - C
-          - D
-          - E
-          - F
-          - H
-          - J
-          - J2
-          - M
-          - MJS
-          - MFS
-          - M2
-          - MS
-          - MJ
-          - O
-          - S
-          - SM
       EmployeeTax3:
         type: object
         description: The Employee Tax model represents Employee level Tax information.
@@ -14266,10 +14664,12 @@ rawSpecString: >
             example: LivesIn
             $ref: '#/components/schemas/ReciprocityType'
           FilingStatus:
-            description: Enumeration of valid filing status values.
+            type: string
+            description: |-
+              Filing status code.
+              Retrieve a value by calling "Get Filing Status by Tax Code
             nullable: true
             example: S
-            $ref: '#/components/schemas/FilingStatus2'
           WithholdingEffectiveStartDate:
             type: string
             description: Effective start date of withholding
@@ -16198,6 +16598,50 @@ rawSpecString: >
             format: date-time
             nullable: true
             example: '2020-11-25'
+      PagedResultOfLaborCode:
+        type: object
+        description: >-
+          The Paged Result model enables pagination of results if maximum of 100
+          records per response is exceeded. Additional
+
+          results can be requested by providing calling the AdditionalResultsUrl
+          endpoint containing the continuation token, or
+
+          by building your own URL using the provided continuation token.
+        additionalProperties: false
+        properties:
+          HasMoreResults:
+            type: boolean
+            description: Whether additional API result records exist on the Paycor system.
+            example: 'True'
+          ContinuationToken:
+            type: string
+            description: >-
+              Paycor generated token string which may be provided in a subsequent
+              request to  release additional records past the maximum. 
+
+              Used when partner is building their own URL.
+            format: guid
+            nullable: true
+            example: 3ac2fca9-09f2-49fb-86d7-b1b84ed6ca74
+          AdditionalResultsUrl:
+            type: string
+            description: >-
+              Provides URL to call with the continuation token included for
+              additional results. 
+            nullable: true
+            example: >-
+              /v1/myresources/xyz?continuationTokenId=3ac2fca9-09f2-49fb-86d7-b1b84ed6ca74
+          Records:
+            type: array
+            description: 'List of the API response records. '
+            nullable: true
+            xml:
+              wrapped: true
+            items:
+              xml:
+                name: LaborCode
+              $ref: '#/components/schemas/LaborCode4'
       LaborCode4:
         type: object
         additionalProperties: false
@@ -16693,6 +17137,50 @@ rawSpecString: >
                           
             nullable: true
             example: CPR Class
+      PagedResultOfTenantCertification:
+        type: object
+        description: >-
+          The Paged Result model enables pagination of results if maximum of 100
+          records per response is exceeded. Additional
+
+          results can be requested by providing calling the AdditionalResultsUrl
+          endpoint containing the continuation token, or
+
+          by building your own URL using the provided continuation token.
+        additionalProperties: false
+        properties:
+          HasMoreResults:
+            type: boolean
+            description: Whether additional API result records exist on the Paycor system.
+            example: 'True'
+          ContinuationToken:
+            type: string
+            description: >-
+              Paycor generated token string which may be provided in a subsequent
+              request to  release additional records past the maximum. 
+
+              Used when partner is building their own URL.
+            format: guid
+            nullable: true
+            example: 3ac2fca9-09f2-49fb-86d7-b1b84ed6ca74
+          AdditionalResultsUrl:
+            type: string
+            description: >-
+              Provides URL to call with the continuation token included for
+              additional results. 
+            nullable: true
+            example: >-
+              /v1/myresources/xyz?continuationTokenId=3ac2fca9-09f2-49fb-86d7-b1b84ed6ca74
+          Records:
+            type: array
+            description: 'List of the API response records. '
+            nullable: true
+            xml:
+              wrapped: true
+            items:
+              xml:
+                name: TenantCertification
+              $ref: '#/components/schemas/TenantCertification'
       TenantCertification:
         type: object
         additionalProperties: false
@@ -17056,6 +17544,50 @@ rawSpecString: >
             format: guid
             minLength: 1
             example: cb4a1b67-000c-0000-0000-000066000212
+      PagedResultOfLegalEntityEarning:
+        type: object
+        description: >-
+          The Paged Result model enables pagination of results if maximum of 100
+          records per response is exceeded. Additional
+
+          results can be requested by providing calling the AdditionalResultsUrl
+          endpoint containing the continuation token, or
+
+          by building your own URL using the provided continuation token.
+        additionalProperties: false
+        properties:
+          HasMoreResults:
+            type: boolean
+            description: Whether additional API result records exist on the Paycor system.
+            example: 'True'
+          ContinuationToken:
+            type: string
+            description: >-
+              Paycor generated token string which may be provided in a subsequent
+              request to  release additional records past the maximum. 
+
+              Used when partner is building their own URL.
+            format: guid
+            nullable: true
+            example: 3ac2fca9-09f2-49fb-86d7-b1b84ed6ca74
+          AdditionalResultsUrl:
+            type: string
+            description: >-
+              Provides URL to call with the continuation token included for
+              additional results. 
+            nullable: true
+            example: >-
+              /v1/myresources/xyz?continuationTokenId=3ac2fca9-09f2-49fb-86d7-b1b84ed6ca74
+          Records:
+            type: array
+            description: 'List of the API response records. '
+            nullable: true
+            xml:
+              wrapped: true
+            items:
+              xml:
+                name: LegalEntityEarning
+              $ref: '#/components/schemas/LegalEntityEarning'
       LegalEntityEarning:
         type: object
         description: >-
@@ -18252,6 +18784,50 @@ rawSpecString: >
           - TerminationReason
           - LeaveReason
           - ReturnReason
+      PagedResultOfLegalEntityTax:
+        type: object
+        description: >-
+          The Paged Result model enables pagination of results if maximum of 100
+          records per response is exceeded. Additional
+
+          results can be requested by providing calling the AdditionalResultsUrl
+          endpoint containing the continuation token, or
+
+          by building your own URL using the provided continuation token.
+        additionalProperties: false
+        properties:
+          HasMoreResults:
+            type: boolean
+            description: Whether additional API result records exist on the Paycor system.
+            example: 'True'
+          ContinuationToken:
+            type: string
+            description: >-
+              Paycor generated token string which may be provided in a subsequent
+              request to  release additional records past the maximum. 
+
+              Used when partner is building their own URL.
+            format: guid
+            nullable: true
+            example: 3ac2fca9-09f2-49fb-86d7-b1b84ed6ca74
+          AdditionalResultsUrl:
+            type: string
+            description: >-
+              Provides URL to call with the continuation token included for
+              additional results. 
+            nullable: true
+            example: >-
+              /v1/myresources/xyz?continuationTokenId=3ac2fca9-09f2-49fb-86d7-b1b84ed6ca74
+          Records:
+            type: array
+            description: 'List of the API response records. '
+            nullable: true
+            xml:
+              wrapped: true
+            items:
+              xml:
+                name: LegalEntityTax
+              $ref: '#/components/schemas/LegalEntityTax'
       LegalEntityTax:
         type: object
         description: >-
@@ -18512,6 +19088,233 @@ rawSpecString: >
               Unique identifier for the Labor Code under the Labor Category.
                           
             format: guid
+      EmployeeHour:
+        type: object
+        additionalProperties: false
+        required:
+          - EmployeeId
+          - DepartmentId
+          - LegalEntityEarningId
+          - StartDateTime
+          - Total
+          - ActivityTypeId
+        properties:
+          EmployeeId:
+            type: string
+            description: >-
+              Unique Identifier of the Employee in Paycor's system. Generated by
+              Paycor.
+            format: guid
+            minLength: 1
+            example: df5566ef-196c-0000-0000-0007d5268Sa2
+          DepartmentId:
+            type: string
+            description: >-
+              Unique identifier of the department in Paycor's system. Generated by
+              Paycor.
+            format: guid
+            minLength: 1
+            example: cb4a1b67-000c-0000-0000-000066000000
+          LegalEntityEarningId:
+            type: string
+            description: >-
+              Unique identifier of the Legal Entity Earning in Paycor's system.
+              Generated by Paycor.
+            format: guid
+            minLength: 1
+            example: f3f4eee9-c7a3-ed11-912f-0050569f27b8
+          StartDateTime:
+            type: string
+            description: |-
+              The date and time the hour record begins.
+              Format: YYYY-MM-DDTHH:MM:SSZ  (ISO-8601 standard) 
+            format: date-time
+            minLength: 1
+            example: '2019-11-01T00:00:00Z'
+          Total:
+            type: number
+            description: The total hours amount.
+            format: decimal
+            example: 8
+          ActivityTypeId:
+            type: string
+            description: Enumeration of valid Activity values.
+            format: guid
+            minLength: 1
+            example: df5566ef-196c-0000-0000-0007d5268Sa2
+          ApplyAllPolicies:
+            type: boolean
+            description: >-
+              Determines the type of Hour being created.
+
+              When set to 'true' Hour Entry is created, if set to 'false' Hour
+              Record is created.
+
+              Existing client policies are only applied to Hour Entries.
+
+              Default value will be false.
+            example: false
+          Note:
+            type: string
+            description: |-
+              Comments to describe the Hour.
+              ​Note when provided must be between 1 and 300 characters.
+            nullable: true
+            example: Employee Hour missed
+          LaborCodes:
+            type: array
+            description: >-
+              ​LaborCodes must either be empty or contain an array of valid
+              LaborCategoryIds and LaborCodeIds.
+            nullable: true
+            xml:
+              wrapped: true
+            items:
+              xml:
+                name: LaborCode
+              $ref: '#/components/schemas/LaborCode6'
+      PagedResultOfPunchErrorLog:
+        type: object
+        description: >-
+          The Paged Result model enables pagination of results if maximum of 100
+          records per response is exceeded. Additional
+
+          results can be requested by providing calling the AdditionalResultsUrl
+          endpoint containing the continuation token, or
+
+          by building your own URL using the provided continuation token.
+        additionalProperties: false
+        properties:
+          HasMoreResults:
+            type: boolean
+            description: Whether additional API result records exist on the Paycor system.
+            example: 'True'
+          ContinuationToken:
+            type: string
+            description: >-
+              Paycor generated token string which may be provided in a subsequent
+              request to  release additional records past the maximum. 
+
+              Used when partner is building their own URL.
+            format: guid
+            nullable: true
+            example: 3ac2fca9-09f2-49fb-86d7-b1b84ed6ca74
+          AdditionalResultsUrl:
+            type: string
+            description: >-
+              Provides URL to call with the continuation token included for
+              additional results. 
+            nullable: true
+            example: >-
+              /v1/myresources/xyz?continuationTokenId=3ac2fca9-09f2-49fb-86d7-b1b84ed6ca74
+          Records:
+            type: array
+            description: 'List of the API response records. '
+            nullable: true
+            xml:
+              wrapped: true
+            items:
+              xml:
+                name: PunchErrorLog
+              $ref: '#/components/schemas/PunchErrorLog'
+      PunchErrorLog:
+        allOf:
+          - $ref: '#/components/schemas/TimeErrorLog'
+          - type: object
+            description: >-
+              Punch Error log model represents information about error logs in the
+              create punch request api.
+            additionalProperties: false
+            properties:
+              PunchDetail:
+                type: string
+                description: >-
+                  Punch details EmployeeID and date of punch that failed while
+                  importing
+                nullable: true
+                example: >-
+                  EmployeeID : 116f2f66-7dbc-0000-0000-0000603d0400, Punch Date
+                  Time: 3/13/2024 8:59:00 PM
+      TimeErrorLog:
+        type: object
+        description: Error log
+        additionalProperties: false
+        properties:
+          TrackingId:
+            type: string
+            description: >-
+              Unique identifier of the request. This is the output of creating
+              bulk punch/hour/payitem request
+            format: guid
+            example: 36f45f30-9a35-0000-0000-000001000000
+          ErrorDetail:
+            type: string
+            description: Error details of failed request
+            nullable: true
+            example: Request Failed.
+      PagedResultOfHourErrorLog:
+        type: object
+        description: >-
+          The Paged Result model enables pagination of results if maximum of 100
+          records per response is exceeded. Additional
+
+          results can be requested by providing calling the AdditionalResultsUrl
+          endpoint containing the continuation token, or
+
+          by building your own URL using the provided continuation token.
+        additionalProperties: false
+        properties:
+          HasMoreResults:
+            type: boolean
+            description: Whether additional API result records exist on the Paycor system.
+            example: 'True'
+          ContinuationToken:
+            type: string
+            description: >-
+              Paycor generated token string which may be provided in a subsequent
+              request to  release additional records past the maximum. 
+
+              Used when partner is building their own URL.
+            format: guid
+            nullable: true
+            example: 3ac2fca9-09f2-49fb-86d7-b1b84ed6ca74
+          AdditionalResultsUrl:
+            type: string
+            description: >-
+              Provides URL to call with the continuation token included for
+              additional results. 
+            nullable: true
+            example: >-
+              /v1/myresources/xyz?continuationTokenId=3ac2fca9-09f2-49fb-86d7-b1b84ed6ca74
+          Records:
+            type: array
+            description: 'List of the API response records. '
+            nullable: true
+            xml:
+              wrapped: true
+            items:
+              xml:
+                name: HourErrorLog
+              $ref: '#/components/schemas/HourErrorLog'
+      HourErrorLog:
+        allOf:
+          - $ref: '#/components/schemas/TimeErrorLog'
+          - type: object
+            description: >-
+              Hour Error log model represents information about error logs in the
+              create hour request api.
+            additionalProperties: false
+            properties:
+              HourDetail:
+                type: string
+                description: >-
+                  Hour details EmployeeID and start date time of hour and total
+                  that failed while importing
+                              
+                nullable: true
+                example: >-
+                  EmployeeID : 36f45f30-9a35-0000-0000-000001000000, Hour start
+                  date Time : 11/29/2023 11:00:00 PM,Total:10.00 
       TimeOffRequestsErrorLog:
         type: object
         description: >-
@@ -20266,7 +21069,9 @@ rawSpecString: >
     - name: Employee Pay Stubs
       description: "\r\nThis API allows working with an employee's Pay Stubs. Each Pay Period will generate one Pay Stub.\r\n* Calling GET Legal Entity Pay Data is required before calling GET Employee Pay Stubs, to obtain a list of valid check dates.\r\n\r\n"
     - name: Employee (Legacy / Perform Time) Schedules
-      description: "\r\nThese APIs interact with Paycor’s Perform Time Scheduling system. They will only be available to customers with Perform Time Scheduling service\r\n* Perform Time Scheduling (sometimes called Legacy Scheduling) stores basic information about Shifts\r\n* The Public APIs do not communicate with the more powerful “Paycor Scheduling” system. For Paycor Scheduling please refer to the documentation under the ‘Employee Schedules’ section. (Coming Soon)\r\n"
+      description: "\r\nThese APIs interact with Paycor’s Perform Time Scheduling system. They will only be available to customers with Perform Time Scheduling service\r\n* Perform Time Scheduling (sometimes called Legacy Scheduling) stores basic information about Shifts\r\n* The Public APIs do not communicate with the more powerful “Paycor Scheduling” system. For Paycor Scheduling please refer to the documentation under the ‘Employee Scheduling’ section.\r\n"
+    - name: Employee Scheduling
+      description: "These APIs interact with Paycor Scheduling system.\r\n\r\nIn order to use these apis you must have either Paycor Scheduling or Paycor Scheduling Pro Service."
     - name: Employee Onboarding
       description: "\r\nThese APIs allow working with employees in the onboarding state.\r\n\r\nThese endpoints can only be used if the Client has the Onboarding Service."
     - name: Employee Taxes
@@ -20315,8 +21120,10 @@ rawSpecString: >
       description: >-
         For more information, see documentation section titled 'Earnings,
         Deductions, and Taxes.'
+    - name: Legal Entity Time Data
+      description: "\r\nThese APIs interact with Paycor's Perform Time system. \r\n* And will only work with 'Perform Time' service/product enabled clients - otherwise you will receive an error.\r\n"
     - name: Legal Entity Time Off Types
     - name: Legal Entity Work Locations
       description: Legal entity work locations information.
     - name: Legal Entity Work Sites
-konfigCliVersion: 1.38.34
+konfigCliVersion: 1.38.37

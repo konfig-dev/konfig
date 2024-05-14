@@ -2,7 +2,7 @@
 const { fontFamily } = require("tailwindcss/defaultTheme");
 
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}", "./docs/**/*.mdx"], // my markdown stuff is in ../docs, not /src
+  content: ["./src/**/*.{js,jsx,ts,tsx,mdx}", "./docs/**/*.mdx"], // my markdown stuff is in ../docs, not /src
   darkMode: ["class", '[data-theme="dark"]'], // hooks into docusaurus' dark mode settigns
   theme: {
     container: {

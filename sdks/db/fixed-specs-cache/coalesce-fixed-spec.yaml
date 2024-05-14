@@ -21,10 +21,12 @@ publishJson:
     - graphical_user_interface
     - data
 rawSpecString: |
-  openapi: 3.0.3
+  openapi: 3.1.0
+  x-stoplight:
+    id: 3j6pll0jo9ds5
   info:
-    title: Coalesce API
-    version: 1.0.0
+    version: '6.2'
+    title: Jobs
     description: REST API for performing operations with the Coalesce backend.
   servers:
     - url: https://app.coalescesoftware.io
@@ -43,17 +45,21 @@ rawSpecString: |
       description: US AWS US West
     - url: https://app.us-west-2.aws.privatelink.coalescesoftware.io
       description: US AWS US West with PrivateLink
+    - url: https://app.northamerica-northeast1.gcp.coalescesoftware.io
+      description: Canada primary
+    - url: https://app.westus2.azure.coalescesoftware.io/
+      description: US Azure West 2
+    - url: https://app.eastus2.azure.coalescesoftware.io
+      description: US Azure East 2
+    - url: ''
+      description: ''
+    - url: ''
+      description: ''
+    - url: ''
+      description: ''
+  security:
+    - sec0: []
   components:
-    securitySchemes:
-      sec0:
-        type: apiKey
-        in: header
-        name: Authorization
-        x-bearer-format: bearer
-        x-default: ''
-      BearerAuth:
-        type: http
-        scheme: bearer
     schemas:
       EnvironmentsResponse:
         type: object
@@ -69,6 +75,8 @@ rawSpecString: |
               - type: array
                 items:
                   $ref: '#/components/schemas/Environment'
+        x-stoplight:
+          id: ne4aq64ww9ksj
       EnvironmentSummary:
         type: object
         description: Summary information about an environment.
@@ -92,6 +100,8 @@ rawSpecString: |
           - id
           - name
           - status
+        x-stoplight:
+          id: ddbdk55qjfvv2
       ErrorResponse:
         description: Error detail in addition to the HTTP status code and text.
         type: object
@@ -100,6 +110,8 @@ rawSpecString: |
         properties:
           error:
             $ref: '#/components/schemas/Error'
+        x-stoplight:
+          id: eiss0cql5hx9s
       NodesResponse:
         type: object
         required:
@@ -114,6 +126,8 @@ rawSpecString: |
               - type: array
                 items:
                   $ref: '#/components/schemas/Node'
+        x-stoplight:
+          id: tg30vf6vna32u
       NodeSummary:
         type: object
         properties:
@@ -136,12 +150,16 @@ rawSpecString: |
           - name
           - nodeType
           - schema
+        x-stoplight:
+          id: 0voguv2vr9klq
       OrderByDirection:
         description: The sort order for query results.
         type: string
         enum:
           - asc
           - desc
+        x-stoplight:
+          id: cepn66enrwq1k
       PackageUpdateReleaseInfo:
         description: Package release information for an update operation.
         type: object
@@ -156,6 +174,8 @@ rawSpecString: |
           - changeLog
           - version
           - releaseID
+        x-stoplight:
+          id: 0jg8jz64rnwfr
       RunsOrderBy:
         description: The field used to sort query results.
         type: string
@@ -164,6 +184,8 @@ rawSpecString: |
           - runStartTime
           - runEndTime
         default: id
+        x-stoplight:
+          id: mc8gx91umiyst
       RunsResponse:
         description: A collection of runs.
         type: object
@@ -189,6 +211,8 @@ rawSpecString: |
               - type: array
                 items:
                   $ref: '#/components/schemas/RunInfo'
+        x-stoplight:
+          id: xjykt2444rh45
       RunResultsResponse:
         type: object
         required:
@@ -199,6 +223,8 @@ rawSpecString: |
             type: array
             items:
               $ref: '#/components/schemas/RunResult'
+        x-stoplight:
+          id: aayfisqrmg55o
       RunSummary:
         type: object
         properties:
@@ -230,6 +256,8 @@ rawSpecString: |
           - id
           - runType
           - runStatus
+        x-stoplight:
+          id: g1ihfbn7bj3k1
       BaseEnvironment:
         type: object
         description: >-
@@ -254,6 +282,8 @@ rawSpecString: |
             $ref: '#/components/schemas/TagColor'
           project:
             type: string
+        x-stoplight:
+          id: bbclg1cqssbvt
       Environment:
         type: object
         description: >-
@@ -292,6 +322,8 @@ rawSpecString: |
           - name
           - oauthEnabled
           - status
+        x-stoplight:
+          id: 1e73ku8xok7jp
       EnvironmentHealth:
         type: string
         enum:
@@ -304,6 +336,8 @@ rawSpecString: |
           - Refreshing
           - Running Dev Run
           - Waiting
+        x-stoplight:
+          id: ussqe9xeeldre
       EnvironmentStorageLocationMappings:
         type: object
         additionalProperties:
@@ -313,6 +347,8 @@ rawSpecString: |
               type: string
             schema:
               type: string
+        x-stoplight:
+          id: farmsxc7c9jvd
       TagColor:
         type: object
         additionalProperties: false
@@ -321,6 +357,8 @@ rawSpecString: |
             type: string
           textColor:
             type: string
+        x-stoplight:
+          id: g7k2doxf183ac
       UserSummary:
         type: object
         description: Summary information about a user.
@@ -334,6 +372,8 @@ rawSpecString: |
             type: string
         required:
           - id
+        x-stoplight:
+          id: ytjzmpmde7x4a
       Error:
         type: object
         additionalProperties: false
@@ -346,6 +386,8 @@ rawSpecString: |
             type: string
         required:
           - errorString
+        x-stoplight:
+          id: c5p3j5v9amkcr
       Node:
         type: object
         oneOf:
@@ -356,14 +398,20 @@ rawSpecString: |
           mapping:
             sourceInput: '#/components/schemas/SourceNode'
             sql: '#/components/schemas/SQLNode'
+        x-stoplight:
+          id: j3qi1v7scd65v
       AliasToStepIDMapping:
         type: object
         additionalProperties:
           type: string
+        x-stoplight:
+          id: 4d160iqnp8jea
       AppliedColumnTests:
         type: object
         additionalProperties:
           type: boolean
+        x-stoplight:
+          id: s32weudd7qqrb
       BaseNode:
         type: object
         additionalProperties: true
@@ -390,6 +438,8 @@ rawSpecString: |
           - name
           - nodeType
           - schema
+        x-stoplight:
+          id: e8tkek45knwy2
       ColumnMetadata:
         type: object
         additionalProperties: false
@@ -463,6 +513,8 @@ rawSpecString: |
           - description
           - name
           - nullable
+        x-stoplight:
+          id: n2i4erkb36jwl
       ColumnReference:
         type: object
         additionalProperties: false
@@ -474,6 +526,8 @@ rawSpecString: |
         required:
           - columnID
           - nodeID
+        x-stoplight:
+          id: tshyzyicycn30
       CustomSQL:
         type: object
         additionalProperties: false
@@ -482,12 +536,16 @@ rawSpecString: |
             type: string
         required:
           - customSQL
+        x-stoplight:
+          id: 104a5ghrn4v1h
       HashAlgorithm:
         type: string
         enum:
           - MD5
           - SHA1
           - SHA256
+        x-stoplight:
+          id: wv54zkq1b14cf
       HashMetadata:
         type: object
         additionalProperties: false
@@ -508,6 +566,8 @@ rawSpecString: |
             type: array
         required:
           - hashAlgorithm
+        x-stoplight:
+          id: 8y7sovb0wqnm5
       IntermediateColumnRefResult:
         additionalProperties: false
         properties:
@@ -520,6 +580,8 @@ rawSpecString: |
           - columnName
           - tableName
         type: object
+        x-stoplight:
+          id: lr3exusbf58gz
       JoinCondition:
         type: object
         additionalProperties: false
@@ -528,6 +590,8 @@ rawSpecString: |
             type: string
         required:
           - joinCondition
+        x-stoplight:
+          id: wgrl4cwooziys
       NodeType:
         anyOf:
           - type: string
@@ -542,6 +606,8 @@ rawSpecString: |
               - View
               - persistentStage
           - type: string
+        x-stoplight:
+          id: uyf0w25nmrtne
       RefLink:
         type: object
         additionalProperties: false
@@ -553,10 +619,14 @@ rawSpecString: |
         required:
           - locationName
           - nodeName
+        x-stoplight:
+          id: andnckup0n6qq
       SourceColumnReference:
         anyOf:
           - $ref: '#/components/schemas/SourceColumnReferenceV1'
           - $ref: '#/components/schemas/SourceColumnReferenceV2'
+        x-stoplight:
+          id: fzbz324xij4fj
       SourceColumnReferenceV1:
         type: object
         additionalProperties: false
@@ -570,6 +640,8 @@ rawSpecString: |
         required:
           - columnReferences
           - transform
+        x-stoplight:
+          id: nwfin50nl4n4g
       SourceColumnReferenceV2:
         type: object
         additionalProperties: false
@@ -578,6 +650,8 @@ rawSpecString: |
             type: string
         required:
           - transform
+        x-stoplight:
+          id: s6t68pjz2z2uw
       SourceMap:
         additionalProperties: false
         properties:
@@ -603,6 +677,8 @@ rawSpecString: |
           - name
           - noLinkRefs
         type: object
+        x-stoplight:
+          id: xoo0n9wmpkbbi
       RunStatus:
         enum:
           - canceled
@@ -611,11 +687,15 @@ rawSpecString: |
           - running
           - waitingToRun
         type: string
+        x-stoplight:
+          id: 089jucc8uvad5
       RunType:
         enum:
           - deploy
           - refresh
         type: string
+        x-stoplight:
+          id: hwi2of8gq5x48
       UserConnectionType:
         type: string
         enum:
@@ -623,6 +703,8 @@ rawSpecString: |
           - Cloud
           - KeyPair
           - OAuth
+        x-stoplight:
+          id: nvknmyzrvz1ip
       DeployRunDetails:
         type: object
         additionalProperties: false
@@ -642,6 +724,8 @@ rawSpecString: |
         required:
           - deployCommit
           - environmentID
+        x-stoplight:
+          id: iadm5l12bqo72
       RefreshRunDetails:
         type: object
         additionalProperties: false
@@ -668,11 +752,15 @@ rawSpecString: |
             type: integer
         required:
           - environmentID
+        x-stoplight:
+          id: ss4lau0fw2u2w
       RunDetails:
         description: Detailed information about a run.
         anyOf:
           - $ref: '#/components/schemas/DeployRunDetails'
           - $ref: '#/components/schemas/RefreshRunDetails'
+        x-stoplight:
+          id: qdyoxpslp2j5e
       RunInfo:
         description: The full details of a run, without the run results.
         type: object
@@ -713,6 +801,8 @@ rawSpecString: |
           - runStatus
           - runTimeParameters
           - runType
+        x-stoplight:
+          id: x7i4v27naz0ag
       SnowflakeUserCredentials:
         description: Information about the Snowflake account used to perform a run.
         type: object
@@ -732,6 +822,8 @@ rawSpecString: |
           - snowflakeAccount
           - snowflakeAuthType
           - snowflakeUsername
+        x-stoplight:
+          id: ecaz5hx06vzn9
       QueryResult:
         type: object
         additionalProperties: false
@@ -770,6 +862,8 @@ rawSpecString: |
           - sql
           - status
           - success
+        x-stoplight:
+          id: oxpnw4c9i1g5w
       RunResult:
         type: object
         additionalProperties: false
@@ -792,6 +886,8 @@ rawSpecString: |
           - name
           - nodeID
           - queryResults
+        x-stoplight:
+          id: g59x96mbnn22t
       RegistryPackageReleaseResult:
         description: A single release of a package in the registry.
         type: object
@@ -838,6 +934,8 @@ rawSpecString: |
           - storagePath
           - createdBy
           - createdAt
+        x-stoplight:
+          id: 82hhwwn7c84n2
       RegistryPackageResult:
         description: A single package in the registry.
         type: object
@@ -876,6 +974,8 @@ rawSpecString: |
           - latestRelease
           - id
           - publicReleases
+        x-stoplight:
+          id: afpzerv8fqiv8
       SourceColumnMetadata:
         type: object
         additionalProperties: false
@@ -898,6 +998,8 @@ rawSpecString: |
               $ref: '#/components/schemas/SourceMap'
         required:
           - columns
+        x-stoplight:
+          id: y5rxmi96nyjd8
       SourceNode:
         type: object
         allOf:
@@ -917,11 +1019,15 @@ rawSpecString: |
           - nodeType
           - schema
           - table
+        x-stoplight:
+          id: ou88lufd8jiro
       MaterializationType:
         type: string
         enum:
           - table
           - view
+        x-stoplight:
+          id: ttvc7sdecqe8r
       NodeTest:
         type: object
         additionalProperties: false
@@ -942,6 +1048,8 @@ rawSpecString: |
           - name
           - runOrder
           - templateString
+        x-stoplight:
+          id: w7ec9phk1cmdg
       SQLNode:
         type: object
         allOf:
@@ -970,6 +1078,8 @@ rawSpecString: |
           - nodeType
           - overrideSQL
           - schema
+        x-stoplight:
+          id: f6juqpk9hbbqj
       SQLNodeMetadata:
         type: object
         additionalProperties: false
@@ -1013,11 +1123,15 @@ rawSpecString: |
           - columns
           - enabledColumnTestIDs
           - sourceMapping
+        x-stoplight:
+          id: yczbli61y53t2
       TestRunOrder:
         type: string
         enum:
           - After
           - Before
+        x-stoplight:
+          id: lufm0q85jqkqd
       UserConfig:
         type: object
         additionalProperties:
@@ -1026,6 +1140,8 @@ rawSpecString: |
             - type: string
             - type: number
             - type: boolean
+        x-stoplight:
+          id: hka00l7t8bhqh
     responses:
       EnvironmentResponse:
         description: Information about an environment.
@@ -1171,9 +1287,366 @@ rawSpecString: |
         schema:
           type: string
         required: true
-  security:
-    - BearerAuth: []
+    securitySchemes:
+      BearerAuth:
+        type: http
+        scheme: bearer
+      sec0:
+        type: apiKey
+        in: header
+        name: Authorization
+        x-bearer-format: bearer
+        x-default: ''
   paths:
+    /api/v1/environments:
+      summary: Environments
+      x-coa-command-group: environments
+      parameters: []
+      get:
+        summary: List Environments
+        description: Get a collection of environment information.
+        operationId: GetEnvironments
+        x-eov-operation-handler: EnvironmentHandlers
+        x-coa-command: list
+        parameters:
+          - name: detail
+            description: Include the full detail of the environments.
+            in: query
+            schema:
+              type: boolean
+              default: false
+            required: false
+        security:
+          - BearerAuth: []
+        tags:
+          - Environments
+        responses:
+          '200':
+            $ref: '#/components/responses/EnvironmentsResponse'
+          '400':
+            $ref: '#/components/responses/InvalidRequestError'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/ForbiddenError'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+          '502':
+            $ref: '#/components/responses/BadGatewayError'
+          '503':
+            $ref: '#/components/responses/ServiceUnavailableError'
+          '504':
+            $ref: '#/components/responses/GatewayTimeoutError'
+        x-stoplight:
+          id: u68k9im7zkl0d
+    /api/v1/environments/{environmentID}:
+      summary: Environment
+      x-coa-command-group: environments
+      parameters:
+        - name: environmentID
+          description: The environment ID.
+          in: path
+          schema:
+            type: string
+          required: true
+      get:
+        summary: Get Environment
+        description: Get information about an environment.
+        operationId: GetEnvironment
+        x-eov-operation-handler: EnvironmentHandlers
+        x-coa-command: get
+        security:
+          - BearerAuth: []
+        tags:
+          - Environments
+        responses:
+          '200':
+            $ref: '#/components/responses/EnvironmentResponse'
+          '400':
+            $ref: '#/components/responses/InvalidRequestError'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/ForbiddenError'
+          '404':
+            $ref: '#/components/responses/NotFoundError'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+          '502':
+            $ref: '#/components/responses/BadGatewayError'
+          '503':
+            $ref: '#/components/responses/ServiceUnavailableError'
+          '504':
+            $ref: '#/components/responses/GatewayTimeoutError'
+        x-stoplight:
+          id: hygn8miza0pdu
+    /api/v1/environments/{environmentID}/nodes:
+      summary: Nodes
+      x-coa-command-group: nodes
+      parameters:
+        - name: environmentID
+          description: The environment ID.
+          in: path
+          schema:
+            type: string
+          required: true
+      get:
+        summary: List Nodes
+        description: Get a collection of nodes for an environment
+        operationId: GetNodes
+        x-eov-operation-handler: NodeHandlers
+        x-coa-command: list
+        parameters:
+          - name: detail
+            description: Include the full detail of the nodes.
+            in: query
+            schema:
+              type: boolean
+              default: false
+            required: false
+        security:
+          - BearerAuth: []
+        tags:
+          - Nodes
+        responses:
+          '200':
+            $ref: '#/components/responses/NodesResponse'
+          '400':
+            $ref: '#/components/responses/InvalidRequestError'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/ForbiddenError'
+          '404':
+            $ref: '#/components/responses/NotFoundError'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+          '502':
+            $ref: '#/components/responses/BadGatewayError'
+          '503':
+            $ref: '#/components/responses/ServiceUnavailableError'
+          '504':
+            $ref: '#/components/responses/GatewayTimeoutError'
+        x-stoplight:
+          id: 5llkiz1eojtwh
+    /api/v1/environments/{environmentID}/nodes/{nodeID}:
+      summary: Node
+      x-coa-command-group: nodes
+      parameters:
+        - name: environmentID
+          description: The environment ID.
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: nodeID
+          description: The node ID.
+          in: path
+          schema:
+            type: string
+          required: true
+      get:
+        summary: Get Node
+        description: Get information about a node in an environment.
+        operationId: GetNode
+        x-eov-operation-handler: NodeHandlers
+        x-coa-command: get
+        security:
+          - BearerAuth: []
+        tags:
+          - Nodes
+        responses:
+          '200':
+            $ref: '#/components/responses/NodeResponse'
+          '400':
+            $ref: '#/components/responses/InvalidRequestError'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/ForbiddenError'
+          '404':
+            $ref: '#/components/responses/NotFoundError'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+          '502':
+            $ref: '#/components/responses/BadGatewayError'
+          '503':
+            $ref: '#/components/responses/ServiceUnavailableError'
+          '504':
+            $ref: '#/components/responses/GatewayTimeoutError'
+        x-stoplight:
+          id: wxhox8ho8vuj9
+    /api/v1/runs:
+      summary: Runs
+      x-coa-command-group: runs
+      parameters: []
+      get:
+        summary: List Runs
+        description: Get a collection of information about runs.
+        operationId: GetRuns
+        x-eov-operation-handler: RunHandlers
+        x-coa-command: list
+        security:
+          - BearerAuth: []
+        tags:
+          - Runs
+        parameters:
+          - name: limit
+            description: The maximum number of runs to return.
+            in: query
+            schema:
+              type: integer
+              minimum: 0
+              maximum: 1000
+              default: 25
+            required: false
+          - name: startingFrom
+            description: >-
+              The starting run ID, runStartTime, or runEndTime (exclusive) for
+              paging the query results.
+            in: query
+            schema:
+              oneOf:
+                - type: integer
+                  minimum: 0
+                - type: string
+                  format: date-time
+            required: false
+          - name: orderBy
+            description: The field used to order results.
+            in: query
+            schema:
+              $ref: '#/components/schemas/RunsOrderBy'
+            required: false
+          - $ref: '#/components/parameters/orderByDirection'
+          - name: runType
+            description: A run type to filter the query results.
+            in: query
+            schema:
+              $ref: '#/components/schemas/RunType'
+            required: false
+          - name: runStatus
+            description: A status value to filter the query results.
+            in: query
+            schema:
+              $ref: '#/components/schemas/RunStatus'
+            required: false
+          - name: environmentID
+            description: An environment ID to filter the query results.
+            in: query
+            schema:
+              type: string
+            required: false
+          - name: detail
+            description: Include the full detail of the run.
+            in: query
+            schema:
+              type: boolean
+              default: false
+            required: false
+        responses:
+          '200':
+            $ref: '#/components/responses/RunsResponse'
+          '400':
+            $ref: '#/components/responses/InvalidRequestError'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/ForbiddenError'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+          '502':
+            $ref: '#/components/responses/BadGatewayError'
+          '503':
+            $ref: '#/components/responses/ServiceUnavailableError'
+          '504':
+            $ref: '#/components/responses/GatewayTimeoutError'
+        x-stoplight:
+          id: oviyqsx5z9skc
+    /api/v1/runs/{runID}:
+      summary: Run
+      x-coa-command-group: runs
+      parameters: []
+      get:
+        summary: Get Run
+        description: Gets a single run.
+        operationId: GetRun
+        x-eov-operation-handler: RunHandlers
+        x-coa-command: get
+        security:
+          - BearerAuth: []
+        tags:
+          - Runs
+        parameters:
+          - name: runID
+            description: The run ID.
+            in: path
+            schema:
+              type: integer
+            required: true
+        responses:
+          '200':
+            $ref: '#/components/responses/RunResponse'
+          '400':
+            $ref: '#/components/responses/InvalidRequestError'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/ForbiddenError'
+          '404':
+            $ref: '#/components/responses/NotFoundError'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+          '502':
+            $ref: '#/components/responses/BadGatewayError'
+          '503':
+            $ref: '#/components/responses/ServiceUnavailableError'
+          '504':
+            $ref: '#/components/responses/GatewayTimeoutError'
+        x-stoplight:
+          id: ppqfvu27yj48y
+    /api/v1/runs/{runID}/results:
+      summary: Run Results
+      x-coa-command-group: runs
+      parameters: []
+      get:
+        summary: List Run Results
+        description: Get a collection of the results of a deploy or refresh run
+        operationId: GetRunResults
+        x-eov-operation-handler: RunHandlers
+        x-coa-command: list-results
+        security:
+          - BearerAuth: []
+        tags:
+          - Runs
+        parameters:
+          - name: runID
+            description: The run ID.
+            in: path
+            schema:
+              type: integer
+            required: true
+        responses:
+          '200':
+            $ref: '#/components/responses/RunResultsResponse'
+          '400':
+            $ref: '#/components/responses/InvalidRequestError'
+          '401':
+            $ref: '#/components/responses/Unauthorized'
+          '403':
+            $ref: '#/components/responses/ForbiddenError'
+          '404':
+            $ref: '#/components/responses/NotFoundError'
+          '500':
+            $ref: '#/components/responses/InternalServerError'
+          '502':
+            $ref: '#/components/responses/BadGatewayError'
+          '503':
+            $ref: '#/components/responses/ServiceUnavailableError'
+          '504':
+            $ref: '#/components/responses/GatewayTimeoutError'
+        x-stoplight:
+          id: gu371uarf1aoq
     /scheduler/startRun:
       post:
         summary: Trigger Job to Run
@@ -1641,345 +2114,10 @@ rawSpecString: |
                             401: Unable to authenticate, please ensure your token
                             is valid.
         deprecated: false
-    /api/v1/environments:
-      summary: Environments
-      x-coa-command-group: environments
-      parameters: []
-      get:
-        summary: List Environments
-        description: Get a collection of environment information.
-        operationId: GetEnvironments
-        x-eov-operation-handler: EnvironmentHandlers
-        x-coa-command: list
-        parameters:
-          - name: detail
-            description: Include the full detail of the environments.
-            in: query
-            schema:
-              type: boolean
-              default: false
-            required: false
-        security:
-          - BearerAuth: []
-        tags:
-          - Environments
-        responses:
-          '200':
-            $ref: '#/components/responses/EnvironmentsResponse'
-          '400':
-            $ref: '#/components/responses/InvalidRequestError'
-          '401':
-            $ref: '#/components/responses/Unauthorized'
-          '403':
-            $ref: '#/components/responses/ForbiddenError'
-          '500':
-            $ref: '#/components/responses/InternalServerError'
-          '502':
-            $ref: '#/components/responses/BadGatewayError'
-          '503':
-            $ref: '#/components/responses/ServiceUnavailableError'
-          '504':
-            $ref: '#/components/responses/GatewayTimeoutError'
-    /api/v1/environments/{environmentID}:
-      summary: Environment
-      x-coa-command-group: environments
-      parameters:
-        - name: environmentID
-          description: The environment ID.
-          in: path
-          schema:
-            type: string
-          required: true
-      get:
-        summary: Get Environment
-        description: Get information about an environment.
-        operationId: GetEnvironment
-        x-eov-operation-handler: EnvironmentHandlers
-        x-coa-command: get
-        security:
-          - BearerAuth: []
-        tags:
-          - Environments
-        responses:
-          '200':
-            $ref: '#/components/responses/EnvironmentResponse'
-          '400':
-            $ref: '#/components/responses/InvalidRequestError'
-          '401':
-            $ref: '#/components/responses/Unauthorized'
-          '403':
-            $ref: '#/components/responses/ForbiddenError'
-          '404':
-            $ref: '#/components/responses/NotFoundError'
-          '500':
-            $ref: '#/components/responses/InternalServerError'
-          '502':
-            $ref: '#/components/responses/BadGatewayError'
-          '503':
-            $ref: '#/components/responses/ServiceUnavailableError'
-          '504':
-            $ref: '#/components/responses/GatewayTimeoutError'
-    /api/v1/environments/{environmentID}/nodes:
-      summary: Nodes
-      x-coa-command-group: nodes
-      parameters:
-        - name: environmentID
-          description: The environment ID.
-          in: path
-          schema:
-            type: string
-          required: true
-      get:
-        summary: List Nodes
-        description: Get a collection of nodes for an environment
-        operationId: GetNodes
-        x-eov-operation-handler: NodeHandlers
-        x-coa-command: list
-        parameters:
-          - name: detail
-            description: Include the full detail of the nodes.
-            in: query
-            schema:
-              type: boolean
-              default: false
-            required: false
-        security:
-          - BearerAuth: []
-        tags:
-          - Nodes
-        responses:
-          '200':
-            $ref: '#/components/responses/NodesResponse'
-          '400':
-            $ref: '#/components/responses/InvalidRequestError'
-          '401':
-            $ref: '#/components/responses/Unauthorized'
-          '403':
-            $ref: '#/components/responses/ForbiddenError'
-          '404':
-            $ref: '#/components/responses/NotFoundError'
-          '500':
-            $ref: '#/components/responses/InternalServerError'
-          '502':
-            $ref: '#/components/responses/BadGatewayError'
-          '503':
-            $ref: '#/components/responses/ServiceUnavailableError'
-          '504':
-            $ref: '#/components/responses/GatewayTimeoutError'
-    /api/v1/environments/{environmentID}/nodes/{nodeID}:
-      summary: Node
-      x-coa-command-group: nodes
-      parameters:
-        - name: environmentID
-          description: The environment ID.
-          in: path
-          schema:
-            type: string
-          required: true
-        - name: nodeID
-          description: The node ID.
-          in: path
-          schema:
-            type: string
-          required: true
-      get:
-        summary: Get Node
-        description: Get information about a node in an environment.
-        operationId: GetNode
-        x-eov-operation-handler: NodeHandlers
-        x-coa-command: get
-        security:
-          - BearerAuth: []
-        tags:
-          - Nodes
-        responses:
-          '200':
-            $ref: '#/components/responses/NodeResponse'
-          '400':
-            $ref: '#/components/responses/InvalidRequestError'
-          '401':
-            $ref: '#/components/responses/Unauthorized'
-          '403':
-            $ref: '#/components/responses/ForbiddenError'
-          '404':
-            $ref: '#/components/responses/NotFoundError'
-          '500':
-            $ref: '#/components/responses/InternalServerError'
-          '502':
-            $ref: '#/components/responses/BadGatewayError'
-          '503':
-            $ref: '#/components/responses/ServiceUnavailableError'
-          '504':
-            $ref: '#/components/responses/GatewayTimeoutError'
-    /api/v1/runs:
-      summary: Runs
-      x-coa-command-group: runs
-      parameters: []
-      get:
-        summary: List Runs
-        description: Get a collection of information about runs.
-        operationId: GetRuns
-        x-eov-operation-handler: RunHandlers
-        x-coa-command: list
-        security:
-          - BearerAuth: []
-        tags:
-          - Runs
-        parameters:
-          - name: limit
-            description: The maximum number of runs to return.
-            in: query
-            schema:
-              type: integer
-              minimum: 0
-              maximum: 1000
-              default: 25
-            required: false
-          - name: startingFrom
-            description: >-
-              The starting run ID, runStartTime, or runEndTime (exclusive) for
-              paging the query results.
-            in: query
-            schema:
-              oneOf:
-                - type: integer
-                  minimum: 0
-                - type: string
-                  format: date-time
-            required: false
-          - name: orderBy
-            description: The field used to order results.
-            in: query
-            schema:
-              $ref: '#/components/schemas/RunsOrderBy'
-            required: false
-          - $ref: '#/components/parameters/orderByDirection'
-          - name: runType
-            description: A run type to filter the query results.
-            in: query
-            schema:
-              $ref: '#/components/schemas/RunType'
-            required: false
-          - name: runStatus
-            description: A status value to filter the query results.
-            in: query
-            schema:
-              $ref: '#/components/schemas/RunStatus'
-            required: false
-          - name: environmentID
-            description: An environment ID to filter the query results.
-            in: query
-            schema:
-              type: string
-            required: false
-          - name: detail
-            description: Include the full detail of the run.
-            in: query
-            schema:
-              type: boolean
-              default: false
-            required: false
-        responses:
-          '200':
-            $ref: '#/components/responses/RunsResponse'
-          '400':
-            $ref: '#/components/responses/InvalidRequestError'
-          '401':
-            $ref: '#/components/responses/Unauthorized'
-          '403':
-            $ref: '#/components/responses/ForbiddenError'
-          '500':
-            $ref: '#/components/responses/InternalServerError'
-          '502':
-            $ref: '#/components/responses/BadGatewayError'
-          '503':
-            $ref: '#/components/responses/ServiceUnavailableError'
-          '504':
-            $ref: '#/components/responses/GatewayTimeoutError'
-    /api/v1/runs/{runID}:
-      summary: Run
-      x-coa-command-group: runs
-      parameters: []
-      get:
-        summary: Get Run
-        description: Gets a single run.
-        operationId: GetRun
-        x-eov-operation-handler: RunHandlers
-        x-coa-command: get
-        security:
-          - BearerAuth: []
-        tags:
-          - Runs
-        parameters:
-          - name: runID
-            description: The run ID.
-            in: path
-            schema:
-              type: integer
-            required: true
-        responses:
-          '200':
-            $ref: '#/components/responses/RunResponse'
-          '400':
-            $ref: '#/components/responses/InvalidRequestError'
-          '401':
-            $ref: '#/components/responses/Unauthorized'
-          '403':
-            $ref: '#/components/responses/ForbiddenError'
-          '404':
-            $ref: '#/components/responses/NotFoundError'
-          '500':
-            $ref: '#/components/responses/InternalServerError'
-          '502':
-            $ref: '#/components/responses/BadGatewayError'
-          '503':
-            $ref: '#/components/responses/ServiceUnavailableError'
-          '504':
-            $ref: '#/components/responses/GatewayTimeoutError'
-    /api/v1/runs/{runID}/results:
-      summary: Run Results
-      x-coa-command-group: runs
-      parameters: []
-      get:
-        summary: List Run Results
-        description: Get a collection of the results of a deploy or refresh run
-        operationId: GetRunResults
-        x-eov-operation-handler: RunHandlers
-        x-coa-command: list-results
-        security:
-          - BearerAuth: []
-        tags:
-          - Runs
-        parameters:
-          - name: runID
-            description: The run ID.
-            in: path
-            schema:
-              type: integer
-            required: true
-        responses:
-          '200':
-            $ref: '#/components/responses/RunResultsResponse'
-          '400':
-            $ref: '#/components/responses/InvalidRequestError'
-          '401':
-            $ref: '#/components/responses/Unauthorized'
-          '403':
-            $ref: '#/components/responses/ForbiddenError'
-          '404':
-            $ref: '#/components/responses/NotFoundError'
-          '500':
-            $ref: '#/components/responses/InternalServerError'
-          '502':
-            $ref: '#/components/responses/BadGatewayError'
-          '503':
-            $ref: '#/components/responses/ServiceUnavailableError'
-          '504':
-            $ref: '#/components/responses/GatewayTimeoutError'
   x-readme:
-    headers: []
-    explorer-enabled: true
-    proxy-enabled: true
+    explorer-enabled: false
+    proxy-enabled: false
     samples-enabled: true
-  _id: 65271ea0a0cb7e0046851766
-konfigCliVersion: 1.38.34
+    headers: []
+  _id: 661e86b77399e9003c4ce17b
+konfigCliVersion: 1.38.37

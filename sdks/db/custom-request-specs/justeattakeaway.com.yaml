@@ -626,208 +626,6 @@ paths:
           description: The order id to query.
       security:
         - X-Flyt-Api-Key: []
-  /consumers/{tenant}/me/exclusions:
-    get:
-      parameters:
-        - required: true
-          description: Request tenant.
-          name: tenant
-          schema:
-            type: string
-          in: path
-        - name: x-jet-application
-          in: header
-          schema:
-            type: string
-          required: false
-          description: Descriptor of client or internal application
-      responses:
-        '200':
-          headers:
-            cache-control:
-              schema:
-                type: string
-              description: Information about how the response can be cached.
-          description: Return consumer's exclusion list.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ExclusionsGetExclusionsResponseYaml'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/4XxErrorSchemaYaml'
-              example:
-                traceId: H3TKh4QSJUSwVBCBqEtkKw==
-                faultId: b39ae4c1-142f-4308-838d-1f01815e1cf1
-                errors:
-                  - description: You are unauthorized to perform this request.
-                    errorCode: Unauthorized
-        '403':
-          description: >-
-            There is no auth token supplied, or the auth token is invalid or
-            expired.
-          $ref: '#/components/responses/403ForbiddenResponseYaml'
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/4XxErrorSchemaYaml'
-              example:
-                traceId: H3TKh4QSJUSwVBCBqEtkKw==
-                faultId: b39ae4c1-142f-4308-838d-1f01815e1cf1
-                errors:
-                  - description: Tenant could not be found.
-                    errorCode: TenantNotFound
-        '429':
-          description: >-
-            Too Many Requests : Request not completed as server has received too
-            many requests in a given amount of time.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/4XxErrorSchemaYaml'
-              example:
-                fault:
-                  traceId: 0HLOCKDKQPKIU
-                  faultId: 72d7036d-990a-4f84-9efa-ef5f40f6044b
-                  errors:
-                    - description: Couldn't complete request
-        '500':
-          description: Internal Server Error
-          $ref: '#/components/responses/500ErrorResponseYaml'
-      description: Gets product types exclusions list for consumer.
-      operationId: consumersTenantMeExclusionsGet
-      tags:
-        - Customer Experience
-        - Manage Customer Information
-        - publicly-accessible
-      summary: Get exclusion list for consumer
-      x-status: Stable
-      security:
-        - Bearer: []
-  /consumers/{tenant}/me/exclusions/{productType}:
-    put:
-      parameters:
-        - required: true
-          description: Request tenant.
-          name: tenant
-          schema:
-            type: string
-          in: path
-        - required: true
-          description: Product type.
-          name: productType
-          schema:
-            type: string
-          in: path
-        - description: The authorization token.
-          schema:
-            type: string
-          in: header
-          required: true
-          name: Authorization
-        - name: x-jet-application
-          in: header
-          schema:
-            type: string
-          required: false
-          description: Descriptor of client or internal application
-      responses:
-        '200':
-          headers:
-            content-language:
-              schema:
-                type: string
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ExclusionsCreateExclusionResponseYaml'
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/4XxErrorSchemaYaml'
-              example:
-                traceId: H3TKh4QSJUSwVBCBqEtkKw==
-                faultId: b39ae4c1-142f-4308-838d-1f01815e1cf1
-                errors:
-                  - description: The product type is invalid.
-                    errorCode: BadRequest
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/4XxErrorSchemaYaml'
-              example:
-                traceId: H3TKh4QSJUSwVBCBqEtkKw==
-                faultId: b39ae4c1-142f-4308-838d-1f01815e1cf1
-                errors:
-                  - description: You are unauthorized to perform this request.
-                    errorCode: Unauthorized
-        '403':
-          description: You are not allowed to perform this request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/4XxErrorSchemaYaml'
-              example:
-                traceId: H3TKh4QSJUSwVBCBqEtkKw==
-                faultId: b39ae4c1-142f-4308-838d-1f01815e1cf1
-                errors:
-                  - description: >-
-                      You are not allowed to switch to a different exclusion
-                      when existing exclusion is active.
-                    errorCode: Forbidden
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/4XxErrorSchemaYaml'
-              example:
-                traceId: H3TKh4QSJUSwVBCBqEtkKw==
-                faultId: b39ae4c1-142f-4308-838d-1f01815e1cf1
-                errors:
-                  - description: Tenant could not be found.
-                    errorCode: TenantNotFound
-        '429':
-          description: >-
-            Too Many Requests : Request not completed as server has received too
-            many requests in a given amount of time.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/4XxErrorSchemaYaml'
-              example:
-                fault:
-                  traceId: 0HLOCKDKQPKIU
-                  faultId: 72d7036d-990a-4f84-9efa-ef5f40f6044b
-                  errors:
-                    - description: Couldn't complete request
-        '500':
-          description: Internal Server Error
-          $ref: '#/components/responses/500ErrorResponseYaml'
-      description: Creates or update an exclusion for a given product type.
-      operationId: consumersTenantMeExclusionsProductTypePut
-      tags:
-        - Customer Experience
-        - Manage Customer Information
-        - publicly-accessible
-      summary: Create or update an exclusion
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ExclusionsSelfExclusionRequestYaml'
-      x-status: Stable
   /delivery/pools:
     get:
       description: >-
@@ -4563,6 +4361,10 @@ paths:
 
         If this endpoint is not called within 3 minutes after an order is marked
         as pending, the order status will switch to "failed to inject".
+
+        If you are receiving multiple transmissions for the same order, e.g.
+        Initial and Final Picked Order, then you need to provide the
+        Transmission ID from the order payload in the request body.
       requestBody:
         content:
           application/json:
@@ -4657,6 +4459,10 @@ paths:
 
         If this endpoint is not called within 3 minutes after an order is marked
         as pending, the order status will switch to "failed to inject".
+
+        If you are receiving multiple transmissions for the same order, e.g.
+        Initial and Final Picked Order, then you need to provide the
+        Transmission ID from the order payload in the request body.
       requestBody:
         content:
           application/json:
@@ -5339,7 +5145,7 @@ paths:
         - ordering-universal-connector
         - publicly-accessible
       x-status: Draft
-      summary: Get amendedment
+      summary: Get amendment
       description: Get progress about the state of an amended order.
       responses:
         '200':
@@ -5479,105 +5285,6 @@ paths:
                     schema:
                       $ref: >-
                         #/components/schemas/JetConnectOrderingUniversalConnectorFailedAmendmentBodyYaml
-      security:
-        - X-Flyt-Api-Key: []
-      parameters:
-        - name: brandSlug
-          in: path
-          required: true
-          description: >-
-            The owning brand in the brand slug format e.g. `je-uk-example`
-            (contact delivery manager if unsure). This field may be removed in a
-            future version.
-          example: je-uk-example
-          schema:
-            type: string
-        - name: orderId
-          in: path
-          required: true
-          description: The originating order ID as supplied by the ordering partner.
-          example: 00025doahk2txeo9ttd0ma
-          schema:
-            type: string
-        - name: x-jet-application
-          in: header
-          schema:
-            type: string
-          required: false
-          description: Descriptor of client or internal application
-  /orders/{brandSlug}/{orderId}/cancel:
-    post:
-      servers:
-        - url: https://ordering-universal-connector.flyt-platform.com
-          description: Production environment
-      operationId: ordersBrandSlugOrderIdCancelPost
-      tags:
-        - JET Connect for Manage Order Status
-        - jet-connect
-        - ordering-universal-connector
-        - publicly-accessible
-      x-status: Draft
-      summary: Cancel order
-      description: >-
-        Cancels an order. Must be called before the order prep-for time has
-        elapsed. Note: this endpoint is not yet generally available. Please
-        contact your delivery manager for more information.
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: >-
-                #/components/schemas/JetConnectOrderingUniversalConnectorCancelOrderReqYaml
-      responses:
-        '200':
-          description: The cancellation request has been accepted and will be processed.
-          content:
-            application/json:
-              schema:
-                $ref: >-
-                  #/components/schemas/JetConnectOrderingUniversalConnectorCancelOrderRespYaml
-        '400':
-          description: Bad request
-          content:
-            application/json:
-              schema:
-                $ref: >-
-                  #/components/schemas/JetConnectOrderingUniversalConnectorFailedCancellationBodyYaml
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: >-
-                  #/components/schemas/JetConnectOrderingUniversalConnectorUnauthorizedResponseYaml
-        '403':
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: >-
-                  #/components/schemas/JetConnectOrderingUniversalConnectorFailedCancellationBodyYaml
-        '429':
-          description: >-
-            Too Many Requests : Request not completed as server has received too
-            many requests in a given amount of time.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/4XxErrorSchemaYaml'
-              example:
-                fault:
-                  traceId: 0HLOCKDKQPKIU
-                  faultId: 72d7036d-990a-4f84-9efa-ef5f40f6044b
-                  errors:
-                    - description: Couldn't complete request
-        '500':
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: >-
-                  #/components/schemas/JetConnectOrderingUniversalConnectorFailedCancellationBodyYaml
       security:
         - X-Flyt-Api-Key: []
       parameters:
@@ -9074,6 +8781,12 @@ components:
             The basket level substitution preference. Currently BestMatch or
             Refund is supported. When null it means that basket level
             substitution preference is not supported.
+        SupportsItemLevelNotes:
+          nullable: true
+          type: boolean
+          description: >-
+            True if the RP supports item-level notes and this is not a group
+            basket. Currently group orders do not support item-level notes.
         CreateDate:
           nullable: true
           description: When the basket was created
@@ -9449,6 +9162,10 @@ components:
           type: array
         Substitution:
           $ref: '#/components/schemas/BasketItemSubstitutionYaml'
+        CustomerNotes:
+          nullable: true
+          type: string
+          description: The customer's item-level notes
       type: object
     BasketDealGroupYaml:
       description: A deal group Id
@@ -9893,6 +9610,10 @@ components:
           type: array
         Substitution:
           $ref: '#/components/schemas/BasketItemSubstitutionYaml'
+        CustomerNotes:
+          nullable: true
+          type: string
+          description: The customer's item-level notes
       type: object
     BasketPromptsYaml:
       description: A basket prompt
@@ -10273,6 +9994,11 @@ components:
         BasketProductId:
           type: string
           description: The basket product Id
+        CustomerNotes:
+          maxLength: 160
+          nullable: true
+          type: string
+          description: The customer's item-level notes. Maximum length 160 characters.
       type: object
     BasketUpdateUpdatedProductYaml:
       description: An update to a product
@@ -10295,6 +10021,11 @@ components:
         BasketProductId:
           type: string
           description: The basket product id
+        CustomerNotes:
+          maxLength: 160
+          nullable: true
+          type: string
+          description: The customer's item-level notes. Maximum length 160 characters.
       type: object
     BenderBenderErrorResponseYaml:
       description: The error object returned when an operation fails
@@ -25125,16 +24856,22 @@ components:
         errorMessage:
           description: Describes the failure reason
           type: string
+        transmissionId:
+          description: >-
+            The Transmission ID that was sent in the order payload. This is
+            optional, it only becomes necessary for partners on multi injection
+            flow.
+          type: string
     JetConnectOrderInjectionStatusUpdaterAsyncOrderSuccessYaml:
       description: The request body to send to mark an order as successful.
       type: object
-      required:
-        - happenedAt
       properties:
-        happenedAt:
-          description: ISO timestamp that the order was marked as successful.
+        transmissionId:
+          description: >-
+            The Transmission ID that was sent in the order payload. This is
+            optional, it only becomes necessary for partners on multi injection
+            flow.
           type: string
-          format: date-time
     JetConnectOrderInjectionStatusUpdaterChannelYaml:
       description: Details about the delivery partner who sent the order.
       type: object
@@ -29340,6 +29077,42 @@ components:
                 unitDepositAmount: 0
                 quantity: 1
                 subItems: []
+        orderItemsModification:
+          - removedItem:
+              totalPrice: 345
+              itemReference: productid%3dd26def13-bf4d-5d28-83d6-cf8f9c93695f
+              name: Bacon and Sausage Breakfast Baguette - NEW RECIPE
+              description: >-
+                Perfectly crispy bacon rashers and oven cooked pork sausages
+                stuffed into a crusty white baguette. Freshly prepared every
+                morning.
+              unitPrice: 345
+              unitDepositAmount: 0
+              quantity: 1
+              refundAmount: 345
+              subItems:
+                - id: >-
+                    i1-d26def13-bf4d-5d28-83d6-cf8f9c93695fo1-ca447a4d-5ca4-52a5-a75c-61c34f5d6f11
+                  itemReference: >-
+                    productid%3dd26def13-bf4d-5d28-83d6-cf8f9c93695f%26accessoryid%3dca447a4d-5ca4-52a5-a75c-61c34f5d6f11
+                  name: Heinz Tomato Ketchup
+                  description: Heinz Tomato Ketchup
+                  customerNote: Can I have the extra large sachets
+                  unitPrice: 0
+                  unitDepositAmount: 0
+                  quantity: 1
+                  subItems: []
+            addedItems:
+              - id: >-
+                  d26def13-bf4d-5d28-83d6-cf8f9c95695fo1-ca447a4d-5ca4-52a5-a75c-61c34f5g6f12
+                menuItemId: >-
+                  d26def13-bf4d-5d28-83d6-cf8f9c95695fo1-ca447a4d-5ca4-52a5-a75c-61c34f5g6f13
+                name: Bacon and Sausage Breakfast Baguette - OLD RECIPE
+                description: >-
+                  Perfectly crispy bacon rashers and oven cooked pork sausages
+                  stuffed into a crusty white baguette. Kind of stale though.
+                basePrice: 200
+                depositAmount: 0
         payment:
           paidDate: '2022-03-21T09:20:46.3322468+00:00'
           tips:
@@ -29530,6 +29303,13 @@ components:
           nullable: true
           items:
             $ref: '#/components/schemas/OpsorderprojectionAppOutOfStockItemYaml'
+        orderItemsModifications:
+          type: array
+          description: Items which were modified
+          nullable: true
+          items:
+            $ref: >-
+              #/components/schemas/OpsorderprojectionAppOrderItemsModificationYaml
         payment:
           description: Payment details for the order
           type: object
@@ -29808,6 +29588,69 @@ components:
         currencyCode:
           description: The ISO-4217 currency code associated with the order.
           type: string
+    OpsorderprojectionAppItemAddedYaml:
+      type: object
+      description: Item added to the order
+      properties:
+        id:
+          type: string
+          description: Modification item id
+        menuItemId:
+          type: string
+          description: Menu item id
+        name:
+          type: string
+          description: Name of the item
+        description:
+          type: string
+          description: Description of the item
+        basePrice:
+          format: money
+          type: integer
+          description: Base price of the item
+        depositAmount:
+          format: money
+          type: integer
+          description: Deposit amount paid for the item
+    OpsorderprojectionAppItemRemovedYaml:
+      type: object
+      description: Item removed from the order
+      nullable: true
+      properties:
+        totalPrice:
+          format: money
+          type: integer
+          description: The total price for the item
+        id:
+          type: string
+          description: The id of the item
+        itemReference:
+          type: string
+          description: The reference for the item
+        name:
+          type: string
+          description: The name of the item
+        description:
+          type: string
+          description: The description of the item
+        customerNote:
+          type: string
+          description: A note from the customer in relation to this item
+        unitPrice:
+          format: money
+          type: integer
+          description: The unit price of the item
+        quantity:
+          type: integer
+          description: The quantity of items requested
+        refundAmount:
+          format: money
+          type: integer
+          description: The total amount refunded for the item
+        subItems:
+          items:
+            $ref: '#/components/schemas/OpsorderprojectionAppChildItemYaml'
+          type: array
     OpsorderprojectionAppNoteDetailYaml:
       type: object
       description: A note from the customer
@@ -29815,6 +29658,21 @@ components:
         note:
           type: string
           description: The note supplied by the customer
+    OpsorderprojectionAppOrderItemsModificationYaml:
+      type: object
+      description: Order items modification
+      properties:
+        removedItem:
+          type: object
+          description: Item removed from the order
+          nullable: true
+          $ref: '#/components/schemas/OpsorderprojectionAppItemRemovedYaml'
+        addedItems:
+          type: array
+          description: Items added to the order
+          nullable: true
+          items:
+            $ref: '#/components/schemas/OpsorderprojectionAppItemAddedYaml'
     OpsorderprojectionAppOutOfStockItemYaml:
       type: object
       description: An out of stock order item
@@ -30825,6 +30683,8 @@ components:
             description: >-
               The cost of any deposit for an item, in the minor unit of the
               currency
+          sub:
+            $ref: '#/components/schemas/OrderdispatchwebhooksSubstitutionYaml'
         required:
           - id
           - name
@@ -30832,6 +30692,15 @@ components:
           - quantity
         type: object
       type: array
+    OrderdispatchwebhooksSubstitutionYaml:
+      properties:
+        pref:
+          enum:
+            - bestMatch
+            - refund
+          description: The preference for substitutions
+      type: object
+      description: Contains preferences for substitutions
     OrderdispatchwebhooksTopLevelItemYaml:
       items:
         properties:
@@ -30874,6 +30743,8 @@ components:
             description: >-
               The cost of any deposit for an item, in the minor unit of the
               currency
+          sub:
+            $ref: '#/components/schemas/OrderdispatchwebhooksSubstitutionYaml'
         required:
           - id
           - name
@@ -36139,6 +36010,107 @@ components:
             badRatingsCount: 10
         ratingAverage: 4.7
         reviewsCount: 66
+    PartnersPartnerYaml:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The partner id
+        name:
+          type: string
+          maxLength: 255
+          description: The name of the partner
+          example: Partner Name
+        partnerGroup:
+          type: string
+          maxLength: 255
+          description: The partner group
+          example: Partner Group
+        partnerGroupId:
+          type: integer
+          description: The partner group id
+        phone:
+          type: string
+          maxLength: 255
+          description: The phone number of the partner
+          example: '1234567890'
+        email:
+          type: string
+          maxLength: 255
+          description: The email address of the partner
+          example: partner@example.com
+        numberOfRestaurants:
+          type: integer
+          description: The number of restaurants
+        addressLine1:
+          type: string
+          maxLength: 128
+          description: The first line of the address
+        addressLine2:
+          type: string
+          maxLength: 128
+          description: The second line of the address
+        addressLine3:
+          type: string
+          maxLength: 128
+          description: The third line of the address
+        stateRegionTerritory:
+          type: string
+          maxLength: 128
+          description: The state, region, or territory
+        postCode:
+          type: string
+          maxLength: 24
+          description: The postal code
+        countryCode:
+          type: string
+          maxLength: 2
+          description: The country code
+        restaurantMappingRequired:
+          type: boolean
+          description: Indicates if restaurant mapping is required
+        tags:
+          type: array
+          items:
+            type: string
+          description: The tags associated with the partner
+        isTest:
+          type: boolean
+          description: Indicates if the partner is a test partner
+        created:
+          type: string
+          format: date-time
+          description: The creation date and time of the partner
+        updated:
+          type: string
+          format: date-time
+          description: The last update date and time of the partner
+      example:
+        id: 1
+        name: Partner Name
+        partnerGroup: Partner Group
+        partnerGroupId: 1
+        phone: '1234567890'
+        email: partner@example.com
+        numberOfRestaurants: 1
+        addressLine1: 123 Fake Street
+        addressLine2: Fakeville
+        addressLine3: Fakeland
+        stateRegionTerritory: Fakelandia
+        postCode: FA1 2KE
+        countryCode: FK
+        restaurantMappingRequired: true
+        tags:
+          - tag1
+          - tag2
+        isTest: false
+        created: '2020-01-01T00:00:00Z'
+        updated: '2020-01-01T00:00:00Z'
+    PartnersPartnersResponseYaml:
+      type: array
+      items:
+        $ref: '#/components/schemas/PartnersPartnerYaml'
+        description: The partner
     PartnersignupAddressYaml:
       type: object
       description: Information required for an address
@@ -50692,6 +50664,8 @@ components:
             delivery
           type: number
           format: integer
+          minimum: 0
+          maximum: 120
         consumerId:
           nullable: true
           description: Optional Id of the user submitting the review
@@ -50704,6 +50678,7 @@ components:
         ratingScores:
           quality: '5'
           delivery: '4'
+        timeTakenMinutes: 60
     ReviewsUnfilteredRestaurantReviewYaml:
       properties:
         reviewId:

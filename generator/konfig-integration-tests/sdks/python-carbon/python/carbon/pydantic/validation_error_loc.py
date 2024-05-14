@@ -16,4 +16,4 @@ from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 from pydantic import BaseModel, Field, RootModel, ConfigDict
 
 
-ValidationErrorLoc = typing.List[typing.Union[typing.List[str], typing.List[int]]]
+ValidationErrorLoc = typing.List[typing.Union[str, int]]

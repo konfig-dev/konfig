@@ -19,7 +19,7 @@ Follow us as we highlight the achievements within the æternity ecosystem, from 
       companyKebabCase="aeternity-foundation"
       clientNameCamelCase="aeternityFoundation"
       homepage="aeternity.com/"
-      lastUpdated={new Date("2024-03-29T17:12:48.443Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/aeternity-foundation/favicon.png"
       // Missing contactUrl
       contactEmail="apiteam@aeternity.com"
@@ -3483,11 +3483,11 @@ Follow us as we highlight the achievements within the æternity ecosystem, from 
       language="TypeScript"
       apiTitle="Aeternity node"
       apiBaseUrl="/v3"
-      apiVersion="6.10.0"
-      endpoints={70}
-      sdkMethods={70}
+      apiVersion="6.13.0"
+      endpoints={74}
+      sdkMethods={74}
       schemas={98}
-      parameters={289}
+      parameters={293}
       difficulty="Medium"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/aeternity-foundation/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/aeternity-foundation/openapi.yaml"

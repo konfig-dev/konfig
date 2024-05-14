@@ -17,7 +17,7 @@ export default function NvidiaNimTypeScriptSdk() {
       companyKebabCase="nvidia"
       clientNameCamelCase="nvidiaNim"
       homepage="www.nvidia.com/en-us/ai/"
-      lastUpdated={new Date("2024-03-27T01:23:25.425Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/nvidia/nim/favicon.png"
       contactUrl="https://help.nvidia.com/"
       contactEmail="earth2-support@exchange.nvidia.com"
@@ -1007,7 +1007,7 @@ export default function NvidiaNimTypeScriptSdk() {
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Default",
     "typeScriptTag": "default",
-    "description": "Protein Structure Prediction (Alignment-free)",
+    "description": "Protein Structure Prediction (https://docs.api.nvidia.com/nim/reference/google-gemma7b",
     "parameters": [
       {
         "name": "sequence",
@@ -1445,7 +1445,7 @@ export default function NvidiaNimTypeScriptSdk() {
       endpoints={19}
       sdkMethods={19}
       schemas={108}
-      parameters={136}
+      parameters={140}
       difficulty="Easy"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/nvidia/nim/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/nvidia/nim/openapi.yaml"

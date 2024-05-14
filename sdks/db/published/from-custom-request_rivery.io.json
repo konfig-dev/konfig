@@ -10,9 +10,9 @@
   "apiDescription": "\n# Rivery API documentation\n\nWelcome to the Rivery API Documentation. \n\nUsing the Rivery API, you can automate any single or group operations you perform in the Rivery console. \nYou can create, execute, and delete Rivers, create DataFrames, automate processes, and more.\nThe Rivery API is structured around REST. It accepts JSON request bodies, returns JSON responses,\nand employs conventional HTTP response codes, authentication, and verbs to access and use data through HTTP requests. \n\nConsult our [Legacy API](https://api-docs.rivery.io/) documentation. \n\nPlease [contact our Support team](mailto:<contact@rivery.io>) if you have any questions or concerns.\n\n# Authorization\n## Rivery API Token\nTo generate a Bearer token, please check out [Rivery's docs](https://docs.rivery.io/docs/rivery-api).\n\nEvery bearer token is a combination of account, environment, and scopes attached. Every time the token is provided,\nthe API compares its scopes with the request required scope.\nIf the scope is not valid, an insufficient permissions (403) response code returned.\n\n## Scopes\nA scope is defined as a combination of the entity in Rivery, and the operation allowed to perform on the entity.\n\nThe entity can be any entity available via the API, for example - connection.\nAn operation can be one of specific operations allowed for each scope. For example: list or edit.\nTherefore, listing connections scope will be set as `connection:list`.\nPlease make sure the Bearer token is has the right scopes attached for all of the needed requests.\n",
   "apiTitle": "Rivery API",
   "endpoints": 42,
-  "sdkMethods": 57,
+  "sdkMethods": 60,
   "schemas": 209,
-  "parameters": 289,
+  "parameters": 302,
   "contactUrl": "https://docs.rivery.io/",
   "contactEmail": "contact@rivery.io",
   "originalCustomRequest": {
@@ -20,7 +20,7 @@
     "url": "https://api.rivery.io/openapi.json"
   },
   "customRequestSpecFilename": "rivery.io.yaml",
-  "difficultyScore": 230.75,
+  "difficultyScore": 238,
   "difficulty": "Hard",
   "company": "Rivery",
   "sdkName": "rivery-{language}-sdk",
@@ -29,7 +29,10 @@
   "apiStatusUrls": "inherit",
   "homepage": "rivery.io",
   "developerDocumentation": "api.rivery.io/documentation",
-  "categories": ["data_transformation", "data_sync"],
+  "categories": [
+    "data_transformation",
+    "data_sync"
+  ],
   "category": "ELT (Extract, Load, and Transform)",
   "methods": [
     {
@@ -2539,7 +2542,9 @@
           "schema": "array",
           "required": false,
           "description": "List of team ids",
-          "example": ["65ce173412f5e196b2b9b163"]
+          "example": [
+            "65ce173412f5e196b2b9b163"
+          ]
         }
       ],
       "responses": [
@@ -3159,7 +3164,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/rivery/imagePreview.jpg",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/rivery/favicon.png",
   "clientNameCamelCase": "rivery",
-  "lastUpdated": "2024-03-29T23:26:19.590Z",
+  "lastUpdated": "2024-04-16T19:21:46.323Z",
   "typescriptSdkUsageCode": "import { Rivery } from 'rivery-typescript-sdk';\n\nconst rivery = new Rivery({\n    httpBearer: \"HTTP_BEARER\"\n})",
   "typescriptSdkFirstRequestCode": "// Get Dataframes\nconst dataframesResponse = rivery.dataframes.dataframes({\n    accountId: \"ACCOUNT_ID\"\n    environmentId: \"ENVIRONMENT_ID\"\n    itemsPerPage: 20\n    page: 1\n})",
   "fixedSpecFileName": "rivery-fixed-spec.yaml"

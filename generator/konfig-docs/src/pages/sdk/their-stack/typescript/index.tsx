@@ -21,7 +21,7 @@ Primarily used by sales and marketing teams, it facilitates lead generation and 
       companyKebabCase="their-stack"
       clientNameCamelCase="theirStack"
       homepage="theirstack.com"
-      lastUpdated={new Date("2024-03-29T23:29:00.943Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/theirstack/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -2043,7 +2043,7 @@ Primarily used by sales and marketing teams, it facilitates lead generation and 
       endpoints={18}
       sdkMethods={25}
       schemas={54}
-      parameters={245}
+      parameters={248}
       difficulty="Easy"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/theirstack/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/theirstack/openapi.yaml"

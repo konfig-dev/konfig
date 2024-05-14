@@ -23,7 +23,7 @@ Cast-iron security with G-Cloud 12 approved suppliers and data stored in ISO2700
       companyKebabCase="tribepad"
       clientNameCamelCase="tribepad"
       homepage="tribepad.com"
-      lastUpdated={new Date("2024-03-28T17:24:12.967Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/tribepad/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -754,10 +754,10 @@ Cast-iron security with G-Cloud 12 approved suppliers and data stored in ISO2700
       apiTitle="V2"
       apiBaseUrl="https://{example.com}"
       apiVersion="1.0.0"
-      endpoints={30}
-      sdkMethods={30}
+      endpoints={48}
+      sdkMethods={53}
       schemas={32}
-      parameters={72}
+      parameters={146}
       difficulty="Easy"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/tribepad/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/tribepad/openapi.yaml"

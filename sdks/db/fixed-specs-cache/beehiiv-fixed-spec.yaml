@@ -1618,6 +1618,38 @@ rawSpecString: |
                           in `value` attribute will be ignored.
         description: ''
         required: true
+      CreateAutomationJourney:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  x-stoplight:
+                    id: ppo283h4f9ic5
+                  example: example@example.com
+                  description: The email address associated with the subscription.
+                subscription_id:
+                  type: string
+                  x-stoplight:
+                    id: 50w0lj0pv89q9
+                  description: The prefixed ID of the subscription.
+                  example: sub_00000000-0000-0000-0000-000000000000
+                  pattern: ^(sub_)
+                double_opt_override:
+                  x-stoplight:
+                    id: 2fh2c53550b97
+                  enum:
+                    - 'on'
+                    - 'off'
+                    - not_set
+                  description: >-
+                    Override publication double-opt settings for this
+                    subscription.
+        description: |-
+          Required: specify either the `email` or `subscription_id` parameter.
+          If both are given, the `subscription_id` will take precedence.
     parameters:
       postId:
         name: postId
@@ -4241,41 +4273,7 @@ rawSpecString: |
           Create](https://beehiiv.stoplight.io/docs/v2/1a77a563675ee-create)**
           endpoint instead and specify the `automation_ids` param.
         requestBody:
-          description: >-
-            Required: specify at least one of the `email` or `subscription_id`
-            parameters.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  email:
-                    type: string
-                    x-stoplight:
-                      id: z9rgisym8lbx5
-                    description: The email address associated with the subscription
-                    example: example@example.com
-                  subscription_id:
-                    type: string
-                    x-stoplight:
-                      id: 5rupjfkjnq1ll
-                    description: The prefixed ID of the subscription
-                    example: sub_00000000-0000-0000-0000-000000000000
-                  double_opt_override:
-                    x-stoplight:
-                      id: bh0p8rk02bh1e
-                    enum:
-                      - 'on'
-                      - 'off'
-                      - not_set
-                    description: >-
-                      Override publication double-opt settings for this
-                      subscription.
-              examples:
-                Example 1:
-                  value:
-                    subscription_email: example@example.com
-                    subscription_id: sub_00000000-0000-0000-0000-000000000000
+          $ref: '#/components/requestBodies/CreateAutomationJourney'
       get:
         summary: Index
         tags:
@@ -4539,4 +4537,4 @@ rawSpecString: |
     - name: Segments
     - name: Subscriptions
     - name: Subscription Tags
-konfigCliVersion: 1.38.34
+konfigCliVersion: 1.38.37

@@ -46,7 +46,7 @@ rawSpecString: |
     license:
       name: Apache License, Version 2.0
       url: https://www.apache.org/licenses/LICENSE-2.0
-    version: 22222222.99201.1227
+    version: 22222222.99201.1256
   paths:
     /v1/admin/capabilities:
       get:
@@ -215,10 +215,10 @@ rawSpecString: |
           - name: includeDetails
             in: query
             description: >-
-              If true, the response includes the analytic objects (display name,
+              If `true`, the response includes the analytic objects (display name,
               ID, and object type), related objects,
-               securable properties, and securable dimensions. If false, the response only includes analytic objects
-               (display name, ID, and object type). Default is false.
+               securable properties, and securable dimensions. If `false`, the response only includes analytic objects
+               (display name, ID, and object type). Default is `false`.
             schema:
               type: boolean
           - name: tenantCode
@@ -259,9 +259,18 @@ rawSpecString: |
           - name: includeDetails
             in: query
             description: >-
-              If true, returns the permission's details. If false, only returns
-              the permissions' ID, display name,
-               and description. Default is false.
+              If `true`, returns the permission's details. If `false`, only
+              returns the permissions' ID, display name,
+               and description. Default is `false`.
+            schema:
+              type: boolean
+          - name: includeDetailsWithStatus
+            in: query
+            description: >-
+              If `true`, returns the validity statuses for the permission's
+              properties in data access sets and the
+               permission's dimensions, dimension members, and hierarchy properties in member filters. If `false`,
+               doesn't return validity status information. Default is `false`.
             schema:
               type: boolean
         responses:
@@ -365,7 +374,7 @@ rawSpecString: |
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/DeletePermissionsRequestDTO'
           required: true
         responses:
           '200':
@@ -400,6 +409,15 @@ rawSpecString: |
           - name: tenantCode
             in: query
             description: Specify the tenant to retrieve a permission from.
+            schema:
+              type: string
+          - name: includeDetailsWithStatus
+            in: query
+            description: >-
+              If `true`, returns the validity statuses for the permission's
+              properties in data access sets and the
+               permission's dimensions, dimension members, and hierarchy properties in member filters. If `false`,
+               doesn't return validity status information. Default is `false`.
             schema:
               type: string
         responses:
@@ -533,6 +551,14 @@ rawSpecString: |
                By default all related objects of a top level analytic object will inherit access.
                To remove access to a related analytic object, add it to the list of inherited access configurations with removeAccess: true.
                To add custom filters to a related analytic object, add the analytic object to the list of inherited access configurations and then add the custom filters to its list of member filter configurations.
+      DeletePermissionsRequestDTO:
+        type: object
+        properties:
+          permissionIds:
+            type: array
+            items:
+              type: string
+            description: The identifiers of the permissions to delete.
       DimensionFilterDTO:
         type: object
         properties:
@@ -558,6 +584,20 @@ rawSpecString: |
             description: >-
               A list of objects representing the dynamic property mappings
               associated with the dynamic dimension filter.
+          dimensionStatus:
+            enum:
+              - Unset
+              - Valid
+              - NoData
+              - NotFound
+            type: string
+            description: >-
+              The dimension's validity status. Valid values: Valid, NoData,
+              NotFound.
+               * **Valid**: The object exists and has loaded data.
+               * **NoData**: The object exists but doesn't have loaded data.
+               * **NotFound**: The object doesn't exist.
+            format: enum
       DynamicPropertyMappingDTO:
         type: object
         properties:
@@ -568,6 +608,19 @@ rawSpecString: |
             allOf:
               - $ref: '#/components/schemas/UserPropertyDTO'
             description: The user property.
+          hierarchyPropertyStatus:
+            enum:
+              - Unset
+              - Valid
+              - NoData
+              - NotFound
+            type: string
+            description: >-
+              The hierarchy property's validity status. Valid values: Valid,
+              NotFound.
+               * **Valid**: The object exists and has loaded data.
+               * **NotFound**: The object doesn't exist.
+            format: enum
       GetCapabilitiesAPIResponseDTO:
         type: object
         properties:
@@ -664,6 +717,19 @@ rawSpecString: |
           excluded:
             type: boolean
             description: The flag for excluding the member.
+          dimensionMemberStatus:
+            enum:
+              - Unset
+              - Valid
+              - NoData
+              - NotFound
+            type: string
+            description: >-
+              The dimension member's validity status. Valid values: Valid,
+              NotFound.
+               * **Valid**: The object exists and has loaded data.
+               * **NotFound**: The object doesn't exist.
+            format: enum
       PermissionBulkOperationResponseDTO:
         type: object
         properties:
@@ -779,6 +845,20 @@ rawSpecString: |
               The access level of the property. Valid values are: Aggregate,
               Sensitive
             format: enum
+          propertyStatus:
+            enum:
+              - Unset
+              - Valid
+              - NoData
+              - NotFound
+            type: string
+            description: >-
+              The property's validity status. Valid values: Valid, NoData,
+              NotFound.
+               * **Valid**: The object exists and has loaded data.
+               * **NoData**: The object exists but doesn't have loaded data.
+               * **NotFound**: The object doesn't exist.
+            format: enum
       PropertySetConfigDTO:
         type: object
         properties:
@@ -871,6 +951,20 @@ rawSpecString: |
             description: >-
               A list of objects representing the member selections associated with
               the static dimension filter.
+          dimensionStatus:
+            enum:
+              - Unset
+              - Valid
+              - NoData
+              - NotFound
+            type: string
+            description: >-
+              The dimension's validity status. Valid values: Valid, NoData,
+              NotFound.
+               * **Valid**: The object exists and has loaded data.
+               * **NoData**: The object exists but doesn't have loaded data.
+               * **NotFound**: The object doesn't exist.
+            format: enum
       Status:
         type: object
         properties:
@@ -948,4 +1042,4 @@ rawSpecString: |
       variables:
         vanity-name:
           default: vanity
-konfigCliVersion: 1.38.34
+konfigCliVersion: 1.38.37

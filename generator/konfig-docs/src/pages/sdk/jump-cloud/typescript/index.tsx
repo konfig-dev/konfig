@@ -19,7 +19,7 @@ Twitter: @jumpcloud`}
       companyKebabCase="jump-cloud"
       clientNameCamelCase="jumpCloud"
       homepage="jumpcloud.com"
-      lastUpdated={new Date("2024-03-26T19:20:53.107Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/jumpcloud/favicon.png"
       contactUrl="https://support.jumpcloud.com/support/s/"
       contactEmail="support@jumpcloud.com"
@@ -7695,7 +7695,7 @@ Twitter: @jumpcloud`}
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Microsoft MDM",
     "typeScriptTag": "microsoftMdm",
-    "description": "This endpoint provides a zipped configuration file intended for use with Microsoft Configuration Designer to create a Provisioning Package (PPKG) for bulk MDM enrollment.",
+    "description": "This endpoint provides a zipped configuration file intended for use with Microsoft Configuration Designer to create a Provisioning Package (https://docs.jumpcloud.com/api/2.0/index.html for bulk MDM enrollment.",
     "parameters": [],
     "responses": [
       {
@@ -17666,10 +17666,10 @@ Twitter: @jumpcloud`}
       apiTitle="JumpCloud API"
       apiBaseUrl="https://console.jumpcloud.com/api/v2"
       apiVersion="2.0"
-      endpoints={426}
-      sdkMethods={1050}
+      endpoints={428}
+      sdkMethods={1053}
       schemas={664}
-      parameters={1362}
+      parameters={1367}
       difficulty="Very Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/jumpcloud/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/jumpcloud/openapi.yaml"

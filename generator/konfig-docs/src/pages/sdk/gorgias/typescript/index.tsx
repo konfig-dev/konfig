@@ -21,7 +21,7 @@ Today, Gorgias serves 13,000+ merchants in the ecommerce space, including Steve 
       companyKebabCase="gorgias"
       clientNameCamelCase="gorgias"
       homepage="gorgias.com"
-      lastUpdated={new Date("2024-03-27T21:44:11.801Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/gorgias/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -100,14 +100,14 @@ Today, Gorgias serves 13,000+ merchants in the ecommerce space, including Steve 
         "name": "externalId",
         "schema": "string",
         "required": false,
-        "description": "ID of the customer in a foreign system (https://developers.gorgias.com/ you're looking for.",
+        "description": "ID of the customer in a foreign system (Stripe, Aircall etc.) you're looking for.",
         "example": "customer-84203241"
       },
       {
         "name": "language",
         "schema": "string",
         "required": false,
-        "description": "The customer's preferred language (https://developers.gorgias.com/ to filter with.",
+        "description": "The customer's preferred language (format: ISO_639-1) to filter with.",
         "example": "fr"
       },
       {
@@ -151,7 +151,7 @@ Today, Gorgias serves 13,000+ merchants in the ecommerce space, including Steve 
         "name": "timezone",
         "schema": "string",
         "required": false,
-        "description": "The customer's preferred timezone (https://developers.gorgias.com/.",
+        "description": "The customer's preferred timezone (format: IANA timezone name).",
         "example": "UTC"
       },
       {
@@ -239,14 +239,14 @@ Today, Gorgias serves 13,000+ merchants in the ecommerce space, including Steve 
         "name": "sourceId",
         "schema": "integer",
         "required": true,
-        "description": "The ID of the customer to merge (https://developers.gorgias.com/.",
+        "description": "The ID of the customer to merge (which will be merged into the targeted customer).",
         "example": 4
       },
       {
         "name": "targetId",
         "schema": "integer",
         "required": true,
-        "description": "The ID of the targeted customer (https://developers.gorgias.com/.",
+        "description": "The ID of the targeted customer (which will still be here after the merge).",
         "example": 4
       },
       {
@@ -411,7 +411,7 @@ Today, Gorgias serves 13,000+ merchants in the ecommerce space, including Steve 
         "name": "search",
         "schema": "string",
         "required": false,
-        "description": "Search for custom fields' names matching the given text query (https://developers.gorgias.com/.",
+        "description": "Search for custom fields' names matching the given text query (case insensitive).",
         "example": "My awesome field"
       },
       {
@@ -839,7 +839,7 @@ Today, Gorgias serves 13,000+ merchants in the ecommerce space, including Steve 
     "responses": [
       {
         "statusCode": "201",
-        "description": "Integrations connect Gorgias with external services (https://developers.gorgias.com/.\n\nThere are official Gorgias integrations that can be found in the Integrations page in the helpdesk and there are custom HTTP integrations.\n\nMost integrations use HTTP APIs."
+        "description": "Integrations connect Gorgias with external services (e.g. Gmail, Shopify, chat systems).\n\nThere are official Gorgias integrations that can be found in the Integrations page in the helpdesk and there are custom HTTP integrations.\n\nMost integrations use HTTP APIs."
       }
     ]
   },
@@ -1147,7 +1147,7 @@ Today, Gorgias serves 13,000+ merchants in the ecommerce space, including Steve 
     "responses": [
       {
         "statusCode": "201",
-        "description": "A macro (https://developers.gorgias.com/ is a list of [actions](https://developers.gorgias.com/) that can be applied to tickets to modify them, and/or reply to them.Macros can be applied manually by agents or automatically by rules.\nFor example, a single macro can add a tag to the ticket, assign an agent to it and send a pre-defined response."
+        "description": "A macro (canned response) is a list of [actions](https://developers.gorgias.com/) that can be applied to tickets to modify them, and/or reply to them.Macros can be applied manually by agents or automatically by rules.\nFor example, a single macro can add a tag to the ticket, assign an agent to it and send a pre-defined response."
       }
     ]
   },
@@ -1224,7 +1224,7 @@ Today, Gorgias serves 13,000+ merchants in the ecommerce space, including Steve 
         "schema": "string",
         "required": true,
         "description": "",
-        "example": "\nif (https://developers.gorgias.com/ && eq(https://developers.gorgias.com/) {\n    if (https://developers.gorgias.com/ || containsAny(https://developers.gorgias.com/) {\n        Action(https://developers.gorgias.com/;\n        Action(https://developers.gorgias.com/\n    }\n}\n"
+        "example": "\nif (eq(ticket.from_agent, false) && eq(ticket.status, 'open')) {\n    if (containsAny(message.intents.name, ['other/no_reply']) || containsAny(ticket.customer.email, [\n            'noreply@',\n            '@noreply'\n        ])) {\n        Action('addTags', { tags: 'auto-close' });\n        Action('setStatus', { status: 'closed' })\n    }\n}\n"
       },
       {
         "name": "code_ast",
@@ -2274,7 +2274,7 @@ Today, Gorgias serves 13,000+ merchants in the ecommerce space, including Steve 
         "name": "externalId",
         "schema": "string",
         "required": false,
-        "description": "ID of the user in a foreign system (https://developers.gorgias.com/ you're looking for",
+        "description": "ID of the user in a foreign system (Stripe, Aircall, etc...) you're looking for",
         "example": "user-hf329f"
       },
       {
@@ -2498,7 +2498,7 @@ Today, Gorgias serves 13,000+ merchants in the ecommerce space, including Steve 
     "responses": [
       {
         "statusCode": "201",
-        "description": "A `Team` represents a group of [users](https://developers.gorgias.com/). Teams are used with the \"auto-assign tickets\" feature: you can assign a ticket to a team (https://developers.gorgias.com/, then it will be automatically assigned to someone who is available in the given team."
+        "description": "A `Team` represents a group of [users](https://developers.gorgias.com/). Teams are used with the \"auto-assign tickets\" feature: you can assign a ticket to a team (manually of via rules), then it will be automatically assigned to someone who is available in the given team."
       }
     ]
   },
@@ -2572,7 +2572,7 @@ Today, Gorgias serves 13,000+ merchants in the ecommerce space, including Steve 
         "name": "search",
         "schema": "string",
         "required": false,
-        "description": "Search for tags' names matching the given text query (https://developers.gorgias.com/."
+        "description": "Search for tags' names matching the given text query (case insensitive)."
       },
       {
         "name": "cursor",
@@ -3162,7 +3162,7 @@ Today, Gorgias serves 13,000+ merchants in the ecommerce space, including Steve 
     "responses": [
       {
         "statusCode": "201",
-        "description": "A ticket-message represents a message (https://developers.gorgias.com/ under a normalized format.\nThere are 3 types of messages:\n  - Outgoing messages: messages sent by your company (https://developers.gorgias.com/ to your customers.\n  - Incoming messages: messages sent by your [customers](https://developers.gorgias.com/) to your company.\n  - Internal notes: internal messages sent between support agents (https://developers.gorgias.com/). Internal notes are not sent/shared with your customers.\n\nA ticket-message is associated with only one ticket."
+        "description": "A ticket-message represents a message (an email, an SMS, a Facebook comment, chat message, etc..) under a normalized format.\nThere are 3 types of messages:\n  - Outgoing messages: messages sent by your company (by rules or support agents) to your customers.\n  - Incoming messages: messages sent by your [customers](https://developers.gorgias.com/) to your company.\n  - Internal notes: internal messages sent between support agents ([users](https://developers.gorgias.com/)). Internal notes are not sent/shared with your customers.\n\nA ticket-message is associated with only one ticket."
       }
     ]
   },
@@ -3617,7 +3617,7 @@ Today, Gorgias serves 13,000+ merchants in the ecommerce space, including Steve 
         "schema": "string",
         "required": false,
         "description": "",
-        "example": "eq(https://developers.gorgias.com/ && eq(https://developers.gorgias.com/"
+        "example": "eq(ticket.assignee_user.id, '{{current_user.id}}') && eq(ticket.status, 'open')"
       },
       {
         "name": "name",
@@ -3793,7 +3793,7 @@ Today, Gorgias serves 13,000+ merchants in the ecommerce space, including Steve 
           "decoration": {
             "emoji": "🙏"
           },
-          "filters": "eq(https://developers.gorgias.com/ && eq(https://developers.gorgias.com/",
+          "filters": "eq(ticket.assignee_user.id, '{{current_user.id}}') && eq(ticket.status, 'open')",
           "search": "where is my order?",
           "fields": [
             "id",
@@ -4354,7 +4354,7 @@ Today, Gorgias serves 13,000+ merchants in the ecommerce space, including Steve 
     "responses": [
       {
         "statusCode": "200",
-        "description": "Integrations connect Gorgias with external services (https://developers.gorgias.com/.\n\nThere are official Gorgias integrations that can be found in the Integrations page in the helpdesk and there are custom HTTP integrations.\n\nMost integrations use HTTP APIs."
+        "description": "Integrations connect Gorgias with external services (e.g. Gmail, Shopify, chat systems).\n\nThere are official Gorgias integrations that can be found in the Integrations page in the helpdesk and there are custom HTTP integrations.\n\nMost integrations use HTTP APIs."
       }
     ]
   },
@@ -4421,7 +4421,7 @@ Today, Gorgias serves 13,000+ merchants in the ecommerce space, including Steve 
     "responses": [
       {
         "statusCode": "202",
-        "description": "Integrations connect Gorgias with external services (https://developers.gorgias.com/.\n\nThere are official Gorgias integrations that can be found in the Integrations page in the helpdesk and there are custom HTTP integrations.\n\nMost integrations use HTTP APIs."
+        "description": "Integrations connect Gorgias with external services (e.g. Gmail, Shopify, chat systems).\n\nThere are official Gorgias integrations that can be found in the Integrations page in the helpdesk and there are custom HTTP integrations.\n\nMost integrations use HTTP APIs."
       }
     ]
   },
@@ -4571,7 +4571,7 @@ Today, Gorgias serves 13,000+ merchants in the ecommerce space, including Steve 
     "responses": [
       {
         "statusCode": "200",
-        "description": "A macro (https://developers.gorgias.com/ is a list of [actions](https://developers.gorgias.com/) that can be applied to tickets to modify them, and/or reply to them.Macros can be applied manually by agents or automatically by rules.\nFor example, a single macro can add a tag to the ticket, assign an agent to it and send a pre-defined response."
+        "description": "A macro (canned response) is a list of [actions](https://developers.gorgias.com/) that can be applied to tickets to modify them, and/or reply to them.Macros can be applied manually by agents or automatically by rules.\nFor example, a single macro can add a tag to the ticket, assign an agent to it and send a pre-defined response."
       }
     ]
   },
@@ -4643,7 +4643,7 @@ Today, Gorgias serves 13,000+ merchants in the ecommerce space, including Steve 
     "responses": [
       {
         "statusCode": "202",
-        "description": "A macro (https://developers.gorgias.com/ is a list of [actions](https://developers.gorgias.com/) that can be applied to tickets to modify them, and/or reply to them.Macros can be applied manually by agents or automatically by rules.\nFor example, a single macro can add a tag to the ticket, assign an agent to it and send a pre-defined response."
+        "description": "A macro (canned response) is a list of [actions](https://developers.gorgias.com/) that can be applied to tickets to modify them, and/or reply to them.Macros can be applied manually by agents or automatically by rules.\nFor example, a single macro can add a tag to the ticket, assign an agent to it and send a pre-defined response."
       }
     ]
   },
@@ -4718,7 +4718,7 @@ Today, Gorgias serves 13,000+ merchants in the ecommerce space, including Steve 
         "name": "code",
         "schema": "string",
         "description": "",
-        "example": "\nif (https://developers.gorgias.com/ && eq(https://developers.gorgias.com/) {\n    if (https://developers.gorgias.com/ || containsAny(https://developers.gorgias.com/) {\n        Action(https://developers.gorgias.com/;\n        Action(https://developers.gorgias.com/\n    }\n}\n"
+        "example": "\nif (eq(ticket.from_agent, false) && eq(ticket.status, 'open')) {\n    if (containsAny(message.intents.name, ['other/no_reply']) || containsAny(ticket.customer.email, [\n            'noreply@',\n            '@noreply'\n        ])) {\n        Action('addTags', { tags: 'auto-close' });\n        Action('setStatus', { status: 'closed' })\n    }\n}\n"
       },
       {
         "name": "code_ast",
@@ -5679,7 +5679,7 @@ Today, Gorgias serves 13,000+ merchants in the ecommerce space, including Steve 
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "The ID of the user to retrieve. Use the ID `0` to fetch your user (https://developers.gorgias.com/.\n",
+        "description": "The ID of the user to retrieve. Use the ID `0` to fetch your user (current user).\n",
         "example": 0
       }
     ],
@@ -5702,7 +5702,7 @@ Today, Gorgias serves 13,000+ merchants in the ecommerce space, including Steve 
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "The ID of the user to update. Use the ID `0` to update your user (https://developers.gorgias.com/.\n",
+        "description": "The ID of the user to update. Use the ID `0` to update your user (current user).\n",
         "example": 0
       },
       {
@@ -5837,7 +5837,7 @@ Today, Gorgias serves 13,000+ merchants in the ecommerce space, including Steve 
     "responses": [
       {
         "statusCode": "200",
-        "description": "A `Team` represents a group of [users](https://developers.gorgias.com/). Teams are used with the \"auto-assign tickets\" feature: you can assign a ticket to a team (https://developers.gorgias.com/, then it will be automatically assigned to someone who is available in the given team."
+        "description": "A `Team` represents a group of [users](https://developers.gorgias.com/). Teams are used with the \"auto-assign tickets\" feature: you can assign a ticket to a team (manually of via rules), then it will be automatically assigned to someone who is available in the given team."
       }
     ]
   },
@@ -5881,7 +5881,7 @@ Today, Gorgias serves 13,000+ merchants in the ecommerce space, including Steve 
     "responses": [
       {
         "statusCode": "202",
-        "description": "A `Team` represents a group of [users](https://developers.gorgias.com/). Teams are used with the \"auto-assign tickets\" feature: you can assign a ticket to a team (https://developers.gorgias.com/, then it will be automatically assigned to someone who is available in the given team."
+        "description": "A `Team` represents a group of [users](https://developers.gorgias.com/). Teams are used with the \"auto-assign tickets\" feature: you can assign a ticket to a team (manually of via rules), then it will be automatically assigned to someone who is available in the given team."
       }
     ]
   },
@@ -6239,7 +6239,7 @@ Today, Gorgias serves 13,000+ merchants in the ecommerce space, including Steve 
     "responses": [
       {
         "statusCode": "200",
-        "description": "A ticket-message represents a message (https://developers.gorgias.com/ under a normalized format.\nThere are 3 types of messages:\n  - Outgoing messages: messages sent by your company (https://developers.gorgias.com/ to your customers.\n  - Incoming messages: messages sent by your [customers](https://developers.gorgias.com/) to your company.\n  - Internal notes: internal messages sent between support agents (https://developers.gorgias.com/). Internal notes are not sent/shared with your customers.\n\nA ticket-message is associated with only one ticket."
+        "description": "A ticket-message represents a message (an email, an SMS, a Facebook comment, chat message, etc..) under a normalized format.\nThere are 3 types of messages:\n  - Outgoing messages: messages sent by your company (by rules or support agents) to your customers.\n  - Incoming messages: messages sent by your [customers](https://developers.gorgias.com/) to your company.\n  - Internal notes: internal messages sent between support agents ([users](https://developers.gorgias.com/)). Internal notes are not sent/shared with your customers.\n\nA ticket-message is associated with only one ticket."
       }
     ]
   },
@@ -6391,7 +6391,7 @@ Today, Gorgias serves 13,000+ merchants in the ecommerce space, including Steve 
     "responses": [
       {
         "statusCode": "202",
-        "description": "A ticket-message represents a message (https://developers.gorgias.com/ under a normalized format.\nThere are 3 types of messages:\n  - Outgoing messages: messages sent by your company (https://developers.gorgias.com/ to your customers.\n  - Incoming messages: messages sent by your [customers](https://developers.gorgias.com/) to your company.\n  - Internal notes: internal messages sent between support agents (https://developers.gorgias.com/). Internal notes are not sent/shared with your customers.\n\nA ticket-message is associated with only one ticket."
+        "description": "A ticket-message represents a message (an email, an SMS, a Facebook comment, chat message, etc..) under a normalized format.\nThere are 3 types of messages:\n  - Outgoing messages: messages sent by your company (by rules or support agents) to your customers.\n  - Incoming messages: messages sent by your [customers](https://developers.gorgias.com/) to your company.\n  - Internal notes: internal messages sent between support agents ([users](https://developers.gorgias.com/)). Internal notes are not sent/shared with your customers.\n\nA ticket-message is associated with only one ticket."
       }
     ]
   },
@@ -6545,7 +6545,7 @@ Today, Gorgias serves 13,000+ merchants in the ecommerce space, including Steve 
         "name": "filters",
         "schema": "string",
         "description": "",
-        "example": "eq(https://developers.gorgias.com/ && eq(https://developers.gorgias.com/"
+        "example": "eq(ticket.assignee_user.id, '{{current_user.id}}') && eq(ticket.status, 'open')"
       },
       {
         "name": "name",
@@ -6834,7 +6834,7 @@ Today, Gorgias serves 13,000+ merchants in the ecommerce space, including Steve 
       endpoints={57}
       sdkMethods={101}
       schemas={107}
-      parameters={477}
+      parameters={464}
       difficulty="Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/gorgias/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/gorgias/openapi.yaml"

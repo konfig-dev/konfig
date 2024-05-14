@@ -8075,6 +8075,101 @@ paths:
         '404':
           description: Not Found
       deprecated: false
+  /deletegoal/:
+    delete:
+      tags:
+        - Goals
+      summary: Delete Goal
+      description: ''
+      operationId: delete-goal
+      parameters:
+        - name: x-api-key
+          in: header
+          description: The API ID of the user to authenticate.
+          required: true
+          schema:
+            type: string
+        - name: userId
+          in: header
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: goalId
+          in: query
+          description: GoalId to delete a goal
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                        "message": "Success"
+                    }
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Success
+        '401':
+          description: '401'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                        "message": "Access denied! Either Authorization or x-api-key & userid parameters are not present/valid."
+                    }
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: >-
+                      Access denied! Either Authorization or x-api-key & userid
+                      parameters are not present/valid.
+        '403':
+          description: '403'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                        "message": "You do not have the permission to delete this goal."
+                    }
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: You do not have the permission to delete this goal.
+        '404':
+          description: '404'
+          content:
+            text/plain:
+              examples:
+                Result:
+                  value: |-
+                    {
+                        "message": "Goal not found."
+                    }
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Goal not found.
+      deprecated: false
   /invoice/:
     get:
       tags:

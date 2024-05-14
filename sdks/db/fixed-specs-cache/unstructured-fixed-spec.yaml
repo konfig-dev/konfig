@@ -171,10 +171,10 @@ rawSpecString: |
             type: boolean
             title: Pdf Infer Table Structure
             description: >-
-              If True and strategy=hi_res, any Table Elements extracted from a PDF
-              will include an additional metadata field, 'text_as_html', where the
-              value (string) is a just a transformation of the data into an HTML
-              <table>.
+              Deprecated! Use skip_infer_table_types to opt out of table
+              extraction for any file type. If False and strategy=hi_res, no Table
+              Elements will be extracted from pdf files regardless of
+              skip_infer_table_types contents.
           skip_infer_table_types:
             items:
               type: string
@@ -183,7 +183,7 @@ rawSpecString: |
             title: Skip Infer Table Types
             description: >-
               The document types that you want to skip table extraction with.
-              Default: ['pdf', 'jpg', 'png']
+              Default: []
           xml_keep_tags:
             type: boolean
             title: Xml Keep Tags
@@ -261,6 +261,13 @@ rawSpecString: |
             example:
               - image
               - table
+          unique_element_ids:
+            type: boolean
+            title: Unique element IDs
+            description: >-
+              When True, assign UUIDs to element IDs, which guarantees their
+              uniqueness (useful when using them as primary keys in database).
+              Otherwise a SHA-256 of element text is used. Default: False
         type: object
         title: Partition Parameters
       HTTPValidationError:
@@ -293,4 +300,4 @@ rawSpecString: |
           - msg
           - type
         title: ValidationError
-konfigCliVersion: 1.38.34
+konfigCliVersion: 1.38.37

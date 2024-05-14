@@ -12,14 +12,14 @@ info:
   description: >-
     The Clerk REST Backend API, meant to be accessed by backend
 
-    servers. 
+    servers.
 
 
     ### Versions
 
 
     When the API changes in a way that isn't compatible with older versions, a
-    new version is released. 
+    new version is released.
 
     Each version is identified by its release date, e.g. `2021-02-05`. For more
     information, please see [Clerk API
@@ -122,10 +122,10 @@ tags:
 
       In these contexts, Clerk ensures that security-critical nonces are passed
       only to the whitelisted URLs.
-  - name: SAML Connections (Beta)
+  - name: SAML Connections
     description: >-
       A SAML Connection holds configuration data required for facilitating a
-      SAML flow between your
+      SAML SSO flow between your
 
       Clerk Instance (SP) and a particular SAML IdP.
   - name: Sessions
@@ -5092,7 +5092,7 @@ paths:
         The SAML Connections are ordered by descending creation date and the
         most recent will be returned first.
       tags:
-        - SAML Connections (Beta)
+        - SAML Connections
       parameters:
         - $ref: '#/components/parameters/LimitParameter'
         - $ref: '#/components/parameters/OffsetParameter'
@@ -5110,7 +5110,7 @@ paths:
       summary: Create a SAML Connection
       description: Create a new SAML Connection.
       tags:
-        - SAML Connections (Beta)
+        - SAML Connections
       requestBody:
         content:
           application/json:
@@ -5195,7 +5195,7 @@ paths:
         Fetches the SAML Connection whose ID matches the provided
         `saml_connection_id` in the path.
       tags:
-        - SAML Connections (Beta)
+        - SAML Connections
       parameters:
         - in: path
           name: saml_connection_id
@@ -5219,7 +5219,7 @@ paths:
         Updates the SAML Connection whose ID matches the provided `id` in the
         path.
       tags:
-        - SAML Connections (Beta)
+        - SAML Connections
       parameters:
         - in: path
           name: saml_connection_id
@@ -5322,7 +5322,7 @@ paths:
         Deletes the SAML Connection whose ID matches the provided `id` in the
         path.
       tags:
-        - SAML Connections (Beta)
+        - SAML Connections
       parameters:
         - in: path
           name: saml_connection_id

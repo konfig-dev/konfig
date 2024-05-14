@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Visier Permission Management APIs
   description: Visier APIs for managing permissions within an organization
-  version: 22222222.99201.1227
+  version: 22222222.99201.1256
   license:
     name: Apache License, Version 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0
@@ -180,10 +180,10 @@ paths:
             items:
               type: string
         - description: >-
-            If true, the response includes the analytic objects (display name,
+            If `true`, the response includes the analytic objects (display name,
             ID, and object type), related objects,
-             securable properties, and securable dimensions. If false, the response only includes analytic objects
-             (display name, ID, and object type). Default is false.
+             securable properties, and securable dimensions. If `false`, the response only includes analytic objects
+             (display name, ID, and object type). Default is `false`.
           name: includeDetails
           in: query
           schema:
@@ -224,10 +224,19 @@ paths:
           schema:
             type: string
         - description: >-
-            If true, returns the permission's details. If false, only returns
-            the permissions' ID, display name,
-             and description. Default is false.
+            If `true`, returns the permission's details. If `false`, only
+            returns the permissions' ID, display name,
+             and description. Default is `false`.
           name: includeDetails
+          in: query
+          schema:
+            type: boolean
+        - description: >-
+            If `true`, returns the validity statuses for the permission's
+            properties in data access sets and the
+             permission's dimensions, dimension members, and hierarchy properties in member filters. If `false`,
+             doesn't return validity status information. Default is `false`.
+          name: includeDetailsWithStatus
           in: query
           schema:
             type: boolean
@@ -332,8 +341,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: >-
-                #/components/schemas/PermissionManagementDeletePermissionsRequest
+              $ref: '#/components/schemas/DeletePermissionsRequestDTO'
         required: true
       responses:
         '200':
@@ -367,6 +375,15 @@ paths:
             type: string
         - description: Specify the tenant to retrieve a permission from.
           name: tenantCode
+          in: query
+          schema:
+            type: string
+        - description: >-
+            If `true`, returns the validity statuses for the permission's
+            properties in data access sets and the
+             permission's dimensions, dimension members, and hierarchy properties in member filters. If `false`,
+             doesn't return validity status information. Default is `false`.
+          name: includeDetailsWithStatus
           in: query
           schema:
             type: string
@@ -502,6 +519,14 @@ components:
           description: >-
             The property set configuration that defines which properties and
             access level to allow for each filtered record.
+    DeletePermissionsRequestDTO:
+      type: object
+      properties:
+        permissionIds:
+          description: The identifiers of the permissions to delete.
+          type: array
+          items:
+            type: string
     DimensionFilterDTO:
       type: object
       properties:
@@ -527,6 +552,20 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DynamicPropertyMappingDTO'
+        dimensionStatus:
+          description: >-
+            The dimension's validity status. Valid values: Valid, NoData,
+            NotFound.
+             * **Valid**: The object exists and has loaded data.
+             * **NoData**: The object exists but doesn't have loaded data.
+             * **NotFound**: The object doesn't exist.
+          enum:
+            - Unset
+            - Valid
+            - NoData
+            - NotFound
+          type: string
+          format: enum
     DynamicPropertyMappingDTO:
       type: object
       properties:
@@ -535,6 +574,19 @@ components:
           type: string
         userProperty:
           $ref: '#/components/schemas/UserPropertyDTO'
+        hierarchyPropertyStatus:
+          description: >-
+            The hierarchy property's validity status. Valid values: Valid,
+            NotFound.
+             * **Valid**: The object exists and has loaded data.
+             * **NotFound**: The object doesn't exist.
+          enum:
+            - Unset
+            - Valid
+            - NoData
+            - NotFound
+          type: string
+          format: enum
       x-konfig-properties:
         userProperty:
           description: The user property.
@@ -634,6 +686,19 @@ components:
         excluded:
           description: The flag for excluding the member.
           type: boolean
+        dimensionMemberStatus:
+          description: >-
+            The dimension member's validity status. Valid values: Valid,
+            NotFound.
+             * **Valid**: The object exists and has loaded data.
+             * **NotFound**: The object doesn't exist.
+          enum:
+            - Unset
+            - Valid
+            - NoData
+            - NotFound
+          type: string
+          format: enum
     PermissionBulkOperationResponseDTO:
       type: object
       properties:
@@ -751,6 +816,20 @@ components:
             - Detailed
           type: string
           format: enum
+        propertyStatus:
+          description: >-
+            The property's validity status. Valid values: Valid, NoData,
+            NotFound.
+             * **Valid**: The object exists and has loaded data.
+             * **NoData**: The object exists but doesn't have loaded data.
+             * **NotFound**: The object doesn't exist.
+          enum:
+            - Unset
+            - Valid
+            - NoData
+            - NotFound
+          type: string
+          format: enum
     PropertySetConfigDTO:
       type: object
       properties:
@@ -843,6 +922,20 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/MemberSelectionDTO'
+        dimensionStatus:
+          description: >-
+            The dimension's validity status. Valid values: Valid, NoData,
+            NotFound.
+             * **Valid**: The object exists and has loaded data.
+             * **NoData**: The object exists but doesn't have loaded data.
+             * **NotFound**: The object doesn't exist.
+          enum:
+            - Unset
+            - Valid
+            - NoData
+            - NotFound
+          type: string
+          format: enum
     Status:
       description: >-
         The `Status` type defines a logical error model that is suitable for
@@ -880,8 +973,6 @@ components:
         name:
           description: The user property name.
           type: string
-    PermissionManagementDeletePermissionsRequest:
-      type: string
   securitySchemes:
     CookieAuth:
       type: apiKey

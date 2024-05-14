@@ -17,7 +17,7 @@ export default function HathoraTypeScriptSdk() {
       companyKebabCase="hathora"
       clientNameCamelCase="hathora"
       homepage="hathora.dev/"
-      lastUpdated={new Date("2024-03-29T17:44:58.773Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/hathora/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -2971,10 +2971,10 @@ export default function HathoraTypeScriptSdk() {
       apiTitle="Hathora Cloud API"
       apiBaseUrl="https://api.hathora.dev"
       apiVersion="0.0.1"
-      endpoints={67}
-      sdkMethods={67}
+      endpoints={71}
+      sdkMethods={71}
       schemas={104}
-      parameters={157}
+      parameters={171}
       difficulty="Medium"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/hathora/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/hathora/openapi.yaml"

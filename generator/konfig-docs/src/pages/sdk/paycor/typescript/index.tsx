@@ -17,7 +17,7 @@ export default function PaycorTypeScriptSdk() {
       companyKebabCase="paycor"
       clientNameCamelCase="paycor"
       homepage="paycor.com"
-      lastUpdated={new Date("2024-03-27T04:31:00.655Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/paycor/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -2026,7 +2026,7 @@ export default function PaycorTypeScriptSdk() {
       {
         "name": "periodEndDate",
         "schema": "string",
-        "description": "Exact Period End Date of Pay Schedule, if you wish to filter - defaults to showing upcoming (future) runs"
+        "description": "Exact Period End Date of Pay Schedule, if you wish to filter - defaults to showing upcoming (https://developers.paycor.com/explore runs"
       },
       {
         "name": "continuationToken",
@@ -3356,14 +3356,14 @@ export default function PaycorTypeScriptSdk() {
         "schema": "string",
         "required": false,
         "description": "",
-        "example": "(123) 456–7890"
+        "example": "(https://developers.paycor.com/explore 456–7890"
       },
       {
         "name": "HomePhone",
         "schema": "string",
         "required": false,
         "description": "",
-        "example": "(123) 456–7890"
+        "example": "(https://developers.paycor.com/explore 456–7890"
       },
       {
         "name": "HomeEmailAddress",
@@ -4625,7 +4625,7 @@ export default function PaycorTypeScriptSdk() {
     "responses": [
       {
         "statusCode": "200",
-        "description": "The Legal Entity (Client) model represents organization Legal Entity information.\nProvides links to the Legal Entity's associated Tenant, Employee, Person, Earning, Deduction, Taxes and Custom Field information."
+        "description": "The Legal Entity (https://developers.paycor.com/explore model represents organization Legal Entity information.\nProvides links to the Legal Entity's associated Tenant, Employee, Person, Earning, Deduction, Taxes and Custom Field information."
       },
       {
         "statusCode": "404",
@@ -6037,7 +6037,7 @@ export default function PaycorTypeScriptSdk() {
     "responses": [
       {
         "statusCode": "200",
-        "description": "The Tenant model represents information about Tenant (company) level organization information.\nProvides links to the associated Legal Entity information.\n            "
+        "description": "The Tenant model represents information about Tenant (https://developers.paycor.com/explore level organization information.\nProvides links to the associated Legal Entity information.\n            "
       },
       {
         "statusCode": "404",
@@ -6127,10 +6127,10 @@ export default function PaycorTypeScriptSdk() {
       apiTitle="Paycor Public API"
       apiBaseUrl="https://apis.paycor.com"
       apiVersion=""
-      endpoints={85}
-      sdkMethods={109}
+      endpoints={90}
+      sdkMethods={114}
       schemas={327}
-      parameters={543}
+      parameters={554}
       difficulty="Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/paycor/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/paycor/openapi.yaml"

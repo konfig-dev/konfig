@@ -23,7 +23,7 @@ We live by open source principles: our code, product, and community are all open
       companyKebabCase="baserow"
       clientNameCamelCase="baserow"
       homepage="baserow.io"
-      lastUpdated={new Date("2024-03-29T21:02:06.014Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/baserow/favicon.png"
       contactUrl="https://baserow.io/contact"
       // Missing contactEmail
@@ -12187,11 +12187,11 @@ We live by open source principles: our code, product, and community are all open
       language="TypeScript"
       apiTitle="Baserow API spec"
       apiBaseUrl="api.baserow.io"
-      apiVersion="1.23.2"
-      endpoints={211}
-      sdkMethods={299}
+      apiVersion="1.24.2"
+      endpoints={213}
+      sdkMethods={302}
       schemas={1137}
-      parameters={914}
+      parameters={929}
       difficulty="Very Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/baserow/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/baserow/openapi.yaml"

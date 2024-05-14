@@ -28905,11 +28905,15 @@ rawSpecString: |
                                     type: string
                             similarity:
                               type: object
+                              description: This property can be null if the flow is 10015
+                              nullable: true
                               properties:
                                 match:
                                   type: boolean
                             liveness:
                               type: object
+                              description: This property can be null if the flow is 10015
+                              nullable: true
                               properties:
                                 isOk:
                                   type: boolean
@@ -31946,11 +31950,11 @@ rawSpecString: |
                         nullable: true
                       rfc:
                         type: string
-                        RFCValidator:
-                          rfcType: PF
-                          homoclave:
-                            enabled: true
-                            required: false
+                        description: >-
+                          RFC for "Persona Fisica" forms should have a length of
+                          10 or 13 characters, and letters should be uppercase.
+                          "Homoclave" can be optional or required, depending on
+                          the form configuration
                       curp:
                         type: string
                         pattern: >-
@@ -32332,11 +32336,11 @@ rawSpecString: |
                         pattern: ^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚäÄëËïÏöÖüÜÿŸ&\.\-\s,'`’<>()/]*$
                       rfc:
                         type: string
-                        RFCValidator:
-                          rfcType: PM
-                          homoclave:
-                            enabled: true
-                            required: false
+                        description: >-
+                          RFC for "Persona Moral" forms should have a length of 9
+                          or 12 characters, and letters should be uppercase.
+                          "Homoclave" can be optional or required, depending on
+                          the form configuration
                     required:
                       - email
                       - phone
@@ -32754,11 +32758,11 @@ rawSpecString: |
                         nullable: true
                       rfc:
                         type: string
-                        RFCValidator:
-                          rfcType: PF
-                          homoclave:
-                            enabled: true
-                            required: false
+                        description: >-
+                          RFC for "Persona Fisica" forms should have a length of
+                          10 or 13 characters, and letters should be uppercase.
+                          "Homoclave" can be optional or required, depending on
+                          the form configuration
                         nullable: true
                       curp:
                         type: string
@@ -33154,11 +33158,11 @@ rawSpecString: |
                         nullable: true
                       rfc:
                         type: string
-                        RFCValidator:
-                          rfcType: PM
-                          homoclave:
-                            enabled: true
-                            required: false
+                        description: >-
+                          RFC for "Persona Moral" forms should have a length of 9
+                          or 12 characters, and letters should be uppercase.
+                          "Homoclave" can be optional or required, depending on
+                          the form configuration
                         nullable: true
                       curp:
                         type: string
@@ -33600,4 +33604,4 @@ rawSpecString: |
       description: Endpoints related to query a service
     - name: Service queries
       description: Endpoints related to getting service queries
-konfigCliVersion: 1.38.34
+konfigCliVersion: 1.38.37

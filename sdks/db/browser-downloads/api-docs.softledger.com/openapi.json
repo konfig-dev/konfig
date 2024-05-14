@@ -14193,6 +14193,7 @@
         }
       }
     },
+    "/general-ledger": {},
     "/inventory/cost-basis": {
       "get": {
         "tags": [
@@ -17822,6 +17823,58 @@
         }
       }
     },
+    "/journals/count": {
+      "get": {
+        "tags": [
+          "Journals"
+        ],
+        "summary": "Count",
+        "description": "The same filters as [Search](#operation/journalsSearch) can be used here.\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/filter"
+          },
+          {
+            "$ref": "#/components/parameters/filterType"
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "description": "`editable` counts draft journals that can be edited directly.\n\n`icdoc` counts draft intercompany document journals that can be edited directly.\n\n`draft` counts journals that aren't posted.\n\n`posted` counts journals that are posted.\n\nNot set counts all journals.\n",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "draft",
+                "editable",
+                "icdoc",
+                "posted"
+              ]
+            }
+          },
+          {
+            "in": "query",
+            "name": "LocationId",
+            "description": "Will include transactions from this Location and its children\n\nFilters on LocationId can further limit data.\n",
+            "schema": {
+              "type": "number",
+              "description": "Ref: Location._id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Count response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CountResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/journals": {
       "post": {
         "tags": [
@@ -18190,6 +18243,7 @@
           "Journals"
         ],
         "summary": "Search",
+        "operationId": "journalsSearch",
         "description": "| Field       | Filterable | Sortable |\n|---------------------|:--:|:--:|\n|_id                  | ✅ | ✅ |\n|currency             | ✅ | ❌ |\n|entryType            | ✅ | ✅ |\n|ICLocationId         | ✅ | ❌ |\n|LocationId           | ✅ | ❌ |\n|number               | ✅ | ✅ |\n|postedDate           | ✅ | ✅ |\n|reference            | ✅ | ❌ |\n|reportingCurrency    | ✅ | ❌ |\n|reverseDate          | ✅ | ✅ |\n|sourceLedger         | ✅ | ✅ |\n|status               | ✅ | ❌ |\n|SystemJobId          | ✅ | ❌ |\n|transactionDate      | ✅ | ✅ |\n|createdAt            | ✅ | ✅ |\n|updatedAt            | ✅ | ✅ |\n",
         "parameters": [
           {
@@ -20775,7 +20829,7 @@
         ],
         "summary": "Search",
         "operationId": "locationsSearch",
-        "description": "| Field       | Filterable | Sortable |\n|---------------------|:--:|:--:|\n|_id                  | ✅ | ✅ |\n|id                   | ✅ | ✅ |\n|name                 | ✅ | ✅ |\n|description          | ✅ | ✅ |\n|currency             | ✅ | ✅ |\n|parent_id            | ✅ | ❌ |\n|Parent.id            | ❌ | ❌ |\n|FXGLAccountId        | ✅ | ❌ |\n",
+        "description": "| Field       | Filterable | Sortable |\n|---------------------|:--:|:--:|\n|_id                  | ✅ | ✅ |\n|id                   | ✅ | ✅ |\n|name                 | ✅ | ✅ |\n|description          | ✅ | ✅ |\n|currency             | ✅ | ✅ |\n|externalId           | ✅ | ✅ |\n|externalSource       | ✅ | ✅ |\n|parent_id            | ✅ | ❌ |\n|Parent.id            | ❌ | ❌ |\n|FXGLAccountId        | ✅ | ❌ |\n",
         "parameters": [
           {
             "$ref": "#/components/parameters/filter"
@@ -20867,6 +20921,12 @@
                               "type": "integer",
                               "description": "Ref: Location._id"
                             }
+                          },
+                          "externalId": {
+                            "type": "string"
+                          },
+                          "externalSource": {
+                            "type": "string"
                           },
                           "AddressId": {
                             "type": "integer",
@@ -20991,6 +21051,12 @@
                     "type": "integer",
                     "description": "Ref: Location._id"
                   },
+                  "externalId": {
+                    "type": "string"
+                  },
+                  "externalSource": {
+                    "type": "string"
+                  },
                   "FXGLAccountId": {
                     "type": "integer",
                     "description": "Ref: LedgerAccount._id"
@@ -21100,6 +21166,12 @@
                         "type": "integer",
                         "description": "Ref: Location._id"
                       }
+                    },
+                    "externalId": {
+                      "type": "string"
+                    },
+                    "externalSource": {
+                      "type": "string"
                     },
                     "AddressId": {
                       "type": "integer",
@@ -21243,6 +21315,12 @@
                         "description": "Ref: Location._id"
                       }
                     },
+                    "externalId": {
+                      "type": "string"
+                    },
+                    "externalSource": {
+                      "type": "string"
+                    },
                     "AddressId": {
                       "type": "integer",
                       "description": "Ref: Addresses._id"
@@ -21369,6 +21447,12 @@
                     "type": "integer",
                     "description": "Ref: Location._id"
                   },
+                  "externalId": {
+                    "type": "string"
+                  },
+                  "externalSource": {
+                    "type": "string"
+                  },
                   "FXGLAccountId": {
                     "type": "integer",
                     "description": "Ref: LedgerAccount._id"
@@ -21478,6 +21562,12 @@
                         "type": "integer",
                         "description": "Ref: Location._id"
                       }
+                    },
+                    "externalId": {
+                      "type": "string"
+                    },
+                    "externalSource": {
+                      "type": "string"
                     },
                     "AddressId": {
                       "type": "integer",
@@ -30737,6 +30827,10 @@
                     "pdfFormats": {
                       "type": "object"
                     },
+                    "timezone": {
+                      "type": "string",
+                      "description": "The timezone of the company. \nExample: \"America/New_York\"\nUsed for timestamps in the UI, and for converstions of timestamps into Accounting Dates.\n"
+                    },
                     "custom1_enabled": {
                       "type": "boolean"
                     },
@@ -31123,6 +31217,10 @@
                   },
                   "draftBillPayments": {
                     "type": "boolean"
+                  },
+                  "timezone": {
+                    "type": "string",
+                    "description": "The timezone of the company. \nExample: \"America/New_York\"\nUsed for timestamps in the UI, and for converstions of timestamps into Accounting Dates.\n"
                   },
                   "custom1_enabled": {
                     "type": "boolean"
@@ -33870,9 +33968,6 @@
                     "_id": {
                       "type": "string"
                     },
-                    "id": {
-                      "type": "string"
-                    },
                     "name": {
                       "type": "string"
                     },
@@ -34780,6 +34875,30 @@
                       "type": "string",
                       "format": "date-time"
                     }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/timezones": {
+      "get": {
+        "tags": [
+          "Timezones"
+        ],
+        "summary": "Supported Timezones",
+        "description": "Returns an array of all supported timezones\n",
+        "responses": {
+          "200": {
+            "description": "List of Templates",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
                   }
                 }
               }
@@ -36145,6 +36264,7 @@
         }
       }
     },
+    "/trial-balance": {},
     "/users": {
       "get": {
         "tags": [
@@ -41092,6 +41212,10 @@
     {
       "name": "Templates",
       "description": "Templates"
+    },
+    {
+      "name": "Timezones",
+      "description": "Timezones"
     },
     {
       "name": "Transactions",

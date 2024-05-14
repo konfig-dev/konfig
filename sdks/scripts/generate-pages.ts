@@ -41,7 +41,8 @@ function main() {
   const sdkFiles = fs.readdirSync(sdkDir);
   for (const file of sdkFiles) {
     if (
-      file !== "index.mdx" &&
+      file !== "_index.mdx" &&
+      file !== "index.tsx" &&
       file !== "_before-vs-after.mdx" &&
       file !== "sdk-links.json" &&
       (process.env.FILTER === undefined || file.includes(process.env.FILTER))

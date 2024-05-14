@@ -17,7 +17,7 @@ export default function VantageTypeScriptSdk() {
       companyKebabCase="vantage"
       clientNameCamelCase="vantage"
       homepage="vantage.sh"
-      lastUpdated={new Date("2024-03-28T20:59:16.525Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/vantage/favicon.png"
       contactUrl="https://www.vantage.sh"
       contactEmail="support@vantage.sh"
@@ -2396,10 +2396,10 @@ export default function VantageTypeScriptSdk() {
       apiTitle="Vantage"
       apiBaseUrl="https://api.vantage.sh/v2"
       apiVersion="2.0.0"
-      endpoints={33}
-      sdkMethods={62}
+      endpoints={45}
+      sdkMethods={88}
       schemas={52}
-      parameters={170}
+      parameters={232}
       difficulty="Medium"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/vantage/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/vantage/openapi.yaml"

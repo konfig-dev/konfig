@@ -3748,6 +3748,11 @@ components:
           format: int64
           x-go-name: Count
           example: 6
+        instance_group_id:
+          description: The ID of the instance group the VMs will be created in.
+          type: string
+          x-go-name: InstanceGroupID
+          example: cda562c4-6162-4565-95f3-ce06a8220c07
         instance_template:
           $ref: '#/components/schemas/InstanceTemplatePostRequestV1Alpha5'
         instance_template_id:
@@ -4614,6 +4619,8 @@ components:
           type: string
           x-go-name: Type
           example: a100.2x
+        virtualization_features:
+          $ref: '#/components/schemas/VirtualizationFeatures'
       x-go-package: gitlab.com/crusoeenergy/island/rest-gateway/internal/handlers
     InstanceTemplatePostRequestV1Alpha5:
       type: object
@@ -4707,6 +4714,8 @@ components:
           type: string
           x-go-name: Type
           example: a100.2x
+        virtualization_features:
+          $ref: '#/components/schemas/VirtualizationFeatures'
       x-go-package: gitlab.com/crusoeenergy/island/rest-gateway/internal/handlers
     InstanceV1Alpha5:
       description: >-
@@ -4791,6 +4800,8 @@ components:
           type: string
           x-go-name: UpdatedAt
           example: '2023-08-14T09:00:35Z'
+        virtualization_features:
+          $ref: '#/components/schemas/VirtualizationFeatures'
       x-go-package: gitlab.com/crusoeenergy/island/rest-gateway/internal/handlers
     InstancesAttachDiskPostRequestV1Alpha5:
       description: >-
@@ -4936,6 +4947,8 @@ components:
           type: string
           x-go-name: Type
           example: a100.2x
+        virtualization_features:
+          $ref: '#/components/schemas/VirtualizationFeatures'
       x-go-package: gitlab.com/crusoeenergy/island/rest-gateway/internal/handlers
     ListCapacitiesResponseV1Alpha5:
       type: object
@@ -6211,4 +6224,12 @@ components:
       properties:
         subnet:
           $ref: '#/components/schemas/VPCSubnet'
+      x-go-package: gitlab.com/crusoeenergy/island/rest-gateway/internal/handlers
+    VirtualizationFeatures:
+      type: object
+      properties:
+        nested_virtualization:
+          type: boolean
+          x-go-name: NestedVirtualization
+          example: true
       x-go-package: gitlab.com/crusoeenergy/island/rest-gateway/internal/handlers

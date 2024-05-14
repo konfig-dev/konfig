@@ -27,7 +27,7 @@ we're building a suite of audio / video models to change how we live, work, and 
       companyKebabCase="sync-labs"
       clientNameCamelCase="syncLabs"
       homepage="synclabs.so"
-      lastUpdated={new Date("2024-03-29T21:02:06.014Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/sync-labs/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -120,7 +120,7 @@ we're building a suite of audio / video models to change how we live, work, and 
     ],
     "responses": [
       {
-        "statusCode": "default",
+        "statusCode": "201",
         "description": ""
       }
     ]
@@ -143,7 +143,122 @@ we're building a suite of audio / video models to change how we live, work, and 
     ],
     "responses": [
       {
-        "statusCode": "default",
+        "statusCode": "200",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "url": "/voices/cost",
+    "method": "voiceCost",
+    "httpMethod": HttpMethodsEnum.GET,
+    "tag": "voices",
+    "typeScriptTag": "voices",
+    "description": "",
+    "parameters": [],
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "url": "/voices",
+    "method": "voices",
+    "httpMethod": HttpMethodsEnum.GET,
+    "tag": "voices",
+    "typeScriptTag": "voices",
+    "description": "",
+    "parameters": [],
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      },
+      {
+        "statusCode": "403",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "url": "/voices/create",
+    "method": "createVoice",
+    "httpMethod": HttpMethodsEnum.POST,
+    "tag": "voices",
+    "typeScriptTag": "voices",
+    "description": "",
+    "parameters": [
+      {
+        "name": "description",
+        "schema": "string",
+        "required": false,
+        "description": "",
+        "example": "This is a test voice. It's used for testing purposes."
+      },
+      {
+        "name": "name",
+        "schema": "string",
+        "required": false,
+        "description": "",
+        "example": "Test voice"
+      },
+      {
+        "name": "inputSamples",
+        "schema": "array",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "maxCredits",
+        "schema": "number",
+        "required": false,
+        "description": "",
+        "default": null
+      },
+      {
+        "name": "webhookUrl",
+        "schema": "string",
+        "required": false,
+        "description": "",
+        "default": null
+      }
+    ],
+    "responses": [
+      {
+        "statusCode": "201",
+        "description": ""
+      },
+      {
+        "statusCode": "403",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "url": "/voices/{id}",
+    "method": "getVoice",
+    "httpMethod": HttpMethodsEnum.GET,
+    "tag": "voices",
+    "typeScriptTag": "voices",
+    "description": "",
+    "parameters": [
+      {
+        "name": "id",
+        "schema": "string",
+        "required": true,
+        "description": "",
+        "example": "ID"
+      }
+    ],
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      },
+      {
+        "statusCode": "403",
         "description": ""
       }
     ]
@@ -175,6 +290,10 @@ we're building a suite of audio / video models to change how we live, work, and 
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "403",
+        "description": ""
       }
     ]
   },
@@ -191,22 +310,14 @@ we're building a suite of audio / video models to change how we live, work, and 
         "schema": "string",
         "required": true,
         "description": "",
-        "example": "AUDIOURL"
+        "example": "https://synchlabs-public.s3.us-west-2.amazonaws.com/david_demo_shortaud-27623a4f-edab-4c6a-8383-871b18961a4a.wav"
       },
       {
         "name": "videoUrl",
         "schema": "string",
         "required": true,
         "description": "",
-        "example": "VIDEOURL"
-      },
-      {
-        "name": "synergize",
-        "schema": "boolean",
-        "required": true,
-        "description": "",
-        "example": true,
-        "default": true
+        "example": "https://synchlabs-public.s3.us-west-2.amazonaws.com/david_demo_shortvid-03a10044-7741-4cfc-816a-5bccd392d1ee.mp4"
       },
       {
         "name": "maxCredits",
@@ -216,23 +327,55 @@ we're building a suite of audio / video models to change how we live, work, and 
         "default": null
       },
       {
+        "name": "model",
+        "schema": "string",
+        "required": false,
+        "description": "",
+        "example": "sync-1.6.0",
+        "default": "sync-1.6.0"
+      },
+      {
+        "name": "synergize",
+        "schema": "boolean",
+        "required": false,
+        "description": "",
+        "example": true,
+        "default": true
+      },
+      {
+        "name": "pads",
+        "schema": "array",
+        "required": false,
+        "description": "",
+        "example": [
+          0,
+          5,
+          0,
+          0
+        ]
+      },
+      {
+        "name": "synergizerStrength",
+        "schema": "number",
+        "required": false,
+        "description": "",
+        "example": 1
+      },
+      {
         "name": "webhookUrl",
         "schema": "string",
         "required": false,
         "description": "",
         "default": null
-      },
-      {
-        "name": "model",
-        "schema": "string",
-        "required": false,
-        "description": "",
-        "default": "sync-1.6.0"
       }
     ],
     "responses": [
       {
-        "statusCode": "default",
+        "statusCode": "201",
+        "description": ""
+      },
+      {
+        "statusCode": "403",
         "description": ""
       }
     ]
@@ -255,22 +398,11 @@ we're building a suite of audio / video models to change how we live, work, and 
     ],
     "responses": [
       {
-        "statusCode": "default",
-        "description": ""
-      }
-    ]
-  },
-  {
-    "url": "/voices",
-    "method": "voices",
-    "httpMethod": HttpMethodsEnum.GET,
-    "tag": "voices",
-    "typeScriptTag": "voices",
-    "description": "",
-    "parameters": [],
-    "responses": [
-      {
         "statusCode": "200",
+        "description": ""
+      },
+      {
+        "statusCode": "403",
         "description": ""
       }
     ]
@@ -295,6 +427,10 @@ we're building a suite of audio / video models to change how we live, work, and 
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "403",
+        "description": ""
       }
     ]
   },
@@ -311,14 +447,15 @@ we're building a suite of audio / video models to change how we live, work, and 
         "schema": "string",
         "required": true,
         "description": "",
-        "example": "VIDEOURL"
+        "example": "https://synchlabs-public.s3.us-west-2.amazonaws.com/david_demo_shortvid-03a10044-7741-4cfc-816a-5bccd392d1ee.mp4"
       },
       {
         "name": "targetLanguage",
         "schema": "string",
         "required": true,
         "description": "",
-        "example": "TARGETLANGUAGE"
+        "example": "en",
+        "default": "en"
       },
       {
         "name": "maxCredits",
@@ -339,12 +476,17 @@ we're building a suite of audio / video models to change how we live, work, and 
         "schema": "string",
         "required": false,
         "description": "",
+        "example": "sync-1.6.0",
         "default": "sync-1.6.0"
       }
     ],
     "responses": [
       {
-        "statusCode": "200",
+        "statusCode": "201",
+        "description": ""
+      },
+      {
+        "statusCode": "403",
         "description": ""
       }
     ]
@@ -367,7 +509,11 @@ we're building a suite of audio / video models to change how we live, work, and 
     ],
     "responses": [
       {
-        "statusCode": "default",
+        "statusCode": "200",
+        "description": ""
+      },
+      {
+        "statusCode": "403",
         "description": ""
       }
     ]
@@ -397,6 +543,10 @@ we're building a suite of audio / video models to change how we live, work, and 
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "403",
+        "description": ""
       }
     ]
   },
@@ -413,14 +563,15 @@ we're building a suite of audio / video models to change how we live, work, and 
         "schema": "string",
         "required": true,
         "description": "",
-        "example": "TRANSCRIPT"
+        "example": "Hello, I hope you enjoy this audio!"
       },
       {
         "name": "voiceId",
         "schema": "string",
         "required": true,
         "description": "",
-        "example": "VOICEID"
+        "example": "e5361405-4967-446d-ad63-2f6ed8729c66",
+        "default": "e5361405-4967-446d-ad63-2f6ed8729c66"
       },
       {
         "name": "maxCredits",
@@ -439,7 +590,11 @@ we're building a suite of audio / video models to change how we live, work, and 
     ],
     "responses": [
       {
-        "statusCode": "200",
+        "statusCode": "201",
+        "description": ""
+      },
+      {
+        "statusCode": "403",
         "description": ""
       }
     ]
@@ -462,7 +617,11 @@ we're building a suite of audio / video models to change how we live, work, and 
     ],
     "responses": [
       {
-        "statusCode": "default",
+        "statusCode": "200",
+        "description": ""
+      },
+      {
+        "statusCode": "403",
         "description": ""
       }
     ]
@@ -492,6 +651,10 @@ we're building a suite of audio / video models to change how we live, work, and 
       {
         "statusCode": "200",
         "description": ""
+      },
+      {
+        "statusCode": "403",
+        "description": ""
       }
     ]
   },
@@ -508,27 +671,29 @@ we're building a suite of audio / video models to change how we live, work, and 
         "schema": "string",
         "required": true,
         "description": "",
-        "example": "VIDEOURL"
+        "example": "https://synchlabs-public.s3.us-west-2.amazonaws.com/david_demo_shortvid-03a10044-7741-4cfc-816a-5bccd392d1ee.mp4"
       },
       {
         "name": "transcript",
         "schema": "string",
         "required": true,
         "description": "",
-        "example": "TRANSCRIPT"
+        "example": "Hello, welcome to our video!"
       },
       {
         "name": "voiceId",
         "schema": "string",
         "required": true,
         "description": "",
-        "example": "VOICEID"
+        "example": "e5361405-4967-446d-ad63-2f6ed8729c66",
+        "default": "e5361405-4967-446d-ad63-2f6ed8729c66"
       },
       {
         "name": "model",
         "schema": "string",
         "required": false,
         "description": "",
+        "example": "sync-1.6.0",
         "default": "sync-1.6.0"
       },
       {
@@ -548,7 +713,11 @@ we're building a suite of audio / video models to change how we live, work, and 
     ],
     "responses": [
       {
-        "statusCode": "200",
+        "statusCode": "201",
+        "description": ""
+      },
+      {
+        "statusCode": "403",
         "description": ""
       }
     ]
@@ -571,33 +740,11 @@ we're building a suite of audio / video models to change how we live, work, and 
     ],
     "responses": [
       {
-        "statusCode": "default",
+        "statusCode": "200",
         "description": ""
-      }
-    ]
-  },
-  {
-    "url": "/verification/send-phone-number-verification-code",
-    "method": "sendPhoneNumberVerificationCode",
-    "httpMethod": HttpMethodsEnum.POST,
-    "description": "",
-    "parameters": [],
-    "responses": [
+      },
       {
-        "statusCode": "201",
-        "description": ""
-      }
-    ]
-  },
-  {
-    "url": "/verification/verify-code",
-    "method": "verifyCode",
-    "httpMethod": HttpMethodsEnum.POST,
-    "description": "",
-    "parameters": [],
-    "responses": [
-      {
-        "statusCode": "201",
+        "statusCode": "403",
         "description": ""
       }
     ]
@@ -608,11 +755,11 @@ we're building a suite of audio / video models to change how we live, work, and 
       apiTitle="Synchronize API"
       apiBaseUrl="https://api.synclabs.so"
       apiVersion="1.0"
-      endpoints={18}
-      sdkMethods={18}
-      schemas={17}
-      parameters={41}
-      difficulty="Very Easy"
+      endpoints={19}
+      sdkMethods={19}
+      schemas={20}
+      parameters={49}
+      difficulty="Easy"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/sync-labs/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/sync-labs/openapi.yaml"
       developerDocumentation="docs.synclabs.so/api-reference/introduction"

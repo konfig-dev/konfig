@@ -17,7 +17,7 @@ export default function ClickUpTypeScriptSdk() {
       companyKebabCase="click-up"
       clientNameCamelCase="clickUp"
       homepage="clickup.com"
-      lastUpdated={new Date("2024-03-24T21:43:23.717Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/clickup/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -124,7 +124,7 @@ export default function ClickUpTypeScriptSdk() {
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Authorization",
     "typeScriptTag": "authorization",
-    "description": "Get Authorized Teams (Workspaces)",
+    "description": "Get Authorized Teams (https://clickup.com/api/",
     "parameters": [],
     "responses": [
       {
@@ -187,7 +187,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "checklistId",
         "schema": "string",
         "required": true,
-        "description": "b8a8-48d8-a0c6-b4200788a683 (uuid)",
+        "description": "b8a8-48d8-a0c6-b4200788a683 (https://clickup.com/api/",
         "example": "b955c4dc"
       }
     ],
@@ -210,7 +210,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "checklistId",
         "schema": "string",
         "required": true,
-        "description": "b8a8-48d8-a0c6-b4200788a683 (uuid)",
+        "description": "b8a8-48d8-a0c6-b4200788a683 (https://clickup.com/api/",
         "example": "b955c4dc"
       },
       {
@@ -243,7 +243,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "checklistId",
         "schema": "string",
         "required": true,
-        "description": "b8a8-48d8-a0c6-b4200788a683 (uuid)",
+        "description": "b8a8-48d8-a0c6-b4200788a683 (https://clickup.com/api/",
         "example": "b955c4dc"
       },
       {
@@ -276,14 +276,14 @@ export default function ClickUpTypeScriptSdk() {
         "name": "checklistId",
         "schema": "string",
         "required": true,
-        "description": "b8a8-48d8-a0c6-b4200788a683 (uuid)",
+        "description": "b8a8-48d8-a0c6-b4200788a683 (https://clickup.com/api/",
         "example": "b955c4dc"
       },
       {
         "name": "checklistItemId",
         "schema": "string",
         "required": true,
-        "description": "e491-47f5-9fd8-d1dc4cedcc6f (uuid)",
+        "description": "e491-47f5-9fd8-d1dc4cedcc6f (https://clickup.com/api/",
         "example": "21e08dc8"
       }
     ],
@@ -306,14 +306,14 @@ export default function ClickUpTypeScriptSdk() {
         "name": "checklistId",
         "schema": "string",
         "required": true,
-        "description": "b8a8-48d8-a0c6-b4200788a683 (uuid)",
+        "description": "b8a8-48d8-a0c6-b4200788a683 (https://clickup.com/api/",
         "example": "b955c4dc"
       },
       {
         "name": "checklistItemId",
         "schema": "string",
         "required": true,
-        "description": "e491-47f5-9fd8-d1dc4cedcc6f (uuid)",
+        "description": "e491-47f5-9fd8-d1dc4cedcc6f (https://clickup.com/api/",
         "example": "21e08dc8"
       },
       {
@@ -457,7 +457,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "viewId",
         "schema": "string",
         "required": true,
-        "description": "105 (string)",
+        "description": "105 (https://clickup.com/api/",
         "example": "3c"
       },
       {
@@ -490,7 +490,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "viewId",
         "schema": "string",
         "required": true,
-        "description": "105 (string)",
+        "description": "105 (https://clickup.com/api/",
         "example": "3c"
       },
       {
@@ -701,7 +701,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "fieldId",
         "schema": "string",
         "required": true,
-        "description": "b8a8-48d8-a0c6-b4200788a683 (uuid)",
+        "description": "b8a8-48d8-a0c6-b4200788a683 (https://clickup.com/api/",
         "example": "b955c4dc"
       },
       {
@@ -743,7 +743,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "fieldId",
         "schema": "string",
         "required": true,
-        "description": "Enter the universal unique identifier (UUID) of the Custom Field you want to set.",
+        "description": "Enter the universal unique identifier (https://clickup.com/api/ of the Custom Field you want to set.",
         "example": "b955c4dc"
       },
       {
@@ -1091,7 +1091,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": 123
       },
       {
@@ -1120,7 +1120,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": 123
       },
       {
@@ -1184,7 +1184,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "goalId",
         "schema": "string",
         "required": true,
-        "description": "900e-462d-a849-4a216b06d930 (uuid)",
+        "description": "900e-462d-a849-4a216b06d930 (https://clickup.com/api/",
         "example": "e53a033c"
       }
     ],
@@ -1207,7 +1207,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "goalId",
         "schema": "string",
         "required": true,
-        "description": "900e-462d-a849-4a216b06d930 (uuid)",
+        "description": "900e-462d-a849-4a216b06d930 (https://clickup.com/api/",
         "example": "e53a033c"
       }
     ],
@@ -1230,7 +1230,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "goalId",
         "schema": "string",
         "required": true,
-        "description": "900e-462d-a849-4a216b06d930 (uuid)",
+        "description": "900e-462d-a849-4a216b06d930 (https://clickup.com/api/",
         "example": "e53a033c"
       },
       {
@@ -1293,7 +1293,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "goalId",
         "schema": "string",
         "required": true,
-        "description": "900e-462d-a849-4a216b06d930 (uuid)",
+        "description": "900e-462d-a849-4a216b06d930 (https://clickup.com/api/",
         "example": "e53a033c"
       },
       {
@@ -1369,7 +1369,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "keyResultId",
         "schema": "string",
         "required": true,
-        "description": "8480-49bc-8c57-e569747efe93 (uuid)",
+        "description": "8480-49bc-8c57-e569747efe93 (https://clickup.com/api/",
         "example": "947d46ed"
       }
     ],
@@ -1392,7 +1392,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "keyResultId",
         "schema": "string",
         "required": true,
-        "description": "8480-49bc-8c57-e569747efe93 (uuid)",
+        "description": "8480-49bc-8c57-e569747efe93 (https://clickup.com/api/",
         "example": "947d46ed"
       },
       {
@@ -1429,7 +1429,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": 123
       },
       {
@@ -1494,7 +1494,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": 123
       },
       {
@@ -1524,7 +1524,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": 123
       },
       {
@@ -1554,7 +1554,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": 123
       },
       {
@@ -2343,7 +2343,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": 123
       }
     ],
@@ -2366,7 +2366,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": 123
       },
       {
@@ -2395,7 +2395,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": 123
       },
       {
@@ -3287,7 +3287,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": 123
       },
       {
@@ -3508,7 +3508,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": 123
       },
       {
@@ -3575,7 +3575,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "string",
         "required": true,
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": "TEAM_ID"
       }
     ],
@@ -3598,7 +3598,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "string",
         "required": true,
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": "TEAM_ID"
       }
     ],
@@ -3621,7 +3621,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": 123
       },
       {
@@ -3657,7 +3657,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": 123
       }
     ],
@@ -3680,7 +3680,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "groupId",
         "schema": "string",
         "required": true,
-        "description": "7C73-4002-A6A9-310014852858 (string) - Team ID (user group)",
+        "description": "7C73-4002-A6A9-310014852858 (https://clickup.com/api/ - Team ID (user group)",
         "example": "C9C58BE9"
       }
     ],
@@ -3703,7 +3703,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "groupId",
         "schema": "string",
         "required": true,
-        "description": "7C73-4002-A6A9-310014852858 (string) - Team ID (user group)",
+        "description": "7C73-4002-A6A9-310014852858 (https://clickup.com/api/ - Team ID (user group)",
         "example": "C9C58BE9"
       },
       {
@@ -3749,7 +3749,7 @@ export default function ClickUpTypeScriptSdk() {
       {
         "name": "teamId",
         "schema": "number",
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": 123
       },
       {
@@ -3770,8 +3770,8 @@ export default function ClickUpTypeScriptSdk() {
     "url": "/task/{task_id}/time",
     "method": "getTrackedTime",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Time Tracking (Legacy)",
-    "typeScriptTag": "timeTrackingLegacy",
+    "tag": "Time Tracking (https://clickup.com/api/",
+    "typeScriptTag": "timeTrackingHttps:ClickupComApi",
     "description": "Get tracked time",
     "parameters": [
       {
@@ -3805,8 +3805,8 @@ export default function ClickUpTypeScriptSdk() {
     "url": "/task/{task_id}/time",
     "method": "recordTimeForTask",
     "httpMethod": HttpMethodsEnum.POST,
-    "tag": "Time Tracking (Legacy)",
-    "typeScriptTag": "timeTrackingLegacy",
+    "tag": "Time Tracking (https://clickup.com/api/",
+    "typeScriptTag": "timeTrackingHttps:ClickupComApi",
     "description": "Track time",
     "parameters": [
       {
@@ -3861,8 +3861,8 @@ export default function ClickUpTypeScriptSdk() {
     "url": "/task/{task_id}/time/{interval_id}",
     "method": "removeTrackedTime",
     "httpMethod": HttpMethodsEnum.DELETE,
-    "tag": "Time Tracking (Legacy)",
-    "typeScriptTag": "timeTrackingLegacy",
+    "tag": "Time Tracking (https://clickup.com/api/",
+    "typeScriptTag": "timeTrackingHttps:ClickupComApi",
     "description": "Delete time tracked",
     "parameters": [
       {
@@ -3903,8 +3903,8 @@ export default function ClickUpTypeScriptSdk() {
     "url": "/task/{task_id}/time/{interval_id}",
     "method": "editTimeTracked",
     "httpMethod": HttpMethodsEnum.PUT,
-    "tag": "Time Tracking (Legacy)",
-    "typeScriptTag": "timeTrackingLegacy",
+    "tag": "Time Tracking (https://clickup.com/api/",
+    "typeScriptTag": "timeTrackingHttps:ClickupComApi",
     "description": "Edit time tracked",
     "parameters": [
       {
@@ -3974,7 +3974,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": 123
       },
       {
@@ -4054,7 +4054,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": 123
       },
       {
@@ -4145,7 +4145,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": 123
       },
       {
@@ -4175,7 +4175,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": 123
       },
       {
@@ -4215,7 +4215,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": 123
       },
       {
@@ -4305,7 +4305,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": 123
       },
       {
@@ -4335,7 +4335,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": 123
       },
       {
@@ -4363,7 +4363,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": 123
       },
       {
@@ -4398,7 +4398,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": 123
       }
     ],
@@ -4421,7 +4421,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": 123
       },
       {
@@ -4456,7 +4456,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": 123
       },
       {
@@ -4507,7 +4507,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": 123
       },
       {
@@ -4562,7 +4562,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": 123
       }
     ],
@@ -4585,7 +4585,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": 123
       },
       {
@@ -4628,7 +4628,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": 123
       },
       {
@@ -4658,7 +4658,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": 123
       },
       {
@@ -4688,7 +4688,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": 123
       },
       {
@@ -4739,7 +4739,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": 123
       }
     ],
@@ -4762,7 +4762,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": 123
       },
       {
@@ -5331,7 +5331,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "viewId",
         "schema": "string",
         "required": true,
-        "description": "105 (string)",
+        "description": "105 (https://clickup.com/api/",
         "example": "3c"
       }
     ],
@@ -5512,7 +5512,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "viewId",
         "schema": "string",
         "required": true,
-        "description": "105 (string)",
+        "description": "105 (https://clickup.com/api/",
         "example": "3c"
       },
       {
@@ -5542,7 +5542,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": 123
       }
     ],
@@ -5565,7 +5565,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "teamId",
         "schema": "number",
         "required": true,
-        "description": "Team ID (Workspace)",
+        "description": "Team ID (https://clickup.com/api/",
         "example": 123
       },
       {
@@ -5625,7 +5625,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "webhookId",
         "schema": "string",
         "required": true,
-        "description": "e506-4a29-9d42-26e504e3435e (uuid)",
+        "description": "e506-4a29-9d42-26e504e3435e (https://clickup.com/api/",
         "example": "4b67ac88"
       }
     ],
@@ -5648,7 +5648,7 @@ export default function ClickUpTypeScriptSdk() {
         "name": "webhookId",
         "schema": "string",
         "required": true,
-        "description": "e506-4a29-9d42-26e504e3435e (uuid)",
+        "description": "e506-4a29-9d42-26e504e3435e (https://clickup.com/api/",
         "example": "4b67ac88"
       },
       {
@@ -5687,9 +5687,9 @@ export default function ClickUpTypeScriptSdk() {
       apiBaseUrl="https://api.clickup.com/api/v2"
       apiVersion="2.0"
       endpoints={72}
-      sdkMethods={197}
+      sdkMethods={196}
       schemas={335}
-      parameters={542}
+      parameters={545}
       difficulty="Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/clickup/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/clickup/openapi.yaml"

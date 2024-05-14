@@ -1,5 +1,48 @@
 # konfig-cli
 
+## 1.38.39
+
+### Patch Changes
+
+- [#687](https://github.com/konfig-dev/konfig/pull/687) [`d12d57a66`](https://github.com/konfig-dev/konfig/commit/d12d57a66563bec09371e71d08e23e50554c47df) Thanks [@eddiechayes](https://github.com/eddiechayes)! - fix top-level readme links
+
+## 1.38.38
+
+### Patch Changes
+
+- Updated dependencies [[`953129f5a`](https://github.com/konfig-dev/konfig/commit/953129f5a2696cabde4c573fe74c2888efa24d39)]:
+  - konfig-openapi-spec@1.8.23
+  - konfig-lib@1.37.4
+  - konfig-postman-to-openapi@3.1.23
+
+## 1.38.37
+
+### Patch Changes
+
+- [`51c0eaeb`](https://github.com/konfig-dev/konfig/commit/51c0eaeb4f869683c66f4aa7d12dc86a6622b139) Thanks [@eddiechayes](https://github.com/eddiechayes)! - fix go publish command
+
+## 1.38.36
+
+### Patch Changes
+
+- [#679](https://github.com/konfig-dev/konfig/pull/679) [`791e38b2`](https://github.com/konfig-dev/konfig/commit/791e38b2d3dcb852ab098f43434adee38d1d334c) Thanks [@eddiechayes](https://github.com/eddiechayes)! - fix publishing for go sdk
+
+## 1.38.35
+
+### Patch Changes
+
+- [`867d8803c`](https://github.com/konfig-dev/konfig/commit/867d8803c762ea89f764ef4f36eaba83483d72cd) Thanks [@dphuang2](https://github.com/dphuang2)! - fix 400 error code from openai when generating operation id / set seed to 0
+
+- [`4388544d5`](https://github.com/konfig-dev/konfig/commit/4388544d58ab7790cd3441f13a9185f7aad5d990) Thanks [@dphuang2](https://github.com/dphuang2)! - handle null value in enum when fixing enum with incorrect type
+
+- [`9227f741d`](https://github.com/konfig-dev/konfig/commit/9227f741d5d7709f354a713d63f8df7ba6a6a76e) Thanks [@dphuang2](https://github.com/dphuang2)! - fix references to non-existent security schemes in "konfig fix"
+
+- [`8d2489de`](https://github.com/konfig-dev/konfig/commit/8d2489de65132cda28da334f9c33636ff10ea3c6) Thanks [@dphuang2](https://github.com/dphuang2)! - trim operation ID suffix when updating operation's operationId
+
+- [`0584afec`](https://github.com/konfig-dev/konfig/commit/0584afecd6bb3956c1014f4da0fb802e59f4b227) Thanks [@dphuang2](https://github.com/dphuang2)! - fix paths without leading slash
+
+- [`6c4fab0c`](https://github.com/konfig-dev/konfig/commit/6c4fab0c082124cc9e57695c7cd727fef45a71dc) Thanks [@eddiechayes](https://github.com/eddiechayes)! - add allow warnings flag to swift publish script
+
 ## 1.38.34
 
 ### Patch Changes

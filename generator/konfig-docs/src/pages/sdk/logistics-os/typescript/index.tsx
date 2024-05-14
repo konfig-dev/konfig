@@ -31,7 +31,7 @@ Further reduce the total travel time by another 10%-20%, which results in direct
       companyKebabCase="logistics-os"
       clientNameCamelCase="logisticsOs"
       homepage="www.logisticsos.com/"
-      lastUpdated={new Date("2024-03-29T17:59:37.016Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/logisticsos/favicon.png"
       // Missing contactUrl
       contactEmail="support@logisticsos.com"
@@ -903,7 +903,7 @@ Further reduce the total travel time by another 10%-20%, which results in direct
       endpoints={7}
       sdkMethods={12}
       schemas={65}
-      parameters={46}
+      parameters={48}
       difficulty="Easy"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/logisticsos/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/logisticsos/openapi.yaml"

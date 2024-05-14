@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+      <head>
+            <meta charset="UTF-8" />
+            <meta name="description"
+                  content="Konfig helps you onboard customers to your API">
+            <meta name="keywords"
+                  content="Konfig, onboarding, api, customer, onboard, onboarding guide, docs, tutorials, sdks">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>
+                  {% block title %}
+                        Konfig | Onboarding Guides
+                  {% endblock title %}
+            </title>
+            {% load static %}
+            <link rel="stylesheet" href="{% static "styles.css" %}" type="text/css">
+            <link rel="icon" href="{% static "favicon.png" %}" type="image/x-icon">
+            <link rel="stylesheet"
+                  href="https://unpkg.com/easymde/dist/easymde.min.css">
+            <script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
+            <script src="https://unpkg.com/htmx.org@1.9.4"
+                    integrity="sha384-zUfuhFKKZCbHTY6aRR46gxiqszMk5tcHjsVFxnUo8VMus4kHGVdIYVbOYYNlKmHV"
+                    crossorigin="anonymous"></script>
+            <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.5/dist/full.min.css"
+                  rel="stylesheet"
+                  type="text/css" />
+            <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+            <link rel="stylesheet"
+                  href="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/styles/github-dark-dimmed.min.css">
+            <script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script>
+            <!-- and it's easy to individually load additional languages -->
+            <script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/languages/json.min.js"></script>
+            <script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/languages/markdown.min.js"></script>
+            <script>hljs.highlightAll();</script>
+            {% block style %}
+            {% endblock style %}
+      </head>
+      <body
+            hx-on::after-swap="hljs.highlightAll()"
+            hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+            {% block body %}
+            {% endblock body %}
+      </body>
+</html>

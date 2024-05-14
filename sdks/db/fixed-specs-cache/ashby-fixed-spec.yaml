@@ -836,6 +836,124 @@ rawSpecString: |
                             - results
                     - $ref: >-
                         #/paths/~1job.info/post/responses/200/content/application~1json/schema/oneOf/1
+    /approvalDefinition.update:
+      post:
+        summary: approvalDefinition.update
+        operationId: approvalDefinitionUpdate
+        description: >
+          Create or update an approval definition for a specific entity that
+          requires approval. The entity requiring approval must be within scope of
+          an approval in Ashby that is marked as being managed by the API.
+
+
+          **Requires the
+          [`approvalsWrite`](authentication#permissions-approvaldefinitionupdate)
+          permission.**
+        tags:
+          - Approval Definition
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  entityType:
+                    type: string
+                    enum:
+                      - offer
+                  entityId:
+                    allOf:
+                      - description: >-
+                          The id of the approval entity being updated (e.g. the id
+                          of the offer version).
+                      - $ref: >-
+                          #/paths/~1candidate.createNote/post/requestBody/content/application~1json/schema/properties/candidateId
+                  approvalStepDefinitions:
+                    type: array
+                    description: >-
+                      An ordered list of approval steps that describes the number
+                      of required approvers at each step, as well as who is an
+                      approver at each step.
+                    items:
+                      type: object
+                      properties:
+                        approvalsRequired:
+                          type: integer
+                          description: >-
+                            The number of approvers required to approve this step,
+                            before the approval moves on to the next step. The
+                            number of approvers must be non-zero and no more than
+                            the number of approvers in this step.
+                        approvers:
+                          type: array
+                          description: An unordered list of who can approve this step.
+                          items:
+                            type: object
+                            properties:
+                              userId:
+                                allOf:
+                                  - $ref: >-
+                                      #/paths/~1candidate.createNote/post/requestBody/content/application~1json/schema/properties/candidateId
+                                  - description: >-
+                                      The id of a user who is an approver for this
+                                      step.
+                              type:
+                                type: string
+                                enum:
+                                  - user
+                            required:
+                              - userId
+                              - type
+                      required:
+                        - approvalsRequired
+                        - approvers
+                required:
+                  - entityType
+                  - entityId
+                  - approvalStepDefinitions
+        responses:
+          '200':
+            description: Responses from the approvalDefinition.update endpoint
+            content:
+              application/json:
+                schema:
+                  oneOf:
+                    - title: Success response
+                      allOf:
+                        - $ref: >-
+                            #/paths/~1job.info/post/responses/200/content/application~1json/schema/oneOf/0/allOf/0
+                        - type: object
+                        - properties:
+                            results:
+                              type: object
+                              properties:
+                                id:
+                                  allOf:
+                                    - description: The id of the approval definition.
+                                    - $ref: >-
+                                        #/paths/~1candidate.createNote/post/requestBody/content/application~1json/schema/properties/candidateId
+                                entityType:
+                                  type: string
+                                  enum:
+                                    - Offer
+                                entityId:
+                                  allOf:
+                                    - description: >-
+                                        The id of the approval entity (e.g. the id
+                                        of the offer version).
+                                    - $ref: >-
+                                        #/paths/~1candidate.createNote/post/requestBody/content/application~1json/schema/properties/candidateId
+                                approvalStepDefinitions:
+                                  $ref: >-
+                                    #/paths/~1approvalDefinition.update/post/requestBody/content/application~1json/schema/properties/approvalStepDefinitions
+                              required:
+                                - entityType
+                                - entityId
+                                - approvalStepDefinitions
+                        - required:
+                            - results
+                    - $ref: >-
+                        #/paths/~1job.info/post/responses/200/content/application~1json/schema/oneOf/1
     /archiveReason.list:
       post:
         summary: archiveReason.list
@@ -1657,6 +1775,8 @@ rawSpecString: |
             - Links `<a>`
             - Bulleted Lists - `<ul>`, `<li>`
             - Ordered Lists - `<ol>`, `<li>`
+            - Code - `<code>`
+            - Code Block - `<pre>`
         operationId: candidateCreateNote
         tags:
           - Candidate
@@ -1700,6 +1820,10 @@ rawSpecString: |
                               - Bulleted Lists - `<ul>`, `<li>`
 
                               - Ordered Lists - `<ol>`, `<li>`
+
+                              - Code - `<code>`
+
+                              - Code Block - `<pre>`
                           value:
                             type: string
                         required:
@@ -1931,6 +2055,9 @@ rawSpecString: |
                                   description: The user who receives credit for this user
                                   $ref: >-
                                     #/paths/~1user.info/post/responses/200/content/application~1json/schema/oneOf/0/allOf/1/properties/results
+                                timezone:
+                                  description: The timezone of the candidate
+                                  type: string
                               required:
                                 - id
                                 - name
@@ -8835,6 +8962,5 @@ rawSpecString: |
   x-readme:
     explorer-enabled: true
     proxy-enabled: true
-    samples-enabled: true
   _id: 65c4fae0fd3df5002cba9b10
-konfigCliVersion: 1.38.34
+konfigCliVersion: 1.38.37

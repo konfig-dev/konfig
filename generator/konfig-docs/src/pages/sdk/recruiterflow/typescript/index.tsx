@@ -25,7 +25,7 @@ Recruiterflow's user interface is designed to be effortlessly navigable, ensurin
       companyKebabCase="recruiterflow"
       clientNameCamelCase="recruiterflow"
       homepage="recruiterflow.com"
-      lastUpdated={new Date("2024-03-28T00:30:05.996Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/recruiterflow/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -4561,10 +4561,10 @@ Recruiterflow's user interface is designed to be effortlessly navigable, ensurin
       apiTitle="Recruiterflow API Documentation"
       apiBaseUrl="https://recruiterflow.com"
       apiVersion="0.0.1"
-      endpoints={86}
-      sdkMethods={86}
+      endpoints={89}
+      sdkMethods={89}
       schemas={116}
-      parameters={526}
+      parameters={534}
       difficulty="Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/recruiterflow/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/recruiterflow/openapi.yaml"

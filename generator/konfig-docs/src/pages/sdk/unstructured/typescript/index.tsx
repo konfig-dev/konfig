@@ -19,7 +19,7 @@ Unstructured captures this unstructured data wherever it lives and transforms it
       companyKebabCase="unstructured"
       clientNameCamelCase="unstructured"
       homepage="unstructured.io"
-      lastUpdated={new Date("2024-03-27T01:23:25.425Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/unstructured/favicon.jpg"
       // Missing contactUrl
       // Missing contactEmail
@@ -183,7 +183,7 @@ Unstructured captures this unstructured data wherever it lives and transforms it
       endpoints={1}
       sdkMethods={1}
       schemas={4}
-      parameters={21}
+      parameters={22}
       difficulty="Very Easy"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/unstructured/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/unstructured/openapi.yaml"

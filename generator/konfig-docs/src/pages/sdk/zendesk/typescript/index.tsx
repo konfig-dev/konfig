@@ -17,7 +17,7 @@ export default function ZendeskTypeScriptSdk() {
       companyKebabCase="zendesk"
       clientNameCamelCase="zendesk"
       homepage="zendesk.com"
-      lastUpdated={new Date("2024-03-27T21:10:09.481Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zendesk/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -120,7 +120,7 @@ export default function ZendeskTypeScriptSdk() {
         "name": "sourceType",
         "schema": "string",
         "required": true,
-        "description": "The type of object the relationship field belongs to (https://developer.zendesk.com/api-reference/.\nThe options are \"zen:user\", \"zen:ticket\", \"zen:organization\", and \"zen:custom_object:CUSTOM_OBJECT_KEY\"\n",
+        "description": "The type of object the relationship field belongs to (example. ticket field belongs to a ticket object).\nThe options are \"zen:user\", \"zen:ticket\", \"zen:organization\", and \"zen:custom_object:CUSTOM_OBJECT_KEY\"\n",
         "example": "zen:custom_object:apartment"
       }
     ],
@@ -914,7 +914,7 @@ export default function ZendeskTypeScriptSdk() {
         "name": "hostMapping",
         "schema": "string",
         "required": true,
-        "description": "The hostmapping to a brand, if any (https://developer.zendesk.com/api-reference/",
+        "description": "The hostmapping to a brand, if any (only admins view this key)",
         "example": "brand1.com"
       },
       {
@@ -8632,10 +8632,10 @@ export default function ZendeskTypeScriptSdk() {
       apiTitle="Support API"
       apiBaseUrl="https://{subdomain}.{domain}.com"
       apiVersion="2.0.0"
-      endpoints={313}
-      sdkMethods={555}
+      endpoints={316}
+      sdkMethods={561}
       schemas={451}
-      parameters={284}
+      parameters={285}
       difficulty="Very Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/zendesk/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/zendesk/openapi.yaml"

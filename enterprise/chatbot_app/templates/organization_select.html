@@ -1,0 +1,15 @@
+<div class="py-2.5">
+  <label>Select Organization</label>
+  <select name="organization_id"
+          hx-get="{% url 'organization_select_view' %}"
+          hx-target="#app">
+    {% for organization in organizations %}
+      <option value="{{ organization.id }}"
+              {% if organization.id == current_organization.id %}selected{% endif %}>{{ organization.id }}</option>
+    {% endfor %}
+  </select>
+  <form hx-post="{% url 'create_organization_view' %}" hx-target="#app">
+    {% csrf_token %}
+    <button>Create Organization</button>
+  </form>
+</div>

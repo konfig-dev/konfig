@@ -35,37 +35,38 @@ paths:
           in: query
           description: >-
             The name of the subject for which events are received. If the name
-            is not specified, events are received for all subjects on the key.
+            is not specified, the events are received for all subjects on the
+            key.
           schema:
             type: string
         - name: activity
           in: query
           description: >-
-            If specified, only events with this activity will be in the
+            If specified, only the events with this activity will be in the
             response.
           schema:
             type: string
         - name: from
           in: query
           description: >-
-            From the date/time events are received (format yyyy-MM-dd HH:mm:ss,
-            e.g. 2022-10-01 12:05:00). If it's not specified - events are
-            received from yesterday.
+            Date/time events are received from (`yyyy-MM-dd HH:mm:ss`, e.g.
+            2022-10-01 12:05:00). If not specified, the events are received from
+            the day before.
           schema:
             type: string
         - name: to
           in: query
           description: >-
-            To the date/time events are received (format yyyy-MM-dd HH:mm:ss,
-            e.g. 2022-10-01 12:15:00). If it's not specified - events are
-            received up to now.
+            To the date/time events are received (`yyyy-MM-dd HH:mm:ss`, e.g.
+            2022-10-01 12:15:00). If not specified, the events are received up
+            to the present moment.
           schema:
             type: string
         - name: limit
           in: query
           description: >-
-            Max number of events in one request. Can't be more than 20000. By
-            default is 10.
+            The maximum number of events per request. Cannot be more than 20000.
+            By default is 10.
           schema:
             type: string
             default: '10'
@@ -76,11 +77,12 @@ paths:
             events. By default is 0.
           schema:
             type: string
+            default: '0'
       deprecated: false
   /resources/status/api:
     get:
       summary: API health
-      description: ''
+      description: Returns the operational status of the API.
       operationId: review-api-health
       deprecated: false
   /resources/applicants:
@@ -96,7 +98,8 @@ paths:
             Case-sensitive and has to be created in the same environment. If
             contains reserved characters (e.g., `@`, `+"`, white spaces as
             `%20`), it should be URL-encoded, otherwise you may get signature
-            mismatch.
+            mismatch.<br><br>Mind that a level for a company applicant must
+            contain the **Company** verification step.
           required: true
           schema:
             type: string
@@ -110,7 +113,7 @@ paths:
               properties:
                 externalUserId:
                   type: string
-                  description: A unique applicant identifies on the client side.
+                  description: A unique applicant identifier on the client side.
                 sourceKey:
                   type: string
                   description: >-
@@ -322,7 +325,7 @@ paths:
               properties:
                 externalUserId:
                   type: string
-                  description: A unique applicant identifies on the client side.
+                  description: A unique applicant identifier on the client side.
                 sourceKey:
                   type: string
                   description: >-
@@ -529,7 +532,7 @@ paths:
       deprecated: false
   /resources/applicants/{applicantId}/moveToLevel:
     post:
-      summary: Change required document set
+      summary: Change required documents
       description: Changes the list of required documents.
       operationId: change-required-document-set-per-level
       parameters:
@@ -537,10 +540,10 @@ paths:
           in: query
           description: >-
             A [verification level](https://docs.sumsub.com/reference) name.
-            Case-sensitive and has to be created in the same environment. If
-            contains reserved characters (e.g., `@`, `+"`, white spaces as
-            `%20`), it should be URL-encoded, otherwise you may get signature
-            mismatch.
+            Case-sensitive and must be created in the same
+            [environment](https://docs.sumsub.com/reference). If contains
+            reserved characters (e.g., `@`, `+"`, white spaces as `%20`), it
+            should be URL-encoded, otherwise you may get signature mismatch.
           required: true
           schema:
             type: string
@@ -564,19 +567,10 @@ paths:
             type: string
           required: true
       deprecated: false
-      x-readme:
-        code-samples:
-          - language: curl
-            code: |
-              curl -X POST \
-                'https://api.sumsub.com/resources/applicants/5f80e6b7155a6336271e4677/requiredIdDocs' \
-                -H 'Content-Type: application/json'
-        samples-languages:
-          - curl
   /resources/applicants/{applicantId}/info/idDoc:
     post:
       summary: Add ID document
-      description: Adds an identification document to be verified.
+      description: Adds an identification document to the verification flow.
       operationId: add-id-documents
       parameters:
         - name: X-Return-Doc-Warnings
@@ -599,7 +593,7 @@ paths:
               properties:
                 metadata:
                   type: object
-                  description: An object representing an ID document.
+                  description: An object that represents an ID document.
                   required:
                     - idDocType
                     - country
@@ -615,13 +609,13 @@ paths:
                       description: ISO 3166-1 alpha-3 country code.
                     firstName:
                       type: string
-                      description: The first applicant name.
+                      description: First applicant name.
                     middleName:
                       type: string
-                      description: The middle applicant name.
+                      description: Middle applicant name.
                     lastName:
                       type: string
-                      description: The last applicant name.
+                      description: Last applicant name.
                     issuedDate:
                       type: string
                       description: Issued date (format `YYYY-mm-dd`, e.g. 2001-09-25).
@@ -633,10 +627,10 @@ paths:
                       description: A document number.
                     dob:
                       type: string
-                      description: The applicant date of birth.
+                      description: Applicant date of birth.
                     placeOfBirth:
                       type: string
-                      description: The applicant birthplace.
+                      description: Applicant birthplace.
                 content:
                   type: string
                   description: A photo of the document.
@@ -647,7 +641,7 @@ paths:
               properties:
                 metadata:
                   type: object
-                  description: An object representing an ID document.
+                  description: An object that represents an ID document.
                   required:
                     - idDocType
                     - country
@@ -663,13 +657,13 @@ paths:
                       description: ISO 3166-1 alpha-3 country code.
                     firstName:
                       type: string
-                      description: The first applicant name.
+                      description: First applicant name.
                     middleName:
                       type: string
-                      description: The middle applicant name.
+                      description: Middle applicant name.
                     lastName:
                       type: string
-                      description: The last applicant name.
+                      description: Last applicant name.
                     issuedDate:
                       type: string
                       description: Issued date (format `YYYY-mm-dd`, e.g. 2001-09-25).
@@ -681,60 +675,21 @@ paths:
                       description: A document number.
                     dob:
                       type: string
-                      description: The applicant date of birth.
+                      description: Applicant date of birth.
                     placeOfBirth:
                       type: string
-                      description: The applicant birthplace.
+                      description: Applicant birthplace.
                 content:
                   type: string
                   description: A photo of the document.
                   format: binary
-      responses:
-        '200':
-          description: '200'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: |-
-                    {
-                      "idDocType": "PASSPORT",
-                      "country": "USA",
-                      "errors": [ "dataNotReadable" ] // will be absent in case of X-Return-Doc-Warnings not having value of "true"
-                    }
-              schema:
-                type: object
-                properties:
-                  idDocType:
-                    type: string
-                    example: PASSPORT
-                  country:
-                    type: string
-                    example: USA
-                  errors:
-                    type: array
-                    items:
-                      type: string
-                      example: dataNotReadable
       deprecated: false
-      x-readme:
-        code-samples:
-          - language: curl
-            code: |
-              curl -X POST \
-                'https://api.sumsub.com/resources/applicants/5b75a5e80a975a3ef2102a87/info/idDoc' \
-                -H 'Content-Type: multipart/form-data' \
-                -H 'X-Return-Doc-Warnings: true' \
-                -F 'metadata={"idDocType":"PASSPORT","country":"USA"}' \
-                -F 'content=@/SumSub/Example/name.jpg'
-        samples-languages:
-          - curl
   /resources/applicants/{applicantId}/fixedInfo:
     patch:
       summary: Change provided information
       description: >-
-        Updates information provided when [creating an
-        applicant](ref:create-applicants).
+        Updates personal applicant information collected via Web and Mobile
+        SDKs.
       operationId: change-provided-info-fixedinfo
       parameters:
         - name: applicantId
@@ -854,24 +809,10 @@ paths:
                   type: string
                   description: Tax identification number.
       deprecated: false
-      x-readme:
-        code-samples:
-          - language: curl
-            code: |
-              curl -X PATCH \
-                'https://api.sumsub.com/resources/applicants/609d68bf460647000aa2d87e/fixedInfo' \
-                -H 'Content-Type: application/json' \
-                -d '{
-                      "firstName" : "Bradley",
-                      "lastName" : "Peak",
-                      "dob" : "1990-01-01"
-                    }'
-        samples-languages:
-          - curl
   /resources/applicants/{applicantId}/info:
     patch:
-      summary: Change information extracted by Sumsub
-      description: Changes extracted information.
+      summary: Change extracted information
+      description: Updates personal applicant information extracted during verification.
       operationId: change-applicant-information-extracted-by-sumsub
       parameters:
         - name: applicantId
@@ -973,23 +914,10 @@ paths:
                   type: string
                   description: Tax identification number.
       deprecated: false
-      x-readme:
-        code-samples:
-          - language: curl
-            code: |
-              curl -X PATCH \
-                'https://api.sumsub.com/resources/applicants/5b76df770a975a1404cbcb60/info' \
-                -H 'Content-Type: application/json' \
-                -d '{
-                      "firstName" : "Andrew",
-                      "dob" : "1990-05-01"
-                    }'
-        samples-languages:
-          - curl
   /resources/applicants/:
     patch:
       summary: Change top-level information
-      description: Changes existing verification level configuration.
+      description: Updates the existing verification level configuration.
       operationId: changing-top-level-information
       requestBody:
         content:
@@ -1029,16 +957,13 @@ paths:
                   type: array
                   description: >-
                     A [questionnaire](https://docs.sumsub.com/reference)
-                    configuration with answers.
+                    configuration with the answers.
                 metadata:
                   type: array
                   description: Additional information about the applicant.
                 deleted:
                   type: boolean
-                  description: >-
-                    Marks an applicant as inactive if set to `true`. The
-                    applicant will not be considered a duplicate. SDKs will not
-                    initiate checks for this applicant.
+                  description: Marks the applicant profile as inactive.
           multipart/form-data:
             schema:
               type: object
@@ -1075,27 +1000,14 @@ paths:
                   type: array
                   description: >-
                     A [questionnaire](https://docs.sumsub.com/reference)
-                    configuration with answers.
+                    configuration with the answers.
                 metadata:
                   type: array
                   description: Additional information about the applicant.
                 deleted:
                   type: boolean
-                  description: >-
-                    Marks an applicant as inactive if set to `true`. The
-                    applicant will not be considered a duplicate. SDKs will not
-                    initiate checks for this applicant.
+                  description: Marks the applicant profile as inactive.
       deprecated: false
-      x-readme:
-        code-samples:
-          - language: curl
-            code: |
-              curl -X PATCH \
-                  'https://api.sumsub.com/resources/applicants' \
-                  -H 'Content-Type: application/json' \
-                  -d '{"id":"5e9ad53d0a975a656d67e4d0","externalUserId":"1983114","email":"new@email.nz"}'
-        samples-languages:
-          - curl
   /resources/applicants/-/ingestCompleted?levelName={levelName}:
     post:
       summary: Import applicants
@@ -1106,10 +1018,10 @@ paths:
           in: query
           description: >-
             A [verification level](https://docs.sumsub.com/reference) name.
-            Case-sensitive and has to be created in the same environment. If
-            contains reserved characters (e.g., `@`, `+"`, white spaces as
-            `%20`), it should be URL-encoded, otherwise you may get signature
-            mismatch.
+            Case-sensitive and must be created in the same
+            [environment](https://docs.sumsub.com/reference). If contains
+            reserved characters (e.g., `@`, `+"`, white spaces as `%20`), it
+            should be URL-encoded, otherwise you may get signature mismatch.
           schema:
             type: string
       requestBody:
@@ -1120,10 +1032,12 @@ paths:
               properties:
                 externalUserId:
                   type: string
-                  description: someClientUserId
+                  description: A unique applicant identifier as registered on your side.
                 info:
                   type: object
-                  description: User's personal data
+                  description: >-
+                    Holds the personal applicant information extracted during
+                    verification.
                   properties:
                     firstName:
                       type: string
@@ -1207,7 +1121,7 @@ paths:
                       description: Tax identification number.
                 review:
                   type: object
-                  description: Review results
+                  description: Review results.
                   properties:
                     createDate:
                       type: string
@@ -1243,10 +1157,12 @@ paths:
               properties:
                 externalUserId:
                   type: string
-                  description: someClientUserId
+                  description: A unique applicant identifier as registered on your side.
                 info:
                   type: object
-                  description: User's personal data
+                  description: >-
+                    Holds the personal applicant information extracted during
+                    verification.
                   properties:
                     firstName:
                       type: string
@@ -1330,7 +1246,7 @@ paths:
                       description: Tax identification number.
                 review:
                   type: object
-                  description: Review results
+                  description: Review results.
                   properties:
                     createDate:
                       type: string
@@ -1361,12 +1277,6 @@ paths:
                       type: string
                       description: '"completed"'
       deprecated: false
-      x-readme:
-        code-samples:
-          - language: curl
-            code: "curl -X POST 'https://api.sumsub.com/resources/applicants/-/ingestCompleted?levelName=basic-kyc-level' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\n\t  \"externalUserId\": \"someClientUserId\",\n\t  \"info\": {\n\t\t\"firstName\": \"John\",\n\t\t\"lastName\": \"Snow\",\n\t\t\"country\": \"GBR\"\n\t  },\n\t  \"review\": {\n\t\t\"elapsedSincePendingMs\": 100,\n\t\t\"elapsedSinceQueuedMs\": 50,\n\t\t\"createDate\": \"2022-11-21 08:25:32+0000\",\n\t\t\"reviewDate\": \"2022-11-21 08:25:36+0000\",\n\t\t\"reviewResult\": {\n\t\t\t\"moderationComment\": \"\",\n\t\t\t\"clientComment\": \"\",\n\t\t\t\"reviewAnswer\": \"GREEN\"\n\t\t},\n\t\t\"reviewStatus\": \"completed\"\n\t  }\n  }'\n"
-        samples-languages:
-          - curl
   /resources/applicants/-/applicantImport:
     post:
       summary: Import applicant with images by archive
@@ -1375,8 +1285,6 @@ paths:
       parameters:
         - name: Content-Type
           in: header
-          description: application/zip
-          required: true
           schema:
             type: string
             default: application/zip
@@ -1622,14 +1530,6 @@ paths:
             type: string
           required: true
       deprecated: false
-      x-readme:
-        code-samples:
-          - language: curl
-            code: |
-              curl -X POST \
-                'https://api.sumsub.com/resources/applicants/5b73b82f0a975a3b46429758/status/pending?reason=someReason'
-        samples-languages:
-          - curl
   /resources/applicants/{applicantId}/blacklist?note={note}:
     post:
       summary: Add applicant to blocklist
@@ -1649,14 +1549,6 @@ paths:
             type: string
           required: true
       deprecated: false
-      x-readme:
-        code-samples:
-          - language: curl
-            code: |
-              curl -X POST \
-                'https://api.sumsub.com/resources/applicants/5c0e93c30a975a53a79aa54b/blacklist?note=A%20user%20provided%20a%20fake%20document'
-        samples-languages:
-          - curl
   /resources/applicants/{applicantId}/reset:
     post:
       summary: Reset applicant profile
@@ -1672,14 +1564,6 @@ paths:
             type: string
           required: true
       deprecated: false
-      x-readme:
-        code-samples:
-          - language: curl
-            code: |
-              curl -X POST \
-                'https://api.sumsub.com/resources/applicants/5d6f821b0a975a0b8aa27b27/reset'
-        samples-languages:
-          - curl
   /resources/applicants/{applicantId}/resetStep/{idDocSetType}:
     post:
       summary: Reset verification step
@@ -1702,14 +1586,6 @@ paths:
             type: string
           required: true
       deprecated: false
-      x-readme:
-        code-samples:
-          - language: curl
-            code: |
-              curl -X POST \
-                'https://api.sumsub.com/resources/applicants/62164ddf8a86e20bbd28ab75/resetStep/PHONE_VERIFICATION'
-        samples-languages:
-          - curl
   /resources/inspections/{inspectionId}/resources/{imageId}:
     delete:
       summary: Mark image as inactive
@@ -1739,14 +1615,6 @@ paths:
             type: string
           required: true
       deprecated: false
-      x-readme:
-        code-samples:
-          - language: curl
-            code: |
-              curl -X DELETE \
-                'https://api.sumsub.com/resources/inspections/5f649369aee05c75ea54c80a/resources/1045510331'
-        samples-languages:
-          - curl
     get:
       summary: Get document images
       description: Returns document images.
@@ -1793,7 +1661,7 @@ paths:
   /resources/applicants/{applicantId}/agreement:
     post:
       summary: Add applicant consent
-      description: Adds a consent to an applicant profile.
+      description: Adds a consent to the applicant profile.
       operationId: add-applicant-consent
       parameters:
         - name: applicantId
@@ -1867,6 +1735,460 @@ paths:
           schema:
             type: string
           required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Individual applicants:
+                  value: |-
+                    {
+                      "id": "5b594ade0a975a36c9349e66",
+                      "createdAt": "2020-06-24 05:05:14",
+                      "clientId": "ClientName",
+                      "inspectionId": "5b594ade0a975a36c9379e67",
+                      "externalUserId": "SomeExternalUserId",
+                      "fixedInfo": {
+                        "firstName": "Chris",
+                        "lastName": "Smith"
+                      },
+                      "info": {
+                        "firstName": "CHRISTIAN",
+                        "firstNameEn": "CHRISTIAN",
+                        "lastName": "SMITH",
+                        "lastNameEn": "SMITH",
+                        "dob": "1989-07-16",
+                        "country": "DEU",
+                        "idDocs": [
+                          {
+                            "idDocType": "ID_CARD",
+                            "country": "DEU",
+                            "firstName": "CHRISTIAN",
+                            "firstNameEn": "CHRISTIAN",
+                            "lastName": "SMITH",
+                            "lastNameEn": "SMITH",
+                            "validUntil": "2028-09-04",
+                            "number": "LGXX359T8",
+                            "dob": "1989-07-16",
+                            "mrzLine1": "IDD<<LGXX359T88<<<<<<<<<<<<<<<",
+                            "mrzLine2": "8907167<2809045D<<<<<<<<<<<<<8",
+                            "mrzLine3": "SMITH<<CHRISTIAN<<<<<<<<<<<<<<"
+                          }
+                        ]
+                      },
+                      "agreement": { //present when SDK was initialized with Agreement screen enabled
+                        "createdAt": "2020-06-24 04:18:40",
+                        "source": "WebSDK",
+                        "targets": [
+                          "By clicking Next, I accept [the Terms and Conditions](https://www.sumsub.com/consent-to-personal-data-processing/)",
+                          "I agree to the processing of my personal data, as described in [the Consent to Personal Data Processing](https://sumsub.com/consent-to-personal-data-processing/)"
+                        ]
+                      },
+                      "email": "christman1@gmail.com",
+                      "applicantPlatform": "Android",
+                      "requiredIdDocs": {
+                        "docSets": [
+                          {
+                            "idDocSetType": "IDENTITY",
+                            "types": [
+                              "PASSPORT",
+                              "ID_CARD"
+                            ]
+                          },
+                          {
+                            "idDocSetType": "SELFIE",
+                            "types": [
+                              "SELFIE"
+                            ]
+                          }
+                        ]
+                      },
+                      "review": {
+                        "elapsedSincePendingMs": 115879,
+                        "elapsedSinceQueuedMs": 95785,
+                        "reprocessing": true,
+                        "levelName": "basic-kyc",
+                        "createDate": "2020-06-24 05:11:02+0000",
+                        "reviewDate": "2020-06-24 05:12:58+0000",
+                        "reviewResult": {
+                          "reviewAnswer": "GREEN"
+                        },
+                        "reviewStatus": "completed"
+                      },
+                      "lang": "de",
+                      "type": "individual"
+                    }
+                Company applicants:
+                  value: |2-
+                          {
+                            "id": "5ecfbe9ad5ea48743f8dd1b8",
+                            "createdAt": "2020-05-28 13:37:30",
+                            "clientId": "coolclientid",
+                            "inspectionId": "5ecfbe9ad5ea48743f8dd1b9",
+                            "externalUserId": "externalCompanyId",
+                            "info": {
+                              "companyInfo": {
+                                "companyName": "SUMSUB LIMITED",
+                                "registrationNumber": "1555555",
+                                "country": "GBR",
+                                "incorporatedOn": "2018-02-28 00:00:00",
+                                "type": "ltd",
+                                "website": "www.sumsub.com",
+                                "beneficiaries": [
+                                  {
+                                    "applicantId": "5ecfbecad5ea48743f8dd438",
+                                    "positions": ["director"],
+                                    "type": "ubo",
+                                    "inRegistry": false,
+                                    "imageIds": null,
+                                    "applicant": null
+                                  }
+                                ]
+                              }
+                            },
+                            "requiredIdDocs": {
+                              "docSets": [
+                                {
+                                  "idDocSetType": "COMPANY",
+                                  "types": ["COMPANY_DOC"],
+                                  "steps": [
+                                    {
+                                      "name": "company",
+                                      "minDocsCnt": 1,
+                                      "idDocTypes": ["COMPANY_DOC"],
+                                      "idDocSubTypes": null
+                                    },
+                                    {
+                                      "name": "ubos",
+                                      "minDocsCnt": null,
+                                      "idDocTypes": null,
+                                      "idDocSubTypes": null
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            "review": {
+                              "elapsedSincePendingMs": 308656,
+                              "elapsedSinceQueuedMs": 26993,
+                              "reprocessing": true,
+                              "createDate": "2020-05-29 12:22:11+0000",
+                              "reviewDate": "2020-05-29 12:27:19+0000",
+                              "startDate": "2020-05-29 12:26:52+0000",
+                              "reviewResult": {
+                                "reviewAnswer": "GREEN"
+                              },
+                              "reviewStatus": "completed"
+                            },
+                            "lang": "en",
+                            "type": "company"
+                          }
+              schema:
+                oneOf:
+                  - title: Individual applicants
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: 5b594ade0a975a36c9349e66
+                      createdAt:
+                        type: string
+                        example: '2020-06-24 05:05:14'
+                      clientId:
+                        type: string
+                        example: ClientName
+                      inspectionId:
+                        type: string
+                        example: 5b594ade0a975a36c9379e67
+                      externalUserId:
+                        type: string
+                        example: SomeExternalUserId
+                      fixedInfo:
+                        type: object
+                        properties:
+                          firstName:
+                            type: string
+                            example: Chris
+                          lastName:
+                            type: string
+                            example: Smith
+                      info:
+                        type: object
+                        properties:
+                          firstName:
+                            type: string
+                            example: CHRISTIAN
+                          firstNameEn:
+                            type: string
+                            example: CHRISTIAN
+                          lastName:
+                            type: string
+                            example: SMITH
+                          lastNameEn:
+                            type: string
+                            example: SMITH
+                          dob:
+                            type: string
+                            example: '1989-07-16'
+                          country:
+                            type: string
+                            example: DEU
+                          idDocs:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                idDocType:
+                                  type: string
+                                  example: ID_CARD
+                                country:
+                                  type: string
+                                  example: DEU
+                                firstName:
+                                  type: string
+                                  example: CHRISTIAN
+                                firstNameEn:
+                                  type: string
+                                  example: CHRISTIAN
+                                lastName:
+                                  type: string
+                                  example: SMITH
+                                lastNameEn:
+                                  type: string
+                                  example: SMITH
+                                validUntil:
+                                  type: string
+                                  example: '2028-09-04'
+                                number:
+                                  type: string
+                                  example: LGXX359T8
+                                dob:
+                                  type: string
+                                  example: '1989-07-16'
+                                mrzLine1:
+                                  type: string
+                                  example: IDD<<LGXX359T88<<<<<<<<<<<<<<<
+                                mrzLine2:
+                                  type: string
+                                  example: 8907167<2809045D<<<<<<<<<<<<<8
+                                mrzLine3:
+                                  type: string
+                                  example: SMITH<<CHRISTIAN<<<<<<<<<<<<<<
+                      agreement:
+                        type: object
+                        properties:
+                          createdAt:
+                            type: string
+                            example: '2020-06-24 04:18:40'
+                          source:
+                            type: string
+                            example: WebSDK
+                          targets:
+                            type: array
+                            items:
+                              type: string
+                              example: >-
+                                By clicking Next, I accept [the Terms and
+                                Conditions](https://www.sumsub.com/consent-to-personal-data-processing/)
+                      email:
+                        type: string
+                        example: christman1@gmail.com
+                      applicantPlatform:
+                        type: string
+                        example: Android
+                      requiredIdDocs:
+                        type: object
+                        properties:
+                          docSets:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                idDocSetType:
+                                  type: string
+                                  example: IDENTITY
+                                types:
+                                  type: array
+                                  items:
+                                    type: string
+                                    example: PASSPORT
+                      review:
+                        type: object
+                        properties:
+                          elapsedSincePendingMs:
+                            type: integer
+                            example: 115879
+                            default: 0
+                          elapsedSinceQueuedMs:
+                            type: integer
+                            example: 95785
+                            default: 0
+                          reprocessing:
+                            type: boolean
+                            example: true
+                            default: true
+                          levelName:
+                            type: string
+                            example: basic-kyc
+                          createDate:
+                            type: string
+                            example: 2020-06-24 05:11:02+0000
+                          reviewDate:
+                            type: string
+                            example: 2020-06-24 05:12:58+0000
+                          reviewResult:
+                            type: object
+                            properties:
+                              reviewAnswer:
+                                type: string
+                                example: GREEN
+                          reviewStatus:
+                            type: string
+                            example: completed
+                      lang:
+                        type: string
+                        example: de
+                      type:
+                        type: string
+                        example: individual
+                  - title: Company applicants
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: 5ecfbe9ad5ea48743f8dd1b8
+                      createdAt:
+                        type: string
+                        example: '2020-05-28 13:37:30'
+                      clientId:
+                        type: string
+                        example: coolclientid
+                      inspectionId:
+                        type: string
+                        example: 5ecfbe9ad5ea48743f8dd1b9
+                      externalUserId:
+                        type: string
+                        example: externalCompanyId
+                      info:
+                        type: object
+                        properties:
+                          companyInfo:
+                            type: object
+                            properties:
+                              companyName:
+                                type: string
+                                example: SUMSUB LIMITED
+                              registrationNumber:
+                                type: string
+                                example: '1555555'
+                              country:
+                                type: string
+                                example: GBR
+                              incorporatedOn:
+                                type: string
+                                example: '2018-02-28 00:00:00'
+                              type:
+                                type: string
+                                example: ltd
+                              website:
+                                type: string
+                                example: www.sumsub.com
+                              beneficiaries:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    applicantId:
+                                      type: string
+                                      example: 5ecfbecad5ea48743f8dd438
+                                    positions:
+                                      type: array
+                                      items:
+                                        type: string
+                                        example: director
+                                    type:
+                                      type: string
+                                      example: ubo
+                                    inRegistry:
+                                      type: boolean
+                                      example: false
+                                      default: true
+                                    imageIds: {}
+                                    applicant: {}
+                      requiredIdDocs:
+                        type: object
+                        properties:
+                          docSets:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                idDocSetType:
+                                  type: string
+                                  example: COMPANY
+                                types:
+                                  type: array
+                                  items:
+                                    type: string
+                                    example: COMPANY_DOC
+                                steps:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      name:
+                                        type: string
+                                        example: company
+                                      minDocsCnt:
+                                        type: integer
+                                        example: 1
+                                        default: 0
+                                      idDocTypes:
+                                        type: array
+                                        items:
+                                          type: string
+                                          example: COMPANY_DOC
+                                      idDocSubTypes: {}
+                      review:
+                        type: object
+                        properties:
+                          elapsedSincePendingMs:
+                            type: integer
+                            example: 308656
+                            default: 0
+                          elapsedSinceQueuedMs:
+                            type: integer
+                            example: 26993
+                            default: 0
+                          reprocessing:
+                            type: boolean
+                            example: true
+                            default: true
+                          createDate:
+                            type: string
+                            example: 2020-05-29 12:22:11+0000
+                          reviewDate:
+                            type: string
+                            example: 2020-05-29 12:27:19+0000
+                          startDate:
+                            type: string
+                            example: 2020-05-29 12:26:52+0000
+                          reviewResult:
+                            type: object
+                            properties:
+                              reviewAnswer:
+                                type: string
+                                example: GREEN
+                          reviewStatus:
+                            type: string
+                            example: completed
+                      lang:
+                        type: string
+                        example: en
+                      type:
+                        type: string
+                        example: company
       deprecated: false
   /resources/applicants/-;externalUserId={externalUserId}/one:
     get:
@@ -1880,11 +2202,471 @@ paths:
           schema:
             type: string
           required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Individual applicants:
+                  value: |-
+                    {
+                      "id": "5b594ade0a975a36c9349e66",
+                      "createdAt": "2020-06-24 05:05:14",
+                      "clientId": "ClientName",
+                      "inspectionId": "5b594ade0a975a36c9379e67",
+                      "externalUserId": "SomeExternalUserId",
+                      "fixedInfo": {
+                        "firstName": "Chris",
+                        "lastName": "Smith"
+                      },
+                      "info": {
+                        "firstName": "CHRISTIAN",
+                        "firstNameEn": "CHRISTIAN",
+                        "lastName": "SMITH",
+                        "lastNameEn": "SMITH",
+                        "dob": "1989-07-16",
+                        "country": "DEU",
+                        "idDocs": [
+                          {
+                            "idDocType": "ID_CARD",
+                            "country": "DEU",
+                            "firstName": "CHRISTIAN",
+                            "firstNameEn": "CHRISTIAN",
+                            "lastName": "SMITH",
+                            "lastNameEn": "SMITH",
+                            "validUntil": "2028-09-04",
+                            "number": "LGXX359T8",
+                            "dob": "1989-07-16",
+                            "mrzLine1": "IDD<<LGXX359T88<<<<<<<<<<<<<<<",
+                            "mrzLine2": "8907167<2809045D<<<<<<<<<<<<<8",
+                            "mrzLine3": "SMITH<<CHRISTIAN<<<<<<<<<<<<<<"
+                          }
+                        ]
+                      },
+                      "agreement": {  //present when SDK was initialized with Agreement screen enabled
+                        "createdAt": "2020-06-24 04:18:40",
+                        "source": "WebSDK",
+                        "targets": [
+                          "By clicking Next, I accept [the Terms and Conditions](https://www.sumsub.com/consent-to-personal-data-processing/)",
+                          "I agree to the processing of my personal data, as described in [the Consent to Personal Data Processing](https://sumsub.com/consent-to-personal-data-processing/)"
+                        ]
+                      },
+                      "email": "christman1@gmail.com",
+                      "applicantPlatform": "Android",
+                      "requiredIdDocs": {
+                        "docSets": [
+                          {
+                            "idDocSetType": "IDENTITY",
+                            "types": [
+                              "PASSPORT",
+                              "ID_CARD"
+                            ]
+                          },
+                          {
+                            "idDocSetType": "SELFIE",
+                            "types": [
+                              "SELFIE"
+                            ]
+                          }
+                        ]
+                      },
+                      "review": {
+                        "elapsedSincePendingMs": 115879,
+                        "elapsedSinceQueuedMs": 95785,
+                        "reprocessing": true,
+                        "levelName": "basic-kyc",
+                        "createDate": "2020-06-24 05:11:02+0000",
+                        "reviewDate": "2020-06-24 05:12:58+0000",
+                        "reviewResult": {
+                          "reviewAnswer": "GREEN"
+                        },
+                        "reviewStatus": "completed"
+                      },
+                      "lang": "de",
+                      "type": "individual"
+                    }
+                Company applicants:
+                  value: |-
+                    {
+                      "id": "5ecfbe9ad5ea48743f8dd1b8",
+                      "createdAt": "2020-05-28 13:37:30",
+                      "clientId": "coolclientid",
+                      "inspectionId": "5ecfbe9ad5ea48743f8dd1b9",
+                      "externalUserId": "externalCompanyId",
+                      "info": {
+                        "companyInfo": {
+                          "companyName": "SUMSUB LIMITED",
+                          "registrationNumber": "1555555",
+                          "country": "GBR",
+                          "incorporatedOn": "2018-02-28 00:00:00",
+                          "type": "ltd",
+                          "website": "www.sumsub.com",
+                          "beneficiaries": [
+                            {
+                              "applicantId": "5ecfbecad5ea48743f8dd438",
+                              "positions": [
+                                "director"
+                              ],
+                              "type": "ubo",
+                              "inRegistry": false,
+                              "imageIds": null,
+                              "applicant": null
+                            }
+                          ]
+                        }
+                      },
+                      "requiredIdDocs": {
+                        "docSets": [
+                          {
+                            "idDocSetType": "COMPANY",
+                            "types": [
+                              "COMPANY_DOC"
+                            ],
+                            "steps": [
+                              {
+                                "name": "company",
+                                "minDocsCnt": 1,
+                                "idDocTypes": [
+                                  "COMPANY_DOC"
+                                ],
+                                "idDocSubTypes": null
+                              },
+                              {
+                                "name": "ubos",
+                                "minDocsCnt": null,
+                                "idDocTypes": null,
+                                "idDocSubTypes": null
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "review": {
+                        "elapsedSincePendingMs": 308656,
+                        "elapsedSinceQueuedMs": 26993,
+                        "reprocessing": true,
+                        "createDate": "2020-05-29 12:22:11+0000",
+                        "reviewDate": "2020-05-29 12:27:19+0000",
+                        "startDate": "2020-05-29 12:26:52+0000",
+                        "reviewResult": {
+                          "reviewAnswer": "GREEN"
+                        },
+                        "reviewStatus": "completed"
+                      },
+                      "lang": "en",
+                      "type": "company"
+                    }
+              schema:
+                oneOf:
+                  - title: Individual applicants
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: 5b594ade0a975a36c9349e66
+                      createdAt:
+                        type: string
+                        example: '2020-06-24 05:05:14'
+                      clientId:
+                        type: string
+                        example: ClientName
+                      inspectionId:
+                        type: string
+                        example: 5b594ade0a975a36c9379e67
+                      externalUserId:
+                        type: string
+                        example: SomeExternalUserId
+                      fixedInfo:
+                        type: object
+                        properties:
+                          firstName:
+                            type: string
+                            example: Chris
+                          lastName:
+                            type: string
+                            example: Smith
+                      info:
+                        type: object
+                        properties:
+                          firstName:
+                            type: string
+                            example: CHRISTIAN
+                          firstNameEn:
+                            type: string
+                            example: CHRISTIAN
+                          lastName:
+                            type: string
+                            example: SMITH
+                          lastNameEn:
+                            type: string
+                            example: SMITH
+                          dob:
+                            type: string
+                            example: '1989-07-16'
+                          country:
+                            type: string
+                            example: DEU
+                          idDocs:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                idDocType:
+                                  type: string
+                                  example: ID_CARD
+                                country:
+                                  type: string
+                                  example: DEU
+                                firstName:
+                                  type: string
+                                  example: CHRISTIAN
+                                firstNameEn:
+                                  type: string
+                                  example: CHRISTIAN
+                                lastName:
+                                  type: string
+                                  example: SMITH
+                                lastNameEn:
+                                  type: string
+                                  example: SMITH
+                                validUntil:
+                                  type: string
+                                  example: '2028-09-04'
+                                number:
+                                  type: string
+                                  example: LGXX359T8
+                                dob:
+                                  type: string
+                                  example: '1989-07-16'
+                                mrzLine1:
+                                  type: string
+                                  example: IDD<<LGXX359T88<<<<<<<<<<<<<<<
+                                mrzLine2:
+                                  type: string
+                                  example: 8907167<2809045D<<<<<<<<<<<<<8
+                                mrzLine3:
+                                  type: string
+                                  example: SMITH<<CHRISTIAN<<<<<<<<<<<<<<
+                      agreement:
+                        type: object
+                        properties:
+                          createdAt:
+                            type: string
+                            example: '2020-06-24 04:18:40'
+                          source:
+                            type: string
+                            example: WebSDK
+                          targets:
+                            type: array
+                            items:
+                              type: string
+                              example: >-
+                                By clicking Next, I accept [the Terms and
+                                Conditions](https://www.sumsub.com/consent-to-personal-data-processing/)
+                      email:
+                        type: string
+                        example: christman1@gmail.com
+                      applicantPlatform:
+                        type: string
+                        example: Android
+                      requiredIdDocs:
+                        type: object
+                        properties:
+                          docSets:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                idDocSetType:
+                                  type: string
+                                  example: IDENTITY
+                                types:
+                                  type: array
+                                  items:
+                                    type: string
+                                    example: PASSPORT
+                      review:
+                        type: object
+                        properties:
+                          elapsedSincePendingMs:
+                            type: integer
+                            example: 115879
+                            default: 0
+                          elapsedSinceQueuedMs:
+                            type: integer
+                            example: 95785
+                            default: 0
+                          reprocessing:
+                            type: boolean
+                            example: true
+                            default: true
+                          levelName:
+                            type: string
+                            example: basic-kyc
+                          createDate:
+                            type: string
+                            example: 2020-06-24 05:11:02+0000
+                          reviewDate:
+                            type: string
+                            example: 2020-06-24 05:12:58+0000
+                          reviewResult:
+                            type: object
+                            properties:
+                              reviewAnswer:
+                                type: string
+                                example: GREEN
+                          reviewStatus:
+                            type: string
+                            example: completed
+                      lang:
+                        type: string
+                        example: de
+                      type:
+                        type: string
+                        example: individual
+                  - title: Company applicants
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: 5ecfbe9ad5ea48743f8dd1b8
+                      createdAt:
+                        type: string
+                        example: '2020-05-28 13:37:30'
+                      clientId:
+                        type: string
+                        example: coolclientid
+                      inspectionId:
+                        type: string
+                        example: 5ecfbe9ad5ea48743f8dd1b9
+                      externalUserId:
+                        type: string
+                        example: externalCompanyId
+                      info:
+                        type: object
+                        properties:
+                          companyInfo:
+                            type: object
+                            properties:
+                              companyName:
+                                type: string
+                                example: SUMSUB LIMITED
+                              registrationNumber:
+                                type: string
+                                example: '1555555'
+                              country:
+                                type: string
+                                example: GBR
+                              incorporatedOn:
+                                type: string
+                                example: '2018-02-28 00:00:00'
+                              type:
+                                type: string
+                                example: ltd
+                              website:
+                                type: string
+                                example: www.sumsub.com
+                              beneficiaries:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    applicantId:
+                                      type: string
+                                      example: 5ecfbecad5ea48743f8dd438
+                                    positions:
+                                      type: array
+                                      items:
+                                        type: string
+                                        example: director
+                                    type:
+                                      type: string
+                                      example: ubo
+                                    inRegistry:
+                                      type: boolean
+                                      example: false
+                                      default: true
+                                    imageIds: {}
+                                    applicant: {}
+                      requiredIdDocs:
+                        type: object
+                        properties:
+                          docSets:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                idDocSetType:
+                                  type: string
+                                  example: COMPANY
+                                types:
+                                  type: array
+                                  items:
+                                    type: string
+                                    example: COMPANY_DOC
+                                steps:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      name:
+                                        type: string
+                                        example: company
+                                      minDocsCnt:
+                                        type: integer
+                                        example: 1
+                                        default: 0
+                                      idDocTypes:
+                                        type: array
+                                        items:
+                                          type: string
+                                          example: COMPANY_DOC
+                                      idDocSubTypes: {}
+                      review:
+                        type: object
+                        properties:
+                          elapsedSincePendingMs:
+                            type: integer
+                            example: 308656
+                            default: 0
+                          elapsedSinceQueuedMs:
+                            type: integer
+                            example: 26993
+                            default: 0
+                          reprocessing:
+                            type: boolean
+                            example: true
+                            default: true
+                          createDate:
+                            type: string
+                            example: 2020-05-29 12:22:11+0000
+                          reviewDate:
+                            type: string
+                            example: 2020-05-29 12:27:19+0000
+                          startDate:
+                            type: string
+                            example: 2020-05-29 12:26:52+0000
+                          reviewResult:
+                            type: object
+                            properties:
+                              reviewAnswer:
+                                type: string
+                                example: GREEN
+                          reviewStatus:
+                            type: string
+                            example: completed
+                      lang:
+                        type: string
+                        example: en
+                      type:
+                        type: string
+                        example: company
       deprecated: false
   /resources/applicants/{applicantId}/status:
     get:
       summary: Get applicant review status
-      description: Returns applicant review status.
+      description: Returns the applicant review status.
       operationId: get-applicant-review-status
       parameters:
         - name: applicantId
@@ -1899,7 +2681,7 @@ paths:
       summary: Get applicant verification steps status
       description: >-
         Returns information about the documents or separate verification step
-        results.
+        results. The method works both for individuals and company applicants.
       operationId: get-applicant-verification-steps-status
       parameters:
         - name: applicantId
@@ -2023,68 +2805,37 @@ paths:
             type: string
           required: true
       deprecated: false
-  /resources/checks/crossCheck?comparisonMode={comparisonMode}:
-    post:
-      summary: Perform name cross validation
-      description: Performs a name cross validation.
-      operationId: perform-name-cross-validation
+  /resources/inspections/{inspectionId}?fields=videoIdentData:
+    get:
+      summary: Get video call data
+      description: Returns the video call results.
+      operationId: get-video-call-data
       parameters:
-        - name: comparisonMode
+        - name: inspectionId
           in: path
-          description: >-
-            Data comparison mode. See the [possible
-            values](/reference/perform-name-cross-validation#possible-comparisonmode-values).
+          description: A unique inspection identifier.
           schema:
             type: string
           required: true
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              required:
-                - idDocs
-              properties:
-                idDocs:
-                  type: array
-                  description: A list with a maximum of two objects to be compared.
-                  items:
-                    properties:
-                      firstName:
-                        type: string
-                        description: First name.
-                      middleName:
-                        type: string
-                        description: Middle name.
-                      lastName:
-                        type: string
-                        description: Last name.
-                    required:
-                      - firstName
-                    type: object
-          multipart/form-data:
-            schema:
-              type: object
-              required:
-                - idDocs
-              properties:
-                idDocs:
-                  type: array
-                  description: A list with a maximum of two objects to be compared.
-                  items:
-                    properties:
-                      firstName:
-                        type: string
-                        description: First name.
-                      middleName:
-                        type: string
-                        description: Middle name.
-                      lastName:
-                        type: string
-                        description: Last name.
-                    required:
-                      - firstName
-                    type: object
+      deprecated: false
+  /resources/videoIdent/applicant/{applicantId}/media/{compositionMediaId}:
+    get:
+      summary: Get video call media
+      description: Returns video call media.
+      operationId: get-video-call-media
+      parameters:
+        - name: applicantId
+          in: path
+          description: A unique applicant identifier.
+          schema:
+            type: string
+          required: true
+        - name: compositionMediaId
+          in: path
+          description: Video call media identifier.
+          schema:
+            type: string
+          required: true
       deprecated: false
   /resources/sdkIntegrations/levels/{levelName}/websdkLink:
     post:
@@ -2137,14 +2888,6 @@ paths:
       description: Returns a list of verification levels.
       operationId: get-available-applicant-levels
       deprecated: false
-      x-readme:
-        code-samples:
-          - language: curl
-            code: |
-              curl -X GET \
-                'https://api.sumsub.com/resources/applicants/-/levels'
-        samples-languages:
-          - curl
   /resources/checks/latest?type=POA:
     get:
       summary: Get additional PoA data
@@ -2158,14 +2901,6 @@ paths:
           schema:
             type: string
       deprecated: false
-      x-readme:
-        code-samples:
-          - language: curl
-            code: |
-              curl -X GET \
-                'https://api.sumsub.com/resources/checks/latest?type=POA&applicantId=6b594ade0a975a36c9349e66'
-        samples-languages:
-          - curl
   /resources/accessTokens:
     post:
       summary: Generate access token
@@ -2202,7 +2937,7 @@ paths:
   /resources/applicantActions/-;applicantId={applicantId}:
     get:
       summary: Get applicant actions
-      description: Returns a list of applicant actions.
+      description: Returns the list of applicant actions.
       operationId: get-applicant-actions
       parameters:
         - name: limit
@@ -2431,6 +3166,14 @@ paths:
                           description: >-
                             A name of the financial institution where an account
                             is held (e.g., Revolut).
+                        type:
+                          type: string
+                          description: A payment source type.
+                          enum:
+                            - bankCard
+                            - bankStatement
+                            - eWallet
+                            - cryptoWallet
           multipart/form-data:
             schema:
               type: object
@@ -2466,6 +3209,14 @@ paths:
                           description: >-
                             A name of the financial institution where an account
                             is held (e.g., Revolut).
+                        type:
+                          type: string
+                          description: A payment source type.
+                          enum:
+                            - bankCard
+                            - bankStatement
+                            - eWallet
+                            - cryptoWallet
       responses:
         '200':
           description: '200'
@@ -2481,7 +3232,6 @@ paths:
                       "clientId": "client_id",
                       "externalActionId": "payment-source-1fbH9AYHn",
                       "applicantId": "65e881a212b4ef468def3bbb",
-                      "type": "paymentMethod",
                       "review": {
                         "reviewId": "RlWfu",
                         "attemptId": "dhABq",
@@ -2507,7 +3257,8 @@ paths:
                           "institutionName": "Name",
                           "fullName": "John Doe",
                           "accountIdentifier": "120834387",
-                          "email": "JohnDoe@mail.com"
+                          "email": "JohnDoe@mail.com",
+                          "type": "paymentMethod"
                         }
                       }
                     }
@@ -2532,9 +3283,6 @@ paths:
                   applicantId:
                     type: string
                     example: 65e881a212b4ef468def3bbb
-                  type:
-                    type: string
-                    example: paymentMethod
                   review:
                     type: object
                     properties:
@@ -2597,6 +3345,9 @@ paths:
                           email:
                             type: string
                             example: JohnDoe@mail.com
+                          type:
+                            type: string
+                            example: paymentMethod
       deprecated: false
   /resources/applicantActions/{actionId}/review/status/pending:
     post:
@@ -2621,7 +3372,7 @@ paths:
           - curl
   /resources/applicantActions/-/forApplicant/{applicantId}/paymentMethod:
     post:
-      summary: Submission
+      summary: Submit payment method
       description: Submits a payment method.
       operationId: submit-payment-method
       parameters:
@@ -3004,7 +3755,7 @@ paths:
                       description: applicantId of beneficiary
                 applicantId:
                   type: string
-                  description: Beneficiary applicant identified.
+                  description: Beneficiary applicant identifier.
                 positions:
                   type: array
                   description: >-
@@ -3014,7 +3765,12 @@ paths:
                     type: string
                 type:
                   type: string
-                  description: 'Type of beneficiary: `ubo`, `shareholder`, `representative`.'
+                  description: Beneficiary type.
+                  enum:
+                    - ubo
+                    - shareholder
+                    - representative
+                    - director
           multipart/form-data:
             schema:
               type: object
@@ -3034,7 +3790,7 @@ paths:
                       description: applicantId of beneficiary
                 applicantId:
                   type: string
-                  description: Beneficiary applicant identified.
+                  description: Beneficiary applicant identifier.
                 positions:
                   type: array
                   description: >-
@@ -3044,7 +3800,12 @@ paths:
                     type: string
                 type:
                   type: string
-                  description: 'Type of beneficiary: `ubo`, `shareholder`, `representative`.'
+                  description: Beneficiary type.
+                  enum:
+                    - ubo
+                    - shareholder
+                    - representative
+                    - director
       deprecated: false
   /resources/applicants/{applicantId}/info/companyInfo/beneficiaries/{beneficiaryApplicantId}:
     delete:
@@ -3068,7 +3829,7 @@ paths:
   /resources/applicants/{applicantId}/info/companyInfo:
     patch:
       summary: Change company data
-      description: Changes company data.
+      description: Changes the company data.
       operationId: change-company-data
       parameters:
         - name: applicantId
@@ -3088,7 +3849,7 @@ paths:
               properties:
                 companyName:
                   type: string
-                  description: Name of the company.
+                  description: Company name.
                 registrationNumber:
                   type: string
                   description: Registration number.
@@ -3123,17 +3884,15 @@ paths:
                   description: Location of registration.
                 website:
                   type: string
-                  description: Website's URL.
+                  description: Website URL.
                 postalAddress:
                   type: string
                   description: Postal address.
                 beneficiaries:
                   type: array
                   description: >-
-                    Contains applicantIds of beneficiaries and additional info
-                    like position and type.
-                  items:
-                    type: string
+                    Applicant IDs of beneficiaries and additional info like
+                    position and type.
                 addresses:
                   type: array
                   description: List of addresses.
@@ -3148,7 +3907,7 @@ paths:
               properties:
                 companyName:
                   type: string
-                  description: Name of the company.
+                  description: Company name.
                 registrationNumber:
                   type: string
                   description: Registration number.
@@ -3183,17 +3942,15 @@ paths:
                   description: Location of registration.
                 website:
                   type: string
-                  description: Website's URL.
+                  description: Website URL.
                 postalAddress:
                   type: string
                   description: Postal address.
                 beneficiaries:
                   type: array
                   description: >-
-                    Contains applicantIds of beneficiaries and additional info
-                    like position and type.
-                  items:
-                    type: string
+                    Applicant IDs of beneficiaries and additional info like
+                    position and type.
                 addresses:
                   type: array
                   description: List of addresses.
@@ -3213,53 +3970,10 @@ paths:
           schema:
             type: string
       deprecated: false
-  /resources/inspections/{inspectionId}?fields=videoIdentData:
-    get:
-      summary: Get video call data
-      description: Returns the video call results.
-      operationId: get-video-call-data
-      parameters:
-        - name: inspectionId
-          in: path
-          description: A unique inspection identifier.
-          schema:
-            type: string
-          required: true
-      deprecated: false
-  /resources/videoIdent/applicant/{applicantId}/media/{compositionMediaId}:
-    get:
-      summary: Get video call media
-      description: Returns video call media.
-      operationId: get-video-call-media
-      parameters:
-        - name: applicantId
-          in: path
-          description: A unique applicant identifier.
-          schema:
-            type: string
-          required: true
-        - name: compositionMediaId
-          in: path
-          description: Video call media identifier.
-          schema:
-            type: string
-          required: true
-      responses:
-        '200':
-          description: '200'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: '{}'
-              schema:
-                type: object
-                properties: {}
-      deprecated: false
-  /resources/applicants/{applicantId}/ekyc/submit:
+  /resources/applicants/{applicantId}/ekyc/submit (COPY):
     post:
-      summary: Submit applicant data
-      description: Sends applicant data for no-document verification.
+      summary: Submit applicant data for non-doc verification
+      description: Submits the applicant data for Non-Doc Verification.
       operationId: submit-applicant-data
       parameters:
         - name: applicantId
@@ -3273,46 +3987,144 @@ paths:
           application/json:
             schema:
               type: object
-              required:
-                - info
               properties:
                 info:
                   type: object
-                  description: Applicant information.
-                  required:
-                    - country
-                    - tin
+                  description: Information about the applicant.
                   properties:
                     country:
                       type: string
                       description: Alpha-3 country code.
+                      enum:
+                        - ARG
+                        - BGD
+                        - BRA
+                        - GBR
+                        - IDN
+                        - IND
+                        - KEN
+                        - MEX
+                        - NGA
+                        - NLD
+                        - VNM
+                        - ZAF
                     tin:
                       type: string
                       description: Tax identifier.
+                    firstName:
+                      type: string
+                      description: The first name of the applicant.
+                idDoc:
+                  type: object
+                  description: Information about the document.
+                  properties:
+                    country:
+                      type: string
+                      description: Alpha-3 country code.
+                      enum:
+                        - ARG
+                        - BGD
+                        - BRA
+                        - GBR
+                        - IDN
+                        - IND
+                        - KEN
+                        - MEX
+                        - NGA
+                        - NLD
+                        - VNM
+                        - ZAF
+                    idDocType:
+                      type: string
+                      description: Document type.
+                    number:
+                      type: string
+                      description: Document number.
+                    gender:
+                      type: string
+                      description: Applicant's gender.
+                    dob:
+                      type: string
+                      description: Applicant's date of birth.
+                    firstName:
+                      type: string
+                      description: The first name of the applicant.
+                    lastName:
+                      type: string
+                      description: The last name of the applicant.
           multipart/form-data:
             schema:
               type: object
-              required:
-                - info
               properties:
                 info:
                   type: object
-                  description: Applicant information.
-                  required:
-                    - country
-                    - tin
+                  description: Information about the applicant.
                   properties:
                     country:
                       type: string
                       description: Alpha-3 country code.
+                      enum:
+                        - ARG
+                        - BGD
+                        - BRA
+                        - GBR
+                        - IDN
+                        - IND
+                        - KEN
+                        - MEX
+                        - NGA
+                        - NLD
+                        - VNM
+                        - ZAF
                     tin:
                       type: string
                       description: Tax identifier.
+                    firstName:
+                      type: string
+                      description: The first name of the applicant.
+                idDoc:
+                  type: object
+                  description: Information about the document.
+                  properties:
+                    country:
+                      type: string
+                      description: Alpha-3 country code.
+                      enum:
+                        - ARG
+                        - BGD
+                        - BRA
+                        - GBR
+                        - IDN
+                        - IND
+                        - KEN
+                        - MEX
+                        - NGA
+                        - NLD
+                        - VNM
+                        - ZAF
+                    idDocType:
+                      type: string
+                      description: Document type.
+                    number:
+                      type: string
+                      description: Document number.
+                    gender:
+                      type: string
+                      description: Applicant's gender.
+                    dob:
+                      type: string
+                      description: Applicant's date of birth.
+                    firstName:
+                      type: string
+                      description: The first name of the applicant.
+                    lastName:
+                      type: string
+                      description: The last name of the applicant.
       deprecated: false
   /resources/applicants/{applicantId}/ekyc/confirm/{confirmationid}:
     post:
-      summary: Confirm applicant data
-      description: Confirms applicant data.
+      summary: Confirm applicant data for non-doc verification
+      description: Confirms the applicant data with the `otp` code or via `oAuth`.
       operationId: confirm-applicant-data
       parameters:
         - name: applicantId
@@ -3382,8 +4194,8 @@ paths:
       deprecated: false
   /resources/checks/latest:
     get:
-      summary: Get applicant data
-      description: Returns the applicant data for Non-Doc verification.
+      summary: Get non-doc verification applicant data
+      description: Returns the applicant data for Non-Doc Verification.
       operationId: get-non-doc-applicant-data
       parameters:
         - name: type
@@ -3469,17 +4281,36 @@ paths:
                         submit already converted default currency amount in this
                         field.
                       format: double
+                    currencyType:
+                      type: string
+                      description: Indicates whether the transaction is `crypto` or `fiat`.
                     currencyCode:
                       type: string
                       description: Currency code (`USD`, `GBP`, `BTC`, etc).
-                    cryptoChain:
-                      type: string
+                    cryptoParams:
+                      type: object
                       description: >-
-                        The crypto chain name. Mandatory for crypto tokens only.
-                        Specifies the network name to which the token at
-                        `currencyCode` belongs. Empty for native tokens (e.g.
-                        for `BTC`, `ETH`). For more information, see [chain
-                        codes](ref:crypto-chain-codes).
+                        Includes crypto transaction parameters. It is crucial
+                        for Sumsub to understand which crypto chain is used to
+                        correctly utilize the data.
+                      required:
+                        - attemptId
+                      properties:
+                        attemptId:
+                          type: string
+                          description: Unique identifier of the transaction attempt.
+                        outputIndex:
+                          type: integer
+                          description: An index number for a transaction output.
+                          format: int32
+                        cryptoChain:
+                          type: string
+                          description: >-
+                            The crypto chain name. Mandatory for crypto tokens
+                            only. Specifies the network name to which the token
+                            at `currencyCode` belongs. Empty for native tokens
+                            (e.g. for `BTC`, `ETH`). For more information, see
+                            [chain codes](ref:crypto-chain-codes).
                     paymentTxnId:
                       type: string
                       description: >-
@@ -3720,31 +4551,6 @@ paths:
                             riskyAsn:
                               type: boolean
                               description: ASN is risky or not.
-                    idDocs:
-                      type: array
-                      description: Data about the user and their documents.
-                      items:
-                        properties:
-                          idDocType:
-                            type: string
-                            description: >-
-                              A [document
-                              type](ref:add-id-documents#supported-document-types).
-                          dob:
-                            type: string
-                            description: >-
-                              Date of birth (format YYYY-mm-dd, e.g.
-                              2001-09-25).
-                          placeOfBirth:
-                            type: string
-                            description: Birthplace.
-                          country:
-                            type: string
-                            description: Alpha-3 country code of the provided document.
-                          number:
-                            type: string
-                            description: A document number.
-                        type: object
                 counterparty:
                   type: object
                   description: >-
@@ -3971,31 +4777,6 @@ paths:
                             riskyAsn:
                               type: boolean
                               description: ASN is risky or not.
-                    idDocs:
-                      type: array
-                      description: Data about the user and their documents.
-                      items:
-                        properties:
-                          idDocType:
-                            type: string
-                            description: >-
-                              A [document
-                              type](ref:add-id-documents#supported-document-types).
-                          dob:
-                            type: string
-                            description: >-
-                              Date of birth (format YYYY-mm-dd, e.g.
-                              2001-09-25).
-                          placeOfBirth:
-                            type: string
-                            description: Birthplace.
-                          country:
-                            type: string
-                            description: Alpha-3 country code of the provided document.
-                          number:
-                            type: string
-                            description: A document number.
-                        type: object
                 type:
                   type: string
                   description: >-
@@ -4072,17 +4853,36 @@ paths:
                         submit already converted default currency amount in this
                         field.
                       format: double
+                    currencyType:
+                      type: string
+                      description: Indicates whether the transaction is `crypto` or `fiat`.
                     currencyCode:
                       type: string
                       description: Currency code (`USD`, `GBP`, `BTC`, etc).
-                    cryptoChain:
-                      type: string
+                    cryptoParams:
+                      type: object
                       description: >-
-                        The crypto chain name. Mandatory for crypto tokens only.
-                        Specifies the network name to which the token at
-                        `currencyCode` belongs. Empty for native tokens (e.g.
-                        for `BTC`, `ETH`). For more information, see [chain
-                        codes](ref:crypto-chain-codes).
+                        Includes crypto transaction parameters. It is crucial
+                        for Sumsub to understand which crypto chain is used to
+                        correctly utilize the data.
+                      required:
+                        - attemptId
+                      properties:
+                        attemptId:
+                          type: string
+                          description: Unique identifier of the transaction attempt.
+                        outputIndex:
+                          type: integer
+                          description: An index number for a transaction output.
+                          format: int32
+                        cryptoChain:
+                          type: string
+                          description: >-
+                            The crypto chain name. Mandatory for crypto tokens
+                            only. Specifies the network name to which the token
+                            at `currencyCode` belongs. Empty for native tokens
+                            (e.g. for `BTC`, `ETH`). For more information, see
+                            [chain codes](ref:crypto-chain-codes).
                     paymentTxnId:
                       type: string
                       description: >-
@@ -4323,31 +5123,6 @@ paths:
                             riskyAsn:
                               type: boolean
                               description: ASN is risky or not.
-                    idDocs:
-                      type: array
-                      description: Data about the user and their documents.
-                      items:
-                        properties:
-                          idDocType:
-                            type: string
-                            description: >-
-                              A [document
-                              type](ref:add-id-documents#supported-document-types).
-                          dob:
-                            type: string
-                            description: >-
-                              Date of birth (format YYYY-mm-dd, e.g.
-                              2001-09-25).
-                          placeOfBirth:
-                            type: string
-                            description: Birthplace.
-                          country:
-                            type: string
-                            description: Alpha-3 country code of the provided document.
-                          number:
-                            type: string
-                            description: A document number.
-                        type: object
                 counterparty:
                   type: object
                   description: >-
@@ -4574,31 +5349,6 @@ paths:
                             riskyAsn:
                               type: boolean
                               description: ASN is risky or not.
-                    idDocs:
-                      type: array
-                      description: Data about the user and their documents.
-                      items:
-                        properties:
-                          idDocType:
-                            type: string
-                            description: >-
-                              A [document
-                              type](ref:add-id-documents#supported-document-types).
-                          dob:
-                            type: string
-                            description: >-
-                              Date of birth (format YYYY-mm-dd, e.g.
-                              2001-09-25).
-                          placeOfBirth:
-                            type: string
-                            description: Birthplace.
-                          country:
-                            type: string
-                            description: Alpha-3 country code of the provided document.
-                          number:
-                            type: string
-                            description: A document number.
-                        type: object
                 type:
                   type: string
                   description: >-
@@ -4690,17 +5440,36 @@ paths:
                         submit already converted default currency amount in this
                         field.
                       format: double
+                    currencyType:
+                      type: string
+                      description: Indicates whether the transaction is `crypto` or `fiat`.
                     currencyCode:
                       type: string
                       description: Currency code (`USD`, `GBP`, `BTC`, etc).
-                    cryptoChain:
-                      type: string
+                    cryptoParams:
+                      type: object
                       description: >-
-                        The crypto chain name. Mandatory for crypto tokens only.
-                        Specifies the network name to which the token at
-                        `currencyCode` belongs. Empty for native tokens (e.g.
-                        for `BTC`, `ETH`). For more information, see [chain
-                        codes](ref:crypto-chain-codes).
+                        Includes crypto transaction parameters. It is crucial
+                        for Sumsub to understand which crypto chain is used to
+                        correctly utilize the data.
+                      required:
+                        - attemptId
+                      properties:
+                        attemptId:
+                          type: string
+                          description: Unique identifier of the transaction attempt.
+                        outputIndex:
+                          type: integer
+                          description: An index number for a transaction output.
+                          format: int32
+                        cryptoChain:
+                          type: string
+                          description: >-
+                            The crypto chain name. Mandatory for crypto tokens
+                            only. Specifies the network name to which the token
+                            at `currencyCode` belongs. Empty for native tokens
+                            (e.g. for `BTC`, `ETH`). For more information, see
+                            [chain codes](ref:crypto-chain-codes).
                     paymentTxnId:
                       type: string
                       description: >-
@@ -4947,31 +5716,6 @@ paths:
                             riskyAsn:
                               type: boolean
                               description: ASN is risky or not.
-                    idDocs:
-                      type: array
-                      description: Data about the user and their documents.
-                      items:
-                        properties:
-                          idDocType:
-                            type: string
-                            description: >-
-                              A [document
-                              type](ref:add-id-documents#supported-document-types).
-                          dob:
-                            type: string
-                            description: >-
-                              Date of birth (format YYYY-mm-dd, e.g.
-                              2001-09-25).
-                          placeOfBirth:
-                            type: string
-                            description: Birthplace.
-                          country:
-                            type: string
-                            description: Alpha-3 country code of the provided document.
-                          number:
-                            type: string
-                            description: A document number.
-                        type: object
                 counterparty:
                   type: object
                   description: >-
@@ -5198,31 +5942,6 @@ paths:
                             riskyAsn:
                               type: boolean
                               description: ASN is risky or not.
-                    idDocs:
-                      type: array
-                      description: Data about the user and their documents.
-                      items:
-                        properties:
-                          idDocType:
-                            type: string
-                            description: >-
-                              A [document
-                              type](ref:add-id-documents#supported-document-types).
-                          dob:
-                            type: string
-                            description: >-
-                              Date of birth (format YYYY-mm-dd, e.g.
-                              2001-09-25).
-                          placeOfBirth:
-                            type: string
-                            description: Birthplace.
-                          country:
-                            type: string
-                            description: Alpha-3 country code of the provided document.
-                          number:
-                            type: string
-                            description: A document number.
-                        type: object
                 type:
                   type: string
                   description: >-
@@ -5285,17 +6004,36 @@ paths:
                         submit already converted default currency amount in this
                         field.
                       format: double
+                    currencyType:
+                      type: string
+                      description: Indicates whether the transaction is `crypto` or `fiat`.
                     currencyCode:
                       type: string
                       description: Currency code (`USD`, `GBP`, `BTC`, etc).
-                    cryptoChain:
-                      type: string
+                    cryptoParams:
+                      type: object
                       description: >-
-                        The crypto chain name. Mandatory for crypto tokens only.
-                        Specifies the network name to which the token at
-                        `currencyCode` belongs. Empty for native tokens (e.g.
-                        for `BTC`, `ETH`). For more information, see [chain
-                        codes](ref:crypto-chain-codes).
+                        Includes crypto transaction parameters. It is crucial
+                        for Sumsub to understand which crypto chain is used to
+                        correctly utilize the data.
+                      required:
+                        - attemptId
+                      properties:
+                        attemptId:
+                          type: string
+                          description: Unique identifier of the transaction attempt.
+                        outputIndex:
+                          type: integer
+                          description: An index number for a transaction output.
+                          format: int32
+                        cryptoChain:
+                          type: string
+                          description: >-
+                            The crypto chain name. Mandatory for crypto tokens
+                            only. Specifies the network name to which the token
+                            at `currencyCode` belongs. Empty for native tokens
+                            (e.g. for `BTC`, `ETH`). For more information, see
+                            [chain codes](ref:crypto-chain-codes).
                     paymentTxnId:
                       type: string
                       description: >-
@@ -5542,31 +6280,6 @@ paths:
                             riskyAsn:
                               type: boolean
                               description: ASN is risky or not.
-                    idDocs:
-                      type: array
-                      description: Data about the user and their documents.
-                      items:
-                        properties:
-                          idDocType:
-                            type: string
-                            description: >-
-                              A [document
-                              type](ref:add-id-documents#supported-document-types).
-                          dob:
-                            type: string
-                            description: >-
-                              Date of birth (format YYYY-mm-dd, e.g.
-                              2001-09-25).
-                          placeOfBirth:
-                            type: string
-                            description: Birthplace.
-                          country:
-                            type: string
-                            description: Alpha-3 country code of the provided document.
-                          number:
-                            type: string
-                            description: A document number.
-                        type: object
                 counterparty:
                   type: object
                   description: >-
@@ -5793,31 +6506,6 @@ paths:
                             riskyAsn:
                               type: boolean
                               description: ASN is risky or not.
-                    idDocs:
-                      type: array
-                      description: Data about the user and their documents.
-                      items:
-                        properties:
-                          idDocType:
-                            type: string
-                            description: >-
-                              A [document
-                              type](ref:add-id-documents#supported-document-types).
-                          dob:
-                            type: string
-                            description: >-
-                              Date of birth (format YYYY-mm-dd, e.g.
-                              2001-09-25).
-                          placeOfBirth:
-                            type: string
-                            description: Birthplace.
-                          country:
-                            type: string
-                            description: Alpha-3 country code of the provided document.
-                          number:
-                            type: string
-                            description: A document number.
-                        type: object
                 type:
                   type: string
                   description: >-
@@ -5956,17 +6644,39 @@ paths:
                             can submit already converted default currency amount
                             in this field.
                           format: double
+                        currencyType:
+                          type: string
+                          description: >-
+                            Indicates whether the transaction is `crypto` or
+                            `fiat`.
                         currencyCode:
                           type: string
                           description: Currency code (`USD`, `GBP`, `BTC`, etc).
-                        cryptoChain:
-                          type: string
+                        cryptoParams:
+                          type: object
                           description: >-
-                            The crypto chain name. Mandatory for crypto tokens
-                            only. Specifies the network name to which the token
-                            at `currencyCode` belongs. Empty for native tokens
-                            (e.g. for `BTC`, `ETH`). For more information, see
-                            [chain codes](ref:crypto-chain-codes).
+                            Includes crypto transaction parameters. It is
+                            crucial for Sumsub to understand which crypto chain
+                            is used to correctly utilize the data.
+                          required:
+                            - attemptId
+                          properties:
+                            attemptId:
+                              type: string
+                              description: Unique identifier of the transaction attempt.
+                            outputIndex:
+                              type: integer
+                              description: An index number for a transaction output.
+                              format: int32
+                            cryptoChain:
+                              type: string
+                              description: >-
+                                The crypto chain name. Mandatory for crypto
+                                tokens only. Specifies the network name to which
+                                the token at `currencyCode` belongs. Empty for
+                                native tokens (e.g. for `BTC`, `ETH`). For more
+                                information, see [chain
+                                codes](ref:crypto-chain-codes).
                         paymentTxnId:
                           type: string
                           description: >-
@@ -6217,31 +6927,6 @@ paths:
                                 riskyAsn:
                                   type: boolean
                                   description: ASN is risky or not.
-                        idDocs:
-                          type: array
-                          description: Data about the user and their documents.
-                          items:
-                            properties:
-                              idDocType:
-                                type: string
-                                description: >-
-                                  A [document
-                                  type](ref:add-id-documents#supported-document-types).
-                              dob:
-                                type: string
-                                description: >-
-                                  Date of birth (format YYYY-mm-dd, e.g.
-                                  2001-09-25).
-                              placeOfBirth:
-                                type: string
-                                description: Birthplace.
-                              country:
-                                type: string
-                                description: Alpha-3 country code of the provided document.
-                              number:
-                                type: string
-                                description: A document number.
-                            type: object
                     counterparty:
                       type: object
                       description: >-
@@ -6471,31 +7156,6 @@ paths:
                                 riskyAsn:
                                   type: boolean
                                   description: ASN is risky or not.
-                        idDocs:
-                          type: array
-                          description: Data about the user and their documents.
-                          items:
-                            properties:
-                              idDocType:
-                                type: string
-                                description: >-
-                                  A [document
-                                  type](ref:add-id-documents#supported-document-types).
-                              dob:
-                                type: string
-                                description: >-
-                                  Date of birth (format YYYY-mm-dd, e.g.
-                                  2001-09-25).
-                              placeOfBirth:
-                                type: string
-                                description: Birthplace.
-                              country:
-                                type: string
-                                description: Alpha-3 country code of the provided document.
-                              number:
-                                type: string
-                                description: A document number.
-                            type: object
                     type:
                       type: string
                       description: >-
@@ -6563,17 +7223,39 @@ paths:
                             can submit already converted default currency amount
                             in this field.
                           format: double
+                        currencyType:
+                          type: string
+                          description: >-
+                            Indicates whether the transaction is `crypto` or
+                            `fiat`.
                         currencyCode:
                           type: string
                           description: Currency code (`USD`, `GBP`, `BTC`, etc).
-                        cryptoChain:
-                          type: string
+                        cryptoParams:
+                          type: object
                           description: >-
-                            The crypto chain name. Mandatory for crypto tokens
-                            only. Specifies the network name to which the token
-                            at `currencyCode` belongs. Empty for native tokens
-                            (e.g. for `BTC`, `ETH`). For more information, see
-                            [chain codes](ref:crypto-chain-codes).
+                            Includes crypto transaction parameters. It is
+                            crucial for Sumsub to understand which crypto chain
+                            is used to correctly utilize the data.
+                          required:
+                            - attemptId
+                          properties:
+                            attemptId:
+                              type: string
+                              description: Unique identifier of the transaction attempt.
+                            outputIndex:
+                              type: integer
+                              description: An index number for a transaction output.
+                              format: int32
+                            cryptoChain:
+                              type: string
+                              description: >-
+                                The crypto chain name. Mandatory for crypto
+                                tokens only. Specifies the network name to which
+                                the token at `currencyCode` belongs. Empty for
+                                native tokens (e.g. for `BTC`, `ETH`). For more
+                                information, see [chain
+                                codes](ref:crypto-chain-codes).
                         paymentTxnId:
                           type: string
                           description: >-
@@ -6824,31 +7506,6 @@ paths:
                                 riskyAsn:
                                   type: boolean
                                   description: ASN is risky or not.
-                        idDocs:
-                          type: array
-                          description: Data about the user and their documents.
-                          items:
-                            properties:
-                              idDocType:
-                                type: string
-                                description: >-
-                                  A [document
-                                  type](ref:add-id-documents#supported-document-types).
-                              dob:
-                                type: string
-                                description: >-
-                                  Date of birth (format YYYY-mm-dd, e.g.
-                                  2001-09-25).
-                              placeOfBirth:
-                                type: string
-                                description: Birthplace.
-                              country:
-                                type: string
-                                description: Alpha-3 country code of the provided document.
-                              number:
-                                type: string
-                                description: A document number.
-                            type: object
                     counterparty:
                       type: object
                       description: >-
@@ -7078,31 +7735,6 @@ paths:
                                 riskyAsn:
                                   type: boolean
                                   description: ASN is risky or not.
-                        idDocs:
-                          type: array
-                          description: Data about the user and their documents.
-                          items:
-                            properties:
-                              idDocType:
-                                type: string
-                                description: >-
-                                  A [document
-                                  type](ref:add-id-documents#supported-document-types).
-                              dob:
-                                type: string
-                                description: >-
-                                  Date of birth (format YYYY-mm-dd, e.g.
-                                  2001-09-25).
-                              placeOfBirth:
-                                type: string
-                                description: Birthplace.
-                              country:
-                                type: string
-                                description: Alpha-3 country code of the provided document.
-                              number:
-                                type: string
-                                description: A document number.
-                            type: object
                     type:
                       type: string
                       description: >-
@@ -7639,10 +8271,174 @@ paths:
                 type: object
                 properties: {}
       deprecated: false
+  /resources/accessTokens/behavior:
+    post:
+      summary: Generate access token
+      description: >-
+        Creates an access token to apply [Fisherman](ref:about-fisherman) per
+        applicant session.
+      operationId: generate-access-token-fisherman
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - sessionId
+                - userPlatformEventType
+              properties:
+                sessionId:
+                  type: string
+                  description: A unique identifier of the applicant session.
+                userPlatformEventType:
+                  type: string
+                  description: >-
+                    An event that occurred on the applicant device as a result
+                    of the interaction with the application UI. <br><br>The
+                    following event types are supported:
+                    <ul><li><code>login</code> — applicant logging
+                    in.</li><li><code>signup</code> — applicant signing
+                    up.</li><li><code>passwordReset</code> — applicant resetting
+                    the password.</li><li><code>twoFaReset</code> — applicant
+                    resetting two-factor authentication.</li></ul>
+                ttlInSecs:
+                  type: integer
+                  description: >-
+                    A lifespan of a token in seconds. Default value is 1800
+                    seconds.
+                  default: 1800
+                  format: int32
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                - sessionId
+                - userPlatformEventType
+              properties:
+                sessionId:
+                  type: string
+                  description: A unique identifier of the applicant session.
+                userPlatformEventType:
+                  type: string
+                  description: >-
+                    An event that occurred on the applicant device as a result
+                    of the interaction with the application UI. <br><br>The
+                    following event types are supported:
+                    <ul><li><code>login</code> — applicant logging
+                    in.</li><li><code>signup</code> — applicant signing
+                    up.</li><li><code>passwordReset</code> — applicant resetting
+                    the password.</li><li><code>twoFaReset</code> — applicant
+                    resetting two-factor authentication.</li></ul>
+                ttlInSecs:
+                  type: integer
+                  description: >-
+                    A lifespan of a token in seconds. Default value is 1800
+                    seconds.
+                  default: 1800
+                  format: int32
+      deprecated: false
+  /resources/applicants/-/kyt/txns/-/data?accessToken={accessToken}:
+    post:
+      summary: Confirm applicant platform event
+      description: Confirms that the platform event on the applicant side is completed.
+      operationId: confirm-applicant-platform-event
+      parameters:
+        - name: accessToken
+          in: path
+          description: >-
+            Access token that you have [received at the first
+            step](ref:generate-access-token-fisherman) of the flow.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - applicant
+                - userPlatformEventInfo
+                - txnId
+              properties:
+                applicant:
+                  type: object
+                  description: Applicant's full name and identifier on your side.
+                  required:
+                    - fullName
+                    - externalUserId
+                  properties:
+                    fullName:
+                      type: string
+                      description: Full name of the applicant.
+                    externalUserId:
+                      type: string
+                      description: A unique applicant identifier within your system.
+                userPlatformEventInfo:
+                  type: object
+                  description: >-
+                    Indicates the applicant platform event status. Can be
+                    omitted if the event was successful.
+                  properties:
+                    failure:
+                      type: boolean
+                      description: >-
+                        Indicates whether the event on the applicant side was
+                        successful or not. <ul><li><code>true</code> — event
+                        failed (e.g. wrong credentials provided when logging in,
+                        or incorrect data submitted when resetting
+                        password).</li><li><code>false</code> — event was
+                        successful.</li></ul>
+                txnId:
+                  type: string
+                  description: >-
+                    Unique identifier for the confirmed applicant platform event
+                    that you generate on your side.
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                - applicant
+                - userPlatformEventInfo
+                - txnId
+              properties:
+                applicant:
+                  type: object
+                  description: Applicant's full name and identifier on your side.
+                  required:
+                    - fullName
+                    - externalUserId
+                  properties:
+                    fullName:
+                      type: string
+                      description: Full name of the applicant.
+                    externalUserId:
+                      type: string
+                      description: A unique applicant identifier within your system.
+                userPlatformEventInfo:
+                  type: object
+                  description: >-
+                    Indicates the applicant platform event status. Can be
+                    omitted if the event was successful.
+                  properties:
+                    failure:
+                      type: boolean
+                      description: >-
+                        Indicates whether the event on the applicant side was
+                        successful or not. <ul><li><code>true</code> — event
+                        failed (e.g. wrong credentials provided when logging in,
+                        or incorrect data submitted when resetting
+                        password).</li><li><code>false</code> — event was
+                        successful.</li></ul>
+                txnId:
+                  type: string
+                  description: >-
+                    Unique identifier for the confirmed applicant platform event
+                    that you generate on your side.
+      deprecated: false
 x-readme:
   headers: []
   explorer-enabled: true
   proxy-enabled: true
-  samples-enabled: true
 x-readme-fauxas: true
-_id: 64562b6dd507c500683094e9:65cc862a021c2900435ee061
+_id: 64562b6dd507c500683094e9:6602995fbcddd70025062118

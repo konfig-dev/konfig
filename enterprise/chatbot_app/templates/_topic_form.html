@@ -1,0 +1,35 @@
+<li class="pb-10 pl-6 border-l {% if current_topic %}border-green-200{% endif %}">
+    <span class="absolute flex items-center justify-center w-8 h-8 {% if current_customer %}bg-green-200 text-green-900{% else %}bg-slate-200{% endif %} rounded-full -start-4 ring-4 ring-white dark:ring-slate-900 dark:bg-green-900">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 24 24"
+             fill="currentColor"
+             class="w-3.5 h-3.5">
+            <path fill-rule="evenodd" d="M5.337 21.718a6.707 6.707 0 0 1-.533-.074.75.75 0 0 1-.44-1.223 3.73 3.73 0 0 0 .814-1.686c.023-.115-.022-.317-.254-.543C3.274 16.587 2.25 14.41 2.25 12c0-5.03 4.428-9 9.75-9s9.75 3.97 9.75 9c0 5.03-4.428 9-9.75 9-.833 0-1.643-.097-2.417-.279a6.721 6.721 0 0 1-4.246.997Z" clip-rule="evenodd" />
+        </svg>
+    </span>
+    <h3 class="font-medium leading-tight {% if current_customer %}text-slate-800{% endif %}">Topic</h3>
+    <p class="text-sm">
+        {% if current_topic %}
+            {{ current_topic }}
+        {% else %}
+            Enter a topic
+        {% endif %}
+    </p>
+    {% if not current_topic and current_customer %}
+        <div class="mt-3">
+            <form>
+                <input type="hidden" name="chat_id" value="{{ current_chat.chat_id }}" />
+                <div class="join w-96">
+                    <input name="topic"
+                           class="flex-1 input input-bordered join-item min-w-60"
+                           placeholder="How do I..."
+                           autocomplete="off" />
+                    <button hx-post="{% url 'save_topic' %}"
+                            hx-target="#app"
+                            type="submit"
+                            class="btn join-item rounded-r-full">Submit</button>
+                </div>
+            </form>
+        </div>
+    {% endif %}
+</li>

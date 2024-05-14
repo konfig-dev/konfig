@@ -17,7 +17,7 @@ export default function QuivrTypeScriptSdk() {
       companyKebabCase="quivr"
       clientNameCamelCase="quivr"
       homepage="quivr.app"
-      lastUpdated={new Date("2024-03-27T04:20:23.221Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/quivr/favicon.jpg"
       // Missing contactUrl
       // Missing contactEmail
@@ -1628,10 +1628,10 @@ export default function QuivrTypeScriptSdk() {
       apiTitle="FastAPI"
       apiBaseUrl="https://api.quivr.app"
       apiVersion="0.1.0"
-      endpoints={42}
-      sdkMethods={52}
+      endpoints={43}
+      sdkMethods={53}
       schemas={99}
-      parameters={102}
+      parameters={105}
       difficulty="Easy"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/quivr/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/quivr/openapi.yaml"

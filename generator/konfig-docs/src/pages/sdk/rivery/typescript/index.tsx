@@ -25,7 +25,7 @@ If you're looking to accelerate your time to value, get in touch today.`}
       companyKebabCase="rivery"
       clientNameCamelCase="rivery"
       homepage="rivery.io"
-      lastUpdated={new Date("2024-03-29T23:26:19.590Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/rivery/favicon.png"
       contactUrl="https://docs.rivery.io/"
       contactEmail="contact@rivery.io"
@@ -3162,9 +3162,9 @@ If you're looking to accelerate your time to value, get in touch today.`}
       apiBaseUrl="https://api.rivery.io"
       apiVersion="1.0.0"
       endpoints={42}
-      sdkMethods={57}
+      sdkMethods={60}
       schemas={209}
-      parameters={289}
+      parameters={302}
       difficulty="Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/rivery/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/rivery/openapi.yaml"

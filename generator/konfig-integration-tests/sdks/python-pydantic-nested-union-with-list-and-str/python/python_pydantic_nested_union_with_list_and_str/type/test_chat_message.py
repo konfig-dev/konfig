@@ -23,7 +23,7 @@ class RequiredTestChatMessage(TypedDict):
 
 class OptionalTestChatMessage(TypedDict, total=False):
     # The test content of the message.
-    testContent: typing.Union[str, typing.List[typing.Union[typing.List[GenericTextContent], typing.List[GenericImageContent]]]]
+    testContent: typing.Union[str, typing.List[typing.Union[GenericTextContent, GenericImageContent]]]
 
 class TestChatMessage(RequiredTestChatMessage, OptionalTestChatMessage):
     pass

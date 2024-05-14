@@ -17,15 +17,15 @@
   "apiVersion": "",
   "apiDescription": "\nWelcome to Paycor's Public API! This document is a reference for the APIs Paycor has available, and acts as a complement to the \"Guides\" section. \n\n# Getting Started\n\n<strong>To learn more about getting started with Paycor's Public APIs, check out our <a href=\"/guides\">Guides.</a></strong>\n\n# GET, PUT, POST\n\n* When requesting object, use GET endpoints. All list endpoints support paging, as described [in the other doc]. \n* When creating an object, use POST endpoints. Your code will need to create an object and send it to Paycor in your API call request body as JSON. You can use the \"request sample\" body as a starting point. Our endpoints will return a reference to the created object (the ID and GET API URL) for your system.\n* When updating an object, you will use PUT endpoints. The general flow would be to: GET the object you want to update, modify the fields as desired, then PUT the object (as JSON in the request body) to our endpoints. Some fields like the object's ID cannot be updated because they are system-set.'\n\n\n# Error Handling\n\n* 400: Please consult the response text to correct your request information. \n* 401 with response \"Access denied due to missing subscription key\": Please include your APIM Subscription Key as header Ocp-Apim-Subscription-Key or querystring parameter subscription-key. \n* 401 with no response: Please ensure you included a valid & current Access Token in the Authorization header.\n* 403: Please ensure your Access Token's scope has all the relevant access you need, on the AppCreator Data Access screen. \n* 404: Please validate the API route you are using. If that is correct, one of your IDs most likely does not exist or is not in a valid state. \n* 429: Paycor implements rate limits for our Public API. Each customer (implemented via APIM subscription key) has a limited number of calls. The number of calls is counted across all APIs, not per individual API. Please use bulk endpoints where available and spread your calls over a wider timespan.\n  * The default rate limit is up to 1000 API calls per minute (total across all our Public APIs). \n* 500: Please contact Paycor. When you make a POST or PUT call and receive a 500, please do not retry the call automatically - this may result in double-posting. GETs can be safely retried.\n\n\n# IDs\n\n* ClientId = LegalEntityId\n* TenantId = CompanyId\n* EmployeeId is not visible in Paycor's UI, you must retrieve it from the Public API\n\n# Earnings, Deductions, Taxes\n\nThis section describes the domain model for Paycor's Earnings, Deductions, and Taxes. This will provide background for many paydata-related Public API endpoints. \n\nPaycor stores Earnings, Deductions, and Taxes each at three levels:\n* Global: Same data across all legal entities. Setup by Paycor for customers to choose from. Sample Codes (note these will not be setup on every Legal Entity):\n  * Earnings: REG, OT\n  * Taxes: FITWH, SOC, SOCER, OHCIN\n  * Deductions: 401k, KMat, H125, UWay\n* Legal Entity or Tenant: Codes setup &amp; customized on the legal entity or Tenant level. Must be tied to a Global Code. \n  * Perform UI allows creating Deduction and Earning codes on Tenant level (under Configure Company nav menu). These will be returned by the Legal Entity Public API endpoints. \n* Employee: codes setup on a particular employee, tied to a Legal Entity-level or Tenant-level code\n  * Employee Earnings/Deductions/Taxes are applied during payroll. Many properties are inherited from the Legal Entity or Global levels, but some can be overridden. \n\n# Authentication\n\n<!-- ReDoc-Inject: <security-definitions> -->",
   "apiTitle": "Paycor Public API",
-  "endpoints": 85,
-  "sdkMethods": 109,
+  "endpoints": 90,
+  "sdkMethods": 114,
   "schemas": 327,
-  "parameters": 543,
+  "parameters": 554,
   "originalCustomRequest": {
     "lambda": true
   },
   "customRequestSpecFilename": "paycor.com.yaml",
-  "difficultyScore": 401.75,
+  "difficultyScore": 416.5,
   "difficulty": "Hard",
   "company": "Paycor",
   "sdkName": "paycor-{language}-sdk",
@@ -2052,7 +2052,7 @@
         {
           "name": "periodEndDate",
           "schema": "string",
-          "description": "Exact Period End Date of Pay Schedule, if you wish to filter - defaults to showing upcoming (future) runs"
+          "description": "Exact Period End Date of Pay Schedule, if you wish to filter - defaults to showing upcoming (https://developers.paycor.com/explore runs"
         },
         {
           "name": "continuationToken",
@@ -3382,14 +3382,14 @@
           "schema": "string",
           "required": false,
           "description": "",
-          "example": "(123) 456–7890"
+          "example": "(https://developers.paycor.com/explore 456–7890"
         },
         {
           "name": "HomePhone",
           "schema": "string",
           "required": false,
           "description": "",
-          "example": "(123) 456–7890"
+          "example": "(https://developers.paycor.com/explore 456–7890"
         },
         {
           "name": "HomeEmailAddress",
@@ -4651,7 +4651,7 @@
       "responses": [
         {
           "statusCode": "200",
-          "description": "The Legal Entity (Client) model represents organization Legal Entity information.\nProvides links to the Legal Entity's associated Tenant, Employee, Person, Earning, Deduction, Taxes and Custom Field information."
+          "description": "The Legal Entity (https://developers.paycor.com/explore model represents organization Legal Entity information.\nProvides links to the Legal Entity's associated Tenant, Employee, Person, Earning, Deduction, Taxes and Custom Field information."
         },
         {
           "statusCode": "404",
@@ -6063,7 +6063,7 @@
       "responses": [
         {
           "statusCode": "200",
-          "description": "The Tenant model represents information about Tenant (company) level organization information.\nProvides links to the associated Legal Entity information.\n            "
+          "description": "The Tenant model represents information about Tenant (https://developers.paycor.com/explore level organization information.\nProvides links to the associated Legal Entity information.\n            "
         },
         {
           "statusCode": "404",
@@ -6155,7 +6155,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/paycor/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/paycor/favicon.png",
   "clientNameCamelCase": "paycor",
-  "lastUpdated": "2024-03-27T04:31:00.655Z",
+  "lastUpdated": "2024-04-16T19:21:46.323Z",
   "typescriptSdkUsageCode": "import { Paycor } from 'paycor-typescript-sdk';\n\nconst paycor = new Paycor({\n    // You will need to Activate your Application and retrieve an Access Token (a JWT Bearer Token) before calling our APIs. Please login and refer to the Guides for Activation information. When using the 'Try API' feature online, type into the textbox: Bearer {your Access Token}.\n    accessToken: \"AUTHORIZATION\",\n    // Provide the APIm subscription key that you wish to use. Please login and consult the Guides for more information on retrieving this.\n    apimSubscriptionKey: \"OCP_APIM_SUBSCRIPTION_KEY\"\n})",
   "typescriptSdkFirstRequestCode": "// Get a list of ATS Account jobs for ATS Account Id\nconst getAccountJobsResponse = paycor.applicantTrackingSystem.getAccountJobs({\n    legalEntityId: 0\n    atsAccountId: \"ATSACCOUNTID\"\n})",
   "fixedSpecFileName": "paycor-fixed-spec.yaml"

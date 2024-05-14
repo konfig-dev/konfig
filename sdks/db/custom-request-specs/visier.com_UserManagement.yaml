@@ -5,7 +5,7 @@ info:
   license:
     name: Apache License, Version 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0
-  version: 22222222.99201.1227
+  version: 22222222.99201.1256
 paths:
   /v1/admin/permissions/users:
     put:
@@ -1514,7 +1514,9 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UserCreationAPIRequestDTO'
-          description: A list of objects representing users to create.
+          description: >-
+            A list of objects representing users to create. Maximum 100 users
+            can be created in a single request.
     UsersDeleteAPIRequestDTO:
       type: object
       properties:
@@ -1522,7 +1524,9 @@ components:
           type: array
           items:
             type: string
-          description: A list of objects representing users to delete.
+          description: >-
+            A list of objects representing users to delete. Maximum 100 users
+            can be deleted in a single request.
     UsersToUserGroupRequestDTO:
       type: object
       properties:
@@ -1553,6 +1557,9 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UsersUpdateAPIUserDTO'
+          description: >-
+            A list of objects representing users to update. Maximum 100 users
+            can be updated in a single request.
     UsersUpdateAPIUserDTO:
       type: object
       properties:

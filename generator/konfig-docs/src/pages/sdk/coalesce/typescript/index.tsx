@@ -17,7 +17,7 @@ export default function CoalesceTypeScriptSdk() {
       companyKebabCase="coalesce"
       clientNameCamelCase="coalesce"
       homepage="coalesce.io/"
-      lastUpdated={new Date("2024-03-27T01:23:25.425Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/coalesce/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -403,7 +403,7 @@ export default function CoalesceTypeScriptSdk() {
         "name": "startingFrom",
         "schema": "undefined",
         "required": false,
-        "description": "The starting run ID, runStartTime, or runEndTime (exclusive) for paging the query results."
+        "description": "The starting run ID, runStartTime, or runEndTime (https://docs.coalesce.io/ for paging the query results."
       },
       {
         "name": "orderBy",
@@ -593,9 +593,9 @@ export default function CoalesceTypeScriptSdk() {
 ]
     }
       language="TypeScript"
-      apiTitle="Coalesce API"
+      apiTitle="Jobs"
       apiBaseUrl="https://app.coalescesoftware.io"
-      apiVersion="1.0.0"
+      apiVersion="6.2"
       endpoints={11}
       sdkMethods={32}
       schemas={67}

@@ -109,6 +109,7 @@ p.result[3] # [Faraday::Response] Raw HTTP response
 
 
 ### `snaptrade.account_information.get_all_user_holdings`<a id="snaptradeaccount_informationget_all_user_holdings"></a>
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 List all accounts for the user, plus balances, positions, and orders for each account.
 
@@ -1508,6 +1509,7 @@ Canceled
 
 
 ### `snaptrade.trading.place_oco_order`<a id="snaptradetradingplace_oco_order"></a>
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 Place a OCO (One Cancels Other) order
 
@@ -1638,6 +1640,7 @@ FXT
 
 
 ### `snaptrade.transactions_and_reporting.get_reporting_custom_range`<a id="snaptradetransactions_and_reportingget_reporting_custom_range"></a>
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 Returns performance information (contributions, dividends, rate of return, etc) for a specific timeframe. Please note that Total Equity Timeframe and Rate of Returns are experimental features. Please contact support@snaptrade.com if you notice any inconsistencies.
 

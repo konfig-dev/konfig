@@ -19,7 +19,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
       companyKebabCase="insightly"
       clientNameCamelCase="insightly"
       homepage="insightly.com"
-      lastUpdated={new Date("2024-03-27T20:29:17.115Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/insightly/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -1423,7 +1423,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -1470,7 +1470,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A record's ID (RECORD_ID)",
+        "description": "A record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -1517,7 +1517,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -1564,7 +1564,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -1578,7 +1578,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "format",
         "schema": "string",
         "required": false,
-        "description": "Binary(default) or JSON"
+        "description": "Binary(https://api.na1.insightly.com/v3.1 or JSON"
       },
       {
         "name": "authorization",
@@ -2271,7 +2271,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -2318,7 +2318,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A record's ID (RECORD_ID)",
+        "description": "A record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -2365,7 +2365,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -2412,7 +2412,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -2426,7 +2426,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "format",
         "schema": "string",
         "required": false,
-        "description": "Binary(default) or JSON"
+        "description": "Binary(https://api.na1.insightly.com/v3.1 or JSON"
       },
       {
         "name": "authorization",
@@ -3215,7 +3215,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -3262,7 +3262,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A record's ID (RECORD_ID)",
+        "description": "A record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -3309,7 +3309,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -3356,7 +3356,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -3370,7 +3370,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "format",
         "schema": "string",
         "required": false,
-        "description": "Binary(default) or JSON"
+        "description": "Binary(https://api.na1.insightly.com/v3.1 or JSON"
       },
       {
         "name": "authorization",
@@ -4631,7 +4631,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -4678,7 +4678,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A record's ID (RECORD_ID)",
+        "description": "A record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -4725,7 +4725,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -5152,7 +5152,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -5244,7 +5244,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -5336,14 +5336,14 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
         "name": "linkId",
         "schema": "integer",
         "required": true,
-        "description": "A Link's ID (LINK_ID)",
+        "description": "A Link's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -5390,7 +5390,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -5404,7 +5404,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "format",
         "schema": "string",
         "required": false,
-        "description": "Binary(default) or JSON"
+        "description": "Binary(https://api.na1.insightly.com/v3.1 or JSON"
       },
       {
         "name": "authorization",
@@ -6031,7 +6031,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -6110,7 +6110,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -6184,7 +6184,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -7428,7 +7428,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -7475,7 +7475,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A record's ID (RECORD_ID)",
+        "description": "A record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -7522,7 +7522,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -7616,7 +7616,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -7708,14 +7708,14 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
         "name": "linkId",
         "schema": "integer",
         "required": true,
-        "description": "A Link's ID (LINK_ID)",
+        "description": "A Link's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -8706,7 +8706,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -8798,14 +8798,14 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
         "name": "linkId",
         "schema": "integer",
         "required": true,
-        "description": "A Link's ID (LINK_ID)",
+        "description": "A Link's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -8852,7 +8852,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -8866,7 +8866,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "format",
         "schema": "string",
         "required": false,
-        "description": "Binary(default) or JSON"
+        "description": "Binary(https://api.na1.insightly.com/v3.1 or JSON"
       },
       {
         "name": "authorization",
@@ -9085,7 +9085,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "format",
         "schema": "string",
         "required": false,
-        "description": "Binary(default) or JSON"
+        "description": "Binary(https://api.na1.insightly.com/v3.1 or JSON"
       },
       {
         "name": "authorization",
@@ -9570,7 +9570,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -9617,7 +9617,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A record's ID (RECORD_ID)",
+        "description": "A record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -9664,7 +9664,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -10156,7 +10156,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -10203,7 +10203,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A record's ID (RECORD_ID)",
+        "description": "A record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -10250,7 +10250,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -10474,7 +10474,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -10488,7 +10488,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "format",
         "schema": "string",
         "required": false,
-        "description": "Binary(default) or JSON"
+        "description": "Binary(https://api.na1.insightly.com/v3.1 or JSON"
       },
       {
         "name": "authorization",
@@ -11408,7 +11408,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -11422,7 +11422,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "format",
         "schema": "string",
         "required": false,
-        "description": "Binary(default) or JSON"
+        "description": "Binary(https://api.na1.insightly.com/v3.1 or JSON"
       },
       {
         "name": "authorization",
@@ -11828,7 +11828,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -11842,7 +11842,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "format",
         "schema": "string",
         "required": false,
-        "description": "Binary(default) or JSON"
+        "description": "Binary(https://api.na1.insightly.com/v3.1 or JSON"
       },
       {
         "name": "authorization",
@@ -12918,7 +12918,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -12965,7 +12965,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A record's ID (RECORD_ID)",
+        "description": "A record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -13012,7 +13012,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -13486,7 +13486,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -13578,7 +13578,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -13670,14 +13670,14 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
         "name": "linkId",
         "schema": "integer",
         "required": true,
-        "description": "A Link's ID (LINK_ID)",
+        "description": "A Link's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -13724,7 +13724,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -13738,7 +13738,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "format",
         "schema": "string",
         "required": false,
-        "description": "Binary(default) or JSON"
+        "description": "Binary(https://api.na1.insightly.com/v3.1 or JSON"
       },
       {
         "name": "authorization",
@@ -14299,7 +14299,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -14378,7 +14378,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -14452,7 +14452,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -16520,7 +16520,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -16567,7 +16567,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A record's ID (RECORD_ID)",
+        "description": "A record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -16614,7 +16614,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -16708,7 +16708,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -16800,14 +16800,14 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
         "name": "linkId",
         "schema": "integer",
         "required": true,
-        "description": "A Link's ID (LINK_ID)",
+        "description": "A Link's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -17770,7 +17770,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -17817,7 +17817,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A record's ID (RECORD_ID)",
+        "description": "A record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -17864,7 +17864,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -18338,7 +18338,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -18430,7 +18430,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -18522,14 +18522,14 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
         "name": "linkId",
         "schema": "integer",
         "required": true,
-        "description": "A Link's ID (LINK_ID)",
+        "description": "A Link's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -18576,7 +18576,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -18590,7 +18590,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "format",
         "schema": "string",
         "required": false,
-        "description": "Binary(default) or JSON"
+        "description": "Binary(https://api.na1.insightly.com/v3.1 or JSON"
       },
       {
         "name": "authorization",
@@ -19037,7 +19037,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -19116,7 +19116,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -19190,7 +19190,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -22313,7 +22313,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -22360,7 +22360,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A record's ID (RECORD_ID)",
+        "description": "A record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -22407,7 +22407,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -22834,7 +22834,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -22926,7 +22926,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -23018,14 +23018,14 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
         "name": "linkId",
         "schema": "integer",
         "required": true,
-        "description": "A Link's ID (LINK_ID)",
+        "description": "A Link's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -23072,7 +23072,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -23086,7 +23086,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "format",
         "schema": "string",
         "required": false,
-        "description": "Binary(default) or JSON"
+        "description": "Binary(https://api.na1.insightly.com/v3.1 or JSON"
       },
       {
         "name": "authorization",
@@ -23595,7 +23595,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -23674,7 +23674,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -23748,7 +23748,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -24735,7 +24735,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -24782,7 +24782,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A record's ID (RECORD_ID)",
+        "description": "A record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -24829,7 +24829,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -24876,7 +24876,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -24890,7 +24890,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "format",
         "schema": "string",
         "required": false,
-        "description": "Binary(default) or JSON"
+        "description": "Binary(https://api.na1.insightly.com/v3.1 or JSON"
       },
       {
         "name": "authorization",
@@ -26096,7 +26096,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -26143,7 +26143,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A record's ID (RECORD_ID)",
+        "description": "A record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -26190,7 +26190,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -26570,7 +26570,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -26584,7 +26584,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "format",
         "schema": "string",
         "required": false,
-        "description": "Binary(default) or JSON"
+        "description": "Binary(https://api.na1.insightly.com/v3.1 or JSON"
       },
       {
         "name": "authorization",
@@ -28088,7 +28088,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -28135,7 +28135,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A record's ID (RECORD_ID)",
+        "description": "A record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -28182,7 +28182,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -28656,7 +28656,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -28748,7 +28748,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -28840,14 +28840,14 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
         "name": "linkId",
         "schema": "integer",
         "required": true,
-        "description": "A Link's ID (LINK_ID)",
+        "description": "A Link's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -28894,7 +28894,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -28908,7 +28908,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "format",
         "schema": "string",
         "required": false,
-        "description": "Binary(default) or JSON"
+        "description": "Binary(https://api.na1.insightly.com/v3.1 or JSON"
       },
       {
         "name": "authorization",
@@ -29226,7 +29226,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "milestoneId",
         "schema": "integer",
         "required": true,
-        "description": "A Milestone's ID (MILESTONE_ID)",
+        "description": "A Milestone's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -29606,7 +29606,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -29685,7 +29685,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -29759,7 +29759,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -30997,7 +30997,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -31044,7 +31044,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A record's ID (RECORD_ID)",
+        "description": "A record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -31091,7 +31091,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -31315,7 +31315,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -31329,7 +31329,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "format",
         "schema": "string",
         "required": false,
-        "description": "Binary(default) or JSON"
+        "description": "Binary(https://api.na1.insightly.com/v3.1 or JSON"
       },
       {
         "name": "authorization",
@@ -32524,7 +32524,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -32571,7 +32571,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A record's ID (RECORD_ID)",
+        "description": "A record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -32618,7 +32618,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -32842,7 +32842,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -32856,7 +32856,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "format",
         "schema": "string",
         "required": false,
-        "description": "Binary(default) or JSON"
+        "description": "Binary(https://api.na1.insightly.com/v3.1 or JSON"
       },
       {
         "name": "authorization",
@@ -35361,7 +35361,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -35408,7 +35408,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A record's ID (RECORD_ID)",
+        "description": "A record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -35455,7 +35455,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -35726,7 +35726,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -35818,14 +35818,14 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
         "name": "linkId",
         "schema": "integer",
         "required": true,
-        "description": "A Link's ID (LINK_ID)",
+        "description": "A Link's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -35872,7 +35872,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -35886,7 +35886,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "format",
         "schema": "string",
         "required": false,
-        "description": "Binary(default) or JSON"
+        "description": "Binary(https://api.na1.insightly.com/v3.1 or JSON"
       },
       {
         "name": "authorization",
@@ -36157,7 +36157,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Team Member's ID (PERMISSION_ID)",
+        "description": "A Team Member's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -36204,7 +36204,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Team Member's ID (PERMISSION_ID)",
+        "description": "A Team Member's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -36516,7 +36516,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Team's ID (TEAM_ID)",
+        "description": "A Team's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -36578,14 +36578,14 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Team's ID (TEAM_ID)",
+        "description": "A Team's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
         "name": "permissionId",
         "schema": "integer",
         "required": true,
-        "description": "A Team Members's ID (PERMISSION_ID)",
+        "description": "A Team Members's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -37119,7 +37119,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -37166,7 +37166,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A record's ID (RECORD_ID)",
+        "description": "A record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -37213,7 +37213,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -37489,7 +37489,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "id",
         "schema": "integer",
         "required": true,
-        "description": "A Record's ID (RECORD_ID)",
+        "description": "A Record's ID (https://api.na1.insightly.com/v3.1",
         "example": 0
       },
       {
@@ -37503,7 +37503,7 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
         "name": "format",
         "schema": "string",
         "required": false,
-        "description": "Binary(default) or JSON"
+        "description": "Binary(https://api.na1.insightly.com/v3.1 or JSON"
       },
       {
         "name": "authorization",
@@ -38104,10 +38104,10 @@ Founded in 2009 and based in San Francisco, Insightly is backed by $38 million i
       apiTitle="Insightly API v3.1"
       apiBaseUrl="https://api.insightly.com/v3.1"
       apiVersion="v3.1"
-      endpoints={343}
-      sdkMethods={577}
+      endpoints={323}
+      sdkMethods={557}
       schemas={787}
-      parameters={3110}
+      parameters={3070}
       difficulty="Very Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/insightly/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/insightly/openapi.yaml"

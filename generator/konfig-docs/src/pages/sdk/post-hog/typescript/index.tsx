@@ -26,7 +26,7 @@ With over 50k users, we're default alive, growing 97% through word of mouth, and
       companyKebabCase="post-hog"
       clientNameCamelCase="postHog"
       homepage="posthog.com"
-      lastUpdated={new Date("2024-03-25T20:47:15.965Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/posthog/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -12528,12 +12528,12 @@ With over 50k users, we're default alive, growing 97% through word of mouth, and
       {
         "name": "select",
         "schema": "array",
-        "description": "(Experimental) JSON-serialized array of HogQL expressions to return"
+        "description": "(https://posthog.com/docs JSON-serialized array of HogQL expressions to return"
       },
       {
         "name": "where",
         "schema": "array",
-        "description": "(Experimental) JSON-serialized array of HogQL expressions that must pass"
+        "description": "(https://posthog.com/docs JSON-serialized array of HogQL expressions that must pass"
       }
     ],
     "responses": [
@@ -23016,7 +23016,7 @@ With over 50k users, we're default alive, growing 97% through word of mouth, and
     "httpMethod": HttpMethodsEnum.DELETE,
     "tag": "query",
     "typeScriptTag": "query",
-    "description": "(Experimental)",
+    "description": "(https://posthog.com/docs",
     "parameters": [
       {
         "name": "id",
@@ -23046,7 +23046,7 @@ With over 50k users, we're default alive, growing 97% through word of mouth, and
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "query",
     "typeScriptTag": "query",
-    "description": "(Experimental)",
+    "description": "(https://posthog.com/docs",
     "parameters": [
       {
         "name": "id",
@@ -26480,10 +26480,10 @@ With over 50k users, we're default alive, growing 97% through word of mouth, and
       apiTitle="PostHog API"
       apiBaseUrl="https://app.posthog.com"
       apiVersion="null"
-      endpoints={240}
-      sdkMethods={390}
+      endpoints={238}
+      sdkMethods={388}
       schemas={377}
-      parameters={3268}
+      parameters={3263}
       difficulty="Very Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/posthog/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/posthog/openapi.yaml"

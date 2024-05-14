@@ -1,0 +1,29 @@
+<div class="flex h-full">
+  <div class="flex-1 flex flex-col border-r border-l">
+    {% include "custom_form.html" %}
+    <form class="flex-1 flex flex-col justify-between bg-slate-50 p-4 shadow-inner"
+          {% if current_chat %} hx-post="{% url 'specific_chat_view' current_chat.chat_id %}" hx-target="#chatbox" {% else %} hx-post="{% url 'chat_view' %}" hx-target="#app" {% endif %}
+          hx-on::before-request="this.reset()">
+      <h2 class="font-bold text-slate-400 text-xl mb-4">Chat</h2>
+      <div>
+        {% include "chatbox.html" %}
+        <div class="my-indicator"></div>
+      </div>
+      <div>
+        {% csrf_token %}
+        {% if current_chat %}<input type="hidden" name="chat_id" value="{{ current_chat.id }}" />{% endif %}
+        <div class="flex flex-col gap-1">
+          <input disabled
+                 placeholder="Ask a question"
+                 class="input input-bordered w-full"
+                 type="text"
+                 name="message" />
+          <button class="btn btn-primary" disabled="disabled" type="submit">Generate Guide</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="flex-1 bg-slate-50 p-4 shadow-inner">
+    <h2 class="font-bold text-slate-400 text-xl mb-4">Guide</h2>
+  </div>
+</div>

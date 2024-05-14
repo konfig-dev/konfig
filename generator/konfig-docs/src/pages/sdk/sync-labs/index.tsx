@@ -4,7 +4,7 @@ import { Company } from '../../../components/Company';
 const sdks = [
   {
     "name": "sync. labs",
-    "numberOfMethods": 18,
+    "numberOfMethods": 19,
     "categories": [
       "ai",
       "audio_generation",
@@ -20,7 +20,7 @@ const sdks = [
   },
   {
     "name": "sync. labs",
-    "numberOfMethods": 18,
+    "numberOfMethods": 19,
     "categories": [
       "ai",
       "audio_generation",
@@ -36,7 +36,7 @@ const sdks = [
   },
   {
     "name": "sync. labs",
-    "numberOfMethods": 18,
+    "numberOfMethods": 19,
     "categories": [
       "ai",
       "audio_generation",

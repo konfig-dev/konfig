@@ -1,4 +1,4 @@
-hash: 2b355d3f5eb9f99bec27c39ca7458a99ec8cbc8abc0b49b8404f5380438fc27e
+hash: bcdbd1a8e2e306a118c2d7ceeed39483b6397cc458b58cba7ae11ad36b23c036
 methodObjects:
   - url: /v2/annotation_filters
     method: deleteAnnotationFilters2
@@ -2212,9 +2212,6 @@ methodObjects:
            - MODULE_DOES_NOT_EXIST: Module related codes 253xx
            - BULK_OPERATION_SUCCESS: Bulk Operation related codes 254xx
            - RUNNER_DOES_NOT_EXIST: Runner related codes 256xx
-           - RUNNER_METHOD_UNARY: signal to runner to use unary method.
-           - RUNNER_METHOD_GENERATE: signal to runner to use generate method to stream responses
-           - RUNNER_METHOD_STREAM: signal to runner to use bi-directional streaming.
            - INPUT_DOWNLOAD_SUCCESS: Input:Image related 30xxx
            - INPUT_DOWNLOAD_PENDING: when things are async, this is the default status.
            - INPUT_DOWNLOAD_FAILED: any type of error downloading and processing
@@ -8875,9 +8872,6 @@ methodObjects:
            - MODULE_DOES_NOT_EXIST: Module related codes 253xx
            - BULK_OPERATION_SUCCESS: Bulk Operation related codes 254xx
            - RUNNER_DOES_NOT_EXIST: Runner related codes 256xx
-           - RUNNER_METHOD_UNARY: signal to runner to use unary method.
-           - RUNNER_METHOD_GENERATE: signal to runner to use generate method to stream responses
-           - RUNNER_METHOD_STREAM: signal to runner to use bi-directional streaming.
            - INPUT_DOWNLOAD_SUCCESS: Input:Image related 30xxx
            - INPUT_DOWNLOAD_PENDING: when things are async, this is the default status.
            - INPUT_DOWNLOAD_FAILED: any type of error downloading and processing
@@ -15439,7 +15433,8 @@ methodObjects:
         description: ''
       - statusCode: default
         description: ''
-  - url: /v2/users/{userAppId.userId}/runners/{runnerId}/items/{itemId}/outputs
+  - url: >-
+      /v2/users/{userAppId.userId}/runners/{runnerId}/items/{runnerItemId}/outputs
     method: postRunnerItemOutputs
     httpMethod: post
     tag: V2
@@ -15460,11 +15455,11 @@ methodObjects:
         required: true
         description: The particular runner that processed the work.
         example: RUNNERID
-      - name: itemId
+      - name: runnerItemId
         schema: string
         required: true
         description: The particular item of work processed.
-        example: ITEMID
+        example: RUNNERITEMID
       - name: userAppId
         schema: object
         description: ''
@@ -16240,7 +16235,7 @@ methodObjects:
         description: ''
       - statusCode: default
         description: ''
-numberOfSchemas: 541
+numberOfSchemas: 543
 apiDescription: >-
   Clarifai is an independent artificial intelligence company that specializes in
   computer vision, natural language processing, and audio recognition.  One of

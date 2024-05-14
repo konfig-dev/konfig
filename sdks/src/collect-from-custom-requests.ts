@@ -191,7 +191,7 @@ const customRequests: Record<string, CustomRequest> = {
   "xyte.io": {
     lambda: async () => {
       const urls = await collectEndpointsFromReadme({
-        url: "https://dev.xyte.io/reference/api-endpoints-1",
+        url: "https://dev.xyte.io/reference",
       });
       return downloadOpenApiSpecFromReadme({ urls });
     },
@@ -199,7 +199,7 @@ const customRequests: Record<string, CustomRequest> = {
   "hyperplane.ai": {
     lambda: async () => {
       const urls = await collectEndpointsFromReadme({
-        url: "https://docs.hyperplane.ai/reference/post_auth-token",
+        url: "https://docs.hyperplane.ai/reference",
       });
       return downloadOpenApiSpecFromReadme({ urls });
     },
@@ -337,7 +337,7 @@ const customRequests: Record<string, CustomRequest> = {
   "beamable.com": {
     lambda: async () => {
       const urls = await collectEndpointsFromReadme({
-        url: "https://docs.beamable.com/reference/overview",
+        url: "https://docs.beamable.com/reference",
       });
       return downloadOpenApiSpecFromReadme({ urls });
     },
@@ -345,7 +345,7 @@ const customRequests: Record<string, CustomRequest> = {
   "breezy.hr": {
     lambda: async () => {
       const urls = await collectEndpointsFromReadme({
-        url: "https://developer.breezy.hr/reference/signin",
+        url: "https://developer.breezy.hr/reference",
       });
       return downloadOpenApiSpecFromReadme({ urls });
     },
@@ -372,7 +372,7 @@ const customRequests: Record<string, CustomRequest> = {
   "bamboohr.com": {
     lambda: async () => {
       const urls = await collectEndpointsFromReadme({
-        url: "https://documentation.bamboohr.com/reference/get-employee",
+        url: "https://documentation.bamboohr.com/reference",
       });
       return downloadOpenApiSpecFromReadme({ urls });
     },
@@ -534,7 +534,7 @@ const customRequests: Record<string, CustomRequest> = {
   "baremetrics.com": {
     lambda: async () => {
       const urls = await collectEndpointsFromReadme({
-        url: "https://developers.baremetrics.com/reference/get-account",
+        url: "https://developers.baremetrics.com/reference",
       });
       console.log(urls);
       return downloadOpenApiSpecFromReadme({ urls });
@@ -547,7 +547,7 @@ const customRequests: Record<string, CustomRequest> = {
   "seel.com": {
     lambda: async () => {
       const urls = await collectEndpointsFromReadme({
-        url: "https://developer.seel.com/reference/createmerchant",
+        url: "https://developer.seel.com/reference",
       });
       return downloadOpenApiSpecFromReadme({ urls });
     },
@@ -555,7 +555,7 @@ const customRequests: Record<string, CustomRequest> = {
   "notion.com": {
     lambda: async () => {
       const urls = await collectEndpointsFromReadme({
-        url: "https://developers.notion.com/reference/create-a-database",
+        url: "https://developers.notion.com/reference",
       });
       return downloadOpenApiSpecFromReadme({ urls });
     },
@@ -697,7 +697,7 @@ const customRequests: Record<string, CustomRequest> = {
   "suprsend.com": {
     lambda: async () => {
       const urls = await collectEndpointsFromReadme({
-        url: "https://docs.suprsend.com/reference/overview",
+        url: "https://docs.suprsend.com/reference",
       });
       return downloadOpenApiSpecFromReadme({ urls });
     },
@@ -792,38 +792,10 @@ const customRequests: Record<string, CustomRequest> = {
   },
   "paylocity.com_weblink": {
     lambda: async () => {
-      const rawSpecString = await fetch(
-        "https://developer.paylocity.com/integrations/reference/add-employee?json=on",
-        {
-          headers: {
-            accept: "*/*",
-            "accept-language": "en-US,en;q=0.9",
-            "cache-control": "no-cache",
-            pragma: "no-cache",
-            "sec-ch-ua": '"Not_A Brand";v="8", "Chromium";v="120"',
-            "sec-ch-ua-mobile": "?0",
-            "sec-ch-ua-platform": '"macOS"',
-            "sec-fetch-dest": "empty",
-            "sec-fetch-mode": "cors",
-            "sec-fetch-site": "same-origin",
-            "sentry-trace":
-              "881ac93cc8ba4055af185bdbe9b03eb1-a843912c87ed9d39-0",
-            "x-requested-with": "XMLHttpRequest",
-            cookie:
-              "ekfls=a6ff2e0e-b152-46a9-8ba7-87e557e92053; cf_clearance=bvqKh8aSTOy54p2_IpW3KHRIhZLWXq9N8pIkhY9NvUk-1706916425-1-Aaui19FSzqSBA0o6+swFR+abGo9XudzgfMEfuewJti4sUgY3ahKx8XbGGYssdIHQ9LRMUF3t5PeDnDVnkqqDtf4=; ARRAffinity=63995d25f48e1ae329d94d56f78f963bebcfdec0bf2164c5175c25d1a9b15940; ARRAffinitySameSite=63995d25f48e1ae329d94d56f78f963bebcfdec0bf2164c5175c25d1a9b15940; at_check=true; mbox=session#d18d2ec1a2274b17ace7470fd5b08297#1706918653|PC#d18d2ec1a2274b17ace7470fd5b08297.35_0#1770161593",
-            Referer:
-              "https://developer.paylocity.com/integrations/reference/add-employee",
-            "Referrer-Policy": "strict-origin-when-cross-origin",
-          },
-          body: null,
-          method: "GET",
-        }
-      ).then((response) => response.text());
-      const rawSpec = JSON.parse(rawSpecString);
-      if (rawSpec.oasDefinition !== undefined) {
-        return JSON.stringify(rawSpec.oasDefinition);
-      }
-      throw Error("Expecting oasDefinition to be defined");
+      const urls = await collectEndpointsFromReadme({
+        url: "https://developer.paylocity.com/integrations/reference",
+      });
+      return downloadOpenApiSpecFromReadme({ urls });
     },
   },
   "onelogin.com": {
@@ -1086,7 +1058,7 @@ const customRequests: Record<string, CustomRequest> = {
   "hibob.com": {
     lambda: async () => {
       const urls = await collectEndpointsFromReadme({
-        url: "https://apidocs.hibob.com/reference/post_people-search",
+        url: "https://apidocs.hibob.com/reference",
       });
       return downloadOpenApiSpecFromReadme({ urls });
     },
@@ -1094,7 +1066,7 @@ const customRequests: Record<string, CustomRequest> = {
   "slope.so": {
     lambda: async () => {
       const urls = await collectEndpointsFromReadme({
-        url: "https://developers.slope.so/reference/createorder",
+        url: "https://developers.slope.so/reference",
       });
       return downloadOpenApiSpecFromReadme({ urls });
     },
@@ -1136,7 +1108,7 @@ const customRequests: Record<string, CustomRequest> = {
   "factorialhr.com": {
     lambda: async () => {
       const urls = await collectEndpointsFromReadme({
-        url: "https://apidoc.factorialhr.com/reference/core-employees-v1",
+        url: "https://apidoc.factorialhr.com/reference",
       });
       return downloadOpenApiSpecFromReadme({ urls });
     },
@@ -1465,31 +1437,31 @@ const customRequests: Record<string, CustomRequest> = {
     type: "GET",
     url: "https://raw.githubusercontent.com/inducedai/docs/main/openapi.json",
   },
-  "tavus.io": {
-    lambda: async () => {
-      const urls = await collectEndpointsFromMintlify({
-        url: "https://docs.tavusapi.com/api-reference/phoenix-replica-model/create-replica",
-      });
-      return downloadOpenApiSpecFromMintlify({ urls });
-    },
-  },
-  "pulze.ai": {
-    lambda: async () => {
-      const urls = await collectEndpointsFromMintlify({
-        url: "https://docs.pulze.ai/api-reference/chat-completions",
-      });
-      return downloadOpenApiSpecFromMintlify({ urls });
-    },
-    apiBaseUrl: "https://api.pulze.ai",
-  },
-  "getpartna.com": {
-    lambda: async () => {
-      const urls = await collectEndpointsFromMintlify({
-        url: "https://docs.getpartna.com/api-reference/endpoint/biz/retrieve-users-transaction-records",
-      });
-      return downloadOpenApiSpecFromMintlify({ urls });
-    },
-  },
+  // "tavus.io": {
+  //   lambda: async () => {
+  //     const urls = await collectEndpointsFromMintlify({
+  //       url: "https://docs.tavusapi.com/api-reference/phoenix-replica-model/create-replica",
+  //     });
+  //     return downloadOpenApiSpecFromMintlify({ urls });
+  //   },
+  // },
+  // "pulze.ai": {
+  //   lambda: async () => {
+  //     const urls = await collectEndpointsFromMintlify({
+  //       url: "https://docs.pulze.ai/api-reference/chat-completions",
+  //     });
+  //     return downloadOpenApiSpecFromMintlify({ urls });
+  //   },
+  //   apiBaseUrl: "https://api.pulze.ai",
+  // },
+  // "getpartna.com": {
+  //   lambda: async () => {
+  //     const urls = await collectEndpointsFromMintlify({
+  //       url: "https://docs.getpartna.com/api-reference/endpoint/biz/retrieve-users-transaction-records",
+  //     });
+  //     return downloadOpenApiSpecFromMintlify({ urls });
+  //   },
+  // },
   "crowdsec.net": {
     type: "GET",
     url: "https://raw.githubusercontent.com/crowdsecurity/crowdsec/master/pkg/models/localapi_swagger.yaml",
@@ -1502,7 +1474,7 @@ const customRequests: Record<string, CustomRequest> = {
   "payfactory.io": {
     lambda: async () => {
       const urls = await collectEndpointsFromReadme({
-        url: "https://payfactory.readme.io/reference/get_v1-applicationform-session-sessionid",
+        url: "https://payfactory.readme.io/reference",
       });
       return downloadOpenApiSpecFromReadme({ urls });
     },
@@ -1515,7 +1487,7 @@ const customRequests: Record<string, CustomRequest> = {
   "clayhr.com": {
     lambda: async () => {
       const urls = await collectEndpointsFromReadme({
-        url: "https://clayhr.readme.io/reference/get-customer-configurations-from-public-customer-model",
+        url: "https://clayhr.readme.io/reference",
       });
       return downloadOpenApiSpecFromReadme({ urls });
     },
@@ -1523,7 +1495,7 @@ const customRequests: Record<string, CustomRequest> = {
   "helcim.com": {
     lambda: async () => {
       const urls = await collectEndpointsFromReadme({
-        url: "https://devdocs.helcim.com/reference/card-terminals",
+        url: "https://devdocs.helcim.com/reference",
       });
       return downloadOpenApiSpecFromReadme({ urls });
     },
@@ -1581,7 +1553,7 @@ const customRequests: Record<string, CustomRequest> = {
   "2c2p.com": {
     lambda: async () => {
       const urls = await collectEndpointsFromReadme({
-        url: "https://developer.2c2p.com/reference/post_payment-4-3-payment",
+        url: "https://developer.2c2p.com/reference",
       });
       return downloadOpenApiSpecFromReadme({ urls });
     },
@@ -1589,7 +1561,7 @@ const customRequests: Record<string, CustomRequest> = {
   "tremendous.com": {
     lambda: async () => {
       const urls = await collectEndpointsFromReadme({
-        url: "https://developers.tremendous.com/reference/list-rewards",
+        url: "https://developers.tremendous.com/reference",
       });
       return downloadOpenApiSpecFromReadme({ urls });
     },
@@ -1597,7 +1569,7 @@ const customRequests: Record<string, CustomRequest> = {
   "fastspring.com": {
     lambda: async () => {
       const urls = await collectEndpointsFromReadme({
-        url: "https://developer.fastspring.com/reference/get-an-account",
+        url: "https://developer.fastspring.com/reference",
       });
       return downloadOpenApiSpecFromReadme({ urls });
     },
@@ -1605,7 +1577,7 @@ const customRequests: Record<string, CustomRequest> = {
   "agrimetrics.co.uk": {
     lambda: async () => {
       const urls = await collectEndpointsFromReadme({
-        url: "https://developer.agrimetrics.co.uk/reference/getstatus",
+        url: "https://developer.agrimetrics.co.uk/reference",
       });
       return downloadOpenApiSpecFromReadme({ urls });
     },
@@ -1613,7 +1585,7 @@ const customRequests: Record<string, CustomRequest> = {
   "nvidia.com_NIM": {
     lambda: async () => {
       const urls = await collectEndpointsFromReadme({
-        url: "https://docs.api.nvidia.com/nim/reference/google-gemma7b",
+        url: "https://docs.api.nvidia.com/nim/reference",
       });
       return await downloadOpenApiSpecFromReadme({ urls });
     },
@@ -1621,7 +1593,7 @@ const customRequests: Record<string, CustomRequest> = {
   "nvidia.com_CloudFunctions": {
     lambda: async () => {
       const urls = await collectEndpointsFromReadme({
-        url: "https://docs.api.nvidia.com/cloud-functions/reference/getfunctiondeployment",
+        url: "https://docs.api.nvidia.com/cloud-functions/reference",
       });
       return await downloadOpenApiSpecFromReadme({ urls });
     },
@@ -1633,7 +1605,7 @@ const customRequests: Record<string, CustomRequest> = {
   "deel.com": {
     lambda: async () => {
       const urls = await collectEndpointsFromReadme({
-        url: "https://developer.deel.com/reference/getmanagers",
+        url: "https://developer.deel.com/reference",
       });
       return downloadOpenApiSpecFromReadme({ urls });
     },
@@ -1746,7 +1718,7 @@ const customRequests: Record<string, CustomRequest> = {
   "pay.com": {
     lambda: async () => {
       const urls = await collectEndpointsFromReadme({
-        url: "https://apiref.pay.com/reference/delete-a-customer",
+        url: "https://apiref.pay.com/reference",
       });
       return downloadOpenApiSpecFromReadme({ urls });
     },
@@ -1775,18 +1747,18 @@ const customRequests: Record<string, CustomRequest> = {
       });
     },
   },
-  "workday.com_Staffing": {
-    type: "GET",
-    url: "https://community.workday.com/sites/default/files/file-hosting/restapi/staffing_v6_20240323_oas2.json",
-  },
-  "workday.com_PerformanceEnablement": {
-    type: "GET",
-    url: "https://community.workday.com/sites/default/files/file-hosting/restapi/performanceEnablement_v5_20240323_oas2.json",
-  },
-  "workday.com_Person": {
-    type: "GET",
-    url: "https://community.workday.com/sites/default/files/file-hosting/restapi/person_v4_20240323_oas2.json",
-  },
+  // "workday.com_Staffing": {
+  //   type: "GET",
+  //   url: "https://community.workday.com/sites/default/files/file-hosting/restapi/staffing_v6_20240323_oas2.json",
+  // },
+  // "workday.com_PerformanceEnablement": {
+  //   type: "GET",
+  //   url: "https://community.workday.com/sites/default/files/file-hosting/restapi/performanceEnablement_v5_20240323_oas2.json",
+  // },
+  // "workday.com_Person": {
+  //   type: "GET",
+  //   url: "https://community.workday.com/sites/default/files/file-hosting/restapi/person_v4_20240323_oas2.json",
+  // },
   // "squareup.com": {
   //   lambda: async () => {
   //     const url =
@@ -1833,7 +1805,7 @@ const customRequests: Record<string, CustomRequest> = {
   "7shifts.com": {
     lambda: async () => {
       const urls = await collectEndpointsFromReadme({
-        url: "https://developers.7shifts.com/reference/oauthtoken-2",
+        url: "https://developers.7shifts.com/reference",
       });
       return downloadOpenApiSpecFromReadme({ urls });
     },
@@ -1889,7 +1861,7 @@ const customRequests: Record<string, CustomRequest> = {
   "coalesce.io": {
     lambda: async () => {
       const urls = await collectEndpointsFromReadme({
-        url: "https://docs.coalesce.io/reference/startrun",
+        url: "https://docs.coalesce.io/reference",
       });
       return downloadOpenApiSpecFromReadme({ urls });
     },
@@ -1897,7 +1869,7 @@ const customRequests: Record<string, CustomRequest> = {
   "revenium.io": {
     lambda: async () => {
       const urls = await collectEndpointsFromReadme({
-        url: "https://revenium.readme.io/reference/getuser",
+        url: "https://revenium.readme.io/reference",
       });
       return await downloadOpenApiSpecFromReadme({ urls });
     },
@@ -1905,7 +1877,7 @@ const customRequests: Record<string, CustomRequest> = {
   "clickfunnels.com": {
     lambda: async () => {
       const urls = await collectEndpointsFromReadme({
-        url: "https://developers.myclickfunnels.com/reference/listteams",
+        url: "https://developers.myclickfunnels.com/reference",
       });
       return await downloadOpenApiSpecFromReadme({ urls });
     },
@@ -1943,7 +1915,7 @@ const customRequests: Record<string, CustomRequest> = {
   "sumsub.com": {
     lambda: async () => {
       const urls = await collectEndpointsFromReadme({
-        url: "https://docs.sumsub.com/reference/audit-trail-events",
+        url: "https://docs.sumsub.com/reference",
       });
       return await downloadOpenApiSpecFromReadme({ urls });
     },
@@ -1986,7 +1958,7 @@ const customRequests: Record<string, CustomRequest> = {
   "sqala.tech": {
     lambda: async () => {
       const urls = await collectEndpointsFromReadme({
-        url: "https://sqala.readme.io/reference/",
+        url: "https://sqala.readme.io/reference",
       });
       return await downloadOpenApiSpecFromReadme({ urls });
     },
@@ -2030,19 +2002,19 @@ const customRequests: Record<string, CustomRequest> = {
   "bluesnap.com": {
     lambda: async () => {
       const urls = await collectEndpointsFromReadme({
-        url: "https://developers.bluesnap.com/v8976-JSON/reference/",
+        url: "https://developers.bluesnap.com/v8976-JSON/reference",
       });
       return await downloadOpenApiSpecFromReadme({ urls });
     },
   },
-  "diarupt.ai": {
-    lambda: async () => {
-      const urls = await collectEndpointsFromMintlify({
-        url: "https://docs.diarupt.ai/api-reference",
-      });
-      return downloadOpenApiSpecFromMintlify({ urls });
-    },
-  },
+  // "diarupt.ai": {
+  //   lambda: async () => {
+  //     const urls = await collectEndpointsFromMintlify({
+  //       url: "https://docs.diarupt.ai/api-reference",
+  //     });
+  //     return downloadOpenApiSpecFromMintlify({ urls });
+  //   },
+  // },
   "echelonpro.io": {
     type: "GET",
     url: "https://developers.echelonpay.com/api/_static/openapi.yaml",
@@ -2533,7 +2505,7 @@ const customRequests: Record<string, CustomRequest> = {
       return downloadOpenApiSpecFromRedoclyEmbedded({
         url: "https://docs.volt.io/api-documentation/",
         browser,
-        filename: "openapi2023.07.19.yaml",
+        filename: "volt-openapi.yaml",
       });
     },
   },

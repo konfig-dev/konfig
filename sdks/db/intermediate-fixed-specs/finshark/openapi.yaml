@@ -6,7 +6,7 @@ x-tagGroups:
       - Cards
       - CardTransactions
       - Transactions
-  - name: Payments
+  - name: Payments(deprecated)
     tags:
       - Payment requests
       - Payment templates
@@ -22,6 +22,7 @@ x-tagGroups:
       - Central person register denmark
       - Compliance data
       - Kyc
+      - Screen data
       - Tra
       - User identification
       - User identity verification
@@ -999,6 +1000,20 @@ paths:
       responses:
         '200':
           description: Success
+  /v1/compliance-data/accounts:
+    get:
+      tags:
+        - Compliance data
+      summary: Retrieves accounts by search term.
+      parameters:
+        - name: searchTerm
+          in: query
+          description: The search term for accounts.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
   /v1/kyc:
     post:
       tags:
@@ -1091,6 +1106,79 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+  /v1/screen-data/{personId}:
+    get:
+      tags:
+        - Screen data
+      summary: Gets data by personId and corporateId.
+      parameters:
+        - name: personId
+          in: path
+          description: The person identifier.
+          required: true
+          schema:
+            type: string
+        - name: corporateId
+          in: query
+          description: The corporate identifier.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+    put:
+      tags:
+        - Screen data
+      summary: Updates data.
+      parameters:
+        - name: personId
+          in: path
+          description: The person identifier.
+          required: true
+          schema:
+            type: string
+        - name: corporateId
+          in: query
+          description: The corporate identifier.
+          schema:
+            type: string
+      requestBody:
+        description: >-
+          The new object of Finshark.Compliance.Core.Payloads.ScreenDataDto type
+          with data to update.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScreenDataDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ScreenDataDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ScreenDataDto'
+      responses:
+        '200':
+          description: Success
+  /v1/screen-data:
+    post:
+      tags:
+        - Screen data
+      summary: Adds data to database.
+      requestBody:
+        description: Screen data.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScreenData'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ScreenData'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ScreenData'
+      responses:
+        '200':
+          description: Success
   /v1/tra-result:
     get:
       tags:
@@ -1323,13 +1411,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/ProblemDetails'
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/ProblemDetails'
             text/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/ProblemDetails'
         '401':
           description: Unauthorized
           content:
@@ -1409,13 +1497,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/ProblemDetails'
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/ProblemDetails'
             text/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/ProblemDetails'
         '401':
           description: Unauthorized
           content:
@@ -1497,7 +1585,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                oneOf:
+                  - $ref: '#/components/schemas/ProblemDetails'
+                  - $ref: '#/components/schemas/ValidationProblemDetails'
         '401':
           description: Authentication failed due to missing or invalid credentials.
           content:
@@ -1599,7 +1689,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                oneOf:
+                  - $ref: '#/components/schemas/ProblemDetails'
+                  - $ref: '#/components/schemas/ValidationProblemDetails'
         '401':
           description: Authentication failed due to missing or invalid credentials.
           content:
@@ -1656,7 +1748,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                oneOf:
+                  - $ref: '#/components/schemas/ProblemDetails'
+                  - $ref: '#/components/schemas/ValidationProblemDetails'
         '401':
           description: Authentication failed due to missing or invalid credentials.
           content:
@@ -1705,7 +1799,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                oneOf:
+                  - $ref: '#/components/schemas/ProblemDetails'
+                  - $ref: '#/components/schemas/ValidationProblemDetails'
         '401':
           description: Authentication failed due to missing or invalid credentials.
           content:
@@ -1767,7 +1863,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                oneOf:
+                  - $ref: '#/components/schemas/ProblemDetails'
+                  - $ref: '#/components/schemas/ValidationProblemDetails'
         '401':
           description: Authentication failed due to missing or invalid credentials.
           content:
@@ -1839,7 +1937,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                oneOf:
+                  - $ref: '#/components/schemas/ProblemDetails'
+                  - $ref: '#/components/schemas/ValidationProblemDetails'
         '401':
           description: Authentication failed due to missing or invalid credentials.
           content:
@@ -1898,7 +1998,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                oneOf:
+                  - $ref: '#/components/schemas/ProblemDetails'
+                  - $ref: '#/components/schemas/ValidationProblemDetails'
         '401':
           description: Authentication failed due to missing or invalid credentials.
           content:
@@ -1952,7 +2054,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                oneOf:
+                  - $ref: '#/components/schemas/ProblemDetails'
+                  - $ref: '#/components/schemas/ValidationProblemDetails'
         '401':
           description: Authentication failed due to missing or invalid credentials.
           content:
@@ -2006,7 +2110,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                oneOf:
+                  - $ref: '#/components/schemas/ProblemDetails'
+                  - $ref: '#/components/schemas/ValidationProblemDetails'
         '401':
           description: Authentication failed due to missing or invalid credentials.
           content:
@@ -2065,7 +2171,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                oneOf:
+                  - $ref: '#/components/schemas/ProblemDetails'
+                  - $ref: '#/components/schemas/ValidationProblemDetails'
         '401':
           description: Authentication failed due to missing or invalid credentials.
           content:
@@ -2120,13 +2228,19 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                oneOf:
+                  - $ref: '#/components/schemas/ProblemDetails'
+                  - $ref: '#/components/schemas/ValidationProblemDetails'
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                oneOf:
+                  - $ref: '#/components/schemas/ProblemDetails'
+                  - $ref: '#/components/schemas/ValidationProblemDetails'
             text/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                oneOf:
+                  - $ref: '#/components/schemas/ProblemDetails'
+                  - $ref: '#/components/schemas/ValidationProblemDetails'
         '401':
           description: Authentication failed due to missing or invalid credentials.
           content:
@@ -2225,7 +2339,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                oneOf:
+                  - $ref: '#/components/schemas/ProblemDetails'
+                  - $ref: '#/components/schemas/ValidationProblemDetails'
         '401':
           description: Authentication failed due to missing or invalid credentials.
           content:
@@ -2284,7 +2400,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                oneOf:
+                  - $ref: '#/components/schemas/ProblemDetails'
+                  - $ref: '#/components/schemas/ValidationProblemDetails'
         '401':
           description: Missing or invalid credentials.
           content:
@@ -2365,7 +2483,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                oneOf:
+                  - $ref: '#/components/schemas/ProblemDetails'
+                  - $ref: '#/components/schemas/ValidationProblemDetails'
         '401':
           description: Missing or invalid credentials.
           content:
@@ -2415,7 +2535,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                oneOf:
+                  - $ref: '#/components/schemas/ProblemDetails'
+                  - $ref: '#/components/schemas/ValidationProblemDetails'
         '401':
           description: Missing or invalid credentials.
           content:
@@ -2475,7 +2597,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                oneOf:
+                  - $ref: '#/components/schemas/ProblemDetails'
+                  - $ref: '#/components/schemas/ValidationProblemDetails'
         '401':
           description: Missing or invalid credentials.
           content:
@@ -2537,7 +2661,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                oneOf:
+                  - $ref: '#/components/schemas/ProblemDetails'
+                  - $ref: '#/components/schemas/ValidationProblemDetails'
         '401':
           description: Authentication failed due to missing or invalid credentials.
           content:
@@ -2598,7 +2724,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                oneOf:
+                  - $ref: '#/components/schemas/ProblemDetails'
+                  - $ref: '#/components/schemas/ValidationProblemDetails'
         '401':
           description: Authentication failed due to missing or invalid credentials.
           content:
@@ -2666,7 +2794,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                oneOf:
+                  - $ref: '#/components/schemas/ProblemDetails'
+                  - $ref: '#/components/schemas/ValidationProblemDetails'
         '401':
           description: Authentication failed due to missing or invalid credentials.
           content:
@@ -2733,7 +2863,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                oneOf:
+                  - $ref: '#/components/schemas/ProblemDetails'
+                  - $ref: '#/components/schemas/ValidationProblemDetails'
         '401':
           description: Authentication failed due to missing or invalid credentials.
           content:
@@ -2793,7 +2925,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                oneOf:
+                  - $ref: '#/components/schemas/ProblemDetails'
+                  - $ref: '#/components/schemas/ValidationProblemDetails'
         '401':
           description: Authentication failed due to missing or invalid credentials.
           content:
@@ -2847,7 +2981,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                oneOf:
+                  - $ref: '#/components/schemas/ProblemDetails'
+                  - $ref: '#/components/schemas/ValidationProblemDetails'
         '401':
           description: Authentication failed due to missing or invalid credentials.
           content:
@@ -2969,7 +3105,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/ProblemDetails'
         '404':
           description: Endpoint does not exist or URL is not constructed correctly.
           content:
@@ -4120,6 +4256,45 @@ components:
           format: int32
       additionalProperties: false
       description: Represents a request for QR code data retrieval.
+    ScreenData:
+      type: object
+      properties:
+        personId:
+          type: string
+          nullable: true
+        corporateId:
+          type: string
+          nullable: true
+        screenedForPEP:
+          type: string
+          default: 'No'
+          nullable: true
+        screenedForSanctionList:
+          type: string
+          default: 'No'
+          nullable: true
+        blocked:
+          type: string
+          default: 'No'
+          nullable: true
+      additionalProperties: false
+    ScreenDataDto:
+      type: object
+      properties:
+        screenedForPEP:
+          type: string
+          description: Screened for PEP (Politically exposes persons).
+          nullable: true
+        screenedForSanctionList:
+          type: string
+          description: Screened for sanction list.
+          nullable: true
+        blocked:
+          type: string
+          description: Blocked.
+          nullable: true
+      additionalProperties: false
+      description: Data transfer object for ScreenData.
     TraEvaluationDto:
       type: object
       properties:
@@ -6148,6 +6323,19 @@ components:
           description: Payment product identifier linked to the payment request.
           nullable: true
       additionalProperties: false
+    ValidationProblemDetails:
+      type: object
+      allOf:
+        - $ref: '#/components/schemas/ProblemDetails'
+      properties:
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+          nullable: true
+      additionalProperties: {}
     AuthorizationValidationRequest:
       type: object
       properties:
@@ -6214,6 +6402,26 @@ components:
         - REJECTED
       type: string
       description: Consent statuses.
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type: string
+          nullable: true
+        title:
+          type: string
+          nullable: true
+        status:
+          type: integer
+          format: int32
+          nullable: true
+        detail:
+          type: string
+          nullable: true
+        instance:
+          type: string
+          nullable: true
+      additionalProperties: {}
     ValidationType:
       enum:
         - VALID

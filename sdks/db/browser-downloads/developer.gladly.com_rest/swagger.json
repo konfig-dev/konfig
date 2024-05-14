@@ -250,7 +250,7 @@
           "Communications"
         ],
         "summary": "Receive Custom Channel messages",
-        "description": "Custom Channels allows for building custom channel integration with Gladly. This functionality is deactivated \nby default. Please contact Gladly Support if you would like to activate this API, and we will evaluate your \nuse case. \nTo receive a Custom Channel message, you must first create a Custom Channel and a Custom Channel Entry Point in \nGladly Settings -> Custom Channels page. This API will accept messages from the channel integration and process them similarly to \nbuilt-in channel messages.\n",
+        "description": "Custom Channels allows for building custom channel integration with Gladly. This functionality is deactivated \nby default. \n\n**Note that the intended use case for custom channels is any non Gladly messaging based supported channel.**\n\nPlease contact [Gladly Support](https://gladly.com/support) if you would like to activate this API and believe you have a valid use case.\n\nTo receive a Custom Channel message, you must first create a Custom Channel and a Custom Channel Entry Point in Gladly Settings -> Custom Channels page. This API will accept messages from the channel integration and process them similarly to built-in messaging channels.\n",
         "operationId": "receiveCustomChannelMessage",
         "parameters": [
           {
@@ -2922,16 +2922,18 @@
                       "type": "CHAT_MESSAGE",
                       "messageType": "QUICK_REPLY_REQUEST",
                       "body": "Hi from chat! Please select an option!",
-                      "messageData": [
-                        {
-                          "id": "option-1",
-                          "label": "option one"
-                        },
-                        {
-                          "id": "option-2",
-                          "label": "option two"
-                        }
-                      ]
+                      "messageData": {
+                        "options": [
+                          {
+                            "id": "option-1",
+                            "label": "option one"
+                          },
+                          {
+                            "id": "option-2",
+                            "label": "option two"
+                          }
+                        ]
+                      }
                     }
                   }
                 },
@@ -6441,8 +6443,9 @@
                   "aggregationLevel": {
                     "type": "string",
                     "default": "daily",
-                    "description": "\\\nThe aggregation level for the report.\n\nApplies to the following `metricSet`s: `AgentAwayTimeReport`, `AgentLoginTimeReport`, `AgentSummary`, `AgentSummaryV2`, `AgentSummaryGlanceReport`, `AgentSummaryGlanceReportV2`, `FirstContactResolutionByAgentV2Report`,  `AnswerUsageReport`, `AnswerUsageByAgentReport`, `ChannelMixReportV2`, `ChannelWaitTimeReport`,`ChannelWaitTimeReportV2`, `ContactSummaryReport`, `ContactSummaryReportV2`,  `ContactSummaryCountsReport`, `ContactSummaryDurationsReport`, `ContactSummaryDurationsReportV2`, `ConversationSummaryReport`, `AbandonedCallsInIVRReport`, `AutoThrottleMissedConversationsReport`, `PaymentsSummaryReport`, `ProactiveVoiceSummaryReport`, `TopicHierarchyReport`, `TaskSummaryReport`, `HelpCenterAnswerUsageReport`, `QuickActionsUsageReport`, and  `GladAppAnswerUsageReport`.\n\nNote that an individual aggregationLevel may only be available depending on the `metricSet` and date range selected (e.g.: \"halfHourly\" is not avaialble on the `AgentSummary` `metricSet` if requesting over 1 month's worth of data)\n",
+                    "description": "\\\nThe aggregation level for the report.\n\nApplies to the following `metricSet`s: `AgentAwayTimeReport`, `AgentLoginTimeReport`, `AgentSummary`, `AgentSummaryV2`, `AgentSummaryGlanceReport`, `AgentSummaryGlanceReportV2`, `FirstContactResolutionByAgentV2Report`,  `AnswerUsageReport`, `AnswerUsageByAgentReport`, `ChannelMixReportV2`, `ChannelWaitTimeReport`,`ChannelWaitTimeReportV2`, `ContactSummaryReport`, `ContactSummaryReportV2`,  `ContactSummaryCountsReport`, `ContactSummaryDurationsReport`, `ContactSummaryDurationsReportV2`, `ConversationSummaryReport`, `AbandonedCallsInIVRReport`, `AutoThrottleMissedConversationsReport`, `PaymentsSummaryReport`, `ProactiveVoiceSummaryReport`, `TopicHierarchyReport`, `TaskSummaryReport`, `HelpCenterAnswerUsageReport`, `QuickActionsUsageReport`, and  `GladAppAnswerUsageReport`.\n\nNote that an individual aggregationLevel may only be available depending on the `metricSet` and date range selected. For example: \n  - \"halfHourly\" is not available on the `AgentSummary` `metricSet` if requesting over 1 month's worth of data\n  - \"quarterHourly\" is only available for `AgentAwayTimeReport` and `AgentLoginTimeReport`\n",
                     "enum": [
+                      "quarterHourly",
                       "halfHourly",
                       "daily",
                       "weekly",

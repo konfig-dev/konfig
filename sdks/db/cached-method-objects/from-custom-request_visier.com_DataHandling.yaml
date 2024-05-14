@@ -1,4 +1,4 @@
-hash: 272866db7baf43fcb8b5283fea76d75fdc2b10f282935a4815d6c7582f8072ae
+hash: 8630a35f4d925401d7417338cce612f163f65861803518253ffda7be94bc7d4f
 methodObjects:
   - url: /v1/op/data-connector-credentials
     method: dataConnectorCredentials
@@ -107,6 +107,46 @@ methodObjects:
       - name: connectors
         schema: array
         description: ''
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: default
+        description: >-
+          The `Status` type defines a logical error model that is suitable for
+          different programming environments, including REST APIs and RPC APIs.
+          It is used by [gRPC](https://github.com/grpc). Each `Status` message
+          contains three pieces of data: error code, error message, and error
+          details. You can find out more about this error model and how to work
+          with it in the [API Design
+          Guide](https://cloud.google.com/apis/design/errors).
+  - url: /v1/op/data-versions
+    method: latestEnabledDv
+    httpMethod: get
+    tag: DataAndJobHandling
+    typeScriptTag: dataAndJobHandling
+    description: Retrieve the latest enabled data versions for all analytic tenants
+    parameters:
+      - name: tenantCode
+        schema: string
+        description: >-
+          The tenant code of a specific analytic tenant that you want to
+          retrieve data versions for.
+           Use this if you are only interested in the results for one analytic tenant.
+      - name: limit
+        schema: integer
+        description: |-
+          The limit of analytic tenants to retrieve data versions for.
+           This parameter is not used if the tenantCode parameter is specified.
+      - name: start
+        schema: integer
+        description: >-
+          The index to start retrieving results from, also known as offset. The
+          index begins at 0.
+      - name: numberOfVersions
+        schema: integer
+        description: >-
+          The number of latest enabled data versions to retrieve. The maximum
+          value is 5.
     responses:
       - statusCode: '200'
         description: ''
@@ -484,6 +524,42 @@ methodObjects:
           details. You can find out more about this error model and how to work
           with it in the [API Design
           Guide](https://cloud.google.com/apis/design/errors).
+  - url: /v1/op/jobs/processing-jobs/:receivingJobId
+    method: processingJobStatus
+    httpMethod: get
+    tag: DataAndJobHandling
+    typeScriptTag: dataAndJobHandling
+    description: Retrieve processing job statuses by receiving job ID
+    parameters:
+      - name: tenantCode
+        schema: string
+        description: >-
+          The tenant code of the tenant you want to retrieve the processing jobs
+          for.
+           Use this if you are only interested in the results for one analytic tenant.
+      - name: limit
+        schema: integer
+        description: The limit of processing jobs to retrieve per page.
+      - name: start
+        schema: integer
+        description: >-
+          The index to start retrieving results from, also known as offset. The
+          index begins at 0.
+      - name: receivingJobId
+        schema: string
+        description: The receiving job ID
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: default
+        description: >-
+          The `Status` type defines a logical error model that is suitable for
+          different programming environments, including REST APIs and RPC APIs.
+          It is used by [gRPC](https://github.com/grpc). Each `Status` message
+          contains three pieces of data: error code, error message, and error
+          details. You can find out more about this error model and how to work
+          with it in the [API Design
+          Guide](https://cloud.google.com/apis/design/errors).
   - url: /v1/op/jobs/receiving-jobs/:receivingJobId
     method: receivingJobStatus
     httpMethod: get
@@ -513,82 +589,6 @@ methodObjects:
       - name: receivingJobId
         schema: string
         description: The jobId provided after sending data to Visier.
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: default
-        description: >-
-          The `Status` type defines a logical error model that is suitable for
-          different programming environments, including REST APIs and RPC APIs.
-          It is used by [gRPC](https://github.com/grpc). Each `Status` message
-          contains three pieces of data: error code, error message, and error
-          details. You can find out more about this error model and how to work
-          with it in the [API Design
-          Guide](https://cloud.google.com/apis/design/errors).
-  - url: v1/op/data-versions
-    method: latestEnabledDv
-    httpMethod: get
-    tag: DataAndJobHandling
-    typeScriptTag: dataAndJobHandling
-    description: Retrieve the latest enabled data versions for all analytic tenants
-    parameters:
-      - name: tenantCode
-        schema: string
-        description: >-
-          The tenant code of a specific analytic tenant that you want to
-          retrieve data versions for.
-           Use this if you are only interested in the results for one analytic tenant.
-      - name: limit
-        schema: integer
-        description: |-
-          The limit of analytic tenants to retrieve data versions for.
-           This parameter is not used if the tenantCode parameter is specified.
-      - name: start
-        schema: integer
-        description: >-
-          The index to start retrieving results from, also known as offset. The
-          index begins at 0.
-      - name: numberOfVersions
-        schema: integer
-        description: >-
-          The number of latest enabled data versions to retrieve. The maximum
-          value is 5.
-    responses:
-      - statusCode: '200'
-        description: ''
-      - statusCode: default
-        description: >-
-          The `Status` type defines a logical error model that is suitable for
-          different programming environments, including REST APIs and RPC APIs.
-          It is used by [gRPC](https://github.com/grpc). Each `Status` message
-          contains three pieces of data: error code, error message, and error
-          details. You can find out more about this error model and how to work
-          with it in the [API Design
-          Guide](https://cloud.google.com/apis/design/errors).
-  - url: v1/op/jobs/processing-jobs/:receivingJobId
-    method: processingJobStatus
-    httpMethod: get
-    tag: DataAndJobHandling
-    typeScriptTag: dataAndJobHandling
-    description: Retrieve processing job statuses by receiving job ID
-    parameters:
-      - name: tenantCode
-        schema: string
-        description: >-
-          The tenant code of the tenant you want to retrieve the processing jobs
-          for.
-           Use this if you are only interested in the results for one analytic tenant.
-      - name: limit
-        schema: integer
-        description: The limit of processing jobs to retrieve per page.
-      - name: start
-        schema: integer
-        description: >-
-          The index to start retrieving results from, also known as offset. The
-          index begins at 0.
-      - name: receivingJobId
-        schema: string
-        description: The receiving job ID
     responses:
       - statusCode: '200'
         description: ''

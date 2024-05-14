@@ -24,18 +24,18 @@
     }
   },
   "apiBaseUrl": "https://api.cloud.hypatos.ai/v2",
-  "apiVersion": "2.13.0",
+  "apiVersion": "2.15.0",
   "apiDescription": "# Introduction\n\nThe Hypatos API is organized around REST. The majority of the endpoints provide CRUD \nfunctionality for resources. The API is also exposing Intent Resources which mimic user intents \nor actions.\n\nThe Hypatos API uses [OAuth 2.0 Client Credential Grant](https://www.rfc-editor.org/rfc/rfc6749#section-4.4) \nto authenticate requests. Before making any requests to any endpoint a client must authenticate \nwith the authorization server and requests an access token from the [token endpoint](https://hypatos.redoc.ly/). \n\n````sh\n  POST /auth/token HTTP/1.1\n  Host: api.cloud.hypatos.ai\n  Content-Type: application/x-www-form-urlencoded\n  Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=\n\n  grant_type=client_credentials\n````\n\n`Authorization` header contains `client_id:client_secret` encoded as explained in [RFC Client Password section](https://datatracker.ietf.org/doc/html/rfc6749#section-2.3.1).\n     \nIf the authorization server authenticated the client successfully, an access token is issued. \nHere is an example successful response:\n\n````sh\n  HTTP/1.1 200 OK\n  Content-Type: application/json;charset=UTF-8\n  Cache-Control: no-store\n  Pragma: no-cache\n\n  {\n    \"access_token\": \"mF_9.B5f-4.1JqM\",\n    \"expires_in\": 86400,\n    \"scope\": \"enrichment.write files.read\",\n    \"token_type\": \"Bearer\",\n  }\n````\nThis token can be used to authenticate the requests to API endpoints by sending a Bearer token \nin the `Authorization` HTTP header. The following example demonstrates how to use the access token \nto retrieve a list of documents.\n\n````sh\n  GET /v2/documents HTTP/1.1\n  Host: api.cloud.hypatos.ai\n  Authorization: Bearer mF_9.B5f-4.1JqM\n````\n\n# Versioning\n\nChanges to this API are released regularly. We use [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html) \nscheme for versioning so that the clients can identify any backward-incompatible changes \neasily. Briefly summarized one can say, if the MAJOR version of the new API version didn't \nchange you can expect the new version to be backward-compatible.\n\n# Rate limits\n\nIn order to maximise the stability of our API, we institue rate limits for all of API \nendpoints. Clients who send too many requests over a given period of time will see error \nresponses that show up as status code [429 Too Many Requests](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429). \n\nWhen you see error responses with status code 429, it means you exhausted your current \nquota and need to withhold from sending further requests until the quota is reset. We \nencourage you not to wait until you get a 429 error but to monitor your quota in each \nrequest. In each response you receive from the API, you will find HTTP headers providing \nthe details about your current quota. Here is the list of the HTTP headers:\n\n* `x-ratelimit-limit`: Indicates the quota associated to the client in the \ncurrent time-window followed by the description of the quota policy.\n* `x-ratelimit-remaining`: Indicates the number of remaining requests in the current \ntime-window\n* `x-ratelimit-reset`: Indicates the number of seconds until quota reset of the current \ntime-window\n\nPlease note that IETF is currently in the process of publishing a standard for these \nheaders. Please explore the [draft](https://datatracker.ietf.org/doc/draft-ietf-httpapi-ratelimit-headers/) \nfor more details.\n\nA basic technique to gracefully handle rate limits is watch for your quota permanently \nand increase the time between your request as the quota is decreasing. To recover from a \n429 error you need a retry mechanism following an exponential backoff schedule.\n",
   "apiTitle": "Hypatos REST API",
   "endpoints": 33,
   "sdkMethods": 34,
   "schemas": 70,
-  "parameters": 155,
+  "parameters": 139,
   "originalCustomRequest": {
     "lambda": true
   },
   "customRequestSpecFilename": "hypatos.ai.yaml",
-  "difficultyScore": 106.75,
+  "difficultyScore": 103.25,
   "difficulty": "Easy",
   "company": "Hypatos",
   "sdkName": "hypatos-{language}-sdk",
@@ -2068,7 +2068,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/hypatos/imagePreview.webp",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/hypatos/favicon.png",
   "clientNameCamelCase": "hypatos",
-  "lastUpdated": "2024-03-29T19:35:23.354Z",
+  "lastUpdated": "2024-04-16T19:21:46.323Z",
   "typescriptSdkUsageCode": "import { Hypatos } from 'hypatos-typescript-sdk';\n\nconst hypatos = new Hypatos({\n    clientId: \"CLIENT_ID\",\n    clientSecret: \"CLIENT_SECRET\",\n    username: \"USERNAME\",\n    password: \"PASSWORD\"\n})",
   "typescriptSdkFirstRequestCode": "// Request an access token\nconst requestAccessTokenResponse = hypatos.authorization.requestAccessToken({\n    grant_type: \"GRANT_TYPE\"\n})",
   "fixedSpecFileName": "hypatos-fixed-spec.yaml"

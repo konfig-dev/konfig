@@ -1,4 +1,4 @@
-hash: 77ba746f8749d3e69b242f819f5f4931c1865057f6bc920b3917847c175e5d2a
+hash: 3392e85f5ca9f8ce6069c3d0995c6d8b8cb86828611dec8535e84d7d99ed60f4
 methodObjects:
   - url: /addon
     method: deleteUserApp
@@ -1889,9 +1889,9 @@ methodObjects:
       - name: path
         schema: string
         required: false
-        description: >-
-          Limit the diff to a particular file
-          (https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication.
+        description: |-
+          Limit the diff to a particular file (this parameter
+          can be repeated for multiple paths).
       - name: ignoreWhitespace
         schema: boolean
         required: false
@@ -2244,14 +2244,10 @@ methodObjects:
       - name: renames
         schema: string
         required: false
-        description: >-
+        description: |-
 
           When `true`, Bitbucket will follow the history of the file across
-
-          renames
-          (https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication.
-          This can be turned off by
-
+          renames (this is the default behavior). This can be turned off by
           specifying `false`.
       - name: q
         schema: string
@@ -5935,88 +5931,52 @@ methodObjects:
       - name: branch
         schema: string
         required: false
-        description: >
+        description: |
 
           The name of the branch that the new commit should be
-
           created on. When omitted, the commit will be created on top
-
           of the main branch and will become the main branch's new
-
           head.
 
-
           When a branch name is provided that already exists in the
-
           repo, then the commit will be created on top of that
-
           branch. In this case, *if* a parent SHA1 was also provided,
-
           then it is asserted that the parent is the branch's
-
           tip/HEAD at the time the request is made. When this is not
-
           the case, a 409 is returned.
 
-
-          When a new branch name is specified
-          (https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication,
-          and no parent SHA1s are provided, then
-
+          When a new branch name is specified (that does not already
+          exist in the repo), and no parent SHA1s are provided, then
           the new commit will inherit from the current main branch's
-
           tip/HEAD commit, but not advance the main branch. The new
-
           commit will be the new branch. When the request *also*
-
           specifies a parent SHA1, then the new commit and branch
-
           are created directly on top of the parent commit,
-
           regardless of the state of the main branch.
 
-
           When a branch name is not specified, but a parent SHA1 is
-
           provided, then Bitbucket asserts that it represents the
-
           main branch's current HEAD/tip, or a 409 is returned.
 
-
           When a branch name is not specified and the repo is empty,
-
           the new commit will become the repo's root commit and will
-
           be on the main branch.
 
-
           When a branch name is specified and the repo is empty, the
-
           new commit will become the repo's root commit and also
-
           define the repo's main branch going forward.
 
-
           This API cannot be used to create additional root commits
-
           in non-empty repos.
-
 
           The branch field cannot be repeated.
 
-
           As a side effect, this API can be used to create a new
-
           branch without modifying any files, by specifying a new
-
           branch name in this field, together with `parents`, but
-
           omitting the `files` fields, while not sending any files.
-
           This will create a new commit and branch with the same
-
           contents as the first parent. The diff of this commit
-
           against its first parent will be empty.
     responses:
       - statusCode: '201'
@@ -6140,7 +6100,7 @@ methodObjects:
         required: false
         description: >-
           Filter down the result based on the authenticated user's role
-          (https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication.
+          (`owner`, `contributor`, or `member`).
     responses:
       - statusCode: '200'
         description: A paginated list of snippets.
@@ -6176,7 +6136,7 @@ methodObjects:
         required: false
         description: >-
           Filter down the result based on the authenticated user's role
-          (https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication.
+          (`owner`, `contributor`, or `member`).
     responses:
       - statusCode: '200'
         description: A paginated list of snippets.

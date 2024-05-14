@@ -17,7 +17,7 @@ export default function AshbyTypeScriptSdk() {
       companyKebabCase="ashby"
       clientNameCamelCase="ashby"
       homepage="ashbyhq.com"
-      lastUpdated={new Date("2024-03-27T22:56:02.537Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/ashby/favicon.png"
       contactUrl="https://app.ashbyhq.com/support"
       contactEmail="support@ashbyhq.com"
@@ -2590,10 +2590,10 @@ export default function AshbyTypeScriptSdk() {
       apiTitle="Ashby API"
       apiBaseUrl="https://api.ashbyhq.com"
       apiVersion="1.0.0"
-      endpoints={89}
-      sdkMethods={89}
+      endpoints={90}
+      sdkMethods={90}
       schemas={175}
-      parameters={188}
+      parameters={191}
       difficulty="Medium"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/ashby/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/ashby/openapi.yaml"

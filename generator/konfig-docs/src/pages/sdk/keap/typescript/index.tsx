@@ -31,7 +31,7 @@ Top 100 Best Workplaces for Millennials in US`}
       companyKebabCase="keap"
       clientNameCamelCase="keap"
       homepage="keap.com"
-      lastUpdated={new Date("2024-03-28T20:59:16.525Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/keap/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -7700,7 +7700,7 @@ Top 100 Best Workplaces for Millennials in US`}
       language="TypeScript"
       apiTitle="Keap REST API"
       apiBaseUrl="https://api.infusionsoft.com/crm/rest"
-      apiVersion="1.70.0.652598"
+      apiVersion="1.70.0.660920-hf-202404121455"
       endpoints={92}
       sdkMethods={141}
       schemas={740}

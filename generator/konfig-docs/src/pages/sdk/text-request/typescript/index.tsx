@@ -21,7 +21,7 @@ Learn more about how we help busy business leaders like you with conversational 
       companyKebabCase="text-request"
       clientNameCamelCase="textRequest"
       homepage="www.textrequest.com/"
-      lastUpdated={new Date("2024-03-28T20:21:18.066Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/text-request/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -2806,9 +2806,9 @@ Learn more about how we help busy business leaders like you with conversational 
       apiBaseUrl="https://api.textrequest.com/api/v3/"
       apiVersion="3.0.0"
       endpoints={36}
-      sdkMethods={66}
+      sdkMethods={67}
       schemas={65}
-      parameters={207}
+      parameters={215}
       difficulty="Medium"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/text-request/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/text-request/openapi.yaml"

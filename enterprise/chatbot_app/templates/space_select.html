@@ -1,0 +1,15 @@
+<div class="py-2.5">
+  <label>Select Space</label>
+  <select name="space_id"
+          hx-get="{% url 'space_select_view' %}"
+          hx-target="#app">
+    {% for space in spaces %}
+      <option value="{{ space.id }}"
+              {% if space.id == current_space.id %}selected{% endif %}>{{ space.id }}</option>
+    {% endfor %}
+  </select>
+  <form hx-post="{% url 'create_space_view' %}" hx-target="#app">
+    {% csrf_token %}
+    <button>Create Space</button>
+  </form>
+</div>

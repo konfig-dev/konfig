@@ -17,7 +17,7 @@ export default function UploadThingTypeScriptSdk() {
       companyKebabCase="upload-thing"
       clientNameCamelCase="uploadThing"
       homepage="uploadthing.com"
-      lastUpdated={new Date("2024-03-29T20:52:35.791Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/uploadthing/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -840,10 +840,10 @@ export default function UploadThingTypeScriptSdk() {
       apiTitle="UploadThing REST API"
       apiBaseUrl="https://uploadthing.com/api"
       apiVersion="6.4.0"
-      endpoints={12}
-      sdkMethods={13}
+      endpoints={13}
+      sdkMethods={14}
       schemas={32}
-      parameters={78}
+      parameters={83}
       difficulty="Very Easy"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/uploadthing/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/uploadthing/openapi.yaml"

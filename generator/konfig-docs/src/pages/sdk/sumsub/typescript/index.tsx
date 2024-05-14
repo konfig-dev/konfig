@@ -19,7 +19,7 @@ Sumsub has over 2,000 clients in fintech, crypto, transportation, trading, e-com
       companyKebabCase="sumsub"
       clientNameCamelCase="sumsub"
       homepage="sumsub.com/"
-      lastUpdated={new Date("2024-03-25T22:13:04.183Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/sumsub/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -870,7 +870,7 @@ Sumsub has over 2,000 clients in fintech, crypto, transportation, trading, e-com
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Applicant",
     "typeScriptTag": "applicant",
-    "description": "Get applicant data (externalUserId)",
+    "description": "Get applicant data (https://docs.sumsub.com/reference",
     "parameters": [
       {
         "name": "externalUserId",
@@ -962,7 +962,7 @@ Sumsub has over 2,000 clients in fintech, crypto, transportation, trading, e-com
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Check",
     "typeScriptTag": "check",
-    "description": "Get TIN (SSN) check results",
+    "description": "Get TIN (https://docs.sumsub.com/reference check results",
     "parameters": [
       {
         "name": "applicantId",
@@ -1106,7 +1106,7 @@ Sumsub has over 2,000 clients in fintech, crypto, transportation, trading, e-com
         "name": "comparisonMode",
         "schema": "string",
         "required": true,
-        "description": "Data comparison mode. See the [possible values](/reference/perform-name-cross-validation#possible-comparisonmode-values).",
+        "description": "Data comparison mode. See the [possible values](https://docs.sumsub.com/reference.",
         "example": "COMPARISONMODE"
       },
       {
@@ -2069,7 +2069,7 @@ Sumsub has over 2,000 clients in fintech, crypto, transportation, trading, e-com
         "name": "applicantId",
         "schema": "string",
         "required": true,
-        "description": "A unique identification number of the applicant who passed user verification (KYC). If you do no have such an applicant, use [Submit transaction for non-existing applicant](ref:submit-transaction-for-non-existing-applicant) instead.",
+        "description": "A unique identification number of the applicant who passed user verification (https://docs.sumsub.com/reference. If you do no have such an applicant, use [Submit transaction for non-existing applicant](ref:submit-transaction-for-non-existing-applicant) instead.",
         "example": "APPLICANTID"
       },
       {
@@ -2232,7 +2232,7 @@ Sumsub has over 2,000 clients in fintech, crypto, transportation, trading, e-com
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Transaction",
     "typeScriptTag": "transaction",
-    "description": "Get transaction information (externalTxnId)",
+    "description": "Get transaction information (https://docs.sumsub.com/reference",
     "parameters": [
       {
         "name": "externalTxnId",
@@ -2260,13 +2260,13 @@ Sumsub has over 2,000 clients in fintech, crypto, transportation, trading, e-com
       {
         "name": "ignoreErrors",
         "schema": "boolean",
-        "description": "<ul><li><code>true</code> — all valid transactions will be created and returned, errors will be ignored during the processing and listed in the response.</li><li><code>false</code> (default) — valid transactions will be created up to the first detected error. The response will only contain the error on which the processing was interrupted.</li></ul>",
+        "description": "<ul><li><code>true</code> — all valid transactions will be created and returned, errors will be ignored during the processing and listed in the response.</li><li><code>false</code> (https://docs.sumsub.com/reference — valid transactions will be created up to the first detected error. The response will only contain the error on which the processing was interrupted.</li></ul>",
         "default": false
       },
       {
         "name": "scoreSavedTxns",
         "schema": "boolean",
-        "description": "Allows you to control whether scoring should be run on imported transactions or not:<ul><li><code>true</code> (default) — start scoring after import.</li><li><code>false</code> — do not start scoring after import.</li></ul>",
+        "description": "Allows you to control whether scoring should be run on imported transactions or not:<ul><li><code>true</code> (https://docs.sumsub.com/reference — start scoring after import.</li><li><code>false</code> — do not start scoring after import.</li></ul>",
         "default": true
       },
       {
@@ -2835,10 +2835,10 @@ Sumsub has over 2,000 clients in fintech, crypto, transportation, trading, e-com
       apiTitle="Sumsub API"
       apiBaseUrl="https://api.sumsub.com"
       apiVersion="1.0"
-      endpoints={76}
-      sdkMethods={82}
+      endpoints={77}
+      sdkMethods={83}
       schemas={76}
-      parameters={254}
+      parameters={260}
       difficulty="Medium"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/sumsub/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/sumsub/openapi.yaml"

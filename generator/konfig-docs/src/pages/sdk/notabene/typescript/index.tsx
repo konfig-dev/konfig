@@ -17,7 +17,7 @@ export default function NotabeneTypeScriptSdk() {
       companyKebabCase="notabene"
       clientNameCamelCase="notabene"
       homepage="notabene.id/"
-      lastUpdated={new Date("2024-03-28T17:19:02.555Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/notabene/favicon.png"
       contactUrl="https://doc.notabene.id"
       contactEmail="tech@notabene.id"
@@ -4188,7 +4188,7 @@ export default function NotabeneTypeScriptSdk() {
       endpoints={84}
       sdkMethods={115}
       schemas={332}
-      parameters={343}
+      parameters={344}
       difficulty="Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/notabene/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/notabene/openapi.yaml"

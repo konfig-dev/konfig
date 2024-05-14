@@ -24,7 +24,7 @@ Finshark is a licensed Payment Institution by the Financial Supervisory Authorit
       companyKebabCase="finshark"
       clientNameCamelCase="finshark"
       homepage="finshark.io/"
-      lastUpdated={new Date("2024-03-29T22:42:59.082Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/finshark/favicon.jpg"
       // Missing contactUrl
       contactEmail="support@finshark.io"
@@ -2787,10 +2787,10 @@ Finshark is a licensed Payment Institution by the Financial Supervisory Authorit
       apiTitle="Finshark API"
       apiBaseUrl="api.finshark.io"
       apiVersion="v1"
-      endpoints={40}
-      sdkMethods={51}
+      endpoints={43}
+      sdkMethods={55}
       schemas={126}
-      parameters={147}
+      parameters={160}
       difficulty="Medium"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/finshark/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/finshark/openapi.yaml"

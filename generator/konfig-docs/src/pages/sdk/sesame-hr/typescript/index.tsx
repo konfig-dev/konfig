@@ -18,7 +18,7 @@ export default function SesameHrTypeScriptSdk() {
       companyKebabCase="sesame-hr"
       clientNameCamelCase="sesameHr"
       homepage="sesamehr.com"
-      lastUpdated={new Date("2024-03-27T17:24:58.337Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/sesame-hr/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -4875,10 +4875,10 @@ export default function SesameHrTypeScriptSdk() {
       apiTitle="Sesame Public API"
       apiBaseUrl="https://api-{region}.sesametime.com"
       apiVersion="3.0.0"
-      endpoints={78}
-      sdkMethods={118}
+      endpoints={79}
+      sdkMethods={119}
       schemas={173}
-      parameters={487}
+      parameters={497}
       difficulty="Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/sesame-hr/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/sesame-hr/openapi.yaml"

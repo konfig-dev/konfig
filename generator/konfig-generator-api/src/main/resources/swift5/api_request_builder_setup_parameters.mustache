@@ -4,10 +4,10 @@
         localVariablePath = localVariablePath.replacingOccurrences(of: "{{=<% %>=}}{<%baseName%>}<%={{ }}=%>", with: {{paramName}}PostEscape, options: .literal, range: nil){{/pathParams}}
         let localVariableURLString = basePath + localVariablePath
         {{#bodyParam}}
+        {{^hasFormParams}}
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: {{paramName}})
-        {{/bodyParam}}
-        {{^bodyParam}}
-            {{#hasFormParams}}
+        {{/hasFormParams}}
+        {{#hasFormParams}}
         let localVariableFormParams: [String: Any?] = [
                 {{#formParams}}
             {{> _param}},
@@ -16,11 +16,12 @@
 
         let localVariableNonNullParameters = APIHelper.rejectNil(localVariableFormParams)
         let localVariableParameters = APIHelper.convertBoolToString(localVariableNonNullParameters)
-            {{/hasFormParams}}
-            {{^hasFormParams}}
+        {{/hasFormParams}}
+        {{/bodyParam}}
+        {{^bodyParam}}
         let localVariableParameters: [String: Any]? = nil
-            {{/hasFormParams}}
-{{/bodyParam}}{{#hasQueryParams}}
+        {{/bodyParam}}
+{{#hasQueryParams}}
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([{{^queryParams}}:{{/queryParams}}
             {{#queryParams}}

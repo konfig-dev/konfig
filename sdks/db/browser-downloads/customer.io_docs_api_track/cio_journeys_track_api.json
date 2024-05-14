@@ -372,6 +372,10 @@
         },
         "x-codeSamples": [
           {
+            "lang": "Shell + Curl",
+            "source": "curl --request PUT \\\n  --url https://track.customer.io/api/v1/customers/{identifier} \\\n  --header \"Authorization: Basic $(echo -n site_id:api_key | base64)\" \\\n  --header 'content-type: application/json' \\\n  --data '{\"id\":\"string\",\"email\":\"user@example.com\",\"anonymous_id\":\"string\",\"created_at\":0,\"_update\":true,\"cio_relationships\":{\"action\":\"add_relationships\",\"relationships\":[{\"identifiers\":{\"object_type_id\":\"1\",\"object_id\":\"acme\"},\"relationship_attributes\":{\"role\":\"admin\"}}]},\"unsubscribed\":true,\"cio_subscription_preferences\":{\"topics\":{\"topic_<id>1\":true,\"topic_<id>2\":true}},\"Attributes1\":\"string\",\"Attributes2\":\"string\"}'"
+          },
+          {
             "lang": "Node + Native",
             "source": "const { TrackClient, RegionUS } = require('customerio-node');\nlet cio = new TrackClient(siteId, apiKey, { region: RegionUS });\n\ncio.identify(5, {\n  email: 'customer@example.com',\n  created_at: 1361205308,\n  first_name: 'Bob',\n  plan: 'basic'\n});\n"
           },
@@ -386,10 +390,6 @@
           {
             "lang": "Go + Native",
             "source": "track := customerio.NewTrackClient(\"YOUR SITE ID\", \"YOUR API SECRET KEY\", customerio.WithRegion(customerio.RegionUS))\n\nif err := track.Identify(\"5\", map[string]interface{}{\n  \"email\": \"bob@example.com\",\n  \"created_at\": time.Now().Unix(),\n  \"first_name\": \"Bob\",\n  \"plan\": \"basic\",\n}); err != nil {\n  // do something with error\n}\n"
-          },
-          {
-            "lang": "Shell + Curl",
-            "source": "curl --request PUT \\\n  --url https://track.customer.io/api/v1/customers/{identifier} \\\n  --header \"Authorization: Basic $(echo -n site_id:api_key | base64)\" \\\n  --header 'content-type: application/json' \\\n  --data '{\"id\":\"string\",\"email\":\"user@example.com\",\"anonymous_id\":\"string\",\"created_at\":0,\"_update\":true,\"cio_relationships\":{\"action\":\"add_relationships\",\"relationships\":[{\"identifiers\":{\"object_type_id\":\"1\",\"object_id\":\"acme\"},\"relationship_attributes\":{\"role\":\"admin\"}}]},\"unsubscribed\":true,\"cio_subscription_preferences\":{\"topics\":{\"topic_<id>1\":true,\"topic_<id>2\":true}},\"Attributes1\":\"string\",\"Attributes2\":\"string\"}'"
           }
         ]
       },
@@ -663,6 +663,10 @@
         },
         "x-codeSamples": [
           {
+            "lang": "Shell + Curl",
+            "source": "curl --request PUT \\\n  --url https://track.customer.io/api/v1/customers/{identifier}/devices \\\n  --header \"Authorization: Basic $(echo -n site_id:api_key | base64)\" \\\n  --header 'content-type: application/json' \\\n  --data '{\"device\":{\"id\":\"string\",\"last_used\":0,\"platform\":\"ios\",\"attributes\":{\"device_os\":\"string\",\"device_model\":\"string\",\"app_version\":\"string\",\"cio_sdk_version\":\"string\",\"device_locale\":\"string\",\"push_enabled\":\"true\",\"Custom Device Attributes1\":\"string\",\"Custom Device Attributes2\":\"string\"}}}'"
+          },
+          {
             "lang": "Node + Native",
             "source": "const { TrackClient, RegionUS } = require('customerio-node');\nlet cio = new TrackClient(siteId, apiKey, { region: RegionUS });\n\n// Depending on your workspace settings, the id (5) may be an email address.\ncio.addDevice(5, \"device_id\", \"ios\", { primary: true });\n"
           },
@@ -677,10 +681,6 @@
           {
             "lang": "Go + Native",
             "source": "track := customerio.NewTrackClient(\"YOUR SITE ID\", \"YOUR API SECRET KEY\", customerio.WithRegion(customerio.RegionUS))\n\n// Depending on your workspace settings, the id (5) may be an email address.\nif err := track.AddDevice(\"5\", \"messaging token\", \"android\", map[string]interface{}{\n  \"last_used\": time.Now().Unix(),\n}) err != nil {\n  // do something with error\n}\n"
-          },
-          {
-            "lang": "Shell + Curl",
-            "source": "curl --request PUT \\\n  --url https://track.customer.io/api/v1/customers/{identifier}/devices \\\n  --header \"Authorization: Basic $(echo -n site_id:api_key | base64)\" \\\n  --header 'content-type: application/json' \\\n  --data '{\"device\":{\"id\":\"string\",\"last_used\":0,\"platform\":\"ios\",\"attributes\":{\"device_os\":\"string\",\"device_model\":\"string\",\"app_version\":\"string\",\"cio_sdk_version\":\"string\",\"device_locale\":\"string\",\"push_enabled\":\"true\",\"Custom Device Attributes1\":\"string\",\"Custom Device Attributes2\":\"string\"}}}'"
           }
         ]
       }
@@ -779,6 +779,10 @@
         },
         "x-codeSamples": [
           {
+            "lang": "Shell + Curl",
+            "source": "curl --request DELETE \\\n  --url https://track.customer.io/api/v1/customers/{identifier}/devices/{device_id} \\\n  --header \"Authorization: Basic $(echo -n site_id:api_key | base64)\""
+          },
+          {
             "lang": "Node + Native",
             "source": "const { TrackClient, RegionUS } = require('customerio-node');\nlet cio = new TrackClient(siteId, apiKey, { region: RegionUS });\n\n// Depending on your workspace settings, the id (5) may be an email address.\ncio.deleteDevice(5, \"device_token\")\n"
           },
@@ -793,10 +797,6 @@
           {
             "lang": "Go + Native",
             "source": "track := customerio.NewTrackClient(\"YOUR SITE ID\", \"YOUR API SECRET KEY\", customerio.WithRegion(customerio.RegionUS))\n\n// Depending on your workspace settings, the id (5) may be an email address.\nif err := track.DeleteDevice(\"5\", \"messaging-token\"); err != nil {\n  // do something with error\n}\n"
-          },
-          {
-            "lang": "Shell + Curl",
-            "source": "curl --request DELETE \\\n  --url https://track.customer.io/api/v1/customers/{identifier}/devices/{device_id} \\\n  --header \"Authorization: Basic $(echo -n site_id:api_key | base64)\""
           }
         ]
       }
@@ -861,6 +861,10 @@
         },
         "x-codeSamples": [
           {
+            "lang": "Shell + Curl",
+            "source": "curl --request POST \\\n  --url https://track.customer.io/api/v1/customers/{identifier}/suppress \\\n  --header \"Authorization: Basic $(echo -n site_id:api_key | base64)\""
+          },
+          {
             "lang": "Node + Native",
             "source": "const { TrackClient, RegionUS } = require('customerio-node');\nlet cio = new TrackClient(siteId, apiKey, { region: RegionUS });\n\n// Depending on your workspace settings, the id (5) may be an email address.\ncio.suppress(5)\n"
           },
@@ -871,10 +875,6 @@
           {
             "lang": "Python + Python3",
             "source": "from customerio import CustomerIO, Regions\ncio = CustomerIO(site_id, api_key, region=Regions.US)\n\n// Depending on your workspace settings, customer_id may be an email address.\ncio.suppress(customer_id=\"5\")\n"
-          },
-          {
-            "lang": "Shell + Curl",
-            "source": "curl --request POST \\\n  --url https://track.customer.io/api/v1/customers/{identifier}/suppress \\\n  --header \"Authorization: Basic $(echo -n site_id:api_key | base64)\""
           },
           {
             "lang": "Go + Native",
@@ -943,20 +943,20 @@
         },
         "x-codeSamples": [
           {
-            "lang": "Ruby + Native",
-            "source": "$customerio = Customerio::Client.new(\"YOUR SITE ID\", \"YOUR API SECRET KEY\", region: Customerio::Regions::US)\n\n// Depending on your workspace settings, the id (5) may be an email address.\n$customerio.unsuppress(5)\n"
-          },
-          {
-            "lang": "Python + Python3",
-            "source": "from customerio import CustomerIO, Regions\ncio = CustomerIO(site_id, api_key, region=Regions.US)\n\n// Depending on your workspace settings, customer_id may be an email address.\ncio.unsuppress(customer_id=\"5\")\n"
-          },
-          {
             "lang": "Shell + Curl",
             "source": "curl --request POST \\\n  --url https://track.customer.io/api/v1/customers/{identifier}/unsuppress \\\n  --header \"Authorization: Basic $(echo -n site_id:api_key | base64)\""
           },
           {
             "lang": "Node + Native",
             "source": "const http = require(\"https\");\n\nconst options = {\n  \"method\": \"POST\",\n  \"hostname\": \"track.customer.io\",\n  \"port\": null,\n  \"path\": \"/api/v1/customers/{identifier}/unsuppress\",\n  \"headers\": {\n    \"Authorization\": \"Basic REPLACE_BASIC_AUTH\"\n  }\n};\n\nconst req = http.request(options, function (res) {\n  const chunks = [];\n\n  res.on(\"data\", function (chunk) {\n    chunks.push(chunk);\n  });\n\n  res.on(\"end\", function () {\n    const body = Buffer.concat(chunks);\n    console.log(body.toString());\n  });\n});\n\nreq.end();"
+          },
+          {
+            "lang": "Ruby + Native",
+            "source": "$customerio = Customerio::Client.new(\"YOUR SITE ID\", \"YOUR API SECRET KEY\", region: Customerio::Regions::US)\n\n// Depending on your workspace settings, the id (5) may be an email address.\n$customerio.unsuppress(5)\n"
+          },
+          {
+            "lang": "Python + Python3",
+            "source": "from customerio import CustomerIO, Regions\ncio = CustomerIO(site_id, api_key, region=Regions.US)\n\n// Depending on your workspace settings, customer_id may be an email address.\ncio.unsuppress(customer_id=\"5\")\n"
           },
           {
             "lang": "Go + Native",
@@ -1269,6 +1269,10 @@
         },
         "x-codeSamples": [
           {
+            "lang": "Shell + Curl",
+            "source": "curl --request POST \\\n  --url https://track.customer.io/api/v1/customers/{identifier}/events \\\n  --header \"Authorization: Basic $(echo -n site_id:api_key | base64)\" \\\n  --header 'content-type: application/json' \\\n  --data '{\"name\":\"purchase\",\"data\":{\"price\":23.45,\"product\":\"socks\"}}'"
+          },
+          {
             "lang": "Node + Native",
             "source": "const { TrackClient, RegionUS } = require('customerio-node');\nlet cio = new TrackClient(siteId, apiKey, { region: RegionUS });\n\n// Depending on your workspace settings, customer_id may be an email address.\ncio.track(5, {\n  name: 'purchase',\n  data: {\n    price: '23.45',\n    product: 'socks'\n  }\n});\n"
           },
@@ -1283,10 +1287,6 @@
           {
             "lang": "Go + Native",
             "source": "track := customerio.NewTrackClient(\"YOUR SITE ID\", \"YOUR API SECRET KEY\", customerio.WithRegion(customerio.RegionUS))\n\nif err := track.Track(\"5\", \"purchase\", map[string]interface{}{\n    \"type\": \"socks\",\n    \"price\": \"13.99\",\n}); err != nil {\n    // do something with error\n}\n"
-          },
-          {
-            "lang": "Shell + Curl",
-            "source": "curl --request POST \\\n  --url https://track.customer.io/api/v1/customers/{identifier}/events \\\n  --header \"Authorization: Basic $(echo -n site_id:api_key | base64)\" \\\n  --header 'content-type: application/json' \\\n  --data '{\"name\":\"purchase\",\"data\":{\"price\":23.45,\"product\":\"socks\"}}'"
           }
         ]
       }
@@ -1493,6 +1493,10 @@
         },
         "x-codeSamples": [
           {
+            "lang": "Shell + Curl",
+            "source": "curl --request POST \\\n  --url https://track.customer.io/api/v1/events \\\n  --header \"Authorization: Basic $(echo -n site_id:api_key | base64)\" \\\n  --header 'content-type: application/json' \\\n  --data '{\"name\":\"watched_video\",\"anonymous_id\":\"abc123\",\"data\":{\"video\":\"intro-to-platform\"}}'"
+          },
+          {
             "lang": "Node + Native",
             "source": "const { TrackClient, RegionUS } = require('customerio-node');\nlet cio = new TrackClient(siteId, apiKey, { region: RegionUS });\n\ncio.trackAnonymous('anonymous-id', {\n  name: 'updated',\n  data: {\n    updated: true,\n    plan: 'free'\n  }\n});\n"
           },
@@ -1507,10 +1511,6 @@
           {
             "lang": "Go + Native",
             "source": "track := customerio.NewTrackClient(\"YOUR SITE ID\", \"YOUR API SECRET KEY\", customerio.WithRegion(customerio.RegionUS))\n\nif err := track.TrackAnonymous(anonymous_id, \"new_app\", map[string]interface{}{\n  \"first_name\": \"Alex\",\n  \"source\": \"OldApp\",\n}); err != nil {\n  // do something with error\n}\n"
-          },
-          {
-            "lang": "Shell + Curl",
-            "source": "curl --request POST \\\n  --url https://track.customer.io/api/v1/events \\\n  --header \"Authorization: Basic $(echo -n site_id:api_key | base64)\" \\\n  --header 'content-type: application/json' \\\n  --data '{\"name\":\"watched_video\",\"anonymous_id\":\"abc123\",\"data\":{\"video\":\"intro-to-platform\"}}'"
           }
         ]
       }
@@ -6998,64 +6998,67 @@
       },
       "activityTypes": {
         "name": "type",
-        "description": "The type of activity you want to search for.",
+        "description": "The type of activity you want to search for. Types with `_o:<object_type_id>` are for objects and types with `_r:<object_type_id>` are for relationships.",
         "in": "query",
         "required": false,
         "schema": {
-          "description": "The activity type.",
+          "description": "The type of activity. Types with `_o:<object_type_id>` are for objects and types with `_r:<object_type_id>` are for relationships.",
           "type": "string",
           "enum": [
-            "page",
-            "screen",
-            "event",
-            "failed_event",
+            "attempted_action",
             "attribute_change",
             "failed_attribute_change",
-            "failed_query_collection",
             "failed_batch_update",
             "skipped_update",
-            "profile_delete",
-            "profile_create",
-            "profile_merge",
-            "anon_merge",
-            "stripe_event",
+            "failed_query_collection",
+            "event",
+            "failed_event",
+            "page",
             "drafted_email",
-            "failed_email",
-            "dropped_email",
+            "attempted_email",
             "sent_email",
-            "spammed_email",
-            "bounced_email",
             "delivered_email",
-            "triggered_email",
             "opened_email",
             "clicked_email",
             "converted_email",
+            "bounced_email",
+            "failed_email",
             "unsubscribed_email",
-            "attempted_email",
+            "topic_unsubscribed_email",
+            "spammed_email",
+            "dropped_email",
             "undeliverable_email",
-            "deferred_email",
-            "device_change",
-            "attempted_action",
             "drafted_action",
-            "sent_action",
             "delivered_action",
             "bounced_action",
-            "failed_action",
-            "converted_action",
-            "undeliverable_action",
-            "unsubscribed_action",
+            "sent_action",
             "opened_action",
             "clicked_action",
+            "failed_action",
+            "converted_action",
+            "device_change",
+            "deferred_email",
+            "unsubscribed_action",
             "dropped_action",
-            "secondary:dropped_email",
-            "secondary:spammed_email",
-            "secondary:bounced_email",
-            "secondary:delivered_email",
-            "secondary:opened_email",
-            "secondary:clicked_email",
-            "secondary:failed_email",
-            "secondary:deferred_email",
-            "webhook_event"
+            "undeliverable_action",
+            "deferred_action",
+            "profile_create",
+            "profile_delete",
+            "profile_merge",
+            "anon_merge",
+            "screen",
+            "webhook_event",
+            "add_relationship",
+            "delete_relationship",
+            "_o:<object_type_id>:create",
+            "_o:<object_type_id>:attribute_change",
+            "_o:<object_type_id>:failed_attribute_change",
+            "_o:<object_type_id>:delete",
+            "_o:<object_type_id>:add_relationship",
+            "_o:<object_type_id>:delete_relationship",
+            "_r:<object_type_id>:attribute_change",
+            "_r:<object_type_id>:failed_attribute_change",
+            "failed_object_journeys"
           ],
           "example": "sent_email"
         }
@@ -7456,7 +7459,6 @@
         "schema": {
           "type": "string",
           "enum": [
-            "created",
             "attempted",
             "sent",
             "delivered",
@@ -8035,7 +8037,7 @@
                 "nullable": true,
                 "format": "email",
                 "description": "A person's email address, if set.",
-                "example": "cool.person@example.com"
+                "example": "test@example.com"
               },
               "id": {
                 "type": "string",
@@ -8133,60 +8135,63 @@
             "example": 1397566226
           },
           "type": {
-            "description": "The activity type.",
+            "description": "The type of activity. Types with `_o:<object_type_id>` are for objects and types with `_r:<object_type_id>` are for relationships.",
             "type": "string",
             "enum": [
-              "page",
-              "screen",
-              "event",
-              "failed_event",
+              "attempted_action",
               "attribute_change",
               "failed_attribute_change",
-              "failed_query_collection",
               "failed_batch_update",
               "skipped_update",
-              "profile_delete",
-              "profile_create",
-              "profile_merge",
-              "anon_merge",
-              "stripe_event",
+              "failed_query_collection",
+              "event",
+              "failed_event",
+              "page",
               "drafted_email",
-              "failed_email",
-              "dropped_email",
+              "attempted_email",
               "sent_email",
-              "spammed_email",
-              "bounced_email",
               "delivered_email",
-              "triggered_email",
               "opened_email",
               "clicked_email",
               "converted_email",
+              "bounced_email",
+              "failed_email",
               "unsubscribed_email",
-              "attempted_email",
+              "topic_unsubscribed_email",
+              "spammed_email",
+              "dropped_email",
               "undeliverable_email",
-              "deferred_email",
-              "device_change",
-              "attempted_action",
               "drafted_action",
-              "sent_action",
               "delivered_action",
               "bounced_action",
-              "failed_action",
-              "converted_action",
-              "undeliverable_action",
-              "unsubscribed_action",
+              "sent_action",
               "opened_action",
               "clicked_action",
+              "failed_action",
+              "converted_action",
+              "device_change",
+              "deferred_email",
+              "unsubscribed_action",
               "dropped_action",
-              "secondary:dropped_email",
-              "secondary:spammed_email",
-              "secondary:bounced_email",
-              "secondary:delivered_email",
-              "secondary:opened_email",
-              "secondary:clicked_email",
-              "secondary:failed_email",
-              "secondary:deferred_email",
-              "webhook_event"
+              "undeliverable_action",
+              "deferred_action",
+              "profile_create",
+              "profile_delete",
+              "profile_merge",
+              "anon_merge",
+              "screen",
+              "webhook_event",
+              "add_relationship",
+              "delete_relationship",
+              "_o:<object_type_id>:create",
+              "_o:<object_type_id>:attribute_change",
+              "_o:<object_type_id>:failed_attribute_change",
+              "_o:<object_type_id>:delete",
+              "_o:<object_type_id>:add_relationship",
+              "_o:<object_type_id>:delete_relationship",
+              "_r:<object_type_id>:attribute_change",
+              "_r:<object_type_id>:failed_attribute_change",
+              "failed_object_journeys"
             ],
             "example": "sent_email"
           }
@@ -8198,60 +8203,63 @@
         "example": "ZAIAAVTJVG0QcCok0-0ZKj6yiQ=="
       },
       "activityTypes": {
-        "description": "The activity type.",
+        "description": "The type of activity. Types with `_o:<object_type_id>` are for objects and types with `_r:<object_type_id>` are for relationships.",
         "type": "string",
         "enum": [
-          "page",
-          "screen",
-          "event",
-          "failed_event",
+          "attempted_action",
           "attribute_change",
           "failed_attribute_change",
-          "failed_query_collection",
           "failed_batch_update",
           "skipped_update",
-          "profile_delete",
-          "profile_create",
-          "profile_merge",
-          "anon_merge",
-          "stripe_event",
+          "failed_query_collection",
+          "event",
+          "failed_event",
+          "page",
           "drafted_email",
-          "failed_email",
-          "dropped_email",
+          "attempted_email",
           "sent_email",
-          "spammed_email",
-          "bounced_email",
           "delivered_email",
-          "triggered_email",
           "opened_email",
           "clicked_email",
           "converted_email",
+          "bounced_email",
+          "failed_email",
           "unsubscribed_email",
-          "attempted_email",
+          "topic_unsubscribed_email",
+          "spammed_email",
+          "dropped_email",
           "undeliverable_email",
-          "deferred_email",
-          "device_change",
-          "attempted_action",
           "drafted_action",
-          "sent_action",
           "delivered_action",
           "bounced_action",
-          "failed_action",
-          "converted_action",
-          "undeliverable_action",
-          "unsubscribed_action",
+          "sent_action",
           "opened_action",
           "clicked_action",
+          "failed_action",
+          "converted_action",
+          "device_change",
+          "deferred_email",
+          "unsubscribed_action",
           "dropped_action",
-          "secondary:dropped_email",
-          "secondary:spammed_email",
-          "secondary:bounced_email",
-          "secondary:delivered_email",
-          "secondary:opened_email",
-          "secondary:clicked_email",
-          "secondary:failed_email",
-          "secondary:deferred_email",
-          "webhook_event"
+          "undeliverable_action",
+          "deferred_action",
+          "profile_create",
+          "profile_delete",
+          "profile_merge",
+          "anon_merge",
+          "screen",
+          "webhook_event",
+          "add_relationship",
+          "delete_relationship",
+          "_o:<object_type_id>:create",
+          "_o:<object_type_id>:attribute_change",
+          "_o:<object_type_id>:failed_attribute_change",
+          "_o:<object_type_id>:delete",
+          "_o:<object_type_id>:add_relationship",
+          "_o:<object_type_id>:delete_relationship",
+          "_r:<object_type_id>:attribute_change",
+          "_r:<object_type_id>:failed_attribute_change",
+          "failed_object_journeys"
         ],
         "example": "sent_email"
       },
@@ -11917,7 +11925,48 @@
           }
         ]
       },
-      "objectAttributeFilter": {
+      "objectattributeFilter": {
+        "title": "object attribute",
+        "description": "Filter your objects by their attributes.",
+        "type": "object",
+        "required": [
+          "field",
+          "operator",
+          "type_id"
+        ],
+        "properties": {
+          "field": {
+            "type": "string",
+            "description": "The name of the attribute you want to filter against.",
+            "example": "location"
+          },
+          "operator": {
+            "type": "string",
+            "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
+            "enum": [
+              "eq",
+              "exists"
+            ]
+          },
+          "value": {
+            "type": "string",
+            "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
+          },
+          "type_id": {
+            "type": "string",
+            "description": "The object type an object belongs to—like \"Companies\" or \"Accounts\". Object type IDs are string-formatted integers that begin at `1` and increment for each new type.",
+            "nullable": false,
+            "example": "1"
+          }
+        },
+        "example": {
+          "field": "cancelled",
+          "operator": "eq",
+          "value": true,
+          "type_id": 1
+        }
+      },
+      "objectFilter-2": {
         "title": "object attribute",
         "description": "Filter your objects by their attributes.",
         "type": "object",
@@ -12128,7 +12177,8 @@
                     "type": "object",
                     "required": [
                       "field",
-                      "operator"
+                      "operator",
+                      "type_id"
                     ],
                     "properties": {
                       "field": {
@@ -12147,12 +12197,19 @@
                       "value": {
                         "type": "string",
                         "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
+                      },
+                      "type_id": {
+                        "type": "string",
+                        "description": "The object type an object belongs to—like \"Companies\" or \"Accounts\". Object type IDs are string-formatted integers that begin at `1` and increment for each new type.",
+                        "nullable": false,
+                        "example": "1"
                       }
                     },
                     "example": {
                       "field": "cancelled",
                       "operator": "eq",
-                      "value": true
+                      "value": true,
+                      "type_id": 1
                     }
                   }
                 }
@@ -12165,7 +12222,8 @@
             "type": "object",
             "required": [
               "field",
-              "operator"
+              "operator",
+              "type_id"
             ],
             "properties": {
               "field": {
@@ -12184,12 +12242,19 @@
               "value": {
                 "type": "string",
                 "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
+              },
+              "type_id": {
+                "type": "string",
+                "description": "The object type an object belongs to—like \"Companies\" or \"Accounts\". Object type IDs are string-formatted integers that begin at `1` and increment for each new type.",
+                "nullable": false,
+                "example": "1"
               }
             },
             "example": {
               "field": "cancelled",
               "operator": "eq",
-              "value": true
+              "value": true,
+              "type_id": 1
             }
           }
         }
@@ -12340,7 +12405,8 @@
                           "type": "object",
                           "required": [
                             "field",
-                            "operator"
+                            "operator",
+                            "type_id"
                           ],
                           "properties": {
                             "field": {
@@ -12359,12 +12425,19 @@
                             "value": {
                               "type": "string",
                               "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
+                            },
+                            "type_id": {
+                              "type": "string",
+                              "description": "The object type an object belongs to—like \"Companies\" or \"Accounts\". Object type IDs are string-formatted integers that begin at `1` and increment for each new type.",
+                              "nullable": false,
+                              "example": "1"
                             }
                           },
                           "example": {
                             "field": "cancelled",
                             "operator": "eq",
-                            "value": true
+                            "value": true,
+                            "type_id": 1
                           }
                         }
                       }
@@ -12377,7 +12450,8 @@
                   "type": "object",
                   "required": [
                     "field",
-                    "operator"
+                    "operator",
+                    "type_id"
                   ],
                   "properties": {
                     "field": {
@@ -12396,12 +12470,19 @@
                     "value": {
                       "type": "string",
                       "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
+                    },
+                    "type_id": {
+                      "type": "string",
+                      "description": "The object type an object belongs to—like \"Companies\" or \"Accounts\". Object type IDs are string-formatted integers that begin at `1` and increment for each new type.",
+                      "nullable": false,
+                      "example": "1"
                     }
                   },
                   "example": {
                     "field": "cancelled",
                     "operator": "eq",
-                    "value": true
+                    "value": true,
+                    "type_id": 1
                   }
                 }
               }
@@ -12555,7 +12636,8 @@
                           "type": "object",
                           "required": [
                             "field",
-                            "operator"
+                            "operator",
+                            "type_id"
                           ],
                           "properties": {
                             "field": {
@@ -12574,12 +12656,19 @@
                             "value": {
                               "type": "string",
                               "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
+                            },
+                            "type_id": {
+                              "type": "string",
+                              "description": "The object type an object belongs to—like \"Companies\" or \"Accounts\". Object type IDs are string-formatted integers that begin at `1` and increment for each new type.",
+                              "nullable": false,
+                              "example": "1"
                             }
                           },
                           "example": {
                             "field": "cancelled",
                             "operator": "eq",
-                            "value": true
+                            "value": true,
+                            "type_id": 1
                           }
                         }
                       }
@@ -12592,7 +12681,8 @@
                   "type": "object",
                   "required": [
                     "field",
-                    "operator"
+                    "operator",
+                    "type_id"
                   ],
                   "properties": {
                     "field": {
@@ -12611,12 +12701,19 @@
                     "value": {
                       "type": "string",
                       "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
+                    },
+                    "type_id": {
+                      "type": "string",
+                      "description": "The object type an object belongs to—like \"Companies\" or \"Accounts\". Object type IDs are string-formatted integers that begin at `1` and increment for each new type.",
+                      "nullable": false,
+                      "example": "1"
                     }
                   },
                   "example": {
                     "field": "cancelled",
                     "operator": "eq",
-                    "value": true
+                    "value": true,
+                    "type_id": 1
                   }
                 }
               }
@@ -12626,1508 +12723,19 @@
       },
       "objectFilterNot": {
         "title": "not",
-        "description": "Returns results if a condition is false. While and/or support an array of items, `not` supports a single filter object.",
-        "oneOf": [
-          {
-            "title": "and",
-            "type": "object",
-            "properties": {
-              "and": {
-                "type": "array",
-                "description": "Match *all* conditions to return results.",
-                "items": {
-                  "title": "Object Filter",
-                  "type": "object",
-                  "description": "When filtering for objects, you can use `and` and `or` arrays to determine the logic for a group of filter conditions. `not` reverses the filter condition and matches when the condition is false.",
-                  "properties": {
-                    "and": {
-                      "type": "array",
-                      "description": "Returns results matching *all* conditions.",
-                      "items": {
-                        "title": "object attribute",
-                        "description": "Filter your objects by their attributes.",
-                        "type": "object",
-                        "required": [
-                          "field",
-                          "operator"
-                        ],
-                        "properties": {
-                          "field": {
-                            "type": "string",
-                            "description": "The name of the attribute you want to filter against.",
-                            "example": "location"
-                          },
-                          "operator": {
-                            "type": "string",
-                            "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
-                            "enum": [
-                              "eq",
-                              "exists"
-                            ]
-                          },
-                          "value": {
-                            "type": "string",
-                            "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
-                          }
-                        },
-                        "example": {
-                          "field": "cancelled",
-                          "operator": "eq",
-                          "value": true
-                        }
-                      }
-                    },
-                    "or": {
-                      "type": "array",
-                      "description": "Returns results matching *any* conditions.",
-                      "items": {
-                        "title": "object attribute",
-                        "description": "Filter your objects by their attributes.",
-                        "type": "object",
-                        "required": [
-                          "field",
-                          "operator"
-                        ],
-                        "properties": {
-                          "field": {
-                            "type": "string",
-                            "description": "The name of the attribute you want to filter against.",
-                            "example": "location"
-                          },
-                          "operator": {
-                            "type": "string",
-                            "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
-                            "enum": [
-                              "eq",
-                              "exists"
-                            ]
-                          },
-                          "value": {
-                            "type": "string",
-                            "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
-                          }
-                        },
-                        "example": {
-                          "field": "cancelled",
-                          "operator": "eq",
-                          "value": true
-                        }
-                      }
-                    },
-                    "not": {
-                      "description": "Returns results if a condition is false. While and/or support an array of items, `not` supports a single filter object.",
-                      "oneOf": [
-                        {
-                          "title": "and",
-                          "type": "object",
-                          "properties": {
-                            "and": {
-                              "type": "array",
-                              "description": "Match *all* conditions to return results.",
-                              "items": {
-                                "title": "object attribute",
-                                "description": "Filter your objects by their attributes.",
-                                "type": "object",
-                                "required": [
-                                  "field",
-                                  "operator"
-                                ],
-                                "properties": {
-                                  "field": {
-                                    "type": "string",
-                                    "description": "The name of the attribute you want to filter against.",
-                                    "example": "location"
-                                  },
-                                  "operator": {
-                                    "type": "string",
-                                    "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
-                                    "enum": [
-                                      "eq",
-                                      "exists"
-                                    ]
-                                  },
-                                  "value": {
-                                    "type": "string",
-                                    "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
-                                  }
-                                },
-                                "example": {
-                                  "field": "cancelled",
-                                  "operator": "eq",
-                                  "value": true
-                                }
-                              }
-                            }
-                          }
-                        },
-                        {
-                          "title": "or",
-                          "type": "object",
-                          "properties": {
-                            "or": {
-                              "type": "array",
-                              "description": "Match *any* condition to return results.",
-                              "items": {
-                                "title": "object attribute",
-                                "description": "Filter your objects by their attributes.",
-                                "type": "object",
-                                "required": [
-                                  "field",
-                                  "operator"
-                                ],
-                                "properties": {
-                                  "field": {
-                                    "type": "string",
-                                    "description": "The name of the attribute you want to filter against.",
-                                    "example": "location"
-                                  },
-                                  "operator": {
-                                    "type": "string",
-                                    "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
-                                    "enum": [
-                                      "eq",
-                                      "exists"
-                                    ]
-                                  },
-                                  "value": {
-                                    "type": "string",
-                                    "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
-                                  }
-                                },
-                                "example": {
-                                  "field": "cancelled",
-                                  "operator": "eq",
-                                  "value": true
-                                }
-                              }
-                            }
-                          }
-                        },
-                        {
-                          "title": "object attribute",
-                          "type": "object",
-                          "properties": {
-                            "object_attribute": {
-                              "title": "object attribute",
-                              "description": "Filter your objects by their attributes.",
-                              "type": "object",
-                              "required": [
-                                "field",
-                                "operator"
-                              ],
-                              "properties": {
-                                "field": {
-                                  "type": "string",
-                                  "description": "The name of the attribute you want to filter against.",
-                                  "example": "location"
-                                },
-                                "operator": {
-                                  "type": "string",
-                                  "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
-                                  "enum": [
-                                    "eq",
-                                    "exists"
-                                  ]
-                                },
-                                "value": {
-                                  "type": "string",
-                                  "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
-                                }
-                              },
-                              "example": {
-                                "field": "cancelled",
-                                "operator": "eq",
-                                "value": true
-                              }
-                            }
-                          }
-                        }
-                      ]
-                    },
-                    "object_attribute": {
-                      "title": "object attribute",
-                      "description": "Filter your objects by their attributes.",
-                      "type": "object",
-                      "required": [
-                        "field",
-                        "operator"
-                      ],
-                      "properties": {
-                        "field": {
-                          "type": "string",
-                          "description": "The name of the attribute you want to filter against.",
-                          "example": "location"
-                        },
-                        "operator": {
-                          "type": "string",
-                          "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
-                          "enum": [
-                            "eq",
-                            "exists"
-                          ]
-                        },
-                        "value": {
-                          "type": "string",
-                          "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
-                        }
-                      },
-                      "example": {
-                        "field": "cancelled",
-                        "operator": "eq",
-                        "value": true
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          {
-            "title": "or",
-            "type": "object",
-            "properties": {
-              "or": {
-                "type": "array",
-                "description": "Match *any* condition to return results.",
-                "items": {
-                  "title": "Object Filter",
-                  "type": "object",
-                  "description": "When filtering for objects, you can use `and` and `or` arrays to determine the logic for a group of filter conditions. `not` reverses the filter condition and matches when the condition is false.",
-                  "properties": {
-                    "and": {
-                      "type": "array",
-                      "description": "Returns results matching *all* conditions.",
-                      "items": {
-                        "title": "object attribute",
-                        "description": "Filter your objects by their attributes.",
-                        "type": "object",
-                        "required": [
-                          "field",
-                          "operator"
-                        ],
-                        "properties": {
-                          "field": {
-                            "type": "string",
-                            "description": "The name of the attribute you want to filter against.",
-                            "example": "location"
-                          },
-                          "operator": {
-                            "type": "string",
-                            "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
-                            "enum": [
-                              "eq",
-                              "exists"
-                            ]
-                          },
-                          "value": {
-                            "type": "string",
-                            "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
-                          }
-                        },
-                        "example": {
-                          "field": "cancelled",
-                          "operator": "eq",
-                          "value": true
-                        }
-                      }
-                    },
-                    "or": {
-                      "type": "array",
-                      "description": "Returns results matching *any* conditions.",
-                      "items": {
-                        "title": "object attribute",
-                        "description": "Filter your objects by their attributes.",
-                        "type": "object",
-                        "required": [
-                          "field",
-                          "operator"
-                        ],
-                        "properties": {
-                          "field": {
-                            "type": "string",
-                            "description": "The name of the attribute you want to filter against.",
-                            "example": "location"
-                          },
-                          "operator": {
-                            "type": "string",
-                            "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
-                            "enum": [
-                              "eq",
-                              "exists"
-                            ]
-                          },
-                          "value": {
-                            "type": "string",
-                            "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
-                          }
-                        },
-                        "example": {
-                          "field": "cancelled",
-                          "operator": "eq",
-                          "value": true
-                        }
-                      }
-                    },
-                    "not": {
-                      "description": "Returns results if a condition is false. While and/or support an array of items, `not` supports a single filter object.",
-                      "oneOf": [
-                        {
-                          "title": "and",
-                          "type": "object",
-                          "properties": {
-                            "and": {
-                              "type": "array",
-                              "description": "Match *all* conditions to return results.",
-                              "items": {
-                                "title": "object attribute",
-                                "description": "Filter your objects by their attributes.",
-                                "type": "object",
-                                "required": [
-                                  "field",
-                                  "operator"
-                                ],
-                                "properties": {
-                                  "field": {
-                                    "type": "string",
-                                    "description": "The name of the attribute you want to filter against.",
-                                    "example": "location"
-                                  },
-                                  "operator": {
-                                    "type": "string",
-                                    "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
-                                    "enum": [
-                                      "eq",
-                                      "exists"
-                                    ]
-                                  },
-                                  "value": {
-                                    "type": "string",
-                                    "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
-                                  }
-                                },
-                                "example": {
-                                  "field": "cancelled",
-                                  "operator": "eq",
-                                  "value": true
-                                }
-                              }
-                            }
-                          }
-                        },
-                        {
-                          "title": "or",
-                          "type": "object",
-                          "properties": {
-                            "or": {
-                              "type": "array",
-                              "description": "Match *any* condition to return results.",
-                              "items": {
-                                "title": "object attribute",
-                                "description": "Filter your objects by their attributes.",
-                                "type": "object",
-                                "required": [
-                                  "field",
-                                  "operator"
-                                ],
-                                "properties": {
-                                  "field": {
-                                    "type": "string",
-                                    "description": "The name of the attribute you want to filter against.",
-                                    "example": "location"
-                                  },
-                                  "operator": {
-                                    "type": "string",
-                                    "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
-                                    "enum": [
-                                      "eq",
-                                      "exists"
-                                    ]
-                                  },
-                                  "value": {
-                                    "type": "string",
-                                    "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
-                                  }
-                                },
-                                "example": {
-                                  "field": "cancelled",
-                                  "operator": "eq",
-                                  "value": true
-                                }
-                              }
-                            }
-                          }
-                        },
-                        {
-                          "title": "object attribute",
-                          "type": "object",
-                          "properties": {
-                            "object_attribute": {
-                              "title": "object attribute",
-                              "description": "Filter your objects by their attributes.",
-                              "type": "object",
-                              "required": [
-                                "field",
-                                "operator"
-                              ],
-                              "properties": {
-                                "field": {
-                                  "type": "string",
-                                  "description": "The name of the attribute you want to filter against.",
-                                  "example": "location"
-                                },
-                                "operator": {
-                                  "type": "string",
-                                  "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
-                                  "enum": [
-                                    "eq",
-                                    "exists"
-                                  ]
-                                },
-                                "value": {
-                                  "type": "string",
-                                  "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
-                                }
-                              },
-                              "example": {
-                                "field": "cancelled",
-                                "operator": "eq",
-                                "value": true
-                              }
-                            }
-                          }
-                        }
-                      ]
-                    },
-                    "object_attribute": {
-                      "title": "object attribute",
-                      "description": "Filter your objects by their attributes.",
-                      "type": "object",
-                      "required": [
-                        "field",
-                        "operator"
-                      ],
-                      "properties": {
-                        "field": {
-                          "type": "string",
-                          "description": "The name of the attribute you want to filter against.",
-                          "example": "location"
-                        },
-                        "operator": {
-                          "type": "string",
-                          "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
-                          "enum": [
-                            "eq",
-                            "exists"
-                          ]
-                        },
-                        "value": {
-                          "type": "string",
-                          "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
-                        }
-                      },
-                      "example": {
-                        "field": "cancelled",
-                        "operator": "eq",
-                        "value": true
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          {
-            "title": "object attribute",
-            "type": "object",
-            "properties": {
-              "object_attribute": {
-                "title": "object attribute",
-                "description": "Filter your objects by their attributes.",
-                "type": "object",
-                "required": [
-                  "field",
-                  "operator"
-                ],
-                "properties": {
-                  "field": {
-                    "type": "string",
-                    "description": "The name of the attribute you want to filter against.",
-                    "example": "location"
-                  },
-                  "operator": {
-                    "type": "string",
-                    "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
-                    "enum": [
-                      "eq",
-                      "exists"
-                    ]
-                  },
-                  "value": {
-                    "type": "string",
-                    "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
-                  }
-                },
-                "example": {
-                  "field": "cancelled",
-                  "operator": "eq",
-                  "value": true
-                }
-              }
-            }
-          }
-        ]
-      },
-      "objectFilter": {
-        "title": "Object Filter",
-        "description": "When filtering for objects, you can use `and` and `or` arrays to determine the logic for a group of filter conditions. `not` reverses the filter condition and matches when the condition is false. `segment` and `attribute` represent the individual conditions you can filter a group of people for.\n\nThe top level of this object can only contain a single property, but you can nest `and` and `or` properties to produce complex filters.\n",
-        "oneOf": [
-          {
-            "title": "and",
-            "type": "object",
-            "properties": {
-              "and": {
-                "type": "array",
-                "description": "Match *all* conditions to return results.",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "or": {
-                      "type": "array",
-                      "description": "Returns results matching *any* conditions.",
-                      "items": {
-                        "title": "object attribute",
-                        "description": "Filter your objects by their attributes.",
-                        "type": "object",
-                        "required": [
-                          "field",
-                          "operator"
-                        ],
-                        "properties": {
-                          "field": {
-                            "type": "string",
-                            "description": "The name of the attribute you want to filter against.",
-                            "example": "location"
-                          },
-                          "operator": {
-                            "type": "string",
-                            "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
-                            "enum": [
-                              "eq",
-                              "exists"
-                            ]
-                          },
-                          "value": {
-                            "type": "string",
-                            "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
-                          }
-                        },
-                        "example": {
-                          "field": "cancelled",
-                          "operator": "eq",
-                          "value": true
-                        }
-                      }
-                    },
-                    "not": {
-                      "description": "Returns results if a condition is false. While and/or support an array of items, `not` supports a single filter object.",
-                      "oneOf": [
-                        {
-                          "title": "and",
-                          "type": "object",
-                          "properties": {
-                            "and": {
-                              "type": "array",
-                              "description": "Match *all* conditions to return results.",
-                              "items": {
-                                "title": "object attribute",
-                                "description": "Filter your objects by their attributes.",
-                                "type": "object",
-                                "required": [
-                                  "field",
-                                  "operator"
-                                ],
-                                "properties": {
-                                  "field": {
-                                    "type": "string",
-                                    "description": "The name of the attribute you want to filter against.",
-                                    "example": "location"
-                                  },
-                                  "operator": {
-                                    "type": "string",
-                                    "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
-                                    "enum": [
-                                      "eq",
-                                      "exists"
-                                    ]
-                                  },
-                                  "value": {
-                                    "type": "string",
-                                    "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
-                                  }
-                                },
-                                "example": {
-                                  "field": "cancelled",
-                                  "operator": "eq",
-                                  "value": true
-                                }
-                              }
-                            }
-                          }
-                        },
-                        {
-                          "title": "or",
-                          "type": "object",
-                          "properties": {
-                            "or": {
-                              "type": "array",
-                              "description": "Match *any* condition to return results.",
-                              "items": {
-                                "title": "object attribute",
-                                "description": "Filter your objects by their attributes.",
-                                "type": "object",
-                                "required": [
-                                  "field",
-                                  "operator"
-                                ],
-                                "properties": {
-                                  "field": {
-                                    "type": "string",
-                                    "description": "The name of the attribute you want to filter against.",
-                                    "example": "location"
-                                  },
-                                  "operator": {
-                                    "type": "string",
-                                    "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
-                                    "enum": [
-                                      "eq",
-                                      "exists"
-                                    ]
-                                  },
-                                  "value": {
-                                    "type": "string",
-                                    "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
-                                  }
-                                },
-                                "example": {
-                                  "field": "cancelled",
-                                  "operator": "eq",
-                                  "value": true
-                                }
-                              }
-                            }
-                          }
-                        },
-                        {
-                          "title": "object attribute",
-                          "type": "object",
-                          "properties": {
-                            "object_attribute": {
-                              "title": "object attribute",
-                              "description": "Filter your objects by their attributes.",
-                              "type": "object",
-                              "required": [
-                                "field",
-                                "operator"
-                              ],
-                              "properties": {
-                                "field": {
-                                  "type": "string",
-                                  "description": "The name of the attribute you want to filter against.",
-                                  "example": "location"
-                                },
-                                "operator": {
-                                  "type": "string",
-                                  "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
-                                  "enum": [
-                                    "eq",
-                                    "exists"
-                                  ]
-                                },
-                                "value": {
-                                  "type": "string",
-                                  "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
-                                }
-                              },
-                              "example": {
-                                "field": "cancelled",
-                                "operator": "eq",
-                                "value": true
-                              }
-                            }
-                          }
-                        }
-                      ]
-                    },
-                    "object_attribute": {
-                      "title": "object attribute",
-                      "description": "Filter your objects by their attributes.",
-                      "type": "object",
-                      "required": [
-                        "field",
-                        "operator"
-                      ],
-                      "properties": {
-                        "field": {
-                          "type": "string",
-                          "description": "The name of the attribute you want to filter against.",
-                          "example": "location"
-                        },
-                        "operator": {
-                          "type": "string",
-                          "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
-                          "enum": [
-                            "eq",
-                            "exists"
-                          ]
-                        },
-                        "value": {
-                          "type": "string",
-                          "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
-                        }
-                      },
-                      "example": {
-                        "field": "cancelled",
-                        "operator": "eq",
-                        "value": true
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          {
-            "title": "or",
-            "type": "object",
-            "properties": {
-              "or": {
-                "type": "array",
-                "description": "Match *any* condition to return results.",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "and": {
-                      "type": "array",
-                      "description": "Returns results matching *all* conditions.",
-                      "items": {
-                        "title": "object attribute",
-                        "description": "Filter your objects by their attributes.",
-                        "type": "object",
-                        "required": [
-                          "field",
-                          "operator"
-                        ],
-                        "properties": {
-                          "field": {
-                            "type": "string",
-                            "description": "The name of the attribute you want to filter against.",
-                            "example": "location"
-                          },
-                          "operator": {
-                            "type": "string",
-                            "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
-                            "enum": [
-                              "eq",
-                              "exists"
-                            ]
-                          },
-                          "value": {
-                            "type": "string",
-                            "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
-                          }
-                        },
-                        "example": {
-                          "field": "cancelled",
-                          "operator": "eq",
-                          "value": true
-                        }
-                      }
-                    },
-                    "not": {
-                      "description": "Returns results if a condition is false. While and/or support an array of items, `not` supports a single filter object.",
-                      "oneOf": [
-                        {
-                          "title": "and",
-                          "type": "object",
-                          "properties": {
-                            "and": {
-                              "type": "array",
-                              "description": "Match *all* conditions to return results.",
-                              "items": {
-                                "title": "object attribute",
-                                "description": "Filter your objects by their attributes.",
-                                "type": "object",
-                                "required": [
-                                  "field",
-                                  "operator"
-                                ],
-                                "properties": {
-                                  "field": {
-                                    "type": "string",
-                                    "description": "The name of the attribute you want to filter against.",
-                                    "example": "location"
-                                  },
-                                  "operator": {
-                                    "type": "string",
-                                    "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
-                                    "enum": [
-                                      "eq",
-                                      "exists"
-                                    ]
-                                  },
-                                  "value": {
-                                    "type": "string",
-                                    "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
-                                  }
-                                },
-                                "example": {
-                                  "field": "cancelled",
-                                  "operator": "eq",
-                                  "value": true
-                                }
-                              }
-                            }
-                          }
-                        },
-                        {
-                          "title": "or",
-                          "type": "object",
-                          "properties": {
-                            "or": {
-                              "type": "array",
-                              "description": "Match *any* condition to return results.",
-                              "items": {
-                                "title": "object attribute",
-                                "description": "Filter your objects by their attributes.",
-                                "type": "object",
-                                "required": [
-                                  "field",
-                                  "operator"
-                                ],
-                                "properties": {
-                                  "field": {
-                                    "type": "string",
-                                    "description": "The name of the attribute you want to filter against.",
-                                    "example": "location"
-                                  },
-                                  "operator": {
-                                    "type": "string",
-                                    "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
-                                    "enum": [
-                                      "eq",
-                                      "exists"
-                                    ]
-                                  },
-                                  "value": {
-                                    "type": "string",
-                                    "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
-                                  }
-                                },
-                                "example": {
-                                  "field": "cancelled",
-                                  "operator": "eq",
-                                  "value": true
-                                }
-                              }
-                            }
-                          }
-                        },
-                        {
-                          "title": "object attribute",
-                          "type": "object",
-                          "properties": {
-                            "object_attribute": {
-                              "title": "object attribute",
-                              "description": "Filter your objects by their attributes.",
-                              "type": "object",
-                              "required": [
-                                "field",
-                                "operator"
-                              ],
-                              "properties": {
-                                "field": {
-                                  "type": "string",
-                                  "description": "The name of the attribute you want to filter against.",
-                                  "example": "location"
-                                },
-                                "operator": {
-                                  "type": "string",
-                                  "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
-                                  "enum": [
-                                    "eq",
-                                    "exists"
-                                  ]
-                                },
-                                "value": {
-                                  "type": "string",
-                                  "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
-                                }
-                              },
-                              "example": {
-                                "field": "cancelled",
-                                "operator": "eq",
-                                "value": true
-                              }
-                            }
-                          }
-                        }
-                      ]
-                    },
-                    "object_attribute": {
-                      "title": "object attribute",
-                      "description": "Filter your objects by their attributes.",
-                      "type": "object",
-                      "required": [
-                        "field",
-                        "operator"
-                      ],
-                      "properties": {
-                        "field": {
-                          "type": "string",
-                          "description": "The name of the attribute you want to filter against.",
-                          "example": "location"
-                        },
-                        "operator": {
-                          "type": "string",
-                          "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
-                          "enum": [
-                            "eq",
-                            "exists"
-                          ]
-                        },
-                        "value": {
-                          "type": "string",
-                          "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
-                        }
-                      },
-                      "example": {
-                        "field": "cancelled",
-                        "operator": "eq",
-                        "value": true
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          {
-            "title": "not",
+        "type": "object",
+        "description": null,
+        "properties": {
+          "not": {
+            "type": "array",
             "description": "Returns results if a condition is false. While and/or support an array of items, `not` supports a single filter object.",
-            "oneOf": [
-              {
-                "title": "and",
-                "type": "object",
-                "properties": {
-                  "and": {
-                    "type": "array",
-                    "description": "Match *all* conditions to return results.",
-                    "items": {
-                      "title": "Object Filter",
-                      "type": "object",
-                      "description": "When filtering for objects, you can use `and` and `or` arrays to determine the logic for a group of filter conditions. `not` reverses the filter condition and matches when the condition is false.",
-                      "properties": {
-                        "and": {
-                          "type": "array",
-                          "description": "Returns results matching *all* conditions.",
-                          "items": {
-                            "title": "object attribute",
-                            "description": "Filter your objects by their attributes.",
-                            "type": "object",
-                            "required": [
-                              "field",
-                              "operator"
-                            ],
-                            "properties": {
-                              "field": {
-                                "type": "string",
-                                "description": "The name of the attribute you want to filter against.",
-                                "example": "location"
-                              },
-                              "operator": {
-                                "type": "string",
-                                "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
-                                "enum": [
-                                  "eq",
-                                  "exists"
-                                ]
-                              },
-                              "value": {
-                                "type": "string",
-                                "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
-                              }
-                            },
-                            "example": {
-                              "field": "cancelled",
-                              "operator": "eq",
-                              "value": true
-                            }
-                          }
-                        },
-                        "or": {
-                          "type": "array",
-                          "description": "Returns results matching *any* conditions.",
-                          "items": {
-                            "title": "object attribute",
-                            "description": "Filter your objects by their attributes.",
-                            "type": "object",
-                            "required": [
-                              "field",
-                              "operator"
-                            ],
-                            "properties": {
-                              "field": {
-                                "type": "string",
-                                "description": "The name of the attribute you want to filter against.",
-                                "example": "location"
-                              },
-                              "operator": {
-                                "type": "string",
-                                "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
-                                "enum": [
-                                  "eq",
-                                  "exists"
-                                ]
-                              },
-                              "value": {
-                                "type": "string",
-                                "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
-                              }
-                            },
-                            "example": {
-                              "field": "cancelled",
-                              "operator": "eq",
-                              "value": true
-                            }
-                          }
-                        },
-                        "not": {
-                          "description": "Returns results if a condition is false. While and/or support an array of items, `not` supports a single filter object.",
-                          "oneOf": [
-                            {
-                              "title": "and",
-                              "type": "object",
-                              "properties": {
-                                "and": {
-                                  "type": "array",
-                                  "description": "Match *all* conditions to return results.",
-                                  "items": {
-                                    "title": "object attribute",
-                                    "description": "Filter your objects by their attributes.",
-                                    "type": "object",
-                                    "required": [
-                                      "field",
-                                      "operator"
-                                    ],
-                                    "properties": {
-                                      "field": {
-                                        "type": "string",
-                                        "description": "The name of the attribute you want to filter against.",
-                                        "example": "location"
-                                      },
-                                      "operator": {
-                                        "type": "string",
-                                        "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
-                                        "enum": [
-                                          "eq",
-                                          "exists"
-                                        ]
-                                      },
-                                      "value": {
-                                        "type": "string",
-                                        "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
-                                      }
-                                    },
-                                    "example": {
-                                      "field": "cancelled",
-                                      "operator": "eq",
-                                      "value": true
-                                    }
-                                  }
-                                }
-                              }
-                            },
-                            {
-                              "title": "or",
-                              "type": "object",
-                              "properties": {
-                                "or": {
-                                  "type": "array",
-                                  "description": "Match *any* condition to return results.",
-                                  "items": {
-                                    "title": "object attribute",
-                                    "description": "Filter your objects by their attributes.",
-                                    "type": "object",
-                                    "required": [
-                                      "field",
-                                      "operator"
-                                    ],
-                                    "properties": {
-                                      "field": {
-                                        "type": "string",
-                                        "description": "The name of the attribute you want to filter against.",
-                                        "example": "location"
-                                      },
-                                      "operator": {
-                                        "type": "string",
-                                        "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
-                                        "enum": [
-                                          "eq",
-                                          "exists"
-                                        ]
-                                      },
-                                      "value": {
-                                        "type": "string",
-                                        "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
-                                      }
-                                    },
-                                    "example": {
-                                      "field": "cancelled",
-                                      "operator": "eq",
-                                      "value": true
-                                    }
-                                  }
-                                }
-                              }
-                            },
-                            {
-                              "title": "object attribute",
-                              "type": "object",
-                              "properties": {
-                                "object_attribute": {
-                                  "title": "object attribute",
-                                  "description": "Filter your objects by their attributes.",
-                                  "type": "object",
-                                  "required": [
-                                    "field",
-                                    "operator"
-                                  ],
-                                  "properties": {
-                                    "field": {
-                                      "type": "string",
-                                      "description": "The name of the attribute you want to filter against.",
-                                      "example": "location"
-                                    },
-                                    "operator": {
-                                      "type": "string",
-                                      "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
-                                      "enum": [
-                                        "eq",
-                                        "exists"
-                                      ]
-                                    },
-                                    "value": {
-                                      "type": "string",
-                                      "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
-                                    }
-                                  },
-                                  "example": {
-                                    "field": "cancelled",
-                                    "operator": "eq",
-                                    "value": true
-                                  }
-                                }
-                              }
-                            }
-                          ]
-                        },
-                        "object_attribute": {
-                          "title": "object attribute",
-                          "description": "Filter your objects by their attributes.",
-                          "type": "object",
-                          "required": [
-                            "field",
-                            "operator"
-                          ],
-                          "properties": {
-                            "field": {
-                              "type": "string",
-                              "description": "The name of the attribute you want to filter against.",
-                              "example": "location"
-                            },
-                            "operator": {
-                              "type": "string",
-                              "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
-                              "enum": [
-                                "eq",
-                                "exists"
-                              ]
-                            },
-                            "value": {
-                              "type": "string",
-                              "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
-                            }
-                          },
-                          "example": {
-                            "field": "cancelled",
-                            "operator": "eq",
-                            "value": true
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              },
-              {
-                "title": "or",
-                "type": "object",
-                "properties": {
-                  "or": {
-                    "type": "array",
-                    "description": "Match *any* condition to return results.",
-                    "items": {
-                      "title": "Object Filter",
-                      "type": "object",
-                      "description": "When filtering for objects, you can use `and` and `or` arrays to determine the logic for a group of filter conditions. `not` reverses the filter condition and matches when the condition is false.",
-                      "properties": {
-                        "and": {
-                          "type": "array",
-                          "description": "Returns results matching *all* conditions.",
-                          "items": {
-                            "title": "object attribute",
-                            "description": "Filter your objects by their attributes.",
-                            "type": "object",
-                            "required": [
-                              "field",
-                              "operator"
-                            ],
-                            "properties": {
-                              "field": {
-                                "type": "string",
-                                "description": "The name of the attribute you want to filter against.",
-                                "example": "location"
-                              },
-                              "operator": {
-                                "type": "string",
-                                "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
-                                "enum": [
-                                  "eq",
-                                  "exists"
-                                ]
-                              },
-                              "value": {
-                                "type": "string",
-                                "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
-                              }
-                            },
-                            "example": {
-                              "field": "cancelled",
-                              "operator": "eq",
-                              "value": true
-                            }
-                          }
-                        },
-                        "or": {
-                          "type": "array",
-                          "description": "Returns results matching *any* conditions.",
-                          "items": {
-                            "title": "object attribute",
-                            "description": "Filter your objects by their attributes.",
-                            "type": "object",
-                            "required": [
-                              "field",
-                              "operator"
-                            ],
-                            "properties": {
-                              "field": {
-                                "type": "string",
-                                "description": "The name of the attribute you want to filter against.",
-                                "example": "location"
-                              },
-                              "operator": {
-                                "type": "string",
-                                "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
-                                "enum": [
-                                  "eq",
-                                  "exists"
-                                ]
-                              },
-                              "value": {
-                                "type": "string",
-                                "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
-                              }
-                            },
-                            "example": {
-                              "field": "cancelled",
-                              "operator": "eq",
-                              "value": true
-                            }
-                          }
-                        },
-                        "not": {
-                          "description": "Returns results if a condition is false. While and/or support an array of items, `not` supports a single filter object.",
-                          "oneOf": [
-                            {
-                              "title": "and",
-                              "type": "object",
-                              "properties": {
-                                "and": {
-                                  "type": "array",
-                                  "description": "Match *all* conditions to return results.",
-                                  "items": {
-                                    "title": "object attribute",
-                                    "description": "Filter your objects by their attributes.",
-                                    "type": "object",
-                                    "required": [
-                                      "field",
-                                      "operator"
-                                    ],
-                                    "properties": {
-                                      "field": {
-                                        "type": "string",
-                                        "description": "The name of the attribute you want to filter against.",
-                                        "example": "location"
-                                      },
-                                      "operator": {
-                                        "type": "string",
-                                        "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
-                                        "enum": [
-                                          "eq",
-                                          "exists"
-                                        ]
-                                      },
-                                      "value": {
-                                        "type": "string",
-                                        "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
-                                      }
-                                    },
-                                    "example": {
-                                      "field": "cancelled",
-                                      "operator": "eq",
-                                      "value": true
-                                    }
-                                  }
-                                }
-                              }
-                            },
-                            {
-                              "title": "or",
-                              "type": "object",
-                              "properties": {
-                                "or": {
-                                  "type": "array",
-                                  "description": "Match *any* condition to return results.",
-                                  "items": {
-                                    "title": "object attribute",
-                                    "description": "Filter your objects by their attributes.",
-                                    "type": "object",
-                                    "required": [
-                                      "field",
-                                      "operator"
-                                    ],
-                                    "properties": {
-                                      "field": {
-                                        "type": "string",
-                                        "description": "The name of the attribute you want to filter against.",
-                                        "example": "location"
-                                      },
-                                      "operator": {
-                                        "type": "string",
-                                        "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
-                                        "enum": [
-                                          "eq",
-                                          "exists"
-                                        ]
-                                      },
-                                      "value": {
-                                        "type": "string",
-                                        "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
-                                      }
-                                    },
-                                    "example": {
-                                      "field": "cancelled",
-                                      "operator": "eq",
-                                      "value": true
-                                    }
-                                  }
-                                }
-                              }
-                            },
-                            {
-                              "title": "object attribute",
-                              "type": "object",
-                              "properties": {
-                                "object_attribute": {
-                                  "title": "object attribute",
-                                  "description": "Filter your objects by their attributes.",
-                                  "type": "object",
-                                  "required": [
-                                    "field",
-                                    "operator"
-                                  ],
-                                  "properties": {
-                                    "field": {
-                                      "type": "string",
-                                      "description": "The name of the attribute you want to filter against.",
-                                      "example": "location"
-                                    },
-                                    "operator": {
-                                      "type": "string",
-                                      "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
-                                      "enum": [
-                                        "eq",
-                                        "exists"
-                                      ]
-                                    },
-                                    "value": {
-                                      "type": "string",
-                                      "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
-                                    }
-                                  },
-                                  "example": {
-                                    "field": "cancelled",
-                                    "operator": "eq",
-                                    "value": true
-                                  }
-                                }
-                              }
-                            }
-                          ]
-                        },
-                        "object_attribute": {
-                          "title": "object attribute",
-                          "description": "Filter your objects by their attributes.",
-                          "type": "object",
-                          "required": [
-                            "field",
-                            "operator"
-                          ],
-                          "properties": {
-                            "field": {
-                              "type": "string",
-                              "description": "The name of the attribute you want to filter against.",
-                              "example": "location"
-                            },
-                            "operator": {
-                              "type": "string",
-                              "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
-                              "enum": [
-                                "eq",
-                                "exists"
-                              ]
-                            },
-                            "value": {
-                              "type": "string",
-                              "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
-                            }
-                          },
-                          "example": {
-                            "field": "cancelled",
-                            "operator": "eq",
-                            "value": true
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              },
-              {
-                "title": "object attribute",
-                "type": "object",
-                "properties": {
-                  "object_attribute": {
+            "items": {
+              "type": "object",
+              "properties": {
+                "and": {
+                  "type": "array",
+                  "description": "Returns results matching *all* conditions.",
+                  "items": {
                     "title": "object attribute",
                     "description": "Filter your objects by their attributes.",
                     "type": "object",
@@ -14160,9 +12768,686 @@
                       "value": true
                     }
                   }
+                },
+                "or": {
+                  "type": "array",
+                  "description": "Returns results matching *any* conditions.",
+                  "items": {
+                    "title": "object attribute",
+                    "description": "Filter your objects by their attributes.",
+                    "type": "object",
+                    "required": [
+                      "field",
+                      "operator"
+                    ],
+                    "properties": {
+                      "field": {
+                        "type": "string",
+                        "description": "The name of the attribute you want to filter against.",
+                        "example": "location"
+                      },
+                      "operator": {
+                        "type": "string",
+                        "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
+                        "enum": [
+                          "eq",
+                          "exists"
+                        ]
+                      },
+                      "value": {
+                        "type": "string",
+                        "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
+                      }
+                    },
+                    "example": {
+                      "field": "cancelled",
+                      "operator": "eq",
+                      "value": true
+                    }
+                  }
+                },
+                "object_attribute": {
+                  "title": "object attribute",
+                  "description": "Filter your objects by their attributes.",
+                  "type": "object",
+                  "required": [
+                    "field",
+                    "operator",
+                    "type_id"
+                  ],
+                  "properties": {
+                    "field": {
+                      "type": "string",
+                      "description": "The name of the attribute you want to filter against.",
+                      "example": "location"
+                    },
+                    "operator": {
+                      "type": "string",
+                      "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
+                      "enum": [
+                        "eq",
+                        "exists"
+                      ]
+                    },
+                    "value": {
+                      "type": "string",
+                      "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
+                    },
+                    "type_id": {
+                      "type": "string",
+                      "description": "The object type an object belongs to—like \"Companies\" or \"Accounts\". Object type IDs are string-formatted integers that begin at `1` and increment for each new type.",
+                      "nullable": false,
+                      "example": "1"
+                    }
+                  },
+                  "example": {
+                    "field": "cancelled",
+                    "operator": "eq",
+                    "value": true,
+                    "type_id": 1
+                  }
                 }
               }
-            ]
+            }
+          }
+        }
+      },
+      "objectFilter": {
+        "title": "Object Filter",
+        "description": "When filtering for objects, you can use `and` and `or` arrays to determine the logic for a group of filter conditions. `not` reverses the filter condition and matches when the condition is false. `object_attribute` represents the individual conditions you can filter a group of people for.\n\nThe top level of this object can only contain a single property, but you can nest `and` and `or` properties to produce complex filters.\n",
+        "oneOf": [
+          {
+            "title": "and",
+            "type": "object",
+            "properties": {
+              "and": {
+                "type": "array",
+                "description": "Match *all* conditions to return results.",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "or": {
+                      "type": "array",
+                      "description": "Returns results matching *any* conditions.",
+                      "items": {
+                        "title": "object attribute",
+                        "description": "Filter your objects by their attributes.",
+                        "type": "object",
+                        "required": [
+                          "field",
+                          "operator"
+                        ],
+                        "properties": {
+                          "field": {
+                            "type": "string",
+                            "description": "The name of the attribute you want to filter against.",
+                            "example": "location"
+                          },
+                          "operator": {
+                            "type": "string",
+                            "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
+                            "enum": [
+                              "eq",
+                              "exists"
+                            ]
+                          },
+                          "value": {
+                            "type": "string",
+                            "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
+                          }
+                        },
+                        "example": {
+                          "field": "cancelled",
+                          "operator": "eq",
+                          "value": true
+                        }
+                      }
+                    },
+                    "not": {
+                      "description": "Returns results if a condition is false. While and/or support an array of items, `not` supports a single filter object.",
+                      "oneOf": [
+                        {
+                          "title": "and",
+                          "type": "object",
+                          "properties": {
+                            "and": {
+                              "type": "array",
+                              "description": "Match *all* conditions to return results.",
+                              "items": {
+                                "title": "object attribute",
+                                "description": "Filter your objects by their attributes.",
+                                "type": "object",
+                                "required": [
+                                  "field",
+                                  "operator"
+                                ],
+                                "properties": {
+                                  "field": {
+                                    "type": "string",
+                                    "description": "The name of the attribute you want to filter against.",
+                                    "example": "location"
+                                  },
+                                  "operator": {
+                                    "type": "string",
+                                    "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
+                                    "enum": [
+                                      "eq",
+                                      "exists"
+                                    ]
+                                  },
+                                  "value": {
+                                    "type": "string",
+                                    "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
+                                  }
+                                },
+                                "example": {
+                                  "field": "cancelled",
+                                  "operator": "eq",
+                                  "value": true
+                                }
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "title": "or",
+                          "type": "object",
+                          "properties": {
+                            "or": {
+                              "type": "array",
+                              "description": "Match *any* condition to return results.",
+                              "items": {
+                                "title": "object attribute",
+                                "description": "Filter your objects by their attributes.",
+                                "type": "object",
+                                "required": [
+                                  "field",
+                                  "operator"
+                                ],
+                                "properties": {
+                                  "field": {
+                                    "type": "string",
+                                    "description": "The name of the attribute you want to filter against.",
+                                    "example": "location"
+                                  },
+                                  "operator": {
+                                    "type": "string",
+                                    "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
+                                    "enum": [
+                                      "eq",
+                                      "exists"
+                                    ]
+                                  },
+                                  "value": {
+                                    "type": "string",
+                                    "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
+                                  }
+                                },
+                                "example": {
+                                  "field": "cancelled",
+                                  "operator": "eq",
+                                  "value": true
+                                }
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "title": "object attribute",
+                          "type": "object",
+                          "properties": {
+                            "object_attribute": {
+                              "title": "object attribute",
+                              "description": "Filter your objects by their attributes.",
+                              "type": "object",
+                              "required": [
+                                "field",
+                                "operator",
+                                "type_id"
+                              ],
+                              "properties": {
+                                "field": {
+                                  "type": "string",
+                                  "description": "The name of the attribute you want to filter against.",
+                                  "example": "location"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
+                                  "enum": [
+                                    "eq",
+                                    "exists"
+                                  ]
+                                },
+                                "value": {
+                                  "type": "string",
+                                  "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
+                                },
+                                "type_id": {
+                                  "type": "string",
+                                  "description": "The object type an object belongs to—like \"Companies\" or \"Accounts\". Object type IDs are string-formatted integers that begin at `1` and increment for each new type.",
+                                  "nullable": false,
+                                  "example": "1"
+                                }
+                              },
+                              "example": {
+                                "field": "cancelled",
+                                "operator": "eq",
+                                "value": true,
+                                "type_id": 1
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "object_attribute": {
+                      "title": "object attribute",
+                      "description": "Filter your objects by their attributes.",
+                      "type": "object",
+                      "required": [
+                        "field",
+                        "operator",
+                        "type_id"
+                      ],
+                      "properties": {
+                        "field": {
+                          "type": "string",
+                          "description": "The name of the attribute you want to filter against.",
+                          "example": "location"
+                        },
+                        "operator": {
+                          "type": "string",
+                          "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
+                          "enum": [
+                            "eq",
+                            "exists"
+                          ]
+                        },
+                        "value": {
+                          "type": "string",
+                          "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
+                        },
+                        "type_id": {
+                          "type": "string",
+                          "description": "The object type an object belongs to—like \"Companies\" or \"Accounts\". Object type IDs are string-formatted integers that begin at `1` and increment for each new type.",
+                          "nullable": false,
+                          "example": "1"
+                        }
+                      },
+                      "example": {
+                        "field": "cancelled",
+                        "operator": "eq",
+                        "value": true,
+                        "type_id": 1
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "title": "or",
+            "type": "object",
+            "properties": {
+              "or": {
+                "type": "array",
+                "description": "Match *any* condition to return results.",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "and": {
+                      "type": "array",
+                      "description": "Returns results matching *all* conditions.",
+                      "items": {
+                        "title": "object attribute",
+                        "description": "Filter your objects by their attributes.",
+                        "type": "object",
+                        "required": [
+                          "field",
+                          "operator"
+                        ],
+                        "properties": {
+                          "field": {
+                            "type": "string",
+                            "description": "The name of the attribute you want to filter against.",
+                            "example": "location"
+                          },
+                          "operator": {
+                            "type": "string",
+                            "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
+                            "enum": [
+                              "eq",
+                              "exists"
+                            ]
+                          },
+                          "value": {
+                            "type": "string",
+                            "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
+                          }
+                        },
+                        "example": {
+                          "field": "cancelled",
+                          "operator": "eq",
+                          "value": true
+                        }
+                      }
+                    },
+                    "not": {
+                      "description": "Returns results if a condition is false. While and/or support an array of items, `not` supports a single filter object.",
+                      "oneOf": [
+                        {
+                          "title": "and",
+                          "type": "object",
+                          "properties": {
+                            "and": {
+                              "type": "array",
+                              "description": "Match *all* conditions to return results.",
+                              "items": {
+                                "title": "object attribute",
+                                "description": "Filter your objects by their attributes.",
+                                "type": "object",
+                                "required": [
+                                  "field",
+                                  "operator"
+                                ],
+                                "properties": {
+                                  "field": {
+                                    "type": "string",
+                                    "description": "The name of the attribute you want to filter against.",
+                                    "example": "location"
+                                  },
+                                  "operator": {
+                                    "type": "string",
+                                    "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
+                                    "enum": [
+                                      "eq",
+                                      "exists"
+                                    ]
+                                  },
+                                  "value": {
+                                    "type": "string",
+                                    "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
+                                  }
+                                },
+                                "example": {
+                                  "field": "cancelled",
+                                  "operator": "eq",
+                                  "value": true
+                                }
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "title": "or",
+                          "type": "object",
+                          "properties": {
+                            "or": {
+                              "type": "array",
+                              "description": "Match *any* condition to return results.",
+                              "items": {
+                                "title": "object attribute",
+                                "description": "Filter your objects by their attributes.",
+                                "type": "object",
+                                "required": [
+                                  "field",
+                                  "operator"
+                                ],
+                                "properties": {
+                                  "field": {
+                                    "type": "string",
+                                    "description": "The name of the attribute you want to filter against.",
+                                    "example": "location"
+                                  },
+                                  "operator": {
+                                    "type": "string",
+                                    "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
+                                    "enum": [
+                                      "eq",
+                                      "exists"
+                                    ]
+                                  },
+                                  "value": {
+                                    "type": "string",
+                                    "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
+                                  }
+                                },
+                                "example": {
+                                  "field": "cancelled",
+                                  "operator": "eq",
+                                  "value": true
+                                }
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "title": "object attribute",
+                          "type": "object",
+                          "properties": {
+                            "object_attribute": {
+                              "title": "object attribute",
+                              "description": "Filter your objects by their attributes.",
+                              "type": "object",
+                              "required": [
+                                "field",
+                                "operator",
+                                "type_id"
+                              ],
+                              "properties": {
+                                "field": {
+                                  "type": "string",
+                                  "description": "The name of the attribute you want to filter against.",
+                                  "example": "location"
+                                },
+                                "operator": {
+                                  "type": "string",
+                                  "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
+                                  "enum": [
+                                    "eq",
+                                    "exists"
+                                  ]
+                                },
+                                "value": {
+                                  "type": "string",
+                                  "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
+                                },
+                                "type_id": {
+                                  "type": "string",
+                                  "description": "The object type an object belongs to—like \"Companies\" or \"Accounts\". Object type IDs are string-formatted integers that begin at `1` and increment for each new type.",
+                                  "nullable": false,
+                                  "example": "1"
+                                }
+                              },
+                              "example": {
+                                "field": "cancelled",
+                                "operator": "eq",
+                                "value": true,
+                                "type_id": 1
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "object_attribute": {
+                      "title": "object attribute",
+                      "description": "Filter your objects by their attributes.",
+                      "type": "object",
+                      "required": [
+                        "field",
+                        "operator",
+                        "type_id"
+                      ],
+                      "properties": {
+                        "field": {
+                          "type": "string",
+                          "description": "The name of the attribute you want to filter against.",
+                          "example": "location"
+                        },
+                        "operator": {
+                          "type": "string",
+                          "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
+                          "enum": [
+                            "eq",
+                            "exists"
+                          ]
+                        },
+                        "value": {
+                          "type": "string",
+                          "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
+                        },
+                        "type_id": {
+                          "type": "string",
+                          "description": "The object type an object belongs to—like \"Companies\" or \"Accounts\". Object type IDs are string-formatted integers that begin at `1` and increment for each new type.",
+                          "nullable": false,
+                          "example": "1"
+                        }
+                      },
+                      "example": {
+                        "field": "cancelled",
+                        "operator": "eq",
+                        "value": true,
+                        "type_id": 1
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "title": "not",
+            "type": "object",
+            "description": null,
+            "properties": {
+              "not": {
+                "type": "array",
+                "description": "Returns results if a condition is false. While and/or support an array of items, `not` supports a single filter object.",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "and": {
+                      "type": "array",
+                      "description": "Returns results matching *all* conditions.",
+                      "items": {
+                        "title": "object attribute",
+                        "description": "Filter your objects by their attributes.",
+                        "type": "object",
+                        "required": [
+                          "field",
+                          "operator"
+                        ],
+                        "properties": {
+                          "field": {
+                            "type": "string",
+                            "description": "The name of the attribute you want to filter against.",
+                            "example": "location"
+                          },
+                          "operator": {
+                            "type": "string",
+                            "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
+                            "enum": [
+                              "eq",
+                              "exists"
+                            ]
+                          },
+                          "value": {
+                            "type": "string",
+                            "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
+                          }
+                        },
+                        "example": {
+                          "field": "cancelled",
+                          "operator": "eq",
+                          "value": true
+                        }
+                      }
+                    },
+                    "or": {
+                      "type": "array",
+                      "description": "Returns results matching *any* conditions.",
+                      "items": {
+                        "title": "object attribute",
+                        "description": "Filter your objects by their attributes.",
+                        "type": "object",
+                        "required": [
+                          "field",
+                          "operator"
+                        ],
+                        "properties": {
+                          "field": {
+                            "type": "string",
+                            "description": "The name of the attribute you want to filter against.",
+                            "example": "location"
+                          },
+                          "operator": {
+                            "type": "string",
+                            "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
+                            "enum": [
+                              "eq",
+                              "exists"
+                            ]
+                          },
+                          "value": {
+                            "type": "string",
+                            "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
+                          }
+                        },
+                        "example": {
+                          "field": "cancelled",
+                          "operator": "eq",
+                          "value": true
+                        }
+                      }
+                    },
+                    "object_attribute": {
+                      "title": "object attribute",
+                      "description": "Filter your objects by their attributes.",
+                      "type": "object",
+                      "required": [
+                        "field",
+                        "operator",
+                        "type_id"
+                      ],
+                      "properties": {
+                        "field": {
+                          "type": "string",
+                          "description": "The name of the attribute you want to filter against.",
+                          "example": "location"
+                        },
+                        "operator": {
+                          "type": "string",
+                          "description": "Determine how to evaluate criteria against the field—`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify.",
+                          "enum": [
+                            "eq",
+                            "exists"
+                          ]
+                        },
+                        "value": {
+                          "type": "string",
+                          "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
+                        },
+                        "type_id": {
+                          "type": "string",
+                          "description": "The object type an object belongs to—like \"Companies\" or \"Accounts\". Object type IDs are string-formatted integers that begin at `1` and increment for each new type.",
+                          "nullable": false,
+                          "example": "1"
+                        }
+                      },
+                      "example": {
+                        "field": "cancelled",
+                        "operator": "eq",
+                        "value": true,
+                        "type_id": 1
+                      }
+                    }
+                  }
+                }
+              }
+            }
           },
           {
             "title": "object attribute",
@@ -14175,7 +13460,8 @@
                 "type": "object",
                 "required": [
                   "field",
-                  "operator"
+                  "operator",
+                  "type_id"
                 ],
                 "properties": {
                   "field": {
@@ -14194,12 +13480,19 @@
                   "value": {
                     "type": "string",
                     "description": "The value you want to match for this attribute. You must include a value if you use the `eq` operator."
+                  },
+                  "type_id": {
+                    "type": "string",
+                    "description": "The object type an object belongs to—like \"Companies\" or \"Accounts\". Object type IDs are string-formatted integers that begin at `1` and increment for each new type.",
+                    "nullable": false,
+                    "example": "1"
                   }
                 },
                 "example": {
                   "field": "cancelled",
                   "operator": "eq",
-                  "value": true
+                  "value": true,
+                  "type_id": 1
                 }
               }
             }
@@ -14972,7 +14265,7 @@
                     "nullable": true,
                     "format": "email",
                     "description": "A person's email address, if set.",
-                    "example": "cool.person@example.com"
+                    "example": "test@example.com"
                   },
                   "id": {
                     "type": "string",
@@ -15283,7 +14576,7 @@
             "nullable": true,
             "format": "email",
             "description": "A person's email address, if set.",
-            "example": "cool.person@example.com"
+            "example": "test@example.com"
           },
           "id": {
             "type": "string",
@@ -20800,7 +20093,7 @@
                 "nullable": true,
                 "format": "email",
                 "description": "A person's email address, if set.",
-                "example": "cool.person@example.com"
+                "example": "test@example.com"
               },
               "id": {
                 "type": "string",

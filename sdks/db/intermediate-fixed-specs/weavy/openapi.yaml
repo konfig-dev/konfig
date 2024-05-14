@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: Weavy API
-  version: 22.0.0
+  version: 22.1.0
   x-api-status-urls: false
   description: >-
     Weavy is a complete toolkit for developers to add collaboration,
@@ -2102,6 +2102,13 @@ paths:
       summary: List conversations
       description: List conversations for the authenticated user.
       parameters:
+        - name: member
+          in: query
+          description: >-
+            User identifier (`id` or `uid`). Used to return conversations where
+            specified user is member.
+          schema:
+            type: string
         - name: unread
           in: query
           description: "`true` lists unread conversations, `false` list read conversations and `null` lists all conversations;\r\n            default is `null`."

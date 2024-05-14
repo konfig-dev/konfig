@@ -436,7 +436,7 @@ paths:
             schema:
               $ref: '#/components/schemas/ApiAppCreateRequest'
       responses:
-        '200':
+        '201':
           description: successful operation
           headers:
             X-RateLimit-Limit:
@@ -4199,7 +4199,7 @@ paths:
               account_id:
                 $ref: '#/components/examples/TeamRemoveMemberRequestAccountIdExample'
       responses:
-        '200':
+        '201':
           description: successful operation
           headers:
             X-RateLimit-Limit:
@@ -13073,7 +13073,6 @@ components:
         - event_time
         - event_type
         - event_hash
-        - event_metadata
       properties:
         event_time:
           description: Time the event was created (using Unix time).
@@ -13104,6 +13103,7 @@ components:
             - template_created
             - template_error
             - callback_test
+            - signature_request_signer_removed
         event_hash:
           description: Generated hash used to verify source of event data.
           type: string

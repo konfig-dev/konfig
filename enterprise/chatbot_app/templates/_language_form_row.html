@@ -1,0 +1,16 @@
+<tr class="bg-white border-b dark:bg-slate-800 dark:border-slate-700">
+    <th scope="row"
+        class="px-6 py-4 font-medium text-slate-900 whitespace-nowrap dark:text-white">{{ language.name }}</th>
+    {% if not current_language %}
+        <td class="px-6 py-4 text-right">
+            <form>
+                <input type="hidden" name="chat_id" value="{{ current_chat.chat_id }}">
+                <button name="language"
+                        value="{{ language.name }}"
+                        hx-post="{% url 'select_language' %}"
+                        hx-target="#app"
+                        class="btn btn-primary btn-sm">Select</button>
+            </form>
+        </td>
+    {% endif %}
+</tr>

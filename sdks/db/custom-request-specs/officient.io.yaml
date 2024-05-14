@@ -495,122 +495,6 @@ paths:
                 type: object
                 properties: {}
       deprecated: false
-  /1.0/assets/{asset_id}/detail:
-    get:
-      summary: Asset detail
-      description: Get details about one asset
-      operationId: asset-detail
-      parameters:
-        - name: asset_id
-          in: path
-          schema:
-            type: integer
-            format: int32
-          required: true
-      responses:
-        '200':
-          description: '200'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: |-
-                    {
-                        "data": {
-                            "id": 38,
-                            "name": "Acer Aspire One",
-                            "price": "1000.00",
-                            "deleted": 0,
-                            "picture": "",
-                            "serial_number": "AE1564",
-                            "vendor": "Coolblue",
-                            "owner": {
-                                "id": 264,
-                                "name": "Randy Marsh",
-                                "avatar": "https://www.gravatar.com/avatar/525ceb06bc8862932d853a033411e3b7?d=404"
-                            },
-                            "custom_fields": [{
-                                "custom_field_name": "Einddatum",
-                                "custom_field_id": 2,
-                                "value": "",
-                                "value_name": null,
-                                "type": "date"
-                            }]
-                        }
-                    }
-              schema:
-                type: object
-                properties:
-                  data:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                        example: 38
-                        default: 0
-                      name:
-                        type: string
-                        example: Acer Aspire One
-                      price:
-                        type: string
-                        example: '1000.00'
-                      deleted:
-                        type: integer
-                        example: 0
-                        default: 0
-                      picture:
-                        type: string
-                        example: ''
-                      serial_number:
-                        type: string
-                        example: AE1564
-                      vendor:
-                        type: string
-                        example: Coolblue
-                      owner:
-                        type: object
-                        properties:
-                          id:
-                            type: integer
-                            example: 264
-                            default: 0
-                          name:
-                            type: string
-                            example: Randy Marsh
-                          avatar:
-                            type: string
-                            example: >-
-                              https://www.gravatar.com/avatar/525ceb06bc8862932d853a033411e3b7?d=404
-                      custom_fields:
-                        type: array
-                        items:
-                          type: object
-                          properties:
-                            custom_field_name:
-                              type: string
-                              example: Einddatum
-                            custom_field_id:
-                              type: integer
-                              example: 2
-                              default: 0
-                            value:
-                              type: string
-                              example: ''
-                            value_name: {}
-                            type:
-                              type: string
-                              example: date
-        '400':
-          description: '400'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: '{}'
-              schema:
-                type: object
-                properties: {}
-      deprecated: false
   /1.0/wages/{person_id}/history:
     get:
       summary: Wage history
@@ -984,28 +868,18 @@ paths:
                 type: object
                 properties: {}
       deprecated: false
-  /1.0/fleet/list:
+  /1.0/assets/{asset_id}/detail:
     get:
-      summary: List vehicles
-      description: Get a list of all vehicles in the fleet
-      operationId: list-vehicles
+      summary: Asset detail
+      description: Get details about one asset
+      operationId: asset-detail
       parameters:
-        - name: page
-          in: query
-          description: >-
-            Controls pagination (0, 1, 2, ..) to view all results. 30 items per
-            page.
+        - name: asset_id
+          in: path
+          schema:
+            type: integer
+            format: int32
           required: true
-          schema:
-            type: integer
-            format: int32
-            default: 0
-        - name: person_id
-          in: query
-          description: view only vehicles that belong to a specific person
-          schema:
-            type: integer
-            format: int32
       responses:
         '200':
           description: '200'
@@ -1015,69 +889,90 @@ paths:
                 Result:
                   value: |-
                     {
-                        "data": [{
-                                "id": 19,
-                                "type": "bicycle",
-                                "brand": "Brompton",
-                                "model": "H-3-R",
-                                "owner": {
-                                    "id": 2790,
-                                    "name": "Al Gore"
-                                }
+                        "data": {
+                            "id": 38,
+                            "name": "Acer Aspire One",
+                            "price": "1000.00",
+                            "deleted": 0,
+                            "picture": "",
+                            "serial_number": "AE1564",
+                            "vendor": "Coolblue",
+                            "owner": {
+                                "id": 264,
+                                "name": "Randy Marsh",
+                                "avatar": "https://www.gravatar.com/avatar/525ceb06bc8862932d853a033411e3b7?d=404"
                             },
-                            {
-                                "id": 18,
-                                "type": "car",
-                                "brand": "Chevy",
-                                "model": "Volt",
-                                "owner": {
-                                    "id": 38,
-                                    "name": "Nancy Pelosi"
-                                }
-                            },
-                            {
-                                "id": 17,
-                                "type": "motorbike",
-                                "brand": "BMW",
-                                "model": "F 700 GS",
-                                "owner": {
-                                    "id": 265,
-                                    "name": "Maarten"
-                                }
-                            }
-                        ]
+                            "custom_fields": [{
+                                "custom_field_name": "Einddatum",
+                                "custom_field_id": 2,
+                                "value": "",
+                                "value_name": null,
+                                "type": "date"
+                            }]
+                        }
                     }
               schema:
                 type: object
                 properties:
                   data:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                          example: 19
-                          default: 0
-                        type:
-                          type: string
-                          example: bicycle
-                        brand:
-                          type: string
-                          example: Brompton
-                        model:
-                          type: string
-                          example: H-3-R
-                        owner:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 38
+                        default: 0
+                      name:
+                        type: string
+                        example: Acer Aspire One
+                      price:
+                        type: string
+                        example: '1000.00'
+                      deleted:
+                        type: integer
+                        example: 0
+                        default: 0
+                      picture:
+                        type: string
+                        example: ''
+                      serial_number:
+                        type: string
+                        example: AE1564
+                      vendor:
+                        type: string
+                        example: Coolblue
+                      owner:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 264
+                            default: 0
+                          name:
+                            type: string
+                            example: Randy Marsh
+                          avatar:
+                            type: string
+                            example: >-
+                              https://www.gravatar.com/avatar/525ceb06bc8862932d853a033411e3b7?d=404
+                      custom_fields:
+                        type: array
+                        items:
                           type: object
                           properties:
-                            id:
-                              type: integer
-                              example: 2790
-                              default: 0
-                            name:
+                            custom_field_name:
                               type: string
-                              example: Al Gore
+                              example: Einddatum
+                            custom_field_id:
+                              type: integer
+                              example: 2
+                              default: 0
+                            value:
+                              type: string
+                              example: ''
+                            value_name: {}
+                            type:
+                              type: string
+                              example: date
         '400':
           description: '400'
           content:
@@ -1256,18 +1151,28 @@ paths:
                 type: object
                 properties: {}
       deprecated: false
-  /1.0/contracts/{contract_id}/detail:
+  /1.0/fleet/list:
     get:
-      summary: Contract detail
-      description: Get details about one contract
-      operationId: contract-detail
+      summary: List vehicles
+      description: Get a list of all vehicles in the fleet
+      operationId: list-vehicles
       parameters:
-        - name: contract_id
-          in: path
+        - name: page
+          in: query
+          description: >-
+            Controls pagination (0, 1, 2, ..) to view all results. 30 items per
+            page.
+          required: true
           schema:
             type: integer
             format: int32
-          required: true
+            default: 0
+        - name: person_id
+          in: query
+          description: view only vehicles that belong to a specific person
+          schema:
+            type: integer
+            format: int32
       responses:
         '200':
           description: '200'
@@ -1277,58 +1182,69 @@ paths:
                 Result:
                   value: |-
                     {
-                        "data": {
-                            "id": 1093,
-                            "name": "Arbeidscontract",
-                            "owner": {
-                                "id": 20184,
-                                "name": "Dr. Dre",
-                                "avatar": "https://www.gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e?d=404"
-                            },
-                            "signatures": [
-                                {
-                                    "type": "internal",
-                                    "status": "signed",
-                                    "signer": {
-                                        "type": "user",
-                                        "id": 44564,
-                                        "name": "Tim Cook"
-                                    },
-                                    "date_signed": "2014-06-02"
-                                },
-                                {
-                                    "type": "employee",
-                                    "status": "signed",
-                                    "signer": {
-                                        "type": "employee",
-                                        "id": 45045465,
-                                        "name": "Dr. Dre"
-                                    },
-                                    "date_signed": "2014-06-03"
-                                },
-                                {
-                                    "type": "second_internal",
-                                    "status": "signed",
-                                    "signer": {
-                                        "type": "user",
-                                        "id": 44565,
-                                        "name": "Dr. Phe"
-                                    },
-                                    "date_signed": "2014-06-04"
+                        "data": [{
+                                "id": 19,
+                                "type": "bicycle",
+                                "brand": "Brompton",
+                                "model": "H-3-R",
+                                "owner": {
+                                    "id": 2790,
+                                    "name": "Al Gore"
                                 }
-                            ],
-                            "date_created": "2014-06-01",
-                            "date_sent": "2014-06-01",
-                            "deleted": 0,
-                            "custom_fields": [{
-                                "custom_field_name": "Importance",
-                                "custom_field_id": 22,
-                                "value": "152",
-                                "value_name": 'High',
-                                "type": "select_option"
-                            }]
-                        }
+                            },
+                            {
+                                "id": 18,
+                                "type": "car",
+                                "brand": "Chevy",
+                                "model": "Volt",
+                                "owner": {
+                                    "id": 38,
+                                    "name": "Nancy Pelosi"
+                                }
+                            },
+                            {
+                                "id": 17,
+                                "type": "motorbike",
+                                "brand": "BMW",
+                                "model": "F 700 GS",
+                                "owner": {
+                                    "id": 265,
+                                    "name": "Maarten"
+                                }
+                            }
+                        ]
                     }
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 19
+                          default: 0
+                        type:
+                          type: string
+                          example: bicycle
+                        brand:
+                          type: string
+                          example: Brompton
+                        model:
+                          type: string
+                          example: H-3-R
+                        owner:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 2790
+                              default: 0
+                            name:
+                              type: string
+                              example: Al Gore
         '400':
           description: '400'
           content:
@@ -1417,6 +1333,90 @@ paths:
                             name:
                               type: string
                               example: Dr. Dre
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+  /1.0/contracts/{contract_id}/detail:
+    get:
+      summary: Contract detail
+      description: Get details about one contract
+      operationId: contract-detail
+      parameters:
+        - name: contract_id
+          in: path
+          schema:
+            type: integer
+            format: int32
+          required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                        "data": {
+                            "id": 1093,
+                            "name": "Arbeidscontract",
+                            "owner": {
+                                "id": 20184,
+                                "name": "Dr. Dre",
+                                "avatar": "https://www.gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e?d=404"
+                            },
+                            "signatures": [
+                                {
+                                    "type": "internal",
+                                    "status": "signed",
+                                    "signer": {
+                                        "type": "user",
+                                        "id": 44564,
+                                        "name": "Tim Cook"
+                                    },
+                                    "date_signed": "2014-06-02"
+                                },
+                                {
+                                    "type": "employee",
+                                    "status": "signed",
+                                    "signer": {
+                                        "type": "employee",
+                                        "id": 45045465,
+                                        "name": "Dr. Dre"
+                                    },
+                                    "date_signed": "2014-06-03"
+                                },
+                                {
+                                    "type": "second_internal",
+                                    "status": "signed",
+                                    "signer": {
+                                        "type": "user",
+                                        "id": 44565,
+                                        "name": "Dr. Phe"
+                                    },
+                                    "date_signed": "2014-06-04"
+                                }
+                            ],
+                            "date_created": "2014-06-01",
+                            "date_sent": "2014-06-01",
+                            "deleted": 0,
+                            "custom_fields": [{
+                                "custom_field_name": "Importance",
+                                "custom_field_id": 22,
+                                "value": "152",
+                                "value_name": 'High',
+                                "type": "select_option"
+                            }]
+                        }
+                    }
         '400':
           description: '400'
           content:
@@ -1652,56 +1652,6 @@ paths:
                 type: object
                 properties: {}
       deprecated: false
-  /1.0/people/add:
-    post:
-      summary: Add person
-      description: Add a new person to Officient
-      operationId: add-person
-      responses:
-        '200':
-          description: '200'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: |-
-                    {
-                        "data": {
-                            "id": "80"
-                        }
-                    }
-              schema:
-                type: object
-                properties:
-                  data:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                        example: '80'
-        '400':
-          description: '400'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: '{}'
-              schema:
-                type: object
-                properties: {}
-      deprecated: false
-      x-readme:
-        code-samples:
-          - language: http
-            code: |-
-              {
-                "name": "Joan Lewis",
-                "email": "joan@your.co",
-                "personal_email": "",
-                "phone": ""
-              }
-        samples-languages:
-          - http
   /1.0/teams/list:
     get:
       summary: List teams
@@ -1753,6 +1703,56 @@ paths:
                 type: object
                 properties: {}
       deprecated: false
+  /1.0/people/add:
+    post:
+      summary: Add person
+      description: Add a new person to Officient
+      operationId: add-person
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                        "data": {
+                            "id": "80"
+                        }
+                    }
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: '80'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      x-readme:
+        code-samples:
+          - language: http
+            code: |-
+              {
+                "name": "Joan Lewis",
+                "email": "joan@your.co",
+                "personal_email": "",
+                "phone": ""
+              }
+        samples-languages:
+          - http
   /1.0/calendar/events/types/{year}:
     get:
       summary: Custom event types
@@ -2019,60 +2019,6 @@ paths:
                     type: string
                     example: No event found for that event_id.
       deprecated: false
-  /1.0/calendar/{person_id}/{year}/{month}/{day}/work/reset:
-    post:
-      summary: Reset time worked
-      description: >-
-        reset the time worked on a given day to the regular work schedule for
-        one person
-      operationId: reset-time-worked
-      parameters:
-        - name: person_id
-          in: path
-          schema:
-            type: integer
-            format: int32
-          required: true
-        - name: year
-          in: path
-          schema:
-            type: integer
-            format: int32
-          required: true
-        - name: month
-          in: path
-          schema:
-            type: integer
-            format: int32
-          required: true
-        - name: day
-          in: path
-          schema:
-            type: integer
-            format: int32
-          required: true
-      responses:
-        '200':
-          description: '200'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: '{}'
-              schema:
-                type: object
-                properties: {}
-        '400':
-          description: '400'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: '{}'
-              schema:
-                type: object
-                properties: {}
-      deprecated: false
   /1.0/calendar/{person_id}/{year}/{month}/{day}/work:
     patch:
       summary: Update time worked
@@ -2152,6 +2098,60 @@ paths:
             name: Set time worked on a given day to 2 hours
         samples-languages:
           - http
+  /1.0/calendar/{person_id}/{year}/{month}/{day}/work/reset:
+    post:
+      summary: Reset time worked
+      description: >-
+        reset the time worked on a given day to the regular work schedule for
+        one person
+      operationId: reset-time-worked
+      parameters:
+        - name: person_id
+          in: path
+          schema:
+            type: integer
+            format: int32
+          required: true
+        - name: year
+          in: path
+          schema:
+            type: integer
+            format: int32
+          required: true
+        - name: month
+          in: path
+          schema:
+            type: integer
+            format: int32
+          required: true
+        - name: day
+          in: path
+          schema:
+            type: integer
+            format: int32
+          required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
   /1.0/people/{person_id}/detail:
     patch:
       summary: Edit person
@@ -2477,80 +2477,6 @@ paths:
                 type: object
                 properties: {}
       deprecated: false
-  /1.0/documents/{object_type}/{object_id}/add:
-    post:
-      summary: Upload document
-      description: ''
-      operationId: upload-document
-      parameters:
-        - name: object_type
-          in: path
-          description: 'pick one: employee, asset, car'
-          schema:
-            type: string
-          required: true
-        - name: object_id
-          in: path
-          schema:
-            type: integer
-            format: int32
-          required: true
-      responses:
-        '200':
-          description: '200'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: |-
-                    {
-                        "data": {
-                            "id": "45275"
-                        }
-                    }
-              schema:
-                type: object
-                properties:
-                  data:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                        example: '45275'
-        '400':
-          description: '400'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: |-
-                    {
-                        "status_code": 400,
-                        "reason_phrase": "The filename should contain an extension."
-                    }
-              schema:
-                type: object
-                properties:
-                  status_code:
-                    type: integer
-                    example: 400
-                    default: 0
-                  reason_phrase:
-                    type: string
-                    example: The filename should contain an extension.
-      deprecated: false
-      x-readme:
-        code-samples:
-          - language: http
-            code: |-
-              {  
-                 "document_base64":"dGVzdA==",
-                 "document_type":"Passport",
-                 "filename":"passport.txt",
-                 "visible_in_selfservice": 1
-              }
-        samples-languages:
-          - http
   /1.0/documents/{object_type}/{object_id}/list:
     get:
       summary: List documents
@@ -2661,13 +2587,19 @@ paths:
                 type: object
                 properties: {}
       deprecated: false
-  /1.0/webhooks/{webhook_id}:
-    delete:
-      summary: Delete webhook
-      description: Use this API to unsubscribe from notifcations
-      operationId: delete-webhook
+  /1.0/documents/{object_type}/{object_id}/add:
+    post:
+      summary: Upload document
+      description: ''
+      operationId: upload-document
       parameters:
-        - name: webhook_id
+        - name: object_type
+          in: path
+          description: 'pick one: employee, asset, car'
+          schema:
+            type: string
+          required: true
+        - name: object_id
           in: path
           schema:
             type: integer
@@ -2680,21 +2612,55 @@ paths:
             application/json:
               examples:
                 Result:
-                  value: '{}'
+                  value: |-
+                    {
+                        "data": {
+                            "id": "45275"
+                        }
+                    }
               schema:
                 type: object
-                properties: {}
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: '45275'
         '400':
           description: '400'
           content:
             application/json:
               examples:
                 Result:
-                  value: '{}'
+                  value: |-
+                    {
+                        "status_code": 400,
+                        "reason_phrase": "The filename should contain an extension."
+                    }
               schema:
                 type: object
-                properties: {}
+                properties:
+                  status_code:
+                    type: integer
+                    example: 400
+                    default: 0
+                  reason_phrase:
+                    type: string
+                    example: The filename should contain an extension.
       deprecated: false
+      x-readme:
+        code-samples:
+          - language: http
+            code: |-
+              {  
+                 "document_base64":"dGVzdA==",
+                 "document_type":"Passport",
+                 "filename":"passport.txt",
+                 "visible_in_selfservice": 1
+              }
+        samples-languages:
+          - http
   /1.0/webhooks/add:
     post:
       summary: Add webhook
@@ -2743,6 +2709,40 @@ paths:
               }
         samples-languages:
           - http
+  /1.0/webhooks/{webhook_id}:
+    delete:
+      summary: Delete webhook
+      description: Use this API to unsubscribe from notifcations
+      operationId: delete-webhook
+      parameters:
+        - name: webhook_id
+          in: path
+          schema:
+            type: integer
+            format: int32
+          required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
   /1.0/webhooks/list:
     get:
       summary: List webhooks
@@ -2909,103 +2909,6 @@ paths:
               }
         samples-languages:
           - http
-  /1.0/calendar/{person_id}/events/types/{year}/limits/{type_id}/set:
-    post:
-      summary: Set event type limit
-      description: This API can update the limitations for a specific event type
-      operationId: set-event-type-limit
-      parameters:
-        - name: person_id
-          in: path
-          schema:
-            type: integer
-            format: int32
-          required: true
-        - name: year
-          in: path
-          schema:
-            type: integer
-            format: int32
-          required: true
-        - name: type_id
-          in: path
-          schema:
-            type: integer
-            format: int32
-          required: true
-      responses:
-        '200':
-          description: '200'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: |-
-                    {
-                        "success": 1
-                    }
-              schema:
-                type: object
-                properties:
-                  success:
-                    type: integer
-                    example: 1
-                    default: 0
-        '400':
-          description: '400'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: |-
-                    {
-                        "status_code": 400,
-                        "reason_phrase": "This exception is automatically calculated by your payroll provider. It cannot be changed. "
-                    }
-              schema:
-                type: object
-                properties:
-                  status_code:
-                    type: integer
-                    example: 400
-                    default: 0
-                  reason_phrase:
-                    type: string
-                    example: >-
-                      This exception is automatically calculated by your payroll
-                      provider. It cannot be changed. 
-      deprecated: false
-      x-readme:
-        code-samples:
-          - language: http
-            code: |-
-              {  
-                 "limitation":"limit_in_days",
-                 "max_yearly_amount_days":5
-              }
-            name: limit_in_days
-          - language: http
-            code: |-
-              { 
-                  "limitation": "unlimited" 
-              }
-            name: unlimited
-          - language: http
-            code: |-
-              { 
-                 "limitation": "limit_in_minutes",
-                 "max_yearly_amount_minutes": 500
-              }
-            name: limit_in_minutes
-          - language: http
-            code: |-
-              { 
-                 "start_date": "01/01/2023",
-                 "starting_amount_minutes": 1200
-              }
-            name: leave_accrual
-        samples-languages:
-          - http
   /1.0/contracts/signature/request:
     post:
       summary: Request contract signature
@@ -3164,6 +3067,103 @@ paths:
                 type: object
                 properties: {}
       deprecated: false
+  /1.0/calendar/{person_id}/events/types/{year}/limits/{type_id}/set:
+    post:
+      summary: Set event type limit
+      description: This API can update the limitations for a specific event type
+      operationId: set-event-type-limit
+      parameters:
+        - name: person_id
+          in: path
+          schema:
+            type: integer
+            format: int32
+          required: true
+        - name: year
+          in: path
+          schema:
+            type: integer
+            format: int32
+          required: true
+        - name: type_id
+          in: path
+          schema:
+            type: integer
+            format: int32
+          required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                        "success": 1
+                    }
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: integer
+                    example: 1
+                    default: 0
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                        "status_code": 400,
+                        "reason_phrase": "This exception is automatically calculated by your payroll provider. It cannot be changed. "
+                    }
+              schema:
+                type: object
+                properties:
+                  status_code:
+                    type: integer
+                    example: 400
+                    default: 0
+                  reason_phrase:
+                    type: string
+                    example: >-
+                      This exception is automatically calculated by your payroll
+                      provider. It cannot be changed. 
+      deprecated: false
+      x-readme:
+        code-samples:
+          - language: http
+            code: |-
+              {  
+                 "limitation":"limit_in_days",
+                 "max_yearly_amount_days":5
+              }
+            name: limit_in_days
+          - language: http
+            code: |-
+              { 
+                  "limitation": "unlimited" 
+              }
+            name: unlimited
+          - language: http
+            code: |-
+              { 
+                 "limitation": "limit_in_minutes",
+                 "max_yearly_amount_minutes": 500
+              }
+            name: limit_in_minutes
+          - language: http
+            code: |-
+              { 
+                 "start_date": "01/01/2023",
+                 "starting_amount_minutes": 1200
+              }
+            name: leave_accrual
+        samples-languages:
+          - http
   /1.0/people/search:
     get:
       summary: Search people
@@ -3710,65 +3710,6 @@ paths:
             name: JSON
         samples-languages:
           - http
-  /1.0/teams/add:
-    post:
-      summary: Add team
-      description: ''
-      operationId: create-team
-      responses:
-        '200':
-          description: '200'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: |-
-                    {
-                      "success": 1, 
-                      "id": 123
-                    }
-              schema:
-                type: object
-                properties:
-                  success:
-                    type: integer
-                    example: 1
-                    default: 0
-                  id:
-                    type: integer
-                    example: 123
-                    default: 0
-        '400':
-          description: '400'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: |-
-                    {
-                       "status_code": 400,
-                       "reason_phrase": "Name should not be empty"
-                    }
-              schema:
-                type: object
-                properties:
-                  status_code:
-                    type: integer
-                    example: 400
-                    default: 0
-                  reason_phrase:
-                    type: string
-                    example: Name should not be empty
-      deprecated: false
-      x-readme:
-        code-samples:
-          - language: http
-            code: |-
-              {
-                "name": "your_team_name"
-              }
-        samples-languages:
-          - http
   /1.0/teams/{team_id}:
     patch:
       summary: Edit team
@@ -3825,6 +3766,65 @@ paths:
             code: |-
               {
                 "name": "new_team_name"
+              }
+        samples-languages:
+          - http
+  /1.0/teams/add:
+    post:
+      summary: Add team
+      description: ''
+      operationId: create-team
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                      "success": 1, 
+                      "id": 123
+                    }
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: integer
+                    example: 1
+                    default: 0
+                  id:
+                    type: integer
+                    example: 123
+                    default: 0
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                       "status_code": 400,
+                       "reason_phrase": "Name should not be empty"
+                    }
+              schema:
+                type: object
+                properties:
+                  status_code:
+                    type: integer
+                    example: 400
+                    default: 0
+                  reason_phrase:
+                    type: string
+                    example: Name should not be empty
+      deprecated: false
+      x-readme:
+        code-samples:
+          - language: http
+            code: |-
+              {
+                "name": "your_team_name"
               }
         samples-languages:
           - http
@@ -3894,13 +3894,83 @@ paths:
                 type: object
                 properties: {}
       deprecated: false
-  /1.0/fleet/{vehicle_id}:
-    patch:
-      summary: Edit vehicle
+  /1.0/assets/types/add:
+    post:
+      summary: Add custom asset type
       description: ''
-      operationId: edit-vehicle
+      operationId: add-event-type
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                        "data": {
+                            "id": "15869"
+                        }
+                    }
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: '15869'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                        "status_code": 400,
+                        "reason_phrase": "Name should not be empty."
+                    }
+              schema:
+                oneOf:
+                  - type: object
+                    properties:
+                      status_code:
+                        type: integer
+                        example: 400
+                        default: 0
+                      reason_phrase:
+                        type: string
+                        example: An asset type with this name already exists.
+                  - type: object
+                    properties:
+                      status_code:
+                        type: integer
+                        example: 400
+                        default: 0
+                      reason_phrase:
+                        type: string
+                        example: Name should not be empty.
+      deprecated: false
+      x-readme:
+        code-samples:
+          - language: http
+            code: |-
+              {  
+                "name":"Keycard",
+                "price":10.5,
+                "url":"http://keycards.xyz/"
+              }
+        samples-languages:
+          - http
+  /1.0/assets/types/{asset_type_id}:
+    delete:
+      summary: Delete custom asset type
+      description: ''
+      operationId: delete-event-type
       parameters:
-        - name: vehicle_id
+        - name: asset_type_id
           in: path
           schema:
             type: integer
@@ -3924,133 +3994,7 @@ paths:
                     type: integer
                     example: 1
                     default: 0
-        '400':
-          description: '400'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: |-
-                    {
-                        "status_code": 400,
-                        "reason_phrase": "Employee not found or you have no access."
-                    }
-              schema:
-                oneOf:
-                  - type: object
-                    properties:
-                      status_code:
-                        type: integer
-                        example: 400
-                        default: 0
-                      reason_phrase:
-                        type: string
-                        example: Vehicle not found or you have no access.
-                  - type: object
-                    properties:
-                      status_code:
-                        type: integer
-                        example: 400
-                        default: 0
-                      reason_phrase:
-                        type: string
-                        example: >-
-                          'fuel' should either be 'gas', 'diesel', 'electric',
-                          'fuel_cells', 'natural_gas' or ''
-                  - type: object
-                    properties:
-                      status_code:
-                        type: integer
-                        example: 400
-                        default: 0
-                      reason_phrase:
-                        type: string
-                        example: >-
-                          'contract_type' should either be 'buy', 'hire',
-                          'op_lease', 'fin_lease' or ''
-                  - type: object
-                    properties:
-                      status_code:
-                        type: integer
-                        example: 400
-                        default: 0
-                      reason_phrase:
-                        type: string
-                        example: Employee not found or you have no access.
       deprecated: false
-      x-readme:
-        code-samples:
-          - language: http
-            code: "{\n\t\"owner_id\": 21001,\n\t\"brand\": \"Audi\",\n\t\"model\": \"A7\",\n\t\"fuel\": \"gas\",\n\t\"plate\": \"1-ABC-123\",\n\t\"hp\": 335,\n\t\"co2_g_km\": 117,\n\t\"chassis_number\": \"123456789\",\n\t\"color\": \"black\",\n\t\"specifics\": \"\",\n\t\"supplier\": \"Audi\",\n\t\"contract_type\": \"op_lease\",\n\t\"yearly_cost_base\": \"14000\",\n\t\"yearly_cost_operational\": \"0\",\n\t\"catalogue_value\": \"67000\"\n}"
-        samples-languages:
-          - http
-  /1.0/fleet/add:
-    post:
-      summary: Add vehicle
-      description: ''
-      operationId: add-vehicle
-      responses:
-        '200':
-          description: '200'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: |-
-                    {
-                        "data": {
-                            "id": "29"
-                        }
-                    }
-              schema:
-                type: object
-                properties:
-                  data:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                        example: '29'
-        '400':
-          description: '400'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: |-
-                    {
-                        "status_code": 400,
-                        "reason_phrase": "Type must be either car, bike or bicycle."
-                    }
-              schema:
-                oneOf:
-                  - type: object
-                    properties:
-                      status_code:
-                        type: integer
-                        example: 400
-                        default: 0
-                      reason_phrase:
-                        type: string
-                        example: >-
-                          The fields 'type', 'brand' and 'model' shouldn't be
-                          empty.
-                  - type: object
-                    properties:
-                      status_code:
-                        type: integer
-                        example: 400
-                        default: 0
-                      reason_phrase:
-                        type: string
-                        example: Type must be either car, bike or bicycle.
-      deprecated: false
-      x-readme:
-        code-samples:
-          - language: http
-            code: "{\n\t\"type\": \"car\",\n\t\"brand\": \"Audi\",\n\t\"model\": \"A6\",\n\t\"plate\": \"1-ABC-123\",\n\t\"fuel\": \"electric\"\n}"
-        samples-languages:
-          - http
   /1.0/assets/add:
     post:
       summary: Add asset
@@ -4215,13 +4159,80 @@ paths:
                 type: object
                 properties: {}
       deprecated: false
-  /1.0/assets/types/{asset_type_id}:
-    delete:
-      summary: Delete custom asset type
+  /1.0/fleet/add:
+    post:
+      summary: Add vehicle
       description: ''
-      operationId: delete-event-type
+      operationId: add-vehicle
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                        "data": {
+                            "id": "29"
+                        }
+                    }
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        example: '29'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                        "status_code": 400,
+                        "reason_phrase": "Type must be either car, bike or bicycle."
+                    }
+              schema:
+                oneOf:
+                  - type: object
+                    properties:
+                      status_code:
+                        type: integer
+                        example: 400
+                        default: 0
+                      reason_phrase:
+                        type: string
+                        example: >-
+                          The fields 'type', 'brand' and 'model' shouldn't be
+                          empty.
+                  - type: object
+                    properties:
+                      status_code:
+                        type: integer
+                        example: 400
+                        default: 0
+                      reason_phrase:
+                        type: string
+                        example: Type must be either car, bike or bicycle.
+      deprecated: false
+      x-readme:
+        code-samples:
+          - language: http
+            code: "{\n\t\"type\": \"car\",\n\t\"brand\": \"Audi\",\n\t\"model\": \"A6\",\n\t\"plate\": \"1-ABC-123\",\n\t\"fuel\": \"electric\"\n}"
+        samples-languages:
+          - http
+  /1.0/fleet/{vehicle_id}:
+    patch:
+      summary: Edit vehicle
+      description: ''
+      operationId: edit-vehicle
       parameters:
-        - name: asset_type_id
+        - name: vehicle_id
           in: path
           schema:
             type: integer
@@ -4245,34 +4256,6 @@ paths:
                     type: integer
                     example: 1
                     default: 0
-      deprecated: false
-  /1.0/assets/types/add:
-    post:
-      summary: Add custom asset type
-      description: ''
-      operationId: add-event-type
-      responses:
-        '200':
-          description: '200'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: |-
-                    {
-                        "data": {
-                            "id": "15869"
-                        }
-                    }
-              schema:
-                type: object
-                properties:
-                  data:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                        example: '15869'
         '400':
           description: '400'
           content:
@@ -4282,7 +4265,7 @@ paths:
                   value: |-
                     {
                         "status_code": 400,
-                        "reason_phrase": "Name should not be empty."
+                        "reason_phrase": "Employee not found or you have no access."
                     }
               schema:
                 oneOf:
@@ -4294,7 +4277,7 @@ paths:
                         default: 0
                       reason_phrase:
                         type: string
-                        example: An asset type with this name already exists.
+                        example: Vehicle not found or you have no access.
                   - type: object
                     properties:
                       status_code:
@@ -4303,17 +4286,34 @@ paths:
                         default: 0
                       reason_phrase:
                         type: string
-                        example: Name should not be empty.
+                        example: >-
+                          'fuel' should either be 'gas', 'diesel', 'electric',
+                          'fuel_cells', 'natural_gas' or ''
+                  - type: object
+                    properties:
+                      status_code:
+                        type: integer
+                        example: 400
+                        default: 0
+                      reason_phrase:
+                        type: string
+                        example: >-
+                          'contract_type' should either be 'buy', 'hire',
+                          'op_lease', 'fin_lease' or ''
+                  - type: object
+                    properties:
+                      status_code:
+                        type: integer
+                        example: 400
+                        default: 0
+                      reason_phrase:
+                        type: string
+                        example: Employee not found or you have no access.
       deprecated: false
       x-readme:
         code-samples:
           - language: http
-            code: |-
-              {  
-                "name":"Keycard",
-                "price":10.5,
-                "url":"http://keycards.xyz/"
-              }
+            code: "{\n\t\"owner_id\": 21001,\n\t\"brand\": \"Audi\",\n\t\"model\": \"A7\",\n\t\"fuel\": \"gas\",\n\t\"plate\": \"1-ABC-123\",\n\t\"hp\": 335,\n\t\"co2_g_km\": 117,\n\t\"chassis_number\": \"123456789\",\n\t\"color\": \"black\",\n\t\"specifics\": \"\",\n\t\"supplier\": \"Audi\",\n\t\"contract_type\": \"op_lease\",\n\t\"yearly_cost_base\": \"14000\",\n\t\"yearly_cost_operational\": \"0\",\n\t\"catalogue_value\": \"67000\"\n}"
         samples-languages:
           - http
   /1.0/calendar/{person_id}/{year}:
@@ -4395,6 +4395,32 @@ paths:
                 type: object
                 properties: {}
       deprecated: false
+  /1.0/calendar/requests/list:
+    get:
+      summary: List calendar requests
+      description: ''
+      operationId: list-days-off-requests
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: string
+            default: '0'
+        - name: status
+          in: query
+          description: Can be either "all", "pending" or "closed"
+          schema:
+            type: string
+            default: all
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n    \"data\": [\n        {\n            \"id\": 56,\n            \"status\": \"pending\",\n          \t\"requester\": [\n                \"id\": 264,\n              \t\"name\": \"Walter White\"\n            ]\n        },\n        {\n            \"id\": 55,\n            \"status\": \"closed\",\n          \t\"requester\": [\n                \"id\": 263,\n              \t\"name\": \"Gustavo Fring\"\n            ]\n        }\n    ]\n}"
+      deprecated: false
   /1.0/calendar/requests/{request_id}/detail:
     get:
       summary: Calendar request detail
@@ -4436,32 +4462,6 @@ paths:
                   reason_phrase:
                     type: string
                     example: Request not found or you have no access.
-      deprecated: false
-  /1.0/calendar/requests/list:
-    get:
-      summary: List calendar requests
-      description: ''
-      operationId: list-days-off-requests
-      parameters:
-        - name: page
-          in: query
-          schema:
-            type: string
-            default: '0'
-        - name: status
-          in: query
-          description: Can be either "all", "pending" or "closed"
-          schema:
-            type: string
-            default: all
-      responses:
-        '200':
-          description: '200'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: "{\n    \"data\": [\n        {\n            \"id\": 56,\n            \"status\": \"pending\",\n          \t\"requester\": [\n                \"id\": 264,\n              \t\"name\": \"Walter White\"\n            ]\n        },\n        {\n            \"id\": 55,\n            \"status\": \"closed\",\n          \t\"requester\": [\n                \"id\": 263,\n              \t\"name\": \"Gustavo Fring\"\n            ]\n        }\n    ]\n}"
       deprecated: false
   /1.0/custom_fields/{custom_field_id}/{object_type}/{object_id}:
     patch:
@@ -7865,5 +7865,4 @@ x-readme:
   headers: []
   explorer-enabled: false
   proxy-enabled: true
-  samples-enabled: true
 x-readme-fauxas: true

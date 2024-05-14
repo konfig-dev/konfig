@@ -46,7 +46,7 @@ Follow us on Twitter: @Bity or Facebook.com/hello.bity`}
       companyKebabCase="bity"
       clientNameCamelCase="bity"
       homepage="bity.com/"
-      lastUpdated={new Date("2024-03-29T21:00:45.801Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/bity/favicon.png"
       contactUrl="https://bity.com/"
       // Missing contactEmail
@@ -491,11 +491,11 @@ Follow us on Twitter: @Bity or Facebook.com/hello.bity`}
       language="TypeScript"
       apiTitle="Bity Exchange API"
       apiBaseUrl="https://exchange.api.bity.com/v2"
-      apiVersion="2.4.1"
-      endpoints={12}
-      sdkMethods={22}
+      apiVersion="2.6.0"
+      endpoints={13}
+      sdkMethods={23}
       schemas={85}
-      parameters={19}
+      parameters={20}
       difficulty="Easy"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/bity/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/bity/openapi.yaml"

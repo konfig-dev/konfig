@@ -17,7 +17,7 @@ export default function CrusoeTypeScriptSdk() {
       companyKebabCase="crusoe"
       clientNameCamelCase="crusoe"
       homepage="crusoecloud.com"
-      lastUpdated={new Date("2024-03-29T21:05:58.808Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/crusoe/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -4565,7 +4565,7 @@ export default function CrusoeTypeScriptSdk() {
       endpoints={56}
       sdkMethods={95}
       schemas={108}
-      parameters={259}
+      parameters={262}
       difficulty="Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/crusoe/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/crusoe/openapi.yaml"

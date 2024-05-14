@@ -17,7 +17,7 @@ export default function BitbucketTypeScriptSdk() {
       companyKebabCase="bitbucket"
       clientNameCamelCase="bitbucket"
       homepage="bitbucket.org/product"
-      lastUpdated={new Date("2024-03-27T21:22:31.941Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/bitbucket/favicon.png"
       contactUrl="https://support.atlassian.com/bitbucket-cloud/"
       contactEmail="support@bitbucket.org"
@@ -2246,7 +2246,7 @@ export default function BitbucketTypeScriptSdk() {
         "name": "path",
         "schema": "string",
         "required": false,
-        "description": "Limit the diff to a particular file (https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication."
+        "description": "Limit the diff to a particular file (this parameter\ncan be repeated for multiple paths)."
       },
       {
         "name": "ignoreWhitespace",
@@ -2654,7 +2654,7 @@ export default function BitbucketTypeScriptSdk() {
         "name": "renames",
         "schema": "string",
         "required": false,
-        "description": "\nWhen `true`, Bitbucket will follow the history of the file across\nrenames (https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication. This can be turned off by\nspecifying `false`."
+        "description": "\nWhen `true`, Bitbucket will follow the history of the file across\nrenames (this is the default behavior). This can be turned off by\nspecifying `false`."
       },
       {
         "name": "q",
@@ -6793,7 +6793,7 @@ export default function BitbucketTypeScriptSdk() {
         "name": "branch",
         "schema": "string",
         "required": false,
-        "description": "\nThe name of the branch that the new commit should be\ncreated on. When omitted, the commit will be created on top\nof the main branch and will become the main branch's new\nhead.\n\nWhen a branch name is provided that already exists in the\nrepo, then the commit will be created on top of that\nbranch. In this case, *if* a parent SHA1 was also provided,\nthen it is asserted that the parent is the branch's\ntip/HEAD at the time the request is made. When this is not\nthe case, a 409 is returned.\n\nWhen a new branch name is specified (https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication, and no parent SHA1s are provided, then\nthe new commit will inherit from the current main branch's\ntip/HEAD commit, but not advance the main branch. The new\ncommit will be the new branch. When the request *also*\nspecifies a parent SHA1, then the new commit and branch\nare created directly on top of the parent commit,\nregardless of the state of the main branch.\n\nWhen a branch name is not specified, but a parent SHA1 is\nprovided, then Bitbucket asserts that it represents the\nmain branch's current HEAD/tip, or a 409 is returned.\n\nWhen a branch name is not specified and the repo is empty,\nthe new commit will become the repo's root commit and will\nbe on the main branch.\n\nWhen a branch name is specified and the repo is empty, the\nnew commit will become the repo's root commit and also\ndefine the repo's main branch going forward.\n\nThis API cannot be used to create additional root commits\nin non-empty repos.\n\nThe branch field cannot be repeated.\n\nAs a side effect, this API can be used to create a new\nbranch without modifying any files, by specifying a new\nbranch name in this field, together with `parents`, but\nomitting the `files` fields, while not sending any files.\nThis will create a new commit and branch with the same\ncontents as the first parent. The diff of this commit\nagainst its first parent will be empty.\n"
+        "description": "\nThe name of the branch that the new commit should be\ncreated on. When omitted, the commit will be created on top\nof the main branch and will become the main branch's new\nhead.\n\nWhen a branch name is provided that already exists in the\nrepo, then the commit will be created on top of that\nbranch. In this case, *if* a parent SHA1 was also provided,\nthen it is asserted that the parent is the branch's\ntip/HEAD at the time the request is made. When this is not\nthe case, a 409 is returned.\n\nWhen a new branch name is specified (that does not already\nexist in the repo), and no parent SHA1s are provided, then\nthe new commit will inherit from the current main branch's\ntip/HEAD commit, but not advance the main branch. The new\ncommit will be the new branch. When the request *also*\nspecifies a parent SHA1, then the new commit and branch\nare created directly on top of the parent commit,\nregardless of the state of the main branch.\n\nWhen a branch name is not specified, but a parent SHA1 is\nprovided, then Bitbucket asserts that it represents the\nmain branch's current HEAD/tip, or a 409 is returned.\n\nWhen a branch name is not specified and the repo is empty,\nthe new commit will become the repo's root commit and will\nbe on the main branch.\n\nWhen a branch name is specified and the repo is empty, the\nnew commit will become the repo's root commit and also\ndefine the repo's main branch going forward.\n\nThis API cannot be used to create additional root commits\nin non-empty repos.\n\nThe branch field cannot be repeated.\n\nAs a side effect, this API can be used to create a new\nbranch without modifying any files, by specifying a new\nbranch name in this field, together with `parents`, but\nomitting the `files` fields, while not sending any files.\nThis will create a new commit and branch with the same\ncontents as the first parent. The diff of this commit\nagainst its first parent will be empty.\n"
       }
     ],
     "responses": [
@@ -6924,7 +6924,7 @@ export default function BitbucketTypeScriptSdk() {
         "name": "role",
         "schema": "string",
         "required": false,
-        "description": "Filter down the result based on the authenticated user's role (https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication."
+        "description": "Filter down the result based on the authenticated user's role (`owner`, `contributor`, or `member`)."
       }
     ],
     "responses": [
@@ -6969,7 +6969,7 @@ export default function BitbucketTypeScriptSdk() {
         "name": "role",
         "schema": "string",
         "required": false,
-        "description": "Filter down the result based on the authenticated user's role (https://developer.atlassian.com/cloud/bitbucket/rest/intro/#authentication."
+        "description": "Filter down the result based on the authenticated user's role (`owner`, `contributor`, or `member`)."
       }
     ],
     "responses": [

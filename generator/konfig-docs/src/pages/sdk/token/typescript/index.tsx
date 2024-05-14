@@ -39,7 +39,7 @@ Token.io is authorised as an AISP & PISP by the FCA in the UK and by BaFin in Ge
       companyKebabCase="token"
       clientNameCamelCase="token"
       homepage="token.io"
-      lastUpdated={new Date("2024-03-29T20:19:21.743Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/token/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -4959,11 +4959,11 @@ Token.io is authorised as an AISP & PISP by the FCA in the UK and by BaFin in Ge
       language="TypeScript"
       apiTitle="Token.io's Open Banking API for TPPs"
       apiBaseUrl="https://api.token.io"
-      apiVersion="v1.2.3.2"
+      apiVersion="v1.2.3.8"
       endpoints={50}
       sdkMethods={63}
       schemas={415}
-      parameters={271}
+      parameters={272}
       difficulty="Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/token/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/token/openapi.yaml"

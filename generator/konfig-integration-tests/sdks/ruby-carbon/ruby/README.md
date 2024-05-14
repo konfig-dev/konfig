@@ -665,6 +665,7 @@ p result
 
 
 ### `carbon.files.get_parsed_file`<a id="carbonfilesget_parsed_file"></a>
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 This route is deprecated. Use `/user_files_v2` instead.
 
@@ -694,6 +695,7 @@ p result
 
 
 ### `carbon.files.get_raw_file`<a id="carbonfilesget_raw_file"></a>
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 This route is deprecated. Use `/user_files_v2` instead.
 
@@ -817,6 +819,7 @@ p result
 
 
 ### `carbon.files.query_user_files_deprecated`<a id="carbonfilesquery_user_files_deprecated"></a>
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 This route is deprecated. Use `/user_files_v2` instead.
 

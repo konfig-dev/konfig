@@ -17,7 +17,7 @@ export default function WeavyTypeScriptSdk() {
       companyKebabCase="weavy"
       clientNameCamelCase="weavy"
       homepage="www.weavy.com/"
-      lastUpdated={new Date("2024-03-28T19:03:57.905Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/weavy/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -6575,11 +6575,11 @@ export default function WeavyTypeScriptSdk() {
       language="TypeScript"
       apiTitle="Weavy API"
       apiBaseUrl="https://{WEAVY-SERVER}"
-      apiVersion="22.0.0"
+      apiVersion="22.1.0"
       endpoints={82}
       sdkMethods={125}
       schemas={87}
-      parameters={482}
+      parameters={483}
       difficulty="Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/weavy/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/weavy/openapi.yaml"

@@ -34146,7 +34146,7 @@ paths:
   /taskNotifications:
     post:
       summary: Create a task reminder
-      description: Create a new task outcome
+      description: Create a new task reminder
       operationId: create-a-task-reminder
       requestBody:
         content:
@@ -34159,11 +34159,11 @@ paths:
               properties:
                 dealTask:
                   type: string
-                  description: Id of task
+                  description: ID of task
                 interval:
                   type: integer
                   description: >-
-                    Amount of time/minutes that a reminder will be sent to a
+                    Amount of time in minutes that a reminder will be sent to a
                     task assignee ahead of task's due date.
                   format: int32
             examples:
@@ -34179,159 +34179,14 @@ paths:
             application/json:
               examples:
                 Result:
-                  value: |-
-                    {
-                      "taskNotification": {
-                        "title": "Interested",
-                        "sentiment": "POSITIVE",
-                        "created_by": "1",
-                        "disabled": "",
-                        "links": {
-                          "tasktypeOutcomeRels": "https://youraccountname.api-us1.com/api/3/taskOutcomes/1/tasktypeOutcomeRels",
-                          "dealTasks": "https://youraccountname.api-us1.com/api/3/taskOutcomes/1/dealTasks"
-                        },
-                        "id": "1"
-                      }
-                    }
-              schema:
-                type: object
-                properties:
-                  taskNotification:
-                    type: object
-                    properties:
-                      title:
-                        type: string
-                        example: Interested
-                      sentiment:
-                        type: string
-                        example: POSITIVE
-                      created_by:
-                        type: string
-                        example: '1'
-                      disabled:
-                        type: string
-                        example: ''
-                      links:
-                        type: object
-                        properties:
-                          tasktypeOutcomeRels:
-                            type: string
-                            example: >-
-                              https://youraccountname.api-us1.com/api/3/taskOutcomes/1/tasktypeOutcomeRels
-                          dealTasks:
-                            type: string
-                            example: >-
-                              https://youraccountname.api-us1.com/api/3/taskOutcomes/1/dealTasks
-                      id:
-                        type: string
-                        example: '1'
+                  value: ''
         '422':
           description: '422'
           content:
             application/json:
               examples:
                 Result:
-                  value: |-
-                    {
-                        "errors": [
-                            {
-                                "title": "The taskOutcome title was not provided.",
-                                "detail": "",
-                                "code": "field_missing",
-                                "error": "taskOutcome_title_was_not_provided",
-                                "source": {
-                                    "pointer": "/data/attributes/title"
-                                }
-                            },
-                            {
-                                "title": "Sentiment value must be one of Positive, Neutral, or Negative.",
-                                "detail": "",
-                                "code": "field_invalid",
-                                "error": "",
-                                "source": {
-                                    "pointer": "/data/attributes/sentiment"
-                                }
-                            }
-                        ]
-                    }
-              schema:
-                type: object
-                properties:
-                  errors:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        title:
-                          type: string
-                          example: The taskOutcome title was not provided.
-                        detail:
-                          type: string
-                          example: ''
-                        code:
-                          type: string
-                          example: field_missing
-                        error:
-                          type: string
-                          example: taskOutcome_title_was_not_provided
-                        source:
-                          type: object
-                          properties:
-                            pointer:
-                              type: string
-                              example: /data/attributes/title
-            text/plain:
-              examples:
-                Result:
-                  value: |-
-                    {
-                        "errors": [
-                            {
-                                "title": "A task outcome with the same title already exists.",
-                                "detail": "",
-                                "code": "field_invalid",
-                                "error": "",
-                                "source": {
-                                    "pointer": "/data/attributes/title"
-                                }
-                            },
-                            {
-                                "title": "Sentiment value must be one of Positive, Neutral, or Negative.",
-                                "detail": "",
-                                "code": "field_invalid",
-                                "error": "",
-                                "source": {
-                                    "pointer": "/data/attributes/sentiment"
-                                }
-                            }
-                        ]
-                    }
-              schema:
-                type: object
-                properties:
-                  errors:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        title:
-                          type: string
-                          example: A task outcome with the same title already exists.
-                        detail:
-                          type: string
-                          example: ''
-                        code:
-                          type: string
-                          example: field_invalid
-                        error:
-                          type: string
-                          example: ''
-                        source:
-                          type: object
-                          properties:
-                            pointer:
-                              type: string
-                              example: /data/attributes/title
+                  value: ''
       deprecated: false
   /templates/{id}:
     get:
@@ -37848,6 +37703,5 @@ x-readme:
   headers: []
   explorer-enabled: false
   proxy-enabled: false
-  samples-enabled: true
 x-readme-fauxas: true
 _id: 58b53c301065f9c438aa1f77:588b6dfd33b1b337002e63ce

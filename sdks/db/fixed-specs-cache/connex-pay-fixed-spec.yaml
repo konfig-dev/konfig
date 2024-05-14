@@ -97,16 +97,21 @@ rawSpecString: |
             maxLength: 200
             minLength: 0
             type: string
+            description: If applicable, the payee's DBA name can be entered.
           payeeId:
             maxLength: 200
             minLength: 0
             pattern: '^[A-Za-z0-9]+(?: +[A-Za-z0-9]+)*$'
             type: string
+            description: Identifier for the payee.
           taxId:
             maxLength: 50
             minLength: 0
             pattern: '^[A-Za-z0-9-]+(?: +[A-Za-z0-9-]+)*$'
             type: string
+            description: >-
+              In the US this field is also known as Employee Identification Number
+              and Corporate Business Number in Canada.
           customerId:
             maxLength: 100
             minLength: 0
@@ -138,12 +143,22 @@ rawSpecString: |
             type: string
           preferredPayoutMethod:
             type: string
+            description: The method to be used when sending a payout to this payee.
           preferredCardBrand:
             type: string
+            description: Visa or Mastercard
           preferredCardClass:
             type: string
+            description: >-
+              This will vary based on your settings. Check with your Customer Care
+              team for applicable options.
           purchaseType:
             type: string
+            description: >-
+              The industry where the virtual card will be utilized, meaning the
+              purchase type passed in inclusive. For example, if value set to
+              airline and the card is used at hotel, it will be declined. Check
+              with your Customer Care team for applicable options.
           guid:
             format: uuid
             type: string
@@ -1086,14 +1101,14 @@ rawSpecString: |
                   OrderNumber:
                     type: string
                     description: >-
-                      This is the most common number you'll see throughout the
-                      ConnexPay Portal.  Transaction ID within client environment
-                      associated with the order. The value is searchable and
-                      reportable in the ConnexPay portal. This value may be sent
-                      in multiple instances of the integration for multiple
-                      purposes. Customers in the travel space often send the
-                      Record Locator/PNR in this field.  The maximum length is 50
-                      alpha-numeric characters and allows dashes ( - ).
+                      A value that is commonly used for reporting on and
+                      reconciling your PayIns and PayOuts.  The Order Number is
+                      searchable in the ConnexPay Bridge and referenced in
+                      Analytics and reporting, and can be any identifier within
+                      your environment to associate with the sale or payment, such
+                      as a Record Locator, PNR, or transaction ID.  The maximum
+                      length is 50 alpha-numeric characters and allows the
+                      following special characters: [._ /- ].
                     default: '{{OrderNumber}}'
                   SendReceipt:
                     type: boolean
@@ -1798,7 +1813,8 @@ rawSpecString: |
                       sale or sales. For example, if you have several sales and
                       one virtual card payment to a supplier, you can add
                       association ID to the sales and the virtual card for
-                      downstream reporting.
+                      downstream reporting. The maximum length is 100
+                      alpha-numeric characters.
                   CustomParameters:
                     type: array
                     description: >-
@@ -3973,14 +3989,14 @@ rawSpecString: |
                   OrderNumber:
                     type: string
                     description: >-
-                      This is the most common number you'll see throughout the
-                      ConnexPay Portal.  Transaction ID within client environment
-                      associated with the order. The value is searchable and
-                      reportable in the ConnexPay portal. This value may be sent
-                      in multiple instances of the integration for multiple
-                      purposes. Customers in the travel space often send the
-                      Record Locator/PNR in this field.  The maximum length is 50
-                      alpha-numeric characters.
+                      A value that is commonly used for reporting on and
+                      reconciling your PayIns and PayOuts.  The Order Number is
+                      searchable in the ConnexPay Bridge and referenced in
+                      Analytics and reporting, and can be any identifier within
+                      your environment to associate with the sale or payment, such
+                      as a Record Locator, PNR, or transaction ID.  The maximum
+                      length is 50 alpha-numeric characters and allows the
+                      following special characters: [._ /- ].
                   SendReceipt:
                     type: boolean
                     description: >-
@@ -4635,7 +4651,8 @@ rawSpecString: |
                       sale or sales. For example, if you have several sales and
                       one virtual card payment to a supplier, you can add
                       association ID to the sales and the virtual card for
-                      downstream reporting.
+                      downstream reporting. The maximum length is 100
+                      alpha-numeric characters.
                   BrowserData:
                     type: object
                     description: >-
@@ -5430,16 +5447,16 @@ rawSpecString: |
                   OrderNumber:
                     type: string
                     description: >-
-                      This is the most common number you'll see throughout the
-                      ConnexPay Portal. Transaction ID within client environment
-                      associated with the order. The value is searchable and
-                      reportable in the ConnexPay portal. This value may be sent
-                      in multiple instances of the integration for multiple
-                      purposes. Customers in the travel space often send the
-                      Record Locator/PNR in this field. The maximum length is 50
-                      alpha-numeric characters and allows dashes ( - ). If you
-                      provided an order number in the AUTH request it will be
-                      overwritten with the order number in the CAPTURE endpoint.
+                      A value that is commonly used for reporting on and
+                      reconciling your PayIns and PayOuts.  The Order Number is
+                      searchable in the ConnexPay Bridge and referenced in
+                      Analytics and reporting, and can be any identifier within
+                      your environment to associate with the sale or payment, such
+                      as a Record Locator, PNR, or transaction ID.  The maximum
+                      length is 50 alpha-numeric characters and allows the
+                      following special characters: [._ /- ]. If you provide an
+                      Order Number in the AUTH request, it will be overwritten
+                      with the Order Number input in the CAPTURE request.
                   CustomerID:
                     type: string
                     description: >-
@@ -5457,7 +5474,8 @@ rawSpecString: |
                       sale or sales. For example, if you have several sales and
                       one virtual card payment to a supplier, you can add
                       association ID to the sales and the virtual card for
-                      downstream reporting.
+                      downstream reporting. The maximum length is 100
+                      alpha-numeric characters.
                   CustomParameters:
                     type: array
                     description: >-
@@ -8790,14 +8808,14 @@ rawSpecString: |
                   OrderNumber:
                     type: string
                     description: >-
-                      This is the most common number you'll see throughout the
-                      ConnexPay Portal. Transaction ID within client environment
-                      associated with the order. The value is searchable and
-                      reportable in the ConnexPay portal. This value may be sent
-                      in multiple instances of the integration for multiple
-                      purposes. Customers in the travel space often send the
-                      Record Locator/PNR in this field. The maximum length is 50
-                      alpha-numeric characters and allows dashes ( - ).
+                      A value that is commonly used for reporting on and
+                      reconciling your PayIns and PayOuts.  The Order Number is
+                      searchable in the ConnexPay Bridge and referenced in
+                      Analytics and reporting, and can be any identifier within
+                      your environment to associate with the sale or payment, such
+                      as a Record Locator, PNR, or transaction ID.  The maximum
+                      length is 50 alpha-numeric characters and allows the
+                      following special characters: [._ /- ].
                     default: '{{OrderNumber}}'
                   IncomingTransactionCode:
                     type: string
@@ -8921,7 +8939,8 @@ rawSpecString: |
                       sale or sales. For example, if you have several sales and
                       one virtual card payment to a supplier, you can add
                       association ID to the sales and the virtual card for
-                      downstream reporting.
+                      downstream reporting. The maximum length is 100
+                      alpha-numeric characters.
                   CustomParameters:
                     type: array
                     description: >-
@@ -9321,15 +9340,14 @@ rawSpecString: |
                   OrderNumber:
                     type: string
                     description: >-
-                      This is the most common number you'll see throughout the
-                      ConnexPay Portal.  Transaction ID within client environment
-                      associated with the order. The value is searchable and
-                      reportable in the ConnexPay portal. This value may be sent
-                      in multiple instances of the integration for multiple
-                      purposes. Customers in the travel space often send the
-                      Record Locator/PNR in this field.  The maximum length is 50
-                      alpha-numeric characters and allows dashes and spaces  ("-",
-                      " ").
+                      A value that is commonly used for reporting on and
+                      reconciling your PayIns and PayOuts.  The Order Number is
+                      searchable in the ConnexPay Bridge and referenced in
+                      Analytics and reporting, and can be any identifier within
+                      your environment to associate with the sale or payment, such
+                      as a Record Locator, PNR, or transaction ID.  The maximum
+                      length is 50 alpha-numeric characters and allows the
+                      following special characters: [._ /- ].
                     default: 1234A
                   CustomerID:
                     type: string
@@ -9465,7 +9483,8 @@ rawSpecString: |
                       sale or sales. For example, if you have several sales and
                       one virtual card payment to a supplier, you can add
                       association ID to the sales and the virtual card for
-                      downstream reporting.
+                      downstream reporting. The maximum length is 100
+                      alpha-numeric characters.
                     default: '1234'
                   LabelIDs:
                     type: array
@@ -9796,15 +9815,14 @@ rawSpecString: |
                   OrderNumber:
                     type: string
                     description: >-
-                      This is the most common number you'll see throughout the
-                      ConnexPay Portal.  Transaction ID within client environment
-                      associated with the order. The value is searchable and
-                      reportable in the ConnexPay portal. This value may be sent
-                      in multiple instances of the integration for multiple
-                      purposes. Customers in the travel space often send the
-                      Record Locator/PNR in this field.  The maximum length is 50
-                      alpha-numeric characters and allows dashes and spaces ("-",
-                      " ").
+                      A value that is commonly used for reporting on and
+                      reconciling your PayIns and PayOuts.  The Order Number is
+                      searchable in the ConnexPay Bridge and referenced in
+                      Analytics and reporting, and can be any identifier within
+                      your environment to associate with the sale or payment, such
+                      as a Record Locator, PNR, or transaction ID.  The maximum
+                      length is 50 alpha-numeric characters and allows the
+                      following special characters: [._ /- ].
                   SupplierId:
                     type: string
                     description: >-
@@ -9921,7 +9939,8 @@ rawSpecString: |
                       sale or sales. For example, if you have several sales and
                       one virtual card payment to a supplier, you can add
                       association ID to the sales and the virtual card for
-                      downstream reporting.
+                      downstream reporting. The maximum length is 100
+                      alpha-numeric characters.
                   LabelIDs:
                     type: array
                     description: >-
@@ -10350,7 +10369,8 @@ rawSpecString: |
                       sale or sales. For example, if you have several sales and
                       one virtual card payment to a supplier, you can add
                       association ID to the sales and the virtual card for
-                      downstream reporting.
+                      downstream reporting. The maximum length is 100
+                      alpha-numeric characters.
                   TerminateDate:
                     type: string
                     description: >-
@@ -10577,7 +10597,8 @@ rawSpecString: |
                       sale or sales. For example, if you have several sales and
                       one lodged card payment to a supplier, you can add
                       association ID to the sales and the lodged card for
-                      downstream reporting.
+                      downstream reporting. The maximum length is 100
+                      alpha-numeric characters.
                   TerminateDate:
                     type: string
                     description: >-
@@ -11699,7 +11720,15 @@ rawSpecString: |
         tags:
           - MerchantPayees
         summary: Create merchant payee
-        description: Create a payee for a merchant
+        description: >-
+          Create a payee record for a merchant you are paying. Leveraging our
+          Payee network gives you control over the payout type being sent to your
+          merchant/supplier. For example, if you have a payee that requires a
+          specific card brand or card class, you can create a payee record with
+          those requirements and ConnexPay will provide a virtual card meeting
+          those specifications from our available bins. Beyond the payee ID,
+          information tied to the payee record does not need to be passed again
+          when requesting a virtual card.
         operationId: MerchantPayees_CreatePayee
         parameters:
           - name: merchantGuid
@@ -12724,7 +12753,8 @@ rawSpecString: |
                       association ID that can be used to tie this ACH Purchase to
                       a sale (Association ID also needs to be included on the sale
                       request). This is useful if you issue the ACH purchase prior
-                      to creating the sale that associates to it.
+                      to creating the sale that associates to it. The maximum
+                      length is 100 alpha-numeric characters.
               examples:
                 IssueACH Lite Request Example:
                   value:
@@ -13976,7 +14006,6 @@ rawSpecString: |
     headers: []
     explorer-enabled: true
     proxy-enabled: true
-    samples-enabled: true
   x-readme-fauxas: true
   _id: 64934188f74cfe00256baea7
-konfigCliVersion: 1.38.34
+konfigCliVersion: 1.38.37

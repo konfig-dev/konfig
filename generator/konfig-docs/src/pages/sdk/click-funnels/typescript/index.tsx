@@ -17,7 +17,7 @@ export default function ClickFunnelsTypeScriptSdk() {
       companyKebabCase="click-funnels"
       clientNameCamelCase="clickFunnels"
       homepage="www.clickfunnels.com/"
-      lastUpdated={new Date("2024-03-27T22:43:23.113Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/clickfunnels/favicon.png"
       contactUrl="https://developers.myclickfunnels.com"
       // Missing contactEmail
@@ -6150,9 +6150,9 @@ export default function ClickFunnelsTypeScriptSdk() {
       apiBaseUrl="https://{subdomain}.myclickfunnels.com/api/v2"
       apiVersion="V2"
       endpoints={82}
-      sdkMethods={159}
+      sdkMethods={156}
       schemas={510}
-      parameters={293}
+      parameters={288}
       difficulty="Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/clickfunnels/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/clickfunnels/openapi.yaml"

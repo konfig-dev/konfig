@@ -2655,6 +2655,7 @@ rawSpecString: |
             example: '2023-01-30'
           workplace_employers:
             type: array
+            nullable: true
             description: >-
               Unique IDs of workplace employers who are contributing to the
               workplace pensions. The incoming list of employers will replace the
@@ -9200,23 +9201,21 @@ rawSpecString: |
           reference_version:
             type: integer
             example: 2
-      reasonDeatils:
+      lifeEvents:
         required:
-          - code
-          - message
+          - event_id
+          - event_type
+          - status
         properties:
-          code:
+          event_id:
             type: string
-            description: Error Code Types
-            example: BAD_REQUEST
-          message:
-            description: Error message
+            example: LISALETI-SCX540
+          event_type:
             type: string
-            example: Invalid format has been used
-          path:
-            description: Error path in the request
+            example: Terminal illness
+          status:
             type: string
-            example: /investorNINO
+            example: completed
       investorAccount:
         required:
           - account_id
@@ -9372,6 +9371,24 @@ rawSpecString: |
             nullable: true
             maxLength: 64
             example: RAI48483jd
+          life_events:
+            description: Life events of the investor
+            type: array
+            items:
+              required:
+                - event_id
+                - event_type
+                - status
+              properties:
+                event_id:
+                  type: string
+                  example: LISALETI-SCX540
+                event_type:
+                  type: string
+                  example: Terminal illness
+                status:
+                  type: string
+                  example: completed
           reference_version:
             type: integer
             example: 1
@@ -9416,24 +9433,8 @@ rawSpecString: |
                 description: Investor account reference created at HMRC for a LISA account
               reason:
                 description: Error reason received from HMRC
-                type: array
-                items:
-                  required:
-                    - code
-                    - message
-                  properties:
-                    code:
-                      type: string
-                      description: Error Code Types
-                      example: BAD_REQUEST
-                    message:
-                      description: Error message
-                      type: string
-                      example: Invalid format has been used
-                    path:
-                      description: Error path in the request
-                      type: string
-                      example: /investorNINO
+                type: string
+                nullable: true
       investorAccounts:
         description: Array of investor accounts
         type: object
@@ -9611,6 +9612,24 @@ rawSpecString: |
                   nullable: true
                   maxLength: 64
                   example: RAI48483jd
+                life_events:
+                  description: Life events of the investor
+                  type: array
+                  items:
+                    required:
+                      - event_id
+                      - event_type
+                      - status
+                    properties:
+                      event_id:
+                        type: string
+                        example: LISALETI-SCX540
+                      event_type:
+                        type: string
+                        example: Terminal illness
+                      status:
+                        type: string
+                        example: completed
                 reference_version:
                   type: integer
                   example: 1
@@ -9657,24 +9676,8 @@ rawSpecString: |
                         account
                     reason:
                       description: Error reason received from HMRC
-                      type: array
-                      items:
-                        required:
-                          - code
-                          - message
-                        properties:
-                          code:
-                            type: string
-                            description: Error Code Types
-                            example: BAD_REQUEST
-                          message:
-                            description: Error message
-                            type: string
-                            example: Invalid format has been used
-                          path:
-                            description: Error path in the request
-                            type: string
-                            example: /investorNINO
+                      type: string
+                      nullable: true
           next_page_available:
             type: boolean
       fullInvestorAccount:
@@ -9861,6 +9864,24 @@ rawSpecString: |
             nullable: true
             maxLength: 64
             example: RAI48483jd
+          life_events:
+            description: Life events of the investor
+            type: array
+            items:
+              required:
+                - event_id
+                - event_type
+                - status
+              properties:
+                event_id:
+                  type: string
+                  example: LISALETI-SCX540
+                event_type:
+                  type: string
+                  example: Terminal illness
+                status:
+                  type: string
+                  example: completed
           reference_version:
             type: integer
             example: 1
@@ -9897,24 +9918,8 @@ rawSpecString: |
                 description: Investor account reference created at HMRC for a LISA account
               reason:
                 description: Error reason received from HMRC
-                type: array
-                items:
-                  required:
-                    - code
-                    - message
-                  properties:
-                    code:
-                      type: string
-                      description: Error Code Types
-                      example: BAD_REQUEST
-                    message:
-                      description: Error message
-                      type: string
-                      example: Invalid format has been used
-                    path:
-                      description: Error path in the request
-                      type: string
-                      example: /investorNINO
+                type: string
+                nullable: true
       UpdateInvestorAccountRequest:
         required:
           - reference_version
@@ -11895,6 +11900,284 @@ rawSpecString: |
               duration of interval and interval_unit. This should be a non zero
               positive value.
             example: 1
+      schemas-RecurringContribution:
+        required:
+          - frequency
+          - amount
+        properties:
+          frequency:
+            type: string
+            description: frequency can have values `Monthly`
+            enum:
+              - Monthly
+          amount:
+            type: number
+            description: The amount can have upto 2 decimal points
+        example:
+          frequency: Monthly
+          amount: 600
+      Fees:
+        required:
+          - fee_type
+          - frequency
+          - amount
+        properties:
+          fee_type:
+            type: string
+            description: Type of the fee
+          frequency:
+            type: string
+            description: frequency can have values `Monthly`
+            enum:
+              - Monthly
+          amount:
+            type: number
+            description: The amount can have upto 2 decimal points
+        example:
+          fee_type: Management fee
+          frequency: Monthly
+          amount: 600
+      AccumulateRequest:
+        type: object
+        required:
+          - name
+          - date_of_birth
+          - intended_retirement_age
+          - current_pension_value
+          - growth_rate
+        properties:
+          name:
+            type: string
+            maxLength: 100
+            description: Name of the investor
+            example: David Brown
+          date_of_birth:
+            type: string
+            format: date
+            description: Should be today or an earlier date
+            example: '1963-07-19'
+          intended_retirement_age:
+            type: integer
+            description: At most should be 100. Should be greater than current age
+            example: 60
+          current_pension_value:
+            type: number
+            description: Current value of the pension pot. Can contain up to 2 decimal points
+            example: 1000
+          growth_rate:
+            type: number
+            description: Annual growth rate of the pot. Can contain up to 2 decimal points
+            example: 2.5
+          recurring_contributions:
+            type: array
+            items:
+              required:
+                - frequency
+                - amount
+              properties:
+                frequency:
+                  type: string
+                  description: frequency can have values `Monthly`
+                  enum:
+                    - Monthly
+                amount:
+                  type: number
+                  description: The amount can have upto 2 decimal points
+              example:
+                frequency: Monthly
+                amount: 600
+          one_off_payment:
+            type: number
+            description: >-
+              One-off payments are added to the initial value as tax relievable. 
+              Can contain up to 2 decimal points
+            example: 500
+          transfer_in:
+            type: number
+            description: >-
+              Transfer-ins are added to the initial value as tax relievable.  Can
+              contain up to 2 decimal points
+            example: 500
+          fees:
+            type: array
+            items:
+              required:
+                - fee_type
+                - frequency
+                - amount
+              properties:
+                fee_type:
+                  type: string
+                  description: Type of the fee
+                frequency:
+                  type: string
+                  description: frequency can have values `Monthly`
+                  enum:
+                    - Monthly
+                amount:
+                  type: number
+                  description: The amount can have upto 2 decimal points
+              example:
+                fee_type: Management fee
+                frequency: Monthly
+                amount: 600
+          projection_coverage_years:
+            type: array
+            description: >-
+              Projection is given for the requested coverage years and the
+              retirement year. If not given, projection is given for 1st, 3rd, 5th
+              and retirement year. Can contains positive integers less than 100
+            example:
+              - 5
+      PensionProjections:
+        required:
+          - coverage_year
+          - date
+          - value
+        properties:
+          coverage_year:
+            type: integer
+            description: Given coverage year
+          date:
+            type: string
+            description: Date that indicate last date of coverage year
+          value:
+            type: number
+            description: Value of the pot
+        example:
+          coverage_year: 5
+          date: '2028-05-09'
+          value: 1167.682
+      ProjectionAccumulationResponse:
+        allOf:
+          - type: object
+            required:
+              - name
+              - date_of_birth
+              - intended_retirement_age
+              - current_pension_value
+              - growth_rate
+            properties:
+              name:
+                type: string
+                maxLength: 100
+                description: Name of the investor
+                example: David Brown
+              date_of_birth:
+                type: string
+                format: date
+                description: Should be today or an earlier date
+                example: '1963-07-19'
+              intended_retirement_age:
+                type: integer
+                description: At most should be 100. Should be greater than current age
+                example: 60
+              current_pension_value:
+                type: number
+                description: >-
+                  Current value of the pension pot. Can contain up to 2 decimal
+                  points
+                example: 1000
+              growth_rate:
+                type: number
+                description: >-
+                  Annual growth rate of the pot. Can contain up to 2 decimal
+                  points
+                example: 2.5
+              recurring_contributions:
+                type: array
+                items:
+                  required:
+                    - frequency
+                    - amount
+                  properties:
+                    frequency:
+                      type: string
+                      description: frequency can have values `Monthly`
+                      enum:
+                        - Monthly
+                    amount:
+                      type: number
+                      description: The amount can have upto 2 decimal points
+                  example:
+                    frequency: Monthly
+                    amount: 600
+              one_off_payment:
+                type: number
+                description: >-
+                  One-off payments are added to the initial value as tax
+                  relievable.  Can contain up to 2 decimal points
+                example: 500
+              transfer_in:
+                type: number
+                description: >-
+                  Transfer-ins are added to the initial value as tax relievable. 
+                  Can contain up to 2 decimal points
+                example: 500
+              fees:
+                type: array
+                items:
+                  required:
+                    - fee_type
+                    - frequency
+                    - amount
+                  properties:
+                    fee_type:
+                      type: string
+                      description: Type of the fee
+                    frequency:
+                      type: string
+                      description: frequency can have values `Monthly`
+                      enum:
+                        - Monthly
+                    amount:
+                      type: number
+                      description: The amount can have upto 2 decimal points
+                  example:
+                    fee_type: Management fee
+                    frequency: Monthly
+                    amount: 600
+              projection_coverage_years:
+                type: array
+                description: >-
+                  Projection is given for the requested coverage years and the
+                  retirement year. If not given, projection is given for 1st, 3rd,
+                  5th and retirement year. Can contains positive integers less
+                  than 100
+                example:
+                  - 5
+          - type: object
+            required:
+              - pension_projections
+              - inflation_rate
+            properties:
+              pension_projections:
+                type: array
+                description: Projection of the pension coverage years
+                readOnly: true
+                items:
+                  required:
+                    - coverage_year
+                    - date
+                    - value
+                  properties:
+                    coverage_year:
+                      type: integer
+                      description: Given coverage year
+                    date:
+                      type: string
+                      description: Date that indicate last date of coverage year
+                    value:
+                      type: number
+                      description: Value of the pot
+                  example:
+                    coverage_year: 5
+                    date: '2028-05-09'
+                    value: 1167.682
+              inflation_rate:
+                type: number
+                description: Inflation rate considered for calculations
+                example: 2
       CrystallisationInstruction:
         required:
           - pot_id
@@ -12520,6 +12803,289 @@ rawSpecString: |
               - Failed
             example:
               - Accepted
+      RecurringWithdrawal:
+        required:
+          - frequency
+          - amount
+        properties:
+          frequency:
+            type: string
+            description: frequency can have values `Monthly`
+            enum:
+              - Monthly
+          amount:
+            type: number
+            description: The amount can have upto 2 decimal points
+        example:
+          frequency: Monthly
+          amount: 600
+      DrawdownRequest:
+        type: object
+        required:
+          - name
+          - date_of_birth
+          - current_pension_value
+          - growth_rate
+        properties:
+          name:
+            type: string
+            maxLength: 100
+            description: Name of the investor
+            example: David Brown
+          date_of_birth:
+            type: string
+            format: date
+            description: Should be today or an earlier date
+            example: '1963-07-19'
+          current_pension_value:
+            type: number
+            description: Current value of the pension pot. Can contain up to 2 decimal points
+            example: 1000
+          growth_rate:
+            type: number
+            description: Annual growth rate of the pot. Can contain up to 2 decimal points
+            example: 2.5
+          recurring_contributions:
+            type: array
+            items:
+              required:
+                - frequency
+                - amount
+              properties:
+                frequency:
+                  type: string
+                  description: frequency can have values `Monthly`
+                  enum:
+                    - Monthly
+                amount:
+                  type: number
+                  description: The amount can have upto 2 decimal points
+              example:
+                frequency: Monthly
+                amount: 600
+          one_off_payment:
+            type: number
+            description: >-
+              One-off payments are added to the initial value as tax relievable. 
+              Can contain up to 2 decimal points
+            example: 500
+          transfer_in:
+            type: number
+            description: >-
+              Transfer-ins are added to the initial value as tax relievable.  Can
+              contain up to 2 decimal points
+            example: 500
+          fees:
+            type: array
+            items:
+              required:
+                - fee_type
+                - frequency
+                - amount
+              properties:
+                fee_type:
+                  type: string
+                  description: Type of the fee
+                frequency:
+                  type: string
+                  description: frequency can have values `Monthly`
+                  enum:
+                    - Monthly
+                amount:
+                  type: number
+                  description: The amount can have upto 2 decimal points
+              example:
+                fee_type: Management fee
+                frequency: Monthly
+                amount: 600
+          one_off_withdrawal:
+            type: number
+            description: >-
+              One-off withdrawals are deducted from the initial value.  Can
+              contain up to 2 decimal points
+            example: 500
+          recurring_withdrawals:
+            type: array
+            items:
+              required:
+                - frequency
+                - amount
+              properties:
+                frequency:
+                  type: string
+                  description: frequency can have values `Monthly`
+                  enum:
+                    - Monthly
+                amount:
+                  type: number
+                  description: The amount can have upto 2 decimal points
+              example:
+                frequency: Monthly
+                amount: 600
+          projection_coverage_years:
+            type: array
+            description: >-
+              Projection is given for the requested coverage years. If not given,
+              projection is given for 5th and 10th years. Can contain positive
+              integers less than 100
+            example:
+              - 5
+      ProjectionDrawdownResponse:
+        allOf:
+          - type: object
+            required:
+              - name
+              - date_of_birth
+              - current_pension_value
+              - growth_rate
+            properties:
+              name:
+                type: string
+                maxLength: 100
+                description: Name of the investor
+                example: David Brown
+              date_of_birth:
+                type: string
+                format: date
+                description: Should be today or an earlier date
+                example: '1963-07-19'
+              current_pension_value:
+                type: number
+                description: >-
+                  Current value of the pension pot. Can contain up to 2 decimal
+                  points
+                example: 1000
+              growth_rate:
+                type: number
+                description: >-
+                  Annual growth rate of the pot. Can contain up to 2 decimal
+                  points
+                example: 2.5
+              recurring_contributions:
+                type: array
+                items:
+                  required:
+                    - frequency
+                    - amount
+                  properties:
+                    frequency:
+                      type: string
+                      description: frequency can have values `Monthly`
+                      enum:
+                        - Monthly
+                    amount:
+                      type: number
+                      description: The amount can have upto 2 decimal points
+                  example:
+                    frequency: Monthly
+                    amount: 600
+              one_off_payment:
+                type: number
+                description: >-
+                  One-off payments are added to the initial value as tax
+                  relievable.  Can contain up to 2 decimal points
+                example: 500
+              transfer_in:
+                type: number
+                description: >-
+                  Transfer-ins are added to the initial value as tax relievable. 
+                  Can contain up to 2 decimal points
+                example: 500
+              fees:
+                type: array
+                items:
+                  required:
+                    - fee_type
+                    - frequency
+                    - amount
+                  properties:
+                    fee_type:
+                      type: string
+                      description: Type of the fee
+                    frequency:
+                      type: string
+                      description: frequency can have values `Monthly`
+                      enum:
+                        - Monthly
+                    amount:
+                      type: number
+                      description: The amount can have upto 2 decimal points
+                  example:
+                    fee_type: Management fee
+                    frequency: Monthly
+                    amount: 600
+              one_off_withdrawal:
+                type: number
+                description: >-
+                  One-off withdrawals are deducted from the initial value.  Can
+                  contain up to 2 decimal points
+                example: 500
+              recurring_withdrawals:
+                type: array
+                items:
+                  required:
+                    - frequency
+                    - amount
+                  properties:
+                    frequency:
+                      type: string
+                      description: frequency can have values `Monthly`
+                      enum:
+                        - Monthly
+                    amount:
+                      type: number
+                      description: The amount can have upto 2 decimal points
+                  example:
+                    frequency: Monthly
+                    amount: 600
+              projection_coverage_years:
+                type: array
+                description: >-
+                  Projection is given for the requested coverage years. If not
+                  given, projection is given for 5th and 10th years. Can contain
+                  positive integers less than 100
+                example:
+                  - 5
+          - type: object
+            required:
+              - pension_projections
+              - age_pension_runout
+              - inflation_rate
+            properties:
+              age_pension_runout:
+                type: number
+                description: >-
+                  Investor age where the pension fund goes to zero. The response
+                  will be a string (The pension will last beyond the 100th year)
+                  if not going to zero before 100 years of age
+                example: 60
+              pension_projections:
+                type: array
+                description: Projection of the pension coverage years
+                readOnly: true
+                items:
+                  required:
+                    - coverage_year
+                    - date
+                    - value
+                  properties:
+                    coverage_year:
+                      type: integer
+                      description: Given coverage year
+                    date:
+                      type: string
+                      description: Date that indicate last date of coverage year
+                    value:
+                      type: number
+                      description: Value of the pot
+                  example:
+                    coverage_year: 5
+                    date: '2028-05-09'
+                    value: 1167.682
+              inflation_rate:
+                type: number
+                description: Inflation rate considered for calculations
+                example: 2
       TaxCode:
         title: Root Type for Tax code
         description: JSON for the Tax code resource type
@@ -12621,7 +13187,7 @@ rawSpecString: |
             type: boolean
             readOnly: true
             description: This indicates the availability of the next page
-      RecurringWithdrawal:
+      schemas-RecurringWithdrawal:
         required:
           - withdrawal_id
           - withdrawal_name
@@ -12716,6 +13282,10 @@ rawSpecString: |
             enum:
               - active
               - cancelled
+          next_withdrawal_date:
+            type: string
+            format: date-time
+            example: '2023-05-01T00:00:00.000Z'
           created_at:
             type: string
             format: date-time
@@ -12832,6 +13402,10 @@ rawSpecString: |
                   enum:
                     - active
                     - cancelled
+                next_withdrawal_date:
+                  type: string
+                  format: date-time
+                  example: '2023-05-01T00:00:00.000Z'
                 created_at:
                   type: string
                   format: date-time
@@ -13072,7 +13646,9 @@ rawSpecString: |
             example: clear
           status:
             type: string
-            description: Status of the workplace employer
+            description: >-
+              Status of the workplace employer. Only the employers with the
+              kyb_aml_status as clear can be set to active.
             enum:
               - active
               - inactive
@@ -13191,7 +13767,9 @@ rawSpecString: |
                 example: clear
               status:
                 type: string
-                description: Status of the workplace employer
+                description: >-
+                  Status of the workplace employer. Only the employers with the
+                  kyb_aml_status as clear can be set to active.
                 enum:
                   - active
                   - inactive
@@ -13349,7 +13927,9 @@ rawSpecString: |
                       example: clear
                     status:
                       type: string
-                      description: Status of the workplace employer
+                      description: >-
+                        Status of the workplace employer. Only the employers with
+                        the kyb_aml_status as clear can be set to active.
                       enum:
                         - active
                         - inactive
@@ -13494,7 +14074,9 @@ rawSpecString: |
             example: clear
           status:
             type: string
-            description: Status of the workplace employer
+            description: >-
+              Status of the workplace employer. Only the employers with the
+              kyb_aml_status as clear can be set to active.
             enum:
               - active
               - inactive
@@ -16320,6 +16902,7 @@ rawSpecString: |
                     example: '2023-01-30'
                   workplace_employers:
                     type: array
+                    nullable: true
                     description: >-
                       Unique IDs of workplace employers who are contributing to
                       the workplace pensions. The incoming list of employers will
@@ -30619,6 +31202,24 @@ rawSpecString: |
                             nullable: true
                             maxLength: 64
                             example: RAI48483jd
+                          life_events:
+                            description: Life events of the investor
+                            type: array
+                            items:
+                              required:
+                                - event_id
+                                - event_type
+                                - status
+                              properties:
+                                event_id:
+                                  type: string
+                                  example: LISALETI-SCX540
+                                event_type:
+                                  type: string
+                                  example: Terminal illness
+                                status:
+                                  type: string
+                                  example: completed
                           reference_version:
                             type: integer
                             example: 1
@@ -30665,24 +31266,8 @@ rawSpecString: |
                                   LISA account
                               reason:
                                 description: Error reason received from HMRC
-                                type: array
-                                items:
-                                  required:
-                                    - code
-                                    - message
-                                  properties:
-                                    code:
-                                      type: string
-                                      description: Error Code Types
-                                      example: BAD_REQUEST
-                                    message:
-                                      description: Error message
-                                      type: string
-                                      example: Invalid format has been used
-                                    path:
-                                      description: Error path in the request
-                                      type: string
-                                      example: /investorNINO
+                                type: string
+                                nullable: true
                     next_page_available:
                       type: boolean
           '400':
@@ -31105,6 +31690,24 @@ rawSpecString: |
                       nullable: true
                       maxLength: 64
                       example: RAI48483jd
+                    life_events:
+                      description: Life events of the investor
+                      type: array
+                      items:
+                        required:
+                          - event_id
+                          - event_type
+                          - status
+                        properties:
+                          event_id:
+                            type: string
+                            example: LISALETI-SCX540
+                          event_type:
+                            type: string
+                            example: Terminal illness
+                          status:
+                            type: string
+                            example: completed
                     reference_version:
                       type: integer
                       example: 1
@@ -31143,24 +31746,8 @@ rawSpecString: |
                             account
                         reason:
                           description: Error reason received from HMRC
-                          type: array
-                          items:
-                            required:
-                              - code
-                              - message
-                            properties:
-                              code:
-                                type: string
-                                description: Error Code Types
-                                example: BAD_REQUEST
-                              message:
-                                description: Error message
-                                type: string
-                                example: Invalid format has been used
-                              path:
-                                description: Error path in the request
-                                type: string
-                                example: /investorNINO
+                          type: string
+                          nullable: true
           '400':
             description: >-
               Request is not complete and may have one or more validations errors.
@@ -31572,6 +32159,24 @@ rawSpecString: |
                       nullable: true
                       maxLength: 64
                       example: RAI48483jd
+                    life_events:
+                      description: Life events of the investor
+                      type: array
+                      items:
+                        required:
+                          - event_id
+                          - event_type
+                          - status
+                        properties:
+                          event_id:
+                            type: string
+                            example: LISALETI-SCX540
+                          event_type:
+                            type: string
+                            example: Terminal illness
+                          status:
+                            type: string
+                            example: completed
                     reference_version:
                       type: integer
                       example: 1
@@ -31610,24 +32215,8 @@ rawSpecString: |
                             account
                         reason:
                           description: Error reason received from HMRC
-                          type: array
-                          items:
-                            required:
-                              - code
-                              - message
-                            properties:
-                              code:
-                                type: string
-                                description: Error Code Types
-                                example: BAD_REQUEST
-                              message:
-                                description: Error message
-                                type: string
-                                example: Invalid format has been used
-                              path:
-                                description: Error path in the request
-                                type: string
-                                example: /investorNINO
+                          type: string
+                          nullable: true
             description: success
           '400':
             description: >-
@@ -38325,6 +38914,454 @@ rawSpecString: |
               puts response.read_body
           - lang: Go + Native
             source: "package main\n\nimport (\n\t\"fmt\"\n\t\"strings\"\n\t\"net/http\"\n\t\"io/ioutil\"\n)\n\nfunc main() {\n\n\turl := \"https://web_host_name/tenant/recurring-contributions/v1/%7Bcontribution_id%7D/cancel\"\n\n\tpayload := strings.NewReader(\"{}\")\n\n\treq, _ := http.NewRequest(\"POST\", url, payload)\n\n\treq.Header.Add(\"content-type\", \"application/json\")\n\treq.Header.Add(\"x-api-key\", \"REPLACE_KEY_VALUE\")\n\n\tres, _ := http.DefaultClient.Do(req)\n\n\tdefer res.Body.Close()\n\tbody, _ := ioutil.ReadAll(res.Body)\n\n\tfmt.Println(res)\n\tfmt.Println(string(body))\n\n}"
+    /tenant/projections/v1/accumulate:
+      post:
+        summary: Projection Accumulation (BETA)
+        operationId: accumulation
+        tags:
+          - Projections
+        security:
+          - ApiSecretKey: []
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - name
+                  - date_of_birth
+                  - intended_retirement_age
+                  - current_pension_value
+                  - growth_rate
+                properties:
+                  name:
+                    type: string
+                    maxLength: 100
+                    description: Name of the investor
+                    example: David Brown
+                  date_of_birth:
+                    type: string
+                    format: date
+                    description: Should be today or an earlier date
+                    example: '1963-07-19'
+                  intended_retirement_age:
+                    type: integer
+                    description: At most should be 100. Should be greater than current age
+                    example: 60
+                  current_pension_value:
+                    type: number
+                    description: >-
+                      Current value of the pension pot. Can contain up to 2
+                      decimal points
+                    example: 1000
+                  growth_rate:
+                    type: number
+                    description: >-
+                      Annual growth rate of the pot. Can contain up to 2 decimal
+                      points
+                    example: 2.5
+                  recurring_contributions:
+                    type: array
+                    items:
+                      required:
+                        - frequency
+                        - amount
+                      properties:
+                        frequency:
+                          type: string
+                          description: frequency can have values `Monthly`
+                          enum:
+                            - Monthly
+                        amount:
+                          type: number
+                          description: The amount can have upto 2 decimal points
+                      example:
+                        frequency: Monthly
+                        amount: 600
+                  one_off_payment:
+                    type: number
+                    description: >-
+                      One-off payments are added to the initial value as tax
+                      relievable.  Can contain up to 2 decimal points
+                    example: 500
+                  transfer_in:
+                    type: number
+                    description: >-
+                      Transfer-ins are added to the initial value as tax
+                      relievable.  Can contain up to 2 decimal points
+                    example: 500
+                  fees:
+                    type: array
+                    items:
+                      required:
+                        - fee_type
+                        - frequency
+                        - amount
+                      properties:
+                        fee_type:
+                          type: string
+                          description: Type of the fee
+                        frequency:
+                          type: string
+                          description: frequency can have values `Monthly`
+                          enum:
+                            - Monthly
+                        amount:
+                          type: number
+                          description: The amount can have upto 2 decimal points
+                      example:
+                        fee_type: Management fee
+                        frequency: Monthly
+                        amount: 600
+                  projection_coverage_years:
+                    type: array
+                    description: >-
+                      Projection is given for the requested coverage years and the
+                      retirement year. If not given, projection is given for 1st,
+                      3rd, 5th and retirement year. Can contains positive integers
+                      less than 100
+                    example:
+                      - 5
+        parameters:
+          - in: header
+            name: x-api-key
+            required: true
+            schema:
+              type: string
+            description: ApiSecretKey
+        responses:
+          '201':
+            description: success
+            content:
+              application/json:
+                schema:
+                  allOf:
+                    - type: object
+                      required:
+                        - name
+                        - date_of_birth
+                        - intended_retirement_age
+                        - current_pension_value
+                        - growth_rate
+                      properties:
+                        name:
+                          type: string
+                          maxLength: 100
+                          description: Name of the investor
+                          example: David Brown
+                        date_of_birth:
+                          type: string
+                          format: date
+                          description: Should be today or an earlier date
+                          example: '1963-07-19'
+                        intended_retirement_age:
+                          type: integer
+                          description: >-
+                            At most should be 100. Should be greater than current
+                            age
+                          example: 60
+                        current_pension_value:
+                          type: number
+                          description: >-
+                            Current value of the pension pot. Can contain up to 2
+                            decimal points
+                          example: 1000
+                        growth_rate:
+                          type: number
+                          description: >-
+                            Annual growth rate of the pot. Can contain up to 2
+                            decimal points
+                          example: 2.5
+                        recurring_contributions:
+                          type: array
+                          items:
+                            required:
+                              - frequency
+                              - amount
+                            properties:
+                              frequency:
+                                type: string
+                                description: frequency can have values `Monthly`
+                                enum:
+                                  - Monthly
+                              amount:
+                                type: number
+                                description: The amount can have upto 2 decimal points
+                            example:
+                              frequency: Monthly
+                              amount: 600
+                        one_off_payment:
+                          type: number
+                          description: >-
+                            One-off payments are added to the initial value as tax
+                            relievable.  Can contain up to 2 decimal points
+                          example: 500
+                        transfer_in:
+                          type: number
+                          description: >-
+                            Transfer-ins are added to the initial value as tax
+                            relievable.  Can contain up to 2 decimal points
+                          example: 500
+                        fees:
+                          type: array
+                          items:
+                            required:
+                              - fee_type
+                              - frequency
+                              - amount
+                            properties:
+                              fee_type:
+                                type: string
+                                description: Type of the fee
+                              frequency:
+                                type: string
+                                description: frequency can have values `Monthly`
+                                enum:
+                                  - Monthly
+                              amount:
+                                type: number
+                                description: The amount can have upto 2 decimal points
+                            example:
+                              fee_type: Management fee
+                              frequency: Monthly
+                              amount: 600
+                        projection_coverage_years:
+                          type: array
+                          description: >-
+                            Projection is given for the requested coverage years
+                            and the retirement year. If not given, projection is
+                            given for 1st, 3rd, 5th and retirement year. Can
+                            contains positive integers less than 100
+                          example:
+                            - 5
+                    - type: object
+                      required:
+                        - pension_projections
+                        - inflation_rate
+                      properties:
+                        pension_projections:
+                          type: array
+                          description: Projection of the pension coverage years
+                          readOnly: true
+                          items:
+                            required:
+                              - coverage_year
+                              - date
+                              - value
+                            properties:
+                              coverage_year:
+                                type: integer
+                                description: Given coverage year
+                              date:
+                                type: string
+                                description: Date that indicate last date of coverage year
+                              value:
+                                type: number
+                                description: Value of the pot
+                            example:
+                              coverage_year: 5
+                              date: '2028-05-09'
+                              value: 1167.682
+                        inflation_rate:
+                          type: number
+                          description: Inflation rate considered for calculations
+                          example: 2
+          '400':
+            description: >-
+              Request is not complete and may have one or more validations errors.
+              Please check the error message and the code
+            content:
+              application/json:
+                schema:
+                  required:
+                    - message
+                  properties:
+                    error_code:
+                      description: Optional error code
+                      type: string
+                    message:
+                      description: Human readable description of the error
+                      type: string
+                    status:
+                      description: Current status of the original request
+                      type: string
+                      enum:
+                        - PROCESSING
+                        - COMPLETE
+                    response:
+                      description: Stringified original response body if status is `COMPLETE`
+                      type: object
+          '401':
+            description: You do not have permissions to access this resource.
+            content:
+              application/json:
+                schema:
+                  required:
+                    - message
+                  properties:
+                    error_code:
+                      description: Optional error code
+                      type: string
+                    message:
+                      description: Human readable description of the error
+                      type: string
+          '403':
+            description: >-
+              Your authentication information is missing or invalid. Please check
+              the keys are properly set and its correct
+            content:
+              application/json:
+                schema:
+                  required:
+                    - message
+                  properties:
+                    error_code:
+                      description: Optional error code
+                      type: string
+                    message:
+                      description: Human readable description of the error
+                      type: string
+          '404':
+            description: The specified resource was not found
+            content:
+              application/json:
+                schema:
+                  required:
+                    - message
+                  properties:
+                    error_code:
+                      description: Optional error code
+                      type: string
+                    message:
+                      description: Human readable description of the error
+                      type: string
+          '429':
+            description: >-
+              You have sent too many requests to the system. Please retry later.
+              If you need to increase your throtteling limits, please contact WOS
+              support
+            content:
+              application/json:
+                schema:
+                  required:
+                    - message
+                  properties:
+                    error_code:
+                      description: Optional error code
+                      type: string
+                    message:
+                      description: Human readable description of the error
+                      type: string
+          '500':
+            description: System error. Retry later. If the error persist, contact WOS support
+            content:
+              application/json:
+                schema:
+                  required:
+                    - message
+                  properties:
+                    error_code:
+                      description: Optional error code
+                      type: string
+                    message:
+                      description: Human readable description of the error
+                      type: string
+        description: >
+          <div class="warning" style='padding:0.1em; background-color:#FEEFB3;
+          color:#9F6000;'>
+              <span>
+                  <p style='margin-top:0.9em;margin-bottom:0.9em;margin-left:1em; text-align:left'>
+                      <b>ⓘ</b> This feature is currently in BETA mode
+                  </p>
+              </span>
+          </div>
+
+
+          This endpoint supports to project accumulation of a pension account.
+        x-codeSamples:
+          - lang: Shell + Curl
+            source: |-
+              curl --request POST \
+                --url https://web_host_name/tenant/projections/v1/accumulate \
+                --header 'content-type: application/json' \
+                --header 'x-api-key: REPLACE_KEY_VALUE' \
+                --data '{"name":"David Brown","date_of_birth":"1963-07-19","intended_retirement_age":60,"current_pension_value":1000,"growth_rate":2.5,"recurring_contributions":[{"frequency":"Monthly","amount":600}],"one_off_payment":500,"transfer_in":500,"fees":[{"fee_type":"Management fee","frequency":"Monthly","amount":600}],"projection_coverage_years":[5]}'
+          - lang: Node + Native
+            source: |-
+              var http = require("https");
+
+              var options = {
+                "method": "POST",
+                "hostname": "web_host_name",
+                "port": null,
+                "path": "/tenant/projections/v1/accumulate",
+                "headers": {
+                  "content-type": "application/json",
+                  "x-api-key": "REPLACE_KEY_VALUE"
+                }
+              };
+
+              var req = http.request(options, function (res) {
+                var chunks = [];
+
+                res.on("data", function (chunk) {
+                  chunks.push(chunk);
+                });
+
+                res.on("end", function () {
+                  var body = Buffer.concat(chunks);
+                  console.log(body.toString());
+                });
+              });
+
+              req.write(JSON.stringify({
+                name: 'David Brown',
+                date_of_birth: '1963-07-19',
+                intended_retirement_age: 60,
+                current_pension_value: 1000,
+                growth_rate: 2.5,
+                recurring_contributions: [{frequency: 'Monthly', amount: 600}],
+                one_off_payment: 500,
+                transfer_in: 500,
+                fees: [{fee_type: 'Management fee', frequency: 'Monthly', amount: 600}],
+                projection_coverage_years: [5]
+              }));
+              req.end();
+          - lang: Ruby + Native
+            source: >-
+              require 'uri'
+
+              require 'net/http'
+
+              require 'openssl'
+
+
+              url = URI("https://web_host_name/tenant/projections/v1/accumulate")
+
+
+              http = Net::HTTP.new(url.host, url.port)
+
+              http.use_ssl = true
+
+              http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+
+              request = Net::HTTP::Post.new(url)
+
+              request["content-type"] = 'application/json'
+
+              request["x-api-key"] = 'REPLACE_KEY_VALUE'
+
+              request.body = "{\"name\":\"David
+              Brown\",\"date_of_birth\":\"1963-07-19\",\"intended_retirement_age\":60,\"current_pension_value\":1000,\"growth_rate\":2.5,\"recurring_contributions\":[{\"frequency\":\"Monthly\",\"amount\":600}],\"one_off_payment\":500,\"transfer_in\":500,\"fees\":[{\"fee_type\":\"Management
+              fee\",\"frequency\":\"Monthly\",\"amount\":600}],\"projection_coverage_years\":[5]}"
+
+
+              response = http.request(request)
+
+              puts response.read_body
+          - lang: Go + Native
+            source: "package main\n\nimport (\n\t\"fmt\"\n\t\"strings\"\n\t\"net/http\"\n\t\"io/ioutil\"\n)\n\nfunc main() {\n\n\turl := \"https://web_host_name/tenant/projections/v1/accumulate\"\n\n\tpayload := strings.NewReader(\"{\\\"name\\\":\\\"David Brown\\\",\\\"date_of_birth\\\":\\\"1963-07-19\\\",\\\"intended_retirement_age\\\":60,\\\"current_pension_value\\\":1000,\\\"growth_rate\\\":2.5,\\\"recurring_contributions\\\":[{\\\"frequency\\\":\\\"Monthly\\\",\\\"amount\\\":600}],\\\"one_off_payment\\\":500,\\\"transfer_in\\\":500,\\\"fees\\\":[{\\\"fee_type\\\":\\\"Management fee\\\",\\\"frequency\\\":\\\"Monthly\\\",\\\"amount\\\":600}],\\\"projection_coverage_years\\\":[5]}\")\n\n\treq, _ := http.NewRequest(\"POST\", url, payload)\n\n\treq.Header.Add(\"content-type\", \"application/json\")\n\treq.Header.Add(\"x-api-key\", \"REPLACE_KEY_VALUE\")\n\n\tres, _ := http.DefaultClient.Do(req)\n\n\tdefer res.Body.Close()\n\tbody, _ := ioutil.ReadAll(res.Body)\n\n\tfmt.Println(res)\n\tfmt.Println(string(body))\n\n}"
     /tenant/pots/v1/crystallisation:
       get:
         tags:
@@ -39170,6 +40207,498 @@ rawSpecString: |
               puts response.read_body
           - lang: Go + Native
             source: "package main\n\nimport (\n\t\"fmt\"\n\t\"strings\"\n\t\"net/http\"\n\t\"io/ioutil\"\n)\n\nfunc main() {\n\n\turl := \"https://web_host_name/tenant/pots/v1/crystallisation\"\n\n\tpayload := strings.NewReader(\"{\\\"request_id\\\":\\\"266ea41d-adf5-480b-af50-15b940c2b846\\\",\\\"investor_id\\\":\\\"inv-XUT11265\\\",\\\"bank_account_id\\\":\\\"ba-bc00c28f-b3fc-42b7\\\",\\\"crystallisation_instructions\\\":[{\\\"pot_id\\\":\\\"pot-GYQ5423100\\\",\\\"value\\\":\\\"1000\\\"}],\\\"drawdown_instructions\\\":[{\\\"pot_id\\\":\\\"pot-XWL3855774\\\",\\\"purpose\\\":\\\"cash\\\",\\\"percentage\\\":\\\"30\\\"},{\\\"pot_id\\\":\\\"pot-SDQ5009730\\\",\\\"purpose\\\":\\\"invest\\\",\\\"percentage\\\":\\\"70\\\"}]}\")\n\n\treq, _ := http.NewRequest(\"POST\", url, payload)\n\n\treq.Header.Add(\"content-type\", \"application/json\")\n\treq.Header.Add(\"x-api-key\", \"REPLACE_KEY_VALUE\")\n\n\tres, _ := http.DefaultClient.Do(req)\n\n\tdefer res.Body.Close()\n\tbody, _ := ioutil.ReadAll(res.Body)\n\n\tfmt.Println(res)\n\tfmt.Println(string(body))\n\n}"
+    /tenant/projections/v1/drawdown:
+      post:
+        summary: Projection Drawdown (BETA)
+        operationId: drawdown
+        tags:
+          - Projections
+        security:
+          - ApiSecretKey: []
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - name
+                  - date_of_birth
+                  - current_pension_value
+                  - growth_rate
+                properties:
+                  name:
+                    type: string
+                    maxLength: 100
+                    description: Name of the investor
+                    example: David Brown
+                  date_of_birth:
+                    type: string
+                    format: date
+                    description: Should be today or an earlier date
+                    example: '1963-07-19'
+                  current_pension_value:
+                    type: number
+                    description: >-
+                      Current value of the pension pot. Can contain up to 2
+                      decimal points
+                    example: 1000
+                  growth_rate:
+                    type: number
+                    description: >-
+                      Annual growth rate of the pot. Can contain up to 2 decimal
+                      points
+                    example: 2.5
+                  recurring_contributions:
+                    type: array
+                    items:
+                      required:
+                        - frequency
+                        - amount
+                      properties:
+                        frequency:
+                          type: string
+                          description: frequency can have values `Monthly`
+                          enum:
+                            - Monthly
+                        amount:
+                          type: number
+                          description: The amount can have upto 2 decimal points
+                      example:
+                        frequency: Monthly
+                        amount: 600
+                  one_off_payment:
+                    type: number
+                    description: >-
+                      One-off payments are added to the initial value as tax
+                      relievable.  Can contain up to 2 decimal points
+                    example: 500
+                  transfer_in:
+                    type: number
+                    description: >-
+                      Transfer-ins are added to the initial value as tax
+                      relievable.  Can contain up to 2 decimal points
+                    example: 500
+                  fees:
+                    type: array
+                    items:
+                      required:
+                        - fee_type
+                        - frequency
+                        - amount
+                      properties:
+                        fee_type:
+                          type: string
+                          description: Type of the fee
+                        frequency:
+                          type: string
+                          description: frequency can have values `Monthly`
+                          enum:
+                            - Monthly
+                        amount:
+                          type: number
+                          description: The amount can have upto 2 decimal points
+                      example:
+                        fee_type: Management fee
+                        frequency: Monthly
+                        amount: 600
+                  one_off_withdrawal:
+                    type: number
+                    description: >-
+                      One-off withdrawals are deducted from the initial value. 
+                      Can contain up to 2 decimal points
+                    example: 500
+                  recurring_withdrawals:
+                    type: array
+                    items:
+                      required:
+                        - frequency
+                        - amount
+                      properties:
+                        frequency:
+                          type: string
+                          description: frequency can have values `Monthly`
+                          enum:
+                            - Monthly
+                        amount:
+                          type: number
+                          description: The amount can have upto 2 decimal points
+                      example:
+                        frequency: Monthly
+                        amount: 600
+                  projection_coverage_years:
+                    type: array
+                    description: >-
+                      Projection is given for the requested coverage years. If not
+                      given, projection is given for 5th and 10th years. Can
+                      contain positive integers less than 100
+                    example:
+                      - 5
+        parameters:
+          - in: header
+            name: x-api-key
+            required: true
+            schema:
+              type: string
+            description: ApiSecretKey
+        responses:
+          '201':
+            description: success
+            content:
+              application/json:
+                schema:
+                  allOf:
+                    - type: object
+                      required:
+                        - name
+                        - date_of_birth
+                        - current_pension_value
+                        - growth_rate
+                      properties:
+                        name:
+                          type: string
+                          maxLength: 100
+                          description: Name of the investor
+                          example: David Brown
+                        date_of_birth:
+                          type: string
+                          format: date
+                          description: Should be today or an earlier date
+                          example: '1963-07-19'
+                        current_pension_value:
+                          type: number
+                          description: >-
+                            Current value of the pension pot. Can contain up to 2
+                            decimal points
+                          example: 1000
+                        growth_rate:
+                          type: number
+                          description: >-
+                            Annual growth rate of the pot. Can contain up to 2
+                            decimal points
+                          example: 2.5
+                        recurring_contributions:
+                          type: array
+                          items:
+                            required:
+                              - frequency
+                              - amount
+                            properties:
+                              frequency:
+                                type: string
+                                description: frequency can have values `Monthly`
+                                enum:
+                                  - Monthly
+                              amount:
+                                type: number
+                                description: The amount can have upto 2 decimal points
+                            example:
+                              frequency: Monthly
+                              amount: 600
+                        one_off_payment:
+                          type: number
+                          description: >-
+                            One-off payments are added to the initial value as tax
+                            relievable.  Can contain up to 2 decimal points
+                          example: 500
+                        transfer_in:
+                          type: number
+                          description: >-
+                            Transfer-ins are added to the initial value as tax
+                            relievable.  Can contain up to 2 decimal points
+                          example: 500
+                        fees:
+                          type: array
+                          items:
+                            required:
+                              - fee_type
+                              - frequency
+                              - amount
+                            properties:
+                              fee_type:
+                                type: string
+                                description: Type of the fee
+                              frequency:
+                                type: string
+                                description: frequency can have values `Monthly`
+                                enum:
+                                  - Monthly
+                              amount:
+                                type: number
+                                description: The amount can have upto 2 decimal points
+                            example:
+                              fee_type: Management fee
+                              frequency: Monthly
+                              amount: 600
+                        one_off_withdrawal:
+                          type: number
+                          description: >-
+                            One-off withdrawals are deducted from the initial
+                            value.  Can contain up to 2 decimal points
+                          example: 500
+                        recurring_withdrawals:
+                          type: array
+                          items:
+                            required:
+                              - frequency
+                              - amount
+                            properties:
+                              frequency:
+                                type: string
+                                description: frequency can have values `Monthly`
+                                enum:
+                                  - Monthly
+                              amount:
+                                type: number
+                                description: The amount can have upto 2 decimal points
+                            example:
+                              frequency: Monthly
+                              amount: 600
+                        projection_coverage_years:
+                          type: array
+                          description: >-
+                            Projection is given for the requested coverage years.
+                            If not given, projection is given for 5th and 10th
+                            years. Can contain positive integers less than 100
+                          example:
+                            - 5
+                    - type: object
+                      required:
+                        - pension_projections
+                        - age_pension_runout
+                        - inflation_rate
+                      properties:
+                        age_pension_runout:
+                          type: number
+                          description: >-
+                            Investor age where the pension fund goes to zero. The
+                            response will be a string (The pension will last
+                            beyond the 100th year) if not going to zero before 100
+                            years of age
+                          example: 60
+                        pension_projections:
+                          type: array
+                          description: Projection of the pension coverage years
+                          readOnly: true
+                          items:
+                            required:
+                              - coverage_year
+                              - date
+                              - value
+                            properties:
+                              coverage_year:
+                                type: integer
+                                description: Given coverage year
+                              date:
+                                type: string
+                                description: Date that indicate last date of coverage year
+                              value:
+                                type: number
+                                description: Value of the pot
+                            example:
+                              coverage_year: 5
+                              date: '2028-05-09'
+                              value: 1167.682
+                        inflation_rate:
+                          type: number
+                          description: Inflation rate considered for calculations
+                          example: 2
+          '400':
+            description: >-
+              Request is not complete and may have one or more validations errors.
+              Please check the error message and the code
+            content:
+              application/json:
+                schema:
+                  required:
+                    - message
+                  properties:
+                    error_code:
+                      description: Optional error code
+                      type: string
+                    message:
+                      description: Human readable description of the error
+                      type: string
+                    status:
+                      description: Current status of the original request
+                      type: string
+                      enum:
+                        - PROCESSING
+                        - COMPLETE
+                    response:
+                      description: Stringified original response body if status is `COMPLETE`
+                      type: object
+          '401':
+            description: You do not have permissions to access this resource.
+            content:
+              application/json:
+                schema:
+                  required:
+                    - message
+                  properties:
+                    error_code:
+                      description: Optional error code
+                      type: string
+                    message:
+                      description: Human readable description of the error
+                      type: string
+          '403':
+            description: >-
+              Your authentication information is missing or invalid. Please check
+              the keys are properly set and its correct
+            content:
+              application/json:
+                schema:
+                  required:
+                    - message
+                  properties:
+                    error_code:
+                      description: Optional error code
+                      type: string
+                    message:
+                      description: Human readable description of the error
+                      type: string
+          '404':
+            description: The specified resource was not found
+            content:
+              application/json:
+                schema:
+                  required:
+                    - message
+                  properties:
+                    error_code:
+                      description: Optional error code
+                      type: string
+                    message:
+                      description: Human readable description of the error
+                      type: string
+          '429':
+            description: >-
+              You have sent too many requests to the system. Please retry later.
+              If you need to increase your throtteling limits, please contact WOS
+              support
+            content:
+              application/json:
+                schema:
+                  required:
+                    - message
+                  properties:
+                    error_code:
+                      description: Optional error code
+                      type: string
+                    message:
+                      description: Human readable description of the error
+                      type: string
+          '500':
+            description: System error. Retry later. If the error persist, contact WOS support
+            content:
+              application/json:
+                schema:
+                  required:
+                    - message
+                  properties:
+                    error_code:
+                      description: Optional error code
+                      type: string
+                    message:
+                      description: Human readable description of the error
+                      type: string
+        description: >-
+          <div class="warning" style='padding:0.1em; background-color:#FEEFB3;
+          color:#9F6000;'>
+              <span>
+                  <p style='margin-top:0.9em;margin-bottom:0.9em;margin-left:1em; text-align:left'>
+                      <b>ⓘ</b> This feature is currently in BETA mode
+                  </p>
+              </span>
+          </div>
+
+
+          This endpoint supports to project drawdown of a pension account. 
+        x-codeSamples:
+          - lang: Shell + Curl
+            source: |-
+              curl --request POST \
+                --url https://web_host_name/tenant/projections/v1/drawdown \
+                --header 'content-type: application/json' \
+                --header 'x-api-key: REPLACE_KEY_VALUE' \
+                --data '{"name":"David Brown","date_of_birth":"1963-07-19","current_pension_value":1000,"growth_rate":2.5,"recurring_contributions":[{"frequency":"Monthly","amount":600}],"one_off_payment":500,"transfer_in":500,"fees":[{"fee_type":"Management fee","frequency":"Monthly","amount":600}],"one_off_withdrawal":500,"recurring_withdrawals":[{"frequency":"Monthly","amount":600}],"projection_coverage_years":[5]}'
+          - lang: Node + Native
+            source: |-
+              var http = require("https");
+
+              var options = {
+                "method": "POST",
+                "hostname": "web_host_name",
+                "port": null,
+                "path": "/tenant/projections/v1/drawdown",
+                "headers": {
+                  "content-type": "application/json",
+                  "x-api-key": "REPLACE_KEY_VALUE"
+                }
+              };
+
+              var req = http.request(options, function (res) {
+                var chunks = [];
+
+                res.on("data", function (chunk) {
+                  chunks.push(chunk);
+                });
+
+                res.on("end", function () {
+                  var body = Buffer.concat(chunks);
+                  console.log(body.toString());
+                });
+              });
+
+              req.write(JSON.stringify({
+                name: 'David Brown',
+                date_of_birth: '1963-07-19',
+                current_pension_value: 1000,
+                growth_rate: 2.5,
+                recurring_contributions: [{frequency: 'Monthly', amount: 600}],
+                one_off_payment: 500,
+                transfer_in: 500,
+                fees: [{fee_type: 'Management fee', frequency: 'Monthly', amount: 600}],
+                one_off_withdrawal: 500,
+                recurring_withdrawals: [{frequency: 'Monthly', amount: 600}],
+                projection_coverage_years: [5]
+              }));
+              req.end();
+          - lang: Ruby + Native
+            source: >-
+              require 'uri'
+
+              require 'net/http'
+
+              require 'openssl'
+
+
+              url = URI("https://web_host_name/tenant/projections/v1/drawdown")
+
+
+              http = Net::HTTP.new(url.host, url.port)
+
+              http.use_ssl = true
+
+              http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+
+              request = Net::HTTP::Post.new(url)
+
+              request["content-type"] = 'application/json'
+
+              request["x-api-key"] = 'REPLACE_KEY_VALUE'
+
+              request.body = "{\"name\":\"David
+              Brown\",\"date_of_birth\":\"1963-07-19\",\"current_pension_value\":1000,\"growth_rate\":2.5,\"recurring_contributions\":[{\"frequency\":\"Monthly\",\"amount\":600}],\"one_off_payment\":500,\"transfer_in\":500,\"fees\":[{\"fee_type\":\"Management
+              fee\",\"frequency\":\"Monthly\",\"amount\":600}],\"one_off_withdrawal\":500,\"recurring_withdrawals\":[{\"frequency\":\"Monthly\",\"amount\":600}],\"projection_coverage_years\":[5]}"
+
+
+              response = http.request(request)
+
+              puts response.read_body
+          - lang: Go + Native
+            source: "package main\n\nimport (\n\t\"fmt\"\n\t\"strings\"\n\t\"net/http\"\n\t\"io/ioutil\"\n)\n\nfunc main() {\n\n\turl := \"https://web_host_name/tenant/projections/v1/drawdown\"\n\n\tpayload := strings.NewReader(\"{\\\"name\\\":\\\"David Brown\\\",\\\"date_of_birth\\\":\\\"1963-07-19\\\",\\\"current_pension_value\\\":1000,\\\"growth_rate\\\":2.5,\\\"recurring_contributions\\\":[{\\\"frequency\\\":\\\"Monthly\\\",\\\"amount\\\":600}],\\\"one_off_payment\\\":500,\\\"transfer_in\\\":500,\\\"fees\\\":[{\\\"fee_type\\\":\\\"Management fee\\\",\\\"frequency\\\":\\\"Monthly\\\",\\\"amount\\\":600}],\\\"one_off_withdrawal\\\":500,\\\"recurring_withdrawals\\\":[{\\\"frequency\\\":\\\"Monthly\\\",\\\"amount\\\":600}],\\\"projection_coverage_years\\\":[5]}\")\n\n\treq, _ := http.NewRequest(\"POST\", url, payload)\n\n\treq.Header.Add(\"content-type\", \"application/json\")\n\treq.Header.Add(\"x-api-key\", \"REPLACE_KEY_VALUE\")\n\n\tres, _ := http.DefaultClient.Do(req)\n\n\tdefer res.Body.Close()\n\tbody, _ := ioutil.ReadAll(res.Body)\n\n\tfmt.Println(res)\n\tfmt.Println(string(body))\n\n}"
     /tenant/investors/v1/tax-codes:
       summary: Investor Tax Codes resource management
       get:
@@ -39648,6 +41177,10 @@ rawSpecString: |
                       enum:
                         - active
                         - cancelled
+                    next_withdrawal_date:
+                      type: string
+                      format: date-time
+                      example: '2023-05-01T00:00:00.000Z'
                     created_at:
                       type: string
                       format: date-time
@@ -39961,6 +41494,10 @@ rawSpecString: |
                             enum:
                               - active
                               - cancelled
+                          next_withdrawal_date:
+                            type: string
+                            format: date-time
+                            example: '2023-05-01T00:00:00.000Z'
                           created_at:
                             type: string
                             format: date-time
@@ -40386,6 +41923,10 @@ rawSpecString: |
                       enum:
                         - active
                         - cancelled
+                    next_withdrawal_date:
+                      type: string
+                      format: date-time
+                      example: '2023-05-01T00:00:00.000Z'
                     created_at:
                       type: string
                       format: date-time
@@ -40412,6 +41953,7 @@ rawSpecString: |
                     date: 1
                     start_date: '2023-04-02'
                     end_date: '2023-11-02'
+                  next_withdrawal_date: '2023-05-01T00:00:00.000Z'
                   created_at: '2023-04-04T15:12:30.000Z'
                   updated_at: '2023-04-04T15:12:30.000Z'
                   reference_version: 1
@@ -40733,6 +42275,10 @@ rawSpecString: |
                       enum:
                         - active
                         - cancelled
+                    next_withdrawal_date:
+                      type: string
+                      format: date-time
+                      example: '2023-05-01T00:00:00.000Z'
                     created_at:
                       type: string
                       format: date-time
@@ -40759,6 +42305,7 @@ rawSpecString: |
                     date: 1
                     start_date: '2023-04-02'
                     end_date: '2023-11-02'
+                  next_withdrawal_date: '2023-05-01T00:00:00.000Z'
                   created_at: '2023-04-04T15:12:30.000Z'
                   updated_at: '2023-04-04T15:12:30.000Z'
                   reference_version: 1
@@ -41063,7 +42610,9 @@ rawSpecString: |
                     example: clear
                   status:
                     type: string
-                    description: Status of the workplace employer
+                    description: >-
+                      Status of the workplace employer. Only the employers with
+                      the kyb_aml_status as clear can be set to active.
                     enum:
                       - active
                       - inactive
@@ -41198,7 +42747,9 @@ rawSpecString: |
                           example: clear
                         status:
                           type: string
-                          description: Status of the workplace employer
+                          description: >-
+                            Status of the workplace employer. Only the employers
+                            with the kyb_aml_status as clear can be set to active.
                           enum:
                             - active
                             - inactive
@@ -41567,7 +43118,10 @@ rawSpecString: |
                                 example: clear
                               status:
                                 type: string
-                                description: Status of the workplace employer
+                                description: >-
+                                  Status of the workplace employer. Only the
+                                  employers with the kyb_aml_status as clear can
+                                  be set to active.
                                 enum:
                                   - active
                                   - inactive
@@ -41959,7 +43513,9 @@ rawSpecString: |
                           example: clear
                         status:
                           type: string
-                          description: Status of the workplace employer
+                          description: >-
+                            Status of the workplace employer. Only the employers
+                            with the kyb_aml_status as clear can be set to active.
                           enum:
                             - active
                             - inactive
@@ -42292,7 +43848,9 @@ rawSpecString: |
                     example: clear
                   status:
                     type: string
-                    description: Status of the workplace employer
+                    description: >-
+                      Status of the workplace employer. Only the employers with
+                      the kyb_aml_status as clear can be set to active.
                     enum:
                       - active
                       - inactive
@@ -42423,7 +43981,9 @@ rawSpecString: |
                           example: clear
                         status:
                           type: string
-                          description: Status of the workplace employer
+                          description: >-
+                            Status of the workplace employer. Only the employers
+                            with the kyb_aml_status as clear can be set to active.
                           enum:
                             - active
                             - inactive
@@ -42893,4 +44453,4 @@ rawSpecString: |
               puts response.read_body
           - lang: Go + Native
             source: "package main\n\nimport (\n\t\"fmt\"\n\t\"net/http\"\n\t\"io/ioutil\"\n)\n\nfunc main() {\n\n\turl := \"https://web_host_name/tenant/workplace-employers/v1/%7Bworkplace_employer_id%7D/investors\"\n\n\treq, _ := http.NewRequest(\"GET\", url, nil)\n\n\treq.Header.Add(\"x-api-key\", \"REPLACE_KEY_VALUE\")\n\n\tres, _ := http.DefaultClient.Do(req)\n\n\tdefer res.Body.Close()\n\tbody, _ := ioutil.ReadAll(res.Body)\n\n\tfmt.Println(res)\n\tfmt.Println(string(body))\n\n}"
-konfigCliVersion: 1.38.34
+konfigCliVersion: 1.38.37

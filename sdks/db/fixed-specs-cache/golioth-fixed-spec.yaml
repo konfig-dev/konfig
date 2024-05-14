@@ -299,14 +299,7 @@ rawSpecString: |
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  items:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/goliothSubscriptionItem'
-                  callbackPath:
-                    type: string
+                $ref: '#/components/schemas/BillingCreateCheckoutSessionBody'
           required: true
         tags:
           - Billing
@@ -336,10 +329,7 @@ rawSpecString: |
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  callbackPath:
-                    type: string
+                $ref: '#/components/schemas/BillingCreateCustomerPortalSessionBody'
           required: true
         tags:
           - Billing
@@ -613,14 +603,7 @@ rawSpecString: |
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  type:
-                    $ref: '#/components/schemas/goliothAPIKeyType'
-                  keyTags:
-                    type: array
-                    items:
-                      type: string
+                $ref: '#/components/schemas/goliothAPIKeysCreateBody'
           required: true
         tags:
           - API Keys
@@ -952,14 +935,7 @@ rawSpecString: |
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  boardId:
-                    type: string
-                  platform:
-                    type: string
+                $ref: '#/components/schemas/goliothBlueprintsCreateBody'
           required: true
         tags:
           - Blueprints
@@ -1149,13 +1125,7 @@ rawSpecString: |
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  certFile:
-                    type: string
-                    format: byte
-                  certType:
-                    type: string
+                $ref: '#/components/schemas/goliothCertificatesCreateBody'
           required: true
         tags:
           - Certificates
@@ -1239,20 +1209,7 @@ rawSpecString: |
             schema:
               type: string
         requestBody:
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  deviceId:
-                    type: string
-                  type:
-                    $ref: '#/components/schemas/goliothCredentialType'
-                  identity:
-                    type: string
-                  preSharedKey:
-                    type: string
-          required: true
+          $ref: '#/components/requestBodies/goliothCredentialsCreateBody'
         tags:
           - Credentials
     /v1/projects/{projectId}/credentials/{credentialId}:
@@ -1435,20 +1392,7 @@ rawSpecString: |
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  hardwareIds:
-                    type: array
-                    items:
-                      type: string
-                  tagIds:
-                    type: array
-                    items:
-                      type: string
-                  blueprintId:
-                    type: string
+                $ref: '#/components/schemas/goliothDevicesCreateBody'
           required: true
         tags:
           - Devices
@@ -1630,18 +1574,7 @@ rawSpecString: |
             schema:
               type: string
         requestBody:
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  type:
-                    $ref: '#/components/schemas/goliothCredentialType'
-                  identity:
-                    type: string
-                  preSharedKey:
-                    type: string
-          required: true
+          $ref: '#/components/requestBodies/goliothCredentialsCreateBody'
         tags:
           - Credentials
     /v1/projects/{projectId}/devices/{deviceId}/credentials/{credentialId}:
@@ -1883,33 +1816,7 @@ rawSpecString: |
             schema:
               type: string
         requestBody:
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  hardwareIds:
-                    type: array
-                    items:
-                      type: string
-                  name:
-                    type: string
-                  type:
-                    $ref: '#/components/schemas/goliothCredentialType'
-                  identity:
-                    type: string
-                  preSharedKey:
-                    type: string
-                  tagIds:
-                    type: array
-                    items:
-                      type: string
-                  blueprintId:
-                    type: string
-                    title: |-
-                      string publicKey
-                      string encryption
-          required: true
+          $ref: '#/components/requestBodies/ProvisioningProvisionDeviceBody'
         tags:
           - Provisioning
     /v1/projects/{projectId}/devices/{deviceId}/rpc:
@@ -1943,16 +1850,8 @@ rawSpecString: |
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  method:
-                    type: string
-                  params:
-                    type: array
-                    items: {}
-                  timeout:
-                    type: integer
-                    format: int64
+                $ref: >-
+                  #/components/schemas/DeviceRemoteProcedureCallRemoteProcedureCallBody
           required: true
         tags:
           - Remote Procedure Call
@@ -2083,26 +1982,7 @@ rawSpecString: |
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  start:
-                    type: string
-                    format: date-time
-                  end:
-                    type: string
-                    format: date-time
-                  interval:
-                    type: string
-                  encodedQuery:
-                    type: string
-                  query:
-                    $ref: '#/components/schemas/goliothDeviceStreamQuery'
-                  page:
-                    type: integer
-                    format: int64
-                  perPage:
-                    type: integer
-                    format: int64
+                $ref: '#/components/schemas/DeviceStreamGetDeviceStreamBody'
           required: true
         tags:
           - LightDB Stream
@@ -2436,7 +2316,11 @@ rawSpecString: |
             schema:
               type: string
         requestBody:
-          $ref: '#/components/requestBodies/Integrations_CreateBody'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/goliothIntegrationsCreateBody'
+          required: true
         tags:
           - Integrations
     /v1/projects/{projectId}/integrations/validate:
@@ -2462,7 +2346,11 @@ rawSpecString: |
             schema:
               type: string
         requestBody:
-          $ref: '#/components/requestBodies/Integrations_CreateBody'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationsValidateBody'
+          required: true
         tags:
           - Integrations
     /v1/projects/{projectId}/integrations/{integrationId}:
@@ -2618,10 +2506,7 @@ rawSpecString: |
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  data:
-                    type: object
+                $ref: '#/components/schemas/IntegrationsTestBody'
           required: true
         tags:
           - Integrations
@@ -2906,35 +2791,7 @@ rawSpecString: |
             schema:
               type: string
         requestBody:
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  deviceId:
-                    type: string
-                  hardwareIds:
-                    type: array
-                    items:
-                      type: string
-                  name:
-                    type: string
-                  type:
-                    $ref: '#/components/schemas/goliothCredentialType'
-                  identity:
-                    type: string
-                  preSharedKey:
-                    type: string
-                  tagIds:
-                    type: array
-                    items:
-                      type: string
-                  blueprintId:
-                    type: string
-                    title: |-
-                      string publicKey
-                      string encryption
-          required: true
+          $ref: '#/components/requestBodies/ProvisioningProvisionDeviceBody'
         tags:
           - Provisioning
     /v1/projects/{projectId}/releases:
@@ -3032,22 +2889,7 @@ rawSpecString: |
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  releaseTags:
-                    type: array
-                    items:
-                      type: string
-                  deviceTagIds:
-                    type: array
-                    items:
-                      type: string
-                  artifactIds:
-                    type: array
-                    items:
-                      type: string
-                  rollout:
-                    type: boolean
+                $ref: '#/components/schemas/goliothReleasesCreateBody'
           required: true
         tags:
           - Releases
@@ -3232,17 +3074,7 @@ rawSpecString: |
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  key:
-                    type: string
-                  dataType:
-                    type: string
-                  value: {}
-                  blueprintId:
-                    type: string
-                  deviceId:
-                    type: string
+                $ref: '#/components/schemas/goliothSettingsCreateBody'
           required: true
         tags:
           - Settings
@@ -3439,34 +3271,7 @@ rawSpecString: |
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  start:
-                    type: string
-                    format: date-time
-                  end:
-                    type: string
-                    format: date-time
-                  interval:
-                    type: string
-                  encodedQuery:
-                    type: string
-                  query:
-                    $ref: '#/components/schemas/goliothDeviceStreamQuery'
-                  deviceId:
-                    type: array
-                    items:
-                      type: string
-                  page:
-                    type: integer
-                    format: int64
-                  perPage:
-                    type: integer
-                    format: int64
-                  tags:
-                    type: array
-                    items:
-                      type: string
+                $ref: '#/components/schemas/DeviceStreamGetProjectStreamBody'
           required: true
         tags:
           - LightDB Stream
@@ -3544,10 +3349,7 @@ rawSpecString: |
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  name:
-                    type: string
+                $ref: '#/components/schemas/goliothTagsCreateBody'
           required: true
         tags:
           - Tags
@@ -3723,10 +3525,7 @@ rawSpecString: |
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  email:
-                    type: string
+                $ref: '#/components/schemas/AccessInviteUserBody'
           required: true
         tags:
           - Access
@@ -3795,20 +3594,11 @@ rawSpecString: |
             schema:
               $ref: '#/components/schemas/goliothArtifactUpdate'
         required: true
-      Integrations_CreateBody:
+      ProvisioningProvisionDeviceBody:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                type:
-                  type: string
-                configuration:
-                  type: object
-                enabled:
-                  type: boolean
+              $ref: '#/components/schemas/ProvisioningProvisionDeviceBody'
         required: true
       goliothIntegrationUpdate:
         content:
@@ -3840,6 +3630,12 @@ rawSpecString: |
             schema:
               $ref: '#/components/schemas/goliothProjectUpdate'
         required: true
+      goliothCredentialsCreateBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/goliothCredentialsCreateBody'
+        required: true
       DeviceState_Update3Value:
         content:
           application/json:
@@ -3867,6 +3663,126 @@ rawSpecString: |
         name: x-api-key
         in: header
     schemas:
+      AccessInviteUserBody:
+        type: object
+        properties:
+          email:
+            type: string
+      BillingCreateCheckoutSessionBody:
+        type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: '#/components/schemas/goliothSubscriptionItem'
+          callbackPath:
+            type: string
+      BillingCreateCustomerPortalSessionBody:
+        type: object
+        properties:
+          callbackPath:
+            type: string
+      DeviceRemoteProcedureCallRemoteProcedureCallBody:
+        type: object
+        properties:
+          method:
+            type: string
+          params:
+            type: array
+            items: {}
+          timeout:
+            type: integer
+            format: int64
+      DeviceStreamGetDeviceStreamBody:
+        type: object
+        properties:
+          start:
+            type: string
+            format: date-time
+          end:
+            type: string
+            format: date-time
+          interval:
+            type: string
+          encodedQuery:
+            type: string
+          query:
+            $ref: '#/components/schemas/goliothDeviceStreamQuery'
+          page:
+            type: integer
+            format: int64
+          perPage:
+            type: integer
+            format: int64
+      DeviceStreamGetProjectStreamBody:
+        type: object
+        properties:
+          start:
+            type: string
+            format: date-time
+          end:
+            type: string
+            format: date-time
+          interval:
+            type: string
+          encodedQuery:
+            type: string
+          query:
+            $ref: '#/components/schemas/goliothDeviceStreamQuery'
+          deviceId:
+            type: array
+            items:
+              type: string
+          page:
+            type: integer
+            format: int64
+          perPage:
+            type: integer
+            format: int64
+          tags:
+            type: array
+            items:
+              type: string
+      IntegrationsTestBody:
+        type: object
+        properties:
+          data:
+            type: object
+      IntegrationsValidateBody:
+        type: object
+        properties:
+          name:
+            type: string
+          type:
+            type: string
+          configuration:
+            type: object
+          enabled:
+            type: boolean
+      ProvisioningProvisionDeviceBody:
+        type: object
+        properties:
+          hardwareIds:
+            type: array
+            items:
+              type: string
+          name:
+            type: string
+          type:
+            $ref: '#/components/schemas/goliothCredentialType'
+          identity:
+            type: string
+          preSharedKey:
+            type: string
+          tagIds:
+            type: array
+            items:
+              type: string
+          blueprintId:
+            type: string
+            title: |-
+              string publicKey
+              string encryption
       comgoliothTag:
         type: object
         properties:
@@ -3919,6 +3835,15 @@ rawSpecString: |
             type: array
             items:
               type: string
+      goliothAPIKeysCreateBody:
+        type: object
+        properties:
+          type:
+            $ref: '#/components/schemas/goliothAPIKeyType'
+          keyTags:
+            type: array
+            items:
+              type: string
       goliothArtifact:
         type: object
         properties:
@@ -3961,6 +3886,15 @@ rawSpecString: |
             type: string
             format: date-time
       goliothBlueprintUpdate:
+        type: object
+        properties:
+          name:
+            type: string
+          boardId:
+            type: string
+          platform:
+            type: string
+      goliothBlueprintsCreateBody:
         type: object
         properties:
           name:
@@ -4030,6 +3964,14 @@ rawSpecString: |
             type: array
             items:
               type: string
+      goliothCertificatesCreateBody:
+        type: object
+        properties:
+          certFile:
+            type: string
+            format: byte
+          certType:
+            type: string
       goliothConditionalMap:
         type: object
         properties:
@@ -4155,6 +4097,17 @@ rawSpecString: |
           - PRE_SHARED_KEY
           - ASYMMETRIC_KEY_PAIR
         default: PRE_SHARED_KEY
+      goliothCredentialsCreateBody:
+        type: object
+        properties:
+          deviceId:
+            type: string
+          type:
+            $ref: '#/components/schemas/goliothCredentialType'
+          identity:
+            type: string
+          preSharedKey:
+            type: string
       goliothDeleteAPIKeyResponse:
         type: object
       goliothDeleteArtifactResponse:
@@ -4348,6 +4301,21 @@ rawSpecString: |
               type: string
           enabled:
             type: boolean
+      goliothDevicesCreateBody:
+        type: object
+        properties:
+          name:
+            type: string
+          hardwareIds:
+            type: array
+            items:
+              type: string
+          tagIds:
+            type: array
+            items:
+              type: string
+          blueprintId:
+            type: string
       goliothFirmwareLogEntry:
         type: object
         properties:
@@ -4562,6 +4530,17 @@ rawSpecString: |
             type: object
       goliothIntegrationValidationResponse:
         type: object
+      goliothIntegrationsCreateBody:
+        type: object
+        properties:
+          name:
+            type: string
+          type:
+            type: string
+          configuration:
+            type: object
+          enabled:
+            type: boolean
       goliothInviteUserResponse:
         type: object
         properties:
@@ -5047,6 +5026,23 @@ rawSpecString: |
             type: array
             items:
               type: string
+      goliothReleasesCreateBody:
+        type: object
+        properties:
+          releaseTags:
+            type: array
+            items:
+              type: string
+          deviceTagIds:
+            type: array
+            items:
+              type: string
+          artifactIds:
+            type: array
+            items:
+              type: string
+          rollout:
+            type: boolean
       goliothRemoteProcedureCallResponse:
         type: object
         properties:
@@ -5114,6 +5110,18 @@ rawSpecString: |
         type: object
         properties:
           value: {}
+      goliothSettingsCreateBody:
+        type: object
+        properties:
+          key:
+            type: string
+          dataType:
+            type: string
+          value: {}
+          blueprintId:
+            type: string
+          deviceId:
+            type: string
       goliothSettingsStatus:
         type: object
         properties:
@@ -5139,6 +5147,11 @@ rawSpecString: |
             type: string
             format: int64
       goliothTagUpdate:
+        type: object
+        properties:
+          name:
+            type: string
+      goliothTagsCreateBody:
         type: object
         properties:
           name:
@@ -5281,4 +5294,4 @@ rawSpecString: |
             type: array
             items:
               $ref: '#/components/schemas/protobufAny'
-konfigCliVersion: 1.38.34
+konfigCliVersion: 1.38.37

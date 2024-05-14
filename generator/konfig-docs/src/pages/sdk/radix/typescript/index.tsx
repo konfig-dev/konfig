@@ -25,7 +25,7 @@ Our client portfolio includes GSK, Atlas Copco, Yara International, Brussels Air
       companyKebabCase="radix"
       clientNameCamelCase="radix"
       homepage="radix.ai"
-      lastUpdated={new Date("2024-03-28T16:48:14.533Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/radix/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -1815,7 +1815,7 @@ Our client portfolio includes GSK, Atlas Copco, Yara International, Brussels Air
       language="TypeScript"
       apiTitle="Talent API · API Reference"
       apiBaseUrl="https://api.talentapi.com"
-      apiVersion="2024-03-19"
+      apiVersion="2024-04-02"
       endpoints={23}
       sdkMethods={25}
       schemas={83}

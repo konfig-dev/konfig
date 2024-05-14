@@ -14,11 +14,11 @@ servers:
 x-readme:
   proxy-enabled: false
   explorer-enabled: true
-  samples-enabled: true
 paths:
   /api/account:
     get:
       summary: Retrieve your account
+      operationId: get-account
       responses:
         '200':
           description: Your account
@@ -48,6 +48,7 @@ paths:
   /api/customers:
     post:
       summary: Create a customer
+      operationId: create-customer
       requestBody:
         required: true
         content:
@@ -1019,6 +1020,7 @@ paths:
         - Customers
     get:
       summary: List customers
+      operationId: list-customers
       description: >-
         List customers, paginated, and ordered by their name (alphabetical
         order).
@@ -1284,34 +1286,6 @@ paths:
               - updated_datetime:asc
               - updated_datetime:desc
           required: false
-        - in: query
-          name: page
-          description: |-
-            The index of the page to fetch.
-                    <span style="color:red">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.
-                    
-          schema:
-            type: integer
-            default: 1
-            example: 7
-            deprecated: true
-          required: false
-          deprecated: true
-        - in: query
-          name: per_page
-          description: |-
-            The maximum number of objects to fetch per page. Default: 30.
-                    <span style="color:red">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.
-                    
-          schema:
-            type: integer
-            default: 30
-            minimum: 1
-            maximum: 100
-            example: 15
-            deprecated: true
-          required: false
-          deprecated: true
         - in: query
           name: timezone
           description: 'The customer''s preferred timezone (format: IANA timezone name).'
@@ -2778,6 +2752,7 @@ paths:
         - Customers
     delete:
       summary: Delete customers
+      operationId: delete-customers
       requestBody:
         required: true
         content:
@@ -2800,6 +2775,7 @@ paths:
   /api/customers/{id}/:
     get:
       summary: Retrieve a customer
+      operationId: get-customer
       parameters:
         - in: path
           name: id
@@ -3796,6 +3772,192 @@ paths:
                           description: The store where the shopper is present.
                           type: object
                           properties:
+                            default_currency:
+                              description: Default currency of the store.
+                              example: usd
+                              type: string
+                              enum:
+                                - afn
+                                - eur
+                                - all
+                                - dzd
+                                - usd
+                                - aoa
+                                - xcd
+                                - ars
+                                - amd
+                                - awg
+                                - aud
+                                - azn
+                                - bsd
+                                - bhd
+                                - bdt
+                                - bbd
+                                - byn
+                                - bzd
+                                - xof
+                                - bmd
+                                - inr
+                                - btn
+                                - bob
+                                - bov
+                                - bam
+                                - bwp
+                                - nok
+                                - brl
+                                - bnd
+                                - bgn
+                                - bif
+                                - cve
+                                - khr
+                                - xaf
+                                - cad
+                                - kyd
+                                - clp
+                                - clf
+                                - cny
+                                - cop
+                                - cou
+                                - kmf
+                                - cdf
+                                - nzd
+                                - crc
+                                - hrk
+                                - cup
+                                - cuc
+                                - ang
+                                - czk
+                                - dkk
+                                - djf
+                                - dop
+                                - egp
+                                - svc
+                                - ern
+                                - szl
+                                - etb
+                                - fkp
+                                - fjd
+                                - xpf
+                                - gmd
+                                - gel
+                                - ghs
+                                - gip
+                                - gtq
+                                - gbp
+                                - gnf
+                                - gyd
+                                - htg
+                                - hnl
+                                - hkd
+                                - huf
+                                - isk
+                                - idr
+                                - xdr
+                                - irr
+                                - iqd
+                                - ils
+                                - jmd
+                                - jpy
+                                - jod
+                                - kzt
+                                - kes
+                                - kpw
+                                - krw
+                                - kwd
+                                - kgs
+                                - lak
+                                - lbp
+                                - lsl
+                                - zar
+                                - lrd
+                                - lyd
+                                - chf
+                                - mop
+                                - mkd
+                                - mga
+                                - mwk
+                                - myr
+                                - mvr
+                                - mru
+                                - mur
+                                - xua
+                                - mxn
+                                - mxv
+                                - mdl
+                                - mnt
+                                - mad
+                                - mzn
+                                - mmk
+                                - nad
+                                - npr
+                                - nio
+                                - ngn
+                                - omr
+                                - pkr
+                                - pab
+                                - pgk
+                                - pyg
+                                - pen
+                                - php
+                                - pln
+                                - qar
+                                - ron
+                                - rub
+                                - rwf
+                                - shp
+                                - wst
+                                - stn
+                                - sar
+                                - rsd
+                                - scr
+                                - sll
+                                - sle
+                                - sgd
+                                - xsu
+                                - sbd
+                                - sos
+                                - ssp
+                                - lkr
+                                - sdg
+                                - srd
+                                - sek
+                                - che
+                                - chw
+                                - syp
+                                - twd
+                                - tjs
+                                - tzs
+                                - thb
+                                - top
+                                - ttd
+                                - tnd
+                                - try
+                                - tmt
+                                - ugx
+                                - uah
+                                - aed
+                                - usn
+                                - uyu
+                                - uyi
+                                - uyw
+                                - uzs
+                                - vuv
+                                - ves
+                                - ved
+                                - vnd
+                                - yer
+                                - zmw
+                                - zwl
+                                - xba
+                                - xbb
+                                - xbc
+                                - xbd
+                                - xts
+                                - xxx
+                                - xau
+                                - xpd
+                                - xpt
+                                - xag
                             currencies:
                               type: array
                               description: Currencies supported by the store.
@@ -3986,6 +4148,11 @@ paths:
                                   - xpd
                                   - xpt
                                   - xag
+                            uuid:
+                              type: string
+                              format: uuid
+                              description: UUID of the store.
+                              example: 7736626b-0d5f-4e2c-86de-8b74e3401c26
                             type:
                               description: Type of the store.
                               example: woocommerce
@@ -3995,286 +4162,60 @@ paths:
                                 - magento
                                 - shopify
                                 - woocommerce
+                            url:
+                              type: string
+                              description: URL of the store,
+                              example: https://my-demo-store.com/
                             deleted_datetime:
                               type: string
                               format: date-time
                               nullable: true
                               description: When the store was deleted.
                               example: '2023-07-15T00:00:00.000000+00:00'
+                            display_name:
+                              type: string
+                              description: Display name of the store.
+                              example: My Demo Store
+                            created_datetime:
+                              type: string
+                              format: date-time
+                              description: When the store was created.
+                              example: '2023-07-15T00:00:00.000000+00:00'
                             id:
                               type: integer
                               description: ID of the store.
                               example: 123456
-                            uuid:
-                              type: string
-                              format: uuid
-                              description: UUID of the store.
-                              example: 7736626b-0d5f-4e2c-86de-8b74e3401c26
+                            helpdesk_integration_id:
+                              type: integer
+                              description: ID of the integration associated to this store.
+                              example: 123456
                             updated_datetime:
                               type: string
                               format: date-time
                               nullable: true
                               description: When the store was updated.
                               example: '2023-07-15T00:00:00.000000+00:00'
-                            display_name:
-                              type: string
-                              description: Display name of the store.
-                              example: My Demo Store
-                            url:
-                              type: string
-                              description: URL of the store,
-                              example: https://my-demo-store.com/
-                            default_currency:
-                              description: Default currency of the store.
-                              example: usd
-                              type: string
-                              enum:
-                                - afn
-                                - eur
-                                - all
-                                - dzd
-                                - usd
-                                - aoa
-                                - xcd
-                                - ars
-                                - amd
-                                - awg
-                                - aud
-                                - azn
-                                - bsd
-                                - bhd
-                                - bdt
-                                - bbd
-                                - byn
-                                - bzd
-                                - xof
-                                - bmd
-                                - inr
-                                - btn
-                                - bob
-                                - bov
-                                - bam
-                                - bwp
-                                - nok
-                                - brl
-                                - bnd
-                                - bgn
-                                - bif
-                                - cve
-                                - khr
-                                - xaf
-                                - cad
-                                - kyd
-                                - clp
-                                - clf
-                                - cny
-                                - cop
-                                - cou
-                                - kmf
-                                - cdf
-                                - nzd
-                                - crc
-                                - hrk
-                                - cup
-                                - cuc
-                                - ang
-                                - czk
-                                - dkk
-                                - djf
-                                - dop
-                                - egp
-                                - svc
-                                - ern
-                                - szl
-                                - etb
-                                - fkp
-                                - fjd
-                                - xpf
-                                - gmd
-                                - gel
-                                - ghs
-                                - gip
-                                - gtq
-                                - gbp
-                                - gnf
-                                - gyd
-                                - htg
-                                - hnl
-                                - hkd
-                                - huf
-                                - isk
-                                - idr
-                                - xdr
-                                - irr
-                                - iqd
-                                - ils
-                                - jmd
-                                - jpy
-                                - jod
-                                - kzt
-                                - kes
-                                - kpw
-                                - krw
-                                - kwd
-                                - kgs
-                                - lak
-                                - lbp
-                                - lsl
-                                - zar
-                                - lrd
-                                - lyd
-                                - chf
-                                - mop
-                                - mkd
-                                - mga
-                                - mwk
-                                - myr
-                                - mvr
-                                - mru
-                                - mur
-                                - xua
-                                - mxn
-                                - mxv
-                                - mdl
-                                - mnt
-                                - mad
-                                - mzn
-                                - mmk
-                                - nad
-                                - npr
-                                - nio
-                                - ngn
-                                - omr
-                                - pkr
-                                - pab
-                                - pgk
-                                - pyg
-                                - pen
-                                - php
-                                - pln
-                                - qar
-                                - ron
-                                - rub
-                                - rwf
-                                - shp
-                                - wst
-                                - stn
-                                - sar
-                                - rsd
-                                - scr
-                                - sll
-                                - sle
-                                - sgd
-                                - xsu
-                                - sbd
-                                - sos
-                                - ssp
-                                - lkr
-                                - sdg
-                                - srd
-                                - sek
-                                - che
-                                - chw
-                                - syp
-                                - twd
-                                - tjs
-                                - tzs
-                                - thb
-                                - top
-                                - ttd
-                                - tnd
-                                - try
-                                - tmt
-                                - ugx
-                                - uah
-                                - aed
-                                - usn
-                                - uyu
-                                - uyi
-                                - uyw
-                                - uzs
-                                - vuv
-                                - ves
-                                - ved
-                                - vnd
-                                - yer
-                                - zmw
-                                - zwl
-                                - xba
-                                - xbb
-                                - xbc
-                                - xbd
-                                - xts
-                                - xxx
-                                - xau
-                                - xpd
-                                - xpt
-                                - xag
-                            helpdesk_integration_id:
-                              type: integer
-                              description: ID of the integration associated to this store.
-                              example: 123456
                             name:
                               type: string
                               description: Name of the store (case sensitive).
                               example: my-demo-store
-                            created_datetime:
-                              type: string
-                              format: date-time
-                              description: When the store was created.
-                              example: '2023-07-15T00:00:00.000000+00:00'
                         shopper:
                           description: The shopper details.
                           type: object
                           properties:
-                            last_name:
-                              type: string
-                              nullable: true
-                              description: The last name of the shopper.
-                              example: Doe
                             accepts_marketing_sms:
                               type: boolean
                               description: Whether the shopper accepts marketing SMS.
-                              example: true
-                            status:
-                              nullable: true
-                              description: The status of the shopper.
-                              example: tax_exempt
-                              type: string
-                              enum:
-                                - tax_exempt
-                                - veteran
-                            updated_datetime:
-                              type: string
-                              format: date-time
-                              nullable: true
-                              description: When the shopper was updated.
-                              example: '2023-07-15T00:00:00.000000+00:00'
-                            birthdate:
-                              type: string
-                              format: date
-                              nullable: true
-                              description: The birthdate of the shopper.
-                              example: '2023-07-15'
-                            helpdesk_customer_id:
-                              type: integer
-                              description: >-
-                                ID of the helpdesk customer associated to this
-                                store.
-                              example: 123456
-                            accepts_marketing_email:
-                              type: boolean
-                              description: Whether the shopper accepts marketing emails.
                               example: true
                             first_name:
                               type: string
                               nullable: true
                               description: The first name of the shopper.
                               example: Jean
-                            external_id:
-                              type: string
-                              description: The ID in the external ecommerce platform.
-                              example: example-id-123
+                            accepts_marketing_email:
+                              type: boolean
+                              description: Whether the shopper accepts marketing emails.
+                              example: true
                             phone_number:
                               type: string
                               nullable: true
@@ -4286,21 +4227,56 @@ paths:
                               nullable: true
                               description: When the shopper was deleted.
                               example: '2023-07-15T00:00:00.000000+00:00'
-                            id:
-                              type: integer
-                              description: ID of the address.
-                              example: 123456
                             email_address:
                               type: string
                               format: email
                               nullable: true
                               description: The email address of the shopper.
                               example: foo@bar.com
+                            id:
+                              type: integer
+                              description: ID of the address.
+                              example: 123456
+                            external_id:
+                              type: string
+                              description: The ID in the external ecommerce platform.
+                              example: example-id-123
+                            helpdesk_customer_id:
+                              type: integer
+                              description: >-
+                                ID of the helpdesk customer associated to this
+                                store.
+                              example: 123456
+                            updated_datetime:
+                              type: string
+                              format: date-time
+                              nullable: true
+                              description: When the shopper was updated.
+                              example: '2023-07-15T00:00:00.000000+00:00'
                             middle_name:
                               type: string
                               nullable: true
                               description: The middle name of the shopper.
                               example: Mary
+                            status:
+                              nullable: true
+                              description: The status of the shopper.
+                              example: tax_exempt
+                              type: string
+                              enum:
+                                - tax_exempt
+                                - veteran
+                            birthdate:
+                              type: string
+                              format: date
+                              nullable: true
+                              description: The birthdate of the shopper.
+                              example: '2023-07-15'
+                            last_name:
+                              type: string
+                              nullable: true
+                              description: The last name of the shopper.
+                              example: Doe
                             created_datetime:
                               type: string
                               format: date-time
@@ -4312,45 +4288,67 @@ paths:
                           items:
                             type: object
                             properties:
-                              external_payment_status:
-                                type: string
+                              discount_amount:
+                                type: number
                                 nullable: true
-                                description: >-
-                                  Ecommerce platform's native order payment
-                                  status.
-                                example: paid
-                              billing_address:
-                                description: The billing address for the order.
+                                description: The flat discount amount.
+                                example: '20'
+                              discount_codes:
+                                type: array
+                                nullable: true
+                                description: The discount codes applied to the order.
+                                example:
+                                  - DISCOUNT_CODE_1
+                                  - DISCOUNT_CODE_2
+                                items:
+                                  type: string
+                              tax_amount:
+                                type: number
+                                nullable: true
+                                description: The tax amount.
+                                example: '20'
+                              shipping_address:
+                                description: The shipping address for the order.
                                 type: object
                                 properties:
-                                  external_id:
+                                  line_1:
                                     type: string
-                                    description: The ID in the external ecommerce platform.
-                                    example: example-id-123
-                                  state:
+                                    description: >-
+                                      The first line of an address where the
+                                      primary information for locating a
+                                      recipient is provided
+                                    example: 123 Main Street
+                                  preferred:
+                                    type: boolean
+                                    description: Whether the address is preferred or not.
+                                    example: true
+                                  first_name:
+                                    type: string
+                                    description: The first name for the contact person.
+                                    example: Jane
+                                  zip_code:
+                                    type: string
+                                    description: The zip code of the address.
+                                    example: '123456'
+                                  country:
+                                    type: string
+                                    description: The country where the address is located.
+                                    example: USA
+                                  phone_number:
                                     type: string
                                     nullable: true
-                                    description: The state where the address is located.
-                                    example: FL
+                                    description: The phone number for the contact person.
+                                    example: +1 123 456 7890
                                   shopper_external_id:
                                     type: string
                                     description: >-
                                       The shopper's ID in the external ecommerce
                                       platform.
                                     example: example-id-123
-                                  phone_number:
-                                    type: string
-                                    nullable: true
-                                    description: The phone number for the contact person.
-                                    example: +1 123 456 7890
                                   city:
                                     type: string
                                     description: The city where the address is located.
                                     example: Miami
-                                  country:
-                                    type: string
-                                    description: The country where the address is located.
-                                    example: USA
                                   last_name:
                                     type: string
                                     description: The last name for the contact person.
@@ -4361,31 +4359,15 @@ paths:
                                     nullable: true
                                     description: When the address was deleted.
                                     example: '2023-07-15T00:00:00.000000+00:00'
+                                  created_datetime:
+                                    type: string
+                                    format: date-time
+                                    description: When the address was created.
+                                    example: '2023-07-15T00:00:00.000000+00:00'
                                   id:
                                     type: integer
                                     description: ID of the address.
                                     example: 123456
-                                  updated_datetime:
-                                    type: string
-                                    format: date-time
-                                    nullable: true
-                                    description: When the address was updated.
-                                    example: '2023-07-15T00:00:00.000000+00:00'
-                                  preferred:
-                                    type: boolean
-                                    description: Whether the address is preferred or not.
-                                    example: true
-                                  zip_code:
-                                    type: string
-                                    description: The zip code of the address.
-                                    example: '123456'
-                                  line_1:
-                                    type: string
-                                    description: >-
-                                      The first line of an address where the
-                                      primary information for locating a
-                                      recipient is provided
-                                    example: 123 Main Street
                                   line_2:
                                     type: string
                                     nullable: true
@@ -4393,19 +4375,169 @@ paths:
                                       Additional information for locating a
                                       recipient, such as the floor of a building
                                     example: Apt 123, Floor 2
+                                  external_id:
+                                    type: string
+                                    description: The ID in the external ecommerce platform.
+                                    example: example-id-123
+                                  updated_datetime:
+                                    type: string
+                                    format: date-time
+                                    nullable: true
+                                    description: When the address was updated.
+                                    example: '2023-07-15T00:00:00.000000+00:00'
+                                  state:
+                                    type: string
+                                    nullable: true
+                                    description: The state where the address is located.
+                                    example: FL
+                              billing_address:
+                                description: The billing address for the order.
+                                type: object
+                                properties:
+                                  line_1:
+                                    type: string
+                                    description: >-
+                                      The first line of an address where the
+                                      primary information for locating a
+                                      recipient is provided
+                                    example: 123 Main Street
+                                  preferred:
+                                    type: boolean
+                                    description: Whether the address is preferred or not.
+                                    example: true
+                                  first_name:
+                                    type: string
+                                    description: The first name for the contact person.
+                                    example: Jane
+                                  zip_code:
+                                    type: string
+                                    description: The zip code of the address.
+                                    example: '123456'
+                                  country:
+                                    type: string
+                                    description: The country where the address is located.
+                                    example: USA
+                                  phone_number:
+                                    type: string
+                                    nullable: true
+                                    description: The phone number for the contact person.
+                                    example: +1 123 456 7890
+                                  shopper_external_id:
+                                    type: string
+                                    description: >-
+                                      The shopper's ID in the external ecommerce
+                                      platform.
+                                    example: example-id-123
+                                  city:
+                                    type: string
+                                    description: The city where the address is located.
+                                    example: Miami
+                                  last_name:
+                                    type: string
+                                    description: The last name for the contact person.
+                                    example: Doe
+                                  deleted_datetime:
+                                    type: string
+                                    format: date-time
+                                    nullable: true
+                                    description: When the address was deleted.
+                                    example: '2023-07-15T00:00:00.000000+00:00'
                                   created_datetime:
                                     type: string
                                     format: date-time
                                     description: When the address was created.
                                     example: '2023-07-15T00:00:00.000000+00:00'
-                                  first_name:
+                                  id:
+                                    type: integer
+                                    description: ID of the address.
+                                    example: 123456
+                                  line_2:
                                     type: string
-                                    description: The first name for the contact person.
-                                    example: Jane
-                              discount_amount:
+                                    nullable: true
+                                    description: >-
+                                      Additional information for locating a
+                                      recipient, such as the floor of a building
+                                    example: Apt 123, Floor 2
+                                  external_id:
+                                    type: string
+                                    description: The ID in the external ecommerce platform.
+                                    example: example-id-123
+                                  updated_datetime:
+                                    type: string
+                                    format: date-time
+                                    nullable: true
+                                    description: When the address was updated.
+                                    example: '2023-07-15T00:00:00.000000+00:00'
+                                  state:
+                                    type: string
+                                    nullable: true
+                                    description: The state where the address is located.
+                                    example: FL
+                              deleted_datetime:
+                                type: string
+                                format: date-time
+                                nullable: true
+                                description: When the order was deleted.
+                                example: '2023-07-15T00:00:00.000000+00:00'
+                              total_amount:
+                                type: number
+                                description: The total amount.
+                                example: '20'
+                              external_id:
+                                type: string
+                                description: The ID in the external ecommerce platform.
+                                example: example-id-123
+                              name:
+                                type: string
+                                description: The name of the order.
+                                example: 'Order #123456'
+                              subtotal_amount:
                                 type: number
                                 nullable: true
-                                description: The flat discount amount.
+                                description: The subtotal for the line items.
+                                example: '20'
+                              status:
+                                nullable: true
+                                description: The status of the order
+                                example: completed
+                                type: string
+                                enum:
+                                  - partially_fulfilled
+                                  - completed
+                                  - canceled
+                                  - on_hold
+                                  - awaiting_fulfillment
+                                  - awaiting_payment
+                                  - scheduled
+                                  - order_pending
+                              external_status:
+                                type: string
+                                nullable: true
+                                description: Ecommerce platform's native order status.
+                                example: pending
+                              created_datetime:
+                                type: string
+                                format: date-time
+                                description: When the order was created.
+                                example: '2023-07-15T00:00:00.000000+00:00'
+                              external_fulfillment_status:
+                                type: string
+                                nullable: true
+                                description: >-
+                                  Ecommerce platform's native order fulfillment
+                                  status.
+                                example: fulfilled
+                              external_payment_status:
+                                type: string
+                                nullable: true
+                                description: >-
+                                  Ecommerce platform's native order payment
+                                  status.
+                                example: paid
+                              shipping_amount:
+                                type: number
+                                nullable: true
+                                description: The shipping amount.
                                 example: '20'
                               line_items:
                                 type: array
@@ -4413,11 +4545,64 @@ paths:
                                 items:
                                   type: object
                                   properties:
+                                    discount_amount:
+                                      type: number
+                                      nullable: true
+                                      description: The discount amount.
+                                      example: '20'
+                                    taxable:
+                                      type: boolean
+                                      nullable: true
+                                      description: Whether item is taxable or not.
+                                      example: true
+                                    discount_reason:
+                                      type: string
+                                      nullable: true
+                                      description: The reason for granting a discount.
+                                      example: Refurbished product
                                     created_datetime:
                                       type: string
                                       format: date-time
                                       description: When the order line was created.
                                       example: '2023-07-15T00:00:00.000000+00:00'
+                                    unit_price:
+                                      type: number
+                                      description: The price for a single unit.
+                                      example: '123456'
+                                    fulfilled_quantity:
+                                      type: integer
+                                      nullable: true
+                                      description: >-
+                                        The number of products of this kind that
+                                        have been fulfilled.
+                                      example: 5
+                                    title:
+                                      type: string
+                                      description: >-
+                                        The custom title of the product for the
+                                        current order.
+                                      example: My Awesome Product
+                                    requires_shipping:
+                                      type: boolean
+                                      nullable: true
+                                      description: Whether item requires shipping or not.
+                                      example: true
+                                    id:
+                                      type: integer
+                                      description: ID of the address.
+                                      example: 123456
+                                    deleted_datetime:
+                                      type: string
+                                      format: date-time
+                                      nullable: true
+                                      description: When the order line was deleted.
+                                      example: '2023-07-15T00:00:00.000000+00:00'
+                                    total_amount:
+                                      type: number
+                                      description: >-
+                                        The total amount for the quantity of
+                                        products.
+                                      example: '5'
                                     discount_type:
                                       nullable: true
                                       description: Type of discount.
@@ -4426,6 +4611,18 @@ paths:
                                       enum:
                                         - percentage
                                         - fixed_amount
+                                    quantity:
+                                      type: integer
+                                      description: >-
+                                        The number of products of this kind in
+                                        the current order.
+                                      example: 5
+                                    updated_datetime:
+                                      type: string
+                                      format: date-time
+                                      nullable: true
+                                      description: When the order line was updated.
+                                      example: '2023-07-15T00:00:00.000000+00:00'
                                     product_options:
                                       type: object
                                       nullable: true
@@ -4434,188 +4631,16 @@ paths:
                                         in current order.
                                       example:
                                         size: 10
-                                    discount_reason:
-                                      type: string
-                                      nullable: true
-                                      description: The reason for granting a discount.
-                                      example: Refurbished product
-                                    fulfilled_quantity:
-                                      type: integer
-                                      nullable: true
-                                      description: >-
-                                        The number of products of this kind that
-                                        have been fulfilled.
-                                      example: 5
-                                    requires_shipping:
-                                      type: boolean
-                                      nullable: true
-                                      description: Whether item requires shipping or not.
-                                      example: true
-                                    discount_amount:
-                                      type: number
-                                      nullable: true
-                                      description: The discount amount.
-                                      example: '20'
-                                    deleted_datetime:
-                                      type: string
-                                      format: date-time
-                                      nullable: true
-                                      description: When the order line was deleted.
-                                      example: '2023-07-15T00:00:00.000000+00:00'
-                                    id:
-                                      type: integer
-                                      description: ID of the address.
-                                      example: 123456
-                                    title:
-                                      type: string
-                                      description: >-
-                                        The custom title of the product for the
-                                        current order.
-                                      example: My Awesome Product
-                                    unit_price:
-                                      type: number
-                                      description: The price for a single unit.
-                                      example: '123456'
-                                    total_amount:
-                                      type: number
-                                      description: >-
-                                        The total amount for the quantity of
-                                        products.
-                                      example: '5'
-                                    updated_datetime:
-                                      type: string
-                                      format: date-time
-                                      nullable: true
-                                      description: When the order line was updated.
-                                      example: '2023-07-15T00:00:00.000000+00:00'
-                                    quantity:
-                                      type: integer
-                                      description: >-
-                                        The number of products of this kind in
-                                        the current order.
-                                      example: 5
-                                    taxable:
-                                      type: boolean
-                                      nullable: true
-                                      description: Whether item is taxable or not.
-                                      example: true
-                              total_amount:
-                                type: number
-                                description: The total amount.
-                                example: '20'
-                              payment_status:
-                                nullable: true
-                                description: The status of the order
-                                example: paid
+                              id:
+                                type: integer
+                                description: ID of the order.
+                                example: 123456
+                              updated_datetime:
                                 type: string
-                                enum:
-                                  - refunded
-                                  - partially_refunded
-                                  - unpaid
-                                  - voided
-                                  - failed
-                                  - manual_verification_required
-                                  - customer_authentication_required
-                                  - paid
-                                  - declined
-                                  - authorized
-                              tax_amount:
-                                type: number
+                                format: date-time
                                 nullable: true
-                                description: The tax amount.
-                                example: '20'
-                              external_id:
-                                type: string
-                                description: The ID in the external ecommerce platform.
-                                example: example-id-123
-                              shipping_address:
-                                description: The shipping address for the order.
-                                type: object
-                                properties:
-                                  external_id:
-                                    type: string
-                                    description: The ID in the external ecommerce platform.
-                                    example: example-id-123
-                                  state:
-                                    type: string
-                                    nullable: true
-                                    description: The state where the address is located.
-                                    example: FL
-                                  shopper_external_id:
-                                    type: string
-                                    description: >-
-                                      The shopper's ID in the external ecommerce
-                                      platform.
-                                    example: example-id-123
-                                  phone_number:
-                                    type: string
-                                    nullable: true
-                                    description: The phone number for the contact person.
-                                    example: +1 123 456 7890
-                                  city:
-                                    type: string
-                                    description: The city where the address is located.
-                                    example: Miami
-                                  country:
-                                    type: string
-                                    description: The country where the address is located.
-                                    example: USA
-                                  last_name:
-                                    type: string
-                                    description: The last name for the contact person.
-                                    example: Doe
-                                  deleted_datetime:
-                                    type: string
-                                    format: date-time
-                                    nullable: true
-                                    description: When the address was deleted.
-                                    example: '2023-07-15T00:00:00.000000+00:00'
-                                  id:
-                                    type: integer
-                                    description: ID of the address.
-                                    example: 123456
-                                  updated_datetime:
-                                    type: string
-                                    format: date-time
-                                    nullable: true
-                                    description: When the address was updated.
-                                    example: '2023-07-15T00:00:00.000000+00:00'
-                                  preferred:
-                                    type: boolean
-                                    description: Whether the address is preferred or not.
-                                    example: true
-                                  zip_code:
-                                    type: string
-                                    description: The zip code of the address.
-                                    example: '123456'
-                                  line_1:
-                                    type: string
-                                    description: >-
-                                      The first line of an address where the
-                                      primary information for locating a
-                                      recipient is provided
-                                    example: 123 Main Street
-                                  line_2:
-                                    type: string
-                                    nullable: true
-                                    description: >-
-                                      Additional information for locating a
-                                      recipient, such as the floor of a building
-                                    example: Apt 123, Floor 2
-                                  created_datetime:
-                                    type: string
-                                    format: date-time
-                                    description: When the address was created.
-                                    example: '2023-07-15T00:00:00.000000+00:00'
-                                  first_name:
-                                    type: string
-                                    description: The first name for the contact person.
-                                    example: Jane
-                              subtotal_amount:
-                                type: number
-                                nullable: true
-                                description: The subtotal for the line items.
-                                example: '20'
+                                description: When the order was updated.
+                                example: '2023-07-15T00:00:00.000000+00:00'
                               currency:
                                 description: The currency of the order
                                 example: usd
@@ -4802,115 +4827,76 @@ paths:
                                   - xpd
                                   - xpt
                                   - xag
-                              shipping_amount:
-                                type: number
-                                nullable: true
-                                description: The shipping amount.
-                                example: '20'
-                              updated_datetime:
-                                type: string
-                                format: date-time
-                                nullable: true
-                                description: When the order was updated.
-                                example: '2023-07-15T00:00:00.000000+00:00'
-                              external_status:
-                                type: string
-                                nullable: true
-                                description: Ecommerce platform's native order status.
-                                example: pending
-                              number:
-                                type: integer
-                                description: Order number.
-                                example: 123456
-                              status:
+                              payment_status:
                                 nullable: true
                                 description: The status of the order
-                                example: completed
+                                example: paid
                                 type: string
                                 enum:
-                                  - partially_fulfilled
-                                  - completed
-                                  - canceled
-                                  - on_hold
-                                  - awaiting_fulfillment
-                                  - awaiting_payment
-                                  - scheduled
-                                  - order_pending
-                              external_fulfillment_status:
-                                type: string
-                                nullable: true
-                                description: >-
-                                  Ecommerce platform's native order fulfillment
-                                  status.
-                                example: fulfilled
+                                  - refunded
+                                  - partially_refunded
+                                  - unpaid
+                                  - voided
+                                  - failed
+                                  - manual_verification_required
+                                  - customer_authentication_required
+                                  - paid
+                                  - declined
+                                  - authorized
                               shopper_external_id:
                                 type: string
                                 description: >-
                                   The customer's ID in the external ecommerce
                                   platform.
                                 example: example-id-123
-                              discount_codes:
-                                type: array
-                                nullable: true
-                                description: The discount codes applied to the order.
-                                example:
-                                  - DISCOUNT_CODE_1
-                                  - DISCOUNT_CODE_2
-                                items:
-                                  type: string
-                              deleted_datetime:
-                                type: string
-                                format: date-time
-                                nullable: true
-                                description: When the order was deleted.
-                                example: '2023-07-15T00:00:00.000000+00:00'
-                              id:
+                              number:
                                 type: integer
-                                description: ID of the order.
+                                description: Order number.
                                 example: 123456
-                              name:
-                                type: string
-                                description: The name of the order.
-                                example: 'Order #123456'
-                              created_datetime:
-                                type: string
-                                format: date-time
-                                description: When the order was created.
-                                example: '2023-07-15T00:00:00.000000+00:00'
                         addresses:
                           type: array
                           description: All the addresses of a shopper.
                           items:
                             type: object
                             properties:
-                              external_id:
+                              line_1:
                                 type: string
-                                description: The ID in the external ecommerce platform.
-                                example: example-id-123
-                              state:
+                                description: >-
+                                  The first line of an address where the primary
+                                  information for locating a recipient is
+                                  provided
+                                example: 123 Main Street
+                              preferred:
+                                type: boolean
+                                description: Whether the address is preferred or not.
+                                example: true
+                              first_name:
+                                type: string
+                                description: The first name for the contact person.
+                                example: Jane
+                              zip_code:
+                                type: string
+                                description: The zip code of the address.
+                                example: '123456'
+                              country:
+                                type: string
+                                description: The country where the address is located.
+                                example: USA
+                              phone_number:
                                 type: string
                                 nullable: true
-                                description: The state where the address is located.
-                                example: FL
+                                description: The phone number for the contact person.
+                                example: +1 123 456 7890
                               shopper_external_id:
                                 type: string
                                 description: >-
                                   The shopper's ID in the external ecommerce
                                   platform.
                                 example: example-id-123
-                              phone_number:
-                                type: string
-                                nullable: true
-                                description: The phone number for the contact person.
-                                example: +1 123 456 7890
                               city:
                                 type: string
                                 description: The city where the address is located.
                                 example: Miami
-                              country:
-                                type: string
-                                description: The country where the address is located.
-                                example: USA
                               last_name:
                                 type: string
                                 description: The last name for the contact person.
@@ -4921,31 +4907,15 @@ paths:
                                 nullable: true
                                 description: When the address was deleted.
                                 example: '2023-07-15T00:00:00.000000+00:00'
+                              created_datetime:
+                                type: string
+                                format: date-time
+                                description: When the address was created.
+                                example: '2023-07-15T00:00:00.000000+00:00'
                               id:
                                 type: integer
                                 description: ID of the address.
                                 example: 123456
-                              updated_datetime:
-                                type: string
-                                format: date-time
-                                nullable: true
-                                description: When the address was updated.
-                                example: '2023-07-15T00:00:00.000000+00:00'
-                              preferred:
-                                type: boolean
-                                description: Whether the address is preferred or not.
-                                example: true
-                              zip_code:
-                                type: string
-                                description: The zip code of the address.
-                                example: '123456'
-                              line_1:
-                                type: string
-                                description: >-
-                                  The first line of an address where the primary
-                                  information for locating a recipient is
-                                  provided
-                                example: 123 Main Street
                               line_2:
                                 type: string
                                 nullable: true
@@ -4953,19 +4923,26 @@ paths:
                                   Additional information for locating a
                                   recipient, such as the floor of a building
                                 example: Apt 123, Floor 2
-                              created_datetime:
+                              external_id:
+                                type: string
+                                description: The ID in the external ecommerce platform.
+                                example: example-id-123
+                              updated_datetime:
                                 type: string
                                 format: date-time
-                                description: When the address was created.
+                                nullable: true
+                                description: When the address was updated.
                                 example: '2023-07-15T00:00:00.000000+00:00'
-                              first_name:
+                              state:
                                 type: string
-                                description: The first name for the contact person.
-                                example: Jane
+                                nullable: true
+                                description: The state where the address is located.
+                                example: FL
       tags:
         - Customers
     put:
       summary: Update a customer
+      operationId: update-customer
       requestBody:
         required: true
         content:
@@ -5942,6 +5919,7 @@ paths:
         - Customers
     delete:
       summary: Delete a customer
+      operationId: delete-customer
       parameters:
         - in: path
           name: id
@@ -5957,6 +5935,7 @@ paths:
   /api/customers/merge:
     put:
       summary: Merge two customers
+      operationId: merge-customers
       description: >
         Merge two customers according to the data sent in the payload. The data
         of the source customer will be merged into the target customer and then
@@ -6878,6 +6857,7 @@ paths:
   /api/customers/{customer_id}/data:
     put:
       summary: Set customer data
+      operationId: update-customer-data
       description: Set a customer's data.
       parameters:
         - in: path
@@ -6915,6 +6895,7 @@ paths:
   /api/custom-fields:
     post:
       summary: Create a custom field
+      operationId: create-custom-field
       requestBody:
         required: true
         content:
@@ -7044,6 +7025,7 @@ paths:
         - Custom Fields
     get:
       summary: List custom fields
+      operationId: list-custom-fields
       description: >-
         List custom fields matching the given parameters, paginated, and
         ordered.
@@ -7138,6 +7120,7 @@ paths:
         - Custom Fields
     put:
       summary: Bulk update a list of custom fields
+      operationId: update-custom-fields
       requestBody:
         required: true
         content:
@@ -7268,6 +7251,7 @@ paths:
   /api/custom-fields/{id}/:
     get:
       summary: Retrieve a custom field
+      operationId: get-custom-field
       parameters:
         - in: path
           name: id
@@ -7307,6 +7291,7 @@ paths:
         - Custom Fields
     put:
       summary: Update a custom field
+      operationId: update-custom-field
       parameters:
         - in: path
           name: id
@@ -7440,6 +7425,7 @@ paths:
   /api/events:
     get:
       summary: List events
+      operationId: list-events
       description: >-
         List events, paginated, and ordered by their creation date, with the
         most recently created first.
@@ -7527,49 +7513,6 @@ paths:
               - created_datetime:desc
           required: false
         - in: query
-          name: order_dir
-          description: |-
-            Direction used to order events."
-                    <span style="color:red">This parameter has been deprecated.</span> Use __order_by__ instead.
-                    
-          schema:
-            type: string
-            default: desc
-            enum:
-              - desc
-              - asc
-            deprecated: true
-          required: false
-          deprecated: true
-        - in: query
-          name: page
-          description: |-
-            The index of the page to fetch.
-                    <span style="color:red">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.
-                    
-          schema:
-            type: integer
-            default: 1
-            example: 7
-            deprecated: true
-          required: false
-          deprecated: true
-        - in: query
-          name: per_page
-          description: |-
-            The maximum number of objects to fetch per page. Default: 30.
-                    <span style="color:red">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.
-                    
-          schema:
-            type: integer
-            default: 30
-            minimum: 1
-            maximum: 100
-            example: 15
-            deprecated: true
-          required: false
-          deprecated: true
-        - in: query
           name: types
           description: Types of the events to return.
           schema:
@@ -7604,6 +7547,7 @@ paths:
                 - ticket-created
                 - ticket-customer-updated
                 - ticket-deleted
+                - ticket-excluded-from-auto-merge
                 - ticket-excluded-from-csat
                 - ticket-marked-spam
                 - ticket-merged
@@ -7678,6 +7622,7 @@ paths:
   /api/events/{id}/:
     get:
       summary: Retrieve an event
+      operationId: get-event
       parameters:
         - in: path
           name: id
@@ -7757,28 +7702,43 @@ paths:
               examples:
                 responses:
                   value:
-                    - url: https://gorgias.io/attachments/package-damaged.png
-                      size: '784554'
-                      name: package-damaged.png
+                    - size: '784554'
+                      url: https://gorgias.io/attachments/package-damaged.png
                       content_type: image/png
+                      name: package-damaged.png
       tags:
         - Files
   /api/upload/{id}/: {}
-  /api/attachment/download/{resource_name}:
+  /api/{file_type}/download/{domain_hash}/{resource_name}:
     get:
-      summary: Download Attachment
+      summary: Download a file
+      operationId: download-file
       description: >-
-        Download a private attachment given its resource identifier. The
-        identifier can be extracted from the URL of an attachment by removing
-        the domain part and keeping the rest.
+        Download a private file given its resource identifier. The identifier
+        can be extracted from the URL of an attachment by removing the domain
+        part and keeping the rest.
       parameters:
+        - in: path
+          name: file_type
+          description: The type of file to download
+          required: true
+          schema:
+            type: string
+            example: attachment
+        - in: path
+          name: domain_hash
+          description: The domain identifier of the account that owns the resource
+          required: true
+          schema:
+            type: string
+            example: Hna8kldnmlal
         - in: path
           name: resource_name
           description: The resource identifier of the attachment you are trying to retrieve
           required: true
           schema:
             type: string
-            example: Hna8kldnmlal/image-test-c9f158fc-062d-4b00-a826-e29b36852c9b.png
+            example: image-test-c9f158fc-062d-4b00-a826-e29b36852c9b.png
       responses:
         '307':
           description: >-
@@ -7789,6 +7749,7 @@ paths:
   /api/integrations:
     post:
       summary: Create an integration
+      operationId: create-integration
       requestBody:
         required: true
         content:
@@ -7980,6 +7941,7 @@ paths:
         - Integrations
     get:
       summary: List integrations
+      operationId: list-integrations
       description: List integrations matching the given parameters, paginated.
       parameters:
         - in: query
@@ -8076,37 +8038,49 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Integration'
-              examples:
-                responses:
-                  value:
-                    - id: 123
-                      created_datetime: '2021-01-07T13:00:00.123456'
-                      http:
-                        id: 987
-                        url: >-
-                          https://company.com/api/customers?email={{ticket.customer.email}}
-                        method: GET
-                        form:
-                          hello: world
-                          ticket_id: '{{ticket.id}}'
-                        request_content_type: application/json
-                        response_content_type: application/json
-                        triggers:
-                          ticket_created: true
-                          ticket_updated: true
-                          ticket_message_created: true
-                      name: My HTTP integration
-                      type: http
-                      updated_datetime: '2021-01-07T13:00:00.123456'
-                      uri: /api/integrations/123/
+                type: object
+                properties:
+                  meta:
+                    description: Pagination metadata for the list.
+                    type: object
+                    properties:
+                      next_cursor:
+                        type: string
+                        nullable: true
+                        description: Value indicating a cursor for the next page.
+                        example: WyJuZXh0IiwgIjIwMjEtMDEtMDFUMDE6MDA6MDAiLCA1MV0=
+                      prev_cursor:
+                        type: string
+                        nullable: true
+                        description: Value indicating a cursor for the previous page.
+                        example: WyJuZXh0IiwgIjIwMjEtMDEtMDFUMDE6MDA6MDAiLCA1MV0=
+                    required:
+                      - next_cursor
+                      - prev_cursor
+                  object:
+                    default: list
+                    description: Describes the object type of the payload.
+                    example: list
+                  uri:
+                    type: string
+                    format: url
+                    description: Contains the URI of the fetched resource list.
+                    example: /api/integrations?limit=100
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Integration'
+                required:
+                  - data
+                  - meta
+                  - object
+                  - uri
       tags:
         - Integrations
   /api/integrations/{id}/:
     get:
       summary: Retrieve an integration
+      operationId: get-integration
       parameters:
         - in: path
           name: id
@@ -8148,6 +8122,7 @@ paths:
         - Integrations
     put:
       summary: Update an integration
+      operationId: update-integration
       parameters:
         - in: path
           name: id
@@ -8336,6 +8311,7 @@ paths:
         - Integrations
     delete:
       summary: Delete an integration
+      operationId: delete-integration
       description: >
         Delete an integration. Any views that use this integration will be
         deactivated. Integrations currently used in rules and/or other
@@ -8355,6 +8331,7 @@ paths:
   /api/jobs:
     post:
       summary: Create a job
+      operationId: create-job
       description: >
         Create a job and schedule its execution. Jobs are processed
         asynchronously, meaning that once a job is created, it will run in
@@ -8514,6 +8491,7 @@ paths:
         - Jobs
     get:
       summary: List jobs
+      operationId: list-jobs
       description: >
         List jobs, paginated and ordered by their creation date, with the most
         recent ones first.
@@ -8615,41 +8593,32 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Job'
-              examples:
-                responses:
-                  value:
-                    - id: 1234
-                      cancel_requested_datetime: '2019-11-23T16:31:00.966927'
-                      cancelled_datetime: '2019-11-23T16:32:00.966927'
-                      created_datetime: '2019-11-23T16:00:00.966927'
-                      ended_datetime: '2019-11-23T16:32:00.966927'
-                      failed_datetime: '2019-11-23T15:59:41.966927'
-                      info:
-                        progress_count: 123
-                      locked_datetime: '2019-11-23T16:30:01.966927'
-                      meta:
-                        description: This job closes all tickets created in 2018
-                      params:
-                        ticket_ids:
-                          - 1
-                          - 2
-                          - 3
-                        updates:
-                          status: open
-                      scheduled_datetime: '2019-11-23T16:30:00.966927'
-                      started_datetime: '2019-11-23T16:30:01.966927'
-                      status: canceled
-                      type: updateTicket
-                      user_id: 42
-                      uri: /api/jobs/1234/
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Job'
+                  meta:
+                    type: object
+                    properties:
+                      next_cursor:
+                        type: string
+                        description: Value indicating a cursor for the next page.
+                        example: WyJuZXh0IiwgIjIwMjEtMDEtMDFUMDE6MDA6MDAiLCA1MV0=
+                      prev_cursor:
+                        type: string
+                        description: Value indicating a cursor for the previous page.
+                        example: WyJuZXh0IiwgIjIwMjEtMDEtMDFUMDE6MDA6MDAiLCA1MV0=
+                required:
+                  - data
+                  - meta
       tags:
         - Jobs
   /api/jobs/{id}/:
     get:
       summary: Retrieve a job
+      operationId: get-job
       parameters:
         - in: path
           name: id
@@ -8695,6 +8664,7 @@ paths:
         - Jobs
     put:
       summary: Update a job
+      operationId: update-job
       parameters:
         - in: path
           name: id
@@ -8852,6 +8822,7 @@ paths:
         - Jobs
     delete:
       summary: Cancel a job
+      operationId: cancel-job
       description: >
         Jobs can be canceled at any time but be aware that if a job already
         started, changes done by this one won't be reverted. For example, if you
@@ -8872,6 +8843,7 @@ paths:
   /api/macros:
     post:
       summary: Create a macro
+      operationId: create-macro
       requestBody:
         required: true
         content:
@@ -8996,6 +8968,7 @@ paths:
         - Macros
     get:
       summary: List macros
+      operationId: list-macros
       parameters:
         - in: query
           name: tags
@@ -9213,6 +9186,7 @@ paths:
   /api/macros/{id}/:
     get:
       summary: Retrieve a macro
+      operationId: get-macro
       parameters:
         - in: path
           name: id
@@ -9261,6 +9235,7 @@ paths:
         - Macros
     put:
       summary: Update a macro
+      operationId: update-macro
       parameters:
         - in: path
           name: id
@@ -9390,6 +9365,7 @@ paths:
         - Macros
     delete:
       summary: Delete a macro
+      operationId: delete-macro
       parameters:
         - in: path
           name: id
@@ -9405,6 +9381,7 @@ paths:
   /api/rules:
     post:
       summary: Create a rule
+      operationId: create-rule
       requestBody:
         required: true
         content:
@@ -10576,6 +10553,7 @@ paths:
         - Rules
     get:
       summary: List rules
+      operationId: list-rules
       description: List rules, paginated.
       parameters:
         - in: query
@@ -10606,34 +10584,6 @@ paths:
               - created_datetime:asc
               - created_datetime:desc
           required: false
-        - in: query
-          name: page
-          description: |-
-            The index of the page to fetch.
-                    <span style="color:red">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.
-                    
-          schema:
-            type: integer
-            default: 1
-            example: 7
-            deprecated: true
-          required: false
-          deprecated: true
-        - in: query
-          name: per_page
-          description: |-
-            The maximum number of objects to fetch per page. Default: 30.
-                    <span style="color:red">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.
-                    
-          schema:
-            type: integer
-            default: 30
-            minimum: 1
-            maximum: 100
-            example: 15
-            deprecated: true
-          required: false
-          deprecated: true
       responses:
         '200':
           description: A list of rules.
@@ -11208,6 +11158,7 @@ paths:
   /api/rules/{id}/:
     get:
       summary: Retrieve a rule
+      operationId: get-rule
       parameters:
         - in: path
           name: id
@@ -11786,6 +11737,7 @@ paths:
         - Rules
     put:
       summary: Update a rule
+      operationId: update-rule
       requestBody:
         required: true
         content:
@@ -12961,6 +12913,7 @@ paths:
         - Rules
     delete:
       summary: Delete a rule
+      operationId: delete-rule
       parameters:
         - in: path
           name: id
@@ -12976,6 +12929,7 @@ paths:
   /api/rules/priorities:
     post:
       summary: Update rules' priorities
+      operationId: update-rules-priorities
       requestBody:
         required: true
         content:
@@ -13579,6 +13533,7 @@ paths:
   /api/satisfaction-surveys:
     post:
       summary: Create a survey
+      operationId: create-satisfaction-survey
       description: >
         Create a new satisfaction survey. If you don't want the satisfaction
         survey to be sent by Gorgias set `should_send_datetime` parameter to
@@ -13680,6 +13635,7 @@ paths:
         - Satisfaction Surveys
     get:
       summary: List surveys
+      operationId: list-satisfaction-surveys
       description: >
         List surveys, paginated and ordered by their creation date, with the
         most recently created  first.
@@ -13713,34 +13669,6 @@ paths:
               - created_datetime:asc
               - created_datetime:desc
           required: false
-        - in: query
-          name: page
-          description: |-
-            The index of the page to fetch.
-                    <span style="color:red">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.
-                    
-          schema:
-            type: integer
-            default: 1
-            example: 7
-            deprecated: true
-          required: false
-          deprecated: true
-        - in: query
-          name: per_page
-          description: |-
-            The maximum number of objects to fetch per page. Default: 30.
-                    <span style="color:red">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.
-                    
-          schema:
-            type: integer
-            default: 30
-            minimum: 1
-            maximum: 100
-            example: 15
-            deprecated: true
-          required: false
-          deprecated: true
       responses:
         '200':
           description: A list of surveys.
@@ -13771,6 +13699,7 @@ paths:
   /api/satisfaction-surveys/{id}/:
     get:
       summary: Retrieve a survey
+      operationId: get-satisfaction-survey
       description: Retrieve a survey
       parameters:
         - in: path
@@ -13806,6 +13735,7 @@ paths:
         - Satisfaction Surveys
     put:
       summary: Update a survey
+      operationId: update-satisfaction-survey
       parameters:
         - in: path
           name: id
@@ -13908,6 +13838,7 @@ paths:
   /api/search:
     post:
       summary: Search for resources
+      operationId: search
       requestBody:
         required: true
         content:
@@ -13962,6 +13893,7 @@ paths:
   /api/users:
     post:
       summary: Create a user
+      operationId: create-user
       requestBody:
         required: true
         content:
@@ -14682,6 +14614,7 @@ paths:
         - Users
     get:
       summary: List users
+      operationId: list-users
       description: |
         List users, paginated and ordered by their name (alphabetical order).
       parameters:
@@ -14823,6 +14756,7 @@ paths:
   /api/users/{id}/:
     get:
       summary: Retrieve a user
+      operationId: get-user
       parameters:
         - in: path
           name: id
@@ -14839,6 +14773,7 @@ paths:
         - Users
     put:
       summary: Update a user
+      operationId: update-user
       parameters:
         - in: path
           name: id
@@ -15585,6 +15520,7 @@ paths:
         - Users
     delete:
       summary: Delete a user
+      operationId: delete-user
       parameters:
         - in: path
           name: id
@@ -15600,6 +15536,7 @@ paths:
   /api/teams:
     post:
       summary: Create a team
+      operationId: create-team
       requestBody:
         required: true
         content:
@@ -15668,6 +15605,7 @@ paths:
         - Teams
     get:
       summary: List teams
+      operationId: list-teams
       description: List teams matching the given parameters, paginated, and ordered.
       parameters:
         - in: query
@@ -15700,34 +15638,6 @@ paths:
               - name:asc
               - name:desc
           required: false
-        - in: query
-          name: page
-          description: |-
-            The index of the page to fetch.
-                    <span style="color:red">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.
-                    
-          schema:
-            type: integer
-            default: 1
-            example: 7
-            deprecated: true
-          required: false
-          deprecated: true
-        - in: query
-          name: per_page
-          description: |-
-            The maximum number of objects to fetch per page. Default: 30.
-                    <span style="color:red">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.
-                    
-          schema:
-            type: integer
-            default: 30
-            minimum: 1
-            maximum: 100
-            example: 15
-            deprecated: true
-          required: false
-          deprecated: true
       responses:
         '200':
           description: List of teams according to the given criteria.
@@ -15747,6 +15657,7 @@ paths:
   /api/teams/{id}/:
     get:
       summary: Retrieve a team
+      operationId: get-team
       parameters:
         - in: path
           name: id
@@ -15770,6 +15681,7 @@ paths:
         - Teams
     put:
       summary: Update a team
+      operationId: update-team
       parameters:
         - in: path
           name: id
@@ -15843,6 +15755,7 @@ paths:
         - Teams
     delete:
       summary: Delete a team
+      operationId: delete-team
       parameters:
         - in: path
           name: id
@@ -15858,6 +15771,7 @@ paths:
   /api/tags:
     post:
       summary: Create a tag
+      operationId: create-tag
       requestBody:
         required: true
         content:
@@ -15908,6 +15822,7 @@ paths:
         - Tags
     get:
       summary: List tags
+      operationId: list-tags
       description: List tags matching the given parameters, paginated, and ordered.
       parameters:
         - in: query
@@ -16024,6 +15939,7 @@ paths:
         - Tags
     delete:
       summary: Delete tags
+      operationId: delete-tags
       description: >
         Delete a list of tags. Any views that use this tag will be deactivated.
         Tags currently used in macros and/or rules cannot be deleted.
@@ -16054,6 +15970,7 @@ paths:
   /api/tags/{id}/:
     get:
       summary: Retrieve a tag
+      operationId: get-tag
       parameters:
         - in: path
           name: id
@@ -16082,6 +15999,7 @@ paths:
         - Tags
     put:
       summary: Update a tag
+      operationId: update-tag
       parameters:
         - in: path
           name: id
@@ -16137,6 +16055,7 @@ paths:
         - Tags
     delete:
       summary: Delete a tag
+      operationId: delete-tag
       description: >
         Delete a tag. Any views that use this tag will be deactivated. Tags
         currently used in macros and/or rules cannot be deleted.
@@ -16155,6 +16074,7 @@ paths:
   /api/tags/{destination_tag_id}/merge:
     put:
       summary: Merge tags
+      operationId: merge-tags
       description: >
         Merge one or more tags into another tag. Source tags will be merged into
         the destination tag and then deleted.
@@ -16207,6 +16127,7 @@ paths:
   /api/tickets:
     post:
       summary: Create a ticket
+      operationId: create-ticket
       requestBody:
         required: true
         content:
@@ -17144,6 +17065,7 @@ paths:
         - Tickets
     get:
       summary: List tickets
+      operationId: list-tickets
       description: |
         List tickets, paginated and ordered by the attribute of the given view.
       parameters:
@@ -17194,34 +17116,6 @@ paths:
               - updated_datetime:asc
               - updated_datetime:desc
           required: false
-        - in: query
-          name: page
-          description: |-
-            The index of the page to fetch.
-                    <span style="color:red">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.
-                    
-          schema:
-            type: integer
-            default: 1
-            example: 7
-            deprecated: true
-          required: false
-          deprecated: true
-        - in: query
-          name: per_page
-          description: |-
-            The maximum number of objects to fetch per page. Default: 30.
-                    <span style="color:red">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.
-                    
-          schema:
-            type: integer
-            default: 30
-            minimum: 1
-            maximum: 100
-            example: 15
-            deprecated: true
-          required: false
-          deprecated: true
         - in: query
           name: view_id
           description: >-
@@ -17715,6 +17609,7 @@ paths:
   /api/tickets/{id}/:
     get:
       summary: Retrieve a ticket
+      operationId: get-ticket
       parameters:
         - in: path
           name: id
@@ -17768,7 +17663,7 @@ paths:
                       related user if any on the ticket.<br><span
                       style="color:red">This parameter has been
                       deprecated.</span> Use [events
-                      api](/reference/get_api-events) instead.
+                      api](/reference/list-events) instead.
                     example:
                       - user:
                           id: 3924
@@ -17844,6 +17739,7 @@ paths:
                             `ticket-untrashed`, `ticket-updated`,
                             `ticket-viewed`, `ticket-event-created`,
                             `ticket-excluded-from-csat`,
+                            `ticket-excluded-from-auto-merge`,
                             `ticket-message-action-failed`,
                             `ticket-message-chat-created`,
                             `ticket-message-created`, `ticket-message-deleted`,
@@ -18525,6 +18421,192 @@ paths:
                               description: The store where the shopper is present.
                               type: object
                               properties:
+                                default_currency:
+                                  description: Default currency of the store.
+                                  example: usd
+                                  type: string
+                                  enum:
+                                    - afn
+                                    - eur
+                                    - all
+                                    - dzd
+                                    - usd
+                                    - aoa
+                                    - xcd
+                                    - ars
+                                    - amd
+                                    - awg
+                                    - aud
+                                    - azn
+                                    - bsd
+                                    - bhd
+                                    - bdt
+                                    - bbd
+                                    - byn
+                                    - bzd
+                                    - xof
+                                    - bmd
+                                    - inr
+                                    - btn
+                                    - bob
+                                    - bov
+                                    - bam
+                                    - bwp
+                                    - nok
+                                    - brl
+                                    - bnd
+                                    - bgn
+                                    - bif
+                                    - cve
+                                    - khr
+                                    - xaf
+                                    - cad
+                                    - kyd
+                                    - clp
+                                    - clf
+                                    - cny
+                                    - cop
+                                    - cou
+                                    - kmf
+                                    - cdf
+                                    - nzd
+                                    - crc
+                                    - hrk
+                                    - cup
+                                    - cuc
+                                    - ang
+                                    - czk
+                                    - dkk
+                                    - djf
+                                    - dop
+                                    - egp
+                                    - svc
+                                    - ern
+                                    - szl
+                                    - etb
+                                    - fkp
+                                    - fjd
+                                    - xpf
+                                    - gmd
+                                    - gel
+                                    - ghs
+                                    - gip
+                                    - gtq
+                                    - gbp
+                                    - gnf
+                                    - gyd
+                                    - htg
+                                    - hnl
+                                    - hkd
+                                    - huf
+                                    - isk
+                                    - idr
+                                    - xdr
+                                    - irr
+                                    - iqd
+                                    - ils
+                                    - jmd
+                                    - jpy
+                                    - jod
+                                    - kzt
+                                    - kes
+                                    - kpw
+                                    - krw
+                                    - kwd
+                                    - kgs
+                                    - lak
+                                    - lbp
+                                    - lsl
+                                    - zar
+                                    - lrd
+                                    - lyd
+                                    - chf
+                                    - mop
+                                    - mkd
+                                    - mga
+                                    - mwk
+                                    - myr
+                                    - mvr
+                                    - mru
+                                    - mur
+                                    - xua
+                                    - mxn
+                                    - mxv
+                                    - mdl
+                                    - mnt
+                                    - mad
+                                    - mzn
+                                    - mmk
+                                    - nad
+                                    - npr
+                                    - nio
+                                    - ngn
+                                    - omr
+                                    - pkr
+                                    - pab
+                                    - pgk
+                                    - pyg
+                                    - pen
+                                    - php
+                                    - pln
+                                    - qar
+                                    - ron
+                                    - rub
+                                    - rwf
+                                    - shp
+                                    - wst
+                                    - stn
+                                    - sar
+                                    - rsd
+                                    - scr
+                                    - sll
+                                    - sle
+                                    - sgd
+                                    - xsu
+                                    - sbd
+                                    - sos
+                                    - ssp
+                                    - lkr
+                                    - sdg
+                                    - srd
+                                    - sek
+                                    - che
+                                    - chw
+                                    - syp
+                                    - twd
+                                    - tjs
+                                    - tzs
+                                    - thb
+                                    - top
+                                    - ttd
+                                    - tnd
+                                    - try
+                                    - tmt
+                                    - ugx
+                                    - uah
+                                    - aed
+                                    - usn
+                                    - uyu
+                                    - uyi
+                                    - uyw
+                                    - uzs
+                                    - vuv
+                                    - ves
+                                    - ved
+                                    - vnd
+                                    - yer
+                                    - zmw
+                                    - zwl
+                                    - xba
+                                    - xbb
+                                    - xbc
+                                    - xbd
+                                    - xts
+                                    - xxx
+                                    - xau
+                                    - xpd
+                                    - xpt
+                                    - xag
                                 currencies:
                                   type: array
                                   description: Currencies supported by the store.
@@ -18715,6 +18797,11 @@ paths:
                                       - xpd
                                       - xpt
                                       - xag
+                                uuid:
+                                  type: string
+                                  format: uuid
+                                  description: UUID of the store.
+                                  example: 7736626b-0d5f-4e2c-86de-8b74e3401c26
                                 type:
                                   description: Type of the store.
                                   example: woocommerce
@@ -18724,290 +18811,64 @@ paths:
                                     - magento
                                     - shopify
                                     - woocommerce
+                                url:
+                                  type: string
+                                  description: URL of the store,
+                                  example: https://my-demo-store.com/
                                 deleted_datetime:
                                   type: string
                                   format: date-time
                                   nullable: true
                                   description: When the store was deleted.
                                   example: '2023-07-15T00:00:00.000000+00:00'
-                                id:
-                                  type: integer
-                                  description: ID of the store.
-                                  example: 123456
-                                uuid:
-                                  type: string
-                                  format: uuid
-                                  description: UUID of the store.
-                                  example: 7736626b-0d5f-4e2c-86de-8b74e3401c26
-                                updated_datetime:
-                                  type: string
-                                  format: date-time
-                                  nullable: true
-                                  description: When the store was updated.
-                                  example: '2023-07-15T00:00:00.000000+00:00'
                                 display_name:
                                   type: string
                                   description: Display name of the store.
                                   example: My Demo Store
-                                url:
+                                created_datetime:
                                   type: string
-                                  description: URL of the store,
-                                  example: https://my-demo-store.com/
-                                default_currency:
-                                  description: Default currency of the store.
-                                  example: usd
-                                  type: string
-                                  enum:
-                                    - afn
-                                    - eur
-                                    - all
-                                    - dzd
-                                    - usd
-                                    - aoa
-                                    - xcd
-                                    - ars
-                                    - amd
-                                    - awg
-                                    - aud
-                                    - azn
-                                    - bsd
-                                    - bhd
-                                    - bdt
-                                    - bbd
-                                    - byn
-                                    - bzd
-                                    - xof
-                                    - bmd
-                                    - inr
-                                    - btn
-                                    - bob
-                                    - bov
-                                    - bam
-                                    - bwp
-                                    - nok
-                                    - brl
-                                    - bnd
-                                    - bgn
-                                    - bif
-                                    - cve
-                                    - khr
-                                    - xaf
-                                    - cad
-                                    - kyd
-                                    - clp
-                                    - clf
-                                    - cny
-                                    - cop
-                                    - cou
-                                    - kmf
-                                    - cdf
-                                    - nzd
-                                    - crc
-                                    - hrk
-                                    - cup
-                                    - cuc
-                                    - ang
-                                    - czk
-                                    - dkk
-                                    - djf
-                                    - dop
-                                    - egp
-                                    - svc
-                                    - ern
-                                    - szl
-                                    - etb
-                                    - fkp
-                                    - fjd
-                                    - xpf
-                                    - gmd
-                                    - gel
-                                    - ghs
-                                    - gip
-                                    - gtq
-                                    - gbp
-                                    - gnf
-                                    - gyd
-                                    - htg
-                                    - hnl
-                                    - hkd
-                                    - huf
-                                    - isk
-                                    - idr
-                                    - xdr
-                                    - irr
-                                    - iqd
-                                    - ils
-                                    - jmd
-                                    - jpy
-                                    - jod
-                                    - kzt
-                                    - kes
-                                    - kpw
-                                    - krw
-                                    - kwd
-                                    - kgs
-                                    - lak
-                                    - lbp
-                                    - lsl
-                                    - zar
-                                    - lrd
-                                    - lyd
-                                    - chf
-                                    - mop
-                                    - mkd
-                                    - mga
-                                    - mwk
-                                    - myr
-                                    - mvr
-                                    - mru
-                                    - mur
-                                    - xua
-                                    - mxn
-                                    - mxv
-                                    - mdl
-                                    - mnt
-                                    - mad
-                                    - mzn
-                                    - mmk
-                                    - nad
-                                    - npr
-                                    - nio
-                                    - ngn
-                                    - omr
-                                    - pkr
-                                    - pab
-                                    - pgk
-                                    - pyg
-                                    - pen
-                                    - php
-                                    - pln
-                                    - qar
-                                    - ron
-                                    - rub
-                                    - rwf
-                                    - shp
-                                    - wst
-                                    - stn
-                                    - sar
-                                    - rsd
-                                    - scr
-                                    - sll
-                                    - sle
-                                    - sgd
-                                    - xsu
-                                    - sbd
-                                    - sos
-                                    - ssp
-                                    - lkr
-                                    - sdg
-                                    - srd
-                                    - sek
-                                    - che
-                                    - chw
-                                    - syp
-                                    - twd
-                                    - tjs
-                                    - tzs
-                                    - thb
-                                    - top
-                                    - ttd
-                                    - tnd
-                                    - try
-                                    - tmt
-                                    - ugx
-                                    - uah
-                                    - aed
-                                    - usn
-                                    - uyu
-                                    - uyi
-                                    - uyw
-                                    - uzs
-                                    - vuv
-                                    - ves
-                                    - ved
-                                    - vnd
-                                    - yer
-                                    - zmw
-                                    - zwl
-                                    - xba
-                                    - xbb
-                                    - xbc
-                                    - xbd
-                                    - xts
-                                    - xxx
-                                    - xau
-                                    - xpd
-                                    - xpt
-                                    - xag
+                                  format: date-time
+                                  description: When the store was created.
+                                  example: '2023-07-15T00:00:00.000000+00:00'
+                                id:
+                                  type: integer
+                                  description: ID of the store.
+                                  example: 123456
                                 helpdesk_integration_id:
                                   type: integer
                                   description: >-
                                     ID of the integration associated to this
                                     store.
                                   example: 123456
-                                name:
-                                  type: string
-                                  description: Name of the store (case sensitive).
-                                  example: my-demo-store
-                                created_datetime:
-                                  type: string
-                                  format: date-time
-                                  description: When the store was created.
-                                  example: '2023-07-15T00:00:00.000000+00:00'
-                            shopper:
-                              description: The shopper details.
-                              type: object
-                              properties:
-                                last_name:
-                                  type: string
-                                  nullable: true
-                                  description: The last name of the shopper.
-                                  example: Doe
-                                accepts_marketing_sms:
-                                  type: boolean
-                                  description: Whether the shopper accepts marketing SMS.
-                                  example: true
-                                status:
-                                  nullable: true
-                                  description: The status of the shopper.
-                                  example: tax_exempt
-                                  type: string
-                                  enum:
-                                    - tax_exempt
-                                    - veteran
                                 updated_datetime:
                                   type: string
                                   format: date-time
                                   nullable: true
-                                  description: When the shopper was updated.
+                                  description: When the store was updated.
                                   example: '2023-07-15T00:00:00.000000+00:00'
-                                birthdate:
+                                name:
                                   type: string
-                                  format: date
-                                  nullable: true
-                                  description: The birthdate of the shopper.
-                                  example: '2023-07-15'
-                                helpdesk_customer_id:
-                                  type: integer
-                                  description: >-
-                                    ID of the helpdesk customer associated to
-                                    this store.
-                                  example: 123456
-                                accepts_marketing_email:
+                                  description: Name of the store (case sensitive).
+                                  example: my-demo-store
+                            shopper:
+                              description: The shopper details.
+                              type: object
+                              properties:
+                                accepts_marketing_sms:
                                   type: boolean
-                                  description: >-
-                                    Whether the shopper accepts marketing
-                                    emails.
+                                  description: Whether the shopper accepts marketing SMS.
                                   example: true
                                 first_name:
                                   type: string
                                   nullable: true
                                   description: The first name of the shopper.
                                   example: Jean
-                                external_id:
-                                  type: string
-                                  description: The ID in the external ecommerce platform.
-                                  example: example-id-123
+                                accepts_marketing_email:
+                                  type: boolean
+                                  description: >-
+                                    Whether the shopper accepts marketing
+                                    emails.
+                                  example: true
                                 phone_number:
                                   type: string
                                   nullable: true
@@ -19019,21 +18880,56 @@ paths:
                                   nullable: true
                                   description: When the shopper was deleted.
                                   example: '2023-07-15T00:00:00.000000+00:00'
-                                id:
-                                  type: integer
-                                  description: ID of the address.
-                                  example: 123456
                                 email_address:
                                   type: string
                                   format: email
                                   nullable: true
                                   description: The email address of the shopper.
                                   example: foo@bar.com
+                                id:
+                                  type: integer
+                                  description: ID of the address.
+                                  example: 123456
+                                external_id:
+                                  type: string
+                                  description: The ID in the external ecommerce platform.
+                                  example: example-id-123
+                                helpdesk_customer_id:
+                                  type: integer
+                                  description: >-
+                                    ID of the helpdesk customer associated to
+                                    this store.
+                                  example: 123456
+                                updated_datetime:
+                                  type: string
+                                  format: date-time
+                                  nullable: true
+                                  description: When the shopper was updated.
+                                  example: '2023-07-15T00:00:00.000000+00:00'
                                 middle_name:
                                   type: string
                                   nullable: true
                                   description: The middle name of the shopper.
                                   example: Mary
+                                status:
+                                  nullable: true
+                                  description: The status of the shopper.
+                                  example: tax_exempt
+                                  type: string
+                                  enum:
+                                    - tax_exempt
+                                    - veteran
+                                birthdate:
+                                  type: string
+                                  format: date
+                                  nullable: true
+                                  description: The birthdate of the shopper.
+                                  example: '2023-07-15'
+                                last_name:
+                                  type: string
+                                  nullable: true
+                                  description: The last name of the shopper.
+                                  example: Doe
                                 created_datetime:
                                   type: string
                                   format: date-time
@@ -19045,49 +18941,69 @@ paths:
                               items:
                                 type: object
                                 properties:
-                                  external_payment_status:
-                                    type: string
+                                  discount_amount:
+                                    type: number
                                     nullable: true
-                                    description: >-
-                                      Ecommerce platform's native order payment
-                                      status.
-                                    example: paid
-                                  billing_address:
-                                    description: The billing address for the order.
+                                    description: The flat discount amount.
+                                    example: '20'
+                                  discount_codes:
+                                    type: array
+                                    nullable: true
+                                    description: The discount codes applied to the order.
+                                    example:
+                                      - DISCOUNT_CODE_1
+                                      - DISCOUNT_CODE_2
+                                    items:
+                                      type: string
+                                  tax_amount:
+                                    type: number
+                                    nullable: true
+                                    description: The tax amount.
+                                    example: '20'
+                                  shipping_address:
+                                    description: The shipping address for the order.
                                     type: object
                                     properties:
-                                      external_id:
+                                      line_1:
                                         type: string
                                         description: >-
-                                          The ID in the external ecommerce
-                                          platform.
-                                        example: example-id-123
-                                      state:
+                                          The first line of an address where the
+                                          primary information for locating a
+                                          recipient is provided
+                                        example: 123 Main Street
+                                      preferred:
+                                        type: boolean
+                                        description: Whether the address is preferred or not.
+                                        example: true
+                                      first_name:
                                         type: string
-                                        nullable: true
-                                        description: The state where the address is located.
-                                        example: FL
-                                      shopper_external_id:
+                                        description: The first name for the contact person.
+                                        example: Jane
+                                      zip_code:
                                         type: string
-                                        description: >-
-                                          The shopper's ID in the external
-                                          ecommerce platform.
-                                        example: example-id-123
-                                      phone_number:
-                                        type: string
-                                        nullable: true
-                                        description: The phone number for the contact person.
-                                        example: +1 123 456 7890
-                                      city:
-                                        type: string
-                                        description: The city where the address is located.
-                                        example: Miami
+                                        description: The zip code of the address.
+                                        example: '123456'
                                       country:
                                         type: string
                                         description: >-
                                           The country where the address is
                                           located.
                                         example: USA
+                                      phone_number:
+                                        type: string
+                                        nullable: true
+                                        description: The phone number for the contact person.
+                                        example: +1 123 456 7890
+                                      shopper_external_id:
+                                        type: string
+                                        description: >-
+                                          The shopper's ID in the external
+                                          ecommerce platform.
+                                        example: example-id-123
+                                      city:
+                                        type: string
+                                        description: The city where the address is located.
+                                        example: Miami
                                       last_name:
                                         type: string
                                         description: The last name for the contact person.
@@ -19098,31 +19014,15 @@ paths:
                                         nullable: true
                                         description: When the address was deleted.
                                         example: '2023-07-15T00:00:00.000000+00:00'
+                                      created_datetime:
+                                        type: string
+                                        format: date-time
+                                        description: When the address was created.
+                                        example: '2023-07-15T00:00:00.000000+00:00'
                                       id:
                                         type: integer
                                         description: ID of the address.
                                         example: 123456
-                                      updated_datetime:
-                                        type: string
-                                        format: date-time
-                                        nullable: true
-                                        description: When the address was updated.
-                                        example: '2023-07-15T00:00:00.000000+00:00'
-                                      preferred:
-                                        type: boolean
-                                        description: Whether the address is preferred or not.
-                                        example: true
-                                      zip_code:
-                                        type: string
-                                        description: The zip code of the address.
-                                        example: '123456'
-                                      line_1:
-                                        type: string
-                                        description: >-
-                                          The first line of an address where the
-                                          primary information for locating a
-                                          recipient is provided
-                                        example: 123 Main Street
                                       line_2:
                                         type: string
                                         nullable: true
@@ -19131,19 +19031,176 @@ paths:
                                           recipient, such as the floor of a
                                           building
                                         example: Apt 123, Floor 2
+                                      external_id:
+                                        type: string
+                                        description: >-
+                                          The ID in the external ecommerce
+                                          platform.
+                                        example: example-id-123
+                                      updated_datetime:
+                                        type: string
+                                        format: date-time
+                                        nullable: true
+                                        description: When the address was updated.
+                                        example: '2023-07-15T00:00:00.000000+00:00'
+                                      state:
+                                        type: string
+                                        nullable: true
+                                        description: The state where the address is located.
+                                        example: FL
+                                  billing_address:
+                                    description: The billing address for the order.
+                                    type: object
+                                    properties:
+                                      line_1:
+                                        type: string
+                                        description: >-
+                                          The first line of an address where the
+                                          primary information for locating a
+                                          recipient is provided
+                                        example: 123 Main Street
+                                      preferred:
+                                        type: boolean
+                                        description: Whether the address is preferred or not.
+                                        example: true
+                                      first_name:
+                                        type: string
+                                        description: The first name for the contact person.
+                                        example: Jane
+                                      zip_code:
+                                        type: string
+                                        description: The zip code of the address.
+                                        example: '123456'
+                                      country:
+                                        type: string
+                                        description: >-
+                                          The country where the address is
+                                          located.
+                                        example: USA
+                                      phone_number:
+                                        type: string
+                                        nullable: true
+                                        description: The phone number for the contact person.
+                                        example: +1 123 456 7890
+                                      shopper_external_id:
+                                        type: string
+                                        description: >-
+                                          The shopper's ID in the external
+                                          ecommerce platform.
+                                        example: example-id-123
+                                      city:
+                                        type: string
+                                        description: The city where the address is located.
+                                        example: Miami
+                                      last_name:
+                                        type: string
+                                        description: The last name for the contact person.
+                                        example: Doe
+                                      deleted_datetime:
+                                        type: string
+                                        format: date-time
+                                        nullable: true
+                                        description: When the address was deleted.
+                                        example: '2023-07-15T00:00:00.000000+00:00'
                                       created_datetime:
                                         type: string
                                         format: date-time
                                         description: When the address was created.
                                         example: '2023-07-15T00:00:00.000000+00:00'
-                                      first_name:
+                                      id:
+                                        type: integer
+                                        description: ID of the address.
+                                        example: 123456
+                                      line_2:
                                         type: string
-                                        description: The first name for the contact person.
-                                        example: Jane
-                                  discount_amount:
+                                        nullable: true
+                                        description: >-
+                                          Additional information for locating a
+                                          recipient, such as the floor of a
+                                          building
+                                        example: Apt 123, Floor 2
+                                      external_id:
+                                        type: string
+                                        description: >-
+                                          The ID in the external ecommerce
+                                          platform.
+                                        example: example-id-123
+                                      updated_datetime:
+                                        type: string
+                                        format: date-time
+                                        nullable: true
+                                        description: When the address was updated.
+                                        example: '2023-07-15T00:00:00.000000+00:00'
+                                      state:
+                                        type: string
+                                        nullable: true
+                                        description: The state where the address is located.
+                                        example: FL
+                                  deleted_datetime:
+                                    type: string
+                                    format: date-time
+                                    nullable: true
+                                    description: When the order was deleted.
+                                    example: '2023-07-15T00:00:00.000000+00:00'
+                                  total_amount:
+                                    type: number
+                                    description: The total amount.
+                                    example: '20'
+                                  external_id:
+                                    type: string
+                                    description: The ID in the external ecommerce platform.
+                                    example: example-id-123
+                                  name:
+                                    type: string
+                                    description: The name of the order.
+                                    example: 'Order #123456'
+                                  subtotal_amount:
                                     type: number
                                     nullable: true
-                                    description: The flat discount amount.
+                                    description: The subtotal for the line items.
+                                    example: '20'
+                                  status:
+                                    nullable: true
+                                    description: The status of the order
+                                    example: completed
+                                    type: string
+                                    enum:
+                                      - partially_fulfilled
+                                      - completed
+                                      - canceled
+                                      - on_hold
+                                      - awaiting_fulfillment
+                                      - awaiting_payment
+                                      - scheduled
+                                      - order_pending
+                                  external_status:
+                                    type: string
+                                    nullable: true
+                                    description: Ecommerce platform's native order status.
+                                    example: pending
+                                  created_datetime:
+                                    type: string
+                                    format: date-time
+                                    description: When the order was created.
+                                    example: '2023-07-15T00:00:00.000000+00:00'
+                                  external_fulfillment_status:
+                                    type: string
+                                    nullable: true
+                                    description: >-
+                                      Ecommerce platform's native order
+                                      fulfillment status.
+                                    example: fulfilled
+                                  external_payment_status:
+                                    type: string
+                                    nullable: true
+                                    description: >-
+                                      Ecommerce platform's native order payment
+                                      status.
+                                    example: paid
+                                  shipping_amount:
+                                    type: number
+                                    nullable: true
+                                    description: The shipping amount.
                                     example: '20'
                                   line_items:
                                     type: array
@@ -19151,11 +19208,64 @@ paths:
                                     items:
                                       type: object
                                       properties:
+                                        discount_amount:
+                                          type: number
+                                          nullable: true
+                                          description: The discount amount.
+                                          example: '20'
+                                        taxable:
+                                          type: boolean
+                                          nullable: true
+                                          description: Whether item is taxable or not.
+                                          example: true
+                                        discount_reason:
+                                          type: string
+                                          nullable: true
+                                          description: The reason for granting a discount.
+                                          example: Refurbished product
                                         created_datetime:
                                           type: string
                                           format: date-time
                                           description: When the order line was created.
                                           example: '2023-07-15T00:00:00.000000+00:00'
+                                        unit_price:
+                                          type: number
+                                          description: The price for a single unit.
+                                          example: '123456'
+                                        fulfilled_quantity:
+                                          type: integer
+                                          nullable: true
+                                          description: >-
+                                            The number of products of this kind that
+                                            have been fulfilled.
+                                          example: 5
+                                        title:
+                                          type: string
+                                          description: >-
+                                            The custom title of the product for the
+                                            current order.
+                                          example: My Awesome Product
+                                        requires_shipping:
+                                          type: boolean
+                                          nullable: true
+                                          description: Whether item requires shipping or not.
+                                          example: true
+                                        id:
+                                          type: integer
+                                          description: ID of the address.
+                                          example: 123456
+                                        deleted_datetime:
+                                          type: string
+                                          format: date-time
+                                          nullable: true
+                                          description: When the order line was deleted.
+                                          example: '2023-07-15T00:00:00.000000+00:00'
+                                        total_amount:
+                                          type: number
+                                          description: >-
+                                            The total amount for the quantity of
+                                            products.
+                                          example: '5'
                                         discount_type:
                                           nullable: true
                                           description: Type of discount.
@@ -19164,6 +19274,18 @@ paths:
                                           enum:
                                             - percentage
                                             - fixed_amount
+                                        quantity:
+                                          type: integer
+                                          description: >-
+                                            The number of products of this kind in
+                                            the current order.
+                                          example: 5
+                                        updated_datetime:
+                                          type: string
+                                          format: date-time
+                                          nullable: true
+                                          description: When the order line was updated.
+                                          example: '2023-07-15T00:00:00.000000+00:00'
                                         product_options:
                                           type: object
                                           nullable: true
@@ -19172,193 +19294,16 @@ paths:
                                             in current order.
                                           example:
                                             size: 10
-                                        discount_reason:
-                                          type: string
-                                          nullable: true
-                                          description: The reason for granting a discount.
-                                          example: Refurbished product
-                                        fulfilled_quantity:
-                                          type: integer
-                                          nullable: true
-                                          description: >-
-                                            The number of products of this kind that
-                                            have been fulfilled.
-                                          example: 5
-                                        requires_shipping:
-                                          type: boolean
-                                          nullable: true
-                                          description: Whether item requires shipping or not.
-                                          example: true
-                                        discount_amount:
-                                          type: number
-                                          nullable: true
-                                          description: The discount amount.
-                                          example: '20'
-                                        deleted_datetime:
-                                          type: string
-                                          format: date-time
-                                          nullable: true
-                                          description: When the order line was deleted.
-                                          example: '2023-07-15T00:00:00.000000+00:00'
-                                        id:
-                                          type: integer
-                                          description: ID of the address.
-                                          example: 123456
-                                        title:
-                                          type: string
-                                          description: >-
-                                            The custom title of the product for the
-                                            current order.
-                                          example: My Awesome Product
-                                        unit_price:
-                                          type: number
-                                          description: The price for a single unit.
-                                          example: '123456'
-                                        total_amount:
-                                          type: number
-                                          description: >-
-                                            The total amount for the quantity of
-                                            products.
-                                          example: '5'
-                                        updated_datetime:
-                                          type: string
-                                          format: date-time
-                                          nullable: true
-                                          description: When the order line was updated.
-                                          example: '2023-07-15T00:00:00.000000+00:00'
-                                        quantity:
-                                          type: integer
-                                          description: >-
-                                            The number of products of this kind in
-                                            the current order.
-                                          example: 5
-                                        taxable:
-                                          type: boolean
-                                          nullable: true
-                                          description: Whether item is taxable or not.
-                                          example: true
-                                  total_amount:
-                                    type: number
-                                    description: The total amount.
-                                    example: '20'
-                                  payment_status:
-                                    nullable: true
-                                    description: The status of the order
-                                    example: paid
+                                  id:
+                                    type: integer
+                                    description: ID of the order.
+                                    example: 123456
+                                  updated_datetime:
                                     type: string
-                                    enum:
-                                      - refunded
-                                      - partially_refunded
-                                      - unpaid
-                                      - voided
-                                      - failed
-                                      - manual_verification_required
-                                      - customer_authentication_required
-                                      - paid
-                                      - declined
-                                      - authorized
-                                  tax_amount:
-                                    type: number
+                                    format: date-time
                                     nullable: true
-                                    description: The tax amount.
-                                    example: '20'
-                                  external_id:
-                                    type: string
-                                    description: The ID in the external ecommerce platform.
-                                    example: example-id-123
-                                  shipping_address:
-                                    description: The shipping address for the order.
-                                    type: object
-                                    properties:
-                                      external_id:
-                                        type: string
-                                        description: >-
-                                          The ID in the external ecommerce
-                                          platform.
-                                        example: example-id-123
-                                      state:
-                                        type: string
-                                        nullable: true
-                                        description: The state where the address is located.
-                                        example: FL
-                                      shopper_external_id:
-                                        type: string
-                                        description: >-
-                                          The shopper's ID in the external
-                                          ecommerce platform.
-                                        example: example-id-123
-                                      phone_number:
-                                        type: string
-                                        nullable: true
-                                        description: The phone number for the contact person.
-                                        example: +1 123 456 7890
-                                      city:
-                                        type: string
-                                        description: The city where the address is located.
-                                        example: Miami
-                                      country:
-                                        type: string
-                                        description: >-
-                                          The country where the address is
-                                          located.
-                                        example: USA
-                                      last_name:
-                                        type: string
-                                        description: The last name for the contact person.
-                                        example: Doe
-                                      deleted_datetime:
-                                        type: string
-                                        format: date-time
-                                        nullable: true
-                                        description: When the address was deleted.
-                                        example: '2023-07-15T00:00:00.000000+00:00'
-                                      id:
-                                        type: integer
-                                        description: ID of the address.
-                                        example: 123456
-                                      updated_datetime:
-                                        type: string
-                                        format: date-time
-                                        nullable: true
-                                        description: When the address was updated.
-                                        example: '2023-07-15T00:00:00.000000+00:00'
-                                      preferred:
-                                        type: boolean
-                                        description: Whether the address is preferred or not.
-                                        example: true
-                                      zip_code:
-                                        type: string
-                                        description: The zip code of the address.
-                                        example: '123456'
-                                      line_1:
-                                        type: string
-                                        description: >-
-                                          The first line of an address where the
-                                          primary information for locating a
-                                          recipient is provided
-                                        example: 123 Main Street
-                                      line_2:
-                                        type: string
-                                        nullable: true
-                                        description: >-
-                                          Additional information for locating a
-                                          recipient, such as the floor of a
-                                          building
-                                        example: Apt 123, Floor 2
-                                      created_datetime:
-                                        type: string
-                                        format: date-time
-                                        description: When the address was created.
-                                        example: '2023-07-15T00:00:00.000000+00:00'
-                                      first_name:
-                                        type: string
-                                        description: The first name for the contact person.
-                                        example: Jane
-                                  subtotal_amount:
-                                    type: number
-                                    nullable: true
-                                    description: The subtotal for the line items.
-                                    example: '20'
+                                    description: When the order was updated.
+                                    example: '2023-07-15T00:00:00.000000+00:00'
                                   currency:
                                     description: The currency of the order
                                     example: usd
@@ -19545,115 +19490,76 @@ paths:
                                       - xpd
                                       - xpt
                                       - xag
-                                  shipping_amount:
-                                    type: number
-                                    nullable: true
-                                    description: The shipping amount.
-                                    example: '20'
-                                  updated_datetime:
-                                    type: string
-                                    format: date-time
-                                    nullable: true
-                                    description: When the order was updated.
-                                    example: '2023-07-15T00:00:00.000000+00:00'
-                                  external_status:
-                                    type: string
-                                    nullable: true
-                                    description: Ecommerce platform's native order status.
-                                    example: pending
-                                  number:
-                                    type: integer
-                                    description: Order number.
-                                    example: 123456
-                                  status:
+                                  payment_status:
                                     nullable: true
                                     description: The status of the order
-                                    example: completed
+                                    example: paid
                                     type: string
                                     enum:
-                                      - partially_fulfilled
-                                      - completed
-                                      - canceled
-                                      - on_hold
-                                      - awaiting_fulfillment
-                                      - awaiting_payment
-                                      - scheduled
-                                      - order_pending
-                                  external_fulfillment_status:
-                                    type: string
-                                    nullable: true
-                                    description: >-
-                                      Ecommerce platform's native order
-                                      fulfillment status.
-                                    example: fulfilled
+                                      - refunded
+                                      - partially_refunded
+                                      - unpaid
+                                      - voided
+                                      - failed
+                                      - manual_verification_required
+                                      - customer_authentication_required
+                                      - paid
+                                      - declined
+                                      - authorized
                                   shopper_external_id:
                                     type: string
                                     description: >-
                                       The customer's ID in the external
                                       ecommerce platform.
                                     example: example-id-123
-                                  discount_codes:
-                                    type: array
-                                    nullable: true
-                                    description: The discount codes applied to the order.
-                                    example:
-                                      - DISCOUNT_CODE_1
-                                      - DISCOUNT_CODE_2
-                                    items:
-                                      type: string
-                                  deleted_datetime:
-                                    type: string
-                                    format: date-time
-                                    nullable: true
-                                    description: When the order was deleted.
-                                    example: '2023-07-15T00:00:00.000000+00:00'
-                                  id:
+                                  number:
                                     type: integer
-                                    description: ID of the order.
+                                    description: Order number.
                                     example: 123456
-                                  name:
-                                    type: string
-                                    description: The name of the order.
-                                    example: 'Order #123456'
-                                  created_datetime:
-                                    type: string
-                                    format: date-time
-                                    description: When the order was created.
-                                    example: '2023-07-15T00:00:00.000000+00:00'
                             addresses:
                               type: array
                               description: All the addresses of a shopper.
                               items:
                                 type: object
                                 properties:
-                                  external_id:
+                                  line_1:
                                     type: string
-                                    description: The ID in the external ecommerce platform.
-                                    example: example-id-123
-                                  state:
+                                    description: >-
+                                      The first line of an address where the
+                                      primary information for locating a
+                                      recipient is provided
+                                    example: 123 Main Street
+                                  preferred:
+                                    type: boolean
+                                    description: Whether the address is preferred or not.
+                                    example: true
+                                  first_name:
+                                    type: string
+                                    description: The first name for the contact person.
+                                    example: Jane
+                                  zip_code:
+                                    type: string
+                                    description: The zip code of the address.
+                                    example: '123456'
+                                  country:
+                                    type: string
+                                    description: The country where the address is located.
+                                    example: USA
+                                  phone_number:
                                     type: string
                                     nullable: true
-                                    description: The state where the address is located.
-                                    example: FL
+                                    description: The phone number for the contact person.
+                                    example: +1 123 456 7890
                                   shopper_external_id:
                                     type: string
                                     description: >-
                                       The shopper's ID in the external ecommerce
                                       platform.
                                     example: example-id-123
-                                  phone_number:
-                                    type: string
-                                    nullable: true
-                                    description: The phone number for the contact person.
-                                    example: +1 123 456 7890
                                   city:
                                     type: string
                                     description: The city where the address is located.
                                     example: Miami
-                                  country:
-                                    type: string
-                                    description: The country where the address is located.
-                                    example: USA
                                   last_name:
                                     type: string
                                     description: The last name for the contact person.
@@ -19664,31 +19570,15 @@ paths:
                                     nullable: true
                                     description: When the address was deleted.
                                     example: '2023-07-15T00:00:00.000000+00:00'
+                                  created_datetime:
+                                    type: string
+                                    format: date-time
+                                    description: When the address was created.
+                                    example: '2023-07-15T00:00:00.000000+00:00'
                                   id:
                                     type: integer
                                     description: ID of the address.
                                     example: 123456
-                                  updated_datetime:
-                                    type: string
-                                    format: date-time
-                                    nullable: true
-                                    description: When the address was updated.
-                                    example: '2023-07-15T00:00:00.000000+00:00'
-                                  preferred:
-                                    type: boolean
-                                    description: Whether the address is preferred or not.
-                                    example: true
-                                  zip_code:
-                                    type: string
-                                    description: The zip code of the address.
-                                    example: '123456'
-                                  line_1:
-                                    type: string
-                                    description: >-
-                                      The first line of an address where the
-                                      primary information for locating a
-                                      recipient is provided
-                                    example: 123 Main Street
                                   line_2:
                                     type: string
                                     nullable: true
@@ -19696,15 +19586,21 @@ paths:
                                       Additional information for locating a
                                       recipient, such as the floor of a building
                                     example: Apt 123, Floor 2
-                                  created_datetime:
+                                  external_id:
+                                    type: string
+                                    description: The ID in the external ecommerce platform.
+                                    example: example-id-123
+                                  updated_datetime:
                                     type: string
                                     format: date-time
-                                    description: When the address was created.
+                                    nullable: true
+                                    description: When the address was updated.
                                     example: '2023-07-15T00:00:00.000000+00:00'
-                                  first_name:
+                                  state:
                                     type: string
-                                    description: The first name for the contact person.
-                                    example: Jane
+                                    nullable: true
+                                    description: The state where the address is located.
+                                    example: FL
                       lastname:
                         type: string
                         readOnly: true
@@ -20538,6 +20434,7 @@ paths:
         - Tickets
     put:
       summary: Update a ticket
+      operationId: update-ticket
       parameters:
         - in: path
           name: id
@@ -21010,6 +20907,7 @@ paths:
         - Tickets
     delete:
       summary: Delete a ticket
+      operationId: delete-ticket
       parameters:
         - in: path
           name: id
@@ -21025,6 +20923,7 @@ paths:
   /api/tickets/{ticket_id}/messages:
     post:
       summary: Create a message
+      operationId: create-ticket-message
       description: >
         Create a message and either:
           - not send it if the attribute `sent_datetime` is filled.
@@ -21482,11 +21381,12 @@ paths:
         - Ticket Messages
     get:
       summary: List messages of a ticket
+      operationId: list-ticket-messages
       deprecated: true
       description: >
         List all messages of a ticket, ordered by their sending date, with the
         oldest messages first.<br> <span style="color:red">This endpoint has
-        been deprecated.</span> Use [list messages](/reference/get_api-messages)
+        been deprecated.</span> Use [list messages](/reference/list-messages)
         endpoint instead.
       parameters:
         - in: path
@@ -21561,6 +21461,7 @@ paths:
   /api/tickets/{ticket_id}/messages/{id}/:
     get:
       summary: Retrieve a message
+      operationId: get-ticket-message
       parameters:
         - in: path
           name: ticket_id
@@ -21637,6 +21538,7 @@ paths:
         - Ticket Messages
     put:
       summary: Update a message
+      operationId: update-ticket-message
       parameters:
         - in: path
           name: ticket_id
@@ -22080,6 +21982,7 @@ paths:
         - Ticket Messages
     delete:
       summary: Delete a message
+      operationId: delete-ticket-message
       parameters:
         - in: path
           name: ticket_id
@@ -22101,6 +22004,7 @@ paths:
   /api/tickets/{ticket_id}/tags:
     post:
       summary: Add ticket tags
+      operationId: create-ticket-tags
       description: Add tags to a ticket.
       parameters:
         - in: path
@@ -22170,6 +22074,7 @@ paths:
         - Tickets
     put:
       summary: Set ticket tags
+      operationId: update-ticket-tags
       description: Set a ticket's tags.
       parameters:
         - in: path
@@ -22208,6 +22113,7 @@ paths:
         - Tickets
     delete:
       summary: Remove ticket tags
+      operationId: delete-ticket-tags
       description: Remove tags from a ticket.
       parameters:
         - in: path
@@ -22247,6 +22153,7 @@ paths:
   /api/tickets/{ticket_id}/custom-fields:
     get:
       summary: List ticket field values
+      operationId: list-ticket-custom-fields
       description: List all custom fields for a ticket.
       parameters:
         - in: path
@@ -22324,6 +22231,7 @@ paths:
         - Tickets
     put:
       summary: Update ticket fields values
+      operationId: update-ticket-custom-fields
       description: Update a ticket's custom fields values.
       parameters:
         - in: path
@@ -22420,6 +22328,7 @@ paths:
   /api/tickets/{ticket_id}/custom-fields/{id}/:
     put:
       summary: Update ticket field value
+      operationId: update-ticket-custom-field
       description: Update a ticket's custom field value.
       parameters:
         - in: path
@@ -22509,6 +22418,7 @@ paths:
         - Tickets
     delete:
       summary: Delete ticket field value
+      operationId: delete-ticket-custom-field
       description: Delete a ticket's custom field value.
       parameters:
         - in: path
@@ -22531,6 +22441,7 @@ paths:
   /api/messages:
     get:
       summary: List messages
+      operationId: list-messages
       description: List messages matching the given parameters, paginated.
       parameters:
         - in: query
@@ -23006,6 +22917,7 @@ paths:
   /api/views:
     post:
       summary: Create a view
+      operationId: create-view
       requestBody:
         required: true
         content:
@@ -23167,6 +23079,7 @@ paths:
         - Views
     get:
       summary: List views
+      operationId: list-views
       description: >
         List all views ordered by their `id` attribute. Current user variables
         (`{{current_user...}}`) present in views' filters will be replaced with
@@ -23200,35 +23113,6 @@ paths:
               - created_datetime:asc
               - created_datetime:desc
           required: false
-        - in: query
-          name: page
-          description: |-
-            The index of the page to fetch.
-                    <span style="color:red">This parameter has been deprecated.</span> Use __cursor__ and __limit__ instead.
-                    
-          schema:
-            type: integer
-            default: 1
-            example: 7
-            deprecated: true
-          required: false
-          deprecated: true
-        - in: query
-          name: per_page
-          description: >-
-            The maximum number of objects to fetch per page. Default: 520.
-
-            <span style="color:red">This parameter has been deprecated.</span>
-            Use __cursor__ and __limit__ instead.
-          schema:
-            type: integer
-            default: 520
-            minimum: 1
-            maximum: 520
-            deprecated: true
-            example: 15
-          required: false
-          deprecated: true
       responses:
         '200':
           description: A list of views.
@@ -23265,6 +23149,7 @@ paths:
   /api/views/{id}/:
     get:
       summary: Retrieve a view
+      operationId: get-view
       parameters:
         - in: path
           name: id
@@ -23305,6 +23190,7 @@ paths:
         - Views
     put:
       summary: Update a view
+      operationId: update-view
       parameters:
         - in: path
           name: id
@@ -23471,6 +23357,7 @@ paths:
         - Views
     delete:
       summary: Delete a view
+      operationId: delete-view
       parameters:
         - in: path
           name: id
@@ -23486,6 +23373,7 @@ paths:
   /api/views/{view_id}/items:
     get:
       summary: List view's items
+      operationId: list-view-items
       description: >-
         List view's items, paginated, and ordered by the attribute specified in
         the data of view.
@@ -23934,6 +23822,7 @@ paths:
         - Views
     put:
       summary: Search for view's items
+      operationId: update-view-items
       description: >-
         List view's items, paginated, and ordered by the attribute specified in
         the data of view.
@@ -24492,6 +24381,7 @@ paths:
     get:
       summary: List voice calls
       description: List voice calls matching the given parameters, paginated, and ordered.
+      operationId: list-voice-calls
       parameters:
         - in: query
           name: cursor
@@ -24522,38 +24412,49 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/VoiceCall'
-              examples:
-                responses:
-                  value:
-                    - id: 123
-                      integration_id: 234
-                      ticket_id: 345
-                      phone_number_id: 456
-                      external_id: CA777a8b2bfef8cdf709896080fe94cd10
-                      provider: twilio
-                      status: completed
-                      direction: inbound
-                      phone_number_source: '+14791234567'
-                      country_source: US
-                      phone_number_destination: '+17201234567'
-                      country_destination: US
-                      duration: 60
-                      started_datetime: '2023-08-31T00:00:00.000000+00:00'
-                      created_datetime: '2023-08-31T00:00:00.000000+00:00'
-                      updated_datetime: '2023-08-31T00:00:00.000000+00:00'
-                      initiated_by_agent_id: 567
-                      last_answered_by_agent_id: 678
-                      customer_id: 789
-                      has_voicemail: true
-                      has_call_recording: false
+                type: object
+                properties:
+                  meta:
+                    description: Pagination metadata for the list.
+                    type: object
+                    properties:
+                      next_cursor:
+                        type: string
+                        nullable: true
+                        description: Value indicating a cursor for the next page.
+                        example: WyJuZXh0IiwgIjIwMjEtMDEtMDFUMDE6MDA6MDAiLCA1MV0=
+                      prev_cursor:
+                        type: string
+                        nullable: true
+                        description: Value indicating a cursor for the previous page.
+                        example: WyJuZXh0IiwgIjIwMjEtMDEtMDFUMDE6MDA6MDAiLCA1MV0=
+                    required:
+                      - next_cursor
+                      - prev_cursor
+                  object:
+                    default: list
+                    description: Describes the object type of the payload.
+                    example: list
+                  uri:
+                    type: string
+                    format: url
+                    description: Contains the URI of the fetched resource list.
+                    example: /api/integrations?limit=100
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/VoiceCall'
+                required:
+                  - data
+                  - meta
+                  - object
+                  - uri
       tags:
         - Voice Calls
   /api/phone/voice-calls/{id}/:
     get:
       summary: Retrieve a voice call
+      operationId: get-voice-call
       parameters:
         - in: path
           name: id
@@ -24597,6 +24498,7 @@ paths:
   /api/phone/voice-call-recordings:
     get:
       summary: List voice call recordings
+      operationId: list-voice-call-recordings
       description: >-
         List voice call recordings matching the given parameters, paginated, and
         ordered.
@@ -24651,6 +24553,7 @@ paths:
   /api/phone/voice-call-recordings/{id}/:
     get:
       summary: Retrieve a voice call recording
+      operationId: get-voice-call-recording
       parameters:
         - in: path
           name: id
@@ -24682,6 +24585,7 @@ paths:
         - Voice Call Recordings
     delete:
       summary: Delete a voice call recording
+      operationId: delete-voice-call-recording
       parameters:
         - in: path
           name: id
@@ -24697,6 +24601,7 @@ paths:
   /api/phone/voice-call-events:
     get:
       summary: List voice call events
+      operationId: list-voice-call-events
       description: >-
         List voice call events matching the given parameters, paginated, and
         ordered.
@@ -24749,6 +24654,7 @@ paths:
   /api/phone/voice-call-events/{id}/:
     get:
       summary: Retrieve a voice call event
+      operationId: get-voice-call-event
       parameters:
         - in: path
           name: id
@@ -24779,6 +24685,7 @@ paths:
   /api/widgets:
     post:
       summary: Create a widget
+      operationId: create-widget
       requestBody:
         required: true
         content:
@@ -24896,6 +24803,7 @@ paths:
         - Widgets
     get:
       summary: List widgets
+      operationId: list-widgets
       description: List all widgets for the account, ordered.
       parameters:
         - in: query
@@ -24982,6 +24890,7 @@ paths:
   /api/widgets/{id}/:
     get:
       summary: Retrieve a widget
+      operationId: get-widget
       parameters:
         - in: path
           name: id
@@ -25022,6 +24931,7 @@ paths:
         - Widgets
     put:
       summary: Update a widget
+      operationId: update-widget
       parameters:
         - in: path
           name: id
@@ -25143,6 +25053,7 @@ paths:
         - Widgets
     delete:
       summary: Delete a widget
+      operationId: delete-widget
       parameters:
         - in: path
           name: id
@@ -26545,14 +26456,14 @@ components:
             `ticket-typing-activity-shopper-started`, `ticket-unassigned`,
             `ticket-unmarked-spam`, `ticket-untrashed`, `ticket-updated`,
             `ticket-viewed`, `ticket-event-created`,
-            `ticket-excluded-from-csat`, `ticket-message-action-failed`,
-            `ticket-message-chat-created`, `ticket-message-created`,
-            `ticket-message-deleted`, `ticket-message-failed`,
-            `ticket-message-summary-created`, `ticket-message-updated`,
-            `customer-created`, `customer-updated`, `customer-merged`,
-            `customer-deleted`, `customer-external-data-updated`,
-            `custom-field-created`, `custom-field-updated`,
-            `custom-fields-ticket-values-updated`,
+            `ticket-excluded-from-csat`, `ticket-excluded-from-auto-merge`,
+            `ticket-message-action-failed`, `ticket-message-chat-created`,
+            `ticket-message-created`, `ticket-message-deleted`,
+            `ticket-message-failed`, `ticket-message-summary-created`,
+            `ticket-message-updated`, `customer-created`, `customer-updated`,
+            `customer-merged`, `customer-deleted`,
+            `customer-external-data-updated`, `custom-field-created`,
+            `custom-field-updated`, `custom-fields-ticket-values-updated`,
             `self-service-configurations-updated`,
             `self-service-configurations-update-started`, `user-created`,
             `user-invited`, `user-updated`, `user-mentioned`, `user-deleted`,
@@ -26585,23 +26496,23 @@ components:
     File:
       type: object
       properties:
+        size:
+          type: integer
+          description: The size of the file (in bytes).
+          example: '784554'
         url:
           type: string
           format: url
           description: The URL of the file.
           example: https://gorgias.io/attachments/package-damaged.png
-        size:
-          type: integer
-          description: The size of the file (in bytes).
-          example: '784554'
-        name:
-          type: string
-          description: The name of the file.
-          example: package-damaged.png
         content_type:
           type: string
           description: The content type of the file.
           example: image/png
+        name:
+          type: string
+          description: The name of the file.
+          example: package-damaged.png
       description: >-
         A file object represents a file hosted on Gorgias's servers. You can
         upload files to attach them to messages.
@@ -28394,8 +28305,8 @@ components:
           description: >-
             All `action-executed` [events](#the-event-object) with the related
             user if any on the ticket.<br><span style="color:red">This parameter
-            has been deprecated.</span> Use [events
-            api](/reference/get_api-events) instead.
+            has been deprecated.</span> Use [events api](/reference/list-events)
+            instead.
           example:
             - user:
                 id: 3924
@@ -28460,14 +28371,15 @@ components:
                   `ticket-typing-activity-shopper-started`, `ticket-unassigned`,
                   `ticket-unmarked-spam`, `ticket-untrashed`, `ticket-updated`,
                   `ticket-viewed`, `ticket-event-created`,
-                  `ticket-excluded-from-csat`, `ticket-message-action-failed`,
-                  `ticket-message-chat-created`, `ticket-message-created`,
-                  `ticket-message-deleted`, `ticket-message-failed`,
-                  `ticket-message-summary-created`, `ticket-message-updated`,
-                  `customer-created`, `customer-updated`, `customer-merged`,
-                  `customer-deleted`, `customer-external-data-updated`,
-                  `custom-field-created`, `custom-field-updated`,
-                  `custom-fields-ticket-values-updated`,
+                  `ticket-excluded-from-csat`,
+                  `ticket-excluded-from-auto-merge`,
+                  `ticket-message-action-failed`, `ticket-message-chat-created`,
+                  `ticket-message-created`, `ticket-message-deleted`,
+                  `ticket-message-failed`, `ticket-message-summary-created`,
+                  `ticket-message-updated`, `customer-created`,
+                  `customer-updated`, `customer-merged`, `customer-deleted`,
+                  `customer-external-data-updated`, `custom-field-created`,
+                  `custom-field-updated`, `custom-fields-ticket-values-updated`,
                   `self-service-configurations-updated`,
                   `self-service-configurations-update-started`, `user-created`,
                   `user-invited`, `user-updated`, `user-mentioned`,

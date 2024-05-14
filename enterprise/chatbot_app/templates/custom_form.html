@@ -1,0 +1,27 @@
+<div id="custom-form" class="flex-1 bg-white border-b p-4">
+    <form method="post"
+          class="flex flex-col gap-1 h-full"
+          hx-target="#app"
+          hx-post="{% url 'customer_configuration' %}">
+        {% if current_chat %}<input type="hidden" name="chat_id" value="{{ current_chat.id }}" />{% endif %}
+        <div class="flex-1">
+            <h2 class="font-bold text-xl mb-4">Form</h2>
+            <label class="form-control flex flex-col gap-1">
+                <div class="label">
+                    <span class="label-text">Customer configuration</span>
+                </div>
+                <select name="customer_id"
+                        required
+                        hx-get="{% url 'customer_configuration' %}"
+                        hx-target="#customer-configurations"
+                        class="select select-bordered w-full bg-gray-50 text-gray-900 invalid:text-gray-500">
+                    <option value="" disabled {% if not customer %}selected{% endif %}>Select a customer</option>
+                    <option value="A" {% if customer == "A" %}selected{% endif %}>Customer A</option>
+                    <option value="B" {% if customer == "B" %}selected{% endif %}>Customer B</option>
+                </select>
+                <div id="customer-configurations">{% include "customer_configurations.html" %}</div>
+            </label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

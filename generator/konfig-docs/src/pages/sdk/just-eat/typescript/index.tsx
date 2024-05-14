@@ -17,7 +17,7 @@ export default function JustEatTypeScriptSdk() {
       companyKebabCase="just-eat"
       clientNameCamelCase="justEat"
       homepage="developers.just-eat.com/"
-      lastUpdated={new Date("2024-03-27T21:31:04.839Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/just-eat/favicon.png"
       contactUrl="https://developers.just-eat.com/"
       contactEmail="david.handley@justeattakeaway.com"
@@ -1159,7 +1159,7 @@ export default function JustEatTypeScriptSdk() {
         "name": "deliveryTime",
         "schema": "string",
         "required": true,
-        "description": "Delivery date/time when fees are required (https://.",
+        "description": "Delivery date/time when fees are required (ISO8601 format).",
         "example": "2019-09-05T12:43:48.431Z"
       },
       {
@@ -1173,7 +1173,7 @@ export default function JustEatTypeScriptSdk() {
         "name": "latlong",
         "schema": "array",
         "required": false,
-        "description": "Point to which delivery is required (https://. Supply this where possible as support for zone-only based lookups will be removed in future.",
+        "description": "Point to which delivery is required (latitude, longitude). Supply this where possible as support for zone-only based lookups will be removed in future.",
         "example": [
           51.3851513,
           -2.0841275
@@ -3113,7 +3113,7 @@ export default function JustEatTypeScriptSdk() {
     "httpMethod": HttpMethodsEnum.PUT,
     "tag": "Manage Order Journey",
     "typeScriptTag": "manageOrderJourney",
-    "description": "Update current driver locations (https://",
+    "description": "Update current driver locations (bulk upload)",
     "parameters": [
       {
         "name": "xJetApplication",
@@ -3145,7 +3145,7 @@ export default function JustEatTypeScriptSdk() {
         "name": "brandSlug",
         "schema": "string",
         "required": true,
-        "description": "The owning brand in the brand slug format e.g. `je-uk-example` (https://. This field may be removed in a future version.",
+        "description": "The owning brand in the brand slug format e.g. `je-uk-example` (contact delivery manager if unsure). This field may be removed in a future version.",
         "example": "je-uk-example"
       },
       {
@@ -3201,7 +3201,7 @@ export default function JustEatTypeScriptSdk() {
         "name": "brandSlug",
         "schema": "string",
         "required": true,
-        "description": "The owning brand in the brand slug format e.g. `je-uk-example` (https://. This field may be removed in a future version.",
+        "description": "The owning brand in the brand slug format e.g. `je-uk-example` (contact delivery manager if unsure). This field may be removed in a future version.",
         "example": "je-uk-example"
       },
       {
@@ -3271,7 +3271,7 @@ export default function JustEatTypeScriptSdk() {
         "name": "brandSlug",
         "schema": "string",
         "required": true,
-        "description": "The owning brand in the brand slug format e.g. `je-uk-example` (https://. This field may be removed in a future version.",
+        "description": "The owning brand in the brand slug format e.g. `je-uk-example` (contact delivery manager if unsure). This field may be removed in a future version.",
         "example": "je-uk-example"
       },
       {
@@ -4662,10 +4662,10 @@ export default function JustEatTypeScriptSdk() {
       apiTitle="Just Eat API"
       apiBaseUrl="https://uk.api.just-eat.io"
       apiVersion="1.0.0"
-      endpoints={68}
-      sdkMethods={76}
+      endpoints={65}
+      sdkMethods={73}
       schemas={1391}
-      parameters={430}
+      parameters={420}
       difficulty="Very Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/just-eat/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/just-eat/openapi.yaml"

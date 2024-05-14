@@ -21,7 +21,7 @@ With 6,300 clients, Sellsy surrounds itself with almost 130 employees to carry o
       companyKebabCase="sellsy"
       clientNameCamelCase="sellsy"
       homepage="sellsy.com"
-      lastUpdated={new Date("2024-03-29T23:14:01.231Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/sellsy/favicon.png"
       // Missing contactUrl
       contactEmail="api@sellsy.com"
@@ -12122,7 +12122,7 @@ With 6,300 clients, Sellsy surrounds itself with almost 130 employees to carry o
       language="TypeScript"
       apiTitle="Sellsy API"
       apiBaseUrl="https://api.sellsy.com/v2"
-      apiVersion="2.126.0"
+      apiVersion="2.128.0"
       endpoints={225}
       sdkMethods={463}
       schemas={424}

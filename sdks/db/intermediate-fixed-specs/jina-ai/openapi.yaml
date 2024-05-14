@@ -2,7 +2,7 @@ openapi: 3.1.0
 info:
   title: The Jina Embedding Serving API
   description: This is the UniversalAPI to access all the Jina embedding models
-  version: 0.0.86
+  version: 0.0.89
 paths:
   /v1/embeddings:
     post:
@@ -145,13 +145,15 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
       security:
         - HTTPBearer: []
-  /v1/multi-embeddings:
+  /v1/multi-vector:
     post:
       tags:
-        - multi-embeddings
-      summary: Create Multi Embeddings
-      description: Create embedding representations of the given input texts.
-      operationId: create_multi_embeddings_v1_multi_embeddings_post
+        - multi-vector
+      summary: Create Multi Vector
+      description: >-
+        Create multiple vector representations of the given input texts. One
+        vector representation for each token in the input text.
+      operationId: create_multi_vector_v1_multi_vector_post
       requestBody:
         content:
           application/json:
@@ -161,7 +163,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Create embeddings
+          description: Create multi vector embeddings
           content:
             application/json:
               schema:
@@ -172,6 +174,38 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
+      security:
+        - HTTPBearer: []
+  /v1/multi-embeddings:
+    post:
+      tags:
+        - multi-vector
+      summary: Create Multi Vector
+      description: >-
+        Create multiple vector representations of the given input texts. One
+        vector representation for each token in the input text.
+      operationId: create_multi_vector_v1_multi_embeddings_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: >-
+                #/components/schemas/api_schemas__multi_embeddings__TextEmbeddingInput
+        required: true
+      responses:
+        '200':
+          description: Create multi vector embeddings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ColbertModelEmbeddingsOutput'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      deprecated: true
       security:
         - HTTPBearer: []
   /:
@@ -375,7 +409,7 @@ components:
           description: >-
             The ID of the BaseDoc. This is useful for indexing in vector stores.
             If not set by user, it will automatically be assigned a random value
-          example: 3edd09dc93fb4d8233af3c770a5c9026
+          example: d25b9372e32971ef9af12b91f524ad52
         url:
           type: string
           maxLength: 65536
@@ -443,14 +477,26 @@ components:
           title: Input
           description: List of images to embed
         encoding_format:
-          type: string
-          enum:
-            - float
-            - base64
+          anyOf:
+            - type: string
+              enum:
+                - float
+                - base64
+                - binary
+                - ubinary
+            - items:
+                type: string
+                enum:
+                  - float
+                  - base64
+                  - binary
+                  - ubinary
+              type: array
           title: Encoding Format
           description: >-
             The format in which you want the embeddings to be returned.Possible
-            value are `float` and `base64`. Defaults to `float`
+            value are `float`, `base64`, `binary`, `ubinary` or a list
+            containing any of them. Defaults to `float` 
       additionalProperties: false
       type: object
       required:
@@ -629,7 +675,7 @@ components:
           description: >-
             The ID of the BaseDoc. This is useful for indexing in vector stores.
             If not set by user, it will automatically be assigned a random value
-          example: 3edd09dc93fb4d8233af3c770a5c9026
+          example: d25b9372e32971ef9af12b91f524ad52
         text:
           type: string
           title: Text
@@ -657,14 +703,26 @@ components:
           title: Input
           description: List of texts to embed
         encoding_format:
-          type: string
-          enum:
-            - float
-            - base64
+          anyOf:
+            - type: string
+              enum:
+                - float
+                - base64
+                - binary
+                - ubinary
+            - items:
+                type: string
+                enum:
+                  - float
+                  - base64
+                  - binary
+                  - ubinary
+              type: array
           title: Encoding Format
           description: >-
             The format in which you want the embeddings to be returned.Possible
-            value are `float` and `base64`. Defaults to `float`
+            value are `float`, `base64`, `binary`, `ubinary` or a list
+            containing any of them. Defaults to `float` 
       additionalProperties: false
       type: object
       required:
@@ -718,14 +776,26 @@ components:
           description: Type of the embedding to compute, query or document
           default: document
         encoding_format:
-          type: string
-          enum:
-            - float
-            - base64
+          anyOf:
+            - type: string
+              enum:
+                - float
+                - base64
+                - binary
+                - ubinary
+            - items:
+                type: string
+                enum:
+                  - float
+                  - base64
+                  - binary
+                  - ubinary
+              type: array
           title: Encoding Format
           description: >-
             The format in which you want the embeddings to be returned.Possible
-            value are `float` and `base64`. Defaults to `float`
+            value are `float`, `base64`, `binary`, `ubinary` or a list
+            containing any of them. Defaults to `float` 
       additionalProperties: false
       type: object
       required:
@@ -745,7 +815,7 @@ components:
           description: >-
             The ID of the BaseDoc. This is useful for indexing in vector stores.
             If not set by user, it will automatically be assigned a random value
-          example: 3edd09dc93fb4d8233af3c770a5c9026
+          example: d25b9372e32971ef9af12b91f524ad52
         text:
           type: string
           title: Text

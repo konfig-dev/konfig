@@ -19,7 +19,7 @@ With Front, teams can centralize messages across channels, route them to the rig
       companyKebabCase="front"
       clientNameCamelCase="frontCore"
       homepage="front.com"
-      lastUpdated={new Date("2024-03-25T20:47:15.965Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/front/core/favicon.png"
       contactUrl="https://community.front.com"
       // Missing contactEmail
@@ -6685,7 +6685,7 @@ With Front, teams can centralize messages across channels, route them to the rig
       endpoints={122}
       sdkMethods={197}
       schemas={163}
-      parameters={535}
+      parameters={536}
       difficulty="Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/front/core/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/front/core/openapi.yaml"

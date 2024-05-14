@@ -3058,7 +3058,7 @@ paths:
                           type: string
                         post_number:
                           type:
-                            - string
+                            - integer
                             - 'null'
                         topic_id:
                           type:
@@ -5002,6 +5002,8 @@ paths:
                         type: integer
                       liked_consolidated:
                         type: integer
+                      linked_consolidated:
+                        type: integer
                       post_approved:
                         type: integer
                       code_review_commit_approved:
@@ -5063,6 +5065,7 @@ paths:
                       - watching_first_post
                       - topic_reminder
                       - liked_consolidated
+                      - linked_consolidated
                       - post_approved
                       - code_review_commit_approved
                       - membership_request_accepted
@@ -5549,6 +5552,52 @@ paths:
                   - archetypes
                   - user_fields
                   - auth_providers
+  /site/basic-info.json:
+    get:
+      summary: Get site basic info
+      tags:
+        - Site
+      operationId: getSiteBasicInfo
+      description: Can be used to fetch basic info about a site
+      responses:
+        '200':
+          description: success response
+          content:
+            application/json:
+              schema:
+                additionalProperties: false
+                properties:
+                  logo_url:
+                    type: string
+                  logo_small_url:
+                    type: string
+                  apple_touch_icon_url:
+                    type: string
+                  favicon_url:
+                    type: string
+                  title:
+                    type: string
+                  description:
+                    type: string
+                  header_primary_color:
+                    type: string
+                  header_background_color:
+                    type: string
+                  login_required:
+                    type: boolean
+                  mobile_logo_url:
+                    type: string
+                required:
+                  - logo_url
+                  - logo_small_url
+                  - apple_touch_icon_url
+                  - favicon_url
+                  - title
+                  - description
+                  - header_primary_color
+                  - header_background_color
+                  - login_required
+                  - mobile_logo_url
   /tag_groups.json:
     get:
       summary: Get a list of tag groups
@@ -8703,6 +8752,8 @@ paths:
                         type: array
                       display_sidebar_tags:
                         type: boolean
+                      can_pick_theme_with_custom_homepage:
+                        type: boolean
                       user_auth_tokens:
                         type: array
                         items:
@@ -9431,6 +9482,8 @@ paths:
                         type: array
                       display_sidebar_tags:
                         type: boolean
+                      can_pick_theme_with_custom_homepage:
+                        type: boolean
                       user_auth_tokens:
                         type: array
                         items:
@@ -10120,6 +10173,8 @@ paths:
                       sidebar_category_ids:
                         type: array
                       display_sidebar_tags:
+                        type: boolean
+                      can_pick_theme_with_custom_homepage:
                         type: boolean
                       user_auth_tokens:
                         type: array

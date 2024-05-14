@@ -1890,15 +1890,15 @@ rawSpecString: |
           content:
             application/vnd.vimeo.tag+json:
               schema:
-                type: object
-                properties:
-                  tag:
-                    description: An array of tags to assign.
-                    items:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      description: The name of the tag to assign.
                       type: string
-                    type: array
-                required:
-                  - tag
+                  required:
+                    - name
         responses:
           '200':
             description: The tags were added.
@@ -4427,7 +4427,7 @@ rawSpecString: |
                     type: object
                   folder_uri:
                     description: The URI of the event's folder.
-                    example: /users/67890/folder/12345
+                    example: /users/67890/projects/12345
                     type: string
                   interaction_tools_settings:
                     description: The settings for the interaction tools.
@@ -4631,92 +4631,6 @@ rawSpecString: |
           - oauth2:
               - create
     /live_events/{live_event_id}:
-      delete:
-        summary: Delete a specific live event
-        description: This method deletes a single event belonging to the authenticated user.
-        operationId: delete_live_event_alt1
-        tags:
-          - Live\Essentials
-        parameters:
-          - description: The ID of the event.
-            in: path
-            name: live_event_id
-            required: true
-            schema:
-              type: number
-        responses:
-          '204':
-            description: The event was deleted.
-          '403':
-            description: >-
-              * Error code 3200: The authenticated user doesn't have the necessary
-              permissions to delete the event.
-
-              * Error code 3422: The authenticated user can't delete the event.
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/error'
-          '404':
-            description: 'Error code 5000: No such event or user exists.'
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/error'
-        security:
-          - oauth2:
-              - delete
-              - private
-      get:
-        summary: Get a specific live event
-        description: This method returns a single event belonging to the authenticated user.
-        operationId: get_live_event_alt1
-        tags:
-          - Live\Essentials
-        parameters:
-          - description: The ID of the event.
-            in: path
-            name: live_event_id
-            required: true
-            schema:
-              type: number
-              example: 12345
-          - description: The password of the event when the privacy is set to `password`.
-            in: query
-            name: password
-            required: false
-            schema:
-              type: string
-        responses:
-          '200':
-            description: The event was returned.
-            content:
-              application/vnd.vimeo.live.event.recurring+json:
-                schema:
-                  $ref: '#/components/schemas/live-event-recurring'
-          '400':
-            description: >-
-              Error code 2204: A password is required for password-protected
-              events.
-            content:
-              application/vnd.vimeo.live.event.recurring+json:
-                schema:
-                  $ref: '#/components/schemas/error'
-          '401':
-            description: 'Error code 3200: The authenticated user can''t access the event.'
-            content:
-              application/vnd.vimeo.live.event.recurring+json:
-                schema:
-                  $ref: '#/components/schemas/error'
-          '404':
-            description: 'Error code 5000: No such event exists.'
-            content:
-              application/vnd.vimeo.live.event.recurring+json:
-                schema:
-                  $ref: '#/components/schemas/error'
-        security:
-          - oauth2:
-              - private
       patch:
         summary: Update a live event
         description: This method updates an event belonging to the authenticated user.
@@ -5064,6 +4978,92 @@ rawSpecString: |
         security:
           - oauth2:
               - edit
+              - private
+      delete:
+        summary: Delete a specific live event
+        description: This method deletes a single event belonging to the authenticated user.
+        operationId: delete_live_event_alt1
+        tags:
+          - Live\Essentials
+        parameters:
+          - description: The ID of the event.
+            in: path
+            name: live_event_id
+            required: true
+            schema:
+              type: number
+        responses:
+          '204':
+            description: The event was deleted.
+          '403':
+            description: >-
+              * Error code 3200: The authenticated user doesn't have the necessary
+              permissions to delete the event.
+
+              * Error code 3422: The authenticated user can't delete the event.
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/error'
+          '404':
+            description: 'Error code 5000: No such event or user exists.'
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/error'
+        security:
+          - oauth2:
+              - delete
+              - private
+      get:
+        summary: Get a specific live event
+        description: This method returns a single event belonging to the authenticated user.
+        operationId: get_live_event_alt1
+        tags:
+          - Live\Essentials
+        parameters:
+          - description: The ID of the event.
+            in: path
+            name: live_event_id
+            required: true
+            schema:
+              type: number
+              example: 12345
+          - description: The password of the event when the privacy is set to `password`.
+            in: query
+            name: password
+            required: false
+            schema:
+              type: string
+        responses:
+          '200':
+            description: The event was returned.
+            content:
+              application/vnd.vimeo.live.event.recurring+json:
+                schema:
+                  $ref: '#/components/schemas/live-event-recurring'
+          '400':
+            description: >-
+              Error code 2204: A password is required for password-protected
+              events.
+            content:
+              application/vnd.vimeo.live.event.recurring+json:
+                schema:
+                  $ref: '#/components/schemas/error'
+          '401':
+            description: 'Error code 3200: The authenticated user can''t access the event.'
+            content:
+              application/vnd.vimeo.live.event.recurring+json:
+                schema:
+                  $ref: '#/components/schemas/error'
+          '404':
+            description: 'Error code 5000: No such event exists.'
+            content:
+              application/vnd.vimeo.live.event.recurring+json:
+                schema:
+                  $ref: '#/components/schemas/error'
+        security:
+          - oauth2:
               - private
     /live_events/{live_event_id}/activate:
       post:
@@ -7146,7 +7146,8 @@ rawSpecString: |
             required: false
             schema:
               type: string
-              example: /folder/1233456,/video/7890123,/folder/123
+              example: >-
+                /users/12345/projects/1233456,/video/7890123,/users/13243/projects/123
           - description: >-
               A comma-separated list of country codes in ISO-3166 format to filter
               on.
@@ -8858,7 +8859,7 @@ rawSpecString: |
                     type: object
                   folder_uri:
                     description: The URI of the event's folder.
-                    example: /users/67890/folder/12345
+                    example: /users/67890/projects/12345
                     type: string
                   interaction_tools_settings:
                     description: The settings for the interaction tools.
@@ -9062,92 +9063,6 @@ rawSpecString: |
           - oauth2:
               - create
     /me/live_events/{live_event_id}:
-      delete:
-        summary: Delete a specific live event
-        description: This method deletes a single event belonging to the authenticated user.
-        operationId: delete_live_event_alt2
-        tags:
-          - Live\Essentials
-        parameters:
-          - description: The ID of the event.
-            in: path
-            name: live_event_id
-            required: true
-            schema:
-              type: number
-        responses:
-          '204':
-            description: The event was deleted.
-          '403':
-            description: >-
-              * Error code 3200: The authenticated user doesn't have the necessary
-              permissions to delete the event.
-
-              * Error code 3422: The authenticated user can't delete the event.
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/error'
-          '404':
-            description: 'Error code 5000: No such event or user exists.'
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/error'
-        security:
-          - oauth2:
-              - delete
-              - private
-      get:
-        summary: Get a specific live event
-        description: This method returns a single event belonging to the authenticated user.
-        operationId: get_live_event_alt2
-        tags:
-          - Live\Essentials
-        parameters:
-          - description: The ID of the event.
-            in: path
-            name: live_event_id
-            required: true
-            schema:
-              type: number
-              example: 12345
-          - description: The password of the event when the privacy is set to `password`.
-            in: query
-            name: password
-            required: false
-            schema:
-              type: string
-        responses:
-          '200':
-            description: The event was returned.
-            content:
-              application/vnd.vimeo.live.event.recurring+json:
-                schema:
-                  $ref: '#/components/schemas/live-event-recurring'
-          '400':
-            description: >-
-              Error code 2204: A password is required for password-protected
-              events.
-            content:
-              application/vnd.vimeo.live.event.recurring+json:
-                schema:
-                  $ref: '#/components/schemas/error'
-          '401':
-            description: 'Error code 3200: The authenticated user can''t access the event.'
-            content:
-              application/vnd.vimeo.live.event.recurring+json:
-                schema:
-                  $ref: '#/components/schemas/error'
-          '404':
-            description: 'Error code 5000: No such event exists.'
-            content:
-              application/vnd.vimeo.live.event.recurring+json:
-                schema:
-                  $ref: '#/components/schemas/error'
-        security:
-          - oauth2:
-              - private
       patch:
         summary: Update a live event
         description: This method updates an event belonging to the authenticated user.
@@ -9495,6 +9410,92 @@ rawSpecString: |
         security:
           - oauth2:
               - edit
+              - private
+      delete:
+        summary: Delete a specific live event
+        description: This method deletes a single event belonging to the authenticated user.
+        operationId: delete_live_event_alt2
+        tags:
+          - Live\Essentials
+        parameters:
+          - description: The ID of the event.
+            in: path
+            name: live_event_id
+            required: true
+            schema:
+              type: number
+        responses:
+          '204':
+            description: The event was deleted.
+          '403':
+            description: >-
+              * Error code 3200: The authenticated user doesn't have the necessary
+              permissions to delete the event.
+
+              * Error code 3422: The authenticated user can't delete the event.
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/error'
+          '404':
+            description: 'Error code 5000: No such event or user exists.'
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/error'
+        security:
+          - oauth2:
+              - delete
+              - private
+      get:
+        summary: Get a specific live event
+        description: This method returns a single event belonging to the authenticated user.
+        operationId: get_live_event_alt2
+        tags:
+          - Live\Essentials
+        parameters:
+          - description: The ID of the event.
+            in: path
+            name: live_event_id
+            required: true
+            schema:
+              type: number
+              example: 12345
+          - description: The password of the event when the privacy is set to `password`.
+            in: query
+            name: password
+            required: false
+            schema:
+              type: string
+        responses:
+          '200':
+            description: The event was returned.
+            content:
+              application/vnd.vimeo.live.event.recurring+json:
+                schema:
+                  $ref: '#/components/schemas/live-event-recurring'
+          '400':
+            description: >-
+              Error code 2204: A password is required for password-protected
+              events.
+            content:
+              application/vnd.vimeo.live.event.recurring+json:
+                schema:
+                  $ref: '#/components/schemas/error'
+          '401':
+            description: 'Error code 3200: The authenticated user can''t access the event.'
+            content:
+              application/vnd.vimeo.live.event.recurring+json:
+                schema:
+                  $ref: '#/components/schemas/error'
+          '404':
+            description: 'Error code 5000: No such event exists.'
+            content:
+              application/vnd.vimeo.live.event.recurring+json:
+                schema:
+                  $ref: '#/components/schemas/error'
+        security:
+          - oauth2:
               - private
     /me/live_events/{live_event_id}/activate:
       post:
@@ -11460,6 +11461,32 @@ rawSpecString: |
                 schema:
                   $ref: '#/components/schemas/error'
     /me/payment_methods/{payment_method_id}:
+      delete:
+        summary: Delete a payments service payment method
+        description: This method deletes the specified Vimeo payments service payment method.
+        operationId: delete_payment_method
+        tags:
+          - Payments\Essentials
+        parameters:
+          - description: The ID of the payment method.
+            in: path
+            name: payment_method_id
+            required: true
+            schema:
+              type: string
+              example: abc12345
+        responses:
+          '204':
+            description: The payments service payment method was deleted.
+          '400':
+            description: 'Error code 2204: No such payment method exists.'
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/error'
+        security:
+          - oauth2:
+              - public
       get:
         summary: Get information about a payments service payment method
         description: >-
@@ -20049,7 +20076,8 @@ rawSpecString: |
             required: false
             schema:
               type: string
-              example: /folder/1233456,/video/7890123,/folder/123
+              example: >-
+                /users/12345/projects/1233456,/video/7890123,/users/13243/projects/123
           - description: >-
               A comma-separated list of country codes in ISO-3166 format to filter
               on.
@@ -21991,7 +22019,7 @@ rawSpecString: |
                     type: object
                   folder_uri:
                     description: The URI of the event's folder.
-                    example: /users/67890/folder/12345
+                    example: /users/67890/projects/12345
                     type: string
                   interaction_tools_settings:
                     description: The settings for the interaction tools.
@@ -22195,105 +22223,6 @@ rawSpecString: |
           - oauth2:
               - create
     /users/{user_id}/live_events/{live_event_id}:
-      delete:
-        summary: Delete a specific live event
-        description: This method deletes a single event belonging to the authenticated user.
-        operationId: delete_live_event
-        tags:
-          - Live\Essentials
-        parameters:
-          - description: The ID of the event.
-            in: path
-            name: live_event_id
-            required: true
-            schema:
-              type: number
-          - description: The ID of the user.
-            in: path
-            name: user_id
-            required: true
-            schema:
-              type: number
-        responses:
-          '204':
-            description: The event was deleted.
-          '403':
-            description: >-
-              * Error code 3200: The authenticated user doesn't have the necessary
-              permissions to delete the event.
-
-              * Error code 3422: The authenticated user can't delete the event.
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/error'
-          '404':
-            description: 'Error code 5000: No such event or user exists.'
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/error'
-        security:
-          - oauth2:
-              - delete
-              - private
-      get:
-        summary: Get a specific live event
-        description: This method returns a single event belonging to the authenticated user.
-        operationId: get_live_event
-        tags:
-          - Live\Essentials
-        parameters:
-          - description: The ID of the event.
-            in: path
-            name: live_event_id
-            required: true
-            schema:
-              type: number
-              example: 12345
-          - description: The ID of the user.
-            in: path
-            name: user_id
-            required: true
-            schema:
-              type: number
-              example: 152184
-          - description: The password of the event when the privacy is set to `password`.
-            in: query
-            name: password
-            required: false
-            schema:
-              type: string
-        responses:
-          '200':
-            description: The event was returned.
-            content:
-              application/vnd.vimeo.live.event.recurring+json:
-                schema:
-                  $ref: '#/components/schemas/live-event-recurring'
-          '400':
-            description: >-
-              Error code 2204: A password is required for password-protected
-              events.
-            content:
-              application/vnd.vimeo.live.event.recurring+json:
-                schema:
-                  $ref: '#/components/schemas/error'
-          '401':
-            description: 'Error code 3200: The authenticated user can''t access the event.'
-            content:
-              application/vnd.vimeo.live.event.recurring+json:
-                schema:
-                  $ref: '#/components/schemas/error'
-          '404':
-            description: 'Error code 5000: No such event exists.'
-            content:
-              application/vnd.vimeo.live.event.recurring+json:
-                schema:
-                  $ref: '#/components/schemas/error'
-        security:
-          - oauth2:
-              - private
       patch:
         summary: Update a live event
         description: This method updates an event belonging to the authenticated user.
@@ -22648,6 +22577,105 @@ rawSpecString: |
         security:
           - oauth2:
               - edit
+              - private
+      delete:
+        summary: Delete a specific live event
+        description: This method deletes a single event belonging to the authenticated user.
+        operationId: delete_live_event
+        tags:
+          - Live\Essentials
+        parameters:
+          - description: The ID of the event.
+            in: path
+            name: live_event_id
+            required: true
+            schema:
+              type: number
+          - description: The ID of the user.
+            in: path
+            name: user_id
+            required: true
+            schema:
+              type: number
+        responses:
+          '204':
+            description: The event was deleted.
+          '403':
+            description: >-
+              * Error code 3200: The authenticated user doesn't have the necessary
+              permissions to delete the event.
+
+              * Error code 3422: The authenticated user can't delete the event.
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/error'
+          '404':
+            description: 'Error code 5000: No such event or user exists.'
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/error'
+        security:
+          - oauth2:
+              - delete
+              - private
+      get:
+        summary: Get a specific live event
+        description: This method returns a single event belonging to the authenticated user.
+        operationId: get_live_event
+        tags:
+          - Live\Essentials
+        parameters:
+          - description: The ID of the event.
+            in: path
+            name: live_event_id
+            required: true
+            schema:
+              type: number
+              example: 12345
+          - description: The ID of the user.
+            in: path
+            name: user_id
+            required: true
+            schema:
+              type: number
+              example: 152184
+          - description: The password of the event when the privacy is set to `password`.
+            in: query
+            name: password
+            required: false
+            schema:
+              type: string
+        responses:
+          '200':
+            description: The event was returned.
+            content:
+              application/vnd.vimeo.live.event.recurring+json:
+                schema:
+                  $ref: '#/components/schemas/live-event-recurring'
+          '400':
+            description: >-
+              Error code 2204: A password is required for password-protected
+              events.
+            content:
+              application/vnd.vimeo.live.event.recurring+json:
+                schema:
+                  $ref: '#/components/schemas/error'
+          '401':
+            description: 'Error code 3200: The authenticated user can''t access the event.'
+            content:
+              application/vnd.vimeo.live.event.recurring+json:
+                schema:
+                  $ref: '#/components/schemas/error'
+          '404':
+            description: 'Error code 5000: No such event exists.'
+            content:
+              application/vnd.vimeo.live.event.recurring+json:
+                schema:
+                  $ref: '#/components/schemas/error'
+        security:
+          - oauth2:
               - private
     /users/{user_id}/live_events/{live_event_id}/activate:
       post:
@@ -34213,12 +34241,84 @@ rawSpecString: |
                       - options
                       - uri
                     type: object
+                  delete:
+                    description: Information about where and how to delete a showcase.
+                    nullable: true
+                    properties:
+                      options:
+                        description: An array of HTTP methods permitted on this URI.
+                        items:
+                          type: string
+                        type: array
+                      uri:
+                        description: The API URI that resolves to the connection data.
+                        type: string
+                    required:
+                      - options
+                      - uri
+                    type: object
+                  edit:
+                    description: Information about where and how to edit a showcase.
+                    nullable: true
+                    properties:
+                      options:
+                        description: An array of HTTP methods permitted on this URI.
+                        items:
+                          type: string
+                        type: array
+                      uri:
+                        description: The API URI that resolves to the connection data.
+                        type: string
+                    required:
+                      - options
+                      - uri
+                    type: object
+                  invite:
+                    description: >-
+                      Information about where and how to invite a team member to a
+                      showcase.
+                    nullable: true
+                    properties:
+                      options:
+                        description: An array of HTTP methods permitted on this URI.
+                        items:
+                          type: string
+                        type: array
+                      uri:
+                        description: The API URI that resolves to the connection data.
+                        type: string
+                    required:
+                      - options
+                      - uri
+                    type: object
+                  view_privacy:
+                    description: >-
+                      Information about whether a user has permissions to view the
+                      privacy of the showcase.
+                    nullable: true
+                    properties:
+                      options:
+                        description: An array of HTTP methods permitted on this URI.
+                        items:
+                          type: string
+                        type: array
+                      uri:
+                        description: The API URI that resolves to the connection data.
+                        type: string
+                    required:
+                      - options
+                      - uri
+                    type: object
                 required:
                   - add_custom_thumbnails
                   - add_live_events
                   - add_logos
                   - add_to
                   - add_videos
+                  - delete
+                  - edit
+                  - invite
+                  - view_privacy
                 type: object
             required:
               - connections
@@ -35576,485 +35676,6 @@ rawSpecString: |
           - role
           - uri
         type: object
-      disabled-video-properties:
-        title: Disabled Video Properties
-        properties:
-          add_to_collection:
-            description: >-
-              An object that represents the reason why adding to a collection is
-              disabled for the video.
-            properties:
-              enable_link:
-                description: The relative link to upgrade to access adding to a collection.
-                example: /store/pro
-                type: string
-              min_tier_for_capability:
-                description: |
-                  The capability required to activate adding to a collection.
-
-                  Option descriptions:
-                   * `basic` - The user must have at least a Vimeo Basic account.
-                   * `business` - The user must have at least a Vimeo Business account.
-                   * `enterprise` - The user must have at least a Vimeo Enterprise account.
-                   * `live_business` - The user must have at least a Vimeo Business Live account.
-                   * `live_premium` - The user must have at least a Vimeo Premium account.
-                   * `live_pro` - The user must have at least a Vimeo Pro Live account.
-                   * `plus` - The user must have at least a Vimeo Plus account.
-                   * `pro` - The user must have at least a Vimeo Pro account.
-                   * `pro_unlimited` - The user must have at least a Vimeo Pro Unlimited account.
-                   * `producer` - The user must have at least a Vimeo Producer account.
-                enum:
-                  - basic
-                  - business
-                  - enterprise
-                  - live_business
-                  - live_premium
-                  - live_pro
-                  - plus
-                  - pro
-                  - pro_unlimited
-                  - producer
-                example: pro
-                type: string
-              reasons:
-                description: >-
-                  The reasons why adding to a collection is disabled for the
-                  video.
-                items:
-                  type: object
-                  properties:
-                    icon:
-                      description: >
-                        The icon that represents the reason why adding to a
-                        collection is disabled.
-
-
-                        Option descriptions:
-                         * `clock` - The reason is represented by a clock icon.
-                         * `create` - The reason is represented by a create icon.
-                         * `image` - The reason is represented by an image icon.
-                         * `theme` - The reason is represented by a theme icon.
-                      enum:
-                        - clock
-                        - create
-                        - image
-                        - theme
-                      example: clock
-                      type: string
-                    message:
-                      description: >-
-                        A user-deliverable message of why adding to a collection
-                        is disabled.
-                      example: Pro template
-                      type: string
-                  required:
-                    - icon
-                    - message
-                type: array
-            required:
-              - enable_link
-              - min_tier_for_capability
-              - reasons
-            type: object
-          download:
-            description: >-
-              An object that represents the reason why download is disabled for
-              the video.
-            properties:
-              enable_link:
-                description: The relative link to upgrade downloads.
-                example: /store/pro
-                type: string
-              key_path:
-                description: The path to the download object in the video response.
-                type: string
-              min_tier_for_capability:
-                description: |
-                  The capability required to activate downloads.
-
-                  Option descriptions:
-                   * `basic` - The user must have at least a Vimeo Basic account.
-                   * `business` - The user must have at least a Vimeo Business account.
-                   * `enterprise` - The user must have at least a Vimeo Enterprise account.
-                   * `live_business` - The user must have at least a Vimeo Business Live account.
-                   * `live_premium` - The user must have at least a Vimeo Premium account.
-                   * `live_pro` - The user must have at least a Vimeo Pro Live account.
-                   * `plus` - The user must have at least a Vimeo Plus account.
-                   * `pro` - The user must have at least a Vimeo Pro account.
-                   * `pro_unlimited` - The user must have at least a Vimeo Pro Unlimited account.
-                   * `producer` - The user must have at least a Vimeo Producer account.
-                enum:
-                  - basic
-                  - business
-                  - enterprise
-                  - live_business
-                  - live_premium
-                  - live_pro
-                  - plus
-                  - pro
-                  - pro_unlimited
-                  - producer
-                example: pro
-                type: string
-              reasons:
-                description: The reasons why download is disabled for the video.
-                items:
-                  type: object
-                  properties:
-                    icon:
-                      description: >
-                        The icon that represents the reason why download is
-                        disabled.
-
-
-                        Option descriptions:
-                         * `clock` - The reason is represented by a clock icon.
-                         * `create` - The reason is represented by a create icon.
-                         * `image` - The reason is represented by an image icon.
-                         * `theme` - The reason is represented by a theme icon.
-                      enum:
-                        - clock
-                        - create
-                        - image
-                        - theme
-                      example: clock
-                      type: string
-                    message:
-                      description: >-
-                        A user-deliverable message of why the download is
-                        disabled.
-                      example: Pro template
-                      type: string
-                  required:
-                    - icon
-                    - message
-                type: array
-            required:
-              - enable_link
-              - key_path
-              - min_tier_for_capability
-              - reasons
-            type: object
-          duplicate:
-            description: >-
-              An object that represents the reason why duplication is disabled for
-              the video.
-            properties:
-              enable_link:
-                description: The relative link to upgrade to duplication.
-                example: /store/pro
-                type: string
-              key_path:
-                description: The path to the duplicate object in the video response.
-                type: string
-              min_tier_for_capability:
-                description: |
-                  The capability required to activate duplication.
-
-                  Option descriptions:
-                   * `basic` - The user must have at least a Vimeo Basic account.
-                   * `business` - The user must have at least a Vimeo Business account.
-                   * `enterprise` - The user must have at least a Vimeo Enterprise account.
-                   * `live_business` - The user must have at least a Vimeo Business Live account.
-                   * `live_premium` - The user must have at least a Vimeo Premium account.
-                   * `live_pro` - The user must have at least a Vimeo Pro Live account.
-                   * `plus` - The user must have at least a Vimeo Plus account.
-                   * `pro` - The user must have at least a Vimeo Pro account.
-                   * `pro_unlimited` - The user must have at least a Vimeo Pro Unlimited account.
-                   * `producer` - The user must have at least a Vimeo Producer account.
-                enum:
-                  - basic
-                  - business
-                  - enterprise
-                  - live_business
-                  - live_premium
-                  - live_pro
-                  - plus
-                  - pro
-                  - pro_unlimited
-                  - producer
-                example: pro
-                type: string
-              reasons:
-                description: The reasons why duplication is disabled for the video.
-                items:
-                  type: object
-                  properties:
-                    icon:
-                      description: >
-                        The icon that represents the reason why duplication is
-                        disabled.
-
-
-                        Option descriptions:
-                         * `clock` - The reason is represented by a clock icon.
-                         * `create` - The reason is represented by a create icon.
-                         * `image` - The reason is represented by an image icon.
-                         * `theme` - The reason is represented by a theme icon.
-                      enum:
-                        - clock
-                        - create
-                        - image
-                        - theme
-                      example: clock
-                      type: string
-                    message:
-                      description: A user-deliverable message of why duplication is disabled.
-                      example: Pro template
-                      type: string
-                  required:
-                    - icon
-                    - message
-                type: array
-            required:
-              - enable_link
-              - key_path
-              - min_tier_for_capability
-              - reasons
-            type: object
-          edit_privacy:
-            description: >-
-              An object that represents the reason why privacy editing is disabled
-              for the video.
-            properties:
-              enable_link:
-                description: The relative link to upgrade to privacy editing.
-                example: /store/pro
-                type: string
-              key_path:
-                description: >-
-                  The path to the edit privacy interaction object in the video
-                  response.
-                type: string
-              min_tier_for_capability:
-                description: |
-                  The capability required to activate privacy editing.
-
-                  Option descriptions:
-                   * `basic` - The user must have at least a Vimeo Basic account.
-                   * `business` - The user must have at least a Vimeo Business account.
-                   * `enterprise` - The user must have at least a Vimeo Enterprise account.
-                   * `live_business` - The user must have at least a Vimeo Business Live account.
-                   * `live_premium` - The user must have at least a Vimeo Premium account.
-                   * `live_pro` - The user must have at least a Vimeo Pro Live account.
-                   * `plus` - The user must have at least a Vimeo Plus account.
-                   * `pro` - The user must have at least a Vimeo Pro account.
-                   * `pro_unlimited` - The user must have at least a Vimeo Pro Unlimited account.
-                   * `producer` - The user must have at least a Vimeo Producer account.
-                enum:
-                  - basic
-                  - business
-                  - enterprise
-                  - live_business
-                  - live_premium
-                  - live_pro
-                  - plus
-                  - pro
-                  - pro_unlimited
-                  - producer
-                example: pro
-                type: string
-              reasons:
-                description: The reasons why privacy editing is disabled for the video.
-                items:
-                  type: object
-                  properties:
-                    icon:
-                      description: >
-                        The icon that represents the reason why privacy editing is
-                        disabled.
-
-
-                        Option descriptions:
-                         * `clock` - The reason is represented by a clock icon.
-                         * `create` - The reason is represented by a create icon.
-                         * `image` - The reason is represented by an image icon.
-                         * `theme` - The reason is represented by a theme icon.
-                      enum:
-                        - clock
-                        - create
-                        - image
-                        - theme
-                      example: clock
-                      type: string
-                    message:
-                      description: >-
-                        A user-deliverable message of why the privacy editing is
-                        disabled.
-                      example: Pro template
-                      type: string
-                  required:
-                    - icon
-                    - message
-                type: array
-            required:
-              - enable_link
-              - key_path
-              - min_tier_for_capability
-              - reasons
-            type: object
-          embed:
-            description: >-
-              An object that represents the reason why embed is disabled for the
-              video.
-            properties:
-              enable_link:
-                description: The relative link to upgrade embeds.
-                example: /store/pro
-                type: string
-              key_path:
-                description: The path to the embed object in the video response.
-                type: string
-              min_tier_for_capability:
-                description: |
-                  The capability required to activate embeds.
-
-                  Option descriptions:
-                   * `basic` - The user must have at least a Vimeo Basic account.
-                   * `business` - The user must have at least a Vimeo Business account.
-                   * `enterprise` - The user must have at least a Vimeo Enterprise account.
-                   * `live_business` - The user must have at least a Vimeo Business Live account.
-                   * `live_premium` - The user must have at least a Vimeo Premium account.
-                   * `live_pro` - The user must have at least a Vimeo Pro Live account.
-                   * `plus` - The user must have at least a Vimeo Plus account.
-                   * `pro` - The user must have at least a Vimeo Pro account.
-                   * `pro_unlimited` - The user must have at least a Vimeo Pro Unlimited account.
-                   * `producer` - The user must have at least a Vimeo Producer account.
-                enum:
-                  - basic
-                  - business
-                  - enterprise
-                  - live_business
-                  - live_premium
-                  - live_pro
-                  - plus
-                  - pro
-                  - pro_unlimited
-                  - producer
-                example: pro
-                type: string
-              reasons:
-                description: The reasons why embed is disabled for the video.
-                items:
-                  type: object
-                  properties:
-                    icon:
-                      description: |
-                        The icon that represents the reason why embed is disabled.
-
-                        Option descriptions:
-                         * `clock` - The reason is represented by a clock icon.
-                         * `create` - The reason is represented by a create icon.
-                         * `image` - The reason is represented by an image icon.
-                         * `theme` - The reason is represented by a theme icon.
-                      enum:
-                        - clock
-                        - create
-                        - image
-                        - theme
-                      example: clock
-                      type: string
-                    message:
-                      description: A user-deliverable message of why embed is disabled.
-                      example: Pro template
-                      type: string
-                  required:
-                    - icon
-                    - message
-                type: array
-            required:
-              - enable_link
-              - key_path
-              - min_tier_for_capability
-              - reasons
-            type: object
-          embed_presets:
-            description: >-
-              An object that represents the reason why embed presets are disabled
-              for the video.
-            properties:
-              enable_link:
-                description: The relative link to upgrade embed presets.
-                example: /store/pro
-                type: string
-              key_path:
-                description: The path to the embed presets object in the video response.
-                type: string
-              min_tier_for_capability:
-                description: |
-                  The capability required to activate embed presets.
-
-                  Option descriptions:
-                   * `basic` - The user must have at least a Vimeo Basic account.
-                   * `business` - The user must have at least a Vimeo Business account.
-                   * `enterprise` - The user must have at least a Vimeo Enterprise account.
-                   * `live_business` - The user must have at least a Vimeo Business Live account.
-                   * `live_premium` - The user must have at least a Vimeo Premium account.
-                   * `live_pro` - The user must have at least a Vimeo Pro Live account.
-                   * `plus` - The user must have at least a Vimeo Plus account.
-                   * `pro` - The user must have at least a Vimeo Pro account.
-                   * `pro_unlimited` - The user must have at least a Vimeo Pro Unlimited account.
-                   * `producer` - The user must have at least a Vimeo Producer account.
-                enum:
-                  - basic
-                  - business
-                  - enterprise
-                  - live_business
-                  - live_premium
-                  - live_pro
-                  - plus
-                  - pro
-                  - pro_unlimited
-                  - producer
-                example: pro
-                type: string
-              reasons:
-                description: The reasons why embed presets are disabled for the video.
-                items:
-                  type: object
-                  properties:
-                    icon:
-                      description: >
-                        The icon that represents the reason why embed presets are
-                        disabled.
-
-
-                        Option descriptions:
-                         * `clock` - The reason is represented by a clock icon.
-                         * `create` - The reason is represented by a create icon.
-                         * `image` - The reason is represented by an image icon.
-                         * `theme` - The reason is represented by a theme icon.
-                      enum:
-                        - clock
-                        - create
-                        - image
-                        - theme
-                      example: clock
-                      type: string
-                    message:
-                      description: >-
-                        A user-deliverable message of why embed presets are
-                        disabled.
-                      example: Pro template
-                      type: string
-                  required:
-                    - icon
-                    - message
-                type: array
-            required:
-              - enable_link
-              - key_path
-              - min_tier_for_capability
-              - reasons
-            type: object
-        required:
-          - add_to_collection
-          - download
-          - duplicate
-          - edit_privacy
-          - embed
-          - embed_presets
-        type: object
       domain:
         title: Domain
         properties:
@@ -36482,6 +36103,10 @@ rawSpecString: |
         properties:
           airplay:
             description: Whether AirPlay is enabled in the embeddable player.
+            example: true
+            type: boolean
+          ask_ai:
+            description: Whether Ask AI is enabled in the embeddable player.
             example: true
             type: boolean
           audio_tracks:
@@ -36927,6 +36552,7 @@ rawSpecString: |
             type: boolean
         required:
           - airplay
+          - ask_ai
           - audio_tracks
           - autopip
           - badges
@@ -38254,6 +37880,29 @@ rawSpecString: |
               type: string
             nullable: true
             type: array
+          whitelisted_domains:
+            description: The domains on a video's whitelist.
+            items:
+              type: object
+              properties:
+                allow_hd:
+                  description: Whether to permit HD embeds on this domain.
+                  example: true
+                  type: boolean
+                domain:
+                  description: The domain name.
+                  example: example.com
+                  type: string
+                uri:
+                  description: The URI of the domain.
+                  example: /videos/258684937/privacy/domains/example.com
+                  type: string
+              required:
+                - allow_hd
+                - domain
+                - uri
+            nullable: true
+            type: array
         required:
           - album
           - allow_share_link
@@ -38306,6 +37955,7 @@ rawSpecString: |
           - user
           - view_link
           - webinar
+          - whitelisted_domains
         type: object
       live-event-automated-closed-captions:
         title: Live Event Automated Closed Captions
@@ -39418,6 +39068,29 @@ rawSpecString: |
               type: string
             nullable: true
             type: array
+          whitelisted_domains:
+            description: The domains on a video's whitelist.
+            items:
+              type: object
+              properties:
+                allow_hd:
+                  description: Whether to permit HD embeds on this domain.
+                  example: true
+                  type: boolean
+                domain:
+                  description: The domain name.
+                  example: example.com
+                  type: string
+                uri:
+                  description: The URI of the domain.
+                  example: /videos/258684937/privacy/domains/example.com
+                  type: string
+              required:
+                - allow_hd
+                - domain
+                - uri
+            nullable: true
+            type: array
         required:
           - album
           - allow_share_link
@@ -39470,6 +39143,7 @@ rawSpecString: |
           - user
           - view_link
           - webinar
+          - whitelisted_domains
         type: object
       live-event-schedule:
         title: Live Event Schedule
@@ -39796,6 +39470,33 @@ rawSpecString: |
           - state
           - state_iso_code
           - sub_locality
+        type: object
+      money:
+        title: Money
+        properties:
+          amount:
+            description: The amount expressed as a numeral without currency formatting.
+            example: 12
+            type: number
+          currency:
+            description: The currency in which the amount is expressed.
+            example: USD
+            type: string
+          formatted:
+            description: The amount expressed as a numeral with currency formatting.
+            example: $12
+            type: string
+          unit:
+            description: >-
+              The amount expressed as a numeral in the lowest denomination. For
+              example, 12 USD is expressed as 1200.
+            example: 1200
+            type: number
+        required:
+          - amount
+          - currency
+          - formatted
+          - unit
         type: object
       on-demand-genre:
         title: On Demand Genre
@@ -41474,6 +41175,10 @@ rawSpecString: |
                 description: Whether AirPlay is enabled in the embeddable player.
                 example: true
                 type: boolean
+              ask_ai:
+                description: Whether Ask AI is enabled in the embeddable player.
+                example: true
+                type: boolean
               audio_tracks:
                 description: >-
                   Whether multiple audio tracks can appear in the embeddable
@@ -41743,6 +41448,7 @@ rawSpecString: |
                 type: boolean
             required:
               - airplay
+              - ask_ai
               - audio_tracks
               - buttons
               - byline
@@ -42703,31 +42409,10 @@ rawSpecString: |
               type: object
               properties:
                 amount:
+                  allOf:
+                    - $ref: '#/components/schemas/money'
                   description: The amount of the plan.
                   example: '1.00'
-                  properties:
-                    amount:
-                      description: The amount in actual currency.
-                      example: 12
-                      type: number
-                    currency:
-                      description: The currency of the amount.
-                      example: USD
-                      type: string
-                    formatted:
-                      description: The formatted amount.
-                      example: '12.00'
-                      type: string
-                    unit:
-                      description: >-
-                        The money amount in the lowest denomination. For instance,
-                        for USD, the lowest denomination is cents, so $12 is
-                        represented as 1200.
-                      example: 1200
-                      type: number
-                  required:
-                    - unit
-                  type: object
                 billing_plan_id:
                   description: The ID of the billing plan.
                   example: abc12345
@@ -42884,7 +42569,6 @@ rawSpecString: |
                   example: '2020-01-01T00:00:00Z'
                   type: string
               required:
-                - amount
                 - created_at
                 - id
                 - items
@@ -43958,9 +43642,8 @@ rawSpecString: |
             example: false
             type: boolean
           bio:
-            description: The authenticated user's long bio text.
+            description: The authenticated user's long biography text.
             example: This is where you will find videos and news updates from the staff.
-            nullable: true
             type: string
           can_work_remotely:
             description: Whether the authenticated user can work remotely.
@@ -44002,7 +43685,6 @@ rawSpecString: |
           gender:
             description: The authenticated user's gender.
             example: m
-            nullable: true
             type: string
           has_invalid_email:
             description: Whether the user's email is invalid.
@@ -44020,13 +43702,11 @@ rawSpecString: |
           location:
             description: The authenticated user's location.
             example: New York City
-            nullable: true
             type: string
           location_details:
             allOf:
               - $ref: '#/components/schemas/location'
             description: The authenticated user's location details.
-            nullable: true
           metadata:
             description: The authenticated user's metadata.
             properties:
@@ -44106,10 +43786,6 @@ rawSpecString: |
                           data requires a bearer token with the `private` scope.
                         example: /me/block
                         type: string
-                    required:
-                      - options
-                      - total
-                      - uri
                     type: object
                   categories:
                     description: >-
@@ -44173,10 +43849,6 @@ rawSpecString: |
                         description: The API URI that resolves to the connection data.
                         example: /me/connected_apps
                         type: string
-                    required:
-                      - options
-                      - total
-                      - uri
                     type: object
                   feed:
                     description: Information about the authenticated user's feed.
@@ -44210,10 +43882,6 @@ rawSpecString: |
                         description: The API URI that resolves to the connection data.
                         example: /users/152184/folders
                         type: string
-                    required:
-                      - options
-                      - total
-                      - uri
                     type: object
                   folders_root:
                     description: >-
@@ -44414,10 +44082,6 @@ rawSpecString: |
                           data requires a bearer token with the `private` scope.
                         example: /me/recommendations/channels
                         type: string
-                    required:
-                      - options
-                      - total
-                      - uri
                     type: object
                   recommended_users:
                     description: >-
@@ -44445,10 +44109,6 @@ rawSpecString: |
                           data requires a bearer token with the `private` scope.
                         example: /me/recommendations/users
                         type: string
-                    required:
-                      - options
-                      - total
-                      - uri
                     type: object
                   shared:
                     description: >-
@@ -44514,10 +44174,6 @@ rawSpecString: |
                         description: The API URI that resolves to the connection data.
                         example: /me/watched/videos
                         type: string
-                    required:
-                      - options
-                      - total
-                      - uri
                     type: object
                   watchlater:
                     description: >-
@@ -44545,12 +44201,9 @@ rawSpecString: |
                 required:
                   - albums
                   - appearances
-                  - block
                   - categories
                   - channels
-                  - connected_apps
                   - feed
-                  - folders
                   - folders_root
                   - followers
                   - following
@@ -44559,11 +44212,8 @@ rawSpecString: |
                   - moderated_channels
                   - pictures
                   - portfolios
-                  - recommended_channels
-                  - recommended_users
                   - shared
                   - videos
-                  - watched_videos
                   - watchlater
                 type: object
               interactions:
@@ -44600,7 +44250,6 @@ rawSpecString: |
                           The time in ISO 8601 format when the block occurred, or
                           the null value if no block exists.
                         example: '2017-05-16T15:05:43+00:00'
-                        nullable: true
                         type: string
                       options:
                         description: An array of the HTTP methods permitted on this URI.
@@ -44613,7 +44262,6 @@ rawSpecString: |
                         type: string
                     required:
                       - added
-                      - added_time
                       - options
                       - uri
                     type: object
@@ -44645,12 +44293,6 @@ rawSpecString: |
                         description: The URI of the connected app.
                         example: /me/connected_apps/facebook
                         type: string
-                    required:
-                      - all_scopes
-                      - is_connected
-                      - needed_scopes
-                      - options
-                      - uri
                     type: object
                   follow:
                     description: >-
@@ -44672,10 +44314,6 @@ rawSpecString: |
                         description: The URI to follow the requested user.
                         example: /users/152184/following/3766357
                         type: string
-                    required:
-                      - added
-                      - options
-                      - uri
                     type: object
                   report:
                     description: >-
@@ -44703,8 +44341,6 @@ rawSpecString: |
                     type: object
                 required:
                   - block
-                  - connected_apps
-                  - follow
                   - report
                 type: object
               public_videos:
@@ -44843,15 +44479,13 @@ rawSpecString: |
             example: bac1033deba2310ebba2caec33c23e4beea67aba
             type: string
           short_bio:
-            description: The authenticated user's short bio text.
+            description: The authenticated user's short biography text.
             example: This is a short biography about me!
-            nullable: true
             type: string
           skills:
             description: A list of the authenticated user's skills.
             items:
               $ref: '#/components/schemas/skill'
-            nullable: true
             type: array
           upload_quota:
             description: >-
@@ -45051,7 +44685,6 @@ rawSpecString: |
                 description:
                   description: The website's description.
                   example: Follow us on Twitter!
-                  nullable: true
                   type: string
                 link:
                   description: The URL of the website.
@@ -45060,7 +44693,6 @@ rawSpecString: |
                 name:
                   description: The name of the website.
                   example: Twitter
-                  nullable: true
                   type: string
                 type:
                   description: The URL type of the website.
@@ -45073,33 +44705,24 @@ rawSpecString: |
                   example: /users/1234/links/1
                   type: string
               required:
-                - description
                 - link
-                - name
                 - type
                 - uri
             type: array
         required:
           - account
           - available_for_hire
-          - bio
           - can_work_remotely
           - capabilities
           - clients
           - created_time
-          - gender
-          - has_invalid_email
           - is_expert
           - link
-          - location
-          - location_details
           - metadata
           - name
           - pictures
           - preferences
           - resource_key
-          - short_bio
-          - skills
           - upload_quota
           - uri
           - websites
@@ -45246,10 +44869,6 @@ rawSpecString: |
             description: A JSON representation of the description.
             example: '{"ops":[{"insert": "Text"}]}'
             type: string
-          disabled_properties:
-            allOf:
-              - $ref: '#/components/schemas/disabled-video-properties'
-            description: Information about what features may be disabled on the video.
           download:
             description: >-
               The list of downloadable files for the video. This data requires a
@@ -45399,10 +45018,6 @@ rawSpecString: |
                           data requires a bearer token with the `private` scope.
                         example: /videos/258684937/videos/available_channels
                         type: string
-                    required:
-                      - options
-                      - total
-                      - uri
                     type: object
                   comments:
                     description: Information about the comments on the video.
@@ -45480,10 +45095,6 @@ rawSpecString: |
                         description: The API URI that resolves to the connection data.
                         example: /ondemand/pages/61326
                         type: string
-                    required:
-                      - options
-                      - resource_key
-                      - uri
                     type: object
                   pictures:
                     description: Information about the video's thumbnails.
@@ -45563,10 +45174,6 @@ rawSpecString: |
                         description: The API URI that resolves to the connection data.
                         example: /ondemand/pages/61326/season/12345
                         type: string
-                    required:
-                      - name
-                      - options
-                      - uri
                     type: object
                   team_permissions:
                     description: >-
@@ -45580,8 +45187,6 @@ rawSpecString: |
                         items:
                           type: string
                         type: array
-                    required:
-                      - options
                     type: object
                   texttracks:
                     description: Information about the video's text tracks.
@@ -45620,10 +45225,6 @@ rawSpecString: |
                         description: The API URI that resolves to the connection data.
                         example: /ondemand/pages/61326/videos/12345
                         type: string
-                    required:
-                      - options
-                      - resource_key
-                      - uri
                     type: object
                   users_with_access:
                     description: >-
@@ -45643,10 +45244,6 @@ rawSpecString: |
                         description: The API URI that resolves to the connection data.
                         example: /videos/258684937/privacy/users
                         type: string
-                    required:
-                      - options
-                      - total
-                      - uri
                     type: object
                   versions:
                     description: Information about the video's versions.
@@ -45685,30 +45282,17 @@ rawSpecString: |
                         description: The API URI that resolves to the connection data.
                         example: /videos/258684937/versions
                         type: string
-                    required:
-                      - has_interactive
-                      - options
-                      - origin_variable_frame_resolution
-                      - total
-                      - uri
                     type: object
                 required:
                   - ancestor_path
-                  - available_channels
                   - comments
                   - credits
                   - likes
-                  - ondemand
                   - pictures
                   - recommendations
                   - related
                   - resource_creator_team_user
-                  - season
-                  - team_permissions
                   - texttracks
-                  - trailer
-                  - users_with_access
-                  - versions
                 type: object
               has_chapter_suggestions:
                 description: Whether the video has chapter suggestions.
@@ -46853,6 +46437,8 @@ rawSpecString: |
 
               Option descriptions:
                * `available` - The video is available.
+               * `failed` - There was an error in rendering the video.
+               * `processing` - Rendering has started and is currently underway for the video.
                * `quota_exceeded` - The user's weekly upload quota is exceeded with this video.
                * `total_cap_exceeded` - The user's total storage limit is exceeded with this video.
                * `transcode_starting` - Transcoding is starting for the video.
@@ -46863,6 +46449,8 @@ rawSpecString: |
                * `uploading_error` - There was an error in uploading the video.
             enum:
               - available
+              - failed
+              - processing
               - quota_exceeded
               - total_cap_exceeded
               - transcode_starting
@@ -47073,7 +46661,6 @@ rawSpecString: |
           - has_audio
           - has_audio_tracks
           - has_chapters
-          - has_interactive
           - has_text_tracks
           - height
           - is_copyright_restricted
@@ -47084,7 +46671,6 @@ rawSpecString: |
           - metadata
           - modified_time
           - name
-          - origin_variable_frame_resolution
           - pictures
           - player_embed_url
           - privacy
@@ -47517,6 +47103,9 @@ rawSpecString: |
             description: The time in ISO 8601 format when the webinar was completed.
             example: '2016-11-03T09:24:56+00:00'
             type: string
+          converted_to_event:
+            description: Whether the webinar has been converted into an event.
+            type: boolean
           created_time:
             description: The time in ISO 8601 format when the webinar was created.
             example: '2016-11-03T09:24:56+00:00'
@@ -47849,6 +47438,7 @@ rawSpecString: |
             description: The owner of the webinar.
         required:
           - completed_on
+          - converted_to_event
           - created_time
           - description
           - edit
@@ -49016,6 +48606,29 @@ rawSpecString: |
               type: string
             nullable: true
             type: array
+          whitelisted_domains:
+            description: The domains on a video's whitelist.
+            items:
+              type: object
+              properties:
+                allow_hd:
+                  description: Whether to permit HD embeds on this domain.
+                  example: true
+                  type: boolean
+                domain:
+                  description: The domain name.
+                  example: example.com
+                  type: string
+                uri:
+                  description: The URI of the domain.
+                  example: /videos/258684937/privacy/domains/example.com
+                  type: string
+              required:
+                - allow_hd
+                - domain
+                - uri
+            nullable: true
+            type: array
         required:
           - album
           - allow_share_link
@@ -49068,6 +48681,7 @@ rawSpecString: |
           - user
           - view_link
           - webinar
+          - whitelisted_domains
         type: object
       webinar-registrant:
         title: Webinar Registrant
@@ -49183,4 +48797,4 @@ rawSpecString: |
         - stats
         - upload
         - video_files
-konfigCliVersion: 1.38.34
+konfigCliVersion: 1.38.37

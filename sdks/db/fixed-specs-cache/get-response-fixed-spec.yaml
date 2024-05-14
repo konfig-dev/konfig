@@ -536,7 +536,7 @@ rawSpecString: |
       name: API Support - DevZone
       url: https://app.getresponse.com/feedback.html?devzone=yes
       email: getresponse-devzone@cs.getresponse.com
-    version: 3.2024-03-04T09:53:07+0000
+    version: 3.2024-04-12T09:53:44+0000
     x-logo:
       url: https://us-ws.gr-cdn.com/images/global/getresponse.png
   servers:
@@ -25456,19 +25456,30 @@ rawSpecString: |
                   - custom
           value:
             description: >-
-              This field stores the date or time interval for the date operators
-              date_to, date_from, or custom
+              This field stores the date or time interval for the `date_to`,
+              `date_from`, or `custom` date operator
             type: string
             example: '2018-04-01'
             oneOf:
               - description: >-
-                  For the dateOperator date_to and date_from, it's the time
+                  For the `date_to` and `date_from` date operators, it's the time
                   compliant with ISO 8601
                 $ref: '#/components/schemas/SpecificDateType'
               - description: >-
-                  For the dateOperator=custom, it's the time interval compliant
+                  For the `custom` date operator, it's the time interval compliant
                   with ISO 8601
                 $ref: '#/components/schemas/IntervalDateType'
+          numberOfDays:
+            description: Number of days, required for the `last_n_days` date operator
+            type: integer
+            example: 20
+          includeCurrentPeriod:
+            description: >-
+              Flag determines if current day will be included into chosen range.
+              This flag is required for `last_n_days` date operator. Can be used
+              with `last_7_days` and `last_30_days` date operators
+            type: boolean
+            example: true
         type: object
         example:
           conditionType: ecommerce_product_purchased
@@ -25489,6 +25500,7 @@ rawSpecString: |
           - scope
           - value
           - currency
+          - date
         properties:
           operatorType:
             type: string
@@ -25524,6 +25536,42 @@ rawSpecString: |
             description: The currency code according to ISO 4217, i.e. USD, GBP, PLN
             type: string
             example: USD
+          date:
+            description: Limit search by date range
+            required:
+              - operator
+            properties:
+              operator:
+                description: Set a date range operator
+                type: string
+                enum:
+                  - anytime
+                  - today
+                  - yesterday
+                  - last_n_days
+                  - this_week
+                  - last_week
+                  - this_month
+                  - last_month
+                  - last_2_months
+                  - custom
+              numberOfDays:
+                description: Number of days, required for the `last_n_days` date operator
+                type: integer
+                example: 20
+              includeCurrentPeriod:
+                description: >-
+                  Flag determines if current day will be included into chosen
+                  range. This flag is required for `last_n_days` date operator
+                type: boolean
+                example: true
+              range:
+                description: >-
+                  Date interval string compliant with ISO 8601, supported format:
+                  <start_date>/<end_date>, allowed only for `custom` date operator
+                allOf:
+                  - $ref: '#/components/schemas/IntervalDateType'
+            type: object
         type: object
         example:
           conditionType: ecommerce_total_spent
@@ -25532,6 +25580,8 @@ rawSpecString: |
           operator: numeric_eq
           value: 7
           currency: USD
+          date:
+            operator: anytime
         allOf:
           - $ref: '#/components/schemas/ConditionType'
       ECommerceNumberOfPurchasesCondition:
@@ -25541,6 +25591,7 @@ rawSpecString: |
           - operator
           - scope
           - value
+          - date
         properties:
           operatorType:
             type: string
@@ -25572,6 +25623,42 @@ rawSpecString: |
             type: integer
             format: int32
             example: 7
+          date:
+            description: Limit search by date range
+            required:
+              - operator
+            properties:
+              operator:
+                description: Set a date range operator
+                type: string
+                enum:
+                  - anytime
+                  - today
+                  - yesterday
+                  - last_n_days
+                  - this_week
+                  - last_week
+                  - this_month
+                  - last_month
+                  - last_2_months
+                  - custom
+              numberOfDays:
+                description: Number of days, required for the `last_n_days` date operator
+                type: integer
+                example: 20
+              includeCurrentPeriod:
+                description: >-
+                  Flag determines if current day will be included into chosen
+                  range. This flag is required for `last_n_days` date operator
+                type: boolean
+                example: true
+              range:
+                description: >-
+                  Date interval string compliant with ISO 8601, supported format:
+                  <start_date>/<end_date>, allowed only for `custom` date operator
+                allOf:
+                  - $ref: '#/components/schemas/IntervalDateType'
+            type: object
         type: object
         example:
           conditionType: ecommerce_number_of_purchases
@@ -25579,6 +25666,8 @@ rawSpecString: |
           operatorType: numeric_operator
           operator: numeric_eq
           value: 7
+          date:
+            operator: anytime
         allOf:
           - $ref: '#/components/schemas/ConditionType'
       TagCondition:
@@ -25619,6 +25708,7 @@ rawSpecString: |
         description: Search contacts by abandoned cart.
         required:
           - shopScope
+          - cartValue
           - dateOperator
         properties:
           shopScope:
@@ -25631,6 +25721,32 @@ rawSpecString: |
                 example: all
               - description: The shop identifier
                 example: ZTo
+          cartValue:
+            description: Limit search by cart value
+            required:
+              - currency
+              - value
+              - operator
+            properties:
+              currency:
+                description: The currency code according to ISO 4217, i.e. USD, GBP, PLN
+                type: string
+                example: USD
+              value:
+                type: number
+                format: double
+                example: '7.00'
+              operator:
+                type: string
+                enum:
+                  - numeric_lt
+                  - numeric_gt
+                  - numeric_eq
+                  - numeric_not_eq
+                  - numeric_lt_eq
+                  - numeric_gt_eq
+                example: numeric_eq
+            type: object
           dateOperator:
             description: >-
               Set a date range. For the date_from and last_n_days, custom field
@@ -25645,7 +25761,10 @@ rawSpecString: |
               - yesterday
               - last_n_days
               - this_week
+              - last_week
               - this_month
+              - last_month
+              - custom
           value:
             description: >-
               This field is required only for `date_from` and `last_n_days` date
@@ -25665,12 +25784,22 @@ rawSpecString: |
               This flag can be used with `last_n_days`.
             type: boolean
             example: true
+          range:
+            description: >-
+              Date interval string compliant with ISO 8601, supported format:
+              <start_date>/<end_date>, allowed only for `custom` date operator
+            allOf:
+              - $ref: '#/components/schemas/IntervalDateType'
         type: object
         example:
           conditionType: ecommerce_abandoned_cart
           shopScope: ZTo
           dateOperator: date_from
           value: '2018-04-01'
+          cartValue:
+            currency: USD
+            value: 7
+            operator: numeric_eq
         allOf:
           - $ref: '#/components/schemas/ConditionType'
       SmsSentCondition:
@@ -26990,103 +27119,6 @@ rawSpecString: |
             type: array
             items:
               $ref: '#/components/schemas/FromFieldReference'
-        type: object
-      UpdateAccount:
-        type: object
-        allOf:
-          - $ref: '#/components/schemas/Account'
-      Account:
-        properties:
-          accountId:
-            description: Account ID
-            type: string
-            readOnly: true
-            example: VfEy1
-          email:
-            description: Email
-            type: string
-            format: email
-            readOnly: true
-            example: john.smith@test.com
-          countryCode:
-            readOnly: true
-            $ref: '#/components/schemas/AccountDetailsCountryCode'
-          industryTag:
-            readOnly: true
-            $ref: '#/components/schemas/IndustryTagId'
-          timeZone:
-            readOnly: true
-            allOf:
-              - $ref: '#/components/schemas/TimezoneName'
-              - $ref: '#/components/schemas/TimezoneOffset'
-          href:
-            description: Direct URL to resource
-            type: string
-            format: uri
-            readOnly: true
-            example: https://api.getresponse.com/v3/accounts
-          firstName:
-            description: First name
-            type: string
-            maxLength: 64
-            minLength: 2
-            example: John
-          lastName:
-            description: Last name
-            type: string
-            maxLength: 64
-            minLength: 2
-            example: Smith
-          companyName:
-            description: Company name
-            type: string
-            maxLength: 64
-            minLength: 2
-            example: MyBigCompany
-          phone:
-            description: Phone number
-            type: string
-            maxLength: 32
-            minLength: 2
-            example: '+00155555555'
-          state:
-            description: State
-            type: string
-            maxLength: 40
-            minLength: 2
-            example: Oklahoma
-          city:
-            description: City
-            type: string
-            example: Alderson
-          street:
-            description: Street
-            type: string
-            maxLength: 64
-            minLength: 2
-            example: Sunset blv.
-          zipCode:
-            description: ZIP Code
-            type: string
-            maxLength: 9
-            minLength: 2
-            example: 81-611
-          numberOfEmployees:
-            description: Numbers of employees
-            type: string
-            enum:
-              - '50'
-              - '250'
-              - '500'
-              - more
-            example: '500'
-          timeFormat:
-            description: Account time notation
-            type: string
-            enum:
-              - 12h
-              - 24h
-            example: 24h
         type: object
       AutoresponderTriggerSettings:
         required:
@@ -28689,6 +28721,10 @@ rawSpecString: |
             description: The number of link clicks from an SMS message
             type: integer
             example: 1
+          totalUniqueClicks:
+            description: The number of total unique link clicks from an SMS message
+            type: integer
+            example: 1
           totalUnsubscribes:
             description: The number of opt-outs from an SMS message
             type: integer
@@ -28720,6 +28756,10 @@ rawSpecString: |
                     example: https://getresponse.com
                   clicks:
                     description: The number of link clicks from an SMS message
+                    type: integer
+                    example: 1
+                  uniqueClicks:
+                    description: The number of unique link clicks from an SMS message
                     type: integer
                     example: 1
                 type: object
@@ -31001,6 +31041,105 @@ rawSpecString: |
             description: The number of email sends used within the given time frame
             type: integer
             example: 0
+        type: object
+      UpdateAccount:
+        type: object
+        allOf:
+          - $ref: '#/components/schemas/Account'
+      Account:
+        properties:
+          accountId:
+            description: Account ID
+            type: string
+            readOnly: true
+            example: VfEy1
+          email:
+            description: Email
+            type: string
+            format: email
+            readOnly: true
+            example: john.smith@test.com
+          countryCode:
+            readOnly: true
+            allOf:
+              - $ref: '#/components/schemas/AccountDetailsCountryCode'
+          industryTag:
+            readOnly: true
+            allOf:
+              - $ref: '#/components/schemas/IndustryTagId'
+          timeZone:
+            readOnly: true
+            allOf:
+              - $ref: '#/components/schemas/TimezoneName'
+              - $ref: '#/components/schemas/TimezoneOffset'
+          href:
+            description: Direct URL to resource
+            type: string
+            format: uri
+            readOnly: true
+            example: https://api.getresponse.com/v3/accounts
+          firstName:
+            description: First name
+            type: string
+            maxLength: 64
+            minLength: 2
+            example: John
+          lastName:
+            description: Last name
+            type: string
+            maxLength: 64
+            minLength: 2
+            example: Smith
+          companyName:
+            description: Company name
+            type: string
+            maxLength: 64
+            minLength: 2
+            example: MyBigCompany
+          phone:
+            description: Phone number
+            type: string
+            maxLength: 32
+            minLength: 2
+            example: '+00155555555'
+          state:
+            description: State
+            type: string
+            maxLength: 40
+            minLength: 2
+            example: Oklahoma
+          city:
+            description: City
+            type: string
+            example: Alderson
+          street:
+            description: Street
+            type: string
+            maxLength: 64
+            minLength: 2
+            example: Sunset blv.
+          zipCode:
+            description: ZIP Code
+            type: string
+            maxLength: 9
+            minLength: 2
+            example: 81-611
+          numberOfEmployees:
+            description: Numbers of employees
+            type: string
+            enum:
+              - '50'
+              - '250'
+              - '500'
+              - more
+            example: '500'
+          timeFormat:
+            description: Account time notation
+            type: string
+            enum:
+              - 12h
+              - 24h
+            example: 24h
         type: object
       IndustryTagId:
         properties:
@@ -34728,11 +34867,6 @@ rawSpecString: |
           application/json:
             schema:
               $ref: '#/components/schemas/UpdateCampaign'
-      UpdateAccount:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateAccount'
       NewAutoresponder:
         content:
           application/json:
@@ -34888,6 +35022,11 @@ rawSpecString: |
           application/json:
             schema:
               $ref: '#/components/schemas/UpdateAccountBadge'
+      UpdateAccount:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAccount'
       UpdateWorkflow:
         content:
           application/json:
@@ -35081,4 +35220,4 @@ rawSpecString: |
     - name: Forms and Popups
       tags:
         - Forms and Popups
-konfigCliVersion: 1.38.34
+konfigCliVersion: 1.38.37

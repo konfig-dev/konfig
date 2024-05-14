@@ -28,7 +28,7 @@ rawSpecString: |
       name: API Support
       email: apisupport@mastercard.com
       url: https://developer.mastercard.com/open-banking-us/documentation/support/
-    version: 1.16.0
+    version: 1.16.2
   servers:
     - url: https://api.finicity.com
       description: Production
@@ -87,8 +87,6 @@ rawSpecString: |
       description: Generate asset reports asynchronously
     - name: Verify Income and Employment
       description: Generate income and employment reports asynchronously
-    - name: Customer Authorization Details
-      description: APIs to retrieve customer authorization details
     - name: Businesses API
       description: >-
         Create and manage business associated with customers in order to use
@@ -328,7 +326,7 @@ rawSpecString: |
         description: >-
           Same as Connect Joint Borrower (`POST
           /connect/v2/generate/jointBorrower`) but send a Connect email  to at
-          least one of the joint borrower's email addresses.
+          least one of the joint borrower's email addresses. 
 
 
           When the consumer opens the email, MVS prompts both the primary and
@@ -387,7 +385,7 @@ rawSpecString: |
 
 
           Active customers must use the "FinBank Billable" profiles for testing
-          purposes.
+          purposes. 
 
 
           _Supported regions_: ![🇺🇸](https://flagcdn.com/20x15/us.png)
@@ -1639,7 +1637,7 @@ rawSpecString: |
 
           Used as a complimentary report to the VOA with Income and VOIE - Paystub
           (with TXVerify) reports and used to fulfill the pre-close VOE
-          requirements.
+          requirements. 
 
 
           Retrieve the latest credit transaction information from the borrower's
@@ -1674,7 +1672,7 @@ rawSpecString: |
         description: >-
           Generate Pay Statement Extraction Report for the given customer. This
           service accepts asset IDs of the stored pay statements to generate a Pay
-          Statement Extraction Report.
+          Statement Extraction Report. 
 
 
           This is a premium service. The billing rate is the variable rate for Pay
@@ -1907,8 +1905,8 @@ rawSpecString: |
           - Bank Statements
         summary: Get Customer Account Multiple Statements
         description: >-
-          This endpoint is retrieving the account statement for a given customer.
-          The maximum number of indexes it will fetch for a single login is 24.
+          This endpoint retrieves account statements for a given customer. The
+          maximum number of statements that can be returned is 24.
 
 
           _Supported regions_: ![🇺🇸](https://flagcdn.com/20x15/us.png)
@@ -2048,7 +2046,7 @@ rawSpecString: |
 
 
           This is a premium service. A billable event will be created upon the
-          successful generation of the Transactions Report.
+          successful generation of the Transactions Report. 
 
 
           Before calling this API, a consumer must be created for the given
@@ -3335,32 +3333,6 @@ rawSpecString: |
             $ref: '#/components/responses/UnauthorizedErrorResponse'
           '404':
             $ref: '#/components/responses/ResourceNotFoundErrorResponse'
-    /customers/institution-logins/{institution_login_id}/authorization-details:
-      get:
-        tags:
-          - Customer Authorization Details
-        summary: >-
-          Returns customer authorization details for the institution login
-          identification.
-        description: >-
-          The endpoint provides customer authorization details like authorization
-          start date, authorization end date against the requested institution
-          login id
-
-
-          _Supported regions_: ![🇺🇸](https://flagcdn.com/20x15/us.png)
-        parameters:
-          - $ref: '#/components/parameters/InstitutionLoginIdPathParam'
-        responses:
-          '200':
-            $ref: '#/components/responses/CustomerAuthorizationDetails'
-          '400':
-            $ref: '#/components/responses/BadRequestErrorResponse'
-          '401':
-            $ref: '#/components/responses/UnauthorizedErrorResponse'
-          '404':
-            $ref: '#/components/responses/ResourceNotFoundErrorResponse'
-        operationId: getCustomerAuthorizationDetails
     /business-services/customers/{customer_id}/businesses:
       post:
         tags:
@@ -3416,7 +3388,7 @@ rawSpecString: |
           _Supported regions_: ![🇺🇸](https://flagcdn.com/20x15/us.png)
         operationId: UpdateBusiness
         parameters:
-          - $ref: '#/components/parameters/CustomerIdPathParameter'
+          - $ref: '#/components/parameters/BusinessIdParameter'
         requestBody:
           $ref: '#/components/requestBodies/BusinessDetailRequest'
         responses:
@@ -3436,12 +3408,43 @@ rawSpecString: |
           ![\U0001F1FA\U0001F1F8](https://flagcdn.com/20x15/us.png)
         operationId: GetBusinessById
         parameters:
-          - $ref: '#/components/parameters/CustomerIdPathParameter'
+          - $ref: '#/components/parameters/BusinessIdParameter'
         responses:
           '200':
             $ref: '#/components/responses/BusinessFoundResponse'
           '404':
             $ref: '#/components/responses/BusinessNotFoundErrorResponse'
+    /aggregation/v3/customers/{customerId}/accounts/{accountId}/details:
+      get:
+        tags:
+          - Payments
+        summary: Get ACH Account Details
+        description: >-
+          Return the real account number and routing number details for an ACH
+          payment along with the supported payment instruction details.
+
+
+          Note: this is a premium service, billable per every successful API call.
+
+
+          _Supported account types_: "checking", "savings", "moneyMarket", "loan"
+
+
+          _Supported regions_: ![🇺🇸](https://flagcdn.com/20x15/us.png)
+        operationId: GetAccountPaymentInstructionDetails
+        parameters:
+          - $ref: '#/components/parameters/CustomerIdParameter'
+          - $ref: '#/components/parameters/AccountIdParameter'
+        responses:
+          '200':
+            $ref: '#/components/responses/GetAccountPaymentInstructionDetailsResponse'
+          '400':
+            $ref: >-
+              #/components/responses/GetAccountPaymentInstructionBadRequestErrorResponse
+          '401':
+            $ref: '#/components/responses/UnauthorizedErrorResponse'
+          '404':
+            $ref: '#/components/responses/ResourceNotFoundErrorResponse'
   components:
     securitySchemes:
       FinicityAppKey:
@@ -4228,7 +4231,7 @@ rawSpecString: |
               CashflowBusinessCraAnalyticsReportResponseExample:
                 $ref: >-
                   #/components/examples/CashflowBusinessCraAnalyticsReportResponseExample
-              CashflowusinessNonCraAnalyticsReportResponseExample:
+              CashflowBusinessNonCraAnalyticsReportResponseExample:
                 $ref: >-
                   #/components/examples/CashflowBusinessNonCraAnalyticsReportResponseExample
               CashflowBusinessFtcAnalyticsReportResponseExample:
@@ -4558,9 +4561,6 @@ rawSpecString: |
                 $ref: '#/components/examples/ResourceNotFoundExample'
               NoRegisteredApplicationExample:
                 $ref: '#/components/examples/NoRegisteredApplicationExample'
-              InstitutionLoginIdNotFoundErrorResponseExample:
-                $ref: >-
-                  #/components/examples/InstitutionLoginIdNotFoundErrorResponseExample
       ConflictErrorResponse:
         description: The resource already exists
         content:
@@ -4821,17 +4821,32 @@ rawSpecString: |
           application/json:
             schema:
               $ref: '#/components/schemas/AccountOwnerHolders'
-      CustomerAuthorizationDetails:
-        description: >-
-          Successfully retrieved customer authorization details by institution
-          login id.
+      GetAccountPaymentInstructionDetailsResponse:
+        description: Account ACH details were successfully retrieved
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CustomerAuthorizationDetails'
+              $ref: '#/components/schemas/PaymentInstructions'
             examples:
-              CustomerAuthorizationDetailsExample:
-                $ref: '#/components/examples/CustomerAuthorizationDetailsExample'
+              ACHDetailsExample:
+                $ref: '#/components/examples/ACHDetailsExample'
+              ACHDetailsWithoutRTPDetailsExample:
+                $ref: '#/components/examples/ACHDetailsWithoutRTPDetailsExample'
+      GetAccountPaymentInstructionBadRequestErrorResponse:
+        description: The request was rejected due to validation failures
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ErrorMessage'
+            examples:
+              MissingFieldExample:
+                $ref: '#/components/examples/MissingFieldExample'
+              InvalidFieldExample:
+                $ref: '#/components/examples/InvalidFieldExample'
+              GenericBadRequestExample:
+                $ref: '#/components/examples/GenericBadRequestExample'
+              AccountTypeNotSupportedExample:
+                $ref: '#/components/examples/AccountTypeNotSupportedExample'
     examples:
       BusinessIdNotFound:
         value:
@@ -6360,6 +6375,8 @@ rawSpecString: |
             accounts:
               id: 1000023996
               number: '1111'
+              ownerName: JOHN DOE
+              ownerAddress: 924 GAINSVILLE HIGHWAY SUITE 130 BUFORD, GA 30518
               name: Checking
               type: checking
               aggregationStatusCode: 0
@@ -7011,6 +7028,8 @@ rawSpecString: |
             accounts:
               id: 1000023996
               number: '1111'
+              ownerName: JOHN DOE
+              ownerAddress: 924 GAINSVILLE HIGHWAY SUITE 130 BUFORD, GA 30518
               name: Checking
               type: checking
               aggregationStatusCode: 0
@@ -11698,17 +11717,29 @@ rawSpecString: |
                 missedRecurringExpensePayments: 0
                 recurringLoanPayments: 234.34
                 missedRecurringLoanPayments: 0
-      CustomerAuthorizationDetailsExample:
+      ACHDetailsExample:
         value:
-          institutionLoginId: 7008461438
-          authorizationStartDate: 2020-07-30T16:11:23:20Z
-          authorizationEndDate: 2020-07-30T16:11:23:20Z
-      InstitutionLoginIdNotFoundErrorResponseExample:
+          paymentInstruction:
+            - type: ach
+              accountNumber: '1000001111'
+              descriptors:
+                - type: routingNumber
+                  value: '091000019'
+            - type: rtp
+              accountNumber: '1000001111'
+              descriptors:
+                - type: routingNumber
+                  value: '091000019'
+              transferInEnabled: true
+              transferOutEnabled: true
+      ACHDetailsWithoutRTPDetailsExample:
         value:
-          status: '404'
-          code: 1606
-          message: Resource Not Found.
-          user_message: 'Institution login id : 7008461438 is not found'
+          paymentInstruction:
+            - type: ach
+              accountNumber: '1000001111'
+              descriptors:
+                - type: routingNumber
+                  value: '091000019'
     parameters:
       AssetIdParameter:
         description: The asset ID
@@ -11849,7 +11880,7 @@ rawSpecString: |
         description: >-
           The text you wish to match. Leave this empty if you wish to return all
           customers. Must be URL-encoded (see: [Handling Spaces in
-          Queries](https://developer.mastercard.com/open-banking-us/documentation/codes-and-formats/)).
+          Queries](https://developer.mastercard.com/open-banking-us/documentation/codes-and-format/)).
         schema:
           type: string
           example: Search Value
@@ -11970,10 +12001,10 @@ rawSpecString: |
         in: query
         required: false
         description: >-
-          Request statements with comma-separated indexes ranged between 1-24. The
+          Request statements with comma-separated indexes between 1-24. The
           default value is 1 and it will return the most recent statement.
           Increasing the index will return older statements, for example, setting
-          the index value to 6 will return a statement from six months ago.
+          the index value to 6 will return the sixth most recent statement.
         schema:
           type: string
           default: '1'
@@ -12151,15 +12182,6 @@ rawSpecString: |
         schema:
           description: Report ID generated and returned by OBB products
           type: string
-      InstitutionLoginIdPathParam:
-        name: institution_login_id
-        description: Institution login id of the customer.
-        in: path
-        required: true
-        schema:
-          type: integer
-          format: int64
-          example: 7008461438
     schemas:
       BusinessList:
         type: array
@@ -12467,7 +12489,7 @@ rawSpecString: |
         description: |-
           The account owner's email type.
 
-          * "Personal"
+          * "Personal" 
 
           * "Business"
         example: Personal
@@ -12559,7 +12581,7 @@ rawSpecString: |
       AccountOwnerPhoneType:
         type: string
         description: |-
-          The account owner's phone type:
+          The account owner's phone type:   
 
           * "HOME"
 
@@ -12577,14 +12599,14 @@ rawSpecString: |
       AccountOwnerRelationshipType:
         type: string
         description: |-
-          The type of relationship to the account:
-          * "AUTHORIZED_USER"
+          The type of relationship to the account:  
+          * "AUTHORIZED_USER"  
 
-          * "BUSINESS"
+          * "BUSINESS"   
 
-          * "FOR_BENEFIT_OF_PRIMARY"
+          * "FOR_BENEFIT_OF_PRIMARY"  
 
-          * "FOR_BENEFIT_OF_PRIMARY_JOINT_RESTRICTED"
+          * "FOR_BENEFIT_OF_PRIMARY_JOINT_RESTRICTED"  
 
           * "FOR_BENEFIT_OF_SECONDARY"
 
@@ -12795,7 +12817,7 @@ rawSpecString: |
           street and house number level. This means the country, state, city,
           postal code, street, and house number of the input address are valid,
           but the subpremise of the input address was unable to be confirmed as
-          valid or invalid.
+          valid or invalid. 
 
               * valid_to_house_number_missing_apt - The input address was
           validated to the street and house number level. This means the country,
@@ -12932,15 +12954,9 @@ rawSpecString: |
             format: int64
             example: 1000023996
           ownerName:
-            type: string
-            description: The name(s) of the account owner(s), retrieved from the institution.
-            example: PATRICK & LORRAINE PURCHASER
+            $ref: '#/components/schemas/ReportAccountOwnerName'
           ownerAddress:
-            type: string
-            description: >-
-              The mailing address of the account owner, retrieved from the
-              institution.
-            example: 7195 BELMONT ST. PARLIN, NJ 08859
+            $ref: '#/components/schemas/ReportAccountOwnerAddress'
           name:
             type: string
             description: The account name from the institution
@@ -13219,8 +13235,8 @@ rawSpecString: |
       Index:
         type: string
         description: >-
-          Returns the index of the month for the statement. It may go up to 24
-          months back. The valid range is 1-24.
+          The index for the statement. This can range from 1 to 24 statement
+          indexes.
       Application:
         required:
           - appDescription
@@ -15033,15 +15049,9 @@ rawSpecString: |
             description: Finicity account ID
             example: '6681984'
           ownerName:
-            type: string
-            description: The name(s) of the account owner(s), retrieved from the institution.
-            example: PATRICK & LORRAINE PURCHASER
+            $ref: '#/components/schemas/ReportAccountOwnerName'
           ownerAddress:
-            type: string
-            description: >-
-              The mailing address of the account owner, retrieved from the
-              institution.
-            example: 7195 BELMONT ST. PARLIN, NJ 08859
+            $ref: '#/components/schemas/ReportAccountOwnerAddress'
           name:
             type: string
             description: The account name from the institution
@@ -15153,15 +15163,9 @@ rawSpecString: |
             description: Finicity account ID
             example: 6681984
           ownerName:
-            type: string
-            description: The name(s) of the account owner(s), retrieved from the institution.
-            example: PATRICK & LORRAINE PURCHASER
+            $ref: '#/components/schemas/ReportAccountOwnerName'
           ownerAddress:
-            type: string
-            description: >-
-              The mailing address of the account owner, retrieved from the
-              institution.
-            example: 7195 BELMONT ST. PARLIN, NJ 08859
+            $ref: '#/components/schemas/ReportAccountOwnerAddress'
           name:
             type: string
             description: The account name from the institution
@@ -15764,15 +15768,15 @@ rawSpecString: |
 
           However, Connect doesn't pass this parameter to the following reports:
 
-          * Pay Statement Extraction Report
+          * Pay Statement Extraction Report 
 
-          * VOIE - Paystub (with TXVerify) Report
+          * VOIE - Paystub (with TXVerify) Report 
 
-          * Statement Report
+          * Statement Report 
 
-          * Verification of Income Report
+          * Verification of Income Report 
 
-          * VOIE - Payroll Report
+          * VOIE - Payroll Report 
 
 
           Note: this field isn't used if you're only collecting transaction data
@@ -17107,34 +17111,34 @@ rawSpecString: |
               Deduction types:
 
 
-              * `Federal tax`: Federal tax withholdings
+              * `Federal tax`: Federal tax withholdings 
 
 
-              * `State tax`: State tax withholdings
+              * `State tax`: State tax withholdings 
 
 
-              * `Local tax`: Local tax withholdings
+              * `Local tax`: Local tax withholdings 
 
 
-              * `Social security tax`: Social security tax withholdings
+              * `Social security tax`: Social security tax withholdings 
 
 
-              * `Medicare tax`: Medicare withholdings
+              * `Medicare tax`: Medicare withholdings 
 
 
-              * `SUI SDI VPDI tax`: SUI SDI VPDI tax
+              * `SUI SDI VPDI tax`: SUI SDI VPDI tax 
 
 
-              * Retirement deductions: Retirement withholdings
+              * Retirement deductions: Retirement withholdings 
 
 
               * `Benefit deductions`: Medical/Health benefits withholdings (i.e.
-              medical, dental, vision, insurance)
+              medical, dental, vision, insurance) 
 
 
               * `Garnishment deductions`: Garnishment withholdings, (i.e.
               bankruptcy, student loan, state garnishments, tax levy garnishments,
-              child support)
+              child support) 
 
 
               * `Other deductions`: Other withholdings, includes any other
@@ -17426,11 +17430,11 @@ rawSpecString: |
 
           * Brand: color and logo
 
-          * Icon: displayed on the "Share your data" page
+          * Icon: displayed on the "Share your data" page 
 
-          * Popular institutions: displayed on the Bank Search page
+          * Popular institutions: displayed on the Bank Search page 
 
-          * Report: the credit decisioning report to send when Connect completes.
+          * Report: the credit decisioning report to send when Connect completes. 
 
           * MVS modules: financial, payroll, paystub
 
@@ -17442,9 +17446,9 @@ rawSpecString: |
           URL](https://developer.mastercard.com/open-banking-us/documentation/connect/generate-2-connect-url-apis/).
 
 
-          Experience values options:
+          Experience values options: 
 
-          * "default": your default experience (must be defined)
+          * "default": your default experience (must be defined) 
 
           * GUID: the code for a different experience
 
@@ -17533,7 +17537,7 @@ rawSpecString: |
             * Driver's license: 1-19 digits
           * **Canada**:
 
-            * Passport: 8 digits
+            * Passport: 8 digits 
 
             * Driver: 6-9 digits
         example: '123456789'
@@ -17885,7 +17889,7 @@ rawSpecString: |
           investment transactions into these types.
 
 
-          Possible values:
+          Possible values: 
 
           * "cancel"
 
@@ -18253,7 +18257,7 @@ rawSpecString: |
           payFrequency:
             type: string
             description: |
-              The current pay frequency, or how often a regular pay check is
+              The current pay frequency, or how often a regular pay check is  
               distributed:
 
               * `Daily`
@@ -19110,27 +19114,27 @@ rawSpecString: |
         description: |
           The current pay frequency or how often a regular pay check is:
 
-          * `Daily`
+          * `Daily` 
 
-          * `Weekly`
+          * `Weekly` 
 
-          * `Bi-Weekly`
+          * `Bi-Weekly` 
 
-          * `Semi-Monthly`
+          * `Semi-Monthly` 
 
-          * `Monthly`
+          * `Monthly` 
 
-          * `Quarterly`
+          * `Quarterly` 
 
-          * `Semi-Annual`
+          * `Semi-Annual` 
 
-          * `Annual`
+          * `Annual` 
 
-          * `Every 2.6 wks`
+          * `Every 2.6 wks` 
 
-          * `Every 4 wks`
+          * `Every 4 wks` 
 
-          * `Every 5.2 wks`
+          * `Every 5.2 wks` 
 
           * `Other`
         example: Weekly
@@ -19903,25 +19907,25 @@ rawSpecString: |
           The match status between the input phone and the queried entity.
 
           * match - Phone location matches input address line 1, address line 2,
-          city, state, and postal code.
+          city, state, and postal code. 
 
 
           * postal-match - Phone location postal code matches input address postal
-          code.
+          code. 
 
 
           * zip4-match - Phone location postal code zip+4 matches input address
-          postal code zip+4.
+          postal code zip+4. 
 
 
           * city-state-match - Phone location city and state matches input address
-          city and state.
+          city and state. 
 
           * metro-match - Phone location is in the same metro area as input
-          address.
+          address. 
 
 
-          * country-match - Phone location country matches input address country.
+          * country-match - Phone location country matches input address country. 
 
 
           * no-match - Phone location does not match input address.
@@ -20069,17 +20073,9 @@ rawSpecString: |
               four are obfuscated)
             example: '1111'
           ownerName:
-            type: string
-            description: >-
-              The name of the account owner. If no owner information is available,
-              this field won't appear in the report.
-            example: JOHN DOE
+            $ref: '#/components/schemas/ReportAccountOwnerName'
           ownerAddress:
-            type: string
-            description: >-
-              The mailing address of the account owner. If no owner information is
-              available, this field won't appear in the report.
-            example: 123 GAINSVILLE STREET BUFORD, GA 84937
+            $ref: '#/components/schemas/ReportAccountOwnerAddress'
           name:
             type: string
             description: The account name from the institution
@@ -20724,39 +20720,39 @@ rawSpecString: |
         description: |
           A report type. Possible values:
 
-          * `voi`
+          * `voi` 
 
-          * `voa`
+          * `voa` 
 
-          * `voaHistory`
+          * `voaHistory` 
 
-          * `history`
+          * `history` 
 
-          * `voieTxVerify`
+          * `voieTxVerify` 
 
-          * `voieWithReport`
+          * `voieWithReport` 
 
-          * `voieWithInterview`
+          * `voieWithInterview` 
 
-          * `paystatement`
+          * `paystatement` 
 
-          * `preQualVoa`
+          * `preQualVoa` 
 
-          * `assetSummary`
+          * `assetSummary` 
 
-          * `voie`
+          * `voie` 
 
-          * `transactions`
+          * `transactions` 
 
-          * `statement`
+          * `statement` 
 
-          * `voiePayroll`
+          * `voiePayroll` 
 
-          * `voeTransactions`
+          * `voeTransactions` 
 
-          * `voePayroll`
+          * `voePayroll` 
 
-          * `cfrp`
+          * `cfrp` 
 
           * `cfrb`
 
@@ -20856,11 +20852,15 @@ rawSpecString: |
             $ref: '#/components/schemas/NumericAccountId'
           statementIndex:
             type: integer
-            description: Index of the statement to retrieve
+            description: >-
+              Index of the statement to include in the report. Request statements
+              from 1-24. By default, 1 is the most recent statement. Increase the
+              index value to count back (by month) and retrieve its most recent
+              statement.
             format: int32
             example: 1
             default: 1
-            maximum: 6
+            maximum: 24
       StatementEndDate:
         type: integer
         description: >-
@@ -21111,7 +21111,7 @@ rawSpecString: |
       TaxId:
         type: string
         description: >-
-          Country specific tax ID associated with the customer.
+          Country specific tax ID associated with the customer. 
 
           * **United Stated**: Social Security number (SSN) or Taxpayer
           Identification Number (TIN)
@@ -21187,7 +21187,7 @@ rawSpecString: |
           An object representing the third party access key receipt
 
             * `customerId`: This is recipient's customerId represented as a
-            pseudo identifier.
+            pseudo identifier. 
             * `accountId`: This is the value provided to recipient
             represented as a pseudo identifier for the accountId.
         type: object
@@ -21211,11 +21211,13 @@ rawSpecString: |
           endTime:
             $ref: '#/components/schemas/DateTimeWithZone'
       ThirdPartyAccessPeriodTypes:
-        description: |-
+        description: >-
           Multiple types will be supported. Presently below types are supported.
-          * "timeframe": Specifies a timeframe bounded by a startTime and endTime.
+
+          * "timeframe": Specifies a timeframe bounded by a startTime and
+          endTime.  
             The startTime is the time at which the access was granted and the
-          access key generated,
+          access key generated, 
             and the endTime is the time at which the access was revoked. Times
           are represented in ISO 8601 format("2022-03-10T06:06:20Z")
         type: string
@@ -21252,25 +21254,25 @@ rawSpecString: |
 
 
 
-          * "moneyTransferDetails": Retrieve account details for money transfer
+          * "moneyTransferDetails": Retrieve account details for money transfer 
 
           * "availableBalance": Retrieves the latest cached available and cleared
-              account balances for an account.
+              account balances for an account. 
           * "availableBalanceLive": Retrieves the available and cleared account
 
-          balances live from the financial institution
+          balances live from the financial institution 
 
           * "accountOwner": Retrieves names and addresses of the account owner
 
-          from a financial institution.
+          from a financial institution. 
 
           * "paymentIndicator": Get the Payment Success Indicator response,
 
-          scoring the likelihood of payment settlement
+          scoring the likelihood of payment settlement 
 
           * "paymentFeedback": Create feedback loop for Payment Success Indicator
 
-          (PSI) and/or Payment Routing Optimizer (PRO)
+          (PSI) and/or Payment Routing Optimizer (PRO) 
 
           * "paymentRouting": Product recommends the best rail to use as well as
 
@@ -22070,19 +22072,9 @@ rawSpecString: |
               four are obfuscated)
             example: '1111'
           ownerName:
-            type: string
-            description: >-
-              The name(s) of the account owner(s). This field is optional. If no
-              owner information is available, this field will not appear in the
-              report.
-            example: JOHN DOE
+            $ref: '#/components/schemas/ReportAccountOwnerName'
           ownerAddress:
-            type: string
-            description: >-
-              The mailing address of the account owner(s). This field is optional.
-              If no owner information is available, this field will not appear in
-              the report.
-            example: 924 GAINSVILLE HIGHWAY SUITE 130 BUFORD, GA 30518
+            $ref: '#/components/schemas/ReportAccountOwnerAddress'
           name:
             type: string
             description: The account name from the institution
@@ -22337,19 +22329,9 @@ rawSpecString: |
               four are obfuscated)
             example: '1111'
           ownerName:
-            type: string
-            description: >-
-              The name(s) of the account owner(s). This field is optional. If no
-              owner information is available, this field will not appear in the
-              report.
-            example: JOHN DOE
+            $ref: '#/components/schemas/ReportAccountOwnerName'
           ownerAddress:
-            type: string
-            description: >-
-              The mailing address of the account owner(s). This field is optional.
-              If no owner information is available, this field will not appear in
-              the report.
-            example: 924 GAINSVILLE HIGHWAY SUITE 130 BUFORD, GA 30518
+            $ref: '#/components/schemas/ReportAccountOwnerAddress'
           name:
             type: string
             description: The account name from the institution
@@ -22823,19 +22805,9 @@ rawSpecString: |
               four are obfuscated)
             example: '1111'
           ownerName:
-            type: string
-            description: >-
-              The name(s) of the account owner(s). This field is optional. If no
-              owner information is available, this field will not appear in the
-              report.
-            example: JOHN DOE
+            $ref: '#/components/schemas/ReportAccountOwnerName'
           ownerAddress:
-            type: string
-            description: >-
-              The mailing address of the account owner(s). This field is optional.
-              If no owner information is available, this field will not appear in
-              the report.
-            example: 924 GAINSVILLE HIGHWAY SUITE 130 BUFORD, GA 30518
+            $ref: '#/components/schemas/ReportAccountOwnerAddress'
           name:
             type: string
             description: The account name from the institution
@@ -23056,19 +23028,9 @@ rawSpecString: |
               four are obfuscated)
             example: '1111'
           ownerName:
-            type: string
-            description: >-
-              The name(s) of the account owner(s). This field is optional. If no
-              owner information is available, this field will not appear in the
-              report.
-            example: JOHN DOE
+            $ref: '#/components/schemas/ReportAccountOwnerName'
           ownerAddress:
-            type: string
-            description: >-
-              The mailing address of the account owner(s). This field is optional.
-              If no owner information is available, this field will not appear in
-              the report.
-            example: 924 GAINSVILLE HIGHWAY SUITE 130 BUFORD, GA 30518
+            $ref: '#/components/schemas/ReportAccountOwnerAddress'
           name:
             type: string
             description: The account name from the institution
@@ -23260,7 +23222,7 @@ rawSpecString: |
             * Address: Input state corrected
             * Email: Address is too long
             * Email: General syntax error
-            * Email: Invalid domain syntax
+            * Email: Invalid domain syntax 
             * Email: Invalid top-level-domain (TLD) in address
             * Email: Invalid username syntax
             * IP: IP address is in private range
@@ -23301,26 +23263,6 @@ rawSpecString: |
         type: string
         description: A ZIP code
         example: '84123'
-      CustomerAuthorizationDetails:
-        type: object
-        properties:
-          institutionLoginId:
-            type: integer
-            description: Institution login id of the customer.
-            format: int64
-            example: 7009561328
-          authorizationStartDate:
-            type: string
-            description: Authorization start date and time in ISO 8601 format.
-            example: 2020-07-30T16:11:23:20Z
-          authorizationEndDate:
-            type: string
-            description: Authorization end date and time in ISO 8601 format.
-            example: 2020-07-30T16:11:23:20Z
-        required:
-          - institutionLoginId
-          - authorizationStartDate
-          - authorizationEndDate
       EmploymentId:
         type: string
         description: >-
@@ -23342,4 +23284,79 @@ rawSpecString: |
           A report style. Possible values are directAPIPayroll,
           credentialedPayroll, paystatement, voieWithInterview, voieWithStatement,
           voieWithReport
-konfigCliVersion: 1.38.34
+      PaymentInstructions:
+        description: A list of payment instructions
+        type: object
+        properties:
+          paymentInstruction:
+            type: array
+            items:
+              $ref: '#/components/schemas/PaymentInstruction'
+            description: List of payment instructions
+      PaymentInstruction:
+        required:
+          - accountNumber
+          - type
+        type: object
+        properties:
+          type:
+            type: string
+            description: >-
+              The type of payment instruction:
+
+              1. ACH: when payment instruction type is ACH (Automated Clearing
+              House)
+
+              2. RTP: when payment instruction type is RTP (Real-Time Payments)
+            example: ach
+          accountNumber:
+            type: string
+            description: The account number from the institution
+            example: '124344454'
+          descriptors:
+            type: array
+            description: List of descriptors
+            items:
+              $ref: '#/components/schemas/Descriptor'
+          transferInEnabled:
+            type: boolean
+            description: >-
+              Indicates whether transfer to this account is enabled or not.
+              Applicable for "RTP" type only.
+            example: true
+          transferOutEnabled:
+            type: boolean
+            description: >-
+              Indicates whether transfer from this account is enabled or not.
+              Applicable for "RTP" type only.
+            example: true
+      Descriptor:
+        required:
+          - type
+          - value
+        type: object
+        properties:
+          type:
+            type: string
+            description: Payment Instruction Descriptor Type
+            example: routingNumber
+          value:
+            type: string
+            description: Value that the Descriptor Type Holds
+            example: '2434345'
+      ReportAccountOwnerName:
+        type: string
+        description: >-
+          The name(s) of the account owner(s). If the owner information is not
+          available, this field will not appear in the report. If the account has
+          multiple owners then all owners will be listed separated by |.
+        example: PATRICK PURCHASER|LORRAINE PURCHASER
+      ReportAccountOwnerAddress:
+        type: string
+        description: >-
+          The mailing address of the account owner(s). If the owner information is
+          not available, this field will not appear in the report. If the account
+          has multiple owners then the address of the primary owner will be
+          listed.
+        example: 7195 BELMONT ST. PARLIN, NJ 08859
+konfigCliVersion: 1.38.37

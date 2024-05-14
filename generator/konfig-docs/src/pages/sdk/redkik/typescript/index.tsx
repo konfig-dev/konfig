@@ -23,7 +23,7 @@ Join Redkik's rapidly growing network of global partners and exceed your busines
       companyKebabCase="redkik"
       clientNameCamelCase="redkik"
       homepage="redkik.com/"
-      lastUpdated={new Date("2024-03-28T22:08:36.815Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/redkik/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -3173,7 +3173,7 @@ Join Redkik's rapidly growing network of global partners and exceed your busines
       endpoints={47}
       sdkMethods={60}
       schemas={94}
-      parameters={282}
+      parameters={285}
       difficulty="Medium"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/redkik/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/redkik/openapi.yaml"

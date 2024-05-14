@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Visier Authentication APIs
   description: Visier APIs for generating authentication tokens
-  version: 22222222.99201.1227
+  version: 22222222.99201.1256
   license:
     name: Apache License, Version 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0
@@ -19,6 +19,7 @@ paths:
     post:
       tags:
         - Authentication
+      summary: Generate a legacy Visier secure ticket
       operationId: Authentication_TicketAuthentication
       description: Generate a legacy Visier secure ticket
       requestBody:
@@ -51,6 +52,7 @@ paths:
     post:
       tags:
         - Authentication
+      summary: Generate a Visier authentication token
       operationId: Authentication_ASIDTokenAuthentication
       description: Generate a Visier authentication token
       requestBody:
@@ -79,82 +81,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/Status'
       deprecated: true
-  /v1/auth/oauth2/authorize:
-    get:
-      tags:
-        - Authentication
-      operationId: Authentication_OAuth2Authorize
-      security:
-        - ApiKeyAuth: []
-      description: Initiate an OAuth2 authorization code flow.
-      parameters:
-        - description: The optional URI to redirect to after authorization.
-          name: redirect_uri
-          in: query
-          required: false
-          schema:
-            type: string
-        - description: The response type. Must be `code`.
-          name: response_type
-          in: query
-          required: true
-          schema:
-            type: string
-        - description: The ID of the pre-registered client application.
-          name: client_id
-          in: query
-          required: true
-          schema:
-            type: string
-        - description: >-
-            The OAuth 2.0 scope of the authorization request. Defaults to
-            `read`.
-          name: scope
-          in: query
-          required: false
-          schema:
-            type: string
-      responses:
-        default:
-          description: Default error response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Status'
-        3XX:
-          description: Redirect to authorization page.
-  /v1/auth/oauth2/token:
-    post:
-      tags:
-        - Authentication
-      operationId: Authentication_OAuth2Token
-      security:
-        - ApiKeyAuth: []
-        - ApiKeyAuth: []
-          BasicAuth: []
-      description: Generate a JSON Web Token (JWT) for the specified user.
-      requestBody:
-        content:
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/TokenRequestBody'
-        required: true
-      responses:
-        '200':
-          description: JWT response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AuthenticationOAuth2Token200Response'
-            application/jwt:
-              schema:
-                $ref: '#/components/schemas/AuthenticationOAuth2TokenResponse'
-        default:
-          description: Default error response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Status'
 components:
   schemas:
     AuthenticationRequest:
@@ -176,7 +102,14 @@ components:
           type: string
       additionalProperties: true
     Status:
-      description: The response structure for errors.
+      description: >-
+        The `Status` type defines a logical error model that is suitable for
+        different programming environments, including REST APIs and RPC APIs. It
+        is used by [gRPC](https://github.com/grpc). Each `Status` message
+        contains three pieces of data: error code, error message, and error
+        details. You can find out more about this error model and how to work
+        with it in the [API Design
+        Guide](https://cloud.google.com/apis/design/errors).
       type: object
       properties:
         code:
@@ -186,7 +119,11 @@ components:
           type: integer
           format: int32
         message:
-          description: The error message returned by the server.
+          description: >-
+            A developer-facing error message, which should be in English. Any
+            user-facing error message should be localized and sent in the
+            [google.rpc.Status.details][google.rpc.Status.details] field, or
+            localized by the client.
           type: string
         details:
           description: >-
@@ -200,45 +137,6 @@ components:
       properties:
         token:
           type: string
-    TokenRequestBody:
-      description: Token request body definition.
-      type: object
-      properties:
-        grant_type:
-          description: >-
-            The grant type. Supported values:
-
-            - `authorization_code`: The authorization code grant type.
-
-            - `password`: The password grant type.
-
-            - `urn:visier:params:oauth:grant-type:asid-token`: The ASID token
-            grant type.
-          type: string
-        client_id:
-          description: The ID of the pre-registered client application.
-          type: string
-        redirect_uri:
-          description: The optional URI to redirect to after authorization.
-          type: string
-        code:
-          description: >-
-            The authorization code. Applicable only for authorization code grant
-            type.
-          type: string
-        username:
-          description: >-
-            The username of the user to authenticate. Applicable only for
-            password grant type.
-          type: string
-        password:
-          description: >-
-            The password of the user to authenticate. Applicable only for
-            password grant type.
-          type: string
-        asid_token:
-          description: The ASID token. Applicable only for ASID token grant type.
-          type: string
     AuthenticationTicketAuthenticationResponse:
       type: string
     AuthenticationTicketAuthentication200Response:
@@ -247,15 +145,3 @@ components:
       type: string
     AuthenticationAsidTokenAuthentication200Response:
       type: string
-    AuthenticationOAuth2TokenResponse:
-      type: string
-    AuthenticationOAuth2Token200Response:
-      type: string
-  securitySchemes:
-    BasicAuth:
-      type: http
-      scheme: basic
-    ApiKeyAuth:
-      type: apiKey
-      name: apikey
-      in: header

@@ -17,7 +17,7 @@ export default function PaylocityWeblinkTypeScriptSdk() {
       companyKebabCase="paylocity"
       clientNameCamelCase="paylocity"
       homepage="developer.paylocity.com"
-      lastUpdated={new Date("2024-03-24T21:41:22.682Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/paylocity/weblink/favicon.jpg"
       // Missing contactUrl
       contactEmail="webservices@paylocity.com"
@@ -30,8 +30,8 @@ export default function PaylocityWeblinkTypeScriptSdk() {
     "url": "/v1/employee",
     "method": "createNewEmployeeRecord",
     "httpMethod": HttpMethodsEnum.POST,
-    "tag": "Employee (v1)",
-    "typeScriptTag": "employeeV1",
+    "tag": "Employee (https://",
+    "typeScriptTag": "employeeHttps:",
     "description": "Add new employee",
     "parameters": [
       {
@@ -51,8 +51,8 @@ export default function PaylocityWeblinkTypeScriptSdk() {
     "url": "/v1/company/{companyId}/employee/{employeeId}",
     "method": "getEmployeeData",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Employee (v1)",
-    "typeScriptTag": "employeeV1",
+    "tag": "Employee (https://",
+    "typeScriptTag": "employeeHttps:",
     "description": "Get Employee",
     "parameters": [
       {
@@ -85,8 +85,8 @@ export default function PaylocityWeblinkTypeScriptSdk() {
     "url": "/v1/update-employee",
     "method": "updateEmployeeDataToPaylocity",
     "httpMethod": HttpMethodsEnum.POST,
-    "tag": "Employee (v1)",
-    "typeScriptTag": "employeeV1",
+    "tag": "Employee (https://",
+    "typeScriptTag": "employeeHttps:",
     "description": "Update employee",
     "parameters": [
       {
@@ -3133,11 +3133,11 @@ export default function PaylocityWeblinkTypeScriptSdk() {
       apiTitle="WebLink API"
       apiBaseUrl="https://apisandbox.paylocity.com/api"
       apiVersion="v2"
-      endpoints={33}
-      sdkMethods={43}
+      endpoints={69}
+      sdkMethods={92}
       schemas={115}
-      parameters={403}
-      difficulty="Medium"
+      parameters={718}
+      difficulty="Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/paylocity/weblink/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/paylocity/weblink/openapi.yaml"
       

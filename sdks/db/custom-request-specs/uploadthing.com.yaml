@@ -2358,3 +2358,107 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrInternalServerError'
+  /updateACL:
+    post:
+      security:
+        - ApiKeyAuth: []
+      description: Update the ACL for a list of files.
+      parameters:
+        - schema:
+            type: string
+            description: The API key for the app
+            example: sk_live_1234567890
+          required: true
+          name: x-uploadthing-api-key
+          in: header
+        - schema:
+            type: string
+            description: A semver parseable version string of the SDK calling the API
+            example: 6.4.0
+          required: true
+          name: x-uploadthing-version
+          in: header
+        - schema:
+            type: string
+            description: Used for analytics, the package name of the frontend
+            example: '@uploadthing/react'
+          required: false
+          name: x-uploadthing-fe-package
+          in: header
+        - schema:
+            type: string
+            description: Used for analytics, the name of the backend adapter
+            example: express
+          required: false
+          name: x-uploadthing-be-adapter
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                updates:
+                  type: array
+                  items:
+                    anyOf:
+                      - type: object
+                        properties:
+                          fileKey:
+                            type: string
+                          acl:
+                            type: string
+                            enum:
+                              - public-read
+                              - private
+                        required:
+                          - fileKey
+                          - acl
+                      - type: object
+                        properties:
+                          customId:
+                            type: string
+                          acl:
+                            type: string
+                            enum:
+                              - public-read
+                              - private
+                        required:
+                          - customId
+                          - acl
+              required:
+                - updates
+      responses:
+        '200':
+          description: Successfully updated the ACL for files.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                required:
+                  - success
+        '400':
+          description: >-
+            Your request input was invalid. Please check your request and try
+            again.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrBadRequest'
+        '401':
+          description: >-
+            Your request was not authorized, either due to missing or invalid
+            API key provided.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrUnauthorized'
+        '500':
+          description: An unexpected error occurred. Please try again later.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrInternalServerError'

@@ -24,7 +24,7 @@ rawSpecString: |
   openapi: 3.0.2
   info:
     title: Belvo API Docs
-    version: 1.102.0
+    version: 1.106.0
     description: >
       # Introduction
 
@@ -1439,8 +1439,19 @@ rawSpecString: |
           `recurrent` to single.
 
 
-          ℹ️ **Note**: When you change a link from `single` to `recurrent`, they
-          will only be updated the next day at the scheduled interval.
+          <div style="background-color:#f4f6f8; border-left: 6px solid #df7d03
+          ;padding: 6px;margin-left: 15px; border-radius: 4px; margin-right:
+          15px">
+
+          <strong>Note: changing the access_mode and billing</strong>
+
+          <p>When you change a link from <code>single</code> to
+          <code>recurrent</code> recurrent, the next day a historical update of
+          the core resources for the link is triggered (resulting in you receiving
+          <code>historical_update</code> webhooks for the link). You are billed
+          for these historical updates.</p>
+
+          </div>
         parameters:
           - name: id
             in: path
@@ -13333,7 +13344,8 @@ rawSpecString: |
             pattern: >-
               (^(\d{4})-(1[0-2]|0?[1-9])-(3[01]|[12][0-9]|0?[1-9])T(?:[01]\d|2[0123]):(?:[012345]\d):(?:[012345]\d)\.(?:[0-9]){3}Z$)
             description: >
-              The ISO-8601 timestamp of when the transaction occurred.
+              The ISO-8601 timestamp of when the transaction occurred (in the UTC
+              timezone).
 
 
               > **Note:** For transactions that occurred before 31.01.2024, the
@@ -13341,6 +13353,17 @@ rawSpecString: |
               `2016-01-29T00:00:00.000Z`). However, transactions that occurred
               after this date must include the date and time
               (`2024-02-20T12:29:03.374Z`).
+
+
+              > **Institutions not abiding by this format:**
+
+              > Some institutions may not provide the exact time of the
+              transaction. In this case, the timestamp will be set to
+              `00:00:00.000Z`.
+
+              > Belvo has identified the following institutions as not abiding by
+              the regulation and have raised the issue with regulators: Bradesco,
+              Itau, and Sicoob.
 
 
               > **Non-nullable:** A value must be returned by Brazil's open
@@ -23556,6 +23579,7 @@ rawSpecString: |
             example: 188
       EnumEmploymentRecordStatusUpdateEvents:
         type: string
+        nullable: true
         enum:
           - DISMISSED_RESIGNED
           - SALARY_MODIFICATION
@@ -23578,6 +23602,7 @@ rawSpecString: |
       EmploymentRecordEmploymentStatusUpdates:
         type: object
         description: Details regarding any employment changes of the individual.
+        nullable: true
         properties:
           event:
             $ref: '#/components/schemas/EnumEmploymentRecordStatusUpdateEvents'
@@ -23661,6 +23686,7 @@ rawSpecString: |
             example: MXN
           employment_status_updates:
             type: array
+            nullable: true
             description: Details regarding any employment changes of the individual.
             items:
               $ref: '#/components/schemas/EmploymentRecordEmploymentStatusUpdates'
@@ -30573,4 +30599,4 @@ rawSpecString: |
     samples-enabled: true
     samples-languages:
       - curl
-konfigCliVersion: 1.38.34
+konfigCliVersion: 1.38.37

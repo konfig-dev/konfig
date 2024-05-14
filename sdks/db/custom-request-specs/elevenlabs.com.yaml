@@ -2051,6 +2051,74 @@ paths:
               tab on the website.
           name: xi-api-key
           in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: >-
+                #/components/schemas/Body_Stream_project_audio_v1_projects__project_id__snapshots__project_snapshot_id__stream_post
+      responses:
+        '200':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/projects/{project_id}/snapshots/{project_snapshot_id}/archive:
+    post:
+      tags:
+        - projects
+      summary: Streams Archive With Project Audio
+      description: Streams archive with project audio.
+      operationId: >-
+        Streams_archive_with_project_audio_v1_projects__project_id__snapshots__project_snapshot_id__archive_post
+      parameters:
+        - description: >-
+            The project_id of the project, you can query GET
+            https://api.elevenlabs.io/v1/projects to list all available
+            projects.
+          required: true
+          schema:
+            type: string
+            title: Project Id
+            description: >-
+              The project_id of the project, you can query GET
+              https://api.elevenlabs.io/v1/projects to list all available
+              projects.
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: project_id
+          in: path
+        - description: >-
+            The project_snapshot_id of the project snapshot. You can query GET
+            /v1/projects/{project_id}/snapshots to list all available snapshots
+            for a project.
+          required: true
+          schema:
+            type: string
+            title: Project Snapshot Id
+            description: >-
+              The project_snapshot_id of the project snapshot. You can query GET
+              /v1/projects/{project_id}/snapshots to list all available
+              snapshots for a project.
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: project_snapshot_id
+          in: path
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            type: string
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+          name: xi-api-key
+          in: header
       responses:
         '200':
           description: Successful Response
@@ -2378,8 +2446,8 @@ paths:
         - projects
       summary: Stream Chapter Audio
       description: >-
-        Stream the audio from a chapter snapshot. Use GET
-        /v1/projects/{project_id}/chapters/{chapter_id}/snapshots to return the
+        Stream the audio from a chapter snapshot. Use `GET
+        /v1/projects/{project_id}/chapters/{chapter_id}/snapshots` to return the
         chapter snapshots of a chapter.
       operationId: >-
         Stream_chapter_audio_v1_projects__project_id__chapters__chapter_id__snapshots__chapter_snapshot_id__stream_post
@@ -2443,6 +2511,12 @@ paths:
               tab on the website.
           name: xi-api-key
           in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: >-
+                #/components/schemas/Body_Stream_chapter_audio_v1_projects__project_id__chapters__chapter_id__snapshots__chapter_snapshot_id__stream_post
       responses:
         '200':
           description: Successful Response
@@ -2541,7 +2615,6 @@ paths:
             schema:
               $ref: >-
                 #/components/schemas/Body_Dub_a_video_or_an_audio_file_v1_dubbing_post
-        required: true
       responses:
         '200':
           description: Successful Response
@@ -2807,14 +2880,14 @@ paths:
       operationId: Get_voices_v1_shared_voices_get
       parameters:
         - description: >-
-            How many shared voices to return at maximum. Can not exceed 500,
+            How many shared voices to return at maximum. Can not exceed 100,
             defaults to 30.
           required: false
           schema:
             type: integer
             title: Page Size
             description: >-
-              How many shared voices to return at maximum. Can not exceed 500,
+              How many shared voices to return at maximum. Can not exceed 100,
               defaults to 30.
             default: 30
           name: page_size
@@ -2895,15 +2968,6 @@ paths:
           example: tiktok
           name: descriptives
           in: query
-        - description: sort criteria
-          required: false
-          schema:
-            type: string
-            title: Sort
-            description: sort criteria
-          example: created_date
-          name: sort
-          in: query
         - description: Filter featured voices
           required: false
           schema:
@@ -2913,6 +2977,34 @@ paths:
             default: false
           example: true
           name: featured
+          in: query
+        - description: Filter voices that are enabled for the reader app
+          required: false
+          schema:
+            type: boolean
+            title: Reader App Enabled
+            description: Filter voices that are enabled for the reader app
+            default: false
+          example: true
+          name: reader_app_enabled
+          in: query
+        - description: Filter voices by public owner ID
+          required: false
+          schema:
+            type: string
+            title: Owner Id
+            description: Filter voices by public owner ID
+          example: 7c9fab611d9a0e1fb2e7448a0c294a8804efc2bcc324b0a366a5d5232b7d1532
+          name: owner_id
+          in: query
+        - description: sort criteria
+          required: false
+          schema:
+            type: string
+            title: Sort
+            description: sort criteria
+          example: created_date
+          name: sort
           in: query
         - required: false
           schema:
@@ -2991,6 +3083,165 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
+  /v1/pronunciation-dictionaries/{pronunciation_dictionary_id}/add-rules:
+    post:
+      tags:
+        - Pronunciation Dictionary
+      summary: Add Rules To The Pronunciation Dictionary
+      description: Add rules to the pronunciation dictionary
+      operationId: >-
+        Add_rules_to_the_pronunciation_dictionary_v1_pronunciation_dictionaries__pronunciation_dictionary_id__add_rules_post
+      parameters:
+        - description: The id of the pronunciation dictionary
+          required: true
+          schema:
+            type: string
+            title: Pronunciation Dictionary Id
+            description: The id of the pronunciation dictionary
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: pronunciation_dictionary_id
+          in: path
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            type: string
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+          name: xi-api-key
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: >-
+                #/components/schemas/Body_Add_rules_to_the_pronunciation_dictionary_v1_pronunciation_dictionaries__pronunciation_dictionary_id__add_rules_post
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/AddPronunciationDictionaryRulesResponseModel
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/pronunciation-dictionaries/{pronunciation_dictionary_id}/remove-rules:
+    post:
+      tags:
+        - Pronunciation Dictionary
+      summary: Remove Rules From The Pronunciation Dictionary
+      description: Remove rules from the pronunciation dictionary
+      operationId: >-
+        Remove_rules_from_the_pronunciation_dictionary_v1_pronunciation_dictionaries__pronunciation_dictionary_id__remove_rules_post
+      parameters:
+        - description: The id of the pronunciation dictionary
+          required: true
+          schema:
+            type: string
+            title: Pronunciation Dictionary Id
+            description: The id of the pronunciation dictionary
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: pronunciation_dictionary_id
+          in: path
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            type: string
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+          name: xi-api-key
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: >-
+                #/components/schemas/Body_Remove_rules_from_the_pronunciation_dictionary_v1_pronunciation_dictionaries__pronunciation_dictionary_id__remove_rules_post
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/RemovePronunciationDictionaryRulesResponseModel
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/pronunciation-dictionaries/{dictionary_id}/{version_id}/download:
+    get:
+      tags:
+        - Pronunciation Dictionary
+      summary: Get Pls File With A Pronunciation Dictionary Version Rules
+      description: Get PLS file with a pronunciation dictionary version rules
+      operationId: >-
+        Get_PLS_file_with_a_pronunciation_dictionary_version_rules_v1_pronunciation_dictionaries__dictionary_id___version_id__download_get
+      parameters:
+        - description: The id of the pronunciation dictionary
+          required: true
+          schema:
+            type: string
+            title: Dictionary Id
+            description: The id of the pronunciation dictionary
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: dictionary_id
+          in: path
+        - description: The id of the version of the pronunciation dictionary
+          required: true
+          schema:
+            type: string
+            title: Version Id
+            description: The id of the version of the pronunciation dictionary
+          example: BdF0s0aZ3oFoKnDYdTox
+          name: version_id
+          in: path
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            type: string
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+          name: xi-api-key
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
   /v1/pronunciation-dictionaries/{pronunciation_dictionary_id}/:
     get:
       tags:
@@ -3037,145 +3288,61 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
-  /admin/n8enylacgd/vanity-link/{vanity_link_id}/update:
-    post:
-      tags:
-        - admin
-      summary: Edit Vanity Link
-      operationId: >-
-        edit_vanity_link_admin_n8enylacgd_vanity_link__vanity_link_id__update_post
-      parameters:
-        - required: true
-          schema:
-            type: string
-            title: Vanity Link Id
-          name: vanity_link_id
-          in: path
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: >-
-                #/components/schemas/Body_edit_vanity_link_admin_n8enylacgd_vanity_link__vanity_link_id__update_post
-        required: true
-      responses:
-        '200':
-          description: Successful Response
-          content:
-            application/json:
-              schema: {}
-        '422':
-          description: Validation Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HTTPValidationError'
-  /admin/n8enylacgd/vanity-link/{vanity_link_id}/delete:
-    post:
-      tags:
-        - admin
-      summary: Delete Vanity Link
-      operationId: >-
-        delete_vanity_link_admin_n8enylacgd_vanity_link__vanity_link_id__delete_post
-      parameters:
-        - required: true
-          schema:
-            type: string
-            title: Vanity Link Id
-          name: vanity_link_id
-          in: path
-      responses:
-        '200':
-          description: Successful Response
-          content:
-            application/json:
-              schema: {}
-        '422':
-          description: Validation Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HTTPValidationError'
-  /admin/n8enylacgd/vanity-links:
+  /v1/pronunciation-dictionaries/:
     get:
       tags:
-        - admin
-      summary: Get All Vanity Links
-      operationId: get_all_vanity_links_admin_n8enylacgd_vanity_links_get
-      responses:
-        '200':
-          description: Successful Response
-          content:
-            application/json:
-              schema: {}
-        '422':
-          description: Validation Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HTTPValidationError'
-  /admin/n8enylacgd/vanity-link/{slug}:
-    get:
-      tags:
-        - admin
-      summary: Get Vanity Link
-      operationId: get_vanity_link_admin_n8enylacgd_vanity_link__slug__get
+        - Pronunciation Dictionary
+      summary: Get Pronunciation Dictionaries
+      description: >-
+        Get a list of the pronunciation dictionaries you have access to and
+        their metadata
+      operationId: Get_Pronunciation_Dictionaries_v1_pronunciation_dictionaries__get
       parameters:
-        - required: true
+        - description: Used for fetching next page. Cursor is returned in the response.
+          required: false
           schema:
             type: string
-            title: Slug
-          name: slug
-          in: path
-      responses:
-        '200':
-          description: Successful Response
-          content:
-            application/json:
-              schema: {}
-        '422':
-          description: Validation Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HTTPValidationError'
-  /admin/n8enylacgd/coupon/{promocode}/archive:
-    post:
-      tags:
-        - admin
-      summary: Archive Coupon
-      operationId: archive_coupon_admin_n8enylacgd_coupon__promocode__archive_post
-      parameters:
-        - required: true
+            title: Cursor
+            description: Used for fetching next page. Cursor is returned in the response.
+          name: cursor
+          in: query
+        - description: >-
+            How many pronunciation dictionaries to return at maximum. Can not
+            exceed 100, defaults to 30.
+          required: false
+          schema:
+            type: integer
+            maximum: 100
+            minimum: 1
+            title: Page Size
+            description: >-
+              How many pronunciation dictionaries to return at maximum. Can not
+              exceed 100, defaults to 30.
+            default: 30
+          name: page_size
+          in: query
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
           schema:
             type: string
-            title: Promocode
-          name: promocode
-          in: path
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+          name: xi-api-key
+          in: header
       responses:
         '200':
           description: Successful Response
-          content:
-            application/json:
-              schema: {}
-        '422':
-          description: Validation Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/HTTPValidationError'
-  /admin/n8enylacgd/coupons:
-    get:
-      tags:
-        - admin
-      summary: Get All Coupons
-      operationId: get_all_coupons_admin_n8enylacgd_coupons_get
-      responses:
-        '200':
-          description: Successful Response
-          content:
-            application/json:
-              schema: {}
+                $ref: >-
+                  #/components/schemas/GetPronunciationDictionariesMetadataResponseModel
         '422':
           description: Validation Error
           content:
@@ -3230,6 +3397,19 @@ components:
         - creation_time_unix
         - version_id
       title: AddPronunciationDictionaryResponseModel
+    AddPronunciationDictionaryRulesResponseModel:
+      properties:
+        id:
+          type: string
+          title: Id
+        version_id:
+          type: string
+          title: Version Id
+      type: object
+      required:
+        - id
+        - version_id
+      title: AddPronunciationDictionaryRulesResponseModel
     AddVoiceResponseModel:
       properties:
         voice_id:
@@ -3340,6 +3520,10 @@ components:
             ultra - ultra quality output format, 192kbps with 44.1kHz sample
             rate and highest improvements on our side. Using this setting
             increases the character cost by 50%.
+
+            ultra lossless - ultra quality output format, 705.6kbps with 44.1kHz
+            sample rate and highest improvements on our side in a fully lossless
+            format. Using this setting increases the character cost by 100%.
           default: standard
           include_in_schema: true
         title:
@@ -3402,6 +3586,26 @@ components:
         - default_model_id
         - pronunciation_dictionary_locators
       title: Body_Add_project_v1_projects_add_post
+    Body_Add_rules_to_the_pronunciation_dictionary_v1_pronunciation_dictionaries__pronunciation_dictionary_id__add_rules_post:
+      properties:
+        rules:
+          items:
+            anyOf:
+              - $ref: >-
+                  #/components/schemas/PronunciationDictionaryAliasRuleRequestModel
+              - $ref: >-
+                  #/components/schemas/PronunciationDictionaryPhonemeRuleRequestModel
+          type: array
+          title: Rules
+          description: |-
+            List of pronunciation rules. Rule can be either:
+                an alias rule: {'string_to_replace': 'a', 'type': 'alias', 'alias': 'b', }
+                or a phoneme rule: {'string_to_replace': 'a', 'type': 'phoneme', 'phoneme': 'b', 'alphabet': 'ipa' }
+      type: object
+      required:
+        - rules
+      title: >-
+        Body_Add_rules_to_the_pronunciation_dictionary_v1_pronunciation_dictionaries__pronunciation_dictionary_id__add_rules_post
     Body_Add_sharing_voice_v1_voices_add__public_user_id___voice_id__post:
       properties:
         new_name:
@@ -3620,7 +3824,9 @@ components:
         target_lang:
           type: string
           title: Target Lang
-          description: Target language.
+          description: >-
+            The Target language to dub the content into. Can be none if dubbing
+            studio editor is enabled and running manual mode
         num_speakers:
           type: integer
           title: Num Speakers
@@ -3650,8 +3856,6 @@ components:
           description: Whether to prepare dub for edits in dubbing studio.
           default: false
       type: object
-      required:
-        - target_lang
       title: Body_Dub_a_video_or_an_audio_file_v1_dubbing_post
     Body_Edit_voice_v1_voices__voice_id__edit_post:
       properties:
@@ -3725,6 +3929,19 @@ components:
         - accent_strength
         - text
       title: Body_Generate_a_random_voice_v1_voice_generation_generate_voice_post
+    Body_Remove_rules_from_the_pronunciation_dictionary_v1_pronunciation_dictionaries__pronunciation_dictionary_id__remove_rules_post:
+      properties:
+        rule_strings:
+          items:
+            type: string
+          type: array
+          title: Rule Strings
+          description: List of strings to remove from the pronunciation dictionary.
+      type: object
+      required:
+        - rule_strings
+      title: >-
+        Body_Remove_rules_from_the_pronunciation_dictionary_v1_pronunciation_dictionaries__pronunciation_dictionary_id__remove_rules_post
     Body_Speech_to_Speech_Streaming_v1_speech_to_speech__voice_id__stream_post:
       properties:
         audio:
@@ -3784,6 +4001,26 @@ components:
       required:
         - audio
       title: Body_Speech_to_Speech_v1_speech_to_speech__voice_id__post
+    Body_Stream_chapter_audio_v1_projects__project_id__chapters__chapter_id__snapshots__chapter_snapshot_id__stream_post:
+      properties:
+        convert_to_mpeg:
+          type: boolean
+          title: Convert To Mpeg
+          description: Whether to convert the audio to mpeg format.
+          default: false
+      type: object
+      title: >-
+        Body_Stream_chapter_audio_v1_projects__project_id__chapters__chapter_id__snapshots__chapter_snapshot_id__stream_post
+    Body_Stream_project_audio_v1_projects__project_id__snapshots__project_snapshot_id__stream_post:
+      properties:
+        convert_to_mpeg:
+          type: boolean
+          title: Convert To Mpeg
+          description: Whether to convert the audio to mpeg format.
+          default: false
+      type: object
+      title: >-
+        Body_Stream_project_audio_v1_projects__project_id__snapshots__project_snapshot_id__stream_post
     Body_Text_to_speech_v1_text_to_speech__voice_id__post:
       properties:
         text:
@@ -3871,29 +4108,6 @@ components:
         - pronunciation_dictionary_locators
       title: >-
         Body_Update_Pronunciation_Dictionaries_v1_projects__project_id__update_pronunciation_dictionaries_post
-    Body_edit_vanity_link_admin_n8enylacgd_vanity_link__vanity_link_id__update_post:
-      properties:
-        vanity_slug:
-          type: string
-          title: Vanity Slug
-          description: >-
-            The new slug for the vanity link. For example, if you want the
-            vanity link to be /blog/NEW_SLUG, enter NEW_SLUG.
-        target_url:
-          type: string
-          title: Target URL
-          description: The new URL that the vanity link should redirect to.
-        comment:
-          type: string
-          title: Comment
-          description: A new comment or description for the vanity link.
-      type: object
-      required:
-        - vanity_slug
-        - target_url
-        - comment
-      title: >-
-        Body_edit_vanity_link_admin_n8enylacgd_vanity_link__vanity_link_id__update_post
     ChapterResponseModel:
       properties:
         chapter_id:
@@ -4232,16 +4446,15 @@ components:
             $ref: '#/components/schemas/LibraryVoiceResponseModel'
           type: array
           title: Voices
-        last_sort_id:
-          type: string
-          title: Last Sort Id
         has_more:
           type: boolean
           title: Has More
+        last_sort_id:
+          type: string
+          title: Last Sort Id
       type: object
       required:
         - voices
-        - last_sort_id
         - has_more
       title: GetLibraryVoicesResponseModel
     GetProjectsResponseModel:
@@ -4255,11 +4468,34 @@ components:
       required:
         - projects
       title: GetProjectsResponseModel
+    GetPronunciationDictionariesMetadataResponseModel:
+      properties:
+        pronunciation_dictionaries:
+          items:
+            $ref: >-
+              #/components/schemas/GetPronunciationDictionaryMetadataResponseModel
+          type: array
+          title: Pronunciation Dictionaries
+        next_cursor:
+          type: string
+          title: Next Cursor
+        has_more:
+          type: boolean
+          title: Has More
+      type: object
+      required:
+        - pronunciation_dictionaries
+        - next_cursor
+        - has_more
+      title: GetPronunciationDictionariesMetadataResponseModel
     GetPronunciationDictionaryMetadataResponseModel:
       properties:
         id:
           type: string
           title: Id
+        latest_version_id:
+          type: string
+          title: Latest Version Id
         name:
           type: string
           title: Name
@@ -4275,6 +4511,7 @@ components:
       type: object
       required:
         - id
+        - latest_version_id
         - name
         - created_by
         - creation_time_unix
@@ -4403,6 +4640,9 @@ components:
         live_moderation_enabled:
           type: boolean
           title: Live Moderation Enabled
+        featured:
+          type: boolean
+          title: Featured
         notice_period:
           type: integer
           title: Notice Period
@@ -4418,9 +4658,6 @@ components:
         tiktok_username:
           type: string
           title: Tiktok Username
-        featured:
-          type: boolean
-          title: Featured
       type: object
       required:
         - public_owner_id
@@ -4442,11 +4679,6 @@ components:
         - rate
         - free_users_allowed
         - live_moderation_enabled
-        - notice_period
-        - instagram_username
-        - twitter_username
-        - youtube_username
-        - tiktok_username
         - featured
       title: LibraryVoiceResponseModel
     ManualVerificationFileResponseModel:
@@ -4699,6 +4931,48 @@ components:
       required:
         - snapshots
       title: ProjectSnapshotsResponseModel
+    PronunciationDictionaryAliasRuleRequestModel:
+      properties:
+        type:
+          type: string
+          enum:
+            - alias
+          title: Type
+        string_to_replace:
+          type: string
+          title: String To Replace
+        alias:
+          type: string
+          title: Alias
+      type: object
+      required:
+        - type
+        - string_to_replace
+        - alias
+      title: PronunciationDictionaryAliasRuleRequestModel
+    PronunciationDictionaryPhonemeRuleRequestModel:
+      properties:
+        type:
+          type: string
+          enum:
+            - phoneme
+          title: Type
+        string_to_replace:
+          type: string
+          title: String To Replace
+        phoneme:
+          type: string
+          title: Phoneme
+        alphabet:
+          type: string
+          title: Alphabet
+      type: object
+      required:
+        - type
+        - string_to_replace
+        - phoneme
+        - alphabet
+      title: PronunciationDictionaryPhonemeRuleRequestModel
     PronunciationDictionaryVersionLocatorDBModel:
       properties:
         pronunciation_dictionary_id:
@@ -4737,6 +5011,19 @@ components:
         - upload_date_unix
         - transcription
       title: RecordingResponseModel
+    RemovePronunciationDictionaryRulesResponseModel:
+      properties:
+        id:
+          type: string
+          title: Id
+        version_id:
+          type: string
+          title: Version Id
+      type: object
+      required:
+        - id
+        - version_id
+      title: RemovePronunciationDictionaryRulesResponseModel
     SampleResponseModel:
       properties:
         sample_id:
@@ -5218,21 +5505,19 @@ components:
         voice_mixing_allowed:
           type: boolean
           title: Voice Mixing Allowed
-        instagram_username:
-          type: string
-          title: Instagram Username
-        twitter_username:
-          type: string
-          title: Twitter Username
-        youtube_username:
-          type: string
-          title: Youtube Username
-        tiktok_username:
-          type: string
-          title: Tiktok Username
         featured:
           type: boolean
           title: Featured
+        category:
+          type: string
+          enum:
+            - generated
+            - professional
+            - high_quality
+          title: Category
+        reader_app_enabled:
+          type: boolean
+          title: Reader App Enabled
         ban_reason:
           type: string
           title: Ban Reason
@@ -5268,6 +5553,18 @@ components:
         enabled_in_library:
           type: boolean
           title: Enabled In Library
+        instagram_username:
+          type: string
+          title: Instagram Username
+        twitter_username:
+          type: string
+          title: Twitter Username
+        youtube_username:
+          type: string
+          title: Youtube Username
+        tiktok_username:
+          type: string
+          title: Tiktok Username
       type: object
       required:
         - status
@@ -5283,11 +5580,9 @@ components:
         - notice_period
         - disable_at_unix
         - voice_mixing_allowed
-        - instagram_username
-        - twitter_username
-        - youtube_username
-        - tiktok_username
         - featured
+        - category
+        - reader_app_enabled
         - ban_reason
         - liked_by_count
         - cloned_by_count

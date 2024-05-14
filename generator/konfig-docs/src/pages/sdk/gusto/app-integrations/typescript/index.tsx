@@ -19,7 +19,7 @@ Through one refreshingly easy, integrated platform, we automate and simplify you
       companyKebabCase="gusto"
       clientNameCamelCase="gustoAppIntegrations"
       homepage="gusto.com"
-      lastUpdated={new Date("2024-03-27T01:23:25.425Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/gusto/app-integrations/favicon.png"
       // Missing contactUrl
       contactEmail="developer@gusto.com"
@@ -697,7 +697,7 @@ Through one refreshingly easy, integrated platform, we automate and simplify you
       {
         "name": "include",
         "schema": "string",
-        "description": "Include the requested attribute(s) in each employee response, multiple options are comma separated. Available options:\n- all_compensations: Include all effective dated compensations for each job instead of only the current compensation\n- custom_fields: Include employees' custom fields"
+        "description": "Include the requested attribute(https://docs.gusto.com/app-integrations/docs/introduction in each employee response, multiple options are comma separated. Available options:\n- all_compensations: Include all effective dated compensations for each job instead of only the current compensation\n- custom_fields: Include employees' custom fields"
       },
       {
         "name": "page",
@@ -1150,7 +1150,7 @@ Through one refreshingly easy, integrated platform, we automate and simplify you
       {
         "name": "include",
         "schema": "string",
-        "description": "Include the requested attribute(s) in each employee response, multiple options are comma separated. Available options:\n- all_compensations: Include all effective dated compensations for each job instead of only the current compensation\n- custom_fields: Include employees' custom fields"
+        "description": "Include the requested attribute(https://docs.gusto.com/app-integrations/docs/introduction in each employee response, multiple options are comma separated. Available options:\n- all_compensations: Include all effective dated compensations for each job instead of only the current compensation\n- custom_fields: Include employees' custom fields"
       },
       {
         "name": "xGustoApiVersion",
@@ -4747,7 +4747,7 @@ Through one refreshingly easy, integrated platform, we automate and simplify you
         "name": "startingAfterUuid",
         "schema": "string",
         "required": false,
-        "description": "A cursor for pagination. Returns all events occuring after the specified UUID (exclusive)"
+        "description": "A cursor for pagination. Returns all events occuring after the specified UUID (https://docs.gusto.com/app-integrations/docs/introduction"
       },
       {
         "name": "resourceUuid",
@@ -4786,7 +4786,7 @@ Through one refreshingly easy, integrated platform, we automate and simplify you
       language="TypeScript"
       apiTitle="Gusto API"
       apiBaseUrl="https://api.gusto-demo.com"
-      apiVersion="2024-03-01"
+      apiVersion="2024-04-01"
       endpoints={59}
       sdkMethods={100}
       schemas={198}

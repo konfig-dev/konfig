@@ -20,7 +20,12 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
+{{^guzzle6}}
 use GuzzleHttp\BodySummarizer;
+{{/guzzle6}}
+{{#guzzle6}}
+use GuzzleHttp\Handler\CurlHandler;
+{{/guzzle6}}
 use GuzzleHttp\Middleware;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Utils;
@@ -77,8 +82,8 @@ use {{invokerPackage}}\ObjectSerializer;
 
         // Do not truncate error messages
         // https://github.com/guzzle/guzzle/issues/2185#issuecomment-800293420
-        $stack = new HandlerStack(Utils::chooseHandler());
-        $stack->push(Middleware::httpErrors(new BodySummarizer(10000)), 'http_errors');
+        $stack = new HandlerStack({{^guzzle6}}Utils::chooseHandler(){{/guzzle6}}{{#guzzle6}}new CurlHandler(){{/guzzle6}});
+        $stack->push(Middleware::httpErrors({{^guzzle6}}new BodySummarizer(10000){{/guzzle6}}), 'http_errors');
         $stack->push(Middleware::redirect(), 'allow_redirects');
         $stack->push(Middleware::cookies(), 'cookies');
         $stack->push(Middleware::prepareBody(), 'prepare_body');

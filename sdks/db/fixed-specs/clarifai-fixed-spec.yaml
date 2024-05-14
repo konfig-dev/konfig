@@ -2932,9 +2932,6 @@ paths:
              - MODULE_DOES_NOT_EXIST: Module related codes 253xx
              - BULK_OPERATION_SUCCESS: Bulk Operation related codes 254xx
              - RUNNER_DOES_NOT_EXIST: Runner related codes 256xx
-             - RUNNER_METHOD_UNARY: signal to runner to use unary method.
-             - RUNNER_METHOD_GENERATE: signal to runner to use generate method to stream responses
-             - RUNNER_METHOD_STREAM: signal to runner to use bi-directional streaming.
              - INPUT_DOWNLOAD_SUCCESS: Input:Image related 30xxx
              - INPUT_DOWNLOAD_PENDING: when things are async, this is the default status.
              - INPUT_DOWNLOAD_FAILED: any type of error downloading and processing
@@ -3147,9 +3144,8 @@ paths:
               - RUNNER_NEEDS_RETRY
               - RUNNER_STREAM_START
               - RUNNER_STREAM_END
-              - RUNNER_METHOD_UNARY
-              - RUNNER_METHOD_GENERATE
-              - RUNNER_METHOD_STREAM
+              - RUNNER_ITEM_CANCELLED
+              - RUNNER_PROCESSING_FAILED
               - INPUT_DOWNLOAD_SUCCESS
               - INPUT_DOWNLOAD_PENDING
               - INPUT_DOWNLOAD_FAILED
@@ -11965,9 +11961,6 @@ paths:
              - MODULE_DOES_NOT_EXIST: Module related codes 253xx
              - BULK_OPERATION_SUCCESS: Bulk Operation related codes 254xx
              - RUNNER_DOES_NOT_EXIST: Runner related codes 256xx
-             - RUNNER_METHOD_UNARY: signal to runner to use unary method.
-             - RUNNER_METHOD_GENERATE: signal to runner to use generate method to stream responses
-             - RUNNER_METHOD_STREAM: signal to runner to use bi-directional streaming.
              - INPUT_DOWNLOAD_SUCCESS: Input:Image related 30xxx
              - INPUT_DOWNLOAD_PENDING: when things are async, this is the default status.
              - INPUT_DOWNLOAD_FAILED: any type of error downloading and processing
@@ -12180,9 +12173,8 @@ paths:
               - RUNNER_NEEDS_RETRY
               - RUNNER_STREAM_START
               - RUNNER_STREAM_END
-              - RUNNER_METHOD_UNARY
-              - RUNNER_METHOD_GENERATE
-              - RUNNER_METHOD_STREAM
+              - RUNNER_ITEM_CANCELLED
+              - RUNNER_PROCESSING_FAILED
               - INPUT_DOWNLOAD_SUCCESS
               - INPUT_DOWNLOAD_PENDING
               - INPUT_DOWNLOAD_FAILED
@@ -20595,7 +20587,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/googlerpcStatus'
-  /v2/users/{userAppId.userId}/runners/{runnerId}/items/{itemId}/outputs:
+  /v2/users/{userAppId.userId}/runners/{runnerId}/items/{runnerItemId}/outputs:
     post:
       tags:
         - V2
@@ -20619,7 +20611,7 @@ paths:
           schema:
             type: string
         - description: The particular item of work processed.
-          name: itemId
+          name: runnerItemId
           in: path
           required: true
           schema:
@@ -26166,7 +26158,7 @@ components:
       properties:
         status:
           $ref: '#/components/schemas/apistatusStatus'
-        items:
+        runnerItems:
           type: array
           items:
             $ref: '#/components/schemas/apiRunnerItem'
@@ -27666,6 +27658,14 @@ components:
              version 1 folder that contains model files (onnx graph, torch script, python BE model, and etc.)
           description: Whether to overwrite the model for the existing internal id
           type: string
+    apiProcessingInfo:
+      title: Processing info tells the runner how to process a RunnerItem
+      type: object
+      properties:
+        runnerMethodType:
+          $ref: '#/components/schemas/apiRunnerMethodType'
+        status:
+          $ref: '#/components/schemas/apistatusStatus'
     apiProgress:
       type: object
       properties:
@@ -27963,6 +27963,7 @@ components:
         computeInfo:
           $ref: '#/components/schemas/apiComputeInfo'
     apiRunnerItem:
+      description: This is a piece of work for a runner to process.
       type: object
       properties:
         description:
@@ -27971,8 +27972,8 @@ components:
         id:
           description: A UUID hash for this work item.
           type: string
-        status:
-          $ref: '#/components/schemas/apistatusStatus'
+        processingInfo:
+          $ref: '#/components/schemas/apiProcessingInfo'
         postModelOutputsRequest:
           $ref: '#/components/schemas/apiPostModelOutputsRequest'
     apiRunnerItemOutput:
@@ -27980,6 +27981,20 @@ components:
       properties:
         multiOutputResponse:
           $ref: '#/components/schemas/apiMultiOutputResponse'
+    apiRunnerMethodType:
+      title: |-
+        - UNARY_UNARY: single request, single response. predict() in code
+         - UNARY_STREAMING: single request, streamed response. generate() in code
+         - STREAMING_UNARY: stream of requests, single response.
+         - STREAMING_STREAMING: stream of requests, stream of responses. stream() in code
+      type: string
+      enum:
+        - UNKNOWN
+        - UNARY_UNARY
+        - UNARY_STREAMING
+        - STREAMING_UNARY
+        - STREAMING_STREAMING
+      default: UNKNOWN
     apiRunnerSelector:
       description: >-
         ////////////////////////////////////////
@@ -29880,9 +29895,6 @@ components:
          - MODULE_DOES_NOT_EXIST: Module related codes 253xx
          - BULK_OPERATION_SUCCESS: Bulk Operation related codes 254xx
          - RUNNER_DOES_NOT_EXIST: Runner related codes 256xx
-         - RUNNER_METHOD_UNARY: signal to runner to use unary method.
-         - RUNNER_METHOD_GENERATE: signal to runner to use generate method to stream responses
-         - RUNNER_METHOD_STREAM: signal to runner to use bi-directional streaming.
          - INPUT_DOWNLOAD_SUCCESS: Input:Image related 30xxx
          - INPUT_DOWNLOAD_PENDING: when things are async, this is the default status.
          - INPUT_DOWNLOAD_FAILED: any type of error downloading and processing
@@ -30091,9 +30103,8 @@ components:
         - RUNNER_NEEDS_RETRY
         - RUNNER_STREAM_START
         - RUNNER_STREAM_END
-        - RUNNER_METHOD_UNARY
-        - RUNNER_METHOD_GENERATE
-        - RUNNER_METHOD_STREAM
+        - RUNNER_ITEM_CANCELLED
+        - RUNNER_PROCESSING_FAILED
         - INPUT_DOWNLOAD_SUCCESS
         - INPUT_DOWNLOAD_PENDING
         - INPUT_DOWNLOAD_FAILED

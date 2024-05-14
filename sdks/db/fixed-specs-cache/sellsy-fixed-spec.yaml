@@ -28,7 +28,7 @@ rawSpecString: |
   openapi: 3.0.2
   info:
     title: Sellsy API
-    version: 2.126.0
+    version: 2.128.0
     description: >-
       Find out the [Postman collections](dist/postman/CollectionsApiV2.json) with
       the required [environment variables](dist/postman/Environment.json)
@@ -15797,6 +15797,8 @@ rawSpecString: |
                           enum:
                             - shipping
                             - packaging
+                      required:
+                        - id
                     unit_amount:
                       description: Unit amount without tax.
                       type: string
@@ -16496,6 +16498,8 @@ rawSpecString: |
                                   type: integer
                                   description: declination identifier
                                   nullable: true
+                              required:
+                                - id
                             unit_amount:
                               description: Unit amount
                               type: string
@@ -21642,20 +21646,17 @@ rawSpecString: |
             items:
               oneOf:
                 - type: object
-                  title: Company or Contact
+                  title: Contact
                   additionalProperties: false
-                  description: Object related to the activity
+                  description: Contact related to the activity
                   properties:
                     id:
                       $ref: '#/components/schemas/Deals/properties/object/properties/id'
                     type:
                       type: string
-                      example: client
+                      example: people
                       description: related type
                       enum:
-                        - prospect
-                        - client
-                        - supplier
                         - people
                     name:
                       type: string
@@ -21676,6 +21677,43 @@ rawSpecString: |
                       nullable: true
                       description: email address
                       example: john@example-company.com
+                - type: object
+                  title: Company
+                  additionalProperties: false
+                  description: Company related to the activity
+                  properties:
+                    id:
+                      $ref: '#/components/schemas/Deals/properties/object/properties/id'
+                    type:
+                      type: string
+                      example: client
+                      description: related type
+                      enum:
+                        - prospect
+                        - client
+                        - supplier
+                    name:
+                      type: string
+                      description: related name
+                      example: Customer
+                    phone_number:
+                      type: string
+                      nullable: true
+                      description: phone number
+                      example: '+33100000000'
+                    mobile_number:
+                      type: string
+                      nullable: true
+                      description: mobile phone number
+                      example: '+33600000000'
+                    email:
+                      type: string
+                      nullable: true
+                      description: email address
+                      example: john@example-company.com
+                    is_individual:
+                      type: boolean
+                      example: false
                 - type: object
                   title: Other related
                   additionalProperties: false
@@ -27580,6 +27618,48 @@ rawSpecString: |
             nullable: true
             description: Linked to the email object
             example: client.1
+          attachments:
+            description: Attachment objects
+            type: array
+            items:
+              title: Email attachment
+              description: The email attachment info
+              type: object
+              properties:
+                name:
+                  description: Attachment file name
+                  type: string
+                  example: business-card
+                extension:
+                  $ref: >-
+                    #/components/schemas/EmailAttachmentOutput/properties/extension
+                size:
+                  description: Attachment file size
+                  type: integer
+                  example: 1234
+                content_id:
+                  description: Attachment file content id
+                  type: string
+                  example: bpo8p9tcqrf3pcm11j8ikvx9o
+                content_disposition:
+                  description: Attachment file content disposition
+                  type: string
+                  example: attachment
+                  enum:
+                    - attachment
+                    - inline
+                public_link:
+                  type: string
+                  format: uri
+                  readOnly: true
+                  description: URL to file
+              required:
+                - name
+                - extension
+                - size
+                - content_id
+                - content_disposition
+                - public_link
       EmailSendBody:
         type: object
         required:
@@ -27630,6 +27710,7 @@ rawSpecString: |
                           - client
                           - supplier
                           - prospect
+                          - individual
                           - estimate
                           - invoice
                           - delivery
@@ -27675,6 +27756,7 @@ rawSpecString: |
                     - client
                     - supplier
                     - prospect
+                    - individual
                     - contact
                     - purInvoice
                     - purCreditNote
@@ -27684,6 +27766,42 @@ rawSpecString: |
             description: Message ID of the email to which this email is a reply
             type: string
             nullable: true
+          attachments:
+            description: Ataachments objects
+            type: array
+            items:
+              title: Email attachment
+              description: The email attachment info
+              type: object
+              properties:
+                name:
+                  description: Attachment filename
+                  type: string
+                  example: business-card.pdf
+                size:
+                  description: Attachment file size
+                  type: integer
+                  example: 1234
+                content_id:
+                  description: Attachment file content id
+                  type: string
+                  example: bpo8p9tcqrf3pcm11j8ikvx9o
+                content_type:
+                  description: Attachment file content type
+                  type: string
+                  example: application/pdf
+                content_disposition:
+                  description: Attachment file content disposition
+                  type: string
+                  enum:
+                    - attachment
+                    - inline
+              required:
+                - name
+                - size
+                - content_id
+                - content_type
+                - content_disposition
       PartialEmailHeader:
         type: object
         title: Mail provider error
@@ -27859,6 +27977,104 @@ rawSpecString: |
               type: string
               example: John Doe
               description: Recipient's name
+      EmailAttachmentOutput:
+        title: Email attachment
+        description: The email attachment info
+        type: object
+        properties:
+          name:
+            description: Attachment name
+            type: string
+            example: business-card
+          extension:
+            title: Attachment file extension
+            description: Attachment file extension
+            type: string
+            example: pdf
+            enum:
+              - rtf
+              - txt
+              - jpg
+              - jpeg
+              - png
+              - pdf
+              - xml
+              - xsl
+              - csv
+              - xls
+              - zip
+              - xlsx
+              - doc
+              - docx
+              - ppt
+              - pptx
+              - json
+              - dxf
+              - dwg
+              - svg
+              - psd
+              - ai
+              - eps
+              - indd
+              - gdoc
+              - avi
+              - mp3
+              - m4a
+              - mp4
+              - rar
+              - gif
+              - gplf
+              - gform
+              - gsheet
+              - gslides
+              - gdraw
+              - ods
+              - odt
+              - odp
+              - odg
+              - odf
+              - sat
+              - wav
+              - wave
+              - wmv
+              - xlsm
+              - stl
+              - ped
+              - tgz
+              - kmz
+              - kml
+              - ppsx
+              - tiff
+              - tif
+              - amr
+              - vcf
+              - cdr
+              - ar3
+              - eml
+              - mmap
+              - msg
+              - skp
+              - ics
+              - tnef
+              - webp
+          size:
+            description: Attachment file size
+            type: integer
+            example: 1234
+          content_id:
+            description: Attachment file content id
+            type: string
+            example: bpo8p9tcqrf3pcm11j8ikvx9o
+          content_type:
+            description: Attachment file content type
+            type: string
+            example: application/pdf
+        required:
+          - name
+          - extension
+          - size
+          - content_id
+          - content_type
       WebhookFilters:
         title: WebhookFilters
         type: object
@@ -34634,6 +34850,11 @@ rawSpecString: |
                           description: Description of item
                           example: T-shirt 90% coton
                           nullable: true
+                        characteristic_weight:
+                          type: string
+                          description: Product weight
+                          example: 99.99
+                          nullable: true
                         unit:
                           type: string
                           description: Unit
@@ -38718,4 +38939,4 @@ rawSpecString: |
             tokenUrl: https://login.sellsy.com/oauth2/access-tokens
             scopes: {}
         description: "### Client OAuth\nYou can generate a new OAuth 2 client for the V2 API, from the developer page of your Sellsy account (https://www.sellsy.fr/developer/api-v2).\n\nSeveral types of clients are available:\n\n- **Private:** API access limited to staffs of your SELLSY account.\n  A flow by authorization code will be required\n- **Personal**:   API access linked to an staff.\n   The use of client credentials flow is possible.\n- **Public**:  API access to connect to all SELLSY accounts.\n   A validation of SELLSY and a flow by authorization code will be required.\n\n### Authorization Code Flow\nSee  https://www.oauth.com/oauth2-servers/server-side-apps/authorization-code/\n\n**PKCE** is required when using the authorization code flow. https://www.oauth.com/oauth2-servers/pkce/\n\n- **Authorization URL:** https://login.sellsy.com/oauth2/authorization\n- **Token URL:** https://login.sellsy.com/oauth2/access-tokens\n- **Refresh URL:** https://login.sellsy.com/oauth2/access-tokens\n\n\n#### Example:\nCall `https://login.sellsy.com/oauth2/authorization?response_type=code&client_id=YOUR_CLIENT_ID&redirect_uri=YOUR_REDIRECT_URI&code_challenge=YOUR_PKCE_CODE_CHALENGE&code_challenge_method=S256`\n\nAfter authentication, a redirection will be performed on the redirection uri. The authaurization code will be retrieved in the query parameter `code` .\n\nThis code can now be exchanged for an access token:\n```bash\ncurl -X POST \\\n  https://login.sellsy.com/oauth2/access-tokens \\\n  -d '{\n\t\"grant_type\": \"authorization_code\",\n\t\"client_id\": \"YOUR_CLIENT_ID\",\n\t\"redirect_uri\": \"YOUR_REDIRECT_URI\",\n\t\"code_verifier\": \"YOUR_PKCE_CODE_VERIFIER\",\n\t\"code\": \"THE_CODE\"\n}'\n# Response\n{\n    \"token_type\": \"Bearer\",\n    \"expires_in\": 3600,\n    \"access_token\": \"YOUR_ACCESS_TOKEN\",\n    \"refresh_token\": \"YOUR_REFRESH_TOKEN\"\n}\n# Use API\ncurl  -X GET \\\n  'https://api.sellsy.com/v2/teams' \\\n   --header 'Authorization: Bearer YOUR_ACCESS_TOKEN'\n```\n\nYou can request a new access token, from the refresh token previously retrieved:\n```bash\ncurl -X POST \\\n  https://login.sellsy.com/oauth2/access-tokens \\\n  -d '{\n\t\"grant_type\": \"refresh_token\",\n\t\"client_id\": \"YOUR_CLIENT_ID\",\n\t\"client_secret\": \"YOUR_CLIENT_SECRET\"\n\t\"refresh_token\": \"YOUR_REFRESH_TOKEN\"\n}'\n# Response\n{\n    \"token_type\": \"Bearer\",\n    \"expires_in\": 3600,\n    \"access_token\": \"YOUR_NEW_ACCESS_TOKEN\",\n    \"refresh_token\": \"YOUR_NEW_REFRESH_TOKEN\"\n}\n```\n\n### Client Credential Flow\nSee  https://www.oauth.com/oauth2-servers/access-tokens/client-credentials/\n\nOnly personal clients can use this authentication flow.\n\n**Token URL:** https://login.sellsy.com/oauth2/access-tokens\n\n#### Example:\n```bash\ncurl -X POST \\\n  https://login.sellsy.com/oauth2/access-tokens \\\n  -d '{\n\t\"grant_type\": \"client_credentials\",\n\t\"client_id\": \"YOUR_CLIENT_ID\",\n\t\"client_secret\": \"YOUR_CLIENT_SECRET\"\n}'\n# Response\n{\n    \"token_type\": \"Bearer\",\n    \"expires_in\": 3600,\n    \"access_token\": \"YOUR_ACCESS_TOKEN\"\n}\n# Use API\ncurl  -X GET \\\n  'https://api.sellsy.com/v2/teams' \\\n   --header 'Authorization: Bearer YOUR_ACCESS_TOKEN'\n```\n### Tokens expiration\n- **Authorization Code:** 10 min\n- **Access Token:** 24 hours\n- **Refresh Token:** 60 days"
-konfigCliVersion: 1.38.34
+konfigCliVersion: 1.38.37

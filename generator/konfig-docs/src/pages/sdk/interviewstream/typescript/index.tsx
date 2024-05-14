@@ -19,7 +19,7 @@ interviewstream is dedicated to the success of more than 900 clients from emergi
       companyKebabCase="interviewstream"
       clientNameCamelCase="interviewstream"
       homepage="interviewstream.com"
-      lastUpdated={new Date("2024-03-28T00:23:48.891Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/interviewstream/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -360,7 +360,7 @@ interviewstream is dedicated to the success of more than 900 clients from emergi
     }
       language="TypeScript"
       apiTitle="General API"
-      apiBaseUrl="https://general-api.ivs-apps.com/api"
+      apiBaseUrl="https://api.interviewstream.com/"
       apiVersion="0.3.0"
       endpoints={10}
       sdkMethods={10}

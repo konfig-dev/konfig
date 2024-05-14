@@ -108,6 +108,14 @@ rawSpecString: |
       noContent:
         description: NO CONTENT
     parameters:
+      origin:
+        in: header
+        name: Origin
+        description: Origin of the request.
+        schema:
+          type: string
+          example: https://sandbox-api.kenjo.io
+        required: true
       authorization:
         in: header
         name: Authorization
@@ -121,6 +129,7 @@ rawSpecString: |
   paths:
     /auth/login:
       post:
+        summary: Log in an API token.
         description: Create a bearer token to allow connecting the API.
         tags:
           - Authentication
@@ -160,6 +169,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /auth/logout:
       post:
+        summary: Log out an API token.
         description: Invalidates a Bearer token.
         tags:
           - Authentication
@@ -172,6 +182,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /attendances/{attendanceId}:
       get:
+        summary: Return an attendance for a given attendance id.
         description: >-
           This endpoint returns one attendance entry specified by 
           **attendanceId**.
@@ -266,6 +277,7 @@ rawSpecString: |
           '401':
             $ref: '#/components/responses/unauthorized'
       put:
+        summary: Update an attendance for a given attendance id.
         description: >-
           This endpoint updates the attendance entry specified by
           **attendanceId**. Only the fields submitted in the body will be updated.
@@ -396,6 +408,7 @@ rawSpecString: |
           '401':
             $ref: '#/components/responses/unauthorized'
       delete:
+        summary: Delete an attendance for a given attendance id.
         description: This endpoint delete the attendance entry specified by **attendanceId**.
         tags:
           - Attendance
@@ -418,6 +431,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /attendances:
       get:
+        summary: Return a list of attendances.
         description: >-
           This endpoint returns an array of objects with all the existing
           attendance entries within Kenjo for a maximum of 31 days, defined by the
@@ -553,6 +567,7 @@ rawSpecString: |
           '401':
             $ref: '#/components/responses/unauthorized'
       post:
+        summary: Create a new attendance.
         description: >-
           This endpoint creates an attendance entry for a one employee, so an user
           *identifier* is required to build this relationship. The following
@@ -726,6 +741,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /attendances/track-time:
       post:
+        summary: Track an attendance entry.
         description: >-
           This endpoint tracks time only providing the following information:
           **employee identifier** and a **date time**. The following identifiers
@@ -819,6 +835,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /attendances/categories:
       get:
+        summary: Return a list of attendance categories.
         description: >-
           This endpoint returns an array of objects. Every object contains an
           attendance category.
@@ -871,6 +888,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /attendances/expected-time:
       get:
+        summary: Return a list of expected times.
         description: >-
           This endpoint returns a paginated list of expected time by user for a
           given date range.
@@ -1092,6 +1110,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /companies:
       get:
+        summary: Return a list of companies.
         description: Returns a list of the existing companies in Kenjo.
         tags:
           - Companies
@@ -1153,6 +1172,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /offices:
       get:
+        summary: Return a list of offices.
         description: Returns a list of the existing offices in Kenjo.
         tags:
           - Offices
@@ -1273,6 +1293,7 @@ rawSpecString: |
           '401':
             $ref: '#/components/responses/unauthorized'
       post:
+        summary: Create a new office.
         description: >-
           Creates a new office.<br><br>The required fields are *name*,
           *companyId*, *calendarId*.<br>Optional fields are *street*,
@@ -1364,6 +1385,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /offices/{id}:
       get:
+        summary: Return an office for a given office id.
         description: Returns the office referenced by *id*.
         tags:
           - Offices
@@ -1422,6 +1444,7 @@ rawSpecString: |
           '401':
             $ref: '#/components/responses/unauthorized'
       put:
+        summary: Update an office for a given office id.
         description: >-
           Updates an office referenced by *id*. Only the attributes submitted are
           modified.
@@ -1469,6 +1492,7 @@ rawSpecString: |
           '401':
             $ref: '#/components/responses/unauthorized'
       delete:
+        summary: Delete an office for a given office id.
         description: Removes the office referenced by *id*.
         tags:
           - Offices
@@ -1491,6 +1515,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /departments:
       get:
+        summary: Return a list of departments.
         description: Returns a list of the existing departments in Kenjo.
         tags:
           - Departments
@@ -1537,6 +1562,7 @@ rawSpecString: |
           '401':
             $ref: '#/components/responses/unauthorized'
       post:
+        summary: Create a new department.
         description: Creates a new department.<br>The *name* is the only required field.<br>
         tags:
           - Departments
@@ -1576,6 +1602,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /departments/{id}:
       get:
+        summary: Return a department for a given department id.
         description: Returns the department referenced by *id*.
         tags:
           - Departments
@@ -1610,15 +1637,16 @@ rawSpecString: |
           '401':
             $ref: '#/components/responses/unauthorized'
       put:
+        summary: Update a department for a given department id.
         description: >-
-          Updates a deparment referenced by *id*. Only the attributes submitted
+          Updates a department referenced by *id*. Only the attributes submitted
           are modified.
         tags:
           - Departments
         parameters:
           - in: path
             name: id
-            description: The _id of the deparment entry to request.
+            description: The _id of the department entry to request.
             required: true
             schema:
               type: string
@@ -1657,6 +1685,7 @@ rawSpecString: |
           '401':
             $ref: '#/components/responses/unauthorized'
       delete:
+        summary: Delete a department for a given department id.
         description: Removes the department referenced by *id*.
         tags:
           - Departments
@@ -1679,6 +1708,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /teams:
       get:
+        summary: Return a list of teams.
         description: Returns a list of the existing teams in Kenjo.
         tags:
           - Teams
@@ -1721,6 +1751,7 @@ rawSpecString: |
           '401':
             $ref: '#/components/responses/unauthorized'
       post:
+        summary: Create a new team.
         description: Creates a new team.<br>The *name* is the only required field.<br>
         tags:
           - Teams
@@ -1760,6 +1791,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /teams/{id}:
       get:
+        summary: Return a team for a given team id.
         description: Returns the team referenced by *id*.
         tags:
           - Teams
@@ -1794,6 +1826,7 @@ rawSpecString: |
           '401':
             $ref: '#/components/responses/unauthorized'
       put:
+        summary: Update a team for a given team id.
         description: >-
           Updates a team referenced by *id*. Only the attributes submitted are
           modified.
@@ -1841,6 +1874,7 @@ rawSpecString: |
           '401':
             $ref: '#/components/responses/unauthorized'
       delete:
+        summary: Delete a team for a given team id.
         description: Removes the team referenced by *id*.
         tags:
           - Teams
@@ -1863,6 +1897,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /areas:
       get:
+        summary: Return a list of areas.
         description: Returns a list of the existing areas in Kenjo.
         tags:
           - Areas
@@ -1892,6 +1927,7 @@ rawSpecString: |
           '401':
             $ref: '#/components/responses/unauthorized'
       post:
+        summary: Create a new area.
         description: Creates a new area.<br>The *name* is the only required field.<br>
         tags:
           - Areas
@@ -1931,6 +1967,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /areas/{id}:
       get:
+        summary: Return a area for a given area id.
         description: Returns the area referenced by *id*.
         tags:
           - Areas
@@ -1965,6 +2002,7 @@ rawSpecString: |
           '401':
             $ref: '#/components/responses/unauthorized'
       put:
+        summary: Update an area for a given area id.
         description: >-
           Updates a area referenced by *id*. Only the attributes submitted are
           modified.
@@ -2012,6 +2050,7 @@ rawSpecString: |
           '401':
             $ref: '#/components/responses/unauthorized'
       delete:
+        summary: Delete an area for a given area id.
         description: Removes the area referenced by *id*.
         tags:
           - Areas
@@ -2034,6 +2073,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /calendars:
       get:
+        summary: Return a list of calendars.
         description: Returns a list of the existing calendars in Kenjo.
         tags:
           - Calendars
@@ -2077,6 +2117,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /calendars/{id}:
       get:
+        summary: Return a calendar for a given calendar id.
         description: Returns the calendar referenced by *id*.
         tags:
           - Calendars
@@ -2112,6 +2153,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /user-accounts:
       get:
+        summary: Return a list of users.
         description: >-
           This endpoint returns an array of objects with the existing employees in
           Kenjo. Every object contains the basic employee information from
@@ -2199,6 +2241,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /employees:
       post:
+        summary: Create a new employee.
         description: >
           This endpoint creates a deactivated employee in Kenjo, the 'isActive'
           field set to false. To activate an employee use the put /activate
@@ -2884,6 +2927,7 @@ rawSpecString: |
           '401':
             $ref: '#/components/responses/unauthorized'
       get:
+        summary: Return a list of user accounts.
         description: >-
           This endpoint returns the list of employee accounts existing in Kenjo.
           It is similar to the */employees/accounts* endpoint.
@@ -2945,6 +2989,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /employees/{employeeId}:
       get:
+        summary: Return all the sections information for a given employee Id.
         description: >-
           This endpoint returns information about the **account**, **personal**,
           **work**, **work schedule**, **address**, **financial** and **home**
@@ -3238,6 +3283,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /employees/accounts:
       get:
+        summary: Return a list of employee accounts.
         description: >-
           This endpoint returns a list with the **account** sections of the
           existing employees. The account section contains information such as
@@ -3330,6 +3376,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /employees/personals:
       get:
+        summary: Return a list of employee personals.
         description: >-
           This endpoint returns a list with the **personal** sections of the
           existing employees.
@@ -3442,6 +3489,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /employees/works:
       get:
+        summary: Return a list of employee works.
         description: >-
           This endpoint returns a list with the **work** sections of the existing
           employees.
@@ -3621,6 +3669,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /employees/work-schedules:
       get:
+        summary: Return a list of employee work schedules.
         description: >-
           This endpoint returns a list with the **work schedule** sections of the
           existing employees.
@@ -3725,6 +3774,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /employees/addresses:
       get:
+        summary: Return a list of employee addresses.
         description: >-
           This endpoint returns a list with the **address** sections of the
           existing employees.
@@ -3807,6 +3857,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /employees/financials:
       get:
+        summary: Return a list of employee financials.
         description: >-
           This endpoint returns a list with the **financial** sections of the
           existing employees.
@@ -3971,6 +4022,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /employees/homes:
       get:
+        summary: Return a list of employee homes.
         description: >-
           This endpoint returns a list with the **home** sections of the existing
           employees.
@@ -4135,6 +4187,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /employees/{employeeId}/accounts:
       put:
+        summary: Update the account section for a given employee id.
         description: >-
           This endpoint updates the employee **account** section for a given
           employee id. The operation only updates the fields provided in the body.
@@ -4211,6 +4264,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /employees/{employeeId}/personals:
       put:
+        summary: Update the personal section for a given employee id.
         description: >
           This endpoint updates the employee **personal** section for a given
           employee id. The operation only updates the fields provided in the body.
@@ -4325,6 +4379,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /employees/{employeeId}/works:
       put:
+        summary: Update the work section for a given employee id.
         description: >
           This endpoint updates the employee **work** section for a given employee
           id. The operation only updates the fields provided in the body.
@@ -4493,6 +4548,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /employees/{employeeId}/work-schedules:
       put:
+        summary: Update the work schedule section for a given employee id.
         description: >-
           This endpoint updates the employee **work schedule** section for a given
           employee id. The operation only updates the fields provided in the body.
@@ -4617,6 +4673,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /employees/{employeeId}/addresses:
       put:
+        summary: Update the address section for a given employee id.
         description: >
           This endpoint updates the employee **address** section for a given
           employee id. The operation only updates the fields provided in the body.
@@ -4708,6 +4765,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /employees/{employeeId}/financials:
       put:
+        summary: Update the financial section for a given employee id.
         description: >
           This endpoint updates the employee **financial** section for a given
           employee id. The operation only updates the fields provided in the body.
@@ -4855,6 +4913,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /employees/{employeeId}/homes:
       put:
+        summary: Update the home section for a given employee id.
         description: >
           This endpoint updates the employee **home** section for a given employee
           id. The operation only updates the fields provided in the body.
@@ -5002,6 +5061,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /employees/{employeeId}/activate:
       put:
+        summary: Activate an employee.
         description: >-
           This endpoint activates a Kenjo employee given by the employeeId. It
           sends an email to the recipient of the employee email to start the
@@ -5042,6 +5102,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /employees/{employeeId}/deactivate:
       put:
+        summary: Deactivate an employee.
         description: >-
           This endpoint deactivates a Kenjo employee given by the employeeId. It
           sets the isActive field to FALSE and invalidate the access Kenjo for the
@@ -5080,6 +5141,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /custom-fields:
       get:
+        summary: Return a list of custome fields.
         description: Returns a list of the existing custom fields in Kenjo.
         tags:
           - Custom fields
@@ -5196,6 +5258,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /time-off/requests:
       get:
+        summary: Return a list of time-off requests.
         description: >-
           This endpoint returns a paginated list of time off requests for a given
           date range.The maximum number of time off requests to retrieve once is
@@ -5363,6 +5426,13 @@ rawSpecString: |
                               Determines if the time-off request has related
                               attachments.
                             example: false
+                          _type:
+                            type: string
+                            description: >-
+                              This field defines if the request is a 'Submission'
+                              or a 'Request'. By default, the 'Submission' is
+                              automatically approved.
+                            example: Submission
                     metadata:
                       type: object
                       properties:
@@ -5393,7 +5463,7 @@ rawSpecString: |
                         _timeOffTypeId: 80a2db290da29e126a187809
                         _policyId: 80a2db290da29e126a187878
                         policyName: Sick days
-                        _policyTipe: Day
+                        _policyType: Day
                         status: Submitted
                         from: '2022-03-10T00:00:00'
                         to: '2022-03-12T00:00:00'
@@ -5401,12 +5471,13 @@ rawSpecString: |
                         workingTime: 2
                         _createdAt: '2022-03-10T08:00:00'
                         hasAttachment: true
+                        _type: Submission
                       - _id: 60a2db290da29e126a18789b
                         _userId: 80a2db290da29e126a18789b
                         _timeOffTypeId: 80a2db290da29e126a18789f
                         _policyId: 80a2db290da29e126a187897
                         policyName: Holidays for tech team
-                        _policyTipe: Day
+                        _policyType: Day
                         status: Submitted
                         from: '2022-02-01T00:00:00'
                         to: '2022-02-12T00:00:00'
@@ -5415,6 +5486,7 @@ rawSpecString: |
                         _createdAt: '2022-02-01T10:30:00'
                         description: I have requested days off
                         hasAttachment: false
+                        _type: Submission
                     metadata:
                       count: 2
                       offset: 1
@@ -5424,8 +5496,259 @@ rawSpecString: |
             $ref: '#/components/responses/badRequest'
           '401':
             $ref: '#/components/responses/unauthorized'
+    /time-off/types:
+      get:
+        summary: Return a list of time-off types.
+        description: >-
+          This endpoint returns a list of all the existing time off types for an
+          organization. The URL params help to return more accurate results.
+        tags:
+          - Time off
+        parameters:
+          - in: header
+            $ref: '#/components/parameters/authorization'
+          - in: query
+            name: name
+            required: false
+            description: >-
+              Optional filter. This field allows you to retrieve time-off types
+              based on their *name*. It can accept two formats:<br><br> 1. A
+              single *name* as a unique string. <br>Example: *name=Sick* <br><br>
+              2. Multiple *name* values separated by commas (up to a maximum of 15
+              values). <br>Example: *name=Maternity,Sick,Home*. These options
+              provide flexibility in filtering contracts by their type, making it
+              easier to retrieve the specific data you need.
+            schema:
+              type: string
+              example: Sick
+          - in: query
+            name: offset
+            description: >-
+              Optional filter for pagination proposals. Determines the number of
+              pages to skip when pagination is being used. If this value is not
+              provided, by default the offset will be 1.
+            schema:
+              type: number
+              example: 1
+          - in: query
+            name: limit
+            description: >-
+              Optional filter for pagination proposals. The maximum number of rows
+              to retrieve which determines the size of the page. If this value is
+              not provided then the limit will be 50 users. The maximum value of
+              the limit is 100 users per page. Only are valid the following limit
+              values: 25, 50 and 100.
+            schema:
+              type: number
+              example: 25
+        responses:
+          '200':
+            description: OK.
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                            description: The name of the time-off type.
+                            example: Maternity leave
+                    metadata:
+                      type: object
+                      properties:
+                        count:
+                          type: number
+                          description: >-
+                            The number of rows retrieved according the pagination
+                            filters (limit + offset).
+                        offset:
+                          type: number
+                          description: >-
+                            The number of pages to skip. Determines the page
+                            number when pagination is being used.
+                        limit:
+                          type: number
+                          description: >-
+                            The maximum number of rows to retrieve. Determines the
+                            size of the page when pagination is being used.
+                        total:
+                          type: number
+                          description: >-
+                            The total number of rows existing for the provided
+                            filters.
+                  example:
+                    data:
+                      - _id: 60a2db290da29e126a18789a
+                        name: Sick
+                      - _id: 60a2db290da29e126a18789f
+                        name: Maternity leave
+                      - _id: 60a2db290da29e126a18789d
+                        name: Holidays
+                    metadata:
+                      count: 2
+                      offset: 1
+                      limit: 50
+                      total: 2
+          '400':
+            $ref: '#/components/responses/badRequest'
+          '401':
+            $ref: '#/components/responses/unauthorized'
+    /time-off/requests/processed:
+      post:
+        summary: Create a new time-off request.
+        description: >
+          This endpoint creates a new time-off request for a specified *_userId*
+          and existing *_timeOffTypeId* within a defined date range specified by
+          the *from* (start) and *to* (end) fields. The request will be listed in
+          the app in the **Time-off history** as 'submitted time off on behalf of'
+          the person assigned to the request.
+
+
+          Additionally, it is possible to indicate whether the 'from' and 'to'
+          dates are taken as full days using the optional fields *partOfDayFrom*
+          and *partOfDayTo*, respectively. If these optional parameters are not
+          provided, the time-off request creation defaults to full days for both
+          the *from* and *to* dates.
+
+          All requests will be made on behalf of the *_userId*, and the status of
+          the request will be 'Processed' if the dates (from and to) are in the
+          past, while if the dates are in the future, the status will be
+          'Submitted'.
+
+
+          This endpoint does not allow creating time-off requests of hourly type.
+
+
+          For the optimal performance of this endpoint, it supports up to 200
+          requests per minute. Please note, rapidly consecutive requests to this
+          endpoint may not be processed in the submitted order. We recommend
+          spacing out your requests for consistent processing results.
+        tags:
+          - Time off
+        parameters:
+          - in: header
+            $ref: '#/components/parameters/authorization'
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _userId:
+                    type: string
+                    description: The Kenjo employee *_id*.
+                    example: 50a2db290da29e126a18789a
+                  _timeOffTypeId:
+                    type: string
+                    description: The Kenjo *time-off type Id* of one existing time-off type.
+                    example: 50a2db290da29e126a18789f
+                  from:
+                    type: string
+                    description: >-
+                      The starting date of the time-off request in format
+                      YYYY-MM-DD.
+                    example: '2020-01-26'
+                  to:
+                    type: string
+                    description: >-
+                      The ending date of the time-off request in format
+                      YYYY-MM-DD.
+                    example: '2020-01-30'
+                  partOfDayFrom:
+                    type: string
+                    enum:
+                      - StartOfDay
+                      - HalfOfDay
+                    description: >-
+                      The duration of the *from* date. 'StartOfDay' means that the
+                      *from* date is the entire day. 'HalfOfDay' means that the
+                      request starts to apply in the middle of the *from* day. If
+                      not specified, the default value will be 'StartOfDay'.
+                    example: StartOfDay
+                  partOfDayTo:
+                    type: string
+                    enum:
+                      - HalfOfDay
+                      - EndOfDay
+                    description: >-
+                      The duration of the *to* date. 'EndOfDay' means that the
+                      *to* date is the entire day. 'HalfOfDay' means the request
+                      starts to apply in the middle of the *to* day. If not
+                      specified, the default value will be 'EndOfDay'.
+                    example: HalfOfDay
+                required:
+                  - _userId
+                  - _timeOffTypeId
+                  - from
+                  - to
+              example:
+                _userId: 50a2db290da29e126a18789a
+                _timeOffTypeId: 50a2db290da29e126a18789f
+                from: '2020-01-26'
+                to: '2020-01-30'
+                partOfDayFrom: StartOfDay
+                partOfDayTo: HalfOfDay
+        responses:
+          '201':
+            description: CREATED
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    _id:
+                      type: string
+                      description: The time off request identifier.
+                      example: 50a2db290da29e126a187834
+                    _userId:
+                      type: string
+                      description: The Kenjo employee *_id*.
+                      example: 50a2db290da29e126a18789a
+                    _timeOffTypeId:
+                      type: string
+                      description: >-
+                        The Kenjo *time-off type Id* for an existing time-off
+                        type.
+                      example: 50a2db290da29e126a18789f
+                    from:
+                      type: string
+                      description: >-
+                        The starting date of the time-off request in format
+                        YYYY-MM-DD.
+                      example: '2020-01-26'
+                    to:
+                      type: string
+                      description: >-
+                        The ending date of the time-off request in format
+                        YYYY-MM-DD.
+                      example: '2020-01-30'
+                    partOfDayFrom:
+                      type: string
+                      enum:
+                        - StartOfDay
+                        - HalfOfDay
+                      description: Indicates when starts to apply the *from* date.
+                      example: StartOfDay
+                    partOfDayTo:
+                      type: string
+                      enum:
+                        - HalfOfDay
+                        - EndOfDay
+                      description: Indicates when starts to apply the *to* date.
+                      example: HalfOfDay
+          '400':
+            $ref: '#/components/responses/badRequest'
+          '401':
+            $ref: '#/components/responses/unauthorized'
     /compensation/contracts:
       get:
+        summary: Return a list of contracts.
         description: >-
           This endpoint returns a paginated list of employment contracts. The URL
           params help to return more accurate results.
@@ -5583,6 +5906,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /compensation/contract-types:
       get:
+        summary: Return a list of contract types.
         description: >-
           This endpoint returns a paginated list of contract types. The URL params
           help to return more accurate results.
@@ -5671,6 +5995,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /compensation/salaries:
       get:
+        summary: Return a list of salaries.
         description: >-
           This endpoint returns a paginated list of employment salaries. The URL
           params help to return more accurate results.
@@ -5868,6 +6193,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /compensation/additional-payments:
       get:
+        summary: Return a list of additional payments.
         description: >-
           This endpoint returns a paginated list of additional payments. The URL
           params help to return more accurate results.
@@ -6042,6 +6368,7 @@ rawSpecString: |
             $ref: '#/components/responses/unauthorized'
     /compensation/additional-payment-types:
       get:
+        summary: Return a list of additional payment types.
         description: >-
           This endpoint returns a paginated list of additional payment types. The
           URL params help to return more accurate results.
@@ -6131,4 +6458,4 @@ rawSpecString: |
             $ref: '#/components/responses/badRequest'
           '401':
             $ref: '#/components/responses/unauthorized'
-konfigCliVersion: 1.38.34
+konfigCliVersion: 1.38.37

@@ -17,7 +17,7 @@ export default function HetznerTypeScriptSdk() {
       companyKebabCase="hetzner"
       clientNameCamelCase="hetzner"
       homepage="hetzner.com"
-      lastUpdated={new Date("2024-03-24T21:45:24.878Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/hetzner/favicon.png"
       // Missing contactUrl
       // Missing contactEmail

@@ -33,7 +33,7 @@ rawSpecString: |
   openapi: 3.0.3
   info:
     title: Baserow API spec
-    version: 1.23.2
+    version: 1.24.2
     description: >-
       For more information about our REST API, please visit [this
       page](https://baserow.io/docs/apis%2Frest-api).
@@ -5907,6 +5907,96 @@ rawSpecString: |
                           format: object
                           description: Machine readable object about what went wrong.
             description: ''
+    /api/database/fields/{field_id}/generate-ai-field-values/:
+      post:
+        operationId: generate_table_ai_field_value
+        description: >-
+          Endpoint that's used by the AI field to start an sync task that will
+          update the cell value of the provided row IDs based on the dynamically
+          constructed prompt configured in the field settings. 
+
+          This is a **premium** feature.
+        parameters:
+          - in: header
+            name: ClientSessionId
+            schema:
+              type: string
+              format: uuid
+            description: >-
+              An optional header that marks the action performed by this request
+              as having occurred in a particular client session. Then using the
+              undo/redo endpoints with the same ClientSessionId header this action
+              can be undone/redone.
+          - in: header
+            name: ClientUndoRedoActionGroupId
+            schema:
+              type: string
+              format: uuid
+            description: >-
+              An optional header that marks the action performed by this request
+              as having occurred in a particular action group.Then calling the
+              undo/redo endpoint with the same ClientSessionId header, all the
+              actions belonging to the same action group can be undone/redone
+              together in a single API call.
+          - in: path
+            name: field_id
+            schema:
+              type: integer
+            description: The field to generate the value for.
+            required: true
+        tags:
+          - Database table fields
+        security:
+          - JWT: []
+        responses:
+          '200':
+            content:
+              application/json:
+                schema:
+                  type: string
+            description: ''
+          '400':
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    error:
+                      type: string
+                      description: Machine readable error indicating what went wrong.
+                      enum:
+                        - ERROR_GENERATIVE_AI_DOES_NOT_EXIST
+                        - ERROR_MODEL_DOES_NOT_BELONG_TO_TYPE
+                    detail:
+                      oneOf:
+                        - type: string
+                          format: string
+                          description: Human readable details about what went wrong.
+                        - type: object
+                          format: object
+                          description: Machine readable object about what went wrong.
+            description: ''
+          '404':
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    error:
+                      type: string
+                      description: Machine readable error indicating what went wrong.
+                      enum:
+                        - ERROR_FIELD_DOES_NOT_EXIST
+                        - ERROR_ROW_DOES_NOT_EXIST
+                    detail:
+                      oneOf:
+                        - type: string
+                          format: string
+                          description: Human readable details about what went wrong.
+                        - type: object
+                          format: object
+                          description: Machine readable object about what went wrong.
+            description: ''
     /api/database/fields/{field_id}/unique_row_values/:
       get:
         operationId: get_database_field_unique_row_values
@@ -6439,14 +6529,16 @@ rawSpecString: |
               The following filters are available: equal, not_equal,
               filename_contains, files_lower_than, has_file_type, contains,
               contains_not, contains_word, doesnt_contain_word,
-              length_is_lower_than, higher_than, lower_than, is_even_and_whole,
-              date_equal, date_before, date_before_or_equal, date_after_days_ago,
-              date_after, date_after_or_equal, date_not_equal, date_equals_today,
+              length_is_lower_than, higher_than, higher_than_or_equal, lower_than,
+              lower_than_or_equal, is_even_and_whole, date_equal, date_before,
+              date_before_or_equal, date_after_days_ago, date_after,
+              date_after_or_equal, date_not_equal, date_equals_today,
               date_before_today, date_after_today, date_within_days,
               date_within_weeks, date_within_months, date_equals_days_ago,
               date_equals_months_ago, date_equals_years_ago, date_equals_week,
               date_equals_month, date_equals_day_of_month, date_equals_year,
-              single_select_equal, single_select_not_equal, link_row_has,
+              single_select_equal, single_select_not_equal,
+              single_select_is_any_of, single_select_is_none_of, link_row_has,
               link_row_has_not, link_row_contains, link_row_not_contains, boolean,
               empty, not_empty, multiple_select_has, multiple_select_has_not,
               multiple_collaborators_has, multiple_collaborators_has_not, user_is,
@@ -6489,14 +6581,16 @@ rawSpecString: |
               The following filters are available: equal, not_equal,
               filename_contains, files_lower_than, has_file_type, contains,
               contains_not, contains_word, doesnt_contain_word,
-              length_is_lower_than, higher_than, lower_than, is_even_and_whole,
-              date_equal, date_before, date_before_or_equal, date_after_days_ago,
-              date_after, date_after_or_equal, date_not_equal, date_equals_today,
+              length_is_lower_than, higher_than, higher_than_or_equal, lower_than,
+              lower_than_or_equal, is_even_and_whole, date_equal, date_before,
+              date_before_or_equal, date_after_days_ago, date_after,
+              date_after_or_equal, date_not_equal, date_equals_today,
               date_before_today, date_after_today, date_within_days,
               date_within_weeks, date_within_months, date_equals_days_ago,
               date_equals_months_ago, date_equals_years_ago, date_equals_week,
               date_equals_month, date_equals_day_of_month, date_equals_year,
-              single_select_equal, single_select_not_equal, link_row_has,
+              single_select_equal, single_select_not_equal,
+              single_select_is_any_of, single_select_is_none_of, link_row_has,
               link_row_has_not, link_row_contains, link_row_not_contains, boolean,
               empty, not_empty, multiple_select_has, multiple_select_has_not,
               multiple_collaborators_has, multiple_collaborators_has_not, user_is,
@@ -11941,14 +12035,16 @@ rawSpecString: |
               The following filters are available: equal, not_equal,
               filename_contains, files_lower_than, has_file_type, contains,
               contains_not, contains_word, doesnt_contain_word,
-              length_is_lower_than, higher_than, lower_than, is_even_and_whole,
-              date_equal, date_before, date_before_or_equal, date_after_days_ago,
-              date_after, date_after_or_equal, date_not_equal, date_equals_today,
+              length_is_lower_than, higher_than, higher_than_or_equal, lower_than,
+              lower_than_or_equal, is_even_and_whole, date_equal, date_before,
+              date_before_or_equal, date_after_days_ago, date_after,
+              date_after_or_equal, date_not_equal, date_equals_today,
               date_before_today, date_after_today, date_within_days,
               date_within_weeks, date_within_months, date_equals_days_ago,
               date_equals_months_ago, date_equals_years_ago, date_equals_week,
               date_equals_month, date_equals_day_of_month, date_equals_year,
-              single_select_equal, single_select_not_equal, link_row_has,
+              single_select_equal, single_select_not_equal,
+              single_select_is_any_of, single_select_is_none_of, link_row_has,
               link_row_has_not, link_row_contains, link_row_not_contains, boolean,
               empty, not_empty, multiple_select_has, multiple_select_has_not,
               multiple_collaborators_has, multiple_collaborators_has_not, user_is,
@@ -11990,14 +12086,16 @@ rawSpecString: |
               The following filters are available: equal, not_equal,
               filename_contains, files_lower_than, has_file_type, contains,
               contains_not, contains_word, doesnt_contain_word,
-              length_is_lower_than, higher_than, lower_than, is_even_and_whole,
-              date_equal, date_before, date_before_or_equal, date_after_days_ago,
-              date_after, date_after_or_equal, date_not_equal, date_equals_today,
+              length_is_lower_than, higher_than, higher_than_or_equal, lower_than,
+              lower_than_or_equal, is_even_and_whole, date_equal, date_before,
+              date_before_or_equal, date_after_days_ago, date_after,
+              date_after_or_equal, date_not_equal, date_equals_today,
               date_before_today, date_after_today, date_within_days,
               date_within_weeks, date_within_months, date_equals_days_ago,
               date_equals_months_ago, date_equals_years_ago, date_equals_week,
               date_equals_month, date_equals_day_of_month, date_equals_year,
-              single_select_equal, single_select_not_equal, link_row_has,
+              single_select_equal, single_select_not_equal,
+              single_select_is_any_of, single_select_is_none_of, link_row_has,
               link_row_has_not, link_row_contains, link_row_not_contains, boolean,
               empty, not_empty, multiple_select_has, multiple_select_has_not,
               multiple_collaborators_has, multiple_collaborators_has_not, user_is,
@@ -12195,14 +12293,16 @@ rawSpecString: |
               The following filters are available: equal, not_equal,
               filename_contains, files_lower_than, has_file_type, contains,
               contains_not, contains_word, doesnt_contain_word,
-              length_is_lower_than, higher_than, lower_than, is_even_and_whole,
-              date_equal, date_before, date_before_or_equal, date_after_days_ago,
-              date_after, date_after_or_equal, date_not_equal, date_equals_today,
+              length_is_lower_than, higher_than, higher_than_or_equal, lower_than,
+              lower_than_or_equal, is_even_and_whole, date_equal, date_before,
+              date_before_or_equal, date_after_days_ago, date_after,
+              date_after_or_equal, date_not_equal, date_equals_today,
               date_before_today, date_after_today, date_within_days,
               date_within_weeks, date_within_months, date_equals_days_ago,
               date_equals_months_ago, date_equals_years_ago, date_equals_week,
               date_equals_month, date_equals_day_of_month, date_equals_year,
-              single_select_equal, single_select_not_equal, link_row_has,
+              single_select_equal, single_select_not_equal,
+              single_select_is_any_of, single_select_is_none_of, link_row_has,
               link_row_has_not, link_row_contains, link_row_not_contains, boolean,
               empty, not_empty, multiple_select_has, multiple_select_has_not,
               multiple_collaborators_has, multiple_collaborators_has_not, user_is,
@@ -12240,14 +12340,16 @@ rawSpecString: |
               The following filters are available: equal, not_equal,
               filename_contains, files_lower_than, has_file_type, contains,
               contains_not, contains_word, doesnt_contain_word,
-              length_is_lower_than, higher_than, lower_than, is_even_and_whole,
-              date_equal, date_before, date_before_or_equal, date_after_days_ago,
-              date_after, date_after_or_equal, date_not_equal, date_equals_today,
+              length_is_lower_than, higher_than, higher_than_or_equal, lower_than,
+              lower_than_or_equal, is_even_and_whole, date_equal, date_before,
+              date_before_or_equal, date_after_days_ago, date_after,
+              date_after_or_equal, date_not_equal, date_equals_today,
               date_before_today, date_after_today, date_within_days,
               date_within_weeks, date_within_months, date_equals_days_ago,
               date_equals_months_ago, date_equals_years_ago, date_equals_week,
               date_equals_month, date_equals_day_of_month, date_equals_year,
-              single_select_equal, single_select_not_equal, link_row_has,
+              single_select_equal, single_select_not_equal,
+              single_select_is_any_of, single_select_is_none_of, link_row_has,
               link_row_has_not, link_row_contains, link_row_not_contains, boolean,
               empty, not_empty, multiple_select_has, multiple_select_has_not,
               multiple_collaborators_has, multiple_collaborators_has_not, user_is,
@@ -12421,14 +12523,16 @@ rawSpecString: |
               The following filters are available: equal, not_equal,
               filename_contains, files_lower_than, has_file_type, contains,
               contains_not, contains_word, doesnt_contain_word,
-              length_is_lower_than, higher_than, lower_than, is_even_and_whole,
-              date_equal, date_before, date_before_or_equal, date_after_days_ago,
-              date_after, date_after_or_equal, date_not_equal, date_equals_today,
+              length_is_lower_than, higher_than, higher_than_or_equal, lower_than,
+              lower_than_or_equal, is_even_and_whole, date_equal, date_before,
+              date_before_or_equal, date_after_days_ago, date_after,
+              date_after_or_equal, date_not_equal, date_equals_today,
               date_before_today, date_after_today, date_within_days,
               date_within_weeks, date_within_months, date_equals_days_ago,
               date_equals_months_ago, date_equals_years_ago, date_equals_week,
               date_equals_month, date_equals_day_of_month, date_equals_year,
-              single_select_equal, single_select_not_equal, link_row_has,
+              single_select_equal, single_select_not_equal,
+              single_select_is_any_of, single_select_is_none_of, link_row_has,
               link_row_has_not, link_row_contains, link_row_not_contains, boolean,
               empty, not_empty, multiple_select_has, multiple_select_has_not,
               multiple_collaborators_has, multiple_collaborators_has_not, user_is,
@@ -12470,14 +12574,16 @@ rawSpecString: |
               The following filters are available: equal, not_equal,
               filename_contains, files_lower_than, has_file_type, contains,
               contains_not, contains_word, doesnt_contain_word,
-              length_is_lower_than, higher_than, lower_than, is_even_and_whole,
-              date_equal, date_before, date_before_or_equal, date_after_days_ago,
-              date_after, date_after_or_equal, date_not_equal, date_equals_today,
+              length_is_lower_than, higher_than, higher_than_or_equal, lower_than,
+              lower_than_or_equal, is_even_and_whole, date_equal, date_before,
+              date_before_or_equal, date_after_days_ago, date_after,
+              date_after_or_equal, date_not_equal, date_equals_today,
               date_before_today, date_after_today, date_within_days,
               date_within_weeks, date_within_months, date_equals_days_ago,
               date_equals_months_ago, date_equals_years_ago, date_equals_week,
               date_equals_month, date_equals_day_of_month, date_equals_year,
-              single_select_equal, single_select_not_equal, link_row_has,
+              single_select_equal, single_select_not_equal,
+              single_select_is_any_of, single_select_is_none_of, link_row_has,
               link_row_has_not, link_row_contains, link_row_not_contains, boolean,
               empty, not_empty, multiple_select_has, multiple_select_has_not,
               multiple_collaborators_has, multiple_collaborators_has_not, user_is,
@@ -12709,14 +12815,16 @@ rawSpecString: |
               The following filters are available: equal, not_equal,
               filename_contains, files_lower_than, has_file_type, contains,
               contains_not, contains_word, doesnt_contain_word,
-              length_is_lower_than, higher_than, lower_than, is_even_and_whole,
-              date_equal, date_before, date_before_or_equal, date_after_days_ago,
-              date_after, date_after_or_equal, date_not_equal, date_equals_today,
+              length_is_lower_than, higher_than, higher_than_or_equal, lower_than,
+              lower_than_or_equal, is_even_and_whole, date_equal, date_before,
+              date_before_or_equal, date_after_days_ago, date_after,
+              date_after_or_equal, date_not_equal, date_equals_today,
               date_before_today, date_after_today, date_within_days,
               date_within_weeks, date_within_months, date_equals_days_ago,
               date_equals_months_ago, date_equals_years_ago, date_equals_week,
               date_equals_month, date_equals_day_of_month, date_equals_year,
-              single_select_equal, single_select_not_equal, link_row_has,
+              single_select_equal, single_select_not_equal,
+              single_select_is_any_of, single_select_is_none_of, link_row_has,
               link_row_has_not, link_row_contains, link_row_not_contains, boolean,
               empty, not_empty, multiple_select_has, multiple_select_has_not,
               multiple_collaborators_has, multiple_collaborators_has_not, user_is,
@@ -12754,14 +12862,16 @@ rawSpecString: |
               The following filters are available: equal, not_equal,
               filename_contains, files_lower_than, has_file_type, contains,
               contains_not, contains_word, doesnt_contain_word,
-              length_is_lower_than, higher_than, lower_than, is_even_and_whole,
-              date_equal, date_before, date_before_or_equal, date_after_days_ago,
-              date_after, date_after_or_equal, date_not_equal, date_equals_today,
+              length_is_lower_than, higher_than, higher_than_or_equal, lower_than,
+              lower_than_or_equal, is_even_and_whole, date_equal, date_before,
+              date_before_or_equal, date_after_days_ago, date_after,
+              date_after_or_equal, date_not_equal, date_equals_today,
               date_before_today, date_after_today, date_within_days,
               date_within_weeks, date_within_months, date_equals_days_ago,
               date_equals_months_ago, date_equals_years_ago, date_equals_week,
               date_equals_month, date_equals_day_of_month, date_equals_year,
-              single_select_equal, single_select_not_equal, link_row_has,
+              single_select_equal, single_select_not_equal,
+              single_select_is_any_of, single_select_is_none_of, link_row_has,
               link_row_has_not, link_row_contains, link_row_not_contains, boolean,
               empty, not_empty, multiple_select_has, multiple_select_has_not,
               multiple_collaborators_has, multiple_collaborators_has_not, user_is,
@@ -13138,14 +13248,16 @@ rawSpecString: |
               The following filters are available: equal, not_equal,
               filename_contains, files_lower_than, has_file_type, contains,
               contains_not, contains_word, doesnt_contain_word,
-              length_is_lower_than, higher_than, lower_than, is_even_and_whole,
-              date_equal, date_before, date_before_or_equal, date_after_days_ago,
-              date_after, date_after_or_equal, date_not_equal, date_equals_today,
+              length_is_lower_than, higher_than, higher_than_or_equal, lower_than,
+              lower_than_or_equal, is_even_and_whole, date_equal, date_before,
+              date_before_or_equal, date_after_days_ago, date_after,
+              date_after_or_equal, date_not_equal, date_equals_today,
               date_before_today, date_after_today, date_within_days,
               date_within_weeks, date_within_months, date_equals_days_ago,
               date_equals_months_ago, date_equals_years_ago, date_equals_week,
               date_equals_month, date_equals_day_of_month, date_equals_year,
-              single_select_equal, single_select_not_equal, link_row_has,
+              single_select_equal, single_select_not_equal,
+              single_select_is_any_of, single_select_is_none_of, link_row_has,
               link_row_has_not, link_row_contains, link_row_not_contains, boolean,
               empty, not_empty, multiple_select_has, multiple_select_has_not,
               multiple_collaborators_has, multiple_collaborators_has_not, user_is,
@@ -13185,14 +13297,16 @@ rawSpecString: |
               The following filters are available: equal, not_equal,
               filename_contains, files_lower_than, has_file_type, contains,
               contains_not, contains_word, doesnt_contain_word,
-              length_is_lower_than, higher_than, lower_than, is_even_and_whole,
-              date_equal, date_before, date_before_or_equal, date_after_days_ago,
-              date_after, date_after_or_equal, date_not_equal, date_equals_today,
+              length_is_lower_than, higher_than, higher_than_or_equal, lower_than,
+              lower_than_or_equal, is_even_and_whole, date_equal, date_before,
+              date_before_or_equal, date_after_days_ago, date_after,
+              date_after_or_equal, date_not_equal, date_equals_today,
               date_before_today, date_after_today, date_within_days,
               date_within_weeks, date_within_months, date_equals_days_ago,
               date_equals_months_ago, date_equals_years_ago, date_equals_week,
               date_equals_month, date_equals_day_of_month, date_equals_year,
-              single_select_equal, single_select_not_equal, link_row_has,
+              single_select_equal, single_select_not_equal,
+              single_select_is_any_of, single_select_is_none_of, link_row_has,
               link_row_has_not, link_row_contains, link_row_not_contains, boolean,
               empty, not_empty, multiple_select_has, multiple_select_has_not,
               multiple_collaborators_has, multiple_collaborators_has_not, user_is,
@@ -13578,14 +13692,16 @@ rawSpecString: |
               The following filters are available: equal, not_equal,
               filename_contains, files_lower_than, has_file_type, contains,
               contains_not, contains_word, doesnt_contain_word,
-              length_is_lower_than, higher_than, lower_than, is_even_and_whole,
-              date_equal, date_before, date_before_or_equal, date_after_days_ago,
-              date_after, date_after_or_equal, date_not_equal, date_equals_today,
+              length_is_lower_than, higher_than, higher_than_or_equal, lower_than,
+              lower_than_or_equal, is_even_and_whole, date_equal, date_before,
+              date_before_or_equal, date_after_days_ago, date_after,
+              date_after_or_equal, date_not_equal, date_equals_today,
               date_before_today, date_after_today, date_within_days,
               date_within_weeks, date_within_months, date_equals_days_ago,
               date_equals_months_ago, date_equals_years_ago, date_equals_week,
               date_equals_month, date_equals_day_of_month, date_equals_year,
-              single_select_equal, single_select_not_equal, link_row_has,
+              single_select_equal, single_select_not_equal,
+              single_select_is_any_of, single_select_is_none_of, link_row_has,
               link_row_has_not, link_row_contains, link_row_not_contains, boolean,
               empty, not_empty, multiple_select_has, multiple_select_has_not,
               multiple_collaborators_has, multiple_collaborators_has_not, user_is,
@@ -13627,14 +13743,16 @@ rawSpecString: |
               The following filters are available: equal, not_equal,
               filename_contains, files_lower_than, has_file_type, contains,
               contains_not, contains_word, doesnt_contain_word,
-              length_is_lower_than, higher_than, lower_than, is_even_and_whole,
-              date_equal, date_before, date_before_or_equal, date_after_days_ago,
-              date_after, date_after_or_equal, date_not_equal, date_equals_today,
+              length_is_lower_than, higher_than, higher_than_or_equal, lower_than,
+              lower_than_or_equal, is_even_and_whole, date_equal, date_before,
+              date_before_or_equal, date_after_days_ago, date_after,
+              date_after_or_equal, date_not_equal, date_equals_today,
               date_before_today, date_after_today, date_within_days,
               date_within_weeks, date_within_months, date_equals_days_ago,
               date_equals_months_ago, date_equals_years_ago, date_equals_week,
               date_equals_month, date_equals_day_of_month, date_equals_year,
-              single_select_equal, single_select_not_equal, link_row_has,
+              single_select_equal, single_select_not_equal,
+              single_select_is_any_of, single_select_is_none_of, link_row_has,
               link_row_has_not, link_row_contains, link_row_not_contains, boolean,
               empty, not_empty, multiple_select_has, multiple_select_has_not,
               multiple_collaborators_has, multiple_collaborators_has_not, user_is,
@@ -13784,14 +13902,16 @@ rawSpecString: |
               The following filters are available: equal, not_equal,
               filename_contains, files_lower_than, has_file_type, contains,
               contains_not, contains_word, doesnt_contain_word,
-              length_is_lower_than, higher_than, lower_than, is_even_and_whole,
-              date_equal, date_before, date_before_or_equal, date_after_days_ago,
-              date_after, date_after_or_equal, date_not_equal, date_equals_today,
+              length_is_lower_than, higher_than, higher_than_or_equal, lower_than,
+              lower_than_or_equal, is_even_and_whole, date_equal, date_before,
+              date_before_or_equal, date_after_days_ago, date_after,
+              date_after_or_equal, date_not_equal, date_equals_today,
               date_before_today, date_after_today, date_within_days,
               date_within_weeks, date_within_months, date_equals_days_ago,
               date_equals_months_ago, date_equals_years_ago, date_equals_week,
               date_equals_month, date_equals_day_of_month, date_equals_year,
-              single_select_equal, single_select_not_equal, link_row_has,
+              single_select_equal, single_select_not_equal,
+              single_select_is_any_of, single_select_is_none_of, link_row_has,
               link_row_has_not, link_row_contains, link_row_not_contains, boolean,
               empty, not_empty, multiple_select_has, multiple_select_has_not,
               multiple_collaborators_has, multiple_collaborators_has_not, user_is,
@@ -13829,14 +13949,16 @@ rawSpecString: |
               The following filters are available: equal, not_equal,
               filename_contains, files_lower_than, has_file_type, contains,
               contains_not, contains_word, doesnt_contain_word,
-              length_is_lower_than, higher_than, lower_than, is_even_and_whole,
-              date_equal, date_before, date_before_or_equal, date_after_days_ago,
-              date_after, date_after_or_equal, date_not_equal, date_equals_today,
+              length_is_lower_than, higher_than, higher_than_or_equal, lower_than,
+              lower_than_or_equal, is_even_and_whole, date_equal, date_before,
+              date_before_or_equal, date_after_days_ago, date_after,
+              date_after_or_equal, date_not_equal, date_equals_today,
               date_before_today, date_after_today, date_within_days,
               date_within_weeks, date_within_months, date_equals_days_ago,
               date_equals_months_ago, date_equals_years_ago, date_equals_week,
               date_equals_month, date_equals_day_of_month, date_equals_year,
-              single_select_equal, single_select_not_equal, link_row_has,
+              single_select_equal, single_select_not_equal,
+              single_select_is_any_of, single_select_is_none_of, link_row_has,
               link_row_has_not, link_row_contains, link_row_not_contains, boolean,
               empty, not_empty, multiple_select_has, multiple_select_has_not,
               multiple_collaborators_has, multiple_collaborators_has_not, user_is,
@@ -21829,6 +21951,114 @@ rawSpecString: |
                           format: object
                           description: Machine readable object about what went wrong.
             description: ''
+    /api/workspaces/{workspace_id}/settings/generative-ai/:
+      get:
+        operationId: get_workspace_generative_ai_models_settings
+        description: Returns the generative AI models settings for the given workspace.
+        parameters:
+          - in: path
+            name: workspace_id
+            schema:
+              type: string
+              pattern: ^[0-9]+$
+            required: true
+        tags:
+          - Workspaces
+        security:
+          - JWT: []
+        responses:
+          '200':
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/GenerativeAISettings'
+            description: ''
+      patch:
+        operationId: update_workspace_generative_ai_models_settings
+        description: Updates the generative AI models settings for the given workspace.
+        parameters:
+          - in: header
+            name: ClientSessionId
+            schema:
+              type: string
+              format: uuid
+            description: >-
+              An optional header that marks the action performed by this request
+              as having occurred in a particular client session. Then using the
+              undo/redo endpoints with the same ClientSessionId header this action
+              can be undone/redone.
+          - in: path
+            name: workspace_id
+            schema:
+              type: integer
+            description: >-
+              Updates the workspace settings for the generative AI models
+              available.
+            required: true
+        tags:
+          - Workspaces
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PatchedGenerativeAISettings'
+            application/x-www-form-urlencoded:
+              schema:
+                $ref: '#/components/schemas/PatchedGenerativeAISettings'
+            multipart/form-data:
+              schema:
+                $ref: '#/components/schemas/PatchedGenerativeAISettings'
+        security:
+          - JWT: []
+        responses:
+          '200':
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Workspace'
+            description: ''
+          '400':
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    error:
+                      type: string
+                      description: Machine readable error indicating what went wrong.
+                      enum:
+                        - ERROR_USER_NOT_IN_GROUP
+                        - ERROR_REQUEST_BODY_VALIDATION
+                        - ERROR_USER_INVALID_GROUP_PERMISSIONS
+                    detail:
+                      oneOf:
+                        - type: string
+                          format: string
+                          description: Human readable details about what went wrong.
+                        - type: object
+                          format: object
+                          description: Machine readable object about what went wrong.
+            description: ''
+          '404':
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    error:
+                      type: string
+                      description: Machine readable error indicating what went wrong.
+                      enum:
+                        - ERROR_GROUP_DOES_NOT_EXIST
+                    detail:
+                      oneOf:
+                        - type: string
+                          format: string
+                          description: Human readable details about what went wrong.
+                        - type: object
+                          format: object
+                          description: Machine readable object about what went wrong.
+            description: ''
     /api/workspaces/invitations/{workspace_invitation_id}/:
       get:
         operationId: get_workspace_invitation
@@ -22639,6 +22869,158 @@ rawSpecString: |
             description: ''
   components:
     schemas:
+      AIFieldCreateField:
+        type: object
+        properties:
+          name:
+            type: string
+            maxLength: 255
+          type:
+            $ref: '#/components/schemas/Type1caEnum'
+          ai_generative_ai_type:
+            type: string
+            nullable: true
+            maxLength: 32
+          ai_generative_ai_model:
+            type: string
+            nullable: true
+            maxLength: 32
+          ai_prompt:
+            type: string
+            default: ''
+            description: The prompt that must run for each row. Must be an formula.
+        required:
+          - name
+          - type
+      AIFieldField:
+        type: object
+        properties:
+          id:
+            type: integer
+            readOnly: true
+          table_id:
+            type: integer
+            readOnly: true
+          name:
+            type: string
+            maxLength: 255
+          order:
+            type: integer
+            maximum: 2147483647
+            minimum: 0
+            description: Lowest first.
+          type:
+            type: string
+            readOnly: true
+            description: The type of the related field.
+          primary:
+            type: boolean
+            description: >-
+              Indicates if the field is a primary field. If `true` the field
+              cannot be deleted and the value should represent the whole row.
+          read_only:
+            type: boolean
+            readOnly: true
+            description: >-
+              Indicates whether the field is a read only field. If true, it's not
+              possible to update the cell value.
+          ai_generative_ai_type:
+            type: string
+            nullable: true
+            maxLength: 32
+          ai_generative_ai_model:
+            type: string
+            nullable: true
+            maxLength: 32
+          ai_prompt:
+            type: string
+            default: ''
+            description: The prompt that must run for each row. Must be an formula.
+        required:
+          - id
+          - name
+          - order
+          - read_only
+          - table_id
+          - type
+      AIFieldFieldSerializerWithRelatedFields:
+        type: object
+        properties:
+          id:
+            type: integer
+            readOnly: true
+          table_id:
+            type: integer
+            readOnly: true
+          name:
+            type: string
+            maxLength: 255
+          order:
+            type: integer
+            maximum: 2147483647
+            minimum: 0
+            description: Lowest first.
+          type:
+            type: string
+            readOnly: true
+            description: The type of the related field.
+          primary:
+            type: boolean
+            description: >-
+              Indicates if the field is a primary field. If `true` the field
+              cannot be deleted and the value should represent the whole row.
+          read_only:
+            type: boolean
+            readOnly: true
+            description: >-
+              Indicates whether the field is a read only field. If true, it's not
+              possible to update the cell value.
+          related_fields:
+            type: array
+            items:
+              $ref: '#/components/schemas/Field'
+            readOnly: true
+            description: A list of related fields which also changed.
+          ai_generative_ai_type:
+            type: string
+            nullable: true
+            maxLength: 32
+          ai_generative_ai_model:
+            type: string
+            nullable: true
+            maxLength: 32
+          ai_prompt:
+            type: string
+            default: ''
+            description: The prompt that must run for each row. Must be an formula.
+        required:
+          - id
+          - name
+          - order
+          - read_only
+          - related_fields
+          - table_id
+          - type
+      AIFieldUpdateField:
+        type: object
+        properties:
+          name:
+            type: string
+            maxLength: 255
+          type:
+            $ref: '#/components/schemas/Type1caEnum'
+          ai_generative_ai_type:
+            type: string
+            nullable: true
+            maxLength: 32
+          ai_generative_ai_model:
+            type: string
+            nullable: true
+            maxLength: 32
+          ai_prompt:
+            type: string
+            default: ''
+            description: The prompt that must run for each row. Must be an formula.
       Account:
         type: object
         description: This serializer must be kept in sync with `UserSerializer`.
@@ -23731,6 +24113,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -23851,6 +24238,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -23966,6 +24358,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -24056,6 +24453,11 @@ rawSpecString: |
       AuthFormElementUpdateElement:
         type: object
         properties:
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -24164,7 +24566,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
           view_id:
             type: integer
             nullable: true
@@ -24264,7 +24666,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
           view_id:
             type: integer
             nullable: true
@@ -24368,7 +24770,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
         required:
           - name
           - type
@@ -24464,7 +24866,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
       BuilderApplication:
         type: object
         description: |-
@@ -24680,6 +25082,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -24809,6 +25216,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -24933,6 +25345,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -25032,6 +25449,11 @@ rawSpecString: |
       ButtonElementUpdateElement:
         type: object
         properties:
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -25368,6 +25790,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -25457,7 +25884,7 @@ rawSpecString: |
           required:
             type: boolean
             default: false
-            description: Whether this input is a required field.
+            description: Whether this form element is a required field.
         required:
           - order
           - type
@@ -25496,6 +25923,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -25585,7 +26017,7 @@ rawSpecString: |
           required:
             type: boolean
             default: false
-            description: Whether this input is a required field.
+            description: Whether this form element is a required field.
         required:
           - id
           - order
@@ -25619,6 +26051,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -25708,7 +26145,7 @@ rawSpecString: |
           required:
             type: boolean
             default: false
-            description: Whether this input is a required field.
+            description: Whether this form element is a required field.
         required:
           - id
           - order
@@ -25717,6 +26154,11 @@ rawSpecString: |
       CheckboxElementUpdateElement:
         type: object
         properties:
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -25806,7 +26248,7 @@ rawSpecString: |
           required:
             type: boolean
             default: false
-            description: Whether this input is a required field.
+            description: Whether this form element is a required field.
       Collaborator:
         type: object
         properties:
@@ -25893,6 +26335,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -26021,6 +26468,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -26144,6 +26596,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -26242,6 +26699,11 @@ rawSpecString: |
       ColumnElementUpdateElement:
         type: object
         properties:
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -26451,7 +26913,11 @@ rawSpecString: |
 
               * `higher_than` - higher_than
 
+              * `higher_than_or_equal` - higher_than_or_equal
+
               * `lower_than` - lower_than
+
+              * `lower_than_or_equal` - lower_than_or_equal
 
               * `is_even_and_whole` - is_even_and_whole
 
@@ -26499,6 +26965,10 @@ rawSpecString: |
 
               * `single_select_not_equal` - single_select_not_equal
 
+              * `single_select_is_any_of` - single_select_is_any_of
+
+              * `single_select_is_none_of` - single_select_is_none_of
+
               * `link_row_has` - link_row_has
 
               * `link_row_has_not` - link_row_has_not
@@ -26525,7 +26995,7 @@ rawSpecString: |
 
               * `user_is_not` - user_is_not
             oneOf:
-              - $ref: '#/components/schemas/Type880Enum'
+              - $ref: '#/components/schemas/TypeA4aEnum'
               - $ref: '#/components/schemas/NullEnum'
           value:
             type: string
@@ -26578,58 +27048,11 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
-          date_time_format:
-            nullable: true
-            description: |-
-              24 (14:30) or 12 (02:30 PM)
-
-              * `24` - 24 hour
-              * `12` - 12 hour
-            oneOf:
-              - $ref: '#/components/schemas/DateTimeFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          date_include_time:
+            $ref: '#/components/schemas/Type1caEnum'
+          date_show_tzinfo:
             type: boolean
             nullable: true
-            description: Indicates if the field also includes a time.
-          array_formula_type:
-            nullable: true
-            oneOf:
-              - $ref: '#/components/schemas/ArrayFormulaTypeEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          duration_format:
-            nullable: true
-            description: |-
-              The format of the duration.
-
-              * `h:mm` - hours:minutes
-              * `h:mm:ss` - hours:minutes:seconds
-              * `h:mm:ss.s` - hours:minutes:seconds:deciseconds
-              * `h:mm:ss.ss` - hours:minutes:seconds:centiseconds
-              * `h:mm:ss.sss` - hours:minutes:seconds:milliseconds
-              * `d h` - days:hours
-              * `d h:mm` - days:hours:minutes
-              * `d h:mm:ss` - days:hours:minutes:seconds
-            oneOf:
-              - $ref: '#/components/schemas/DurationFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          date_force_timezone:
-            type: string
-            nullable: true
-            description: Force a timezone for the field overriding user profile settings.
-            maxLength: 255
-          date_format:
-            nullable: true
-            description: |-
-              EU (20/02/2020), US (02/20/2020) or ISO (2020-02-20)
-
-              * `EU` - European (D/M/Y)
-              * `US` - US (M/D/Y)
-              * `ISO` - ISO (Y-M-D)
-            oneOf:
-              - $ref: '#/components/schemas/DateFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
+            description: Indicates if the time zone should be shown.
           number_decimal_places:
             nullable: true
             description: |-
@@ -26654,13 +27077,60 @@ rawSpecString: |
           nullable:
             type: boolean
             readOnly: true
+          duration_format:
+            nullable: true
+            description: |-
+              The format of the duration.
+
+              * `h:mm` - hours:minutes
+              * `h:mm:ss` - hours:minutes:seconds
+              * `h:mm:ss.s` - hours:minutes:seconds:deciseconds
+              * `h:mm:ss.ss` - hours:minutes:seconds:centiseconds
+              * `h:mm:ss.sss` - hours:minutes:seconds:milliseconds
+              * `d h` - days:hours
+              * `d h:mm` - days:hours:minutes
+              * `d h:mm:ss` - days:hours:minutes:seconds
+            oneOf:
+              - $ref: '#/components/schemas/DurationFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_force_timezone:
+            type: string
+            nullable: true
+            description: Force a timezone for the field overriding user profile settings.
+            maxLength: 255
+          array_formula_type:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/ArrayFormulaTypeEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_format:
+            nullable: true
+            description: |-
+              EU (20/02/2020), US (02/20/2020) or ISO (2020-02-20)
+
+              * `EU` - European (D/M/Y)
+              * `US` - US (M/D/Y)
+              * `ISO` - ISO (Y-M-D)
+            oneOf:
+              - $ref: '#/components/schemas/DateFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_include_time:
+            type: boolean
+            nullable: true
+            description: Indicates if the field also includes a time.
+          date_time_format:
+            nullable: true
+            description: |-
+              24 (14:30) or 12 (02:30 PM)
+
+              * `24` - 24 hour
+              * `12` - 12 hour
+            oneOf:
+              - $ref: '#/components/schemas/DateTimeFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
           error:
             type: string
             nullable: true
-          date_show_tzinfo:
-            type: boolean
-            nullable: true
-            description: Indicates if the time zone should be shown.
           through_field_id:
             type: integer
             nullable: true
@@ -26703,57 +27173,10 @@ rawSpecString: |
             description: >-
               Indicates whether the field is a read only field. If true, it's not
               possible to update the cell value.
-          date_time_format:
-            nullable: true
-            description: |-
-              24 (14:30) or 12 (02:30 PM)
-
-              * `24` - 24 hour
-              * `12` - 12 hour
-            oneOf:
-              - $ref: '#/components/schemas/DateTimeFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          date_include_time:
+          date_show_tzinfo:
             type: boolean
             nullable: true
-            description: Indicates if the field also includes a time.
-          array_formula_type:
-            nullable: true
-            oneOf:
-              - $ref: '#/components/schemas/ArrayFormulaTypeEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          duration_format:
-            nullable: true
-            description: |-
-              The format of the duration.
-
-              * `h:mm` - hours:minutes
-              * `h:mm:ss` - hours:minutes:seconds
-              * `h:mm:ss.s` - hours:minutes:seconds:deciseconds
-              * `h:mm:ss.ss` - hours:minutes:seconds:centiseconds
-              * `h:mm:ss.sss` - hours:minutes:seconds:milliseconds
-              * `d h` - days:hours
-              * `d h:mm` - days:hours:minutes
-              * `d h:mm:ss` - days:hours:minutes:seconds
-            oneOf:
-              - $ref: '#/components/schemas/DurationFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          date_force_timezone:
-            type: string
-            nullable: true
-            description: Force a timezone for the field overriding user profile settings.
-            maxLength: 255
-          date_format:
-            nullable: true
-            description: |-
-              EU (20/02/2020), US (02/20/2020) or ISO (2020-02-20)
-
-              * `EU` - European (D/M/Y)
-              * `US` - US (M/D/Y)
-              * `ISO` - ISO (Y-M-D)
-            oneOf:
-              - $ref: '#/components/schemas/DateFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
+            description: Indicates if the time zone should be shown.
           number_decimal_places:
             nullable: true
             description: |-
@@ -26778,13 +27201,60 @@ rawSpecString: |
           nullable:
             type: boolean
             readOnly: true
+          duration_format:
+            nullable: true
+            description: |-
+              The format of the duration.
+
+              * `h:mm` - hours:minutes
+              * `h:mm:ss` - hours:minutes:seconds
+              * `h:mm:ss.s` - hours:minutes:seconds:deciseconds
+              * `h:mm:ss.ss` - hours:minutes:seconds:centiseconds
+              * `h:mm:ss.sss` - hours:minutes:seconds:milliseconds
+              * `d h` - days:hours
+              * `d h:mm` - days:hours:minutes
+              * `d h:mm:ss` - days:hours:minutes:seconds
+            oneOf:
+              - $ref: '#/components/schemas/DurationFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_force_timezone:
+            type: string
+            nullable: true
+            description: Force a timezone for the field overriding user profile settings.
+            maxLength: 255
+          array_formula_type:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/ArrayFormulaTypeEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_format:
+            nullable: true
+            description: |-
+              EU (20/02/2020), US (02/20/2020) or ISO (2020-02-20)
+
+              * `EU` - European (D/M/Y)
+              * `US` - US (M/D/Y)
+              * `ISO` - ISO (Y-M-D)
+            oneOf:
+              - $ref: '#/components/schemas/DateFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_include_time:
+            type: boolean
+            nullable: true
+            description: Indicates if the field also includes a time.
+          date_time_format:
+            nullable: true
+            description: |-
+              24 (14:30) or 12 (02:30 PM)
+
+              * `24` - 24 hour
+              * `12` - 12 hour
+            oneOf:
+              - $ref: '#/components/schemas/DateTimeFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
           error:
             type: string
             nullable: true
-          date_show_tzinfo:
-            type: boolean
-            nullable: true
-            description: Indicates if the time zone should be shown.
           through_field_id:
             type: integer
             nullable: true
@@ -26837,57 +27307,10 @@ rawSpecString: |
               $ref: '#/components/schemas/Field'
             readOnly: true
             description: A list of related fields which also changed.
-          date_time_format:
-            nullable: true
-            description: |-
-              24 (14:30) or 12 (02:30 PM)
-
-              * `24` - 24 hour
-              * `12` - 12 hour
-            oneOf:
-              - $ref: '#/components/schemas/DateTimeFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          date_include_time:
+          date_show_tzinfo:
             type: boolean
             nullable: true
-            description: Indicates if the field also includes a time.
-          array_formula_type:
-            nullable: true
-            oneOf:
-              - $ref: '#/components/schemas/ArrayFormulaTypeEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          duration_format:
-            nullable: true
-            description: |-
-              The format of the duration.
-
-              * `h:mm` - hours:minutes
-              * `h:mm:ss` - hours:minutes:seconds
-              * `h:mm:ss.s` - hours:minutes:seconds:deciseconds
-              * `h:mm:ss.ss` - hours:minutes:seconds:centiseconds
-              * `h:mm:ss.sss` - hours:minutes:seconds:milliseconds
-              * `d h` - days:hours
-              * `d h:mm` - days:hours:minutes
-              * `d h:mm:ss` - days:hours:minutes:seconds
-            oneOf:
-              - $ref: '#/components/schemas/DurationFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          date_force_timezone:
-            type: string
-            nullable: true
-            description: Force a timezone for the field overriding user profile settings.
-            maxLength: 255
-          date_format:
-            nullable: true
-            description: |-
-              EU (20/02/2020), US (02/20/2020) or ISO (2020-02-20)
-
-              * `EU` - European (D/M/Y)
-              * `US` - US (M/D/Y)
-              * `ISO` - ISO (Y-M-D)
-            oneOf:
-              - $ref: '#/components/schemas/DateFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
+            description: Indicates if the time zone should be shown.
           number_decimal_places:
             nullable: true
             description: |-
@@ -26912,13 +27335,60 @@ rawSpecString: |
           nullable:
             type: boolean
             readOnly: true
+          duration_format:
+            nullable: true
+            description: |-
+              The format of the duration.
+
+              * `h:mm` - hours:minutes
+              * `h:mm:ss` - hours:minutes:seconds
+              * `h:mm:ss.s` - hours:minutes:seconds:deciseconds
+              * `h:mm:ss.ss` - hours:minutes:seconds:centiseconds
+              * `h:mm:ss.sss` - hours:minutes:seconds:milliseconds
+              * `d h` - days:hours
+              * `d h:mm` - days:hours:minutes
+              * `d h:mm:ss` - days:hours:minutes:seconds
+            oneOf:
+              - $ref: '#/components/schemas/DurationFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_force_timezone:
+            type: string
+            nullable: true
+            description: Force a timezone for the field overriding user profile settings.
+            maxLength: 255
+          array_formula_type:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/ArrayFormulaTypeEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_format:
+            nullable: true
+            description: |-
+              EU (20/02/2020), US (02/20/2020) or ISO (2020-02-20)
+
+              * `EU` - European (D/M/Y)
+              * `US` - US (M/D/Y)
+              * `ISO` - ISO (Y-M-D)
+            oneOf:
+              - $ref: '#/components/schemas/DateFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_include_time:
+            type: boolean
+            nullable: true
+            description: Indicates if the field also includes a time.
+          date_time_format:
+            nullable: true
+            description: |-
+              24 (14:30) or 12 (02:30 PM)
+
+              * `24` - 24 hour
+              * `12` - 12 hour
+            oneOf:
+              - $ref: '#/components/schemas/DateTimeFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
           error:
             type: string
             nullable: true
-          date_show_tzinfo:
-            type: boolean
-            nullable: true
-            description: Indicates if the time zone should be shown.
           through_field_id:
             type: integer
             nullable: true
@@ -26941,58 +27411,11 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
-          date_time_format:
-            nullable: true
-            description: |-
-              24 (14:30) or 12 (02:30 PM)
-
-              * `24` - 24 hour
-              * `12` - 12 hour
-            oneOf:
-              - $ref: '#/components/schemas/DateTimeFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          date_include_time:
+            $ref: '#/components/schemas/Type1caEnum'
+          date_show_tzinfo:
             type: boolean
             nullable: true
-            description: Indicates if the field also includes a time.
-          array_formula_type:
-            nullable: true
-            oneOf:
-              - $ref: '#/components/schemas/ArrayFormulaTypeEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          duration_format:
-            nullable: true
-            description: |-
-              The format of the duration.
-
-              * `h:mm` - hours:minutes
-              * `h:mm:ss` - hours:minutes:seconds
-              * `h:mm:ss.s` - hours:minutes:seconds:deciseconds
-              * `h:mm:ss.ss` - hours:minutes:seconds:centiseconds
-              * `h:mm:ss.sss` - hours:minutes:seconds:milliseconds
-              * `d h` - days:hours
-              * `d h:mm` - days:hours:minutes
-              * `d h:mm:ss` - days:hours:minutes:seconds
-            oneOf:
-              - $ref: '#/components/schemas/DurationFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          date_force_timezone:
-            type: string
-            nullable: true
-            description: Force a timezone for the field overriding user profile settings.
-            maxLength: 255
-          date_format:
-            nullable: true
-            description: |-
-              EU (20/02/2020), US (02/20/2020) or ISO (2020-02-20)
-
-              * `EU` - European (D/M/Y)
-              * `US` - US (M/D/Y)
-              * `ISO` - ISO (Y-M-D)
-            oneOf:
-              - $ref: '#/components/schemas/DateFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
+            description: Indicates if the time zone should be shown.
           number_decimal_places:
             nullable: true
             description: |-
@@ -27017,13 +27440,60 @@ rawSpecString: |
           nullable:
             type: boolean
             readOnly: true
+          duration_format:
+            nullable: true
+            description: |-
+              The format of the duration.
+
+              * `h:mm` - hours:minutes
+              * `h:mm:ss` - hours:minutes:seconds
+              * `h:mm:ss.s` - hours:minutes:seconds:deciseconds
+              * `h:mm:ss.ss` - hours:minutes:seconds:centiseconds
+              * `h:mm:ss.sss` - hours:minutes:seconds:milliseconds
+              * `d h` - days:hours
+              * `d h:mm` - days:hours:minutes
+              * `d h:mm:ss` - days:hours:minutes:seconds
+            oneOf:
+              - $ref: '#/components/schemas/DurationFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_force_timezone:
+            type: string
+            nullable: true
+            description: Force a timezone for the field overriding user profile settings.
+            maxLength: 255
+          array_formula_type:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/ArrayFormulaTypeEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_format:
+            nullable: true
+            description: |-
+              EU (20/02/2020), US (02/20/2020) or ISO (2020-02-20)
+
+              * `EU` - European (D/M/Y)
+              * `US` - US (M/D/Y)
+              * `ISO` - ISO (Y-M-D)
+            oneOf:
+              - $ref: '#/components/schemas/DateFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_include_time:
+            type: boolean
+            nullable: true
+            description: Indicates if the field also includes a time.
+          date_time_format:
+            nullable: true
+            description: |-
+              24 (14:30) or 12 (02:30 PM)
+
+              * `24` - 24 hour
+              * `12` - 12 hour
+            oneOf:
+              - $ref: '#/components/schemas/DateTimeFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
           error:
             type: string
             nullable: true
-          date_show_tzinfo:
-            type: boolean
-            nullable: true
-            description: Indicates if the time zone should be shown.
           through_field_id:
             type: integer
             nullable: true
@@ -27175,7 +27645,7 @@ rawSpecString: |
             description: The field of which the value must be compared to the filter value.
           type:
             allOf:
-              - $ref: '#/components/schemas/Type880Enum'
+              - $ref: '#/components/schemas/TypeA4aEnum'
             description: >-
               Indicates how the field's value must be compared to the filter's
               value. The filter is always in this order `field` `type` `value`
@@ -27204,7 +27674,11 @@ rawSpecString: |
 
               * `higher_than` - higher_than
 
+              * `higher_than_or_equal` - higher_than_or_equal
+
               * `lower_than` - lower_than
+
+              * `lower_than_or_equal` - lower_than_or_equal
 
               * `is_even_and_whole` - is_even_and_whole
 
@@ -27251,6 +27725,10 @@ rawSpecString: |
               * `single_select_equal` - single_select_equal
 
               * `single_select_not_equal` - single_select_not_equal
+
+              * `single_select_is_any_of` - single_select_is_any_of
+
+              * `single_select_is_none_of` - single_select_is_none_of
 
               * `link_row_has` - link_row_has
 
@@ -27391,7 +27869,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
         required:
           - name
           - type
@@ -27487,7 +27965,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
       CreatedOnFieldCreateField:
         type: object
         properties:
@@ -27495,7 +27973,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
           date_format:
             allOf:
               - $ref: '#/components/schemas/DateFormatEnum'
@@ -27679,7 +28157,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
           date_format:
             allOf:
               - $ref: '#/components/schemas/DateFormatEnum'
@@ -27935,7 +28413,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
           date_format:
             allOf:
               - $ref: '#/components/schemas/DateFormatEnum'
@@ -28119,7 +28597,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
           date_format:
             allOf:
               - $ref: '#/components/schemas/DateFormatEnum'
@@ -28259,6 +28737,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -28348,7 +28831,7 @@ rawSpecString: |
           required:
             type: boolean
             default: false
-            description: Whether this drodpown is a required field.
+            description: Whether this form element is a required field.
           placeholder:
             type: string
             default: ''
@@ -28395,6 +28878,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -28484,7 +28972,7 @@ rawSpecString: |
           required:
             type: boolean
             default: false
-            description: Whether this drodpown is a required field.
+            description: Whether this form element is a required field.
           placeholder:
             type: string
             default: ''
@@ -28526,6 +29014,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -28615,7 +29108,7 @@ rawSpecString: |
           required:
             type: boolean
             default: false
-            description: Whether this drodpown is a required field.
+            description: Whether this form element is a required field.
           placeholder:
             type: string
             default: ''
@@ -28632,6 +29125,11 @@ rawSpecString: |
       DropdownElementUpdateElement:
         type: object
         properties:
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -28721,7 +29219,7 @@ rawSpecString: |
           required:
             type: boolean
             default: false
-            description: Whether this drodpown is a required field.
+            description: Whether this form element is a required field.
           placeholder:
             type: string
             default: ''
@@ -29021,7 +29519,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
           duration_format:
             allOf:
               - $ref: '#/components/schemas/DurationFormatEnum'
@@ -29159,7 +29657,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
           duration_format:
             allOf:
               - $ref: '#/components/schemas/DurationFormatEnum'
@@ -29229,6 +29727,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -29413,7 +29916,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
         required:
           - name
           - type
@@ -29509,7 +30012,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
       EmailNotificationFrequencyEnum:
         enum:
           - instant
@@ -29817,6 +30320,15 @@ rawSpecString: |
               will unset it, `true` will be ignored. The response will respond
               with `true` is a password is set, but will never expose the password
               itself.
+          field_27:
+            type: string
+            nullable: true
+            description: >-
+              This field represents the `ai` field. The number in field_27 is in a
+              normal request or response the id of the field. If the GET parameter
+              `user_field_names` is provided then the key will instead be the
+              actual name of the field. Holds a text value that is generated by a
+              generative UI model using a dynamic prompt.
         required:
           - id
       ExampleRowRequest:
@@ -29973,6 +30485,13 @@ rawSpecString: |
               password, `null` will unset it, `true` will be ignored. The response
               will respond with `true` is a password is set, but will never expose
               the password itself.
+          field_27:
+            type: string
+            nullable: true
+            description: >-
+              This field represents the `ai` field. The number in field_27 is in a
+              normal request or response the id of the field. Holds a text value
+              that is generated by a generative UI model using a dynamic prompt.
       ExampleRowRequestSerializerWithUserFieldNames:
         type: object
         properties:
@@ -30160,6 +30679,15 @@ rawSpecString: |
               will unset it, `true` will be ignored. The response will respond
               with `true` is a password is set, but will never expose the password
               itself.
+          field_27:
+            type: string
+            nullable: true
+            description: >-
+              This field represents the `ai` field. The number in field_27 is in a
+              normal request or response the id of the field. If the GET parameter
+              `user_field_names` is provided then the key will instead be the
+              actual name of the field. Holds a text value that is generated by a
+              generative UI model using a dynamic prompt.
       ExampleRowResponse:
         type: object
         properties:
@@ -30371,6 +30899,13 @@ rawSpecString: |
               password, `null` will unset it, `true` will be ignored. The response
               will respond with `true` is a password is set, but will never expose
               the password itself.
+          field_27:
+            type: string
+            nullable: true
+            description: >-
+              This field represents the `ai` field. The number in field_27 is in a
+              normal request or response the id of the field. Holds a text value
+              that is generated by a generative UI model using a dynamic prompt.
         required:
           - id
       ExampleRowResponseSerializerWithUserFieldNames:
@@ -30635,6 +31170,15 @@ rawSpecString: |
               will unset it, `true` will be ignored. The response will respond
               with `true` is a password is set, but will never expose the password
               itself.
+          field_27:
+            type: string
+            nullable: true
+            description: >-
+              This field represents the `ai` field. The number in field_27 is in a
+              normal request or response the id of the field. If the GET parameter
+              `user_field_names` is provided then the key will instead be the
+              actual name of the field. Holds a text value that is generated by a
+              generative UI model using a dynamic prompt.
         required:
           - id
       Export:
@@ -30874,6 +31418,7 @@ rawSpecString: |
           - $ref: '#/components/schemas/UUIDFieldCreateField'
           - $ref: '#/components/schemas/AutonumberFieldCreateField'
           - $ref: '#/components/schemas/PasswordFieldCreateField'
+          - $ref: '#/components/schemas/AIFieldCreateField'
         discriminator:
           propertyName: type
           mapping:
@@ -30903,6 +31448,7 @@ rawSpecString: |
             uuid: '#/components/schemas/UUIDFieldCreateField'
             autonumber: '#/components/schemas/AutonumberFieldCreateField'
             password: '#/components/schemas/PasswordFieldCreateField'
+            ai: '#/components/schemas/AIFieldCreateField'
       FieldField:
         oneOf:
           - $ref: '#/components/schemas/TextFieldField'
@@ -30931,6 +31477,7 @@ rawSpecString: |
           - $ref: '#/components/schemas/UUIDFieldField'
           - $ref: '#/components/schemas/AutonumberFieldField'
           - $ref: '#/components/schemas/PasswordFieldField'
+          - $ref: '#/components/schemas/AIFieldField'
         discriminator:
           propertyName: type
           mapping:
@@ -30960,6 +31507,7 @@ rawSpecString: |
             uuid: '#/components/schemas/UUIDFieldField'
             autonumber: '#/components/schemas/AutonumberFieldField'
             password: '#/components/schemas/PasswordFieldField'
+            ai: '#/components/schemas/AIFieldField'
       FieldFieldSerializerWithRelatedFields:
         oneOf:
           - $ref: '#/components/schemas/TextFieldFieldSerializerWithRelatedFields'
@@ -30994,6 +31542,7 @@ rawSpecString: |
           - $ref: '#/components/schemas/UUIDFieldFieldSerializerWithRelatedFields'
           - $ref: '#/components/schemas/AutonumberFieldFieldSerializerWithRelatedFields'
           - $ref: '#/components/schemas/PasswordFieldFieldSerializerWithRelatedFields'
+          - $ref: '#/components/schemas/AIFieldFieldSerializerWithRelatedFields'
         discriminator:
           propertyName: type
           mapping:
@@ -31029,6 +31578,7 @@ rawSpecString: |
             uuid: '#/components/schemas/UUIDFieldFieldSerializerWithRelatedFields'
             autonumber: '#/components/schemas/AutonumberFieldFieldSerializerWithRelatedFields'
             password: '#/components/schemas/PasswordFieldFieldSerializerWithRelatedFields'
+            ai: '#/components/schemas/AIFieldFieldSerializerWithRelatedFields'
       FieldSerializerWithRelatedFields:
         type: object
         properties:
@@ -31082,7 +31632,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
         required:
           - name
           - type
@@ -31228,7 +31778,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
       FileImportJobCreateJob:
         type: object
         properties:
@@ -31610,6 +32160,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -31696,6 +32251,11 @@ rawSpecString: |
             default: primary
             description: Button color.
             maxLength: 20
+          reset_initial_values_post_submission:
+            type: boolean
+            description: >-
+              Whether to reset the form to using its initial values after a
+              successful form submission.
         required:
           - order
           - type
@@ -31734,6 +32294,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -31820,6 +32385,11 @@ rawSpecString: |
             default: primary
             description: Button color.
             maxLength: 20
+          reset_initial_values_post_submission:
+            type: boolean
+            description: >-
+              Whether to reset the form to using its initial values after a
+              successful form submission.
         required:
           - id
           - order
@@ -31853,6 +32423,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -31939,6 +32514,11 @@ rawSpecString: |
             default: primary
             description: Button color.
             maxLength: 20
+          reset_initial_values_post_submission:
+            type: boolean
+            description: >-
+              Whether to reset the form to using its initial values after a
+              successful form submission.
         required:
           - id
           - order
@@ -31947,6 +32527,11 @@ rawSpecString: |
       FormContainerElementUpdateElement:
         type: object
         properties:
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -32033,6 +32618,11 @@ rawSpecString: |
             default: primary
             description: Button color.
             maxLength: 20
+          reset_initial_values_post_submission:
+            type: boolean
+            description: >-
+              Whether to reset the form to using its initial values after a
+              successful form submission.
       FormViewCreateView:
         type: object
         properties:
@@ -32414,58 +33004,11 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
-          date_time_format:
-            nullable: true
-            description: |-
-              24 (14:30) or 12 (02:30 PM)
-
-              * `24` - 24 hour
-              * `12` - 12 hour
-            oneOf:
-              - $ref: '#/components/schemas/DateTimeFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          date_include_time:
+            $ref: '#/components/schemas/Type1caEnum'
+          date_show_tzinfo:
             type: boolean
             nullable: true
-            description: Indicates if the field also includes a time.
-          array_formula_type:
-            nullable: true
-            oneOf:
-              - $ref: '#/components/schemas/ArrayFormulaTypeEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          duration_format:
-            nullable: true
-            description: |-
-              The format of the duration.
-
-              * `h:mm` - hours:minutes
-              * `h:mm:ss` - hours:minutes:seconds
-              * `h:mm:ss.s` - hours:minutes:seconds:deciseconds
-              * `h:mm:ss.ss` - hours:minutes:seconds:centiseconds
-              * `h:mm:ss.sss` - hours:minutes:seconds:milliseconds
-              * `d h` - days:hours
-              * `d h:mm` - days:hours:minutes
-              * `d h:mm:ss` - days:hours:minutes:seconds
-            oneOf:
-              - $ref: '#/components/schemas/DurationFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          date_force_timezone:
-            type: string
-            nullable: true
-            description: Force a timezone for the field overriding user profile settings.
-            maxLength: 255
-          date_format:
-            nullable: true
-            description: |-
-              EU (20/02/2020), US (02/20/2020) or ISO (2020-02-20)
-
-              * `EU` - European (D/M/Y)
-              * `US` - US (M/D/Y)
-              * `ISO` - ISO (Y-M-D)
-            oneOf:
-              - $ref: '#/components/schemas/DateFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
+            description: Indicates if the time zone should be shown.
           number_decimal_places:
             nullable: true
             description: |-
@@ -32490,13 +33033,60 @@ rawSpecString: |
           nullable:
             type: boolean
             readOnly: true
+          duration_format:
+            nullable: true
+            description: |-
+              The format of the duration.
+
+              * `h:mm` - hours:minutes
+              * `h:mm:ss` - hours:minutes:seconds
+              * `h:mm:ss.s` - hours:minutes:seconds:deciseconds
+              * `h:mm:ss.ss` - hours:minutes:seconds:centiseconds
+              * `h:mm:ss.sss` - hours:minutes:seconds:milliseconds
+              * `d h` - days:hours
+              * `d h:mm` - days:hours:minutes
+              * `d h:mm:ss` - days:hours:minutes:seconds
+            oneOf:
+              - $ref: '#/components/schemas/DurationFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_force_timezone:
+            type: string
+            nullable: true
+            description: Force a timezone for the field overriding user profile settings.
+            maxLength: 255
+          array_formula_type:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/ArrayFormulaTypeEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_format:
+            nullable: true
+            description: |-
+              EU (20/02/2020), US (02/20/2020) or ISO (2020-02-20)
+
+              * `EU` - European (D/M/Y)
+              * `US` - US (M/D/Y)
+              * `ISO` - ISO (Y-M-D)
+            oneOf:
+              - $ref: '#/components/schemas/DateFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_include_time:
+            type: boolean
+            nullable: true
+            description: Indicates if the field also includes a time.
+          date_time_format:
+            nullable: true
+            description: |-
+              24 (14:30) or 12 (02:30 PM)
+
+              * `24` - 24 hour
+              * `12` - 12 hour
+            oneOf:
+              - $ref: '#/components/schemas/DateTimeFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
           error:
             type: string
             readOnly: true
-          date_show_tzinfo:
-            type: boolean
-            nullable: true
-            description: Indicates if the time zone should be shown.
           formula:
             type: string
           formula_type:
@@ -32539,57 +33129,10 @@ rawSpecString: |
             description: >-
               Indicates whether the field is a read only field. If true, it's not
               possible to update the cell value.
-          date_time_format:
-            nullable: true
-            description: |-
-              24 (14:30) or 12 (02:30 PM)
-
-              * `24` - 24 hour
-              * `12` - 12 hour
-            oneOf:
-              - $ref: '#/components/schemas/DateTimeFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          date_include_time:
+          date_show_tzinfo:
             type: boolean
             nullable: true
-            description: Indicates if the field also includes a time.
-          array_formula_type:
-            nullable: true
-            oneOf:
-              - $ref: '#/components/schemas/ArrayFormulaTypeEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          duration_format:
-            nullable: true
-            description: |-
-              The format of the duration.
-
-              * `h:mm` - hours:minutes
-              * `h:mm:ss` - hours:minutes:seconds
-              * `h:mm:ss.s` - hours:minutes:seconds:deciseconds
-              * `h:mm:ss.ss` - hours:minutes:seconds:centiseconds
-              * `h:mm:ss.sss` - hours:minutes:seconds:milliseconds
-              * `d h` - days:hours
-              * `d h:mm` - days:hours:minutes
-              * `d h:mm:ss` - days:hours:minutes:seconds
-            oneOf:
-              - $ref: '#/components/schemas/DurationFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          date_force_timezone:
-            type: string
-            nullable: true
-            description: Force a timezone for the field overriding user profile settings.
-            maxLength: 255
-          date_format:
-            nullable: true
-            description: |-
-              EU (20/02/2020), US (02/20/2020) or ISO (2020-02-20)
-
-              * `EU` - European (D/M/Y)
-              * `US` - US (M/D/Y)
-              * `ISO` - ISO (Y-M-D)
-            oneOf:
-              - $ref: '#/components/schemas/DateFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
+            description: Indicates if the time zone should be shown.
           number_decimal_places:
             nullable: true
             description: |-
@@ -32614,13 +33157,60 @@ rawSpecString: |
           nullable:
             type: boolean
             readOnly: true
+          duration_format:
+            nullable: true
+            description: |-
+              The format of the duration.
+
+              * `h:mm` - hours:minutes
+              * `h:mm:ss` - hours:minutes:seconds
+              * `h:mm:ss.s` - hours:minutes:seconds:deciseconds
+              * `h:mm:ss.ss` - hours:minutes:seconds:centiseconds
+              * `h:mm:ss.sss` - hours:minutes:seconds:milliseconds
+              * `d h` - days:hours
+              * `d h:mm` - days:hours:minutes
+              * `d h:mm:ss` - days:hours:minutes:seconds
+            oneOf:
+              - $ref: '#/components/schemas/DurationFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_force_timezone:
+            type: string
+            nullable: true
+            description: Force a timezone for the field overriding user profile settings.
+            maxLength: 255
+          array_formula_type:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/ArrayFormulaTypeEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_format:
+            nullable: true
+            description: |-
+              EU (20/02/2020), US (02/20/2020) or ISO (2020-02-20)
+
+              * `EU` - European (D/M/Y)
+              * `US` - US (M/D/Y)
+              * `ISO` - ISO (Y-M-D)
+            oneOf:
+              - $ref: '#/components/schemas/DateFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_include_time:
+            type: boolean
+            nullable: true
+            description: Indicates if the field also includes a time.
+          date_time_format:
+            nullable: true
+            description: |-
+              24 (14:30) or 12 (02:30 PM)
+
+              * `24` - 24 hour
+              * `12` - 12 hour
+            oneOf:
+              - $ref: '#/components/schemas/DateTimeFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
           error:
             type: string
             readOnly: true
-          date_show_tzinfo:
-            type: boolean
-            nullable: true
-            description: Indicates if the time zone should be shown.
           formula:
             type: string
           formula_type:
@@ -32673,57 +33263,10 @@ rawSpecString: |
               $ref: '#/components/schemas/Field'
             readOnly: true
             description: A list of related fields which also changed.
-          date_time_format:
-            nullable: true
-            description: |-
-              24 (14:30) or 12 (02:30 PM)
-
-              * `24` - 24 hour
-              * `12` - 12 hour
-            oneOf:
-              - $ref: '#/components/schemas/DateTimeFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          date_include_time:
+          date_show_tzinfo:
             type: boolean
             nullable: true
-            description: Indicates if the field also includes a time.
-          array_formula_type:
-            nullable: true
-            oneOf:
-              - $ref: '#/components/schemas/ArrayFormulaTypeEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          duration_format:
-            nullable: true
-            description: |-
-              The format of the duration.
-
-              * `h:mm` - hours:minutes
-              * `h:mm:ss` - hours:minutes:seconds
-              * `h:mm:ss.s` - hours:minutes:seconds:deciseconds
-              * `h:mm:ss.ss` - hours:minutes:seconds:centiseconds
-              * `h:mm:ss.sss` - hours:minutes:seconds:milliseconds
-              * `d h` - days:hours
-              * `d h:mm` - days:hours:minutes
-              * `d h:mm:ss` - days:hours:minutes:seconds
-            oneOf:
-              - $ref: '#/components/schemas/DurationFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          date_force_timezone:
-            type: string
-            nullable: true
-            description: Force a timezone for the field overriding user profile settings.
-            maxLength: 255
-          date_format:
-            nullable: true
-            description: |-
-              EU (20/02/2020), US (02/20/2020) or ISO (2020-02-20)
-
-              * `EU` - European (D/M/Y)
-              * `US` - US (M/D/Y)
-              * `ISO` - ISO (Y-M-D)
-            oneOf:
-              - $ref: '#/components/schemas/DateFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
+            description: Indicates if the time zone should be shown.
           number_decimal_places:
             nullable: true
             description: |-
@@ -32748,13 +33291,60 @@ rawSpecString: |
           nullable:
             type: boolean
             readOnly: true
+          duration_format:
+            nullable: true
+            description: |-
+              The format of the duration.
+
+              * `h:mm` - hours:minutes
+              * `h:mm:ss` - hours:minutes:seconds
+              * `h:mm:ss.s` - hours:minutes:seconds:deciseconds
+              * `h:mm:ss.ss` - hours:minutes:seconds:centiseconds
+              * `h:mm:ss.sss` - hours:minutes:seconds:milliseconds
+              * `d h` - days:hours
+              * `d h:mm` - days:hours:minutes
+              * `d h:mm:ss` - days:hours:minutes:seconds
+            oneOf:
+              - $ref: '#/components/schemas/DurationFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_force_timezone:
+            type: string
+            nullable: true
+            description: Force a timezone for the field overriding user profile settings.
+            maxLength: 255
+          array_formula_type:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/ArrayFormulaTypeEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_format:
+            nullable: true
+            description: |-
+              EU (20/02/2020), US (02/20/2020) or ISO (2020-02-20)
+
+              * `EU` - European (D/M/Y)
+              * `US` - US (M/D/Y)
+              * `ISO` - ISO (Y-M-D)
+            oneOf:
+              - $ref: '#/components/schemas/DateFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_include_time:
+            type: boolean
+            nullable: true
+            description: Indicates if the field also includes a time.
+          date_time_format:
+            nullable: true
+            description: |-
+              24 (14:30) or 12 (02:30 PM)
+
+              * `24` - 24 hour
+              * `12` - 12 hour
+            oneOf:
+              - $ref: '#/components/schemas/DateTimeFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
           error:
             type: string
             readOnly: true
-          date_show_tzinfo:
-            type: boolean
-            nullable: true
-            description: Indicates if the time zone should be shown.
           formula:
             type: string
           formula_type:
@@ -32777,58 +33367,11 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
-          date_time_format:
-            nullable: true
-            description: |-
-              24 (14:30) or 12 (02:30 PM)
-
-              * `24` - 24 hour
-              * `12` - 12 hour
-            oneOf:
-              - $ref: '#/components/schemas/DateTimeFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          date_include_time:
+            $ref: '#/components/schemas/Type1caEnum'
+          date_show_tzinfo:
             type: boolean
             nullable: true
-            description: Indicates if the field also includes a time.
-          array_formula_type:
-            nullable: true
-            oneOf:
-              - $ref: '#/components/schemas/ArrayFormulaTypeEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          duration_format:
-            nullable: true
-            description: |-
-              The format of the duration.
-
-              * `h:mm` - hours:minutes
-              * `h:mm:ss` - hours:minutes:seconds
-              * `h:mm:ss.s` - hours:minutes:seconds:deciseconds
-              * `h:mm:ss.ss` - hours:minutes:seconds:centiseconds
-              * `h:mm:ss.sss` - hours:minutes:seconds:milliseconds
-              * `d h` - days:hours
-              * `d h:mm` - days:hours:minutes
-              * `d h:mm:ss` - days:hours:minutes:seconds
-            oneOf:
-              - $ref: '#/components/schemas/DurationFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          date_force_timezone:
-            type: string
-            nullable: true
-            description: Force a timezone for the field overriding user profile settings.
-            maxLength: 255
-          date_format:
-            nullable: true
-            description: |-
-              EU (20/02/2020), US (02/20/2020) or ISO (2020-02-20)
-
-              * `EU` - European (D/M/Y)
-              * `US` - US (M/D/Y)
-              * `ISO` - ISO (Y-M-D)
-            oneOf:
-              - $ref: '#/components/schemas/DateFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
+            description: Indicates if the time zone should be shown.
           number_decimal_places:
             nullable: true
             description: |-
@@ -32853,13 +33396,60 @@ rawSpecString: |
           nullable:
             type: boolean
             readOnly: true
+          duration_format:
+            nullable: true
+            description: |-
+              The format of the duration.
+
+              * `h:mm` - hours:minutes
+              * `h:mm:ss` - hours:minutes:seconds
+              * `h:mm:ss.s` - hours:minutes:seconds:deciseconds
+              * `h:mm:ss.ss` - hours:minutes:seconds:centiseconds
+              * `h:mm:ss.sss` - hours:minutes:seconds:milliseconds
+              * `d h` - days:hours
+              * `d h:mm` - days:hours:minutes
+              * `d h:mm:ss` - days:hours:minutes:seconds
+            oneOf:
+              - $ref: '#/components/schemas/DurationFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_force_timezone:
+            type: string
+            nullable: true
+            description: Force a timezone for the field overriding user profile settings.
+            maxLength: 255
+          array_formula_type:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/ArrayFormulaTypeEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_format:
+            nullable: true
+            description: |-
+              EU (20/02/2020), US (02/20/2020) or ISO (2020-02-20)
+
+              * `EU` - European (D/M/Y)
+              * `US` - US (M/D/Y)
+              * `ISO` - ISO (Y-M-D)
+            oneOf:
+              - $ref: '#/components/schemas/DateFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_include_time:
+            type: boolean
+            nullable: true
+            description: Indicates if the field also includes a time.
+          date_time_format:
+            nullable: true
+            description: |-
+              24 (14:30) or 12 (02:30 PM)
+
+              * `24` - 24 hour
+              * `12` - 12 hour
+            oneOf:
+              - $ref: '#/components/schemas/DateTimeFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
           error:
             type: string
             readOnly: true
-          date_show_tzinfo:
-            type: boolean
-            nullable: true
-            description: Indicates if the time zone should be shown.
           formula:
             type: string
           formula_type:
@@ -33291,6 +33881,13 @@ rawSpecString: |
               decorator with the lowest id must be shown first.
         required:
           - id
+      GenerativeAISettings:
+        type: object
+        properties:
+          openai:
+            $ref: '#/components/schemas/OpenAISettings'
+          ollama:
+            $ref: '#/components/schemas/OllamaSettings'
       GitHubAuthProviderModelAuthProvider:
         type: object
         properties:
@@ -33655,6 +34252,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -33787,6 +34389,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -33914,6 +34521,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -34016,6 +34628,11 @@ rawSpecString: |
       HeadingElementUpdateElement:
         type: object
         properties:
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -34159,6 +34776,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -34293,6 +34915,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -34422,6 +35049,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -34526,6 +35158,11 @@ rawSpecString: |
       IFrameElementUpdateElement:
         type: object
         properties:
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -34936,6 +35573,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -35088,6 +35730,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -35234,6 +35881,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -35355,6 +36007,11 @@ rawSpecString: |
       ImageElementUpdateElement:
         type: object
         properties:
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -35526,6 +36183,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -35615,7 +36277,16 @@ rawSpecString: |
           required:
             type: boolean
             default: false
-            description: Whether this text input is a required field.
+            description: Whether this form element is a required field.
+          validation_type:
+            allOf:
+              - $ref: '#/components/schemas/ValidationTypeEnum'
+            description: |-
+              Optionally set the validation type to use when applying form data.
+
+              * `any` - Any
+              * `email` - Email
+              * `integer` - Integer
           placeholder:
             type: string
             default: ''
@@ -35630,6 +36301,15 @@ rawSpecString: |
             minimum: 1
             default: 3
             description: Number of rows displayed by the rendered input element
+          input_type:
+            allOf:
+              - $ref: '#/components/schemas/InputTypeEnum'
+            default: text
+            description: |-
+              The type of the input, not applicable for multiline inputs.
+
+              * `text` - Text
+              * `password` - Password
         required:
           - order
           - type
@@ -35668,6 +36348,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -35757,7 +36442,16 @@ rawSpecString: |
           required:
             type: boolean
             default: false
-            description: Whether this text input is a required field.
+            description: Whether this form element is a required field.
+          validation_type:
+            allOf:
+              - $ref: '#/components/schemas/ValidationTypeEnum'
+            description: |-
+              Optionally set the validation type to use when applying form data.
+
+              * `any` - Any
+              * `email` - Email
+              * `integer` - Integer
           placeholder:
             type: string
             default: ''
@@ -35772,6 +36466,15 @@ rawSpecString: |
             minimum: 1
             default: 3
             description: Number of rows displayed by the rendered input element
+          input_type:
+            allOf:
+              - $ref: '#/components/schemas/InputTypeEnum'
+            default: text
+            description: |-
+              The type of the input, not applicable for multiline inputs.
+
+              * `text` - Text
+              * `password` - Password
         required:
           - id
           - order
@@ -35805,6 +36508,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -35894,7 +36602,16 @@ rawSpecString: |
           required:
             type: boolean
             default: false
-            description: Whether this text input is a required field.
+            description: Whether this form element is a required field.
+          validation_type:
+            allOf:
+              - $ref: '#/components/schemas/ValidationTypeEnum'
+            description: |-
+              Optionally set the validation type to use when applying form data.
+
+              * `any` - Any
+              * `email` - Email
+              * `integer` - Integer
           placeholder:
             type: string
             default: ''
@@ -35909,6 +36626,15 @@ rawSpecString: |
             minimum: 1
             default: 3
             description: Number of rows displayed by the rendered input element
+          input_type:
+            allOf:
+              - $ref: '#/components/schemas/InputTypeEnum'
+            default: text
+            description: |-
+              The type of the input, not applicable for multiline inputs.
+
+              * `text` - Text
+              * `password` - Password
         required:
           - id
           - order
@@ -35917,6 +36643,11 @@ rawSpecString: |
       InputTextElementUpdateElement:
         type: object
         properties:
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -36006,7 +36737,16 @@ rawSpecString: |
           required:
             type: boolean
             default: false
-            description: Whether this text input is a required field.
+            description: Whether this form element is a required field.
+          validation_type:
+            allOf:
+              - $ref: '#/components/schemas/ValidationTypeEnum'
+            description: |-
+              Optionally set the validation type to use when applying form data.
+
+              * `any` - Any
+              * `email` - Email
+              * `integer` - Integer
           placeholder:
             type: string
             default: ''
@@ -36021,6 +36761,23 @@ rawSpecString: |
             minimum: 1
             default: 3
             description: Number of rows displayed by the rendered input element
+          input_type:
+            allOf:
+              - $ref: '#/components/schemas/InputTypeEnum'
+            default: text
+            description: |-
+              The type of the input, not applicable for multiline inputs.
+
+              * `text` - Text
+              * `password` - Password
+      InputTypeEnum:
+        enum:
+          - text
+          - password
+        type: string
+        description: |-
+          * `text` - Text
+          * `password` - Password
       InstallTemplateJobCreateJob:
         type: object
         properties:
@@ -36462,7 +37219,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
         required:
           - name
           - type
@@ -36558,7 +37315,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
       LastModifiedFieldCreateField:
         type: object
         properties:
@@ -36566,7 +37323,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
           date_format:
             allOf:
               - $ref: '#/components/schemas/DateFormatEnum'
@@ -36750,7 +37507,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
           date_format:
             allOf:
               - $ref: '#/components/schemas/DateFormatEnum'
@@ -36999,6 +37756,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -37167,6 +37929,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -37330,6 +38097,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -37468,6 +38240,11 @@ rawSpecString: |
       LinkElementUpdateElement:
         type: object
         properties:
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -37605,7 +38382,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
           link_row_table_id:
             type: integer
             nullable: true
@@ -37749,7 +38526,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
           link_row_table_id:
             type: integer
             nullable: true
@@ -39437,7 +40214,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
           long_text_enable_rich_text:
             type: boolean
             nullable: true
@@ -39545,7 +40322,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
           long_text_enable_rich_text:
             type: boolean
             nullable: true
@@ -39557,58 +40334,11 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
-          date_time_format:
-            nullable: true
-            description: |-
-              24 (14:30) or 12 (02:30 PM)
-
-              * `24` - 24 hour
-              * `12` - 12 hour
-            oneOf:
-              - $ref: '#/components/schemas/DateTimeFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          date_include_time:
+            $ref: '#/components/schemas/Type1caEnum'
+          date_show_tzinfo:
             type: boolean
             nullable: true
-            description: Indicates if the field also includes a time.
-          array_formula_type:
-            nullable: true
-            oneOf:
-              - $ref: '#/components/schemas/ArrayFormulaTypeEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          duration_format:
-            nullable: true
-            description: |-
-              The format of the duration.
-
-              * `h:mm` - hours:minutes
-              * `h:mm:ss` - hours:minutes:seconds
-              * `h:mm:ss.s` - hours:minutes:seconds:deciseconds
-              * `h:mm:ss.ss` - hours:minutes:seconds:centiseconds
-              * `h:mm:ss.sss` - hours:minutes:seconds:milliseconds
-              * `d h` - days:hours
-              * `d h:mm` - days:hours:minutes
-              * `d h:mm:ss` - days:hours:minutes:seconds
-            oneOf:
-              - $ref: '#/components/schemas/DurationFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          date_force_timezone:
-            type: string
-            nullable: true
-            description: Force a timezone for the field overriding user profile settings.
-            maxLength: 255
-          date_format:
-            nullable: true
-            description: |-
-              EU (20/02/2020), US (02/20/2020) or ISO (2020-02-20)
-
-              * `EU` - European (D/M/Y)
-              * `US` - US (M/D/Y)
-              * `ISO` - ISO (Y-M-D)
-            oneOf:
-              - $ref: '#/components/schemas/DateFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
+            description: Indicates if the time zone should be shown.
           number_decimal_places:
             nullable: true
             description: |-
@@ -39633,13 +40363,60 @@ rawSpecString: |
           nullable:
             type: boolean
             readOnly: true
+          duration_format:
+            nullable: true
+            description: |-
+              The format of the duration.
+
+              * `h:mm` - hours:minutes
+              * `h:mm:ss` - hours:minutes:seconds
+              * `h:mm:ss.s` - hours:minutes:seconds:deciseconds
+              * `h:mm:ss.ss` - hours:minutes:seconds:centiseconds
+              * `h:mm:ss.sss` - hours:minutes:seconds:milliseconds
+              * `d h` - days:hours
+              * `d h:mm` - days:hours:minutes
+              * `d h:mm:ss` - days:hours:minutes:seconds
+            oneOf:
+              - $ref: '#/components/schemas/DurationFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_force_timezone:
+            type: string
+            nullable: true
+            description: Force a timezone for the field overriding user profile settings.
+            maxLength: 255
+          array_formula_type:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/ArrayFormulaTypeEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_format:
+            nullable: true
+            description: |-
+              EU (20/02/2020), US (02/20/2020) or ISO (2020-02-20)
+
+              * `EU` - European (D/M/Y)
+              * `US` - US (M/D/Y)
+              * `ISO` - ISO (Y-M-D)
+            oneOf:
+              - $ref: '#/components/schemas/DateFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_include_time:
+            type: boolean
+            nullable: true
+            description: Indicates if the field also includes a time.
+          date_time_format:
+            nullable: true
+            description: |-
+              24 (14:30) or 12 (02:30 PM)
+
+              * `24` - 24 hour
+              * `12` - 12 hour
+            oneOf:
+              - $ref: '#/components/schemas/DateTimeFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
           error:
             type: string
             nullable: true
-          date_show_tzinfo:
-            type: boolean
-            nullable: true
-            description: Indicates if the time zone should be shown.
           through_field_id:
             type: integer
             nullable: true
@@ -39702,57 +40479,10 @@ rawSpecString: |
             description: >-
               Indicates whether the field is a read only field. If true, it's not
               possible to update the cell value.
-          date_time_format:
-            nullable: true
-            description: |-
-              24 (14:30) or 12 (02:30 PM)
-
-              * `24` - 24 hour
-              * `12` - 12 hour
-            oneOf:
-              - $ref: '#/components/schemas/DateTimeFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          date_include_time:
+          date_show_tzinfo:
             type: boolean
             nullable: true
-            description: Indicates if the field also includes a time.
-          array_formula_type:
-            nullable: true
-            oneOf:
-              - $ref: '#/components/schemas/ArrayFormulaTypeEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          duration_format:
-            nullable: true
-            description: |-
-              The format of the duration.
-
-              * `h:mm` - hours:minutes
-              * `h:mm:ss` - hours:minutes:seconds
-              * `h:mm:ss.s` - hours:minutes:seconds:deciseconds
-              * `h:mm:ss.ss` - hours:minutes:seconds:centiseconds
-              * `h:mm:ss.sss` - hours:minutes:seconds:milliseconds
-              * `d h` - days:hours
-              * `d h:mm` - days:hours:minutes
-              * `d h:mm:ss` - days:hours:minutes:seconds
-            oneOf:
-              - $ref: '#/components/schemas/DurationFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          date_force_timezone:
-            type: string
-            nullable: true
-            description: Force a timezone for the field overriding user profile settings.
-            maxLength: 255
-          date_format:
-            nullable: true
-            description: |-
-              EU (20/02/2020), US (02/20/2020) or ISO (2020-02-20)
-
-              * `EU` - European (D/M/Y)
-              * `US` - US (M/D/Y)
-              * `ISO` - ISO (Y-M-D)
-            oneOf:
-              - $ref: '#/components/schemas/DateFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
+            description: Indicates if the time zone should be shown.
           number_decimal_places:
             nullable: true
             description: |-
@@ -39777,13 +40507,60 @@ rawSpecString: |
           nullable:
             type: boolean
             readOnly: true
+          duration_format:
+            nullable: true
+            description: |-
+              The format of the duration.
+
+              * `h:mm` - hours:minutes
+              * `h:mm:ss` - hours:minutes:seconds
+              * `h:mm:ss.s` - hours:minutes:seconds:deciseconds
+              * `h:mm:ss.ss` - hours:minutes:seconds:centiseconds
+              * `h:mm:ss.sss` - hours:minutes:seconds:milliseconds
+              * `d h` - days:hours
+              * `d h:mm` - days:hours:minutes
+              * `d h:mm:ss` - days:hours:minutes:seconds
+            oneOf:
+              - $ref: '#/components/schemas/DurationFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_force_timezone:
+            type: string
+            nullable: true
+            description: Force a timezone for the field overriding user profile settings.
+            maxLength: 255
+          array_formula_type:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/ArrayFormulaTypeEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_format:
+            nullable: true
+            description: |-
+              EU (20/02/2020), US (02/20/2020) or ISO (2020-02-20)
+
+              * `EU` - European (D/M/Y)
+              * `US` - US (M/D/Y)
+              * `ISO` - ISO (Y-M-D)
+            oneOf:
+              - $ref: '#/components/schemas/DateFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_include_time:
+            type: boolean
+            nullable: true
+            description: Indicates if the field also includes a time.
+          date_time_format:
+            nullable: true
+            description: |-
+              24 (14:30) or 12 (02:30 PM)
+
+              * `24` - 24 hour
+              * `12` - 12 hour
+            oneOf:
+              - $ref: '#/components/schemas/DateTimeFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
           error:
             type: string
             nullable: true
-          date_show_tzinfo:
-            type: boolean
-            nullable: true
-            description: Indicates if the time zone should be shown.
           through_field_id:
             type: integer
             nullable: true
@@ -39856,57 +40633,10 @@ rawSpecString: |
               $ref: '#/components/schemas/Field'
             readOnly: true
             description: A list of related fields which also changed.
-          date_time_format:
-            nullable: true
-            description: |-
-              24 (14:30) or 12 (02:30 PM)
-
-              * `24` - 24 hour
-              * `12` - 12 hour
-            oneOf:
-              - $ref: '#/components/schemas/DateTimeFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          date_include_time:
+          date_show_tzinfo:
             type: boolean
             nullable: true
-            description: Indicates if the field also includes a time.
-          array_formula_type:
-            nullable: true
-            oneOf:
-              - $ref: '#/components/schemas/ArrayFormulaTypeEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          duration_format:
-            nullable: true
-            description: |-
-              The format of the duration.
-
-              * `h:mm` - hours:minutes
-              * `h:mm:ss` - hours:minutes:seconds
-              * `h:mm:ss.s` - hours:minutes:seconds:deciseconds
-              * `h:mm:ss.ss` - hours:minutes:seconds:centiseconds
-              * `h:mm:ss.sss` - hours:minutes:seconds:milliseconds
-              * `d h` - days:hours
-              * `d h:mm` - days:hours:minutes
-              * `d h:mm:ss` - days:hours:minutes:seconds
-            oneOf:
-              - $ref: '#/components/schemas/DurationFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          date_force_timezone:
-            type: string
-            nullable: true
-            description: Force a timezone for the field overriding user profile settings.
-            maxLength: 255
-          date_format:
-            nullable: true
-            description: |-
-              EU (20/02/2020), US (02/20/2020) or ISO (2020-02-20)
-
-              * `EU` - European (D/M/Y)
-              * `US` - US (M/D/Y)
-              * `ISO` - ISO (Y-M-D)
-            oneOf:
-              - $ref: '#/components/schemas/DateFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
+            description: Indicates if the time zone should be shown.
           number_decimal_places:
             nullable: true
             description: |-
@@ -39931,13 +40661,60 @@ rawSpecString: |
           nullable:
             type: boolean
             readOnly: true
+          duration_format:
+            nullable: true
+            description: |-
+              The format of the duration.
+
+              * `h:mm` - hours:minutes
+              * `h:mm:ss` - hours:minutes:seconds
+              * `h:mm:ss.s` - hours:minutes:seconds:deciseconds
+              * `h:mm:ss.ss` - hours:minutes:seconds:centiseconds
+              * `h:mm:ss.sss` - hours:minutes:seconds:milliseconds
+              * `d h` - days:hours
+              * `d h:mm` - days:hours:minutes
+              * `d h:mm:ss` - days:hours:minutes:seconds
+            oneOf:
+              - $ref: '#/components/schemas/DurationFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_force_timezone:
+            type: string
+            nullable: true
+            description: Force a timezone for the field overriding user profile settings.
+            maxLength: 255
+          array_formula_type:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/ArrayFormulaTypeEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_format:
+            nullable: true
+            description: |-
+              EU (20/02/2020), US (02/20/2020) or ISO (2020-02-20)
+
+              * `EU` - European (D/M/Y)
+              * `US` - US (M/D/Y)
+              * `ISO` - ISO (Y-M-D)
+            oneOf:
+              - $ref: '#/components/schemas/DateFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_include_time:
+            type: boolean
+            nullable: true
+            description: Indicates if the field also includes a time.
+          date_time_format:
+            nullable: true
+            description: |-
+              24 (14:30) or 12 (02:30 PM)
+
+              * `24` - 24 hour
+              * `12` - 12 hour
+            oneOf:
+              - $ref: '#/components/schemas/DateTimeFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
           error:
             type: string
             nullable: true
-          date_show_tzinfo:
-            type: boolean
-            nullable: true
-            description: Indicates if the time zone should be shown.
           through_field_id:
             type: integer
             nullable: true
@@ -39980,58 +40757,11 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
-          date_time_format:
-            nullable: true
-            description: |-
-              24 (14:30) or 12 (02:30 PM)
-
-              * `24` - 24 hour
-              * `12` - 12 hour
-            oneOf:
-              - $ref: '#/components/schemas/DateTimeFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          date_include_time:
+            $ref: '#/components/schemas/Type1caEnum'
+          date_show_tzinfo:
             type: boolean
             nullable: true
-            description: Indicates if the field also includes a time.
-          array_formula_type:
-            nullable: true
-            oneOf:
-              - $ref: '#/components/schemas/ArrayFormulaTypeEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          duration_format:
-            nullable: true
-            description: |-
-              The format of the duration.
-
-              * `h:mm` - hours:minutes
-              * `h:mm:ss` - hours:minutes:seconds
-              * `h:mm:ss.s` - hours:minutes:seconds:deciseconds
-              * `h:mm:ss.ss` - hours:minutes:seconds:centiseconds
-              * `h:mm:ss.sss` - hours:minutes:seconds:milliseconds
-              * `d h` - days:hours
-              * `d h:mm` - days:hours:minutes
-              * `d h:mm:ss` - days:hours:minutes:seconds
-            oneOf:
-              - $ref: '#/components/schemas/DurationFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          date_force_timezone:
-            type: string
-            nullable: true
-            description: Force a timezone for the field overriding user profile settings.
-            maxLength: 255
-          date_format:
-            nullable: true
-            description: |-
-              EU (20/02/2020), US (02/20/2020) or ISO (2020-02-20)
-
-              * `EU` - European (D/M/Y)
-              * `US` - US (M/D/Y)
-              * `ISO` - ISO (Y-M-D)
-            oneOf:
-              - $ref: '#/components/schemas/DateFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
+            description: Indicates if the time zone should be shown.
           number_decimal_places:
             nullable: true
             description: |-
@@ -40056,13 +40786,60 @@ rawSpecString: |
           nullable:
             type: boolean
             readOnly: true
+          duration_format:
+            nullable: true
+            description: |-
+              The format of the duration.
+
+              * `h:mm` - hours:minutes
+              * `h:mm:ss` - hours:minutes:seconds
+              * `h:mm:ss.s` - hours:minutes:seconds:deciseconds
+              * `h:mm:ss.ss` - hours:minutes:seconds:centiseconds
+              * `h:mm:ss.sss` - hours:minutes:seconds:milliseconds
+              * `d h` - days:hours
+              * `d h:mm` - days:hours:minutes
+              * `d h:mm:ss` - days:hours:minutes:seconds
+            oneOf:
+              - $ref: '#/components/schemas/DurationFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_force_timezone:
+            type: string
+            nullable: true
+            description: Force a timezone for the field overriding user profile settings.
+            maxLength: 255
+          array_formula_type:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/ArrayFormulaTypeEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_format:
+            nullable: true
+            description: |-
+              EU (20/02/2020), US (02/20/2020) or ISO (2020-02-20)
+
+              * `EU` - European (D/M/Y)
+              * `US` - US (M/D/Y)
+              * `ISO` - ISO (Y-M-D)
+            oneOf:
+              - $ref: '#/components/schemas/DateFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_include_time:
+            type: boolean
+            nullable: true
+            description: Indicates if the field also includes a time.
+          date_time_format:
+            nullable: true
+            description: |-
+              24 (14:30) or 12 (02:30 PM)
+
+              * `24` - 24 hour
+              * `12` - 12 hour
+            oneOf:
+              - $ref: '#/components/schemas/DateTimeFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
           error:
             type: string
             nullable: true
-          date_show_tzinfo:
-            type: boolean
-            nullable: true
-            description: Indicates if the time zone should be shown.
           through_field_id:
             type: integer
             nullable: true
@@ -40114,7 +40891,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
           notify_user_when_added:
             type: boolean
         required:
@@ -40216,7 +40993,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
           notify_user_when_added:
             type: boolean
       MultipleSelectFieldCreateField:
@@ -40226,7 +41003,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
           select_options:
             type: array
             items:
@@ -40334,7 +41111,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
           select_options:
             type: array
             items:
@@ -40529,7 +41306,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
           number_decimal_places:
             allOf:
               - $ref: '#/components/schemas/NumberDecimalPlacesEnum'
@@ -40691,7 +41468,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
           number_decimal_places:
             allOf:
               - $ref: '#/components/schemas/NumberDecimalPlacesEnum'
@@ -40714,6 +41491,31 @@ rawSpecString: |
           number_negative:
             type: boolean
             description: Indicates if negative values are allowed.
+      OllamaSettings:
+        type: object
+        properties:
+          models:
+            type: array
+            items:
+              type: string
+            description: The models that are enabled for this AI type.
+          host:
+            type: string
+            description: The host that is used to authenticate with the Ollama API.
+      OpenAISettings:
+        type: object
+        properties:
+          models:
+            type: array
+            items:
+              type: string
+            description: The models that are enabled for this AI type.
+          api_key:
+            type: string
+            description: The OpenAI API key that is used to authenticate with the OpenAI API.
+          organization:
+            type: string
+            description: The organization that the OpenAI API key belongs to.
       OpenApiRoleAssignment:
         type: object
         description: Serializer for RoleAssignment used for the Open API spec
@@ -41513,7 +42315,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
         required:
           - name
           - type
@@ -41609,7 +42411,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
       PatchedAccount:
         type: object
         description: This serializer must be kept in sync with `UserSerializer`.
@@ -41917,6 +42719,15 @@ rawSpecString: |
               will unset it, `true` will be ignored. The response will respond
               with `true` is a password is set, but will never expose the password
               itself.
+          field_27:
+            type: string
+            nullable: true
+            description: >-
+              This field represents the `ai` field. The number in field_27 is in a
+              normal request or response the id of the field. If the GET parameter
+              `user_field_names` is provided then the key will instead be the
+              actual name of the field. Holds a text value that is generated by a
+              generative UI model using a dynamic prompt.
       PatchedFieldUpdateField:
         oneOf:
           - $ref: '#/components/schemas/TextFieldUpdateField'
@@ -41945,6 +42756,7 @@ rawSpecString: |
           - $ref: '#/components/schemas/UUIDFieldUpdateField'
           - $ref: '#/components/schemas/AutonumberFieldUpdateField'
           - $ref: '#/components/schemas/PasswordFieldUpdateField'
+          - $ref: '#/components/schemas/AIFieldUpdateField'
         discriminator:
           propertyName: type
           mapping:
@@ -41974,6 +42786,14 @@ rawSpecString: |
             uuid: '#/components/schemas/UUIDFieldUpdateField'
             autonumber: '#/components/schemas/AutonumberFieldUpdateField'
             password: '#/components/schemas/PasswordFieldUpdateField'
+            ai: '#/components/schemas/AIFieldUpdateField'
+      PatchedGenerativeAISettings:
+        type: object
+        properties:
+          openai:
+            $ref: '#/components/schemas/OpenAISettings'
+          ollama:
+            $ref: '#/components/schemas/OllamaSettings'
       PatchedIntegrationUpdateIntegration:
         anyOf:
           - $ref: '#/components/schemas/LocalBaserowIntegrationUpdateIntegration'
@@ -42343,7 +43163,7 @@ rawSpecString: |
             description: The field of which the value must be compared to the filter value.
           type:
             allOf:
-              - $ref: '#/components/schemas/Type880Enum'
+              - $ref: '#/components/schemas/TypeA4aEnum'
             description: >-
               Indicates how the field's value must be compared to the filter's
               value. The filter is always in this order `field` `type` `value`
@@ -42372,7 +43192,11 @@ rawSpecString: |
 
               * `higher_than` - higher_than
 
+              * `higher_than_or_equal` - higher_than_or_equal
+
               * `lower_than` - lower_than
+
+              * `lower_than_or_equal` - lower_than_or_equal
 
               * `is_even_and_whole` - is_even_and_whole
 
@@ -42419,6 +43243,10 @@ rawSpecString: |
               * `single_select_equal` - single_select_equal
 
               * `single_select_not_equal` - single_select_not_equal
+
+              * `single_select_is_any_of` - single_select_is_any_of
+
+              * `single_select_is_none_of` - single_select_is_none_of
 
               * `link_row_has` - link_row_has
 
@@ -42572,6 +43400,9 @@ rawSpecString: |
           name:
             type: string
             maxLength: 165
+          generative_ai_models_enabled:
+            type: string
+            readOnly: true
       PathParam:
         type: object
         properties:
@@ -42618,7 +43449,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
         required:
           - name
           - type
@@ -42714,7 +43545,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
       PublicBuilder:
         type: object
         description: >-
@@ -43241,7 +44072,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
           max_value:
             type: integer
             maximum: 10
@@ -43397,7 +44228,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
           max_value:
             type: integer
             maximum: 10
@@ -43586,58 +44417,11 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
-          date_time_format:
-            nullable: true
-            description: |-
-              24 (14:30) or 12 (02:30 PM)
-
-              * `24` - 24 hour
-              * `12` - 12 hour
-            oneOf:
-              - $ref: '#/components/schemas/DateTimeFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          date_include_time:
+            $ref: '#/components/schemas/Type1caEnum'
+          date_show_tzinfo:
             type: boolean
             nullable: true
-            description: Indicates if the field also includes a time.
-          array_formula_type:
-            nullable: true
-            oneOf:
-              - $ref: '#/components/schemas/ArrayFormulaTypeEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          duration_format:
-            nullable: true
-            description: |-
-              The format of the duration.
-
-              * `h:mm` - hours:minutes
-              * `h:mm:ss` - hours:minutes:seconds
-              * `h:mm:ss.s` - hours:minutes:seconds:deciseconds
-              * `h:mm:ss.ss` - hours:minutes:seconds:centiseconds
-              * `h:mm:ss.sss` - hours:minutes:seconds:milliseconds
-              * `d h` - days:hours
-              * `d h:mm` - days:hours:minutes
-              * `d h:mm:ss` - days:hours:minutes:seconds
-            oneOf:
-              - $ref: '#/components/schemas/DurationFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          date_force_timezone:
-            type: string
-            nullable: true
-            description: Force a timezone for the field overriding user profile settings.
-            maxLength: 255
-          date_format:
-            nullable: true
-            description: |-
-              EU (20/02/2020), US (02/20/2020) or ISO (2020-02-20)
-
-              * `EU` - European (D/M/Y)
-              * `US` - US (M/D/Y)
-              * `ISO` - ISO (Y-M-D)
-            oneOf:
-              - $ref: '#/components/schemas/DateFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
+            description: Indicates if the time zone should be shown.
           number_decimal_places:
             nullable: true
             description: |-
@@ -43662,13 +44446,60 @@ rawSpecString: |
           nullable:
             type: boolean
             readOnly: true
+          duration_format:
+            nullable: true
+            description: |-
+              The format of the duration.
+
+              * `h:mm` - hours:minutes
+              * `h:mm:ss` - hours:minutes:seconds
+              * `h:mm:ss.s` - hours:minutes:seconds:deciseconds
+              * `h:mm:ss.ss` - hours:minutes:seconds:centiseconds
+              * `h:mm:ss.sss` - hours:minutes:seconds:milliseconds
+              * `d h` - days:hours
+              * `d h:mm` - days:hours:minutes
+              * `d h:mm:ss` - days:hours:minutes:seconds
+            oneOf:
+              - $ref: '#/components/schemas/DurationFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_force_timezone:
+            type: string
+            nullable: true
+            description: Force a timezone for the field overriding user profile settings.
+            maxLength: 255
+          array_formula_type:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/ArrayFormulaTypeEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_format:
+            nullable: true
+            description: |-
+              EU (20/02/2020), US (02/20/2020) or ISO (2020-02-20)
+
+              * `EU` - European (D/M/Y)
+              * `US` - US (M/D/Y)
+              * `ISO` - ISO (Y-M-D)
+            oneOf:
+              - $ref: '#/components/schemas/DateFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_include_time:
+            type: boolean
+            nullable: true
+            description: Indicates if the field also includes a time.
+          date_time_format:
+            nullable: true
+            description: |-
+              24 (14:30) or 12 (02:30 PM)
+
+              * `24` - 24 hour
+              * `12` - 12 hour
+            oneOf:
+              - $ref: '#/components/schemas/DateTimeFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
           error:
             type: string
             nullable: true
-          date_show_tzinfo:
-            type: boolean
-            nullable: true
-            description: Indicates if the time zone should be shown.
           through_field_id:
             type: integer
             nullable: true
@@ -43721,57 +44552,10 @@ rawSpecString: |
             description: >-
               Indicates whether the field is a read only field. If true, it's not
               possible to update the cell value.
-          date_time_format:
-            nullable: true
-            description: |-
-              24 (14:30) or 12 (02:30 PM)
-
-              * `24` - 24 hour
-              * `12` - 12 hour
-            oneOf:
-              - $ref: '#/components/schemas/DateTimeFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          date_include_time:
+          date_show_tzinfo:
             type: boolean
             nullable: true
-            description: Indicates if the field also includes a time.
-          array_formula_type:
-            nullable: true
-            oneOf:
-              - $ref: '#/components/schemas/ArrayFormulaTypeEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          duration_format:
-            nullable: true
-            description: |-
-              The format of the duration.
-
-              * `h:mm` - hours:minutes
-              * `h:mm:ss` - hours:minutes:seconds
-              * `h:mm:ss.s` - hours:minutes:seconds:deciseconds
-              * `h:mm:ss.ss` - hours:minutes:seconds:centiseconds
-              * `h:mm:ss.sss` - hours:minutes:seconds:milliseconds
-              * `d h` - days:hours
-              * `d h:mm` - days:hours:minutes
-              * `d h:mm:ss` - days:hours:minutes:seconds
-            oneOf:
-              - $ref: '#/components/schemas/DurationFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          date_force_timezone:
-            type: string
-            nullable: true
-            description: Force a timezone for the field overriding user profile settings.
-            maxLength: 255
-          date_format:
-            nullable: true
-            description: |-
-              EU (20/02/2020), US (02/20/2020) or ISO (2020-02-20)
-
-              * `EU` - European (D/M/Y)
-              * `US` - US (M/D/Y)
-              * `ISO` - ISO (Y-M-D)
-            oneOf:
-              - $ref: '#/components/schemas/DateFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
+            description: Indicates if the time zone should be shown.
           number_decimal_places:
             nullable: true
             description: |-
@@ -43796,13 +44580,60 @@ rawSpecString: |
           nullable:
             type: boolean
             readOnly: true
+          duration_format:
+            nullable: true
+            description: |-
+              The format of the duration.
+
+              * `h:mm` - hours:minutes
+              * `h:mm:ss` - hours:minutes:seconds
+              * `h:mm:ss.s` - hours:minutes:seconds:deciseconds
+              * `h:mm:ss.ss` - hours:minutes:seconds:centiseconds
+              * `h:mm:ss.sss` - hours:minutes:seconds:milliseconds
+              * `d h` - days:hours
+              * `d h:mm` - days:hours:minutes
+              * `d h:mm:ss` - days:hours:minutes:seconds
+            oneOf:
+              - $ref: '#/components/schemas/DurationFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_force_timezone:
+            type: string
+            nullable: true
+            description: Force a timezone for the field overriding user profile settings.
+            maxLength: 255
+          array_formula_type:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/ArrayFormulaTypeEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_format:
+            nullable: true
+            description: |-
+              EU (20/02/2020), US (02/20/2020) or ISO (2020-02-20)
+
+              * `EU` - European (D/M/Y)
+              * `US` - US (M/D/Y)
+              * `ISO` - ISO (Y-M-D)
+            oneOf:
+              - $ref: '#/components/schemas/DateFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_include_time:
+            type: boolean
+            nullable: true
+            description: Indicates if the field also includes a time.
+          date_time_format:
+            nullable: true
+            description: |-
+              24 (14:30) or 12 (02:30 PM)
+
+              * `24` - 24 hour
+              * `12` - 12 hour
+            oneOf:
+              - $ref: '#/components/schemas/DateTimeFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
           error:
             type: string
             nullable: true
-          date_show_tzinfo:
-            type: boolean
-            nullable: true
-            description: Indicates if the time zone should be shown.
           through_field_id:
             type: integer
             nullable: true
@@ -43865,57 +44696,10 @@ rawSpecString: |
               $ref: '#/components/schemas/Field'
             readOnly: true
             description: A list of related fields which also changed.
-          date_time_format:
-            nullable: true
-            description: |-
-              24 (14:30) or 12 (02:30 PM)
-
-              * `24` - 24 hour
-              * `12` - 12 hour
-            oneOf:
-              - $ref: '#/components/schemas/DateTimeFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          date_include_time:
+          date_show_tzinfo:
             type: boolean
             nullable: true
-            description: Indicates if the field also includes a time.
-          array_formula_type:
-            nullable: true
-            oneOf:
-              - $ref: '#/components/schemas/ArrayFormulaTypeEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          duration_format:
-            nullable: true
-            description: |-
-              The format of the duration.
-
-              * `h:mm` - hours:minutes
-              * `h:mm:ss` - hours:minutes:seconds
-              * `h:mm:ss.s` - hours:minutes:seconds:deciseconds
-              * `h:mm:ss.ss` - hours:minutes:seconds:centiseconds
-              * `h:mm:ss.sss` - hours:minutes:seconds:milliseconds
-              * `d h` - days:hours
-              * `d h:mm` - days:hours:minutes
-              * `d h:mm:ss` - days:hours:minutes:seconds
-            oneOf:
-              - $ref: '#/components/schemas/DurationFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          date_force_timezone:
-            type: string
-            nullable: true
-            description: Force a timezone for the field overriding user profile settings.
-            maxLength: 255
-          date_format:
-            nullable: true
-            description: |-
-              EU (20/02/2020), US (02/20/2020) or ISO (2020-02-20)
-
-              * `EU` - European (D/M/Y)
-              * `US` - US (M/D/Y)
-              * `ISO` - ISO (Y-M-D)
-            oneOf:
-              - $ref: '#/components/schemas/DateFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
+            description: Indicates if the time zone should be shown.
           number_decimal_places:
             nullable: true
             description: |-
@@ -43940,13 +44724,60 @@ rawSpecString: |
           nullable:
             type: boolean
             readOnly: true
+          duration_format:
+            nullable: true
+            description: |-
+              The format of the duration.
+
+              * `h:mm` - hours:minutes
+              * `h:mm:ss` - hours:minutes:seconds
+              * `h:mm:ss.s` - hours:minutes:seconds:deciseconds
+              * `h:mm:ss.ss` - hours:minutes:seconds:centiseconds
+              * `h:mm:ss.sss` - hours:minutes:seconds:milliseconds
+              * `d h` - days:hours
+              * `d h:mm` - days:hours:minutes
+              * `d h:mm:ss` - days:hours:minutes:seconds
+            oneOf:
+              - $ref: '#/components/schemas/DurationFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_force_timezone:
+            type: string
+            nullable: true
+            description: Force a timezone for the field overriding user profile settings.
+            maxLength: 255
+          array_formula_type:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/ArrayFormulaTypeEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_format:
+            nullable: true
+            description: |-
+              EU (20/02/2020), US (02/20/2020) or ISO (2020-02-20)
+
+              * `EU` - European (D/M/Y)
+              * `US` - US (M/D/Y)
+              * `ISO` - ISO (Y-M-D)
+            oneOf:
+              - $ref: '#/components/schemas/DateFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_include_time:
+            type: boolean
+            nullable: true
+            description: Indicates if the field also includes a time.
+          date_time_format:
+            nullable: true
+            description: |-
+              24 (14:30) or 12 (02:30 PM)
+
+              * `24` - 24 hour
+              * `12` - 12 hour
+            oneOf:
+              - $ref: '#/components/schemas/DateTimeFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
           error:
             type: string
             nullable: true
-          date_show_tzinfo:
-            type: boolean
-            nullable: true
-            description: Indicates if the time zone should be shown.
           through_field_id:
             type: integer
             nullable: true
@@ -43979,58 +44810,11 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
-          date_time_format:
-            nullable: true
-            description: |-
-              24 (14:30) or 12 (02:30 PM)
-
-              * `24` - 24 hour
-              * `12` - 12 hour
-            oneOf:
-              - $ref: '#/components/schemas/DateTimeFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          date_include_time:
+            $ref: '#/components/schemas/Type1caEnum'
+          date_show_tzinfo:
             type: boolean
             nullable: true
-            description: Indicates if the field also includes a time.
-          array_formula_type:
-            nullable: true
-            oneOf:
-              - $ref: '#/components/schemas/ArrayFormulaTypeEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          duration_format:
-            nullable: true
-            description: |-
-              The format of the duration.
-
-              * `h:mm` - hours:minutes
-              * `h:mm:ss` - hours:minutes:seconds
-              * `h:mm:ss.s` - hours:minutes:seconds:deciseconds
-              * `h:mm:ss.ss` - hours:minutes:seconds:centiseconds
-              * `h:mm:ss.sss` - hours:minutes:seconds:milliseconds
-              * `d h` - days:hours
-              * `d h:mm` - days:hours:minutes
-              * `d h:mm:ss` - days:hours:minutes:seconds
-            oneOf:
-              - $ref: '#/components/schemas/DurationFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          date_force_timezone:
-            type: string
-            nullable: true
-            description: Force a timezone for the field overriding user profile settings.
-            maxLength: 255
-          date_format:
-            nullable: true
-            description: |-
-              EU (20/02/2020), US (02/20/2020) or ISO (2020-02-20)
-
-              * `EU` - European (D/M/Y)
-              * `US` - US (M/D/Y)
-              * `ISO` - ISO (Y-M-D)
-            oneOf:
-              - $ref: '#/components/schemas/DateFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
+            description: Indicates if the time zone should be shown.
           number_decimal_places:
             nullable: true
             description: |-
@@ -44055,13 +44839,60 @@ rawSpecString: |
           nullable:
             type: boolean
             readOnly: true
+          duration_format:
+            nullable: true
+            description: |-
+              The format of the duration.
+
+              * `h:mm` - hours:minutes
+              * `h:mm:ss` - hours:minutes:seconds
+              * `h:mm:ss.s` - hours:minutes:seconds:deciseconds
+              * `h:mm:ss.ss` - hours:minutes:seconds:centiseconds
+              * `h:mm:ss.sss` - hours:minutes:seconds:milliseconds
+              * `d h` - days:hours
+              * `d h:mm` - days:hours:minutes
+              * `d h:mm:ss` - days:hours:minutes:seconds
+            oneOf:
+              - $ref: '#/components/schemas/DurationFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_force_timezone:
+            type: string
+            nullable: true
+            description: Force a timezone for the field overriding user profile settings.
+            maxLength: 255
+          array_formula_type:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/ArrayFormulaTypeEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_format:
+            nullable: true
+            description: |-
+              EU (20/02/2020), US (02/20/2020) or ISO (2020-02-20)
+
+              * `EU` - European (D/M/Y)
+              * `US` - US (M/D/Y)
+              * `ISO` - ISO (Y-M-D)
+            oneOf:
+              - $ref: '#/components/schemas/DateFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_include_time:
+            type: boolean
+            nullable: true
+            description: Indicates if the field also includes a time.
+          date_time_format:
+            nullable: true
+            description: |-
+              24 (14:30) or 12 (02:30 PM)
+
+              * `24` - 24 hour
+              * `12` - 12 hour
+            oneOf:
+              - $ref: '#/components/schemas/DateTimeFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
           error:
             type: string
             nullable: true
-          date_show_tzinfo:
-            type: boolean
-            nullable: true
-            description: Indicates if the time zone should be shown.
           through_field_id:
             type: integer
             nullable: true
@@ -45235,7 +46066,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
           select_options:
             type: array
             items:
@@ -45343,7 +46174,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
           select_options:
             type: array
             items:
@@ -45654,6 +46485,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -45789,6 +46625,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -45919,6 +46760,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -46024,6 +46870,11 @@ rawSpecString: |
       TableElementUpdateElement:
         type: object
         properties:
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -46683,6 +47534,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -46814,6 +47670,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -46940,6 +47801,11 @@ rawSpecString: |
             nullable: true
             description: The place in the container.
             maxLength: 255
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -47041,6 +47907,11 @@ rawSpecString: |
       TextElementUpdateElement:
         type: object
         properties:
+          visibility:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/VisibilityEnum'
+              - $ref: '#/components/schemas/NullEnum'
           style_border_top_color:
             type: string
             description: Top border color.
@@ -47141,7 +48012,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
           text_default:
             type: string
             description: >-
@@ -47255,7 +48126,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
           text_default:
             type: string
             description: >-
@@ -47644,6 +48515,64 @@ rawSpecString: |
         description: |-
           * `custom` - custom
           * `sub_domain` - sub_domain
+      Type1caEnum:
+        enum:
+          - text
+          - long_text
+          - url
+          - email
+          - number
+          - rating
+          - boolean
+          - date
+          - last_modified
+          - last_modified_by
+          - created_on
+          - created_by
+          - duration
+          - link_row
+          - file
+          - single_select
+          - multiple_select
+          - phone_number
+          - formula
+          - count
+          - rollup
+          - lookup
+          - multiple_collaborators
+          - uuid
+          - autonumber
+          - password
+          - ai
+        type: string
+        description: |-
+          * `text` - text
+          * `long_text` - long_text
+          * `url` - url
+          * `email` - email
+          * `number` - number
+          * `rating` - rating
+          * `boolean` - boolean
+          * `date` - date
+          * `last_modified` - last_modified
+          * `last_modified_by` - last_modified_by
+          * `created_on` - created_on
+          * `created_by` - created_by
+          * `duration` - duration
+          * `link_row` - link_row
+          * `file` - file
+          * `single_select` - single_select
+          * `multiple_select` - multiple_select
+          * `phone_number` - phone_number
+          * `formula` - formula
+          * `count` - count
+          * `rollup` - rollup
+          * `lookup` - lookup
+          * `multiple_collaborators` - multiple_collaborators
+          * `uuid` - uuid
+          * `autonumber` - autonumber
+          * `password` - password
+          * `ai` - ai
       Type2a6Enum:
         enum:
           - heading
@@ -47693,7 +48622,7 @@ rawSpecString: |
           * `create_row` - create_row
           * `update_row` - update_row
           * `logout` - logout
-      Type880Enum:
+      TypeA4aEnum:
         enum:
           - equal
           - not_equal
@@ -47706,7 +48635,9 @@ rawSpecString: |
           - doesnt_contain_word
           - length_is_lower_than
           - higher_than
+          - higher_than_or_equal
           - lower_than
+          - lower_than_or_equal
           - is_even_and_whole
           - date_equal
           - date_before
@@ -47730,6 +48661,8 @@ rawSpecString: |
           - date_equals_year
           - single_select_equal
           - single_select_not_equal
+          - single_select_is_any_of
+          - single_select_is_none_of
           - link_row_has
           - link_row_has_not
           - link_row_contains
@@ -47756,7 +48689,9 @@ rawSpecString: |
           * `doesnt_contain_word` - doesnt_contain_word
           * `length_is_lower_than` - length_is_lower_than
           * `higher_than` - higher_than
+          * `higher_than_or_equal` - higher_than_or_equal
           * `lower_than` - lower_than
+          * `lower_than_or_equal` - lower_than_or_equal
           * `is_even_and_whole` - is_even_and_whole
           * `date_equal` - date_equal
           * `date_before` - date_before
@@ -47780,6 +48715,8 @@ rawSpecString: |
           * `date_equals_year` - date_equals_year
           * `single_select_equal` - single_select_equal
           * `single_select_not_equal` - single_select_not_equal
+          * `single_select_is_any_of` - single_select_is_any_of
+          * `single_select_is_none_of` - single_select_is_none_of
           * `link_row_has` - link_row_has
           * `link_row_has_not` - link_row_has_not
           * `link_row_contains` - link_row_contains
@@ -47829,62 +48766,6 @@ rawSpecString: |
           * `duplicate_page` - duplicate_page
           * `publish_domain` - publish_domain
           * `audit_log_export` - audit_log_export
-      TypeD64Enum:
-        enum:
-          - text
-          - long_text
-          - url
-          - email
-          - number
-          - rating
-          - boolean
-          - date
-          - last_modified
-          - last_modified_by
-          - created_on
-          - created_by
-          - duration
-          - link_row
-          - file
-          - single_select
-          - multiple_select
-          - phone_number
-          - formula
-          - count
-          - rollup
-          - lookup
-          - multiple_collaborators
-          - uuid
-          - autonumber
-          - password
-        type: string
-        description: |-
-          * `text` - text
-          * `long_text` - long_text
-          * `url` - url
-          * `email` - email
-          * `number` - number
-          * `rating` - rating
-          * `boolean` - boolean
-          * `date` - date
-          * `last_modified` - last_modified
-          * `last_modified_by` - last_modified_by
-          * `created_on` - created_on
-          * `created_by` - created_by
-          * `duration` - duration
-          * `link_row` - link_row
-          * `file` - file
-          * `single_select` - single_select
-          * `multiple_select` - multiple_select
-          * `phone_number` - phone_number
-          * `formula` - formula
-          * `count` - count
-          * `rollup` - rollup
-          * `lookup` - lookup
-          * `multiple_collaborators` - multiple_collaborators
-          * `uuid` - uuid
-          * `autonumber` - autonumber
-          * `password` - password
       TypeF4fEnum:
         enum:
           - database
@@ -47915,57 +48796,10 @@ rawSpecString: |
       TypeFormulaResult:
         type: object
         properties:
-          date_time_format:
-            nullable: true
-            description: |-
-              24 (14:30) or 12 (02:30 PM)
-
-              * `24` - 24 hour
-              * `12` - 12 hour
-            oneOf:
-              - $ref: '#/components/schemas/DateTimeFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          date_include_time:
+          date_show_tzinfo:
             type: boolean
             nullable: true
-            description: Indicates if the field also includes a time.
-          array_formula_type:
-            nullable: true
-            oneOf:
-              - $ref: '#/components/schemas/ArrayFormulaTypeEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          duration_format:
-            nullable: true
-            description: |-
-              The format of the duration.
-
-              * `h:mm` - hours:minutes
-              * `h:mm:ss` - hours:minutes:seconds
-              * `h:mm:ss.s` - hours:minutes:seconds:deciseconds
-              * `h:mm:ss.ss` - hours:minutes:seconds:centiseconds
-              * `h:mm:ss.sss` - hours:minutes:seconds:milliseconds
-              * `d h` - days:hours
-              * `d h:mm` - days:hours:minutes
-              * `d h:mm:ss` - days:hours:minutes:seconds
-            oneOf:
-              - $ref: '#/components/schemas/DurationFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
-          date_force_timezone:
-            type: string
-            nullable: true
-            description: Force a timezone for the field overriding user profile settings.
-            maxLength: 255
-          date_format:
-            nullable: true
-            description: |-
-              EU (20/02/2020), US (02/20/2020) or ISO (2020-02-20)
-
-              * `EU` - European (D/M/Y)
-              * `US` - US (M/D/Y)
-              * `ISO` - ISO (Y-M-D)
-            oneOf:
-              - $ref: '#/components/schemas/DateFormatEnum'
-              - $ref: '#/components/schemas/NullEnum'
+            description: Indicates if the time zone should be shown.
           number_decimal_places:
             nullable: true
             description: |-
@@ -47989,13 +48823,60 @@ rawSpecString: |
               - $ref: '#/components/schemas/NullEnum'
           nullable:
             type: boolean
+          duration_format:
+            nullable: true
+            description: |-
+              The format of the duration.
+
+              * `h:mm` - hours:minutes
+              * `h:mm:ss` - hours:minutes:seconds
+              * `h:mm:ss.s` - hours:minutes:seconds:deciseconds
+              * `h:mm:ss.ss` - hours:minutes:seconds:centiseconds
+              * `h:mm:ss.sss` - hours:minutes:seconds:milliseconds
+              * `d h` - days:hours
+              * `d h:mm` - days:hours:minutes
+              * `d h:mm:ss` - days:hours:minutes:seconds
+            oneOf:
+              - $ref: '#/components/schemas/DurationFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_force_timezone:
+            type: string
+            nullable: true
+            description: Force a timezone for the field overriding user profile settings.
+            maxLength: 255
+          array_formula_type:
+            nullable: true
+            oneOf:
+              - $ref: '#/components/schemas/ArrayFormulaTypeEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_format:
+            nullable: true
+            description: |-
+              EU (20/02/2020), US (02/20/2020) or ISO (2020-02-20)
+
+              * `EU` - European (D/M/Y)
+              * `US` - US (M/D/Y)
+              * `ISO` - ISO (Y-M-D)
+            oneOf:
+              - $ref: '#/components/schemas/DateFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
+          date_include_time:
+            type: boolean
+            nullable: true
+            description: Indicates if the field also includes a time.
+          date_time_format:
+            nullable: true
+            description: |-
+              24 (14:30) or 12 (02:30 PM)
+
+              * `24` - 24 hour
+              * `12` - 12 hour
+            oneOf:
+              - $ref: '#/components/schemas/DateTimeFormatEnum'
+              - $ref: '#/components/schemas/NullEnum'
           error:
             type: string
             nullable: true
-          date_show_tzinfo:
-            type: boolean
-            nullable: true
-            description: Indicates if the time zone should be shown.
           formula:
             type: string
           formula_type:
@@ -48010,7 +48891,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
         required:
           - name
           - type
@@ -48106,7 +48987,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
       UUIDFieldCreateField:
         type: object
         properties:
@@ -48114,7 +48995,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
         required:
           - name
           - type
@@ -48210,7 +49091,7 @@ rawSpecString: |
             type: string
             maxLength: 255
           type:
-            $ref: '#/components/schemas/TypeD64Enum'
+            $ref: '#/components/schemas/Type1caEnum'
       UndoRedoAction:
         type: object
         properties:
@@ -48517,6 +49398,16 @@ rawSpecString: |
               list of users for this user source.
         required:
           - users_per_user_sources
+      ValidationTypeEnum:
+        enum:
+          - any
+          - email
+          - integer
+        type: string
+        description: |-
+          * `any` - Any
+          * `email` - Email
+          * `integer` - Integer
       ValueProviderTypeEnum:
         enum:
           - single_select_color
@@ -48834,6 +49725,16 @@ rawSpecString: |
             form: '#/components/schemas/FormViewView'
             kanban: '#/components/schemas/KanbanViewView'
             calendar: '#/components/schemas/CalendarViewView'
+      VisibilityEnum:
+        enum:
+          - all
+          - logged-in
+          - not-logged
+        type: string
+        description: |-
+          * `all` - All
+          * `logged-in` - Logged In
+          * `not-logged` - Not Logged
       WidthEnum:
         enum:
           - auto
@@ -48851,7 +49752,11 @@ rawSpecString: |
           name:
             type: string
             maxLength: 165
+          generative_ai_models_enabled:
+            type: string
+            readOnly: true
         required:
+          - generative_ai_models_enabled
           - id
           - name
       WorkspaceAdminUsers:
@@ -49012,7 +49917,12 @@ rawSpecString: |
             type: integer
             readOnly: true
             description: The number of unread notifications for the requesting user.
+          generative_ai_models_enabled:
+            type: string
+            readOnly: true
+            description: Generative AI models available in this workspace.
         required:
+          - generative_ai_models_enabled
           - id
           - name
           - order
@@ -49487,4 +50397,4 @@ rawSpecString: |
     - name: Admin
   servers:
     - url: api.baserow.io
-konfigCliVersion: 1.38.34
+konfigCliVersion: 1.38.37

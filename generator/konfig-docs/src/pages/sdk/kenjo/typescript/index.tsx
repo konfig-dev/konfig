@@ -21,7 +21,7 @@ All of this with the aim of making HR a key part of the success of companies and
       companyKebabCase="kenjo"
       clientNameCamelCase="kenjo"
       homepage="kenjo.io"
-      lastUpdated={new Date("2024-03-26T19:52:11.073Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/kenjo/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -1744,7 +1744,7 @@ All of this with the aim of making HR a key part of the success of companies and
       {
         "name": "gender",
         "schema": "string",
-        "description": "The employee gender. Only is valid one of the following values 'Male' (male), 'Female' (female) or 'Other' (other).",
+        "description": "The employee gender. Only is valid one of the following values 'Male' (https://www.kenjo.io/legal/api, 'Female' (https://www.kenjo.io/legal/api or 'Other' (https://www.kenjo.io/legal/api.",
         "example": "es"
       },
       {
@@ -2085,7 +2085,7 @@ All of this with the aim of making HR a key part of the success of companies and
       {
         "name": "spouseGender",
         "schema": "string",
-        "description": "The employee's spouse gender. Only is valid one of the following values 'Male' (male), 'Female' (female) or 'Other' (other).",
+        "description": "The employee's spouse gender. Only is valid one of the following values 'Male' (https://www.kenjo.io/legal/api, 'Female' (https://www.kenjo.io/legal/api or 'Other' (https://www.kenjo.io/legal/api.",
         "example": "Female"
       },
       {
@@ -3155,10 +3155,10 @@ All of this with the aim of making HR a key part of the success of companies and
       apiTitle="Kenjo API"
       apiBaseUrl="https://sandbox-api.kenjo.io/api/v1"
       apiVersion="1.0.0"
-      endpoints={44}
-      sdkMethods={60}
+      endpoints={46}
+      sdkMethods={62}
       schemas={78}
-      parameters={263}
+      parameters={274}
       difficulty="Medium"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/kenjo/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/kenjo/openapi.yaml"

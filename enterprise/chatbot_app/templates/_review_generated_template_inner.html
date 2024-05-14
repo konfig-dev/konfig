@@ -1,0 +1,126 @@
+<span class="absolute flex items-center justify-center w-8 h-8 {% if current_language %}bg-green-200 text-green-900{% else %}bg-slate-200{% endif %} rounded-full -start-4 ring-4 ring-white dark:ring-slate-900 dark:bg-slate-700">
+    <form>
+        <input type="hidden" name="chat_id" value="{{ current_chat.chat_id }}">
+        <svg hx-post="{% url 'generate_draft_template' %}"
+             hx-trigger="generate-template from:body"
+             hx-indicator="closest li"
+             hx-target="closest li"
+             xmlns="http://www.w3.org/2000/svg"
+             fill="none"
+             viewBox="0 0 24 24"
+             stroke-width="1.5"
+             stroke="currentColor"
+             class="w-3.5 h-3.5 htmx-request-hidden">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z" />
+        </svg>
+    </form>
+    <span class="hidden htmx-request-block loading loading-infinity loading-sm"></span>
+</span>
+<h3 class="font-medium leading-tight {% if current_language %}text-slate-800{% endif %}">Template</h3>
+<p class="text-sm">
+    <span class="htmx-request-hidden">Review the generated template</span>
+    <span class="hidden ellipsis htmx-request-inline">Generating template</span>
+</p>
+{% if current_language %}
+    <div class="mt-3">
+        <form id="template-drafting" class="flex flex-col items-end">
+            <input type="hidden" name="chat_id" value="{{ current_chat.chat_id }}">
+            <textarea name="template" id="draft-template"></textarea>
+            <style>
+        .EasyMDEContainer {
+            position: relative;
+            width: 100%;
+        }
+        {% if final_template %}
+        #template-drafting .cm-s-easymde {
+            border-radius: 0.5rem;
+        }
+        #template-drafting .editor-preview {
+            padding: 20px;
+        }
+        {% endif %}
+        .cm-s-easymde .cm-header-1 {
+            font-size: calc(0.9625rem + 1.05vw);
+        }
+
+        .cm-s-easymde .cm-header-2 {
+            font-size: calc(0.9275rem + 0.63vw);
+        }
+
+        .cm-s-easymde .cm-header-3 {
+            font-size: calc(0.91rem + 0.42vw);
+        }
+
+        .cm-s-easymde .cm-header-4 {
+            font-size: calc(0.8925rem + 0.21vw);
+        }
+
+        .cm-s-easymde .cm-header-5 {
+            font-size: 0.875rem;
+        }
+
+        .cm-s-easymde .cm-header-6 {
+            font-size: 0.7rem;
+        }
+            </style>
+            <script>
+        if (typeof templateEditor !== 'undefined') {
+            isTemplateEditorFullScreen = templateEditor.codemirror.getOption('fullScreen')
+            if (isTemplateEditorFullScreen) {
+                templateEditor.toggleFullScreen()
+            }
+        }
+        templateEditor = new EasyMDE({
+            previewRender: function(plainText) {
+                let html = this.parent.markdown(plainText);
+
+                // Add "hljs" class to code blocks
+                html = html.replace(/<pre><code class="([^"]+)">/g, function(match, p1) {
+                    return '<pre class="not-prose"><code class="' + p1 + ' hljs not-prose">';
+                });
+
+                html = '<div class="prose prose-sm">' + html + '</div>';
+
+                return html
+            },
+            status: false,
+            renderingConfig: {
+                codeSyntaxHighlighting: true
+            },
+            spellChecker: false,
+            // autosave: {
+            //     enabled: true,
+            //     uniqueId: "{{ current_chat.chat_id }}_template",
+            // },
+            forceSync: true,
+            maxHeight: "500px",
+            initialValue: `{{ draft_template|default:"" }}`,
+            element: document.currentScript.closest('div').querySelector('textarea'),
+            {% if final_template %}
+            toolbar: false,
+            {% endif %}
+        });
+        templateEditor.togglePreview();
+
+        if (typeof templateWebSocket === 'undefined') {
+            templateWebSocket = new WebSocket(
+                'ws://'
+                + window.location.host
+                + '/ws/guide/{{ current_chat.chat_id }}'
+                + '/'
+            );
+            templateWebSocket.onmessage = function(event) {
+                let data = JSON.parse(event.data);
+                if (data.type === "template.update") {
+                    templateEditor.value(data.template);
+                }
+            }
+        }
+
+</script>
+{% if not final_template and draft_template %}
+<button hx-target="#app" hx-post={% url 'submit_template' %} class="mt-2 btn btn-primary">Submit</button>
+{% endif %}
+</form>
+</div>
+{% endif %}

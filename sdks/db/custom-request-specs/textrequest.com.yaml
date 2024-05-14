@@ -617,6 +617,7 @@ paths:
             default: 100
       tags:
         - Conversations
+        - Messages
       summary: Get a conversation's messages by contact phone.
       description: >-
         Retrieves the conversation between the specified dashboard and phone
@@ -773,6 +774,7 @@ paths:
             default: 100
       tags:
         - Conversations
+        - Messages
       summary: Get all messages for a dashboard.
       description: >-
         Retrieves the text messages sent and received in the specified
@@ -1289,6 +1291,53 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/post_contact_request'
+      responses:
+        '200':
+          description: The new/updated contact.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/contact'
+        '400':
+          description: Bad request. There are no required parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+        '401':
+          description: Unauthorized. Sent if the API key is omitted or invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
+    patch:
+      parameters:
+        - name: dashboard_id
+          in: path
+          description: Id of dashboard
+          required: true
+          schema:
+            type: integer
+            example: 121
+        - name: phone_number
+          in: path
+          description: Phone number
+          required: true
+          schema:
+            type: string
+      tags:
+        - Contacts
+      summary: >-
+        Add or remove a group, contact tag, or custom field to a contact with
+        the given phone number
+      description: >-
+        Adds or removes a group, contact tag, or custom field to a contact
+        (depending on the secondary boolean value in the request body).
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/patch_contact_request'
       responses:
         '200':
           description: The new/updated contact.
@@ -3050,6 +3099,52 @@ components:
           type: boolean
           description: Whether or not their conversation thread is currently resolved.
           example: false
+    patch_contact_request:
+      type: object
+      properties:
+        group:
+          type: integer
+          description: >-
+            A group identifier that references a group that this contact should
+            be added to or removed from. This argument is optional and can be
+            omitted or set to null, which will cause no change to the contact's
+            group memberships.
+          example: 26
+        add_group_to_contact:
+          type: boolean
+          description: >-
+            Whether to add or remove the contact tag from the contact. True
+            means add. False means remove. This will only do something if a
+            value for group is provided.
+          example: true
+        contact_tag:
+          type: string
+          description: >-
+            A contact tag unique identifier that references a tag that should be
+            attached to or removed from this contact. This argument is optional
+            and can be omitted or set to null, which will cause no change to the
+            contact's custom tags.
+          example: 54b35406-189d-4e70-a170-c87e231f8ca3
+        add_tag_to_contact:
+          type: boolean
+          description: >-
+            Whether to add or remove the contact tag from the contact. True
+            means add. False means remove. This will only do something if a
+            value for contact_tag is provided.
+          example: true
+        custom_field_id:
+          type: string
+          description: >-
+            A custom field identifier for a custom field to edit/add to this
+            contact. This argument is optional and can be omitted or set to
+            null, which will cause no change to the contact's custom fields.
+          example: cc63eb7d-3575-478f-b42e-1e64e40d41c9
+        custom_field_value:
+          type: boolean
+          description: >-
+            The new value for the custom field. This will only do something if a
+            value for custom_field_id is provided.
+          example: john.doe@gmail.com
     update_contact_request:
       type: object
       properties:
@@ -3781,6 +3876,13 @@ components:
               type: string
               description: The message's text.
               example: '14252335575'
+            segments_count:
+              type: number
+              example: 2
+              description: >-
+                The number of segments billed for this particular message. For
+                more information on segments and billing, see
+                https://help.textrequest.com/message-character-count
     contact_message_request:
       type: object
       properties:

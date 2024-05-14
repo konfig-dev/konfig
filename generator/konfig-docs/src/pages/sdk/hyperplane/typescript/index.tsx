@@ -20,7 +20,7 @@ Our data platform uses first-party data for hyper-personalization and machine in
       companyKebabCase="hyperplane"
       clientNameCamelCase="hyperplane"
       homepage="hyperplane.ai"
-      lastUpdated={new Date("2024-03-27T01:23:25.425Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/hyperplane/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -1177,12 +1177,12 @@ Our data platform uses first-party data for hyper-personalization and machine in
     }
       language="TypeScript"
       apiTitle="Hyperplane API Gateway"
-      apiBaseUrl="https://api.sandbox-65ebc.chico.ai/v1"
+      apiBaseUrl="https://api.sandbox-65ebc.chico.ai"
       apiVersion="1.0"
-      endpoints={26}
-      sdkMethods={28}
+      endpoints={27}
+      sdkMethods={29}
       schemas={60}
-      parameters={105}
+      parameters={106}
       difficulty="Easy"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/hyperplane/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/hyperplane/openapi.yaml"

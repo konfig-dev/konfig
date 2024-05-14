@@ -41,6 +41,26 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ChatCompletionResponse'
+            text/event-stream:
+              schema:
+                $ref: '#/components/schemas/ChatCompletionChunk'
+        '202':
+          description: |
+            Result is pending. Client should poll using the requestId.
+          content:
+            application/json:
+              example: {}
+              schema: {}
+          headers:
+            NVCF-REQID:
+              description: requestId required for pooling
+              schema:
+                type: string
+                format: uuid
+            NVCF-STATUS:
+              description: Invocation status
+              schema:
+                type: string
         '402':
           description: Payment Required
           content:
@@ -53,6 +73,26 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
+              example:
+                type: urn:nvcf-worker-service:problem-details:unprocessable-entity
+                title: Unprocessable Entity
+                status: 422
+                detail: string
+                instance: /v2/nvcf/pexec/functions/2f495340-a99f-4b4b-89bd-1beb003dd896
+                requestId: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+        '500':
+          description: The invocation ended with an error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+              example:
+                type: urn:nvcf-worker-service:problem-details:internal-server-error
+                title: Internal Server Error
+                status: 500
+                detail: string
+                instance: /v2/nvcf/pexec/functions/2f495340-a99f-4b4b-89bd-1beb003dd896
+                requestId: 3fa85f64-5717-4562-b3fc-2c963f66afa6
       x-nvai-meta:
         name: Create chat completion
         returns: >
@@ -741,7 +781,7 @@ paths:
                 console.log(JSON.stringify(response_body))
               curl: "\ninvoke_url='https://api.nvcf.nvidia.com/v2/nvcf/pexec/functions/$SDXL_FUNCTION_ID'\nfetch_url_format='https://api.nvcf.nvidia.com/v2/nvcf/pexec/status/'\n\nauthorization_header='Authorization: Bearer $API_KEY_REQUIRED_IF_EXECUTING_OUTSIDE_NGC'\naccept_header='Accept: application/json'\ncontent_type_header='Content-Type: application/json'\n\ndata='{\n  \"prompt\": \"A photo of a Shiba Inu dog with a backpack riding a bike\",\n  \"negative_prompt\": \"beach\",\n  \"sampler\": \"DPM\",\n  \"seed\": 0,\n  \"guidance_scale\": 5,\n  \"inference_steps\": 25\n}'\n\nresponse=$(curl --silent -i -w \"\n%{http_code}\" --request POST   --url \"$invoke_url\"   --header \"$authorization_header\"   --header \"$accept_header\"   --header \"$content_type_header\"   --data \"$data\"\n)\n\nhttp_code=$(echo \"$response\" | tail -n 1)\nreq_id=$(echo \"$response\" | grep -i '^nvcf-reqid:' | awk '{print $2}' | tr -d '\r')\n\nwhile [ \"$http_code\" -eq 202 ]; do\n  response=$(curl --silent -i -w \"\n%{http_code}\" --request GET     --url \"$fetch_url_format$req_id\"     --header \"$authorization_header\"     --header \"$accept_header\"     --header \"$content_type_header\"   )\n\n  http_code=$(echo \"$response\" | tail -n 1)\n  req_id=$(echo \"$response\" | grep -i '^nvcf-reqid:' | awk '{print $2}' | tr -d '\r')\ndone\n\necho \"$response\" | awk '/{/,EOF-1'\n"
             response: "\ninvoke_url='https://api.nvcf.nvidia.com/v2/nvcf/pexec/functions/$SDXL_TURBO_FUNCTION_ID'\nfetch_url_format='https://api.nvcf.nvidia.com/v2/nvcf/pexec/status/'\n\nauthorization_header='Authorization: Bearer $API_KEY_REQUIRED_IF_EXECUTING_OUTSIDE_NGC'\naccept_header='Accept: application/json'\ncontent_type_header='Content-Type: application/json'\n\ndata='{\n  \"text_prompts\": [\n        {\n            \"text\": \"a photo of an astronaut riding a horse on mars\"\n        }\n    ],\n    \"seed\":0,\n    \"steps\": 4\n}'\n\nresponse=$(curl --silent -i -w \"\n%{http_code}\" --request POST   --url \"$invoke_url\"   --header \"$authorization_header\"   --header \"$accept_header\"   --header \"$content_type_header\"   --data \"$data\"\n)\n\nhttp_code=$(echo \"$response\" | tail -n 1)\nreq_id=$(echo \"$response\" | grep -i '^nvcf-reqid:' | awk '{print $2}' | tr -d '\r')\n\nwhile [ \"$http_code\" -eq 202 ]; do\n  response=$(curl --silent -i -w \"\n%{http_code}\" --request GET     --url \"$fetch_url_format$req_id\"     --header \"$authorization_header\"     --header \"$accept_header\"     --header \"$content_type_header\"   )\n\n  http_code=$(echo \"$response\" | tail -n 1)\n  req_id=$(echo \"$response\" | grep -i '^nvcf-reqid:' | awk '{print $2}' | tr -d '\r')\ndone\n\necho \"$response\" | awk '/{/,EOF-1'\n"
-  /genai/stabilityai/sdxl:
+  /genai/stabilityai/stable-diffusion-xl:
     post:
       summary: ' Infer'
       operationId: _infer_infer_post
@@ -26574,6 +26614,419 @@ components:
         - msg
         - type
       title: ValidationError
+    Errors:
+      properties:
+        type:
+          type: string
+          description: Error type
+          format: ^.{1, 128}$
+          maxLength: 128
+        title:
+          type: string
+          description: Error title
+          format: ^.{1, 128}$
+          maxLength: 128
+        status:
+          type: integer
+          description: Error status code
+          minimum: 100
+          maximum: 999
+        detail:
+          type: string
+          description: Detailed information about the error
+          format: ^.{1, 1024}$
+          maxLength: 1024
+        instance:
+          type: string
+          description: Function instance used to invoke the request
+          format: ^.{1, 256}$
+          maxLength: 256
+        requestId:
+          type: string
+          format: uuid
+          description: UUID of the request
+          maxLength: 36
+      type: object
+      required:
+        - type
+        - title
+        - status
+        - detail
+        - instance
+        - requestId
+      title: InvokeError
+    ChatCompletion:
+      properties:
+        id:
+          description: A unique identifier for the completion.
+          format: uuid
+          title: Id
+          type: string
+          maxLength: 36
+        choices:
+          description: >-
+            The list of completion choices the model generated for the input
+            prompt.
+          items:
+            $ref: '#/components/schemas/Choice'
+          title: Choices
+          type: array
+          maxItems: 1
+        usage:
+          allOf:
+            - $ref: '#/components/schemas/Usage'
+          description: Usage statistics for the completion request.
+      required:
+        - id
+        - choices
+        - usage
+      title: ChatCompletion
+      type: object
+    ChatCompletionChunk:
+      properties:
+        id:
+          description: A unique identifier for the completion.
+          format: uuid
+          title: Id
+          type: string
+          maxLength: 36
+        choices:
+          description: >-
+            The list of completion choices the model generated for the input
+            prompt.
+          items:
+            $ref: '#/components/schemas/ChoiceChunk'
+          title: Choices
+          type: array
+          maxItems: 1
+      required:
+        - id
+        - choices
+      title: ChatCompletionChunk
+      type: object
+    ChatRequest:
+      additionalProperties: false
+      properties:
+        model:
+          type: string
+          title: Model
+          default: google/recurrentgemma-2b
+        messages:
+          description: >-
+            A list of messages comprising the conversation so far. The roles of
+            the messages must be alternating between `user` and `assistant`. The
+            last input message should have role `user` or `assistant`. A message
+            with the `system` role is optional, and must be the very first
+            message if it is present.
+          examples:
+            - - content: >-
+                  Hi! What is in this image? <img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+wSzIAAAABlBMVEX///+/v7+jQ3Y5AAAADklEQVQI12P4AIX8EAgALgAD/aNpbtEAAAAASUVORK5CYII=="
+                  />
+                name: null
+                role: user
+            - - content: >-
+                  Hi! What is in this image? <img
+                  src="data:image/png;asset_id,87b132b0-08f9-43ea-8fab-f107350a5d00"
+                  />
+                name: null
+                role: user
+          items:
+            $ref: '#/components/schemas/Message'
+            anyOf:
+              - $ref: '#/components/schemas/Message'
+              - $ref: '#/components/schemas/MessageWithEntities'
+          title: Messages
+          type: array
+          maxItems: 1
+          minItems: 1
+        temperature:
+          default: 0.2
+          description: >-
+            The sampling temperature to use for text generation. The higher the
+            temperature value is, the less deterministic the output text will
+            be. It is not recommended to modify both temperature and top_p in
+            the same call.
+          maximum: 1
+          minimum: 0
+          title: Temperature
+          type: number
+          exclusiveMinimum: 0
+        top_p:
+          default: 0.7
+          description: >-
+            The top-p sampling mass used for text generation. The top-p value
+            determines the probability mass that is sampled at sampling time.
+            For example, if top_p = 0.2, only the most likely tokens (summing to
+            0.2 cumulative probability) will be sampled. It is not recommended
+            to modify both temperature and top_p in the same call.
+          maximum: 1
+          minimum: 0
+          title: Top P
+          type: number
+          exclusiveMinimum: 0
+        max_tokens:
+          default: 1024
+          description: >-
+            The maximum number of tokens to generate in any given call. Note
+            that the model is not aware of this value, and generation will
+            simply stop at the number of tokens specified.
+          maximum: 1024
+          minimum: 1
+          title: Max Tokens
+          type: integer
+        seed:
+          anyOf:
+            - maximum: 18446744073709552000
+              minimum: 0
+              type: integer
+            - type: 'null'
+          default: null
+          description: >-
+            If specified, our system will make a best effort to sample
+            deterministically, such that repeated requests with the same seed
+            and parameters should return the same result.
+          examples:
+            - 42
+          title: Seed
+        stream:
+          default: false
+          description: >-
+            If set, partial message deltas will be sent. Tokens will be sent as
+            data-only server-sent events (SSE) as they become available (JSON
+            responses are prefixed by `data: `), with the stream terminated by a
+            `data: [DONE]` message.
+          title: Stream
+          type: boolean
+        grounded_response:
+          default: true
+          description: >-
+            Grounding refers to the process of connecting or associating text
+            with the visual world by 
+
+            <br>perceiving object descriptions, such as bounding boxes, within
+            an image. So if set, the model will produce 
+
+            <br>bounding boxes for entities mentioned in the generated text.
+          title: Grounded Response
+          type: boolean
+        bounding_boxes:
+          anyOf:
+            - type: boolean
+            - type: 'null'
+          default: null
+          deprecated: true
+          description: '[Deprecated parameter]: use `grounded_response` instead'
+          title: Bounding Boxes
+        response_mode:
+          anyOf:
+            - enum:
+                - brief
+                - detailed
+              type: string
+            - type: 'null'
+          default: detailed
+          description: >-
+            These modes determine the level of information provided in the
+            response. 
+
+            <br>When it is set `detailed` response will have a bit more
+            information
+          title: Response Mode
+        task:
+          anyOf:
+            - enum:
+                - VQA
+                - image captioning
+              type: string
+            - type: 'null'
+          default: VQA
+          description: >-
+            Model is capable of performing two tasks: Visual Question Answering
+            (VQA) and image captioning. 
+
+            <br>Visual Question Answering involves answering questions about an
+            image. Image captioning, on the other hand, 
+
+            <br>generates descriptive captions for images. In image captioning
+            both content and entities are ignored
+          title: Task
+      required:
+        - messages
+      title: ChatRequest
+      type: object
+    Choice:
+      properties:
+        index:
+          description: The index of the choice in the list of choices (always 0).
+          title: Index
+          type: integer
+          default: 0
+          exclusiveMaximum: 1
+          minimum: 0
+        message:
+          allOf:
+            - $ref: '#/components/schemas/Message'
+          description: A chat completion message generated by the model.
+          examples:
+            - content: >-
+                The image features a gray and white checkered pattern on a white
+                background.
+              name: null
+              role: assistant
+          anyOf:
+            - $ref: '#/components/schemas/Message'
+            - $ref: '#/components/schemas/MessageWithEntities'
+          title: Message
+        finish_reason:
+          anyOf:
+            - enum:
+                - stop
+                - length
+              type: string
+            - type: 'null'
+          default: null
+          description: >-
+            The reason the model stopped generating tokens. This will be `stop`
+            if the model hit a natural stop point or a provided stop sequence,
+            or `length` if the maximum number of tokens specified in the request
+            was reached.
+          examples:
+            - stop
+          title: Finish Reason
+      required:
+        - message
+      title: Choice
+      type: object
+    ChoiceChunk:
+      properties:
+        index:
+          description: The index of the choice in the list of choices (always 0).
+          title: Index
+          type: integer
+          default: 0
+          exclusiveMaximum: 1
+          minimum: 0
+        delta:
+          allOf:
+            - $ref: '#/components/schemas/Message'
+          description: A chat completion delta generated by streamed model responses.
+          examples:
+            - content: The
+              name: null
+              role: assistant
+        finish_reason:
+          anyOf:
+            - enum:
+                - stop
+                - length
+              type: string
+            - type: 'null'
+          default: null
+          description: >-
+            The reason the model stopped generating tokens. This will be `stop`
+            if the model hit a natural stop point or a provided stop sequence,
+            or `length` if the maximum number of tokens specified in the request
+            was reached. Will be `null` if the model has not finished
+            generating.
+          title: Finish Reason
+      required:
+        - delta
+      title: ChoiceChunk
+      type: object
+    Message:
+      additionalProperties: false
+      properties:
+        role:
+          description: The role of the message author.
+          enum:
+            - system
+            - user
+            - assistant
+          title: Role
+          type: string
+        content:
+          description: >
+            The contents of the message.
+
+            <br>Can only be `null` as part of a last request message with
+            role=`assistant` (for "completion mode", i.e. providing the
+            beginning of the assistant response).
+
+            <br>To pass images (only with role=`user`):
+
+            <br>    - When content is a string, images can be passed together
+            with the text with `img` HTML tags with base64 data: `<img
+            src="data:image/{format};base64,{base64encodedimage}" />` .
+             If the size of an image is more than 200KB, it needs to be uploaded to a presigned S3 bucket using NVCF Asset APIs. Once uploaded you can refer to it using the following format: `<img src="data:image/png;asset_id,{asset_id}" />` .
+            <br>    - When content is a list of objects, images can be passed
+            with objects with type=`image_url`, and image_url containing the
+            base64 image data:
+            `data:image/{format};base64,{base64encodedimage}`. HTML `img` tags
+            will not be parsed from objects with type=`text`.
+
+            <br>    - In both cases, images can be PNG, JPG or JPEG.
+
+            <br>For `system` and `assistant` roles, the object list format is
+            not supported.
+          title: Content
+          type: string
+          anyOf:
+            - type: string
+            - items:
+                anyOf:
+                  - $ref: '#/components/schemas/UserTextContent'
+                  - $ref: '#/components/schemas/UserImageContent'
+              type: array
+            - type: 'null'
+          default: null
+        name:
+          anyOf:
+            - maxLength: 64
+              type: string
+            - type: 'null'
+          default: null
+          description: >-
+            The name of the author of this message. Cannot be used with
+            role=`system`. May contain a-z, A-Z, 0-9, and underscores, with a
+            maximum length of 64 characters.
+          title: Name
+      required:
+        - role
+      title: Message
+      type: object
+    Usage:
+      properties:
+        completion_tokens:
+          description: Number of tokens in the generated completion.
+          examples:
+            - 19
+          title: Completion Tokens
+          type: integer
+          maximum: 1024
+          minimum: 0
+        prompt_tokens:
+          description: Number of tokens in the prompt.
+          examples:
+            - 46
+          title: Prompt Tokens
+          type: integer
+          maximum: 3072
+          minimum: 0
+        total_tokens:
+          description: Total number of tokens used in the request (prompt + completion).
+          examples:
+            - 65
+          title: Total Tokens
+          type: integer
+          maximum: 4096
+          minimum: 0
+      required:
+        - completion_tokens
+        - prompt_tokens
+        - total_tokens
+      title: Usage
+      type: object
     EmbeddingObject:
       type: object
       properties:
@@ -26740,22 +27193,18 @@ components:
       additionalProperties: false
       properties:
         height:
-          anyOf:
-            - maximum: 1024
-              minimum: 1024
-              type: integer
-            - type: 'null'
+          maximum: 1024
+          minimum: 1024
+          type: integer
           default: 1024
           description: >-
             Height of the image to generate, in pixels. Only height=1024 is
             supported
           title: Height
         width:
-          anyOf:
-            - maximum: 1024
-              minimum: 1024
-              type: integer
-            - type: 'null'
+          maximum: 1024
+          minimum: 1024
+          type: integer
           default: 1024
           description: >-
             Width of the image to generate, in pixels. Only width=1024 is
@@ -26770,70 +27219,61 @@ components:
           title: Text Prompts
           type: array
         cfg_scale:
-          anyOf:
-            - exclusiveMinimum: 1
-              maximum: 9
-              type: number
-            - type: 'null'
+          maximum: 9
+          minimum: 0
+          type: number
           default: 5
           description: >-
             How strictly the diffusion process adheres to the prompt text
             (higher values keep your image closer to your prompt).
           title: Cfg Scale
+          exclusiveMinimum: 1
         clip_guidance_preset:
-          anyOf:
-            - const: NONE
-            - type: 'null'
+          enum:
+            - NONE
+          type: string
           default: NONE
           description: clip guidance preset. Only clip_guidance_preset=`NONE` is supported
           title: Clip Guidance Preset
         sampler:
-          anyOf:
-            - enum:
-                - DDIM
-                - K_EULER_ANCESTRAL
-                - K_LMS
-                - K_DPM_2_ANCESTRAL
-              type: string
-            - type: 'null'
+          enum:
+            - DDIM
+            - K_EULER_ANCESTRAL
+            - K_LMS
+            - K_DPM_2_ANCESTRAL
+          type: string
           default: K_DPM_2_ANCESTRAL
           description: >-
             The sampler to use for generation. Varying diffusion samplers will
             vary outputs significantly.
           title: Sampler
         samples:
-          anyOf:
-            - maximum: 1
-              minimum: 1
-              type: integer
-            - type: 'null'
+          maximum: 1
+          minimum: 1
+          type: integer
           default: 1
           description: Number of images to generate. Only samples=1 is supported
           title: Samples
         seed:
-          anyOf:
-            - exclusiveMaximum: 4294967296
-              minimum: 0
-              type: integer
-            - type: 'null'
+          exclusiveMaximum: 4294967296
+          minimum: 0
+          type: integer
           default: 0
           description: >-
             The seed which governs generation. Omit this option or use 0 for a
             random seed
           title: Seed
         steps:
-          anyOf:
-            - maximum: 100
-              minimum: 5
-              type: integer
-            - type: 'null'
+          maximum: 100
+          minimum: 5
+          type: integer
           default: 25
           description: Number of diffusion steps to run
           title: Steps
         style_preset:
-          anyOf:
-            - const: none
-            - type: 'null'
+          enum:
+            - none
+          type: string
           default: none
           description: >-
             Pass in a style preset to guide the image model towards a particular
@@ -26867,17 +27307,17 @@ components:
           title: Text
           type: string
         weight:
-          anyOf:
-            - enum:
-                - 1
-                - -1
-              type: number
-            - type: 'null'
+          maximum: 1
+          minimum: 1
+          type: number
           default: 1
           description: >-
             Weight of the prompt, only weight=1.0 for prompt and weight=-1 for
             negative prompt is supported
           title: Weight
+          enum:
+            - 1
+            - -1
       required:
         - text
       title: TextPrompt
@@ -26901,22 +27341,18 @@ components:
           title: Image
           type: string
         seed:
-          anyOf:
-            - exclusiveMaximum: 4294967296
-              minimum: 0
-              type: integer
-            - type: 'null'
+          exclusiveMaximum: 4294967296
+          minimum: 0
+          type: integer
           default: 0
           description: >-
             The seed which governs generation. Omit this option or use 0 for a
             random seed
           title: Seed
         cfg_scale:
-          anyOf:
-            - exclusiveMinimum: 1
-              maximum: 9
-              type: number
-            - type: 'null'
+          exclusiveMinimum: 1
+          maximum: 9
+          type: number
           default: 1.8
           description: >-
             How strongly the video sticks to the original image. Use lower
@@ -26924,11 +27360,9 @@ components:
             values to correct motion distortions.
           title: Cfg Scale
         motion_bucket_id:
-          anyOf:
-            - maximum: 127
-              minimum: 127
-              type: integer
-            - type: 'null'
+          maximum: 127
+          minimum: 127
+          type: integer
           default: 127
           description: >-
             Controls how much motion to add/remove from the image. Only
@@ -26962,414 +27396,6 @@ components:
         - finish_reason
         - seed
       title: VideoResponse
-      type: object
-    Errors:
-      properties:
-        type:
-          type: string
-          format: ^.{1, 128}$
-          maxLength: 128
-          description: Error type
-        title:
-          type: string
-          format: ^.{1, 128}$
-          maxLength: 128
-          description: Error title
-        status:
-          type: integer
-          minimum: 100
-          maximum: 999
-          description: Error status code
-        detail:
-          type: string
-          format: ^.{1, 1024}$
-          maxLength: 1024
-          description: Detailed information about the error
-        instance:
-          type: string
-          format: ^.{1, 256}$
-          maxLength: 256
-          description: Function instance used to invoke the request
-        requestId:
-          type: string
-          format: uuid
-          maxLength: 36
-          description: UUID of the request
-      type: object
-      required:
-        - type
-        - title
-        - status
-        - detail
-        - instance
-        - requestId
-      title: InvokeError
-    ChatCompletion:
-      properties:
-        id:
-          description: A unique identifier for the completion.
-          format: uuid
-          maxLength: 36
-          title: Id
-          type: string
-        choices:
-          description: >-
-            The list of completion choices the model generated for the input
-            prompt.
-          items:
-            $ref: '#/components/schemas/Choice'
-          maxItems: 1
-          title: Choices
-          type: array
-        usage:
-          allOf:
-            - $ref: '#/components/schemas/Usage'
-          description: Usage statistics for the completion request.
-      required:
-        - id
-        - choices
-        - usage
-      title: ChatCompletion
-      type: object
-    ChatCompletionChunk:
-      properties:
-        id:
-          description: A unique identifier for the completion.
-          format: uuid
-          maxLength: 36
-          title: Id
-          type: string
-        choices:
-          description: >-
-            The list of completion choices the model generated for the input
-            prompt.
-          items:
-            $ref: '#/components/schemas/ChoiceChunk'
-          maxItems: 1
-          title: Choices
-          type: array
-      required:
-        - id
-        - choices
-      title: ChatCompletionChunk
-      type: object
-    ChatRequest:
-      additionalProperties: false
-      properties:
-        messages:
-          description: >-
-            A list of messages comprising the conversation so far. The roles of
-            the messages must be alternating between `user` and `assistant`. The
-            last input message should have role `user` or `assistant`. A message
-            with the `system` role is optional, and must be the very first
-            message if it is present.
-          examples:
-            - - content: >-
-                  Hi! What is in this image? <img
-                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+wSzIAAAABlBMVEX///+/v7+jQ3Y5AAAADklEQVQI12P4AIX8EAgALgAD/aNpbtEAAAAASUVORK5CYII=="
-                  />
-                name: null
-                role: user
-            - - content: >-
-                  Hi! What is in this image? <img
-                  src="data:image/png;asset_id,87b132b0-08f9-43ea-8fab-f107350a5d00"
-                  />
-                name: null
-                role: user
-          items:
-            $ref: '#/components/schemas/Message'
-            anyOf:
-              - $ref: '#/components/schemas/Message'
-              - $ref: '#/components/schemas/MessageWithEntities'
-          maxItems: 1
-          minItems: 1
-          title: Messages
-          type: array
-        temperature:
-          default: 0.2
-          description: >-
-            The sampling temperature to use for text generation. The higher the
-            temperature value is, the less deterministic the output text will
-            be. It is not recommended to modify both temperature and top_p in
-            the same call.
-          exclusiveMinimum: 0
-          maximum: 1
-          title: Temperature
-          type: number
-          minimum: 0
-        top_p:
-          default: 0.7
-          description: >-
-            The top-p sampling mass used for text generation. The top-p value
-            determines the probability mass that is sampled at sampling time.
-            For example, if top_p = 0.2, only the most likely tokens (summing to
-            0.2 cumulative probability) will be sampled. It is not recommended
-            to modify both temperature and top_p in the same call.
-          exclusiveMinimum: 0
-          maximum: 1
-          title: Top P
-          type: number
-          minimum: 0
-        max_tokens:
-          default: 1024
-          description: >-
-            The maximum number of tokens to generate in any given call. Note
-            that the model is not aware of this value, and generation will
-            simply stop at the number of tokens specified.
-          maximum: 1024
-          minimum: 1
-          title: Max Tokens
-          type: integer
-        seed:
-          anyOf:
-            - maximum: 18446744073709552000
-              minimum: 0
-              type: integer
-            - type: 'null'
-          default: null
-          description: >-
-            If specified, our system will make a best effort to sample
-            deterministically, such that repeated requests with the same seed
-            and parameters should return the same result.
-          examples:
-            - 42
-          title: Seed
-        stream:
-          default: false
-          description: >-
-            If set, partial message deltas will be sent. Tokens will be sent as
-            data-only server-sent events (SSE) as they become available (JSON
-            responses are prefixed by `data: `), with the stream terminated by a
-            `data: [DONE]` message.
-          title: Stream
-          type: boolean
-        grounded_response:
-          default: true
-          description: >-
-            Grounding refers to the process of connecting or associating text
-            with the visual world by 
-
-            <br>perceiving object descriptions, such as bounding boxes, within
-            an image. So if set, the model will produce 
-
-            <br>bounding boxes for entities mentioned in the generated text.
-          title: Grounded Response
-          type: boolean
-        bounding_boxes:
-          anyOf:
-            - type: boolean
-            - type: 'null'
-          default: null
-          deprecated: true
-          description: '[Deprecated parameter]: use `grounded_response` instead'
-          title: Bounding Boxes
-        response_mode:
-          anyOf:
-            - enum:
-                - brief
-                - detailed
-              type: string
-            - type: 'null'
-          default: detailed
-          description: >-
-            These modes determine the level of information provided in the
-            response. 
-
-            <br>When it is set `detailed` response will have a bit more
-            information
-          title: Response Mode
-        task:
-          anyOf:
-            - enum:
-                - VQA
-                - image captioning
-              type: string
-            - type: 'null'
-          default: VQA
-          description: >-
-            Model is capable of performing two tasks: Visual Question Answering
-            (VQA) and image captioning. 
-
-            <br>Visual Question Answering involves answering questions about an
-            image. Image captioning, on the other hand, 
-
-            <br>generates descriptive captions for images. In image captioning
-            both content and entities are ignored
-          title: Task
-      required:
-        - messages
-      title: ChatRequest
-      type: object
-    Choice:
-      properties:
-        index:
-          default: 0
-          description: The index of the choice in the list of choices (always 0).
-          exclusiveMaximum: 1
-          minimum: 0
-          title: Index
-          type: integer
-        message:
-          allOf:
-            - $ref: '#/components/schemas/Message'
-          description: A chat completion message generated by the model.
-          examples:
-            - content: >-
-                The image features a gray and white checkered pattern on a white
-                background.
-              name: null
-              role: assistant
-          anyOf:
-            - $ref: '#/components/schemas/Message'
-            - $ref: '#/components/schemas/MessageWithEntities'
-          title: Message
-        finish_reason:
-          anyOf:
-            - enum:
-                - stop
-                - length
-              type: string
-            - type: 'null'
-          default: null
-          description: >-
-            The reason the model stopped generating tokens. This will be `stop`
-            if the model hit a natural stop point or a provided stop sequence,
-            or `length` if the maximum number of tokens specified in the request
-            was reached.
-          examples:
-            - stop
-          title: Finish Reason
-      required:
-        - message
-      title: Choice
-      type: object
-    ChoiceChunk:
-      properties:
-        index:
-          default: 0
-          description: The index of the choice in the list of choices (always 0).
-          exclusiveMaximum: 1
-          minimum: 0
-          title: Index
-          type: integer
-        delta:
-          allOf:
-            - $ref: '#/components/schemas/Message'
-          description: A chat completion delta generated by streamed model responses.
-          examples:
-            - content: The
-              name: null
-              role: assistant
-        finish_reason:
-          anyOf:
-            - enum:
-                - stop
-                - length
-              type: string
-            - type: 'null'
-          default: null
-          description: >-
-            The reason the model stopped generating tokens. This will be `stop`
-            if the model hit a natural stop point or a provided stop sequence,
-            or `length` if the maximum number of tokens specified in the request
-            was reached. Will be `null` if the model has not finished
-            generating.
-          title: Finish Reason
-      required:
-        - delta
-      title: ChoiceChunk
-      type: object
-    Message:
-      additionalProperties: false
-      properties:
-        role:
-          description: The role of the message author.
-          enum:
-            - system
-            - user
-            - assistant
-          title: Role
-          type: string
-        content:
-          anyOf:
-            - type: string
-            - items:
-                anyOf:
-                  - $ref: '#/components/schemas/UserTextContent'
-                  - $ref: '#/components/schemas/UserImageContent'
-              type: array
-            - type: 'null'
-          default: null
-          description: >
-            The contents of the message.
-
-            <br>Can only be `null` as part of a last request message with
-            role=`assistant` (for "completion mode", i.e. providing the
-            beginning of the assistant response).
-
-            <br>To pass images (only with role=`user`):
-
-            <br>    - When content is a string, images can be passed together
-            with the text with `img` HTML tags with base64 data: `<img
-            src="data:image/{format};base64,{base64encodedimage}" />` .
-             If the size of an image is more than 200KB, it needs to be uploaded to a presigned S3 bucket using NVCF Asset APIs. Once uploaded you can refer to it using the following format: `<img src="data:image/png;asset_id,{asset_id}" />` .
-            <br>    - When content is a list of objects, images can be passed
-            with objects with type=`image_url`, and image_url containing the
-            base64 image data:
-            `data:image/{format};base64,{base64encodedimage}`. HTML `img` tags
-            will not be parsed from objects with type=`text`.
-
-            <br>    - In both cases, images can be PNG, JPG or JPEG.
-
-            <br>For `system` and `assistant` roles, the object list format is
-            not supported.
-          title: Content
-        name:
-          anyOf:
-            - maxLength: 64
-              type: string
-            - type: 'null'
-          default: null
-          description: >-
-            The name of the author of this message. Cannot be used with
-            role=`system`. May contain a-z, A-Z, 0-9, and underscores, with a
-            maximum length of 64 characters.
-          title: Name
-      required:
-        - role
-      title: Message
-      type: object
-    Usage:
-      properties:
-        completion_tokens:
-          description: Number of tokens in the generated completion.
-          examples:
-            - 19
-          maximum: 1024
-          minimum: 0
-          title: Completion Tokens
-          type: integer
-        prompt_tokens:
-          description: Number of tokens in the prompt.
-          examples:
-            - 46
-          maximum: 3072
-          minimum: 0
-          title: Prompt Tokens
-          type: integer
-        total_tokens:
-          description: Total number of tokens used in the request (prompt + completion).
-          examples:
-            - 65
-          maximum: 4096
-          minimum: 0
-          title: Total Tokens
-          type: integer
-      required:
-        - completion_tokens
-        - prompt_tokens
-        - total_tokens
-      title: Usage
       type: object
     UserImageContent:
       additionalProperties: false
@@ -32697,7 +32723,6 @@ components:
 x-readme:
   explorer-enabled: true
   proxy-enabled: true
-  samples-enabled: true
 _id: 65f5e0ebcf5165005a5c06e1
 tags:
   - description: An operation relating to weather forecasting.

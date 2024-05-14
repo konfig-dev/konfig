@@ -17,7 +17,7 @@ export default function SqalaTypeScriptSdk() {
       companyKebabCase="sqala"
       clientNameCamelCase="sqala"
       homepage="www.sqala.tech/"
-      lastUpdated={new Date("2024-03-26T21:29:16.993Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/sqala/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -996,10 +996,10 @@ export default function SqalaTypeScriptSdk() {
       apiTitle="Developer API"
       apiBaseUrl="https://api.sqala.tech/developer/v1"
       apiVersion="1.0"
-      endpoints={18}
-      sdkMethods={25}
+      endpoints={20}
+      sdkMethods={28}
       schemas={56}
-      parameters={73}
+      parameters={85}
       difficulty="Easy"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/sqala/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/sqala/openapi.yaml"

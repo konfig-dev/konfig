@@ -36,7 +36,7 @@ Visit us at https://get.fountain.com to learn more.`}
       companyKebabCase="fountain"
       clientNameCamelCase="fountain"
       homepage="fountain.com"
-      lastUpdated={new Date("2024-03-27T23:15:52.151Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/fountain/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -3386,7 +3386,7 @@ Visit us at https://get.fountain.com to learn more.`}
       endpoints={55}
       sdkMethods={80}
       schemas={97}
-      parameters={277}
+      parameters={269}
       difficulty="Medium"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/fountain/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/fountain/openapi.yaml"

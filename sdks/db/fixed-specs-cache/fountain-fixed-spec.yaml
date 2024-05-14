@@ -872,6 +872,19 @@ rawSpecString: |
               type: string
               format: uri
               description: The URL of the video.
+          assigned_user:
+            type: object
+            properties:
+              id:
+                type: string
+                description: The assigned user's id
+              email:
+                type: string
+                description: The assigned user's email address
+              name:
+                type: string
+                description: The assigned user's name
+            additionalProperties: false
           i9:
             type: object
             properties:
@@ -1006,6 +1019,10 @@ rawSpecString: |
                 description: The DateTime the applicant filled out the i9 Form.
                 example: '2024-01-10T05:19:37.788-08:00'
             additionalProperties: false
+          i9_pdf:
+            type: string
+            description: The URL to visit i9 PDF Form.
+            nullable: true
           everify:
             type: object
             properties:
@@ -1678,26 +1695,33 @@ rawSpecString: |
       CreateApplicantRequest:
         type: object
         properties:
-          applicant:
-            type: object
-            properties:
-              name:
-                type: string
-                description: Applicants full name.
-              email:
-                type: string
-                description: Applicants email.
-              phone_number:
-                type: string
-                description: Applicants complete phone number.
-            additionalProperties: false
-            required:
-              - name
-              - email
-              - phone_number
+          name:
+            type: string
+            description: Applicants full name.
+          email:
+            type: string
+            description: Applicants email.
+          phone_number:
+            type: string
+            description: Applicants complete phone number.
         additionalProperties: false
         required:
-          - applicant
+          - name
+          - email
+          - phone_number
+      CreateUpdateApplicantNote:
+        type: object
+        properties:
+          content:
+            type: string
+            description: ''
+          user_id:
+            type: string
+            description: User UUID who will be assigned as the creating user.
+            nullable: true
+        additionalProperties: false
+        required:
+          - content
       ApplicantNote:
         type: object
         properties:
@@ -1770,7 +1794,7 @@ rawSpecString: |
         required:
           - notes
       CreateUpdateApplicantNoteRequest:
-        $ref: '#/components/schemas/ApplicantNote'
+        $ref: '#/components/schemas/CreateUpdateApplicantNote'
       ApplicantCreateUpdateNoteResponse:
         $ref: '#/components/schemas/ApplicantNote'
       ApplicantSecureDocumentsResponse:
@@ -1992,6 +2016,10 @@ rawSpecString: |
                   type: string
                   nullable: true
                   description: User who performed the transition.
+                funnel_id:
+                  type: string
+                  nullable: true
+                  description: The Funnel ID
               additionalProperties: false
               required:
                 - stage_id
@@ -2297,6 +2325,10 @@ rawSpecString: |
                     type: string
                     nullable: true
                     description: Sub Stage Title, if it exists.
+                  funnel_id:
+                    type: string
+                    nullable: true
+                    description: The Funnel ID
                 additionalProperties: false
                 required:
                   - stage_id
@@ -3916,6 +3948,48 @@ rawSpecString: |
           id:
             type: string
             description: Unique identifier for the stage
+          data_fields:
+            type: array
+            items:
+              type: object
+              properties:
+                key:
+                  type: string
+                  description: The key the data is collected under
+                type:
+                  type: string
+                  description: The type of the input for the question
+                question:
+                  type: string
+                  description: Text of the question asked on the form
+                storage:
+                  type: string
+                  enum:
+                    - data
+                    - secure_data
+                    - applicant
+                  description: >-
+                    Where in the applicant payload the response is stored.
+                    "applicant" means on the root of the applicant record.
+                options:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      value:
+                        type: string
+                        description: The value persisted for the option
+                      label:
+                        type: string
+                        description: The human-readable value for the option
+                    required:
+                      - value
+                      - label
+              required:
+                - key
+                - type
+                - question
+                - storage
         required:
           - id
           - title
@@ -4836,9 +4910,6 @@ rawSpecString: |
         parameters: []
         tags:
           - Applicants
-        description: >-
-          Move an applicant to an appropriate stage or to the next stage
-          (default).
         responses:
           '200':
             description: No Content
@@ -4866,16 +4937,6 @@ rawSpecString: |
                       description: List of Applicant IDs
                     minItems: 1
                     maxItems: 500
-                  funnel_id:
-                    type: string
-                    description: >-
-                      Destination funnel's external id. If not provided, the
-                      applicant will stay in the current funnel.
-                  skip_automated_actions:
-                    type: boolean
-                    description: >-
-                      Set `true` if you want to skip automated actions when
-                      advancing the applicant.
     /v2/applicants/{id}/booked_slots:
       get:
         summary: Get Interview Sesssions
@@ -5066,7 +5127,7 @@ rawSpecString: |
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApplicantNote'
+                $ref: '#/components/schemas/CreateUpdateApplicantNote'
           required: true
     /v2/applicants/{id}/notes/{note_id}:
       delete:
@@ -5132,7 +5193,7 @@ rawSpecString: |
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApplicantNote'
+                $ref: '#/components/schemas/CreateUpdateApplicantNote'
           required: true
     /v2/applicants/{id}/secure_documents:
       get:
@@ -6350,11 +6411,10 @@ rawSpecString: |
                     type: string
                     description: The number of hires needed for this Hiring Goal
                   opening_id:
-                    type: boolean
+                    type: string
                     description: >-
-                      The Opening (also known as Funnel) this Hiring Goal applies
-                      to
-                    nullable: true
+                      The id of the Opening (also known as Funnel) this Hiring
+                      Goal applies to
                 required:
                   - start_date
                   - hire_by
@@ -8026,6 +8086,5 @@ rawSpecString: |
   x-readme:
     explorer-enabled: true
     proxy-enabled: true
-    samples-enabled: true
   _id: 64e38fdbcde20500430b8d1d
-konfigCliVersion: 1.38.34
+konfigCliVersion: 1.38.37

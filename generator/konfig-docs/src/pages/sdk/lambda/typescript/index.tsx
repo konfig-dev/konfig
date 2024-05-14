@@ -17,7 +17,7 @@ export default function LambdaTypeScriptSdk() {
       companyKebabCase="lambda"
       clientNameCamelCase="lambda"
       homepage="lambdalabs.com"
-      lastUpdated={new Date("2024-03-27T16:38:55.058Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/lambda/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -84,7 +84,7 @@ export default function LambdaTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier (ID) of the instance",
+        "description": "The unique identifier (https://docs.lambdalabs.com/on-demand-cloud/cloud-api of the instance",
         "example": "0920582c7ff041399e34823a0be62549"
       }
     ],
@@ -344,7 +344,7 @@ export default function LambdaTypeScriptSdk() {
         "name": "id",
         "schema": "string",
         "required": true,
-        "description": "The unique identifier (ID) of the SSH key",
+        "description": "The unique identifier (https://docs.lambdalabs.com/on-demand-cloud/cloud-api of the SSH key",
         "example": "0920582c7ff041399e34823a0be62548"
       }
     ],
@@ -395,7 +395,7 @@ export default function LambdaTypeScriptSdk() {
       language="TypeScript"
       apiTitle="Lambda Cloud API"
       apiBaseUrl="https://cloud.lambdalabs.com/api/v1/"
-      apiVersion="1.5.1"
+      apiVersion="1.5.3"
       endpoints={9}
       sdkMethods={10}
       schemas={33}

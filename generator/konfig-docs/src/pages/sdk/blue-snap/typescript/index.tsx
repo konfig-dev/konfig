@@ -25,7 +25,7 @@ Learn more at BlueSnap.com`}
       companyKebabCase="blue-snap"
       clientNameCamelCase="blueSnap"
       homepage="www.bluesnap.com/"
-      lastUpdated={new Date("2024-03-28T17:53:35.242Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/bluesnap/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -1286,10 +1286,10 @@ Learn more at BlueSnap.com`}
       apiTitle="API Settings"
       apiBaseUrl="https://sandbox.bluesnap.com/services/2"
       apiVersion="8976-Tools"
-      endpoints={27}
-      sdkMethods={34}
+      endpoints={29}
+      sdkMethods={36}
       schemas={16}
-      parameters={128}
+      parameters={129}
       difficulty="Easy"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/bluesnap/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/bluesnap/openapi.yaml"

@@ -21,7 +21,7 @@ Verifiable works with innovative healthcare provider and payer organizations lik
       companyKebabCase="verifiable"
       clientNameCamelCase="verifiable"
       homepage="verifiable.com"
-      lastUpdated={new Date("2024-03-29T21:46:12.237Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/verifiable/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -9927,7 +9927,7 @@ Verifiable works with innovative healthcare provider and payer organizations lik
       language="TypeScript"
       apiTitle="Verifiable API Documentation"
       apiBaseUrl="https://api.discovery.verifiable.com"
-      apiVersion="24.12.2.676"
+      apiVersion="24.14.3.683"
       endpoints={102}
       sdkMethods={168}
       schemas={364}

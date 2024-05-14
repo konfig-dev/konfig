@@ -36,13 +36,13 @@
     }
   },
   "apiBaseUrl": "https://{vanity-name}.api.visier.io",
-  "apiVersion": "22222222.99201.1227",
+  "apiVersion": "22222222.99201.1256",
   "apiDescription": "Visier APIs for managing permissions within an organization",
   "apiTitle": "Visier Permission Management APIs",
   "endpoints": 7,
   "sdkMethods": 10,
   "schemas": 33,
-  "parameters": 19,
+  "parameters": 22,
   "originalCustomRequest": {
     "type": "GET",
     "url": "https://raw.githubusercontent.com/visier/openapi-clients/main/res/permission-management-apis.yaml",
@@ -58,7 +58,7 @@
     ]
   },
   "customRequestSpecFilename": "visier.com_PermissionManagement.yaml",
-  "difficultyScore": 30.75,
+  "difficultyScore": 32,
   "difficulty": "Very Easy",
   "company": "Visier",
   "serviceName": "PermissionManagement",
@@ -223,7 +223,7 @@
         {
           "name": "includeDetails",
           "schema": "boolean",
-          "description": "If true, the response includes the analytic objects (display name, ID, and object type), related objects,\n securable properties, and securable dimensions. If false, the response only includes analytic objects\n (display name, ID, and object type). Default is false."
+          "description": "If `true`, the response includes the analytic objects (display name, ID, and object type), related objects,\n securable properties, and securable dimensions. If `false`, the response only includes analytic objects\n (display name, ID, and object type). Default is `false`."
         },
         {
           "name": "tenantCode",
@@ -254,6 +254,11 @@
           "name": "tenantCode",
           "schema": "string",
           "description": "Specify the tenant to delete permissions from."
+        },
+        {
+          "name": "permissionIds",
+          "schema": "array",
+          "description": ""
         }
       ],
       "responses": [
@@ -283,7 +288,12 @@
         {
           "name": "includeDetails",
           "schema": "boolean",
-          "description": "If true, returns the permission's details. If false, only returns the permissions' ID, display name,\n and description. Default is false."
+          "description": "If `true`, returns the permission's details. If `false`, only returns the permissions' ID, display name,\n and description. Default is `false`."
+        },
+        {
+          "name": "includeDetailsWithStatus",
+          "schema": "boolean",
+          "description": "If `true`, returns the validity statuses for the permission's properties in data access sets and the\n permission's dimensions, dimension members, and hierarchy properties in member filters. If `false`,\n doesn't return validity status information. Default is `false`."
         }
       ],
       "responses": [
@@ -376,6 +386,11 @@
           "name": "tenantCode",
           "schema": "string",
           "description": "Specify the tenant to retrieve a permission from."
+        },
+        {
+          "name": "includeDetailsWithStatus",
+          "schema": "string",
+          "description": "If `true`, returns the validity statuses for the permission's properties in data access sets and the\n permission's dimensions, dimension members, and hierarchy properties in member filters. If `false`,\n doesn't return validity status information. Default is `false`."
         }
       ],
       "responses": [
@@ -397,7 +412,7 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/visier/permission-management/imagePreview.jpg",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/visier/permission-management/favicon.png",
   "clientNameCamelCase": "visierPermissionManagement",
-  "lastUpdated": "2024-03-28T00:17:09.977Z",
+  "lastUpdated": "2024-04-16T19:21:46.323Z",
   "typescriptSdkUsageCode": "import { VisierPermissionManagement } from 'visier-permission-management-typescript-sdk';\n\nconst visierPermissionManagement = new VisierPermissionManagement({\n    cookieAuth: \"VISIER_ASID_TOKEN\",\n    apiKeyAuth: \"APIKEY\",\n    bearerAuth: \"BEARER_AUTH\",\n    username: \"USERNAME\",\n    password: \"PASSWORD\"\n})",
   "typescriptSdkFirstRequestCode": "// Retrieve a list of all permission capabilities\nconst getCapabilitiesResponse = visierPermissionManagement.permissionManagement.getCapabilities()",
   "fixedSpecFileName": "visier-permission-management-fixed-spec.yaml"

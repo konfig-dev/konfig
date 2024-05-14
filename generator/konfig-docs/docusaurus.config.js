@@ -58,6 +58,10 @@ async function createConfig() {
     trailingSlash: true,
     scripts: [
       {
+        src: "/js/rb2b.js",
+        async: false,
+      },
+      {
         src: "https://tag.clearbitscripts.com/v1/pk_99799d8e5d4460e6c6e7b3c89b407b12/tags.js",
         referrerpolicy: "strict-origin-when-cross-origin",
         async: true,
@@ -203,6 +207,10 @@ async function createConfig() {
                 {
                   label: "Blog",
                   to: "/blog",
+                },
+                {
+                  label: "Enterprise",
+                  to: "/enterprise",
                 },
               ],
             },

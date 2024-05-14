@@ -31,11 +31,11 @@ rawSpecString: |
     /decisions/stream:
       get:
         description: >-
-          Returns a list of new/expired decisions. Intended for bouncers that need
-          to "stream" decisions
+          Returns a list of new/expired decisions. Intended for remediation
+          component that need to "stream" decisions
         summary: getDecisionsStream
         tags:
-          - bouncers
+          - Remediation component
         operationId: getDecisionsStream
         deprecated: false
         parameters:
@@ -43,8 +43,8 @@ rawSpecString: |
             in: query
             required: false
             description: >-
-              If true, means that the bouncers is starting and a full list must be
-              provided
+              If true, means that the remediation component is starting and a full
+              list must be provided
             schema:
               type: boolean
           - name: scopes
@@ -96,11 +96,11 @@ rawSpecString: |
           - APIKeyAuthorizer: []
       head:
         description: >-
-          Returns a list of new/expired decisions. Intended for bouncers that need
-          to "stream" decisions
+          Returns a list of new/expired decisions. Intended for remediation
+          component that need to "stream" decisions
         summary: GetDecisionsStream
         tags:
-          - bouncers
+          - Remediation component
         operationId: headDecisionsStream
         deprecated: false
         parameters:
@@ -125,7 +125,7 @@ rawSpecString: |
         description: Returns information about existing decisions
         summary: getDecisions
         tags:
-          - bouncers
+          - Remediation component
         operationId: getDecisions
         deprecated: false
         parameters:
@@ -211,7 +211,7 @@ rawSpecString: |
         description: Returns information about existing decisions
         summary: GetDecisions
         tags:
-          - bouncers
+          - Remediation component
         operationId: headDecisions
         deprecated: false
         parameters:
@@ -803,7 +803,7 @@ rawSpecString: |
         security:
           - JWTAuthorizer: []
   tags:
-    - name: bouncers
+    - name: Remediation component
       description: 'Operations about decisions : bans, captcha, rate-limit etc.'
     - name: watchers
       description: 'Operations about watchers : cscli & crowdsec'
@@ -1160,4 +1160,4 @@ rawSpecString: |
             description: more detail on individual errors
         title: error response
         description: error response return by the API
-konfigCliVersion: 1.38.34
+konfigCliVersion: 1.38.37

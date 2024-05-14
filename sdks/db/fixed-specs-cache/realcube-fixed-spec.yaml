@@ -323,6 +323,8 @@ rawSpecString: |
       description: Mieterhöhungen
     - name: emission_factor_settings
       description: Emissionsfaktor-Einstellungen
+    - name: building_wastes
+      description: Abfallverbrauch
   paths:
     /v1/platform_configs:
       post:
@@ -1976,14 +1978,14 @@ rawSpecString: |
           - name: start_date
             in: query
             description: The starting date for new tenant
-            example: '2024-03-29'
+            example: '2024-04-16'
             schema:
               type: string
               format: date-time
           - name: end_date
             in: query
             description: The ending date for new tenant
-            example: '2024-03-30'
+            example: '2024-04-17'
             schema:
               type: string
               format: date-time
@@ -2150,7 +2152,7 @@ rawSpecString: |
              * de,  en,  gsw
           # Allowed field:
             1. Building:
-               * id,  name,  custom_id,  comment,  street,  street_number,  city,  province,  country,  user_id,  organisation_id,  lot_id,  property_id,  last_editor_id,  created_at,  updated_at,  building_type_id,  zip_code,  latitude,  longitude,  year_of_construction,  gross_floor_area_in_sqm_din_277,  architect,  net_floor_area_in_sqm_din_277,  auxiliary_floor_area_in_sqm,  deleted_at,  dynamic_attribute_id,  customer_attributes_schema_id,  customer_attributes,  units_count,  customer_account_schema_id,  gross_floor_area_in_sqm_GIF,  parking_space,  old_roof_form,  external_id,  source_system,  gross_floor_area_in_sqm_sia_d_0165,  net_floor_area_in_sqm_sia_d_0165,  planned_monthly_rent,  number_of_floors,  last_refurbishment_at,  heating_type,  main_energy_provider,  floors_below_ground,  floors_above_ground,  stairwells,  main_energy_source,  parking_garage,  protective_area,  number_of_lifts,  facility_type,  institution_type,  deso_facility,  heating_used_energy,  kitchen_type,  objectphase,  region,  last_modernisation,  construction_project_category,  state_of_renovation,  roof_form,  number_of_windows,  user_intervention_window_number,  user_intervention_window_area,  fund_name,  own_use,  listed_building,  house_number,  address_suffix,  energy_certificate_type,  stored_energy_validity,  accounting_rules_applied,  energy_class,  year_of_construction_heat_generator,  air_conditioning,
+               * id,  name,  custom_id,  comment,  street,  street_number,  city,  province,  country,  user_id,  organisation_id,  lot_id,  property_id,  last_editor_id,  created_at,  updated_at,  building_type_id,  zip_code,  latitude,  longitude,  year_of_construction,  gross_floor_area_in_sqm_din_277,  architect,  net_floor_area_in_sqm_din_277,  auxiliary_floor_area_in_sqm,  deleted_at,  dynamic_attribute_id,  customer_attributes_schema_id,  customer_attributes,  units_count,  customer_account_schema_id,  gross_floor_area_in_sqm_GIF,  parking_space,  old_roof_form,  external_id,  source_system,  gross_floor_area_in_sqm_sia_d_0165,  net_floor_area_in_sqm_sia_d_0165,  planned_monthly_rent,  number_of_floors,  last_refurbishment_at,  heating_type,  main_energy_provider,  floors_below_ground,  floors_above_ground,  stairwells,  main_energy_source,  parking_garage,  protective_area,  number_of_lifts,  facility_type,  institution_type,  deso_facility,  heating_used_energy,  kitchen_type,  objectphase,  region,  construction_project_category,  state_of_renovation,  roof_form,  number_of_windows,  user_intervention_window_number,  user_intervention_window_area,  fund_name,  own_use,  listed_building,  house_number,  address_suffix,  energy_certificate_type,  stored_energy_validity,  accounting_rules_applied,  energy_class,  year_of_construction_heat_generator,  air_conditioning,
             2. Building::Unit:
                * id,  building_id,  name,  comment,  last_editor_id,  organisation_id,  created_at,  updated_at,  tenant,  gross_floor_area_in_sqm_din_277,  net_floor_area_in_sqm_din_277,  building_unit_type_id,  user_id,  auxiliary_floor_area_in_sqm,  social_floor_area_in_sqm,  deleted_at,  owner,  dynamic_attribute_id,  customer_attributes_schema_id,  customer_attributes,  customer_account_schema_id,  gross_floor_area_in_sqm_GIF,  contract_id,  external_id,  source_system,  net_floor_area_in_sqm_sia_d_0165,  gross_floor_area_in_sqm_sia_d_0165,  market_rental_price,  planned_monthly_rent,  planned_operating_cost,  planned_total_rent,  planned_deposit,  number_of_rooms,  number_of_bedrooms,  number_of_bathrooms,  quality_of_available_features,  current_condition,  description,  description_of_features,  features,  heating_costs_in_operating_costs,  contracted_lease_base_rent,  contracted_lease_operating_costs,  contracted_lease_deposit,  floor,  group_home,
             3. Property:
@@ -2320,7 +2322,7 @@ rawSpecString: |
              * de,  en,  gsw
           # Allowed field:
             1. Building:
-               * id,  name,  custom_id,  comment,  street,  street_number,  city,  province,  country,  user_id,  organisation_id,  lot_id,  property_id,  last_editor_id,  created_at,  updated_at,  building_type_id,  zip_code,  latitude,  longitude,  year_of_construction,  gross_floor_area_in_sqm_din_277,  architect,  net_floor_area_in_sqm_din_277,  auxiliary_floor_area_in_sqm,  deleted_at,  dynamic_attribute_id,  customer_attributes_schema_id,  customer_attributes,  units_count,  customer_account_schema_id,  gross_floor_area_in_sqm_GIF,  parking_space,  old_roof_form,  external_id,  source_system,  gross_floor_area_in_sqm_sia_d_0165,  net_floor_area_in_sqm_sia_d_0165,  planned_monthly_rent,  number_of_floors,  last_refurbishment_at,  heating_type,  main_energy_provider,  floors_below_ground,  floors_above_ground,  stairwells,  main_energy_source,  parking_garage,  protective_area,  number_of_lifts,  facility_type,  institution_type,  deso_facility,  heating_used_energy,  kitchen_type,  objectphase,  region,  last_modernisation,  construction_project_category,  state_of_renovation,  roof_form,  number_of_windows,  user_intervention_window_number,  user_intervention_window_area,  fund_name,  own_use,  listed_building,  house_number,  address_suffix,  energy_certificate_type,  stored_energy_validity,  accounting_rules_applied,  energy_class,  year_of_construction_heat_generator,  air_conditioning,
+               * id,  name,  custom_id,  comment,  street,  street_number,  city,  province,  country,  user_id,  organisation_id,  lot_id,  property_id,  last_editor_id,  created_at,  updated_at,  building_type_id,  zip_code,  latitude,  longitude,  year_of_construction,  gross_floor_area_in_sqm_din_277,  architect,  net_floor_area_in_sqm_din_277,  auxiliary_floor_area_in_sqm,  deleted_at,  dynamic_attribute_id,  customer_attributes_schema_id,  customer_attributes,  units_count,  customer_account_schema_id,  gross_floor_area_in_sqm_GIF,  parking_space,  old_roof_form,  external_id,  source_system,  gross_floor_area_in_sqm_sia_d_0165,  net_floor_area_in_sqm_sia_d_0165,  planned_monthly_rent,  number_of_floors,  last_refurbishment_at,  heating_type,  main_energy_provider,  floors_below_ground,  floors_above_ground,  stairwells,  main_energy_source,  parking_garage,  protective_area,  number_of_lifts,  facility_type,  institution_type,  deso_facility,  heating_used_energy,  kitchen_type,  objectphase,  region,  construction_project_category,  state_of_renovation,  roof_form,  number_of_windows,  user_intervention_window_number,  user_intervention_window_area,  fund_name,  own_use,  listed_building,  house_number,  address_suffix,  energy_certificate_type,  stored_energy_validity,  accounting_rules_applied,  energy_class,  year_of_construction_heat_generator,  air_conditioning,
             2. Building::Unit:
                * id,  building_id,  name,  comment,  last_editor_id,  organisation_id,  created_at,  updated_at,  tenant,  gross_floor_area_in_sqm_din_277,  net_floor_area_in_sqm_din_277,  building_unit_type_id,  user_id,  auxiliary_floor_area_in_sqm,  social_floor_area_in_sqm,  deleted_at,  owner,  dynamic_attribute_id,  customer_attributes_schema_id,  customer_attributes,  customer_account_schema_id,  gross_floor_area_in_sqm_GIF,  contract_id,  external_id,  source_system,  net_floor_area_in_sqm_sia_d_0165,  gross_floor_area_in_sqm_sia_d_0165,  market_rental_price,  planned_monthly_rent,  planned_operating_cost,  planned_total_rent,  planned_deposit,  number_of_rooms,  number_of_bedrooms,  number_of_bathrooms,  quality_of_available_features,  current_condition,  description,  description_of_features,  features,  heating_costs_in_operating_costs,  contracted_lease_base_rent,  contracted_lease_operating_costs,  contracted_lease_deposit,  floor,  group_home,
             3. Property:
@@ -9371,6 +9373,12 @@ rawSpecString: |
             required: true
             schema:
               type: integer
+          - name: cost_type_id
+            in: query
+            description: ID of cost type
+            required: false
+            schema:
+              type: integer
         responses:
           '200':
             description: Returns all contract membership costs
@@ -15828,6 +15836,203 @@ rawSpecString: |
           - api_key: []
           - oauth:
               - building_unit_retail_metric_write
+    /v1/building_wastes:
+      get:
+        summary: Return building wastes of the building
+        description: Return building wastes of the building
+        tags:
+          - building_wastes
+        parameters:
+          - name: building_id
+            in: query
+            description: ID of the building
+            required: true
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: Return building wastes of the building
+            content:
+              application/json:
+                schema:
+                  properties:
+                    building_wastes:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/BuildingWasteShow'
+          '401':
+            description: Invalid or missing api key
+            content:
+              application/json:
+                schema:
+                  properties:
+                    errors:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/AuthenticationError'
+          '500':
+            description: An unexpected error occurred
+            content:
+              application/json:
+                schema:
+                  properties:
+                    errors:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/InternalServerError'
+        security:
+          - api_key: []
+          - oauth:
+              - building_waste_read
+      post:
+        summary: Creates a building waste
+        description: |
+          # Description
+          Creates a building waste
+        tags:
+          - building_wastes
+        parameters:
+          - name: building_id
+            in: query
+            description: ID of the building
+            required: true
+            schema:
+              type: integer
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BuildingWasteCreate'
+          required: true
+        responses:
+          '201':
+            description: Customer account category successfully created
+            content:
+              application/json:
+                schema:
+                  properties:
+                    building_waste:
+                      $ref: '#/components/schemas/BuildingWasteShow'
+          '401':
+            description: Invalid or missing api key
+            content:
+              application/json:
+                schema:
+                  properties:
+                    errors:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/AuthenticationError'
+          '403':
+            description: You are trying to access a resource but you are not allowed to
+            content:
+              application/json:
+                schema:
+                  properties:
+                    errors:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/AuthorizationError'
+          '422':
+            description: The request could not be processed
+            content:
+              application/json:
+                schema:
+                  properties:
+                    errors:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/UnprocessableRequestError'
+          '500':
+            description: An unexpected error occurred
+            content:
+              application/json:
+                schema:
+                  properties:
+                    errors:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/InternalServerError'
+        security:
+          - api_key: []
+          - oauth:
+              - building_waste_write
+    /v1/building_wastes/{building_waste_id}:
+      put:
+        summary: Update building waste
+        description: Update building waste
+        tags:
+          - building_wastes
+        parameters:
+          - name: building_id
+            in: query
+            description: ID of the building
+            required: true
+            schema:
+              type: integer
+          - name: building_waste_id
+            in: path
+            description: ID of the building waste to update
+            required: true
+            schema:
+              type: string
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BuildingWasteUpdate'
+          required: true
+        responses:
+          '200':
+            description: Building waste successfully updated
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/BuildingWasteShow'
+          '401':
+            description: Invalid or missing api key
+            content:
+              application/json:
+                schema:
+                  properties:
+                    errors:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/AuthenticationError'
+          '403':
+            description: You are trying to access a resource but you are not allowed to
+            content:
+              application/json:
+                schema:
+                  properties:
+                    errors:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/AuthorizationError'
+          '422':
+            description: The request could not be processed
+            content:
+              application/json:
+                schema:
+                  properties:
+                    errors:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/UnprocessableRequestError'
+          '500':
+            description: An unexpected error occurred
+            content:
+              application/json:
+                schema:
+                  properties:
+                    errors:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/InternalServerError'
+        security:
+          - api_key: []
+          - oauth:
+              - building_waste_write
     /v1/building_waters:
       get:
         summary: Return building waters of the building
@@ -28633,10 +28838,13 @@ rawSpecString: |
     /v1/rent_increases:
       post:
         summary: Creates a rent's increase (Admin only)
-        description: |
+        description: >
           # Description
+
           Creates a rent's increase
-          Status: pending: 1, confirmed: 2, canceled: 3, confirmation_needed: 4
+
+          Status: pending: 1, confirmed: 2, canceled: 3, confirmation_needed: 4,
+          max_adjustments_reached: 5
         tags:
           - rent_increases
         parameters:
@@ -28913,10 +29121,13 @@ rawSpecString: |
               - rent_increase_read
       put:
         summary: Update rent'  increase
-        description: |
+        description: >
           # Description
+
           Update rent_increase (Admin only)
-          Status: pending: 1, confirmed: 2, canceled: 3, confirmation_needed: 4
+
+          Status: pending: 1, confirmed: 2, canceled: 3, confirmation_needed: 4,
+          max_adjustments_reached: 5
         tags:
           - rent_increases
         parameters:
@@ -31516,6 +31727,9 @@ rawSpecString: |
               - achieved_certificate_level
               - energy_performance
               - energy_source
+              - waste_type
+              - weight_unit
+              - waste_treatment_method
       CustomerAccountCategoryShow:
         allOf:
           - $ref: '#/components/schemas/PersistedRecord'
@@ -32645,9 +32859,6 @@ rawSpecString: |
             type: integer
           construction_project_category:
             type: integer
-          last_modernisation:
-            type: string
-            format: date-time
           heating_used_energy:
             type: array
             items:
@@ -33605,6 +33816,94 @@ rawSpecString: |
                 type: string
                 format: date-time
               updated_at:
+                type: string
+                format: date-time
+      BuildingWaste:
+        type: object
+        properties:
+          waste_amount:
+            type: integer
+          co2_emission_volume:
+            type: integer
+          from_date:
+            type: string
+            format: date-time
+          to_date:
+            type: string
+            format: date-time
+      BuildingWasteShow:
+        allOf:
+          - $ref: '#/components/schemas/PersistedRecord'
+          - $ref: '#/components/schemas/BuildingWaste'
+          - required:
+              - waste_type
+              - building
+              - waste_amount_metric
+              - co2_emission_volume_metric
+            properties:
+              building:
+                $ref: '#/components/schemas/Building'
+              waste_type:
+                $ref: '#/components/schemas/CustomerAccountCategoryShow'
+              waste_amount_metric:
+                $ref: '#/components/schemas/CustomerAccountCategoryShow'
+              co2_emission_volume_metric:
+                $ref: '#/components/schemas/CustomerAccountCategoryShow'
+              waste_treatment_method:
+                $ref: '#/components/schemas/CustomerAccountCategoryShow'
+      BuildingWasteCreate:
+        allOf:
+          - $ref: '#/components/schemas/BuildingWaste'
+          - required:
+              - waste_type_id
+              - waste_amount_metric_id
+              - co2_emission_volume_metric_id
+            properties:
+              waste_type_id:
+                type: integer
+              waste_amount_metric_id:
+                type: integer
+              co2_emission_volume_metric_id:
+                type: integer
+              waste_treatment_method_id:
+                type: integer
+      BuildingWasteUpdate:
+        allOf:
+          - $ref: '#/components/schemas/BuildingWaste'
+          - required:
+              - waste_type_id
+              - waste_amount_metric_id
+              - co2_emission_volume_metric_id
+            properties:
+              waste_type_id:
+                type: integer
+              waste_amount_metric_id:
+                type: integer
+              co2_emission_volume_metric_id:
+                type: integer
+              waste_treatment_method_id:
+                type: integer
+      BuildingWasteIndex:
+        allOf:
+          - $ref: '#/components/schemas/BuildingWaste'
+          - properties:
+              building:
+                $ref: '#/components/schemas/BuildingShow'
+              waste_type:
+                $ref: '#/components/schemas/CustomerAccountCategoryShow'
+              waste_amount_metric:
+                $ref: '#/components/schemas/CustomerAccountCategoryShow'
+              co2_emission_volume_metric:
+                $ref: '#/components/schemas/CustomerAccountCategoryShow'
+              waste_treatment_method:
+                $ref: '#/components/schemas/CustomerAccountCategoryShow'
+              created_at:
+                type: string
+                format: date-time
+              updated_at:
+                type: string
+                format: date-time
+              deleted_at:
                 type: string
                 format: date-time
       BuildingWater:
@@ -36865,11 +37164,15 @@ rawSpecString: |
               - 1
               - 2
               - 3
+              - 4
+              - 5
           adjustment_percentage:
             type: number
           max_increase_percentage:
             type: number
           threshold:
+            type: number
+          adjustment_fixed_value:
             type: number
           step_two_enabled:
             type: boolean
@@ -36889,6 +37192,8 @@ rawSpecString: |
               - commercial
           automatic_adjustment:
             type: boolean
+          max_number_of_adjustments:
+            type: number
       RentIncreaseShow:
         allOf:
           - $ref: '#/components/schemas/PersistedRecord'
@@ -36911,11 +37216,15 @@ rawSpecString: |
                   - 1
                   - 2
                   - 3
+                  - 4
+                  - 5
               adjustment_percentage:
                 type: number
               max_increase_percentage:
                 type: number
               threshold:
+                type: number
+              adjustment_fixed_value:
                 type: number
               step_two_enabled:
                 type: boolean
@@ -36935,6 +37244,13 @@ rawSpecString: |
                   - commercial
               automatic_adjustment:
                 type: boolean
+              next_adjustment_date:
+                type: string
+                format: date-time
+              number_of_confirmed_adjustments:
+                type: number
+              max_number_of_adjustments:
+                type: number
               rent_increase_type:
                 $ref: '#/components/schemas/RentIncreaseType'
               customer_account:
@@ -36990,6 +37306,8 @@ rawSpecString: |
                   - 1
                   - 2
                   - 3
+                  - 4
+                  - 5
               recurring:
                 type: boolean
               recurring_increase_month:
@@ -37031,12 +37349,21 @@ rawSpecString: |
                 type: number
               threshold:
                 type: number
+              adjustment_fixed_value:
+                type: number
+              next_adjustment_date:
+                type: string
+                format: date-time
               building_type:
                 type: string
                 enum:
                   - residential
                   - office
                   - commercial
+              number_of_confirmed_adjustments:
+                type: number
+              max_number_of_adjustments:
+                type: number
       RentIncreaseCreate:
         allOf:
           - $ref: '#/components/schemas/RentIncrease'
@@ -37181,4 +37508,4 @@ rawSpecString: |
           - id
           - updated_at
           - created_at
-konfigCliVersion: 1.38.34
+konfigCliVersion: 1.38.37

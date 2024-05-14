@@ -1,4 +1,4 @@
-hash: 04cb1a2442462a8e2d082ea9bd3c7e515aa0a039da2e30cc58f148a5692813ec
+hash: a1236c4e434c47d384927e9ca3c09756a884e50b34f0ac8f1b168bce9e01224e
 methodObjects:
   - url: /video/cost
     method: cost
@@ -63,7 +63,7 @@ methodObjects:
         description: ''
         default: sync-1.6.0
     responses:
-      - statusCode: default
+      - statusCode: '201'
         description: ''
   - url: /video/{id}
     method: getLipSyncJob
@@ -78,7 +78,82 @@ methodObjects:
         description: ''
         example: ID
     responses:
-      - statusCode: default
+      - statusCode: '200'
+        description: ''
+  - url: /voices/cost
+    method: voiceCost
+    httpMethod: get
+    tag: voices
+    typeScriptTag: voices
+    description: ''
+    parameters: []
+    responses:
+      - statusCode: '200'
+        description: ''
+  - url: /voices
+    method: voices
+    httpMethod: get
+    tag: voices
+    typeScriptTag: voices
+    description: ''
+    parameters: []
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '403'
+        description: ''
+  - url: /voices/create
+    method: createVoice
+    httpMethod: post
+    tag: voices
+    typeScriptTag: voices
+    description: ''
+    parameters:
+      - name: description
+        schema: string
+        required: false
+        description: ''
+        example: This is a test voice. It's used for testing purposes.
+      - name: name
+        schema: string
+        required: false
+        description: ''
+        example: Test voice
+      - name: inputSamples
+        schema: array
+        required: true
+        description: ''
+      - name: maxCredits
+        schema: number
+        required: false
+        description: ''
+        default: null
+      - name: webhookUrl
+        schema: string
+        required: false
+        description: ''
+        default: null
+    responses:
+      - statusCode: '201'
+        description: ''
+      - statusCode: '403'
+        description: ''
+  - url: /voices/{id}
+    method: getVoice
+    httpMethod: get
+    tag: voices
+    typeScriptTag: voices
+    description: ''
+    parameters:
+      - name: id
+        schema: string
+        required: true
+        description: ''
+        example: ID
+    responses:
+      - statusCode: '200'
+        description: ''
+      - statusCode: '403'
         description: ''
   - url: /lipsync/cost
     method: lipsyncCost
@@ -104,6 +179,8 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
+      - statusCode: '403'
+        description: ''
   - url: /lipsync
     method: lipSync
     httpMethod: post
@@ -115,25 +192,16 @@ methodObjects:
         schema: string
         required: true
         description: ''
-        example: AUDIOURL
+        example: >-
+          https://synchlabs-public.s3.us-west-2.amazonaws.com/david_demo_shortaud-27623a4f-edab-4c6a-8383-871b18961a4a.wav
       - name: videoUrl
         schema: string
         required: true
         description: ''
-        example: VIDEOURL
-      - name: synergize
-        schema: boolean
-        required: true
-        description: ''
-        example: true
-        default: true
+        example: >-
+          https://synchlabs-public.s3.us-west-2.amazonaws.com/david_demo_shortvid-03a10044-7741-4cfc-816a-5bccd392d1ee.mp4
       - name: maxCredits
         schema: number
-        required: false
-        description: ''
-        default: null
-      - name: webhookUrl
-        schema: string
         required: false
         description: ''
         default: null
@@ -141,9 +209,37 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: sync-1.6.0
         default: sync-1.6.0
+      - name: synergize
+        schema: boolean
+        required: false
+        description: ''
+        example: true
+        default: true
+      - name: pads
+        schema: array
+        required: false
+        description: ''
+        example:
+          - 0
+          - 5
+          - 0
+          - 0
+      - name: synergizerStrength
+        schema: number
+        required: false
+        description: ''
+        example: 1
+      - name: webhookUrl
+        schema: string
+        required: false
+        description: ''
+        default: null
     responses:
-      - statusCode: default
+      - statusCode: '201'
+        description: ''
+      - statusCode: '403'
         description: ''
   - url: /lipsync/{id}
     method: getLipsync
@@ -158,17 +254,9 @@ methodObjects:
         description: ''
         example: ID
     responses:
-      - statusCode: default
-        description: ''
-  - url: /voices
-    method: voices
-    httpMethod: get
-    tag: voices
-    typeScriptTag: voices
-    description: ''
-    parameters: []
-    responses:
       - statusCode: '200'
+        description: ''
+      - statusCode: '403'
         description: ''
   - url: /translate/cost
     method: translationCost
@@ -187,6 +275,8 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
+      - statusCode: '403'
+        description: ''
   - url: /translate
     method: translate
     httpMethod: post
@@ -198,12 +288,14 @@ methodObjects:
         schema: string
         required: true
         description: ''
-        example: VIDEOURL
+        example: >-
+          https://synchlabs-public.s3.us-west-2.amazonaws.com/david_demo_shortvid-03a10044-7741-4cfc-816a-5bccd392d1ee.mp4
       - name: targetLanguage
         schema: string
         required: true
         description: ''
-        example: TARGETLANGUAGE
+        example: en
+        default: en
       - name: maxCredits
         schema: number
         required: false
@@ -218,9 +310,12 @@ methodObjects:
         schema: string
         required: false
         description: ''
+        example: sync-1.6.0
         default: sync-1.6.0
     responses:
-      - statusCode: '200'
+      - statusCode: '201'
+        description: ''
+      - statusCode: '403'
         description: ''
   - url: /translate/{id}
     method: getTranslation
@@ -235,7 +330,9 @@ methodObjects:
         description: ''
         example: ID
     responses:
-      - statusCode: default
+      - statusCode: '200'
+        description: ''
+      - statusCode: '403'
         description: ''
   - url: /speak/cost
     method: speakCost
@@ -255,6 +352,8 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
+      - statusCode: '403'
+        description: ''
   - url: /speak
     method: speak
     httpMethod: post
@@ -266,12 +365,13 @@ methodObjects:
         schema: string
         required: true
         description: ''
-        example: TRANSCRIPT
+        example: Hello, I hope you enjoy this audio!
       - name: voiceId
         schema: string
         required: true
         description: ''
-        example: VOICEID
+        example: e5361405-4967-446d-ad63-2f6ed8729c66
+        default: e5361405-4967-446d-ad63-2f6ed8729c66
       - name: maxCredits
         schema: number
         required: false
@@ -283,7 +383,9 @@ methodObjects:
         description: ''
         default: null
     responses:
-      - statusCode: '200'
+      - statusCode: '201'
+        description: ''
+      - statusCode: '403'
         description: ''
   - url: /speak/{id}
     method: getSpeech
@@ -298,7 +400,9 @@ methodObjects:
         description: ''
         example: ID
     responses:
-      - statusCode: default
+      - statusCode: '200'
+        description: ''
+      - statusCode: '403'
         description: ''
   - url: /animate/cost
     method: animateCost
@@ -318,6 +422,8 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: ''
+      - statusCode: '403'
+        description: ''
   - url: /animate
     method: animate
     httpMethod: post
@@ -329,21 +435,24 @@ methodObjects:
         schema: string
         required: true
         description: ''
-        example: VIDEOURL
+        example: >-
+          https://synchlabs-public.s3.us-west-2.amazonaws.com/david_demo_shortvid-03a10044-7741-4cfc-816a-5bccd392d1ee.mp4
       - name: transcript
         schema: string
         required: true
         description: ''
-        example: TRANSCRIPT
+        example: Hello, welcome to our video!
       - name: voiceId
         schema: string
         required: true
         description: ''
-        example: VOICEID
+        example: e5361405-4967-446d-ad63-2f6ed8729c66
+        default: e5361405-4967-446d-ad63-2f6ed8729c66
       - name: model
         schema: string
         required: false
         description: ''
+        example: sync-1.6.0
         default: sync-1.6.0
       - name: maxCredits
         schema: number
@@ -356,7 +465,9 @@ methodObjects:
         description: ''
         default: null
     responses:
-      - statusCode: '200'
+      - statusCode: '201'
+        description: ''
+      - statusCode: '403'
         description: ''
   - url: /animate/{id}
     method: getAnimation
@@ -371,23 +482,9 @@ methodObjects:
         description: ''
         example: ID
     responses:
-      - statusCode: default
+      - statusCode: '200'
         description: ''
-  - url: /verification/send-phone-number-verification-code
-    method: sendPhoneNumberVerificationCode
-    httpMethod: post
-    description: ''
-    parameters: []
-    responses:
-      - statusCode: '201'
+      - statusCode: '403'
         description: ''
-  - url: /verification/verify-code
-    method: verifyCode
-    httpMethod: post
-    description: ''
-    parameters: []
-    responses:
-      - statusCode: '201'
-        description: ''
-numberOfSchemas: 17
+numberOfSchemas: 20
 apiDescription: Synchronize API allows you to lipsync a video to any audio in any language.

@@ -464,12 +464,15 @@ paths:
       summary: Get Epic Workflow
   /api/v3/epics:
     get:
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ListEpics'
-        required: true
+      parameters:
+        - in: query
+          name: includes_description
+          description: >-
+            A true/false boolean indicating whether to return Epics with their
+            descriptions.
+          required: false
+          schema:
+            type: boolean
       responses:
         '200':
           description: Resource
@@ -801,12 +804,14 @@ paths:
           schema:
             type: integer
             format: int64
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/GetEpicStories'
-        required: true
+        - in: query
+          name: includes_description
+          description: >-
+            A true/false boolean indicating whether to return Stories with their
+            descriptions.
+          required: false
+          schema:
+            type: boolean
       responses:
         '200':
           description: Resource
@@ -849,12 +854,15 @@ paths:
       summary: Unlink Productboard from Epic
   /api/v3/external-link/stories:
     get:
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/GetExternalLinkStoriesParams'
-        required: true
+      parameters:
+        - in: query
+          name: external_link
+          description: The external link associated with one or more stories.
+          required: true
+          schema:
+            type: string
+            maxLength: 2048
+            pattern: ^https?://.+$
       responses:
         '200':
           description: Resource
@@ -1175,12 +1183,22 @@ paths:
           schema:
             type: string
             format: uuid
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ListGroupStories'
-        required: true
+        - in: query
+          name: limit
+          description: >-
+            The maximum number of results to return. (Defaults to 1000, max
+            1000)
+          required: false
+          schema:
+            type: integer
+            format: int64
+        - in: query
+          name: offset
+          description: The offset at which to begin returning results. (Defaults to 0)
+          required: false
+          schema:
+            type: integer
+            format: int64
       responses:
         '200':
           description: Resource
@@ -1353,12 +1371,14 @@ paths:
           schema:
             type: integer
             format: int64
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/GetIterationStories'
-        required: true
+        - in: query
+          name: includes_description
+          description: >-
+            A true/false boolean indicating whether to return Stories with their
+            descriptions.
+          required: false
+          schema:
+            type: boolean
       responses:
         '200':
           description: Resource
@@ -1438,12 +1458,15 @@ paths:
       summary: Update Key Result
   /api/v3/labels:
     get:
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ListLabels'
-        required: true
+      parameters:
+        - in: query
+          name: slim
+          description: >-
+            A true/false boolean indicating if the slim versions of the Label
+            should be returned.
+          required: false
+          schema:
+            type: boolean
       responses:
         '200':
           description: Resource
@@ -1605,12 +1628,14 @@ paths:
           schema:
             type: integer
             format: int64
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/GetLabelStories'
-        required: true
+        - in: query
+          name: includes_description
+          description: >-
+            A true/false boolean indicating whether to return Stories with their
+            descriptions.
+          required: false
+          schema:
+            type: boolean
       responses:
         '200':
           description: Resource
@@ -1776,12 +1801,15 @@ paths:
       summary: Get Current Member Info
   /api/v3/members:
     get:
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ListMembers'
-        required: true
+      parameters:
+        - in: query
+          name: org-public-id
+          description: The unique ID of the Organization to limit the list to.
+          required: false
+          x-doc-skip: true
+          schema:
+            type: string
+            format: uuid
       responses:
         '200':
           description: Resource
@@ -1810,12 +1838,14 @@ paths:
           schema:
             type: string
             format: uuid
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/GetMember'
-        required: true
+        - in: query
+          name: org-public-id
+          description: The unique ID of the Organization to limit the lookup to.
+          required: false
+          x-doc-skip: true
+          schema:
+            type: string
+            format: uuid
       responses:
         '200':
           description: Resource
@@ -2276,12 +2306,14 @@ paths:
           schema:
             type: integer
             format: int64
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/GetProjectStories'
-        required: true
+        - in: query
+          name: includes_description
+          description: >-
+            A true/false boolean indicating whether to return Stories with their
+            descriptions.
+          required: false
+          schema:
+            type: boolean
       responses:
         '200':
           description: Resource
@@ -2352,8 +2384,65 @@ paths:
       summary: Get Repository
   /api/v3/search:
     get:
-      requestBody:
-        $ref: '#/components/requestBodies/Search'
+      parameters:
+        - in: query
+          name: query
+          description: >-
+            See our help center article on [search
+            operators](https://help.shortcut.com/hc/en-us/articles/360000046646-Search-Operators)
+          required: true
+          schema:
+            type: string
+            minLength: 1
+        - in: query
+          name: page_size
+          description: >-
+            The number of search results to include in a page. Minimum of 1 and
+            maximum of 25.
+          required: false
+          schema:
+            type: integer
+            format: int64
+        - in: query
+          name: detail
+          description: |-
+            The amount of detail included in each result item.
+               "full" will include all descriptions and comments and more fields on
+               related items such as pull requests, branches and tasks.
+               "slim" omits larger fulltext fields such as descriptions and comments
+               and only references related items by id.
+               The default is "full".
+          required: false
+          schema:
+            type: string
+            enum:
+              - full
+              - slim
+        - in: query
+          name: next
+          description: The next page token.
+          required: false
+          x-doc-skip: true
+          schema:
+            type: string
+        - in: query
+          name: entity_types
+          description: >-
+            A collection of entity_types to search. Defaults to story and epic.
+            Supports: epic, iteration, objective, story.
+          required: false
+          x-doc-skip: true
+          explode: true
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - story
+                - milestone
+                - epic
+                - iteration
+                - objective
       responses:
         '200':
           description: Resource
@@ -2383,8 +2472,65 @@ paths:
       summary: Search
   /api/v3/search/epics:
     get:
-      requestBody:
-        $ref: '#/components/requestBodies/Search'
+      parameters:
+        - in: query
+          name: query
+          description: >-
+            See our help center article on [search
+            operators](https://help.shortcut.com/hc/en-us/articles/360000046646-Search-Operators)
+          required: true
+          schema:
+            type: string
+            minLength: 1
+        - in: query
+          name: page_size
+          description: >-
+            The number of search results to include in a page. Minimum of 1 and
+            maximum of 25.
+          required: false
+          schema:
+            type: integer
+            format: int64
+        - in: query
+          name: detail
+          description: |-
+            The amount of detail included in each result item.
+               "full" will include all descriptions and comments and more fields on
+               related items such as pull requests, branches and tasks.
+               "slim" omits larger fulltext fields such as descriptions and comments
+               and only references related items by id.
+               The default is "full".
+          required: false
+          schema:
+            type: string
+            enum:
+              - full
+              - slim
+        - in: query
+          name: next
+          description: The next page token.
+          required: false
+          x-doc-skip: true
+          schema:
+            type: string
+        - in: query
+          name: entity_types
+          description: >-
+            A collection of entity_types to search. Defaults to story and epic.
+            Supports: epic, iteration, objective, story.
+          required: false
+          x-doc-skip: true
+          explode: true
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - story
+                - milestone
+                - epic
+                - iteration
+                - objective
       responses:
         '200':
           description: Resource
@@ -2414,8 +2560,65 @@ paths:
       summary: Search Epics
   /api/v3/search/iterations:
     get:
-      requestBody:
-        $ref: '#/components/requestBodies/Search'
+      parameters:
+        - in: query
+          name: query
+          description: >-
+            See our help center article on [search
+            operators](https://help.shortcut.com/hc/en-us/articles/360000046646-Search-Operators)
+          required: true
+          schema:
+            type: string
+            minLength: 1
+        - in: query
+          name: page_size
+          description: >-
+            The number of search results to include in a page. Minimum of 1 and
+            maximum of 25.
+          required: false
+          schema:
+            type: integer
+            format: int64
+        - in: query
+          name: detail
+          description: |-
+            The amount of detail included in each result item.
+               "full" will include all descriptions and comments and more fields on
+               related items such as pull requests, branches and tasks.
+               "slim" omits larger fulltext fields such as descriptions and comments
+               and only references related items by id.
+               The default is "full".
+          required: false
+          schema:
+            type: string
+            enum:
+              - full
+              - slim
+        - in: query
+          name: next
+          description: The next page token.
+          required: false
+          x-doc-skip: true
+          schema:
+            type: string
+        - in: query
+          name: entity_types
+          description: >-
+            A collection of entity_types to search. Defaults to story and epic.
+            Supports: epic, iteration, objective, story.
+          required: false
+          x-doc-skip: true
+          explode: true
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - story
+                - milestone
+                - epic
+                - iteration
+                - objective
       responses:
         '200':
           description: Resource
@@ -2445,8 +2648,65 @@ paths:
       summary: Search Iterations
   /api/v3/search/milestones:
     get:
-      requestBody:
-        $ref: '#/components/requestBodies/Search'
+      parameters:
+        - in: query
+          name: query
+          description: >-
+            See our help center article on [search
+            operators](https://help.shortcut.com/hc/en-us/articles/360000046646-Search-Operators)
+          required: true
+          schema:
+            type: string
+            minLength: 1
+        - in: query
+          name: page_size
+          description: >-
+            The number of search results to include in a page. Minimum of 1 and
+            maximum of 25.
+          required: false
+          schema:
+            type: integer
+            format: int64
+        - in: query
+          name: detail
+          description: |-
+            The amount of detail included in each result item.
+               "full" will include all descriptions and comments and more fields on
+               related items such as pull requests, branches and tasks.
+               "slim" omits larger fulltext fields such as descriptions and comments
+               and only references related items by id.
+               The default is "full".
+          required: false
+          schema:
+            type: string
+            enum:
+              - full
+              - slim
+        - in: query
+          name: next
+          description: The next page token.
+          required: false
+          x-doc-skip: true
+          schema:
+            type: string
+        - in: query
+          name: entity_types
+          description: >-
+            A collection of entity_types to search. Defaults to story and epic.
+            Supports: epic, iteration, objective, story.
+          required: false
+          x-doc-skip: true
+          explode: true
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - story
+                - milestone
+                - epic
+                - iteration
+                - objective
       responses:
         '200':
           description: Resource
@@ -2476,8 +2736,65 @@ paths:
       summary: Search Milestones
   /api/v3/search/objectives:
     get:
-      requestBody:
-        $ref: '#/components/requestBodies/Search'
+      parameters:
+        - in: query
+          name: query
+          description: >-
+            See our help center article on [search
+            operators](https://help.shortcut.com/hc/en-us/articles/360000046646-Search-Operators)
+          required: true
+          schema:
+            type: string
+            minLength: 1
+        - in: query
+          name: page_size
+          description: >-
+            The number of search results to include in a page. Minimum of 1 and
+            maximum of 25.
+          required: false
+          schema:
+            type: integer
+            format: int64
+        - in: query
+          name: detail
+          description: |-
+            The amount of detail included in each result item.
+               "full" will include all descriptions and comments and more fields on
+               related items such as pull requests, branches and tasks.
+               "slim" omits larger fulltext fields such as descriptions and comments
+               and only references related items by id.
+               The default is "full".
+          required: false
+          schema:
+            type: string
+            enum:
+              - full
+              - slim
+        - in: query
+          name: next
+          description: The next page token.
+          required: false
+          x-doc-skip: true
+          schema:
+            type: string
+        - in: query
+          name: entity_types
+          description: >-
+            A collection of entity_types to search. Defaults to story and epic.
+            Supports: epic, iteration, objective, story.
+          required: false
+          x-doc-skip: true
+          explode: true
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - story
+                - milestone
+                - epic
+                - iteration
+                - objective
       responses:
         '200':
           description: Resource
@@ -2507,8 +2824,65 @@ paths:
       summary: Search Objectives
   /api/v3/search/stories:
     get:
-      requestBody:
-        $ref: '#/components/requestBodies/Search'
+      parameters:
+        - in: query
+          name: query
+          description: >-
+            See our help center article on [search
+            operators](https://help.shortcut.com/hc/en-us/articles/360000046646-Search-Operators)
+          required: true
+          schema:
+            type: string
+            minLength: 1
+        - in: query
+          name: page_size
+          description: >-
+            The number of search results to include in a page. Minimum of 1 and
+            maximum of 25.
+          required: false
+          schema:
+            type: integer
+            format: int64
+        - in: query
+          name: detail
+          description: |-
+            The amount of detail included in each result item.
+               "full" will include all descriptions and comments and more fields on
+               related items such as pull requests, branches and tasks.
+               "slim" omits larger fulltext fields such as descriptions and comments
+               and only references related items by id.
+               The default is "full".
+          required: false
+          schema:
+            type: string
+            enum:
+              - full
+              - slim
+        - in: query
+          name: next
+          description: The next page token.
+          required: false
+          x-doc-skip: true
+          schema:
+            type: string
+        - in: query
+          name: entity_types
+          description: >-
+            A collection of entity_types to search. Defaults to story and epic.
+            Supports: epic, iteration, objective, story.
+          required: false
+          x-doc-skip: true
+          explode: true
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - story
+                - milestone
+                - epic
+                - iteration
+                - objective
       responses:
         '200':
           description: Resource
@@ -3331,12 +3705,6 @@ servers:
   - url: https://api.app.shortcut.com
 components:
   requestBodies:
-    Search:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Search'
-      required: true
     CreateOrDeleteStoryReaction:
       content:
         application/json:
@@ -4207,18 +4575,22 @@ components:
       x-doc-skip: true
       type: object
       properties:
+        text:
+          maxLength: 100000
+          description: The comment text.
+          type: string
         author_id:
           description: >-
             The Member ID of the Comment's author. Defaults to the user
             identified by the API token.
           type: string
           format: uuid
-        blocker:
+        created_at:
           description: >-
-            Marks the comment as a blocker that can be surfaced to permissions
-            or teams mentioned in the comment. Can only be used on a top-level
-            comment.
-          type: boolean
+            Defaults to the time/date the comment is created, but can be set to
+            reflect another date.
+          type: string
+          format: date-time
         updated_at:
           description: >-
             Defaults to the time/date the comment is last updated, but can be
@@ -4236,21 +4608,6 @@ components:
           type: integer
           format: int64
           nullable: true
-        unblocks_parent:
-          description: >-
-            Marks the comment as an unblocker to its  blocker parent. Can only
-            be set on a threaded comment who has a parent with `blocker` set.
-          type: boolean
-        created_at:
-          description: >-
-            Defaults to the time/date the comment is created, but can be set to
-            reflect another date.
-          type: string
-          format: date-time
-        text:
-          maxLength: 100000
-          description: The comment text.
-          type: string
       additionalProperties: false
       required:
         - text
@@ -4291,17 +4648,6 @@ components:
           type: integer
           format: int64
           nullable: true
-        blocker:
-          description: >-
-            Marks the comment as a blocker that can be surfaced to permissions
-            or teams mentioned in the comment. Can only be used on a top-level
-            comment.
-          type: boolean
-        unblocks_parent:
-          description: >-
-            Marks the comment as an unblocker to its  blocker parent. Can only
-            be set on a threaded comment who has a parent with `blocker` set.
-          type: boolean
       additionalProperties: false
       required:
         - text
@@ -6205,66 +6551,6 @@ components:
         - updated_at
         - default_epic_state_id
         - epic_states
-    GetEpicStories:
-      x-doc-skip: true
-      type: object
-      properties:
-        includes_description:
-          description: >-
-            A true/false boolean indicating whether to return Stories with their
-            descriptions.
-          type: boolean
-      additionalProperties: false
-    GetExternalLinkStoriesParams:
-      type: object
-      properties:
-        external_link:
-          pattern: ^https?://.+$
-          maxLength: 2048
-          description: The external link associated with one or more stories.
-          type: string
-      additionalProperties: false
-      required:
-        - external_link
-    GetIterationStories:
-      type: object
-      properties:
-        includes_description:
-          description: >-
-            A true/false boolean indicating whether to return Stories with their
-            descriptions.
-          type: boolean
-      additionalProperties: false
-    GetLabelStories:
-      x-doc-skip: true
-      type: object
-      properties:
-        includes_description:
-          description: >-
-            A true/false boolean indicating whether to return Stories with their
-            descriptions.
-          type: boolean
-      additionalProperties: false
-    GetMember:
-      x-doc-skip: true
-      type: object
-      properties:
-        org-public-id:
-          description: The unique ID of the Organization to limit the lookup to.
-          x-doc-skip: true
-          type: string
-          format: uuid
-      additionalProperties: false
-    GetProjectStories:
-      x-doc-skip: true
-      type: object
-      properties:
-        includes_description:
-          description: >-
-            A true/false boolean indicating whether to return Stories with their
-            descriptions.
-          type: boolean
-      additionalProperties: false
     Group:
       description: A Group.
       type: object
@@ -8434,50 +8720,6 @@ components:
         - id
         - url
         - created_at
-    ListEpics:
-      x-doc-skip: true
-      type: object
-      properties:
-        includes_description:
-          description: >-
-            A true/false boolean indicating whether to return Epics with their
-            descriptions.
-          type: boolean
-      additionalProperties: false
-    ListGroupStories:
-      type: object
-      properties:
-        limit:
-          description: >-
-            The maximum number of results to return. (Defaults to 1000, max
-            1000)
-          type: integer
-          format: int64
-        offset:
-          description: The offset at which to begin returning results. (Defaults to 0)
-          type: integer
-          format: int64
-      additionalProperties: false
-    ListLabels:
-      x-doc-skip: true
-      type: object
-      properties:
-        slim:
-          description: >-
-            A true/false boolean indicating if the slim versions of the Label
-            should be returned.
-          type: boolean
-      additionalProperties: false
-    ListMembers:
-      x-doc-skip: true
-      type: object
-      properties:
-        org-public-id:
-          description: The unique ID of the Organization to limit the list to.
-          x-doc-skip: true
-          type: string
-          format: uuid
-      additionalProperties: false
     MaxSearchResultsExceededError:
       description: Error returned when total maximum supported results have been reached.
       type: object
@@ -9417,55 +9659,6 @@ components:
         - url
         - full_name
         - created_at
-    Search:
-      x-doc-skip: true
-      type: object
-      properties:
-        query:
-          minLength: 1
-          description: >-
-            See our help center article on [search
-            operators](https://help.shortcut.com/hc/en-us/articles/360000046646-Search-Operators)
-          type: string
-        page_size:
-          description: >-
-            The number of search results to include in a page. Minimum of 1 and
-            maximum of 25.
-          type: integer
-          format: int64
-        detail:
-          description: |-
-            The amount of detail included in each result item.
-               "full" will include all descriptions and comments and more fields on
-               related items such as pull requests, branches and tasks.
-               "slim" omits larger fulltext fields such as descriptions and comments
-               and only references related items by id.
-               The default is "full".
-          type: string
-          enum:
-            - full
-            - slim
-        next:
-          description: The next page token.
-          x-doc-skip: true
-          type: string
-        entity_types:
-          description: >-
-            A collection of entity_types to search. Defaults to story and epic.
-            Supports: epic, iteration, objective, story.
-          x-doc-skip: true
-          type: array
-          items:
-            type: string
-            enum:
-              - story
-              - milestone
-              - epic
-              - iteration
-              - objective
-      additionalProperties: false
-      required:
-        - query
     SearchResults:
       description: The results of the multi-entity search query.
       type: object

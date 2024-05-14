@@ -10746,6 +10746,7 @@ paths:
       responses:
         '200':
           description: no content success
+  /general-ledger: {}
   /inventory/cost-basis:
     get:
       tags:
@@ -13563,6 +13564,57 @@ paths:
                   updatedAt:
                     type: string
                     format: date-time
+  /journals/count:
+    get:
+      tags:
+        - Journals
+      summary: Count
+      description: >
+        The same filters as [Search](https://api-docs.softledger.com/) can be
+        used here.
+      parameters:
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/filterType'
+        - in: query
+          name: status
+          description: >
+            `editable` counts draft journals that can be edited directly.
+
+
+            `icdoc` counts draft intercompany document journals that can be
+            edited directly.
+
+
+            `draft` counts journals that aren't posted.
+
+
+            `posted` counts journals that are posted.
+
+
+            Not set counts all journals.
+          schema:
+            type: string
+            enum:
+              - draft
+              - editable
+              - icdoc
+              - posted
+        - in: query
+          name: LocationId
+          description: |
+            Will include transactions from this Location and its children
+
+            Filters on LocationId can further limit data.
+          schema:
+            type: number
+            description: 'Ref: Location._id'
+      responses:
+        '200':
+          description: Count response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CountResponse'
   /journals:
     post:
       tags:
@@ -13857,6 +13909,7 @@ paths:
       tags:
         - Journals
       summary: Search
+      operationId: journalsSearch
       description: |
         | Field       | Filterable | Sortable |
         |---------------------|:--:|:--:|
@@ -15899,6 +15952,8 @@ paths:
         |name                 | ✅ | ✅ |
         |description          | ✅ | ✅ |
         |currency             | ✅ | ✅ |
+        |externalId           | ✅ | ✅ |
+        |externalSource       | ✅ | ✅ |
         |parent_id            | ✅ | ❌ |
         |Parent.id            | ❌ | ❌ |
         |FXGLAccountId        | ✅ | ❌ |
@@ -15966,6 +16021,10 @@ paths:
                           items:
                             type: integer
                             description: 'Ref: Location._id'
+                        externalId:
+                          type: string
+                        externalSource:
+                          type: string
                         AddressId:
                           type: integer
                           description: 'Ref: Addresses._id'
@@ -16058,6 +16117,10 @@ paths:
                 parent_id:
                   type: integer
                   description: 'Ref: Location._id'
+                externalId:
+                  type: string
+                externalSource:
+                  type: string
                 FXGLAccountId:
                   type: integer
                   description: 'Ref: LedgerAccount._id'
@@ -16136,6 +16199,10 @@ paths:
                     items:
                       type: integer
                       description: 'Ref: Location._id'
+                  externalId:
+                    type: string
+                  externalSource:
+                    type: string
                   AddressId:
                     type: integer
                     description: 'Ref: Addresses._id'
@@ -16236,6 +16303,10 @@ paths:
                     items:
                       type: integer
                       description: 'Ref: Location._id'
+                  externalId:
+                    type: string
+                  externalSource:
+                    type: string
                   AddressId:
                     type: integer
                     description: 'Ref: Addresses._id'
@@ -16331,6 +16402,10 @@ paths:
                 parent_id:
                   type: integer
                   description: 'Ref: Location._id'
+                externalId:
+                  type: string
+                externalSource:
+                  type: string
                 FXGLAccountId:
                   type: integer
                   description: 'Ref: LedgerAccount._id'
@@ -16409,6 +16484,10 @@ paths:
                     items:
                       type: integer
                       description: 'Ref: Location._id'
+                  externalId:
+                    type: string
+                  externalSource:
+                    type: string
                   AddressId:
                     type: integer
                     description: 'Ref: Addresses._id'
@@ -23720,6 +23799,15 @@ paths:
                     type: boolean
                   pdfFormats:
                     type: object
+                  timezone:
+                    type: string
+                    description: >
+                      The timezone of the company. 
+
+                      Example: "America/New_York"
+
+                      Used for timestamps in the UI, and for converstions of
+                      timestamps into Accounting Dates.
                   custom1_enabled:
                     type: boolean
                   custom1_name:
@@ -24004,6 +24092,15 @@ paths:
                   type: boolean
                 draftBillPayments:
                   type: boolean
+                timezone:
+                  type: string
+                  description: >
+                    The timezone of the company. 
+
+                    Example: "America/New_York"
+
+                    Used for timestamps in the UI, and for converstions of
+                    timestamps into Accounting Dates.
                 custom1_enabled:
                   type: boolean
                 custom1_name:
@@ -26185,8 +26282,6 @@ paths:
                 properties:
                   _id:
                     type: string
-                  id:
-                    type: string
                   name:
                     type: string
                   date:
@@ -26867,6 +26962,22 @@ paths:
                   updatedAt:
                     type: string
                     format: date-time
+  /timezones:
+    get:
+      tags:
+        - Timezones
+      summary: Supported Timezones
+      description: |
+        Returns an array of all supported timezones
+      responses:
+        '200':
+          description: List of Templates
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
   /transactions:
     get:
       tags:
@@ -28030,6 +28141,7 @@ paths:
                   FromWarehouseId:
                     type: integer
                     description: 'Ref: Warehouse._id'
+  /trial-balance: {}
   /users:
     get:
       tags:
@@ -31965,6 +32077,8 @@ tags:
     description: Tax Codes
   - name: Templates
     description: Templates
+  - name: Timezones
+    description: Timezones
   - name: Transactions
     description: Transactions
   - name: Transfers

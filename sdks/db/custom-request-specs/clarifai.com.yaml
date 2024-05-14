@@ -3016,9 +3016,6 @@ paths:
              - MODULE_DOES_NOT_EXIST: Module related codes 253xx
              - BULK_OPERATION_SUCCESS: Bulk Operation related codes 254xx
              - RUNNER_DOES_NOT_EXIST: Runner related codes 256xx
-             - RUNNER_METHOD_UNARY: signal to runner to use unary method.
-             - RUNNER_METHOD_GENERATE: signal to runner to use generate method to stream responses
-             - RUNNER_METHOD_STREAM: signal to runner to use bi-directional streaming.
              - INPUT_DOWNLOAD_SUCCESS: Input:Image related 30xxx
              - INPUT_DOWNLOAD_PENDING: when things are async, this is the default status.
              - INPUT_DOWNLOAD_FAILED: any type of error downloading and processing
@@ -3230,9 +3227,8 @@ paths:
               - RUNNER_NEEDS_RETRY
               - RUNNER_STREAM_START
               - RUNNER_STREAM_END
-              - RUNNER_METHOD_UNARY
-              - RUNNER_METHOD_GENERATE
-              - RUNNER_METHOD_STREAM
+              - RUNNER_ITEM_CANCELLED
+              - RUNNER_PROCESSING_FAILED
               - INPUT_DOWNLOAD_SUCCESS
               - INPUT_DOWNLOAD_PENDING
               - INPUT_DOWNLOAD_FAILED
@@ -12823,9 +12819,6 @@ paths:
              - MODULE_DOES_NOT_EXIST: Module related codes 253xx
              - BULK_OPERATION_SUCCESS: Bulk Operation related codes 254xx
              - RUNNER_DOES_NOT_EXIST: Runner related codes 256xx
-             - RUNNER_METHOD_UNARY: signal to runner to use unary method.
-             - RUNNER_METHOD_GENERATE: signal to runner to use generate method to stream responses
-             - RUNNER_METHOD_STREAM: signal to runner to use bi-directional streaming.
              - INPUT_DOWNLOAD_SUCCESS: Input:Image related 30xxx
              - INPUT_DOWNLOAD_PENDING: when things are async, this is the default status.
              - INPUT_DOWNLOAD_FAILED: any type of error downloading and processing
@@ -13037,9 +13030,8 @@ paths:
               - RUNNER_NEEDS_RETRY
               - RUNNER_STREAM_START
               - RUNNER_STREAM_END
-              - RUNNER_METHOD_UNARY
-              - RUNNER_METHOD_GENERATE
-              - RUNNER_METHOD_STREAM
+              - RUNNER_ITEM_CANCELLED
+              - RUNNER_PROCESSING_FAILED
               - INPUT_DOWNLOAD_SUCCESS
               - INPUT_DOWNLOAD_PENDING
               - INPUT_DOWNLOAD_FAILED
@@ -22365,7 +22357,7 @@ paths:
             type: string
       tags:
         - V2
-  /v2/users/{userAppId.userId}/runners/{runnerId}/items/{itemId}/outputs:
+  /v2/users/{userAppId.userId}/runners/{runnerId}/items/{runnerItemId}/outputs:
     post:
       summary: |-
         Post back outputs from remote runners
@@ -22399,7 +22391,7 @@ paths:
           required: true
           schema:
             type: string
-        - name: itemId
+        - name: runnerItemId
           description: The particular item of work processed.
           in: path
           required: true
@@ -28149,7 +28141,7 @@ components:
       properties:
         status:
           $ref: '#/components/schemas/apistatusStatus'
-        items:
+        runnerItems:
           type: array
           items:
             $ref: '#/components/schemas/apiRunnerItem'
@@ -29650,6 +29642,14 @@ components:
              config.pbtxt
              version 1 folder that contains model files (onnx graph, torch script, python BE model, and etc.)
       title: PretrainedModelConfig
+    apiProcessingInfo:
+      type: object
+      properties:
+        runnerMethodType:
+          $ref: '#/components/schemas/apiRunnerMethodType'
+        status:
+          $ref: '#/components/schemas/apistatusStatus'
+      title: Processing info tells the runner how to process a RunnerItem
     apiProgress:
       type: object
       properties:
@@ -29955,15 +29955,30 @@ components:
         description:
           type: string
           description: A description of the work to be done in case needed for UIs.
-        status:
-          $ref: '#/components/schemas/apistatusStatus'
+        processingInfo:
+          $ref: '#/components/schemas/apiProcessingInfo'
         postModelOutputsRequest:
           $ref: '#/components/schemas/apiPostModelOutputsRequest'
+      description: This is a piece of work for a runner to process.
     apiRunnerItemOutput:
       type: object
       properties:
         multiOutputResponse:
           $ref: '#/components/schemas/apiMultiOutputResponse'
+    apiRunnerMethodType:
+      type: string
+      enum:
+        - UNKNOWN
+        - UNARY_UNARY
+        - UNARY_STREAMING
+        - STREAMING_UNARY
+        - STREAMING_STREAMING
+      default: UNKNOWN
+      title: |-
+        - UNARY_UNARY: single request, single response. predict() in code
+         - UNARY_STREAMING: single request, streamed response. generate() in code
+         - STREAMING_UNARY: stream of requests, single response.
+         - STREAMING_STREAMING: stream of requests, stream of responses. stream() in code
     apiRunnerSelector:
       type: object
       properties:
@@ -31940,9 +31955,8 @@ components:
         - RUNNER_NEEDS_RETRY
         - RUNNER_STREAM_START
         - RUNNER_STREAM_END
-        - RUNNER_METHOD_UNARY
-        - RUNNER_METHOD_GENERATE
-        - RUNNER_METHOD_STREAM
+        - RUNNER_ITEM_CANCELLED
+        - RUNNER_PROCESSING_FAILED
         - INPUT_DOWNLOAD_SUCCESS
         - INPUT_DOWNLOAD_PENDING
         - INPUT_DOWNLOAD_FAILED
@@ -32224,9 +32238,6 @@ components:
          - MODULE_DOES_NOT_EXIST: Module related codes 253xx
          - BULK_OPERATION_SUCCESS: Bulk Operation related codes 254xx
          - RUNNER_DOES_NOT_EXIST: Runner related codes 256xx
-         - RUNNER_METHOD_UNARY: signal to runner to use unary method.
-         - RUNNER_METHOD_GENERATE: signal to runner to use generate method to stream responses
-         - RUNNER_METHOD_STREAM: signal to runner to use bi-directional streaming.
          - INPUT_DOWNLOAD_SUCCESS: Input:Image related 30xxx
          - INPUT_DOWNLOAD_PENDING: when things are async, this is the default status.
          - INPUT_DOWNLOAD_FAILED: any type of error downloading and processing

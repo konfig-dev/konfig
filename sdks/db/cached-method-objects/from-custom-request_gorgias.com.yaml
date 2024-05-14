@@ -1,4 +1,4 @@
-hash: 70e5d112a8957f1b161f8e805d50eef19099102491dbdffa9e1a3f7ff30ce81a
+hash: 4c45e38876bed11327181a8230f7a9c99a0348811b0b35a7ea282dc79b7fddd9
 methodObjects:
   - url: /api/account
     method: getDetails
@@ -54,15 +54,13 @@ methodObjects:
         schema: string
         required: false
         description: >-
-          ID of the customer in a foreign system
-          (https://developers.gorgias.com/ you're looking for.
+          ID of the customer in a foreign system (Stripe, Aircall etc.) you're
+          looking for.
         example: customer-84203241
       - name: language
         schema: string
         required: false
-        description: >-
-          The customer's preferred language (https://developers.gorgias.com/ to
-          filter with.
+        description: 'The customer''s preferred language (format: ISO_639-1) to filter with.'
         example: fr
       - name: limit
         schema: integer
@@ -100,7 +98,7 @@ methodObjects:
       - name: timezone
         schema: string
         required: false
-        description: The customer's preferred timezone (https://developers.gorgias.com/.
+        description: 'The customer''s preferred timezone (format: IANA timezone name).'
         example: UTC
       - name: viewId
         schema: integer
@@ -160,12 +158,16 @@ methodObjects:
       - name: sourceId
         schema: integer
         required: true
-        description: The ID of the customer to merge (https://developers.gorgias.com/.
+        description: >-
+          The ID of the customer to merge (which will be merged into the
+          targeted customer).
         example: 4
       - name: targetId
         schema: integer
         required: true
-        description: The ID of the targeted customer (https://developers.gorgias.com/.
+        description: >-
+          The ID of the targeted customer (which will still be here after the
+          merge).
         example: 4
       - name: id
         schema: integer
@@ -274,8 +276,8 @@ methodObjects:
         schema: string
         required: false
         description: >-
-          Search for custom fields' names matching the given text query
-          (https://developers.gorgias.com/.
+          Search for custom fields' names matching the given text query (case
+          insensitive).
         example: My awesome field
       - name: archived
         schema: boolean
@@ -604,8 +606,8 @@ methodObjects:
     responses:
       - statusCode: '201'
         description: >-
-          Integrations connect Gorgias with external services
-          (https://developers.gorgias.com/.
+          Integrations connect Gorgias with external services (e.g. Gmail,
+          Shopify, chat systems).
 
 
           There are official Gorgias integrations that can be found in the
@@ -881,7 +883,7 @@ methodObjects:
     responses:
       - statusCode: '201'
         description: >-
-          A macro (https://developers.gorgias.com/ is a list of
+          A macro (canned response) is a list of
           [actions](https://developers.gorgias.com/) that can be applied to
           tickets to modify them, and/or reply to them.Macros can be applied
           manually by agents or automatically by rules.
@@ -951,13 +953,15 @@ methodObjects:
         schema: string
         required: true
         description: ''
-        example: >
+        example: |
 
-          if (https://developers.gorgias.com/ &&
-          eq(https://developers.gorgias.com/) {
-              if (https://developers.gorgias.com/ || containsAny(https://developers.gorgias.com/) {
-                  Action(https://developers.gorgias.com/;
-                  Action(https://developers.gorgias.com/
+          if (eq(ticket.from_agent, false) && eq(ticket.status, 'open')) {
+              if (containsAny(message.intents.name, ['other/no_reply']) || containsAny(ticket.customer.email, [
+                      'noreply@',
+                      '@noreply'
+                  ])) {
+                  Action('addTags', { tags: 'auto-close' });
+                  Action('setStatus', { status: 'closed' })
               }
           }
       - name: code_ast
@@ -1702,8 +1706,8 @@ methodObjects:
         schema: string
         required: false
         description: >-
-          ID of the user in a foreign system (https://developers.gorgias.com/
-          you're looking for
+          ID of the user in a foreign system (Stripe, Aircall, etc...) you're
+          looking for
         example: user-hf329f
       - name: limit
         schema: integer
@@ -1877,8 +1881,8 @@ methodObjects:
           A `Team` represents a group of
           [users](https://developers.gorgias.com/). Teams are used with the
           "auto-assign tickets" feature: you can assign a ticket to a team
-          (https://developers.gorgias.com/, then it will be automatically
-          assigned to someone who is available in the given team.
+          (manually of via rules), then it will be automatically assigned to
+          someone who is available in the given team.
   - url: /api/tags
     method: deactivateAll
     httpMethod: delete
@@ -1943,8 +1947,8 @@ methodObjects:
         schema: string
         required: false
         description: >-
-          Search for tags' names matching the given text query
-          (https://developers.gorgias.com/.
+          Search for tags' names matching the given text query (case
+          insensitive).
       - name: cursor
         schema: string
         required: false
@@ -2441,13 +2445,13 @@ methodObjects:
     responses:
       - statusCode: '201'
         description: >-
-          A ticket-message represents a message (https://developers.gorgias.com/
-          under a normalized format.
+          A ticket-message represents a message (an email, an SMS, a Facebook
+          comment, chat message, etc..) under a normalized format.
 
           There are 3 types of messages:
-            - Outgoing messages: messages sent by your company (https://developers.gorgias.com/ to your customers.
+            - Outgoing messages: messages sent by your company (by rules or support agents) to your customers.
             - Incoming messages: messages sent by your [customers](https://developers.gorgias.com/) to your company.
-            - Internal notes: internal messages sent between support agents (https://developers.gorgias.com/). Internal notes are not sent/shared with your customers.
+            - Internal notes: internal messages sent between support agents ([users](https://developers.gorgias.com/)). Internal notes are not sent/shared with your customers.
 
           A ticket-message is associated with only one ticket.
   - url: /api/tickets/{ticket_id}/tags
@@ -2771,8 +2775,8 @@ methodObjects:
         required: false
         description: ''
         example: >-
-          eq(https://developers.gorgias.com/ &&
-          eq(https://developers.gorgias.com/
+          eq(ticket.assignee_user.id, '{{current_user.id}}') &&
+          eq(ticket.status, 'open')
       - name: name
         schema: string
         required: false
@@ -2911,8 +2915,8 @@ methodObjects:
           decoration:
             emoji: 🙏
           filters: >-
-            eq(https://developers.gorgias.com/ &&
-            eq(https://developers.gorgias.com/
+            eq(ticket.assignee_user.id, '{{current_user.id}}') &&
+            eq(ticket.status, 'open')
           search: where is my order?
           fields:
             - id
@@ -3309,8 +3313,8 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: >-
-          Integrations connect Gorgias with external services
-          (https://developers.gorgias.com/.
+          Integrations connect Gorgias with external services (e.g. Gmail,
+          Shopify, chat systems).
 
 
           There are official Gorgias integrations that can be found in the
@@ -3366,8 +3370,8 @@ methodObjects:
     responses:
       - statusCode: '202'
         description: >-
-          Integrations connect Gorgias with external services
-          (https://developers.gorgias.com/.
+          Integrations connect Gorgias with external services (e.g. Gmail,
+          Shopify, chat systems).
 
 
           There are official Gorgias integrations that can be found in the
@@ -3502,7 +3506,7 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: >-
-          A macro (https://developers.gorgias.com/ is a list of
+          A macro (canned response) is a list of
           [actions](https://developers.gorgias.com/) that can be applied to
           tickets to modify them, and/or reply to them.Macros can be applied
           manually by agents or automatically by rules.
@@ -3561,7 +3565,7 @@ methodObjects:
     responses:
       - statusCode: '202'
         description: >-
-          A macro (https://developers.gorgias.com/ is a list of
+          A macro (canned response) is a list of
           [actions](https://developers.gorgias.com/) that can be applied to
           tickets to modify them, and/or reply to them.Macros can be applied
           manually by agents or automatically by rules.
@@ -3627,13 +3631,15 @@ methodObjects:
       - name: code
         schema: string
         description: ''
-        example: >
+        example: |
 
-          if (https://developers.gorgias.com/ &&
-          eq(https://developers.gorgias.com/) {
-              if (https://developers.gorgias.com/ || containsAny(https://developers.gorgias.com/) {
-                  Action(https://developers.gorgias.com/;
-                  Action(https://developers.gorgias.com/
+          if (eq(ticket.from_agent, false) && eq(ticket.status, 'open')) {
+              if (containsAny(message.intents.name, ['other/no_reply']) || containsAny(ticket.customer.email, [
+                      'noreply@',
+                      '@noreply'
+                  ])) {
+                  Action('addTags', { tags: 'auto-close' });
+                  Action('setStatus', { status: 'closed' })
               }
           }
       - name: code_ast
@@ -4308,7 +4314,7 @@ methodObjects:
         required: true
         description: >
           The ID of the user to retrieve. Use the ID `0` to fetch your user
-          (https://developers.gorgias.com/.
+          (current user).
         example: 0
     responses:
       - statusCode: '200'
@@ -4325,7 +4331,7 @@ methodObjects:
         required: true
         description: >
           The ID of the user to update. Use the ID `0` to update your user
-          (https://developers.gorgias.com/.
+          (current user).
         example: 0
       - name: bio
         schema: string
@@ -4420,8 +4426,8 @@ methodObjects:
           A `Team` represents a group of
           [users](https://developers.gorgias.com/). Teams are used with the
           "auto-assign tickets" feature: you can assign a ticket to a team
-          (https://developers.gorgias.com/, then it will be automatically
-          assigned to someone who is available in the given team.
+          (manually of via rules), then it will be automatically assigned to
+          someone who is available in the given team.
   - url: /api/teams/{id}
     method: updateTeamById
     httpMethod: put
@@ -4453,8 +4459,8 @@ methodObjects:
           A `Team` represents a group of
           [users](https://developers.gorgias.com/). Teams are used with the
           "auto-assign tickets" feature: you can assign a ticket to a team
-          (https://developers.gorgias.com/, then it will be automatically
-          assigned to someone who is available in the given team.
+          (manually of via rules), then it will be automatically assigned to
+          someone who is available in the given team.
   - url: /api/tags/{id}
     method: deleteTag
     httpMethod: delete
@@ -4718,13 +4724,13 @@ methodObjects:
     responses:
       - statusCode: '200'
         description: >-
-          A ticket-message represents a message (https://developers.gorgias.com/
-          under a normalized format.
+          A ticket-message represents a message (an email, an SMS, a Facebook
+          comment, chat message, etc..) under a normalized format.
 
           There are 3 types of messages:
-            - Outgoing messages: messages sent by your company (https://developers.gorgias.com/ to your customers.
+            - Outgoing messages: messages sent by your company (by rules or support agents) to your customers.
             - Incoming messages: messages sent by your [customers](https://developers.gorgias.com/) to your company.
-            - Internal notes: internal messages sent between support agents (https://developers.gorgias.com/). Internal notes are not sent/shared with your customers.
+            - Internal notes: internal messages sent between support agents ([users](https://developers.gorgias.com/)). Internal notes are not sent/shared with your customers.
 
           A ticket-message is associated with only one ticket.
   - url: /api/tickets/{ticket_id}/messages/{id}
@@ -4855,13 +4861,13 @@ methodObjects:
     responses:
       - statusCode: '202'
         description: >-
-          A ticket-message represents a message (https://developers.gorgias.com/
-          under a normalized format.
+          A ticket-message represents a message (an email, an SMS, a Facebook
+          comment, chat message, etc..) under a normalized format.
 
           There are 3 types of messages:
-            - Outgoing messages: messages sent by your company (https://developers.gorgias.com/ to your customers.
+            - Outgoing messages: messages sent by your company (by rules or support agents) to your customers.
             - Incoming messages: messages sent by your [customers](https://developers.gorgias.com/) to your company.
-            - Internal notes: internal messages sent between support agents (https://developers.gorgias.com/). Internal notes are not sent/shared with your customers.
+            - Internal notes: internal messages sent between support agents ([users](https://developers.gorgias.com/)). Internal notes are not sent/shared with your customers.
 
           A ticket-message is associated with only one ticket.
   - url: /api/tickets/{ticket_id}/custom-fields/{id}
@@ -4972,8 +4978,8 @@ methodObjects:
         schema: string
         description: ''
         example: >-
-          eq(https://developers.gorgias.com/ &&
-          eq(https://developers.gorgias.com/
+          eq(ticket.assignee_user.id, '{{current_user.id}}') &&
+          eq(ticket.status, 'open')
       - name: name
         schema: string
         description: ''

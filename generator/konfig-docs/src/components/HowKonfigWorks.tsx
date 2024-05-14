@@ -58,7 +58,7 @@ export function HowKonfigWorks() {
         </div>
         <div className="grow-0">
           <h3 className="text-[hsl(243_75%_97%)] text-2xl leading-tight sm:text-3xl">
-            Generates SDKs from{" "}
+            Generates AI-Augmented SDKs from{" "}
             <span className="font-mono whitespace-nowrap">
               openapi-examples
             </span>

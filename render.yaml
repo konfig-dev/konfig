@@ -12,13 +12,6 @@ services:
     buildCommand: npm init -y; npm install konfig-cli
     repo: https://github.com/konfig-dev/splitit-web-sdks
     startCommand: ./node_modules/.bin/konfig pull && ./node_modules/.bin/konfig push -o konfig-dev -r splitit-web-sdks -s swagger.json
-  - name: leap-polling
-    type: cron
-    env: node
-    schedule: "*/30 * * * *"
-    buildCommand: npm init -y; npm install konfig-cli
-    repo: https://github.com/leap-ai/leap-sdks
-    startCommand: ./node_modules/.bin/konfig pull && ./node_modules/.bin/konfig push -o leap-ai -r leap-sdks -s api.json
   - name: leap-workflows-polling
     type: cron
     env: node
@@ -29,23 +22,30 @@ services:
   - name: carbon-polling
     type: cron
     env: node
-    schedule: "*/30 * * * *"
+    schedule: "0 0 * * *"
     buildCommand: npm init -y; npm install konfig-cli
     repo: https://github.com/Carbon-for-Developers/carbon-sdks
     startCommand: ./node_modules/.bin/konfig pull && ./node_modules/.bin/konfig push -o Carbon-for-Developers -r carbon-sdks -s openapi.json
+  - name: newscatcher-polling-v3
+    type: cron
+    env: node
+    schedule: "*/30 * * * *"
+    buildCommand: npm init -y; npm install konfig-cli
+    repo: https://github.com/konfig-dev/newscatcher-sdks
+    startCommand: ./node_modules/.bin/konfig pull -i https://v3-api.newscatcherapi.com/docs/openapi.json -o openapi.json && ./node_modules/.bin/konfig push -o konfig-dev -r newscatcher-sdks -s openapi.json -x v3
   - name: humanloop-polling-v4
     type: cron
     schedule: "*/30 * * * *"
     buildCommand: npm init -y; npm install konfig-cli
     env: node
-    repo: https://github.com/konfig-dev/konfig
+    repo: https://github.com/konfig-dev/automation
     startCommand: ./node_modules/.bin/konfig pull -i https://api.humanloop.com/v4/openapi.json -o openapi.json && ./node_modules/.bin/konfig push -o humanloop -r humanloop-sdks -s openapi.json -x v4
   - name: humanloop-polling-v4-alpha
     type: cron
     env: node
     schedule: "*/30 * * * *"
     buildCommand: npm init -y; npm install konfig-cli
-    repo: https://github.com/konfig-dev/konfig
+    repo: https://github.com/konfig-dev/automation
     startCommand: ./node_modules/.bin/konfig pull -i https://neostaging.humanloop.ml/v4/openapi.json -o openapi.json && ./node_modules/.bin/konfig push -o humanloop -r humanloop-sdks -s openapi.json -x v4-alpha
 
   - name: konfigthis.com
@@ -83,6 +83,7 @@ services:
     repo: https://github.com/konfig-dev/konfig
     rootDir: generator/konfig-next-app
     plan: standard
+    autoDeploy: false
     buildFilter:
       paths:
       - generator/konfig-dash/**/*
@@ -112,7 +113,7 @@ services:
   - name: konfig-demo-portal-staging
     type: web
     env: node
-    buildCommand: yarn --ignore-engines; yarn build;
+    buildCommand: ./build-render.sh
     startCommand: yarn start;
     repo: https://github.com/konfig-dev/konfig
     branch: staging

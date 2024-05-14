@@ -10574,6 +10574,538 @@ paths:
                     type: string
                     example: No Result found for Subscriber with id 100
       deprecated: false
+  /contacts/{id}/contactDeals:
+    get:
+      summary: Retrieve a list of contact's deals
+      description: ''
+      operationId: retrieve-contact-deals-list
+      parameters:
+        - name: id
+          in: path
+          description: ID of the contact
+          schema:
+            type: integer
+            format: int32
+          required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                        "contacts": [
+                            {
+                                "cdate": "2021-11-28T00:00:00-06:00",
+                                "email": "john.doe@example.com",
+                                "phone": "555-555-5555",
+                                "firstName": "John",
+                                "lastName": "Doe",
+                                "orgid": "XX",
+                                "orgname": "Opulence Time",
+                                "segmentio_id": "",
+                                "bounced_hard": "0",
+                                "bounced_soft": "0",
+                                "bounced_date": "0000-00-00",
+                                "ip": "0",
+                                "ua": "",
+                                "hash": "43fa9ikvd23cbc59915f89asd234gsda27b33",
+                                "socialdata_lastcheck": "0000-00-00 00:00:00",
+                                "email_local": "",
+                                "email_domain": "",
+                                "sentcnt": "0",
+                                "rating_tstamp": "0000-00-00",
+                                "gravatar": "0",
+                                "deleted": "0",
+                                "anonymized": "0",
+                                "adate": "2021-11-28T00:00:00-06:00",
+                                "udate": "2021-11-28T00:00:00-06:00",
+                                "edate": "2021-12-20T06:23:31-06:00",
+                                "deleted_at": "0000-00-00 00:00:00",
+                                "created_utc_timestamp": "2021-11-28 00:00:00",
+                                "updated_utc_timestamp": "2022-01-25 16:26:37",
+                                "created_timestamp": "2021-11-28 00:00:00",
+                                "updated_timestamp": "2021-12-09 00:00:00",
+                                "created_by": "0",
+                                "updated_by": "0",
+                                "email_empty": false,
+                                "mpp_tracking": "0",
+                                "links": {
+                                    "bounceLogs": "https://:account.api-us1.com/api/3/contacts/1107/bounceLogs",
+                                    "contactAutomations": "https://:account.api-us1.com/api/3/contacts/1107/contactAutomations?limit=1000&orders%5Blastdate%5D=DESC",
+                                    "contactData": "https://:account.api-us1.com/api/3/contacts/1107/contactData",
+                                    "contactGoals": "https://:account.api-us1.com/api/3/contacts/1107/contactGoals",
+                                    "contactLists": "https://:account.api-us1.com/api/3/contacts/1107/contactLists",
+                                    "contactLogs": "https://:account.api-us1.com/api/3/contacts/1107/contactLogs",
+                                    "contactTags": "https://:account.api-us1.com/api/3/contacts/1107/contactTags",
+                                    "contactDeals": "https://:account.api-us1.com/api/3/contacts/1107/contactDeals",
+                                    "deals": "https://:account.api-us1.com/api/3/contacts/1107/deals",
+                                    "fieldValues": "https://:account.api-us1.com/api/3/contacts/1107/fieldValues",
+                                    "geoIps": "https://:account.api-us1.com/api/3/contacts/1107/geoIps",
+                                    "notes": "https://:account.api-us1.com/api/3/contacts/1107/notes",
+                                    "organization": "https://:account.api-us1.com/api/3/contacts/1107/organization",
+                                    "plusAppend": "https://:account.api-us1.com/api/3/contacts/1107/plusAppend",
+                                    "trackingLogs": "https://:account.api-us1.com/api/3/contacts/1107/trackingLogs",
+                                    "scoreValues": "https://:account.api-us1.com/api/3/contacts/1107/scoreValues",
+                                    "accountContacts": "https://:account.api-us1.com/api/3/contacts/1107/accountContacts",
+                                    "automationEntryCounts": "https://:account.api-us1.com/api/3/contacts/1107/automationEntryCounts"
+                                },
+                                "id": "XXXX",
+                                "organization": "XX"
+                            }
+                        ],
+                        "deals": [
+                            {
+                                "hash": "dx60eh125",
+                                "owner": "8",
+                                "contact": "XXXX",
+                                "organization": "31",
+                                "group": "1",
+                                "stage": "1",
+                                "title": "Opulence Time",
+                                "description": "",
+                                "percent": "0",
+                                "cdate": "2022-01-24T00:00:00-06:00",
+                                "mdate": "2022-01-25T00:00:00-06:00",
+                                "nextdate": null,
+                                "nexttaskid": "0",
+                                "value": "7320163",
+                                "currency": "usd",
+                                "winProbability": null,
+                                "winProbabilityMdate": null,
+                                "status": "0",
+                                "activitycount": "24",
+                                "nextdealid": "4218",
+                                "edate": "2022-03-07 00:00:00",
+                                "links": {
+                                    "dealActivities": "https://:account.api-us1.com/api/3/deals/4228/dealActivities",
+                                    "contact": "https://:account.api-us1.com/api/3/deals/4228/contact",
+                                    "contactDeals": "https://:account.api-us1.com/api/3/deals/4228/contactDeals",
+                                    "group": "https://:account.api-us1.com/api/3/deals/4228/group",
+                                    "nextTask": "https://:account.api-us1.com/api/3/deals/4228/nextTask",
+                                    "notes": "https://:account.api-us1.com/api/3/deals/4228/notes",
+                                    "account": "https://:account.api-us1.com/api/3/deals/4228/account",
+                                    "customerAccount": "https://:account.api-us1.com/api/3/deals/4228/customerAccount",
+                                    "organization": "https://:account.api-us1.com/api/3/deals/4228/organization",
+                                    "owner": "https://:account.api-us1.com/api/3/deals/4228/owner",
+                                    "scoreValues": "https://:account.api-us1.com/api/3/deals/4228/scoreValues",
+                                    "stage": "https://:account.api-us1.com/api/3/deals/4228/stage",
+                                    "tasks": "https://:account.api-us1.com/api/3/deals/4228/tasks",
+                                    "dealCustomFieldData": "https://:account.api-us1.com/api/3/deals/4228/dealCustomFieldData"
+                                },
+                                "id": "4228",
+                                "isDisabled": false,
+                                "nextTask": null,
+                                "account": "31",
+                                "customerAccount": "31"
+                            }
+                        ],
+                        "contactDeals": [
+                            {
+                                "deal": "4228",
+                                "contact": "5",
+                                "role": null,
+                                "cdate": "2021-10-22T13:16:27-05:00",
+                                "created_timestamp": "2021-10-22 13:16:27",
+                                "updated_timestamp": "2021-10-22 13:16:27",
+                                "created_by": null,
+                                "updated_by": null,
+                                "links": {
+                                    "deal": "https://:account.api-us1.com/api/3/contactDeals/4248/deal",
+                                    "contact": "https://:account.api-us1.com/api/3/contactDeals/4248/contact",
+                                    "role": "https://:account.api-us1.com/api/3/contactDeals/4248/role"
+                                },
+                                "id": "4248"
+                            }
+                        ]
+                    }
+              schema:
+                type: object
+                properties:
+                  contacts:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        cdate:
+                          type: string
+                          example: '2021-11-28T00:00:00-06:00'
+                        email:
+                          type: string
+                          example: john.doe@example.com
+                        phone:
+                          type: string
+                          example: 555-555-5555
+                        firstName:
+                          type: string
+                          example: John
+                        lastName:
+                          type: string
+                          example: Doe
+                        orgid:
+                          type: string
+                          example: XX
+                        orgname:
+                          type: string
+                          example: Opulence Time
+                        segmentio_id:
+                          type: string
+                          example: ''
+                        bounced_hard:
+                          type: string
+                          example: '0'
+                        bounced_soft:
+                          type: string
+                          example: '0'
+                        bounced_date:
+                          type: string
+                          example: '0000-00-00'
+                        ip:
+                          type: string
+                          example: '0'
+                        ua:
+                          type: string
+                          example: ''
+                        hash:
+                          type: string
+                          example: 43fa9ikvd23cbc59915f89asd234gsda27b33
+                        socialdata_lastcheck:
+                          type: string
+                          example: '0000-00-00 00:00:00'
+                        email_local:
+                          type: string
+                          example: ''
+                        email_domain:
+                          type: string
+                          example: ''
+                        sentcnt:
+                          type: string
+                          example: '0'
+                        rating_tstamp:
+                          type: string
+                          example: '0000-00-00'
+                        gravatar:
+                          type: string
+                          example: '0'
+                        deleted:
+                          type: string
+                          example: '0'
+                        anonymized:
+                          type: string
+                          example: '0'
+                        adate:
+                          type: string
+                          example: '2021-11-28T00:00:00-06:00'
+                        udate:
+                          type: string
+                          example: '2021-11-28T00:00:00-06:00'
+                        edate:
+                          type: string
+                          example: '2021-12-20T06:23:31-06:00'
+                        deleted_at:
+                          type: string
+                          example: '0000-00-00 00:00:00'
+                        created_utc_timestamp:
+                          type: string
+                          example: '2021-11-28 00:00:00'
+                        updated_utc_timestamp:
+                          type: string
+                          example: '2022-01-25 16:26:37'
+                        created_timestamp:
+                          type: string
+                          example: '2021-11-28 00:00:00'
+                        updated_timestamp:
+                          type: string
+                          example: '2021-12-09 00:00:00'
+                        created_by:
+                          type: string
+                          example: '0'
+                        updated_by:
+                          type: string
+                          example: '0'
+                        email_empty:
+                          type: boolean
+                          example: false
+                          default: true
+                        mpp_tracking:
+                          type: string
+                          example: '0'
+                        links:
+                          type: object
+                          properties:
+                            bounceLogs:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/contacts/1107/bounceLogs
+                            contactAutomations:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/contacts/1107/contactAutomations?limit=1000&orders%5Blastdate%5D=DESC
+                            contactData:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/contacts/1107/contactData
+                            contactGoals:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/contacts/1107/contactGoals
+                            contactLists:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/contacts/1107/contactLists
+                            contactLogs:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/contacts/1107/contactLogs
+                            contactTags:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/contacts/1107/contactTags
+                            contactDeals:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/contacts/1107/contactDeals
+                            deals:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/contacts/1107/deals
+                            fieldValues:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/contacts/1107/fieldValues
+                            geoIps:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/contacts/1107/geoIps
+                            notes:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/contacts/1107/notes
+                            organization:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/contacts/1107/organization
+                            plusAppend:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/contacts/1107/plusAppend
+                            trackingLogs:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/contacts/1107/trackingLogs
+                            scoreValues:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/contacts/1107/scoreValues
+                            accountContacts:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/contacts/1107/accountContacts
+                            automationEntryCounts:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/contacts/1107/automationEntryCounts
+                        id:
+                          type: string
+                          example: XXXX
+                        organization:
+                          type: string
+                          example: XX
+                  deals:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        hash:
+                          type: string
+                          example: dx60eh125
+                        owner:
+                          type: string
+                          example: '8'
+                        contact:
+                          type: string
+                          example: XXXX
+                        organization:
+                          type: string
+                          example: '31'
+                        group:
+                          type: string
+                          example: '1'
+                        stage:
+                          type: string
+                          example: '1'
+                        title:
+                          type: string
+                          example: Opulence Time
+                        description:
+                          type: string
+                          example: ''
+                        percent:
+                          type: string
+                          example: '0'
+                        cdate:
+                          type: string
+                          example: '2022-01-24T00:00:00-06:00'
+                        mdate:
+                          type: string
+                          example: '2022-01-25T00:00:00-06:00'
+                        nextdate: {}
+                        nexttaskid:
+                          type: string
+                          example: '0'
+                        value:
+                          type: string
+                          example: '7320163'
+                        currency:
+                          type: string
+                          example: usd
+                        winProbability: {}
+                        winProbabilityMdate: {}
+                        status:
+                          type: string
+                          example: '0'
+                        activitycount:
+                          type: string
+                          example: '24'
+                        nextdealid:
+                          type: string
+                          example: '4218'
+                        edate:
+                          type: string
+                          example: '2022-03-07 00:00:00'
+                        links:
+                          type: object
+                          properties:
+                            dealActivities:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/deals/4228/dealActivities
+                            contact:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/deals/4228/contact
+                            contactDeals:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/deals/4228/contactDeals
+                            group:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/deals/4228/group
+                            nextTask:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/deals/4228/nextTask
+                            notes:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/deals/4228/notes
+                            account:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/deals/4228/account
+                            customerAccount:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/deals/4228/customerAccount
+                            organization:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/deals/4228/organization
+                            owner:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/deals/4228/owner
+                            scoreValues:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/deals/4228/scoreValues
+                            stage:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/deals/4228/stage
+                            tasks:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/deals/4228/tasks
+                            dealCustomFieldData:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/deals/4228/dealCustomFieldData
+                        id:
+                          type: string
+                          example: '4228'
+                        isDisabled:
+                          type: boolean
+                          example: false
+                          default: true
+                        nextTask: {}
+                        account:
+                          type: string
+                          example: '31'
+                        customerAccount:
+                          type: string
+                          example: '31'
+                  contactDeals:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        deal:
+                          type: string
+                          example: '4228'
+                        contact:
+                          type: string
+                          example: '5'
+                        role: {}
+                        cdate:
+                          type: string
+                          example: '2021-10-22T13:16:27-05:00'
+                        created_timestamp:
+                          type: string
+                          example: '2021-10-22 13:16:27'
+                        updated_timestamp:
+                          type: string
+                          example: '2021-10-22 13:16:27'
+                        created_by: {}
+                        updated_by: {}
+                        links:
+                          type: object
+                          properties:
+                            deal:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/contactDeals/4248/deal
+                            contact:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/contactDeals/4248/contact
+                            role:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/contactDeals/4248/role
+                        id:
+                          type: string
+                          example: '4248'
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                        "message": "No Result found for Subscriber with id 100"
+                    }
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: No Result found for Subscriber with id 100
+      deprecated: false
   /contacts/{id}/deals:
     get:
       summary: Retrieve a contact's deals
@@ -24239,6 +24771,46 @@ paths:
                               type: string
                               example: /data/attributes/contact
       deprecated: false
+    delete:
+      summary: Delete a secondary contact
+      description: Delete an existing secondary contact
+      operationId: delete-a-secondary-contact
+      parameters:
+        - name: id
+          in: path
+          description: Secondary Contact's id
+          schema:
+            type: integer
+            format: int32
+          required: true
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{ }'
+              schema:
+                type: object
+                properties: {}
+        '404':
+          description: '404'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                        "message": "No Result found for SubscriberDeal with id 100"
+                    }
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: No Result found for SubscriberDeal with id 100
+      deprecated: false
   /dealRoles:
     get:
       summary: List all deal roles
@@ -33584,7 +34156,7 @@ paths:
   /taskNotifications:
     post:
       summary: Create a task reminder
-      description: Create a new task outcome
+      description: Create a new task reminder
       operationId: create-a-task-reminder
       requestBody:
         content:
@@ -33597,11 +34169,11 @@ paths:
               properties:
                 dealTask:
                   type: string
-                  description: Id of task
+                  description: ID of task
                 interval:
                   type: integer
                   description: >-
-                    Amount of time/minutes that a reminder will be sent to a
+                    Amount of time in minutes that a reminder will be sent to a
                     task assignee ahead of task's due date.
                   format: int32
             examples:
@@ -33617,159 +34189,14 @@ paths:
             application/json:
               examples:
                 Result:
-                  value: |-
-                    {
-                      "taskNotification": {
-                        "title": "Interested",
-                        "sentiment": "POSITIVE",
-                        "created_by": "1",
-                        "disabled": "",
-                        "links": {
-                          "tasktypeOutcomeRels": "https://youraccountname.api-us1.com/api/3/taskOutcomes/1/tasktypeOutcomeRels",
-                          "dealTasks": "https://youraccountname.api-us1.com/api/3/taskOutcomes/1/dealTasks"
-                        },
-                        "id": "1"
-                      }
-                    }
-              schema:
-                type: object
-                properties:
-                  taskNotification:
-                    type: object
-                    properties:
-                      title:
-                        type: string
-                        example: Interested
-                      sentiment:
-                        type: string
-                        example: POSITIVE
-                      created_by:
-                        type: string
-                        example: '1'
-                      disabled:
-                        type: string
-                        example: ''
-                      links:
-                        type: object
-                        properties:
-                          tasktypeOutcomeRels:
-                            type: string
-                            example: >-
-                              https://youraccountname.api-us1.com/api/3/taskOutcomes/1/tasktypeOutcomeRels
-                          dealTasks:
-                            type: string
-                            example: >-
-                              https://youraccountname.api-us1.com/api/3/taskOutcomes/1/dealTasks
-                      id:
-                        type: string
-                        example: '1'
+                  value: ''
         '422':
           description: '422'
           content:
             application/json:
               examples:
                 Result:
-                  value: |-
-                    {
-                        "errors": [
-                            {
-                                "title": "The taskOutcome title was not provided.",
-                                "detail": "",
-                                "code": "field_missing",
-                                "error": "taskOutcome_title_was_not_provided",
-                                "source": {
-                                    "pointer": "/data/attributes/title"
-                                }
-                            },
-                            {
-                                "title": "Sentiment value must be one of Positive, Neutral, or Negative.",
-                                "detail": "",
-                                "code": "field_invalid",
-                                "error": "",
-                                "source": {
-                                    "pointer": "/data/attributes/sentiment"
-                                }
-                            }
-                        ]
-                    }
-              schema:
-                type: object
-                properties:
-                  errors:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        title:
-                          type: string
-                          example: The taskOutcome title was not provided.
-                        detail:
-                          type: string
-                          example: ''
-                        code:
-                          type: string
-                          example: field_missing
-                        error:
-                          type: string
-                          example: taskOutcome_title_was_not_provided
-                        source:
-                          type: object
-                          properties:
-                            pointer:
-                              type: string
-                              example: /data/attributes/title
-            text/plain:
-              examples:
-                Result:
-                  value: |-
-                    {
-                        "errors": [
-                            {
-                                "title": "A task outcome with the same title already exists.",
-                                "detail": "",
-                                "code": "field_invalid",
-                                "error": "",
-                                "source": {
-                                    "pointer": "/data/attributes/title"
-                                }
-                            },
-                            {
-                                "title": "Sentiment value must be one of Positive, Neutral, or Negative.",
-                                "detail": "",
-                                "code": "field_invalid",
-                                "error": "",
-                                "source": {
-                                    "pointer": "/data/attributes/sentiment"
-                                }
-                            }
-                        ]
-                    }
-              schema:
-                type: object
-                properties:
-                  errors:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        title:
-                          type: string
-                          example: A task outcome with the same title already exists.
-                        detail:
-                          type: string
-                          example: ''
-                        code:
-                          type: string
-                          example: field_invalid
-                        error:
-                          type: string
-                          example: ''
-                        source:
-                          type: object
-                          properties:
-                            pointer:
-                              type: string
-                              example: /data/attributes/title
+                  value: ''
       deprecated: false
   /templates/{id}:
     get:
@@ -34020,6 +34447,123 @@ paths:
                       id:
                         type: string
                         example: '3'
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+    get:
+      summary: List all users
+      description: List all existing users
+      operationId: list-all-users
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: |-
+                    {
+                      "users": [
+                        {
+                          "username": "admin",
+                          "firstName": "John",
+                          "lastName": "Doe",
+                          "email": "johndoe@activecampaign.com",
+                          "phone": "",
+                          "signature": null,
+                          "links": {
+                            "lists": "https://:account.api-us1.com/api/3/users/1/lists",
+                            "userGroup": "https://:account.api-us1.com/api/3/users/1/userGroup",
+                            "dealGroupTotals": "https://:account.api-us1.com/api/3/users/1/dealGroupTotals",
+                            "dealGroupUsers": "https://:account.api-us1.com/api/3/users/1/dealGroupUsers",
+                            "configs": "https://:account.api-us1.com/api/3/users/1/configs"
+                          },
+                          "id": "1"
+                        },
+                        {
+                          "username": "janedoe",
+                          "firstName": "Jane",
+                          "lastName": "Doe",
+                          "email": "janedoe@activecampaign.com",
+                          "phone": "",
+                          "signature": null,
+                          "links": {
+                            "lists": "https://:account.api-us1.com/api/3/users/5/lists",
+                            "userGroup": "https://:account.api-us1.com/api/3/users/5/userGroup",
+                            "dealGroupTotals": "https://:account.api-us1.com/api/3/users/5/dealGroupTotals",
+                            "dealGroupUsers": "https://:account.api-us1.com/api/3/users/5/dealGroupUsers",
+                            "configs": "https://:account.api-us1.com/api/3/users/5/configs"
+                          },
+                          "id": "5"
+                        }
+                      ],
+                      "meta": {
+                        "total": "2"
+                      }
+                    }
+              schema:
+                type: object
+                properties:
+                  users:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        username:
+                          type: string
+                          example: admin
+                        firstName:
+                          type: string
+                          example: John
+                        lastName:
+                          type: string
+                          example: Doe
+                        email:
+                          type: string
+                          example: johndoe@activecampaign.com
+                        phone:
+                          type: string
+                          example: ''
+                        signature: {}
+                        links:
+                          type: object
+                          properties:
+                            lists:
+                              type: string
+                              example: https://:account.api-us1.com/api/3/users/1/lists
+                            userGroup:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/users/1/userGroup
+                            dealGroupTotals:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/users/1/dealGroupTotals
+                            dealGroupUsers:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/users/1/dealGroupUsers
+                            configs:
+                              type: string
+                              example: >-
+                                https://:account.api-us1.com/api/3/users/1/configs
+                        id:
+                          type: string
+                          example: '1'
+                  meta:
+                    type: object
+                    properties:
+                      total:
+                        type: string
+                        example: '2'
         '400':
           description: '400'
           content:
@@ -37173,6 +37717,5 @@ x-readme:
   headers: []
   explorer-enabled: false
   proxy-enabled: false
-  samples-enabled: true
 x-readme-fauxas: true
 _id: 58b53c301065f9c438aa1f77:588b6dfd33b1b337002e63ce

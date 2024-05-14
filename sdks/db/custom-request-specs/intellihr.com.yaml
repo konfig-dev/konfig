@@ -26620,6 +26620,7 @@ components:
                     This workflow contains a series of checklists and employee
                     feedback tasks
             formInstanceSchedule:
+              deprecated: true
               type: array
               title: Scheduled Form Array
               description: An array providing information on scheduled Form instances.
@@ -26639,6 +26640,29 @@ components:
                     example: '2015-03-01T22:30:00+00:00'
                     description: >-
                       The date this Form instance is scheduled to be sent. This
+                      date will follow the format defined by
+                      [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.6).
+                    type: string
+            scheduledForms:
+              type: array
+              title: Scheduled Form Array
+              description: An array providing information on Scheduled Forms
+              items:
+                type: object
+                title: Scheduled Forms
+                properties:
+                  id:
+                    title: UUIDv4
+                    maxLength: 36
+                    minLength: 36
+                    example: 8a5f3ea6-ea6b-4425-8a87-3c256bb7b6f9
+                    description: The identifier string for the Scheduled Form.
+                    type: string
+                  issueDate:
+                    title: RFC3339 datetime
+                    example: '2015-03-01T22:30:00+00:00'
+                    description: >-
+                      The date this Scheduled Form is scheduled to be sent. This
                       date will follow the format defined by
                       [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.6).
                     type: string

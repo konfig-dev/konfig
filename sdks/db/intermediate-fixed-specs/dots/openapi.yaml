@@ -1182,8 +1182,6 @@ paths:
                     - ach
                     - bank_transfer
                     - cash_app
-                    - payoneer
-                    - airtm
                     - default
                   description: Platform that you are paying out the `user` through,
                 account_id:
@@ -1775,8 +1773,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/payment-intent'
-      x-stoplight:
-        id: cui3559ytwoaa
       description: Confirm a payment intent that has not been confirmed yet.
       requestBody:
         content:
@@ -1786,8 +1782,6 @@ paths:
               properties:
                 payment_method_id:
                   type: string
-                  x-stoplight:
-                    id: zi4bm7qnkmn6i
                   description: ID of the payment method to confirm the intent with.
               required:
                 - payment_method_id
@@ -2279,8 +2273,6 @@ paths:
               properties:
                 name:
                   type: string
-                  x-stoplight:
-                    id: yxeyh7kr44vob
                   description: The name of the application.
                   minLength: 3
                   maxLength: 60
@@ -2288,8 +2280,6 @@ paths:
                   type:
                     - object
                     - string
-                  x-stoplight:
-                    id: zv0zi3c333dvg
                   description: >-
                     Set of key-value pairs that you can attach to an object.
                     This can be useful for storing additional information about
@@ -2390,16 +2380,10 @@ paths:
                 properties:
                   mask:
                     type: string
-                    x-stoplight:
-                      id: 1m2ie10baxulo
                     description: The last four digits of the bank account number.
                   name:
                     type: string
-                    x-stoplight:
-                      id: lkkkghd75ookg
                     description: The name of the bank account.
-      x-stoplight:
-        id: 2oxyh99r8zbio
       tags:
         - apps
       description: Get the App's ach account information.
@@ -2416,16 +2400,10 @@ paths:
                 properties:
                   mask:
                     type: string
-                    x-stoplight:
-                      id: rt2gwtq9a5lem
                     description: The last four digits of the bank account number.
                   name:
                     type: string
-                    x-stoplight:
-                      id: cf8wn1nuin80v
                     description: The name of the bank account.
-      x-stoplight:
-        id: s91dfrmyrzo6s
       description: >-
         Add an ACH account to an app. The account's owner must match the
         compliance information submitted.
@@ -2437,19 +2415,13 @@ paths:
               properties:
                 account_number:
                   type: string
-                  x-stoplight:
-                    id: il8jsqrfkjtw8
                   pattern: '[0-9]{7,20}'
                   description: The bank account number.
                 routing_number:
                   type: string
-                  x-stoplight:
-                    id: pshq2c7pk7p6w
                   pattern: '[0-9]{9}'
                   description: The bank's ABA routing number.
                 account_type:
-                  x-stoplight:
-                    id: ngkifj36w2fn2
                   enum:
                     - checking
                     - savings
@@ -2478,8 +2450,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/transfer'
-      x-stoplight:
-        id: su69v6je8ftwp
       tags:
         - apps
       description: Deposit funds into App wallet by endpoint.
@@ -2491,13 +2461,9 @@ paths:
               properties:
                 amount:
                   type: integer
-                  x-stoplight:
-                    id: x8ifasn0a26bk
                   description: The amount to deposit in cents.
                 idempotency_key:
                   type: string
-                  x-stoplight:
-                    id: x3s7qvqawo1qb
                   format: uuid
                   description: Idempotency key in UUID format.
               required:
@@ -2553,20 +2519,12 @@ paths:
                 properties:
                   data:
                     type: array
-                    x-stoplight:
-                      id: 94rcge4a2wqdo
                     description: List of payment methods.
                     items:
                       $ref: '#/components/schemas/payment-method'
-                      x-stoplight:
-                        id: j086q459o72zm
                   has_more:
                     type: boolean
-                    x-stoplight:
-                      id: rwtvo5wcuw1tv
       operationId: get-payment-methods
-      x-stoplight:
-        id: 8nz38kl6i46x0
       requestBody:
         content: {}
       description: Get the payment methods for a payment customer
@@ -2602,8 +2560,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/payment-method'
       operationId: get-payment-method
-      x-stoplight:
-        id: hfkiotu86njxm
       description: Get a payment method by its ID.
       requestBody:
         content: {}
@@ -2625,8 +2581,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/payment-method'
-      x-stoplight:
-        id: m5sk0vytfig41
       tags:
         - payment-methods
       requestBody:
@@ -2637,8 +2591,6 @@ paths:
               properties:
                 customer_id:
                   type: string
-                  x-stoplight:
-                    id: 4uj7v7zpfc96f
                   description: ID of the payment customer
               required:
                 - customer_id
@@ -2661,8 +2613,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/payment-method'
-      x-stoplight:
-        id: 52v2h32hk0vyd
       tags:
         - payment-methods
       description: Detach a payment method from a payment customer
@@ -2675,8 +2625,6 @@ paths:
               properties:
                 customer_id:
                   type: string
-                  x-stoplight:
-                    id: udd5vmbp33cwe
                   description: >-
                     ID of the payment customer to detach the payment method
                     from.
@@ -2694,20 +2642,12 @@ paths:
                 type: object
                 properties:
                   has_more:
-                    x-stoplight:
-                      id: y725pkv20qk98
                     type: boolean
                   data:
                     type: array
-                    x-stoplight:
-                      id: 5sfqy95seqf2u
                     items:
                       $ref: '#/components/schemas/dispute'
-                      x-stoplight:
-                        id: c7b9po5utwheb
       operationId: list-disputes
-      x-stoplight:
-        id: xcdsqvbvhy6mz
       parameters:
         - schema:
             type: string
@@ -2755,8 +2695,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/dispute'
       operationId: get-dispute
-      x-stoplight:
-        id: 4geqmcz7edxrq
       description: Retreieve a dispute by its ID
   /v2/disputes/{dispute_id}/evidence:
     parameters:
@@ -2773,8 +2711,6 @@ paths:
         '201':
           description: Created
           content: {}
-      x-stoplight:
-        id: dkjf9e1kvu9r7
       tags:
         - disputes
       description: Add an evidence file to the dispute
@@ -2785,8 +2721,6 @@ paths:
               type: object
               properties:
                 type:
-                  x-stoplight:
-                    id: duy0d05akb9c2
                   enum:
                     - customer_communications
                     - refund_policy
@@ -2799,8 +2733,6 @@ paths:
                     - uncategorized
                 content:
                   type: string
-                  x-stoplight:
-                    id: eluu5effho7x5
         description: ''
   /v2/disputes/{dispute_id}/submit:
     parameters:
@@ -2816,8 +2748,6 @@ paths:
       responses:
         '200':
           description: OK
-      x-stoplight:
-        id: 5j1hrb4qfvdx6
       tags:
         - disputes
       description: Submit a dispute
@@ -2829,8 +2759,6 @@ paths:
               properties:
                 description:
                   type: string
-                  x-stoplight:
-                    id: u40t07qa6e0hb
               required:
                 - description
   /v2/refunds:
@@ -2847,20 +2775,12 @@ paths:
                 type: object
                 properties:
                   has_more:
-                    x-stoplight:
-                      id: w0z8u5slzutnp
                     type: boolean
                   data:
                     type: array
-                    x-stoplight:
-                      id: uangvijaw6vgu
                     items:
                       $ref: '#/components/schemas/refund'
-                      x-stoplight:
-                        id: 2r2dty7ckymvd
       operationId: list-refunds
-      x-stoplight:
-        id: uhiklv82eudst
       parameters:
         - schema:
             type: string
@@ -2953,8 +2873,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/refund'
       operationId: get-refund
-      x-stoplight:
-        id: psj0f257s405v
       description: Retreieve a refund by its ID
   /v2/organization-transfers:
     get:
@@ -3037,14 +2955,10 @@ paths:
                     money from the `app` to the `user`.
                 api_app_id:
                   type: string
-                  x-stoplight:
-                    id: g8a7zc7z7uoxl
                   format: uuid
                   description: API App ID to transact with.
                 idempotency_key:
                   type: string
-                  x-stoplight:
-                    id: 212khhchum63l
                   format: uuid
                 metadata:
                   type:
@@ -3093,6 +3007,51 @@ paths:
                 description: The `transfer` object.
       operationId: get-organization-transfer
       description: Get a transfer by its id.
+  /v2/users/{user_id}/addresses:
+    parameters:
+      - schema:
+          type: string
+        name: user_id
+        in: path
+        required: true
+        description: The ID of the user
+    put:
+      summary: Add User Address
+      descriptions: Add an address to the user
+      tags:
+        - users
+      responses:
+        '200':
+          description: OK
+      operationId: add-user-address
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - postcode
+                - city
+                - state
+                - country
+                - line_1
+              properties:
+                postcode:
+                  type: string
+                city:
+                  type: string
+                state:
+                  type: string
+                  description: 2 letter state code for US states
+                country:
+                  type: string
+                  description: 2 letter country code
+                line_1:
+                  type: string
+                line_2:
+                  type: string
+                line_3:
+                  type: string
 components:
   schemas:
     flow:
@@ -3397,8 +3356,6 @@ components:
                 - intl_bank
                 - intl_transfer
                 - bank_transfer
-                - payoneer
-                - airtm
         transactions:
           type: array
           items:
@@ -3885,23 +3842,15 @@ components:
                 - We provide a platform for influencers to get paid for posting.
     dispute:
       title: dispute
-      x-stoplight:
-        id: jcb2z9r96n1zi
       type: object
       properties:
         id:
           type: string
-          x-stoplight:
-            id: 7qvkx4zjierd7
           format: uuid
         payment_intent_id:
           type: string
-          x-stoplight:
-            id: fcyb62tz9e6c9
           format: uuid
         status:
-          x-stoplight:
-            id: 8kb60u39sbolh
           enum:
             - needs_response
             - under_review
@@ -3913,21 +3862,13 @@ components:
             - lost
         evidence:
           type: array
-          x-stoplight:
-            id: fha0n910f7m91
           items:
             $ref: '#/components/schemas/dispute-file'
-            x-stoplight:
-              id: n4kqrtq0rm5wm
     dispute-file:
       title: dispute-file
-      x-stoplight:
-        id: b6apls98z9e1l
       type: object
       properties:
         type:
-          x-stoplight:
-            id: 58jv6ehzztbxk
           enum:
             - customer_communications
             - refund_policy
@@ -3940,8 +3881,6 @@ components:
             - uncategorized
         url:
           type: string
-          x-stoplight:
-            id: 616hb78dc3vyn
           format: uri
     refund:
       title: refund

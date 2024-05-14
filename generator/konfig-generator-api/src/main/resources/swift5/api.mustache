@@ -162,7 +162,7 @@ extension {{projectName}}API {
 {{> api_request_builder_setup_parameters}}
         do {
             {{#authMethods}}
-            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "{{apiKeyIn}}", name: "{{keyParamName}}", value: {{projectName}}API.{{nameInPascalCase}})
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "{{apiKeyIn}}", name: "{{keyParamName}}", value: {{projectName}}API.{{nameInPascalCase}}, prefix: {{#vendorExtensions.x-konfig-prefix}}"{{.}}"{{/vendorExtensions.x-konfig-prefix}}{{^vendorExtensions.x-konfig-prefix}}nil{{/vendorExtensions.x-konfig-prefix}})
             {{/authMethods}}
 {{> api_request_builder_init}}
         } catch {
@@ -178,7 +178,7 @@ extension {{projectName}}API {
 {{> api_request_builder_setup_parameters}}
         do {
             {{#authMethods}}
-            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "{{apiKeyIn}}", name: "{{keyParamName}}", value: self.client.{{nameInPascalCase}})
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "{{apiKeyIn}}", name: "{{keyParamName}}", value: self.client.{{nameInPascalCase}}, prefix: {{#vendorExtensions.x-konfig-prefix}}"{{.}}"{{/vendorExtensions.x-konfig-prefix}}{{^vendorExtensions.x-konfig-prefix}}nil{{/vendorExtensions.x-konfig-prefix}})
             {{/authMethods}}
 {{> api_request_builder_init}}
         } catch {

@@ -21,7 +21,7 @@ As the global leader in people analytics, Visier has over 25,000 customers in 75
       companyKebabCase="visier"
       clientNameCamelCase="visierDataHandling"
       homepage="visier.com"
-      lastUpdated={new Date("2024-03-27T01:23:25.425Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/visier/data-handling/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -152,6 +152,46 @@ As the global leader in people analytics, Visier has over 25,000 customers in 75
         "name": "connectors",
         "schema": "array",
         "description": ""
+      }
+    ],
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      },
+      {
+        "statusCode": "default",
+        "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+      }
+    ]
+  },
+  {
+    "url": "/v1/op/data-versions",
+    "method": "latestEnabledDv",
+    "httpMethod": HttpMethodsEnum.GET,
+    "tag": "DataAndJobHandling",
+    "typeScriptTag": "dataAndJobHandling",
+    "description": "Retrieve the latest enabled data versions for all analytic tenants",
+    "parameters": [
+      {
+        "name": "tenantCode",
+        "schema": "string",
+        "description": "The tenant code of a specific analytic tenant that you want to retrieve data versions for.\n Use this if you are only interested in the results for one analytic tenant."
+      },
+      {
+        "name": "limit",
+        "schema": "integer",
+        "description": "The limit of analytic tenants to retrieve data versions for.\n This parameter is not used if the tenantCode parameter is specified."
+      },
+      {
+        "name": "start",
+        "schema": "integer",
+        "description": "The index to start retrieving results from, also known as offset. The index begins at 0."
+      },
+      {
+        "name": "numberOfVersions",
+        "schema": "integer",
+        "description": "The number of latest enabled data versions to retrieve. The maximum value is 5."
       }
     ],
     "responses": [
@@ -581,6 +621,46 @@ As the global leader in people analytics, Visier has over 25,000 customers in 75
     ]
   },
   {
+    "url": "/v1/op/jobs/processing-jobs/:receivingJobId",
+    "method": "processingJobStatus",
+    "httpMethod": HttpMethodsEnum.GET,
+    "tag": "DataAndJobHandling",
+    "typeScriptTag": "dataAndJobHandling",
+    "description": "Retrieve processing job statuses by receiving job ID",
+    "parameters": [
+      {
+        "name": "tenantCode",
+        "schema": "string",
+        "description": "The tenant code of the tenant you want to retrieve the processing jobs for.\n Use this if you are only interested in the results for one analytic tenant."
+      },
+      {
+        "name": "limit",
+        "schema": "integer",
+        "description": "The limit of processing jobs to retrieve per page."
+      },
+      {
+        "name": "start",
+        "schema": "integer",
+        "description": "The index to start retrieving results from, also known as offset. The index begins at 0."
+      },
+      {
+        "name": "receivingJobId",
+        "schema": "string",
+        "description": "The receiving job ID"
+      }
+    ],
+    "responses": [
+      {
+        "statusCode": "200",
+        "description": ""
+      },
+      {
+        "statusCode": "default",
+        "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
+      }
+    ]
+  },
+  {
     "url": "/v1/op/jobs/receiving-jobs/:receivingJobId",
     "method": "receivingJobStatus",
     "httpMethod": HttpMethodsEnum.GET,
@@ -612,86 +692,6 @@ As the global leader in people analytics, Visier has over 25,000 customers in 75
         "name": "receivingJobId",
         "schema": "string",
         "description": "The jobId provided after sending data to Visier."
-      }
-    ],
-    "responses": [
-      {
-        "statusCode": "200",
-        "description": ""
-      },
-      {
-        "statusCode": "default",
-        "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
-      }
-    ]
-  },
-  {
-    "url": "v1/op/data-versions",
-    "method": "latestEnabledDv",
-    "httpMethod": HttpMethodsEnum.GET,
-    "tag": "DataAndJobHandling",
-    "typeScriptTag": "dataAndJobHandling",
-    "description": "Retrieve the latest enabled data versions for all analytic tenants",
-    "parameters": [
-      {
-        "name": "tenantCode",
-        "schema": "string",
-        "description": "The tenant code of a specific analytic tenant that you want to retrieve data versions for.\n Use this if you are only interested in the results for one analytic tenant."
-      },
-      {
-        "name": "limit",
-        "schema": "integer",
-        "description": "The limit of analytic tenants to retrieve data versions for.\n This parameter is not used if the tenantCode parameter is specified."
-      },
-      {
-        "name": "start",
-        "schema": "integer",
-        "description": "The index to start retrieving results from, also known as offset. The index begins at 0."
-      },
-      {
-        "name": "numberOfVersions",
-        "schema": "integer",
-        "description": "The number of latest enabled data versions to retrieve. The maximum value is 5."
-      }
-    ],
-    "responses": [
-      {
-        "statusCode": "200",
-        "description": ""
-      },
-      {
-        "statusCode": "default",
-        "description": "The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors)."
-      }
-    ]
-  },
-  {
-    "url": "v1/op/jobs/processing-jobs/:receivingJobId",
-    "method": "processingJobStatus",
-    "httpMethod": HttpMethodsEnum.GET,
-    "tag": "DataAndJobHandling",
-    "typeScriptTag": "dataAndJobHandling",
-    "description": "Retrieve processing job statuses by receiving job ID",
-    "parameters": [
-      {
-        "name": "tenantCode",
-        "schema": "string",
-        "description": "The tenant code of the tenant you want to retrieve the processing jobs for.\n Use this if you are only interested in the results for one analytic tenant."
-      },
-      {
-        "name": "limit",
-        "schema": "integer",
-        "description": "The limit of processing jobs to retrieve per page."
-      },
-      {
-        "name": "start",
-        "schema": "integer",
-        "description": "The index to start retrieving results from, also known as offset. The index begins at 0."
-      },
-      {
-        "name": "receivingJobId",
-        "schema": "string",
-        "description": "The receiving job ID"
       }
     ],
     "responses": [
@@ -740,7 +740,7 @@ As the global leader in people analytics, Visier has over 25,000 customers in 75
       language="TypeScript"
       apiTitle="Visier Data and Job Handling APIs"
       apiBaseUrl="https://{vanity-name}.api.visier.io"
-      apiVersion="22222222.99201.1227"
+      apiVersion="22222222.99201.1256"
       endpoints={20}
       sdkMethods={21}
       schemas={98}

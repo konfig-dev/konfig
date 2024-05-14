@@ -18,7 +18,7 @@ export default function HubSpotCrmTypeScriptSdk() {
       companyKebabCase="hub-spot"
       clientNameCamelCase="hubSpotCrm"
       homepage="hubspot.com"
-      lastUpdated={new Date("2024-03-27T19:52:45.958Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/hubspot/crm/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -124,13 +124,13 @@ export default function HubSpotCrmTypeScriptSdk() {
         "name": "properties",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored."
+        "description": "A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(https://developers.hubspot.com/docs/api/overview, they will be ignored."
       },
       {
         "name": "propertiesWithHistory",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored."
+        "description": "A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(https://developers.hubspot.com/docs/api/overview, they will be ignored."
       },
       {
         "name": "associations",
@@ -389,13 +389,13 @@ export default function HubSpotCrmTypeScriptSdk() {
         "name": "properties",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored."
+        "description": "A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(https://developers.hubspot.com/docs/api/overview, they will be ignored."
       },
       {
         "name": "propertiesWithHistory",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request."
+        "description": "A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(https://developers.hubspot.com/docs/api/overview, they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request."
       },
       {
         "name": "associations",
@@ -449,7 +449,7 @@ export default function HubSpotCrmTypeScriptSdk() {
           "hs_cost_of_goods_sold": "600.00",
           "hs_recurring_billing_period": "P24M",
           "city": "Cambridge",
-          "phone": "(877) 929-0687",
+          "phone": "(https://developers.hubspot.com/docs/api/overview 929-0687",
           "state": "Massachusetts",
           "domain": "biglytics.net",
           "industry": "Technology",
@@ -1328,13 +1328,13 @@ export default function HubSpotCrmTypeScriptSdk() {
         "name": "properties",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored."
+        "description": "A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(https://developers.hubspot.com/docs/api/overview, they will be ignored."
       },
       {
         "name": "propertiesWithHistory",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored."
+        "description": "A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(https://developers.hubspot.com/docs/api/overview, they will be ignored."
       },
       {
         "name": "associations",
@@ -1593,13 +1593,13 @@ export default function HubSpotCrmTypeScriptSdk() {
         "name": "properties",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored."
+        "description": "A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(https://developers.hubspot.com/docs/api/overview, they will be ignored."
       },
       {
         "name": "propertiesWithHistory",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request."
+        "description": "A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(https://developers.hubspot.com/docs/api/overview, they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request."
       },
       {
         "name": "associations",
@@ -1653,7 +1653,7 @@ export default function HubSpotCrmTypeScriptSdk() {
           "hs_cost_of_goods_sold": "600.00",
           "hs_recurring_billing_period": "P24M",
           "city": "Cambridge",
-          "phone": "(877) 929-0687",
+          "phone": "(https://developers.hubspot.com/docs/api/overview 929-0687",
           "state": "Massachusetts",
           "domain": "biglytics.net",
           "industry": "Technology",
@@ -2113,13 +2113,13 @@ export default function HubSpotCrmTypeScriptSdk() {
         "name": "properties",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored."
+        "description": "A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(https://developers.hubspot.com/docs/api/overview, they will be ignored."
       },
       {
         "name": "propertiesWithHistory",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored."
+        "description": "A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(https://developers.hubspot.com/docs/api/overview, they will be ignored."
       },
       {
         "name": "associations",
@@ -2378,13 +2378,13 @@ export default function HubSpotCrmTypeScriptSdk() {
         "name": "properties",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored."
+        "description": "A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(https://developers.hubspot.com/docs/api/overview, they will be ignored."
       },
       {
         "name": "propertiesWithHistory",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request."
+        "description": "A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(https://developers.hubspot.com/docs/api/overview, they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request."
       },
       {
         "name": "associations",
@@ -2438,7 +2438,7 @@ export default function HubSpotCrmTypeScriptSdk() {
           "hs_cost_of_goods_sold": "600.00",
           "hs_recurring_billing_period": "P24M",
           "city": "Cambridge",
-          "phone": "(877) 929-0687",
+          "phone": "(https://developers.hubspot.com/docs/api/overview 929-0687",
           "state": "Massachusetts",
           "domain": "biglytics.net",
           "industry": "Technology",
@@ -2629,13 +2629,13 @@ export default function HubSpotCrmTypeScriptSdk() {
         "name": "properties",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored."
+        "description": "A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(https://developers.hubspot.com/docs/api/overview, they will be ignored."
       },
       {
         "name": "propertiesWithHistory",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored."
+        "description": "A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(https://developers.hubspot.com/docs/api/overview, they will be ignored."
       },
       {
         "name": "associations",
@@ -2894,13 +2894,13 @@ export default function HubSpotCrmTypeScriptSdk() {
         "name": "properties",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored."
+        "description": "A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(https://developers.hubspot.com/docs/api/overview, they will be ignored."
       },
       {
         "name": "propertiesWithHistory",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request."
+        "description": "A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(https://developers.hubspot.com/docs/api/overview, they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request."
       },
       {
         "name": "associations",
@@ -2954,7 +2954,7 @@ export default function HubSpotCrmTypeScriptSdk() {
           "hs_cost_of_goods_sold": "600.00",
           "hs_recurring_billing_period": "P24M",
           "city": "Cambridge",
-          "phone": "(877) 929-0687",
+          "phone": "(https://developers.hubspot.com/docs/api/overview 929-0687",
           "state": "Massachusetts",
           "domain": "biglytics.net",
           "industry": "Technology",
@@ -5087,13 +5087,13 @@ export default function HubSpotCrmTypeScriptSdk() {
         "name": "properties",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored."
+        "description": "A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(https://developers.hubspot.com/docs/api/overview, they will be ignored."
       },
       {
         "name": "propertiesWithHistory",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored."
+        "description": "A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(https://developers.hubspot.com/docs/api/overview, they will be ignored."
       },
       {
         "name": "associations",
@@ -5340,13 +5340,13 @@ export default function HubSpotCrmTypeScriptSdk() {
         "name": "properties",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored."
+        "description": "A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(https://developers.hubspot.com/docs/api/overview, they will be ignored."
       },
       {
         "name": "propertiesWithHistory",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request."
+        "description": "A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(https://developers.hubspot.com/docs/api/overview, they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request."
       },
       {
         "name": "associations",
@@ -5400,7 +5400,7 @@ export default function HubSpotCrmTypeScriptSdk() {
           "hs_cost_of_goods_sold": "600.00",
           "hs_recurring_billing_period": "P24M",
           "city": "Cambridge",
-          "phone": "(877) 929-0687",
+          "phone": "(https://developers.hubspot.com/docs/api/overview 929-0687",
           "state": "Massachusetts",
           "domain": "biglytics.net",
           "industry": "Technology",
@@ -5591,13 +5591,13 @@ export default function HubSpotCrmTypeScriptSdk() {
         "name": "properties",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored."
+        "description": "A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(https://developers.hubspot.com/docs/api/overview, they will be ignored."
       },
       {
         "name": "propertiesWithHistory",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored."
+        "description": "A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(https://developers.hubspot.com/docs/api/overview, they will be ignored."
       },
       {
         "name": "associations",
@@ -5856,13 +5856,13 @@ export default function HubSpotCrmTypeScriptSdk() {
         "name": "properties",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored."
+        "description": "A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(https://developers.hubspot.com/docs/api/overview, they will be ignored."
       },
       {
         "name": "propertiesWithHistory",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request."
+        "description": "A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(https://developers.hubspot.com/docs/api/overview, they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request."
       },
       {
         "name": "associations",
@@ -5916,7 +5916,7 @@ export default function HubSpotCrmTypeScriptSdk() {
           "hs_cost_of_goods_sold": "600.00",
           "hs_recurring_billing_period": "P24M",
           "city": "Cambridge",
-          "phone": "(877) 929-0687",
+          "phone": "(https://developers.hubspot.com/docs/api/overview 929-0687",
           "state": "Massachusetts",
           "domain": "biglytics.net",
           "industry": "Technology",
@@ -6128,13 +6128,13 @@ export default function HubSpotCrmTypeScriptSdk() {
         "name": "properties",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored."
+        "description": "A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(https://developers.hubspot.com/docs/api/overview, they will be ignored."
       },
       {
         "name": "propertiesWithHistory",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored."
+        "description": "A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(https://developers.hubspot.com/docs/api/overview, they will be ignored."
       },
       {
         "name": "associations",
@@ -6442,13 +6442,13 @@ export default function HubSpotCrmTypeScriptSdk() {
         "name": "properties",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored."
+        "description": "A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(https://developers.hubspot.com/docs/api/overview, they will be ignored."
       },
       {
         "name": "propertiesWithHistory",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request."
+        "description": "A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(https://developers.hubspot.com/docs/api/overview, they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request."
       },
       {
         "name": "associations",
@@ -6509,7 +6509,7 @@ export default function HubSpotCrmTypeScriptSdk() {
           "hs_cost_of_goods_sold": "600.00",
           "hs_recurring_billing_period": "P24M",
           "city": "Cambridge",
-          "phone": "(877) 929-0687",
+          "phone": "(https://developers.hubspot.com/docs/api/overview 929-0687",
           "state": "Massachusetts",
           "domain": "biglytics.net",
           "industry": "Technology",
@@ -6818,13 +6818,13 @@ export default function HubSpotCrmTypeScriptSdk() {
         "name": "properties",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored."
+        "description": "A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(https://developers.hubspot.com/docs/api/overview, they will be ignored."
       },
       {
         "name": "propertiesWithHistory",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored."
+        "description": "A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(https://developers.hubspot.com/docs/api/overview, they will be ignored."
       },
       {
         "name": "associations",
@@ -7083,13 +7083,13 @@ export default function HubSpotCrmTypeScriptSdk() {
         "name": "properties",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored."
+        "description": "A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(https://developers.hubspot.com/docs/api/overview, they will be ignored."
       },
       {
         "name": "propertiesWithHistory",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request."
+        "description": "A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(https://developers.hubspot.com/docs/api/overview, they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request."
       },
       {
         "name": "associations",
@@ -7143,7 +7143,7 @@ export default function HubSpotCrmTypeScriptSdk() {
           "hs_cost_of_goods_sold": "600.00",
           "hs_recurring_billing_period": "P24M",
           "city": "Cambridge",
-          "phone": "(877) 929-0687",
+          "phone": "(https://developers.hubspot.com/docs/api/overview 929-0687",
           "state": "Massachusetts",
           "domain": "biglytics.net",
           "industry": "Technology",
@@ -7334,13 +7334,13 @@ export default function HubSpotCrmTypeScriptSdk() {
         "name": "properties",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored."
+        "description": "A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(https://developers.hubspot.com/docs/api/overview, they will be ignored."
       },
       {
         "name": "propertiesWithHistory",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored."
+        "description": "A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(https://developers.hubspot.com/docs/api/overview, they will be ignored."
       },
       {
         "name": "associations",
@@ -7599,13 +7599,13 @@ export default function HubSpotCrmTypeScriptSdk() {
         "name": "properties",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored."
+        "description": "A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(https://developers.hubspot.com/docs/api/overview, they will be ignored."
       },
       {
         "name": "propertiesWithHistory",
         "schema": "array",
         "required": false,
-        "description": "A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request."
+        "description": "A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(https://developers.hubspot.com/docs/api/overview, they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request."
       },
       {
         "name": "associations",
@@ -7659,7 +7659,7 @@ export default function HubSpotCrmTypeScriptSdk() {
           "hs_cost_of_goods_sold": "600.00",
           "hs_recurring_billing_period": "P24M",
           "city": "Cambridge",
-          "phone": "(877) 929-0687",
+          "phone": "(https://developers.hubspot.com/docs/api/overview 929-0687",
           "state": "Massachusetts",
           "domain": "biglytics.net",
           "industry": "Technology",
@@ -7833,7 +7833,7 @@ export default function HubSpotCrmTypeScriptSdk() {
         "name": "email",
         "schema": "string",
         "required": false,
-        "description": "Filter by email address (optional)"
+        "description": "Filter by email address (https://developers.hubspot.com/docs/api/overview"
       },
       {
         "name": "after",
@@ -7873,10 +7873,10 @@ export default function HubSpotCrmTypeScriptSdk() {
       apiTitle="Line Items"
       apiBaseUrl="https://api.hubapi.com"
       apiVersion="v3"
-      endpoints={117}
-      sdkMethods={173}
+      endpoints={116}
+      sdkMethods={172}
       schemas={104}
-      parameters={573}
+      parameters={570}
       difficulty="Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/hubspot/crm/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/hubspot/crm/openapi.yaml"

@@ -19,7 +19,7 @@ In 2023, we've made significant strides in advancing AI generation tools grounde
       companyKebabCase="jina-ai"
       clientNameCamelCase="jinaAi"
       homepage="jina.ai"
-      lastUpdated={new Date("2024-03-27T01:23:25.425Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/jina-ai/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -259,11 +259,11 @@ In 2023, we've made significant strides in advancing AI generation tools grounde
       language="TypeScript"
       apiTitle="The Jina Embedding Serving API"
       apiBaseUrl="https://api.jina.ai"
-      apiVersion="0.0.86"
-      endpoints={7}
-      sdkMethods={7}
+      apiVersion="0.0.89"
+      endpoints={8}
+      sdkMethods={8}
       schemas={20}
-      parameters={14}
+      parameters={18}
       difficulty="Very Easy"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/jina-ai/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/jina-ai/openapi.yaml"

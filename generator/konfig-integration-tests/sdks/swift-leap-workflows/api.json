@@ -1,0 +1,381 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/v1/runs": {
+      "post": {
+        "operationId": "run_workflow",
+        "summary": "Run a workflow",
+        "description": "This endpoint lets the user run a specified workflow with the provided workflow definition.",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RunWorkflowSchema"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The workflow has been successfully initiated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkflowRunSchema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized."
+          }
+        },
+        "tags": [
+          "Workflow Runs"
+        ],
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/v1/runs/{workflow_run_id}": {
+      "get": {
+        "operationId": "get_workflow_run",
+        "summary": "Get a workflow run",
+        "description": "This endpoint retrieves the details of a specific workflow run using its `workflow_run_id`.",
+        "parameters": [
+          {
+            "name": "workflow_run_id",
+            "required": true,
+            "in": "path",
+            "description": "The ID of the workflow run to retrieve.",
+            "example": "rnp_x3p27VQk6MyJfLe",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The workflow run details have been successfully retrieved.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WorkflowRunSchema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized."
+          }
+        },
+        "tags": [
+          "Workflow Runs"
+        ],
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/v1/runs/bulk": {
+      "post": {
+        "operationId": "bulk_run_workflow",
+        "summary": "Run a workflow in bulk",
+        "description": "This endpoint lets the user run a specified workflow with the provided csv in bulk.",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RunBulkWorkflowSchema"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The bulk workflow run has been successfully initiated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BulkRunSchema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized."
+          }
+        },
+        "tags": [
+          "Bulk Workflow Runs"
+        ],
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/v1/runs/bulk/{bulk_run_id}": {
+      "get": {
+        "operationId": "get_bulk_workflow_run",
+        "summary": "Get a bulk workflow run",
+        "description": "This endpoint retrieves the details of a specific bulk workflow run using its `bulk_run_id`.",
+        "parameters": [
+          {
+            "name": "bulk_run_id",
+            "required": true,
+            "in": "path",
+            "description": "The ID of the bulk run to retrieve.",
+            "example": "bulk_9Nmenl7rxIu2FiSsnqNyTe9G",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The bulk run details have been successfully retrieved.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BulkRunSchema"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized."
+          }
+        },
+        "tags": [
+          "Bulk Workflow Runs"
+        ],
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "Leap Workflows API",
+    "description": "The Leap Workflows API allows developers to run workflows, fetch workflow runs, and provide other utility functions related to workflow runs. Please use the X-Api-Key for authenticated requests.",
+    "version": "1.0",
+    "contact": {
+      "name": "Leap Support",
+      "url": "https://tryleap.ai/",
+      "email": "help@tryleap.ai"
+    },
+    "termsOfService": "https://app.getterms.io/view/dlM8u/tos/en-us"
+  },
+  "tags": [
+    {
+      "name": "Workflow Runs",
+      "description": "Endpoints related to workflow run operations"
+    },
+    {
+      "name": "Bulk Workflow Runs",
+      "description": "Endpoints related to bulk workflow run operations"
+    }
+  ],
+  "servers": [
+    {
+      "url": "https://api.workflows.tryleap.ai/",
+      "description": "Base API Server"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "api_key": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-Api-Key"
+      }
+    },
+    "schemas": {
+      "RunWorkflowSchema": {
+        "type": "object",
+        "properties": {
+          "workflow_id": {
+            "type": "string",
+            "format": "",
+            "description": "The ID of the workflow to be run.",
+            "example": "wkf_i3F5UjpZ2Vg"
+          },
+          "webhook_url": {
+            "type": "string",
+            "description": "The URL to which the workflow results should be sent to on completion.",
+            "example": "https://myapp.com/webhook"
+          },
+          "input": {
+            "type": "object",
+            "additionalProperties": true,
+            "description": "Variables that the workflow can use globally and their values.",
+            "example": {
+              "first_name": "Sam",
+              "last_name": "Altman"
+            }
+          }
+        },
+        "required": [
+          "workflow_id"
+        ]
+      },
+      "WorkflowRunSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "version_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "completed",
+              "running",
+              "failed",
+              "queued",
+              "cancelled"
+            ]
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "started_at": {
+            "type": "string",
+            "nullable": true,
+            "default": null
+          },
+          "ended_at": {
+            "type": "string",
+            "nullable": true,
+            "default": null
+          },
+          "workflow_id": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string",
+            "nullable": true,
+            "default": null
+          },
+          "input": {
+            "type": "object",
+            "nullable": true,
+            "default": null
+          },
+          "output": {
+            "type": "object",
+            "nullable": true,
+            "default": null
+          }
+        },
+        "required": [
+          "id",
+          "version_id",
+          "status",
+          "created_at",
+          "started_at",
+          "ended_at",
+          "workflow_id",
+          "error",
+          "input",
+          "output"
+        ]
+      },
+      "RunBulkWorkflowSchema": {
+        "type": "object",
+        "properties": {
+          "workflow_id": {
+            "type": "string",
+            "format": "",
+            "description": "The ID of the workflow to be run in bulk.",
+            "example": "wkf_i3F5UjpZ2Vg"
+          },
+          "input_csv_url": {
+            "type": "string",
+            "format": "",
+            "description": "A CSV file containing the input data for the bulk run. Each row should contain the input data for a single run.",
+            "example": "https://myapp.com/input.csv"
+          },
+          "webhook_url": {
+            "type": "string",
+            "description": "The URL to which the bulk run results should be sent to on completion.",
+            "example": "https://myapp.com/webhook"
+          }
+        },
+        "required": [
+          "workflow_id",
+          "input_csv_url"
+        ]
+      },
+      "BulkRunSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "version_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "completed",
+              "running",
+              "failed",
+              "queued",
+              "cancelled"
+            ]
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "workflow_id": {
+            "type": "string"
+          },
+          "input_csv_url": {
+            "type": "string"
+          },
+          "output_csv_url": {
+            "type": "string",
+            "nullable": true,
+            "default": null
+          },
+          "error": {
+            "type": "string",
+            "nullable": true,
+            "default": null
+          },
+          "row_count": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "id",
+          "version_id",
+          "status",
+          "created_at",
+          "workflow_id",
+          "input_csv_url",
+          "output_csv_url",
+          "error",
+          "row_count"
+        ]
+      }
+    }
+  }
+}

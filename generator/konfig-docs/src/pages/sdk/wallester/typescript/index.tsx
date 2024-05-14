@@ -17,7 +17,7 @@ export default function WallesterTypeScriptSdk() {
       companyKebabCase="wallester"
       clientNameCamelCase="wallester"
       homepage="wallester.com"
-      lastUpdated={new Date("2024-03-29T20:34:56.573Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/wallester/favicon.png"
       contactUrl="/v1/doc/#"
       contactEmail="operations@wallester.com"
@@ -20874,7 +20874,7 @@ export default function WallesterTypeScriptSdk() {
       endpoints={205}
       sdkMethods={248}
       schemas={552}
-      parameters={1849}
+      parameters={1850}
       difficulty="Very Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/wallester/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/wallester/openapi.yaml"

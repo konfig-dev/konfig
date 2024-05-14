@@ -278,6 +278,7 @@ export const phpConfig = z.object({
   clientState,
   clientStateWithExamples,
   supportPhp7: z.boolean().optional().default(false),
+  guzzle6: z.boolean().optional().default(false),
   packagistUsername: z
     .string()
     .optional()

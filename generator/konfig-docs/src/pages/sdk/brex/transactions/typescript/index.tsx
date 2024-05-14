@@ -17,7 +17,7 @@ export default function BrexTransactionsTypeScriptSdk() {
       companyKebabCase="brex"
       clientNameCamelCase="brexTransactions"
       homepage="brex.com"
-      lastUpdated={new Date("2024-03-27T01:23:25.425Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/transactions/favicon.png"
       contactUrl="https://brex.com"
       contactEmail="developer-access@brex.com"

@@ -4,6 +4,16 @@ export async function collectEndpointsFromReadme({
 }: {
   url: string;
 }): Promise<string[]> {
+  // make sure url does not end with the regex /\/[a-zA-Z0-9-._~:/?#[\]@!$&'()*+,;=]+\/?/. Throw an error if detected
+  if (
+    !url.endsWith("/reference") &&
+    url.match(/\/[a-zA-Z0-9-._~:/?#[\]@!$&'()*+,;=]+\/?$/)
+  ) {
+    throw new Error(
+      `URL (${url}) does not end with the regex '/[a-zA-Z0-9-._~:/?#[]@!$&'()*+,;=]+/?$'`
+    );
+  }
+
   const html = await fetch(url).then((res) => res.text());
 
   // parse for div with "hub-sidebar-content"

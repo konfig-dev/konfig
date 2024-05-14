@@ -1,0 +1,17 @@
+<tr class="bg-white border-b dark:bg-slate-800 dark:border-slate-700">
+    {% if not selected_operations %}
+        <td class="px-6 py-4 text-right">
+            <input value="{{ operation.id }}"
+                   name="selected_operations[]"
+                   type="checkbox"
+                   class="checkbox" />
+        </td>
+    {% endif %}
+    <td scope="row"
+        class="px-6 py-4 font-medium text-slate-900 whitespace-nowrap">{{ operation.summary }}</td>
+    <td scope="row"
+        class="px-6 py-4 text-slate-900 overflow-x-auto max-w-32 whitespace-nowrap">{{ operation.description }}</td>
+    <td scope="row"
+        class="px-6 py-4 max-w-32 overflow-x-auto whitespace-nowrap">{{ operation.path }}</td>
+    <td class="px-6 py-4">{{ operation.http_method }}</td>
+</tr>

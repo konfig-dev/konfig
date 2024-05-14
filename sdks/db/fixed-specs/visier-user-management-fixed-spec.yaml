@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Visier User Management APIs
   description: Visier APIs for managing users within an organization
-  version: 22222222.99201.1227
+  version: 22222222.99201.1256
   license:
     name: Apache License, Version 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0
@@ -1542,7 +1542,9 @@ components:
       type: object
       properties:
         users:
-          description: A list of objects representing users to create.
+          description: >-
+            A list of objects representing users to create. Maximum 100 users
+            can be created in a single request.
           type: array
           items:
             $ref: '#/components/schemas/UserCreationAPIRequestDTO'
@@ -1550,7 +1552,9 @@ components:
       type: object
       properties:
         userIds:
-          description: A list of objects representing users to delete.
+          description: >-
+            A list of objects representing users to delete. Maximum 100 users
+            can be deleted in a single request.
           type: array
           items:
             type: string
@@ -1581,6 +1585,9 @@ components:
       type: object
       properties:
         users:
+          description: >-
+            A list of objects representing users to update. Maximum 100 users
+            can be updated in a single request.
           type: array
           items:
             $ref: '#/components/schemas/UsersUpdateAPIUserDTO'

@@ -21,7 +21,7 @@ Learn more at teamwork.com.`}
       companyKebabCase="teamwork"
       clientNameCamelCase="teamwork"
       homepage="teamwork.com"
-      lastUpdated={new Date("2024-03-28T21:25:19.896Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/teamwork/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -26449,7 +26449,7 @@ Learn more at teamwork.com.`}
       endpoints={147}
       sdkMethods={188}
       schemas={296}
-      parameters={4155}
+      parameters={4180}
       difficulty="Very Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/teamwork/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/teamwork/openapi.yaml"

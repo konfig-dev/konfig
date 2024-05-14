@@ -2530,6 +2530,43 @@ rawSpecString: |
                   $ref: '#/components/schemas/HTTPValidationError'
         security:
           - HTTPBearer: []
+      post:
+        tags:
+          - Beta Endpoints
+        summary: Add Environment
+        description: |-
+          **Authorization scope:** `environment:list` 
+           
+           **Creates a new environment entity**
+        operationId: add_environment
+        parameters:
+          - required: true
+            schema:
+              type: string
+              title: Account Id
+            name: account_id
+            in: path
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnvironmentInput'
+          required: true
+        responses:
+          '201':
+            description: Successful Response
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/EnvironmentsFields'
+          '422':
+            description: Validation Error
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/HTTPValidationError'
+        security:
+          - HTTPBearer: []
     /v1/accounts/{account_id}/environments/{environment_id}:
       get:
         tags:
@@ -2560,6 +2597,86 @@ rawSpecString: |
               application/json:
                 schema:
                   $ref: '#/components/schemas/EnvironmentsFields'
+          '422':
+            description: Validation Error
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/HTTPValidationError'
+        security:
+          - HTTPBearer: []
+      put:
+        tags:
+          - Beta Endpoints
+        summary: Patch Environment
+        description: |-
+          **Authorization scope:** `environment:edit` 
+           
+           **Updates an existing environment entity**
+        operationId: patch_environment
+        parameters:
+          - required: true
+            schema:
+              type: string
+              title: Account Id
+            name: account_id
+            in: path
+          - required: true
+            schema:
+              type: string
+              title: Environment Id
+            name: environment_id
+            in: path
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PatchEnvironmentInput'
+          required: true
+        responses:
+          '200':
+            description: Successful Response
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/EnvironmentsFields'
+          '422':
+            description: Validation Error
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/HTTPValidationError'
+        security:
+          - HTTPBearer: []
+      delete:
+        tags:
+          - Beta Endpoints
+        summary: Delete Environment
+        description: |-
+          **Authorization scope:** `environment:delete` 
+           
+           **Delete Environment**
+        operationId: delete_environment
+        parameters:
+          - required: true
+            schema:
+              type: string
+              title: Account Id
+            name: account_id
+            in: path
+          - required: true
+            schema:
+              type: string
+              title: Environment Id
+            name: environment_id
+            in: path
+        responses:
+          '200':
+            description: Successful Response
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/OperationResponse'
           '422':
             description: Validation Error
             content:
@@ -3097,14 +3214,14 @@ rawSpecString: |
           - required: true
             schema:
               type: string
-              title: Team Id
-            name: team_id
+              title: Account Id
+            name: account_id
             in: path
           - required: true
             schema:
               type: string
-              title: Account Id
-            name: account_id
+              title: Team Id
+            name: team_id
             in: path
         responses:
           '204':
@@ -4037,6 +4154,7 @@ rawSpecString: |
           - rivers
           - river_groups
           - users
+          - teams
         title: AuditEntityTypeEnum
         description: The audit event entity types
       AuditEventTypeEnum:
@@ -4932,7 +5050,7 @@ rawSpecString: |
           last_updated:
             type: string
             title: Last Updated
-            default: '2024-03-29T20:59:22.070733Z'
+            default: '2024-04-16T14:43:07.443036Z'
           datasource_type:
             type: string
             enum:
@@ -4955,7 +5073,7 @@ rawSpecString: |
           last_updated:
             type: string
             title: Last Updated
-            default: '2024-03-29T20:59:22.070733Z'
+            default: '2024-04-16T14:43:07.443036Z'
           datasource_type:
             type: string
             enum:
@@ -4988,7 +5106,7 @@ rawSpecString: |
           last_updated:
             type: string
             title: Last Updated
-            default: '2024-03-29T20:59:22.070733Z'
+            default: '2024-04-16T14:43:07.443036Z'
           datasource_type:
             type: string
             enum:
@@ -5011,7 +5129,7 @@ rawSpecString: |
           last_updated:
             type: string
             title: Last Updated
-            default: '2024-03-29T20:59:22.070733Z'
+            default: '2024-04-16T14:43:07.443036Z'
           datasource_type:
             type: string
             enum:
@@ -5035,7 +5153,7 @@ rawSpecString: |
           last_updated:
             type: string
             title: Last Updated
-            default: '2024-03-29T20:59:22.070733Z'
+            default: '2024-04-16T14:43:07.443036Z'
           datasource_type:
             type: string
             enum:
@@ -5650,6 +5768,37 @@ rawSpecString: |
           - email_list
         title: EmailTargetSettings
         description: Email target settings properties to return.
+      EnvironmentInput:
+        properties:
+          name:
+            type: string
+            title: Name
+            description: The environment name
+            example: Dev Environment
+          color:
+            allOf:
+              - $ref: '#/components/schemas/EnvironmentsColorEnum'
+            description: The environment color as shown in the app
+            default: gray.400
+            example: Gray.400
+          description:
+            type: string
+            title: Description
+            description: The environment description
+            example: Development environment for new rivers
+          is_default:
+            type: boolean
+            title: Is Default
+            description: >-
+              A flag that indicates whether the environment is the account's
+              default environment
+            default: 'False'
+            example: 'True'
+        type: object
+        required:
+          - name
+        title: EnvironmentInput
+        description: Add Environment Model
       EnvironmentsColorEnum:
         type: string
         enum:
@@ -5671,6 +5820,8 @@ rawSpecString: |
           _id:
             type: string
             title: ' Id'
+            description: The environment id
+            example: 633ede20f1fc5500111fd7b3
           account:
             type: string
             title: Account
@@ -5766,6 +5917,11 @@ rawSpecString: |
             title: Updated By
             description: The user id of the user who last updated the environment
             example: 62e7f4352c13160013dc39be
+          is_delete_lock:
+            type: boolean
+            title: Is Delete Lock
+            description: A flag that indicates the environment deletion progress
+            example: 'True'
         type: object
         required:
           - _id
@@ -6634,6 +6790,33 @@ rawSpecString: |
           - by_minute
         title: PartitionedKindEnum
         description: Partitioned kind for storages
+      PatchEnvironmentInput:
+        properties:
+          environment_name:
+            type: string
+            title: Environment Name
+            description: The environment name
+            example: Dev Environment
+          color:
+            allOf:
+              - $ref: '#/components/schemas/EnvironmentsColorEnum'
+            description: The environment color as shown in the app
+            example: Gray.400
+          description:
+            type: string
+            title: Description
+            description: The environment description
+            example: Development environment for new rivers
+          is_default:
+            type: boolean
+            title: Is Default
+            description: >-
+              A flag that indicates whether the environment is the account's
+              default environment
+            example: 'True'
+        type: object
+        title: PatchEnvironmentInput
+        description: Patch Environment Model
       PatchUserTeamsInput:
         properties:
           display_name:
@@ -9763,7 +9946,7 @@ rawSpecString: |
             format: date-time
             title: Created At
             description: Created team datatime
-            example: '2024-03-29T20:59:20.796255'
+            example: '2024-04-16T14:43:05.410714'
         type: object
         required:
           - _id
@@ -12960,6 +13143,15 @@ rawSpecString: |
           - date_range
         title: WriteShopifyPredefinedAddressesReport
         description: Shopify predefined addresses report, used for write.
+        extra_fields:
+          skip_failed_queues:
+            display_name: Number of allowed failed queues
+            name: skip_failed_queues
+            value: 0
+            required: false
+            type: number
+            readonly: true
+            chakra: true
         report_index:
           extract_method: 0
           incremental_field: 1
@@ -12970,15 +13162,6 @@ rawSpecString: |
           time_interval: 4.2
           interval_size: 4.3
           skip_failed_queues: 5
-        extra_fields:
-          skip_failed_queues:
-            display_name: Number of allowed failed queues
-            name: skip_failed_queues
-            value: 0
-            required: false
-            type: number
-            readonly: true
-            chakra: true
       WriteShopifyPredefinedAnalyticReport:
         properties:
           is_selected:
@@ -13098,6 +13281,15 @@ rawSpecString: |
           - date_range
         title: WriteShopifyPredefinedAnalyticReport
         description: Shopify predefined analytic report, used for write.
+        extra_fields:
+          skip_failed_queues:
+            display_name: Number of allowed failed queues
+            name: skip_failed_queues
+            value: 0
+            required: false
+            type: number
+            readonly: true
+            chakra: true
         report_index:
           extract_method: 0
           incremental_field: 1
@@ -13108,15 +13300,6 @@ rawSpecString: |
           time_interval: 4.2
           interval_size: 4.3
           skip_failed_queues: 5
-        extra_fields:
-          skip_failed_queues:
-            display_name: Number of allowed failed queues
-            name: skip_failed_queues
-            value: 0
-            required: false
-            type: number
-            readonly: true
-            chakra: true
       WriteShopifyPredefinedCustomersReport:
         properties:
           is_selected:
@@ -13242,6 +13425,15 @@ rawSpecString: |
           - date_range
         title: WriteShopifyPredefinedCustomersReport
         description: Shopify predefined analytic report, used for write.
+        extra_fields:
+          skip_failed_queues:
+            display_name: Number of allowed failed queues
+            name: skip_failed_queues
+            value: 0
+            required: false
+            type: number
+            readonly: true
+            chakra: true
         report_index:
           extract_method: 0
           incremental_field: 1
@@ -13252,15 +13444,6 @@ rawSpecString: |
           time_interval: 4.2
           interval_size: 4.3
           skip_failed_queues: 5
-        extra_fields:
-          skip_failed_queues:
-            display_name: Number of allowed failed queues
-            name: skip_failed_queues
-            value: 0
-            required: false
-            type: number
-            readonly: true
-            chakra: true
       WriteShopifyPredefinedInventoryLevelsReport:
         properties:
           is_selected:
@@ -13386,6 +13569,15 @@ rawSpecString: |
           - date_range
         title: WriteShopifyPredefinedInventoryLevelsReport
         description: Shopify predefined inventory levels report, used for write.
+        extra_fields:
+          skip_failed_queues:
+            display_name: Number of allowed failed queues
+            name: skip_failed_queues
+            value: 0
+            required: false
+            type: number
+            readonly: true
+            chakra: true
         report_index:
           extract_method: 0
           incremental_field: 1
@@ -13396,15 +13588,6 @@ rawSpecString: |
           time_interval: 4.2
           interval_size: 4.3
           skip_failed_queues: 5
-        extra_fields:
-          skip_failed_queues:
-            display_name: Number of allowed failed queues
-            name: skip_failed_queues
-            value: 0
-            required: false
-            type: number
-            readonly: true
-            chakra: true
       WriteShopifyPredefinedMarketingEventsReport:
         properties:
           is_selected:
@@ -13635,6 +13818,15 @@ rawSpecString: |
           - date_range
         title: WriteShopifyPredefinedOrderTransactionsReport
         description: Shopify predefined order transaction report, used for write.
+        extra_fields:
+          skip_failed_queues:
+            display_name: Number of allowed failed queues
+            name: skip_failed_queues
+            value: 0
+            required: false
+            type: number
+            readonly: true
+            chakra: true
         report_index:
           extract_method: 0
           incremental_field: 1
@@ -13645,15 +13837,6 @@ rawSpecString: |
           time_interval: 4.2
           interval_size: 4.3
           skip_failed_queues: 5
-        extra_fields:
-          skip_failed_queues:
-            display_name: Number of allowed failed queues
-            name: skip_failed_queues
-            value: 0
-            required: false
-            type: number
-            readonly: true
-            chakra: true
       WriteShopifyPredefinedOrdersReport:
         properties:
           is_selected:
@@ -13826,6 +14009,15 @@ rawSpecString: |
           - date_range
         title: WriteShopifyPredefinedOrdersReport
         description: Shopify predefined orders report, used for write.
+        extra_fields:
+          skip_failed_queues:
+            display_name: Number of allowed failed queues
+            name: skip_failed_queues
+            value: 0
+            required: false
+            type: number
+            readonly: true
+            chakra: true
         report_index:
           status: 0
           financial_status: 1
@@ -13838,15 +14030,6 @@ rawSpecString: |
           time_interval: 6.2
           interval_size: 6.3
           skip_failed_queues: 7
-        extra_fields:
-          skip_failed_queues:
-            display_name: Number of allowed failed queues
-            name: skip_failed_queues
-            value: 0
-            required: false
-            type: number
-            readonly: true
-            chakra: true
       WriteShopifyPredefinedProductsReport:
         properties:
           is_selected:
@@ -13974,6 +14157,15 @@ rawSpecString: |
           - date_range
         title: WriteShopifyPredefinedProductsReport
         description: Shopify predefined products report, used for write.
+        extra_fields:
+          skip_failed_queues:
+            display_name: Number of allowed failed queues
+            name: skip_failed_queues
+            value: 0
+            required: false
+            type: number
+            readonly: true
+            chakra: true
         report_index:
           extract_method: 0
           incremental_field: 1
@@ -13984,15 +14176,6 @@ rawSpecString: |
           time_interval: 4.2
           interval_size: 4.3
           skip_failed_queues: 5
-        extra_fields:
-          skip_failed_queues:
-            display_name: Number of allowed failed queues
-            name: skip_failed_queues
-            value: 0
-            required: false
-            type: number
-            readonly: true
-            chakra: true
       WriteShopifyPredefinedShopReport:
         properties:
           is_selected:
@@ -14177,4 +14360,4 @@ rawSpecString: |
       description: Listing account's audit events
     - name: Beta Endpoints
       description: Beta endpoints
-konfigCliVersion: 1.38.34
+konfigCliVersion: 1.38.37

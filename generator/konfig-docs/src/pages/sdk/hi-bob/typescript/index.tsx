@@ -19,7 +19,7 @@ Since late 2015, trusted and empowered "Bobbers" from around the world have brou
       companyKebabCase="hi-bob"
       clientNameCamelCase="hiBob"
       homepage="hibob.com"
-      lastUpdated={new Date("2024-03-28T16:25:40.616Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/hibob/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -2864,8 +2864,8 @@ Since late 2015, trusted and empowered "Bobbers" from around the world have brou
       apiTitle="Bob API"
       apiBaseUrl="https://api.hibob.com/v1"
       apiVersion="1.0.0"
-      endpoints={72}
-      sdkMethods={93}
+      endpoints={73}
+      sdkMethods={94}
       schemas={97}
       parameters={215}
       difficulty="Medium"

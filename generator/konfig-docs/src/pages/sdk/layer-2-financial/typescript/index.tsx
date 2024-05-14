@@ -17,7 +17,7 @@ export default function Layer2FinancialTypeScriptSdk() {
       companyKebabCase="layer-2-financial"
       clientNameCamelCase="layer2Financial"
       homepage="layer2financial.com"
-      lastUpdated={new Date("2024-03-29T19:01:06.634Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/layer-2-financial/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -3599,11 +3599,11 @@ export default function Layer2FinancialTypeScriptSdk() {
       language="TypeScript"
       apiTitle="Layer2 API Specification"
       apiBaseUrl="https://alpha.layer2financial.dev/api"
-      apiVersion="1.0.4 β"
-      endpoints={48}
-      sdkMethods={59}
+      apiVersion="1.0.5"
+      endpoints={45}
+      sdkMethods={57}
       schemas={218}
-      parameters={345}
+      parameters={337}
       difficulty="Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/layer-2-financial/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/layer-2-financial/openapi.yaml"

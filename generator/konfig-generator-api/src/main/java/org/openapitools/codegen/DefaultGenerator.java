@@ -1020,8 +1020,11 @@ public class DefaultGenerator implements Generator {
         if (openAPI.getInfo() != null)
             bundle.put("infoExtensions", openAPI.getInfo().getExtensions());
 
-        if (bundle.get("packageVersion") != null)
+        if (bundle.get("packageVersion") != null) {
             bundle.put("packageVersionWithoutDashes", ((String) bundle.get("packageVersion")).replaceAll("-", ""));
+            bundle.put("packageMajorVersion", ((String) bundle.get("packageVersion")).split("\\.")[0]);
+            bundle.put("isMajorVersionGreaterThanOne", Integer.parseInt((String) bundle.get("packageMajorVersion")) > 1);
+        }
         if (bundle.get("npmVersion") != null)
             bundle.put("npmVersionWithoutDashes", ((String) bundle.get("npmVersion")).replaceAll("-", ""));
         if (bundle.get("podVersion") != null)

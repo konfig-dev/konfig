@@ -310,9 +310,7 @@ rawSpecString: |
               type: string
               format: date-time
               nullable: true
-            example: |
-
-              2022-12-12T23:59:59.999
+            example: '2022-12-12T23:59:59.999'
           - name: expand[]
             in: query
             required: false
@@ -384,9 +382,7 @@ rawSpecString: |
               type: string
               format: date-time
               nullable: true
-            example: |
-
-              2022-12-12T23:59:59.999
+            example: '2022-12-12T23:59:59.999'
         responses:
           '200':
             description: listCashTransactions 200 response
@@ -603,18 +599,28 @@ rawSpecString: |
         required:
           - mcc
           - raw_descriptor
+          - country
         type: object
         properties:
           raw_descriptor:
             required:
               - 'true'
             type: string
-            description: Merchant descriptor
+            description: Merchant descriptor, it can be the merchant name.
           mcc:
             required:
               - 'true'
             type: string
-            description: https://en.wikipedia.org/wiki/Merchant_category_code
+            description: >-
+              A four-digit number listed in ISO 18245 for retail financial
+              services, e.g. 4121 for Taxicabs and Rideshares. Please refer to
+              https://en.wikipedia.org/wiki/Merchant_category_code for more
+              details.
+          country:
+            required:
+              - 'true'
+            type: string
+            description: Merchant's country, in ISO 3166-1 alpha-3 format.
       Money:
         type: object
         properties:
@@ -741,6 +747,6 @@ rawSpecString: |
               transactions.card.readonly: View card transaction data
               statements.card.readonly: View card statement data
               accounts.card.readonly: View card account data
-              accounts.cash.readonly: View cash account data
+              accounts.cash.readonly: View business accounts data
   x-explorer-enabled: false
-konfigCliVersion: 1.38.34
+konfigCliVersion: 1.38.37

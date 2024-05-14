@@ -17,7 +17,7 @@ export default function LangfuseTypeScriptSdk() {
       companyKebabCase="langfuse"
       clientNameCamelCase="langfuse"
       homepage="langfuse.com"
-      lastUpdated={new Date("2024-03-27T01:23:25.425Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/langfuse/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -1124,9 +1124,9 @@ export default function LangfuseTypeScriptSdk() {
       apiBaseUrl="https://cloud.langfuse.com"
       apiVersion=""
       endpoints={18}
-      sdkMethods={21}
+      sdkMethods={22}
       schemas={151}
-      parameters={52}
+      parameters={59}
       difficulty="Easy"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/langfuse/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/langfuse/openapi.yaml"

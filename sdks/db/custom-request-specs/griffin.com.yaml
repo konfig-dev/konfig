@@ -323,7 +323,7 @@ tags:
   - name: Payments
     description: >-
       A payment captures the intent to move funds from a bank account to another
-      party's bank account. Outbound payments can be made from your [bank
+      bank account. Outbound payments can be made from your [bank
       account](http://docs.griffin.com) to a [payee](http://docs.griffin.com).
       Griffin accepts inbound payments to your bank accounts on your behalf. 
        If it's your first time using our payments API, check out our guide for [making a payment](http://docs.griffin.com)
@@ -5669,6 +5669,14 @@ paths:
                                 maxLength: 2
                                 example: GB
                                 minLength: 2
+                              title: international-payments-countries
+                              description: |-
+                                List of country codes for payments received
+                                                                 from UK accounts that are, in full or in part,
+                                                                 funded from international sources. If the
+                                                                 account does not receive payments from
+                                                                 internationally-funded sources, then leave
+                                                                 the collection empty.
                             claim-type:
                               enum:
                                 - international-payments-countries
@@ -7531,6 +7539,23 @@ paths:
                           title: alternative-number
                         - type: object
                           properties:
+                            cash-payments?:
+                              type: boolean
+                              title: cash-payments?
+                              description: >-
+                                Attestation that funds generated from cash are
+                                (true) or are not (false)
+                                                                                       accepted.
+                            claim-type:
+                              enum:
+                                - cash-payments
+                              type: string
+                          required:
+                            - cash-payments?
+                            - claim-type
+                          title: cash-payments
+                        - type: object
+                          properties:
                             tax-identification-number:
                               title: tax-identification-number
                               type: string
@@ -7913,6 +7938,14 @@ paths:
                         maxLength: 2
                         example: GB
                         minLength: 2
+                      title: international-payments-countries
+                      description: |-
+                        List of country codes for payments received
+                                                         from UK accounts that are, in full or in part,
+                                                         funded from international sources. If the
+                                                         account does not receive payments from
+                                                         internationally-funded sources, then leave
+                                                         the collection empty.
                     claim-type:
                       enum:
                         - international-payments-countries
@@ -9737,6 +9770,23 @@ paths:
                   title: alternative-number
                 - type: object
                   properties:
+                    cash-payments?:
+                      type: boolean
+                      title: cash-payments?
+                      description: >-
+                        Attestation that funds generated from cash are (true) or
+                        are not (false)
+                                                                               accepted.
+                    claim-type:
+                      enum:
+                        - cash-payments
+                      type: string
+                  required:
+                    - cash-payments?
+                    - claim-type
+                  title: cash-payments
+                - type: object
+                  properties:
                     tax-identification-number:
                       title: tax-identification-number
                       type: string
@@ -10086,6 +10136,14 @@ paths:
                           maxLength: 2
                           example: GB
                           minLength: 2
+                        title: international-payments-countries
+                        description: |-
+                          List of country codes for payments received
+                                                           from UK accounts that are, in full or in part,
+                                                           funded from international sources. If the
+                                                           account does not receive payments from
+                                                           internationally-funded sources, then leave
+                                                           the collection empty.
                       claim-type:
                         enum:
                           - international-payments-countries
@@ -11917,6 +11975,23 @@ paths:
                       - telephone-number
                       - claim-type
                     title: alternative-number
+                  - type: object
+                    properties:
+                      cash-payments?:
+                        type: boolean
+                        title: cash-payments?
+                        description: >-
+                          Attestation that funds generated from cash are (true)
+                          or are not (false)
+                                                                                 accepted.
+                      claim-type:
+                        enum:
+                          - cash-payments
+                        type: string
+                    required:
+                      - cash-payments?
+                      - claim-type
+                    title: cash-payments
                   - type: object
                     properties:
                       tax-identification-number:
@@ -16221,6 +16296,14 @@ paths:
                               maxLength: 2
                               example: GB
                               minLength: 2
+                            title: international-payments-countries
+                            description: |-
+                              List of country codes for payments received
+                                                               from UK accounts that are, in full or in part,
+                                                               funded from international sources. If the
+                                                               account does not receive payments from
+                                                               internationally-funded sources, then leave
+                                                               the collection empty.
                           claim-type:
                             enum:
                               - international-payments-countries
@@ -18075,6 +18158,23 @@ paths:
                         title: alternative-number
                       - type: object
                         properties:
+                          cash-payments?:
+                            type: boolean
+                            title: cash-payments?
+                            description: >-
+                              Attestation that funds generated from cash are
+                              (true) or are not (false)
+                                                                                     accepted.
+                          claim-type:
+                            enum:
+                              - cash-payments
+                            type: string
+                        required:
+                          - cash-payments?
+                          - claim-type
+                        title: cash-payments
+                      - type: object
+                        properties:
                           tax-identification-number:
                             title: tax-identification-number
                             type: string
@@ -19050,6 +19150,14 @@ paths:
                                   maxLength: 2
                                   example: GB
                                   minLength: 2
+                                title: international-payments-countries
+                                description: |-
+                                  List of country codes for payments received
+                                                                   from UK accounts that are, in full or in part,
+                                                                   funded from international sources. If the
+                                                                   account does not receive payments from
+                                                                   internationally-funded sources, then leave
+                                                                   the collection empty.
                               claim-type:
                                 enum:
                                   - international-payments-countries
@@ -20930,6 +21038,23 @@ paths:
                             title: alternative-number
                           - type: object
                             properties:
+                              cash-payments?:
+                                type: boolean
+                                title: cash-payments?
+                                description: >-
+                                  Attestation that funds generated from cash are
+                                  (true) or are not (false)
+                                                                                         accepted.
+                              claim-type:
+                                enum:
+                                  - cash-payments
+                                type: string
+                            required:
+                              - cash-payments?
+                              - claim-type
+                            title: cash-payments
+                          - type: object
+                            properties:
                               tax-identification-number:
                                 title: tax-identification-number
                                 type: string
@@ -21378,6 +21503,14 @@ paths:
                                     maxLength: 2
                                     example: GB
                                     minLength: 2
+                                  title: international-payments-countries
+                                  description: |-
+                                    List of country codes for payments received
+                                                                     from UK accounts that are, in full or in part,
+                                                                     funded from international sources. If the
+                                                                     account does not receive payments from
+                                                                     internationally-funded sources, then leave
+                                                                     the collection empty.
                                 claim-type:
                                   enum:
                                     - international-payments-countries
@@ -23264,6 +23397,23 @@ paths:
                               title: alternative-number
                             - type: object
                               properties:
+                                cash-payments?:
+                                  type: boolean
+                                  title: cash-payments?
+                                  description: >-
+                                    Attestation that funds generated from cash
+                                    are (true) or are not (false)
+                                                                                           accepted.
+                                claim-type:
+                                  enum:
+                                    - cash-payments
+                                  type: string
+                              required:
+                                - cash-payments?
+                                - claim-type
+                              title: cash-payments
+                            - type: object
+                              properties:
                                 tax-identification-number:
                                   title: tax-identification-number
                                   type: string
@@ -23709,6 +23859,7 @@ paths:
                                 - company-telephone-number
                                 - managed-properties
                                 - person-with-significant-control
+                                - business-industry
                                 - tenant-cash-payments
                                 - verified-bank-account
                                 - company-email-address
@@ -23717,6 +23868,7 @@ paths:
                                 - non-tenant-balance
                                 - business-description
                                 - hmrc-register
+                                - vat-registration
                                 - business-email-address
                                 - client-money-protection-scheme
                                 - individual-sources-of-funds
@@ -23746,6 +23898,7 @@ paths:
                                 - company-website
                                 - director
                                 - alternative-number
+                                - cash-payments
                                 - tax-identification-number
                                 - individual-residence
                             uniqueItems: true
@@ -26197,6 +26350,7 @@ paths:
                           - company-telephone-number
                           - managed-properties
                           - person-with-significant-control
+                          - business-industry
                           - tenant-cash-payments
                           - verified-bank-account
                           - company-email-address
@@ -26205,6 +26359,7 @@ paths:
                           - non-tenant-balance
                           - business-description
                           - hmrc-register
+                          - vat-registration
                           - business-email-address
                           - client-money-protection-scheme
                           - individual-sources-of-funds
@@ -26234,6 +26389,7 @@ paths:
                           - company-website
                           - director
                           - alternative-number
+                          - cash-payments
                           - tax-identification-number
                           - individual-residence
                       uniqueItems: true

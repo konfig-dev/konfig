@@ -21,7 +21,7 @@ Peach Payments currently powers businesses in South Africa, Kenya and Mauritius.
       companyKebabCase="peach-payments"
       clientNameCamelCase="peachPayments"
       homepage="www.peachpayments.com/"
-      lastUpdated={new Date("2024-03-28T21:39:50.212Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/peach-payments/favicon.png"
       contactUrl="https://support.peachpayments.com/support/home"
       contactEmail="support@peachpayments.com"
@@ -2105,7 +2105,7 @@ Peach Payments currently powers businesses in South Africa, Kenya and Mauritius.
       endpoints={17}
       sdkMethods={21}
       schemas={92}
-      parameters={221}
+      parameters={230}
       difficulty="Easy"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/peach-payments/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/peach-payments/openapi.yaml"

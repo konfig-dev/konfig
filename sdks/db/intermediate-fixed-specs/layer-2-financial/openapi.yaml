@@ -3,7 +3,7 @@ info:
   title: Layer2 API Specification
   description: |
     Welcome to the Layer2 Financial Developer Guide!
-  version: 1.0.4 β
+  version: 1.0.5
 servers:
   - url: https://alpha.layer2financial.dev/api
     description: Early Adopter / Beta Instance
@@ -18,8 +18,6 @@ tags:
     description: Deposit accounts creation and management functions
   - name: Accounts/Payments
     description: Payment accounts creation and management functions
-  - name: Adjustments
-    description: Perform ledger corrections
   - name: Counterparty
     description: Counterparty creation and management functions, including remote linking
   - name: Customers
@@ -1961,162 +1959,6 @@ paths:
       security:
         - OAuth2Flow:
             - applications:write
-  /v1/adjustments:
-    post:
-      tags:
-        - Adjustments
-      summary: Create Adjustment
-      operationId: createAdjustment
-      parameters:
-        - name: Authorization
-          in: header
-          description: OAuth bearer token (see authentication flows)
-          schema:
-            type: string
-        - name: x-l2f-request-id
-          in: header
-          description: >-
-            Optional Unique ID per request, useful for fault
-            resolution/diagnosis and audit.
-          schema:
-            type: string
-        - name: x-l2f-idempotency-id
-          in: header
-          description: >-
-            Unique ID used to safely retry an operation. See
-            [idempotency](https://docs.layer2financial.com/guides/idempotence/)
-            section for more details.
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RequestAdjustment'
-        required: true
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/CREDIT'
-                  - $ref: '#/components/schemas/DEBIT'
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResponseError'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResponseError'
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResponseError'
-        '500':
-          description: Internal Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResponseError'
-      security:
-        - OAuth2Flow:
-            - adjustments:write
-  /v1/adjustments/{id}/accept:
-    post:
-      tags:
-        - Adjustments
-      summary: Accept Adjustment
-      description: >-
-        Accept an adjustment. This change cannot be reversed without performing
-        a corrective adjustment
-      operationId: acceptAdjustment
-      parameters:
-        - name: id
-          in: path
-          description: Adjustment ID
-          required: true
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          description: OAuth bearer token (see authentication flows)
-          schema:
-            type: string
-        - name: x-l2f-request-id
-          in: header
-          description: >-
-            Optional Unique ID per request, useful for fault
-            resolution/diagnosis and audit.
-          schema:
-            type: string
-        - name: x-l2f-idempotency-id
-          in: header
-          description: >-
-            Unique ID used to safely retry an operation. See
-            [idempotency](https://docs.layer2financial.com/guides/idempotence/)
-            section for more details.
-          schema:
-            type: string
-        - name: x-signature
-          in: header
-          description: >-
-            Client signature to validate the provence of the API request. See
-            [signing](https://docs.layer2financial.com/guides/requestsigning/)
-            section for more details.
-          schema:
-            type: string
-        - name: x-timestamp
-          in: header
-          description: >-
-            Current timestamp, represented AS unix epoch seconds. Mandatory when
-            x-signature is provided.
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/CREDIT'
-                  - $ref: '#/components/schemas/DEBIT'
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResponseError'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResponseError'
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResponseError'
-        '500':
-          description: Internal Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResponseError'
-      security:
-        - OAuth2Flow:
-            - adjustments:write
   /v1/accounts/payments:
     get:
       tags:
@@ -2934,6 +2776,149 @@ paths:
       security:
         - OAuth2Flow:
             - customers:write
+  /v1/counterparties/{id}:
+    get:
+      tags:
+        - Counterparty
+      summary: Retrieve Counterparty
+      description: Retrieves a list of counterparties given the filter parameters provided
+      operationId: getCounterparty
+      parameters:
+        - name: id
+          in: path
+          description: Counterparty ID
+          required: true
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: OAuth bearer token (see authentication flows)
+          schema:
+            type: string
+        - name: x-l2f-request-id
+          in: header
+          description: >-
+            Optional Unique ID per request, useful for fault
+            resolution/diagnosis and audit.
+          schema:
+            type: string
+        - name: x-l2f-idempotency-id
+          in: header
+          description: >-
+            Unique ID used to safely retry an operation. See
+            [idempotency](https://docs.layer2financial.com/guides/idempotence/)
+            section for more details.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseCounterparty'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseError'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseError'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseError'
+        '500':
+          description: Internal Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseError'
+      security:
+        - OAuth2Flow:
+            - accounts:read
+    patch:
+      tags:
+        - Counterparty
+      summary: 'Update Counterparty '
+      description: >-
+        Update Counterparty details. There are limits to what can be updated
+        once the counterparty has been approved for use. 
+      operationId: updateCounterparty
+      parameters:
+        - name: id
+          in: path
+          description: Counterparty ID
+          required: true
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: OAuth bearer token (see authentication flows)
+          schema:
+            type: string
+        - name: x-l2f-request-id
+          in: header
+          description: >-
+            Optional Unique ID per request, useful for fault
+            resolution/diagnosis and audit.
+          schema:
+            type: string
+        - name: x-l2f-idempotency-id
+          in: header
+          description: >-
+            Unique ID used to safely retry an operation. See
+            [idempotency](https://docs.layer2financial.com/guides/idempotence/)
+            section for more details.
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestCounterpartyPatch'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseCounterpartyBase'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseError'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseError'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseError'
+        '500':
+          description: Internal Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseError'
+      security:
+        - OAuth2Flow:
+            - accounts:write
   /v1/applications/{id}:
     get:
       tags:
@@ -3878,74 +3863,6 @@ paths:
       security:
         - OAuth2Flow:
             - deposits:read
-  /v1/counterparties/{id}:
-    get:
-      tags:
-        - Counterparty
-      summary: Retrieve Counterparty
-      description: Retrieves a list of counterparties given the filter parameters provided
-      operationId: getCounterparty
-      parameters:
-        - name: id
-          in: path
-          description: Counterparty ID
-          required: true
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          description: OAuth bearer token (see authentication flows)
-          schema:
-            type: string
-        - name: x-l2f-request-id
-          in: header
-          description: >-
-            Optional Unique ID per request, useful for fault
-            resolution/diagnosis and audit.
-          schema:
-            type: string
-        - name: x-l2f-idempotency-id
-          in: header
-          description: >-
-            Unique ID used to safely retry an operation. See
-            [idempotency](https://docs.layer2financial.com/guides/idempotence/)
-            section for more details.
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResponseCounterparty'
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResponseError'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResponseError'
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResponseError'
-        '500':
-          description: Internal Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResponseError'
-      security:
-        - OAuth2Flow:
-            - accounts:read
   /v1/applications/{id}/status:
     get:
       tags:
@@ -4006,68 +3923,6 @@ paths:
       security:
         - OAuth2Flow:
             - applications:read
-  /v1/adjustments/{id}:
-    get:
-      tags:
-        - Adjustments
-      summary: Retrieve adjustment
-      description: Retrieves details of a previously requested adjustment
-      operationId: getAdjustment
-      parameters:
-        - name: id
-          in: path
-          description: Adjustment ID
-          required: true
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          description: OAuth bearer token (see authentication flows)
-          schema:
-            type: string
-        - name: x-l2f-request-id
-          in: header
-          description: >-
-            Optional Unique ID per request, useful for fault
-            resolution/diagnosis and audit.
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                oneOf:
-                  - $ref: '#/components/schemas/CREDIT'
-                  - $ref: '#/components/schemas/DEBIT'
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResponseError'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResponseError'
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResponseError'
-        '500':
-          description: Internal Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResponseError'
-      security:
-        - OAuth2Flow:
-            - adjustments:read
   /v1/accounts/payments/{id}/transactions:
     get:
       tags:
@@ -5144,13 +4999,15 @@ components:
             `{$BLOCKCHAIN}_{$NETWORK}_{$CURRENCY_CODE}`  Simple asset type to
             test with include 
 
-            - `ETHEREUM_GOERLI_ETH`
+            - `ETHEREUM_SEPOLIA_ETH`
 
-            - `ETHEREUM_GOERLI_USDC`
+            - `ETHEREUM_SEPOLIA_USDC`
 
             - `SOLANA_DEVNET_SOL`
 
             - `BITCOIN_TESTNET_BTC`
+
+            - `FIAT_TESTNET_USD`
 
             - `FIAT_TESTNET_USD`
 
@@ -5179,13 +5036,15 @@ components:
             `{$BLOCKCHAIN}_{$NETWORK}_{$CURRENCY_CODE}`  Simple asset type to
             test with include. 
 
-            - `ETHEREUM_GOERLI_ETH`
+            - `ETHEREUM_SEPOLIA_ETH`
 
-            - `ETHEREUM_GOERLI_USDC`
+            - `ETHEREUM_SEPOLIA_USDC`
 
             - `SOLANA_DEVNET_SOL`
 
             - `BITCOIN_TESTNET_BTC`
+
+            - `FIAT_TESTNET_USD`
 
             - `FIAT_TESTNET_USD`
 
@@ -5495,13 +5354,15 @@ components:
             `{$BLOCKCHAIN}_{$NETWORK}_{$CURRENCY_CODE}`  Simple asset type to
             test with include 
 
-            - `ETHEREUM_GOERLI_ETH`
+            - `ETHEREUM_SEPOLIA_ETH`
 
-            - `ETHEREUM_GOERLI_USDC`
+            - `ETHEREUM_SEPOLIA_USDC`
 
             - `SOLANA_DEVNET_SOL`
 
             - `BITCOIN_TESTNET_BTC`
+
+            - `FIAT_TESTNET_USD`
 
             - `FIAT_TESTNET_USD`
 
@@ -5792,13 +5653,15 @@ components:
             `{$BLOCKCHAIN}_{$NETWORK}_{$CURRENCY_CODE}`  Simple asset type to
             test with include. 
 
-            - `ETHEREUM_GOERLI_ETH`
+            - `ETHEREUM_SEPOLIA_ETH`
 
-            - `ETHEREUM_GOERLI_USDC`
+            - `ETHEREUM_SEPOLIA_USDC`
 
             - `SOLANA_DEVNET_SOL`
 
             - `BITCOIN_TESTNET_BTC`
+
+            - `FIAT_TESTNET_USD`
 
             - `FIAT_TESTNET_USD`
 
@@ -5839,13 +5702,15 @@ components:
             `{$BLOCKCHAIN}_{$NETWORK}_{$CURRENCY_CODE}`  Simple asset type to
             test with include. 
 
-            - `ETHEREUM_GOERLI_ETH`
+            - `ETHEREUM_SEPOLIA_ETH`
 
-            - `ETHEREUM_GOERLI_USDC`
+            - `ETHEREUM_SEPOLIA_USDC`
 
             - `SOLANA_DEVNET_SOL`
 
             - `BITCOIN_TESTNET_BTC`
+
+            - `FIAT_TESTNET_USD`
 
             - `FIAT_TESTNET_USD`
 
@@ -5901,13 +5766,15 @@ components:
             `{$BLOCKCHAIN}_{$NETWORK}_{$CURRENCY_CODE}`  Simple asset type to
             test with include. 
 
-            - `ETHEREUM_GOERLI_ETH`
+            - `ETHEREUM_SEPOLIA_ETH`
 
-            - `ETHEREUM_GOERLI_USDC`
+            - `ETHEREUM_SEPOLIA_USDC`
 
             - `SOLANA_DEVNET_SOL`
 
             - `BITCOIN_TESTNET_BTC`
+
+            - `FIAT_TESTNET_USD`
 
             - `FIAT_TESTNET_USD`
 
@@ -5960,13 +5827,15 @@ components:
             `{$BLOCKCHAIN}_{$NETWORK}_{$CURRENCY_CODE}`  Simple asset type to
             test with include. 
 
-            - `ETHEREUM_GOERLI_ETH`
+            - `ETHEREUM_SEPOLIA_ETH`
 
-            - `ETHEREUM_GOERLI_USDC`
+            - `ETHEREUM_SEPOLIA_USDC`
 
             - `SOLANA_DEVNET_SOL`
 
             - `BITCOIN_TESTNET_BTC`
+
+            - `FIAT_TESTNET_USD`
 
             - `FIAT_TESTNET_USD`
 
@@ -6151,13 +6020,15 @@ components:
             `{$BLOCKCHAIN}_{$NETWORK}_{$CURRENCY_CODE}`  Simple asset type to
             test with include 
 
-            - `ETHEREUM_GOERLI_ETH`
+            - `ETHEREUM_SEPOLIA_ETH`
 
-            - `ETHEREUM_GOERLI_USDC`
+            - `ETHEREUM_SEPOLIA_USDC`
 
             - `SOLANA_DEVNET_SOL`
 
             - `BITCOIN_TESTNET_BTC`
+
+            - `FIAT_TESTNET_USD`
 
             - `FIAT_TESTNET_USD`
 
@@ -7092,13 +6963,15 @@ components:
             follows: `{$BLOCKCHAIN}_{$NETWORK}_{$CURRENCY_CODE}`  Simple asset
             type to test with include 
 
-            - `ETHEREUM_GOERLI_ETH`
+            - `ETHEREUM_SEPOLIA_ETH`
 
-            - `ETHEREUM_GOERLI_USDC`
+            - `ETHEREUM_SEPOLIA_USDC`
 
             - `SOLANA_DEVNET_SOL`
 
             - `BITCOIN_TESTNET_BTC`
+
+            - `FIAT_TESTNET_USD`
 
             - `FIAT_TESTNET_USD`
 
@@ -7146,13 +7019,15 @@ components:
             follows: `{$BLOCKCHAIN}_{$NETWORK}_{$CURRENCY_CODE}`  Simple asset
             type to test with include 
 
-            - `ETHEREUM_GOERLI_ETH`
+            - `ETHEREUM_SEPOLIA_ETH`
 
-            - `ETHEREUM_GOERLI_USDC`
+            - `ETHEREUM_SEPOLIA_USDC`
 
             - `SOLANA_DEVNET_SOL`
 
             - `BITCOIN_TESTNET_BTC`
+
+            - `FIAT_TESTNET_USD`
 
             - `FIAT_TESTNET_USD`
 
@@ -7195,13 +7070,15 @@ components:
             follows: `{$BLOCKCHAIN}_{$NETWORK}_{$CURRENCY_CODE}`  Simple asset
             type to test with include 
 
-            - `ETHEREUM_GOERLI_ETH`
+            - `ETHEREUM_SEPOLIA_ETH`
 
-            - `ETHEREUM_GOERLI_USDC`
+            - `ETHEREUM_SEPOLIA_USDC`
 
             - `SOLANA_DEVNET_SOL`
 
             - `BITCOIN_TESTNET_BTC`
+
+            - `FIAT_TESTNET_USD`
 
             - `FIAT_TESTNET_USD`
 
@@ -7244,13 +7121,15 @@ components:
             follows: `{$BLOCKCHAIN}_{$NETWORK}_{$CURRENCY_CODE}`  Simple asset
             type to test with include 
 
-            - `ETHEREUM_GOERLI_ETH`
+            - `ETHEREUM_SEPOLIA_ETH`
 
-            - `ETHEREUM_GOERLI_USDC`
+            - `ETHEREUM_SEPOLIA_USDC`
 
             - `SOLANA_DEVNET_SOL`
 
             - `BITCOIN_TESTNET_BTC`
+
+            - `FIAT_TESTNET_USD`
 
             - `FIAT_TESTNET_USD`
 
@@ -7288,13 +7167,15 @@ components:
             follows: `{$BLOCKCHAIN}_{$NETWORK}_{$CURRENCY_CODE}`  Simple asset
             type to test with include 
 
-            - `ETHEREUM_GOERLI_ETH`
+            - `ETHEREUM_SEPOLIA_ETH`
 
-            - `ETHEREUM_GOERLI_USDC`
+            - `ETHEREUM_SEPOLIA_USDC`
 
             - `SOLANA_DEVNET_SOL`
 
             - `BITCOIN_TESTNET_BTC`
+
+            - `FIAT_TESTNET_USD`
 
             - `FIAT_TESTNET_USD`
 
@@ -7331,13 +7212,15 @@ components:
             follows: `{$BLOCKCHAIN}_{$NETWORK}_{$CURRENCY_CODE}`  Simple asset
             type to test with include 
 
-            - `ETHEREUM_GOERLI_ETH`
+            - `ETHEREUM_SEPOLIA_ETH`
 
-            - `ETHEREUM_GOERLI_USDC`
+            - `ETHEREUM_SEPOLIA_USDC`
 
             - `SOLANA_DEVNET_SOL`
 
             - `BITCOIN_TESTNET_BTC`
+
+            - `FIAT_TESTNET_USD`
 
             - `FIAT_TESTNET_USD`
 
@@ -7382,13 +7265,15 @@ components:
             follows: `{$BLOCKCHAIN}_{$NETWORK}_{$CURRENCY_CODE}`  Simple asset
             type to test with include 
 
-            - `ETHEREUM_GOERLI_ETH`
+            - `ETHEREUM_SEPOLIA_ETH`
 
-            - `ETHEREUM_GOERLI_USDC`
+            - `ETHEREUM_SEPOLIA_USDC`
 
             - `SOLANA_DEVNET_SOL`
 
             - `BITCOIN_TESTNET_BTC`
+
+            - `FIAT_TESTNET_USD`
 
             - `FIAT_TESTNET_USD`
 
@@ -7425,13 +7310,15 @@ components:
             follows: `{$BLOCKCHAIN}_{$NETWORK}_{$CURRENCY_CODE}`  Simple asset
             type to test with include 
 
-            - `ETHEREUM_GOERLI_ETH`
+            - `ETHEREUM_SEPOLIA_ETH`
 
-            - `ETHEREUM_GOERLI_USDC`
+            - `ETHEREUM_SEPOLIA_USDC`
 
             - `SOLANA_DEVNET_SOL`
 
             - `BITCOIN_TESTNET_BTC`
+
+            - `FIAT_TESTNET_USD`
 
             - `FIAT_TESTNET_USD`
 
@@ -7471,13 +7358,15 @@ components:
             follows: `{$BLOCKCHAIN}_{$NETWORK}_{$CURRENCY_CODE}`  Simple asset
             type to test with include 
 
-            - `ETHEREUM_GOERLI_ETH`
+            - `ETHEREUM_SEPOLIA_ETH`
 
-            - `ETHEREUM_GOERLI_USDC`
+            - `ETHEREUM_SEPOLIA_USDC`
 
             - `SOLANA_DEVNET_SOL`
 
             - `BITCOIN_TESTNET_BTC`
+
+            - `FIAT_TESTNET_USD`
 
             - `FIAT_TESTNET_USD`
 
@@ -7514,13 +7403,15 @@ components:
             follows: `{$BLOCKCHAIN}_{$NETWORK}_{$CURRENCY_CODE}`  Simple asset
             type to test with include 
 
-            - `ETHEREUM_GOERLI_ETH`
+            - `ETHEREUM_SEPOLIA_ETH`
 
-            - `ETHEREUM_GOERLI_USDC`
+            - `ETHEREUM_SEPOLIA_USDC`
 
             - `SOLANA_DEVNET_SOL`
 
             - `BITCOIN_TESTNET_BTC`
+
+            - `FIAT_TESTNET_USD`
 
             - `FIAT_TESTNET_USD`
 
@@ -7557,13 +7448,15 @@ components:
             follows: `{$BLOCKCHAIN}_{$NETWORK}_{$CURRENCY_CODE}`  Simple asset
             type to test with include 
 
-            - `ETHEREUM_GOERLI_ETH`
+            - `ETHEREUM_SEPOLIA_ETH`
 
-            - `ETHEREUM_GOERLI_USDC`
+            - `ETHEREUM_SEPOLIA_USDC`
 
             - `SOLANA_DEVNET_SOL`
 
             - `BITCOIN_TESTNET_BTC`
+
+            - `FIAT_TESTNET_USD`
 
             - `FIAT_TESTNET_USD`
 
@@ -7600,13 +7493,15 @@ components:
             follows: `{$BLOCKCHAIN}_{$NETWORK}_{$CURRENCY_CODE}`  Simple asset
             type to test with include 
 
-            - `ETHEREUM_GOERLI_ETH`
+            - `ETHEREUM_SEPOLIA_ETH`
 
-            - `ETHEREUM_GOERLI_USDC`
+            - `ETHEREUM_SEPOLIA_USDC`
 
             - `SOLANA_DEVNET_SOL`
 
             - `BITCOIN_TESTNET_BTC`
+
+            - `FIAT_TESTNET_USD`
 
             - `FIAT_TESTNET_USD`
 
@@ -7642,13 +7537,15 @@ components:
             follows: `{$BLOCKCHAIN}_{$NETWORK}_{$CURRENCY_CODE}`  Simple asset
             type to test with include 
 
-            - `ETHEREUM_GOERLI_ETH`
+            - `ETHEREUM_SEPOLIA_ETH`
 
-            - `ETHEREUM_GOERLI_USDC`
+            - `ETHEREUM_SEPOLIA_USDC`
 
             - `SOLANA_DEVNET_SOL`
 
             - `BITCOIN_TESTNET_BTC`
+
+            - `FIAT_TESTNET_USD`
 
             - `FIAT_TESTNET_USD`
 
@@ -7691,13 +7588,15 @@ components:
             follows: `{$BLOCKCHAIN}_{$NETWORK}_{$CURRENCY_CODE}`  Simple asset
             type to test with include 
 
-            - `ETHEREUM_GOERLI_ETH`
+            - `ETHEREUM_SEPOLIA_ETH`
 
-            - `ETHEREUM_GOERLI_USDC`
+            - `ETHEREUM_SEPOLIA_USDC`
 
             - `SOLANA_DEVNET_SOL`
 
             - `BITCOIN_TESTNET_BTC`
+
+            - `FIAT_TESTNET_USD`
 
             - `FIAT_TESTNET_USD`
 
@@ -11251,11 +11150,9 @@ components:
 
             Pre configured products that are available for use are 
 
-            - `DEPOSIT_ANCH_CRYPTO`
+            - `DEPOSIT_BASIC`
 
-            - `PAYMENT_ANCH_CRYPTO`
-
-            - `DEPOSIT_ANCH_FIAT`
+            - `PAYMENT_BASIC`
         asset_type_id:
           type: string
           description: >
@@ -11268,13 +11165,15 @@ components:
             `{$BLOCKCHAIN}_{$NETWORK}_{$CURRENCY_CODE}`  Simple asset type to
             test with include 
 
-            - `ETHEREUM_GOERLI_ETH`
+            - `ETHEREUM_SEPOLIA_ETH`
 
-            - `ETHEREUM_GOERLI_USDC`
+            - `ETHEREUM_SEPOLIA_USDC`
 
             - `SOLANA_DEVNET_SOL`
 
             - `BITCOIN_TESTNET_BTC`
+
+            - `FIAT_TESTNET_USD`
 
             - `FIAT_TESTNET_USD`
 
@@ -11922,226 +11821,6 @@ components:
       properties:
         data:
           $ref: '#/components/schemas/ApplicationAccessCode'
-    AdjustmentCredit:
-      required:
-        - adjustment_type
-        - amount
-        - id
-        - status
-        - target_account_id
-      type: object
-      properties:
-        id:
-          type: string
-          description: >-
-            Unique ID of the adjustment request, to be used to accept the
-            adjustment and lookup status
-          readOnly: true
-        status:
-          type: string
-          description: >+
-            Status of the adjustment. Cannot be modified directly by the
-            client. 
-
-            * `REQUESTED` - Adjustment request is created and has passed
-            validation. It must be accepted at which point it will be executed. 
-
-            * `ACCEPTED` - Adjustment request has been accepted and is waiting
-            execution. At this point it cannot be cancelled.  
-
-            * `CANCELLED` - Adjustment request was cancelled. Only available
-            prior to acceptance. The adjustment cannot be replayed from this
-            state.  
-
-            * `EXECUTED` -  Adjustment request has been executed, it is
-            completed with all ledger entries performed.  
-
-            * `REJECTED` - Adjustment request was rejected and cannot be
-            executed.  
-
-          readOnly: true
-          enum:
-            - REQUESTED
-            - ACCEPTED
-            - CANCELLED
-            - EXECUTED
-            - REJECTED
-        adjustment_type:
-          type: string
-          description: >+
-            Type of adjustment to be performed on the target account. Currently
-            supported adjustments are 
-
-            * `CREDIT` - Credit adjustments increase the available balance of
-            the underlying account 
-
-            * `DEBIT` - Debit adjustments decrease the available balance of the
-            underlying account 
-
-          enum:
-            - CREDIT
-            - DEBIT
-        target_account_id:
-          type: string
-          description: >-
-            Target account ID into which the  credit adjustment is being
-            applied. A credit adjustment is not available on all account types.
-            Typically this is used for managing balances on accounts with a
-            product_type of `VIRTUAL`. Adjustments cannot be performed on
-            accounts with a product_type of `DEPOSIT`
-        amount:
-          type: number
-          description: >-
-            Total amount to credit to the target account. Use only positive
-            values.
-    CREDIT:
-      required:
-        - data
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AdjustmentCredit'
-    AdjustmentDebit:
-      required:
-        - adjustment_type
-        - amount
-        - id
-        - status
-        - target_account_id
-      type: object
-      properties:
-        id:
-          type: string
-          description: >-
-            Unique ID of the adjustment request, to be used to accept the
-            adjustment and lookup status
-          readOnly: true
-        status:
-          type: string
-          description: >+
-            Status of the adjustment. Cannot be modified directly by the
-            client. 
-
-            * `REQUESTED` - Adjustment request is created and has passed
-            validation. It must be accepted at which point it will be executed. 
-
-            * `ACCEPTED` - Adjustment request has been accepted and is waiting
-            execution. At this point it cannot be cancelled.  
-
-            * `CANCELLED` - Adjustment request was cancelled. Only available
-            prior to acceptance. The adjustment cannot be replayed from this
-            state.  
-
-            * `EXECUTED` -  Adjustment request has been executed, it is
-            completed with all ledger entries performed.  
-
-            * `REJECTED` - Adjustment request was rejected and cannot be
-            executed.  
-
-          readOnly: true
-          enum:
-            - REQUESTED
-            - ACCEPTED
-            - CANCELLED
-            - EXECUTED
-            - REJECTED
-        adjustment_type:
-          type: string
-          description: >+
-            Type of adjustment to be performed on the target account. Currently
-            supported adjustments are 
-
-            * `CREDIT` - Credit adjustments increase the available balance of
-            the underlying account 
-
-            * `DEBIT` - Debit adjustments decrease the available balance of the
-            underlying account 
-
-          enum:
-            - CREDIT
-            - DEBIT
-        target_account_id:
-          type: string
-          description: >-
-            Target account ID into which the debit adjustment is being applied.
-            A debit adjustment is not available on all account types. Typically
-            this is used for managing balances on accounts with a product_type
-            of `VIRTUAL`. Adjustments cannot be performed on accounts with a
-            product_type of `DEPOSIT`.
-        amount:
-          type: number
-          description: >-
-            Total amount to debit from the target account. Use only positive
-            values.
-    DEBIT:
-      required:
-        - data
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/AdjustmentDebit'
-    RequestAdjustment:
-      required:
-        - adjustment_type
-        - id
-        - status
-      type: object
-      properties:
-        id:
-          type: string
-          description: >-
-            Unique ID of the adjustment request, to be used to accept the
-            adjustment and lookup status
-          readOnly: true
-        status:
-          type: string
-          description: >+
-            Status of the adjustment. Cannot be modified directly by the
-            client. 
-
-            * `REQUESTED` - Adjustment request is created and has passed
-            validation. It must be accepted at which point it will be executed. 
-
-            * `ACCEPTED` - Adjustment request has been accepted and is waiting
-            execution. At this point it cannot be cancelled.  
-
-            * `CANCELLED` - Adjustment request was cancelled. Only available
-            prior to acceptance. The adjustment cannot be replayed from this
-            state.  
-
-            * `EXECUTED` -  Adjustment request has been executed, it is
-            completed with all ledger entries performed.  
-
-            * `REJECTED` - Adjustment request was rejected and cannot be
-            executed.  
-
-          readOnly: true
-          enum:
-            - REQUESTED
-            - ACCEPTED
-            - CANCELLED
-            - EXECUTED
-            - REJECTED
-        adjustment_type:
-          type: string
-          description: >+
-            Type of adjustment to be performed on the target account. Currently
-            supported adjustments are 
-
-            * `CREDIT` - Credit adjustments increase the available balance of
-            the underlying account 
-
-            * `DEBIT` - Debit adjustments decrease the available balance of the
-            underlying account 
-
-          enum:
-            - CREDIT
-            - DEBIT
-      discriminator:
-        propertyName: adjustment_type
-        mapping:
-          CREDIT: '#/components/schemas/AdjustmentCredit'
-          DEBIT: '#/components/schemas/AdjustmentDebit'
     AccountBase:
       required:
         - id
@@ -12197,13 +11876,15 @@ components:
             `{$BLOCKCHAIN}_{$NETWORK}_{$CURRENCY_CODE}`  Simple asset type to
             test with include 
 
-            - `ETHEREUM_GOERLI_ETH`
+            - `ETHEREUM_SEPOLIA_ETH`
 
-            - `ETHEREUM_GOERLI_USDC`
+            - `ETHEREUM_SEPOLIA_USDC`
 
             - `SOLANA_DEVNET_SOL`
 
             - `BITCOIN_TESTNET_BTC`
+
+            - `FIAT_TESTNET_USD`
 
             - `FIAT_TESTNET_USD`
 
@@ -12332,6 +12013,32 @@ components:
           description: Follow standard patch guidance
           items:
             $ref: '#/components/schemas/PatchGeneric'
+    PatchCounterparty:
+      type: object
+      properties:
+        field:
+          type: string
+          description: Counterparty Field To Be Patched
+        value:
+          type: string
+          description: New value
+      description: Follow standard patch guidance
+    RequestCounterpartyPatch:
+      type: object
+      properties:
+        updates:
+          type: array
+          description: Follow standard patch guidance
+          items:
+            $ref: '#/components/schemas/PatchCounterparty'
+        updated_by:
+          type: string
+          description: >-
+            Description or reference of the system/person who requested the
+            change
+        reason:
+          type: string
+          description: 'String representing the reason for the change. '
     PatchApplication:
       type: object
       properties:
@@ -13007,13 +12714,15 @@ components:
             `{$BLOCKCHAIN}_{$NETWORK}_{$CURRENCY_CODE}`  Simple asset type to
             test with include 
 
-            - `ETHEREUM_GOERLI_ETH`
+            - `ETHEREUM_SEPOLIA_ETH`
 
-            - `ETHEREUM_GOERLI_USDC`
+            - `ETHEREUM_SEPOLIA_USDC`
 
             - `SOLANA_DEVNET_SOL`
 
             - `BITCOIN_TESTNET_BTC`
+
+            - `FIAT_TESTNET_USD`
 
             - `FIAT_TESTNET_USD`
 
@@ -13381,10 +13090,22 @@ components:
           description: >+
             Transaction type 
 
-            * `TRANSFER_IN` - External deposit of funds into an account. 
+            * `TRANSFER_IN` - External deposit of crypto funds into an account. 
 
-            * `TRANSFER_OUT` - Withdrawal of funds from an account to an
+            * `TRANSFER_OUT` - Withdrawal of crypto funds from an account to an
             external location .  
+
+            * `FIAT_TRANSFER_IN` - External deposit of FIAT funds into an
+            account. 
+
+            * `FIAT_TRANSFER_OUT` - Withdrawal of FIAT funds from an account to
+            an external location .  
+
+            * `FIAT_TRANSFER_IN_RETURN` - Clawback of a FIAT deposit (e.g. due
+            to bankiing error). 
+
+            * `FIAT_TRANSFER_OUT_RETURN` - Return of a FIAT withdrawal (e.g. due
+            to the destination account being closed)  
 
             * `DEBIT_CORRECTION` - Debit account adjustment.  
 
@@ -13410,9 +13131,6 @@ components:
           type: string
           description: >+
             If this transaction related to a core platform feature 
-
-            * `ADJUSTMENT` - When this transaction was a result of an
-            [adjustment](https://docs.layer2financial.com/api-docs/openapi/layer2/overview/).  
 
             * `DEPOSIT` - When this transaction was a result of a deposit.  
 
@@ -13525,10 +13243,22 @@ components:
           description: >+
             Transaction type 
 
-            * `TRANSFER_IN` - External deposit of funds into an account. 
+            * `TRANSFER_IN` - External deposit of crypto funds into an account. 
 
-            * `TRANSFER_OUT` - Withdrawal of funds from an account to an
+            * `TRANSFER_OUT` - Withdrawal of crypto funds from an account to an
             external location .  
+
+            * `FIAT_TRANSFER_IN` - External deposit of FIAT funds into an
+            account. 
+
+            * `FIAT_TRANSFER_OUT` - Withdrawal of FIAT funds from an account to
+            an external location .  
+
+            * `FIAT_TRANSFER_IN_RETURN` - Clawback of a FIAT deposit (e.g. due
+            to bankiing error). 
+
+            * `FIAT_TRANSFER_OUT_RETURN` - Return of a FIAT withdrawal (e.g. due
+            to the destination account being closed)  
 
             * `DEBIT_CORRECTION` - Debit account adjustment.  
 
@@ -13554,9 +13284,6 @@ components:
           type: string
           description: >+
             If this transaction related to a core platform feature 
-
-            * `ADJUSTMENT` - When this transaction was a result of an
-            [adjustment](https://docs.layer2financial.com/api-docs/openapi/layer2/overview/).  
 
             * `DEPOSIT` - When this transaction was a result of a deposit.  
 
@@ -13652,10 +13379,22 @@ components:
           description: >+
             Transaction type 
 
-            * `TRANSFER_IN` - External deposit of funds into an account. 
+            * `TRANSFER_IN` - External deposit of crypto funds into an account. 
 
-            * `TRANSFER_OUT` - Withdrawal of funds from an account to an
+            * `TRANSFER_OUT` - Withdrawal of crypto funds from an account to an
             external location .  
+
+            * `FIAT_TRANSFER_IN` - External deposit of FIAT funds into an
+            account. 
+
+            * `FIAT_TRANSFER_OUT` - Withdrawal of FIAT funds from an account to
+            an external location .  
+
+            * `FIAT_TRANSFER_IN_RETURN` - Clawback of a FIAT deposit (e.g. due
+            to bankiing error). 
+
+            * `FIAT_TRANSFER_OUT_RETURN` - Return of a FIAT withdrawal (e.g. due
+            to the destination account being closed)  
 
             * `DEBIT_CORRECTION` - Debit account adjustment.  
 
@@ -13681,9 +13420,6 @@ components:
           type: string
           description: >+
             If this transaction related to a core platform feature 
-
-            * `ADJUSTMENT` - When this transaction was a result of an
-            [adjustment](https://docs.layer2financial.com/api-docs/openapi/layer2/overview/).  
 
             * `DEPOSIT` - When this transaction was a result of a deposit.  
 
@@ -13763,8 +13499,6 @@ components:
             withdrawals:write: Create and Modify Withdrawals Related Data
             exchanges:read: View Exchanges Data
             exchanges:write: Create and Modify Exchange Related Data
-            adjustments:read: View Adjustment Data
-            adjustments:write: Create and Modify Adjustment Related Data
             deposits:read: View Deposit Related data
             deposits:write: Create and Modify Deposit Related Data
             subscriptions:read: View Subscription Related data

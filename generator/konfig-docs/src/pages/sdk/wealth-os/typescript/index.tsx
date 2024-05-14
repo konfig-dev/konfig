@@ -25,7 +25,7 @@ Our modular architecture allows you to use WealthOS fully to launch your entire 
       companyKebabCase="wealth-os"
       clientNameCamelCase="wealthOs"
       homepage="wealthos.cloud/"
-      lastUpdated={new Date("2024-03-28T00:10:52.272Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/wealthos/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -5353,10 +5353,10 @@ Our modular architecture allows you to use WealthOS fully to launch your entire 
       apiTitle="WealthOS API"
       apiBaseUrl="https://web_host_name"
       apiVersion="v1"
-      endpoints={56}
-      sdkMethods={83}
+      endpoints={58}
+      sdkMethods={85}
       schemas={675}
-      parameters={411}
+      parameters={434}
       difficulty="Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/wealthos/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/wealthos/openapi.yaml"

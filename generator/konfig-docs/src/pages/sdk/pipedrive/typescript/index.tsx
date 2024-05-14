@@ -23,7 +23,7 @@ Learn more at www.pipedrive.com.`}
       companyKebabCase="pipedrive"
       clientNameCamelCase="pipedrive"
       homepage="pipedrive.com"
-      lastUpdated={new Date("2024-03-27T20:29:17.115Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/pipedrive/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -201,7 +201,7 @@ Learn more at www.pipedrive.com.`}
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Activities",
     "typeScriptTag": "activities",
-    "description": "Get all activities (BETA)",
+    "description": "Get all activities (https://developers.pipedrive.com/docs/api/v1",
     "parameters": [
       {
         "name": "cursor",
@@ -1084,7 +1084,7 @@ Learn more at www.pipedrive.com.`}
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Deals",
     "typeScriptTag": "deals",
-    "description": "Get all deals (BETA)",
+    "description": "Get all deals (https://developers.pipedrive.com/docs/api/v1",
     "parameters": [
       {
         "name": "cursor",
@@ -1265,7 +1265,7 @@ Learn more at www.pipedrive.com.`}
         "name": "amount",
         "schema": "integer",
         "required": true,
-        "description": "The number of given intervals, starting from `start_date`, to fetch. E.g. 3 (months).",
+        "description": "The number of given intervals, starting from `start_date`, to fetch. E.g. 3 (https://developers.pipedrive.com/docs/api/v1.",
         "example": 0
       },
       {
@@ -1293,7 +1293,7 @@ Learn more at www.pipedrive.com.`}
       {
         "name": "excludeDeals",
         "schema": "number",
-        "description": "Whether to exclude deals list (1) or not (0). Note that when deals are excluded, the timeline summary (counts and values) is still returned."
+        "description": "Whether to exclude deals list (https://developers.pipedrive.com/docs/api/v1 or not (https://developers.pipedrive.com/docs/api/v1. Note that when deals are excluded, the timeline summary (counts and values) is still returned."
       },
       {
         "name": "totalsConvertCurrency",
@@ -1888,7 +1888,7 @@ Learn more at www.pipedrive.com.`}
       {
         "name": "includeProductData",
         "schema": "number",
-        "description": "Whether to fetch product data along with each attached product (1) or not (0, default)"
+        "description": "Whether to fetch product data along with each attached product (https://developers.pipedrive.com/docs/api/v1 or not (0, default)"
       }
     ],
     "responses": [
@@ -4420,7 +4420,7 @@ Learn more at www.pipedrive.com.`}
       {
         "name": "firstChar",
         "schema": "string",
-        "description": "If supplied, only organizations whose name starts with the specified letter will be returned (case-insensitive)"
+        "description": "If supplied, only organizations whose name starts with the specified letter will be returned (https://developers.pipedrive.com/docs/api/v1"
       },
       {
         "name": "start",
@@ -4467,7 +4467,7 @@ Learn more at www.pipedrive.com.`}
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Organizations",
     "typeScriptTag": "organizations",
-    "description": "Get all organizations (BETA)",
+    "description": "Get all organizations (https://developers.pipedrive.com/docs/api/v1",
     "parameters": [
       {
         "name": "cursor",
@@ -4503,7 +4503,7 @@ Learn more at www.pipedrive.com.`}
         "name": "firstChar",
         "schema": "string",
         "required": false,
-        "description": "If supplied, only organizations whose name starts with the specified letter will be returned (case-insensitive)"
+        "description": "If supplied, only organizations whose name starts with the specified letter will be returned (https://developers.pipedrive.com/docs/api/v1"
       }
     ],
     "responses": [
@@ -4714,7 +4714,7 @@ Learn more at www.pipedrive.com.`}
       {
         "name": "onlyPrimaryAssociation",
         "schema": "number",
-        "description": "If set, only deals that are directly associated to the organization are fetched. If not set (default), all deals are fetched that are either directly or indirectly related to the organization. Indirect relations include relations through custom, organization-type fields and through persons of the given organization."
+        "description": "If set, only deals that are directly associated to the organization are fetched. If not set (https://developers.pipedrive.com/docs/api/v1, all deals are fetched that are either directly or indirectly related to the organization. Indirect relations include relations through custom, organization-type fields and through persons of the given organization."
       }
     ],
     "responses": [
@@ -5452,7 +5452,7 @@ Learn more at www.pipedrive.com.`}
       {
         "name": "firstChar",
         "schema": "string",
-        "description": "If supplied, only persons whose name starts with the specified letter will be returned (case-insensitive)"
+        "description": "If supplied, only persons whose name starts with the specified letter will be returned (https://developers.pipedrive.com/docs/api/v1"
       },
       {
         "name": "start",
@@ -5499,7 +5499,7 @@ Learn more at www.pipedrive.com.`}
     "httpMethod": HttpMethodsEnum.GET,
     "tag": "Persons",
     "typeScriptTag": "persons",
-    "description": "Get all persons (BETA)",
+    "description": "Get all persons (https://developers.pipedrive.com/docs/api/v1",
     "parameters": [
       {
         "name": "cursor",
@@ -5535,7 +5535,7 @@ Learn more at www.pipedrive.com.`}
         "name": "firstChar",
         "schema": "string",
         "required": false,
-        "description": "If supplied, only persons whose name starts with the specified letter will be returned (case-insensitive)"
+        "description": "If supplied, only persons whose name starts with the specified letter will be returned (https://developers.pipedrive.com/docs/api/v1"
       }
     ],
     "responses": [
@@ -6599,7 +6599,7 @@ Learn more at www.pipedrive.com.`}
       {
         "name": "firstChar",
         "schema": "string",
-        "description": "If supplied, only products whose name starts with the specified letter will be returned (case-insensitive)"
+        "description": "If supplied, only products whose name starts with the specified letter will be returned (https://developers.pipedrive.com/docs/api/v1"
       },
       {
         "name": "getSummary",
@@ -7614,7 +7614,7 @@ Learn more at www.pipedrive.com.`}
       {
         "name": "items",
         "schema": "string",
-        "description": "Multiple selection of item types to include in the query (optional)"
+        "description": "Multiple selection of item types to include in the query (https://developers.pipedrive.com/docs/api/v1"
       },
       {
         "name": "start",
@@ -9125,10 +9125,10 @@ Learn more at www.pipedrive.com.`}
       apiTitle="Pipedrive API v1"
       apiBaseUrl="https://api.pipedrive.com/v1"
       apiVersion="1.0.0"
-      endpoints={176}
-      sdkMethods={276}
+      endpoints={179}
+      sdkMethods={279}
       schemas={415}
-      parameters={739}
+      parameters={748}
       difficulty="Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/pipedrive/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/pipedrive/openapi.yaml"

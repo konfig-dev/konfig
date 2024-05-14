@@ -5,7 +5,7 @@ info:
   license:
     name: Apache License, Version 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0
-  version: 22222222.99201.1227
+  version: 22222222.99201.1256
   x-api-status-urls: false
 paths:
   /v1/op/data-connector-credentials:
@@ -156,6 +156,65 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssignConnectorCredentialsResponseDTO'
+        default:
+          description: Default error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+  /v1/op/data-versions:
+    get:
+      tags:
+        - DataAndJobHandling
+      summary: Retrieve the latest enabled data versions for all analytic tenants
+      description: >-
+        If you discover any inconsistencies after running metric value
+        validation, you may want to find the data versions
+         causing inconsistencies so you can later disable them.
+
+         Use this API to retrieve up to five (5) of the latest enabled data versions for all your analytic tenants or a
+         single specified analytic tenant.
+      operationId: DataAndJobHandling_LatestEnabledDV
+      parameters:
+        - name: tenantCode
+          in: query
+          description: >-
+            The tenant code of a specific analytic tenant that you want to
+            retrieve data versions for.
+             Use this if you are only interested in the results for one analytic tenant.
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: |-
+            The limit of analytic tenants to retrieve data versions for.
+             This parameter is not used if the tenantCode parameter is specified.
+          schema:
+            type: integer
+            format: int32
+        - name: start
+          in: query
+          description: >-
+            The index to start retrieving results from, also known as offset.
+            The index begins at 0.
+          schema:
+            type: integer
+            format: int32
+        - name: numberOfVersions
+          in: query
+          description: >-
+            The number of latest enabled data versions to retrieve. The maximum
+            value is 5.
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MultipleTenantDataVersionsListDTO'
         default:
           description: Default error response
           content:
@@ -683,6 +742,59 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Status'
+  /v1/op/jobs/processing-jobs/:receivingJobId:
+    get:
+      tags:
+        - DataAndJobHandling
+      summary: Retrieve processing job statuses by receiving job ID
+      description: >-
+        Use this API to retrieve a list of statuses for all processing jobs
+        associated with the given receiving job ID.
+         Processing jobs deal with an individual analytic tenant's data load. A processing job is either triggered through
+         the UI or is one of many processing jobs spawned from a receiving job. When a processing job is triggered as part
+         of a set from an receiving job, it is associated to the receiving job through a Parent ID.
+      operationId: DataAndJobHandling_ProcessingJobStatus
+      parameters:
+        - name: tenantCode
+          in: query
+          description: >-
+            The tenant code of the tenant you want to retrieve the processing
+            jobs for.
+             Use this if you are only interested in the results for one analytic tenant.
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: The limit of processing jobs to retrieve per page.
+          schema:
+            type: integer
+            format: int32
+        - name: start
+          in: query
+          description: >-
+            The index to start retrieving results from, also known as offset.
+            The index begins at 0.
+          schema:
+            type: integer
+            format: int32
+        - name: receivingJobId
+          in: query
+          description: The receiving job ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessingJobStatusResponse'
+        default:
+          description: Default error response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
   /v1/op/jobs/receiving-jobs/:receivingJobId:
     get:
       tags:
@@ -738,118 +850,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ReceivingJobStatusResponse'
-        default:
-          description: Default error response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Status'
-  v1/op/data-versions:
-    get:
-      tags:
-        - DataAndJobHandling
-      summary: Retrieve the latest enabled data versions for all analytic tenants
-      description: >-
-        If you discover any inconsistencies after running metric value
-        validation, you may want to find the data versions
-         causing inconsistencies so you can later disable them.
-
-         Use this API to retrieve up to five (5) of the latest enabled data versions for all your analytic tenants or a
-         single specified analytic tenant.
-      operationId: DataAndJobHandling_LatestEnabledDV
-      parameters:
-        - name: tenantCode
-          in: query
-          description: >-
-            The tenant code of a specific analytic tenant that you want to
-            retrieve data versions for.
-             Use this if you are only interested in the results for one analytic tenant.
-          schema:
-            type: string
-        - name: limit
-          in: query
-          description: |-
-            The limit of analytic tenants to retrieve data versions for.
-             This parameter is not used if the tenantCode parameter is specified.
-          schema:
-            type: integer
-            format: int32
-        - name: start
-          in: query
-          description: >-
-            The index to start retrieving results from, also known as offset.
-            The index begins at 0.
-          schema:
-            type: integer
-            format: int32
-        - name: numberOfVersions
-          in: query
-          description: >-
-            The number of latest enabled data versions to retrieve. The maximum
-            value is 5.
-          schema:
-            type: integer
-            format: int32
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MultipleTenantDataVersionsListDTO'
-        default:
-          description: Default error response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Status'
-  v1/op/jobs/processing-jobs/:receivingJobId:
-    get:
-      tags:
-        - DataAndJobHandling
-      summary: Retrieve processing job statuses by receiving job ID
-      description: >-
-        Use this API to retrieve a list of statuses for all processing jobs
-        associated with the given receiving job ID.
-         Processing jobs deal with an individual analytic tenant's data load. A processing job is either triggered through
-         the UI or is one of many processing jobs spawned from a receiving job. When a processing job is triggered as part
-         of a set from an receiving job, it is associated to the receiving job through a Parent ID.
-      operationId: DataAndJobHandling_ProcessingJobStatus
-      parameters:
-        - name: tenantCode
-          in: query
-          description: >-
-            The tenant code of the tenant you want to retrieve the processing
-            jobs for.
-             Use this if you are only interested in the results for one analytic tenant.
-          schema:
-            type: string
-        - name: limit
-          in: query
-          description: The limit of processing jobs to retrieve per page.
-          schema:
-            type: integer
-            format: int32
-        - name: start
-          in: query
-          description: >-
-            The index to start retrieving results from, also known as offset.
-            The index begins at 0.
-          schema:
-            type: integer
-            format: int32
-        - name: receivingJobId
-          in: query
-          description: The receiving job ID
-          schema:
-            type: string
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProcessingJobStatusResponse'
         default:
           description: Default error response
           content:

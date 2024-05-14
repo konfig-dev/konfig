@@ -325,16 +325,33 @@ components:
             $ref: '#/components/schemas/AccessScope'
         organizationDescendants:
           type: array
+          items:
+            format: isNotBlank
+            type: string
         organizationAncestors:
           type: array
+          items:
+            format: isNotBlank
+            type: string
         organizationInsured:
           type: array
+          items:
+            format: isNotBlank
+            type: string
         roles:
           type: array
+          items:
+            format: isNotBlank
+            type: string
       required:
         - id
         - ttl
         - created
+        - abac
+        - organizationDescendants
+        - organizationAncestors
+        - organizationInsured
+        - roles
     UserTokenDto:
       type: object
       properties:
@@ -352,8 +369,6 @@ components:
           minLength: 1
         organizationId:
           type: string
-        role:
-          type: number
         timezone:
           type: string
         locale:
@@ -388,8 +403,6 @@ components:
           type: string
           format: isNotBlank
           minLength: 1
-        policyId:
-          type: object
         type:
           type: number
           format: isNotBlank
@@ -572,18 +585,6 @@ components:
       required:
         - id
         - name
-    AvailablePolicyDto:
-      type: object
-      properties:
-        policyId:
-          type: string
-          minLength: 1
-        name:
-          type: string
-          minLength: 1
-      required:
-        - policyId
-        - name
     EndorsementDto:
       type: object
       properties:
@@ -625,6 +626,8 @@ components:
         allowLetterOfCredit:
           type: boolean
         allowUserClaim:
+          type: boolean
+        allowPolicyModifyTechFee:
           type: boolean
         type:
           type: number
@@ -741,6 +744,7 @@ components:
             oneOf:
               - $ref: '#/components/schemas/AdditionalFieldString'
               - $ref: '#/components/schemas/AdditionalFieldEnum'
+              - $ref: '#/components/schemas/AdditionalFieldJSON'
         enforceTrackingCode:
           type: boolean
       required:
@@ -958,6 +962,9 @@ components:
         allowLetterOfCredit:
           type: boolean
           description: Allow letter of credit information to be added during quotation
+        allowPolicyModifyTechFee:
+          type: boolean
+          description: Allow an organizations policy to alter the tech fee
         parent:
           $ref: '#/components/schemas/Organization'
         addressId:
@@ -1083,6 +1090,7 @@ components:
             oneOf:
               - $ref: '#/components/schemas/AdditionalFieldString'
               - $ref: '#/components/schemas/AdditionalFieldEnum'
+              - $ref: '#/components/schemas/AdditionalFieldJSON'
         enforceTrackingCode:
           type: boolean
       required:
@@ -1199,6 +1207,23 @@ components:
             type: string
       required:
         - options
+    AdditionalFieldJSON:
+      type: object
+      properties:
+        id:
+          type: string
+          minLength: 1
+        type:
+          type: string
+          enum:
+            - json
+          minLength: 1
+        mandatory:
+          type: boolean
+      required:
+        - id
+        - type
+        - mandatory
     OrganizationFormDtoCreation:
       type: object
       properties:
@@ -1229,6 +1254,8 @@ components:
         allowLetterOfCredit:
           type: boolean
         allowUserClaim:
+          type: boolean
+        allowPolicyModifyTechFee:
           type: boolean
         type:
           type: number
@@ -1345,6 +1372,7 @@ components:
             oneOf:
               - $ref: '#/components/schemas/AdditionalFieldString'
               - $ref: '#/components/schemas/AdditionalFieldEnum'
+              - $ref: '#/components/schemas/AdditionalFieldJSON'
         enforceTrackingCode:
           type: boolean
       required:
@@ -1393,6 +1421,8 @@ components:
           type: boolean
         allowUserClaim:
           type: boolean
+        allowPolicyModifyTechFee:
+          type: boolean
         type:
           type: number
           format: isNotBlank
@@ -1506,6 +1536,7 @@ components:
             oneOf:
               - $ref: '#/components/schemas/AdditionalFieldString'
               - $ref: '#/components/schemas/AdditionalFieldEnum'
+              - $ref: '#/components/schemas/AdditionalFieldJSON'
         enforceTrackingCode:
           type: boolean
     PublicSetupResponse:
@@ -2701,38 +2732,6 @@ paths:
             type: object
       tags:
         - OrganizationController
-  /api/v2/user/organizations/available-policies:
-    get:
-      operationId: organizationsGetAvailablePolicies
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/AvailablePolicyDto'
-          description: Success
-        '401':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Unauthorized'
-          description: Unauthorized
-        '403':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Forbidden'
-          description: Forbidden
-      description: >-
-        Returns a list of policies that can be assigned to organization of the
-        user
-      security:
-        - bearerAuth: []
-      parameters: []
-      tags:
-        - OrganizationController
   /api/v2/user/organizations/{id}/endorsements:
     get:
       operationId: organizationsFetchEndorsements
@@ -3299,6 +3298,40 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/OrganizationNameDto'
+          description: Success
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Forbidden'
+          description: Forbidden
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      tags:
+        - OrganizationController
+  /api/v2/user/organizations/{id}/insured-ids:
+    get:
+      operationId: organizationsGetInsuredIds
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
           description: Success
         '401':
           content:

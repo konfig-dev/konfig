@@ -22,7 +22,7 @@ https://www.hypatos.ai/privacy-policy`}
       companyKebabCase="hypatos"
       clientNameCamelCase="hypatos"
       homepage="hypatos.ai"
-      lastUpdated={new Date("2024-03-29T19:35:23.354Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/hypatos/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -2045,11 +2045,11 @@ https://www.hypatos.ai/privacy-policy`}
       language="TypeScript"
       apiTitle="Hypatos REST API"
       apiBaseUrl="https://api.cloud.hypatos.ai/v2"
-      apiVersion="2.13.0"
+      apiVersion="2.15.0"
       endpoints={33}
       sdkMethods={34}
       schemas={70}
-      parameters={155}
+      parameters={139}
       difficulty="Easy"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/hypatos/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/hypatos/openapi.yaml"

@@ -21,7 +21,7 @@ rawSpecString: |
     contact:
       name: SmartRecruiters
       url: https://developers.smartrecruiters.com
-    version: '201910.4'
+    version: '201911.1'
     description: SmartOnboard Public API
   servers:
     - url: https://api.smartrecruiters.com/webhooks-api/v201907
@@ -1853,6 +1853,33 @@ rawSpecString: |
 
           ```
 
+          * **JOB_PROPERTY_DEPENDENT_VALUES_MODIFIED** - job property dependent
+          values were modified
+
+          Additional context represents modified dependent values:
+
+           ```json
+
+          context: {
+            dependentId: "string",
+            modifications: {
+              "valuesSet": {
+                "string": ["string"]
+              },
+               "valuesAppended": {
+                 "string": ["string"]
+               },
+               "valuesRemoved": {
+                "string": ["string"]
+              },
+               "parentValuesWithAllValuesSet": ["string"],
+               "clearedOtherParentValues": boolean
+            },
+          }
+
+          ```
+
+
           * **JOB_PROPERTIES_CHANGED** - job details has changed (job fields
           edited on job)
 
@@ -2074,6 +2101,7 @@ rawSpecString: |
                   - JOB_PROPERTY_ARCHIVED_VALUE
                   - JOB_PROPERTY_DEPENDENT_PROPERTIES_UPDATED
                   - JOB_PROPERTY_DEPENDENT_VALUES_UPDATED
+                  - JOB_PROPERTY_DEPENDENT_VALUES_MODIFIED
                   - JOB_PROPERTIES_CHANGED
                   - POSITION_UPDATED
                   - POSITION_DELETED
@@ -2150,6 +2178,7 @@ rawSpecString: |
                 - JOB_PROPERTY_ARCHIVED_VALUE
                 - JOB_PROPERTY_DEPENDENT_PROPERTIES_UPDATED
                 - JOB_PROPERTY_DEPENDENT_VALUES_UPDATED
+                - JOB_PROPERTY_DEPENDENT_VALUES_MODIFIED
                 - JOB_PROPERTIES_CHANGED
                 - POSITION_UPDATED
                 - POSITION_DELETED
@@ -3825,6 +3854,14 @@ rawSpecString: |
               type (with enabled custom text pattern validation) and its value
               contains value that does not match the pattern
 
+              * **INVALID_NUMBER_RANGE** when candidate property of NUMBER type
+              (with enabled application fields date and number range validation)
+              and its value is not in the defined range
+
+              * **INVALID_DATE_RANGE** when candidate property of DATE type (with
+              enabled application fields date and number range validation) and its
+              value is not in the defined range
+
               * **INACCESSIBLE_FIELD** when candidate property cannot be set due
               to its own configuration
 
@@ -4032,6 +4069,14 @@ rawSpecString: |
               type (with enabled custom text pattern validation) and its value
               contains value that does not match the pattern
 
+              * **INVALID_NUMBER_RANGE** when candidate property of NUMBER type
+              (with enabled application fields date and number range validation)
+              and its value is not in the defined range
+
+              * **INVALID_DATE_RANGE** when candidate property of DATE type (with
+              enabled application fields date and number range validation) and its
+              value is not in the defined range
+
               * **INACCESSIBLE_FIELD** when candidate property cannot be set due
               to its own configuration
             content:
@@ -4212,6 +4257,14 @@ rawSpecString: |
               * **INVALID_TEXT_PATTERN_FORMAT** when candidate property of TEXT
               type (with enabled custom text pattern validation) and its value
               contains value that does not match the pattern
+
+              * **INVALID_NUMBER_RANGE** when candidate property of NUMBER type
+              (with enabled application fields date and number range validation)
+              and its value is not in the defined range
+
+              * **INVALID_DATE_RANGE** when candidate property of DATE type (with
+              enabled application fields date and number range validation) and its
+              value is not in the defined range
 
               * **INACCESSIBLE_FIELD** when candidate property cannot be set due
               to its own configuration
@@ -6574,6 +6627,18 @@ rawSpecString: |
             description: PostingId not found
         security:
           - key: []
+    /info/metrics.prometheus:
+      get:
+        tags:
+          - info
+        operationId: getPrometheusMetrics
+        responses:
+          default:
+            description: Exposes Prometheus metrics
+            content:
+              text/plain; version=0.0.4:
+                schema:
+                  type: string
     /publications:
       get:
         tags:
@@ -20119,4 +20184,4 @@ rawSpecString: |
   tags:
     - name: subscriptions
       description: Manage your event subscriptions
-konfigCliVersion: 1.38.34
+konfigCliVersion: 1.38.37

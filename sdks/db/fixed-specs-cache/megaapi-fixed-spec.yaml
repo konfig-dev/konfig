@@ -342,6 +342,34 @@ rawSpecString: |
                 type: object
         tags:
           - InstanceController
+    /rest/instance/getProfilePicture/{instance_key}:
+      get:
+        responses:
+          '200':
+            description: Success
+        operationId: Instance - getProfilePicture
+        summary: Get image from any whatsapp profile
+        security:
+          - bearer: []
+        parameters:
+          - in: path
+            name: instance_key
+            required: true
+            schema:
+              type: string
+          - in: query
+            name: to
+            required: false
+            schema:
+              type: string
+          - description: icon/image
+            in: query
+            name: type
+            required: false
+            schema:
+              type: string
+        tags:
+          - InstanceController
     /rest/instance/isOnWhatsApp/{instance_key}:
       get:
         responses:
@@ -1071,4 +1099,4 @@ rawSpecString: |
       description: Endpoints related to management of groups
   servers:
     - url: https://apistart01.megaapi.com.br
-konfigCliVersion: 1.38.34
+konfigCliVersion: 1.38.37

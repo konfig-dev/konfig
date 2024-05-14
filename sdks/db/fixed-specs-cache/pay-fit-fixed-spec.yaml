@@ -348,7 +348,18 @@ rawSpecString: |
     /companies/{companyId}/accounting-v2:
       get:
         operationId: GET_companyAccountingV2
-        summary: Get accounting v2 data for a company in JSON format
+        summary: Get accounting v2 data
+        description: >
+          WARNING: this endpoint is in beta and is subject to changes. We
+          discourage its usage in production for now.  Only available for FR and
+          UK. Returns accounting data of the company for a given month. For French
+          companies, the data returned is the same than the one in the automatic
+          accounting exports, so the company accounting exports have to be
+          configured properly in order to get details by analytical code, and by
+          employee. For UK companies, the data returned is the same than the one
+          in the automatic payroll journals, so the company payroll journals have
+          to be configured properly in order to get details by employee or by cost
+          center.
         tags:
           - Company
         parameters:
@@ -390,6 +401,7 @@ rawSpecString: |
                       employeeFullName:
                         type: string
                         description: The fullname of the concerned employee.
+                        nullable: true
                       accountId:
                         type: string
                         description: >-
@@ -6482,6 +6494,7 @@ rawSpecString: |
           employeeFullName:
             type: string
             description: The fullname of the concerned employee.
+            nullable: true
           accountId:
             type: string
             description: >-
@@ -6513,5 +6526,4 @@ rawSpecString: |
   x-readme:
     explorer-enabled: true
     proxy-enabled: true
-    samples-enabled: true
-konfigCliVersion: 1.38.34
+konfigCliVersion: 1.38.37

@@ -310,6 +310,34 @@ paths:
               type: object
       tags:
         - InstanceController
+  /rest/instance/getProfilePicture/{instance_key}:
+    get:
+      responses:
+        '200':
+          description: Success
+      operationId: Instance - getProfilePicture
+      summary: Get image from any whatsapp profile
+      security:
+        - bearer: []
+      parameters:
+        - in: path
+          name: instance_key
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: to
+          required: false
+          schema:
+            type: string
+        - description: icon/image
+          in: query
+          name: type
+          required: false
+          schema:
+            type: string
+      tags:
+        - InstanceController
   /rest/instance/isOnWhatsApp/{instance_key}:
     get:
       responses:

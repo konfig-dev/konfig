@@ -1,21 +1,21 @@
 {
   "securitySchemes": {
+    "BearerAuth": {
+      "type": "http",
+      "scheme": "bearer"
+    },
     "sec0": {
       "type": "apiKey",
       "in": "header",
       "name": "Authorization",
       "x-bearer-format": "bearer",
       "x-default": ""
-    },
-    "BearerAuth": {
-      "type": "http",
-      "scheme": "bearer"
     }
   },
   "apiBaseUrl": "https://app.coalescesoftware.io",
-  "apiVersion": "1.0.0",
+  "apiVersion": "6.2",
   "apiDescription": "REST API for performing operations with the Coalesce backend.",
-  "apiTitle": "Coalesce API",
+  "apiTitle": "Jobs",
   "endpoints": 11,
   "sdkMethods": 32,
   "schemas": 67,
@@ -419,7 +419,7 @@
           "name": "startingFrom",
           "schema": "undefined",
           "required": false,
-          "description": "The starting run ID, runStartTime, or runEndTime (exclusive) for paging the query results."
+          "description": "The starting run ID, runStartTime, or runEndTime (https://docs.coalesce.io/ for paging the query results."
         },
         {
           "name": "orderBy",
@@ -614,8 +614,8 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/coalesce/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/coalesce/favicon.png",
   "clientNameCamelCase": "coalesce",
-  "lastUpdated": "2024-03-27T01:23:25.425Z",
-  "typescriptSdkUsageCode": "import { Coalesce } from 'coalesce-typescript-sdk';\n\nconst coalesce = new Coalesce({\n    sec0: \"AUTHORIZATION\",\n    bearerAuth: \"BEARER_AUTH\"\n})",
+  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "typescriptSdkUsageCode": "import { Coalesce } from 'coalesce-typescript-sdk';\n\nconst coalesce = new Coalesce({\n    bearerAuth: \"BEARER_AUTH\",\n    sec0: \"AUTHORIZATION\"\n})",
   "typescriptSdkFirstRequestCode": "// Trigger Job to Run\nconst initiateRunResponse = coalesce.jobs.initiateRun()",
   "fixedSpecFileName": "coalesce-fixed-spec.yaml"
 }

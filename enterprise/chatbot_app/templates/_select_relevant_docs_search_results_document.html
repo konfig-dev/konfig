@@ -1,0 +1,32 @@
+<tr class="bg-white border-b dark:bg-slate-800 dark:border-slate-700">
+    {% if not selected_documents %}
+        <td class="px-6 py-4 text-right">
+            <input value="{{ document.id }}"
+                   name="selected_documents[]"
+                   type="checkbox"
+                   class="checkbox" />
+        </td>
+    {% endif %}
+    <td scope="row"
+        class="px-6 py-4 font-medium text-slate-900 whitespace-nowrap dark:text-white">{{ document.name }}</td>
+    <td class="px-6 py-4">
+        <button class="btn btn-sm"
+                onclick="{{ document.id }}_doc.showModal(); event.preventDefault();">View Contents</button>
+        <dialog id="{{ document.id }}_doc" class="modal">
+            <div class="modal-box max-w-[45rem]">
+                <div class="flex items-center justify-between pb-4">
+                    <h3 class="font-bold text-lg">{{ document.name }}</h3>
+                    <form method="dialog">
+                        <button class="btn btn-sm btn-circle btn-ghost">✕</button>
+                    </form>
+                </div>
+                <div class="max-h-[40rem] overflow-y-auto rounded-box">
+                    <pre><code class="language-markdown">{{ document.content }}</code></pre>
+                </div>
+            </div>
+            <form method="dialog" class="modal-backdrop">
+                <button>close</button>
+            </form>
+        </dialog>
+    </td>
+</tr>

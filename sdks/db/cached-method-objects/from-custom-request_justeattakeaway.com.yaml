@@ -1,4 +1,4 @@
-hash: 30a5f66f307d2a952fd0296230613da40773571de73d36b66a79bbf255404038
+hash: b484710a2aadf96b81f91839ebcc1cbea2965a8cecac0ae91905c40cf3c72c1f
 methodObjects:
   - url: /attempted-delivery-query-resolved
     method: resolveDeliveryQuery
@@ -715,7 +715,7 @@ methodObjects:
       - name: deliveryTime
         schema: string
         required: true
-        description: Delivery date/time when fees are required (https://.
+        description: Delivery date/time when fees are required (ISO8601 format).
         example: '2019-09-05T12:43:48.431Z'
       - name: zone
         schema: string
@@ -729,9 +729,9 @@ methodObjects:
         schema: array
         required: false
         description: >-
-          Point to which delivery is required (https://. Supply this where
-          possible as support for zone-only based lookups will be removed in
-          future.
+          Point to which delivery is required (latitude, longitude). Supply this
+          where possible as support for zone-only based lookups will be removed
+          in future.
         example:
           - 51.3851513
           - -2.0841275
@@ -2045,7 +2045,7 @@ methodObjects:
     httpMethod: put
     tag: Manage Order Journey
     typeScriptTag: manageOrderJourney
-    description: Update current driver locations (https://
+    description: Update current driver locations (bulk upload)
     parameters:
       - name: xJetApplication
         schema: string
@@ -2068,7 +2068,8 @@ methodObjects:
         required: true
         description: >-
           The owning brand in the brand slug format e.g. `je-uk-example`
-          (https://. This field may be removed in a future version.
+          (contact delivery manager if unsure). This field may be removed in a
+          future version.
         example: je-uk-example
       - name: orderId
         schema: string
@@ -2104,7 +2105,8 @@ methodObjects:
         required: true
         description: >-
           The owning brand in the brand slug format e.g. `je-uk-example`
-          (https://. This field may be removed in a future version.
+          (contact delivery manager if unsure). This field may be removed in a
+          future version.
         example: je-uk-example
       - name: orderId
         schema: string
@@ -2152,7 +2154,8 @@ methodObjects:
         required: true
         description: >-
           The owning brand in the brand slug format e.g. `je-uk-example`
-          (https://. This field may be removed in a future version.
+          (contact delivery manager if unsure). This field may be removed in a
+          future version.
         example: je-uk-example
       - name: orderId
         schema: string

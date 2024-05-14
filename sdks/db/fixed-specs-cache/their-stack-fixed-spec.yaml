@@ -2028,6 +2028,11 @@ rawSpecString: |
               with a date filter, and to get all results, better set a high limit
               and iterate over pages, setting this to False.
             default: false
+          blur_company_data:
+            type: boolean
+            title: Blur Company Data
+            description: Blur company data, so that no credits are consumed.
+            default: false
           job_filters:
             $ref: '#/components/schemas/JobFilters'
           tech_filters:
@@ -2167,6 +2172,13 @@ rawSpecString: |
               - $ref: '#/components/schemas/CompanyWithTechnologySlugs'
             title: Company Object
             description: Company object
+          has_blurred_data:
+            type: boolean
+            title: Has Blurred Data
+            description: >-
+              Whether the returned object has company identifiable data blurred or
+              not
+            default: false
         type: object
         title: CompanyTechnology
       CompanyWithTechnologies:
@@ -2188,12 +2200,6 @@ rawSpecString: |
             title: Domain
             description: Company domain
             example: google.com
-          probability_actual_domain_found:
-            type: number
-            title: Probability Actual Domain Found
-            description: >-
-              Estimates the probability the the domain we found for a given
-              company name is the actual domain of that company. Between 0 and 1.
           industry:
             type: string
             title: Industry
@@ -2363,6 +2369,13 @@ rawSpecString: |
             type: string
             title: Funding Stage
             description: Latest funding stage of the company
+          has_blurred_data:
+            type: boolean
+            title: Has Blurred Data
+            description: >-
+              Whether the returned object has company identifiable data blurred or
+              not
+            default: false
           technology_slugs:
             items:
               type: string
@@ -2413,12 +2426,6 @@ rawSpecString: |
             title: Domain
             description: Company domain
             example: google.com
-          probability_actual_domain_found:
-            type: number
-            title: Probability Actual Domain Found
-            description: >-
-              Estimates the probability the the domain we found for a given
-              company name is the actual domain of that company. Between 0 and 1.
           industry:
             type: string
             title: Industry
@@ -2588,6 +2595,13 @@ rawSpecString: |
             type: string
             title: Funding Stage
             description: Latest funding stage of the company
+          has_blurred_data:
+            type: boolean
+            title: Has Blurred Data
+            description: >-
+              Whether the returned object has company identifiable data blurred or
+              not
+            default: false
           technology_slugs:
             items:
               type: string
@@ -2647,12 +2661,6 @@ rawSpecString: |
             title: Domain
             description: Company domain
             example: google.com
-          probability_actual_domain_found:
-            type: number
-            title: Probability Actual Domain Found
-            description: >-
-              Estimates the probability the the domain we found for a given
-              company name is the actual domain of that company. Between 0 and 1.
           industry:
             type: string
             title: Industry
@@ -2822,6 +2830,13 @@ rawSpecString: |
             type: string
             title: Funding Stage
             description: Latest funding stage of the company
+          has_blurred_data:
+            type: boolean
+            title: Has Blurred Data
+            description: >-
+              Whether the returned object has company identifiable data blurred or
+              not
+            default: false
           technology_slugs:
             items:
               type: string
@@ -2960,6 +2975,16 @@ rawSpecString: |
             description: Date when the job was posted
             examples:
               - '2021-01-01'
+          has_blurred_data:
+            type: boolean
+            title: Has Blurred Data
+            description: >-
+              Whether the returned object has company identifiable data blurred or
+              not
+            default: false
+          company:
+            type: string
+            title: Company
         type: object
         title: JobBase
       JobFilters:
@@ -3804,6 +3829,11 @@ rawSpecString: |
               with a date filter, and to get all results, better set a high limit
               and iterate over pages, setting this to False.
             default: false
+          blur_company_data:
+            type: boolean
+            title: Blur Company Data
+            description: Blur company data, so that no credits are consumed.
+            default: false
           group_by:
             items:
               type: string
@@ -4565,6 +4595,11 @@ rawSpecString: |
               Returns technologies with any of these confidence values that the
               companies use them. Available values: "high", "medium", "low"
             default: []
+          blur_company_data:
+            type: boolean
+            title: Blur Company Data
+            description: Blur company data, so that no credits are consumed.
+            default: false
         additionalProperties: false
         type: object
         title: TechDetailsFilters
@@ -4858,4 +4893,4 @@ rawSpecString: |
       description: Finding decision makers
   servers:
     - url: https://api.theirstack.com/
-konfigCliVersion: 1.38.34
+konfigCliVersion: 1.38.37

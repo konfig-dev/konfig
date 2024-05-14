@@ -23,7 +23,7 @@ Api muito simples e fácil de utilizar
       companyKebabCase="megaapi"
       clientNameCamelCase="megaapi"
       homepage="mega-api.app.br/"
-      lastUpdated={new Date("2024-03-29T23:28:38.455Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/megaapi/favicon.png"
       contactUrl="https://mega-api.app.br"
       // Missing contactEmail
@@ -801,10 +801,10 @@ Api muito simples e fácil de utilizar
       apiTitle="Documentation MegaAPI"
       apiBaseUrl="https://apistart01.megaapi.com.br"
       apiVersion="6.1"
-      endpoints={28}
-      sdkMethods={28}
+      endpoints={29}
+      sdkMethods={29}
       schemas={35}
-      parameters={51}
+      parameters={54}
       difficulty="Easy"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/megaapi/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/megaapi/openapi.yaml"

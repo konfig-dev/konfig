@@ -17,7 +17,7 @@ export default function BelvoTypeScriptSdk() {
       companyKebabCase="belvo"
       clientNameCamelCase="belvo"
       homepage="belvo.com"
-      lastUpdated={new Date("2024-03-28T23:23:00.755Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/belvo/favicon.png"
       contactUrl="https://developers.belvo.com"
       contactEmail="support@belvo.com"
@@ -6029,7 +6029,7 @@ export default function BelvoTypeScriptSdk() {
       language="TypeScript"
       apiTitle="Belvo API Docs"
       apiBaseUrl="https://sandbox.belvo.com"
-      apiVersion="1.102.0"
+      apiVersion="1.106.0"
       endpoints={37}
       sdkMethods={80}
       schemas={575}

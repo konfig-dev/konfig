@@ -19,7 +19,7 @@ We're driving the shift to an era where real-time is the only time. This new era
       companyKebabCase="volt-io"
       clientNameCamelCase="voltIo"
       homepage="www.volt.io/"
-      lastUpdated={new Date("2024-03-29T19:01:06.634Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/volt-io/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -987,7 +987,7 @@ We're driving the shift to an era where real-time is the only time. This new era
       endpoints={19}
       sdkMethods={27}
       schemas={68}
-      parameters={63}
+      parameters={66}
       difficulty="Easy"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/volt-io/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/volt-io/openapi.yaml"

@@ -21,7 +21,7 @@ As the global leader in people analytics, Visier has over 25,000 customers in 75
       companyKebabCase="visier"
       clientNameCamelCase="visierConsolidatedAnalytics"
       homepage="visier.com"
-      lastUpdated={new Date("2024-03-27T01:23:25.425Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/visier/consolidated-analytics/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -345,7 +345,7 @@ As the global leader in people analytics, Visier has over 25,000 customers in 75
       language="TypeScript"
       apiTitle="Visier Consolidated Analytics APIs"
       apiBaseUrl="https://{vanity-name}.api.visier.io"
-      apiVersion="22222222.99201.1227"
+      apiVersion="22222222.99201.1256"
       endpoints={3}
       sdkMethods={10}
       schemas={8}

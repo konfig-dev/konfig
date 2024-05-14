@@ -17,7 +17,7 @@ export default function ChartHopTypeScriptSdk() {
       companyKebabCase="chart-hop"
       clientNameCamelCase="chartHop"
       homepage="charthop.com"
-      lastUpdated={new Date("2024-03-27T23:15:52.151Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/charthop/favicon.png"
       contactUrl="https://www.charthop.com"
       contactEmail="support@charthop.com"
@@ -30077,10 +30077,10 @@ export default function ChartHopTypeScriptSdk() {
       apiTitle="ChartHop API"
       apiBaseUrl="https://api.charthop.com"
       apiVersion="V1.0.0"
-      endpoints={365}
-      sdkMethods={509}
+      endpoints={369}
+      sdkMethods={514}
       schemas={495}
-      parameters={2553}
+      parameters={2586}
       difficulty="Very Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/charthop/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/charthop/openapi.yaml"

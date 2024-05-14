@@ -483,10 +483,13 @@ paths:
                                             "from":["5","2021"],
                                             "to":["5","2022"]
                                           }
-                                        ]
+                                        ],
+                    "added_time"       : "2021-01-12T10:16:16+0000"
                   }
             schema:
               properties:
+                added_time:
+                  type: string
                 angellist_profile:
                   type: string
                 custom_fields:
@@ -690,8 +693,14 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              added_time: 2021-01-12T10:16:16+0000
+              id: 123
+              job_id: 456
             schema:
               properties:
+                added_time:
+                  type: string
                 id:
                   type: integer
                 job_id:
@@ -1056,6 +1065,10 @@ paths:
           application/json:
             schema:
               properties:
+                added_time:
+                  description: Time when the candidate was disqualified. (Optional)
+                  example: 2021-01-12T10:16:16+0000
+                  type: string
                 id:
                   description: Candidate ID
                   type: integer
@@ -1552,6 +1565,10 @@ paths:
           application/json:
             schema:
               properties:
+                added_time:
+                  description: Time when the candidate was moved to the stage. (Optional)
+                  example: 2021-01-12T10:16:16+0000
+                  type: string
                 id:
                   description: Candidate ID
                   type: integer
@@ -3314,6 +3331,36 @@ paths:
       summary: Find all search types in the link below.
       tags:
         - Client APIs
+  /api/external/client/status/list:
+    get:
+      parameters:
+        - explode: false
+          in: header
+          name: RF-Api-Key
+          required: false
+          schema:
+            type: string
+          style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                data:
+                  - id: 1
+                    name: Prospect
+                  - id: 2
+                    name: Lead
+                  - id: 3
+                    name: In Progress
+                  - id: 4
+                    name: Won
+                  - id: 5
+                    name: Lost
+          description: Auto generated using Swagger Inspector
+      summary: Lists all Company statuses.
+      tags:
+        - Client APIs
   /api/external/client/update:
     post:
       parameters:
@@ -3575,10 +3622,13 @@ paths:
                                             "from":["5","2021"],
                                             "to":["5","2022"]
                                           }
-                                        ]
+                                        ],
+                    "added_time"        : "2021-01-12T10:16:16+0000"
                   }
             schema:
               properties:
+                added_time:
+                  type: string
                 angellist_profile:
                   type: string
                 client_company:
@@ -4858,6 +4908,32 @@ paths:
                 total_items: 6
           description: Auto generated using Swagger Inspector
       summary: Find all search types in the link below.
+      tags:
+        - Contact APIs
+  /api/external/contact/status/list:
+    get:
+      parameters:
+        - explode: false
+          in: header
+          name: RF-Api-Key
+          required: false
+          schema:
+            type: string
+          style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                data:
+                  - id: 1
+                    name: New
+                  - id: 2
+                    name: In Progress
+                  - id: 3
+                    name: Closed
+          description: Auto generated using Swagger Inspector
+      summary: List all statuses for contacts.
       tags:
         - Contact APIs
   /api/external/contact/task/list:
@@ -7449,6 +7525,36 @@ paths:
       summary: Lists all job distinct stage names in the account.
       tags:
         - Job APIs
+  /api/external/job/status/list:
+    get:
+      parameters:
+        - example: e0fb97af10fe90c9e4ead2492a12938b
+          explode: false
+          in: header
+          name: RF-Api-Key
+          required: false
+          schema:
+            type: string
+          style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                example:
+                  data:
+                    - id: 1
+                      name: External
+                    - id: 3
+                      name: Internal
+                    - id: 2
+                      name: Unlisted
+                    - id: 4
+                      name: Confidential
+          description: Auto generated using Swagger Inspector
+      summary: Lists all job status types.
+      tags:
+        - Job APIs
   /api/external/job/update:
     post:
       parameters:
@@ -9864,6 +9970,9 @@ paths:
         - Other APIs
   /api/external/status/list:
     get:
+      description: >-
+        Note: This API endpoint is deprecated and will be removed in future.
+        Please use /api/external/client/status/list instead.<br/>
       parameters:
         - explode: false
           in: header

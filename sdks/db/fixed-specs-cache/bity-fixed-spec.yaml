@@ -399,6 +399,8 @@ rawSpecString: |
             $ref: '#/components/schemas/PaymentDetails'
           price_breakdown:
             $ref: '#/components/schemas/PriceBreakdown'
+          purpose:
+            $ref: '#/components/schemas/OrderPurpose'
           timestamp_awaiting_payment_since:
             $ref: '#/components/schemas/OrderTimestampAwaitingPaymentSince'
           timestamp_cancelled:
@@ -673,6 +675,26 @@ rawSpecString: |
           - currency
           - type
         type: object
+      OrderPurpose:
+        description: Information about the purpose of the order.
+        properties:
+          category:
+            $ref: '#/components/schemas/OrderPurposeCategory'
+          comment:
+            description: >-
+              Comment about the purpose of the order.
+
+              Users can use this comment in order to remember what was their
+              purpose when placing the order.
+            maxLength: 140
+            type: string
+        type: object
+      OrderPurposeCategory:
+        description: |
+          Non-exhaustive list of possible values:
+
+            - `bill_payment`: The purpose of the order is to pay a bill.
+        type: string
       OrderTimestampAwaitingPaymentSince:
         description: >-
           Date and time at which the order became executable and at which the
@@ -924,6 +946,8 @@ rawSpecString: |
             $ref: '#/components/schemas/PlaceOrderRequestOutput'
           partner_fee:
             $ref: '#/components/schemas/PartnerFee'
+          purpose:
+            $ref: '#/components/schemas/OrderPurpose'
         required:
           - input
           - output
@@ -1373,7 +1397,7 @@ rawSpecString: |
       url: https://go.bity.com/legal
     termsOfService: https://go.bity.com/legal
     title: Bity Exchange API
-    version: 2.4.1
+    version: 2.6.0
   openapi: 3.0.3
   paths:
     /currencies:
@@ -2354,10 +2378,98 @@ rawSpecString: |
         tags:
           - Currencies
       summary: Get and filter currency pairs
+    /read_payment_information:
+      post:
+        description: |
+          This endpoint reads payment information from the document contained in
+          the request body.
+
+          The following documents are currencly supported:
+
+          - Content of QR code found in QR bills
+        operationId: read_payment_information
+        requestBody:
+          content:
+            text/plain:
+              schema:
+                type: string
+        responses:
+          '200':
+            content:
+              application/json:
+                examples:
+                  Example QR Bill:
+                    value:
+                      amount: '199.95'
+                      currency: CHF
+                      iban: CH4989144173928427588
+                      owner:
+                        building_number: '1'
+                        country: CH
+                        name: Example company
+                        post_code: '8000'
+                        street_name: Musterstrasse
+                        town_name: Zürich
+                      qr_reference: '210000000003139471430009017'
+                      type: bank_account
+                      ultimate_debtor:
+                        building_number: '1'
+                        country: CH
+                        name: Example customer
+                        post_code: '6000'
+                        street_name: Pilatusstrasse
+                        town_name: Luzern
+                schema:
+                  properties:
+                    amount:
+                      $ref: '#/components/schemas/OutputAmount'
+                    bic_swift:
+                      type: string
+                    currency:
+                      $ref: '#/components/schemas/CurrencyCode'
+                    iban:
+                      type: string
+                    owner:
+                      allOf:
+                        - properties:
+                            name:
+                              type: string
+                          type: object
+                        - $ref: '#/components/schemas/PostalAddress'
+                    qr_reference:
+                      $ref: '#/components/schemas/QrReference'
+                    reference:
+                      type: string
+                    structured_creditor_reference:
+                      $ref: '#/components/schemas/StructuredCreditorReference'
+                    type:
+                      enum:
+                        - bank_account
+                      type: string
+                    ultimate_debtor:
+                      allOf:
+                        - description: |
+                            Information about the ultimate debtor.
+                          properties:
+                            name:
+                              type: string
+                          type: object
+                        - $ref: '#/components/schemas/PostalAddress'
+                  required:
+                    - type
+                  type: object
+            description: Payment information
+          '400':
+            description: Error
+        security: []
+        summary: Read payment information
+        tags:
+          - Other
   servers:
     - description: Bity Exchange API version 2
       url: https://exchange.api.bity.com/v2
   tags:
     - name: Orders
     - name: Currencies
-konfigCliVersion: 1.38.34
+    - name: Other
+konfigCliVersion: 1.38.37

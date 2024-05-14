@@ -816,15 +816,15 @@ rawSpecString: |
 
       ```
 
-      LD-API-Version: 20220603
+      LD-API-Version: 20240415
 
       ```
 
 
       The header value is the version number of the API version you would like to
       request. The number for each version corresponds to the date the version was
-      released in `yyyymmdd` format. In the example above the version `20220603`
-      corresponds to June 03, 2022.
+      released in `yyyymmdd` format. In the example above the version `20240415`
+      corresponds to April 15, 2024.
 
 
       ### Setting the API version per access token
@@ -864,6 +864,33 @@ rawSpecString: |
 
       |---|---|---|
 
+      | `20240415` | <ul><li>Changed several endpoints from unpaginated to
+      paginated. Use the `limit` and `offset` query parameters to page through the
+      results.</li> <li>Changed the [list access
+      tokens](https://apidocs.launchdarkly.com) endpoint: <ul><li>Response is now
+      paginated with a default limit of `25`</li></ul></li> <li>Changed the [list
+      account members](https://apidocs.launchdarkly.com) endpoint: <ul><li>The
+      `accessCheck` filter is no longer available</li></ul></li> <li>Changed the
+      [list custom roles](https://apidocs.launchdarkly.com) endpoint:
+      <ul><li>Response is now paginated with a default limit of
+      `20`</li></ul></li> <li>Changed the [list feature
+      flags](https://apidocs.launchdarkly.com) endpoint: <ul><li>Response is now
+      paginated with a default limit of `20`</li><li>The `environments` field is
+      now only returned if the request is filtered by environment, using the
+      `filterEnv` query parameter</li><li>The `filterEnv` query parameter supports
+      a maximum of three environments</li><li>The `followerId`, `hasDataExport`,
+      `status`, `contextKindTargeted`, and `segmentTargeted` filters are no longer
+      available</li></ul></li> <li>Changed the [list
+      segments](https://apidocs.launchdarkly.com) endpoint: <ul><li>Response is
+      now paginated with a default limit of `20`</li></ul></li> <li>Changed the
+      [list teams](https://apidocs.launchdarkly.com) endpoint: <ul><li>The
+      `expand` parameter no longer supports including `projects` or
+      `roles`</li><li>In paginated results, the maximum page size is now
+      100</li></ul></li> <li>Changed the [get
+      workflows](https://apidocs.launchdarkly.com) endpoint: <ul><li>Response is
+      now paginated with a default limit of `20`</li><li>The `_conflicts` field in
+      the response is no longer available</li></ul></li> </ul>  | Current |
+
       | `20220603` | <ul><li>Changed the [list
       projects](https://apidocs.launchdarkly.com) return value:<ul><li>Response is
       now paginated with a default limit of `20`.</li><li>Added support for filter
@@ -871,7 +898,7 @@ rawSpecString: |
       field is omitted by default.</li></ul></li><li>Changed the [get
       project](https://apidocs.launchdarkly.com) return value:<ul><li>The
       `environments` field is now expandable. This field is omitted by
-      default.</li></ul></li></ul> | Current |
+      default.</li></ul></li></ul> | 2025-04-15 |
 
       | `20210729` | <ul><li>Changed the [create approval
       request](https://apidocs.launchdarkly.com) return value. It now returns HTTP
@@ -897,6 +924,10 @@ rawSpecString: |
 
       | `20160426` | <ul><li>Initial versioning of API. Tokens created before
       versioning have their version set to this.</li></ul> | 2020-12-12 |
+
+
+      To learn more about how EOL is determined, read LaunchDarkly's [End of Life
+      (EOL) Policy](https://launchdarkly.com/policies/end-of-life-policy/).
     contact:
       name: LaunchDarkly Technical Support Team
       url: https://support.launchdarkly.com
@@ -6767,10 +6798,6 @@ rawSpecString: |
           days for all of the context kinds in the list. |
           `filter=contextKindsEvaluated:user+application` |
 
-          | `contextKindTargeted`   | A string. It filters the list to flags that
-          are targeting the given context kind key. |
-          `filter=contextKindTargeted:user` |
-
           | `codeReferences.max`    | An integer value. Use `0` to return flags
           that do not have code references. | `filter=codeReferences.max:0` |
 
@@ -6788,22 +6815,12 @@ rawSpecString: |
           provided. This filter requires the `filterEnv` filter. |
           `filter=evaluation:{"after":1690527600000}` |
 
-          | `filterEnv`             | A string with the key of a valid
-          environment. You must use this field for filters that are
+          | `filterEnv`             | A string with a list of comma-separated keys
+          of valid environments. You must use this field for filters that are
           environment-specific. If there are multiple environment-specific
-          filters, you only need to include this field once. |
-          `filter=evaluated:{"after":
+          filters, you only need to include this field once. You can filter for a
+          maximum of three environments. | `filter=evaluated:{"after":
           1590768455282},filterEnv:production,status:active` |
-
-          | `followerId`            | A valid member ID. It filters the list to
-          flags that are being followed by this member. | 
-          `filter=followerId:12ab3c45de678910abc12345` |
-
-          | `hasDataExport`         | A boolean value. It filters the list to
-          flags that are exporting data in the specified environment. This
-          includes flags that are exporting data from Experimentation. This filter
-          requires the `filterEnv` filter. |
-          `filter=hasDataExport:true,filterEnv:production` |
 
           | `hasExperiment`         | A boolean value. It filters the list to
           flags that are used in an experiment. | `filter=hasExperiment:true` |
@@ -6831,16 +6848,6 @@ rawSpecString: |
           filters to flags set to use either the client-side ID or the mobile key.
           Using `server` filters to flags set to use neither, that is, to flags
           only available in server-side SDKs.  | `filter=sdkAvailability:client` |
-
-          | `segmentTargeted`       | A string. It filters the list to flags that
-          target the segment with this key. This filter requires the `filterEnv`
-          filter. |
-          `filter=segmentTargeted:example-segment-key,filterEnv:production` |
-
-          | `status`                | A string, either `new`, `inactive`,
-          `active`, or `launched`. It filters the list to flags with the specified
-          status in the specified environment. This filter requires the
-          `filterEnv` filter. | `filter=status:active,filterEnv:production` |
 
           | `tags`                  | A `+`-separated list of tags. It filters the
           list to flags that have all of the tags in the list. |
@@ -6951,15 +6958,11 @@ rawSpecString: |
               description: Filter feature flags by tag
           - name: limit
             in: query
-            description: >-
-              The number of feature flags to return. Defaults to -1, which returns
-              all flags
+            description: The number of feature flags to return. Defaults to 20.
             schema:
               type: integer
               format: int64
-              description: >-
-                The number of feature flags to return. Defaults to -1, which
-                returns all flags
+              description: The number of feature flags to return. Defaults to 20.
           - name: offset
             in: query
             description: >-
@@ -7085,11 +7088,18 @@ rawSpecString: |
           Create a feature flag with the given name, key, and variations.
 
 
+          <details>
+
+          <summary>Click to expand instructions for <strong>creating a migration
+          flag</strong></summary>
+
+
           ### Creating a migration flag
 
 
           When you create a migration flag, the variations are pre-determined
           based on the number of stages in the migration.
+
 
           To create a migration flag, omit the `variations` and `defaults`
           information. Instead, provide a `purpose` of `migration`, and
@@ -7116,6 +7126,9 @@ rawSpecString: |
 
           To learn more, read [Migration
           Flags](https://docs.launchdarkly.com/home/flag-types/migration-flags).
+
+
+          </details>
         parameters:
           - name: projectKey
             in: path
@@ -16227,6 +16240,27 @@ rawSpecString: |
                 A field to sort the items by. Prefix field by a dash ( - ) to sort
                 in descending order. This endpoint supports sorting by
                 `creationDate` or `stopDate`.
+          - name: limit
+            in: query
+            description: The maximum number of workflows to return. Defaults to 20.
+            schema:
+              type: integer
+              format: int64
+              description: The maximum number of workflows to return. Defaults to 20.
+          - name: offset
+            in: query
+            description: >-
+              Where to start in the list. Defaults to 0. Use this with pagination.
+              For example, an offset of 10 skips the first ten items and then
+              returns the next items in the list, up to the query `limit`.
+            schema:
+              type: integer
+              format: int64
+              description: >-
+                Where to start in the list. Defaults to 0. Use this with
+                pagination. For example, an offset of 10 skips the first ten items
+                and then returns the next items in the list, up to the query
+                `limit`.
         operationId: getWorkflows
       post:
         responses:
@@ -16525,7 +16559,7 @@ rawSpecString: |
                 schema:
                   $ref: '#/components/schemas/StatusServiceUnavailable'
         tags:
-          - Feature flags (beta)
+          - Feature flags
         summary: Get migration safety issues
         description: >-
           Returns the migration safety issues that are associated with the POSTed
@@ -17296,6 +17330,28 @@ rawSpecString: |
           exact workflow needs. Custom roles are available to customers on our
           enterprise plans. If you're interested in learning more about our
           enterprise plans, contact sales@launchdarkly.com.
+        parameters:
+          - name: limit
+            in: query
+            description: The maximum number of custom roles to return. Defaults to 20.
+            schema:
+              type: integer
+              format: int64
+              description: The maximum number of custom roles to return. Defaults to 20.
+          - name: offset
+            in: query
+            description: >-
+              Where to start in the list. Defaults to 0. Use this with pagination.
+              For example, an offset of 10 skips the first ten items and then
+              returns the next items in the list, up to the query `limit`.
+            schema:
+              type: integer
+              format: int64
+              description: >-
+                Where to start in the list. Defaults to 0. Use this with
+                pagination. For example, an offset of 10 skips the first ten items
+                and then returns the next items in the list, up to the query
+                `limit`.
         operationId: getCustomRoles
       post:
         responses:
@@ -17564,11 +17620,11 @@ rawSpecString: |
               description: The environment key
           - name: limit
             in: query
-            description: The number of segments to return. Defaults to 50.
+            description: The number of segments to return. Defaults to 20.
             schema:
               type: integer
               format: int64
-              description: The number of segments to return. Defaults to 50.
+              description: The number of segments to return. Defaults to 20.
           - name: offset
             in: query
             description: >-
@@ -19509,7 +19565,7 @@ rawSpecString: |
 
           ### Expanding the teams response
 
-          LaunchDarkly supports four fields for expanding the "List teams"
+          LaunchDarkly supports expanding several fields in the "List teams"
           response. By default, these fields are **not** included in the response.
 
 
@@ -19519,18 +19575,12 @@ rawSpecString: |
 
           * `members` includes the total count of members that belong to the team.
 
-          * `roles` includes a paginated list of the custom roles that you have
-          assigned to the team.
-
-          * `projects` includes a paginated list of the projects that the team has
-          any write access to.
-
           * `maintainers` includes a paginated list of the maintainers that you
           have assigned to the team.
 
 
-          For example, `expand=members,roles` includes the `members` and `roles`
-          fields in the response.
+          For example, `expand=members,maintainers` includes the `members` and
+          `maintainers` fields in the response.
         parameters:
           - name: limit
             in: query
@@ -21183,6 +21233,76 @@ rawSpecString: |
                 epoch time in milliseconds. By default, the token will expire
                 immediately.
         operationId: resetToken
+    /api/v2/usage/data-export-events:
+      get:
+        responses:
+          '200':
+            description: Usage response
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/SeriesIntervalsRep'
+          '400':
+            description: Invalid request
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/InvalidRequestErrorRep'
+          '401':
+            description: Invalid access token
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/UnauthorizedErrorRep'
+          '403':
+            description: Forbidden
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/ForbiddenErrorRep'
+          '429':
+            description: Rate limited
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/RateLimitedErrorRep'
+          '503':
+            description: Service unavailable
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/StatusServiceUnavailable'
+        tags:
+          - Account usage (beta)
+        summary: Get data export events usage
+        description: >-
+          Get a time-series array of the number of monthly data export events from
+          your account. The granularity is always daily, with a maximum of 31
+          days.
+        parameters:
+          - name: from
+            in: query
+            description: >-
+              The series of data returned starts from this timestamp (Unix
+              seconds). Defaults to the beginning of the current month.
+            schema:
+              type: string
+              format: string
+              description: >-
+                The series of data returned starts from this timestamp (Unix
+                seconds). Defaults to the beginning of the current month.
+          - name: to
+            in: query
+            description: >-
+              The series of data returned ends at this timestamp (Unix seconds).
+              Defaults to the current time.
+            schema:
+              type: string
+              format: string
+              description: >-
+                The series of data returned ends at this timestamp (Unix seconds).
+                Defaults to the current time.
+        operationId: getDataExportEventsUsage
     /api/v2/usage/evaluations/{projectKey}/{environmentKey}/{featureFlagKey}:
       get:
         responses:
@@ -21818,6 +21938,76 @@ rawSpecString: |
                 The type of SDK with monthly active users (MAU) to list. Must be
                 either `client` or `server`.
         operationId: getMauSdksByType
+    /api/v2/usage/service-connections:
+      get:
+        responses:
+          '200':
+            description: Usage response
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/SeriesIntervalsRep'
+          '400':
+            description: Invalid request
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/InvalidRequestErrorRep'
+          '401':
+            description: Invalid access token
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/UnauthorizedErrorRep'
+          '403':
+            description: Forbidden
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/ForbiddenErrorRep'
+          '429':
+            description: Rate limited
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/RateLimitedErrorRep'
+          '503':
+            description: Service unavailable
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/StatusServiceUnavailable'
+        tags:
+          - Account usage (beta)
+        summary: Get service connection usage
+        description: >-
+          Get a time-series array of the number of monthly service connections
+          from your account. The granularity is always daily, with a maximum of 31
+          days.
+        parameters:
+          - name: from
+            in: query
+            description: >-
+              The series of data returned starts from this timestamp (Unix
+              seconds). Defaults to the beginning of the current month.
+            schema:
+              type: string
+              format: string
+              description: >-
+                The series of data returned starts from this timestamp (Unix
+                seconds). Defaults to the beginning of the current month.
+          - name: to
+            in: query
+            description: >-
+              The series of data returned ends at this timestamp (Unix seconds).
+              Defaults to the current time.
+            schema:
+              type: string
+              format: string
+              description: >-
+                The series of data returned ends at this timestamp (Unix seconds).
+                Defaults to the current time.
+        operationId: getServiceConnectionUsage
     /api/v2/usage/streams/{source}:
       get:
         responses:
@@ -27611,12 +27801,23 @@ rawSpecString: |
         type: object
         required:
           - items
+          - totalCount
+          - _links
         properties:
           items:
             type: array
             description: An array of workflows
             items:
               $ref: '#/components/schemas/CustomWorkflowOutput'
+          totalCount:
+            type: integer
+            description: Total number of workflows
+            example: 1
+          _links:
+            type: object
+            additionalProperties:
+              $ref: '#/components/schemas/Link'
+            description: The location and content type of related resources
       DateVersion:
         type: integer
       DefaultClientSideAvailability:
@@ -29321,7 +29522,10 @@ rawSpecString: |
             type: object
             additionalProperties:
               $ref: '#/components/schemas/FeatureFlagConfig'
-            description: Details on the environments for this flag
+            description: >-
+              Details on the environments for this flag. Only returned if the
+              request is filtered by environment, using the <code>filterEnv</code>
+              query parameter.
             example:
               my-environment:
                 _environmentName: My Environment
@@ -29445,6 +29649,14 @@ rawSpecString: |
               Settings relevant to flags where <code>purpose</code> is
               <code>migration</code>
             $ref: '#/components/schemas/MigrationSettingsPost'
+          maintainerId:
+            type: string
+            description: The ID of the member who maintains this feature flag
+            example: 12ab3c45de678910fgh12345
+          maintainerTeamKey:
+            type: string
+            description: The key of the team that maintains this feature flag
+            example: team-1
       FeatureFlagConfig:
         type: object
         required:
@@ -37320,4 +37532,4 @@ rawSpecString: |
         type: apiKey
         in: header
         name: Authorization
-konfigCliVersion: 1.38.34
+konfigCliVersion: 1.38.37

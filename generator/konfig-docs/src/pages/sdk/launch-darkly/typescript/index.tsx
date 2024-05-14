@@ -17,7 +17,7 @@ export default function LaunchDarklyTypeScriptSdk() {
       companyKebabCase="launch-darkly"
       clientNameCamelCase="launchDarkly"
       homepage="launchdarkly.com"
-      lastUpdated={new Date("2024-03-27T20:44:35.877Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/launchdarkly/favicon.png"
       contactUrl="https://support.launchdarkly.com"
       contactEmail="support@launchdarkly.com"
@@ -298,8 +298,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/applications",
     "method": "listApplications",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Applications (beta)",
-    "typeScriptTag": "applicationsBeta",
+    "tag": "Applications (https://",
+    "typeScriptTag": "applicationsHttps:",
     "description": "Get applications",
     "parameters": [
       {
@@ -359,8 +359,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/applications/{applicationKey}",
     "method": "removeApplication",
     "httpMethod": HttpMethodsEnum.DELETE,
-    "tag": "Applications (beta)",
-    "typeScriptTag": "applicationsBeta",
+    "tag": "Applications (https://",
+    "typeScriptTag": "applicationsHttps:",
     "description": "Delete application",
     "parameters": [
       {
@@ -398,8 +398,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/applications/{applicationKey}",
     "method": "getApplicationByKey",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Applications (beta)",
-    "typeScriptTag": "applicationsBeta",
+    "tag": "Applications (https://",
+    "typeScriptTag": "applicationsHttps:",
     "description": "Get application by key",
     "parameters": [
       {
@@ -446,8 +446,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/applications/{applicationKey}",
     "method": "updateApplicationPatch",
     "httpMethod": HttpMethodsEnum.PATCH,
-    "tag": "Applications (beta)",
-    "typeScriptTag": "applicationsBeta",
+    "tag": "Applications (https://",
+    "typeScriptTag": "applicationsHttps:",
     "description": "Update application",
     "parameters": [
       {
@@ -489,8 +489,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/applications/{applicationKey}/versions",
     "method": "getApplicationVersions",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Applications (beta)",
-    "typeScriptTag": "applicationsBeta",
+    "tag": "Applications (https://",
+    "typeScriptTag": "applicationsHttps:",
     "description": "Get application versions by application key",
     "parameters": [
       {
@@ -552,8 +552,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/applications/{applicationKey}/versions/{versionKey}",
     "method": "removeVersion",
     "httpMethod": HttpMethodsEnum.DELETE,
-    "tag": "Applications (beta)",
-    "typeScriptTag": "applicationsBeta",
+    "tag": "Applications (https://",
+    "typeScriptTag": "applicationsHttps:",
     "description": "Delete application version",
     "parameters": [
       {
@@ -598,8 +598,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/applications/{applicationKey}/versions/{versionKey}",
     "method": "updateVersionPatch",
     "httpMethod": HttpMethodsEnum.PATCH,
-    "tag": "Applications (beta)",
-    "typeScriptTag": "applicationsBeta",
+    "tag": "Applications (https://",
+    "typeScriptTag": "applicationsHttps:",
     "description": "Update application version",
     "parameters": [
       {
@@ -2020,8 +2020,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/flag-links/projects/{projectKey}/flags/{featureFlagKey}",
     "method": "listLinks",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Flag links (beta)",
-    "typeScriptTag": "flagLinksBeta",
+    "tag": "Flag links (https://",
+    "typeScriptTag": "flagLinksHttps:",
     "description": "List flag links",
     "parameters": [
       {
@@ -2062,8 +2062,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/flag-links/projects/{projectKey}/flags/{featureFlagKey}",
     "method": "createFlagLink",
     "httpMethod": HttpMethodsEnum.POST,
-    "tag": "Flag links (beta)",
-    "typeScriptTag": "flagLinksBeta",
+    "tag": "Flag links (https://",
+    "typeScriptTag": "flagLinksHttps:",
     "description": "Create flag link",
     "parameters": [
       {
@@ -2151,8 +2151,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/flag-links/projects/{projectKey}/flags/{featureFlagKey}/{id}",
     "method": "deleteFlagLink",
     "httpMethod": HttpMethodsEnum.DELETE,
-    "tag": "Flag links (beta)",
-    "typeScriptTag": "flagLinksBeta",
+    "tag": "Flag links (https://",
+    "typeScriptTag": "flagLinksHttps:",
     "description": "Delete flag link",
     "parameters": [
       {
@@ -2208,8 +2208,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/flag-links/projects/{projectKey}/flags/{featureFlagKey}/{id}",
     "method": "updateFlagLink",
     "httpMethod": HttpMethodsEnum.PATCH,
-    "tag": "Flag links (beta)",
-    "typeScriptTag": "flagLinksBeta",
+    "tag": "Flag links (https://",
+    "typeScriptTag": "flagLinksHttps:",
     "description": "Update flag link",
     "parameters": [
       {
@@ -2644,8 +2644,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/flags/{projectKey}/{environmentKey}/{featureFlagKey}/dependent-flags",
     "method": "listDependentFlagsByEnv",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Feature flags (beta)",
-    "typeScriptTag": "featureFlagsBeta",
+    "tag": "Feature flags (https://",
+    "typeScriptTag": "featureFlagsHttps:",
     "description": "List dependent feature flags by environment",
     "parameters": [
       {
@@ -2951,8 +2951,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/flags/{projectKey}/{featureFlagKey}/dependent-flags",
     "method": "listDependentFlags",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Feature flags (beta)",
-    "typeScriptTag": "featureFlagsBeta",
+    "tag": "Feature flags (https://",
+    "typeScriptTag": "featureFlagsHttps:",
     "description": "List dependent feature flags",
     "parameters": [
       {
@@ -2997,9 +2997,9 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/flags/{projectKey}/{featureFlagKey}/experiments/{environmentKey}/{metricKey}",
     "method": "getLegacyExperimentResults",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Experiments (beta)",
-    "typeScriptTag": "experimentsBeta",
-    "description": "Get legacy experiment results (deprecated)",
+    "tag": "Experiments (https://",
+    "typeScriptTag": "experimentsHttps:",
+    "description": "Get legacy experiment results (https://",
     "parameters": [
       {
         "name": "projectKey",
@@ -3672,8 +3672,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/flags/{projectKey}/{flagKey}/release",
     "method": "getCurrentRelease",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Releases (beta)",
-    "typeScriptTag": "releasesBeta",
+    "tag": "Releases (https://",
+    "typeScriptTag": "releasesHttps:",
     "description": "Get release for flag",
     "parameters": [
       {
@@ -3706,8 +3706,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/flags/{projectKey}/{flagKey}/release",
     "method": "updateActiveReleasePatch",
     "httpMethod": HttpMethodsEnum.PATCH,
-    "tag": "Releases (beta)",
-    "typeScriptTag": "releasesBeta",
+    "tag": "Releases (https://",
+    "typeScriptTag": "releasesHttps:",
     "description": "Patch release for flag",
     "parameters": [
       {
@@ -3756,8 +3756,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/integration-capabilities/big-segment-store",
     "method": "listBigSegmentStoreIntegrations",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Integrations (beta)",
-    "typeScriptTag": "integrationsBeta",
+    "tag": "Integrations (https://",
+    "typeScriptTag": "integrationsHttps:",
     "description": "List all big segment store integrations",
     "parameters": [],
     "responses": [
@@ -3787,8 +3787,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/integration-capabilities/big-segment-store/{projectKey}/{environmentKey}/{integrationKey}",
     "method": "createPersistentStoreIntegration",
     "httpMethod": HttpMethodsEnum.POST,
-    "tag": "Integrations (beta)",
-    "typeScriptTag": "integrationsBeta",
+    "tag": "Integrations (https://",
+    "typeScriptTag": "integrationsHttps:",
     "description": "Create big segment store integration",
     "parameters": [
       {
@@ -3877,8 +3877,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/integration-capabilities/big-segment-store/{projectKey}/{environmentKey}/{integrationKey}/{integrationId}",
     "method": "deleteBigSegmentStoreIntegration",
     "httpMethod": HttpMethodsEnum.DELETE,
-    "tag": "Integrations (beta)",
-    "typeScriptTag": "integrationsBeta",
+    "tag": "Integrations (https://",
+    "typeScriptTag": "integrationsHttps:",
     "description": "Delete big segment store integration",
     "parameters": [
       {
@@ -3941,8 +3941,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/integration-capabilities/big-segment-store/{projectKey}/{environmentKey}/{integrationKey}/{integrationId}",
     "method": "getBigSegmentStoreIntegrationById",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Integrations (beta)",
-    "typeScriptTag": "integrationsBeta",
+    "tag": "Integrations (https://",
+    "typeScriptTag": "integrationsHttps:",
     "description": "Get big segment store integration by ID",
     "parameters": [
       {
@@ -4001,8 +4001,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/integration-capabilities/big-segment-store/{projectKey}/{environmentKey}/{integrationKey}/{integrationId}",
     "method": "updateBigSegmentStore",
     "httpMethod": HttpMethodsEnum.PATCH,
-    "tag": "Integrations (beta)",
-    "typeScriptTag": "integrationsBeta",
+    "tag": "Integrations (https://",
+    "typeScriptTag": "integrationsHttps:",
     "description": "Update big segment store integration",
     "parameters": [
       {
@@ -4069,8 +4069,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/integration-capabilities/featureStore",
     "method": "listDeliveryConfigurations",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Integration delivery configurations (beta)",
-    "typeScriptTag": "integrationDeliveryConfigurationsBeta",
+    "tag": "Integration delivery configurations (https://",
+    "typeScriptTag": "integrationDeliveryConfigurationsHttps:",
     "description": "List all delivery configurations",
     "parameters": [],
     "responses": [
@@ -4100,8 +4100,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/integration-capabilities/featureStore/{projectKey}/{environmentKey}",
     "method": "getDeliveryConfigurationsByEnvironment",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Integration delivery configurations (beta)",
-    "typeScriptTag": "integrationDeliveryConfigurationsBeta",
+    "tag": "Integration delivery configurations (https://",
+    "typeScriptTag": "integrationDeliveryConfigurationsHttps:",
     "description": "Get delivery configurations by environment",
     "parameters": [
       {
@@ -4146,8 +4146,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/integration-capabilities/featureStore/{projectKey}/{environmentKey}/{integrationKey}",
     "method": "createDeliveryConfiguration",
     "httpMethod": HttpMethodsEnum.POST,
-    "tag": "Integration delivery configurations (beta)",
-    "typeScriptTag": "integrationDeliveryConfigurationsBeta",
+    "tag": "Integration delivery configurations (https://",
+    "typeScriptTag": "integrationDeliveryConfigurationsHttps:",
     "description": "Create delivery configuration",
     "parameters": [
       {
@@ -4232,8 +4232,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/integration-capabilities/featureStore/{projectKey}/{environmentKey}/{integrationKey}/{id}",
     "method": "deleteDeliveryConfiguration",
     "httpMethod": HttpMethodsEnum.DELETE,
-    "tag": "Integration delivery configurations (beta)",
-    "typeScriptTag": "integrationDeliveryConfigurationsBeta",
+    "tag": "Integration delivery configurations (https://",
+    "typeScriptTag": "integrationDeliveryConfigurationsHttps:",
     "description": "Delete delivery configuration",
     "parameters": [
       {
@@ -4296,8 +4296,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/integration-capabilities/featureStore/{projectKey}/{environmentKey}/{integrationKey}/{id}",
     "method": "getById",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Integration delivery configurations (beta)",
-    "typeScriptTag": "integrationDeliveryConfigurationsBeta",
+    "tag": "Integration delivery configurations (https://",
+    "typeScriptTag": "integrationDeliveryConfigurationsHttps:",
     "description": "Get delivery configuration by ID",
     "parameters": [
       {
@@ -4348,8 +4348,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/integration-capabilities/featureStore/{projectKey}/{environmentKey}/{integrationKey}/{id}",
     "method": "updateDeliveryConfiguration",
     "httpMethod": HttpMethodsEnum.PATCH,
-    "tag": "Integration delivery configurations (beta)",
-    "typeScriptTag": "integrationDeliveryConfigurationsBeta",
+    "tag": "Integration delivery configurations (https://",
+    "typeScriptTag": "integrationDeliveryConfigurationsHttps:",
     "description": "Update delivery configuration",
     "parameters": [
       {
@@ -4416,8 +4416,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/integration-capabilities/featureStore/{projectKey}/{environmentKey}/{integrationKey}/{id}/validate",
     "method": "validateDeliveryConfiguration",
     "httpMethod": HttpMethodsEnum.POST,
-    "tag": "Integration delivery configurations (beta)",
-    "typeScriptTag": "integrationDeliveryConfigurationsBeta",
+    "tag": "Integration delivery configurations (https://",
+    "typeScriptTag": "integrationDeliveryConfigurationsHttps:",
     "description": "Validate delivery configuration",
     "parameters": [
       {
@@ -4808,8 +4808,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/members",
     "method": "modifyMembersRoles",
     "httpMethod": HttpMethodsEnum.PATCH,
-    "tag": "Account members (beta)",
-    "typeScriptTag": "accountMembersBeta",
+    "tag": "Account members (https://",
+    "typeScriptTag": "accountMembersHttps:",
     "description": "Modify account members",
     "parameters": [
       {
@@ -7025,8 +7025,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/projects/{projectKey}/environments/{environmentKey}/experiments",
     "method": "listExperimentsInEnvironment",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Experiments (beta)",
-    "typeScriptTag": "experimentsBeta",
+    "tag": "Experiments (https://",
+    "typeScriptTag": "experimentsHttps:",
     "description": "Get experiments",
     "parameters": [
       {
@@ -7104,8 +7104,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/projects/{projectKey}/environments/{environmentKey}/experiments",
     "method": "createNew",
     "httpMethod": HttpMethodsEnum.POST,
-    "tag": "Experiments (beta)",
-    "typeScriptTag": "experimentsBeta",
+    "tag": "Experiments (https://",
+    "typeScriptTag": "experimentsHttps:",
     "description": "Create experiment",
     "parameters": [
       {
@@ -7188,8 +7188,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}",
     "method": "getDetails",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Experiments (beta)",
-    "typeScriptTag": "experimentsBeta",
+    "tag": "Experiments (https://",
+    "typeScriptTag": "experimentsHttps:",
     "description": "Get experiment",
     "parameters": [
       {
@@ -7254,8 +7254,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}",
     "method": "updateSemanticPatch",
     "httpMethod": HttpMethodsEnum.PATCH,
-    "tag": "Experiments (beta)",
-    "typeScriptTag": "experimentsBeta",
+    "tag": "Experiments (https://",
+    "typeScriptTag": "experimentsHttps:",
     "description": "Patch experiment",
     "parameters": [
       {
@@ -7324,8 +7324,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/iterations",
     "method": "createIteration",
     "httpMethod": HttpMethodsEnum.POST,
-    "tag": "Experiments (beta)",
-    "typeScriptTag": "experimentsBeta",
+    "tag": "Experiments (https://",
+    "typeScriptTag": "experimentsHttps:",
     "description": "Create iteration",
     "parameters": [
       {
@@ -7434,8 +7434,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/metric-groups/{metricGroupKey}/results",
     "method": "getResultsForMetricGroup",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Experiments (beta)",
-    "typeScriptTag": "experimentsBeta",
+    "tag": "Experiments (https://",
+    "typeScriptTag": "experimentsHttps:",
     "description": "Get experiment results for metric group",
     "parameters": [
       {
@@ -7503,8 +7503,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/metrics/{metricKey}/results",
     "method": "getExperimentMetricResults",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Experiments (beta)",
-    "typeScriptTag": "experimentsBeta",
+    "tag": "Experiments (https://",
+    "typeScriptTag": "experimentsHttps:",
     "description": "Get experiment results",
     "parameters": [
       {
@@ -7789,8 +7789,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/projects/{projectKey}/experimentation-settings",
     "method": "getExperimentationSettings",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Experiments (beta)",
-    "typeScriptTag": "experimentsBeta",
+    "tag": "Experiments (https://",
+    "typeScriptTag": "experimentsHttps:",
     "description": "Get experimentation settings",
     "parameters": [
       {
@@ -7836,8 +7836,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/projects/{projectKey}/experimentation-settings",
     "method": "updateExperimentationSettings",
     "httpMethod": HttpMethodsEnum.PUT,
-    "tag": "Experiments (beta)",
-    "typeScriptTag": "experimentsBeta",
+    "tag": "Experiments (https://",
+    "typeScriptTag": "experimentsHttps:",
     "description": "Update experimentation settings",
     "parameters": [
       {
@@ -9405,8 +9405,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/projects/{projectKey}/flags/{flagKey}/environments/{environmentKey}/migration-safety-issues",
     "method": "getMigrationSafetyIssues",
     "httpMethod": HttpMethodsEnum.POST,
-    "tag": "Feature flags (beta)",
-    "typeScriptTag": "featureFlagsBeta",
+    "tag": "Feature flags (https://",
+    "typeScriptTag": "featureFlagsHttps:",
     "description": "Get migration safety issues",
     "parameters": [
       {
@@ -9482,8 +9482,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/projects/{projectKey}/metric-groups",
     "method": "listMetricGroups",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Metrics (beta)",
-    "typeScriptTag": "metricsBeta",
+    "tag": "Metrics (https://",
+    "typeScriptTag": "metricsHttps:",
     "description": "List metric groups",
     "parameters": [
       {
@@ -9534,8 +9534,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/projects/{projectKey}/metric-groups",
     "method": "createMetricGroup",
     "httpMethod": HttpMethodsEnum.POST,
-    "tag": "Metrics (beta)",
-    "typeScriptTag": "metricsBeta",
+    "tag": "Metrics (https://",
+    "typeScriptTag": "metricsHttps:",
     "description": "Create metric group",
     "parameters": [
       {
@@ -9631,8 +9631,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/projects/{projectKey}/metric-groups/{metricGroupKey}",
     "method": "deleteMetricGroup",
     "httpMethod": HttpMethodsEnum.DELETE,
-    "tag": "Metrics (beta)",
-    "typeScriptTag": "metricsBeta",
+    "tag": "Metrics (https://",
+    "typeScriptTag": "metricsHttps:",
     "description": "Delete metric group",
     "parameters": [
       {
@@ -9685,8 +9685,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/projects/{projectKey}/metric-groups/{metricGroupKey}",
     "method": "getMetricGroupDetails",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Metrics (beta)",
-    "typeScriptTag": "metricsBeta",
+    "tag": "Metrics (https://",
+    "typeScriptTag": "metricsHttps:",
     "description": "Get metric group",
     "parameters": [
       {
@@ -9744,8 +9744,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/projects/{projectKey}/metric-groups/{metricGroupKey}",
     "method": "updateMetricGroupByKey",
     "httpMethod": HttpMethodsEnum.PATCH,
-    "tag": "Metrics (beta)",
-    "typeScriptTag": "metricsBeta",
+    "tag": "Metrics (https://",
+    "typeScriptTag": "metricsHttps:",
     "description": "Patch metric group",
     "parameters": [
       {
@@ -9798,8 +9798,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/projects/{projectKey}/release-pipelines",
     "method": "getAllReleasePipelines",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Release pipelines (beta)",
-    "typeScriptTag": "releasePipelinesBeta",
+    "tag": "Release pipelines (https://",
+    "typeScriptTag": "releasePipelinesHttps:",
     "description": "Get all release pipelines",
     "parameters": [
       {
@@ -9840,8 +9840,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/projects/{projectKey}/release-pipelines",
     "method": "createNewPipeline",
     "httpMethod": HttpMethodsEnum.POST,
-    "tag": "Release pipelines (beta)",
-    "typeScriptTag": "releasePipelinesBeta",
+    "tag": "Release pipelines (https://",
+    "typeScriptTag": "releasePipelinesHttps:",
     "description": "Create a release pipeline",
     "parameters": [
       {
@@ -9915,8 +9915,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/projects/{projectKey}/release-pipelines/{pipelineKey}",
     "method": "deletePipeline",
     "httpMethod": HttpMethodsEnum.DELETE,
-    "tag": "Release pipelines (beta)",
-    "typeScriptTag": "releasePipelinesBeta",
+    "tag": "Release pipelines (https://",
+    "typeScriptTag": "releasePipelinesHttps:",
     "description": "Delete release pipeline",
     "parameters": [
       {
@@ -9953,8 +9953,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/projects/{projectKey}/release-pipelines/{pipelineKey}",
     "method": "getByPipeKey",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Release pipelines (beta)",
-    "typeScriptTag": "releasePipelinesBeta",
+    "tag": "Release pipelines (https://",
+    "typeScriptTag": "releasePipelinesHttps:",
     "description": "Get release pipeline by key",
     "parameters": [
       {
@@ -9987,8 +9987,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/projects/{projectKey}/release-pipelines/{pipelineKey}",
     "method": "updatePipelinePatch",
     "httpMethod": HttpMethodsEnum.PATCH,
-    "tag": "Release pipelines (beta)",
-    "typeScriptTag": "releasePipelinesBeta",
+    "tag": "Release pipelines (https://",
+    "typeScriptTag": "releasePipelinesHttps:",
     "description": "Update a release pipeline",
     "parameters": [
       {
@@ -10727,8 +10727,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/exports",
     "method": "startBigSegmentExport",
     "httpMethod": HttpMethodsEnum.POST,
-    "tag": "Segments (beta)",
-    "typeScriptTag": "segmentsBeta",
+    "tag": "Segments (https://",
+    "typeScriptTag": "segmentsHttps:",
     "description": "Create big segment export",
     "parameters": [
       {
@@ -10780,8 +10780,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/exports/{exportID}",
     "method": "getBigSegmentExportInfo",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Segments (beta)",
-    "typeScriptTag": "segmentsBeta",
+    "tag": "Segments (https://",
+    "typeScriptTag": "segmentsHttps:",
     "description": "Get big segment export",
     "parameters": [
       {
@@ -10836,8 +10836,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/imports",
     "method": "startBigSegmentImport",
     "httpMethod": HttpMethodsEnum.POST,
-    "tag": "Segments (beta)",
-    "typeScriptTag": "segmentsBeta",
+    "tag": "Segments (https://",
+    "typeScriptTag": "segmentsHttps:",
     "description": "Create big segment import",
     "parameters": [
       {
@@ -10903,8 +10903,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/imports/{importID}",
     "method": "getImportInfo",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Segments (beta)",
-    "typeScriptTag": "segmentsBeta",
+    "tag": "Segments (https://",
+    "typeScriptTag": "segmentsHttps:",
     "description": "Get big segment import",
     "parameters": [
       {
@@ -11443,8 +11443,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/teams",
     "method": "updateMultipleTeamsSemanticPatch",
     "httpMethod": HttpMethodsEnum.PATCH,
-    "tag": "Teams (beta)",
-    "typeScriptTag": "teamsBeta",
+    "tag": "Teams (https://",
+    "typeScriptTag": "teamsHttps:",
     "description": "Update teams",
     "parameters": [
       {
@@ -12334,8 +12334,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/usage/evaluations/{projectKey}/{environmentKey}/{featureFlagKey}",
     "method": "getEvaluationsUsage",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Account usage (beta)",
-    "typeScriptTag": "accountUsageBeta",
+    "tag": "Account usage (https://",
+    "typeScriptTag": "accountUsageHttps:",
     "description": "Get evaluations usage",
     "parameters": [
       {
@@ -12406,8 +12406,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/usage/events/{type}",
     "method": "getEventsUsageData",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Account usage (beta)",
-    "typeScriptTag": "accountUsageBeta",
+    "tag": "Account usage (https://",
+    "typeScriptTag": "accountUsageHttps:",
     "description": "Get events usage",
     "parameters": [
       {
@@ -12459,8 +12459,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/usage/experimentation-keys",
     "method": "getExperimentationKeysUsage",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Account usage (beta)",
-    "typeScriptTag": "accountUsageBeta",
+    "tag": "Account usage (https://",
+    "typeScriptTag": "accountUsageHttps:",
     "description": "Get experimentation keys usage",
     "parameters": [
       {
@@ -12505,8 +12505,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/usage/experimentation-units",
     "method": "getExperimentationUnitsUsage",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Account usage (beta)",
-    "typeScriptTag": "accountUsageBeta",
+    "tag": "Account usage (https://",
+    "typeScriptTag": "accountUsageHttps:",
     "description": "Get experimentation units usage",
     "parameters": [
       {
@@ -12551,8 +12551,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/usage/mau",
     "method": "getMauUsageData",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Account usage (beta)",
-    "typeScriptTag": "accountUsageBeta",
+    "tag": "Account usage (https://",
+    "typeScriptTag": "accountUsageHttps:",
     "description": "Get MAU usage",
     "parameters": [
       {
@@ -12623,8 +12623,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/usage/mau/bycategory",
     "method": "getMauUsageByCategory",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Account usage (beta)",
-    "typeScriptTag": "accountUsageBeta",
+    "tag": "Account usage (https://",
+    "typeScriptTag": "accountUsageHttps:",
     "description": "Get MAU usage by category",
     "parameters": [
       {
@@ -12669,8 +12669,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/usage/mau/sdks",
     "method": "listMauSdksByType",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Account usage (beta)",
-    "typeScriptTag": "accountUsageBeta",
+    "tag": "Account usage (https://",
+    "typeScriptTag": "accountUsageHttps:",
     "description": "Get MAU SDKs by type",
     "parameters": [
       {
@@ -12686,7 +12686,7 @@ export default function LaunchDarklyTypeScriptSdk() {
       {
         "name": "sdktype",
         "schema": "string",
-        "description": "The type of SDK with monthly active users (MAU) to list. Must be either `client` or `server`."
+        "description": "The type of SDK with monthly active users (https:// to list. Must be either `client` or `server`."
       }
     ],
     "responses": [
@@ -12716,8 +12716,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/usage/streams/{source}",
     "method": "getStreamUsage",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Account usage (beta)",
-    "typeScriptTag": "accountUsageBeta",
+    "tag": "Account usage (https://",
+    "typeScriptTag": "accountUsageHttps:",
     "description": "Get stream usage",
     "parameters": [
       {
@@ -12774,8 +12774,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/usage/streams/{source}/bysdkversion",
     "method": "getStreamUsageBySdkVersionData",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Account usage (beta)",
-    "typeScriptTag": "accountUsageBeta",
+    "tag": "Account usage (https://",
+    "typeScriptTag": "accountUsageHttps:",
     "description": "Get stream usage by SDK version",
     "parameters": [
       {
@@ -12842,8 +12842,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/usage/streams/{source}/sdkversions",
     "method": "listSdkVersions",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Account usage (beta)",
-    "typeScriptTag": "accountUsageBeta",
+    "tag": "Account usage (https://",
+    "typeScriptTag": "accountUsageHttps:",
     "description": "Get stream usage SDK versions",
     "parameters": [
       {
@@ -12877,8 +12877,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/user-attributes/{projectKey}/{environmentKey}",
     "method": "getAllInUseUserAttributes",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Users (beta)",
-    "typeScriptTag": "usersBeta",
+    "tag": "Users (https://",
+    "typeScriptTag": "usersHttps:",
     "description": "Get user attribute names",
     "parameters": [
       {
@@ -13757,8 +13757,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/engineering-insights/charts/deployments/frequency",
     "method": "deploymentFrequencyChartData",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Insights charts (beta)",
-    "typeScriptTag": "insightsChartsBeta",
+    "tag": "Insights charts (https://",
+    "typeScriptTag": "insightsChartsHttps:",
     "description": "Get deployment frequency chart data",
     "parameters": [
       {
@@ -13838,8 +13838,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/engineering-insights/charts/flags/stale",
     "method": "staleFlagsChartData",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Insights charts (beta)",
-    "typeScriptTag": "insightsChartsBeta",
+    "tag": "Insights charts (https://",
+    "typeScriptTag": "insightsChartsHttps:",
     "description": "Get stale flags chart data",
     "parameters": [
       {
@@ -13913,8 +13913,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/engineering-insights/charts/flags/status",
     "method": "getFlagStatusChartData",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Insights charts (beta)",
-    "typeScriptTag": "insightsChartsBeta",
+    "tag": "Insights charts (https://",
+    "typeScriptTag": "insightsChartsHttps:",
     "description": "Get flag status chart data",
     "parameters": [
       {
@@ -13968,8 +13968,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/engineering-insights/charts/lead-time",
     "method": "leadTimeChartData",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Insights charts (beta)",
-    "typeScriptTag": "insightsChartsBeta",
+    "tag": "Insights charts (https://",
+    "typeScriptTag": "insightsChartsHttps:",
     "description": "Get lead time chart data",
     "parameters": [
       {
@@ -14051,8 +14051,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/engineering-insights/charts/releases/frequency",
     "method": "releaseFrequencyData",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Insights charts (beta)",
-    "typeScriptTag": "insightsChartsBeta",
+    "tag": "Insights charts (https://",
+    "typeScriptTag": "insightsChartsHttps:",
     "description": "Get release frequency chart data",
     "parameters": [
       {
@@ -14146,8 +14146,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/engineering-insights/deployment-events",
     "method": "createDeploymentEvent",
     "httpMethod": HttpMethodsEnum.POST,
-    "tag": "Insights deployments (beta)",
-    "typeScriptTag": "insightsDeploymentsBeta",
+    "tag": "Insights deployments (https://",
+    "typeScriptTag": "insightsDeploymentsHttps:",
     "description": "Create deployment event",
     "parameters": [
       {
@@ -14262,8 +14262,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/engineering-insights/deployments",
     "method": "listDeployments",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Insights deployments (beta)",
-    "typeScriptTag": "insightsDeploymentsBeta",
+    "tag": "Insights deployments (https://",
+    "typeScriptTag": "insightsDeploymentsHttps:",
     "description": "List deployments",
     "parameters": [
       {
@@ -14357,8 +14357,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/engineering-insights/deployments/{deploymentID}",
     "method": "getDeploymentById",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Insights deployments (beta)",
-    "typeScriptTag": "insightsDeploymentsBeta",
+    "tag": "Insights deployments (https://",
+    "typeScriptTag": "insightsDeploymentsHttps:",
     "description": "Get deployment",
     "parameters": [
       {
@@ -14405,8 +14405,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/engineering-insights/deployments/{deploymentID}",
     "method": "updateDeploymentById",
     "httpMethod": HttpMethodsEnum.PATCH,
-    "tag": "Insights deployments (beta)",
-    "typeScriptTag": "insightsDeploymentsBeta",
+    "tag": "Insights deployments (https://",
+    "typeScriptTag": "insightsDeploymentsHttps:",
     "description": "Update deployment",
     "parameters": [
       {
@@ -14448,8 +14448,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/engineering-insights/flag-events",
     "method": "listFlagEvents",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Insights flag events (beta)",
-    "typeScriptTag": "insightsFlagEventsBeta",
+    "tag": "Insights flag events (https://",
+    "typeScriptTag": "insightsFlagEventsHttps:",
     "description": "List flag events",
     "parameters": [
       {
@@ -14553,8 +14553,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/engineering-insights/insights/group",
     "method": "createInsightGroup",
     "httpMethod": HttpMethodsEnum.POST,
-    "tag": "Insights scores (beta)",
-    "typeScriptTag": "insightsScoresBeta",
+    "tag": "Insights scores (https://",
+    "typeScriptTag": "insightsScoresHttps:",
     "description": "Create insight group",
     "parameters": [
       {
@@ -14631,8 +14631,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/engineering-insights/insights/groups",
     "method": "listGroupInsightScores",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Insights scores (beta)",
-    "typeScriptTag": "insightsScoresBeta",
+    "tag": "Insights scores (https://",
+    "typeScriptTag": "insightsScoresHttps:",
     "description": "List insight groups",
     "parameters": [
       {
@@ -14688,8 +14688,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/engineering-insights/insights/groups/{insightGroupKey}",
     "method": "deleteInsightGroup",
     "httpMethod": HttpMethodsEnum.DELETE,
-    "tag": "Insights scores (beta)",
-    "typeScriptTag": "insightsScoresBeta",
+    "tag": "Insights scores (https://",
+    "typeScriptTag": "insightsScoresHttps:",
     "description": "Delete insight group",
     "parameters": [
       {
@@ -14731,8 +14731,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/engineering-insights/insights/groups/{insightGroupKey}",
     "method": "expandGroupInsightScores",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Insights scores (beta)",
-    "typeScriptTag": "insightsScoresBeta",
+    "tag": "Insights scores (https://",
+    "typeScriptTag": "insightsScoresHttps:",
     "description": "Get insight group",
     "parameters": [
       {
@@ -14779,8 +14779,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/engineering-insights/insights/groups/{insightGroupKey}",
     "method": "updateInsightGroupPatch",
     "httpMethod": HttpMethodsEnum.PATCH,
-    "tag": "Insights scores (beta)",
-    "typeScriptTag": "insightsScoresBeta",
+    "tag": "Insights scores (https://",
+    "typeScriptTag": "insightsScoresHttps:",
     "description": "Patch insight group",
     "parameters": [
       {
@@ -14826,8 +14826,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/engineering-insights/insights/scores",
     "method": "getInsightScores",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Insights scores (beta)",
-    "typeScriptTag": "insightsScoresBeta",
+    "tag": "Insights scores (https://",
+    "typeScriptTag": "insightsScoresHttps:",
     "description": "Get insight scores",
     "parameters": [
       {
@@ -14877,8 +14877,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/engineering-insights/pull-requests",
     "method": "listPullRequests",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Insights pull requests (beta)",
-    "typeScriptTag": "insightsPullRequestsBeta",
+    "tag": "Insights pull requests (https://",
+    "typeScriptTag": "insightsPullRequestsHttps:",
     "description": "List pull requests",
     "parameters": [
       {
@@ -14921,7 +14921,7 @@ export default function LaunchDarklyTypeScriptSdk() {
       {
         "name": "sort",
         "schema": "string",
-        "description": "Sort results. Requires the `environmentKey` to be set. Options: `leadTime` (asc) and `-leadTime` (desc). When query option is excluded, default sort is by created or merged date."
+        "description": "Sort results. Requires the `environmentKey` to be set. Options: `leadTime` (https:// and `-leadTime` (https://. When query option is excluded, default sort is by created or merged date."
       },
       {
         "name": "from",
@@ -14975,8 +14975,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/engineering-insights/repositories",
     "method": "listRepositories",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Insights repositories (beta)",
-    "typeScriptTag": "insightsRepositoriesBeta",
+    "tag": "Insights repositories (https://",
+    "typeScriptTag": "insightsRepositoriesHttps:",
     "description": "List repositories",
     "parameters": [
       {
@@ -15016,8 +15016,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/engineering-insights/repositories/projects",
     "method": "associateRepositoriesAndProjects",
     "httpMethod": HttpMethodsEnum.PUT,
-    "tag": "Insights repositories (beta)",
-    "typeScriptTag": "insightsRepositoriesBeta",
+    "tag": "Insights repositories (https://",
+    "typeScriptTag": "insightsRepositoriesHttps:",
     "description": "Associate repositories with projects",
     "parameters": [
       {
@@ -15058,8 +15058,8 @@ export default function LaunchDarklyTypeScriptSdk() {
     "url": "/api/v2/engineering-insights/repositories/{repositoryKey}/projects/{projectKey}",
     "method": "removeRepositoryProjectAssociation",
     "httpMethod": HttpMethodsEnum.DELETE,
-    "tag": "Insights repositories (beta)",
-    "typeScriptTag": "insightsRepositoriesBeta",
+    "tag": "Insights repositories (https://",
+    "typeScriptTag": "insightsRepositoriesHttps:",
     "description": "Remove repository project association",
     "parameters": [
       {
@@ -15110,10 +15110,10 @@ export default function LaunchDarklyTypeScriptSdk() {
       apiTitle="LaunchDarkly REST API"
       apiBaseUrl="https://app.launchdarkly.com"
       apiVersion="2.0"
-      endpoints={164}
-      sdkMethods={257}
+      endpoints={166}
+      sdkMethods={259}
       schemas={448}
-      parameters={982}
+      parameters={992}
       difficulty="Very Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/launchdarkly/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/launchdarkly/openapi.yaml"

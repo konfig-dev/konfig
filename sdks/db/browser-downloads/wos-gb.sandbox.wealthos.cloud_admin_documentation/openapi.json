@@ -2960,6 +2960,7 @@
           },
           "workplace_employers": {
             "type": "array",
+            "nullable": true,
             "description": "Unique IDs of workplace employers who are contributing to the workplace pensions. The incoming list of employers will replace the existing list of employers.",
             "items": {
               "type": "string",
@@ -10490,26 +10491,24 @@
           }
         }
       },
-      "reasonDeatils": {
+      "lifeEvents": {
         "required": [
-          "code",
-          "message"
+          "event_id",
+          "event_type",
+          "status"
         ],
         "properties": {
-          "code": {
+          "event_id": {
             "type": "string",
-            "description": "Error Code Types",
-            "example": "BAD_REQUEST"
+            "example": "LISALETI-SCX540"
           },
-          "message": {
-            "description": "Error message",
+          "event_type": {
             "type": "string",
-            "example": "Invalid format has been used"
+            "example": "Terminal illness"
           },
-          "path": {
-            "description": "Error path in the request",
+          "status": {
             "type": "string",
-            "example": "/investorNINO"
+            "example": "completed"
           }
         }
       },
@@ -10671,6 +10670,31 @@
             "maxLength": 64,
             "example": "RAI48483jd"
           },
+          "life_events": {
+            "description": "Life events of the investor",
+            "type": "array",
+            "items": {
+              "required": [
+                "event_id",
+                "event_type",
+                "status"
+              ],
+              "properties": {
+                "event_id": {
+                  "type": "string",
+                  "example": "LISALETI-SCX540"
+                },
+                "event_type": {
+                  "type": "string",
+                  "example": "Terminal illness"
+                },
+                "status": {
+                  "type": "string",
+                  "example": "completed"
+                }
+              }
+            }
+          },
           "reference_version": {
             "type": "integer",
             "example": 1
@@ -10723,30 +10747,8 @@
               },
               "reason": {
                 "description": "Error reason received from HMRC",
-                "type": "array",
-                "items": {
-                  "required": [
-                    "code",
-                    "message"
-                  ],
-                  "properties": {
-                    "code": {
-                      "type": "string",
-                      "description": "Error Code Types",
-                      "example": "BAD_REQUEST"
-                    },
-                    "message": {
-                      "description": "Error message",
-                      "type": "string",
-                      "example": "Invalid format has been used"
-                    },
-                    "path": {
-                      "description": "Error path in the request",
-                      "type": "string",
-                      "example": "/investorNINO"
-                    }
-                  }
-                }
+                "type": "string",
+                "nullable": true
               }
             }
           }
@@ -10920,6 +10922,31 @@
                   "maxLength": 64,
                   "example": "RAI48483jd"
                 },
+                "life_events": {
+                  "description": "Life events of the investor",
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "event_id",
+                      "event_type",
+                      "status"
+                    ],
+                    "properties": {
+                      "event_id": {
+                        "type": "string",
+                        "example": "LISALETI-SCX540"
+                      },
+                      "event_type": {
+                        "type": "string",
+                        "example": "Terminal illness"
+                      },
+                      "status": {
+                        "type": "string",
+                        "example": "completed"
+                      }
+                    }
+                  }
+                },
                 "reference_version": {
                   "type": "integer",
                   "example": 1
@@ -10972,30 +10999,8 @@
                     },
                     "reason": {
                       "description": "Error reason received from HMRC",
-                      "type": "array",
-                      "items": {
-                        "required": [
-                          "code",
-                          "message"
-                        ],
-                        "properties": {
-                          "code": {
-                            "type": "string",
-                            "description": "Error Code Types",
-                            "example": "BAD_REQUEST"
-                          },
-                          "message": {
-                            "description": "Error message",
-                            "type": "string",
-                            "example": "Invalid format has been used"
-                          },
-                          "path": {
-                            "description": "Error path in the request",
-                            "type": "string",
-                            "example": "/investorNINO"
-                          }
-                        }
-                      }
+                      "type": "string",
+                      "nullable": true
                     }
                   }
                 }
@@ -11187,6 +11192,31 @@
             "maxLength": 64,
             "example": "RAI48483jd"
           },
+          "life_events": {
+            "description": "Life events of the investor",
+            "type": "array",
+            "items": {
+              "required": [
+                "event_id",
+                "event_type",
+                "status"
+              ],
+              "properties": {
+                "event_id": {
+                  "type": "string",
+                  "example": "LISALETI-SCX540"
+                },
+                "event_type": {
+                  "type": "string",
+                  "example": "Terminal illness"
+                },
+                "status": {
+                  "type": "string",
+                  "example": "completed"
+                }
+              }
+            }
+          },
           "reference_version": {
             "type": "integer",
             "example": 1
@@ -11228,30 +11258,8 @@
               },
               "reason": {
                 "description": "Error reason received from HMRC",
-                "type": "array",
-                "items": {
-                  "required": [
-                    "code",
-                    "message"
-                  ],
-                  "properties": {
-                    "code": {
-                      "type": "string",
-                      "description": "Error Code Types",
-                      "example": "BAD_REQUEST"
-                    },
-                    "message": {
-                      "description": "Error message",
-                      "type": "string",
-                      "example": "Invalid format has been used"
-                    },
-                    "path": {
-                      "description": "Error path in the request",
-                      "type": "string",
-                      "example": "/investorNINO"
-                    }
-                  }
-                }
+                "type": "string",
+                "nullable": true
               }
             }
           }
@@ -13604,6 +13612,361 @@
           }
         }
       },
+      "schemas-RecurringContribution": {
+        "required": [
+          "frequency",
+          "amount"
+        ],
+        "properties": {
+          "frequency": {
+            "type": "string",
+            "description": "frequency can have values `Monthly`",
+            "enum": [
+              "Monthly"
+            ]
+          },
+          "amount": {
+            "type": "number",
+            "description": "The amount can have upto 2 decimal points"
+          }
+        },
+        "example": {
+          "frequency": "Monthly",
+          "amount": 600
+        }
+      },
+      "Fees": {
+        "required": [
+          "fee_type",
+          "frequency",
+          "amount"
+        ],
+        "properties": {
+          "fee_type": {
+            "type": "string",
+            "description": "Type of the fee"
+          },
+          "frequency": {
+            "type": "string",
+            "description": "frequency can have values `Monthly`",
+            "enum": [
+              "Monthly"
+            ]
+          },
+          "amount": {
+            "type": "number",
+            "description": "The amount can have upto 2 decimal points"
+          }
+        },
+        "example": {
+          "fee_type": "Management fee",
+          "frequency": "Monthly",
+          "amount": 600
+        }
+      },
+      "AccumulateRequest": {
+        "type": "object",
+        "required": [
+          "name",
+          "date_of_birth",
+          "intended_retirement_age",
+          "current_pension_value",
+          "growth_rate"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 100,
+            "description": "Name of the investor",
+            "example": "David Brown"
+          },
+          "date_of_birth": {
+            "type": "string",
+            "format": "date",
+            "description": "Should be today or an earlier date",
+            "example": "1963-07-19"
+          },
+          "intended_retirement_age": {
+            "type": "integer",
+            "description": "At most should be 100. Should be greater than current age",
+            "example": 60
+          },
+          "current_pension_value": {
+            "type": "number",
+            "description": "Current value of the pension pot. Can contain up to 2 decimal points",
+            "example": 1000
+          },
+          "growth_rate": {
+            "type": "number",
+            "description": "Annual growth rate of the pot. Can contain up to 2 decimal points",
+            "example": 2.5
+          },
+          "recurring_contributions": {
+            "type": "array",
+            "items": {
+              "required": [
+                "frequency",
+                "amount"
+              ],
+              "properties": {
+                "frequency": {
+                  "type": "string",
+                  "description": "frequency can have values `Monthly`",
+                  "enum": [
+                    "Monthly"
+                  ]
+                },
+                "amount": {
+                  "type": "number",
+                  "description": "The amount can have upto 2 decimal points"
+                }
+              },
+              "example": {
+                "frequency": "Monthly",
+                "amount": 600
+              }
+            }
+          },
+          "one_off_payment": {
+            "type": "number",
+            "description": "One-off payments are added to the initial value as tax relievable.  Can contain up to 2 decimal points",
+            "example": 500
+          },
+          "transfer_in": {
+            "type": "number",
+            "description": "Transfer-ins are added to the initial value as tax relievable.  Can contain up to 2 decimal points",
+            "example": 500
+          },
+          "fees": {
+            "type": "array",
+            "items": {
+              "required": [
+                "fee_type",
+                "frequency",
+                "amount"
+              ],
+              "properties": {
+                "fee_type": {
+                  "type": "string",
+                  "description": "Type of the fee"
+                },
+                "frequency": {
+                  "type": "string",
+                  "description": "frequency can have values `Monthly`",
+                  "enum": [
+                    "Monthly"
+                  ]
+                },
+                "amount": {
+                  "type": "number",
+                  "description": "The amount can have upto 2 decimal points"
+                }
+              },
+              "example": {
+                "fee_type": "Management fee",
+                "frequency": "Monthly",
+                "amount": 600
+              }
+            }
+          },
+          "projection_coverage_years": {
+            "type": "array",
+            "description": "Projection is given for the requested coverage years and the retirement year. If not given, projection is given for 1st, 3rd, 5th and retirement year. Can contains positive integers less than 100",
+            "example": [
+              5
+            ]
+          }
+        }
+      },
+      "PensionProjections": {
+        "required": [
+          "coverage_year",
+          "date",
+          "value"
+        ],
+        "properties": {
+          "coverage_year": {
+            "type": "integer",
+            "description": "Given coverage year"
+          },
+          "date": {
+            "type": "string",
+            "description": "Date that indicate last date of coverage year"
+          },
+          "value": {
+            "type": "number",
+            "description": "Value of the pot"
+          }
+        },
+        "example": {
+          "coverage_year": 5,
+          "date": "2028-05-09",
+          "value": 1167.682
+        }
+      },
+      "ProjectionAccumulationResponse": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "name",
+              "date_of_birth",
+              "intended_retirement_age",
+              "current_pension_value",
+              "growth_rate"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "maxLength": 100,
+                "description": "Name of the investor",
+                "example": "David Brown"
+              },
+              "date_of_birth": {
+                "type": "string",
+                "format": "date",
+                "description": "Should be today or an earlier date",
+                "example": "1963-07-19"
+              },
+              "intended_retirement_age": {
+                "type": "integer",
+                "description": "At most should be 100. Should be greater than current age",
+                "example": 60
+              },
+              "current_pension_value": {
+                "type": "number",
+                "description": "Current value of the pension pot. Can contain up to 2 decimal points",
+                "example": 1000
+              },
+              "growth_rate": {
+                "type": "number",
+                "description": "Annual growth rate of the pot. Can contain up to 2 decimal points",
+                "example": 2.5
+              },
+              "recurring_contributions": {
+                "type": "array",
+                "items": {
+                  "required": [
+                    "frequency",
+                    "amount"
+                  ],
+                  "properties": {
+                    "frequency": {
+                      "type": "string",
+                      "description": "frequency can have values `Monthly`",
+                      "enum": [
+                        "Monthly"
+                      ]
+                    },
+                    "amount": {
+                      "type": "number",
+                      "description": "The amount can have upto 2 decimal points"
+                    }
+                  },
+                  "example": {
+                    "frequency": "Monthly",
+                    "amount": 600
+                  }
+                }
+              },
+              "one_off_payment": {
+                "type": "number",
+                "description": "One-off payments are added to the initial value as tax relievable.  Can contain up to 2 decimal points",
+                "example": 500
+              },
+              "transfer_in": {
+                "type": "number",
+                "description": "Transfer-ins are added to the initial value as tax relievable.  Can contain up to 2 decimal points",
+                "example": 500
+              },
+              "fees": {
+                "type": "array",
+                "items": {
+                  "required": [
+                    "fee_type",
+                    "frequency",
+                    "amount"
+                  ],
+                  "properties": {
+                    "fee_type": {
+                      "type": "string",
+                      "description": "Type of the fee"
+                    },
+                    "frequency": {
+                      "type": "string",
+                      "description": "frequency can have values `Monthly`",
+                      "enum": [
+                        "Monthly"
+                      ]
+                    },
+                    "amount": {
+                      "type": "number",
+                      "description": "The amount can have upto 2 decimal points"
+                    }
+                  },
+                  "example": {
+                    "fee_type": "Management fee",
+                    "frequency": "Monthly",
+                    "amount": 600
+                  }
+                }
+              },
+              "projection_coverage_years": {
+                "type": "array",
+                "description": "Projection is given for the requested coverage years and the retirement year. If not given, projection is given for 1st, 3rd, 5th and retirement year. Can contains positive integers less than 100",
+                "example": [
+                  5
+                ]
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "pension_projections",
+              "inflation_rate"
+            ],
+            "properties": {
+              "pension_projections": {
+                "type": "array",
+                "description": "Projection of the pension coverage years",
+                "readOnly": true,
+                "items": {
+                  "required": [
+                    "coverage_year",
+                    "date",
+                    "value"
+                  ],
+                  "properties": {
+                    "coverage_year": {
+                      "type": "integer",
+                      "description": "Given coverage year"
+                    },
+                    "date": {
+                      "type": "string",
+                      "description": "Date that indicate last date of coverage year"
+                    },
+                    "value": {
+                      "type": "number",
+                      "description": "Value of the pot"
+                    }
+                  },
+                  "example": {
+                    "coverage_year": 5,
+                    "date": "2028-05-09",
+                    "value": 1167.682
+                  }
+                }
+              },
+              "inflation_rate": {
+                "type": "number",
+                "description": "Inflation rate considered for calculations",
+                "example": 2
+              }
+            }
+          }
+        ]
+      },
       "CrystallisationInstruction": {
         "required": [
           "pot_id"
@@ -14382,6 +14745,362 @@
           }
         }
       },
+      "RecurringWithdrawal": {
+        "required": [
+          "frequency",
+          "amount"
+        ],
+        "properties": {
+          "frequency": {
+            "type": "string",
+            "description": "frequency can have values `Monthly`",
+            "enum": [
+              "Monthly"
+            ]
+          },
+          "amount": {
+            "type": "number",
+            "description": "The amount can have upto 2 decimal points"
+          }
+        },
+        "example": {
+          "frequency": "Monthly",
+          "amount": 600
+        }
+      },
+      "DrawdownRequest": {
+        "type": "object",
+        "required": [
+          "name",
+          "date_of_birth",
+          "current_pension_value",
+          "growth_rate"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 100,
+            "description": "Name of the investor",
+            "example": "David Brown"
+          },
+          "date_of_birth": {
+            "type": "string",
+            "format": "date",
+            "description": "Should be today or an earlier date",
+            "example": "1963-07-19"
+          },
+          "current_pension_value": {
+            "type": "number",
+            "description": "Current value of the pension pot. Can contain up to 2 decimal points",
+            "example": 1000
+          },
+          "growth_rate": {
+            "type": "number",
+            "description": "Annual growth rate of the pot. Can contain up to 2 decimal points",
+            "example": 2.5
+          },
+          "recurring_contributions": {
+            "type": "array",
+            "items": {
+              "required": [
+                "frequency",
+                "amount"
+              ],
+              "properties": {
+                "frequency": {
+                  "type": "string",
+                  "description": "frequency can have values `Monthly`",
+                  "enum": [
+                    "Monthly"
+                  ]
+                },
+                "amount": {
+                  "type": "number",
+                  "description": "The amount can have upto 2 decimal points"
+                }
+              },
+              "example": {
+                "frequency": "Monthly",
+                "amount": 600
+              }
+            }
+          },
+          "one_off_payment": {
+            "type": "number",
+            "description": "One-off payments are added to the initial value as tax relievable.  Can contain up to 2 decimal points",
+            "example": 500
+          },
+          "transfer_in": {
+            "type": "number",
+            "description": "Transfer-ins are added to the initial value as tax relievable.  Can contain up to 2 decimal points",
+            "example": 500
+          },
+          "fees": {
+            "type": "array",
+            "items": {
+              "required": [
+                "fee_type",
+                "frequency",
+                "amount"
+              ],
+              "properties": {
+                "fee_type": {
+                  "type": "string",
+                  "description": "Type of the fee"
+                },
+                "frequency": {
+                  "type": "string",
+                  "description": "frequency can have values `Monthly`",
+                  "enum": [
+                    "Monthly"
+                  ]
+                },
+                "amount": {
+                  "type": "number",
+                  "description": "The amount can have upto 2 decimal points"
+                }
+              },
+              "example": {
+                "fee_type": "Management fee",
+                "frequency": "Monthly",
+                "amount": 600
+              }
+            }
+          },
+          "one_off_withdrawal": {
+            "type": "number",
+            "description": "One-off withdrawals are deducted from the initial value.  Can contain up to 2 decimal points",
+            "example": 500
+          },
+          "recurring_withdrawals": {
+            "type": "array",
+            "items": {
+              "required": [
+                "frequency",
+                "amount"
+              ],
+              "properties": {
+                "frequency": {
+                  "type": "string",
+                  "description": "frequency can have values `Monthly`",
+                  "enum": [
+                    "Monthly"
+                  ]
+                },
+                "amount": {
+                  "type": "number",
+                  "description": "The amount can have upto 2 decimal points"
+                }
+              },
+              "example": {
+                "frequency": "Monthly",
+                "amount": 600
+              }
+            }
+          },
+          "projection_coverage_years": {
+            "type": "array",
+            "description": "Projection is given for the requested coverage years. If not given, projection is given for 5th and 10th years. Can contain positive integers less than 100",
+            "example": [
+              5
+            ]
+          }
+        }
+      },
+      "ProjectionDrawdownResponse": {
+        "allOf": [
+          {
+            "type": "object",
+            "required": [
+              "name",
+              "date_of_birth",
+              "current_pension_value",
+              "growth_rate"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "maxLength": 100,
+                "description": "Name of the investor",
+                "example": "David Brown"
+              },
+              "date_of_birth": {
+                "type": "string",
+                "format": "date",
+                "description": "Should be today or an earlier date",
+                "example": "1963-07-19"
+              },
+              "current_pension_value": {
+                "type": "number",
+                "description": "Current value of the pension pot. Can contain up to 2 decimal points",
+                "example": 1000
+              },
+              "growth_rate": {
+                "type": "number",
+                "description": "Annual growth rate of the pot. Can contain up to 2 decimal points",
+                "example": 2.5
+              },
+              "recurring_contributions": {
+                "type": "array",
+                "items": {
+                  "required": [
+                    "frequency",
+                    "amount"
+                  ],
+                  "properties": {
+                    "frequency": {
+                      "type": "string",
+                      "description": "frequency can have values `Monthly`",
+                      "enum": [
+                        "Monthly"
+                      ]
+                    },
+                    "amount": {
+                      "type": "number",
+                      "description": "The amount can have upto 2 decimal points"
+                    }
+                  },
+                  "example": {
+                    "frequency": "Monthly",
+                    "amount": 600
+                  }
+                }
+              },
+              "one_off_payment": {
+                "type": "number",
+                "description": "One-off payments are added to the initial value as tax relievable.  Can contain up to 2 decimal points",
+                "example": 500
+              },
+              "transfer_in": {
+                "type": "number",
+                "description": "Transfer-ins are added to the initial value as tax relievable.  Can contain up to 2 decimal points",
+                "example": 500
+              },
+              "fees": {
+                "type": "array",
+                "items": {
+                  "required": [
+                    "fee_type",
+                    "frequency",
+                    "amount"
+                  ],
+                  "properties": {
+                    "fee_type": {
+                      "type": "string",
+                      "description": "Type of the fee"
+                    },
+                    "frequency": {
+                      "type": "string",
+                      "description": "frequency can have values `Monthly`",
+                      "enum": [
+                        "Monthly"
+                      ]
+                    },
+                    "amount": {
+                      "type": "number",
+                      "description": "The amount can have upto 2 decimal points"
+                    }
+                  },
+                  "example": {
+                    "fee_type": "Management fee",
+                    "frequency": "Monthly",
+                    "amount": 600
+                  }
+                }
+              },
+              "one_off_withdrawal": {
+                "type": "number",
+                "description": "One-off withdrawals are deducted from the initial value.  Can contain up to 2 decimal points",
+                "example": 500
+              },
+              "recurring_withdrawals": {
+                "type": "array",
+                "items": {
+                  "required": [
+                    "frequency",
+                    "amount"
+                  ],
+                  "properties": {
+                    "frequency": {
+                      "type": "string",
+                      "description": "frequency can have values `Monthly`",
+                      "enum": [
+                        "Monthly"
+                      ]
+                    },
+                    "amount": {
+                      "type": "number",
+                      "description": "The amount can have upto 2 decimal points"
+                    }
+                  },
+                  "example": {
+                    "frequency": "Monthly",
+                    "amount": 600
+                  }
+                }
+              },
+              "projection_coverage_years": {
+                "type": "array",
+                "description": "Projection is given for the requested coverage years. If not given, projection is given for 5th and 10th years. Can contain positive integers less than 100",
+                "example": [
+                  5
+                ]
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "pension_projections",
+              "age_pension_runout",
+              "inflation_rate"
+            ],
+            "properties": {
+              "age_pension_runout": {
+                "type": "number",
+                "description": "Investor age where the pension fund goes to zero. The response will be a string (The pension will last beyond the 100th year) if not going to zero before 100 years of age",
+                "example": 60
+              },
+              "pension_projections": {
+                "type": "array",
+                "description": "Projection of the pension coverage years",
+                "readOnly": true,
+                "items": {
+                  "required": [
+                    "coverage_year",
+                    "date",
+                    "value"
+                  ],
+                  "properties": {
+                    "coverage_year": {
+                      "type": "integer",
+                      "description": "Given coverage year"
+                    },
+                    "date": {
+                      "type": "string",
+                      "description": "Date that indicate last date of coverage year"
+                    },
+                    "value": {
+                      "type": "number",
+                      "description": "Value of the pot"
+                    }
+                  },
+                  "example": {
+                    "coverage_year": 5,
+                    "date": "2028-05-09",
+                    "value": 1167.682
+                  }
+                }
+              },
+              "inflation_rate": {
+                "type": "number",
+                "description": "Inflation rate considered for calculations",
+                "example": 2
+              }
+            }
+          }
+        ]
+      },
       "TaxCode": {
         "title": "Root Type for Tax code",
         "description": "JSON for the Tax code resource type",
@@ -14510,7 +15229,7 @@
           }
         }
       },
-      "RecurringWithdrawal": {
+      "schemas-RecurringWithdrawal": {
         "required": [
           "withdrawal_id",
           "withdrawal_name",
@@ -14612,6 +15331,11 @@
               "active",
               "cancelled"
             ]
+          },
+          "next_withdrawal_date": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2023-05-01T00:00:00.000Z"
           },
           "created_at": {
             "type": "string",
@@ -14740,6 +15464,11 @@
                     "active",
                     "cancelled"
                   ]
+                },
+                "next_withdrawal_date": {
+                  "type": "string",
+                  "format": "date-time",
+                  "example": "2023-05-01T00:00:00.000Z"
                 },
                 "created_at": {
                   "type": "string",
@@ -15025,7 +15754,7 @@
           },
           "status": {
             "type": "string",
-            "description": "Status of the workplace employer",
+            "description": "Status of the workplace employer. Only the employers with the kyb_aml_status as clear can be set to active.",
             "enum": [
               "active",
               "inactive"
@@ -15175,7 +15904,7 @@
               },
               "status": {
                 "type": "string",
-                "description": "Status of the workplace employer",
+                "description": "Status of the workplace employer. Only the employers with the kyb_aml_status as clear can be set to active.",
                 "enum": [
                   "active",
                   "inactive"
@@ -15371,7 +16100,7 @@
                     },
                     "status": {
                       "type": "string",
-                      "description": "Status of the workplace employer",
+                      "description": "Status of the workplace employer. Only the employers with the kyb_aml_status as clear can be set to active.",
                       "enum": [
                         "active",
                         "inactive"
@@ -15560,7 +16289,7 @@
           },
           "status": {
             "type": "string",
-            "description": "Status of the workplace employer",
+            "description": "Status of the workplace employer. Only the employers with the kyb_aml_status as clear can be set to active.",
             "enum": [
               "active",
               "inactive"
@@ -18772,6 +19501,7 @@
                   },
                   "workplace_employers": {
                     "type": "array",
+                    "nullable": true,
                     "description": "Unique IDs of workplace employers who are contributing to the workplace pensions. The incoming list of employers will replace the existing list of employers.",
                     "items": {
                       "type": "string",
@@ -33955,6 +34685,31 @@
                             "maxLength": 64,
                             "example": "RAI48483jd"
                           },
+                          "life_events": {
+                            "description": "Life events of the investor",
+                            "type": "array",
+                            "items": {
+                              "required": [
+                                "event_id",
+                                "event_type",
+                                "status"
+                              ],
+                              "properties": {
+                                "event_id": {
+                                  "type": "string",
+                                  "example": "LISALETI-SCX540"
+                                },
+                                "event_type": {
+                                  "type": "string",
+                                  "example": "Terminal illness"
+                                },
+                                "status": {
+                                  "type": "string",
+                                  "example": "completed"
+                                }
+                              }
+                            }
+                          },
                           "reference_version": {
                             "type": "integer",
                             "example": 1
@@ -34007,30 +34762,8 @@
                               },
                               "reason": {
                                 "description": "Error reason received from HMRC",
-                                "type": "array",
-                                "items": {
-                                  "required": [
-                                    "code",
-                                    "message"
-                                  ],
-                                  "properties": {
-                                    "code": {
-                                      "type": "string",
-                                      "description": "Error Code Types",
-                                      "example": "BAD_REQUEST"
-                                    },
-                                    "message": {
-                                      "description": "Error message",
-                                      "type": "string",
-                                      "example": "Invalid format has been used"
-                                    },
-                                    "path": {
-                                      "description": "Error path in the request",
-                                      "type": "string",
-                                      "example": "/investorNINO"
-                                    }
-                                  }
-                                }
+                                "type": "string",
+                                "nullable": true
                               }
                             }
                           }
@@ -34468,6 +35201,31 @@
                       "maxLength": 64,
                       "example": "RAI48483jd"
                     },
+                    "life_events": {
+                      "description": "Life events of the investor",
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "event_id",
+                          "event_type",
+                          "status"
+                        ],
+                        "properties": {
+                          "event_id": {
+                            "type": "string",
+                            "example": "LISALETI-SCX540"
+                          },
+                          "event_type": {
+                            "type": "string",
+                            "example": "Terminal illness"
+                          },
+                          "status": {
+                            "type": "string",
+                            "example": "completed"
+                          }
+                        }
+                      }
+                    },
                     "reference_version": {
                       "type": "integer",
                       "example": 1
@@ -34509,30 +35267,8 @@
                         },
                         "reason": {
                           "description": "Error reason received from HMRC",
-                          "type": "array",
-                          "items": {
-                            "required": [
-                              "code",
-                              "message"
-                            ],
-                            "properties": {
-                              "code": {
-                                "type": "string",
-                                "description": "Error Code Types",
-                                "example": "BAD_REQUEST"
-                              },
-                              "message": {
-                                "description": "Error message",
-                                "type": "string",
-                                "example": "Invalid format has been used"
-                              },
-                              "path": {
-                                "description": "Error path in the request",
-                                "type": "string",
-                                "example": "/investorNINO"
-                              }
-                            }
-                          }
+                          "type": "string",
+                          "nullable": true
                         }
                       }
                     }
@@ -34960,6 +35696,31 @@
                       "maxLength": 64,
                       "example": "RAI48483jd"
                     },
+                    "life_events": {
+                      "description": "Life events of the investor",
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "event_id",
+                          "event_type",
+                          "status"
+                        ],
+                        "properties": {
+                          "event_id": {
+                            "type": "string",
+                            "example": "LISALETI-SCX540"
+                          },
+                          "event_type": {
+                            "type": "string",
+                            "example": "Terminal illness"
+                          },
+                          "status": {
+                            "type": "string",
+                            "example": "completed"
+                          }
+                        }
+                      }
+                    },
                     "reference_version": {
                       "type": "integer",
                       "example": 1
@@ -35001,30 +35762,8 @@
                         },
                         "reason": {
                           "description": "Error reason received from HMRC",
-                          "type": "array",
-                          "items": {
-                            "required": [
-                              "code",
-                              "message"
-                            ],
-                            "properties": {
-                              "code": {
-                                "type": "string",
-                                "description": "Error Code Types",
-                                "example": "BAD_REQUEST"
-                              },
-                              "message": {
-                                "description": "Error message",
-                                "type": "string",
-                                "example": "Invalid format has been used"
-                              },
-                              "path": {
-                                "description": "Error path in the request",
-                                "type": "string",
-                                "example": "/investorNINO"
-                              }
-                            }
-                          }
+                          "type": "string",
+                          "nullable": true
                         }
                       }
                     }
@@ -41979,6 +42718,486 @@
         ]
       }
     },
+    "/tenant/projections/v1/accumulate": {
+      "post": {
+        "summary": "Projection Accumulation (BETA)",
+        "operationId": "accumulation",
+        "tags": [
+          "Projections"
+        ],
+        "security": [
+          {
+            "ApiSecretKey": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name",
+                  "date_of_birth",
+                  "intended_retirement_age",
+                  "current_pension_value",
+                  "growth_rate"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "maxLength": 100,
+                    "description": "Name of the investor",
+                    "example": "David Brown"
+                  },
+                  "date_of_birth": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "Should be today or an earlier date",
+                    "example": "1963-07-19"
+                  },
+                  "intended_retirement_age": {
+                    "type": "integer",
+                    "description": "At most should be 100. Should be greater than current age",
+                    "example": 60
+                  },
+                  "current_pension_value": {
+                    "type": "number",
+                    "description": "Current value of the pension pot. Can contain up to 2 decimal points",
+                    "example": 1000
+                  },
+                  "growth_rate": {
+                    "type": "number",
+                    "description": "Annual growth rate of the pot. Can contain up to 2 decimal points",
+                    "example": 2.5
+                  },
+                  "recurring_contributions": {
+                    "type": "array",
+                    "items": {
+                      "required": [
+                        "frequency",
+                        "amount"
+                      ],
+                      "properties": {
+                        "frequency": {
+                          "type": "string",
+                          "description": "frequency can have values `Monthly`",
+                          "enum": [
+                            "Monthly"
+                          ]
+                        },
+                        "amount": {
+                          "type": "number",
+                          "description": "The amount can have upto 2 decimal points"
+                        }
+                      },
+                      "example": {
+                        "frequency": "Monthly",
+                        "amount": 600
+                      }
+                    }
+                  },
+                  "one_off_payment": {
+                    "type": "number",
+                    "description": "One-off payments are added to the initial value as tax relievable.  Can contain up to 2 decimal points",
+                    "example": 500
+                  },
+                  "transfer_in": {
+                    "type": "number",
+                    "description": "Transfer-ins are added to the initial value as tax relievable.  Can contain up to 2 decimal points",
+                    "example": 500
+                  },
+                  "fees": {
+                    "type": "array",
+                    "items": {
+                      "required": [
+                        "fee_type",
+                        "frequency",
+                        "amount"
+                      ],
+                      "properties": {
+                        "fee_type": {
+                          "type": "string",
+                          "description": "Type of the fee"
+                        },
+                        "frequency": {
+                          "type": "string",
+                          "description": "frequency can have values `Monthly`",
+                          "enum": [
+                            "Monthly"
+                          ]
+                        },
+                        "amount": {
+                          "type": "number",
+                          "description": "The amount can have upto 2 decimal points"
+                        }
+                      },
+                      "example": {
+                        "fee_type": "Management fee",
+                        "frequency": "Monthly",
+                        "amount": 600
+                      }
+                    }
+                  },
+                  "projection_coverage_years": {
+                    "type": "array",
+                    "description": "Projection is given for the requested coverage years and the retirement year. If not given, projection is given for 1st, 3rd, 5th and retirement year. Can contains positive integers less than 100",
+                    "example": [
+                      5
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "header",
+            "name": "x-api-key",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ApiSecretKey"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "required": [
+                        "name",
+                        "date_of_birth",
+                        "intended_retirement_age",
+                        "current_pension_value",
+                        "growth_rate"
+                      ],
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "maxLength": 100,
+                          "description": "Name of the investor",
+                          "example": "David Brown"
+                        },
+                        "date_of_birth": {
+                          "type": "string",
+                          "format": "date",
+                          "description": "Should be today or an earlier date",
+                          "example": "1963-07-19"
+                        },
+                        "intended_retirement_age": {
+                          "type": "integer",
+                          "description": "At most should be 100. Should be greater than current age",
+                          "example": 60
+                        },
+                        "current_pension_value": {
+                          "type": "number",
+                          "description": "Current value of the pension pot. Can contain up to 2 decimal points",
+                          "example": 1000
+                        },
+                        "growth_rate": {
+                          "type": "number",
+                          "description": "Annual growth rate of the pot. Can contain up to 2 decimal points",
+                          "example": 2.5
+                        },
+                        "recurring_contributions": {
+                          "type": "array",
+                          "items": {
+                            "required": [
+                              "frequency",
+                              "amount"
+                            ],
+                            "properties": {
+                              "frequency": {
+                                "type": "string",
+                                "description": "frequency can have values `Monthly`",
+                                "enum": [
+                                  "Monthly"
+                                ]
+                              },
+                              "amount": {
+                                "type": "number",
+                                "description": "The amount can have upto 2 decimal points"
+                              }
+                            },
+                            "example": {
+                              "frequency": "Monthly",
+                              "amount": 600
+                            }
+                          }
+                        },
+                        "one_off_payment": {
+                          "type": "number",
+                          "description": "One-off payments are added to the initial value as tax relievable.  Can contain up to 2 decimal points",
+                          "example": 500
+                        },
+                        "transfer_in": {
+                          "type": "number",
+                          "description": "Transfer-ins are added to the initial value as tax relievable.  Can contain up to 2 decimal points",
+                          "example": 500
+                        },
+                        "fees": {
+                          "type": "array",
+                          "items": {
+                            "required": [
+                              "fee_type",
+                              "frequency",
+                              "amount"
+                            ],
+                            "properties": {
+                              "fee_type": {
+                                "type": "string",
+                                "description": "Type of the fee"
+                              },
+                              "frequency": {
+                                "type": "string",
+                                "description": "frequency can have values `Monthly`",
+                                "enum": [
+                                  "Monthly"
+                                ]
+                              },
+                              "amount": {
+                                "type": "number",
+                                "description": "The amount can have upto 2 decimal points"
+                              }
+                            },
+                            "example": {
+                              "fee_type": "Management fee",
+                              "frequency": "Monthly",
+                              "amount": 600
+                            }
+                          }
+                        },
+                        "projection_coverage_years": {
+                          "type": "array",
+                          "description": "Projection is given for the requested coverage years and the retirement year. If not given, projection is given for 1st, 3rd, 5th and retirement year. Can contains positive integers less than 100",
+                          "example": [
+                            5
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "required": [
+                        "pension_projections",
+                        "inflation_rate"
+                      ],
+                      "properties": {
+                        "pension_projections": {
+                          "type": "array",
+                          "description": "Projection of the pension coverage years",
+                          "readOnly": true,
+                          "items": {
+                            "required": [
+                              "coverage_year",
+                              "date",
+                              "value"
+                            ],
+                            "properties": {
+                              "coverage_year": {
+                                "type": "integer",
+                                "description": "Given coverage year"
+                              },
+                              "date": {
+                                "type": "string",
+                                "description": "Date that indicate last date of coverage year"
+                              },
+                              "value": {
+                                "type": "number",
+                                "description": "Value of the pot"
+                              }
+                            },
+                            "example": {
+                              "coverage_year": 5,
+                              "date": "2028-05-09",
+                              "value": 1167.682
+                            }
+                          }
+                        },
+                        "inflation_rate": {
+                          "type": "number",
+                          "description": "Inflation rate considered for calculations",
+                          "example": 2
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Request is not complete and may have one or more validations errors. Please check the error message and the code",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "required": [
+                    "message"
+                  ],
+                  "properties": {
+                    "error_code": {
+                      "description": "Optional error code",
+                      "type": "string"
+                    },
+                    "message": {
+                      "description": "Human readable description of the error",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "Current status of the original request",
+                      "type": "string",
+                      "enum": [
+                        "PROCESSING",
+                        "COMPLETE"
+                      ]
+                    },
+                    "response": {
+                      "description": "Stringified original response body if status is `COMPLETE`",
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "You do not have permissions to access this resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "required": [
+                    "message"
+                  ],
+                  "properties": {
+                    "error_code": {
+                      "description": "Optional error code",
+                      "type": "string"
+                    },
+                    "message": {
+                      "description": "Human readable description of the error",
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Your authentication information is missing or invalid. Please check the keys are properly set and its correct",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "required": [
+                    "message"
+                  ],
+                  "properties": {
+                    "error_code": {
+                      "description": "Optional error code",
+                      "type": "string"
+                    },
+                    "message": {
+                      "description": "Human readable description of the error",
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The specified resource was not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "required": [
+                    "message"
+                  ],
+                  "properties": {
+                    "error_code": {
+                      "description": "Optional error code",
+                      "type": "string"
+                    },
+                    "message": {
+                      "description": "Human readable description of the error",
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "You have sent too many requests to the system. Please retry later. If you need to increase your throtteling limits, please contact WOS support",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "required": [
+                    "message"
+                  ],
+                  "properties": {
+                    "error_code": {
+                      "description": "Optional error code",
+                      "type": "string"
+                    },
+                    "message": {
+                      "description": "Human readable description of the error",
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "System error. Retry later. If the error persist, contact WOS support",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "required": [
+                    "message"
+                  ],
+                  "properties": {
+                    "error_code": {
+                      "description": "Optional error code",
+                      "type": "string"
+                    },
+                    "message": {
+                      "description": "Human readable description of the error",
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "<div class=\"warning\" style='padding:0.1em; background-color:#FEEFB3; color:#9F6000;'>\n    <span>\n        <p style='margin-top:0.9em;margin-bottom:0.9em;margin-left:1em; text-align:left'>\n            <b>ⓘ</b> This feature is currently in BETA mode\n        </p>\n    </span>\n</div>\n\nThis endpoint supports to project accumulation of a pension account.\n",
+        "x-codeSamples": [
+          {
+            "lang": "Shell + Curl",
+            "source": "curl --request POST \\\n  --url https://web_host_name/tenant/projections/v1/accumulate \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: REPLACE_KEY_VALUE' \\\n  --data '{\"name\":\"David Brown\",\"date_of_birth\":\"1963-07-19\",\"intended_retirement_age\":60,\"current_pension_value\":1000,\"growth_rate\":2.5,\"recurring_contributions\":[{\"frequency\":\"Monthly\",\"amount\":600}],\"one_off_payment\":500,\"transfer_in\":500,\"fees\":[{\"fee_type\":\"Management fee\",\"frequency\":\"Monthly\",\"amount\":600}],\"projection_coverage_years\":[5]}'"
+          },
+          {
+            "lang": "Node + Native",
+            "source": "var http = require(\"https\");\n\nvar options = {\n  \"method\": \"POST\",\n  \"hostname\": \"web_host_name\",\n  \"port\": null,\n  \"path\": \"/tenant/projections/v1/accumulate\",\n  \"headers\": {\n    \"content-type\": \"application/json\",\n    \"x-api-key\": \"REPLACE_KEY_VALUE\"\n  }\n};\n\nvar req = http.request(options, function (res) {\n  var chunks = [];\n\n  res.on(\"data\", function (chunk) {\n    chunks.push(chunk);\n  });\n\n  res.on(\"end\", function () {\n    var body = Buffer.concat(chunks);\n    console.log(body.toString());\n  });\n});\n\nreq.write(JSON.stringify({\n  name: 'David Brown',\n  date_of_birth: '1963-07-19',\n  intended_retirement_age: 60,\n  current_pension_value: 1000,\n  growth_rate: 2.5,\n  recurring_contributions: [{frequency: 'Monthly', amount: 600}],\n  one_off_payment: 500,\n  transfer_in: 500,\n  fees: [{fee_type: 'Management fee', frequency: 'Monthly', amount: 600}],\n  projection_coverage_years: [5]\n}));\nreq.end();"
+          },
+          {
+            "lang": "Ruby + Native",
+            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://web_host_name/tenant/projections/v1/accumulate\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"x-api-key\"] = 'REPLACE_KEY_VALUE'\nrequest.body = \"{\\\"name\\\":\\\"David Brown\\\",\\\"date_of_birth\\\":\\\"1963-07-19\\\",\\\"intended_retirement_age\\\":60,\\\"current_pension_value\\\":1000,\\\"growth_rate\\\":2.5,\\\"recurring_contributions\\\":[{\\\"frequency\\\":\\\"Monthly\\\",\\\"amount\\\":600}],\\\"one_off_payment\\\":500,\\\"transfer_in\\\":500,\\\"fees\\\":[{\\\"fee_type\\\":\\\"Management fee\\\",\\\"frequency\\\":\\\"Monthly\\\",\\\"amount\\\":600}],\\\"projection_coverage_years\\\":[5]}\"\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Go + Native",
+            "source": "package main\n\nimport (\n\t\"fmt\"\n\t\"strings\"\n\t\"net/http\"\n\t\"io/ioutil\"\n)\n\nfunc main() {\n\n\turl := \"https://web_host_name/tenant/projections/v1/accumulate\"\n\n\tpayload := strings.NewReader(\"{\\\"name\\\":\\\"David Brown\\\",\\\"date_of_birth\\\":\\\"1963-07-19\\\",\\\"intended_retirement_age\\\":60,\\\"current_pension_value\\\":1000,\\\"growth_rate\\\":2.5,\\\"recurring_contributions\\\":[{\\\"frequency\\\":\\\"Monthly\\\",\\\"amount\\\":600}],\\\"one_off_payment\\\":500,\\\"transfer_in\\\":500,\\\"fees\\\":[{\\\"fee_type\\\":\\\"Management fee\\\",\\\"frequency\\\":\\\"Monthly\\\",\\\"amount\\\":600}],\\\"projection_coverage_years\\\":[5]}\")\n\n\treq, _ := http.NewRequest(\"POST\", url, payload)\n\n\treq.Header.Add(\"content-type\", \"application/json\")\n\treq.Header.Add(\"x-api-key\", \"REPLACE_KEY_VALUE\")\n\n\tres, _ := http.DefaultClient.Do(req)\n\n\tdefer res.Body.Close()\n\tbody, _ := ioutil.ReadAll(res.Body)\n\n\tfmt.Println(res)\n\tfmt.Println(string(body))\n\n}"
+          }
+        ]
+      }
+    },
     "/tenant/pots/v1/crystallisation": {
       "get": {
         "tags": [
@@ -42880,6 +44099,542 @@
         ]
       }
     },
+    "/tenant/projections/v1/drawdown": {
+      "post": {
+        "summary": "Projection Drawdown (BETA)",
+        "operationId": "drawdown",
+        "tags": [
+          "Projections"
+        ],
+        "security": [
+          {
+            "ApiSecretKey": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name",
+                  "date_of_birth",
+                  "current_pension_value",
+                  "growth_rate"
+                ],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "maxLength": 100,
+                    "description": "Name of the investor",
+                    "example": "David Brown"
+                  },
+                  "date_of_birth": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "Should be today or an earlier date",
+                    "example": "1963-07-19"
+                  },
+                  "current_pension_value": {
+                    "type": "number",
+                    "description": "Current value of the pension pot. Can contain up to 2 decimal points",
+                    "example": 1000
+                  },
+                  "growth_rate": {
+                    "type": "number",
+                    "description": "Annual growth rate of the pot. Can contain up to 2 decimal points",
+                    "example": 2.5
+                  },
+                  "recurring_contributions": {
+                    "type": "array",
+                    "items": {
+                      "required": [
+                        "frequency",
+                        "amount"
+                      ],
+                      "properties": {
+                        "frequency": {
+                          "type": "string",
+                          "description": "frequency can have values `Monthly`",
+                          "enum": [
+                            "Monthly"
+                          ]
+                        },
+                        "amount": {
+                          "type": "number",
+                          "description": "The amount can have upto 2 decimal points"
+                        }
+                      },
+                      "example": {
+                        "frequency": "Monthly",
+                        "amount": 600
+                      }
+                    }
+                  },
+                  "one_off_payment": {
+                    "type": "number",
+                    "description": "One-off payments are added to the initial value as tax relievable.  Can contain up to 2 decimal points",
+                    "example": 500
+                  },
+                  "transfer_in": {
+                    "type": "number",
+                    "description": "Transfer-ins are added to the initial value as tax relievable.  Can contain up to 2 decimal points",
+                    "example": 500
+                  },
+                  "fees": {
+                    "type": "array",
+                    "items": {
+                      "required": [
+                        "fee_type",
+                        "frequency",
+                        "amount"
+                      ],
+                      "properties": {
+                        "fee_type": {
+                          "type": "string",
+                          "description": "Type of the fee"
+                        },
+                        "frequency": {
+                          "type": "string",
+                          "description": "frequency can have values `Monthly`",
+                          "enum": [
+                            "Monthly"
+                          ]
+                        },
+                        "amount": {
+                          "type": "number",
+                          "description": "The amount can have upto 2 decimal points"
+                        }
+                      },
+                      "example": {
+                        "fee_type": "Management fee",
+                        "frequency": "Monthly",
+                        "amount": 600
+                      }
+                    }
+                  },
+                  "one_off_withdrawal": {
+                    "type": "number",
+                    "description": "One-off withdrawals are deducted from the initial value.  Can contain up to 2 decimal points",
+                    "example": 500
+                  },
+                  "recurring_withdrawals": {
+                    "type": "array",
+                    "items": {
+                      "required": [
+                        "frequency",
+                        "amount"
+                      ],
+                      "properties": {
+                        "frequency": {
+                          "type": "string",
+                          "description": "frequency can have values `Monthly`",
+                          "enum": [
+                            "Monthly"
+                          ]
+                        },
+                        "amount": {
+                          "type": "number",
+                          "description": "The amount can have upto 2 decimal points"
+                        }
+                      },
+                      "example": {
+                        "frequency": "Monthly",
+                        "amount": 600
+                      }
+                    }
+                  },
+                  "projection_coverage_years": {
+                    "type": "array",
+                    "description": "Projection is given for the requested coverage years. If not given, projection is given for 5th and 10th years. Can contain positive integers less than 100",
+                    "example": [
+                      5
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "header",
+            "name": "x-api-key",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ApiSecretKey"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "type": "object",
+                      "required": [
+                        "name",
+                        "date_of_birth",
+                        "current_pension_value",
+                        "growth_rate"
+                      ],
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "maxLength": 100,
+                          "description": "Name of the investor",
+                          "example": "David Brown"
+                        },
+                        "date_of_birth": {
+                          "type": "string",
+                          "format": "date",
+                          "description": "Should be today or an earlier date",
+                          "example": "1963-07-19"
+                        },
+                        "current_pension_value": {
+                          "type": "number",
+                          "description": "Current value of the pension pot. Can contain up to 2 decimal points",
+                          "example": 1000
+                        },
+                        "growth_rate": {
+                          "type": "number",
+                          "description": "Annual growth rate of the pot. Can contain up to 2 decimal points",
+                          "example": 2.5
+                        },
+                        "recurring_contributions": {
+                          "type": "array",
+                          "items": {
+                            "required": [
+                              "frequency",
+                              "amount"
+                            ],
+                            "properties": {
+                              "frequency": {
+                                "type": "string",
+                                "description": "frequency can have values `Monthly`",
+                                "enum": [
+                                  "Monthly"
+                                ]
+                              },
+                              "amount": {
+                                "type": "number",
+                                "description": "The amount can have upto 2 decimal points"
+                              }
+                            },
+                            "example": {
+                              "frequency": "Monthly",
+                              "amount": 600
+                            }
+                          }
+                        },
+                        "one_off_payment": {
+                          "type": "number",
+                          "description": "One-off payments are added to the initial value as tax relievable.  Can contain up to 2 decimal points",
+                          "example": 500
+                        },
+                        "transfer_in": {
+                          "type": "number",
+                          "description": "Transfer-ins are added to the initial value as tax relievable.  Can contain up to 2 decimal points",
+                          "example": 500
+                        },
+                        "fees": {
+                          "type": "array",
+                          "items": {
+                            "required": [
+                              "fee_type",
+                              "frequency",
+                              "amount"
+                            ],
+                            "properties": {
+                              "fee_type": {
+                                "type": "string",
+                                "description": "Type of the fee"
+                              },
+                              "frequency": {
+                                "type": "string",
+                                "description": "frequency can have values `Monthly`",
+                                "enum": [
+                                  "Monthly"
+                                ]
+                              },
+                              "amount": {
+                                "type": "number",
+                                "description": "The amount can have upto 2 decimal points"
+                              }
+                            },
+                            "example": {
+                              "fee_type": "Management fee",
+                              "frequency": "Monthly",
+                              "amount": 600
+                            }
+                          }
+                        },
+                        "one_off_withdrawal": {
+                          "type": "number",
+                          "description": "One-off withdrawals are deducted from the initial value.  Can contain up to 2 decimal points",
+                          "example": 500
+                        },
+                        "recurring_withdrawals": {
+                          "type": "array",
+                          "items": {
+                            "required": [
+                              "frequency",
+                              "amount"
+                            ],
+                            "properties": {
+                              "frequency": {
+                                "type": "string",
+                                "description": "frequency can have values `Monthly`",
+                                "enum": [
+                                  "Monthly"
+                                ]
+                              },
+                              "amount": {
+                                "type": "number",
+                                "description": "The amount can have upto 2 decimal points"
+                              }
+                            },
+                            "example": {
+                              "frequency": "Monthly",
+                              "amount": 600
+                            }
+                          }
+                        },
+                        "projection_coverage_years": {
+                          "type": "array",
+                          "description": "Projection is given for the requested coverage years. If not given, projection is given for 5th and 10th years. Can contain positive integers less than 100",
+                          "example": [
+                            5
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "required": [
+                        "pension_projections",
+                        "age_pension_runout",
+                        "inflation_rate"
+                      ],
+                      "properties": {
+                        "age_pension_runout": {
+                          "type": "number",
+                          "description": "Investor age where the pension fund goes to zero. The response will be a string (The pension will last beyond the 100th year) if not going to zero before 100 years of age",
+                          "example": 60
+                        },
+                        "pension_projections": {
+                          "type": "array",
+                          "description": "Projection of the pension coverage years",
+                          "readOnly": true,
+                          "items": {
+                            "required": [
+                              "coverage_year",
+                              "date",
+                              "value"
+                            ],
+                            "properties": {
+                              "coverage_year": {
+                                "type": "integer",
+                                "description": "Given coverage year"
+                              },
+                              "date": {
+                                "type": "string",
+                                "description": "Date that indicate last date of coverage year"
+                              },
+                              "value": {
+                                "type": "number",
+                                "description": "Value of the pot"
+                              }
+                            },
+                            "example": {
+                              "coverage_year": 5,
+                              "date": "2028-05-09",
+                              "value": 1167.682
+                            }
+                          }
+                        },
+                        "inflation_rate": {
+                          "type": "number",
+                          "description": "Inflation rate considered for calculations",
+                          "example": 2
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Request is not complete and may have one or more validations errors. Please check the error message and the code",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "required": [
+                    "message"
+                  ],
+                  "properties": {
+                    "error_code": {
+                      "description": "Optional error code",
+                      "type": "string"
+                    },
+                    "message": {
+                      "description": "Human readable description of the error",
+                      "type": "string"
+                    },
+                    "status": {
+                      "description": "Current status of the original request",
+                      "type": "string",
+                      "enum": [
+                        "PROCESSING",
+                        "COMPLETE"
+                      ]
+                    },
+                    "response": {
+                      "description": "Stringified original response body if status is `COMPLETE`",
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "You do not have permissions to access this resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "required": [
+                    "message"
+                  ],
+                  "properties": {
+                    "error_code": {
+                      "description": "Optional error code",
+                      "type": "string"
+                    },
+                    "message": {
+                      "description": "Human readable description of the error",
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Your authentication information is missing or invalid. Please check the keys are properly set and its correct",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "required": [
+                    "message"
+                  ],
+                  "properties": {
+                    "error_code": {
+                      "description": "Optional error code",
+                      "type": "string"
+                    },
+                    "message": {
+                      "description": "Human readable description of the error",
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The specified resource was not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "required": [
+                    "message"
+                  ],
+                  "properties": {
+                    "error_code": {
+                      "description": "Optional error code",
+                      "type": "string"
+                    },
+                    "message": {
+                      "description": "Human readable description of the error",
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "You have sent too many requests to the system. Please retry later. If you need to increase your throtteling limits, please contact WOS support",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "required": [
+                    "message"
+                  ],
+                  "properties": {
+                    "error_code": {
+                      "description": "Optional error code",
+                      "type": "string"
+                    },
+                    "message": {
+                      "description": "Human readable description of the error",
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "System error. Retry later. If the error persist, contact WOS support",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "required": [
+                    "message"
+                  ],
+                  "properties": {
+                    "error_code": {
+                      "description": "Optional error code",
+                      "type": "string"
+                    },
+                    "message": {
+                      "description": "Human readable description of the error",
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "<div class=\"warning\" style='padding:0.1em; background-color:#FEEFB3; color:#9F6000;'>\n    <span>\n        <p style='margin-top:0.9em;margin-bottom:0.9em;margin-left:1em; text-align:left'>\n            <b>ⓘ</b> This feature is currently in BETA mode\n        </p>\n    </span>\n</div>\n\nThis endpoint supports to project drawdown of a pension account. ",
+        "x-codeSamples": [
+          {
+            "lang": "Shell + Curl",
+            "source": "curl --request POST \\\n  --url https://web_host_name/tenant/projections/v1/drawdown \\\n  --header 'content-type: application/json' \\\n  --header 'x-api-key: REPLACE_KEY_VALUE' \\\n  --data '{\"name\":\"David Brown\",\"date_of_birth\":\"1963-07-19\",\"current_pension_value\":1000,\"growth_rate\":2.5,\"recurring_contributions\":[{\"frequency\":\"Monthly\",\"amount\":600}],\"one_off_payment\":500,\"transfer_in\":500,\"fees\":[{\"fee_type\":\"Management fee\",\"frequency\":\"Monthly\",\"amount\":600}],\"one_off_withdrawal\":500,\"recurring_withdrawals\":[{\"frequency\":\"Monthly\",\"amount\":600}],\"projection_coverage_years\":[5]}'"
+          },
+          {
+            "lang": "Node + Native",
+            "source": "var http = require(\"https\");\n\nvar options = {\n  \"method\": \"POST\",\n  \"hostname\": \"web_host_name\",\n  \"port\": null,\n  \"path\": \"/tenant/projections/v1/drawdown\",\n  \"headers\": {\n    \"content-type\": \"application/json\",\n    \"x-api-key\": \"REPLACE_KEY_VALUE\"\n  }\n};\n\nvar req = http.request(options, function (res) {\n  var chunks = [];\n\n  res.on(\"data\", function (chunk) {\n    chunks.push(chunk);\n  });\n\n  res.on(\"end\", function () {\n    var body = Buffer.concat(chunks);\n    console.log(body.toString());\n  });\n});\n\nreq.write(JSON.stringify({\n  name: 'David Brown',\n  date_of_birth: '1963-07-19',\n  current_pension_value: 1000,\n  growth_rate: 2.5,\n  recurring_contributions: [{frequency: 'Monthly', amount: 600}],\n  one_off_payment: 500,\n  transfer_in: 500,\n  fees: [{fee_type: 'Management fee', frequency: 'Monthly', amount: 600}],\n  one_off_withdrawal: 500,\n  recurring_withdrawals: [{frequency: 'Monthly', amount: 600}],\n  projection_coverage_years: [5]\n}));\nreq.end();"
+          },
+          {
+            "lang": "Ruby + Native",
+            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://web_host_name/tenant/projections/v1/drawdown\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"x-api-key\"] = 'REPLACE_KEY_VALUE'\nrequest.body = \"{\\\"name\\\":\\\"David Brown\\\",\\\"date_of_birth\\\":\\\"1963-07-19\\\",\\\"current_pension_value\\\":1000,\\\"growth_rate\\\":2.5,\\\"recurring_contributions\\\":[{\\\"frequency\\\":\\\"Monthly\\\",\\\"amount\\\":600}],\\\"one_off_payment\\\":500,\\\"transfer_in\\\":500,\\\"fees\\\":[{\\\"fee_type\\\":\\\"Management fee\\\",\\\"frequency\\\":\\\"Monthly\\\",\\\"amount\\\":600}],\\\"one_off_withdrawal\\\":500,\\\"recurring_withdrawals\\\":[{\\\"frequency\\\":\\\"Monthly\\\",\\\"amount\\\":600}],\\\"projection_coverage_years\\\":[5]}\"\n\nresponse = http.request(request)\nputs response.read_body"
+          },
+          {
+            "lang": "Go + Native",
+            "source": "package main\n\nimport (\n\t\"fmt\"\n\t\"strings\"\n\t\"net/http\"\n\t\"io/ioutil\"\n)\n\nfunc main() {\n\n\turl := \"https://web_host_name/tenant/projections/v1/drawdown\"\n\n\tpayload := strings.NewReader(\"{\\\"name\\\":\\\"David Brown\\\",\\\"date_of_birth\\\":\\\"1963-07-19\\\",\\\"current_pension_value\\\":1000,\\\"growth_rate\\\":2.5,\\\"recurring_contributions\\\":[{\\\"frequency\\\":\\\"Monthly\\\",\\\"amount\\\":600}],\\\"one_off_payment\\\":500,\\\"transfer_in\\\":500,\\\"fees\\\":[{\\\"fee_type\\\":\\\"Management fee\\\",\\\"frequency\\\":\\\"Monthly\\\",\\\"amount\\\":600}],\\\"one_off_withdrawal\\\":500,\\\"recurring_withdrawals\\\":[{\\\"frequency\\\":\\\"Monthly\\\",\\\"amount\\\":600}],\\\"projection_coverage_years\\\":[5]}\")\n\n\treq, _ := http.NewRequest(\"POST\", url, payload)\n\n\treq.Header.Add(\"content-type\", \"application/json\")\n\treq.Header.Add(\"x-api-key\", \"REPLACE_KEY_VALUE\")\n\n\tres, _ := http.DefaultClient.Do(req)\n\n\tdefer res.Body.Close()\n\tbody, _ := ioutil.ReadAll(res.Body)\n\n\tfmt.Println(res)\n\tfmt.Println(string(body))\n\n}"
+          }
+        ]
+      }
+    },
     "/tenant/investors/v1/tax-codes": {
       "summary": "Investor Tax Codes resource management",
       "get": {
@@ -43399,6 +45154,11 @@
                         "cancelled"
                       ]
                     },
+                    "next_withdrawal_date": {
+                      "type": "string",
+                      "format": "date-time",
+                      "example": "2023-05-01T00:00:00.000Z"
+                    },
                     "created_at": {
                       "type": "string",
                       "format": "date-time",
@@ -43682,6 +45442,11 @@
                               "active",
                               "cancelled"
                             ]
+                          },
+                          "next_withdrawal_date": {
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2023-05-01T00:00:00.000Z"
                           },
                           "created_at": {
                             "type": "string",
@@ -44132,6 +45897,11 @@
                         "cancelled"
                       ]
                     },
+                    "next_withdrawal_date": {
+                      "type": "string",
+                      "format": "date-time",
+                      "example": "2023-05-01T00:00:00.000Z"
+                    },
                     "created_at": {
                       "type": "string",
                       "format": "date-time",
@@ -44164,6 +45934,7 @@
                     "start_date": "2023-04-02",
                     "end_date": "2023-11-02"
                   },
+                  "next_withdrawal_date": "2023-05-01T00:00:00.000Z",
                   "created_at": "2023-04-04T15:12:30.000Z",
                   "updated_at": "2023-04-04T15:12:30.000Z",
                   "reference_version": 1
@@ -44503,6 +46274,11 @@
                         "cancelled"
                       ]
                     },
+                    "next_withdrawal_date": {
+                      "type": "string",
+                      "format": "date-time",
+                      "example": "2023-05-01T00:00:00.000Z"
+                    },
                     "created_at": {
                       "type": "string",
                       "format": "date-time",
@@ -44535,6 +46311,7 @@
                     "start_date": "2023-04-02",
                     "end_date": "2023-11-02"
                   },
+                  "next_withdrawal_date": "2023-05-01T00:00:00.000Z",
                   "created_at": "2023-04-04T15:12:30.000Z",
                   "updated_at": "2023-04-04T15:12:30.000Z",
                   "reference_version": 1
@@ -44843,7 +46620,7 @@
                   },
                   "status": {
                     "type": "string",
-                    "description": "Status of the workplace employer",
+                    "description": "Status of the workplace employer. Only the employers with the kyb_aml_status as clear can be set to active.",
                     "enum": [
                       "active",
                       "inactive"
@@ -45012,7 +46789,7 @@
                         },
                         "status": {
                           "type": "string",
-                          "description": "Status of the workplace employer",
+                          "description": "Status of the workplace employer. Only the employers with the kyb_aml_status as clear can be set to active.",
                           "enum": [
                             "active",
                             "inactive"
@@ -45383,7 +47160,7 @@
                               },
                               "status": {
                                 "type": "string",
-                                "description": "Status of the workplace employer",
+                                "description": "Status of the workplace employer. Only the employers with the kyb_aml_status as clear can be set to active.",
                                 "enum": [
                                   "active",
                                   "inactive"
@@ -45836,7 +47613,7 @@
                         },
                         "status": {
                           "type": "string",
-                          "description": "Status of the workplace employer",
+                          "description": "Status of the workplace employer. Only the employers with the kyb_aml_status as clear can be set to active.",
                           "enum": [
                             "active",
                             "inactive"
@@ -46219,7 +47996,7 @@
                   },
                   "status": {
                     "type": "string",
-                    "description": "Status of the workplace employer",
+                    "description": "Status of the workplace employer. Only the employers with the kyb_aml_status as clear can be set to active.",
                     "enum": [
                       "active",
                       "inactive"
@@ -46381,7 +48158,7 @@
                         },
                         "status": {
                           "type": "string",
-                          "description": "Status of the workplace employer",
+                          "description": "Status of the workplace employer. Only the employers with the kyb_aml_status as clear can be set to active.",
                           "enum": [
                             "active",
                             "inactive"

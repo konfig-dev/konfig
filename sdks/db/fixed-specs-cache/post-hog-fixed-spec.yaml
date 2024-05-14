@@ -3943,74 +3943,6 @@ rawSpecString: |
         responses:
           '405':
             description: No response body
-    /api/projects/{project_id}/actions/{id}/count/:
-      get:
-        operationId: actions_count_retrieve
-        parameters:
-          - in: query
-            name: format
-            schema:
-              type: string
-              enum:
-                - csv
-                - json
-          - in: path
-            name: id
-            schema:
-              type: integer
-            description: A unique integer value identifying this action.
-            required: true
-          - in: path
-            name: project_id
-            required: true
-            schema:
-              type: string
-            description: >-
-              Project ID of the project you're trying to access. To find the ID of
-              the project, make a call to /api/projects/.
-        tags:
-          - actions
-        responses:
-          '200':
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/Action'
-              text/csv:
-                schema:
-                  $ref: '#/components/schemas/Action'
-            description: ''
-    /api/projects/{project_id}/actions/people/:
-      get:
-        operationId: actions_people_retrieve
-        parameters:
-          - in: query
-            name: format
-            schema:
-              type: string
-              enum:
-                - csv
-                - json
-          - in: path
-            name: project_id
-            required: true
-            schema:
-              type: string
-            description: >-
-              Project ID of the project you're trying to access. To find the ID of
-              the project, make a call to /api/projects/.
-        tags:
-          - actions
-        responses:
-          '200':
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/Action'
-              text/csv:
-                schema:
-                  $ref: '#/components/schemas/Action'
-            description: ''
     /api/projects/{project_id}/activity_log/:
       get:
         operationId: activity_log_list
@@ -13533,6 +13465,7 @@ rawSpecString: |
                     - $ref: '#/components/schemas/HogQLPropertyFilter'
                     - $ref: '#/components/schemas/EmptyPropertyFilter'
                     - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+                    - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
                 type: array
               - type: 'null'
             default: null
@@ -13595,6 +13528,7 @@ rawSpecString: |
                     - $ref: '#/components/schemas/HogQLPropertyFilter'
                     - $ref: '#/components/schemas/EmptyPropertyFilter'
                     - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+                    - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
                 type: array
               - type: 'null'
             default: null
@@ -13673,6 +13607,7 @@ rawSpecString: |
                     - $ref: '#/components/schemas/HogQLPropertyFilter'
                     - $ref: '#/components/schemas/EmptyPropertyFilter'
                     - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+                    - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
                 type: array
               - type: 'null'
             default: null
@@ -13716,6 +13651,7 @@ rawSpecString: |
                     - $ref: '#/components/schemas/HogQLPropertyFilter'
                     - $ref: '#/components/schemas/EmptyPropertyFilter'
                     - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+                    - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
                 type: array
               - type: 'null'
             default: null
@@ -15061,6 +14997,7 @@ rawSpecString: |
                     - $ref: '#/components/schemas/HogQLPropertyFilter'
                     - $ref: '#/components/schemas/EmptyPropertyFilter'
                     - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+                    - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
                 type: array
               - type: 'null'
             default: null
@@ -15126,6 +15063,7 @@ rawSpecString: |
                     - $ref: '#/components/schemas/HogQLPropertyFilter'
                     - $ref: '#/components/schemas/EmptyPropertyFilter'
                     - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+                    - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
                 type: array
               - type: 'null'
             default: null
@@ -15151,6 +15089,41 @@ rawSpecString: |
           - table_name
           - timestamp_field
         title: DataWarehouseNode
+        type: object
+      DataWarehousePersonPropertyFilter:
+        additionalProperties: false
+        properties:
+          key:
+            title: Key
+            type: string
+          label:
+            anyOf:
+              - type: string
+              - type: 'null'
+            default: null
+            title: Label
+          operator:
+            $ref: '#/components/schemas/PropertyOperator'
+          type:
+            const: data_warehouse_person_property
+            default: data_warehouse_person_property
+            title: Type
+          value:
+            anyOf:
+              - type: string
+              - type: number
+              - items:
+                  anyOf:
+                    - type: string
+                    - type: number
+                type: array
+              - type: 'null'
+            default: null
+            title: Value
+        required:
+          - key
+          - operator
+        title: DataWarehousePersonPropertyFilter
         type: object
       DataWarehousePropertyFilter:
         additionalProperties: false
@@ -15258,6 +15231,15 @@ rawSpecString: |
               - type: 'null'
             default: null
             title: Date To
+          explicitDate:
+            anyOf:
+              - type: boolean
+              - type: 'null'
+            default: null
+            description: >-
+              Whether the date_from and date_to should be used verbatim. Disables
+              rounding to the start and end of period.
+            title: Explicitdate
         title: DateRange
         type: object
       DayItem:
@@ -15647,6 +15629,7 @@ rawSpecString: |
                     - $ref: '#/components/schemas/HogQLPropertyFilter'
                     - $ref: '#/components/schemas/EmptyPropertyFilter'
                     - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+                    - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
                 type: array
               - type: 'null'
             default: null
@@ -15721,6 +15704,7 @@ rawSpecString: |
                     - $ref: '#/components/schemas/HogQLPropertyFilter'
                     - $ref: '#/components/schemas/EmptyPropertyFilter'
                     - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+                    - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
                 type: array
               - type: 'null'
             default: null
@@ -15787,6 +15771,7 @@ rawSpecString: |
                     - $ref: '#/components/schemas/HogQLPropertyFilter'
                     - $ref: '#/components/schemas/EmptyPropertyFilter'
                     - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+                    - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
                 type: array
               - type: 'null'
             default: null
@@ -15843,6 +15828,7 @@ rawSpecString: |
                     - $ref: '#/components/schemas/HogQLPropertyFilter'
                     - $ref: '#/components/schemas/EmptyPropertyFilter'
                     - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+                    - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
                 type: array
               - type: 'null'
             default: null
@@ -16663,6 +16649,7 @@ rawSpecString: |
                     - $ref: '#/components/schemas/HogQLPropertyFilter'
                     - $ref: '#/components/schemas/EmptyPropertyFilter'
                     - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+                    - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
                 type: array
               - type: 'null'
             default: null
@@ -16873,6 +16860,7 @@ rawSpecString: |
                     - $ref: '#/components/schemas/HogQLPropertyFilter'
                     - $ref: '#/components/schemas/EmptyPropertyFilter'
                     - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+                    - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
                 type: array
               - type: 'null'
             default: null
@@ -16941,6 +16929,7 @@ rawSpecString: |
                     - $ref: '#/components/schemas/HogQLPropertyFilter'
                     - $ref: '#/components/schemas/EmptyPropertyFilter'
                     - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+                    - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
                 type: array
               - type: 'null'
             default: null
@@ -16990,6 +16979,7 @@ rawSpecString: |
                     - $ref: '#/components/schemas/HogQLPropertyFilter'
                     - $ref: '#/components/schemas/EmptyPropertyFilter'
                     - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+                    - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
                 type: array
               - type: 'null'
             default: null
@@ -17070,6 +17060,7 @@ rawSpecString: |
                     - $ref: '#/components/schemas/HogQLPropertyFilter'
                     - $ref: '#/components/schemas/EmptyPropertyFilter'
                     - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+                    - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
                 type: array
               - type: 'null'
             default: null
@@ -17109,6 +17100,26 @@ rawSpecString: |
           - funnel_path_after_step
         title: FunnelPathType
         type: string
+      FunnelPathsFilter:
+        additionalProperties: false
+        properties:
+          funnelPathType:
+            anyOf:
+              - $ref: '#/components/schemas/FunnelPathType'
+              - type: 'null'
+            default: null
+          funnelSource:
+            $ref: '#/components/schemas/FunnelsQuery'
+          funnelStep:
+            anyOf:
+              - type: integer
+              - type: 'null'
+            default: null
+            title: Funnelstep
+        required:
+          - funnelSource
+        title: FunnelPathsFilter
+        type: object
       FunnelStepReference:
         enum:
           - total
@@ -18639,6 +18650,7 @@ rawSpecString: |
                     - $ref: '#/components/schemas/HogQLPropertyFilter'
                     - $ref: '#/components/schemas/EmptyPropertyFilter'
                     - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+                    - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
                 type: array
               - $ref: '#/components/schemas/PropertyGroupFilter'
               - type: 'null'
@@ -18892,6 +18904,7 @@ rawSpecString: |
                     - $ref: '#/components/schemas/HogQLPropertyFilter'
                     - $ref: '#/components/schemas/EmptyPropertyFilter'
                     - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+                    - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
                 type: array
               - type: 'null'
             default: null
@@ -19827,6 +19840,7 @@ rawSpecString: |
                     - $ref: '#/components/schemas/HogQLPropertyFilter'
                     - $ref: '#/components/schemas/EmptyPropertyFilter'
                     - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+                    - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
                 type: array
               - $ref: '#/components/schemas/PropertyGroupFilter'
               - type: 'null'
@@ -22508,17 +22522,6 @@ rawSpecString: |
               - type: 'null'
             default: null
             title: Excludeevents
-          funnelFilter:
-            anyOf:
-              - type: object
-              - type: 'null'
-            default: null
-            title: Funnelfilter
-          funnelPaths:
-            anyOf:
-              - $ref: '#/components/schemas/FunnelPathType'
-              - type: 'null'
-            default: null
           includeEventTypes:
             anyOf:
               - items:
@@ -22625,6 +22628,12 @@ rawSpecString: |
             default: null
             description: Exclude internal and test users by applying the respective filters
             title: Filtertestaccounts
+          funnelPathsFilter:
+            anyOf:
+              - $ref: '#/components/schemas/FunnelPathsFilter'
+              - type: 'null'
+            default: null
+            description: Used for displaying paths in relation to funnel steps.
           kind:
             const: PathsQuery
             default: PathsQuery
@@ -22648,6 +22657,7 @@ rawSpecString: |
                     - $ref: '#/components/schemas/HogQLPropertyFilter'
                     - $ref: '#/components/schemas/EmptyPropertyFilter'
                     - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+                    - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
                 type: array
               - $ref: '#/components/schemas/PropertyGroupFilter'
               - type: 'null'
@@ -22816,6 +22826,7 @@ rawSpecString: |
                     - $ref: '#/components/schemas/HogQLPropertyFilter'
                     - $ref: '#/components/schemas/EmptyPropertyFilter'
                     - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+                    - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
                 type: array
               - type: 'null'
             default: null
@@ -22854,6 +22865,7 @@ rawSpecString: |
                     - $ref: '#/components/schemas/HogQLPropertyFilter'
                     - $ref: '#/components/schemas/EmptyPropertyFilter'
                     - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+                    - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
                 type: array
               - type: 'null'
             default: null
@@ -22877,10 +22889,9 @@ rawSpecString: |
       PersonsOnEventsMode:
         enum:
           - disabled
-          - v1_enabled
-          - v1_mixed
-          - v2_enabled
-          - v3_enabled
+          - person_id_no_override_properties_on_events
+          - person_id_override_properties_on_events
+          - person_id_override_properties_joined
         title: PersonsOnEventsMode
         type: string
       Plugin:
@@ -23163,6 +23174,7 @@ rawSpecString: |
                 - $ref: '#/components/schemas/HogQLPropertyFilter'
                 - $ref: '#/components/schemas/EmptyPropertyFilter'
                 - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+                - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
             title: Values
             type: array
         required:
@@ -23214,6 +23226,7 @@ rawSpecString: |
           - session
           - hogql
           - data_warehouse
+          - data_warehouse_person_property
         type: string
         description: |-
           * `event` - event
@@ -23229,6 +23242,7 @@ rawSpecString: |
           * `session` - session
           * `hogql` - hogql
           * `data_warehouse` - data_warehouse
+          * `data_warehouse_person_property` - data_warehouse_person_property
       PropertyMathType:
         enum:
           - avg
@@ -24353,6 +24367,7 @@ rawSpecString: |
                     - $ref: '#/components/schemas/HogQLPropertyFilter'
                     - $ref: '#/components/schemas/EmptyPropertyFilter'
                     - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+                    - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
                 type: array
               - $ref: '#/components/schemas/PropertyGroupFilter'
               - type: 'null'
@@ -24828,9 +24843,8 @@ rawSpecString: |
         additionalProperties: false
         properties:
           key:
-            const: $session_duration
-            default: $session_duration
             title: Key
+            type: string
           label:
             anyOf:
               - type: string
@@ -24856,6 +24870,7 @@ rawSpecString: |
             default: null
             title: Value
         required:
+          - key
           - operator
         title: SessionPropertyFilter
         type: object
@@ -25226,6 +25241,7 @@ rawSpecString: |
                     - $ref: '#/components/schemas/HogQLPropertyFilter'
                     - $ref: '#/components/schemas/EmptyPropertyFilter'
                     - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+                    - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
                 type: array
               - $ref: '#/components/schemas/PropertyGroupFilter'
               - type: 'null'
@@ -28457,6 +28473,7 @@ rawSpecString: |
                     - $ref: '#/components/schemas/HogQLPropertyFilter'
                     - $ref: '#/components/schemas/EmptyPropertyFilter'
                     - $ref: '#/components/schemas/DataWarehousePropertyFilter'
+                    - $ref: '#/components/schemas/DataWarehousePersonPropertyFilter'
                 type: array
               - $ref: '#/components/schemas/PropertyGroupFilter'
               - type: 'null'
@@ -29191,4 +29208,4 @@ rawSpecString: |
       description: US Cloud
     - url: https://eu.posthog.com
       description: EU Cloud
-konfigCliVersion: 1.38.34
+konfigCliVersion: 1.38.37

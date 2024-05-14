@@ -27,7 +27,7 @@ Learn more about Shippo: https://goshippo.com/`}
       companyKebabCase="shippo"
       clientNameCamelCase="shippo"
       homepage="goshippo.com"
-      lastUpdated={new Date("2024-03-29T18:20:16.115Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/shippo/favicon.png"
       contactUrl="https://goshippo.com/contact/"
       // Missing contactEmail
@@ -2135,10 +2135,10 @@ Learn more about Shippo: https://goshippo.com/`}
       apiTitle="Shippo external API."
       apiBaseUrl="https://api.goshippo.com"
       apiVersion="2018-02-08"
-      endpoints={45}
-      sdkMethods={64}
+      endpoints={46}
+      sdkMethods={65}
       schemas={203}
-      parameters={159}
+      parameters={166}
       difficulty="Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/shippo/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/shippo/openapi.yaml"

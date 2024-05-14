@@ -17,7 +17,7 @@ export default function SmartRecruitersTypeScriptSdk() {
       companyKebabCase="smart-recruiters"
       clientNameCamelCase="smartRecruiters"
       homepage="smartrecruiters.com"
-      lastUpdated={new Date("2024-03-28T00:30:05.996Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/smartrecruiters/favicon.png"
       contactUrl="https://developers.smartrecruiters.com"
       // Missing contactEmail
@@ -9111,9 +9111,9 @@ export default function SmartRecruitersTypeScriptSdk() {
       language="TypeScript"
       apiTitle="Webhooks"
       apiBaseUrl="https://api.smartrecruiters.com/webhooks-api/v201907"
-      apiVersion="201910.4"
-      endpoints={164}
-      sdkMethods={317}
+      apiVersion="201911.1"
+      endpoints={165}
+      sdkMethods={318}
       schemas={373}
       parameters={528}
       difficulty="Very Hard"

@@ -1,0 +1,273 @@
+import { SdkSignupForm } from "@site/src/components/SdkSignupForm";
+import { SdksLink } from "@site/src/components/SdksLink"
+import { Figure } from "@site/src/components/Figure"
+import Mermaid from '@theme/Mermaid';
+import Admonition from "@theme/Admonition"
+import ScheduleDemo from "./ScheduleDemo"
+import Details from "@theme/Details"
+
+<div className="markdown max-w-[760px] px-4 pb-16 pt-16 md:pt-32 mx-auto">
+
+<h1 className="font-extrabold text-4xl md:text-5xl">
+<span className="bg-gradient-to-r from-purple-800 to-indigo-600 bg-clip-text text-transparent">AI-powered</span>
+*customized* guides for your API
+</h1>
+
+Konfig learns from your technical documentation and fetches your customer's configurations to generate *customized* onboarding guides. With Konfig, you can run an efficient onboarding process by spending less time handholding customers.
+
+ <ScheduleDemo/>
+
+<h2 className="font-extrabold underline">
+How Konfig Works
+</h2>
+
+For example, lets walkthrough the following scenario:
+
+- You have a customer that wants to integrate with your KYC (Know Your Customer) Identity Verification API
+- Your customer has a custom verification workflow that is setup elsewhere
+
+### 1. 🛠️ Configure Konfig
+
+Konfig can be configured to understand your technical resources and your customer's configuration.
+
+<Mermaid
+  value={`
+graph LR
+  HWD[Hand-written Documentation] --> Konfig
+  DP["Workflow Configuration (API Call)"] --> Konfig
+  HC["Health checks (API Call)"] --> Konfig
+  API[OpenAPI Specification] --> Konfig
+  QA[Onboarding Form Answers] --> Konfig
+  Konfig --> CG[Custom Guides]
+  subgraph Configurable Inputs
+    HC
+    HWD
+    DP
+    API
+    QA
+  end
+
+  style Konfig fill:#0351b3,stroke:#0351b3,color:#fff,stroke-width:2,stroke-opacity:0.3
+    `}
+/>
+
+### 2. 📄 Generate Custom Guides
+
+When the customer is ready to onboard, easily generate custom guides on the fly
+that are tailored to your customer's needs.
+
+Here is an example generated guide:
+
+<div className="max-w-[90vw] block mb-[calc(0.15_*_100%_*_-1)]">
+<div className="scale-[85%] h-[700px] shadow-xl overflow-scroll origin-top ring-1 ring-slate-800 p-4 md:p-8">
+
+<h1>{`ACME 🤝 Customer`}</h1>
+
+## KYC API Integration Onboarding Guide for Customer
+
+Welcome to ACME! This guide is intended to assist your integration of our KYC
+solutions using our API. This document will guide you through setting up your
+environment, authenticating requests, and making API calls with custom
+configurations.
+
+### Required Parameters Based on Your Configuration
+
+Based on the configuration we pulled from your account, the following parameters are required to initialize the KYC process:
+
+- `address`: The address of the customer.
+- `gender`: The gender of the customer.
+
+### Prerequisites
+
+Before you start, ensure you have:
+- Python installed on your system.
+- The `requests` library installed in Python (Install using `pip install requests`).
+
+### Authentication
+
+To authenticate your API requests, ensure the following API key is set in your environment:
+
+<details summary="🔑 API Key!">
+<div>
+```bash
+export ACME_API_KEY=9415170c-e774-43aa-b863-3d0a94ef085f
+```
+</div>
+</details>
+
+
+<Admonition type="caution">
+Do not share your API key with anyone.
+</Admonition>
+
+### Integrating with ACME
+
+Below are the primary endpoints you need to interact with the KYC system:
+
+#### Initialize KYC Process
+
+This endpoint initializes the KYC process for a customer.
+
+- **Endpoint:** `/initialize`
+- **Method:** `POST`
+- **Required Parameters:**
+  - `workflow_id`: The unique identifier of the workflow from ACME
+  - `customer_id`: The unique identifier of the customer from your system
+  - `address`: The address of the customer
+  - `gender`: The gender of the customer
+
+<Admonition type="note">
+We pulled `workflow_id` from your account. The `customer_id`, `address`, and
+`gender` should be dynamically fetched from your system.
+</Admonition>
+
+Here is a Python example that includes the required parameters:
+
+```python
+import os
+import requests
+
+WORKFLOW_ID = "de65fa5a-130d-43dd-a2c8-d01ff28443e4"
+ACME_API_KEY = os.getenv("ACME_API_KEY")
+
+url = 'https://api.acme-kyc.com/v1/initialize'
+headers = {
+    'Authorization': f'Bearer {ACME_API_KEY}',
+    'Content-Type': 'application/json'
+}
+payload = {
+    'workflow_id': WORKFLOW_ID,
+    'customer_id': 'YOUR_CUSTOMERS_UNIQUE_ID',
+    'data': {
+        'gender': 'male',
+        'address': '1234 Main St'
+    }
+}
+
+response = requests.post(url, json=payload, headers=headers)
+print(response.json())
+```
+
+#### Check KYC Status
+
+Use this endpoint to check the KYC status of a customer.
+
+- **Endpoint:** `/status`
+- **Method:** `GET`
+- **Required Parameters:**
+  - `customer_id`: The unique identifier of the customer from your system
+
+```python
+import os
+import requests
+
+ACME_API_KEY = os.getenv("ACME_API_KEY")
+
+url = 'https://api.acme-kyc.com/v1/status'
+params = {
+    'customer_id': 'YOUR_CUSTOMERS_UNIQUE_ID'
+}
+headers = {
+    'Authorization': f'Bearer {ACME_API_KEY}'
+}
+
+response = requests.get(url, params=params, headers=headers)
+print(response.json())
+```
+
+And more...
+
+</div>
+</div>
+
+### 3. 🤝 Easily Onboard More Customers
+
+Multiply the efforts of your engineers so they can handle more customers.
+
+<Mermaid
+  value={`
+graph TD
+  subgraph s1 [" "]
+    Engineer[👷 Engineer] --> C1[👨‍💼 Customer #1]
+    Engineer --> C2[👩🏼‍💼 Customer #2]
+  end
+  Engineer --> C3[🧑🏾‍💼 Customer #3]
+  Engineer --> C4[👨🏼‍💼 Customer #4]
+  subgraph Konfig[Only possible with the efficiency of Konfig]
+    C3
+    C4
+  end
+
+  classDef invisible fill: white, stroke: white
+  class s1 invisible
+    `}
+/>
+
+<h2 className="font-extrabold underline">
+More than a chatbot
+</h2>
+
+To generate customized guides for your customers, Konfig is specifically
+tailored to understands the way your system works and your customer's needs.
+
+### 🔗 Fetches Customer Configurations
+
+Chatbots need to be prompted to understand what to generate. Konfig is
+configured to understand your customer's needs without any work from your side.
+
+<div className="border p-2 md:p-4 max-w-fit mx-auto">
+#### Required API Parameters
+
+- `name_first`:
+- `name_middle`:
+- `name_last`:
+- `address`: ✅
+- `gender`: ✅
+- `email_address`:
+
+</div>
+
+### 🧠 Deeply Understands OpenAPI Specification
+
+OpenAPI Specifications are large and complicated. Konfig has a built-in OpenAPI
+Specification Understanding Engine that allows Konfig to understand your API
+without any work from your side.
+
+<Mermaid value={`
+graph LR
+  OAS[OpenAPI Specification] --> OpenAPI
+  subgraph Konfig
+    OpenAPI[🧠 OpenAPI Specification Understanding Engine]
+  end
+
+  style Konfig fill:#0351b3,stroke:#0351b3,color:#fff,stroke-width:2,stroke-opacity:0.3
+`}/>
+
+### ✅ Produces *Accurate* Guides
+
+Chatbots fail to understand the nuances of how your customer needs to integrate
+with your API. Konfig *infers these nuances* from hand-written documentation and
+generates the necessary guidance based on your customer's configurations.
+
+To solve this, we developed an AI-powered rule and nuance understanding engine
+to ensure accurate guidance.
+
+- 🤝 Understands and enforces required API parameters with 100% accuracy
+- 🙅‍♂️ No hallucinations
+
+<Mermaid value={`
+
+graph LR
+  HWD[Hand-written Documentation] --> Rules
+  QA[Onboarding Form Answers] --> Rules
+  subgraph Konfig
+    Rules[🧠 Rule and Nuance Understanding Engine]
+  end
+
+  style Konfig fill:#0351b3,stroke:#0351b3,color:#fff,stroke-width:2,stroke-opacity:0.3
+`}/>
+
+<ScheduleDemo/>
+
+</div>
+

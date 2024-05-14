@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block body %}
+    <div class="h-full">
+        <header class="flex h-14 w-full px-4 lg:px-32 bg-white border-b">
+            <div class="flex-1 flex items-center h-full gap-8">
+                <a href="{% url 'guides_view' %}"
+                   class="btn btn-ghost text-lg font-extrabold text-purple-800">konfig</a>
+            </div>
+            <div class="flex-none flex items-center h-full">
+                <a class="mr-6" target="_blank" href="https://konfigthis.com/docs">Documentation</a>
+                <a class="mr-10" target="_blank" href="https://konfigthis.com/docs">Guides</a>
+                <div class="dropdown dropdown-end">
+                    <div tabindex="0" role="button" class="avatar placeholder">
+                        <div class="bg-neutral text-neutral-content rounded-full w-9">
+                            <span class="text-lg">{{ user.username|slice:":1"|upper }}</span>
+                        </div>
+                    </div>
+                    <form method="post" action="{% url 'logout' %}" class="inline">
+                        <ul tabindex="0"
+                            class="menu menu-sm dropdown-content mt-3 z-20 p-2 shadow rounded-box bg-base-100 w-52">
+                            <li>
+                                {% csrf_token %}
+                                <button type="submit">Logout</button>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+        </header>
+        <div class="relative" id="app">
+            {% block app %}
+            {% endblock app %}
+        </div>
+    </div>
+{% endblock body %}

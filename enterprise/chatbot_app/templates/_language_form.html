@@ -1,0 +1,41 @@
+<li class="pb-10 pl-6 border-l {% if current_language %}border-l-green-200{% endif %}">
+    <span class="absolute flex items-center justify-center w-8 h-8 {% if selected_operations %}bg-green-200{% else %}bg-slate-200{% endif %} rounded-full -start-4 ring-4 ring-white dark:ring-slate-900 dark:bg-slate-700">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 24 24"
+             fill="currentColor"
+             class="w-3.5 h-3.5 {% if selected_operations %}text-green-900{% endif %}">
+            <path fill-rule="evenodd" d="M14.447 3.026a.75.75 0 0 1 .527.921l-4.5 16.5a.75.75 0 0 1-1.448-.394l4.5-16.5a.75.75 0 0 1 .921-.527ZM16.72 6.22a.75.75 0 0 1 1.06 0l5.25 5.25a.75.75 0 0 1 0 1.06l-5.25 5.25a.75.75 0 1 1-1.06-1.06L21.44 12l-4.72-4.72a.75.75 0 0 1 0-1.06Zm-9.44 0a.75.75 0 0 1 0 1.06L2.56 12l4.72 4.72a.75.75 0 0 1-1.06 1.06L.97 12.53a.75.75 0 0 1 0-1.06l5.25-5.25a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd" />
+        </svg>
+    </span>
+    <h3 class="font-medium leading-tight {% if selected_operations %}text-slate-800{% endif %}">Language</h3>
+    <p class="text-sm">Select a language</p>
+    {% if selected_operations %}
+        <div class="mt-3">
+            <div class="relative overflow-x-auto shadow-md rounded-lg">
+                <table class="w-full text-sm text-left rtl:text-right text-slate-500 dark:text-slate-400">
+                    <thead class="text-xs uppercase bg-slate-200 dark:bg-slate-700 dark:text-slate-400">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">Language</th>
+                            {% if not current_language %}
+                                <th scope="col" class="px-6 py-3">
+                                    <span class="sr-only">Select</span>
+                                </th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for language in languages %}
+                            {% if current_language %}
+                                {% if current_language == language.name %}
+                                    {% include "_language_form_row.html" %}
+                                {% endif %}
+                            {% else %}
+                                {% include "_language_form_row.html" %}
+                            {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% endif %}
+</li>

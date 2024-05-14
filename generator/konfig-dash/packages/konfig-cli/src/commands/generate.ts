@@ -1603,6 +1603,14 @@ function constructGoGenerationRequest({
     )
   }
 
+  const majorVersion = restOfConfig.version.split('.')[0]
+  const outputParentDir = path.basename(restOfConfig.outputDirectory)
+  if (parseInt(majorVersion) > 1 && outputParentDir !== `v${majorVersion}`) {
+    CliUx.ux.error(
+      `Go SDK output directory must end with the directory "v${majorVersion}". See https://go.dev/blog/v2-go-modules.`
+    )
+  }
+
   const requestGo: GenerateRequestBodyType['generators']['go'] = {
     files: createTemplateFilesObject(files, 'go', configDir),
     ...handleReadmeSnippet({ config: restOfConfig }),

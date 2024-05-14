@@ -17,7 +17,7 @@ export default function DotsTypeScriptSdk() {
       companyKebabCase="dots"
       clientNameCamelCase="dots"
       homepage="dots.dev"
-      lastUpdated={new Date("2024-03-25T19:04:01.511Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/dots/favicon.png"
       contactUrl="https://dots.dev"
       contactEmail="info@dots.dev"
@@ -2088,10 +2088,10 @@ export default function DotsTypeScriptSdk() {
       apiTitle="dots api"
       apiBaseUrl="https://api.dots.dev/api"
       apiVersion="1.0"
-      endpoints={46}
-      sdkMethods={98}
+      endpoints={47}
+      sdkMethods={100}
       schemas={67}
-      parameters={177}
+      parameters={184}
       difficulty="Medium"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/dots/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/dots/openapi.yaml"

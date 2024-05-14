@@ -33,8 +33,8 @@ components:
           type: string
           description: ID of the Account in an external system
         custom_fields:
-          type: object
-          description: Custom field attributes for this account.
+          description: Custom fields for this account
+          $ref: '#/components/schemas/CustomFieldParameter'
     AccountIds:
       type: object
       required:
@@ -59,16 +59,16 @@ components:
           items:
             type: string
         custom_fields:
-          type: object
           description: >-
-            Custom field attributes for this account. If you want to keep all
-            custom fields the same when updating this resource, do not include
-            any custom fields in the update. If you want to update custom
-            fields, make sure to include all custom fields, not just the fields
-            you want to add or update. If you send only the custom fields you
-            want to update, the other custom fields will be erased. You can
-            retrieve the existing custom fields before making the update to note
-            the current fields.
+            Custom fields for this account. If you want to keep all custom
+            fields the same when updating this resource, do not include any
+            custom fields in the update. If you want to update custom fields,
+            make sure to include all custom fields, not just the fields you want
+            to add or update. If you send only the custom fields you want to
+            update, the other custom fields will be erased. You can retrieve the
+            existing custom fields before making the update to note the current
+            fields.
+          $ref: '#/components/schemas/CustomFieldParameter'
     AccountResponse:
       properties:
         _links:
@@ -118,11 +118,8 @@ components:
             system or CRM
           example: 8739674733
         custom_fields:
-          type: object
-          description: Custom Attributes for this account
-          example:
-            employees: 36
-            headquarters: New York City
+          description: Custom fields for this account
+          $ref: '#/components/schemas/CustomFieldParameter'
         created_at:
           type: number
           description: Timestamp when the account was created
@@ -207,9 +204,6 @@ components:
     AnalyticsActivitiesExportsColumns:
       required:
         - columns
-        - start
-        - end
-        - type
       type: object
       properties:
         columns:
@@ -416,9 +410,6 @@ components:
     AnalyticsMessagesExportColumns:
       required:
         - columns
-        - start
-        - end
-        - type
       type: object
       properties:
         columns:
@@ -820,16 +811,16 @@ components:
           items:
             type: string
         custom_fields:
-          type: object
           description: >-
-            Custom field attributes for this contact. If you want to keep all
-            custom fields the same when updating this resource, do not include
-            any custom fields in the update. If you want to update custom
-            fields, make sure to include all custom fields, not just the fields
-            you want to add or update. If you send only the custom fields you
-            want to update, the other custom fields will be erased. You can
-            retrieve the existing custom fields before making the update to note
-            the current fields.
+            Custom fields for this contact. If you want to keep all custom
+            fields the same when updating this resource, do not include any
+            custom fields in the update. If you want to update custom fields,
+            make sure to include all custom fields, not just the fields you want
+            to add or update. If you send only the custom fields you want to
+            update, the other custom fields will be erased. You can retrieve the
+            existing custom fields before making the update to note the current
+            fields.
+          $ref: '#/components/schemas/CustomFieldParameter'
     ContactGroupResponses:
       properties:
         _links:
@@ -983,11 +974,8 @@ components:
           items:
             $ref: '#/components/schemas/ContactHandle'
         custom_fields:
-          type: object
-          description: Custom field attributes for this contact.
-          example:
-            nemesis: Jim Halpert
-            prankable: true
+          description: Custom fields for this contact.
+          $ref: '#/components/schemas/CustomFieldParameter'
         is_private:
           type: boolean
           description: Whether or not the contact is individual
@@ -1068,10 +1056,8 @@ components:
           items:
             $ref: '#/components/schemas/LinkResponse'
         custom_fields:
-          type: object
-          description: Custom field attributes for this conversation
-          example:
-            last_assignee: Jim Halpert
+          description: Custom fields for this conversation
+          $ref: '#/components/schemas/CustomFieldParameter'
         created_at:
           type: number
           description: Timestamp at which the conversation have been created.
@@ -1271,6 +1257,9 @@ components:
               items:
                 type: string
                 format: binary
+        custom_fields:
+          description: Custom fields for this conversation
+          $ref: '#/components/schemas/CustomFieldParameter'
     CreateDraft:
       required:
         - author_id
@@ -1651,6 +1640,49 @@ components:
           type: boolean
           description: Whether the tag is visible in conversation lists.
           default: false
+    CustomFieldParameter:
+      type: object
+      properties:
+        key:
+          description: The `name` property of the custom field
+          type: string
+          example: custom_key
+        value:
+          description: >-
+            The `value` property of the custom field as defined by
+            https://dev.frontapp.com/reference/custom-fields
+          anyOf:
+            - type: string
+              description: String values
+              example: London, UK
+            - type: boolean
+              description: Boolean `true`/`false`
+              example: true
+            - type: integer
+              description: Epoch Timestamps
+              example: 1525417200
+            - type: integer
+              description: Integers
+              example: 90
+            - type: string
+              format: email
+              description: Email address of a teammate
+              example: leela@planet-express.com
+            - type: array
+              description: List of email addresses of teammates
+              items:
+                type: string
+                format: email
+              example:
+                - leela@planet-express.com
+                - fry@planet-express.com
+                - bender@planet-express.com
+            - type: string
+              description: Inbox id
+              example: inb_55c8c149
+            - type: string
+              description: Enum string values
+              example: firefighter
     CustomFieldResponse:
       properties:
         _links:
@@ -1684,7 +1716,7 @@ components:
             - teammate_list
             - inbox
             - enum
-          example: string
+          example: enum
         values:
           type: array
           description: List of possible values for a custom field of type `enum`.
@@ -1726,7 +1758,11 @@ components:
               type: string
               description: >-
                 Handle of the sender. It can be any string used to uniquely
-                identify the sender
+                identify the sender. **Important:** When sending a phone number,
+                include a country code preceded by a plus (+) sign. For example,
+                +33 for France. If you do not send a country code or include a
+                plus sign, Front will normalize your phone number to the USA
+                (+1).
         subject:
           type: string
           description: Subject of the message
@@ -1952,7 +1988,11 @@ components:
               type: string
               description: >-
                 Handle of the sender. It can be any string used to uniquely
-                identify the sender
+                identify the sender. **Important:** When sending a phone number,
+                include a country code preceded by a plus (+) sign. For example,
+                +33 for France. If you do not send a country code or include a
+                plus sign, Front will normalize your phone number to the USA
+                (+1).
         to:
           type: array
           description: List of the recipient handles who will receive this message
@@ -2105,11 +2145,8 @@ components:
           description: Whether or not the inbox is individual
           example: false
         custom_fields:
-          type: object
-          description: Custom field attributes for this inbox
-          example:
-            manager: Michael Scott
-            triager: Pam Beesly
+          description: Custom fields for this inbox
+          $ref: '#/components/schemas/CustomFieldParameter'
     KnowledgeBaseArticleCreate:
       type: object
       properties:
@@ -2192,9 +2229,11 @@ components:
         keywords:
           type: array
           description: Article keywords
-          example:
-            - billing
-            - returns
+          items:
+            type: string
+            example:
+              - billing
+              - returns
         content:
           type: string
           description: Article HTML content
@@ -2563,10 +2602,8 @@ components:
           description: Underlying identifying external URL of the link
           example: https://dundermifflin.atlassian.net/browse/PB-SCRAN-4567
         custom_fields:
-          type: object
-          description: Custom field attributes for this link
-          example:
-            related_tms_entry: SCR-848930-8902DK
+          description: Custom fields for this link
+          $ref: '#/components/schemas/CustomFieldParameter'
     MergeContacts:
       required:
         - contact_ids
@@ -3548,11 +3585,8 @@ components:
           description: Whether or not the teammate account has been blocked
           example: false
         custom_fields:
-          type: object
-          description: Custom field attributes for this teammate
-          example:
-            nemesis: Toby Flenderson
-            prankable: true
+          description: Custom fields for this teammate
+          $ref: '#/components/schemas/CustomFieldParameter'
     UpdateChannel:
       properties:
         name:
@@ -3620,16 +3654,16 @@ components:
           items:
             $ref: '#/components/schemas/ResourceID'
         custom_fields:
-          type: object
           description: >-
-            Custom field attributes for this conversation. If you want to keep
-            all custom fields the same when updating this resource, do not
-            include any custom fields in the update. If you want to update
-            custom fields, make sure to include all custom fields, not just the
-            fields you want to add or update. If you send only the custom fields
-            you want to update, the other custom fields will be erased. You can
-            retrieve the existing custom fields before making the update to note
-            the current fields.
+            Custom fields for this conversation. If you want to keep all custom
+            fields the same when updating this resource, do not include any
+            custom fields in the update. If you want to update custom fields,
+            make sure to include all custom fields, not just the fields you want
+            to add or update. If you send only the custom fields you want to
+            update, the other custom fields will be erased. You can retrieve the
+            existing custom fields before making the update to note the current
+            fields.
+          $ref: '#/components/schemas/CustomFieldParameter'
     UpdateConversationAssignee:
       required:
         - assignee_id
@@ -3827,16 +3861,16 @@ components:
           type: boolean
           description: New availability status
         custom_fields:
-          type: object
           description: >-
-            Custom field attributes for this teammate. If you want to keep all
-            custom fields the same when updating this resource, do not include
-            any custom fields in the update. If you want to update custom
-            fields, make sure to include all custom fields, not just the fields
-            you want to add or update. If you send only the custom fields you
-            want to update, the other custom fields will be erased. You can
-            retrieve the existing custom fields before making the update to note
-            the current fields.
+            Custom fields for this teammate. If you want to keep all custom
+            fields the same when updating this resource, do not include any
+            custom fields in the update. If you want to update custom fields,
+            make sure to include all custom fields, not just the fields you want
+            to add or update. If you send only the custom fields you want to
+            update, the other custom fields will be erased. You can retrieve the
+            existing custom fields before making the update to note the current
+            fields.
+          $ref: '#/components/schemas/CustomFieldParameter'
   securitySchemes:
     http:
       type: http
@@ -6609,6 +6643,7 @@ paths:
   /knowledge_base_articles/{article_id}:
     get:
       summary: Get a knowledge base article
+      operationId: get-a-knowledge-base-article
       description: >
         Fetches a knowledge base article.
 
@@ -6630,6 +6665,7 @@ paths:
           $ref: '#/components/responses/knowledgeBaseArticleSlim'
     delete:
       summary: Delete an article
+      operationId: delete-an-article
       description: >
         Deletes an article and all its content and translations.
 
@@ -6652,6 +6688,7 @@ paths:
   /knowledge_base_articles/{article_id}/content:
     get:
       summary: Get knowledge base article with content in default locale
+      operationId: get-knowledge-base-article-with-content-in-default-locale
       description: >
         Fetches a knowledge base article with content in the default locale.
 
@@ -6673,6 +6710,7 @@ paths:
           $ref: '#/components/responses/knowledgeBaseArticle'
     patch:
       summary: Update article content in default locale.
+      operationId: update-article-content-in-default-locale
       description: >
         Updates an article's content in the default locale
 
@@ -6703,6 +6741,7 @@ paths:
   /knowledge_base_articles/{article_id}/download/{attachment_id}:
     get:
       summary: Download attachment from an article
+      operationId: download-attachment-from-an-article
       description: >
         Downloads the attachment from an article.
 
@@ -6731,6 +6770,7 @@ paths:
   /knowledge_base_articles/{article_id}/locales/{locale}/content:
     get:
       summary: Get knowledge base article with content in specified locale
+      operationId: get-knowledge-base-article-with-content-in-specified-locale
       description: >
         Fetches a knowledge base article with content for a given locale.
 
@@ -6762,6 +6802,7 @@ paths:
           $ref: '#/components/responses/knowledgeBaseArticle'
     patch:
       summary: Update article content in specified locale
+      operationId: update-article-content-in-specified-locale
       description: >
         Updates an article's content for a given locale.
 
@@ -6802,6 +6843,7 @@ paths:
   /knowledge_base_categories/{category_id}:
     get:
       summary: Get a knowledge base category
+      operationId: get-a-knowledge-base-category
       description: >
         Fetches a knowledge base category.
 
@@ -6823,6 +6865,7 @@ paths:
           $ref: '#/components/responses/knowledgeBaseCategorySlim'
     delete:
       summary: Delete a knowledge base category
+      operationId: delete-a-knowledge-base-category
       description: >
         Deletes a knowledge base category.
 
@@ -6853,6 +6896,7 @@ paths:
   /knowledge_base_categories/{category_id}/articles:
     get:
       summary: List articles in a category
+      operationId: list-articles-in-a-category
       description: >
         List articles in a category.
 
@@ -6877,6 +6921,7 @@ paths:
   /knowledge_base_categories/{category_id}/content:
     get:
       summary: Get knowledge base category content in default locale
+      operationId: get-knowledge-base-category-content-in-default-locale
       description: >
         Fetches a knowledge base category with content in the default locale.
 
@@ -6898,6 +6943,7 @@ paths:
           $ref: '#/components/responses/knowledgeBaseCategory'
     patch:
       summary: Update knowledge base category in default locale
+      operationId: update-knowledge-base-category-in-default-locale
       description: >
         Updates a knowledge base category in the default locale. Will republish
         the knowledge base if the knowledge base is currently published.
@@ -6926,6 +6972,7 @@ paths:
   /knowledge_base_categories/{category_id}/locales/{locale}/content:
     get:
       summary: Get knowledge base category with content in specified locale
+      operationId: get-knowledge-base-category-with-content-in-specified-locale
       description: >
         Fetches a knowledge base category with content for a given locale.
 
@@ -6957,6 +7004,7 @@ paths:
           $ref: '#/components/responses/knowledgeBaseCategory'
     patch:
       summary: Update knowledge base category in specified locale
+      operationId: update-knowledge-base-category-in-specified-locale
       description: >
         Updates a knowledge base category for a given locale. Will republish the
         knowledge base if the knowledge base is currently published.
@@ -6995,6 +7043,7 @@ paths:
   /knowledge_bases:
     get:
       summary: List knowledge bases
+      operationId: list-knowledge-bases
       description: >
         List the knowledge bases of the company.
 
@@ -7008,6 +7057,7 @@ paths:
           $ref: '#/components/responses/listOfKnowledgeBases'
     post:
       summary: Create a knowledge base
+      operationId: create-a-knowledge-base
       description: >
         Creates a knowledge base.
 
@@ -7029,6 +7079,7 @@ paths:
   /knowledge_bases/{knowledge_base_id}:
     get:
       summary: Get a knowledge base
+      operationId: get-a-knowledge-base
       description: >
         Fetches a knowledge base.
 
@@ -7051,6 +7102,7 @@ paths:
   /knowledge_bases/{knowledge_base_id}/articles:
     get:
       summary: List articles in a knowledge base
+      operationId: list-articles-in-a-knowledge-base
       description: >
         List articles in a knowledge base
 
@@ -7074,6 +7126,7 @@ paths:
           $ref: '#/components/responses/listOfKnowledgeBaseArticles'
     post:
       summary: Create article in a knowledge base in default locale
+      operationId: create-article-in-a-knowledge-base-in-default-locale
       description: >
         Creates an article in a knowledge base in the default locale.
 
@@ -7105,6 +7158,7 @@ paths:
   /knowledge_bases/{knowledge_base_id}/categories:
     get:
       summary: List categories in a knowledge base
+      operationId: list-categories-in-a-knowledge-base
       description: >
         List categories in a knowledge base.
 
@@ -7128,6 +7182,7 @@ paths:
           $ref: '#/components/responses/listOfKnowledgeBaseCategories'
     post:
       summary: Create knowledge base category in default locale
+      operationId: create-knowledge-base-category-in-default-locale
       description: >
         Creates a knowledge base category in the default locale.
 
@@ -7157,6 +7212,7 @@ paths:
   /knowledge_bases/{knowledge_base_id}/content:
     get:
       summary: Get a knowledge base with content in default locale
+      operationId: get-a-knowledge-base-with-content-in-default-locale
       description: >
         Fetches a knowledge base with its content in the default locale.
 
@@ -7178,6 +7234,7 @@ paths:
           $ref: '#/components/responses/knowledgeBase'
     patch:
       summary: Update knowledge base in default locale
+      operationId: update-knowledge-base-in-default-locale
       description: >
         Updates a knowledge base in the default locale. Will republish the
         knowledge base if the knowledge base is currently published.
@@ -7208,6 +7265,7 @@ paths:
   /knowledge_bases/{knowledge_base_id}/locales/{locale}/articles:
     post:
       summary: Create article in a knowledge base in specified locale
+      operationId: create-article-in-a-knowledge-base-in-specified-locale
       description: >
         Create an article for a given locale in a knowledge base.
 
@@ -7249,6 +7307,7 @@ paths:
   /knowledge_bases/{knowledge_base_id}/locales/{locale}/categories:
     post:
       summary: Create knowledge base category in specified locale
+      operationId: create-knowledge-base-category-in-specified-locale
       description: >
         Creates a knowledge base category for a given locale.
 
@@ -7288,6 +7347,7 @@ paths:
   /knowledge_bases/{knowledge_base_id}/locales/{locale}/content:
     get:
       summary: Get a knowledge base with content in specified locale
+      operationId: get-a-knowledge-base-with-content-in-specified-locale
       description: >
         Fetches a knowledge base with its content for a given locale.
 
@@ -7319,6 +7379,7 @@ paths:
           $ref: '#/components/responses/knowledgeBase'
     patch:
       summary: Update knowledge base in specified locale
+      operationId: update-knowledge-base-in-specified-locale
       description: >
         Updates a knowledge base for a given locale. Will republish the
         knowledge base if the knowledge base is currently published.

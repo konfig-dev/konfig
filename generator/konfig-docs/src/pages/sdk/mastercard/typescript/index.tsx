@@ -17,7 +17,7 @@ export default function MastercardTypeScriptSdk() {
       companyKebabCase="mastercard"
       clientNameCamelCase="mastercard"
       homepage="finicity.com"
-      lastUpdated={new Date("2024-03-24T21:42:09.454Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/mastercard/favicon.png"
       contactUrl="https://developer.mastercard.com/open-banking-us/documentation/support/"
       contactEmail="apisupport@mastercard.com"
@@ -1920,9 +1920,9 @@ export default function MastercardTypeScriptSdk() {
     "url": "/aggregation/v1/customers/{customerId}/institutions/{institutionId}/accounts/simple",
     "method": "getBasicInfo",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Accounts (Simple)",
-    "typeScriptTag": "accountsSimple",
-    "description": "Get Customer Accounts by Institution ID (Simple)",
+    "tag": "Accounts (https://",
+    "typeScriptTag": "accountsHttps:",
+    "description": "Get Customer Accounts by Institution ID (https://",
     "parameters": [
       {
         "name": "customerId",
@@ -1962,9 +1962,9 @@ export default function MastercardTypeScriptSdk() {
     "url": "/aggregation/v1/customers/{customerId}/institutionLogins/{institutionLoginId}/accounts/simple",
     "method": "getBasicInfo",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Accounts (Simple)",
-    "typeScriptTag": "accountsSimple",
-    "description": "Get Customer Accounts by Institution Login ID (Simple)",
+    "tag": "Accounts (https://",
+    "typeScriptTag": "accountsHttps:",
+    "description": "Get Customer Accounts by Institution Login ID (https://",
     "parameters": [
       {
         "name": "customerId",
@@ -2004,9 +2004,9 @@ export default function MastercardTypeScriptSdk() {
     "url": "/aggregation/v1/customers/{customerId}/accounts/{accountId}/simple",
     "method": "getBasicInfo",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Accounts (Simple)",
-    "typeScriptTag": "accountsSimple",
-    "description": "Get Customer Account by ID (Simple)",
+    "tag": "Accounts (https://",
+    "typeScriptTag": "accountsHttps:",
+    "description": "Get Customer Account by ID (https://",
     "parameters": [
       {
         "name": "customerId",
@@ -2046,9 +2046,9 @@ export default function MastercardTypeScriptSdk() {
     "url": "/aggregation/v1/customers/{customerId}/accounts/simple",
     "method": "getBasicInfo",
     "httpMethod": HttpMethodsEnum.GET,
-    "tag": "Accounts (Simple)",
-    "typeScriptTag": "accountsSimple",
-    "description": "Get Customer Accounts (Simple)",
+    "tag": "Accounts (https://",
+    "typeScriptTag": "accountsHttps:",
+    "description": "Get Customer Accounts (https://",
     "parameters": [
       {
         "name": "customerId",
@@ -2992,7 +2992,7 @@ export default function MastercardTypeScriptSdk() {
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Verify Assets",
     "typeScriptTag": "verifyAssets",
-    "description": "Generate Prequalification (CRA) Report",
+    "description": "Generate Prequalification (https:// Report",
     "parameters": [
       {
         "name": "customerId",
@@ -3057,7 +3057,7 @@ export default function MastercardTypeScriptSdk() {
     "httpMethod": HttpMethodsEnum.POST,
     "tag": "Verify Assets",
     "typeScriptTag": "verifyAssets",
-    "description": "Generate Prequalification (Non-CRA) Report",
+    "description": "Generate Prequalification (https:// Report",
     "parameters": [
       {
         "name": "customerId",
@@ -6093,11 +6093,11 @@ export default function MastercardTypeScriptSdk() {
       language="TypeScript"
       apiTitle="Open Banking"
       apiBaseUrl="https://api.finicity.com"
-      apiVersion="1.16.0"
+      apiVersion="1.16.2"
       endpoints={93}
       sdkMethods={104}
       schemas={510}
-      parameters={468}
+      parameters={469}
       difficulty="Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/mastercard/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/mastercard/openapi.yaml"

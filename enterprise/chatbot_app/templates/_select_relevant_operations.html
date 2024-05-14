@@ -1,0 +1,26 @@
+<li class="pb-10 pl-6 border-l {% if selected_operations %}border-l-green-200{% endif %}">
+    <span class="absolute flex items-center justify-center w-8 h-8 {% if selected_documents %}bg-green-200{% else %}bg-slate-200{% endif %} rounded-full -start-4 ring-4 ring-white dark:ring-slate-900 dark:bg-slate-700">
+        <svg class="w-3.5 h-3.5 {% if selected_documents %}text-green-900{% endif %}"
+             xmlns="http://www.w3.org/2000/svg"
+             fill="none"
+             viewBox="0 0 24 24"
+             stroke-width="1.5"
+             stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244" />
+        </svg>
+    </span>
+    <h3 class="font-medium leading-tight {% if selected_documents %}text-slate-800{% endif %}">Relevant API operations</h3>
+    <p class="text-sm">Select relevant API operations</p>
+    {% if selected_documents %}
+        <div class="mt-3">
+            {% comment %} This can't be a form or else the "View Contents" button will submit a form {% endcomment %}
+            <input type="hidden" name="chat_id" value="{{ current_chat.chat_id }}">
+            <div hx-include="previous input"
+                 hx-post="{% url 'search_relevant_operations' %}"
+                 hx-trigger="search-operations from:body"
+                 class="relative overflow-x-auto shadow-md rounded-lg">
+                {% include "_select_relevant_operations_search_results.html" %}
+            </div>
+        </div>
+    {% endif %}
+</li>

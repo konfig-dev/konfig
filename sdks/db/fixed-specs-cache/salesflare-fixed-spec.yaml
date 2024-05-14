@@ -11393,7 +11393,7 @@ rawSpecString: |
                     reminder_date:
                       type: string
                       format: date
-                      default: '2024-03-28T14:04:12.832Z'
+                      default: '2024-04-16T17:55:24.837Z'
                     assignees:
                       type: array
                       x-constraint:
@@ -24958,47 +24958,6 @@ rawSpecString: |
               '*/*':
                 schema:
                   type: string
-    /accounts/{account_id}/users:
-      post:
-        summary: Update an account's users
-        operationId: postAccountsAccount_idUsers
-        parameters:
-          - name: account_id
-            in: path
-            required: true
-            schema:
-              type: number
-        requestBody:
-          $ref: '#/components/requestBodies/postAccountsAccount_idUsersBody'
-        tags:
-          - Accounts
-        responses:
-          default:
-            description: Successful
-            content:
-              '*/*':
-                schema:
-                  type: string
-      put:
-        summary: Update an account's users
-        operationId: putAccountsAccount_idUsers
-        parameters:
-          - name: account_id
-            in: path
-            required: true
-            schema:
-              type: number
-        requestBody:
-          $ref: '#/components/requestBodies/postAccountsAccount_idUsersBody'
-        tags:
-          - Accounts
-        responses:
-          default:
-            description: Successful
-            content:
-              '*/*':
-                schema:
-                  type: string
     /accounts/{account_id}/contacts:
       post:
         summary: Update an account's contacts
@@ -25010,7 +24969,7 @@ rawSpecString: |
             schema:
               type: number
         requestBody:
-          $ref: '#/components/requestBodies/postAccountsAccount_idUsersBody'
+          $ref: '#/components/requestBodies/postAccountsAccount_idContactsBody'
         tags:
           - Accounts
         responses:
@@ -25030,7 +24989,48 @@ rawSpecString: |
             schema:
               type: number
         requestBody:
-          $ref: '#/components/requestBodies/postAccountsAccount_idUsersBody'
+          $ref: '#/components/requestBodies/postAccountsAccount_idContactsBody'
+        tags:
+          - Accounts
+        responses:
+          default:
+            description: Successful
+            content:
+              '*/*':
+                schema:
+                  type: string
+    /accounts/{account_id}/users:
+      post:
+        summary: Update an account's users
+        operationId: postAccountsAccount_idUsers
+        parameters:
+          - name: account_id
+            in: path
+            required: true
+            schema:
+              type: number
+        requestBody:
+          $ref: '#/components/requestBodies/postAccountsAccount_idContactsBody'
+        tags:
+          - Accounts
+        responses:
+          default:
+            description: Successful
+            content:
+              '*/*':
+                schema:
+                  type: string
+      put:
+        summary: Update an account's users
+        operationId: putAccountsAccount_idUsers
+        parameters:
+          - name: account_id
+            in: path
+            required: true
+            schema:
+              type: number
+        requestBody:
+          $ref: '#/components/requestBodies/postAccountsAccount_idContactsBody'
         tags:
           - Accounts
         responses:
@@ -25193,7 +25193,7 @@ rawSpecString: |
                   type: string
     /workflows/{id}/audience/{record_id}:
       put:
-        summary: Exit an entity from a workflow
+        summary: Re-enter or exit an entity from a workflow
         operationId: putWorkflowsIdAudienceRecord_id
         parameters:
           - name: id
@@ -25218,8 +25218,9 @@ rawSpecString: |
                   exited:
                     type: boolean
                     description: >-
-                      Setting `exited` of a workflow record to `false` is
-                      currently not possible.
+                      Setting `exited` to `true` will exit the entity from the
+                      workflow. Setting `exited` to `false` will re-enter the
+                      entity into the workflow.
                   met_goal:
                     type: boolean
                     description: >-
@@ -25241,7 +25242,7 @@ rawSpecString: |
     - url: https://api.salesflare.com
   components:
     requestBodies:
-      postAccountsAccount_idUsersBody:
+      postAccountsAccount_idContactsBody:
         content:
           application/json:
             schema:
@@ -30677,4 +30678,4 @@ rawSpecString: |
                   type: string
               required:
                 - name
-konfigCliVersion: 1.38.34
+konfigCliVersion: 1.38.37

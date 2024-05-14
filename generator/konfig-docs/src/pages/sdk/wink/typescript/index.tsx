@@ -17,7 +17,7 @@ export default function WinkTypeScriptSdk() {
       companyKebabCase="wink"
       clientNameCamelCase="wink"
       homepage="wink.travel/"
-      lastUpdated={new Date("2024-03-28T00:23:27.639Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/wink/favicon.png"
       // Missing contactUrl
       contactEmail="bjorn@wink.travel"
@@ -10032,11 +10032,11 @@ export default function WinkTypeScriptSdk() {
       language="TypeScript"
       apiTitle="Wink API"
       apiBaseUrl="https://api.wink.travel"
-      apiVersion="29.50.1"
-      endpoints={98}
-      sdkMethods={130}
+      apiVersion="29.54.1"
+      endpoints={97}
+      sdkMethods={129}
       schemas={875}
-      parameters={649}
+      parameters={646}
       difficulty="Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/wink/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/wink/openapi.yaml"

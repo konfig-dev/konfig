@@ -17,7 +17,7 @@ export default function BrexExpensesTypeScriptSdk() {
       companyKebabCase="brex"
       clientNameCamelCase="brexExpenses"
       homepage="brex.com"
-      lastUpdated={new Date("2024-03-27T01:23:25.425Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/expenses/favicon.png"
       contactUrl="https://brex.com"
       contactEmail="developer-access@brex.com"
@@ -45,13 +45,13 @@ export default function BrexExpensesTypeScriptSdk() {
         "name": "userId[]",
         "schema": "array",
         "required": false,
-        "description": "Get expenses belong to provided user(s)."
+        "description": "Get expenses belong to provided user(https://developer.brex.com/openapi/expenses_api/."
       },
       {
         "name": "parentExpenseId[]",
         "schema": "array",
         "required": false,
-        "description": "Get itemized expenses belong to provided parent expenses ID(s)."
+        "description": "Get itemized expenses belong to provided parent expenses ID(https://developer.brex.com/openapi/expenses_api/."
       },
       {
         "name": "budgetId[]",
@@ -293,7 +293,7 @@ export default function BrexExpensesTypeScriptSdk() {
       endpoints={4}
       sdkMethods={5}
       schemas={19}
-      parameters={17}
+      parameters={19}
       difficulty="Very Easy"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brex/expenses/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/brex/expenses/openapi.yaml"

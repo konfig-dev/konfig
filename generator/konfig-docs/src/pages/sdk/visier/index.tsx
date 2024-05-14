@@ -4,7 +4,7 @@ import { Company } from '../../../components/Company';
 const sdks = [
   {
     "name": "Authentication",
-    "numberOfMethods": 4,
+    "numberOfMethods": 2,
     "categories": [
       "enterprise_software",
       "people_analytics",
@@ -31,7 +31,7 @@ const sdks = [
   },
   {
     "name": "Authentication",
-    "numberOfMethods": 4,
+    "numberOfMethods": 2,
     "categories": [
       "enterprise_software",
       "people_analytics",
@@ -58,7 +58,7 @@ const sdks = [
   },
   {
     "name": "Authentication",
-    "numberOfMethods": 4,
+    "numberOfMethods": 2,
     "categories": [
       "enterprise_software",
       "people_analytics",

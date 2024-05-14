@@ -28,7 +28,7 @@ export default function BrevoTypeScriptSdk() {
       companyKebabCase="brevo"
       clientNameCamelCase="brevo"
       homepage="brevo.com"
-      lastUpdated={new Date("2024-03-29T17:12:48.443Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brevo/favicon.png"
       contactUrl="https://account.brevo.com/support"
       contactEmail="contact@brevo.com"
@@ -9714,10 +9714,10 @@ export default function BrevoTypeScriptSdk() {
       apiTitle="Brevo API"
       apiBaseUrl="https://api.brevo.com/v3"
       apiVersion="3.0.0"
-      endpoints={156}
-      sdkMethods={221}
+      endpoints={161}
+      sdkMethods={227}
       schemas={254}
-      parameters={772}
+      parameters={793}
       difficulty="Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/brevo/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/brevo/openapi.yaml"

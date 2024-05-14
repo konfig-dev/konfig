@@ -4,17 +4,15 @@ info:
   description: Synchronize API allows you to lipsync a video to any audio in any language.
   version: '1.0'
   contact: {}
-  x-konfig-ignore:
-    object-with-no-properties: true
 servers:
   - url: https://api.synclabs.so
 tags:
+  - name: voices
   - name: video
   - name: lipsync
   - name: translate
   - name: speak
   - name: animate
-  - name: voices
 paths:
   /video/cost:
     get:
@@ -65,7 +63,7 @@ paths:
             schema:
               $ref: '#/components/schemas/CreateVideoDto'
       responses:
-        default:
+        '201':
           description: ''
           content:
             application/json:
@@ -89,18 +87,114 @@ paths:
           schema:
             type: string
       responses:
-        default:
+        '200':
           description: Returns video status and URL to download from.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/VideoExtended'
       deprecated: true
+  /voices/cost:
+    get:
+      tags:
+        - voices
+      operationId: VoicesController_voiceCost
+      parameters: []
+      responses:
+        '200':
+          description: ''
+  /voices:
+    get:
+      tags:
+        - voices
+      summary: ''
+      operationId: VoicesController_voices
+      description: Get all voices
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoicesControllerVoicesResponse'
+        '403':
+          description: Forbidden resource. Check your API key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /voices/create:
+    post:
+      tags:
+        - voices
+      summary: ''
+      operationId: VoicesController_createVoice
+      description: >-
+        Generates audio given inputted text and voice and synchronizes with the
+        given video.
+      parameters: []
+      requestBody:
+        description: >-
+          Required data for animating video. Includes video URL, transcript,
+          voice, and optional parameters for webhook integration and credit
+          limits.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateVoiceDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Voice'
+        '403':
+          description: Forbidden resource. Check your API key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
+  /voices/{id}:
+    get:
+      tags:
+        - voices
+      summary: ''
+      operationId: VoicesController_getVoice
+      description: >-
+        Use the ID from the POST request to check status. Keep checking until
+        status is 'completed' and a download URL is provided.
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Returns status and URL to download from.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Voice'
+        '403':
+          description: Forbidden resource. Check your API key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /lipsync/cost:
     get:
       tags:
         - lipsync
+      summary: ''
       operationId: LipSyncController_lipsyncCost
+      description: >-
+        Get the cost of a lipsync job. The cost is based on the frame rate of
+        the video, length of the audio and model used. The cost is returned in
+        credits.
       parameters:
         - description: >-
             A url to the audio file to be synchronized -- must be publicly
@@ -120,7 +214,17 @@ paths:
             type: string
       responses:
         '200':
-          description: ''
+          description: Returns the cost of the lipsync job.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LipsyncCost'
+        '403':
+          description: Forbidden resource. Check your API key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /lipsync:
     post:
       tags:
@@ -143,12 +247,18 @@ paths:
             schema:
               $ref: '#/components/schemas/LipsyncDto'
       responses:
-        default:
-          description: ''
+        '201':
+          description: Lipsync job created successfully.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/LipSyncInitial'
+                $ref: '#/components/schemas/Lipsync'
+        '403':
+          description: Forbidden resource. Check your API key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /lipsync/{id}:
     get:
       tags:
@@ -165,28 +275,28 @@ paths:
           schema:
             type: string
       responses:
-        default:
+        '200':
           description: Returns video status and URL to download from.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/LipSyncExtended'
-  /voices:
-    get:
-      tags:
-        - voices
-      summary: ''
-      operationId: VoicesController_voices
-      description: Get all voices
-      parameters: []
-      responses:
-        '200':
-          description: ''
+                $ref: '#/components/schemas/Lipsync'
+        '403':
+          description: Forbidden resource. Check your API key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /translate/cost:
     get:
       tags:
         - translate
+      summary: ''
       operationId: TranslateController_translationCost
+      description: >-
+        Get the cost of a lipsync job. The cost is based on the frame rate of
+        the video, length of the audio and model used. The cost is returned in
+        credits.
       parameters:
         - description: >-
             A url to the video file to be synchronized -- must be publicly
@@ -198,7 +308,17 @@ paths:
             type: string
       responses:
         '200':
-          description: ''
+          description: Returns the cost of the lipsync job.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TranslationCost'
+        '403':
+          description: Forbidden resource. Check your API key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /translate:
     post:
       tags:
@@ -220,12 +340,18 @@ paths:
             schema:
               $ref: '#/components/schemas/TranslateDto'
       responses:
-        '200':
+        '201':
           description: The translation job has been successfully created.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TranslationJobInitial'
+                $ref: '#/components/schemas/Translate'
+        '403':
+          description: Forbidden resource. Check your API key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /translate/{id}:
     get:
       tags:
@@ -242,17 +368,27 @@ paths:
           schema:
             type: string
       responses:
-        default:
+        '200':
           description: Returns video status and URL to download from.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TranslationJobExtended'
+                $ref: '#/components/schemas/Translate'
+        '403':
+          description: Forbidden resource. Check your API key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /speak/cost:
     get:
       tags:
         - speak
+      summary: ''
       operationId: SpeakController_speakCost
+      description: >-
+        Get the cost of a speech synthesis job. The cost is based on the number
+        of characters of text to synthesize. The cost is returned in credits.
       parameters:
         - description: A string of text to be spoken by the AI
           name: transcript
@@ -268,7 +404,17 @@ paths:
             type: string
       responses:
         '200':
-          description: ''
+          description: Returns the cost of the speech synthesis job.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpeakCost'
+        '403':
+          description: Forbidden resource. Check your API key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /speak:
     post:
       tags:
@@ -285,12 +431,18 @@ paths:
             schema:
               $ref: '#/components/schemas/SpeakDto'
       responses:
-        '200':
+        '201':
           description: ''
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SpeakInitial'
+                $ref: '#/components/schemas/Speak'
+        '403':
+          description: Forbidden resource. Check your API key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /speak/{id}:
     get:
       tags:
@@ -307,17 +459,28 @@ paths:
           schema:
             type: string
       responses:
-        default:
+        '200':
           description: Returns video status and URL to download from.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SpeakExtended'
+                $ref: '#/components/schemas/Speak'
+        '403':
+          description: Forbidden resource. Check your API key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /animate/cost:
     get:
       tags:
         - animate
+      summary: ''
       operationId: AnimateController_animateCost
+      description: >-
+        Get the cost of an animate job. The cost is based on the frame rate of
+        the video, and the number of characters of text to animate. The cost is
+        returned in credits.
       parameters:
         - description: A string of text to be spoken by the AI
           name: transcript
@@ -333,7 +496,17 @@ paths:
             type: string
       responses:
         '200':
-          description: ''
+          description: Returns the cost of the animate job.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnimateCost'
+        '403':
+          description: Forbidden resource. Check your API key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /animate:
     post:
       tags:
@@ -355,12 +528,18 @@ paths:
             schema:
               $ref: '#/components/schemas/AnimateDto'
       responses:
-        '200':
-          description: ''
+        '201':
+          description: Animation job created. Check status with GET request.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AnimateInitial'
+                $ref: '#/components/schemas/Animate'
+        '403':
+          description: Forbidden resource. Check your API key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
   /animate/{id}:
     get:
       tags:
@@ -377,38 +556,18 @@ paths:
           schema:
             type: string
       responses:
-        default:
+        '200':
           description: Returns status and URL to download from.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AnimateExtended'
-  /verification/send-phone-number-verification-code:
-    post:
-      operationId: VerificationController_sendPhoneNumberVerificationCode
-      parameters: []
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SendPhoneNumberVerificationCodeDto'
-      responses:
-        '201':
-          description: ''
-  /verification/verify-code:
-    post:
-      operationId: VerificationController_verifyCode
-      parameters: []
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/VerifyCodeDto'
-      responses:
-        '201':
-          description: ''
+                $ref: '#/components/schemas/Animate'
+        '403':
+          description: Forbidden resource. Check your API key.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiError'
 components:
   securitySchemes:
     apiKey:
@@ -509,6 +668,132 @@ components:
         - status
         - synergize
         - credits_deducted
+    VoiceDetails:
+      type: object
+      properties:
+        description:
+          description: A description the voice.
+          type: object
+        id:
+          description: A unique identifier for the voice.
+          type: string
+        status:
+          description: The status of the voice.
+          type: object
+        name:
+          description: A name for the voice.
+          type: object
+        inputSamples:
+          description: Input samples for creating the voice.
+          type: array
+          items:
+            type: string
+        outputSamples:
+          description: Output samples for hearing the voice.
+          type: array
+          items:
+            type: string
+      required:
+        - id
+        - status
+        - inputSamples
+        - outputSamples
+    ApiError:
+      type: object
+      properties:
+        statusCode:
+          description: The status code of the error.
+          type: number
+        message:
+          description: The error message.
+          type: string
+        error:
+          description: The error.
+          type: string
+      required:
+        - statusCode
+        - message
+        - error
+    CreateVoiceDto:
+      type: object
+      properties:
+        description:
+          description: >-
+            The description of the voice. Helpful for keeping track of voice
+            details.
+          type: string
+          example: This is a test voice. It's used for testing purposes.
+        name:
+          description: The name of the voice. Helpful for organization and search purposes.
+          type: string
+          example: Test voice
+        inputSamples:
+          description: A list of audio samples to use for voice generation
+          type: array
+          items:
+            type: string
+        maxCredits:
+          description: >-
+            Maximum number of credits to use for audio generation. If job
+            exceeds this value, the job will be aborted
+          type: number
+          default: null
+        webhookUrl:
+          description: A url to send a notification to upon completion of audio generation
+          type: string
+          default: null
+      required:
+        - inputSamples
+    Voice:
+      type: object
+      properties:
+        description:
+          description: A description the voice.
+          type: object
+        id:
+          description: A unique identifier for the voice.
+          type: string
+        status:
+          description: The status of the voice.
+          type: object
+        name:
+          description: A name for the voice.
+          type: object
+        inputSamples:
+          description: Input samples for creating the voice.
+          type: array
+          items:
+            type: string
+        outputSamples:
+          description: Output samples for hearing the voice.
+          type: array
+          items:
+            type: string
+        creditsDeducted:
+          description: The cost of the voice.
+          type: object
+        webhookUrl:
+          description: The webhook URL for the voice.
+          type: object
+      required:
+        - id
+        - status
+        - inputSamples
+        - outputSamples
+        - creditsDeducted
+        - webhookUrl
+    LipsyncCost:
+      type: object
+      properties:
+        credits:
+          description: The cost of the lipsync job.
+          type: number
+        videoLength:
+          description: The length of the synchronized video in seconds.
+          type: number
+      required:
+        - credits
+        - videoLength
     LipsyncDto:
       type: object
       properties:
@@ -517,91 +802,130 @@ components:
             A url to the audio file to be synchronized -- must be publicly
             accessible
           type: string
+          example: >-
+            https://synchlabs-public.s3.us-west-2.amazonaws.com/david_demo_shortaud-27623a4f-edab-4c6a-8383-871b18961a4a.wav
         videoUrl:
           description: >-
             A url to the video file to be synchronized -- must be publicly
             accessible
           type: string
-        synergize:
-          description: A flag to enable / disable post-processing
-          type: boolean
-          default: true
+          example: >-
+            https://synchlabs-public.s3.us-west-2.amazonaws.com/david_demo_shortvid-03a10044-7741-4cfc-816a-5bccd392d1ee.mp4
         maxCredits:
           description: >-
             Maximum number of credits to use for video generation. If job
             exceeds this value, the job will be aborted
           type: number
           default: null
-        webhookUrl:
-          description: A url to send a notification to upon completion of video generation
-          type: string
-          default: null
         model:
           description: The model to use for video generation
           type: string
           default: sync-1.6.0
+          example: sync-1.6.0
+        synergize:
+          description: enable, disable restoration stage | highly recommended to keep on
+          type: boolean
+          default: true
+          example: true
+        pads:
+          description: '[top, bottom, left, right], number of pixels to add as padding'
+          example:
+            - 0
+            - 5
+            - 0
+            - 0
+          type: array
+          items:
+            type: string
+        synergizerStrength:
+          description: >-
+            1 is very good quality but identity features will reduce, 0 is very
+            natural / identity will be preserved but less clean up of artifacts
+          type: number
+          example: 1
+        webhookUrl:
+          description: A url to send a notification to upon completion of video generation
+          type: string
+          default: null
       required:
         - audioUrl
         - videoUrl
-        - synergize
-    LipSyncInitial:
+    Lipsync:
       type: object
       properties:
         id:
           description: A unique identifier for the video.
           type: string
-        url:
-          description: A URL which can be used to download the video.
-          type: string
-        original_video_url:
-          description: The original URL of the video that was submitted.
-          type: string
-        original_audio_url:
-          description: The original URL of the audio that was submitted.
-          type: string
         status:
           description: The status of the video.
+          type: string
+        videoUrl:
+          description: A URL which can be used to download the video.
+          type: object
+        originalVideoUrl:
+          description: The original URL of the video that was submitted.
+          type: string
+        originalAudioUrl:
+          description: The original URL of the audio that was submitted.
           type: string
         synergize:
           description: A flag to enable / disable post-processing
           type: boolean
+        creditsDeducted:
+          description: The number of credits deducted for the video.
+          type: object
+        webhookUrl:
+          description: The URL to the webhook endpoint.
+          type: object
+        url:
+          description: >-
+            DEPRECATED - now use `videoUrl` - A URL which can be used to
+            download the video.
+          type: object
+        original_video_url:
+          description: >-
+            DEPRECATED - now use `originalVideoUrl` - The original URL of the
+            video that was submitted.
+          type: string
+        original_audio_url:
+          description: >-
+            DEPRECATED - now use `originalAudioUrl` - The original URL of the
+            audio that was submitted.
+          type: string
+        credits_deducted:
+          description: >-
+            DEPRECATED - now use `creditsDeducted` - The number of credits
+            deducted for the video.
+          type: object
+        message:
+          description: An important message related to the API response.
+          type: string
       required:
         - id
+        - status
+        - videoUrl
+        - originalVideoUrl
+        - originalAudioUrl
+        - synergize
+        - creditsDeducted
+        - webhookUrl
+        - url
         - original_video_url
         - original_audio_url
-        - status
-        - synergize
-    LipSyncExtended:
+        - credits_deducted
+        - message
+    TranslationCost:
       type: object
       properties:
-        id:
-          description: A unique identifier for the video.
-          type: string
-        url:
-          description: A URL which can be used to download the video.
-          type: string
-        original_video_url:
-          description: The original URL of the video that was submitted.
-          type: string
-        original_audio_url:
-          description: The original URL of the audio that was submitted.
-          type: string
-        status:
-          description: The status of the video.
-          type: string
-        synergize:
-          description: A flag to enable / disable post-processing
-          type: boolean
-        credits_deducted:
-          description: The number of credits deducted for the video.
+        credits:
+          description: The cost of the translation job.
+          type: number
+        videoLength:
+          description: The length of the translated and synchronized video in seconds.
           type: number
       required:
-        - id
-        - original_video_url
-        - original_audio_url
-        - status
-        - synergize
-        - credits_deducted
+        - credits
+        - videoLength
     TranslateDto:
       type: object
       properties:
@@ -610,9 +934,13 @@ components:
             A url to the video file to be translated and synchronized -- must be
             publicly accessible
           type: string
+          example: >-
+            https://synchlabs-public.s3.us-west-2.amazonaws.com/david_demo_shortvid-03a10044-7741-4cfc-816a-5bccd392d1ee.mp4
         targetLanguage:
           description: Target language to translate the video to
           type: string
+          default: en
+          example: en
         maxCredits:
           description: >-
             Maximum number of credits to use for video generation. If job
@@ -627,81 +955,79 @@ components:
           description: The model to use for video generation.
           type: string
           default: sync-1.6.0
+          example: sync-1.6.0
       required:
         - videoUrl
         - targetLanguage
-    TranslationJobInitial:
+    Translate:
       type: object
       properties:
         id:
           description: A unique identifier for the translation job.
-          type: string
-        video_url:
-          description: A URL which can be used to download the video.
-          type: string
-        original_video_url:
-          description: The original URL of the video that was submitted.
-          type: string
-        target_language:
-          description: The language into which the video is being translated.
           type: string
         status:
           description: The status of the translation job.
           type: string
         step:
           description: The step of the translation job.
-          type: string
-      required:
-        - id
-        - original_video_url
-        - status
-        - step
-    TranslationJobExtended:
-      type: object
-      properties:
-        id:
-          description: A unique identifier for the translation job.
-          type: string
-        video_url:
+          type: object
+        videoUrl:
           description: A URL which can be used to download the video.
-          type: string
-        audio_url:
+          type: object
+        audioUrl:
           description: A URL which can be used to download the audio.
-          type: string
-        transcript_url:
+          type: object
+        transcriptUrl:
           description: A URL to access the transcript of the video.
-          type: string
-        original_video_url:
+          type: object
+        originalVideoUrl:
           description: The original URL of the video that was submitted.
           type: string
-        source_language:
+        sourceLanguage:
           description: The source language of the video.
-          type: string
-        target_language:
+          type: object
+        targetLanguage:
           description: The language into which the video is being translated.
           type: string
-        status:
-          description: The status of the translation job.
-          type: string
-        step:
-          description: The step of the translation job.
-          type: string
+        creditsDeducted:
+          description: The number of credits deducted for the translation.
+          type: object
+        webhookUrl:
+          description: The webhook URL for the translation job.
+          type: object
       required:
         - id
-        - audio_url
-        - original_video_url
-        - source_language
         - status
         - step
+        - audioUrl
+        - originalVideoUrl
+        - sourceLanguage
+        - creditsDeducted
+        - webhookUrl
+    SpeakCost:
+      type: object
+      properties:
+        credits:
+          description: The cost of the speech synthesis job in credits.
+          type: number
+        audioLength:
+          description: The length of the audio in seconds.
+          type: number
+      required:
+        - credits
+        - audioLength
     SpeakDto:
       type: object
       properties:
         transcript:
           description: A string of text to be spoken by the AI
           type: string
+          example: Hello, I hope you enjoy this audio!
         voiceId:
           description: The voice to use for audio generation
           type: string
+          default: e5361405-4967-446d-ad63-2f6ed8729c66
+          example: e5361405-4967-446d-ad63-2f6ed8729c66
         maxCredits:
           description: >-
             Maximum number of credits to use for audio generation. If job
@@ -715,48 +1041,51 @@ components:
       required:
         - transcript
         - voiceId
-    SpeakInitial:
+    Speak:
       type: object
       properties:
         id:
           description: A unique identifier for the video.
           type: string
-        audio_url:
-          description: A URL which can be used to download the audio.
-          type: string
-        transcript_url:
-          description: A URL to a file containing the input transcript.
-          type: string
         status:
           description: The status of the audio.
           type: string
+        step:
+          description: The step of the audio.
+          type: object
+        audioUrl:
+          description: A URL which can be used to download the audio.
+          type: object
+        transcriptUrl:
+          description: A URL to a file containing the input transcript.
+          type: object
+        voiceId:
+          description: The voice ID used for the audio.
+          type: string
+        creditsDeducted:
+          description: The number of credits deducted for the audio.
+          type: object
+        webhookUrl:
+          description: The webhook URL to notify the user when the audio is ready.
+          type: object
       required:
         - id
-        - transcript_url
         - status
-    SpeakExtended:
+        - transcriptUrl
+        - voiceId
+        - creditsDeducted
+    AnimateCost:
       type: object
       properties:
-        id:
-          description: A unique identifier for the video.
-          type: string
-        audio_url:
-          description: A URL which can be used to download the audio.
-          type: string
-        transcript_url:
-          description: A URL to a file containing the input transcript.
-          type: string
-        status:
-          description: The status of the audio.
-          type: string
-        credits_deducted:
-          description: The number of credits deducted for the audio.
+        credits:
+          description: The cost of the animate job.
+          type: number
+        videoLength:
+          description: The estimated length of the video in seconds.
           type: number
       required:
-        - id
-        - transcript_url
-        - status
-        - credits_deducted
+        - credits
+        - videoLength
     AnimateDto:
       type: object
       properties:
@@ -765,16 +1094,22 @@ components:
             A url to the video file to be synchronized -- must be publicly
             accessible
           type: string
+          example: >-
+            https://synchlabs-public.s3.us-west-2.amazonaws.com/david_demo_shortvid-03a10044-7741-4cfc-816a-5bccd392d1ee.mp4
         transcript:
           description: A string of text to be spoken by the AI
           type: string
+          example: Hello, welcome to our video!
         voiceId:
           description: The voice to use for audio generation
           type: string
+          default: e5361405-4967-446d-ad63-2f6ed8729c66
+          example: e5361405-4967-446d-ad63-2f6ed8729c66
         model:
           description: The model to use for video generation
           type: string
           default: sync-1.6.0
+          example: sync-1.6.0
         maxCredits:
           description: >-
             Maximum number of credits to use for audio generation. If job
@@ -789,59 +1124,51 @@ components:
         - videoUrl
         - transcript
         - voiceId
-    AnimateInitial:
+    Animate:
       type: object
       properties:
         id:
           description: A unique identifier for the video.
           type: string
-        video_url:
-          description: A URL which can be used to download the audio.
-          type: string
-        audio_url:
-          description: A URL which can be used to download the audio.
-          type: string
-        transcript_url:
-          description: A URL to a file containing the input transcript.
-          type: string
         status:
           description: The status of the audio.
           type: string
-      required:
-        - id
-        - transcript_url
-        - status
-    AnimateExtended:
-      type: object
-      properties:
-        id:
-          description: A unique identifier for the video.
+        step:
+          description: The current step of the animation.
+          type: object
+        videoUrl:
+          description: A URL which can be used to download the generated video.
+          type: object
+        audioUrl:
+          description: A URL which can be used to download the generated audio.
+          type: object
+        originalVideoUrl:
+          description: >-
+            A URL to the original video file. This is the video that was used as
+            input to the animation process.
           type: string
-        video_url:
-          description: A URL which can be used to download the audio.
-          type: string
-        audio_url:
-          description: A URL which can be used to download the audio.
-          type: string
-        transcript_url:
+        transcriptUrl:
           description: A URL to a file containing the input transcript.
+          type: object
+        voiceId:
+          description: The voice used for the audio.
           type: string
-        status:
-          description: The status of the audio.
-          type: string
-        credits_deducted:
+        creditsDeducted:
           description: The number of credits deducted for the audio.
-          type: number
+          type: object
+        webhookUrl:
+          description: The webhook URL.
+          type: object
       required:
         - id
-        - transcript_url
         - status
-        - credits_deducted
-    SendPhoneNumberVerificationCodeDto:
-      type: object
-      properties: {}
-    VerifyCodeDto:
-      type: object
-      properties: {}
+        - originalVideoUrl
+        - transcriptUrl
+        - voiceId
+        - creditsDeducted
+    VoicesControllerVoicesResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/VoiceDetails'
 security:
   - apiKey: []

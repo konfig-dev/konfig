@@ -1,19 +1,18 @@
 {
   "securitySchemes": {
-    "Authorization": {
+    "CompanyAccessAuth": {
       "type": "http",
       "scheme": "bearer",
-      "description": "The access token"
+      "description": "Company-level authentication"
     },
-    "ApiKeyAuth": {
-      "type": "apiKey",
-      "in": "header",
-      "name": "Authorization",
-      "description": "Enter your token in the format **Token <API key>**"
+    "SystemAccessAuth": {
+      "type": "http",
+      "scheme": "bearer",
+      "description": "System-level authentication"
     }
   },
   "apiBaseUrl": "https://api.gusto-demo.com",
-  "apiVersion": "2024-03-01",
+  "apiVersion": "2024-04-01",
   "apiDescription": "Welcome to Gusto's Embedded Payroll API documentation!",
   "apiTitle": "Gusto API",
   "endpoints": 59,
@@ -714,7 +713,7 @@
         {
           "name": "include",
           "schema": "string",
-          "description": "Include the requested attribute(s) in each employee response, multiple options are comma separated. Available options:\n- all_compensations: Include all effective dated compensations for each job instead of only the current compensation\n- custom_fields: Include employees' custom fields"
+          "description": "Include the requested attribute(https://docs.gusto.com/app-integrations/docs/introduction in each employee response, multiple options are comma separated. Available options:\n- all_compensations: Include all effective dated compensations for each job instead of only the current compensation\n- custom_fields: Include employees' custom fields"
         },
         {
           "name": "page",
@@ -1167,7 +1166,7 @@
         {
           "name": "include",
           "schema": "string",
-          "description": "Include the requested attribute(s) in each employee response, multiple options are comma separated. Available options:\n- all_compensations: Include all effective dated compensations for each job instead of only the current compensation\n- custom_fields: Include employees' custom fields"
+          "description": "Include the requested attribute(https://docs.gusto.com/app-integrations/docs/introduction in each employee response, multiple options are comma separated. Available options:\n- all_compensations: Include all effective dated compensations for each job instead of only the current compensation\n- custom_fields: Include employees' custom fields"
         },
         {
           "name": "xGustoApiVersion",
@@ -4764,7 +4763,7 @@
           "name": "startingAfterUuid",
           "schema": "string",
           "required": false,
-          "description": "A cursor for pagination. Returns all events occuring after the specified UUID (exclusive)"
+          "description": "A cursor for pagination. Returns all events occuring after the specified UUID (https://docs.gusto.com/app-integrations/docs/introduction"
         },
         {
           "name": "resourceUuid",
@@ -4806,8 +4805,8 @@
   "previewLinkImage": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/gusto/app-integrations/imagePreview.png",
   "faviconUrl": "https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/gusto/app-integrations/favicon.png",
   "clientNameCamelCase": "gustoAppIntegrations",
-  "lastUpdated": "2024-03-27T01:23:25.425Z",
-  "typescriptSdkUsageCode": "import { GustoAppIntegrations } from 'gusto-app-integrations-typescript-sdk';\n\nconst gustoAppIntegrations = new GustoAppIntegrations({\n    // The access token\n    authorization: \"AUTHORIZATION\",\n    // Enter your token in the format **Token <API key>**\n    apiKeyAuth: \"AUTHORIZATION\"\n})",
+  "lastUpdated": "2024-04-16T19:21:46.323Z",
+  "typescriptSdkUsageCode": "import { GustoAppIntegrations } from 'gusto-app-integrations-typescript-sdk';\n\nconst gustoAppIntegrations = new GustoAppIntegrations({\n    // Company-level authentication\n    companyAccessAuth: \"COMPANY_ACCESS_AUTH\",\n    // System-level authentication\n    systemAccessAuth: \"SYSTEM_ACCESS_AUTH\"\n})",
   "typescriptSdkFirstRequestCode": "// Get info about the current access token\nconst accessTokenInfoResponse = gustoAppIntegrations.introspection.accessTokenInfo()",
   "fixedSpecFileName": "gusto-app-integrations-fixed-spec.yaml"
 }

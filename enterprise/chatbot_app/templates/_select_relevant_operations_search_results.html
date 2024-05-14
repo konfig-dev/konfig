@@ -1,0 +1,63 @@
+<form>
+    <input type="hidden" name="chat_id" value="{{ current_chat.chat_id }}">
+    <table class="w-full text-sm text-left rtl:text-right text-slate-500 dark:text-slate-400">
+        <thead class="text-xs uppercase bg-slate-200 dark:bg-slate-700 dark:text-slate-400">
+            <tr>
+                {% if not selected_operations %}
+                    <th scope="col" class="px-6 py-3">
+                        <span class="sr-only">Select</span>
+                    </th>
+                {% endif %}
+                <th scope="col" class="px-6 py-3">Summary</th>
+                <th scope="col" class="px-6 py-3">Description</th>
+                <th scope="col" class="px-6 py-3">Path</th>
+                <th scope="col" class="px-6 py-3">HTTP Method</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if selected_operations %}
+                {% for operation in selected_operations %}
+                    {% include "_select_relevant_operations_search_results_row.html" %}
+                {% endfor %}
+            {% else %}
+                {% for operation in searched_operations %}
+                    {% include "_select_relevant_operations_search_results_row.html" %}
+                {% endfor %}
+            {% endif %}
+        </tbody>
+        {% if searched_operations|length > 0 and not selected_operations %}
+            <tfoot class="bg-slate-200 ">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="px-6 py-4 text-right">
+                        <button hx-post="{% url 'select_relevant_operations' %}"
+                                hx-target="#app"
+                                class="btn btn-primary">Select</button>
+                    </td>
+                </tr>
+            </tfoot>
+        {% endif %}
+    </table>
+</form>
+<div class="htmx-request-flex px-6 py-4 flex-col items-center text-center">
+    <span class="loading loading-ring loading-sm"></span>
+    <div class="text-slate-500">Searching operations...</div>
+</div>
+{% if searched_operations|length == 0 %}
+    <div class="htmx-request-hidden px-6 py-4 flex flex-col items-center text-center">
+        <div class="p-2 mb-3 bg-slate-200 rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 fill="none"
+                 viewBox="0 0 24 24"
+                 stroke-width="1.5"
+                 stroke="currentColor"
+                 class="w-6 h-6 text-slate-400">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+            </svg>
+        </div>
+        <div class="text-slate-700">No operations found</div>
+    </div>
+{% endif %}

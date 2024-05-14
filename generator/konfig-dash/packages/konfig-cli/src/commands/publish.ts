@@ -118,7 +118,7 @@ const publishScripts = {
       skipTag,
     })
     // git tag has to be present for pod trunk to work
-    return [...gitTagCommands, `pod trunk push ${projectName}.podspec`]
+    return [...gitTagCommands, `pod trunk push ${projectName}.podspec --allow-warnings`]
   },
   go: async ({
     version,
@@ -137,6 +137,8 @@ const publishScripts = {
     gitHost: string
     skipTag?: boolean
   }) => {
+    const majorVersion = version.split('.')[0]
+    const majorVersionStr = parseInt(majorVersion) > 1 ? `/v${majorVersion}` : ''
     return [
       ...(await generateGitTagCommands({
         version,
@@ -145,7 +147,7 @@ const publishScripts = {
         isSubmodule,
         skipTag,
       })),
-      `GOPROXY=proxy.golang.org go list -m ${gitHost}/${owner}/${repo}@v${version}`,
+      `GOPROXY=proxy.golang.org go list -m ${gitHost}/${owner}/${repo}${majorVersionStr}@v${version}`,
     ]
   },
   npm: async ({

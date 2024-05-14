@@ -21,7 +21,7 @@ As the global leader in people analytics, Visier has over 25,000 customers in 75
       companyKebabCase="visier"
       clientNameCamelCase="visierPermissionManagement"
       homepage="visier.com"
-      lastUpdated={new Date("2024-03-28T00:17:09.977Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/visier/permission-management/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -165,7 +165,7 @@ As the global leader in people analytics, Visier has over 25,000 customers in 75
       {
         "name": "includeDetails",
         "schema": "boolean",
-        "description": "If true, the response includes the analytic objects (display name, ID, and object type), related objects,\n securable properties, and securable dimensions. If false, the response only includes analytic objects\n (display name, ID, and object type). Default is false."
+        "description": "If `true`, the response includes the analytic objects (display name, ID, and object type), related objects,\n securable properties, and securable dimensions. If `false`, the response only includes analytic objects\n (display name, ID, and object type). Default is `false`."
       },
       {
         "name": "tenantCode",
@@ -196,6 +196,11 @@ As the global leader in people analytics, Visier has over 25,000 customers in 75
         "name": "tenantCode",
         "schema": "string",
         "description": "Specify the tenant to delete permissions from."
+      },
+      {
+        "name": "permissionIds",
+        "schema": "array",
+        "description": ""
       }
     ],
     "responses": [
@@ -225,7 +230,12 @@ As the global leader in people analytics, Visier has over 25,000 customers in 75
       {
         "name": "includeDetails",
         "schema": "boolean",
-        "description": "If true, returns the permission's details. If false, only returns the permissions' ID, display name,\n and description. Default is false."
+        "description": "If `true`, returns the permission's details. If `false`, only returns the permissions' ID, display name,\n and description. Default is `false`."
+      },
+      {
+        "name": "includeDetailsWithStatus",
+        "schema": "boolean",
+        "description": "If `true`, returns the validity statuses for the permission's properties in data access sets and the\n permission's dimensions, dimension members, and hierarchy properties in member filters. If `false`,\n doesn't return validity status information. Default is `false`."
       }
     ],
     "responses": [
@@ -318,6 +328,11 @@ As the global leader in people analytics, Visier has over 25,000 customers in 75
         "name": "tenantCode",
         "schema": "string",
         "description": "Specify the tenant to retrieve a permission from."
+      },
+      {
+        "name": "includeDetailsWithStatus",
+        "schema": "string",
+        "description": "If `true`, returns the validity statuses for the permission's properties in data access sets and the\n permission's dimensions, dimension members, and hierarchy properties in member filters. If `false`,\n doesn't return validity status information. Default is `false`."
       }
     ],
     "responses": [
@@ -336,11 +351,11 @@ As the global leader in people analytics, Visier has over 25,000 customers in 75
       language="TypeScript"
       apiTitle="Visier Permission Management APIs"
       apiBaseUrl="https://{vanity-name}.api.visier.io"
-      apiVersion="22222222.99201.1227"
+      apiVersion="22222222.99201.1256"
       endpoints={7}
       sdkMethods={10}
       schemas={33}
-      parameters={19}
+      parameters={22}
       difficulty="Very Easy"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/visier/permission-management/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/visier/permission-management/openapi.yaml"

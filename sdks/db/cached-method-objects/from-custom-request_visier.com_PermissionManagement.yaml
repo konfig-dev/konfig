@@ -1,4 +1,4 @@
-hash: c4fb87bd7082201bf478d5250ccfd113db40a170532b95f3279bc5dfc59c780c
+hash: b885547c73ffc02eecd3499a50bfade8b68ba6dfefa45341e09acbaa311368ed
 methodObjects:
   - url: /v1/admin/capabilities
     method: getCapabilities
@@ -120,10 +120,10 @@ methodObjects:
       - name: includeDetails
         schema: boolean
         description: >-
-          If true, the response includes the analytic objects (display name, ID,
-          and object type), related objects,
-           securable properties, and securable dimensions. If false, the response only includes analytic objects
-           (display name, ID, and object type). Default is false.
+          If `true`, the response includes the analytic objects (display name,
+          ID, and object type), related objects,
+           securable properties, and securable dimensions. If `false`, the response only includes analytic objects
+           (display name, ID, and object type). Default is `false`.
       - name: tenantCode
         schema: string
         description: Specify the tenant to retrieve data security objects from.
@@ -149,6 +149,9 @@ methodObjects:
       - name: tenantCode
         schema: string
         description: Specify the tenant to delete permissions from.
+      - name: permissionIds
+        schema: array
+        description: ''
     responses:
       - statusCode: '200'
         description: ''
@@ -174,9 +177,16 @@ methodObjects:
       - name: includeDetails
         schema: boolean
         description: >-
-          If true, returns the permission's details. If false, only returns the
-          permissions' ID, display name,
-           and description. Default is false.
+          If `true`, returns the permission's details. If `false`, only returns
+          the permissions' ID, display name,
+           and description. Default is `false`.
+      - name: includeDetailsWithStatus
+        schema: boolean
+        description: >-
+          If `true`, returns the validity statuses for the permission's
+          properties in data access sets and the
+           permission's dimensions, dimension members, and hierarchy properties in member filters. If `false`,
+           doesn't return validity status information. Default is `false`.
     responses:
       - statusCode: '200'
         description: List of available permissions
@@ -254,6 +264,13 @@ methodObjects:
       - name: tenantCode
         schema: string
         description: Specify the tenant to retrieve a permission from.
+      - name: includeDetailsWithStatus
+        schema: string
+        description: >-
+          If `true`, returns the validity statuses for the permission's
+          properties in data access sets and the
+           permission's dimensions, dimension members, and hierarchy properties in member filters. If `false`,
+           doesn't return validity status information. Default is `false`.
     responses:
       - statusCode: '200'
         description: ''

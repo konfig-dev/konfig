@@ -19,6 +19,15 @@ test("typescript-oauth-token", async () => {
             expires_in: 3600,
           },
         },
+        {
+          path: "/fast-expiring-token",
+          method: "post",
+          response: {
+            access_token: "0987654321",
+            token_type: "Bearer",
+            expires_in: 10,
+          },
+        },
       ],
     },
   });

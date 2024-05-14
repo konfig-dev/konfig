@@ -24,7 +24,7 @@ Completely cloud based application available via your favorite web browsers and 
       companyKebabCase="clay-hr"
       clientNameCamelCase="clayHr"
       homepage="clayhr.com"
-      lastUpdated={new Date("2024-03-28T16:25:40.616Z")}
+      lastUpdated={new Date("2024-04-16T19:21:46.323Z")}
       faviconUrl="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/clayhr/favicon.png"
       // Missing contactUrl
       // Missing contactEmail
@@ -7301,10 +7301,10 @@ Completely cloud based application available via your favorite web browsers and 
       apiTitle="Expense Reports"
       apiBaseUrl="https://acmecompany.bizmerlin.net/rm/api"
       apiVersion="1.0"
-      endpoints={137}
-      sdkMethods={142}
+      endpoints={138}
+      sdkMethods={143}
       schemas={421}
-      parameters={918}
+      parameters={921}
       difficulty="Hard"
       openApiRaw="https://raw.githubusercontent.com/konfig-sdks/openapi-examples/HEAD/clayhr/openapi.yaml"
       openApiGitHubUi="https://github.com/konfig-sdks/openapi-examples/tree/HEAD/clayhr/openapi.yaml"

@@ -1,17 +1,6 @@
 processed:
   securitySchemes:
     basicAuth:
-      type: apiKey
-      name: US-CUSTOMER-API-KEY
-      in: header
-      scheme: basic
-    basic:
-      type: http
-      name: US-CUSTOMER-API-KEY
-      in: header
-      description: Basic HTTP Authentication
-      scheme: basic
-    BasicAuth:
       type: http
       scheme: basic
     OauthSecurity:
@@ -21,16 +10,56 @@ processed:
           authorizationUrl: https://login-dev.ultipro.com/introspect
           tokenUrl: https://identity.mia.ucloud.int/t/ulticonnect/token
           scopes:
+            '': ''
             recruiting.domain.third-party-job-board-integrations.auto-feed: Needed for all read requests
-  apiBaseUrl: '{hostname}'
+    OPPAuthN:
+      type: oauth2
+      flows:
+        clientCredentials:
+          scopes:
+            recruiting.domain.applications.read: recruiting.domain.applications.read
+            recruiting.domain.applications.write: recruiting.domain.applications.write
+            recruiting.domain.candidates.read: recruiting.domain.candidates.read
+            recruiting.domain.candidates.write: recruiting.domain.candidates.write
+            recruiting.domain.opportunities.read: recruiting.domain.opportunities.read
+            recruiting.domain.opportunities.write: recruiting.domain.opportunities.write
+            recruiting.domain.configuration.read: recruiting.domain.configuration.read
+            recruiting.domain.configuration.write: recruiting.domain.configuration.write
+            recruiting.domain.offers.read: recruiting.domain.offers.read
+            recruiting.domain.offers.write: recruiting.domain.offers.write
+            recruiting.domain.candidates.name-email: recruiting.domain.candidates.name-email
+            recruiting.domain.physical-locations.read: recruiting.domain.physical-locations.read
+            recruiting.domain.application-import.read: recruiting.domain.application-import.read
+            recruiting.domain.application-import.create: recruiting.domain.application-import.create
+            recruiting.domain.candidate-import.read: recruiting.domain.candidate-import.read
+            recruiting.domain.candidate-import.create: recruiting.domain.candidate-import.create
+            recruiting.domain.candidates.assessments.read: recruiting.domain.candidates.assessments.read
+            recruiting.domain.candidates.assessments.create: recruiting.domain.candidates.assessments.create
+            recruiting.domain.candidates.background-checks: recruiting.domain.candidates.background-checks
+            recruiting.easy-apply: recruiting.easy-apply
+            recruiting.domain.candidates.assessment.update: recruiting.domain.candidates.assessment.update
+            recruiting.domain.third-party-job-board-integrations.auto-feed: recruiting.domain.third-party-job-board-integrations.auto-feed
+            recruiting.third-party-job-board-integration-application-disposition-events.read: >-
+              recruiting.third-party-job-board-integration-application-disposition-events.read
+          tokenUrl: /signin/oauth2/t/tenantalias/access_token
+    BasicAuthentication:
+      type: http
+      scheme: basic
+    Bearer:
+      name: Token
+      type: apiKey
+      in: header
+  apiBaseUrl: '{tenantId}.{hostname}'
   apiVersion: v1
-  apiDescription: This API is for UTA customers only.
-  apiTitle: User Defined Fields
-  endpoints: 171
-  sdkMethods: 203
-  schemas: 170
-  parameters: 932
+  apiDescription: >-
+    Configure your UKG Pro Configuration Codes through UKG Pro APIs. Status: R1
+    deployment
+  apiTitle: User Profile Details
+  endpoints: 239
+  sdkMethods: 374
+  schemas: 146
+  parameters: 1389
   originalCustomRequest:
     lambda: true
   customRequestSpecFilename: ukg.com.yaml
-  difficultyScore: 521
+  difficultyScore: 794.25
