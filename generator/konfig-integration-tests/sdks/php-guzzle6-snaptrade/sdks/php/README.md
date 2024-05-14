@@ -125,6 +125,7 @@ $result = $snaptrade->accountInformation->getAllUserHoldings(
 
 
 ### `snaptrade.accountInformation.getAllUserHoldings`<a id="snaptradeaccountinformationgetalluserholdings"></a>
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 List all accounts for the user, plus balances, positions, and orders for each account.
 

@@ -179,6 +179,7 @@ main();
 
 
 ### `snaptrade.accountInformation.getAllUserHoldings`<a id="snaptradeaccountinformationgetalluserholdings"></a>
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 List all accounts for the user, plus balances, positions, and orders for each account.
 
@@ -1669,6 +1670,7 @@ Trade time in force examples:   * FOK - Fill Or Kill   * Day - Day   * GTC - Goo
 
 
 ### `snaptrade.trading.placeOCOOrder`<a id="snaptradetradingplaceocoorder"></a>
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 Place a OCO (One Cancels Other) order
 
@@ -1802,6 +1804,7 @@ Optional comma seperated list of types to filter activities by. This is not an e
 
 
 ### `snaptrade.transactionsAndReporting.getReportingCustomRange`<a id="snaptradetransactionsandreportinggetreportingcustomrange"></a>
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 Returns performance information (contributions, dividends, rate of return, etc) for a specific timeframe. Please note that Total Equity Timeframe and Rate of Returns are experimental features. Please contact support@snaptrade.com if you notice any inconsistencies.
 

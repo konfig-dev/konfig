@@ -682,6 +682,7 @@ let createUserFileTagsResponse = try await carbon.files.createUserFileTags(
 
 
 ### `carbon.files.delete`<a id="carbonfilesdelete"></a>
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 Delete File Endpoint
 
@@ -751,6 +752,7 @@ let deleteFileTagsResponse = try await carbon.files.deleteFileTags(
 
 
 ### `carbon.files.deleteMany`<a id="carbonfilesdeletemany"></a>
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 Delete Files Endpoint
 
@@ -873,6 +875,7 @@ let deleteV2Response = try await carbon.files.deleteV2(
 
 
 ### `carbon.files.getParsedFile`<a id="carbonfilesgetparsedfile"></a>
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 This route is deprecated. Use `/user_files_v2` instead.
 
@@ -904,6 +907,7 @@ let getParsedFileResponse = try await carbon.files.getParsedFile(
 
 
 ### `carbon.files.getRawFile`<a id="carbonfilesgetrawfile"></a>
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 This route is deprecated. Use `/user_files_v2` instead.
 
@@ -1083,6 +1087,7 @@ let queryUserFilesResponse = try await carbon.files.queryUserFiles(
 
 
 ### `carbon.files.queryUserFilesDeprecated`<a id="carbonfilesqueryuserfilesdeprecated"></a>
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 This route is deprecated. Use `/user_files_v2` instead.
 
