@@ -10,6 +10,7 @@ rm -rf ../../sdks;
 rm -rf ../../customers;
 rm -rf ../konfig-docs;
 rm -rf ../konfig-integration-tests;
+rm -rf ../../.git
 yarn --ignore-engines;
 yarn build;
 du -hs ../../*;
