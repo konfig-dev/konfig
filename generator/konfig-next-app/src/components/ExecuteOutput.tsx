@@ -104,7 +104,13 @@ export function ExecuteOutput({
           </Tabs.List>
 
           <Tabs.Panel value="raw">
-            <Code mah={500} sx={{ overflowY: 'auto' }} color="gray" block>
+            <Code
+              className="rounded-t-none"
+              mah={500}
+              sx={{ overflowY: 'auto' }}
+              color="gray"
+              block
+            >
               {processedOutput}
             </Code>
           </Tabs.Panel>

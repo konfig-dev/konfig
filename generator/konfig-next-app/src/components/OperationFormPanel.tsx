@@ -80,7 +80,7 @@ export function OperationFormPanel({
           requestInProgress={requestInProgress}
         />
         {result?.data != null && (
-          <Paper shadow="sm" radius="xs" p={0} withBorder>
+          <Paper className="rounded-md overflow-hidden" p={0} withBorder>
             <Box p="sm">
               {/* if status is not successful (e.g. 4xx or 5xx), the badge is red */}
               <Badge
