@@ -226,7 +226,7 @@ export function OperationReferenceMain({
     statusText: string
   } | null>(null)
 
-  const hasParameters = parameters.length > 0
+  const hasParameters = parameters.length < 0 || requestBodyParameter != null
 
   const handleError = (errors: typeof form.errors) => {
     for (const [id, message] of Object.entries(errors)) {
