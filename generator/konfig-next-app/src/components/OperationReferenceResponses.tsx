@@ -41,10 +41,6 @@ export function OperationReferenceResponses({
   responses,
   operation,
 }: Pick<ReferencePageProps, 'responses' | 'operation'>) {
-  const { classes, cx } = useStyles()
-  const [value, setValue] = useState<string | null>(null)
-  const theme = useMantineTheme()
-
   return (
     <Box my="lg">
       <Title
@@ -54,137 +50,147 @@ export function OperationReferenceResponses({
         )}
         order={4}
       >
-        Responses
+        Response fields
       </Title>
-      <Accordion
-        value={value}
-        onChange={(responseCode) => {
-          if (responseCode === null) return setValue(responseCode)
-          if (responses[responseCode] === undefined) return
-          if (responses[responseCode].content === undefined) {
-            return
-          }
-          const contentObject = responses[responseCode].content
-          if (contentObject === undefined) return
+      <V1 responses={responses} />
+    </Box>
+  )
+}
 
-          if (contentObject[Object.keys(contentObject)[0]].schema === undefined)
-            return
+function V1({ responses }: Pick<ReferencePageProps, 'responses'>) {
+  const { classes, cx } = useStyles()
+  const [value, setValue] = useState<string | null>(null)
+  const theme = useMantineTheme()
 
-          setValue(responseCode)
-        }}
-        variant="separated"
-      >
-        {Object.entries(responses).map(([responseCode, response]) => {
-          // get schemaobject from first content type
-          // if schema is null the response object could be like
-          // "200": {
-          //  "description": "Successful response"
-          // }
-          const schemaObject = response.content
-            ? response.content[Object.keys(response.content)[0]].schema
-            : null
+  return (
+    <Accordion
+      value={value}
+      onChange={(responseCode) => {
+        if (responseCode === null) return setValue(responseCode)
+        if (responses[responseCode] === undefined) return
+        if (responses[responseCode].content === undefined) {
+          return
+        }
+        const contentObject = responses[responseCode].content
+        if (contentObject === undefined) return
 
-          return (
-            <Accordion.Item
-              className={classes.item}
-              value={responseCode}
-              key={responseCode}
-            >
-              {/* 1. Render response code
+        if (contentObject[Object.keys(contentObject)[0]].schema === undefined)
+          return
+
+        setValue(responseCode)
+      }}
+      variant="separated"
+    >
+      {Object.entries(responses).map(([responseCode, response]) => {
+        // get schemaobject from first content type
+        // if schema is null the response object could be like
+        // "200": {
+        //  "description": "Successful response"
+        // }
+        const schemaObject = response.content
+          ? response.content[Object.keys(response.content)[0]].schema
+          : null
+
+        return (
+          <Accordion.Item
+            className={classes.item}
+            value={responseCode}
+            key={responseCode}
+          >
+            {/* 1. Render response code
                           2. Render meaning of response code like "OK" for 200 and "Not Found" for 404 in same text box as (1)
                           3. Render green "Success" badge next to 2xx codes and red "Error" badge next to 4xx and 5xx codes
                           4. Render response description if it exists under the response code + badge
                        */}
-              <Accordion.Control
-                className={cx({
-                  [classes.noSchema]: schemaObject === null,
-                })}
-                px="md"
-              >
-                <Flex gap="xs" align="center">
-                  <Title order={6}>
-                    {responseCode} {httpResponseCodeMeaning(responseCode)}
-                  </Title>
-                  {responseCode.startsWith('2') ? (
-                    <Badge color="blue">Success</Badge>
-                  ) : (
-                    <Badge color="red">Error</Badge>
-                  )}
-                </Flex>
-                {response.description && (
-                  <Text c="dimmed" fz="sm">
-                    {response.description}
-                  </Text>
+            <Accordion.Control
+              className={cx({
+                [classes.noSchema]: schemaObject === null,
+              })}
+              px="md"
+            >
+              <Flex gap="xs" align="center">
+                <Title order={6}>
+                  {responseCode} {httpResponseCodeMeaning(responseCode)}
+                </Title>
+                {responseCode.startsWith('2') ? (
+                  <Badge color="blue">Success</Badge>
+                ) : (
+                  <Badge color="red">Error</Badge>
                 )}
-              </Accordion.Control>
-              <Accordion.Panel>
-                <Tabs
-                  styles={{
-                    tab: {
-                      color: inactiveColor(theme),
-                      '&[data-active="true"]': {
-                        color:
-                          theme.colorScheme === 'dark'
-                            ? theme.white
-                            : theme.black,
+              </Flex>
+              {response.description && (
+                <Text c="dimmed" fz="sm">
+                  {response.description}
+                </Text>
+              )}
+            </Accordion.Control>
+            <Accordion.Panel>
+              <Tabs
+                styles={{
+                  tab: {
+                    color: inactiveColor(theme),
+                    '&[data-active="true"]': {
+                      color:
+                        theme.colorScheme === 'dark'
+                          ? theme.white
+                          : theme.black,
+                      ...getClickableStyles(theme),
+                      ':hover': {
                         ...getClickableStyles(theme),
-                        ':hover': {
-                          ...getClickableStyles(theme),
-                        },
                       },
                     },
-                  }}
-                  variant="pills"
-                  defaultValue="example"
-                >
-                  <Tabs.List>
-                    <Tabs.Tab
-                      w="100px"
-                      value="example"
-                      icon={<IconFile size="0.8rem" />}
-                    >
-                      Example
-                    </Tabs.Tab>
-                    <Tabs.Tab
-                      w="138px"
-                      value="schema"
-                      icon={<IconFileCode size="0.8rem" />}
-                    >
-                      JSON Schema
-                    </Tabs.Tab>
-                  </Tabs.List>
+                  },
+                }}
+                variant="pills"
+                defaultValue="example"
+              >
+                <Tabs.List>
+                  <Tabs.Tab
+                    w="100px"
+                    value="example"
+                    icon={<IconFile size="0.8rem" />}
+                  >
+                    Example
+                  </Tabs.Tab>
+                  <Tabs.Tab
+                    w="138px"
+                    value="schema"
+                    icon={<IconFileCode size="0.8rem" />}
+                  >
+                    JSON Schema
+                  </Tabs.Tab>
+                </Tabs.List>
 
-                  <Tabs.Panel value="example" pt="xs">
-                    {schemaObject && !('$ref' in schemaObject) && (
-                      <JsonViewer
-                        collapsed={3}
-                        displayObjectSize={false}
-                        displayDataTypes={false}
-                        enableClipboard={true}
-                        name={false}
-                        src={OpenAPISampler.sample(schemaObject as any)}
-                      ></JsonViewer>
-                    )}
-                  </Tabs.Panel>
+                <Tabs.Panel value="example" pt="xs">
+                  {schemaObject && !('$ref' in schemaObject) && (
+                    <JsonViewer
+                      collapsed={3}
+                      displayObjectSize={false}
+                      displayDataTypes={false}
+                      enableClipboard={true}
+                      name={false}
+                      src={OpenAPISampler.sample(schemaObject as any)}
+                    ></JsonViewer>
+                  )}
+                </Tabs.Panel>
 
-                  <Tabs.Panel value="schema" pt="xs">
-                    {schemaObject && !('$ref' in schemaObject) && (
-                      <JsonViewer
-                        collapsed={3}
-                        displayObjectSize={false}
-                        displayDataTypes={false}
-                        enableClipboard={true}
-                        name={false}
-                        src={schemaObject}
-                      />
-                    )}
-                  </Tabs.Panel>
-                </Tabs>
-              </Accordion.Panel>
-            </Accordion.Item>
-          )
-        })}
-      </Accordion>
-    </Box>
+                <Tabs.Panel value="schema" pt="xs">
+                  {schemaObject && !('$ref' in schemaObject) && (
+                    <JsonViewer
+                      collapsed={3}
+                      displayObjectSize={false}
+                      displayDataTypes={false}
+                      enableClipboard={true}
+                      name={false}
+                      src={schemaObject}
+                    />
+                  )}
+                </Tabs.Panel>
+              </Tabs>
+            </Accordion.Panel>
+          </Accordion.Item>
+        )
+      })}
+    </Accordion>
   )
 }

@@ -331,7 +331,7 @@ export function OperationReferenceMain({
             )}
             order={4}
           >
-            Request Parameters
+            Request parameters
           </Title>
         </div>
         <Flex
