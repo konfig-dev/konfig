@@ -141,6 +141,36 @@ export function ParameterInput({
       />
     )
   }
+  // if oneOf and first schema's type is integer, then we need to use NumberInput
+  if (parameter.schema.oneOf !== undefined) {
+    if ('$ref' in parameter.schema.oneOf[0]) {
+      throw new Error('$ref not expected in oneOf')
+    }
+    if (parameter.schema.oneOf[0].type === 'integer') {
+      return (
+        <NumberInput
+          {...inputProps}
+          placeholder={processSchemaExample(parameter.schema.example)}
+        />
+      )
+    }
+  }
+
+  // if allOf and first schema's type is integer, then we need to use NumberInput
+  if (parameter.schema.allOf !== undefined) {
+    if ('$ref' in parameter.schema.allOf[0]) {
+      throw new Error('$ref not expected in allOf')
+    }
+    if (parameter.schema.allOf[0].type === 'integer') {
+      return (
+        <NumberInput
+          {...inputProps}
+          placeholder={processSchemaExample(parameter.schema.example)}
+        />
+      )
+    }
+  }
+
   if (
     parameter.schema.type === 'string' &&
     parameter.schema.enum !== undefined
@@ -159,6 +189,39 @@ export function ParameterInput({
       />
     )
   }
+
+  // if oneOf and first schema's type is number, then we need to use NumberInput
+  if (parameter.schema.oneOf !== undefined) {
+    if ('$ref' in parameter.schema.oneOf[0]) {
+      throw new Error('$ref not expected in oneOf')
+    }
+    if (parameter.schema.oneOf[0].type === 'number') {
+      return (
+        <NumberInput
+          {...inputProps}
+          precision={2}
+          placeholder={processSchemaExample(parameter.schema.example)}
+        />
+      )
+    }
+  }
+
+  // if allOf and first schema's type is number, then we need to use NumberInput
+  if (parameter.schema.allOf !== undefined) {
+    if ('$ref' in parameter.schema.allOf[0]) {
+      throw new Error('$ref not expected in allOf')
+    }
+    if (parameter.schema.allOf[0].type === 'number') {
+      return (
+        <NumberInput
+          {...inputProps}
+          precision={2}
+          placeholder={processSchemaExample(parameter.schema.example)}
+        />
+      )
+    }
+  }
+
   if (parameter.schema.type === 'number') {
     return (
       <NumberInput
