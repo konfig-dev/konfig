@@ -39,7 +39,7 @@ export function OperationForm({
   hasParameters: boolean
 }) {
   if (!hasParameters) {
-    return <div className="text-mantine-gray-600">No parameters.</div>
+    return <div className="text-mantine-gray-600">No request parameters.</div>
   }
   return (
     <Stack spacing="xl">
