@@ -13,6 +13,7 @@ import { schemaTypeLabel } from '@/utils/schema-type-label'
 import dynamic from 'next/dynamic'
 import { OperationParameterObjectForm } from './OperationParameterObjectForm'
 import { getParameterDescription } from '@/utils/get-parameter-description'
+import { OperationParameterDocumentation } from './OperationParameterDocumentation'
 
 /**
  * dynamic import to avoid SSR hydration errors where server-rendered HTML does not match client-rendered HTML
@@ -46,7 +47,6 @@ export function OperationParameter({
   noLabel?: boolean
 }) {
   const description = getParameterDescription(param)
-  const theme = useMantineTheme()
   return (
     <Stack pb="lg">
       {noLabel ? (
@@ -58,59 +58,14 @@ export function OperationParameter({
         />
       ) : (
         <Flex justify="space-between">
-          <Box maw="50%" key={param.name}>
-            <Flex align="center" wrap="wrap">
-              {param.name !== '' && (
-                <Code
-                  mr={rem(5)}
-                  style={{
-                    color: theme.colorScheme === 'dark' ? 'white' : 'black',
-                    backgroundColor:
-                      theme.colorScheme === 'dark'
-                        ? theme.colors.gray[9]
-                        : theme.colors.gray[0],
-                    borderRadius: theme.radius.md,
-                    border: `1px solid ${
-                      theme.colorScheme === 'dark'
-                        ? theme.colors.gray[8]
-                        : theme.colors.gray[4]
-                    }`,
-                  }}
-                >
-                  {param.name}
-                </Code>
-              )}
-              <Code
-                style={{
-                  color: theme.colors.gray[6],
-                }}
-                bg="unset"
-                fz={12}
-                ml={param.name === '' ? rem(-5) : undefined}
-                mr={rem(5)}
-              >
-                {schemaTypeLabel({ schema: param.schema })}
-              </Code>
-              {param.required && (
-                <Code style={{ color: 'red' }} bg="unset" fz={12}>
-                  {'required'}
-                </Code>
-              )}
-            </Flex>
-            {description && (
-              <Text
-                mt="xs"
-                c={
-                  theme.colorScheme === 'dark'
-                    ? theme.colors.gray[5]
-                    : theme.colors.gray[7]
-                }
-                fz="sm"
-              >
-                {description}
-              </Text>
-            )}
-          </Box>
+          <div className="max-w-[50%]">
+            <OperationParameterDocumentation
+              name={param.name}
+              description={description}
+              schema={schemaTypeLabel({ schema: param.schema })}
+              required={param.required}
+            />
+          </div>
           <Box ta="right" w="40%">
             <ParameterInput
               owner={owner}
