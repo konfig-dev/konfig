@@ -312,6 +312,7 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
         typeTemplateFiles.put("type." + templateExtension, ".py");
 
         apiTemplateFiles.put("api." + templateExtension, ".py");
+        apiTemplateFiles.put("api_generated." + templateExtension, ".py");
         if (additionalProperties.get("prstv2") != null && additionalProperties.get("prstv2").equals(true)) {
             additionalModelTemplateFiles.put("pydantic." + templateExtension, ".py");
             apiTemplateFiles.put("api_raw." + templateExtension, ".py");
@@ -557,7 +558,13 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
     @Override
     public String apiFilename(String templateName, String tag) {
         String suffix = apiTemplateFiles().get(templateName);
-        String filename = templateName.contains("_raw") ? toApiFilenameRaw(tag) : toApiFilename(tag);
+        String filename;
+        if (templateName.contains("_raw"))
+            filename = toApiFilenameRaw(tag);
+        else if (templateName.contains("_generated"))
+            filename = toApiFilenameGenerated(tag);
+        else
+            filename = toApiFilename(tag);
         return apiFileFolder() + File.separator + filename + suffix;
     }
 
