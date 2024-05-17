@@ -367,19 +367,19 @@ export function OperationReferenceMain({
             hideNonSdkSnippets={hideNonSdkSnippets}
           />
         </Flex>
-        <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
-          <Divider className="my-16" />
-        </MediaQuery>
-        <div className="px-3 sm:px-8">
-          {responses && (
-            <OperationReferenceResponses
-              operation={operation}
-              responses={responses}
-            />
-          )}
-          <SocialFooter konfigYaml={konfigYaml} />
-        </div>
       </form>
+      <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
+        <Divider className="my-16" />
+      </MediaQuery>
+      <div className="px-3 sm:px-8">
+        {responses && (
+          <OperationReferenceResponses
+            operation={operation}
+            responses={responses}
+          />
+        )}
+        <SocialFooter konfigYaml={konfigYaml} />
+      </div>
     </FormProvider>
   )
 }

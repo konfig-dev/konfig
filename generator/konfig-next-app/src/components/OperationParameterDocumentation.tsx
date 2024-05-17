@@ -1,16 +1,18 @@
 import { Box, Flex, rem, useMantineTheme, Text, Code } from '@mantine/core'
 
+export type OperationParameterDocumentationProps = {
+  name: string
+  description: string | undefined
+  schema: string
+  required?: boolean
+}
+
 export function OperationParameterDocumentation({
   name,
   description,
   schema,
   required,
-}: {
-  name: string
-  description: string | undefined
-  schema: string
-  required?: boolean
-}) {
+}: OperationParameterDocumentationProps) {
   const theme = useMantineTheme()
   return (
     <Box key={name}>

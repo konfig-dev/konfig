@@ -13,10 +13,22 @@ import {
   createStyles,
   Tabs,
   clsx,
+  Collapse,
+  Code,
+  rem,
 } from '@mantine/core'
 import { IconFile, IconFileCode } from '@tabler/icons-react'
-import { useState } from 'react'
+import { createContext, useContext, useState } from 'react'
 import { JsonViewer } from './JsonViewer'
+import { SchemaObject } from 'konfig-lib'
+import { makeAutoObservable } from 'mobx'
+import { observer } from 'mobx-react'
+import {
+  OperationParameterDocumentation,
+  OperationParameterDocumentationProps,
+} from './OperationParameterDocumentation'
+import { schemaTypeLabel } from '@/utils/schema-type-label'
+import { CollapsibleChevron } from './CollapsibleChevron'
 const OpenAPISampler = require('openapi-sampler')
 
 const useStyles = createStyles((theme) => ({
@@ -37,25 +49,339 @@ const useStyles = createStyles((theme) => ({
   },
 }))
 
-export function OperationReferenceResponses({
-  responses,
-  operation,
-}: Pick<ReferencePageProps, 'responses' | 'operation'>) {
-  return (
-    <Box my="lg">
-      <Title
-        className={clsx(
-          'mb-8',
-          'border-b pb-3 border-b-mantine-gray-100 dark:border-b-mantine-gray-900'
-        )}
-        order={4}
-      >
-        Response fields
-      </Title>
-      <V1 responses={responses} />
-    </Box>
-  )
+export const OperationReferenceResponses = observer(
+  ({
+    responses,
+    operation,
+  }: Pick<ReferencePageProps, 'responses' | 'operation'>) => {
+    return (
+      <Box my="lg">
+        <Title
+          className={clsx(
+            'mb-8',
+            'border-b pb-3 border-b-mantine-gray-100 dark:border-b-mantine-gray-900'
+          )}
+          order={4}
+        >
+          Response fields
+        </Title>
+        {/* <V1 responses={responses} /> */}
+        <V2 responses={responses} />
+      </Box>
+    )
+  }
+)
+
+type ResponseDocumentationObject = {
+  responseCode: string
+  description: string
+  schema: SchemaObject | null | undefined
 }
+
+type FieldDocumentationWithDepth = OperationParameterDocumentationProps & {
+  properties?: FieldDocumentationWithDepth[]
+}
+
+class ResponsesState {
+  responseCode: string
+  responses: ResponseDocumentationObject[]
+  propertiesExpanded: {
+    [path: string]: boolean
+  }
+  constructor({
+    responseCode,
+    responses,
+  }: {
+    responseCode: string
+    responses: ResponseDocumentationObject[]
+  }) {
+    makeAutoObservable(this)
+    this.responseCode = responseCode
+    this.responses = responses
+    this.propertiesExpanded = {}
+  }
+
+  getPropertiesExpanded(path: string) {
+    if (this.propertiesExpanded[path] === undefined) {
+      this.propertiesExpanded[path] = false
+    }
+    return this.propertiesExpanded[path]
+  }
+
+  setPropertiesExpanded(path: string, value: boolean) {
+    this.propertiesExpanded[path] = value
+  }
+
+  expandAllProperties() {
+    Object.keys(this.propertiesExpanded).forEach((key) => {
+      this.propertiesExpanded[key] = true
+    })
+  }
+
+  collapseAllProperties() {
+    Object.keys(this.propertiesExpanded).forEach((key) => {
+      this.propertiesExpanded[key] = false
+    })
+  }
+
+  get anyPropertiesExpanded() {
+    return Object.values(this.propertiesExpanded).some((expanded) => expanded)
+  }
+
+  get responseObject() {
+    const responseObject = this.responses.find(
+      (response) => response.responseCode === this.responseCode
+    )
+    if (responseObject === undefined) {
+      throw new Error('Response object not found')
+    }
+    return responseObject
+  }
+
+  get responseObjectSchemaLabel(): string {
+    const responseObject = this.responseObject
+    if (responseObject.schema === null) return ''
+    if (responseObject.schema === undefined) return ''
+    if ('$ref' in responseObject.schema)
+      throw new Error('$ref not expected in schema')
+    const schema = responseObject.schema
+    return schemaTypeLabel({ schema })
+  }
+
+  get fields(): FieldDocumentationWithDepth[] {
+    const responseObject = this.responseObject
+    if (responseObject.schema === null) return []
+    if (responseObject.schema === undefined) return []
+    if ('$ref' in responseObject.schema)
+      throw new Error('$ref not expected in schema')
+    const schema = responseObject.schema
+    if (schema.type === 'object') {
+      if (schema.properties === undefined) return []
+      const fields = Object.entries(schema.properties).map(
+        ([name, schema]) => ({
+          name,
+          schema,
+        })
+      )
+      return this.fieldsWithDepth(fields)
+    }
+    return []
+  }
+
+  fieldsWithDepth(
+    fields: { name: string; schema: SchemaObject }[]
+  ): FieldDocumentationWithDepth[] {
+    const fieldsWithDepth: FieldDocumentationWithDepth[] = []
+
+    for (const field of fields) {
+      if (field.schema.type === 'object') {
+        if (field.schema.properties !== undefined) {
+          const objectFields = Object.entries(field.schema.properties).map(
+            ([name, schema]) => ({
+              name,
+              schema,
+            })
+          )
+          const properties = this.fieldsWithDepth(objectFields)
+          fieldsWithDepth.push({
+            name: field.name,
+            schema: schemaTypeLabel({ schema: field.schema }),
+            description: field.schema.description,
+            properties,
+          })
+        } else {
+          fieldsWithDepth.push({
+            name: field.name,
+            schema: schemaTypeLabel({ schema: field.schema }),
+            description: field.schema.description,
+          })
+        }
+      } else if (field.schema.type === 'array') {
+        fieldsWithDepth.push({
+          name: field.name,
+          schema: schemaTypeLabel({ schema: field.schema }),
+          description: field.schema.description,
+        })
+      } else {
+        fieldsWithDepth.push({
+          name: field.name,
+          schema: schemaTypeLabel({ schema: field.schema }),
+          description: field.schema.description,
+        })
+      }
+    }
+
+    return fieldsWithDepth
+  }
+}
+
+const ResponsesStateContext = createContext<ResponsesState | null>(null)
+
+const V2 = observer(({ responses }: Pick<ReferencePageProps, 'responses'>) => {
+  const responsesMapped = Object.entries(responses).map(
+    ([responseCode, response]) => {
+      // get schemaobject from first content type
+      // if schema is null the response object could be like
+      // "200": {
+      //  "description": "Successful response"
+      // }
+      const schemaObject = response.content
+        ? response.content[Object.keys(response.content)[0]].schema
+        : null
+
+      if (schemaObject != null && '$ref' in schemaObject) {
+        throw new Error('$ref not expected in schema')
+      }
+
+      return {
+        responseCode,
+        description: response.description,
+        schema: schemaObject,
+      }
+    }
+  )
+
+  return (
+    <ResponsesStateContext.Provider
+      value={
+        new ResponsesState({
+          responseCode: responsesMapped[0].responseCode,
+          responses: responsesMapped,
+        })
+      }
+    >
+      <ResponseDocumentation />
+    </ResponsesStateContext.Provider>
+  )
+})
+
+const ResponseDocumentation = observer(() => {
+  const responsesState = useContext(ResponsesStateContext)
+  const theme = useMantineTheme()
+  return (
+    <div className="flex flex-col sm:flex-row gap-3 justify-between">
+      <div className="flex-1">
+        <div className="w-full border-b dark:border-mantine-gray-900 border-mantine-gray-100 flex justify-between">
+          <Code
+            style={{
+              color: theme.colors.gray[6],
+            }}
+            bg="unset"
+            fz={12}
+          >
+            {responsesState?.responseObjectSchemaLabel}
+          </Code>
+          <button
+            onClick={() =>
+              responsesState?.anyPropertiesExpanded
+                ? responsesState?.collapseAllProperties()
+                : responsesState?.expandAllProperties()
+            }
+            className="text-sm py-1 mb-1 px-3 dark:hover:bg-mantine-gray-800 hover:bg-mantine-gray-100 rounded-md"
+          >
+            {responsesState?.anyPropertiesExpanded
+              ? 'Collapse all...'
+              : 'Expand all...'}
+          </button>
+        </div>
+        {responsesState && (
+          <ResponseFieldDocumentationContents
+            depth={0}
+            fields={responsesState.fields}
+            path=""
+          />
+        )}
+      </div>
+      <div className="flex-1">Example</div>
+    </div>
+  )
+})
+
+const ResponseFieldDocumentationContents = observer(
+  ({
+    fields,
+    depth,
+    path,
+  }: {
+    fields: FieldDocumentationWithDepth[]
+    depth: number
+    path: string
+  }) => {
+    return (
+      <div
+        className={clsx({
+          'ml-4': depth === 1,
+          'ml-8': depth === 2,
+          'ml-12': depth === 3,
+          'ml-16': depth === 4,
+          'ml-20': depth === 5,
+          'ml-24': depth === 6,
+          'ml-28': depth === 7,
+          'ml-32': depth === 8,
+          'ml-36': depth === 9,
+          'ml-40': depth === 10,
+        })}
+      >
+        {fields.map((field) => (
+          <ResponseFieldDocumentationField
+            key={field.name}
+            field={field}
+            depth={depth}
+            path={path + '.' + field.name}
+          />
+        ))}
+      </div>
+    )
+  }
+)
+
+const ResponseFieldDocumentationField = observer(
+  ({
+    field,
+    path,
+    depth,
+  }: {
+    field: FieldDocumentationWithDepth
+    path: string
+    depth: number
+  }) => {
+    const responsesState = useContext(ResponsesStateContext)
+    const opened = responsesState?.getPropertiesExpanded(path) ?? false
+    const toggle = () => responsesState?.setPropertiesExpanded(path, !opened)
+    return (
+      <>
+        <div
+          className={clsx(
+            'hover:bg-mantine-gray-100 dark:hover:bg-mantine-gray-900',
+            'border-b dark:border-mantine-gray-900 border-mantine-gray-100 py-5 px-3'
+          )}
+        >
+          <OperationParameterDocumentation key={field.name} {...field} />
+          {field.properties && field.properties.length > 0 && (
+            <button
+              onClick={() => toggle()}
+              className="mt-4 ml-auto px-3 flex items-center py-1 rounded-md dark:hover:bg-mantine-gray-800 hover:bg-mantine-gray-100"
+            >
+              <span className="text-sm mr-3 dark:text-mantine-gray-500">
+                {opened ? 'Hide properties' : 'Show properties'}
+              </span>
+              <CollapsibleChevron opened={opened} />
+            </button>
+          )}
+        </div>
+        <Collapse in={opened}>
+          {field.properties && field.properties.length > 0 && (
+            <ResponseFieldDocumentationContents
+              fields={field.properties}
+              depth={depth + 1}
+              path={path}
+            />
+          )}
+        </Collapse>
+      </>
+    )
+  }
+)
 
 function V1({ responses }: Pick<ReferencePageProps, 'responses'>) {
   const { classes, cx } = useStyles()

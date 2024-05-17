@@ -8,10 +8,10 @@ import {
   createStyles,
   rem,
 } from '@mantine/core'
-import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react'
 import { HttpMethodBadge } from './HttpMethodBadge'
 import { NavbarLink, navbarLinkColor } from './NavbarLink'
 import { useRouter } from 'next/router'
+import { CollapsibleChevron } from './CollapsibleChevron'
 
 const useStyles = createStyles((theme) => ({
   control: {
@@ -33,10 +33,6 @@ const useStyles = createStyles((theme) => ({
 
   linkWrapper: {
     paddingLeft: rem(12),
-  },
-
-  chevron: {
-    transition: 'transform 200ms ease',
   },
 }))
 
@@ -71,7 +67,6 @@ export function LinksGroup({
   const { classes, theme } = useStyles()
   const hasLinks = Array.isArray(links)
   const [opened, setOpened] = useState(initiallyOpened || false)
-  const ChevronIcon = theme.dir === 'ltr' ? IconChevronRight : IconChevronLeft
   const ref = useRef<HTMLAnchorElement>(null)
 
   const router = useRouter()
@@ -121,18 +116,7 @@ export function LinksGroup({
       >
         <Group position="apart" spacing={0}>
           <Box>{label}</Box>
-          {hasLinks && (
-            <ChevronIcon
-              className={classes.chevron}
-              size="1rem"
-              stroke={1.5}
-              style={{
-                transform: opened
-                  ? `rotate(${theme.dir === 'rtl' ? -90 : 90}deg)`
-                  : 'none',
-              }}
-            />
-          )}
+          {hasLinks && <CollapsibleChevron opened={opened} />}
         </Group>
       </UnstyledButton>
       {hasLinks ? <Collapse in={opened}>{items}</Collapse> : null}
