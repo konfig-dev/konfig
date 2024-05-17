@@ -498,7 +498,7 @@ public class PythonClientCodegen extends AbstractPythonCodegen {
         dependencies.add(new PythonDependency("certifi", "2023.7.22", ">=", ">="));
         dependencies.add(new PythonDependency("python-dateutil", "2.8.2", "~=", "^"));
         dependencies.add(new PythonDependency("typing_extensions", "4.3.0", "~=", "^"));
-        dependencies.add(new PythonDependency("urllib3", "1.26.18", "~=", "^"));
+        dependencies.add(new PythonDependency("urllib3", new String[]{"1.26.18", "2.0.0"}, new String[]{"~=", "~="},  new String[]{"^", "^"}));
         dependencies.add(new PythonDependency("cryptography", "42.0.5", "~=", "^"));
         dependencies.add(new PythonDependency("frozendict", "2.3.4", "~=", "^"));
         if (additionalProperties.get("useAiohttp38") != null && (boolean) additionalProperties.get("useAiohttp38")) {
