@@ -50,8 +50,10 @@ describe('highlight-json-lines', () => {
   })
   test('id in array of object', () => {
     expect(
-      highlightJsonLines({ json: jsonWithArrayOfObjects, path: ['data', 'id'] })
-        .highlightedLines
+      highlightJsonLines({
+        json: jsonWithArrayOfObjects,
+        path: ['data', '$item', 'id'],
+      }).highlightedLines
     ).toStrictEqual([4, 7])
   })
 
@@ -101,5 +103,26 @@ describe('highlight-json-lines', () => {
       highlightJsonLines({ json: nestedObjects, path: ['a', 'b', 'c'] })
         .highlightedLines
     ).toStrictEqual([4])
+  })
+
+  const arrayOfObjects = [
+    {
+      id: 1,
+    },
+    {
+      id: 2,
+    },
+  ]
+  test('array of object items', () => {
+    expect(
+      highlightJsonLines({ json: arrayOfObjects, path: ['$item'] })
+        .highlightedLines
+    ).toStrictEqual([2, 3, 4, 5, 6, 7])
+  })
+  test('array of objects id', () => {
+    expect(
+      highlightJsonLines({ json: arrayOfObjects, path: ['$item', 'id'] })
+        .highlightedLines
+    ).toStrictEqual([3, 6])
   })
 })

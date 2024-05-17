@@ -115,13 +115,14 @@ export function highlightJsonLines({
         }
       }
 
-      // If we aren't currently processing an object or array, we can move to the next path index
       if (
         !parsingState.processingObject &&
         !parsingState.processingArray &&
         !parsingState.processingObjectItem &&
         !keyIsItem
       ) {
+        pathIndex++
+      } else if (keyIsItem && !endOfPath) {
         pathIndex++
       }
     }
