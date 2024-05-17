@@ -71,7 +71,7 @@ export function OperationReferenceDocumentation({
         </Alert>
       )}
       {operation.operation.description && (
-        <Box className="space-y-4 text-mantine-gray-700 dark:text-mantine-gray-500 text-sm max-w-2xl">
+        <Box className="space-y-4 prose text-mantine-gray-700 dark:text-mantine-gray-500 text-sm max-w-2xl">
           <ReactMarkdown>{operation.operation.description}</ReactMarkdown>
         </Box>
       )}

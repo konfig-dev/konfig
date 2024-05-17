@@ -1,4 +1,5 @@
 import { Box, Flex, rem, useMantineTheme, Text, Code } from '@mantine/core'
+import ReactMarkdown from 'react-markdown'
 
 export type OperationParameterDocumentationProps = {
   name: string
@@ -55,17 +56,9 @@ export function OperationParameterDocumentation({
         )}
       </Flex>
       {description && (
-        <Text
-          mt="xs"
-          c={
-            theme.colorScheme === 'dark'
-              ? theme.colors.gray[5]
-              : theme.colors.gray[7]
-          }
-          fz="sm"
-        >
+        <ReactMarkdown className="mt-[0.625rem] prose dark:prose-invert text-sm dark:text-mantine-gray-500 text-mantine-gray-700">
           {description}
-        </Text>
+        </ReactMarkdown>
       )}
     </Box>
   )

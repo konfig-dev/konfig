@@ -16,6 +16,7 @@ import {
   Collapse,
   Code,
   rem,
+  Spoiler,
 } from '@mantine/core'
 import { IconFile, IconFileCode } from '@tabler/icons-react'
 import { createContext, useContext, useState } from 'react'
@@ -340,26 +341,30 @@ const ResponseDocumentation = observer(() => {
   return (
     <div className="flex flex-col sm:flex-row gap-3 justify-between">
       <div className="flex-1">
-        <div className="w-full pb-3 items-end border-b dark:border-mantine-gray-900 border-mantine-gray-100 flex justify-between">
-          <OperationParameterDocumentation
-            name=""
-            schema={responsesState?.responseObjectSchemaLabel ?? ''}
-            description={responsesState?.responseObjectSchemaDescription}
-          />
-          {responsesState?.anyCollapsibleProperties && (
-            <button
-              onClick={() =>
-                responsesState?.anyPropertiesExpanded
-                  ? responsesState?.collapseAllProperties()
-                  : responsesState?.expandAllProperties()
-              }
-              className="text-sm flex-nowrap whitespace-nowrap h-fit py-1 px-3 dark:hover:bg-mantine-gray-800 hover:bg-mantine-gray-100 rounded-md"
-            >
-              {responsesState?.anyPropertiesExpanded
-                ? 'Collapse all...'
-                : 'Expand all...'}
-            </button>
-          )}
+        <div className="w-full pb-3 border-b dark:border-mantine-gray-900 border-mantine-gray-100">
+          <Spoiler maxHeight={120} showLabel="Show more" hideLabel="Hide">
+            <OperationParameterDocumentation
+              name=""
+              schema={responsesState?.responseObjectSchemaLabel ?? ''}
+              description={responsesState?.responseObjectSchemaDescription}
+            />
+          </Spoiler>
+          <div className="w-full flex justify-end">
+            {responsesState?.anyCollapsibleProperties && (
+              <button
+                onClick={() =>
+                  responsesState?.anyPropertiesExpanded
+                    ? responsesState?.collapseAllProperties()
+                    : responsesState?.expandAllProperties()
+                }
+                className="text-sm flex-nowrap whitespace-nowrap py-1 px-3 dark:hover:bg-mantine-gray-800 hover:bg-mantine-gray-100 rounded-md"
+              >
+                {responsesState?.anyPropertiesExpanded
+                  ? 'Collapse all...'
+                  : 'Expand all...'}
+              </button>
+            )}
+          </div>
         </div>
         {responsesState && (
           <ResponseFieldDocumentationContents
