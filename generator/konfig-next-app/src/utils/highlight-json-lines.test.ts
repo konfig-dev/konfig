@@ -65,8 +65,7 @@ describe('highlight-json-lines', () => {
   const arrayOfScalar = [1, 2, 3]
   test('array of scalars', () => {
     expect(
-      highlightJsonLines({ json: arrayOfScalar, path: ['item'] })
-        .highlightedLines
+      highlightJsonLines({ json: arrayOfScalar, path: [] }).highlightedLines
     ).toStrictEqual([1, 2, 3, 4, 5])
   })
   test('array of scalars items', () => {
