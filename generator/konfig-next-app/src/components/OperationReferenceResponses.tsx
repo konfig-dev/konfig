@@ -128,6 +128,11 @@ class ResponsesState {
     return Object.values(this.propertiesExpanded).some((expanded) => expanded)
   }
 
+  get anyCollapsibleProperties() {
+    // iterate through all fields and check if they have any properties
+    return this.fields.some((field) => (field.properties?.length ?? 0) > 0)
+  }
+
   get responseObject() {
     const responseObject = this.responses.find(
       (response) => response.responseCode === this.responseCode
@@ -148,6 +153,16 @@ class ResponsesState {
     return schemaTypeLabel({ schema })
   }
 
+  get responseObjectSchemaDescription(): string {
+    const responseObject = this.responseObject
+    if (responseObject.schema === null) return ''
+    if (responseObject.schema === undefined) return ''
+    if ('$ref' in responseObject.schema)
+      throw new Error('$ref not expected in schema')
+    const schema = responseObject.schema
+    return schema.description ?? ''
+  }
+
   get fields(): FieldDocumentationWithDepth[] {
     const responseObject = this.responseObject
     if (responseObject.schema === null) return []
@@ -164,6 +179,17 @@ class ResponsesState {
         })
       )
       return this.fieldsWithDepth(fields)
+    } else if (schema.type === 'array') {
+      if ('$ref' in schema.items) {
+        throw new Error('$ref not expected in schema')
+      }
+      const fields = [
+        {
+          name: 'item',
+          schema: schema.items,
+        },
+      ]
+      return this.fieldsWithDepth(fields)
     }
     return []
   }
@@ -176,6 +202,7 @@ class ResponsesState {
     for (const field of fields) {
       if (field.schema.type === 'object') {
         if (field.schema.properties !== undefined) {
+          // object with properties
           const objectFields = Object.entries(field.schema.properties).map(
             ([name, schema]) => ({
               name,
@@ -190,6 +217,7 @@ class ResponsesState {
             properties,
           })
         } else {
+          // object without properties
           fieldsWithDepth.push({
             name: field.name,
             schema: schemaTypeLabel({ schema: field.schema }),
@@ -197,12 +225,64 @@ class ResponsesState {
           })
         }
       } else if (field.schema.type === 'array') {
-        fieldsWithDepth.push({
-          name: field.name,
-          schema: schemaTypeLabel({ schema: field.schema }),
-          description: field.schema.description,
-        })
+        if (field.schema.items !== undefined) {
+          if ('$ref' in field.schema.items) {
+            throw new Error('$ref not expected in schema')
+          }
+          if (field.schema.items.type === 'object') {
+            if (field.schema.items.properties === undefined) {
+              // array of free-form objects
+              fieldsWithDepth.push({
+                name: field.name,
+                schema: schemaTypeLabel({ schema: field.schema }),
+                description: field.schema.description,
+              })
+            } else {
+              // array of objects with properties
+              const objectFields = Object.entries(
+                field.schema.items.properties
+              ).map(([name, schema]) => ({
+                name,
+                schema,
+              }))
+              const properties = this.fieldsWithDepth(objectFields)
+              fieldsWithDepth.push({
+                name: field.name,
+                schema: schemaTypeLabel({ schema: field.schema }),
+                description: field.schema.description,
+                properties,
+              })
+            }
+          } else {
+            // array of scalars (thus we must come up with some arbitrary name. I chose to make the name based on schema)
+            const name =
+              typeof field.schema.items.type === 'string'
+                ? field.schema.items.type
+                : 'item'
+            const objectFields = [
+              {
+                name,
+                schema: field.schema.items,
+              },
+            ]
+            const properties = this.fieldsWithDepth(objectFields)
+            fieldsWithDepth.push({
+              name: field.name,
+              schema: schemaTypeLabel({ schema: field.schema }),
+              description: field.schema.description,
+              properties,
+            })
+          }
+        } else {
+          // array without items
+          fieldsWithDepth.push({
+            name: field.name,
+            schema: schemaTypeLabel({ schema: field.schema }),
+            description: field.schema.description,
+          })
+        }
       } else {
+        // scalar non-array
         fieldsWithDepth.push({
           name: field.name,
           schema: schemaTypeLabel({ schema: field.schema }),
@@ -257,32 +337,29 @@ const V2 = observer(({ responses }: Pick<ReferencePageProps, 'responses'>) => {
 
 const ResponseDocumentation = observer(() => {
   const responsesState = useContext(ResponsesStateContext)
-  const theme = useMantineTheme()
   return (
     <div className="flex flex-col sm:flex-row gap-3 justify-between">
       <div className="flex-1">
-        <div className="w-full border-b dark:border-mantine-gray-900 border-mantine-gray-100 flex justify-between">
-          <Code
-            style={{
-              color: theme.colors.gray[6],
-            }}
-            bg="unset"
-            fz={12}
-          >
-            {responsesState?.responseObjectSchemaLabel}
-          </Code>
-          <button
-            onClick={() =>
-              responsesState?.anyPropertiesExpanded
-                ? responsesState?.collapseAllProperties()
-                : responsesState?.expandAllProperties()
-            }
-            className="text-sm py-1 mb-1 px-3 dark:hover:bg-mantine-gray-800 hover:bg-mantine-gray-100 rounded-md"
-          >
-            {responsesState?.anyPropertiesExpanded
-              ? 'Collapse all...'
-              : 'Expand all...'}
-          </button>
+        <div className="w-full pb-3 items-end border-b dark:border-mantine-gray-900 border-mantine-gray-100 flex justify-between">
+          <OperationParameterDocumentation
+            name=""
+            schema={responsesState?.responseObjectSchemaLabel ?? ''}
+            description={responsesState?.responseObjectSchemaDescription}
+          />
+          {responsesState?.anyCollapsibleProperties && (
+            <button
+              onClick={() =>
+                responsesState?.anyPropertiesExpanded
+                  ? responsesState?.collapseAllProperties()
+                  : responsesState?.expandAllProperties()
+              }
+              className="text-sm flex-nowrap whitespace-nowrap h-fit py-1 px-3 dark:hover:bg-mantine-gray-800 hover:bg-mantine-gray-100 rounded-md"
+            >
+              {responsesState?.anyPropertiesExpanded
+                ? 'Collapse all...'
+                : 'Expand all...'}
+            </button>
+          )}
         </div>
         {responsesState && (
           <ResponseFieldDocumentationContents
