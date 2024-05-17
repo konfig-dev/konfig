@@ -20,7 +20,7 @@ extension {{projectName}}API {
 /** {{{.}}} */{{/description}}
 {{#objcCompatible}}@objc {{/objcCompatible}}{{#nonPublicApi}}internal{{/nonPublicApi}}{{^nonPublicApi}}open{{/nonPublicApi}} class {{classname}}{{#objcCompatible}} : NSObject{{/objcCompatible}} {
 
-    let client: {{projectName}}Client
+    weak var client: {{projectName}}Client?
 
     public init(client: {{projectName}}Client) {
         self.client = client
