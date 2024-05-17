@@ -47,8 +47,8 @@ export function highlightJsonLines({
   const parsingState = {
     inArray: 0,
     inObject: 0,
-    processingObject: false,
-    processingArray: false,
+    processingObject: -1,
+    processingArray: -1,
     processingObjectItem: false,
   }
   let atArrayOpen = false
@@ -94,30 +94,34 @@ export function highlightJsonLines({
     if (
       (keyIsItem && !atArrayClose) ||
       keyMatches ||
-      ((atRoot || keyMatches) && endOfPath && (atObjectOpen || atArrayOpen)) ||
-      parsingState.processingObject ||
-      parsingState.processingArray
+      (atRoot && endOfPath && (atObjectOpen || atArrayOpen)) ||
+      parsingState.processingObject !== -1 ||
+      parsingState.processingArray !== -1
     ) {
       if (endOfPath) {
         highlightedLines.push(lineNumber)
 
-        if (atObjectOpen) {
-          parsingState.processingObject = true
+        if (
+          keyMatches &&
+          atObjectOpen &&
+          parsingState.processingObject === -1
+        ) {
+          parsingState.processingObject = parsingState.inObject
         }
-        if (atArrayOpen) {
-          parsingState.processingArray = true
+        if (keyMatches && atArrayOpen && parsingState.processingArray === -1) {
+          parsingState.processingArray = parsingState.inArray
         }
-        if (atObjectClose) {
-          parsingState.processingObject = false
+        if (parsingState.inObject < parsingState.processingObject) {
+          parsingState.processingObject = -1
         }
-        if (atArrayClose) {
-          parsingState.processingArray = false
+        if (parsingState.inArray < parsingState.processingArray) {
+          parsingState.processingArray = -1
         }
       }
 
       if (
-        !parsingState.processingObject &&
-        !parsingState.processingArray &&
+        parsingState.processingObject === -1 &&
+        parsingState.processingArray === -1 &&
         !parsingState.processingObjectItem &&
         !keyIsItem
       ) {
