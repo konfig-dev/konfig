@@ -83,8 +83,10 @@ export function highlightJsonLines({
     const endOfPath = pathIndex === path.length - 1
     const atRoot = pathIndex === 0
     const keyMatches = trimmedLine.startsWith(`"${path[pathIndex]}"`)
+    const keyIsItem = path[pathIndex] === '$item'
 
     if (
+      (keyIsItem && !atArrayClose) ||
       keyMatches ||
       ((atRoot || keyMatches) && endOfPath && (atObjectOpen || atArrayOpen)) ||
       parsingState.processingObject ||
@@ -111,7 +113,8 @@ export function highlightJsonLines({
       if (
         !parsingState.processingObject &&
         !parsingState.processingArray &&
-        !parsingState.processingObjectItem
+        !parsingState.processingObjectItem &&
+        !keyIsItem
       ) {
         pathIndex++
       }

@@ -70,7 +70,7 @@ describe('highlight-json-lines', () => {
   })
   test('array of scalars items', () => {
     expect(
-      highlightJsonLines({ json: arrayOfScalar, path: ['item'] })
+      highlightJsonLines({ json: arrayOfScalar, path: ['$item'] })
         .highlightedLines
     ).toStrictEqual([2, 3, 4])
   })
