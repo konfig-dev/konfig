@@ -312,8 +312,8 @@ export function OperationReferenceMain({
   const header = operation.operation.summary ?? operation.path
   return (
     <FormProvider form={form}>
-      <form onSubmit={form.onSubmit(handleSubmit, handleError)}>
-        <div className="px-3 sm:px-8">
+      <div className="px-3 sm:px-8">
+        <form onSubmit={form.onSubmit(handleSubmit, handleError)}>
           <div className="mb-14 mt-6">
             <OperationReferenceDocumentation
               operation={operation}
@@ -326,6 +326,7 @@ export function OperationReferenceMain({
           </div>
           <Title
             className={clsx(
+              'mt-20',
               'mb-8',
               'border-b pb-3 border-b-mantine-gray-100 dark:border-b-mantine-gray-900'
             )}
@@ -333,45 +334,42 @@ export function OperationReferenceMain({
           >
             Execute an API Request
           </Title>
-        </div>
-        <Flex
-          direction={{ base: 'column', sm: 'row' }}
-          justify={{ base: undefined, sm: 'space-between' }}
-          className="px-3 sm:px-8"
-        >
-          <Stack w={{ base: '100%', sm: '55%' }} spacing="md">
-            <OperationForm
-              hasParameters={hasParameters}
-              requestBody={requestBodyParameter}
-              owner={owner}
-              repo={repo}
-              pathParameters={pathParameters}
-              queryParameters={queryParameters}
-              headerParameters={headerParameters}
-              cookieParameters={cookieParameters}
-              requestBodyProperties={requestBodyProperties}
-              requestBodyRequired={requestBodyRequired}
+          <Flex
+            direction={{ base: 'column', sm: 'row' }}
+            justify={{ base: undefined, sm: 'space-between' }}
+          >
+            <Stack w={{ base: '100%', sm: '55%' }} spacing="md">
+              <OperationForm
+                hasParameters={hasParameters}
+                requestBody={requestBodyParameter}
+                owner={owner}
+                repo={repo}
+                pathParameters={pathParameters}
+                queryParameters={queryParameters}
+                headerParameters={headerParameters}
+                cookieParameters={cookieParameters}
+                requestBodyProperties={requestBodyProperties}
+                requestBodyRequired={requestBodyRequired}
+              />
+            </Stack>
+            <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
+              <div className="h-10" />
+            </MediaQuery>
+            <OperationFormPanel
+              authorization={authorization}
+              hideSecurity={hideSecurity}
+              clientState={clientState}
+              clientStateWithExamples={clientStateWithExamples}
+              codegenArgs={codegenArgs}
+              result={result}
+              requestInProgress={requestInProgress}
+              hideNonSdkSnippets={hideNonSdkSnippets}
             />
-          </Stack>
-          <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
-            <div className="h-10" />
-          </MediaQuery>
-          <OperationFormPanel
-            authorization={authorization}
-            hideSecurity={hideSecurity}
-            clientState={clientState}
-            clientStateWithExamples={clientStateWithExamples}
-            codegenArgs={codegenArgs}
-            result={result}
-            requestInProgress={requestInProgress}
-            hideNonSdkSnippets={hideNonSdkSnippets}
-          />
-        </Flex>
-      </form>
-      <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
-        <Divider className="my-16" />
-      </MediaQuery>
-      <div className="px-3 sm:px-8">
+          </Flex>
+        </form>
+        <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
+          <Divider className="my-16" />
+        </MediaQuery>
         {responses && (
           <OperationReferenceResponses
             operation={operation}
