@@ -495,7 +495,12 @@ const ResponseFieldDocumentationField = observer(
     return (
       <>
         <div
-          data-path={JSON.stringify(path.substring(1).split(PATH_DELIMITER))}
+          data-path={JSON.stringify(
+            path
+              .substring(1)
+              .split(PATH_DELIMITER)
+              .map((part) => (part === 'item' ? '$item' : part))
+          )}
           onMouseEnter={(e) => {
             const dataPath = e.currentTarget.getAttribute('data-path')
             if (dataPath === null) return
