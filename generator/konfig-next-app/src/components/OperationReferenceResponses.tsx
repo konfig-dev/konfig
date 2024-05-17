@@ -17,9 +17,10 @@ import {
   Code,
   rem,
   Spoiler,
+  DefaultProps,
 } from '@mantine/core'
 import { IconFile, IconFileCode } from '@tabler/icons-react'
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 import { JsonViewer } from './JsonViewer'
 import { SchemaObject } from 'konfig-lib'
 import { makeAutoObservable } from 'mobx'
@@ -30,6 +31,8 @@ import {
 } from './OperationParameterDocumentation'
 import { schemaTypeLabel } from '@/utils/schema-type-label'
 import { CollapsibleChevron } from './CollapsibleChevron'
+import { Prism, PrismStylesNames } from '@mantine/prism'
+import { highlightJsonLines } from '@/utils/highlight-json-lines'
 const OpenAPISampler = require('openapi-sampler')
 
 const useStyles = createStyles((theme) => ({
@@ -86,6 +89,7 @@ type FieldDocumentationWithDepth = OperationParameterDocumentationProps & {
 class ResponsesState {
   responseCode: string
   responses: ResponseDocumentationObject[]
+  highlightJsonPath: string[] = []
   propertiesExpanded: {
     [path: string]: boolean
   }
@@ -199,6 +203,10 @@ class ResponsesState {
     return []
   }
 
+  setHighlightPath(dataPath: string) {
+    this.highlightJsonPath = JSON.parse(dataPath)
+  }
+
   get example(): object {
     return OpenAPISampler.sample(this.responseObjectSchema)
   }
@@ -302,6 +310,17 @@ class ResponsesState {
 
     return fieldsWithDepth
   }
+
+  get exampleString(): string {
+    return this.highlightLines.jsonString
+  }
+
+  get highlightLines(): ReturnType<typeof highlightJsonLines> {
+    return highlightJsonLines({
+      json: this.example,
+      path: this.highlightJsonPath,
+    })
+  }
 }
 
 const ResponsesStateContext = createContext<ResponsesState | null>(null)
@@ -382,11 +401,55 @@ const ResponseDocumentation = observer(() => {
           />
         )}
       </div>
-      <div className="flex-1">Example</div>
+      <div className="flex-1">
+        <ResponseExample />
+      </div>
     </div>
   )
 })
 
+const ResponseExample = observer(() => {
+  const responsesState = useContext(ResponsesStateContext)
+  const styles: DefaultProps<PrismStylesNames> = {
+    styles: {
+      code: {
+        maxHeight: 720,
+        padding: 0,
+      },
+    },
+    classNames: {
+      root: 'rounded-md overflow-hidden',
+      line: 'first:pt-5 last:pb-5',
+    },
+  }
+  const jsonString = responsesState?.exampleString ?? ''
+
+  const highlightLines = {
+    ...Object.fromEntries(
+      Array.from(
+        { length: jsonString.split('\n').length },
+        (_, i) => [i + 1, { color: 'dark' }] as [number, { color: string }]
+      ).filter(
+        ([i]) => !responsesState?.highlightLines.highlightedLines.includes(i)
+      )
+    ),
+  }
+
+  return (
+    <div className="sticky top-[calc(var(--mantine-header-height,0px)+1rem)]">
+      <Prism
+        highlightLines={{ ...highlightLines }}
+        withLineNumbers
+        {...styles}
+        language={'json'}
+      >
+        {jsonString}
+      </Prism>
+    </div>
+  )
+})
+
+const PATH_DELIMITER = '.'
 const ResponseFieldDocumentationContents = observer(
   ({
     fields,
@@ -400,16 +463,7 @@ const ResponseFieldDocumentationContents = observer(
     return (
       <div
         className={clsx({
-          'ml-4': depth === 1,
-          'ml-8': depth === 2,
-          'ml-12': depth === 3,
-          'ml-16': depth === 4,
-          'ml-20': depth === 5,
-          'ml-24': depth === 6,
-          'ml-28': depth === 7,
-          'ml-32': depth === 8,
-          'ml-36': depth === 9,
-          'ml-40': depth === 10,
+          'ml-4': depth > 0,
         })}
       >
         {fields.map((field) => (
@@ -417,7 +471,7 @@ const ResponseFieldDocumentationContents = observer(
             key={field.name}
             field={field}
             depth={depth}
-            path={path + '.' + field.name}
+            path={path + PATH_DELIMITER + field.name}
           />
         ))}
       </div>
@@ -441,6 +495,15 @@ const ResponseFieldDocumentationField = observer(
     return (
       <>
         <div
+          data-path={JSON.stringify(path.substring(1).split(PATH_DELIMITER))}
+          onMouseEnter={(e) => {
+            const dataPath = e.currentTarget.getAttribute('data-path')
+            if (dataPath === null) return
+            responsesState?.setHighlightPath(dataPath)
+          }}
+          onMouseLeave={(e) => {
+            responsesState?.setHighlightPath('[]')
+          }}
           className={clsx(
             'hover:bg-mantine-gray-100 dark:hover:bg-mantine-gray-900',
             'border-b dark:border-mantine-gray-900 border-mantine-gray-100 py-5 px-3'
