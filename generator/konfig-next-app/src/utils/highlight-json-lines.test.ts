@@ -6,6 +6,9 @@ describe('highlight-json-lines', () => {
     inner: {
       id: 2,
     },
+    another: {
+      id: 3,
+    },
   }
   test('top-level id', () => {
     expect(
@@ -26,7 +29,7 @@ describe('highlight-json-lines', () => {
   test('root', () => {
     expect(
       highlightJsonLines({ json: simpleJson, path: [] }).highlightedLines
-    ).toStrictEqual([1, 2, 3, 4, 5])
+    ).toStrictEqual([1, 2, 3, 4, 5, 6, 7, 8, 9])
   })
 
   const jsonWithArrayOfObjects = {

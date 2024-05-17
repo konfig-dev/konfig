@@ -31,6 +31,12 @@ export function highlightJsonLines({
     return JSON.stringify(obj, null, SPACES)
   }
   const jsonString = stringify(json)
+  if (path.length === 0) {
+    return {
+      jsonString,
+      highlightedLines: jsonString.split('\n').map((_, i) => i + 1),
+    }
+  }
   const lines = jsonString.split('\n')
   path = ['$root', ...path]
 
