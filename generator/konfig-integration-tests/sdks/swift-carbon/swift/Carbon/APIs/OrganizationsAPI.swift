@@ -12,7 +12,7 @@ import AnyCodable
 
 open class OrganizationsAPI {
 
-    let client: CarbonClient
+    weak var client: CarbonClient?
 
     public init(client: CarbonClient) {
         self.client = client
@@ -145,7 +145,7 @@ open class OrganizationsAPI {
      */
     open func callGetWithRequestBuilder(
     ) -> RequestBuilder<OrganizationResponse> {
-        let basePath = self.client.basePath;
+        let basePath = self.client!.basePath;
         let localVariablePath = "/organization"
         let localVariableURLString = basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -159,7 +159,7 @@ open class OrganizationsAPI {
         var localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         do {
-            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "authorization", value: self.client.apiKey, prefix: "Bearer ")
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "authorization", value: self.client!.apiKey, prefix: "Bearer ")
             let localVariableRequestBuilder: RequestBuilder<OrganizationResponse>.Type = CarbonAPI.requestBuilderFactory.getBuilder()
             let URLString = localVariableUrlComponents?.string ?? localVariableURLString
             return localVariableRequestBuilder.init(method: "GET", URLString: URLString, parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)

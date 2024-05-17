@@ -12,7 +12,7 @@ import AnyCodable
 
 open class UserDeviceAPI {
 
-    let client: SafehealthPushClient
+    weak var client: SafehealthPushClient?
 
     public init(client: SafehealthPushClient) {
         self.client = client
@@ -209,9 +209,9 @@ open class UserDeviceAPI {
         var localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         do {
-            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "Authorization", value: SafehealthPushAPI.identityAccessToken)
-            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "x-sf-account", value: SafehealthPushAPI.safeAccount)
-            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "x-sf-tenant", value: SafehealthPushAPI.safeTenant)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "Authorization", value: SafehealthPushAPI.identityAccessToken, prefix: nil)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "x-sf-account", value: SafehealthPushAPI.safeAccount, prefix: nil)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "x-sf-tenant", value: SafehealthPushAPI.safeTenant, prefix: nil)
             let localVariableRequestBuilder: RequestBuilder<UserDevice>.Type = SafehealthPushAPI.requestBuilderFactory.getBuilder()
             let URLString = localVariableUrlComponents?.string ?? localVariableURLString
             return localVariableRequestBuilder.init(method: "POST", URLString: URLString, parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
@@ -239,7 +239,7 @@ open class UserDeviceAPI {
     open func createWithRequestBuilder(
             userDevice: UserDevice? = nil
     ) -> RequestBuilder<UserDevice> {
-        let basePath = self.client.basePath;
+        let basePath = self.client!.basePath;
         let localVariablePath = "/device"
         let localVariableURLString = basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: userDevice)
@@ -253,9 +253,9 @@ open class UserDeviceAPI {
         var localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         do {
-            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "Authorization", value: self.client.identityAccessToken)
-            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "x-sf-account", value: self.client.safeAccount)
-            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "x-sf-tenant", value: self.client.safeTenant)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "Authorization", value: self.client!.identityAccessToken, prefix: nil)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "x-sf-account", value: self.client!.safeAccount, prefix: nil)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "x-sf-tenant", value: self.client!.safeTenant, prefix: nil)
             let localVariableRequestBuilder: RequestBuilder<UserDevice>.Type = SafehealthPushAPI.requestBuilderFactory.getBuilder()
             let URLString = localVariableUrlComponents?.string ?? localVariableURLString
             return localVariableRequestBuilder.init(method: "POST", URLString: URLString, parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
@@ -377,7 +377,6 @@ open class UserDeviceAPI {
         let localVariablePath = "/device"
         let localVariableURLString = basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
-
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "deviceToken": (wrappedValue: deviceToken?.encodeToJSON(), isExplode: true),
@@ -390,9 +389,9 @@ open class UserDeviceAPI {
         var localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         do {
-            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "Authorization", value: SafehealthPushAPI.identityAccessToken)
-            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "x-sf-account", value: SafehealthPushAPI.safeAccount)
-            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "x-sf-tenant", value: SafehealthPushAPI.safeTenant)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "Authorization", value: SafehealthPushAPI.identityAccessToken, prefix: nil)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "x-sf-account", value: SafehealthPushAPI.safeAccount, prefix: nil)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "x-sf-tenant", value: SafehealthPushAPI.safeTenant, prefix: nil)
             let localVariableRequestBuilder: RequestBuilder<UserDevice>.Type = SafehealthPushAPI.requestBuilderFactory.getBuilder()
             let URLString = localVariableUrlComponents?.string ?? localVariableURLString
             return localVariableRequestBuilder.init(method: "DELETE", URLString: URLString, parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
@@ -420,11 +419,10 @@ open class UserDeviceAPI {
     open func deleteWithRequestBuilder(
             deviceToken: String? = nil
     ) -> RequestBuilder<UserDevice> {
-        let basePath = self.client.basePath;
+        let basePath = self.client!.basePath;
         let localVariablePath = "/device"
         let localVariableURLString = basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
-
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "deviceToken": (wrappedValue: deviceToken?.encodeToJSON(), isExplode: true),
@@ -437,9 +435,9 @@ open class UserDeviceAPI {
         var localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         do {
-            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "Authorization", value: self.client.identityAccessToken)
-            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "x-sf-account", value: self.client.safeAccount)
-            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "x-sf-tenant", value: self.client.safeTenant)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "Authorization", value: self.client!.identityAccessToken, prefix: nil)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "x-sf-account", value: self.client!.safeAccount, prefix: nil)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "x-sf-tenant", value: self.client!.safeTenant, prefix: nil)
             let localVariableRequestBuilder: RequestBuilder<UserDevice>.Type = SafehealthPushAPI.requestBuilderFactory.getBuilder()
             let URLString = localVariableUrlComponents?.string ?? localVariableURLString
             return localVariableRequestBuilder.init(method: "DELETE", URLString: URLString, parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)

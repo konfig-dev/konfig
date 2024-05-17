@@ -12,7 +12,7 @@ import AnyCodable
 
 open class WebhooksAPI {
 
-    let client: CarbonClient
+    weak var client: CarbonClient?
 
     public init(client: CarbonClient) {
         self.client = client
@@ -161,7 +161,7 @@ open class WebhooksAPI {
     open func addUrlWithRequestBuilder(
             addWebhookProps: AddWebhookProps
     ) -> RequestBuilder<Webhook> {
-        let basePath = self.client.basePath;
+        let basePath = self.client!.basePath;
         let localVariablePath = "/add_webhook"
         let localVariableURLString = basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: addWebhookProps)
@@ -175,7 +175,7 @@ open class WebhooksAPI {
         var localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         do {
-            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "authorization", value: self.client.apiKey, prefix: "Bearer ")
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "authorization", value: self.client!.apiKey, prefix: "Bearer ")
             let localVariableRequestBuilder: RequestBuilder<Webhook>.Type = CarbonAPI.requestBuilderFactory.getBuilder()
             let URLString = localVariableUrlComponents?.string ?? localVariableURLString
             return localVariableRequestBuilder.init(method: "POST", URLString: URLString, parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
@@ -326,7 +326,7 @@ open class WebhooksAPI {
     open func deleteUrlWithRequestBuilder(
             webhookId: Int
     ) -> RequestBuilder<GenericSuccessResponse> {
-        let basePath = self.client.basePath;
+        let basePath = self.client!.basePath;
         var localVariablePath = "/delete_webhook/{webhook_id}"
         let webhookIdPreEscape = "\(APIHelper.mapValueToPathItem(webhookId))"
         let webhookIdPostEscape = webhookIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -343,7 +343,7 @@ open class WebhooksAPI {
         var localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         do {
-            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "authorization", value: self.client.apiKey, prefix: "Bearer ")
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "authorization", value: self.client!.apiKey, prefix: "Bearer ")
             let localVariableRequestBuilder: RequestBuilder<GenericSuccessResponse>.Type = CarbonAPI.requestBuilderFactory.getBuilder()
             let URLString = localVariableUrlComponents?.string ?? localVariableURLString
             return localVariableRequestBuilder.init(method: "DELETE", URLString: URLString, parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
@@ -509,7 +509,7 @@ open class WebhooksAPI {
     open func urlsWithRequestBuilder(
             webhookQueryInput: WebhookQueryInput
     ) -> RequestBuilder<WebhookQueryResponse> {
-        let basePath = self.client.basePath;
+        let basePath = self.client!.basePath;
         let localVariablePath = "/webhooks"
         let localVariableURLString = basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: webhookQueryInput)
@@ -523,7 +523,7 @@ open class WebhooksAPI {
         var localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         do {
-            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "authorization", value: self.client.apiKey, prefix: "Bearer ")
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "authorization", value: self.client!.apiKey, prefix: "Bearer ")
             let localVariableRequestBuilder: RequestBuilder<WebhookQueryResponse>.Type = CarbonAPI.requestBuilderFactory.getBuilder()
             let URLString = localVariableUrlComponents?.string ?? localVariableURLString
             return localVariableRequestBuilder.init(method: "POST", URLString: URLString, parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)

@@ -12,7 +12,7 @@ import AnyCodable
 
 open class HealthAPI {
 
-    let client: CarbonClient
+    weak var client: CarbonClient?
 
     public init(client: CarbonClient) {
         self.client = client
@@ -138,7 +138,7 @@ open class HealthAPI {
      */
     open func checkWithRequestBuilder(
     ) -> RequestBuilder<AnyCodable> {
-        let basePath = self.client.basePath;
+        let basePath = self.client!.basePath;
         let localVariablePath = "/health"
         let localVariableURLString = basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil

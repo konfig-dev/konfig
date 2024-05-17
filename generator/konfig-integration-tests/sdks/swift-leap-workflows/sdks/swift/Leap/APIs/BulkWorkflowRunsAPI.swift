@@ -12,7 +12,7 @@ import AnyCodable
 
 open class BulkWorkflowRunsAPI {
 
-    let client: LeapClient
+    weak var client: LeapClient?
 
     public init(client: LeapClient) {
         self.client = client
@@ -160,7 +160,7 @@ open class BulkWorkflowRunsAPI {
     open func getBulkWithRequestBuilder(
             bulkRunId: String
     ) -> RequestBuilder<BulkRunSchema> {
-        let basePath = self.client.basePath;
+        let basePath = self.client!.basePath;
         var localVariablePath = "/v1/runs/bulk/{bulk_run_id}"
         let bulkRunIdPreEscape = "\(APIHelper.mapValueToPathItem(bulkRunId))"
         let bulkRunIdPostEscape = bulkRunIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -177,7 +177,7 @@ open class BulkWorkflowRunsAPI {
         var localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         do {
-            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "X-Api-Key", value: self.client.apiKey, prefix: nil)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "X-Api-Key", value: self.client!.apiKey, prefix: nil)
             let localVariableRequestBuilder: RequestBuilder<BulkRunSchema>.Type = LeapAPI.requestBuilderFactory.getBuilder()
             let URLString = localVariableUrlComponents?.string ?? localVariableURLString
             return localVariableRequestBuilder.init(method: "GET", URLString: URLString, parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
@@ -341,7 +341,7 @@ open class BulkWorkflowRunsAPI {
     open func runBulkWithRequestBuilder(
             runBulkWorkflowSchema: RunBulkWorkflowSchema
     ) -> RequestBuilder<BulkRunSchema> {
-        let basePath = self.client.basePath;
+        let basePath = self.client!.basePath;
         let localVariablePath = "/v1/runs/bulk"
         let localVariableURLString = basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: runBulkWorkflowSchema)
@@ -355,7 +355,7 @@ open class BulkWorkflowRunsAPI {
         var localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         do {
-            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "X-Api-Key", value: self.client.apiKey, prefix: nil)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "X-Api-Key", value: self.client!.apiKey, prefix: nil)
             let localVariableRequestBuilder: RequestBuilder<BulkRunSchema>.Type = LeapAPI.requestBuilderFactory.getBuilder()
             let URLString = localVariableUrlComponents?.string ?? localVariableURLString
             return localVariableRequestBuilder.init(method: "POST", URLString: URLString, parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)

@@ -12,7 +12,7 @@ import AnyCodable
 
 open class ApiStatusAPI {
 
-    let client: SnapTradeClient
+    weak var client: SnapTradeClient?
 
     public init(client: SnapTradeClient) {
         self.client = client
@@ -140,7 +140,7 @@ open class ApiStatusAPI {
      */
     open func checkWithRequestBuilder(
     ) -> RequestBuilder<Status> {
-        let basePath = self.client.basePath;
+        let basePath = self.client!.basePath;
         let localVariablePath = "/"
         let localVariableURLString = basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil

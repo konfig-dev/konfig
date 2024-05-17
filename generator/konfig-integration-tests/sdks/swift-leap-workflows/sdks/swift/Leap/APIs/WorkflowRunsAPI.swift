@@ -12,7 +12,7 @@ import AnyCodable
 
 open class WorkflowRunsAPI {
 
-    let client: LeapClient
+    weak var client: LeapClient?
 
     public init(client: LeapClient) {
         self.client = client
@@ -160,7 +160,7 @@ open class WorkflowRunsAPI {
     open func getWorkflowRunWithRequestBuilder(
             workflowRunId: String
     ) -> RequestBuilder<WorkflowRunSchema> {
-        let basePath = self.client.basePath;
+        let basePath = self.client!.basePath;
         var localVariablePath = "/v1/runs/{workflow_run_id}"
         let workflowRunIdPreEscape = "\(APIHelper.mapValueToPathItem(workflowRunId))"
         let workflowRunIdPostEscape = workflowRunIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -177,7 +177,7 @@ open class WorkflowRunsAPI {
         var localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         do {
-            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "X-Api-Key", value: self.client.apiKey, prefix: nil)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "X-Api-Key", value: self.client!.apiKey, prefix: nil)
             let localVariableRequestBuilder: RequestBuilder<WorkflowRunSchema>.Type = LeapAPI.requestBuilderFactory.getBuilder()
             let URLString = localVariableUrlComponents?.string ?? localVariableURLString
             return localVariableRequestBuilder.init(method: "GET", URLString: URLString, parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
@@ -341,7 +341,7 @@ open class WorkflowRunsAPI {
     open func workflowWithRequestBuilder(
             runWorkflowSchema: RunWorkflowSchema
     ) -> RequestBuilder<WorkflowRunSchema> {
-        let basePath = self.client.basePath;
+        let basePath = self.client!.basePath;
         let localVariablePath = "/v1/runs"
         let localVariableURLString = basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: runWorkflowSchema)
@@ -355,7 +355,7 @@ open class WorkflowRunsAPI {
         var localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         do {
-            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "X-Api-Key", value: self.client.apiKey, prefix: nil)
+            try Authentication.setAuthenticationParameters(headers: &localVariableHeaderParameters, url: &localVariableUrlComponents, in: "header", name: "X-Api-Key", value: self.client!.apiKey, prefix: nil)
             let localVariableRequestBuilder: RequestBuilder<WorkflowRunSchema>.Type = LeapAPI.requestBuilderFactory.getBuilder()
             let URLString = localVariableUrlComponents?.string ?? localVariableURLString
             return localVariableRequestBuilder.init(method: "POST", URLString: URLString, parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
