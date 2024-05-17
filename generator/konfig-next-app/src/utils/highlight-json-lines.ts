@@ -43,7 +43,10 @@ export function highlightJsonLines({
     inObject: 0,
     processingObject: false,
     processingArray: false,
+    processingObjectItem: false,
   }
+  let atArrayOpen = false
+  let atObjectClose = false
   for (const lineNumberString in lines) {
     const lineNumber = Number(lineNumberString)
     const trimmedLine = lines[lineNumber].trim()
@@ -55,17 +58,27 @@ export function highlightJsonLines({
     }
     if (trimmedLine.endsWith('{')) {
       parsingState.inObject++
+
+      // If the last line was the array opening, then we are currently processing an object item
+      if (atArrayOpen) {
+        parsingState.processingObjectItem = true
+      }
     }
     if (trimmedLine.endsWith(']') || trimmedLine.endsWith('],')) {
       parsingState.inArray--
+
+      // If this is the end of an array of objects, then we are not processing an object item anymore
+      if (parsingState.processingObjectItem && atObjectClose) {
+        parsingState.processingObjectItem = false
+      }
     }
     if (trimmedLine.endsWith('}') || trimmedLine.endsWith('},')) {
       parsingState.inObject--
     }
 
     const atObjectOpen = stateBefore.inObject < parsingState.inObject
-    const atArrayOpen = stateBefore.inArray < parsingState.inArray
-    const atObjectClose = stateBefore.inObject > parsingState.inObject
+    atArrayOpen = stateBefore.inArray < parsingState.inArray
+    atObjectClose = stateBefore.inObject > parsingState.inObject
     const atArrayClose = stateBefore.inArray > parsingState.inArray
     const endOfPath = pathIndex === path.length - 1
     const atRoot = pathIndex === 0
@@ -77,7 +90,7 @@ export function highlightJsonLines({
       parsingState.processingObject ||
       parsingState.processingArray
     ) {
-      if (pathIndex === path.length - 1) {
+      if (endOfPath) {
         highlightedLines.push(lineNumber)
 
         if (atObjectOpen) {
@@ -95,7 +108,11 @@ export function highlightJsonLines({
       }
 
       // If we aren't currently processing an object or array, we can move to the next path index
-      if (!parsingState.processingObject && !parsingState.processingArray) {
+      if (
+        !parsingState.processingObject &&
+        !parsingState.processingArray &&
+        !parsingState.processingObjectItem
+      ) {
         pathIndex++
       }
     }
