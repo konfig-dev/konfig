@@ -32,6 +32,7 @@ export function highlightJsonLines({
   }
   const jsonString = stringify(json)
   const lines = jsonString.split('\n')
+  path = ['$root', ...path]
 
   // Trakcs the current path index we are processing
   let pathIndex = 0
@@ -67,9 +68,11 @@ export function highlightJsonLines({
     const atObjectClose = stateBefore.inObject > parsingState.inObject
     const atArrayClose = stateBefore.inArray > parsingState.inArray
     const endOfPath = pathIndex === path.length - 1
+    const atRoot = pathIndex === 0
 
     if (
       trimmedLine.startsWith(`"${path[pathIndex]}"`) ||
+      (endOfPath && (atObjectOpen || atArrayOpen)) ||
       parsingState.processingObject ||
       parsingState.processingArray
     ) {
@@ -94,6 +97,10 @@ export function highlightJsonLines({
       if (!parsingState.processingObject && !parsingState.processingArray) {
         pathIndex++
       }
+    }
+
+    if (atRoot && !endOfPath) {
+      pathIndex++
     }
 
     if (pathIndex === path.length) {
