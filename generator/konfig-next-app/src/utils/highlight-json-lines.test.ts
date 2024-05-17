@@ -74,4 +74,29 @@ describe('highlight-json-lines', () => {
         .highlightedLines
     ).toStrictEqual([2, 3, 4])
   })
+
+  const nestedObjects = {
+    a: {
+      b: {
+        c: 1,
+      },
+    },
+  }
+  test('nested objects - a', () => {
+    expect(
+      highlightJsonLines({ json: nestedObjects, path: ['a'] }).highlightedLines
+    ).toStrictEqual([2, 3, 4, 5])
+  })
+  test('nested objects - b', () => {
+    expect(
+      highlightJsonLines({ json: nestedObjects, path: ['a', 'b'] })
+        .highlightedLines
+    ).toStrictEqual([3, 4, 5])
+  })
+  test('nested objects - c', () => {
+    expect(
+      highlightJsonLines({ json: nestedObjects, path: ['a', 'b', 'c'] })
+        .highlightedLines
+    ).toStrictEqual([4])
+  })
 })
