@@ -401,7 +401,7 @@ const ResponseDocumentation = observer(() => {
           />
         )}
       </div>
-      <div className="flex-1">
+      <div className="flex-1 max-w-[50%]">
         <ResponseExample />
       </div>
     </div>
