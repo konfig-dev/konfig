@@ -56,7 +56,7 @@ export const OperationReferenceResponses = observer(
     operation,
   }: Pick<ReferencePageProps, 'responses' | 'operation'>) => {
     return (
-      <Box my="lg">
+      <div className="my-20">
         <Title
           className={clsx(
             'mb-8',
@@ -68,7 +68,7 @@ export const OperationReferenceResponses = observer(
         </Title>
         {/* <V1 responses={responses} /> */}
         <V2 responses={responses} />
-      </Box>
+      </div>
     )
   }
 )
@@ -155,13 +155,17 @@ class ResponsesState {
   }
 
   get responseObjectSchemaDescription(): string {
+    return this.responseObjectSchema?.description ?? ''
+  }
+
+  get responseObjectSchema(): SchemaObject | null {
     const responseObject = this.responseObject
-    if (responseObject.schema === null) return ''
-    if (responseObject.schema === undefined) return ''
+    if (responseObject.schema === null) return null
+    if (responseObject.schema === undefined) return null
     if ('$ref' in responseObject.schema)
       throw new Error('$ref not expected in schema')
     const schema = responseObject.schema
-    return schema.description ?? ''
+    return schema
   }
 
   get fields(): FieldDocumentationWithDepth[] {
@@ -193,6 +197,10 @@ class ResponsesState {
       return this.fieldsWithDepth(fields)
     }
     return []
+  }
+
+  get example(): object {
+    return OpenAPISampler.sample(this.responseObjectSchema)
   }
 
   fieldsWithDepth(
