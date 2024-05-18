@@ -139,19 +139,6 @@ export function highlightJsonLines({
       currentPath.every((pathPart, i) => pathPart === path[i])
 
     if (
-      atObjectClose &&
-      parsingState.inArray >= parsingState.processingObjectItem &&
-      parsingState.inArray > 0 &&
-      parsingState.processingArray === -1 &&
-      parsingState.processingObject === -1 &&
-      path[pathIndex - 1] !== '$item' && // do not decrement if processing an item's field
-      !keyIsItem
-    ) {
-      // 1 for re-enabling the path, and 1 for exiting this object
-      pathIndex -= 2
-    }
-
-    if (
       (keyIsItem && !atArrayClose) ||
       keyMatches ||
       (atRoot && endOfPath && (atObjectOpen || atArrayOpen)) ||

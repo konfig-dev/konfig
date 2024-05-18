@@ -302,4 +302,25 @@ describe('highlight-json-lines', () => {
       }).highlightedLines
     ).toStrictEqual([76])
   })
+
+  const createOptionsStrategyResponse = {
+    strategy: {
+      underlying_symbol_id: {
+        currencies: [
+          {
+            name: 'US Dollar',
+          },
+        ],
+        figi_code: 'BBG000B9XRY4',
+      },
+    },
+  }
+  test('create options strategy response', () => {
+    expect(
+      highlightJsonLines({
+        json: createOptionsStrategyResponse,
+        path: ['strategy', 'underlying_symbol_id', 'figi_code'],
+      }).highlightedLines
+    ).toStrictEqual([9])
+  })
 })
