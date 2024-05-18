@@ -323,4 +323,19 @@ describe('highlight-json-lines', () => {
       }).highlightedLines
     ).toStrictEqual([9])
   })
+
+  const getBrokerageAuthDetailsResponse = {
+    brokerage: {
+      name: 'Traditional Brokerage',
+    },
+    name: 'Connection-1',
+  }
+  test('get brokerage auth details response', () => {
+    expect(
+      highlightJsonLines({
+        json: getBrokerageAuthDetailsResponse,
+        path: ['name'],
+      }).highlightedLines
+    ).toStrictEqual([5])
+  })
 })

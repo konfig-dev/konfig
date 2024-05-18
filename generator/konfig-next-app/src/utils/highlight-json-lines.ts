@@ -176,6 +176,7 @@ export function highlightJsonLines({
 
         // "If we do not need to process any more items, then we break"
         if (
+          pathMatches &&
           !keyIsItem &&
           parsingState.processingObject === -1 &&
           parsingState.processingArray === -1 &&
