@@ -50,6 +50,7 @@ export function highlightJsonLines({
     processingObject: -1, // -1 signifies that we are not processing an object
     processingArray: -1, // -1 signifies that we are not processing an array
     processingObjectItem: 0, // 0 signifies that we are not processing an object item
+    currentPath: [] as string[],
   }
   let atArrayOpen = false
   let atObjectClose = false
@@ -97,6 +98,7 @@ export function highlightJsonLines({
       parsingState.inArray > 0 &&
       parsingState.processingArray === -1 &&
       parsingState.processingObject === -1 &&
+      path[pathIndex - 1] !== '$item' && // do not decrement if processing an item's field
       !keyIsItem
     ) {
       // 1 for re-enabling the path, and 1 for exiting this object

@@ -286,4 +286,20 @@ describe('highlight-json-lines', () => {
       }).highlightedLines
     ).toStrictEqual([4])
   })
+  test('complicated json - average_purchase_price', () => {
+    expect(
+      highlightJsonLines({
+        json: complicatedJson,
+        path: ['$item', 'average_purchase_price'],
+      }).highlightedLines
+    ).toStrictEqual([143])
+  })
+  // test('complicated json - symbol.brokerage_authorization.name', () => {
+  //   expect(
+  //     highlightJsonLines({
+  //       json: complicatedJson,
+  //       path: ['$item', 'symbol', 'brokerage_authorization', 'name'],
+  //     }).highlightedLines
+  //   ).toStrictEqual([76])
+  // })
 })
