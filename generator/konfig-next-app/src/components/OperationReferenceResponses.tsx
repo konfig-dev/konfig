@@ -19,7 +19,7 @@ import {
   MantineColor,
 } from '@mantine/core'
 import { IconFile, IconFileCode } from '@tabler/icons-react'
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext, useEffect, useRef, useState } from 'react'
 import { JsonViewer } from './JsonViewer'
 import { SchemaObject } from 'konfig-lib'
 import { makeAutoObservable } from 'mobx'
@@ -333,6 +333,10 @@ class ResponsesState {
       path: this.highlightJsonPath,
     })
   }
+
+  get firstLine() {
+    return this.highlightLines.highlightedLines[0]
+  }
 }
 
 const ResponsesStateContext = createContext<ResponsesState | null>(null)
@@ -444,10 +448,37 @@ const ResponseExample = observer(() => {
       )
     ),
   }
+  const prismRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (responsesState === null) return
+    // if first line is 1, do not scroll to the top
+    if (responsesState.firstLine === 1) return
+
+    // find div with attribute "data-radix-scroll-area-viewport"
+    const viewportRef = prismRef.current?.querySelector(
+      '[data-radix-scroll-area-viewport]'
+    )
+    if (viewportRef === null) return
+    if (viewportRef === undefined) return
+
+    // find first <pre> tag from ref
+    const pre = prismRef.current?.querySelector('pre')
+    if (pre === null) return
+    if (pre === undefined) return
+
+    // find nth div where n is firstLine
+    const div = pre.children[responsesState.firstLine - 1] as HTMLDivElement
+    if (div === null) return
+    if (div === undefined) return
+
+    viewportRef.scrollTo({ top: div.offsetTop - 44.2, behavior: 'smooth' })
+  }, [responsesState?.firstLine])
 
   return (
     <div className="sticky top-[calc(var(--mantine-header-height,0px)+1rem)]">
       <Prism
+        ref={prismRef}
         colorScheme="dark"
         highlightLines={{ ...highlightLines }}
         withLineNumbers
