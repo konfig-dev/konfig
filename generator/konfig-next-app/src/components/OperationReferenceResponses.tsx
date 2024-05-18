@@ -18,6 +18,7 @@ import {
   rem,
   Spoiler,
   DefaultProps,
+  MantineColor,
 } from '@mantine/core'
 import { IconFile, IconFileCode } from '@tabler/icons-react'
 import { createContext, useContext, useEffect, useState } from 'react'
@@ -440,7 +441,8 @@ const ResponseExample = observer(() => {
     ...Object.fromEntries(
       Array.from(
         { length: jsonString.split('\n').length },
-        (_, i) => [i + 1, { color: 'dark' }] as [number, { color: string }]
+        (_, i) =>
+          [i + 1, { color: 'dark' }] as [number, { color: MantineColor }]
       ).filter(
         ([i]) => !responsesState?.highlightLines.highlightedLines.includes(i)
       )
@@ -450,8 +452,10 @@ const ResponseExample = observer(() => {
   return (
     <div className="sticky top-[calc(var(--mantine-header-height,0px)+1rem)]">
       <Prism
+        colorScheme="dark"
         highlightLines={{ ...highlightLines }}
         withLineNumbers
+        scrollAreaComponent="div"
         {...styles}
         language={'json'}
       >
