@@ -84,6 +84,7 @@ type ResponseDocumentationObject = {
 
 type FieldDocumentationWithDepth = OperationParameterDocumentationProps & {
   properties?: FieldDocumentationWithDepth[]
+  path: string
 }
 
 class ResponsesState {
@@ -212,12 +213,14 @@ class ResponsesState {
   }
 
   fieldsWithDepth(
-    fields: { name: string; schema: SchemaObject }[]
+    fields: { name: string; schema: SchemaObject }[],
+    path: string = ''
   ): FieldDocumentationWithDepth[] {
     const fieldsWithDepth: FieldDocumentationWithDepth[] = []
 
     for (const field of fields) {
       if (field.schema.type === 'object') {
+        const newPath = path + PATH_DELIMITER + field.name
         if (field.schema.properties !== undefined) {
           // object with properties
           const objectFields = Object.entries(field.schema.properties).map(
@@ -226,12 +229,13 @@ class ResponsesState {
               schema,
             })
           )
-          const properties = this.fieldsWithDepth(objectFields)
+          const properties = this.fieldsWithDepth(objectFields, newPath)
           fieldsWithDepth.push({
             name: field.name,
             schema: schemaTypeLabel({ schema: field.schema }),
             description: field.schema.description,
             properties,
+            path: newPath,
           })
         } else {
           // object without properties
@@ -239,9 +243,11 @@ class ResponsesState {
             name: field.name,
             schema: schemaTypeLabel({ schema: field.schema }),
             description: field.schema.description,
+            path: newPath,
           })
         }
       } else if (field.schema.type === 'array') {
+        const newPath = path + PATH_DELIMITER + field.name
         if (field.schema.items !== undefined) {
           if ('$ref' in field.schema.items) {
             throw new Error('$ref not expected in schema')
@@ -253,6 +259,7 @@ class ResponsesState {
                 name: field.name,
                 schema: schemaTypeLabel({ schema: field.schema }),
                 description: field.schema.description,
+                path: newPath,
               })
             } else {
               // array of objects with properties
@@ -262,32 +269,36 @@ class ResponsesState {
                 name,
                 schema,
               }))
-              const properties = this.fieldsWithDepth(objectFields)
+              const properties = this.fieldsWithDepth(
+                objectFields,
+                newPath + PATH_DELIMITER + '$item'
+              )
               fieldsWithDepth.push({
                 name: field.name,
                 schema: schemaTypeLabel({ schema: field.schema }),
                 description: field.schema.description,
                 properties,
+                path: newPath,
               })
             }
           } else {
-            // array of scalars (thus we must come up with some arbitrary name. I chose to make the name based on schema)
-            const name =
-              typeof field.schema.items.type === 'string'
-                ? field.schema.items.type
-                : '$item'
+            const name = '$item'
             const objectFields = [
               {
                 name,
                 schema: field.schema.items,
               },
             ]
-            const properties = this.fieldsWithDepth(objectFields)
+            const properties = this.fieldsWithDepth(
+              objectFields,
+              newPath + PATH_DELIMITER + name
+            )
             fieldsWithDepth.push({
               name: field.name,
               schema: schemaTypeLabel({ schema: field.schema }),
               description: field.schema.description,
               properties,
+              path: newPath,
             })
           }
         } else {
@@ -296,6 +307,7 @@ class ResponsesState {
             name: field.name,
             schema: schemaTypeLabel({ schema: field.schema }),
             description: field.schema.description,
+            path: newPath,
           })
         }
       } else {
@@ -304,6 +316,7 @@ class ResponsesState {
           name: field.name,
           schema: schemaTypeLabel({ schema: field.schema }),
           description: field.schema.description,
+          path: path + PATH_DELIMITER + field.name,
         })
       }
     }
@@ -397,7 +410,6 @@ const ResponseDocumentation = observer(() => {
           <ResponseFieldDocumentationContents
             depth={0}
             fields={responsesState.fields}
-            path=""
           />
         )}
       </div>
@@ -454,11 +466,9 @@ const ResponseFieldDocumentationContents = observer(
   ({
     fields,
     depth,
-    path,
   }: {
     fields: FieldDocumentationWithDepth[]
     depth: number
-    path: string
   }) => {
     return (
       <div
@@ -471,7 +481,6 @@ const ResponseFieldDocumentationContents = observer(
             key={field.name}
             field={field}
             depth={depth}
-            path={path + PATH_DELIMITER + field.name}
           />
         ))}
       </div>
@@ -480,22 +489,17 @@ const ResponseFieldDocumentationContents = observer(
 )
 
 const ResponseFieldDocumentationField = observer(
-  ({
-    field,
-    path,
-    depth,
-  }: {
-    field: FieldDocumentationWithDepth
-    path: string
-    depth: number
-  }) => {
+  ({ field, depth }: { field: FieldDocumentationWithDepth; depth: number }) => {
     const responsesState = useContext(ResponsesStateContext)
-    const opened = responsesState?.getPropertiesExpanded(path) ?? false
-    const toggle = () => responsesState?.setPropertiesExpanded(path, !opened)
+    const opened = responsesState?.getPropertiesExpanded(field.path) ?? false
+    const toggle = () =>
+      responsesState?.setPropertiesExpanded(field.path, !opened)
     return (
       <>
         <div
-          data-path={JSON.stringify(path.substring(1).split(PATH_DELIMITER))}
+          data-path={JSON.stringify(
+            field.path.substring(1).split(PATH_DELIMITER)
+          )}
           onMouseEnter={(e) => {
             const dataPath = e.currentTarget.getAttribute('data-path')
             if (dataPath === null) return
@@ -531,7 +535,6 @@ const ResponseFieldDocumentationField = observer(
             <ResponseFieldDocumentationContents
               fields={field.properties}
               depth={depth + 1}
-              path={path}
             />
           )}
         </Collapse>
