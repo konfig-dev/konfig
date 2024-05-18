@@ -294,12 +294,12 @@ describe('highlight-json-lines', () => {
       }).highlightedLines
     ).toStrictEqual([143])
   })
-  // test('complicated json - symbol.brokerage_authorization.name', () => {
-  //   expect(
-  //     highlightJsonLines({
-  //       json: complicatedJson,
-  //       path: ['$item', 'symbol', 'brokerage_authorization', 'name'],
-  //     }).highlightedLines
-  //   ).toStrictEqual([76])
-  // })
+  test('complicated json - symbol.brokerage_authorization.name', () => {
+    expect(
+      highlightJsonLines({
+        json: complicatedJson,
+        path: ['$item', 'symbol', 'brokerage_authorization', 'name'],
+      }).highlightedLines
+    ).toStrictEqual([76])
+  })
 })

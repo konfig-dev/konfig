@@ -26,21 +26,29 @@ export function highlightJsonLines({
   json: object
   path: string[]
 }): { jsonString: string; highlightedLines: number[] } {
+  // Setting up some helpful constants for parsing
   const SPACES = 2
   const stringify = (obj: object) => {
     return JSON.stringify(obj, null, SPACES)
   }
   const jsonString = stringify(json)
+
+  // If path is empty, then we highlight all lines
   if (path.length === 0) {
     return {
       jsonString,
       highlightedLines: jsonString.split('\n').map((_, i) => i + 1),
     }
   }
+
   const lines = jsonString.split('\n')
   path = ['$root', ...path]
 
-  // Trakcs the current path index we are processing
+  // Tracks the current path index we are processing
+  // 1. Is incremented when we found a matching field name in the path
+  // 2. Is decremented when processing object item is complete
+  // 3. When $root is reached, is incremented by 1
+  // 4. When $item is found, is incremented by 1
   let pathIndex = 0
 
   const highlightedLines: number[] = []
@@ -50,18 +58,30 @@ export function highlightJsonLines({
     processingObject: -1, // -1 signifies that we are not processing an object
     processingArray: -1, // -1 signifies that we are not processing an array
     processingObjectItem: 0, // 0 signifies that we are not processing an object item
-    currentPath: [] as string[],
+    pathSoFar: ['$root'] as string[],
   }
-  let atArrayOpen = false
-  let atObjectClose = false
   for (const lineNumberString in lines) {
+    // Pre-computing some helpful variables for the current line
     const lineNumber = Number(lineNumberString)
     const trimmedLine = lines[lineNumber].trim()
+    const fieldName = trimmedLine.match(/^"([^"]+)": /)?.[1]
     const stateBefore = { ...parsingState }
 
-    // Maintain parsing state
+    // Calculating parsing state
+    // 1. inArray is incremented when we found an array opening
+    // 2. inObject is incremented when we found an object opening
+    // 3. processingObject is incremented when we found an object item
+    // 4. processingArray is incremented when we found an array item
+    // 5. pathSoFar is appended with the current field name if found
+    // 6. processingObjectItem is incremented when object opening is found
+    // inside an array
     if (trimmedLine.endsWith('[')) {
       parsingState.inArray++
+
+      if (fieldName) {
+        parsingState.pathSoFar.push(fieldName)
+      }
+      parsingState.pathSoFar.push('$item')
     }
     if (trimmedLine.endsWith('{')) {
       parsingState.inObject++
@@ -70,9 +90,13 @@ export function highlightJsonLines({
       if (parsingState.inArray > 0) {
         parsingState.processingObjectItem++
       }
+      if (fieldName) {
+        parsingState.pathSoFar.push(fieldName)
+      }
     }
     if (trimmedLine.endsWith(']') || trimmedLine.endsWith('],')) {
       parsingState.inArray--
+      parsingState.pathSoFar.pop()
     }
     if (trimmedLine.endsWith('}') || trimmedLine.endsWith('},')) {
       parsingState.inObject--
@@ -81,16 +105,31 @@ export function highlightJsonLines({
       if (parsingState.inArray > 0) {
         parsingState.processingObjectItem--
       }
+
+      if (
+        parsingState.pathSoFar[parsingState.pathSoFar.length - 1] !== '$item'
+      ) {
+        parsingState.pathSoFar.pop()
+      }
     }
 
+    // Calculating derivative state
     const atObjectOpen = stateBefore.inObject < parsingState.inObject
-    atArrayOpen = stateBefore.inArray < parsingState.inArray
-    atObjectClose = stateBefore.inObject > parsingState.inObject
+    const atArrayOpen = stateBefore.inArray < parsingState.inArray
+    const atObjectClose = stateBefore.inObject > parsingState.inObject
     const atArrayClose = stateBefore.inArray > parsingState.inArray
     const endOfPath = pathIndex === path.length - 1
     const atRoot = pathIndex === 0
-    const keyMatches = trimmedLine.startsWith(`"${path[pathIndex]}"`)
+    const keyMatches = fieldName !== undefined && fieldName === path[pathIndex]
     const keyIsItem = path[pathIndex] === '$item'
+    const currentPath = [
+      ...parsingState.pathSoFar,
+      ...(atObjectOpen || atArrayOpen ? [] : [fieldName]),
+    ]
+    const pathMatches =
+      keyMatches &&
+      currentPath.length === path.length &&
+      currentPath.every((pathPart, i) => pathPart === path[i])
 
     if (
       atObjectClose &&
@@ -113,8 +152,6 @@ export function highlightJsonLines({
       parsingState.processingArray !== -1
     ) {
       if (endOfPath) {
-        highlightedLines.push(lineNumber)
-
         if (
           keyMatches &&
           atObjectOpen &&
@@ -127,20 +164,42 @@ export function highlightJsonLines({
         }
         if (parsingState.inObject < parsingState.processingObject) {
           parsingState.processingObject = -1
+          highlightedLines.push(lineNumber)
         }
         if (parsingState.inArray < parsingState.processingArray) {
           parsingState.processingArray = -1
+          highlightedLines.push(lineNumber)
+        }
+
+        if (
+          pathMatches ||
+          parsingState.processingObject !== -1 ||
+          parsingState.processingArray !== -1
+        ) {
+          highlightedLines.push(lineNumber)
+        }
+
+        // "If we do not need to process any more items, then we break"
+        if (
+          !keyIsItem &&
+          parsingState.processingObject === -1 &&
+          parsingState.processingArray === -1 &&
+          parsingState.processingObjectItem === 0
+        ) {
+          break
         }
       }
 
-      if (
-        parsingState.processingObject === -1 &&
-        parsingState.processingArray === -1 &&
-        !keyIsItem
-      ) {
-        pathIndex++
-      } else if (keyIsItem && !endOfPath) {
-        pathIndex++
+      if (!endOfPath) {
+        if (
+          parsingState.processingObject === -1 &&
+          parsingState.processingArray === -1 &&
+          !keyIsItem
+        ) {
+          pathIndex++
+        } else if (keyIsItem) {
+          pathIndex++
+        }
       }
     }
 
