@@ -10,14 +10,20 @@ export function schemaTypeLabel({ schema }: { schema: SchemaObject }) {
       }
     }
   }
-  const type = schema.type && schema.type
+  const type = schema.type
+    ? schema.type
+    : schema.properties !== undefined
+    ? 'object'
+    : ''
   const innerType =
     schema.type === 'array' ? (schema.items as SchemaObject).type : null
   const arrayOf =
     innerType !== null && typeof innerType === 'string'
       ? ` of ${pluralize(innerType)}`
       : schema.type === 'array'
-      ? ' of any'
+      ? (schema.items as SchemaObject)?.properties !== undefined
+        ? ' of objects'
+        : ' of any'
       : ''
   const format = schema.format ? ` (format: ${schema.format})` : ''
   const label = `${type}${format}${arrayOf}${nullable}`

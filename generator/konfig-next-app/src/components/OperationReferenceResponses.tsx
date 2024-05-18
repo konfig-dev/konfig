@@ -219,7 +219,10 @@ class ResponsesState {
     const fieldsWithDepth: FieldDocumentationWithDepth[] = []
 
     for (const field of fields) {
-      if (field.schema.type === 'object') {
+      if (
+        field.schema.type === 'object' ||
+        field.schema.properties !== undefined
+      ) {
         const newPath = path + PATH_DELIMITER + field.name
         if (field.schema.properties !== undefined) {
           // object with properties
@@ -252,7 +255,10 @@ class ResponsesState {
           if ('$ref' in field.schema.items) {
             throw new Error('$ref not expected in schema')
           }
-          if (field.schema.items.type === 'object') {
+          if (
+            field.schema.items.type === 'object' ||
+            field.schema.items.properties !== undefined
+          ) {
             if (field.schema.items.properties === undefined) {
               // array of free-form objects
               fieldsWithDepth.push({

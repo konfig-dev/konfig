@@ -5,6 +5,31 @@ describe('schema-type-label', () => {
   test('string', () => {
     expect(schemaTypeLabel({ schema: { type: 'string' } })).toBe('string')
   })
+  test('arrary of object type with no type field', () => {
+    expect(
+      schemaTypeLabel({
+        schema: {
+          type: 'array',
+          items: {
+            properties: {
+              name: { type: 'string' },
+            },
+          },
+        },
+      })
+    ).toBe('array of objects')
+  })
+  test('object type with no type field', () => {
+    expect(
+      schemaTypeLabel({
+        schema: {
+          properties: {
+            name: { type: 'string' },
+          },
+        },
+      })
+    ).toBe('object')
+  })
   test('all-of-nullable', () => {
     expect(
       schemaTypeLabel({
