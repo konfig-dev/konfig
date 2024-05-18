@@ -194,7 +194,7 @@ class ResponsesState {
       }
       const fields = [
         {
-          name: 'item',
+          name: '$item',
           schema: schema.items,
         },
       ]
@@ -275,7 +275,7 @@ class ResponsesState {
             const name =
               typeof field.schema.items.type === 'string'
                 ? field.schema.items.type
-                : 'item'
+                : '$item'
             const objectFields = [
               {
                 name,
@@ -495,12 +495,7 @@ const ResponseFieldDocumentationField = observer(
     return (
       <>
         <div
-          data-path={JSON.stringify(
-            path
-              .substring(1)
-              .split(PATH_DELIMITER)
-              .map((part) => (part === 'item' ? '$item' : part))
-          )}
+          data-path={JSON.stringify(path.substring(1).split(PATH_DELIMITER))}
           onMouseEnter={(e) => {
             const dataPath = e.currentTarget.getAttribute('data-path')
             if (dataPath === null) return
@@ -514,7 +509,11 @@ const ResponseFieldDocumentationField = observer(
             'border-b dark:border-mantine-gray-900 border-mantine-gray-100 py-5 px-3'
           )}
         >
-          <OperationParameterDocumentation key={field.name} {...field} />
+          <OperationParameterDocumentation
+            key={field.name}
+            {...field}
+            name={field.name === '$item' ? '' : field.name}
+          />
           {field.properties && field.properties.length > 0 && (
             <button
               onClick={() => toggle()}
