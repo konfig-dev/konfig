@@ -207,7 +207,8 @@ class ResponsesState {
     this.highlightJsonPath = JSON.parse(dataPath)
   }
 
-  get example(): object {
+  get example(): object | null {
+    if (this.responseObjectSchema === null) return null
     return OpenAPISampler.sample(this.responseObjectSchema)
   }
 
@@ -323,11 +324,12 @@ class ResponsesState {
     return fieldsWithDepth
   }
 
-  get exampleString(): string {
-    return this.highlightLines.jsonString
+  get exampleString(): string | null {
+    return this.highlightLines?.jsonString ?? null
   }
 
-  get highlightLines(): ReturnType<typeof highlightJsonLines> {
+  get highlightLines(): ReturnType<typeof highlightJsonLines> | null {
+    if (this.example === null) return null
     return highlightJsonLines({
       json: this.example,
       path: this.highlightJsonPath,
@@ -335,7 +337,7 @@ class ResponsesState {
   }
 
   get firstLine() {
-    return this.highlightLines.highlightedLines[0]
+    return this.highlightLines?.highlightedLines[0] ?? null
   }
 }
 
@@ -381,6 +383,9 @@ const V2 = observer(({ responses }: Pick<ReferencePageProps, 'responses'>) => {
 
 const ResponseDocumentation = observer(() => {
   const responsesState = useContext(ResponsesStateContext)
+  if (responsesState?.responseObjectSchema === null) {
+    return <div className="text-mantine-gray-600">No response fields.</div>
+  }
   return (
     <div className="flex flex-col sm:flex-row gap-3 justify-between">
       <div className="w-1/2">
@@ -425,6 +430,7 @@ const ResponseDocumentation = observer(() => {
 
 const ResponseExample = observer(() => {
   const responsesState = useContext(ResponsesStateContext)
+  if (responsesState?.highlightLines === null) return null
   const styles: DefaultProps<PrismStylesNames> = {
     styles: {
       scrollArea: {
@@ -444,7 +450,9 @@ const ResponseExample = observer(() => {
         (_, i) =>
           [i + 1, { color: 'dark' }] as [number, { color: MantineColor }]
       ).filter(
-        ([i]) => !responsesState?.highlightLines.highlightedLines.includes(i)
+        ([i]) =>
+          responsesState?.highlightLines &&
+          !responsesState?.highlightLines.highlightedLines.includes(i)
       )
     ),
   }
@@ -454,6 +462,7 @@ const ResponseExample = observer(() => {
     if (responsesState === null) return
     // if first line is 1, do not scroll to the top
     if (responsesState.firstLine === 1) return
+    if (responsesState.firstLine === null) return
 
     // find div with attribute "data-radix-scroll-area-viewport"
     const viewportRef = prismRef.current?.querySelector(
