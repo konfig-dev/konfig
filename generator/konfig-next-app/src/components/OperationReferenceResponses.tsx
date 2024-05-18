@@ -281,6 +281,14 @@ class ResponsesState {
                 path: newPath,
               })
             }
+          } else if (field.schema.items.type === undefined) {
+            // array of any, don't put any properties
+            fieldsWithDepth.push({
+              name: field.name,
+              schema: schemaTypeLabel({ schema: field.schema }),
+              description: field.schema.description,
+              path: newPath,
+            })
           } else {
             const name = '$item'
             const objectFields = [

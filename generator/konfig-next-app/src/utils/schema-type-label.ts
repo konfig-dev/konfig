@@ -16,6 +16,8 @@ export function schemaTypeLabel({ schema }: { schema: SchemaObject }) {
   const arrayOf =
     innerType !== null && typeof innerType === 'string'
       ? ` of ${pluralize(innerType)}`
+      : schema.type === 'array'
+      ? ' of any'
       : ''
   const format = schema.format ? ` (format: ${schema.format})` : ''
   const label = `${type}${format}${arrayOf}${nullable}`
