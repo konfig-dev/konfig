@@ -30,7 +30,23 @@ describe('schema-type-label', () => {
       })
     ).toBe('object')
   })
-  test('all-of-nullable', () => {
+  test('all-of-nullable object', () => {
+    expect(
+      schemaTypeLabel({
+        schema: {
+          nullable: true,
+          allOf: [
+            {
+              properties: {
+                name: { type: 'string' },
+              },
+            },
+          ],
+        },
+      })
+    ).toBe('object or null')
+  })
+  test('all-of-nullable number', () => {
     expect(
       schemaTypeLabel({
         schema: {

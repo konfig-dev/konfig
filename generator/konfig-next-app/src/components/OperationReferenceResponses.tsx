@@ -164,6 +164,15 @@ class ResponsesState {
 
   get responseObjectSchema(): SchemaObject | null {
     const responseObject = this.responseObject
+    if (responseObject.schema?.allOf !== undefined) {
+      if (responseObject.schema.allOf.length === 1) {
+        const schema = responseObject.schema.allOf[0]
+        if ('$ref' in schema) {
+          throw new Error('$ref not expected in schema')
+        }
+        return schema
+      }
+    }
     if (responseObject.schema === null) return null
     if (responseObject.schema === undefined) return null
     if ('$ref' in responseObject.schema)
@@ -173,12 +182,8 @@ class ResponsesState {
   }
 
   get fields(): FieldDocumentationWithDepth[] {
-    const responseObject = this.responseObject
-    if (responseObject.schema === null) return []
-    if (responseObject.schema === undefined) return []
-    if ('$ref' in responseObject.schema)
-      throw new Error('$ref not expected in schema')
-    const schema = responseObject.schema
+    const schema = this.responseObjectSchema
+    if (schema === null) return []
     if (schema.type === 'object') {
       if (schema.properties === undefined) return []
       const fields = Object.entries(schema.properties).map(
@@ -219,7 +224,23 @@ class ResponsesState {
     const fieldsWithDepth: FieldDocumentationWithDepth[] = []
 
     for (const field of fields) {
-      if (
+      if (field.schema.allOf !== undefined) {
+        if (field.schema.allOf.length === 1) {
+          const isNullable = 'nullable' in field.schema && field.schema.nullable
+          const schema = field.schema.allOf[0]
+          if ('$ref' in schema) {
+            throw new Error('$ref not expected in schema')
+          }
+          if (isNullable) {
+            ;(schema as any).nullable = true
+          }
+          const recursiveFields = this.fieldsWithDepth(
+            [{ name: field.name, schema }],
+            path
+          )
+          fieldsWithDepth.push(...recursiveFields)
+        }
+      } else if (
         field.schema.type === 'object' ||
         field.schema.properties !== undefined
       ) {
@@ -402,7 +423,7 @@ const ResponseDocumentation = observer(() => {
   }
   return (
     <div className="flex flex-col sm:flex-row gap-3 justify-between">
-      <div className="w-1/2">
+      <div className="sm:w-1/2">
         <div className="w-full pb-3 border-b dark:border-mantine-gray-900 border-mantine-gray-100">
           <Spoiler maxHeight={120} showLabel="Show more" hideLabel="Hide">
             <OperationParameterDocumentation
@@ -435,7 +456,7 @@ const ResponseDocumentation = observer(() => {
           />
         )}
       </div>
-      <div className="w-1/2">
+      <div className="mt-6 sm:mt-0 sm:w-1/2">
         <div className="text-xs text-mantine-gray-600 mb-3 font-semibold">
           Example API Response
         </div>
