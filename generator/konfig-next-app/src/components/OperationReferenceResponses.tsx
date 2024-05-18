@@ -422,6 +422,9 @@ const ResponseDocumentation = observer(() => {
         )}
       </div>
       <div className="w-1/2">
+        <div className="text-xs text-mantine-gray-600 mb-3 font-semibold">
+          Example API Response
+        </div>
         <ResponseExample />
       </div>
     </div>
