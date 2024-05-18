@@ -367,7 +367,7 @@ const ResponseDocumentation = observer(() => {
   const responsesState = useContext(ResponsesStateContext)
   return (
     <div className="flex flex-col sm:flex-row gap-3 justify-between">
-      <div className="flex-1">
+      <div className="w-1/2">
         <div className="w-full pb-3 border-b dark:border-mantine-gray-900 border-mantine-gray-100">
           <Spoiler maxHeight={120} showLabel="Show more" hideLabel="Hide">
             <OperationParameterDocumentation
@@ -401,7 +401,7 @@ const ResponseDocumentation = observer(() => {
           />
         )}
       </div>
-      <div className="flex-1 max-w-[50%]">
+      <div className="w-1/2">
         <ResponseExample />
       </div>
     </div>
