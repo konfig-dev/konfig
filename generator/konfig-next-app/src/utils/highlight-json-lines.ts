@@ -99,7 +99,8 @@ export function highlightJsonLines({
       parsingState.processingObject === -1 &&
       !keyIsItem
     ) {
-      pathIndex--
+      // 1 for re-enabling the path, and 1 for exiting this object
+      pathIndex -= 2
     }
 
     if (
