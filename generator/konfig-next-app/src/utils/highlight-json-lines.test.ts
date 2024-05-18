@@ -338,4 +338,33 @@ describe('highlight-json-lines', () => {
       }).highlightedLines
     ).toStrictEqual([5])
   })
+
+  const identicalNestedObjects = {
+    balances: [
+      {
+        currency: {
+          id: '87b24961-b51e-4db8-9226-f198f6518a89',
+        },
+      },
+    ],
+    positions: [
+      {
+        symbol: {
+          symbol: {
+            currency: {
+              id: '87b24961-b51e-4db8-9226-f198f6518a89',
+            },
+          },
+        },
+      },
+    ],
+  }
+  test('identical nested objects', () => {
+    expect(
+      highlightJsonLines({
+        json: identicalNestedObjects,
+        path: ['balances', '$item', 'currency'],
+      }).highlightedLines
+    ).toStrictEqual([4, 5, 6])
+  })
 })

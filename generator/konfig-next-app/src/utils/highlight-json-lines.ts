@@ -133,6 +133,8 @@ export function highlightJsonLines({
         ? []
         : [fieldName]),
     ]
+    const currentPathLeaf = currentPath[currentPath.length - 1]
+    const currentPathLeafIsItem = currentPathLeaf === '$item'
     const pathMatches =
       keyMatches &&
       currentPath.length === path.length &&
@@ -147,13 +149,17 @@ export function highlightJsonLines({
     ) {
       if (endOfPath) {
         if (
-          keyMatches &&
+          (pathMatches || (keyMatches && currentPathLeafIsItem)) &&
           atObjectOpen &&
           parsingState.processingObject === -1
         ) {
           parsingState.processingObject = parsingState.inObject
         }
-        if (keyMatches && atArrayOpen && parsingState.processingArray === -1) {
+        if (
+          (pathMatches || (keyMatches && currentPathLeafIsItem)) &&
+          atArrayOpen &&
+          parsingState.processingArray === -1
+        ) {
           parsingState.processingArray = parsingState.inArray
         }
         if (parsingState.inObject < parsingState.processingObject) {
