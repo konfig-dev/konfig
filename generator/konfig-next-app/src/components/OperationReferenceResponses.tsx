@@ -14,8 +14,6 @@ import {
   Tabs,
   clsx,
   Collapse,
-  Code,
-  rem,
   Spoiler,
   DefaultProps,
   MantineColor,
@@ -425,14 +423,12 @@ const ResponseExample = observer(() => {
   const responsesState = useContext(ResponsesStateContext)
   const styles: DefaultProps<PrismStylesNames> = {
     styles: {
-      code: {
-        maxHeight: 720,
-        padding: 0,
+      scrollArea: {
+        height: 720,
       },
     },
     classNames: {
       root: 'rounded-md overflow-hidden',
-      line: 'first:pt-5 last:pb-5',
     },
   }
   const jsonString = responsesState?.exampleString ?? ''
@@ -455,7 +451,6 @@ const ResponseExample = observer(() => {
         colorScheme="dark"
         highlightLines={{ ...highlightLines }}
         withLineNumbers
-        scrollAreaComponent="div"
         {...styles}
         language={'json'}
       >
