@@ -47,9 +47,9 @@ export function highlightJsonLines({
   const parsingState = {
     inArray: 0,
     inObject: 0,
-    processingObject: -1,
-    processingArray: -1,
-    processingObjectItem: false,
+    processingObject: -1, // -1 signifies that we are not processing an object
+    processingArray: -1, // -1 signifies that we are not processing an array
+    processingObjectItem: 0, // 0 signifies that we are not processing an object item
   }
   let atArrayOpen = false
   let atObjectClose = false
@@ -65,21 +65,21 @@ export function highlightJsonLines({
     if (trimmedLine.endsWith('{')) {
       parsingState.inObject++
 
-      // If the last line was the array opening, then we are currently processing an object item
-      if (atArrayOpen) {
-        parsingState.processingObjectItem = true
+      // If the last line was the array opening, then we increment the processing object item
+      if (parsingState.inArray > 0) {
+        parsingState.processingObjectItem++
       }
     }
     if (trimmedLine.endsWith(']') || trimmedLine.endsWith('],')) {
       parsingState.inArray--
-
-      // If this is the end of an array of objects, then we are not processing an object item anymore
-      if (parsingState.processingObjectItem && atObjectClose) {
-        parsingState.processingObjectItem = false
-      }
     }
     if (trimmedLine.endsWith('}') || trimmedLine.endsWith('},')) {
       parsingState.inObject--
+
+      // If this is the end of object in an array, then we decrement the processing object item
+      if (parsingState.inArray > 0) {
+        parsingState.processingObjectItem--
+      }
     }
 
     const atObjectOpen = stateBefore.inObject < parsingState.inObject
@@ -90,6 +90,17 @@ export function highlightJsonLines({
     const atRoot = pathIndex === 0
     const keyMatches = trimmedLine.startsWith(`"${path[pathIndex]}"`)
     const keyIsItem = path[pathIndex] === '$item'
+
+    if (
+      atObjectClose &&
+      parsingState.inArray >= parsingState.processingObjectItem &&
+      parsingState.inArray > 0 &&
+      parsingState.processingArray === -1 &&
+      parsingState.processingObject === -1 &&
+      !keyIsItem
+    ) {
+      pathIndex--
+    }
 
     if (
       (keyIsItem && !atArrayClose) ||
@@ -122,7 +133,6 @@ export function highlightJsonLines({
       if (
         parsingState.processingObject === -1 &&
         parsingState.processingArray === -1 &&
-        !parsingState.processingObjectItem &&
         !keyIsItem
       ) {
         pathIndex++
@@ -135,7 +145,7 @@ export function highlightJsonLines({
       pathIndex++
     }
 
-    if (pathIndex === path.length) {
+    if (pathIndex === path.length && parsingState.processingObjectItem === 0) {
       break
     }
   }

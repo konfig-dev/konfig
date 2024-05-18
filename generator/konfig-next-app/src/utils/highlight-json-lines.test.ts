@@ -278,4 +278,12 @@ describe('highlight-json-lines', () => {
         .highlightedLines
     ).toStrictEqual(Array.from({ length: 133 }).map((_, i) => i + 3))
   })
+  test('complicated json - symbol.id', () => {
+    expect(
+      highlightJsonLines({
+        json: complicatedJson,
+        path: ['$item', 'symbol', 'id'],
+      }).highlightedLines
+    ).toStrictEqual([4])
+  })
 })
