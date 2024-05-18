@@ -124,7 +124,9 @@ export function highlightJsonLines({
     const keyIsItem = path[pathIndex] === '$item'
     const currentPath = [
       ...parsingState.pathSoFar,
-      ...(atObjectOpen || atArrayOpen ? [] : [fieldName]),
+      ...(atObjectOpen || atArrayOpen || fieldName === undefined
+        ? []
+        : [fieldName]),
     ]
     const pathMatches =
       keyMatches &&
@@ -174,7 +176,8 @@ export function highlightJsonLines({
         if (
           pathMatches ||
           parsingState.processingObject !== -1 ||
-          parsingState.processingArray !== -1
+          parsingState.processingArray !== -1 ||
+          keyIsItem
         ) {
           highlightedLines.push(lineNumber)
         }
