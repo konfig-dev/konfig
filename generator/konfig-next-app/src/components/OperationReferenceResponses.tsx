@@ -58,16 +58,10 @@ export const OperationReferenceResponses = observer(
     operation,
   }: Pick<ReferencePageProps, 'responses' | 'operation'>) => {
     return (
-      <div className="my-20">
-        <Title
-          className={clsx(
-            'mb-8',
-            'border-b pb-3 border-b-mantine-gray-100 dark:border-b-mantine-gray-900'
-          )}
-          order={4}
-        >
-          Response fields
-        </Title>
+      <div className="my-20 ">
+        <div className="pb-3 mb-8 border-b border-b-mantine-gray-100 dark:border-b-mantine-gray-900">
+          <Title order={4}>Response fields</Title>
+        </div>
         {/* <V1 responses={responses} /> */}
         <V2 responses={responses} />
       </div>
