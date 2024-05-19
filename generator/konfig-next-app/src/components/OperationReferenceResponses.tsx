@@ -67,6 +67,10 @@ class ResponsesState {
   responseCode: string
   responses: ResponseDocumentationObject[]
   highlightJsonPath: string[] = []
+
+  // To handle oneOf case
+  schemaIndex: number = 0
+
   propertiesExpanded: {
     [path: string]: boolean
   }
@@ -81,6 +85,10 @@ class ResponsesState {
     this.responseCode = responseCode
     this.responses = responses
     this.propertiesExpanded = {}
+  }
+
+  setSchemaIndex(index: number) {
+    this.schemaIndex = index
   }
 
   setResponseCode(responseCode: string) {
@@ -129,13 +137,9 @@ class ResponsesState {
     return responseObject
   }
 
-  get responseObjectSchemaLabel(): string {
-    const responseObject = this.responseObject
-    if (responseObject.schema === null) return ''
-    if (responseObject.schema === undefined) return ''
-    if ('$ref' in responseObject.schema)
-      throw new Error('$ref not expected in schema')
-    const schema = responseObject.schema
+  get responseObjectSchemaLabel(): string | null {
+    const schema = this.responseObjectSchema
+    if (schema === null) return null
     return schemaTypeLabel({ schema })
   }
 
@@ -143,7 +147,7 @@ class ResponsesState {
     return this.responseObjectSchema?.description ?? ''
   }
 
-  get responseObjectSchema(): SchemaObject | null {
+  get responseObjectSchemaList(): SchemaObject[] | null {
     const responseObject = this.responseObject
     if (responseObject.schema?.allOf !== undefined) {
       if (responseObject.schema.allOf.length === 1) {
@@ -151,7 +155,7 @@ class ResponsesState {
         if ('$ref' in schema) {
           throw new Error('$ref not expected in schema')
         }
-        return schema
+        return [schema]
       }
     }
     if (responseObject.schema === null) return null
@@ -159,7 +163,15 @@ class ResponsesState {
     if ('$ref' in responseObject.schema)
       throw new Error('$ref not expected in schema')
     const schema = responseObject.schema
-    return schema
+    if (schema.oneOf !== undefined) {
+      return schema.oneOf as SchemaObject[]
+    }
+    return [schema]
+  }
+
+  get responseObjectSchema(): SchemaObject | null {
+    const schemas = this.responseObjectSchemaList
+    return schemas?.[this.schemaIndex] ?? null
   }
 
   get fields(): FieldDocumentationWithDepth[] {
@@ -411,6 +423,15 @@ const V2 = observer(({ responses }: Pick<ReferencePageProps, 'responses'>) => {
   )
 })
 
+const tabStyles = {
+  tab: clsx(
+    'text-xs px-3 py-1',
+    'data-[active=true]:bg-mantine-gray-100 text-mantine-gray-700 data-[active=true]:hover:bg-mantine-gray-100 data-[active=true]:text-black',
+    'dark:text-mantine-gray-500 data-[active=true]:dark:bg-mantine-gray-900 data-[active=true]:dark:text-white'
+  ),
+  tabsList: 'border-mantine-gray-100 dark:border-mantine-gray-900',
+}
+
 const ResponseDocumentation = observer(() => {
   const responsesState = useContext(ResponsesStateContext)
   return (
@@ -418,15 +439,7 @@ const ResponseDocumentation = observer(() => {
       <div className="pb-3 flex items-center mb-8 border-b border-b-mantine-gray-100 dark:border-b-mantine-gray-900">
         <Title order={4}>Response fields</Title>
         <Tabs
-          classNames={{
-            root: 'ml-4 sm:ml-12',
-            tab: clsx(
-              'text-xs px-3 py-1',
-              'data-[active=true]:bg-mantine-gray-100 text-mantine-gray-700 data-[active=true]:hover:bg-mantine-gray-100 data-[active=true]:text-black',
-              'dark:text-mantine-gray-500 data-[active=true]:dark:bg-mantine-gray-900 data-[active=true]:dark:text-white'
-            ),
-            tabsList: 'border-mantine-gray-100 dark:border-mantine-gray-900',
-          }}
+          classNames={{ ...tabStyles, root: 'ml-4 sm:ml-12' }}
           defaultValue="gallery"
           onTabChange={(value) => {
             if (value !== null) {
@@ -437,10 +450,17 @@ const ResponseDocumentation = observer(() => {
           value={responsesState?.responseCode}
         >
           <Tabs.List>
-            {responsesState?.responses.map((response) =>
-              response.description !== undefined &&
-              response.description !== '' ? (
+            {responsesState?.responses.map((response) => {
+              if (
+                response.description === '' ||
+                response.description === undefined
+              ) {
+                console.log(response.description)
+              }
+              return response.description !== undefined &&
+                response.description !== '' ? (
                 <Tooltip
+                  key={response.responseCode}
                   withArrow
                   classNames={{
                     tooltip:
@@ -453,11 +473,14 @@ const ResponseDocumentation = observer(() => {
                   </Tabs.Tab>
                 </Tooltip>
               ) : (
-                <Tabs.Tab value={response.responseCode}>
+                <Tabs.Tab
+                  key={response.responseCode}
+                  value={response.responseCode}
+                >
                   {response.responseCode}
                 </Tabs.Tab>
               )
-            )}
+            })}
           </Tabs.List>
         </Tabs>
       </div>
@@ -476,6 +499,30 @@ const ResponseFieldsDocumentation = observer(() => {
   return (
     <div className="flex flex-col sm:flex-row gap-3 justify-between">
       <div className="sm:w-1/2">
+        {responsesState?.responseObjectSchemaList?.length !== undefined &&
+          responsesState?.responseObjectSchemaList?.length > 1 && (
+            <div className="mb-6">
+              <Tabs
+                classNames={tabStyles}
+                variant="pills"
+                defaultValue="gallery"
+                value={responsesState?.schemaIndex.toString()}
+                onTabChange={(value) => {
+                  if (value !== null) {
+                    responsesState?.setSchemaIndex(parseInt(value))
+                  }
+                }}
+              >
+                <Tabs.List>
+                  {responsesState?.responseObjectSchemaList.map((_, i) => (
+                    <Tabs.Tab key={i} value={i.toString()}>
+                      Schema {i + 1}
+                    </Tabs.Tab>
+                  ))}
+                </Tabs.List>
+              </Tabs>
+            </div>
+          )}
         <div className="w-full pb-3 border-b dark:border-mantine-gray-900 border-mantine-gray-100">
           <Spoiler maxHeight={120} showLabel="Show more" hideLabel="Hide">
             <OperationParameterDocumentation
