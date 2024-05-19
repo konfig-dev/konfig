@@ -3,7 +3,6 @@ import { getClickableStyles } from '@/utils/get-clickable-styles'
 import { httpResponseCodeMeaning } from '@/utils/http-response-code-meaning'
 import { inactiveColor } from '@/utils/inactive-color'
 import {
-  Box,
   Title,
   Flex,
   Badge,
@@ -17,6 +16,7 @@ import {
   Spoiler,
   DefaultProps,
   MantineColor,
+  Tooltip,
 } from '@mantine/core'
 import { IconFile, IconFileCode } from '@tabler/icons-react'
 import { createContext, useContext, useEffect, useRef, useState } from 'react'
@@ -81,6 +81,10 @@ class ResponsesState {
     this.responseCode = responseCode
     this.responses = responses
     this.propertiesExpanded = {}
+  }
+
+  setResponseCode(responseCode: string) {
+    this.responseCode = responseCode
   }
 
   getPropertiesExpanded(path: string) {
@@ -362,9 +366,6 @@ export const OperationReferenceResponses = observer(
   }: Pick<ReferencePageProps, 'responses' | 'operation'>) => {
     return (
       <div className="my-20 ">
-        <div className="pb-3 mb-8 border-b border-b-mantine-gray-100 dark:border-b-mantine-gray-900">
-          <Title order={4}>Response fields</Title>
-        </div>
         {/* <V1 responses={responses} /> */}
         <V2 responses={responses} />
       </div>
@@ -412,9 +413,66 @@ const V2 = observer(({ responses }: Pick<ReferencePageProps, 'responses'>) => {
 
 const ResponseDocumentation = observer(() => {
   const responsesState = useContext(ResponsesStateContext)
-  if (responsesState?.responseObjectSchema === null) {
-    return <div className="text-mantine-gray-600">No response fields.</div>
-  }
+  return (
+    <>
+      <div className="pb-3 flex items-center mb-8 border-b border-b-mantine-gray-100 dark:border-b-mantine-gray-900">
+        <Title order={4}>Response fields</Title>
+        <Tabs
+          classNames={{
+            root: 'ml-4 sm:ml-12',
+            tab: clsx(
+              'text-xs px-3 py-1',
+              'data-[active=true]:bg-mantine-gray-100 text-mantine-gray-700 data-[active=true]:hover:bg-mantine-gray-100 data-[active=true]:text-black',
+              'dark:text-mantine-gray-500 data-[active=true]:dark:bg-mantine-gray-900 data-[active=true]:dark:text-white'
+            ),
+            tabsList: 'border-mantine-gray-100 dark:border-mantine-gray-900',
+          }}
+          defaultValue="gallery"
+          onTabChange={(value) => {
+            if (value !== null) {
+              responsesState?.setResponseCode(value)
+            }
+          }}
+          variant="pills"
+          value={responsesState?.responseCode}
+        >
+          <Tabs.List>
+            {responsesState?.responses.map((response) =>
+              response.description !== undefined &&
+              response.description !== '' ? (
+                <Tooltip
+                  withArrow
+                  classNames={{
+                    tooltip:
+                      'text-xs dark:bg-mantine-gray-900 dark:text-mantine-gray-100',
+                  }}
+                  label={response.description}
+                >
+                  <Tabs.Tab value={response.responseCode}>
+                    {response.responseCode}
+                  </Tabs.Tab>
+                </Tooltip>
+              ) : (
+                <Tabs.Tab value={response.responseCode}>
+                  {response.responseCode}
+                </Tabs.Tab>
+              )
+            )}
+          </Tabs.List>
+        </Tabs>
+      </div>
+      {responsesState?.responseObjectSchema !== null ? (
+        <ResponseFieldsDocumentation />
+      ) : (
+        <div className="text-mantine-gray-600">No response fields.</div>
+      )}
+    </>
+  )
+})
+
+const ResponseFieldsDocumentation = observer(() => {
+  const responsesState = useContext(ResponsesStateContext)
+
   return (
     <div className="flex flex-col sm:flex-row gap-3 justify-between">
       <div className="sm:w-1/2">
@@ -451,9 +509,7 @@ const ResponseDocumentation = observer(() => {
         )}
       </div>
       <div className="mt-6 sm:mt-0 sm:w-1/2">
-        <div className="text-xs text-mantine-gray-600 mb-3 font-semibold">
-          Example API Response
-        </div>
+        <div className="mb-2 text-xs"></div>
         <ResponseExample />
       </div>
     </div>
@@ -614,6 +670,34 @@ const ResponseFieldDocumentationField = observer(
   }
 )
 
+function ResponseCodeTab({
+  code,
+  description,
+}: {
+  code: string
+  description: string
+}) {
+  return (
+    <>
+      <Flex gap="xs" align="center">
+        <Title order={6}>
+          {code} {httpResponseCodeMeaning(code)}
+        </Title>
+        {code.startsWith('2') ? (
+          <Badge color="blue">Success</Badge>
+        ) : (
+          <Badge color="red">Error</Badge>
+        )}
+      </Flex>
+      {description && (
+        <Text c="dimmed" fz="sm">
+          {description}
+        </Text>
+      )}
+    </>
+  )
+}
+
 function V1({ responses }: Pick<ReferencePageProps, 'responses'>) {
   const { classes, cx } = useStyles()
   const [value, setValue] = useState<string | null>(null)
@@ -665,21 +749,10 @@ function V1({ responses }: Pick<ReferencePageProps, 'responses'>) {
               })}
               px="md"
             >
-              <Flex gap="xs" align="center">
-                <Title order={6}>
-                  {responseCode} {httpResponseCodeMeaning(responseCode)}
-                </Title>
-                {responseCode.startsWith('2') ? (
-                  <Badge color="blue">Success</Badge>
-                ) : (
-                  <Badge color="red">Error</Badge>
-                )}
-              </Flex>
-              {response.description && (
-                <Text c="dimmed" fz="sm">
-                  {response.description}
-                </Text>
-              )}
+              <ResponseCodeTab
+                code={responseCode}
+                description={response.description}
+              />
             </Accordion.Control>
             <Accordion.Panel>
               <Tabs
