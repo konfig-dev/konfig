@@ -52,23 +52,6 @@ const useStyles = createStyles((theme) => ({
   },
 }))
 
-export const OperationReferenceResponses = observer(
-  ({
-    responses,
-    operation,
-  }: Pick<ReferencePageProps, 'responses' | 'operation'>) => {
-    return (
-      <div className="my-20 ">
-        <div className="pb-3 mb-8 border-b border-b-mantine-gray-100 dark:border-b-mantine-gray-900">
-          <Title order={4}>Response fields</Title>
-        </div>
-        {/* <V1 responses={responses} /> */}
-        <V2 responses={responses} />
-      </div>
-    )
-  }
-)
-
 type ResponseDocumentationObject = {
   responseCode: string
   description: string
@@ -371,6 +354,23 @@ class ResponsesState {
 }
 
 const ResponsesStateContext = createContext<ResponsesState | null>(null)
+
+export const OperationReferenceResponses = observer(
+  ({
+    responses,
+    operation,
+  }: Pick<ReferencePageProps, 'responses' | 'operation'>) => {
+    return (
+      <div className="my-20 ">
+        <div className="pb-3 mb-8 border-b border-b-mantine-gray-100 dark:border-b-mantine-gray-900">
+          <Title order={4}>Response fields</Title>
+        </div>
+        {/* <V1 responses={responses} /> */}
+        <V2 responses={responses} />
+      </div>
+    )
+  }
+)
 
 const V2 = observer(({ responses }: Pick<ReferencePageProps, 'responses'>) => {
   const responsesMapped = Object.entries(responses).map(
