@@ -460,4 +460,12 @@ describe('highlight-json-lines', () => {
       }).highlightedLines
     ).toStrictEqual(Array.from({ length: 81 - 4 + 1 }).map((_, i) => i + 4))
   })
+  test('groundx response - documents', () => {
+    expect(
+      highlightJsonLines({
+        json: groundxResponse,
+        path: ['ingest', 'progress', 'cancelled', 'documents'],
+      }).highlightedLines
+    ).toStrictEqual(Array.from({ length: 21 - 6 + 1 }).map((_, i) => i + 6))
+  })
 })
