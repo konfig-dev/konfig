@@ -103,7 +103,10 @@ export function highlightJsonLines({
         parsingState.pathSoFar.pop() // field name
       }
     }
-    if (trimmedLine.endsWith('}') || trimmedLine.endsWith('},')) {
+    if (
+      !(trimmedLine.endsWith('{}') || trimmedLine.endsWith('{},')) &&
+      (trimmedLine.endsWith('}') || trimmedLine.endsWith('},'))
+    ) {
       parsingState.inObject--
 
       // If this is the end of object in an array, then we decrement the processing object item

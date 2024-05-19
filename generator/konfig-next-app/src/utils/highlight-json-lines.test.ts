@@ -367,4 +367,97 @@ describe('highlight-json-lines', () => {
       }).highlightedLines
     ).toStrictEqual([4, 5, 6])
   })
+  const groundxResponse = {
+    ingest: {
+      processId: '9e0ad09b-5150-48c0-aded-707587048fd9',
+      progress: {
+        cancelled: {
+          documents: [
+            {
+              document: {
+                bucketId: 0,
+                documentId: '4704590c-004e-410d-adf7-acb7ca0a7052',
+                fileName: 'string',
+                fileSize: '1.4MB',
+                fileType: 'txt',
+                processId: '9e0ad09b-5150-48c0-aded-707587048fd9',
+                searchData: {},
+                sourceUrl: 'http://example.com',
+                status: 'queued',
+                statusMessage: 'string',
+              },
+            },
+          ],
+          total: 0,
+        },
+        complete: {
+          documents: [
+            {
+              document: {
+                bucketId: 0,
+                documentId: '4704590c-004e-410d-adf7-acb7ca0a7052',
+                fileName: 'string',
+                fileSize: '1.4MB',
+                fileType: 'txt',
+                processId: '9e0ad09b-5150-48c0-aded-707587048fd9',
+                searchData: {},
+                sourceUrl: 'http://example.com',
+                status: 'queued',
+                statusMessage: 'string',
+              },
+            },
+          ],
+          total: 0,
+        },
+        errors: {
+          documents: [
+            {
+              document: {
+                bucketId: 0,
+                documentId: '4704590c-004e-410d-adf7-acb7ca0a7052',
+                fileName: 'string',
+                fileSize: '1.4MB',
+                fileType: 'txt',
+                processId: '9e0ad09b-5150-48c0-aded-707587048fd9',
+                searchData: {},
+                sourceUrl: 'http://example.com',
+                status: 'queued',
+                statusMessage: 'string',
+              },
+            },
+          ],
+          total: 0,
+        },
+        processing: {
+          documents: [
+            {
+              document: {
+                bucketId: 0,
+                documentId: '4704590c-004e-410d-adf7-acb7ca0a7052',
+                fileName: 'string',
+                fileSize: '1.4MB',
+                fileType: 'txt',
+                processId: '9e0ad09b-5150-48c0-aded-707587048fd9',
+                searchData: {},
+                sourceUrl: 'http://example.com',
+                status: 'queued',
+                statusMessage: 'string',
+              },
+            },
+          ],
+          total: 0,
+        },
+      },
+      status: 'queued',
+      statusMessage: 'string',
+    },
+  }
+  test('groundx response', () => {
+    expect(
+      highlightJsonLines({
+        json: groundxResponse,
+        path: ['ingest', 'progress'],
+      }).highlightedLines
+    ).toStrictEqual(Array.from({ length: 81 - 4 + 1 }).map((_, i) => i + 4))
+  })
 })
