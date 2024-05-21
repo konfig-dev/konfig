@@ -1,7 +1,8 @@
 {{#if hasVars}}
 {{#if useDictionaryBasedTypedDict}}
 Required{{classname}} = TypedDict("Required{{classname}}", {
-    {{#each requiredVars}}
+    {{#each allVars}}
+    {{#if required}}
     {{#if deprecated}}
     # WARNING: This property is deprecated
     {{/if}}
@@ -12,11 +13,13 @@ Required{{classname}} = TypedDict("Required{{classname}}", {
     {{#unless @last}}
 
     {{/unless}}
+    {{/if}}
     {{/each}}
     })
 {{else}}
 class Required{{classname}}(TypedDict):
-    {{#each requiredVars}}
+    {{#each allVars}}
+    {{#if required}}
     {{#if deprecated}}
     # WARNING: This property is deprecated
     {{/if}}
@@ -27,6 +30,7 @@ class Required{{classname}}(TypedDict):
     {{#unless @last}}
 
     {{/unless}}
+    {{/if}}
     {{/each}}
     {{#unless requiredVars}}
     pass
@@ -35,7 +39,8 @@ class Required{{classname}}(TypedDict):
 
 {{#if useDictionaryBasedTypedDict}}
 Optional{{classname}} = TypedDict("Optional{{classname}}", {
-    {{#each optionalVars}}
+    {{#each allVars}}
+    {{#unless required}}
     {{#if deprecated}}
     # WARNING: This property is deprecated
     {{/if}}
@@ -46,11 +51,13 @@ Optional{{classname}} = TypedDict("Optional{{classname}}", {
     {{#unless @last}}
 
     {{/unless}}
+    {{/unless}}
     {{/each}}
     }, total=False)
 {{else}}
 class Optional{{classname}}(TypedDict, total=False):
-    {{#each optionalVars}}
+    {{#each allVars}}
+    {{#unless required}}
     {{#if deprecated}}
     # WARNING: This property is deprecated
     {{/if}}
@@ -60,6 +67,7 @@ class Optional{{classname}}(TypedDict, total=False):
     {{baseName}}: {{> type_templates/type_property_data_type}}
     {{#unless @last}}
 
+    {{/unless}}
     {{/unless}}
     {{/each}}
     {{#unless optionalVars}}
