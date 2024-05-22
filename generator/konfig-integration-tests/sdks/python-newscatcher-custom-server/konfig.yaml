@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://unpkg.com/konfig-lib@latest/konfig-yaml.schema.json
 
-outputDirectory: /tmp/newscatcherapi-custom-typescript-sdks-out
+outputDirectory: /tmp/newscatcherapi-custom-python-sdks-out
 specInputPath: openapi.json
 specPath: openapi-fixed.json
 filterPaths:
@@ -19,20 +19,14 @@ fixConfig:
         width='286' height='35' /> <br>  <br>Visit our website  <a
         href='https://newscatcherapi.com'>https://newscatcherapi.com</a>
 generators:
-  typescript:
-    version: 6.0.7
-    npmName: newscatcherapi-typescript-sdk
+  python:
+    version: 6.0.6
+    packageName: newscatcherapi_client
+    projectName: newscatcherapi-python-sdk
+    useAiohttp3_8: true
+    outputDirectory: python
     clientName: Newscatcher
-    useAxios0_27_2: true
-    outputDirectory: typescript
+    pypiApiTokenEnvironmentVariable: NEWSCATCHER_PYPI_API_TOKEN
     git:
       userId: konfig-dev
-      repoId: newscatcher-sdks/tree/main/v3/typescript
-    pagination:
-      parameters:
-        - page_size
-        - page
-      response:
-        - page
-        - total_pages
-        - page_size
+      repoId: newscatcher-sdks/tree/main/v3/python
