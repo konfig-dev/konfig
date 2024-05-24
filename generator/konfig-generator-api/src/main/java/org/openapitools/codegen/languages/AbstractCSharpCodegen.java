@@ -1533,6 +1533,37 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
 
             return "new " + dataType + "(" + composedSchema.getAnyOf().get(0).example + ")";
         }
+        if (composedSchema.getOneOf() != null) {
+            composedSchema.getOneOf().sort((a, b) -> {
+                if (a.dataType.equals("DateTime")) {
+                    return -1;
+                }
+                if (b.dataType.equals("DateTime")) {
+                    return 1;
+                }
+                return 0;
+            });
+
+            String example = "null";
+            for (CodegenProperty p : composedSchema.getOneOf()) {
+                if (p.example != null && !p.example.equals("null")) {
+                    example = p.example;
+                    break;
+                }
+            }
+            // if none have examples then use a default value if possible
+            if (example.equals("null")) {
+                for (CodegenProperty p : composedSchema.getOneOf()) {
+                    if (p.isNumber) {
+                        example = "100";
+                        break;
+                    }
+                    // add more as necessary
+                }
+            }
+
+            return "new " + dataType + "(" + example + ")";
+        }
         return "null";
     }
 
