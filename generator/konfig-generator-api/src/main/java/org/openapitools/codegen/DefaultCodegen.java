@@ -5339,7 +5339,8 @@ public class DefaultCodegen implements CodegenConfig {
         if (parameter.getSchema() != null) {
             parameterSchema = unaliasSchema(parameter.getSchema());
             parameterModelName = getParameterDataType(parameter, parameterSchema);
-            if (this instanceof PythonPriorClientCodegen && parameter.getSchema().get$ref() != null
+            if ((this instanceof PythonPriorClientCodegen || this instanceof TypeScriptAxiosClientCodegen)
+                    && parameter.getSchema().get$ref() != null
                     && parameterModelName != null) {
                 // This is a ref so add it to list of imports
                 imports.add(parameterModelName);
