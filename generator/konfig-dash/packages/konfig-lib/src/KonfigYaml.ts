@@ -337,14 +337,6 @@ export const typescriptConfig = z.object({
     ),
   pagination: paginationConfigSchema.optional(),
   removeKonfigBranding,
-  useSecurityKeyNameAsPropertyName: z
-    .boolean()
-    .optional()
-    .describe(
-      `Consider the following security scheme: { accessToken: { type: apiKey, name: authorization, in: header }}.
-The default behavior is to use the (camelCased) header name as the Configuration property name (e.g. "authorization").
-If this flag is set to true, then the key name will be used instead (e.g. "accessToken").`
-    ),
   objectPropertyNamingConvention:
     objectPropertyNamingConvention.default('camelCase'),
   clientState,
@@ -487,6 +479,14 @@ export const generatorCommonOptional = z
     disabled: z.boolean().optional(),
     defaultTimeout: z.number().optional().default(0),
     userAgent: z.string().optional().default('Konfig'),
+    useSecurityKeyNameAsPropertyName: z
+    .boolean()
+    .optional()
+    .describe(
+      `Consider the following security scheme: { accessToken: { type: apiKey, name: authorization, in: header }}.
+The default behavior is to use the (camelCased) header name as the Configuration property name (e.g. "authorization").
+If this flag is set to true, then the key name will be used instead (e.g. "accessToken").`
+    ),
   })
   .merge(testConfig)
 

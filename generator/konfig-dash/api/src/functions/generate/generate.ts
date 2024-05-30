@@ -920,6 +920,7 @@ async function queueJavaGeneration({
         disallowAdditionalPropertiesIfNotPresent: false,
         defaultTimeout: generatorConfig.defaultTimeout,
         userAgent: generatorConfig.userAgent,
+        useSecurityKeyNameAsPropertyName: generatorConfig.useSecurityKeyNameAsPropertyName,
         useSingleRequestParameter: true,
       },
       artifactVersion: generatorConfig.version,

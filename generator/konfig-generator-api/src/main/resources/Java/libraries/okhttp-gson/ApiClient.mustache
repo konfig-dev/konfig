@@ -1,5 +1,4 @@
 {{>licenseInfo}}
-
 package {{invokerPackage}};
 
 {{#dynamicOperations}}
@@ -136,7 +135,7 @@ public class ApiClient extends ApiClientCustom {
         // Setup authentications (key: authentication name, value: authentication).{{#authMethods}}{{#isBasic}}{{#isBasicBasic}}
         authentications.put("{{name}}", new HttpBasicAuth());{{/isBasicBasic}}{{^isBasicBasic}}
         authentications.put("{{name}}", new HttpBearerAuth("{{scheme}}"));{{/isBasicBasic}}{{/isBasic}}{{#isApiKey}}
-        authentications.put("{{name}}", new ApiKeyAuth({{#isKeyInHeader}}"header"{{/isKeyInHeader}}{{#isKeyInQuery}}"query"{{/isKeyInQuery}}{{#isKeyInCookie}}"cookie"{{/isKeyInCookie}}, "{{keyParamName}}"));{{/isApiKey}}{{#isOAuth}}
+        authentications.put("{{name}}", new ApiKeyAuth({{#isKeyInHeader}}"header"{{/isKeyInHeader}}{{#isKeyInQuery}}"query"{{/isKeyInQuery}}{{#isKeyInCookie}}"cookie"{{/isKeyInCookie}}, "{{>securityHeaderName}}"{{#vendorExtensions.x-konfig-prefix}}, "{{vendorExtensions.x-konfig-prefix}}"{{/vendorExtensions.x-konfig-prefix}}));{{/isApiKey}}{{#isOAuth}}
         RetryingOAuth oauth = configuration != null ? setupOauth(configuration.clientId, configuration.clientSecret, null) : null;{{/isOAuth}}{{/authMethods}}
         // Prevent the authentications from being modified.
         authentications = Collections.unmodifiableMap(authentications);
@@ -601,22 +600,21 @@ public class ApiClient extends ApiClientCustom {
         throw new RuntimeException("No HTTP basic authentication configured!");
     }
 
+{{#hasOAuthMethods}}
     /**
      * Helper method to set access token for the first OAuth2 authentication.
      *
      * @param accessToken Access token
      */
     public void setAccessToken(String accessToken) {
-        {{#hasOAuthMethods}}
         for (Authentication auth : authentications.values()) {
             if (auth instanceof OAuth) {
                 ((OAuth) auth).setAccessToken(accessToken);
                 return;
             }
         }
-        {{/hasOAuthMethods}}
-        throw new RuntimeException("No OAuth2 authentication configured!");
     }
+{{/hasOAuthMethods}}
 
     /**
      * Set the User-Agent header's value (by adding to the default header map).
