@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.37.5
+
+### Patch Changes
+
+- [#704](https://github.com/konfig-dev/konfig/pull/704) [`d26c15cab`](https://github.com/konfig-dev/konfig/commit/d26c15cab5867f651e1dad4f68f0464a7b9a208f) Thanks [@eddiechayes](https://github.com/eddiechayes)! - add useSecurityKeyNameAsPropertyName support for java
+
 ## 1.37.4
 
 ### Patch Changes
