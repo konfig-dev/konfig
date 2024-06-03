@@ -81,8 +81,7 @@ namespace CsharpSplitit.Net.Client.Auth
         /// <returns>An authentication token.</returns>
         async Task<string> GetToken()
         {
-            var client = new RestClient(_tokenUrl)
-                .UseSerializer(() => new CustomJsonCodec(_serializerSettings, _configuration));
+            var client = new RestClient(_tokenUrl, configureSerialization: s => s.UseSerializer(() => new CustomJsonCodec(_serializerSettings, _configuration)));
 
             var request = new RestRequest()
                 .AddParameter("grant_type", _grantType)

@@ -39,7 +39,7 @@ namespace Newscatcherapi.Net.Client
     internal class CustomJsonCodec : IRestSerializer, ISerializer, IDeserializer
     {
         private readonly IReadableConfiguration _configuration;
-        private static readonly string _contentType = "application/json";
+        private static readonly ContentType _contentType = "application/json";
         private readonly JsonSerializerSettings _serializerSettings = new JsonSerializerSettings
         {
             // OpenAPI generated types generally hide default constructors.
@@ -145,13 +145,13 @@ namespace Newscatcherapi.Net.Client
         public ISerializer Serializer => this;
         public IDeserializer Deserializer => this;
 
-        public string[] AcceptedContentTypes => RestSharp.Serializers.ContentType.JsonAccept;
+        public string[] AcceptedContentTypes => RestSharp.ContentType.JsonAccept;
 
         public SupportsContentType SupportsContentType => contentType =>
-            contentType.EndsWith("json", StringComparison.InvariantCultureIgnoreCase) ||
-            contentType.EndsWith("javascript", StringComparison.InvariantCultureIgnoreCase);
+            contentType.Value.EndsWith("json", StringComparison.InvariantCultureIgnoreCase) ||
+            contentType.Value.EndsWith("javascript", StringComparison.InvariantCultureIgnoreCase);
 
-        public string ContentType
+        public ContentType ContentType
         {
             get { return _contentType; }
             set { throw new InvalidOperationException("Not allowed to set content type."); }
@@ -451,18 +451,15 @@ namespace Newscatcherapi.Net.Client
             {
                 ClientCertificates = configuration.ClientCertificates,
                 CookieContainer = cookies,
-                MaxTimeout = configuration.Timeout,
+                Timeout = TimeSpan.FromMilliseconds(configuration.Timeout),
                 Proxy = configuration.Proxy,
+                UserAgent = configuration.UserAgent
             };
             if (!configuration.VerifySsl)
             {
                 clientOptions.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
             };
-
-            RestClient client = new RestClient(clientOptions)
-                .UseSerializer(() => new CustomJsonCodec(SerializerSettings, configuration));
-            client.AddDefaultHeader("User-Agent", configuration.UserAgent);
-
+            RestClient client = new RestClient(clientOptions, configureSerialization: s => s.UseSerializer(() => new CustomJsonCodec(SerializerSettings, configuration)));
             InterceptRequest(req);
 
             RestResponse<T> response;
@@ -470,7 +467,7 @@ namespace Newscatcherapi.Net.Client
             {
                 var policy = RetryConfiguration.RetryPolicy;
                 var policyResult = policy.ExecuteAndCapture(() => client.Execute(req));
-                response = (policyResult.Outcome == OutcomeType.Successful) ? client.Deserialize<T>(policyResult.Result) : new RestResponse<T>
+                response = (policyResult.Outcome == OutcomeType.Successful) ? client.Deserialize<T>(policyResult.Result, CancellationToken.None).Result : new RestResponse<T>(req)
                 {
                     Request = req,
                     ErrorException = policyResult.FinalException
@@ -550,18 +547,16 @@ namespace Newscatcherapi.Net.Client
             var clientOptions = new RestClientOptions(baseUrl)
             {
                 ClientCertificates = configuration.ClientCertificates,
-                MaxTimeout = configuration.Timeout,
+                Timeout = TimeSpan.FromMilliseconds(configuration.Timeout),
                 Proxy = configuration.Proxy,
+                UserAgent = configuration.UserAgent
             };
             if (!configuration.VerifySsl)
             {
                 clientOptions.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
             };
 
-            RestClient client = new RestClient(clientOptions)
-                .UseSerializer(() => new CustomJsonCodec(SerializerSettings, configuration));
-            client.AddDefaultHeader("User-Agent", configuration.UserAgent);
-
+            RestClient client = new RestClient(clientOptions, configureSerialization: s => s.UseSerializer(() => new CustomJsonCodec(SerializerSettings, configuration)));
             InterceptRequest(req);
 
             RestResponse<T> response;
@@ -569,7 +564,7 @@ namespace Newscatcherapi.Net.Client
             {
                 var policy = RetryConfiguration.AsyncRetryPolicy;
                 var policyResult = await policy.ExecuteAndCaptureAsync((ct) => client.ExecuteAsync(req, ct), cancellationToken).ConfigureAwait(false);
-                response = (policyResult.Outcome == OutcomeType.Successful) ? client.Deserialize<T>(policyResult.Result) : new RestResponse<T>
+                response = (policyResult.Outcome == OutcomeType.Successful) ? await client.Deserialize<T>(policyResult.Result, CancellationToken.None) : new RestResponse<T>(req)
                 {
                     Request = req,
                     ErrorException = policyResult.FinalException
