@@ -4,6 +4,7 @@ describe("typescript-api-exception-contains-response-headers", () => {
     it("initialize client", async () => {
         const client = new TypescriptApiExceptionContainsResponseHeadersClient({
             apiKey: "API_KEY",
+            basePath: "http://localhost:4081",
         });
         try {
             await client.test.fetch();
