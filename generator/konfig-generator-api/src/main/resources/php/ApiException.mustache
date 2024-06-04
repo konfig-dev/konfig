@@ -48,7 +48,12 @@ class ApiException extends Exception
      */
     public function __construct($message = "", $code = 0, $responseHeaders = [], $responseBody = null)
     {
-        parent::__construct($message, $code);
+        $headersString = '';
+        foreach ($responseHeaders as $key => $value)
+        {
+            $headersString .= $key . ': ' . implode(', ', $value) . "\n";
+        }
+        parent::__construct($message . "\nResponse Headers:\n" . $headersString, $code);
         $this->responseHeaders = $responseHeaders;
         $this->responseBody = $responseBody;
     }
