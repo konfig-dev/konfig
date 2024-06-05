@@ -410,7 +410,7 @@ public class {{classname}}Generated {
     }
     {{#vendorExtensions.x-group-parameters}}
 
-    public class {{> request_builder_name_partial}} {
+    public abstract class {{> request_builder_name_partial}}Generated {
         {{#requiredParamsWithRequestBodyProperties}}
         private final {{> data_type_partial}} {{paramName}};
         {{/requiredParamsWithRequestBodyProperties}}
@@ -423,7 +423,7 @@ public class {{classname}}Generated {
         {{/isStrictlyObject}}
         {{/bodyParam}}
 
-        private {{> request_builder_name_partial}}({{#requiredParamsWithRequestBodyProperties}}{{#isNumber}}{{{dataTypeLowerCase}}}{{/isNumber}}{{^isNumber}}{{{dataType}}}{{/isNumber}} {{paramName}}{{^-last}}, {{/-last}}{{/requiredParamsWithRequestBodyProperties}}) {
+        public {{> request_builder_name_partial}}Generated({{#requiredParamsWithRequestBodyProperties}}{{#isNumber}}{{{dataTypeLowerCase}}}{{/isNumber}}{{^isNumber}}{{{dataType}}}{{/isNumber}} {{paramName}}{{^-last}}, {{/-last}}{{/requiredParamsWithRequestBodyProperties}}) {
             {{#requiredParamsWithRequestBodyProperties}}
             this.{{paramName}} = {{paramName}};
             {{/requiredParamsWithRequestBodyProperties}}
@@ -434,11 +434,11 @@ public class {{classname}}Generated {
         /**
          * Set {{paramName}}
          * @param {{paramName}} {{description}} (optional{{^isContainer}}{{#defaultValue}}, default to {{.}}{{/defaultValue}}{{/isContainer}})
-         * @return {{> request_builder_name_partial}}
+         * @return {{classname}}.{{> request_builder_name_partial}}
          */
-        public {{> request_builder_name_partial}} {{paramName}}({{{dataType}}} {{paramName}}) {
+        public {{classname}}.{{> request_builder_name_partial}} {{paramName}}({{{dataType}}} {{paramName}}) {
             this.{{paramName}} = {{paramName}};
-            return this;
+            return ({{classname}}.{{>request_builder_name_partial}}) this;
         }
 
         {{/isStrictlyObject}}
@@ -447,25 +447,25 @@ public class {{classname}}Generated {
         /**
          * Set {{paramName}}
          * @param {{paramName}} {{description}} (optional{{^isContainer}}{{#defaultValue}}, default to {{.}}{{/defaultValue}}{{/isContainer}})
-         * @return {{> request_builder_name_partial}}
+         * @return {{classname}}.{{> request_builder_name_partial}}
          */
-        public {{> request_builder_name_partial}} {{paramName}}({{> data_type_partial}} {{paramName}}) {
+        public {{classname}}.{{> request_builder_name_partial}} {{paramName}}({{> data_type_partial}} {{paramName}}) {
             this.{{paramName}} = {{paramName}};
-            return this;
+            return ({{classname}}.{{>request_builder_name_partial}}) this;
         }
         {{#isNumber}}{{#isNullable}}
 
         /**
          * Set {{paramName}}
          * @param {{paramName}} {{description}} (optional{{^isContainer}}{{#defaultValue}}, default to {{.}}{{/defaultValue}}{{/isContainer}})
-         * @return {{> request_builder_name_partial}}
+         * @return {{classname}}.{{> request_builder_name_partial}}
          */
-        public {{> request_builder_name_partial}} {{paramName}}(Integer {{paramName}}) {
+        public {{classname}}.{{> request_builder_name_partial}} {{paramName}}(Integer {{paramName}}) {
             {{^isNullable}}
             if ({{paramName}} == null) throw new IllegalArgumentException("\"{{paramName}}\" is required but got null");
             {{/isNullable}}
             this.{{paramName}} = {{paramName}}.doubleValue();
-            return this;
+            return ({{classname}}.{{>request_builder_name_partial}}) this;
         }
         {{/isNullable}}{{/isNumber}}
         {{/optionalParamsWithRequestBodyProperties}}
@@ -646,14 +646,14 @@ public class {{classname}}Generated {
     {{#isDeprecated}}
     @Deprecated
     {{/isDeprecated}}
-    public {{> request_builder_name_partial}} {{operationId}}({{#requiredParamsWithRequestBodyProperties}}{{#isNumber}}{{{dataTypeLowerCase}}}{{/isNumber}}{{^isNumber}}{{{dataType}}}{{/isNumber}} {{paramName}}{{^-last}}, {{/-last}}{{/requiredParamsWithRequestBodyProperties}}) throws IllegalArgumentException {
+    public {{classname}}.{{> request_builder_name_partial}} {{operationId}}({{#requiredParamsWithRequestBodyProperties}}{{#isNumber}}{{{dataTypeLowerCase}}}{{/isNumber}}{{^isNumber}}{{{dataType}}}{{/isNumber}} {{paramName}}{{^-last}}, {{/-last}}{{/requiredParamsWithRequestBodyProperties}}) throws IllegalArgumentException {
         {{#requiredParamsWithRequestBodyProperties}}
         {{^isNullable}}{{^isNumber}}if ({{paramName}} == null) throw new IllegalArgumentException("\"{{paramName}}\" is required but got null");{{/isNumber}}{{/isNullable}}
         {{#isString}}
         {{> min_length_validation_partial_param}}
         {{/isString}}
         {{/requiredParamsWithRequestBodyProperties}}
-        return new {{> request_builder_name_partial}}({{#requiredParamsWithRequestBodyProperties}}{{paramName}}{{^-last}}, {{/-last}}{{/requiredParamsWithRequestBodyProperties}});
+        return (({{classname}}) this).new {{> request_builder_name_partial}}({{#requiredParamsWithRequestBodyProperties}}{{paramName}}{{^-last}}, {{/-last}}{{/requiredParamsWithRequestBodyProperties}});
     }
     {{/vendorExtensions.x-group-parameters}}
     {{/operation}}

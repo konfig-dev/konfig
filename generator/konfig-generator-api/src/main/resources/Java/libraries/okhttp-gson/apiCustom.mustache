@@ -1,10 +1,30 @@
 package {{package}};
 
 import {{invokerPackage}}.ApiClient;
+{{#imports}}import {{import}};
+{{/imports}}
+{{^fullJavaUtil}}
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+{{#supportStreaming}}
+import java.io.InputStream;
+{{/supportStreaming}}
+{{/fullJavaUtil}}
 
 public class {{classname}} extends {{classname}}Generated {
 
     public {{classname}}(ApiClient apiClient) throws IllegalArgumentException {
         super(apiClient);
     }
+{{#operations}}
+{{#operation}}
+    public class {{> request_builder_name_partial}} extends {{> request_builder_name_partial}}Generated {
+        public {{> request_builder_name_partial}}({{#requiredParamsWithRequestBodyProperties}}{{#isNumber}}{{{dataTypeLowerCase}}}{{/isNumber}}{{^isNumber}}{{{dataType}}}{{/isNumber}} {{paramName}}{{^-last}}, {{/-last}}{{/requiredParamsWithRequestBodyProperties}}) {
+            super({{#requiredParamsWithRequestBodyProperties}}{{paramName}}{{^-last}}, {{/-last}}{{/requiredParamsWithRequestBodyProperties}});
+        }
+    }
+{{/operation}}
+{{/operations}}
 }
