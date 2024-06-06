@@ -140,9 +140,9 @@ public class OrganizationsApiGenerated {
         return localVarCall;
     }
 
-    public class GetRequestBuilder {
+    public abstract class GetRequestBuilderGenerated {
 
-        private GetRequestBuilder() {
+        public GetRequestBuilderGenerated() {
         }
 
         /**
@@ -216,8 +216,8 @@ public class OrganizationsApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public GetRequestBuilder get() throws IllegalArgumentException {
-        return new GetRequestBuilder();
+    public OrganizationsApi.GetRequestBuilder get() throws IllegalArgumentException {
+        return ((OrganizationsApi) this).new GetRequestBuilder();
     }
     private okhttp3.Call updateCall(UpdateOrganizationInput updateOrganizationInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -290,20 +290,20 @@ public class OrganizationsApiGenerated {
         return localVarCall;
     }
 
-    public class UpdateRequestBuilder {
+    public abstract class UpdateRequestBuilderGenerated {
         private UserConfigurationNullable globalUserConfig;
 
-        private UpdateRequestBuilder() {
+        public UpdateRequestBuilderGenerated() {
         }
 
         /**
          * Set globalUserConfig
          * @param globalUserConfig  (optional)
-         * @return UpdateRequestBuilder
+         * @return OrganizationsApi.UpdateRequestBuilder
          */
-        public UpdateRequestBuilder globalUserConfig(UserConfigurationNullable globalUserConfig) {
+        public OrganizationsApi.UpdateRequestBuilder globalUserConfig(UserConfigurationNullable globalUserConfig) {
             this.globalUserConfig = globalUserConfig;
-            return this;
+            return (OrganizationsApi.UpdateRequestBuilder) this;
         }
         
         /**
@@ -387,8 +387,8 @@ public class OrganizationsApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public UpdateRequestBuilder update() throws IllegalArgumentException {
-        return new UpdateRequestBuilder();
+    public OrganizationsApi.UpdateRequestBuilder update() throws IllegalArgumentException {
+        return ((OrganizationsApi) this).new UpdateRequestBuilder();
     }
     private okhttp3.Call updateStatsCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -455,9 +455,9 @@ public class OrganizationsApiGenerated {
         return localVarCall;
     }
 
-    public class UpdateStatsRequestBuilder {
+    public abstract class UpdateStatsRequestBuilderGenerated {
 
-        private UpdateStatsRequestBuilder() {
+        public UpdateStatsRequestBuilderGenerated() {
         }
 
         /**
@@ -531,7 +531,7 @@ public class OrganizationsApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public UpdateStatsRequestBuilder updateStats() throws IllegalArgumentException {
-        return new UpdateStatsRequestBuilder();
+    public OrganizationsApi.UpdateStatsRequestBuilder updateStats() throws IllegalArgumentException {
+        return ((OrganizationsApi) this).new UpdateStatsRequestBuilder();
     }
 }

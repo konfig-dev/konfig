@@ -152,10 +152,10 @@ public class ReferenceDataApiGenerated {
         return localVarCall;
     }
 
-    public class GetCurrencyExchangeRatePairRequestBuilder {
+    public abstract class GetCurrencyExchangeRatePairRequestBuilderGenerated {
         private final String currencyPair;
 
-        private GetCurrencyExchangeRatePairRequestBuilder(String currencyPair) {
+        public GetCurrencyExchangeRatePairRequestBuilderGenerated(String currencyPair) {
             this.currencyPair = currencyPair;
         }
 
@@ -231,11 +231,11 @@ public class ReferenceDataApiGenerated {
         <tr><td> 200 </td><td> A list of all exchange rates pairs for supported currencies </td><td>  -  </td></tr>
      </table>
      */
-    public GetCurrencyExchangeRatePairRequestBuilder getCurrencyExchangeRatePair(String currencyPair) throws IllegalArgumentException {
+    public ReferenceDataApi.GetCurrencyExchangeRatePairRequestBuilder getCurrencyExchangeRatePair(String currencyPair) throws IllegalArgumentException {
         if (currencyPair == null) throw new IllegalArgumentException("\"currencyPair\" is required but got null");
             
 
-        return new GetCurrencyExchangeRatePairRequestBuilder(currencyPair);
+        return ((ReferenceDataApi) this).new GetCurrencyExchangeRatePairRequestBuilder(currencyPair);
     }
     private okhttp3.Call getPartnerInfoCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -302,9 +302,9 @@ public class ReferenceDataApiGenerated {
         return localVarCall;
     }
 
-    public class GetPartnerInfoRequestBuilder {
+    public abstract class GetPartnerInfoRequestBuilderGenerated {
 
-        private GetPartnerInfoRequestBuilder() {
+        public GetPartnerInfoRequestBuilderGenerated() {
         }
 
         /**
@@ -383,8 +383,8 @@ public class ReferenceDataApiGenerated {
         <tr><td> 500 </td><td> Unexpected Error </td><td>  -  </td></tr>
      </table>
      */
-    public GetPartnerInfoRequestBuilder getPartnerInfo() throws IllegalArgumentException {
-        return new GetPartnerInfoRequestBuilder();
+    public ReferenceDataApi.GetPartnerInfoRequestBuilder getPartnerInfo() throws IllegalArgumentException {
+        return ((ReferenceDataApi) this).new GetPartnerInfoRequestBuilder();
     }
     private okhttp3.Call getSecurityTypesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -451,9 +451,9 @@ public class ReferenceDataApiGenerated {
         return localVarCall;
     }
 
-    public class GetSecurityTypesRequestBuilder {
+    public abstract class GetSecurityTypesRequestBuilderGenerated {
 
-        private GetSecurityTypesRequestBuilder() {
+        public GetSecurityTypesRequestBuilderGenerated() {
         }
 
         /**
@@ -532,8 +532,8 @@ public class ReferenceDataApiGenerated {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public GetSecurityTypesRequestBuilder getSecurityTypes() throws IllegalArgumentException {
-        return new GetSecurityTypesRequestBuilder();
+    public ReferenceDataApi.GetSecurityTypesRequestBuilder getSecurityTypes() throws IllegalArgumentException {
+        return ((ReferenceDataApi) this).new GetSecurityTypesRequestBuilder();
     }
     private okhttp3.Call getStockExchangesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -600,9 +600,9 @@ public class ReferenceDataApiGenerated {
         return localVarCall;
     }
 
-    public class GetStockExchangesRequestBuilder {
+    public abstract class GetStockExchangesRequestBuilderGenerated {
 
-        private GetStockExchangesRequestBuilder() {
+        public GetStockExchangesRequestBuilderGenerated() {
         }
 
         /**
@@ -676,8 +676,8 @@ public class ReferenceDataApiGenerated {
         <tr><td> 200 </td><td> A list of all supported stock exchanges </td><td>  -  </td></tr>
      </table>
      */
-    public GetStockExchangesRequestBuilder getStockExchanges() throws IllegalArgumentException {
-        return new GetStockExchangesRequestBuilder();
+    public ReferenceDataApi.GetStockExchangesRequestBuilder getStockExchanges() throws IllegalArgumentException {
+        return ((ReferenceDataApi) this).new GetStockExchangesRequestBuilder();
     }
     private okhttp3.Call getSymbolsCall(SymbolQuery symbolQuery, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -745,20 +745,20 @@ public class ReferenceDataApiGenerated {
         return localVarCall;
     }
 
-    public class GetSymbolsRequestBuilder {
+    public abstract class GetSymbolsRequestBuilderGenerated {
         private String substring;
 
-        private GetSymbolsRequestBuilder() {
+        public GetSymbolsRequestBuilderGenerated() {
         }
 
         /**
          * Set substring
          * @param substring  (optional)
-         * @return GetSymbolsRequestBuilder
+         * @return ReferenceDataApi.GetSymbolsRequestBuilder
          */
-        public GetSymbolsRequestBuilder substring(String substring) {
+        public ReferenceDataApi.GetSymbolsRequestBuilder substring(String substring) {
             this.substring = substring;
-            return this;
+            return (ReferenceDataApi.GetSymbolsRequestBuilder) this;
         }
         
         /**
@@ -846,8 +846,8 @@ public class ReferenceDataApiGenerated {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public GetSymbolsRequestBuilder getSymbols() throws IllegalArgumentException {
-        return new GetSymbolsRequestBuilder();
+    public ReferenceDataApi.GetSymbolsRequestBuilder getSymbols() throws IllegalArgumentException {
+        return ((ReferenceDataApi) this).new GetSymbolsRequestBuilder();
     }
     private okhttp3.Call getSymbolsByTickerCall(String query, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -920,10 +920,10 @@ public class ReferenceDataApiGenerated {
         return localVarCall;
     }
 
-    public class GetSymbolsByTickerRequestBuilder {
+    public abstract class GetSymbolsByTickerRequestBuilderGenerated {
         private final String query;
 
-        private GetSymbolsByTickerRequestBuilder(String query) {
+        public GetSymbolsByTickerRequestBuilderGenerated(String query) {
             this.query = query;
         }
 
@@ -1009,11 +1009,11 @@ public class ReferenceDataApiGenerated {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public GetSymbolsByTickerRequestBuilder getSymbolsByTicker(String query) throws IllegalArgumentException {
+    public ReferenceDataApi.GetSymbolsByTickerRequestBuilder getSymbolsByTicker(String query) throws IllegalArgumentException {
         if (query == null) throw new IllegalArgumentException("\"query\" is required but got null");
             
 
-        return new GetSymbolsByTickerRequestBuilder(query);
+        return ((ReferenceDataApi) this).new GetSymbolsByTickerRequestBuilder(query);
     }
     private okhttp3.Call listAllBrokerageAuthorizationTypeCall(String brokerage, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1084,20 +1084,20 @@ public class ReferenceDataApiGenerated {
         return localVarCall;
     }
 
-    public class ListAllBrokerageAuthorizationTypeRequestBuilder {
+    public abstract class ListAllBrokerageAuthorizationTypeRequestBuilderGenerated {
         private String brokerage;
 
-        private ListAllBrokerageAuthorizationTypeRequestBuilder() {
+        public ListAllBrokerageAuthorizationTypeRequestBuilderGenerated() {
         }
 
         /**
          * Set brokerage
          * @param brokerage Comma separated value of brokerage slugs (optional)
-         * @return ListAllBrokerageAuthorizationTypeRequestBuilder
+         * @return ReferenceDataApi.ListAllBrokerageAuthorizationTypeRequestBuilder
          */
-        public ListAllBrokerageAuthorizationTypeRequestBuilder brokerage(String brokerage) {
+        public ReferenceDataApi.ListAllBrokerageAuthorizationTypeRequestBuilder brokerage(String brokerage) {
             this.brokerage = brokerage;
-            return this;
+            return (ReferenceDataApi.ListAllBrokerageAuthorizationTypeRequestBuilder) this;
         }
         
         /**
@@ -1176,8 +1176,8 @@ public class ReferenceDataApiGenerated {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ListAllBrokerageAuthorizationTypeRequestBuilder listAllBrokerageAuthorizationType() throws IllegalArgumentException {
-        return new ListAllBrokerageAuthorizationTypeRequestBuilder();
+    public ReferenceDataApi.ListAllBrokerageAuthorizationTypeRequestBuilder listAllBrokerageAuthorizationType() throws IllegalArgumentException {
+        return ((ReferenceDataApi) this).new ListAllBrokerageAuthorizationTypeRequestBuilder();
     }
     private okhttp3.Call listAllBrokeragesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1244,9 +1244,9 @@ public class ReferenceDataApiGenerated {
         return localVarCall;
     }
 
-    public class ListAllBrokeragesRequestBuilder {
+    public abstract class ListAllBrokeragesRequestBuilderGenerated {
 
-        private ListAllBrokeragesRequestBuilder() {
+        public ListAllBrokeragesRequestBuilderGenerated() {
         }
 
         /**
@@ -1325,8 +1325,8 @@ public class ReferenceDataApiGenerated {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ListAllBrokeragesRequestBuilder listAllBrokerages() throws IllegalArgumentException {
-        return new ListAllBrokeragesRequestBuilder();
+    public ReferenceDataApi.ListAllBrokeragesRequestBuilder listAllBrokerages() throws IllegalArgumentException {
+        return ((ReferenceDataApi) this).new ListAllBrokeragesRequestBuilder();
     }
     private okhttp3.Call listAllCurrenciesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1393,9 +1393,9 @@ public class ReferenceDataApiGenerated {
         return localVarCall;
     }
 
-    public class ListAllCurrenciesRequestBuilder {
+    public abstract class ListAllCurrenciesRequestBuilderGenerated {
 
-        private ListAllCurrenciesRequestBuilder() {
+        public ListAllCurrenciesRequestBuilderGenerated() {
         }
 
         /**
@@ -1474,8 +1474,8 @@ public class ReferenceDataApiGenerated {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ListAllCurrenciesRequestBuilder listAllCurrencies() throws IllegalArgumentException {
-        return new ListAllCurrenciesRequestBuilder();
+    public ReferenceDataApi.ListAllCurrenciesRequestBuilder listAllCurrencies() throws IllegalArgumentException {
+        return ((ReferenceDataApi) this).new ListAllCurrenciesRequestBuilder();
     }
     private okhttp3.Call listAllCurrenciesRatesCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1542,9 +1542,9 @@ public class ReferenceDataApiGenerated {
         return localVarCall;
     }
 
-    public class ListAllCurrenciesRatesRequestBuilder {
+    public abstract class ListAllCurrenciesRatesRequestBuilderGenerated {
 
-        private ListAllCurrenciesRatesRequestBuilder() {
+        public ListAllCurrenciesRatesRequestBuilderGenerated() {
         }
 
         /**
@@ -1618,8 +1618,8 @@ public class ReferenceDataApiGenerated {
         <tr><td> 200 </td><td> A list of all exchange rates pairs for supported currencies </td><td>  -  </td></tr>
      </table>
      */
-    public ListAllCurrenciesRatesRequestBuilder listAllCurrenciesRates() throws IllegalArgumentException {
-        return new ListAllCurrenciesRatesRequestBuilder();
+    public ReferenceDataApi.ListAllCurrenciesRatesRequestBuilder listAllCurrenciesRates() throws IllegalArgumentException {
+        return ((ReferenceDataApi) this).new ListAllCurrenciesRatesRequestBuilder();
     }
     private okhttp3.Call symbolSearchUserAccountCall(String userId, String userSecret, UUID accountId, SymbolQuery symbolQuery, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1711,13 +1711,13 @@ public class ReferenceDataApiGenerated {
         return localVarCall;
     }
 
-    public class SymbolSearchUserAccountRequestBuilder {
+    public abstract class SymbolSearchUserAccountRequestBuilderGenerated {
         private final String userId;
         private final String userSecret;
         private final UUID accountId;
         private String substring;
 
-        private SymbolSearchUserAccountRequestBuilder(String userId, String userSecret, UUID accountId) {
+        public SymbolSearchUserAccountRequestBuilderGenerated(String userId, String userSecret, UUID accountId) {
             this.userId = userId;
             this.userSecret = userSecret;
             this.accountId = accountId;
@@ -1726,11 +1726,11 @@ public class ReferenceDataApiGenerated {
         /**
          * Set substring
          * @param substring  (optional)
-         * @return SymbolSearchUserAccountRequestBuilder
+         * @return ReferenceDataApi.SymbolSearchUserAccountRequestBuilder
          */
-        public SymbolSearchUserAccountRequestBuilder substring(String substring) {
+        public ReferenceDataApi.SymbolSearchUserAccountRequestBuilder substring(String substring) {
             this.substring = substring;
-            return this;
+            return (ReferenceDataApi.SymbolSearchUserAccountRequestBuilder) this;
         }
         
         /**
@@ -1821,7 +1821,7 @@ public class ReferenceDataApiGenerated {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public SymbolSearchUserAccountRequestBuilder symbolSearchUserAccount(String userId, String userSecret, UUID accountId) throws IllegalArgumentException {
+    public ReferenceDataApi.SymbolSearchUserAccountRequestBuilder symbolSearchUserAccount(String userId, String userSecret, UUID accountId) throws IllegalArgumentException {
         if (userId == null) throw new IllegalArgumentException("\"userId\" is required but got null");
             
 
@@ -1831,6 +1831,6 @@ public class ReferenceDataApiGenerated {
         if (accountId == null) throw new IllegalArgumentException("\"accountId\" is required but got null");
             
 
-        return new SymbolSearchUserAccountRequestBuilder(userId, userSecret, accountId);
+        return ((ReferenceDataApi) this).new SymbolSearchUserAccountRequestBuilder(userId, userSecret, accountId);
     }
 }

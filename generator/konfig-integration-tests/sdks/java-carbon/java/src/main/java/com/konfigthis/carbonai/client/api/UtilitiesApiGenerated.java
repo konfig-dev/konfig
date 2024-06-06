@@ -150,10 +150,10 @@ public class UtilitiesApiGenerated {
         return localVarCall;
     }
 
-    public class FetchUrlsRequestBuilder {
+    public abstract class FetchUrlsRequestBuilderGenerated {
         private final String url;
 
-        private FetchUrlsRequestBuilder(String url) {
+        public FetchUrlsRequestBuilderGenerated(String url) {
             this.url = url;
         }
 
@@ -229,11 +229,11 @@ public class UtilitiesApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public FetchUrlsRequestBuilder fetchUrls(String url) throws IllegalArgumentException {
+    public UtilitiesApi.FetchUrlsRequestBuilder fetchUrls(String url) throws IllegalArgumentException {
         if (url == null) throw new IllegalArgumentException("\"url\" is required but got null");
             
 
-        return new FetchUrlsRequestBuilder(url);
+        return ((UtilitiesApi) this).new FetchUrlsRequestBuilder(url);
     }
     private okhttp3.Call fetchYoutubeTranscriptsCall(String id, Boolean raw, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -313,22 +313,22 @@ public class UtilitiesApiGenerated {
         return localVarCall;
     }
 
-    public class FetchYoutubeTranscriptsRequestBuilder {
+    public abstract class FetchYoutubeTranscriptsRequestBuilderGenerated {
         private final String id;
         private Boolean raw;
 
-        private FetchYoutubeTranscriptsRequestBuilder(String id) {
+        public FetchYoutubeTranscriptsRequestBuilderGenerated(String id) {
             this.id = id;
         }
 
         /**
          * Set raw
          * @param raw  (optional, default to false)
-         * @return FetchYoutubeTranscriptsRequestBuilder
+         * @return UtilitiesApi.FetchYoutubeTranscriptsRequestBuilder
          */
-        public FetchYoutubeTranscriptsRequestBuilder raw(Boolean raw) {
+        public UtilitiesApi.FetchYoutubeTranscriptsRequestBuilder raw(Boolean raw) {
             this.raw = raw;
-            return this;
+            return (UtilitiesApi.FetchYoutubeTranscriptsRequestBuilder) this;
         }
         
         /**
@@ -403,11 +403,11 @@ public class UtilitiesApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public FetchYoutubeTranscriptsRequestBuilder fetchYoutubeTranscripts(String id) throws IllegalArgumentException {
+    public UtilitiesApi.FetchYoutubeTranscriptsRequestBuilder fetchYoutubeTranscripts(String id) throws IllegalArgumentException {
         if (id == null) throw new IllegalArgumentException("\"id\" is required but got null");
             
 
-        return new FetchYoutubeTranscriptsRequestBuilder(id);
+        return ((UtilitiesApi) this).new FetchYoutubeTranscriptsRequestBuilder(id);
     }
     private okhttp3.Call processSitemapCall(String url, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -483,10 +483,10 @@ public class UtilitiesApiGenerated {
         return localVarCall;
     }
 
-    public class ProcessSitemapRequestBuilder {
+    public abstract class ProcessSitemapRequestBuilderGenerated {
         private final String url;
 
-        private ProcessSitemapRequestBuilder(String url) {
+        public ProcessSitemapRequestBuilderGenerated(String url) {
             this.url = url;
         }
 
@@ -562,11 +562,11 @@ public class UtilitiesApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public ProcessSitemapRequestBuilder processSitemap(String url) throws IllegalArgumentException {
+    public UtilitiesApi.ProcessSitemapRequestBuilder processSitemap(String url) throws IllegalArgumentException {
         if (url == null) throw new IllegalArgumentException("\"url\" is required but got null");
             
 
-        return new ProcessSitemapRequestBuilder(url);
+        return ((UtilitiesApi) this).new ProcessSitemapRequestBuilder(url);
     }
     private okhttp3.Call scrapeSitemapCall(SitemapScrapeRequest sitemapScrapeRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -639,7 +639,7 @@ public class UtilitiesApiGenerated {
         return localVarCall;
     }
 
-    public class ScrapeSitemapRequestBuilder {
+    public abstract class ScrapeSitemapRequestBuilderGenerated {
         private final String url;
         private Map<String, Object> tags;
         private Integer maxPagesToScrape;
@@ -654,128 +654,128 @@ public class UtilitiesApiGenerated {
         private List<String> cssSelectorsToSkip;
         private EmbeddingGenerators embeddingModel;
 
-        private ScrapeSitemapRequestBuilder(String url) {
+        public ScrapeSitemapRequestBuilderGenerated(String url) {
             this.url = url;
         }
 
         /**
          * Set tags
          * @param tags  (optional)
-         * @return ScrapeSitemapRequestBuilder
+         * @return UtilitiesApi.ScrapeSitemapRequestBuilder
          */
-        public ScrapeSitemapRequestBuilder tags(Map<String, Object> tags) {
+        public UtilitiesApi.ScrapeSitemapRequestBuilder tags(Map<String, Object> tags) {
             this.tags = tags;
-            return this;
+            return (UtilitiesApi.ScrapeSitemapRequestBuilder) this;
         }
         
         /**
          * Set maxPagesToScrape
          * @param maxPagesToScrape  (optional)
-         * @return ScrapeSitemapRequestBuilder
+         * @return UtilitiesApi.ScrapeSitemapRequestBuilder
          */
-        public ScrapeSitemapRequestBuilder maxPagesToScrape(Integer maxPagesToScrape) {
+        public UtilitiesApi.ScrapeSitemapRequestBuilder maxPagesToScrape(Integer maxPagesToScrape) {
             this.maxPagesToScrape = maxPagesToScrape;
-            return this;
+            return (UtilitiesApi.ScrapeSitemapRequestBuilder) this;
         }
         
         /**
          * Set chunkSize
          * @param chunkSize  (optional, default to 1500)
-         * @return ScrapeSitemapRequestBuilder
+         * @return UtilitiesApi.ScrapeSitemapRequestBuilder
          */
-        public ScrapeSitemapRequestBuilder chunkSize(Integer chunkSize) {
+        public UtilitiesApi.ScrapeSitemapRequestBuilder chunkSize(Integer chunkSize) {
             this.chunkSize = chunkSize;
-            return this;
+            return (UtilitiesApi.ScrapeSitemapRequestBuilder) this;
         }
         
         /**
          * Set chunkOverlap
          * @param chunkOverlap  (optional, default to 20)
-         * @return ScrapeSitemapRequestBuilder
+         * @return UtilitiesApi.ScrapeSitemapRequestBuilder
          */
-        public ScrapeSitemapRequestBuilder chunkOverlap(Integer chunkOverlap) {
+        public UtilitiesApi.ScrapeSitemapRequestBuilder chunkOverlap(Integer chunkOverlap) {
             this.chunkOverlap = chunkOverlap;
-            return this;
+            return (UtilitiesApi.ScrapeSitemapRequestBuilder) this;
         }
         
         /**
          * Set skipEmbeddingGeneration
          * @param skipEmbeddingGeneration  (optional, default to false)
-         * @return ScrapeSitemapRequestBuilder
+         * @return UtilitiesApi.ScrapeSitemapRequestBuilder
          */
-        public ScrapeSitemapRequestBuilder skipEmbeddingGeneration(Boolean skipEmbeddingGeneration) {
+        public UtilitiesApi.ScrapeSitemapRequestBuilder skipEmbeddingGeneration(Boolean skipEmbeddingGeneration) {
             this.skipEmbeddingGeneration = skipEmbeddingGeneration;
-            return this;
+            return (UtilitiesApi.ScrapeSitemapRequestBuilder) this;
         }
         
         /**
          * Set enableAutoSync
          * @param enableAutoSync  (optional, default to false)
-         * @return ScrapeSitemapRequestBuilder
+         * @return UtilitiesApi.ScrapeSitemapRequestBuilder
          */
-        public ScrapeSitemapRequestBuilder enableAutoSync(Boolean enableAutoSync) {
+        public UtilitiesApi.ScrapeSitemapRequestBuilder enableAutoSync(Boolean enableAutoSync) {
             this.enableAutoSync = enableAutoSync;
-            return this;
+            return (UtilitiesApi.ScrapeSitemapRequestBuilder) this;
         }
         
         /**
          * Set generateSparseVectors
          * @param generateSparseVectors  (optional, default to false)
-         * @return ScrapeSitemapRequestBuilder
+         * @return UtilitiesApi.ScrapeSitemapRequestBuilder
          */
-        public ScrapeSitemapRequestBuilder generateSparseVectors(Boolean generateSparseVectors) {
+        public UtilitiesApi.ScrapeSitemapRequestBuilder generateSparseVectors(Boolean generateSparseVectors) {
             this.generateSparseVectors = generateSparseVectors;
-            return this;
+            return (UtilitiesApi.ScrapeSitemapRequestBuilder) this;
         }
         
         /**
          * Set prependFilenameToChunks
          * @param prependFilenameToChunks  (optional, default to false)
-         * @return ScrapeSitemapRequestBuilder
+         * @return UtilitiesApi.ScrapeSitemapRequestBuilder
          */
-        public ScrapeSitemapRequestBuilder prependFilenameToChunks(Boolean prependFilenameToChunks) {
+        public UtilitiesApi.ScrapeSitemapRequestBuilder prependFilenameToChunks(Boolean prependFilenameToChunks) {
             this.prependFilenameToChunks = prependFilenameToChunks;
-            return this;
+            return (UtilitiesApi.ScrapeSitemapRequestBuilder) this;
         }
         
         /**
          * Set htmlTagsToSkip
          * @param htmlTagsToSkip  (optional)
-         * @return ScrapeSitemapRequestBuilder
+         * @return UtilitiesApi.ScrapeSitemapRequestBuilder
          */
-        public ScrapeSitemapRequestBuilder htmlTagsToSkip(List<String> htmlTagsToSkip) {
+        public UtilitiesApi.ScrapeSitemapRequestBuilder htmlTagsToSkip(List<String> htmlTagsToSkip) {
             this.htmlTagsToSkip = htmlTagsToSkip;
-            return this;
+            return (UtilitiesApi.ScrapeSitemapRequestBuilder) this;
         }
         
         /**
          * Set cssClassesToSkip
          * @param cssClassesToSkip  (optional)
-         * @return ScrapeSitemapRequestBuilder
+         * @return UtilitiesApi.ScrapeSitemapRequestBuilder
          */
-        public ScrapeSitemapRequestBuilder cssClassesToSkip(List<String> cssClassesToSkip) {
+        public UtilitiesApi.ScrapeSitemapRequestBuilder cssClassesToSkip(List<String> cssClassesToSkip) {
             this.cssClassesToSkip = cssClassesToSkip;
-            return this;
+            return (UtilitiesApi.ScrapeSitemapRequestBuilder) this;
         }
         
         /**
          * Set cssSelectorsToSkip
          * @param cssSelectorsToSkip  (optional)
-         * @return ScrapeSitemapRequestBuilder
+         * @return UtilitiesApi.ScrapeSitemapRequestBuilder
          */
-        public ScrapeSitemapRequestBuilder cssSelectorsToSkip(List<String> cssSelectorsToSkip) {
+        public UtilitiesApi.ScrapeSitemapRequestBuilder cssSelectorsToSkip(List<String> cssSelectorsToSkip) {
             this.cssSelectorsToSkip = cssSelectorsToSkip;
-            return this;
+            return (UtilitiesApi.ScrapeSitemapRequestBuilder) this;
         }
         
         /**
          * Set embeddingModel
          * @param embeddingModel  (optional)
-         * @return ScrapeSitemapRequestBuilder
+         * @return UtilitiesApi.ScrapeSitemapRequestBuilder
          */
-        public ScrapeSitemapRequestBuilder embeddingModel(EmbeddingGenerators embeddingModel) {
+        public UtilitiesApi.ScrapeSitemapRequestBuilder embeddingModel(EmbeddingGenerators embeddingModel) {
             this.embeddingModel = embeddingModel;
-            return this;
+            return (UtilitiesApi.ScrapeSitemapRequestBuilder) this;
         }
         
         /**
@@ -871,11 +871,11 @@ public class UtilitiesApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public ScrapeSitemapRequestBuilder scrapeSitemap(String url) throws IllegalArgumentException {
+    public UtilitiesApi.ScrapeSitemapRequestBuilder scrapeSitemap(String url) throws IllegalArgumentException {
         if (url == null) throw new IllegalArgumentException("\"url\" is required but got null");
             
 
-        return new ScrapeSitemapRequestBuilder(url);
+        return ((UtilitiesApi) this).new ScrapeSitemapRequestBuilder(url);
     }
     private okhttp3.Call scrapeWebCall(List<WebscrapeRequest> webscrapeRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -948,20 +948,20 @@ public class UtilitiesApiGenerated {
         return localVarCall;
     }
 
-    public class ScrapeWebRequestBuilder {
+    public abstract class ScrapeWebRequestBuilderGenerated {
         private List<WebscrapeRequest> webscrapeRequest;
 
-        private ScrapeWebRequestBuilder() {
+        public ScrapeWebRequestBuilderGenerated() {
         }
 
         /**
          * Set webscrapeRequest
          * @param webscrapeRequest  (optional)
-         * @return ScrapeWebRequestBuilder
+         * @return UtilitiesApi.ScrapeWebRequestBuilder
          */
-        public ScrapeWebRequestBuilder webscrapeRequest(List<WebscrapeRequest> webscrapeRequest) {
+        public UtilitiesApi.ScrapeWebRequestBuilder webscrapeRequest(List<WebscrapeRequest> webscrapeRequest) {
             this.webscrapeRequest = webscrapeRequest;
-            return this;
+            return (UtilitiesApi.ScrapeWebRequestBuilder) this;
         }
 
         /**
@@ -1043,8 +1043,8 @@ public class UtilitiesApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public ScrapeWebRequestBuilder scrapeWeb() throws IllegalArgumentException {
-        return new ScrapeWebRequestBuilder();
+    public UtilitiesApi.ScrapeWebRequestBuilder scrapeWeb() throws IllegalArgumentException {
+        return ((UtilitiesApi) this).new ScrapeWebRequestBuilder();
     }
     private okhttp3.Call searchUrlsCall(String query, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1120,10 +1120,10 @@ public class UtilitiesApiGenerated {
         return localVarCall;
     }
 
-    public class SearchUrlsRequestBuilder {
+    public abstract class SearchUrlsRequestBuilderGenerated {
         private final String query;
 
-        private SearchUrlsRequestBuilder(String query) {
+        public SearchUrlsRequestBuilderGenerated(String query) {
             this.query = query;
         }
 
@@ -1199,10 +1199,10 @@ public class UtilitiesApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public SearchUrlsRequestBuilder searchUrls(String query) throws IllegalArgumentException {
+    public UtilitiesApi.SearchUrlsRequestBuilder searchUrls(String query) throws IllegalArgumentException {
         if (query == null) throw new IllegalArgumentException("\"query\" is required but got null");
             
 
-        return new SearchUrlsRequestBuilder(query);
+        return ((UtilitiesApi) this).new SearchUrlsRequestBuilder(query);
     }
 }

@@ -177,7 +177,7 @@ public class TransactionsAndReportingApiGenerated {
         return localVarCall;
     }
 
-    public class GetActivitiesRequestBuilder {
+    public abstract class GetActivitiesRequestBuilderGenerated {
         private final String userId;
         private final String userSecret;
         private LocalDate startDate;
@@ -186,7 +186,7 @@ public class TransactionsAndReportingApiGenerated {
         private String brokerageAuthorizations;
         private String type;
 
-        private GetActivitiesRequestBuilder(String userId, String userSecret) {
+        public GetActivitiesRequestBuilderGenerated(String userId, String userSecret) {
             this.userId = userId;
             this.userSecret = userSecret;
         }
@@ -194,51 +194,51 @@ public class TransactionsAndReportingApiGenerated {
         /**
          * Set startDate
          * @param startDate  (optional)
-         * @return GetActivitiesRequestBuilder
+         * @return TransactionsAndReportingApi.GetActivitiesRequestBuilder
          */
-        public GetActivitiesRequestBuilder startDate(LocalDate startDate) {
+        public TransactionsAndReportingApi.GetActivitiesRequestBuilder startDate(LocalDate startDate) {
             this.startDate = startDate;
-            return this;
+            return (TransactionsAndReportingApi.GetActivitiesRequestBuilder) this;
         }
         
         /**
          * Set endDate
          * @param endDate  (optional)
-         * @return GetActivitiesRequestBuilder
+         * @return TransactionsAndReportingApi.GetActivitiesRequestBuilder
          */
-        public GetActivitiesRequestBuilder endDate(LocalDate endDate) {
+        public TransactionsAndReportingApi.GetActivitiesRequestBuilder endDate(LocalDate endDate) {
             this.endDate = endDate;
-            return this;
+            return (TransactionsAndReportingApi.GetActivitiesRequestBuilder) this;
         }
         
         /**
          * Set accounts
          * @param accounts Optional comma seperated list of account IDs used to filter the request on specific accounts (optional)
-         * @return GetActivitiesRequestBuilder
+         * @return TransactionsAndReportingApi.GetActivitiesRequestBuilder
          */
-        public GetActivitiesRequestBuilder accounts(String accounts) {
+        public TransactionsAndReportingApi.GetActivitiesRequestBuilder accounts(String accounts) {
             this.accounts = accounts;
-            return this;
+            return (TransactionsAndReportingApi.GetActivitiesRequestBuilder) this;
         }
         
         /**
          * Set brokerageAuthorizations
          * @param brokerageAuthorizations Optional comma seperated list of brokerage authorization IDs used to filter the request on only accounts that belong to those authorizations (optional)
-         * @return GetActivitiesRequestBuilder
+         * @return TransactionsAndReportingApi.GetActivitiesRequestBuilder
          */
-        public GetActivitiesRequestBuilder brokerageAuthorizations(String brokerageAuthorizations) {
+        public TransactionsAndReportingApi.GetActivitiesRequestBuilder brokerageAuthorizations(String brokerageAuthorizations) {
             this.brokerageAuthorizations = brokerageAuthorizations;
-            return this;
+            return (TransactionsAndReportingApi.GetActivitiesRequestBuilder) this;
         }
         
         /**
          * Set type
          * @param type Optional comma seperated list of types to filter activities by. This is not an exhaustive list, if we fail to match to these types, we will return the raw description from the brokerage. Potential values include - DIVIDEND - BUY - SELL - CONTRIBUTION - WITHDRAWAL - EXTERNAL_ASSET_TRANSFER_IN - EXTERNAL_ASSET_TRANSFER_OUT - INTERNAL_CASH_TRANSFER_IN - INTERNAL_CASH_TRANSFER_OUT - INTERNAL_ASSET_TRANSFER_IN - INTERNAL_ASSET_TRANSFER_OUT - INTEREST - REBATE - GOV_GRANT - TAX - FEE - REI - FXT (optional)
-         * @return GetActivitiesRequestBuilder
+         * @return TransactionsAndReportingApi.GetActivitiesRequestBuilder
          */
-        public GetActivitiesRequestBuilder type(String type) {
+        public TransactionsAndReportingApi.GetActivitiesRequestBuilder type(String type) {
             this.type = type;
-            return this;
+            return (TransactionsAndReportingApi.GetActivitiesRequestBuilder) this;
         }
         
         /**
@@ -319,14 +319,14 @@ public class TransactionsAndReportingApiGenerated {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public GetActivitiesRequestBuilder getActivities(String userId, String userSecret) throws IllegalArgumentException {
+    public TransactionsAndReportingApi.GetActivitiesRequestBuilder getActivities(String userId, String userSecret) throws IllegalArgumentException {
         if (userId == null) throw new IllegalArgumentException("\"userId\" is required but got null");
             
 
         if (userSecret == null) throw new IllegalArgumentException("\"userSecret\" is required but got null");
             
 
-        return new GetActivitiesRequestBuilder(userId, userSecret);
+        return ((TransactionsAndReportingApi) this).new GetActivitiesRequestBuilder(userId, userSecret);
     }
     private okhttp3.Call getReportingCustomRangeCall(LocalDate startDate, LocalDate endDate, String userId, String userSecret, String accounts, Boolean detailed, String frequency, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -442,7 +442,7 @@ public class TransactionsAndReportingApiGenerated {
         return localVarCall;
     }
 
-    public class GetReportingCustomRangeRequestBuilder {
+    public abstract class GetReportingCustomRangeRequestBuilderGenerated {
         private final LocalDate startDate;
         private final LocalDate endDate;
         private final String userId;
@@ -451,7 +451,7 @@ public class TransactionsAndReportingApiGenerated {
         private Boolean detailed;
         private String frequency;
 
-        private GetReportingCustomRangeRequestBuilder(LocalDate startDate, LocalDate endDate, String userId, String userSecret) {
+        public GetReportingCustomRangeRequestBuilderGenerated(LocalDate startDate, LocalDate endDate, String userId, String userSecret) {
             this.startDate = startDate;
             this.endDate = endDate;
             this.userId = userId;
@@ -461,31 +461,31 @@ public class TransactionsAndReportingApiGenerated {
         /**
          * Set accounts
          * @param accounts Optional comma seperated list of account IDs used to filter the request on specific accounts (optional)
-         * @return GetReportingCustomRangeRequestBuilder
+         * @return TransactionsAndReportingApi.GetReportingCustomRangeRequestBuilder
          */
-        public GetReportingCustomRangeRequestBuilder accounts(String accounts) {
+        public TransactionsAndReportingApi.GetReportingCustomRangeRequestBuilder accounts(String accounts) {
             this.accounts = accounts;
-            return this;
+            return (TransactionsAndReportingApi.GetReportingCustomRangeRequestBuilder) this;
         }
         
         /**
          * Set detailed
          * @param detailed Optional, increases frequency of data points for the total value and contribution charts if set to true (optional)
-         * @return GetReportingCustomRangeRequestBuilder
+         * @return TransactionsAndReportingApi.GetReportingCustomRangeRequestBuilder
          */
-        public GetReportingCustomRangeRequestBuilder detailed(Boolean detailed) {
+        public TransactionsAndReportingApi.GetReportingCustomRangeRequestBuilder detailed(Boolean detailed) {
             this.detailed = detailed;
-            return this;
+            return (TransactionsAndReportingApi.GetReportingCustomRangeRequestBuilder) this;
         }
         
         /**
          * Set frequency
          * @param frequency Optional frequency for the rate of return chart (defaults to monthly). Possible values are daily, weekly, monthly, quarterly, yearly. (optional)
-         * @return GetReportingCustomRangeRequestBuilder
+         * @return TransactionsAndReportingApi.GetReportingCustomRangeRequestBuilder
          */
-        public GetReportingCustomRangeRequestBuilder frequency(String frequency) {
+        public TransactionsAndReportingApi.GetReportingCustomRangeRequestBuilder frequency(String frequency) {
             this.frequency = frequency;
-            return this;
+            return (TransactionsAndReportingApi.GetReportingCustomRangeRequestBuilder) this;
         }
         
         /**
@@ -578,7 +578,7 @@ public class TransactionsAndReportingApiGenerated {
      * @deprecated
      */
     @Deprecated
-    public GetReportingCustomRangeRequestBuilder getReportingCustomRange(LocalDate startDate, LocalDate endDate, String userId, String userSecret) throws IllegalArgumentException {
+    public TransactionsAndReportingApi.GetReportingCustomRangeRequestBuilder getReportingCustomRange(LocalDate startDate, LocalDate endDate, String userId, String userSecret) throws IllegalArgumentException {
         if (startDate == null) throw new IllegalArgumentException("\"startDate\" is required but got null");
         if (endDate == null) throw new IllegalArgumentException("\"endDate\" is required but got null");
         if (userId == null) throw new IllegalArgumentException("\"userId\" is required but got null");
@@ -587,6 +587,6 @@ public class TransactionsAndReportingApiGenerated {
         if (userSecret == null) throw new IllegalArgumentException("\"userSecret\" is required but got null");
             
 
-        return new GetReportingCustomRangeRequestBuilder(startDate, endDate, userId, userSecret);
+        return ((TransactionsAndReportingApi) this).new GetReportingCustomRangeRequestBuilder(startDate, endDate, userId, userSecret);
     }
 }

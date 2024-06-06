@@ -137,9 +137,9 @@ public class TestApiGenerated {
         return localVarCall;
     }
 
-    public class FetchRequestBuilder {
+    public abstract class FetchRequestBuilderGenerated {
 
-        private FetchRequestBuilder() {
+        public FetchRequestBuilderGenerated() {
         }
 
         /**
@@ -186,7 +186,7 @@ public class TestApiGenerated {
      * Provide an input parameter to receive a JSON value with properties.
      * @return FetchRequestBuilder
      */
-    public FetchRequestBuilder fetch() throws IllegalArgumentException {
-        return new FetchRequestBuilder();
+    public TestApi.FetchRequestBuilder fetch() throws IllegalArgumentException {
+        return ((TestApi) this).new FetchRequestBuilder();
     }
 }

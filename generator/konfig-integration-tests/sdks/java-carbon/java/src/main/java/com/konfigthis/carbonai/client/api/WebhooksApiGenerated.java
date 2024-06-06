@@ -151,10 +151,10 @@ public class WebhooksApiGenerated {
         return localVarCall;
     }
 
-    public class AddUrlRequestBuilder {
+    public abstract class AddUrlRequestBuilderGenerated {
         private final String url;
 
-        private AddUrlRequestBuilder(String url) {
+        public AddUrlRequestBuilderGenerated(String url) {
             this.url = url;
         }
 
@@ -239,11 +239,11 @@ public class WebhooksApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public AddUrlRequestBuilder addUrl(String url) throws IllegalArgumentException {
+    public WebhooksApi.AddUrlRequestBuilder addUrl(String url) throws IllegalArgumentException {
         if (url == null) throw new IllegalArgumentException("\"url\" is required but got null");
             
 
-        return new AddUrlRequestBuilder(url);
+        return ((WebhooksApi) this).new AddUrlRequestBuilder(url);
     }
     private okhttp3.Call deleteUrlCall(Integer webhookId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -316,10 +316,10 @@ public class WebhooksApiGenerated {
         return localVarCall;
     }
 
-    public class DeleteUrlRequestBuilder {
+    public abstract class DeleteUrlRequestBuilderGenerated {
         private final Integer webhookId;
 
-        private DeleteUrlRequestBuilder(Integer webhookId) {
+        public DeleteUrlRequestBuilderGenerated(Integer webhookId) {
             this.webhookId = webhookId;
         }
 
@@ -395,9 +395,9 @@ public class WebhooksApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public DeleteUrlRequestBuilder deleteUrl(Integer webhookId) throws IllegalArgumentException {
+    public WebhooksApi.DeleteUrlRequestBuilder deleteUrl(Integer webhookId) throws IllegalArgumentException {
         if (webhookId == null) throw new IllegalArgumentException("\"webhookId\" is required but got null");
-        return new DeleteUrlRequestBuilder(webhookId);
+        return ((WebhooksApi) this).new DeleteUrlRequestBuilder(webhookId);
     }
     private okhttp3.Call urlsCall(WebhookQueryInput webhookQueryInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -470,53 +470,53 @@ public class WebhooksApiGenerated {
         return localVarCall;
     }
 
-    public class UrlsRequestBuilder {
+    public abstract class UrlsRequestBuilderGenerated {
         private Pagination pagination;
         private WebhookOrderByColumns orderBy;
         private OrderDir orderDir;
         private WebhookFilters filters;
 
-        private UrlsRequestBuilder() {
+        public UrlsRequestBuilderGenerated() {
         }
 
         /**
          * Set pagination
          * @param pagination  (optional)
-         * @return UrlsRequestBuilder
+         * @return WebhooksApi.UrlsRequestBuilder
          */
-        public UrlsRequestBuilder pagination(Pagination pagination) {
+        public WebhooksApi.UrlsRequestBuilder pagination(Pagination pagination) {
             this.pagination = pagination;
-            return this;
+            return (WebhooksApi.UrlsRequestBuilder) this;
         }
         
         /**
          * Set orderBy
          * @param orderBy  (optional)
-         * @return UrlsRequestBuilder
+         * @return WebhooksApi.UrlsRequestBuilder
          */
-        public UrlsRequestBuilder orderBy(WebhookOrderByColumns orderBy) {
+        public WebhooksApi.UrlsRequestBuilder orderBy(WebhookOrderByColumns orderBy) {
             this.orderBy = orderBy;
-            return this;
+            return (WebhooksApi.UrlsRequestBuilder) this;
         }
         
         /**
          * Set orderDir
          * @param orderDir  (optional)
-         * @return UrlsRequestBuilder
+         * @return WebhooksApi.UrlsRequestBuilder
          */
-        public UrlsRequestBuilder orderDir(OrderDir orderDir) {
+        public WebhooksApi.UrlsRequestBuilder orderDir(OrderDir orderDir) {
             this.orderDir = orderDir;
-            return this;
+            return (WebhooksApi.UrlsRequestBuilder) this;
         }
         
         /**
          * Set filters
          * @param filters  (optional)
-         * @return UrlsRequestBuilder
+         * @return WebhooksApi.UrlsRequestBuilder
          */
-        public UrlsRequestBuilder filters(WebhookFilters filters) {
+        public WebhooksApi.UrlsRequestBuilder filters(WebhookFilters filters) {
             this.filters = filters;
-            return this;
+            return (WebhooksApi.UrlsRequestBuilder) this;
         }
         
         /**
@@ -603,7 +603,7 @@ public class WebhooksApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public UrlsRequestBuilder urls() throws IllegalArgumentException {
-        return new UrlsRequestBuilder();
+    public WebhooksApi.UrlsRequestBuilder urls() throws IllegalArgumentException {
+        return ((WebhooksApi) this).new UrlsRequestBuilder();
     }
 }

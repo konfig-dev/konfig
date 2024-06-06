@@ -163,12 +163,12 @@ public class ConnectionsApiGenerated {
         return localVarCall;
     }
 
-    public class DetailBrokerageAuthorizationRequestBuilder {
+    public abstract class DetailBrokerageAuthorizationRequestBuilderGenerated {
         private final UUID authorizationId;
         private final String userId;
         private final String userSecret;
 
-        private DetailBrokerageAuthorizationRequestBuilder(UUID authorizationId, String userId, String userSecret) {
+        public DetailBrokerageAuthorizationRequestBuilderGenerated(UUID authorizationId, String userId, String userSecret) {
             this.authorizationId = authorizationId;
             this.userId = userId;
             this.userSecret = userSecret;
@@ -253,7 +253,7 @@ public class ConnectionsApiGenerated {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public DetailBrokerageAuthorizationRequestBuilder detailBrokerageAuthorization(UUID authorizationId, String userId, String userSecret) throws IllegalArgumentException {
+    public ConnectionsApi.DetailBrokerageAuthorizationRequestBuilder detailBrokerageAuthorization(UUID authorizationId, String userId, String userSecret) throws IllegalArgumentException {
         if (authorizationId == null) throw new IllegalArgumentException("\"authorizationId\" is required but got null");
             
 
@@ -263,7 +263,7 @@ public class ConnectionsApiGenerated {
         if (userSecret == null) throw new IllegalArgumentException("\"userSecret\" is required but got null");
             
 
-        return new DetailBrokerageAuthorizationRequestBuilder(authorizationId, userId, userSecret);
+        return ((ConnectionsApi) this).new DetailBrokerageAuthorizationRequestBuilder(authorizationId, userId, userSecret);
     }
     private okhttp3.Call listBrokerageAuthorizationsCall(String userId, String userSecret, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -348,11 +348,11 @@ public class ConnectionsApiGenerated {
         return localVarCall;
     }
 
-    public class ListBrokerageAuthorizationsRequestBuilder {
+    public abstract class ListBrokerageAuthorizationsRequestBuilderGenerated {
         private final String userId;
         private final String userSecret;
 
-        private ListBrokerageAuthorizationsRequestBuilder(String userId, String userSecret) {
+        public ListBrokerageAuthorizationsRequestBuilderGenerated(String userId, String userSecret) {
             this.userId = userId;
             this.userSecret = userSecret;
         }
@@ -435,14 +435,14 @@ public class ConnectionsApiGenerated {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ListBrokerageAuthorizationsRequestBuilder listBrokerageAuthorizations(String userId, String userSecret) throws IllegalArgumentException {
+    public ConnectionsApi.ListBrokerageAuthorizationsRequestBuilder listBrokerageAuthorizations(String userId, String userSecret) throws IllegalArgumentException {
         if (userId == null) throw new IllegalArgumentException("\"userId\" is required but got null");
             
 
         if (userSecret == null) throw new IllegalArgumentException("\"userSecret\" is required but got null");
             
 
-        return new ListBrokerageAuthorizationsRequestBuilder(userId, userSecret);
+        return ((ConnectionsApi) this).new ListBrokerageAuthorizationsRequestBuilder(userId, userSecret);
     }
     private okhttp3.Call removeBrokerageAuthorizationCall(UUID authorizationId, String userId, String userSecret, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -530,12 +530,12 @@ public class ConnectionsApiGenerated {
         return localVarCall;
     }
 
-    public class RemoveBrokerageAuthorizationRequestBuilder {
+    public abstract class RemoveBrokerageAuthorizationRequestBuilderGenerated {
         private final UUID authorizationId;
         private final String userId;
         private final String userSecret;
 
-        private RemoveBrokerageAuthorizationRequestBuilder(UUID authorizationId, String userId, String userSecret) {
+        public RemoveBrokerageAuthorizationRequestBuilderGenerated(UUID authorizationId, String userId, String userSecret) {
             this.authorizationId = authorizationId;
             this.userId = userId;
             this.userSecret = userSecret;
@@ -628,7 +628,7 @@ public class ConnectionsApiGenerated {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public RemoveBrokerageAuthorizationRequestBuilder removeBrokerageAuthorization(UUID authorizationId, String userId, String userSecret) throws IllegalArgumentException {
+    public ConnectionsApi.RemoveBrokerageAuthorizationRequestBuilder removeBrokerageAuthorization(UUID authorizationId, String userId, String userSecret) throws IllegalArgumentException {
         if (authorizationId == null) throw new IllegalArgumentException("\"authorizationId\" is required but got null");
             
 
@@ -638,7 +638,7 @@ public class ConnectionsApiGenerated {
         if (userSecret == null) throw new IllegalArgumentException("\"userSecret\" is required but got null");
             
 
-        return new RemoveBrokerageAuthorizationRequestBuilder(authorizationId, userId, userSecret);
+        return ((ConnectionsApi) this).new RemoveBrokerageAuthorizationRequestBuilder(authorizationId, userId, userSecret);
     }
     private okhttp3.Call sessionEventsCall(String partnerClientId, String userId, String sessionId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -722,33 +722,33 @@ public class ConnectionsApiGenerated {
         return localVarCall;
     }
 
-    public class SessionEventsRequestBuilder {
+    public abstract class SessionEventsRequestBuilderGenerated {
         private final String partnerClientId;
         private String userId;
         private String sessionId;
 
-        private SessionEventsRequestBuilder(String partnerClientId) {
+        public SessionEventsRequestBuilderGenerated(String partnerClientId) {
             this.partnerClientId = partnerClientId;
         }
 
         /**
          * Set userId
          * @param userId Optional comma seperated list of user IDs used to filter the request on specific users (optional)
-         * @return SessionEventsRequestBuilder
+         * @return ConnectionsApi.SessionEventsRequestBuilder
          */
-        public SessionEventsRequestBuilder userId(String userId) {
+        public ConnectionsApi.SessionEventsRequestBuilder userId(String userId) {
             this.userId = userId;
-            return this;
+            return (ConnectionsApi.SessionEventsRequestBuilder) this;
         }
         
         /**
          * Set sessionId
          * @param sessionId Optional comma seperated list of session IDs used to filter the request on specific users (optional)
-         * @return SessionEventsRequestBuilder
+         * @return ConnectionsApi.SessionEventsRequestBuilder
          */
-        public SessionEventsRequestBuilder sessionId(String sessionId) {
+        public ConnectionsApi.SessionEventsRequestBuilder sessionId(String sessionId) {
             this.sessionId = sessionId;
-            return this;
+            return (ConnectionsApi.SessionEventsRequestBuilder) this;
         }
         
         /**
@@ -828,10 +828,10 @@ public class ConnectionsApiGenerated {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public SessionEventsRequestBuilder sessionEvents(String partnerClientId) throws IllegalArgumentException {
+    public ConnectionsApi.SessionEventsRequestBuilder sessionEvents(String partnerClientId) throws IllegalArgumentException {
         if (partnerClientId == null) throw new IllegalArgumentException("\"partnerClientId\" is required but got null");
             
 
-        return new SessionEventsRequestBuilder(partnerClientId);
+        return ((ConnectionsApi) this).new SessionEventsRequestBuilder(partnerClientId);
     }
 }

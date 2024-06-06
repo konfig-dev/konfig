@@ -140,9 +140,9 @@ public class TestApiGenerated {
         return localVarCall;
     }
 
-    public class FetchRequestBuilder {
+    public abstract class FetchRequestBuilderGenerated {
 
-        private FetchRequestBuilder() {
+        public FetchRequestBuilderGenerated() {
         }
 
         /**
@@ -216,7 +216,7 @@ public class TestApiGenerated {
         <tr><td> 200 </td><td> Successful response </td><td>  -  </td></tr>
      </table>
      */
-    public FetchRequestBuilder fetch() throws IllegalArgumentException {
-        return new FetchRequestBuilder();
+    public TestApi.FetchRequestBuilder fetch() throws IllegalArgumentException {
+        return ((TestApi) this).new FetchRequestBuilder();
     }
 }

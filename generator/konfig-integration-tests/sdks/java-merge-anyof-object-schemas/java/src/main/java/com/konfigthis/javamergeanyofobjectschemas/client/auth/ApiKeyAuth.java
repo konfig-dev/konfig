@@ -31,6 +31,12 @@ public class ApiKeyAuth implements Authentication {
     this.paramName = paramName;
   }
 
+  public ApiKeyAuth(String location, String paramName, String prefix) {
+    this.location = location;
+    this.paramName = paramName;
+    this.apiKeyPrefix = prefix;
+  }
+
   public String getLocation() {
     return location;
   }
@@ -63,7 +69,7 @@ public class ApiKeyAuth implements Authentication {
     }
     String value;
     if (apiKeyPrefix != null) {
-      value = apiKeyPrefix + " " + apiKey;
+      value = apiKeyPrefix + apiKey;
     } else {
       value = apiKey;
     }

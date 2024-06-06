@@ -138,9 +138,9 @@ public class AuthApiGenerated {
         return localVarCall;
     }
 
-    public class GetAccessTokenRequestBuilder {
+    public abstract class GetAccessTokenRequestBuilderGenerated {
 
-        private GetAccessTokenRequestBuilder() {
+        public GetAccessTokenRequestBuilderGenerated() {
         }
 
         /**
@@ -214,8 +214,8 @@ public class AuthApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public GetAccessTokenRequestBuilder getAccessToken() throws IllegalArgumentException {
-        return new GetAccessTokenRequestBuilder();
+    public AuthApi.GetAccessTokenRequestBuilder getAccessToken() throws IllegalArgumentException {
+        return ((AuthApi) this).new GetAccessTokenRequestBuilder();
     }
     private okhttp3.Call getWhiteLabelingCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -282,9 +282,9 @@ public class AuthApiGenerated {
         return localVarCall;
     }
 
-    public class GetWhiteLabelingRequestBuilder {
+    public abstract class GetWhiteLabelingRequestBuilderGenerated {
 
-        private GetWhiteLabelingRequestBuilder() {
+        public GetWhiteLabelingRequestBuilderGenerated() {
         }
 
         /**
@@ -358,7 +358,7 @@ public class AuthApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public GetWhiteLabelingRequestBuilder getWhiteLabeling() throws IllegalArgumentException {
-        return new GetWhiteLabelingRequestBuilder();
+    public AuthApi.GetWhiteLabelingRequestBuilder getWhiteLabeling() throws IllegalArgumentException {
+        return ((AuthApi) this).new GetWhiteLabelingRequestBuilder();
     }
 }

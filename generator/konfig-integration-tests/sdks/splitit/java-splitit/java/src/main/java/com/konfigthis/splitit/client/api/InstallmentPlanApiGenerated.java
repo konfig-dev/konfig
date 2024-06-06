@@ -193,12 +193,12 @@ public class InstallmentPlanApiGenerated {
         return localVarCall;
     }
 
-    public class CancelRequestBuilder {
+    public abstract class CancelRequestBuilderGenerated {
         private final String installmentPlanNumber;
         private final String xSplititIdempotencyKey;
         private final String xSplititTouchPoint;
 
-        private CancelRequestBuilder(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint) {
+        public CancelRequestBuilderGenerated(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint) {
             this.installmentPlanNumber = installmentPlanNumber;
             this.xSplititIdempotencyKey = xSplititIdempotencyKey;
             this.xSplititTouchPoint = xSplititTouchPoint;
@@ -278,7 +278,7 @@ public class InstallmentPlanApiGenerated {
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public CancelRequestBuilder cancel(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint) throws IllegalArgumentException {
+    public InstallmentPlanApi.CancelRequestBuilder cancel(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint) throws IllegalArgumentException {
         if (installmentPlanNumber == null) throw new IllegalArgumentException("\"installmentPlanNumber\" is required but got null");
             
 
@@ -288,7 +288,7 @@ public class InstallmentPlanApiGenerated {
         if (xSplititTouchPoint == null) throw new IllegalArgumentException("\"xSplititTouchPoint\" is required but got null");
             
 
-        return new CancelRequestBuilder(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint);
+        return ((InstallmentPlanApi) this).new CancelRequestBuilder(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint);
     }
     private okhttp3.Call checkEligibilityCall(String xSplititIdempotencyKey, String xSplititTouchPoint, CheckInstallmentsEligibilityRequest checkInstallmentsEligibilityRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -384,14 +384,14 @@ public class InstallmentPlanApiGenerated {
         return localVarCall;
     }
 
-    public class CheckEligibilityRequestBuilder {
+    public abstract class CheckEligibilityRequestBuilderGenerated {
         private final String xSplititIdempotencyKey;
         private final String xSplititTouchPoint;
         private PlanData planData;
         private CardData cardDetails;
         private AddressData billingAddress;
 
-        private CheckEligibilityRequestBuilder(String xSplititIdempotencyKey, String xSplititTouchPoint) {
+        public CheckEligibilityRequestBuilderGenerated(String xSplititIdempotencyKey, String xSplititTouchPoint) {
             this.xSplititIdempotencyKey = xSplititIdempotencyKey;
             this.xSplititTouchPoint = xSplititTouchPoint;
         }
@@ -399,31 +399,31 @@ public class InstallmentPlanApiGenerated {
         /**
          * Set planData
          * @param planData  (optional)
-         * @return CheckEligibilityRequestBuilder
+         * @return InstallmentPlanApi.CheckEligibilityRequestBuilder
          */
-        public CheckEligibilityRequestBuilder planData(PlanData planData) {
+        public InstallmentPlanApi.CheckEligibilityRequestBuilder planData(PlanData planData) {
             this.planData = planData;
-            return this;
+            return (InstallmentPlanApi.CheckEligibilityRequestBuilder) this;
         }
         
         /**
          * Set cardDetails
          * @param cardDetails  (optional)
-         * @return CheckEligibilityRequestBuilder
+         * @return InstallmentPlanApi.CheckEligibilityRequestBuilder
          */
-        public CheckEligibilityRequestBuilder cardDetails(CardData cardDetails) {
+        public InstallmentPlanApi.CheckEligibilityRequestBuilder cardDetails(CardData cardDetails) {
             this.cardDetails = cardDetails;
-            return this;
+            return (InstallmentPlanApi.CheckEligibilityRequestBuilder) this;
         }
         
         /**
          * Set billingAddress
          * @param billingAddress  (optional)
-         * @return CheckEligibilityRequestBuilder
+         * @return InstallmentPlanApi.CheckEligibilityRequestBuilder
          */
-        public CheckEligibilityRequestBuilder billingAddress(AddressData billingAddress) {
+        public InstallmentPlanApi.CheckEligibilityRequestBuilder billingAddress(AddressData billingAddress) {
             this.billingAddress = billingAddress;
-            return this;
+            return (InstallmentPlanApi.CheckEligibilityRequestBuilder) this;
         }
         
         /**
@@ -511,14 +511,14 @@ public class InstallmentPlanApiGenerated {
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public CheckEligibilityRequestBuilder checkEligibility(String xSplititIdempotencyKey, String xSplititTouchPoint) throws IllegalArgumentException {
+    public InstallmentPlanApi.CheckEligibilityRequestBuilder checkEligibility(String xSplititIdempotencyKey, String xSplititTouchPoint) throws IllegalArgumentException {
         if (xSplititIdempotencyKey == null) throw new IllegalArgumentException("\"xSplititIdempotencyKey\" is required but got null");
             
 
         if (xSplititTouchPoint == null) throw new IllegalArgumentException("\"xSplititTouchPoint\" is required but got null");
             
 
-        return new CheckEligibilityRequestBuilder(xSplititIdempotencyKey, xSplititTouchPoint);
+        return ((InstallmentPlanApi) this).new CheckEligibilityRequestBuilder(xSplititIdempotencyKey, xSplititTouchPoint);
     }
     private okhttp3.Call getCall(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -611,12 +611,12 @@ public class InstallmentPlanApiGenerated {
         return localVarCall;
     }
 
-    public class GetRequestBuilder {
+    public abstract class GetRequestBuilderGenerated {
         private final String installmentPlanNumber;
         private final String xSplititIdempotencyKey;
         private final String xSplititTouchPoint;
 
-        private GetRequestBuilder(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint) {
+        public GetRequestBuilderGenerated(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint) {
             this.installmentPlanNumber = installmentPlanNumber;
             this.xSplititIdempotencyKey = xSplititIdempotencyKey;
             this.xSplititTouchPoint = xSplititTouchPoint;
@@ -696,7 +696,7 @@ public class InstallmentPlanApiGenerated {
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public GetRequestBuilder get(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint) throws IllegalArgumentException {
+    public InstallmentPlanApi.GetRequestBuilder get(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint) throws IllegalArgumentException {
         if (installmentPlanNumber == null) throw new IllegalArgumentException("\"installmentPlanNumber\" is required but got null");
             
 
@@ -706,7 +706,7 @@ public class InstallmentPlanApiGenerated {
         if (xSplititTouchPoint == null) throw new IllegalArgumentException("\"xSplititTouchPoint\" is required but got null");
             
 
-        return new GetRequestBuilder(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint);
+        return ((InstallmentPlanApi) this).new GetRequestBuilder(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint);
     }
     private okhttp3.Call postCall(String xSplititIdempotencyKey, String xSplititTouchPoint, InstallmentPlanInitiateRequest installmentPlanInitiateRequest, String xSplititTestMode, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -806,7 +806,7 @@ public class InstallmentPlanApiGenerated {
         return localVarCall;
     }
 
-    public class PostRequestBuilder {
+    public abstract class PostRequestBuilderGenerated {
         private final Boolean autoCapture;
         private final String xSplititIdempotencyKey;
         private final String xSplititTouchPoint;
@@ -820,7 +820,7 @@ public class InstallmentPlanApiGenerated {
         private ProcessingData processingData;
         private String xSplititTestMode;
 
-        private PostRequestBuilder(Boolean autoCapture, String xSplititIdempotencyKey, String xSplititTouchPoint) {
+        public PostRequestBuilderGenerated(Boolean autoCapture, String xSplititIdempotencyKey, String xSplititTouchPoint) {
             this.autoCapture = autoCapture;
             this.xSplititIdempotencyKey = xSplititIdempotencyKey;
             this.xSplititTouchPoint = xSplititTouchPoint;
@@ -829,91 +829,91 @@ public class InstallmentPlanApiGenerated {
         /**
          * Set attempt3dSecure
          * @param attempt3dSecure  (optional)
-         * @return PostRequestBuilder
+         * @return InstallmentPlanApi.PostRequestBuilder
          */
-        public PostRequestBuilder attempt3dSecure(Boolean attempt3dSecure) {
+        public InstallmentPlanApi.PostRequestBuilder attempt3dSecure(Boolean attempt3dSecure) {
             this.attempt3dSecure = attempt3dSecure;
-            return this;
+            return (InstallmentPlanApi.PostRequestBuilder) this;
         }
         
         /**
          * Set shopper
          * @param shopper  (optional)
-         * @return PostRequestBuilder
+         * @return InstallmentPlanApi.PostRequestBuilder
          */
-        public PostRequestBuilder shopper(ShopperData shopper) {
+        public InstallmentPlanApi.PostRequestBuilder shopper(ShopperData shopper) {
             this.shopper = shopper;
-            return this;
+            return (InstallmentPlanApi.PostRequestBuilder) this;
         }
         
         /**
          * Set planData
          * @param planData  (optional)
-         * @return PostRequestBuilder
+         * @return InstallmentPlanApi.PostRequestBuilder
          */
-        public PostRequestBuilder planData(PlanDataModel planData) {
+        public InstallmentPlanApi.PostRequestBuilder planData(PlanDataModel planData) {
             this.planData = planData;
-            return this;
+            return (InstallmentPlanApi.PostRequestBuilder) this;
         }
         
         /**
          * Set billingAddress
          * @param billingAddress  (optional)
-         * @return PostRequestBuilder
+         * @return InstallmentPlanApi.PostRequestBuilder
          */
-        public PostRequestBuilder billingAddress(AddressDataModel billingAddress) {
+        public InstallmentPlanApi.PostRequestBuilder billingAddress(AddressDataModel billingAddress) {
             this.billingAddress = billingAddress;
-            return this;
+            return (InstallmentPlanApi.PostRequestBuilder) this;
         }
         
         /**
          * Set redirectUrls
          * @param redirectUrls  (optional)
-         * @return PostRequestBuilder
+         * @return InstallmentPlanApi.PostRequestBuilder
          */
-        public PostRequestBuilder redirectUrls(InitiateRedirectionEndpointsModel redirectUrls) {
+        public InstallmentPlanApi.PostRequestBuilder redirectUrls(InitiateRedirectionEndpointsModel redirectUrls) {
             this.redirectUrls = redirectUrls;
-            return this;
+            return (InstallmentPlanApi.PostRequestBuilder) this;
         }
         
         /**
          * Set uxSettings
          * @param uxSettings  (optional)
-         * @return PostRequestBuilder
+         * @return InstallmentPlanApi.PostRequestBuilder
          */
-        public PostRequestBuilder uxSettings(UxSettingsModel uxSettings) {
+        public InstallmentPlanApi.PostRequestBuilder uxSettings(UxSettingsModel uxSettings) {
             this.uxSettings = uxSettings;
-            return this;
+            return (InstallmentPlanApi.PostRequestBuilder) this;
         }
         
         /**
          * Set eventsEndpoints
          * @param eventsEndpoints  (optional)
-         * @return PostRequestBuilder
+         * @return InstallmentPlanApi.PostRequestBuilder
          */
-        public PostRequestBuilder eventsEndpoints(EventsEndpointsModel eventsEndpoints) {
+        public InstallmentPlanApi.PostRequestBuilder eventsEndpoints(EventsEndpointsModel eventsEndpoints) {
             this.eventsEndpoints = eventsEndpoints;
-            return this;
+            return (InstallmentPlanApi.PostRequestBuilder) this;
         }
         
         /**
          * Set processingData
          * @param processingData  (optional)
-         * @return PostRequestBuilder
+         * @return InstallmentPlanApi.PostRequestBuilder
          */
-        public PostRequestBuilder processingData(ProcessingData processingData) {
+        public InstallmentPlanApi.PostRequestBuilder processingData(ProcessingData processingData) {
             this.processingData = processingData;
-            return this;
+            return (InstallmentPlanApi.PostRequestBuilder) this;
         }
         
         /**
          * Set xSplititTestMode
          * @param xSplititTestMode  (optional)
-         * @return PostRequestBuilder
+         * @return InstallmentPlanApi.PostRequestBuilder
          */
-        public PostRequestBuilder xSplititTestMode(String xSplititTestMode) {
+        public InstallmentPlanApi.PostRequestBuilder xSplititTestMode(String xSplititTestMode) {
             this.xSplititTestMode = xSplititTestMode;
-            return this;
+            return (InstallmentPlanApi.PostRequestBuilder) this;
         }
         
         /**
@@ -1007,7 +1007,7 @@ public class InstallmentPlanApiGenerated {
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public PostRequestBuilder post(Boolean autoCapture, String xSplititIdempotencyKey, String xSplititTouchPoint) throws IllegalArgumentException {
+    public InstallmentPlanApi.PostRequestBuilder post(Boolean autoCapture, String xSplititIdempotencyKey, String xSplititTouchPoint) throws IllegalArgumentException {
         if (autoCapture == null) throw new IllegalArgumentException("\"autoCapture\" is required but got null");
         if (xSplititIdempotencyKey == null) throw new IllegalArgumentException("\"xSplititIdempotencyKey\" is required but got null");
             
@@ -1015,7 +1015,7 @@ public class InstallmentPlanApiGenerated {
         if (xSplititTouchPoint == null) throw new IllegalArgumentException("\"xSplititTouchPoint\" is required but got null");
             
 
-        return new PostRequestBuilder(autoCapture, xSplititIdempotencyKey, xSplititTouchPoint);
+        return ((InstallmentPlanApi) this).new PostRequestBuilder(autoCapture, xSplititIdempotencyKey, xSplititTouchPoint);
     }
     private okhttp3.Call post2Call(String xSplititIdempotencyKey, String xSplititTouchPoint, InstallmentPlanCreateRequest installmentPlanCreateRequest, String xSplititTestMode, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1115,7 +1115,7 @@ public class InstallmentPlanApiGenerated {
         return localVarCall;
     }
 
-    public class Post2RequestBuilder {
+    public abstract class Post2RequestBuilderGenerated {
         private final Boolean autoCapture;
         private final Boolean termsAndConditionsAccepted;
         private final String xSplititIdempotencyKey;
@@ -1130,7 +1130,7 @@ public class InstallmentPlanApiGenerated {
         private EventsEndpointsModel eventsEndpoints;
         private String xSplititTestMode;
 
-        private Post2RequestBuilder(Boolean autoCapture, Boolean termsAndConditionsAccepted, String xSplititIdempotencyKey, String xSplititTouchPoint) {
+        public Post2RequestBuilderGenerated(Boolean autoCapture, Boolean termsAndConditionsAccepted, String xSplititIdempotencyKey, String xSplititTouchPoint) {
             this.autoCapture = autoCapture;
             this.termsAndConditionsAccepted = termsAndConditionsAccepted;
             this.xSplititIdempotencyKey = xSplititIdempotencyKey;
@@ -1140,91 +1140,91 @@ public class InstallmentPlanApiGenerated {
         /**
          * Set attempt3dSecure
          * @param attempt3dSecure  (optional)
-         * @return Post2RequestBuilder
+         * @return InstallmentPlanApi.Post2RequestBuilder
          */
-        public Post2RequestBuilder attempt3dSecure(Boolean attempt3dSecure) {
+        public InstallmentPlanApi.Post2RequestBuilder attempt3dSecure(Boolean attempt3dSecure) {
             this.attempt3dSecure = attempt3dSecure;
-            return this;
+            return (InstallmentPlanApi.Post2RequestBuilder) this;
         }
         
         /**
          * Set shopper
          * @param shopper  (optional)
-         * @return Post2RequestBuilder
+         * @return InstallmentPlanApi.Post2RequestBuilder
          */
-        public Post2RequestBuilder shopper(ShopperData shopper) {
+        public InstallmentPlanApi.Post2RequestBuilder shopper(ShopperData shopper) {
             this.shopper = shopper;
-            return this;
+            return (InstallmentPlanApi.Post2RequestBuilder) this;
         }
         
         /**
          * Set planData
          * @param planData  (optional)
-         * @return Post2RequestBuilder
+         * @return InstallmentPlanApi.Post2RequestBuilder
          */
-        public Post2RequestBuilder planData(PlanDataModel planData) {
+        public InstallmentPlanApi.Post2RequestBuilder planData(PlanDataModel planData) {
             this.planData = planData;
-            return this;
+            return (InstallmentPlanApi.Post2RequestBuilder) this;
         }
         
         /**
          * Set billingAddress
          * @param billingAddress  (optional)
-         * @return Post2RequestBuilder
+         * @return InstallmentPlanApi.Post2RequestBuilder
          */
-        public Post2RequestBuilder billingAddress(AddressDataModel billingAddress) {
+        public InstallmentPlanApi.Post2RequestBuilder billingAddress(AddressDataModel billingAddress) {
             this.billingAddress = billingAddress;
-            return this;
+            return (InstallmentPlanApi.Post2RequestBuilder) this;
         }
         
         /**
          * Set paymentMethod
          * @param paymentMethod  (optional)
-         * @return Post2RequestBuilder
+         * @return InstallmentPlanApi.Post2RequestBuilder
          */
-        public Post2RequestBuilder paymentMethod(PaymentMethodModel paymentMethod) {
+        public InstallmentPlanApi.Post2RequestBuilder paymentMethod(PaymentMethodModel paymentMethod) {
             this.paymentMethod = paymentMethod;
-            return this;
+            return (InstallmentPlanApi.Post2RequestBuilder) this;
         }
         
         /**
          * Set redirectUrls
          * @param redirectUrls  (optional)
-         * @return Post2RequestBuilder
+         * @return InstallmentPlanApi.Post2RequestBuilder
          */
-        public Post2RequestBuilder redirectUrls(RedirectionEndpointsModel redirectUrls) {
+        public InstallmentPlanApi.Post2RequestBuilder redirectUrls(RedirectionEndpointsModel redirectUrls) {
             this.redirectUrls = redirectUrls;
-            return this;
+            return (InstallmentPlanApi.Post2RequestBuilder) this;
         }
         
         /**
          * Set processingData
          * @param processingData  (optional)
-         * @return Post2RequestBuilder
+         * @return InstallmentPlanApi.Post2RequestBuilder
          */
-        public Post2RequestBuilder processingData(ProcessingData processingData) {
+        public InstallmentPlanApi.Post2RequestBuilder processingData(ProcessingData processingData) {
             this.processingData = processingData;
-            return this;
+            return (InstallmentPlanApi.Post2RequestBuilder) this;
         }
         
         /**
          * Set eventsEndpoints
          * @param eventsEndpoints  (optional)
-         * @return Post2RequestBuilder
+         * @return InstallmentPlanApi.Post2RequestBuilder
          */
-        public Post2RequestBuilder eventsEndpoints(EventsEndpointsModel eventsEndpoints) {
+        public InstallmentPlanApi.Post2RequestBuilder eventsEndpoints(EventsEndpointsModel eventsEndpoints) {
             this.eventsEndpoints = eventsEndpoints;
-            return this;
+            return (InstallmentPlanApi.Post2RequestBuilder) this;
         }
         
         /**
          * Set xSplititTestMode
          * @param xSplititTestMode  (optional)
-         * @return Post2RequestBuilder
+         * @return InstallmentPlanApi.Post2RequestBuilder
          */
-        public Post2RequestBuilder xSplititTestMode(String xSplititTestMode) {
+        public InstallmentPlanApi.Post2RequestBuilder xSplititTestMode(String xSplititTestMode) {
             this.xSplititTestMode = xSplititTestMode;
-            return this;
+            return (InstallmentPlanApi.Post2RequestBuilder) this;
         }
         
         /**
@@ -1319,7 +1319,7 @@ public class InstallmentPlanApiGenerated {
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public Post2RequestBuilder post2(Boolean autoCapture, Boolean termsAndConditionsAccepted, String xSplititIdempotencyKey, String xSplititTouchPoint) throws IllegalArgumentException {
+    public InstallmentPlanApi.Post2RequestBuilder post2(Boolean autoCapture, Boolean termsAndConditionsAccepted, String xSplititIdempotencyKey, String xSplititTouchPoint) throws IllegalArgumentException {
         if (autoCapture == null) throw new IllegalArgumentException("\"autoCapture\" is required but got null");
         if (termsAndConditionsAccepted == null) throw new IllegalArgumentException("\"termsAndConditionsAccepted\" is required but got null");
         if (xSplititIdempotencyKey == null) throw new IllegalArgumentException("\"xSplititIdempotencyKey\" is required but got null");
@@ -1328,7 +1328,7 @@ public class InstallmentPlanApiGenerated {
         if (xSplititTouchPoint == null) throw new IllegalArgumentException("\"xSplititTouchPoint\" is required but got null");
             
 
-        return new Post2RequestBuilder(autoCapture, termsAndConditionsAccepted, xSplititIdempotencyKey, xSplititTouchPoint);
+        return ((InstallmentPlanApi) this).new Post2RequestBuilder(autoCapture, termsAndConditionsAccepted, xSplititIdempotencyKey, xSplititTouchPoint);
     }
     private okhttp3.Call refundCall(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint, InstallmentPlanRefundRequest installmentPlanRefundRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1430,14 +1430,14 @@ public class InstallmentPlanApiGenerated {
         return localVarCall;
     }
 
-    public class RefundRequestBuilder {
+    public abstract class RefundRequestBuilderGenerated {
         private final Double amount;
         private final String installmentPlanNumber;
         private final String xSplititIdempotencyKey;
         private final String xSplititTouchPoint;
         private RefundStrategy refundStrategy;
 
-        private RefundRequestBuilder(double amount, String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint) {
+        public RefundRequestBuilderGenerated(double amount, String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint) {
             this.amount = amount;
             this.installmentPlanNumber = installmentPlanNumber;
             this.xSplititIdempotencyKey = xSplititIdempotencyKey;
@@ -1447,11 +1447,11 @@ public class InstallmentPlanApiGenerated {
         /**
          * Set refundStrategy
          * @param refundStrategy  (optional)
-         * @return RefundRequestBuilder
+         * @return InstallmentPlanApi.RefundRequestBuilder
          */
-        public RefundRequestBuilder refundStrategy(RefundStrategy refundStrategy) {
+        public InstallmentPlanApi.RefundRequestBuilder refundStrategy(RefundStrategy refundStrategy) {
             this.refundStrategy = refundStrategy;
-            return this;
+            return (InstallmentPlanApi.RefundRequestBuilder) this;
         }
         
         /**
@@ -1539,7 +1539,7 @@ public class InstallmentPlanApiGenerated {
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public RefundRequestBuilder refund(double amount, String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint) throws IllegalArgumentException {
+    public InstallmentPlanApi.RefundRequestBuilder refund(double amount, String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint) throws IllegalArgumentException {
         
         if (installmentPlanNumber == null) throw new IllegalArgumentException("\"installmentPlanNumber\" is required but got null");
             
@@ -1550,7 +1550,7 @@ public class InstallmentPlanApiGenerated {
         if (xSplititTouchPoint == null) throw new IllegalArgumentException("\"xSplititTouchPoint\" is required but got null");
             
 
-        return new RefundRequestBuilder(amount, installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint);
+        return ((InstallmentPlanApi) this).new RefundRequestBuilder(amount, installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint);
     }
     private okhttp3.Call searchCall(String xSplititIdempotencyKey, String xSplititTouchPoint, String installmentPlanNumber, String refOrderNumber, Map<String, String> extendedParams, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1649,14 +1649,14 @@ public class InstallmentPlanApiGenerated {
         return localVarCall;
     }
 
-    public class SearchRequestBuilder {
+    public abstract class SearchRequestBuilderGenerated {
         private final String xSplititIdempotencyKey;
         private final String xSplititTouchPoint;
         private String installmentPlanNumber;
         private String refOrderNumber;
         private Map<String, String> extendedParams;
 
-        private SearchRequestBuilder(String xSplititIdempotencyKey, String xSplititTouchPoint) {
+        public SearchRequestBuilderGenerated(String xSplititIdempotencyKey, String xSplititTouchPoint) {
             this.xSplititIdempotencyKey = xSplititIdempotencyKey;
             this.xSplititTouchPoint = xSplititTouchPoint;
         }
@@ -1664,31 +1664,31 @@ public class InstallmentPlanApiGenerated {
         /**
          * Set installmentPlanNumber
          * @param installmentPlanNumber  (optional)
-         * @return SearchRequestBuilder
+         * @return InstallmentPlanApi.SearchRequestBuilder
          */
-        public SearchRequestBuilder installmentPlanNumber(String installmentPlanNumber) {
+        public InstallmentPlanApi.SearchRequestBuilder installmentPlanNumber(String installmentPlanNumber) {
             this.installmentPlanNumber = installmentPlanNumber;
-            return this;
+            return (InstallmentPlanApi.SearchRequestBuilder) this;
         }
         
         /**
          * Set refOrderNumber
          * @param refOrderNumber  (optional)
-         * @return SearchRequestBuilder
+         * @return InstallmentPlanApi.SearchRequestBuilder
          */
-        public SearchRequestBuilder refOrderNumber(String refOrderNumber) {
+        public InstallmentPlanApi.SearchRequestBuilder refOrderNumber(String refOrderNumber) {
             this.refOrderNumber = refOrderNumber;
-            return this;
+            return (InstallmentPlanApi.SearchRequestBuilder) this;
         }
         
         /**
          * Set extendedParams
          * @param extendedParams  (optional)
-         * @return SearchRequestBuilder
+         * @return InstallmentPlanApi.SearchRequestBuilder
          */
-        public SearchRequestBuilder extendedParams(Map<String, String> extendedParams) {
+        public InstallmentPlanApi.SearchRequestBuilder extendedParams(Map<String, String> extendedParams) {
             this.extendedParams = extendedParams;
-            return this;
+            return (InstallmentPlanApi.SearchRequestBuilder) this;
         }
         
         /**
@@ -1764,14 +1764,14 @@ public class InstallmentPlanApiGenerated {
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public SearchRequestBuilder search(String xSplititIdempotencyKey, String xSplititTouchPoint) throws IllegalArgumentException {
+    public InstallmentPlanApi.SearchRequestBuilder search(String xSplititIdempotencyKey, String xSplititTouchPoint) throws IllegalArgumentException {
         if (xSplititIdempotencyKey == null) throw new IllegalArgumentException("\"xSplititIdempotencyKey\" is required but got null");
             
 
         if (xSplititTouchPoint == null) throw new IllegalArgumentException("\"xSplititTouchPoint\" is required but got null");
             
 
-        return new SearchRequestBuilder(xSplititIdempotencyKey, xSplititTouchPoint);
+        return ((InstallmentPlanApi) this).new SearchRequestBuilder(xSplititIdempotencyKey, xSplititTouchPoint);
     }
     private okhttp3.Call updateOrderCall(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint, UpdateOrderRequest updateOrderRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1873,7 +1873,7 @@ public class InstallmentPlanApiGenerated {
         return localVarCall;
     }
 
-    public class UpdateOrderRequestBuilder {
+    public abstract class UpdateOrderRequestBuilderGenerated {
         private final String installmentPlanNumber;
         private final String xSplititIdempotencyKey;
         private final String xSplititTouchPoint;
@@ -1882,7 +1882,7 @@ public class InstallmentPlanApiGenerated {
         private ShippingStatus shippingStatus;
         private Boolean capture;
 
-        private UpdateOrderRequestBuilder(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint) {
+        public UpdateOrderRequestBuilderGenerated(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint) {
             this.installmentPlanNumber = installmentPlanNumber;
             this.xSplititIdempotencyKey = xSplititIdempotencyKey;
             this.xSplititTouchPoint = xSplititTouchPoint;
@@ -1891,41 +1891,41 @@ public class InstallmentPlanApiGenerated {
         /**
          * Set trackingNumber
          * @param trackingNumber  (optional)
-         * @return UpdateOrderRequestBuilder
+         * @return InstallmentPlanApi.UpdateOrderRequestBuilder
          */
-        public UpdateOrderRequestBuilder trackingNumber(String trackingNumber) {
+        public InstallmentPlanApi.UpdateOrderRequestBuilder trackingNumber(String trackingNumber) {
             this.trackingNumber = trackingNumber;
-            return this;
+            return (InstallmentPlanApi.UpdateOrderRequestBuilder) this;
         }
         
         /**
          * Set refOrderNumber
          * @param refOrderNumber  (optional)
-         * @return UpdateOrderRequestBuilder
+         * @return InstallmentPlanApi.UpdateOrderRequestBuilder
          */
-        public UpdateOrderRequestBuilder refOrderNumber(String refOrderNumber) {
+        public InstallmentPlanApi.UpdateOrderRequestBuilder refOrderNumber(String refOrderNumber) {
             this.refOrderNumber = refOrderNumber;
-            return this;
+            return (InstallmentPlanApi.UpdateOrderRequestBuilder) this;
         }
         
         /**
          * Set shippingStatus
          * @param shippingStatus  (optional)
-         * @return UpdateOrderRequestBuilder
+         * @return InstallmentPlanApi.UpdateOrderRequestBuilder
          */
-        public UpdateOrderRequestBuilder shippingStatus(ShippingStatus shippingStatus) {
+        public InstallmentPlanApi.UpdateOrderRequestBuilder shippingStatus(ShippingStatus shippingStatus) {
             this.shippingStatus = shippingStatus;
-            return this;
+            return (InstallmentPlanApi.UpdateOrderRequestBuilder) this;
         }
         
         /**
          * Set capture
          * @param capture  (optional)
-         * @return UpdateOrderRequestBuilder
+         * @return InstallmentPlanApi.UpdateOrderRequestBuilder
          */
-        public UpdateOrderRequestBuilder capture(Boolean capture) {
+        public InstallmentPlanApi.UpdateOrderRequestBuilder capture(Boolean capture) {
             this.capture = capture;
-            return this;
+            return (InstallmentPlanApi.UpdateOrderRequestBuilder) this;
         }
         
         /**
@@ -2015,7 +2015,7 @@ public class InstallmentPlanApiGenerated {
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public UpdateOrderRequestBuilder updateOrder(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint) throws IllegalArgumentException {
+    public InstallmentPlanApi.UpdateOrderRequestBuilder updateOrder(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint) throws IllegalArgumentException {
         if (installmentPlanNumber == null) throw new IllegalArgumentException("\"installmentPlanNumber\" is required but got null");
             
 
@@ -2025,7 +2025,7 @@ public class InstallmentPlanApiGenerated {
         if (xSplititTouchPoint == null) throw new IllegalArgumentException("\"xSplititTouchPoint\" is required but got null");
             
 
-        return new UpdateOrderRequestBuilder(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint);
+        return ((InstallmentPlanApi) this).new UpdateOrderRequestBuilder(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint);
     }
     private okhttp3.Call updateOrder2Call(String xSplititIdempotencyKey, String xSplititTouchPoint, InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -2121,7 +2121,7 @@ public class InstallmentPlanApiGenerated {
         return localVarCall;
     }
 
-    public class UpdateOrder2RequestBuilder {
+    public abstract class UpdateOrder2RequestBuilderGenerated {
         private final String xSplititIdempotencyKey;
         private final String xSplititTouchPoint;
         private String refOrderNumber;
@@ -2130,7 +2130,7 @@ public class InstallmentPlanApiGenerated {
         private ShippingStatus2 shippingStatus;
         private IdentifierContract identifier;
 
-        private UpdateOrder2RequestBuilder(String xSplititIdempotencyKey, String xSplititTouchPoint) {
+        public UpdateOrder2RequestBuilderGenerated(String xSplititIdempotencyKey, String xSplititTouchPoint) {
             this.xSplititIdempotencyKey = xSplititIdempotencyKey;
             this.xSplititTouchPoint = xSplititTouchPoint;
         }
@@ -2138,51 +2138,51 @@ public class InstallmentPlanApiGenerated {
         /**
          * Set refOrderNumber
          * @param refOrderNumber  (optional)
-         * @return UpdateOrder2RequestBuilder
+         * @return InstallmentPlanApi.UpdateOrder2RequestBuilder
          */
-        public UpdateOrder2RequestBuilder refOrderNumber(String refOrderNumber) {
+        public InstallmentPlanApi.UpdateOrder2RequestBuilder refOrderNumber(String refOrderNumber) {
             this.refOrderNumber = refOrderNumber;
-            return this;
+            return (InstallmentPlanApi.UpdateOrder2RequestBuilder) this;
         }
         
         /**
          * Set trackingNumber
          * @param trackingNumber  (optional)
-         * @return UpdateOrder2RequestBuilder
+         * @return InstallmentPlanApi.UpdateOrder2RequestBuilder
          */
-        public UpdateOrder2RequestBuilder trackingNumber(String trackingNumber) {
+        public InstallmentPlanApi.UpdateOrder2RequestBuilder trackingNumber(String trackingNumber) {
             this.trackingNumber = trackingNumber;
-            return this;
+            return (InstallmentPlanApi.UpdateOrder2RequestBuilder) this;
         }
         
         /**
          * Set capture
          * @param capture  (optional)
-         * @return UpdateOrder2RequestBuilder
+         * @return InstallmentPlanApi.UpdateOrder2RequestBuilder
          */
-        public UpdateOrder2RequestBuilder capture(Boolean capture) {
+        public InstallmentPlanApi.UpdateOrder2RequestBuilder capture(Boolean capture) {
             this.capture = capture;
-            return this;
+            return (InstallmentPlanApi.UpdateOrder2RequestBuilder) this;
         }
         
         /**
          * Set shippingStatus
          * @param shippingStatus  (optional)
-         * @return UpdateOrder2RequestBuilder
+         * @return InstallmentPlanApi.UpdateOrder2RequestBuilder
          */
-        public UpdateOrder2RequestBuilder shippingStatus(ShippingStatus2 shippingStatus) {
+        public InstallmentPlanApi.UpdateOrder2RequestBuilder shippingStatus(ShippingStatus2 shippingStatus) {
             this.shippingStatus = shippingStatus;
-            return this;
+            return (InstallmentPlanApi.UpdateOrder2RequestBuilder) this;
         }
         
         /**
          * Set identifier
          * @param identifier  (optional)
-         * @return UpdateOrder2RequestBuilder
+         * @return InstallmentPlanApi.UpdateOrder2RequestBuilder
          */
-        public UpdateOrder2RequestBuilder identifier(IdentifierContract identifier) {
+        public InstallmentPlanApi.UpdateOrder2RequestBuilder identifier(IdentifierContract identifier) {
             this.identifier = identifier;
-            return this;
+            return (InstallmentPlanApi.UpdateOrder2RequestBuilder) this;
         }
         
         /**
@@ -2267,14 +2267,14 @@ public class InstallmentPlanApiGenerated {
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public UpdateOrder2RequestBuilder updateOrder2(String xSplititIdempotencyKey, String xSplititTouchPoint) throws IllegalArgumentException {
+    public InstallmentPlanApi.UpdateOrder2RequestBuilder updateOrder2(String xSplititIdempotencyKey, String xSplititTouchPoint) throws IllegalArgumentException {
         if (xSplititIdempotencyKey == null) throw new IllegalArgumentException("\"xSplititIdempotencyKey\" is required but got null");
             
 
         if (xSplititTouchPoint == null) throw new IllegalArgumentException("\"xSplititTouchPoint\" is required but got null");
             
 
-        return new UpdateOrder2RequestBuilder(xSplititIdempotencyKey, xSplititTouchPoint);
+        return ((InstallmentPlanApi) this).new UpdateOrder2RequestBuilder(xSplititIdempotencyKey, xSplititTouchPoint);
     }
     private okhttp3.Call verifyAuthorizationCall(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -2367,12 +2367,12 @@ public class InstallmentPlanApiGenerated {
         return localVarCall;
     }
 
-    public class VerifyAuthorizationRequestBuilder {
+    public abstract class VerifyAuthorizationRequestBuilderGenerated {
         private final String installmentPlanNumber;
         private final String xSplititIdempotencyKey;
         private final String xSplititTouchPoint;
 
-        private VerifyAuthorizationRequestBuilder(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint) {
+        public VerifyAuthorizationRequestBuilderGenerated(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint) {
             this.installmentPlanNumber = installmentPlanNumber;
             this.xSplititIdempotencyKey = xSplititIdempotencyKey;
             this.xSplititTouchPoint = xSplititTouchPoint;
@@ -2452,7 +2452,7 @@ public class InstallmentPlanApiGenerated {
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public VerifyAuthorizationRequestBuilder verifyAuthorization(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint) throws IllegalArgumentException {
+    public InstallmentPlanApi.VerifyAuthorizationRequestBuilder verifyAuthorization(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint) throws IllegalArgumentException {
         if (installmentPlanNumber == null) throw new IllegalArgumentException("\"installmentPlanNumber\" is required but got null");
             
 
@@ -2462,6 +2462,6 @@ public class InstallmentPlanApiGenerated {
         if (xSplititTouchPoint == null) throw new IllegalArgumentException("\"xSplititTouchPoint\" is required but got null");
             
 
-        return new VerifyAuthorizationRequestBuilder(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint);
+        return ((InstallmentPlanApi) this).new VerifyAuthorizationRequestBuilder(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint);
     }
 }

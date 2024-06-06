@@ -155,11 +155,11 @@ public class ErrorLogsApiGenerated {
         return localVarCall;
     }
 
-    public class ListUserErrorsRequestBuilder {
+    public abstract class ListUserErrorsRequestBuilderGenerated {
         private final String userId;
         private final String userSecret;
 
-        private ListUserErrorsRequestBuilder(String userId, String userSecret) {
+        public ListUserErrorsRequestBuilderGenerated(String userId, String userSecret) {
             this.userId = userId;
             this.userSecret = userSecret;
         }
@@ -237,13 +237,13 @@ public class ErrorLogsApiGenerated {
         <tr><td> 200 </td><td> A list of all user errors for a particular user in the last 90 days. </td><td>  -  </td></tr>
      </table>
      */
-    public ListUserErrorsRequestBuilder listUserErrors(String userId, String userSecret) throws IllegalArgumentException {
+    public ErrorLogsApi.ListUserErrorsRequestBuilder listUserErrors(String userId, String userSecret) throws IllegalArgumentException {
         if (userId == null) throw new IllegalArgumentException("\"userId\" is required but got null");
             
 
         if (userSecret == null) throw new IllegalArgumentException("\"userSecret\" is required but got null");
             
 
-        return new ListUserErrorsRequestBuilder(userId, userSecret);
+        return ((ErrorLogsApi) this).new ListUserErrorsRequestBuilder(userId, userSecret);
     }
 }

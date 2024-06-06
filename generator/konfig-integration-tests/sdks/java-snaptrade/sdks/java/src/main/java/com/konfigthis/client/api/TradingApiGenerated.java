@@ -177,13 +177,13 @@ public class TradingApiGenerated {
         return localVarCall;
     }
 
-    public class CancelUserAccountOrderRequestBuilder {
+    public abstract class CancelUserAccountOrderRequestBuilderGenerated {
         private final String userId;
         private final String userSecret;
         private final UUID accountId;
         private UUID brokerageOrderId;
 
-        private CancelUserAccountOrderRequestBuilder(String userId, String userSecret, UUID accountId) {
+        public CancelUserAccountOrderRequestBuilderGenerated(String userId, String userSecret, UUID accountId) {
             this.userId = userId;
             this.userSecret = userSecret;
             this.accountId = accountId;
@@ -192,11 +192,11 @@ public class TradingApiGenerated {
         /**
          * Set brokerageOrderId
          * @param brokerageOrderId  (optional)
-         * @return CancelUserAccountOrderRequestBuilder
+         * @return TradingApi.CancelUserAccountOrderRequestBuilder
          */
-        public CancelUserAccountOrderRequestBuilder brokerageOrderId(UUID brokerageOrderId) {
+        public TradingApi.CancelUserAccountOrderRequestBuilder brokerageOrderId(UUID brokerageOrderId) {
             this.brokerageOrderId = brokerageOrderId;
-            return this;
+            return (TradingApi.CancelUserAccountOrderRequestBuilder) this;
         }
         
         /**
@@ -283,7 +283,7 @@ public class TradingApiGenerated {
         <tr><td> 200 </td><td> Order Record of canceled order </td><td>  -  </td></tr>
      </table>
      */
-    public CancelUserAccountOrderRequestBuilder cancelUserAccountOrder(String userId, String userSecret, UUID accountId) throws IllegalArgumentException {
+    public TradingApi.CancelUserAccountOrderRequestBuilder cancelUserAccountOrder(String userId, String userSecret, UUID accountId) throws IllegalArgumentException {
         if (userId == null) throw new IllegalArgumentException("\"userId\" is required but got null");
             
 
@@ -293,7 +293,7 @@ public class TradingApiGenerated {
         if (accountId == null) throw new IllegalArgumentException("\"accountId\" is required but got null");
             
 
-        return new CancelUserAccountOrderRequestBuilder(userId, userSecret, accountId);
+        return ((TradingApi) this).new CancelUserAccountOrderRequestBuilder(userId, userSecret, accountId);
     }
     private okhttp3.Call getOrderImpactCall(String userId, String userSecret, ManualTradeForm manualTradeForm, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -384,7 +384,7 @@ public class TradingApiGenerated {
         return localVarCall;
     }
 
-    public class GetOrderImpactRequestBuilder {
+    public abstract class GetOrderImpactRequestBuilderGenerated {
         private final String userId;
         private final String userSecret;
         private UUID accountId;
@@ -397,7 +397,7 @@ public class TradingApiGenerated {
         private UUID universalSymbolId;
         private Double notionalValue;
 
-        private GetOrderImpactRequestBuilder(String userId, String userSecret) {
+        public GetOrderImpactRequestBuilderGenerated(String userId, String userSecret) {
             this.userId = userId;
             this.userSecret = userSecret;
         }
@@ -405,135 +405,135 @@ public class TradingApiGenerated {
         /**
          * Set accountId
          * @param accountId  (optional)
-         * @return GetOrderImpactRequestBuilder
+         * @return TradingApi.GetOrderImpactRequestBuilder
          */
-        public GetOrderImpactRequestBuilder accountId(UUID accountId) {
+        public TradingApi.GetOrderImpactRequestBuilder accountId(UUID accountId) {
             this.accountId = accountId;
-            return this;
+            return (TradingApi.GetOrderImpactRequestBuilder) this;
         }
         
         /**
          * Set action
          * @param action  (optional)
-         * @return GetOrderImpactRequestBuilder
+         * @return TradingApi.GetOrderImpactRequestBuilder
          */
-        public GetOrderImpactRequestBuilder action(Action action) {
+        public TradingApi.GetOrderImpactRequestBuilder action(Action action) {
             this.action = action;
-            return this;
+            return (TradingApi.GetOrderImpactRequestBuilder) this;
         }
         
         /**
          * Set orderType
          * @param orderType  (optional)
-         * @return GetOrderImpactRequestBuilder
+         * @return TradingApi.GetOrderImpactRequestBuilder
          */
-        public GetOrderImpactRequestBuilder orderType(OrderType orderType) {
+        public TradingApi.GetOrderImpactRequestBuilder orderType(OrderType orderType) {
             this.orderType = orderType;
-            return this;
+            return (TradingApi.GetOrderImpactRequestBuilder) this;
         }
         
         /**
          * Set price
          * @param price Trade Price if limit or stop limit order (optional)
-         * @return GetOrderImpactRequestBuilder
+         * @return TradingApi.GetOrderImpactRequestBuilder
          */
-        public GetOrderImpactRequestBuilder price(Double price) {
+        public TradingApi.GetOrderImpactRequestBuilder price(Double price) {
             this.price = price;
-            return this;
+            return (TradingApi.GetOrderImpactRequestBuilder) this;
         }
         
 
         /**
          * Set price
          * @param price Trade Price if limit or stop limit order (optional)
-         * @return GetOrderImpactRequestBuilder
+         * @return TradingApi.GetOrderImpactRequestBuilder
          */
-        public GetOrderImpactRequestBuilder price(Integer price) {
+        public TradingApi.GetOrderImpactRequestBuilder price(Integer price) {
             this.price = price.doubleValue();
-            return this;
+            return (TradingApi.GetOrderImpactRequestBuilder) this;
         }
         
         /**
          * Set stop
          * @param stop Stop Price. If stop loss or stop limit order, the price to trigger the stop (optional)
-         * @return GetOrderImpactRequestBuilder
+         * @return TradingApi.GetOrderImpactRequestBuilder
          */
-        public GetOrderImpactRequestBuilder stop(Double stop) {
+        public TradingApi.GetOrderImpactRequestBuilder stop(Double stop) {
             this.stop = stop;
-            return this;
+            return (TradingApi.GetOrderImpactRequestBuilder) this;
         }
         
 
         /**
          * Set stop
          * @param stop Stop Price. If stop loss or stop limit order, the price to trigger the stop (optional)
-         * @return GetOrderImpactRequestBuilder
+         * @return TradingApi.GetOrderImpactRequestBuilder
          */
-        public GetOrderImpactRequestBuilder stop(Integer stop) {
+        public TradingApi.GetOrderImpactRequestBuilder stop(Integer stop) {
             this.stop = stop.doubleValue();
-            return this;
+            return (TradingApi.GetOrderImpactRequestBuilder) this;
         }
         
         /**
          * Set timeInForce
          * @param timeInForce  (optional)
-         * @return GetOrderImpactRequestBuilder
+         * @return TradingApi.GetOrderImpactRequestBuilder
          */
-        public GetOrderImpactRequestBuilder timeInForce(TimeInForceStrict timeInForce) {
+        public TradingApi.GetOrderImpactRequestBuilder timeInForce(TimeInForceStrict timeInForce) {
             this.timeInForce = timeInForce;
-            return this;
+            return (TradingApi.GetOrderImpactRequestBuilder) this;
         }
         
         /**
          * Set units
          * @param units Trade Units. Cannot work with notional value. (optional)
-         * @return GetOrderImpactRequestBuilder
+         * @return TradingApi.GetOrderImpactRequestBuilder
          */
-        public GetOrderImpactRequestBuilder units(Double units) {
+        public TradingApi.GetOrderImpactRequestBuilder units(Double units) {
             this.units = units;
-            return this;
+            return (TradingApi.GetOrderImpactRequestBuilder) this;
         }
         
 
         /**
          * Set units
          * @param units Trade Units. Cannot work with notional value. (optional)
-         * @return GetOrderImpactRequestBuilder
+         * @return TradingApi.GetOrderImpactRequestBuilder
          */
-        public GetOrderImpactRequestBuilder units(Integer units) {
+        public TradingApi.GetOrderImpactRequestBuilder units(Integer units) {
             this.units = units.doubleValue();
-            return this;
+            return (TradingApi.GetOrderImpactRequestBuilder) this;
         }
         
         /**
          * Set universalSymbolId
          * @param universalSymbolId  (optional)
-         * @return GetOrderImpactRequestBuilder
+         * @return TradingApi.GetOrderImpactRequestBuilder
          */
-        public GetOrderImpactRequestBuilder universalSymbolId(UUID universalSymbolId) {
+        public TradingApi.GetOrderImpactRequestBuilder universalSymbolId(UUID universalSymbolId) {
             this.universalSymbolId = universalSymbolId;
-            return this;
+            return (TradingApi.GetOrderImpactRequestBuilder) this;
         }
         
         /**
          * Set notionalValue
          * @param notionalValue Dollar amount to trade. Cannot work with units. Can only work for market order types and day for time in force. **Only available for Alpaca, Alpaca Paper, and Robinhood. Please contact support to get access to place notional trades** (optional)
-         * @return GetOrderImpactRequestBuilder
+         * @return TradingApi.GetOrderImpactRequestBuilder
          */
-        public GetOrderImpactRequestBuilder notionalValue(Double notionalValue) {
+        public TradingApi.GetOrderImpactRequestBuilder notionalValue(Double notionalValue) {
             this.notionalValue = notionalValue;
-            return this;
+            return (TradingApi.GetOrderImpactRequestBuilder) this;
         }
         
 
         /**
          * Set notionalValue
          * @param notionalValue Dollar amount to trade. Cannot work with units. Can only work for market order types and day for time in force. **Only available for Alpaca, Alpaca Paper, and Robinhood. Please contact support to get access to place notional trades** (optional)
-         * @return GetOrderImpactRequestBuilder
+         * @return TradingApi.GetOrderImpactRequestBuilder
          */
-        public GetOrderImpactRequestBuilder notionalValue(Integer notionalValue) {
+        public TradingApi.GetOrderImpactRequestBuilder notionalValue(Integer notionalValue) {
             this.notionalValue = notionalValue.doubleValue();
-            return this;
+            return (TradingApi.GetOrderImpactRequestBuilder) this;
         }
         
         /**
@@ -632,14 +632,14 @@ public class TradingApiGenerated {
         <tr><td> 500 </td><td> Unexpected Error </td><td>  -  </td></tr>
      </table>
      */
-    public GetOrderImpactRequestBuilder getOrderImpact(String userId, String userSecret) throws IllegalArgumentException {
+    public TradingApi.GetOrderImpactRequestBuilder getOrderImpact(String userId, String userSecret) throws IllegalArgumentException {
         if (userId == null) throw new IllegalArgumentException("\"userId\" is required but got null");
             
 
         if (userSecret == null) throw new IllegalArgumentException("\"userSecret\" is required but got null");
             
 
-        return new GetOrderImpactRequestBuilder(userId, userSecret);
+        return ((TradingApi) this).new GetOrderImpactRequestBuilder(userId, userSecret);
     }
     private okhttp3.Call getUserAccountQuotesCall(String userId, String userSecret, String symbols, UUID accountId, Boolean useTicker, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -743,14 +743,14 @@ public class TradingApiGenerated {
         return localVarCall;
     }
 
-    public class GetUserAccountQuotesRequestBuilder {
+    public abstract class GetUserAccountQuotesRequestBuilderGenerated {
         private final String userId;
         private final String userSecret;
         private final String symbols;
         private final UUID accountId;
         private Boolean useTicker;
 
-        private GetUserAccountQuotesRequestBuilder(String userId, String userSecret, String symbols, UUID accountId) {
+        public GetUserAccountQuotesRequestBuilderGenerated(String userId, String userSecret, String symbols, UUID accountId) {
             this.userId = userId;
             this.userSecret = userSecret;
             this.symbols = symbols;
@@ -760,11 +760,11 @@ public class TradingApiGenerated {
         /**
          * Set useTicker
          * @param useTicker Should be set to True if providing tickers. (optional)
-         * @return GetUserAccountQuotesRequestBuilder
+         * @return TradingApi.GetUserAccountQuotesRequestBuilder
          */
-        public GetUserAccountQuotesRequestBuilder useTicker(Boolean useTicker) {
+        public TradingApi.GetUserAccountQuotesRequestBuilder useTicker(Boolean useTicker) {
             this.useTicker = useTicker;
-            return this;
+            return (TradingApi.GetUserAccountQuotesRequestBuilder) this;
         }
         
         /**
@@ -842,7 +842,7 @@ public class TradingApiGenerated {
         <tr><td> 200 </td><td> Returns quotes object with different prices </td><td>  -  </td></tr>
      </table>
      */
-    public GetUserAccountQuotesRequestBuilder getUserAccountQuotes(String userId, String userSecret, String symbols, UUID accountId) throws IllegalArgumentException {
+    public TradingApi.GetUserAccountQuotesRequestBuilder getUserAccountQuotes(String userId, String userSecret, String symbols, UUID accountId) throws IllegalArgumentException {
         if (userId == null) throw new IllegalArgumentException("\"userId\" is required but got null");
             
 
@@ -855,7 +855,7 @@ public class TradingApiGenerated {
         if (accountId == null) throw new IllegalArgumentException("\"accountId\" is required but got null");
             
 
-        return new GetUserAccountQuotesRequestBuilder(userId, userSecret, symbols, accountId);
+        return ((TradingApi) this).new GetUserAccountQuotesRequestBuilder(userId, userSecret, symbols, accountId);
     }
     private okhttp3.Call placeForceOrderCall(String userId, String userSecret, ManualTradeForm manualTradeForm, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -946,7 +946,7 @@ public class TradingApiGenerated {
         return localVarCall;
     }
 
-    public class PlaceForceOrderRequestBuilder {
+    public abstract class PlaceForceOrderRequestBuilderGenerated {
         private final String userId;
         private final String userSecret;
         private UUID accountId;
@@ -959,7 +959,7 @@ public class TradingApiGenerated {
         private UUID universalSymbolId;
         private Double notionalValue;
 
-        private PlaceForceOrderRequestBuilder(String userId, String userSecret) {
+        public PlaceForceOrderRequestBuilderGenerated(String userId, String userSecret) {
             this.userId = userId;
             this.userSecret = userSecret;
         }
@@ -967,135 +967,135 @@ public class TradingApiGenerated {
         /**
          * Set accountId
          * @param accountId  (optional)
-         * @return PlaceForceOrderRequestBuilder
+         * @return TradingApi.PlaceForceOrderRequestBuilder
          */
-        public PlaceForceOrderRequestBuilder accountId(UUID accountId) {
+        public TradingApi.PlaceForceOrderRequestBuilder accountId(UUID accountId) {
             this.accountId = accountId;
-            return this;
+            return (TradingApi.PlaceForceOrderRequestBuilder) this;
         }
         
         /**
          * Set action
          * @param action  (optional)
-         * @return PlaceForceOrderRequestBuilder
+         * @return TradingApi.PlaceForceOrderRequestBuilder
          */
-        public PlaceForceOrderRequestBuilder action(Action action) {
+        public TradingApi.PlaceForceOrderRequestBuilder action(Action action) {
             this.action = action;
-            return this;
+            return (TradingApi.PlaceForceOrderRequestBuilder) this;
         }
         
         /**
          * Set orderType
          * @param orderType  (optional)
-         * @return PlaceForceOrderRequestBuilder
+         * @return TradingApi.PlaceForceOrderRequestBuilder
          */
-        public PlaceForceOrderRequestBuilder orderType(OrderType orderType) {
+        public TradingApi.PlaceForceOrderRequestBuilder orderType(OrderType orderType) {
             this.orderType = orderType;
-            return this;
+            return (TradingApi.PlaceForceOrderRequestBuilder) this;
         }
         
         /**
          * Set price
          * @param price Trade Price if limit or stop limit order (optional)
-         * @return PlaceForceOrderRequestBuilder
+         * @return TradingApi.PlaceForceOrderRequestBuilder
          */
-        public PlaceForceOrderRequestBuilder price(Double price) {
+        public TradingApi.PlaceForceOrderRequestBuilder price(Double price) {
             this.price = price;
-            return this;
+            return (TradingApi.PlaceForceOrderRequestBuilder) this;
         }
         
 
         /**
          * Set price
          * @param price Trade Price if limit or stop limit order (optional)
-         * @return PlaceForceOrderRequestBuilder
+         * @return TradingApi.PlaceForceOrderRequestBuilder
          */
-        public PlaceForceOrderRequestBuilder price(Integer price) {
+        public TradingApi.PlaceForceOrderRequestBuilder price(Integer price) {
             this.price = price.doubleValue();
-            return this;
+            return (TradingApi.PlaceForceOrderRequestBuilder) this;
         }
         
         /**
          * Set stop
          * @param stop Stop Price. If stop loss or stop limit order, the price to trigger the stop (optional)
-         * @return PlaceForceOrderRequestBuilder
+         * @return TradingApi.PlaceForceOrderRequestBuilder
          */
-        public PlaceForceOrderRequestBuilder stop(Double stop) {
+        public TradingApi.PlaceForceOrderRequestBuilder stop(Double stop) {
             this.stop = stop;
-            return this;
+            return (TradingApi.PlaceForceOrderRequestBuilder) this;
         }
         
 
         /**
          * Set stop
          * @param stop Stop Price. If stop loss or stop limit order, the price to trigger the stop (optional)
-         * @return PlaceForceOrderRequestBuilder
+         * @return TradingApi.PlaceForceOrderRequestBuilder
          */
-        public PlaceForceOrderRequestBuilder stop(Integer stop) {
+        public TradingApi.PlaceForceOrderRequestBuilder stop(Integer stop) {
             this.stop = stop.doubleValue();
-            return this;
+            return (TradingApi.PlaceForceOrderRequestBuilder) this;
         }
         
         /**
          * Set timeInForce
          * @param timeInForce  (optional)
-         * @return PlaceForceOrderRequestBuilder
+         * @return TradingApi.PlaceForceOrderRequestBuilder
          */
-        public PlaceForceOrderRequestBuilder timeInForce(TimeInForceStrict timeInForce) {
+        public TradingApi.PlaceForceOrderRequestBuilder timeInForce(TimeInForceStrict timeInForce) {
             this.timeInForce = timeInForce;
-            return this;
+            return (TradingApi.PlaceForceOrderRequestBuilder) this;
         }
         
         /**
          * Set units
          * @param units Trade Units. Cannot work with notional value. (optional)
-         * @return PlaceForceOrderRequestBuilder
+         * @return TradingApi.PlaceForceOrderRequestBuilder
          */
-        public PlaceForceOrderRequestBuilder units(Double units) {
+        public TradingApi.PlaceForceOrderRequestBuilder units(Double units) {
             this.units = units;
-            return this;
+            return (TradingApi.PlaceForceOrderRequestBuilder) this;
         }
         
 
         /**
          * Set units
          * @param units Trade Units. Cannot work with notional value. (optional)
-         * @return PlaceForceOrderRequestBuilder
+         * @return TradingApi.PlaceForceOrderRequestBuilder
          */
-        public PlaceForceOrderRequestBuilder units(Integer units) {
+        public TradingApi.PlaceForceOrderRequestBuilder units(Integer units) {
             this.units = units.doubleValue();
-            return this;
+            return (TradingApi.PlaceForceOrderRequestBuilder) this;
         }
         
         /**
          * Set universalSymbolId
          * @param universalSymbolId  (optional)
-         * @return PlaceForceOrderRequestBuilder
+         * @return TradingApi.PlaceForceOrderRequestBuilder
          */
-        public PlaceForceOrderRequestBuilder universalSymbolId(UUID universalSymbolId) {
+        public TradingApi.PlaceForceOrderRequestBuilder universalSymbolId(UUID universalSymbolId) {
             this.universalSymbolId = universalSymbolId;
-            return this;
+            return (TradingApi.PlaceForceOrderRequestBuilder) this;
         }
         
         /**
          * Set notionalValue
          * @param notionalValue Dollar amount to trade. Cannot work with units. Can only work for market order types and day for time in force. **Only available for Alpaca, Alpaca Paper, and Robinhood. Please contact support to get access to place notional trades** (optional)
-         * @return PlaceForceOrderRequestBuilder
+         * @return TradingApi.PlaceForceOrderRequestBuilder
          */
-        public PlaceForceOrderRequestBuilder notionalValue(Double notionalValue) {
+        public TradingApi.PlaceForceOrderRequestBuilder notionalValue(Double notionalValue) {
             this.notionalValue = notionalValue;
-            return this;
+            return (TradingApi.PlaceForceOrderRequestBuilder) this;
         }
         
 
         /**
          * Set notionalValue
          * @param notionalValue Dollar amount to trade. Cannot work with units. Can only work for market order types and day for time in force. **Only available for Alpaca, Alpaca Paper, and Robinhood. Please contact support to get access to place notional trades** (optional)
-         * @return PlaceForceOrderRequestBuilder
+         * @return TradingApi.PlaceForceOrderRequestBuilder
          */
-        public PlaceForceOrderRequestBuilder notionalValue(Integer notionalValue) {
+        public TradingApi.PlaceForceOrderRequestBuilder notionalValue(Integer notionalValue) {
             this.notionalValue = notionalValue.doubleValue();
-            return this;
+            return (TradingApi.PlaceForceOrderRequestBuilder) this;
         }
         
         /**
@@ -1194,14 +1194,14 @@ public class TradingApiGenerated {
         <tr><td> 500 </td><td> Unexpected Error </td><td>  -  </td></tr>
      </table>
      */
-    public PlaceForceOrderRequestBuilder placeForceOrder(String userId, String userSecret) throws IllegalArgumentException {
+    public TradingApi.PlaceForceOrderRequestBuilder placeForceOrder(String userId, String userSecret) throws IllegalArgumentException {
         if (userId == null) throw new IllegalArgumentException("\"userId\" is required but got null");
             
 
         if (userSecret == null) throw new IllegalArgumentException("\"userSecret\" is required but got null");
             
 
-        return new PlaceForceOrderRequestBuilder(userId, userSecret);
+        return ((TradingApi) this).new PlaceForceOrderRequestBuilder(userId, userSecret);
     }
     private okhttp3.Call placeOCOOrderCall(String userId, String userSecret, TradingPlaceOCOOrderRequest tradingPlaceOCOOrderRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1293,13 +1293,13 @@ public class TradingApiGenerated {
         return localVarCall;
     }
 
-    public class PlaceOCOOrderRequestBuilder {
+    public abstract class PlaceOCOOrderRequestBuilderGenerated {
         private final String userId;
         private final String userSecret;
         private Object firstTradeId;
         private Object secondTradeId;
 
-        private PlaceOCOOrderRequestBuilder(String userId, String userSecret) {
+        public PlaceOCOOrderRequestBuilderGenerated(String userId, String userSecret) {
             this.userId = userId;
             this.userSecret = userSecret;
         }
@@ -1307,21 +1307,21 @@ public class TradingApiGenerated {
         /**
          * Set firstTradeId
          * @param firstTradeId The ID of first trade object obtained from trade/impact endpoint (optional)
-         * @return PlaceOCOOrderRequestBuilder
+         * @return TradingApi.PlaceOCOOrderRequestBuilder
          */
-        public PlaceOCOOrderRequestBuilder firstTradeId(Object firstTradeId) {
+        public TradingApi.PlaceOCOOrderRequestBuilder firstTradeId(Object firstTradeId) {
             this.firstTradeId = firstTradeId;
-            return this;
+            return (TradingApi.PlaceOCOOrderRequestBuilder) this;
         }
         
         /**
          * Set secondTradeId
          * @param secondTradeId The ID of second trade object obtained from trade/impact endpoint (optional)
-         * @return PlaceOCOOrderRequestBuilder
+         * @return TradingApi.PlaceOCOOrderRequestBuilder
          */
-        public PlaceOCOOrderRequestBuilder secondTradeId(Object secondTradeId) {
+        public TradingApi.PlaceOCOOrderRequestBuilder secondTradeId(Object secondTradeId) {
             this.secondTradeId = secondTradeId;
-            return this;
+            return (TradingApi.PlaceOCOOrderRequestBuilder) this;
         }
         
         /**
@@ -1423,14 +1423,14 @@ public class TradingApiGenerated {
      * @deprecated
      */
     @Deprecated
-    public PlaceOCOOrderRequestBuilder placeOCOOrder(String userId, String userSecret) throws IllegalArgumentException {
+    public TradingApi.PlaceOCOOrderRequestBuilder placeOCOOrder(String userId, String userSecret) throws IllegalArgumentException {
         if (userId == null) throw new IllegalArgumentException("\"userId\" is required but got null");
             
 
         if (userSecret == null) throw new IllegalArgumentException("\"userSecret\" is required but got null");
             
 
-        return new PlaceOCOOrderRequestBuilder(userId, userSecret);
+        return ((TradingApi) this).new PlaceOCOOrderRequestBuilder(userId, userSecret);
     }
     private okhttp3.Call placeOrderCall(UUID tradeId, String userId, String userSecret, ValidatedTradeBody validatedTradeBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1522,13 +1522,13 @@ public class TradingApiGenerated {
         return localVarCall;
     }
 
-    public class PlaceOrderRequestBuilder {
+    public abstract class PlaceOrderRequestBuilderGenerated {
         private final UUID tradeId;
         private final String userId;
         private final String userSecret;
         private Boolean waitToConfirm;
 
-        private PlaceOrderRequestBuilder(UUID tradeId, String userId, String userSecret) {
+        public PlaceOrderRequestBuilderGenerated(UUID tradeId, String userId, String userSecret) {
             this.tradeId = tradeId;
             this.userId = userId;
             this.userSecret = userSecret;
@@ -1537,11 +1537,11 @@ public class TradingApiGenerated {
         /**
          * Set waitToConfirm
          * @param waitToConfirm Optional, defaults to true. Determines if a wait is performed to check on order status. If false, latency will be reduced but orders returned will be more likely to be of status PENDING as we will not wait to check on the status before responding to the request (optional)
-         * @return PlaceOrderRequestBuilder
+         * @return TradingApi.PlaceOrderRequestBuilder
          */
-        public PlaceOrderRequestBuilder waitToConfirm(Boolean waitToConfirm) {
+        public TradingApi.PlaceOrderRequestBuilder waitToConfirm(Boolean waitToConfirm) {
             this.waitToConfirm = waitToConfirm;
-            return this;
+            return (TradingApi.PlaceOrderRequestBuilder) this;
         }
         
         /**
@@ -1632,7 +1632,7 @@ public class TradingApiGenerated {
         <tr><td> 500 </td><td> Unexpected Error </td><td>  -  </td></tr>
      </table>
      */
-    public PlaceOrderRequestBuilder placeOrder(UUID tradeId, String userId, String userSecret) throws IllegalArgumentException {
+    public TradingApi.PlaceOrderRequestBuilder placeOrder(UUID tradeId, String userId, String userSecret) throws IllegalArgumentException {
         if (tradeId == null) throw new IllegalArgumentException("\"tradeId\" is required but got null");
             
 
@@ -1642,6 +1642,6 @@ public class TradingApiGenerated {
         if (userSecret == null) throw new IllegalArgumentException("\"userSecret\" is required but got null");
             
 
-        return new PlaceOrderRequestBuilder(tradeId, userId, userSecret);
+        return ((TradingApi) this).new PlaceOrderRequestBuilder(tradeId, userId, userSecret);
     }
 }

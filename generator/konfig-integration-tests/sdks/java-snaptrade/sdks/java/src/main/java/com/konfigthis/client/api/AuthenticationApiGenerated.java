@@ -150,10 +150,10 @@ public class AuthenticationApiGenerated {
         return localVarCall;
     }
 
-    public class DeleteSnapTradeUserRequestBuilder {
+    public abstract class DeleteSnapTradeUserRequestBuilderGenerated {
         private final String userId;
 
-        private DeleteSnapTradeUserRequestBuilder(String userId) {
+        public DeleteSnapTradeUserRequestBuilderGenerated(String userId) {
             this.userId = userId;
         }
 
@@ -234,11 +234,11 @@ public class AuthenticationApiGenerated {
         <tr><td> 500 </td><td> Unexpected Error </td><td>  -  </td></tr>
      </table>
      */
-    public DeleteSnapTradeUserRequestBuilder deleteSnapTradeUser(String userId) throws IllegalArgumentException {
+    public AuthenticationApi.DeleteSnapTradeUserRequestBuilder deleteSnapTradeUser(String userId) throws IllegalArgumentException {
         if (userId == null) throw new IllegalArgumentException("\"userId\" is required but got null");
             
 
-        return new DeleteSnapTradeUserRequestBuilder(userId);
+        return ((AuthenticationApi) this).new DeleteSnapTradeUserRequestBuilder(userId);
     }
     private okhttp3.Call getUserJWTCall(String userId, String userSecret, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -323,11 +323,11 @@ public class AuthenticationApiGenerated {
         return localVarCall;
     }
 
-    public class GetUserJWTRequestBuilder {
+    public abstract class GetUserJWTRequestBuilderGenerated {
         private final String userId;
         private final String userSecret;
 
-        private GetUserJWTRequestBuilder(String userId, String userSecret) {
+        public GetUserJWTRequestBuilderGenerated(String userId, String userSecret) {
             this.userId = userId;
             this.userSecret = userSecret;
         }
@@ -410,14 +410,14 @@ public class AuthenticationApiGenerated {
         <tr><td> 500 </td><td> Unexpected Error </td><td>  -  </td></tr>
      </table>
      */
-    public GetUserJWTRequestBuilder getUserJWT(String userId, String userSecret) throws IllegalArgumentException {
+    public AuthenticationApi.GetUserJWTRequestBuilder getUserJWT(String userId, String userSecret) throws IllegalArgumentException {
         if (userId == null) throw new IllegalArgumentException("\"userId\" is required but got null");
             
 
         if (userSecret == null) throw new IllegalArgumentException("\"userSecret\" is required but got null");
             
 
-        return new GetUserJWTRequestBuilder(userId, userSecret);
+        return ((AuthenticationApi) this).new GetUserJWTRequestBuilder(userId, userSecret);
     }
     private okhttp3.Call listSnapTradeUsersCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -484,9 +484,9 @@ public class AuthenticationApiGenerated {
         return localVarCall;
     }
 
-    public class ListSnapTradeUsersRequestBuilder {
+    public abstract class ListSnapTradeUsersRequestBuilderGenerated {
 
-        private ListSnapTradeUsersRequestBuilder() {
+        public ListSnapTradeUsersRequestBuilderGenerated() {
         }
 
         /**
@@ -560,8 +560,8 @@ public class AuthenticationApiGenerated {
         <tr><td> 200 </td><td> Successfully retrieved a list of users </td><td>  -  </td></tr>
      </table>
      */
-    public ListSnapTradeUsersRequestBuilder listSnapTradeUsers() throws IllegalArgumentException {
-        return new ListSnapTradeUsersRequestBuilder();
+    public AuthenticationApi.ListSnapTradeUsersRequestBuilder listSnapTradeUsers() throws IllegalArgumentException {
+        return ((AuthenticationApi) this).new ListSnapTradeUsersRequestBuilder();
     }
     private okhttp3.Call loginSnapTradeUserCall(String userId, String userSecret, SnapTradeLoginUserRequestBody snapTradeLoginUserRequestBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -647,7 +647,7 @@ public class AuthenticationApiGenerated {
         return localVarCall;
     }
 
-    public class LoginSnapTradeUserRequestBuilder {
+    public abstract class LoginSnapTradeUserRequestBuilderGenerated {
         private final String userId;
         private final String userSecret;
         private String broker;
@@ -657,7 +657,7 @@ public class AuthenticationApiGenerated {
         private String connectionType;
         private String connectionPortalVersion;
 
-        private LoginSnapTradeUserRequestBuilder(String userId, String userSecret) {
+        public LoginSnapTradeUserRequestBuilderGenerated(String userId, String userSecret) {
             this.userId = userId;
             this.userSecret = userSecret;
         }
@@ -665,61 +665,61 @@ public class AuthenticationApiGenerated {
         /**
          * Set broker
          * @param broker Slug of the brokerage to connect the user to (optional)
-         * @return LoginSnapTradeUserRequestBuilder
+         * @return AuthenticationApi.LoginSnapTradeUserRequestBuilder
          */
-        public LoginSnapTradeUserRequestBuilder broker(String broker) {
+        public AuthenticationApi.LoginSnapTradeUserRequestBuilder broker(String broker) {
             this.broker = broker;
-            return this;
+            return (AuthenticationApi.LoginSnapTradeUserRequestBuilder) this;
         }
         
         /**
          * Set immediateRedirect
          * @param immediateRedirect When set to True, user will be redirected back to the partner&#39;s site instead of the connection portal (optional)
-         * @return LoginSnapTradeUserRequestBuilder
+         * @return AuthenticationApi.LoginSnapTradeUserRequestBuilder
          */
-        public LoginSnapTradeUserRequestBuilder immediateRedirect(Boolean immediateRedirect) {
+        public AuthenticationApi.LoginSnapTradeUserRequestBuilder immediateRedirect(Boolean immediateRedirect) {
             this.immediateRedirect = immediateRedirect;
-            return this;
+            return (AuthenticationApi.LoginSnapTradeUserRequestBuilder) this;
         }
         
         /**
          * Set customRedirect
          * @param customRedirect URL to redirect the user to after the user connects their brokerage account (optional)
-         * @return LoginSnapTradeUserRequestBuilder
+         * @return AuthenticationApi.LoginSnapTradeUserRequestBuilder
          */
-        public LoginSnapTradeUserRequestBuilder customRedirect(String customRedirect) {
+        public AuthenticationApi.LoginSnapTradeUserRequestBuilder customRedirect(String customRedirect) {
             this.customRedirect = customRedirect;
-            return this;
+            return (AuthenticationApi.LoginSnapTradeUserRequestBuilder) this;
         }
         
         /**
          * Set reconnect
          * @param reconnect The UUID of the brokerage connection to be reconnected. This parameter should be left empty unless you are reconnecting a disabled connection. See ‘Reconnecting Accounts’ for more information. (optional)
-         * @return LoginSnapTradeUserRequestBuilder
+         * @return AuthenticationApi.LoginSnapTradeUserRequestBuilder
          */
-        public LoginSnapTradeUserRequestBuilder reconnect(String reconnect) {
+        public AuthenticationApi.LoginSnapTradeUserRequestBuilder reconnect(String reconnect) {
             this.reconnect = reconnect;
-            return this;
+            return (AuthenticationApi.LoginSnapTradeUserRequestBuilder) this;
         }
         
         /**
          * Set connectionType
          * @param connectionType Sets whether the connection should be read or trade (optional)
-         * @return LoginSnapTradeUserRequestBuilder
+         * @return AuthenticationApi.LoginSnapTradeUserRequestBuilder
          */
-        public LoginSnapTradeUserRequestBuilder connectionType(String connectionType) {
+        public AuthenticationApi.LoginSnapTradeUserRequestBuilder connectionType(String connectionType) {
             this.connectionType = connectionType;
-            return this;
+            return (AuthenticationApi.LoginSnapTradeUserRequestBuilder) this;
         }
         
         /**
          * Set connectionPortalVersion
          * @param connectionPortalVersion Sets the version of the connection portal to render, with a default to &#39;v2&#39; (optional)
-         * @return LoginSnapTradeUserRequestBuilder
+         * @return AuthenticationApi.LoginSnapTradeUserRequestBuilder
          */
-        public LoginSnapTradeUserRequestBuilder connectionPortalVersion(String connectionPortalVersion) {
+        public AuthenticationApi.LoginSnapTradeUserRequestBuilder connectionPortalVersion(String connectionPortalVersion) {
             this.connectionPortalVersion = connectionPortalVersion;
-            return this;
+            return (AuthenticationApi.LoginSnapTradeUserRequestBuilder) this;
         }
         
         /**
@@ -816,14 +816,14 @@ public class AuthenticationApiGenerated {
         <tr><td> 500 </td><td> Unexpected Error </td><td>  -  </td></tr>
      </table>
      */
-    public LoginSnapTradeUserRequestBuilder loginSnapTradeUser(String userId, String userSecret) throws IllegalArgumentException {
+    public AuthenticationApi.LoginSnapTradeUserRequestBuilder loginSnapTradeUser(String userId, String userSecret) throws IllegalArgumentException {
         if (userId == null) throw new IllegalArgumentException("\"userId\" is required but got null");
             
 
         if (userSecret == null) throw new IllegalArgumentException("\"userSecret\" is required but got null");
             
 
-        return new LoginSnapTradeUserRequestBuilder(userId, userSecret);
+        return ((AuthenticationApi) this).new LoginSnapTradeUserRequestBuilder(userId, userSecret);
     }
     private okhttp3.Call registerSnapTradeUserCall(SnapTradeRegisterUserRequestBody snapTradeRegisterUserRequestBody, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -896,20 +896,20 @@ public class AuthenticationApiGenerated {
         return localVarCall;
     }
 
-    public class RegisterSnapTradeUserRequestBuilder {
+    public abstract class RegisterSnapTradeUserRequestBuilderGenerated {
         private String userId;
 
-        private RegisterSnapTradeUserRequestBuilder() {
+        public RegisterSnapTradeUserRequestBuilderGenerated() {
         }
 
         /**
          * Set userId
          * @param userId SnapTrade User ID. Provided by SnapTrade Partner. Can be any string, as long as it&#39;s unique to a user (optional)
-         * @return RegisterSnapTradeUserRequestBuilder
+         * @return AuthenticationApi.RegisterSnapTradeUserRequestBuilder
          */
-        public RegisterSnapTradeUserRequestBuilder userId(String userId) {
+        public AuthenticationApi.RegisterSnapTradeUserRequestBuilder userId(String userId) {
             this.userId = userId;
-            return this;
+            return (AuthenticationApi.RegisterSnapTradeUserRequestBuilder) this;
         }
         
         /**
@@ -993,8 +993,8 @@ public class AuthenticationApiGenerated {
         <tr><td> 200 </td><td> Successfully registered user </td><td>  -  </td></tr>
      </table>
      */
-    public RegisterSnapTradeUserRequestBuilder registerSnapTradeUser() throws IllegalArgumentException {
-        return new RegisterSnapTradeUserRequestBuilder();
+    public AuthenticationApi.RegisterSnapTradeUserRequestBuilder registerSnapTradeUser() throws IllegalArgumentException {
+        return ((AuthenticationApi) this).new RegisterSnapTradeUserRequestBuilder();
     }
     private okhttp3.Call resetSnapTradeUserSecretCall(UserIDandSecret userIDandSecret, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1067,31 +1067,31 @@ public class AuthenticationApiGenerated {
         return localVarCall;
     }
 
-    public class ResetSnapTradeUserSecretRequestBuilder {
+    public abstract class ResetSnapTradeUserSecretRequestBuilderGenerated {
         private String userId;
         private String userSecret;
 
-        private ResetSnapTradeUserSecretRequestBuilder() {
+        public ResetSnapTradeUserSecretRequestBuilderGenerated() {
         }
 
         /**
          * Set userId
          * @param userId SnapTrade User ID. Provided by SnapTrade Partner. Can be any string, as long as it&#39;s unique to a user (optional)
-         * @return ResetSnapTradeUserSecretRequestBuilder
+         * @return AuthenticationApi.ResetSnapTradeUserSecretRequestBuilder
          */
-        public ResetSnapTradeUserSecretRequestBuilder userId(String userId) {
+        public AuthenticationApi.ResetSnapTradeUserSecretRequestBuilder userId(String userId) {
             this.userId = userId;
-            return this;
+            return (AuthenticationApi.ResetSnapTradeUserSecretRequestBuilder) this;
         }
         
         /**
          * Set userSecret
          * @param userSecret SnapTrade User Secret randomly generated by SnapTrade. This should be considered priviledged information and if compromised, you should delete and re-create this SnapTrade user. (optional)
-         * @return ResetSnapTradeUserSecretRequestBuilder
+         * @return AuthenticationApi.ResetSnapTradeUserSecretRequestBuilder
          */
-        public ResetSnapTradeUserSecretRequestBuilder userSecret(String userSecret) {
+        public AuthenticationApi.ResetSnapTradeUserSecretRequestBuilder userSecret(String userSecret) {
             this.userSecret = userSecret;
-            return this;
+            return (AuthenticationApi.ResetSnapTradeUserSecretRequestBuilder) this;
         }
         
         /**
@@ -1176,7 +1176,7 @@ public class AuthenticationApiGenerated {
         <tr><td> 200 </td><td> New user secret is generated </td><td>  -  </td></tr>
      </table>
      */
-    public ResetSnapTradeUserSecretRequestBuilder resetSnapTradeUserSecret() throws IllegalArgumentException {
-        return new ResetSnapTradeUserSecretRequestBuilder();
+    public AuthenticationApi.ResetSnapTradeUserSecretRequestBuilder resetSnapTradeUserSecret() throws IllegalArgumentException {
+        return ((AuthenticationApi) this).new ResetSnapTradeUserSecretRequestBuilder();
     }
 }

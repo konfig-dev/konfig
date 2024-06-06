@@ -176,7 +176,7 @@ public class OptionsApiGenerated {
         return localVarCall;
     }
 
-    public class GetOptionStrategyRequestBuilder {
+    public abstract class GetOptionStrategyRequestBuilderGenerated {
         private final UUID underlyingSymbolId;
         private final List<OptionLeg> legs;
         private final String strategyType;
@@ -184,7 +184,7 @@ public class OptionsApiGenerated {
         private final String userSecret;
         private final UUID accountId;
 
-        private GetOptionStrategyRequestBuilder(UUID underlyingSymbolId, List<OptionLeg> legs, String strategyType, String userId, String userSecret, UUID accountId) {
+        public GetOptionStrategyRequestBuilderGenerated(UUID underlyingSymbolId, List<OptionLeg> legs, String strategyType, String userId, String userSecret, UUID accountId) {
             this.underlyingSymbolId = underlyingSymbolId;
             this.legs = legs;
             this.strategyType = strategyType;
@@ -280,7 +280,7 @@ public class OptionsApiGenerated {
         <tr><td> 200 </td><td> Order Quotes </td><td>  -  </td></tr>
      </table>
      */
-    public GetOptionStrategyRequestBuilder getOptionStrategy(UUID underlyingSymbolId, List<OptionLeg> legs, String strategyType, String userId, String userSecret, UUID accountId) throws IllegalArgumentException {
+    public OptionsApi.GetOptionStrategyRequestBuilder getOptionStrategy(UUID underlyingSymbolId, List<OptionLeg> legs, String strategyType, String userId, String userSecret, UUID accountId) throws IllegalArgumentException {
         if (underlyingSymbolId == null) throw new IllegalArgumentException("\"underlyingSymbolId\" is required but got null");
             
 
@@ -297,7 +297,7 @@ public class OptionsApiGenerated {
         if (accountId == null) throw new IllegalArgumentException("\"accountId\" is required but got null");
             
 
-        return new GetOptionStrategyRequestBuilder(underlyingSymbolId, legs, strategyType, userId, userSecret, accountId);
+        return ((OptionsApi) this).new GetOptionStrategyRequestBuilder(underlyingSymbolId, legs, strategyType, userId, userSecret, accountId);
     }
     private okhttp3.Call getOptionsChainCall(String userId, String userSecret, UUID accountId, UUID symbol, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -397,13 +397,13 @@ public class OptionsApiGenerated {
         return localVarCall;
     }
 
-    public class GetOptionsChainRequestBuilder {
+    public abstract class GetOptionsChainRequestBuilderGenerated {
         private final String userId;
         private final String userSecret;
         private final UUID accountId;
         private final UUID symbol;
 
-        private GetOptionsChainRequestBuilder(String userId, String userSecret, UUID accountId, UUID symbol) {
+        public GetOptionsChainRequestBuilderGenerated(String userId, String userSecret, UUID accountId, UUID symbol) {
             this.userId = userId;
             this.userSecret = userSecret;
             this.accountId = accountId;
@@ -485,7 +485,7 @@ public class OptionsApiGenerated {
         <tr><td> 200 </td><td> List of all Options available for the brokerage symbol </td><td>  -  </td></tr>
      </table>
      */
-    public GetOptionsChainRequestBuilder getOptionsChain(String userId, String userSecret, UUID accountId, UUID symbol) throws IllegalArgumentException {
+    public OptionsApi.GetOptionsChainRequestBuilder getOptionsChain(String userId, String userSecret, UUID accountId, UUID symbol) throws IllegalArgumentException {
         if (userId == null) throw new IllegalArgumentException("\"userId\" is required but got null");
             
 
@@ -498,7 +498,7 @@ public class OptionsApiGenerated {
         if (symbol == null) throw new IllegalArgumentException("\"symbol\" is required but got null");
             
 
-        return new GetOptionsChainRequestBuilder(userId, userSecret, accountId, symbol);
+        return ((OptionsApi) this).new GetOptionsChainRequestBuilder(userId, userSecret, accountId, symbol);
     }
     private okhttp3.Call getOptionsStrategyQuoteCall(String userId, String userSecret, UUID accountId, UUID optionStrategyId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -595,13 +595,13 @@ public class OptionsApiGenerated {
         return localVarCall;
     }
 
-    public class GetOptionsStrategyQuoteRequestBuilder {
+    public abstract class GetOptionsStrategyQuoteRequestBuilderGenerated {
         private final String userId;
         private final String userSecret;
         private final UUID accountId;
         private final UUID optionStrategyId;
 
-        private GetOptionsStrategyQuoteRequestBuilder(String userId, String userSecret, UUID accountId, UUID optionStrategyId) {
+        public GetOptionsStrategyQuoteRequestBuilderGenerated(String userId, String userSecret, UUID accountId, UUID optionStrategyId) {
             this.userId = userId;
             this.userSecret = userSecret;
             this.accountId = accountId;
@@ -683,7 +683,7 @@ public class OptionsApiGenerated {
         <tr><td> 200 </td><td> Order Quotes </td><td>  -  </td></tr>
      </table>
      */
-    public GetOptionsStrategyQuoteRequestBuilder getOptionsStrategyQuote(String userId, String userSecret, UUID accountId, UUID optionStrategyId) throws IllegalArgumentException {
+    public OptionsApi.GetOptionsStrategyQuoteRequestBuilder getOptionsStrategyQuote(String userId, String userSecret, UUID accountId, UUID optionStrategyId) throws IllegalArgumentException {
         if (userId == null) throw new IllegalArgumentException("\"userId\" is required but got null");
             
 
@@ -696,7 +696,7 @@ public class OptionsApiGenerated {
         if (optionStrategyId == null) throw new IllegalArgumentException("\"optionStrategyId\" is required but got null");
             
 
-        return new GetOptionsStrategyQuoteRequestBuilder(userId, userSecret, accountId, optionStrategyId);
+        return ((OptionsApi) this).new GetOptionsStrategyQuoteRequestBuilder(userId, userSecret, accountId, optionStrategyId);
     }
     private okhttp3.Call listOptionHoldingsCall(String userId, String userSecret, UUID accountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -787,12 +787,12 @@ public class OptionsApiGenerated {
         return localVarCall;
     }
 
-    public class ListOptionHoldingsRequestBuilder {
+    public abstract class ListOptionHoldingsRequestBuilderGenerated {
         private final String userId;
         private final String userSecret;
         private final UUID accountId;
 
-        private ListOptionHoldingsRequestBuilder(String userId, String userSecret, UUID accountId) {
+        public ListOptionHoldingsRequestBuilderGenerated(String userId, String userSecret, UUID accountId) {
             this.userId = userId;
             this.userSecret = userSecret;
             this.accountId = accountId;
@@ -872,7 +872,7 @@ public class OptionsApiGenerated {
         <tr><td> 200 </td><td> The option holdings in the account </td><td>  -  </td></tr>
      </table>
      */
-    public ListOptionHoldingsRequestBuilder listOptionHoldings(String userId, String userSecret, UUID accountId) throws IllegalArgumentException {
+    public OptionsApi.ListOptionHoldingsRequestBuilder listOptionHoldings(String userId, String userSecret, UUID accountId) throws IllegalArgumentException {
         if (userId == null) throw new IllegalArgumentException("\"userId\" is required but got null");
             
 
@@ -882,7 +882,7 @@ public class OptionsApiGenerated {
         if (accountId == null) throw new IllegalArgumentException("\"accountId\" is required but got null");
             
 
-        return new ListOptionHoldingsRequestBuilder(userId, userSecret, accountId);
+        return ((OptionsApi) this).new ListOptionHoldingsRequestBuilder(userId, userSecret, accountId);
     }
     private okhttp3.Call placeOptionStrategyCall(String userId, String userSecret, UUID accountId, UUID optionStrategyId, OptionsPlaceOptionStrategyRequest optionsPlaceOptionStrategyRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -985,7 +985,7 @@ public class OptionsApiGenerated {
         return localVarCall;
     }
 
-    public class PlaceOptionStrategyRequestBuilder {
+    public abstract class PlaceOptionStrategyRequestBuilderGenerated {
         private final OrderType orderType;
         private final TimeInForceStrict timeInForce;
         private final String userId;
@@ -994,7 +994,7 @@ public class OptionsApiGenerated {
         private final UUID optionStrategyId;
         private Double price;
 
-        private PlaceOptionStrategyRequestBuilder(OrderType orderType, TimeInForceStrict timeInForce, String userId, String userSecret, UUID accountId, UUID optionStrategyId) {
+        public PlaceOptionStrategyRequestBuilderGenerated(OrderType orderType, TimeInForceStrict timeInForce, String userId, String userSecret, UUID accountId, UUID optionStrategyId) {
             this.orderType = orderType;
             this.timeInForce = timeInForce;
             this.userId = userId;
@@ -1006,22 +1006,22 @@ public class OptionsApiGenerated {
         /**
          * Set price
          * @param price Trade Price if limit or stop limit order (optional)
-         * @return PlaceOptionStrategyRequestBuilder
+         * @return OptionsApi.PlaceOptionStrategyRequestBuilder
          */
-        public PlaceOptionStrategyRequestBuilder price(Double price) {
+        public OptionsApi.PlaceOptionStrategyRequestBuilder price(Double price) {
             this.price = price;
-            return this;
+            return (OptionsApi.PlaceOptionStrategyRequestBuilder) this;
         }
         
 
         /**
          * Set price
          * @param price Trade Price if limit or stop limit order (optional)
-         * @return PlaceOptionStrategyRequestBuilder
+         * @return OptionsApi.PlaceOptionStrategyRequestBuilder
          */
-        public PlaceOptionStrategyRequestBuilder price(Integer price) {
+        public OptionsApi.PlaceOptionStrategyRequestBuilder price(Integer price) {
             this.price = price.doubleValue();
-            return this;
+            return (OptionsApi.PlaceOptionStrategyRequestBuilder) this;
         }
         
         /**
@@ -1111,7 +1111,7 @@ public class OptionsApiGenerated {
         <tr><td> 200 </td><td> Status of strategy order placed </td><td>  -  </td></tr>
      </table>
      */
-    public PlaceOptionStrategyRequestBuilder placeOptionStrategy(OrderType orderType, TimeInForceStrict timeInForce, String userId, String userSecret, UUID accountId, UUID optionStrategyId) throws IllegalArgumentException {
+    public OptionsApi.PlaceOptionStrategyRequestBuilder placeOptionStrategy(OrderType orderType, TimeInForceStrict timeInForce, String userId, String userSecret, UUID accountId, UUID optionStrategyId) throws IllegalArgumentException {
         if (orderType == null) throw new IllegalArgumentException("\"orderType\" is required but got null");
         if (timeInForce == null) throw new IllegalArgumentException("\"timeInForce\" is required but got null");
         if (userId == null) throw new IllegalArgumentException("\"userId\" is required but got null");
@@ -1126,6 +1126,6 @@ public class OptionsApiGenerated {
         if (optionStrategyId == null) throw new IllegalArgumentException("\"optionStrategyId\" is required but got null");
             
 
-        return new PlaceOptionStrategyRequestBuilder(orderType, timeInForce, userId, userSecret, accountId, optionStrategyId);
+        return ((OptionsApi) this).new PlaceOptionStrategyRequestBuilder(orderType, timeInForce, userId, userSecret, accountId, optionStrategyId);
     }
 }

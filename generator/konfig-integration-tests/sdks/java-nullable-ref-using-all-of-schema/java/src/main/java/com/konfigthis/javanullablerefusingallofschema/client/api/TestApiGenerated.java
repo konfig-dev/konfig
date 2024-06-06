@@ -141,31 +141,31 @@ public class TestApiGenerated {
         return localVarCall;
     }
 
-    public class FetchRequestBuilder {
+    public abstract class FetchRequestBuilderGenerated {
         private Double input;
 
-        private FetchRequestBuilder() {
+        public FetchRequestBuilderGenerated() {
         }
 
         /**
          * Set input
          * @param input  (optional)
-         * @return FetchRequestBuilder
+         * @return TestApi.FetchRequestBuilder
          */
-        public FetchRequestBuilder input(Double input) {
+        public TestApi.FetchRequestBuilder input(Double input) {
             this.input = input;
-            return this;
+            return (TestApi.FetchRequestBuilder) this;
         }
         
 
         /**
          * Set input
          * @param input  (optional)
-         * @return FetchRequestBuilder
+         * @return TestApi.FetchRequestBuilder
          */
-        public FetchRequestBuilder input(Integer input) {
+        public TestApi.FetchRequestBuilder input(Integer input) {
             this.input = input.doubleValue();
-            return this;
+            return (TestApi.FetchRequestBuilder) this;
         }
         
         /**
@@ -248,7 +248,7 @@ public class TestApiGenerated {
         <tr><td> 200 </td><td> Successful response </td><td>  -  </td></tr>
      </table>
      */
-    public FetchRequestBuilder fetch() throws IllegalArgumentException {
-        return new FetchRequestBuilder();
+    public TestApi.FetchRequestBuilder fetch() throws IllegalArgumentException {
+        return ((TestApi) this).new FetchRequestBuilder();
     }
 }

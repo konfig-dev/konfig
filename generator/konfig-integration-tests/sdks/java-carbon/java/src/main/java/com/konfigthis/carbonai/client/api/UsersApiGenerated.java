@@ -148,10 +148,10 @@ public class UsersApiGenerated {
         return localVarCall;
     }
 
-    public class DeleteRequestBuilder {
+    public abstract class DeleteRequestBuilderGenerated {
         private final List<String> customerIds;
 
-        private DeleteRequestBuilder(List<String> customerIds) {
+        public DeleteRequestBuilderGenerated(List<String> customerIds) {
             this.customerIds = customerIds;
         }
 
@@ -236,9 +236,9 @@ public class UsersApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public DeleteRequestBuilder delete(List<String> customerIds) throws IllegalArgumentException {
+    public UsersApi.DeleteRequestBuilder delete(List<String> customerIds) throws IllegalArgumentException {
         if (customerIds == null) throw new IllegalArgumentException("\"customerIds\" is required but got null");
-        return new DeleteRequestBuilder(customerIds);
+        return ((UsersApi) this).new DeleteRequestBuilder(customerIds);
     }
     private okhttp3.Call getCall(UserRequestContent userRequestContent, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -311,10 +311,10 @@ public class UsersApiGenerated {
         return localVarCall;
     }
 
-    public class GetRequestBuilder {
+    public abstract class GetRequestBuilderGenerated {
         private final String customerId;
 
-        private GetRequestBuilder(String customerId) {
+        public GetRequestBuilderGenerated(String customerId) {
             this.customerId = customerId;
         }
 
@@ -399,11 +399,11 @@ public class UsersApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public GetRequestBuilder get(String customerId) throws IllegalArgumentException {
+    public UsersApi.GetRequestBuilder get(String customerId) throws IllegalArgumentException {
         if (customerId == null) throw new IllegalArgumentException("\"customerId\" is required but got null");
             
 
-        return new GetRequestBuilder(customerId);
+        return ((UsersApi) this).new GetRequestBuilder(customerId);
     }
     private okhttp3.Call toggleUserFeaturesCall(ModifyUserConfigurationInput modifyUserConfigurationInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -477,11 +477,11 @@ public class UsersApiGenerated {
         return localVarCall;
     }
 
-    public class ToggleUserFeaturesRequestBuilder {
+    public abstract class ToggleUserFeaturesRequestBuilderGenerated {
         private final String configurationKeyName;
         private final Object value;
 
-        private ToggleUserFeaturesRequestBuilder(String configurationKeyName, Object value) {
+        public ToggleUserFeaturesRequestBuilderGenerated(String configurationKeyName, Object value) {
             this.configurationKeyName = configurationKeyName;
             this.value = value;
         }
@@ -578,12 +578,12 @@ public class UsersApiGenerated {
      * @deprecated
      */
     @Deprecated
-    public ToggleUserFeaturesRequestBuilder toggleUserFeatures(String configurationKeyName, Object value) throws IllegalArgumentException {
+    public UsersApi.ToggleUserFeaturesRequestBuilder toggleUserFeatures(String configurationKeyName, Object value) throws IllegalArgumentException {
         if (configurationKeyName == null) throw new IllegalArgumentException("\"configurationKeyName\" is required but got null");
             
 
         if (value == null) throw new IllegalArgumentException("\"value\" is required but got null");
-        return new ToggleUserFeaturesRequestBuilder(configurationKeyName, value);
+        return ((UsersApi) this).new ToggleUserFeaturesRequestBuilder(configurationKeyName, value);
     }
     private okhttp3.Call updateUsersCall(UpdateUsersInput updateUsersInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -656,44 +656,44 @@ public class UsersApiGenerated {
         return localVarCall;
     }
 
-    public class UpdateUsersRequestBuilder {
+    public abstract class UpdateUsersRequestBuilderGenerated {
         private final List<String> customerIds;
         private Object autoSyncEnabledSources;
         private Integer maxFiles;
         private Integer maxFilesPerUpload;
 
-        private UpdateUsersRequestBuilder(List<String> customerIds) {
+        public UpdateUsersRequestBuilderGenerated(List<String> customerIds) {
             this.customerIds = customerIds;
         }
 
         /**
          * Set autoSyncEnabledSources
          * @param autoSyncEnabledSources  (optional)
-         * @return UpdateUsersRequestBuilder
+         * @return UsersApi.UpdateUsersRequestBuilder
          */
-        public UpdateUsersRequestBuilder autoSyncEnabledSources(Object autoSyncEnabledSources) {
+        public UsersApi.UpdateUsersRequestBuilder autoSyncEnabledSources(Object autoSyncEnabledSources) {
             this.autoSyncEnabledSources = autoSyncEnabledSources;
-            return this;
+            return (UsersApi.UpdateUsersRequestBuilder) this;
         }
         
         /**
          * Set maxFiles
          * @param maxFiles Custom file upload limit for the user over *all* user&#39;s files across all uploads.          If set, then the user will not be allowed to upload more files than this limit. If not set, or if set to -1,         then the user will have no limit. (optional)
-         * @return UpdateUsersRequestBuilder
+         * @return UsersApi.UpdateUsersRequestBuilder
          */
-        public UpdateUsersRequestBuilder maxFiles(Integer maxFiles) {
+        public UsersApi.UpdateUsersRequestBuilder maxFiles(Integer maxFiles) {
             this.maxFiles = maxFiles;
-            return this;
+            return (UsersApi.UpdateUsersRequestBuilder) this;
         }
         
         /**
          * Set maxFilesPerUpload
          * @param maxFilesPerUpload Custom file upload limit for the user across a single upload.         If set, then the user will not be allowed to upload more files than this limit in a single upload. If not set,         or if set to -1, then the user will have no limit. (optional)
-         * @return UpdateUsersRequestBuilder
+         * @return UsersApi.UpdateUsersRequestBuilder
          */
-        public UpdateUsersRequestBuilder maxFilesPerUpload(Integer maxFilesPerUpload) {
+        public UsersApi.UpdateUsersRequestBuilder maxFilesPerUpload(Integer maxFilesPerUpload) {
             this.maxFilesPerUpload = maxFilesPerUpload;
-            return this;
+            return (UsersApi.UpdateUsersRequestBuilder) this;
         }
         
         /**
@@ -780,8 +780,8 @@ public class UsersApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public UpdateUsersRequestBuilder updateUsers(List<String> customerIds) throws IllegalArgumentException {
+    public UsersApi.UpdateUsersRequestBuilder updateUsers(List<String> customerIds) throws IllegalArgumentException {
         if (customerIds == null) throw new IllegalArgumentException("\"customerIds\" is required but got null");
-        return new UpdateUsersRequestBuilder(customerIds);
+        return ((UsersApi) this).new UpdateUsersRequestBuilder(customerIds);
     }
 }

@@ -9,7 +9,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.konfigthis.client;
 
 import okhttp3.*;
@@ -441,14 +440,6 @@ public class ApiClient extends ApiClientCustom {
         throw new RuntimeException("No HTTP basic authentication configured!");
     }
 
-    /**
-     * Helper method to set access token for the first OAuth2 authentication.
-     *
-     * @param accessToken Access token
-     */
-    public void setAccessToken(String accessToken) {
-        throw new RuntimeException("No OAuth2 authentication configured!");
-    }
 
     /**
      * Set the User-Agent header's value (by adding to the default header map).

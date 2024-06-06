@@ -136,9 +136,9 @@ public class HealthApiGenerated {
         return localVarCall;
     }
 
-    public class CheckRequestBuilder {
+    public abstract class CheckRequestBuilderGenerated {
 
-        private CheckRequestBuilder() {
+        public CheckRequestBuilderGenerated() {
         }
 
         /**
@@ -212,7 +212,7 @@ public class HealthApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public CheckRequestBuilder check() throws IllegalArgumentException {
-        return new CheckRequestBuilder();
+    public HealthApi.CheckRequestBuilder check() throws IllegalArgumentException {
+        return ((HealthApi) this).new CheckRequestBuilder();
     }
 }

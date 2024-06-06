@@ -142,9 +142,9 @@ public class TestApiGenerated {
         return localVarCall;
     }
 
-    public class FetchRequestBuilder {
+    public abstract class FetchRequestBuilderGenerated {
 
-        private FetchRequestBuilder() {
+        public FetchRequestBuilderGenerated() {
         }
 
         /**
@@ -218,8 +218,8 @@ public class TestApiGenerated {
         <tr><td> 200 </td><td> Successful response </td><td>  -  </td></tr>
      </table>
      */
-    public FetchRequestBuilder fetch() throws IllegalArgumentException {
-        return new FetchRequestBuilder();
+    public TestApi.FetchRequestBuilder fetch() throws IllegalArgumentException {
+        return ((TestApi) this).new FetchRequestBuilder();
     }
     private okhttp3.Call mergeDifferentCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -286,9 +286,9 @@ public class TestApiGenerated {
         return localVarCall;
     }
 
-    public class MergeDifferentRequestBuilder {
+    public abstract class MergeDifferentRequestBuilderGenerated {
 
-        private MergeDifferentRequestBuilder() {
+        public MergeDifferentRequestBuilderGenerated() {
         }
 
         /**
@@ -362,8 +362,8 @@ public class TestApiGenerated {
         <tr><td> 200 </td><td> Successful response </td><td>  -  </td></tr>
      </table>
      */
-    public MergeDifferentRequestBuilder mergeDifferent() throws IllegalArgumentException {
-        return new MergeDifferentRequestBuilder();
+    public TestApi.MergeDifferentRequestBuilder mergeDifferent() throws IllegalArgumentException {
+        return ((TestApi) this).new MergeDifferentRequestBuilder();
     }
     private okhttp3.Call mergeSameCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -430,9 +430,9 @@ public class TestApiGenerated {
         return localVarCall;
     }
 
-    public class MergeSameRequestBuilder {
+    public abstract class MergeSameRequestBuilderGenerated {
 
-        private MergeSameRequestBuilder() {
+        public MergeSameRequestBuilderGenerated() {
         }
 
         /**
@@ -506,7 +506,7 @@ public class TestApiGenerated {
         <tr><td> 200 </td><td> Successful response </td><td>  -  </td></tr>
      </table>
      */
-    public MergeSameRequestBuilder mergeSame() throws IllegalArgumentException {
-        return new MergeSameRequestBuilder();
+    public TestApi.MergeSameRequestBuilder mergeSame() throws IllegalArgumentException {
+        return ((TestApi) this).new MergeSameRequestBuilder();
     }
 }

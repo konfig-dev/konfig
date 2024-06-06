@@ -150,53 +150,53 @@ public class DataSourcesApiGenerated {
         return localVarCall;
     }
 
-    public class QueryUserDataSourcesRequestBuilder {
+    public abstract class QueryUserDataSourcesRequestBuilderGenerated {
         private Pagination pagination;
         private OrganizationUserDataSourceOrderByColumns orderBy;
         private OrderDir orderDir;
         private OrganizationUserDataSourceFilters filters;
 
-        private QueryUserDataSourcesRequestBuilder() {
+        public QueryUserDataSourcesRequestBuilderGenerated() {
         }
 
         /**
          * Set pagination
          * @param pagination  (optional)
-         * @return QueryUserDataSourcesRequestBuilder
+         * @return DataSourcesApi.QueryUserDataSourcesRequestBuilder
          */
-        public QueryUserDataSourcesRequestBuilder pagination(Pagination pagination) {
+        public DataSourcesApi.QueryUserDataSourcesRequestBuilder pagination(Pagination pagination) {
             this.pagination = pagination;
-            return this;
+            return (DataSourcesApi.QueryUserDataSourcesRequestBuilder) this;
         }
         
         /**
          * Set orderBy
          * @param orderBy  (optional)
-         * @return QueryUserDataSourcesRequestBuilder
+         * @return DataSourcesApi.QueryUserDataSourcesRequestBuilder
          */
-        public QueryUserDataSourcesRequestBuilder orderBy(OrganizationUserDataSourceOrderByColumns orderBy) {
+        public DataSourcesApi.QueryUserDataSourcesRequestBuilder orderBy(OrganizationUserDataSourceOrderByColumns orderBy) {
             this.orderBy = orderBy;
-            return this;
+            return (DataSourcesApi.QueryUserDataSourcesRequestBuilder) this;
         }
         
         /**
          * Set orderDir
          * @param orderDir  (optional)
-         * @return QueryUserDataSourcesRequestBuilder
+         * @return DataSourcesApi.QueryUserDataSourcesRequestBuilder
          */
-        public QueryUserDataSourcesRequestBuilder orderDir(OrderDir orderDir) {
+        public DataSourcesApi.QueryUserDataSourcesRequestBuilder orderDir(OrderDir orderDir) {
             this.orderDir = orderDir;
-            return this;
+            return (DataSourcesApi.QueryUserDataSourcesRequestBuilder) this;
         }
         
         /**
          * Set filters
          * @param filters  (optional)
-         * @return QueryUserDataSourcesRequestBuilder
+         * @return DataSourcesApi.QueryUserDataSourcesRequestBuilder
          */
-        public QueryUserDataSourcesRequestBuilder filters(OrganizationUserDataSourceFilters filters) {
+        public DataSourcesApi.QueryUserDataSourcesRequestBuilder filters(OrganizationUserDataSourceFilters filters) {
             this.filters = filters;
-            return this;
+            return (DataSourcesApi.QueryUserDataSourcesRequestBuilder) this;
         }
         
         /**
@@ -283,8 +283,8 @@ public class DataSourcesApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public QueryUserDataSourcesRequestBuilder queryUserDataSources() throws IllegalArgumentException {
-        return new QueryUserDataSourcesRequestBuilder();
+    public DataSourcesApi.QueryUserDataSourcesRequestBuilder queryUserDataSources() throws IllegalArgumentException {
+        return ((DataSourcesApi) this).new QueryUserDataSourcesRequestBuilder();
     }
     private okhttp3.Call revokeAccessTokenCall(RevokeAccessTokenInput revokeAccessTokenInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -357,10 +357,10 @@ public class DataSourcesApiGenerated {
         return localVarCall;
     }
 
-    public class RevokeAccessTokenRequestBuilder {
+    public abstract class RevokeAccessTokenRequestBuilderGenerated {
         private final Integer dataSourceId;
 
-        private RevokeAccessTokenRequestBuilder(Integer dataSourceId) {
+        public RevokeAccessTokenRequestBuilderGenerated(Integer dataSourceId) {
             this.dataSourceId = dataSourceId;
         }
 
@@ -445,8 +445,8 @@ public class DataSourcesApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public RevokeAccessTokenRequestBuilder revokeAccessToken(Integer dataSourceId) throws IllegalArgumentException {
+    public DataSourcesApi.RevokeAccessTokenRequestBuilder revokeAccessToken(Integer dataSourceId) throws IllegalArgumentException {
         if (dataSourceId == null) throw new IllegalArgumentException("\"dataSourceId\" is required but got null");
-        return new RevokeAccessTokenRequestBuilder(dataSourceId);
+        return ((DataSourcesApi) this).new RevokeAccessTokenRequestBuilder(dataSourceId);
     }
 }

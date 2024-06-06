@@ -137,9 +137,9 @@ public class ApiStatusApiGenerated {
         return localVarCall;
     }
 
-    public class CheckRequestBuilder {
+    public abstract class CheckRequestBuilderGenerated {
 
-        private CheckRequestBuilder() {
+        public CheckRequestBuilderGenerated() {
         }
 
         /**
@@ -218,7 +218,7 @@ public class ApiStatusApiGenerated {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public CheckRequestBuilder check() throws IllegalArgumentException {
-        return new CheckRequestBuilder();
+    public ApiStatusApi.CheckRequestBuilder check() throws IllegalArgumentException {
+        return ((ApiStatusApi) this).new CheckRequestBuilder();
     }
 }

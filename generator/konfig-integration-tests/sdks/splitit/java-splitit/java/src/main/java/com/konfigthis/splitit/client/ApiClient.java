@@ -9,7 +9,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.konfigthis.splitit.client;
 
 import okhttp3.*;
@@ -500,7 +499,6 @@ public class ApiClient extends ApiClientCustom {
                 return;
             }
         }
-        throw new RuntimeException("No OAuth2 authentication configured!");
     }
 
     /**

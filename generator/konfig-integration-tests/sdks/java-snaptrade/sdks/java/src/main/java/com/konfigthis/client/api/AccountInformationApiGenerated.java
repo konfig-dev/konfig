@@ -166,12 +166,12 @@ public class AccountInformationApiGenerated {
         return localVarCall;
     }
 
-    public class GetAllUserHoldingsRequestBuilder {
+    public abstract class GetAllUserHoldingsRequestBuilderGenerated {
         private final String userId;
         private final String userSecret;
         private UUID brokerageAuthorizations;
 
-        private GetAllUserHoldingsRequestBuilder(String userId, String userSecret) {
+        public GetAllUserHoldingsRequestBuilderGenerated(String userId, String userSecret) {
             this.userId = userId;
             this.userSecret = userSecret;
         }
@@ -179,11 +179,11 @@ public class AccountInformationApiGenerated {
         /**
          * Set brokerageAuthorizations
          * @param brokerageAuthorizations Optional. Comma seperated list of authorization IDs (only use if filtering is needed on one or more authorizations). (optional)
-         * @return GetAllUserHoldingsRequestBuilder
+         * @return AccountInformationApi.GetAllUserHoldingsRequestBuilder
          */
-        public GetAllUserHoldingsRequestBuilder brokerageAuthorizations(UUID brokerageAuthorizations) {
+        public AccountInformationApi.GetAllUserHoldingsRequestBuilder brokerageAuthorizations(UUID brokerageAuthorizations) {
             this.brokerageAuthorizations = brokerageAuthorizations;
-            return this;
+            return (AccountInformationApi.GetAllUserHoldingsRequestBuilder) this;
         }
         
         /**
@@ -274,14 +274,14 @@ public class AccountInformationApiGenerated {
      * @deprecated
      */
     @Deprecated
-    public GetAllUserHoldingsRequestBuilder getAllUserHoldings(String userId, String userSecret) throws IllegalArgumentException {
+    public AccountInformationApi.GetAllUserHoldingsRequestBuilder getAllUserHoldings(String userId, String userSecret) throws IllegalArgumentException {
         if (userId == null) throw new IllegalArgumentException("\"userId\" is required but got null");
             
 
         if (userSecret == null) throw new IllegalArgumentException("\"userSecret\" is required but got null");
             
 
-        return new GetAllUserHoldingsRequestBuilder(userId, userSecret);
+        return ((AccountInformationApi) this).new GetAllUserHoldingsRequestBuilder(userId, userSecret);
     }
     private okhttp3.Call getUserAccountBalanceCall(String userId, String userSecret, UUID accountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -372,12 +372,12 @@ public class AccountInformationApiGenerated {
         return localVarCall;
     }
 
-    public class GetUserAccountBalanceRequestBuilder {
+    public abstract class GetUserAccountBalanceRequestBuilderGenerated {
         private final String userId;
         private final String userSecret;
         private final UUID accountId;
 
-        private GetUserAccountBalanceRequestBuilder(String userId, String userSecret, UUID accountId) {
+        public GetUserAccountBalanceRequestBuilderGenerated(String userId, String userSecret, UUID accountId) {
             this.userId = userId;
             this.userSecret = userSecret;
             this.accountId = accountId;
@@ -462,7 +462,7 @@ public class AccountInformationApiGenerated {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public GetUserAccountBalanceRequestBuilder getUserAccountBalance(String userId, String userSecret, UUID accountId) throws IllegalArgumentException {
+    public AccountInformationApi.GetUserAccountBalanceRequestBuilder getUserAccountBalance(String userId, String userSecret, UUID accountId) throws IllegalArgumentException {
         if (userId == null) throw new IllegalArgumentException("\"userId\" is required but got null");
             
 
@@ -472,7 +472,7 @@ public class AccountInformationApiGenerated {
         if (accountId == null) throw new IllegalArgumentException("\"accountId\" is required but got null");
             
 
-        return new GetUserAccountBalanceRequestBuilder(userId, userSecret, accountId);
+        return ((AccountInformationApi) this).new GetUserAccountBalanceRequestBuilder(userId, userSecret, accountId);
     }
     private okhttp3.Call getUserAccountDetailsCall(String userId, String userSecret, UUID accountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -563,12 +563,12 @@ public class AccountInformationApiGenerated {
         return localVarCall;
     }
 
-    public class GetUserAccountDetailsRequestBuilder {
+    public abstract class GetUserAccountDetailsRequestBuilderGenerated {
         private final String userId;
         private final String userSecret;
         private final UUID accountId;
 
-        private GetUserAccountDetailsRequestBuilder(String userId, String userSecret, UUID accountId) {
+        public GetUserAccountDetailsRequestBuilderGenerated(String userId, String userSecret, UUID accountId) {
             this.userId = userId;
             this.userSecret = userSecret;
             this.accountId = accountId;
@@ -653,7 +653,7 @@ public class AccountInformationApiGenerated {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public GetUserAccountDetailsRequestBuilder getUserAccountDetails(String userId, String userSecret, UUID accountId) throws IllegalArgumentException {
+    public AccountInformationApi.GetUserAccountDetailsRequestBuilder getUserAccountDetails(String userId, String userSecret, UUID accountId) throws IllegalArgumentException {
         if (userId == null) throw new IllegalArgumentException("\"userId\" is required but got null");
             
 
@@ -663,7 +663,7 @@ public class AccountInformationApiGenerated {
         if (accountId == null) throw new IllegalArgumentException("\"accountId\" is required but got null");
             
 
-        return new GetUserAccountDetailsRequestBuilder(userId, userSecret, accountId);
+        return ((AccountInformationApi) this).new GetUserAccountDetailsRequestBuilder(userId, userSecret, accountId);
     }
     private okhttp3.Call getUserAccountOrdersCall(String userId, String userSecret, UUID accountId, String state, Integer days, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -762,14 +762,14 @@ public class AccountInformationApiGenerated {
         return localVarCall;
     }
 
-    public class GetUserAccountOrdersRequestBuilder {
+    public abstract class GetUserAccountOrdersRequestBuilderGenerated {
         private final String userId;
         private final String userSecret;
         private final UUID accountId;
         private String state;
         private Integer days;
 
-        private GetUserAccountOrdersRequestBuilder(String userId, String userSecret, UUID accountId) {
+        public GetUserAccountOrdersRequestBuilderGenerated(String userId, String userSecret, UUID accountId) {
             this.userId = userId;
             this.userSecret = userSecret;
             this.accountId = accountId;
@@ -778,21 +778,21 @@ public class AccountInformationApiGenerated {
         /**
          * Set state
          * @param state defaults value is set to \&quot;all\&quot; (optional)
-         * @return GetUserAccountOrdersRequestBuilder
+         * @return AccountInformationApi.GetUserAccountOrdersRequestBuilder
          */
-        public GetUserAccountOrdersRequestBuilder state(String state) {
+        public AccountInformationApi.GetUserAccountOrdersRequestBuilder state(String state) {
             this.state = state;
-            return this;
+            return (AccountInformationApi.GetUserAccountOrdersRequestBuilder) this;
         }
         
         /**
          * Set days
          * @param days Number of days in the past to fetch the most recent orders. Defaults to the last 90 days if no value is passed in. (optional)
-         * @return GetUserAccountOrdersRequestBuilder
+         * @return AccountInformationApi.GetUserAccountOrdersRequestBuilder
          */
-        public GetUserAccountOrdersRequestBuilder days(Integer days) {
+        public AccountInformationApi.GetUserAccountOrdersRequestBuilder days(Integer days) {
             this.days = days;
-            return this;
+            return (AccountInformationApi.GetUserAccountOrdersRequestBuilder) this;
         }
         
         /**
@@ -869,7 +869,7 @@ public class AccountInformationApiGenerated {
         <tr><td> 200 </td><td> List all orders in account </td><td>  -  </td></tr>
      </table>
      */
-    public GetUserAccountOrdersRequestBuilder getUserAccountOrders(String userId, String userSecret, UUID accountId) throws IllegalArgumentException {
+    public AccountInformationApi.GetUserAccountOrdersRequestBuilder getUserAccountOrders(String userId, String userSecret, UUID accountId) throws IllegalArgumentException {
         if (userId == null) throw new IllegalArgumentException("\"userId\" is required but got null");
             
 
@@ -879,7 +879,7 @@ public class AccountInformationApiGenerated {
         if (accountId == null) throw new IllegalArgumentException("\"accountId\" is required but got null");
             
 
-        return new GetUserAccountOrdersRequestBuilder(userId, userSecret, accountId);
+        return ((AccountInformationApi) this).new GetUserAccountOrdersRequestBuilder(userId, userSecret, accountId);
     }
     private okhttp3.Call getUserAccountPositionsCall(String userId, String userSecret, UUID accountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -970,12 +970,12 @@ public class AccountInformationApiGenerated {
         return localVarCall;
     }
 
-    public class GetUserAccountPositionsRequestBuilder {
+    public abstract class GetUserAccountPositionsRequestBuilderGenerated {
         private final String userId;
         private final String userSecret;
         private final UUID accountId;
 
-        private GetUserAccountPositionsRequestBuilder(String userId, String userSecret, UUID accountId) {
+        public GetUserAccountPositionsRequestBuilderGenerated(String userId, String userSecret, UUID accountId) {
             this.userId = userId;
             this.userSecret = userSecret;
             this.accountId = accountId;
@@ -1060,7 +1060,7 @@ public class AccountInformationApiGenerated {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public GetUserAccountPositionsRequestBuilder getUserAccountPositions(String userId, String userSecret, UUID accountId) throws IllegalArgumentException {
+    public AccountInformationApi.GetUserAccountPositionsRequestBuilder getUserAccountPositions(String userId, String userSecret, UUID accountId) throws IllegalArgumentException {
         if (userId == null) throw new IllegalArgumentException("\"userId\" is required but got null");
             
 
@@ -1070,7 +1070,7 @@ public class AccountInformationApiGenerated {
         if (accountId == null) throw new IllegalArgumentException("\"accountId\" is required but got null");
             
 
-        return new GetUserAccountPositionsRequestBuilder(userId, userSecret, accountId);
+        return ((AccountInformationApi) this).new GetUserAccountPositionsRequestBuilder(userId, userSecret, accountId);
     }
     private okhttp3.Call getUserHoldingsCall(UUID accountId, String userId, String userSecret, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1161,12 +1161,12 @@ public class AccountInformationApiGenerated {
         return localVarCall;
     }
 
-    public class GetUserHoldingsRequestBuilder {
+    public abstract class GetUserHoldingsRequestBuilderGenerated {
         private final UUID accountId;
         private final String userId;
         private final String userSecret;
 
-        private GetUserHoldingsRequestBuilder(UUID accountId, String userId, String userSecret) {
+        public GetUserHoldingsRequestBuilderGenerated(UUID accountId, String userId, String userSecret) {
             this.accountId = accountId;
             this.userId = userId;
             this.userSecret = userSecret;
@@ -1251,7 +1251,7 @@ public class AccountInformationApiGenerated {
         <tr><td> 500 </td><td> Unexpected Error </td><td>  -  </td></tr>
      </table>
      */
-    public GetUserHoldingsRequestBuilder getUserHoldings(UUID accountId, String userId, String userSecret) throws IllegalArgumentException {
+    public AccountInformationApi.GetUserHoldingsRequestBuilder getUserHoldings(UUID accountId, String userId, String userSecret) throws IllegalArgumentException {
         if (accountId == null) throw new IllegalArgumentException("\"accountId\" is required but got null");
             
 
@@ -1261,7 +1261,7 @@ public class AccountInformationApiGenerated {
         if (userSecret == null) throw new IllegalArgumentException("\"userSecret\" is required but got null");
             
 
-        return new GetUserHoldingsRequestBuilder(accountId, userId, userSecret);
+        return ((AccountInformationApi) this).new GetUserHoldingsRequestBuilder(accountId, userId, userSecret);
     }
     private okhttp3.Call listUserAccountsCall(String userId, String userSecret, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1346,11 +1346,11 @@ public class AccountInformationApiGenerated {
         return localVarCall;
     }
 
-    public class ListUserAccountsRequestBuilder {
+    public abstract class ListUserAccountsRequestBuilderGenerated {
         private final String userId;
         private final String userSecret;
 
-        private ListUserAccountsRequestBuilder(String userId, String userSecret) {
+        public ListUserAccountsRequestBuilderGenerated(String userId, String userSecret) {
             this.userId = userId;
             this.userSecret = userSecret;
         }
@@ -1433,14 +1433,14 @@ public class AccountInformationApiGenerated {
         <tr><td> 0 </td><td> Unexpected error. </td><td>  -  </td></tr>
      </table>
      */
-    public ListUserAccountsRequestBuilder listUserAccounts(String userId, String userSecret) throws IllegalArgumentException {
+    public AccountInformationApi.ListUserAccountsRequestBuilder listUserAccounts(String userId, String userSecret) throws IllegalArgumentException {
         if (userId == null) throw new IllegalArgumentException("\"userId\" is required but got null");
             
 
         if (userSecret == null) throw new IllegalArgumentException("\"userSecret\" is required but got null");
             
 
-        return new ListUserAccountsRequestBuilder(userId, userSecret);
+        return ((AccountInformationApi) this).new ListUserAccountsRequestBuilder(userId, userSecret);
     }
     private okhttp3.Call updateUserAccountCall(String userId, String userSecret, UUID accountId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1531,12 +1531,12 @@ public class AccountInformationApiGenerated {
         return localVarCall;
     }
 
-    public class UpdateUserAccountRequestBuilder {
+    public abstract class UpdateUserAccountRequestBuilderGenerated {
         private final String userId;
         private final String userSecret;
         private final UUID accountId;
 
-        private UpdateUserAccountRequestBuilder(String userId, String userSecret, UUID accountId) {
+        public UpdateUserAccountRequestBuilderGenerated(String userId, String userSecret, UUID accountId) {
             this.userId = userId;
             this.userSecret = userSecret;
             this.accountId = accountId;
@@ -1621,7 +1621,7 @@ public class AccountInformationApiGenerated {
         <tr><td> 0 </td><td> Unexpected error </td><td>  -  </td></tr>
      </table>
      */
-    public UpdateUserAccountRequestBuilder updateUserAccount(String userId, String userSecret, UUID accountId) throws IllegalArgumentException {
+    public AccountInformationApi.UpdateUserAccountRequestBuilder updateUserAccount(String userId, String userSecret, UUID accountId) throws IllegalArgumentException {
         if (userId == null) throw new IllegalArgumentException("\"userId\" is required but got null");
             
 
@@ -1631,6 +1631,6 @@ public class AccountInformationApiGenerated {
         if (accountId == null) throw new IllegalArgumentException("\"accountId\" is required but got null");
             
 
-        return new UpdateUserAccountRequestBuilder(userId, userSecret, accountId);
+        return ((AccountInformationApi) this).new UpdateUserAccountRequestBuilder(userId, userSecret, accountId);
     }
 }

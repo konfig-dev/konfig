@@ -165,11 +165,11 @@ public class FilesApiGenerated {
         return localVarCall;
     }
 
-    public class CreateUserFileTagsRequestBuilder {
+    public abstract class CreateUserFileTagsRequestBuilderGenerated {
         private final Map<String, Object> tags;
         private final Integer organizationUserFileId;
 
-        private CreateUserFileTagsRequestBuilder(Map<String, Object> tags, Integer organizationUserFileId) {
+        public CreateUserFileTagsRequestBuilderGenerated(Map<String, Object> tags, Integer organizationUserFileId) {
             this.tags = tags;
             this.organizationUserFileId = organizationUserFileId;
         }
@@ -256,10 +256,10 @@ public class FilesApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public CreateUserFileTagsRequestBuilder createUserFileTags(Map<String, Object> tags, Integer organizationUserFileId) throws IllegalArgumentException {
+    public FilesApi.CreateUserFileTagsRequestBuilder createUserFileTags(Map<String, Object> tags, Integer organizationUserFileId) throws IllegalArgumentException {
         if (tags == null) throw new IllegalArgumentException("\"tags\" is required but got null");
         if (organizationUserFileId == null) throw new IllegalArgumentException("\"organizationUserFileId\" is required but got null");
-        return new CreateUserFileTagsRequestBuilder(tags, organizationUserFileId);
+        return ((FilesApi) this).new CreateUserFileTagsRequestBuilder(tags, organizationUserFileId);
     }
     private okhttp3.Call deleteCall(Integer fileId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -333,10 +333,10 @@ public class FilesApiGenerated {
         return localVarCall;
     }
 
-    public class DeleteRequestBuilder {
+    public abstract class DeleteRequestBuilderGenerated {
         private final Integer fileId;
 
-        private DeleteRequestBuilder(Integer fileId) {
+        public DeleteRequestBuilderGenerated(Integer fileId) {
             this.fileId = fileId;
         }
 
@@ -422,9 +422,9 @@ public class FilesApiGenerated {
      * @deprecated
      */
     @Deprecated
-    public DeleteRequestBuilder delete(Integer fileId) throws IllegalArgumentException {
+    public FilesApi.DeleteRequestBuilder delete(Integer fileId) throws IllegalArgumentException {
         if (fileId == null) throw new IllegalArgumentException("\"fileId\" is required but got null");
-        return new DeleteRequestBuilder(fileId);
+        return ((FilesApi) this).new DeleteRequestBuilder(fileId);
     }
     private okhttp3.Call deleteFileTagsCall(OrganizationUserFileTagsRemove organizationUserFileTagsRemove, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -497,11 +497,11 @@ public class FilesApiGenerated {
         return localVarCall;
     }
 
-    public class DeleteFileTagsRequestBuilder {
+    public abstract class DeleteFileTagsRequestBuilderGenerated {
         private final List<String> tags;
         private final Integer organizationUserFileId;
 
-        private DeleteFileTagsRequestBuilder(List<String> tags, Integer organizationUserFileId) {
+        public DeleteFileTagsRequestBuilderGenerated(List<String> tags, Integer organizationUserFileId) {
             this.tags = tags;
             this.organizationUserFileId = organizationUserFileId;
         }
@@ -588,10 +588,10 @@ public class FilesApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public DeleteFileTagsRequestBuilder deleteFileTags(List<String> tags, Integer organizationUserFileId) throws IllegalArgumentException {
+    public FilesApi.DeleteFileTagsRequestBuilder deleteFileTags(List<String> tags, Integer organizationUserFileId) throws IllegalArgumentException {
         if (tags == null) throw new IllegalArgumentException("\"tags\" is required but got null");
         if (organizationUserFileId == null) throw new IllegalArgumentException("\"organizationUserFileId\" is required but got null");
-        return new DeleteFileTagsRequestBuilder(tags, organizationUserFileId);
+        return ((FilesApi) this).new DeleteFileTagsRequestBuilder(tags, organizationUserFileId);
     }
     private okhttp3.Call deleteManyCall(DeleteFilesQueryInput deleteFilesQueryInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -665,64 +665,64 @@ public class FilesApiGenerated {
         return localVarCall;
     }
 
-    public class DeleteManyRequestBuilder {
+    public abstract class DeleteManyRequestBuilderGenerated {
         private List<Integer> fileIds;
         private List<ExternalFileSyncStatuses> syncStatuses;
         private Boolean deleteNonSyncedOnly;
         private Boolean sendWebhook;
         private Boolean deleteChildFiles;
 
-        private DeleteManyRequestBuilder() {
+        public DeleteManyRequestBuilderGenerated() {
         }
 
         /**
          * Set fileIds
          * @param fileIds  (optional)
-         * @return DeleteManyRequestBuilder
+         * @return FilesApi.DeleteManyRequestBuilder
          */
-        public DeleteManyRequestBuilder fileIds(List<Integer> fileIds) {
+        public FilesApi.DeleteManyRequestBuilder fileIds(List<Integer> fileIds) {
             this.fileIds = fileIds;
-            return this;
+            return (FilesApi.DeleteManyRequestBuilder) this;
         }
         
         /**
          * Set syncStatuses
          * @param syncStatuses  (optional)
-         * @return DeleteManyRequestBuilder
+         * @return FilesApi.DeleteManyRequestBuilder
          */
-        public DeleteManyRequestBuilder syncStatuses(List<ExternalFileSyncStatuses> syncStatuses) {
+        public FilesApi.DeleteManyRequestBuilder syncStatuses(List<ExternalFileSyncStatuses> syncStatuses) {
             this.syncStatuses = syncStatuses;
-            return this;
+            return (FilesApi.DeleteManyRequestBuilder) this;
         }
         
         /**
          * Set deleteNonSyncedOnly
          * @param deleteNonSyncedOnly  (optional, default to false)
-         * @return DeleteManyRequestBuilder
+         * @return FilesApi.DeleteManyRequestBuilder
          */
-        public DeleteManyRequestBuilder deleteNonSyncedOnly(Boolean deleteNonSyncedOnly) {
+        public FilesApi.DeleteManyRequestBuilder deleteNonSyncedOnly(Boolean deleteNonSyncedOnly) {
             this.deleteNonSyncedOnly = deleteNonSyncedOnly;
-            return this;
+            return (FilesApi.DeleteManyRequestBuilder) this;
         }
         
         /**
          * Set sendWebhook
          * @param sendWebhook  (optional, default to false)
-         * @return DeleteManyRequestBuilder
+         * @return FilesApi.DeleteManyRequestBuilder
          */
-        public DeleteManyRequestBuilder sendWebhook(Boolean sendWebhook) {
+        public FilesApi.DeleteManyRequestBuilder sendWebhook(Boolean sendWebhook) {
             this.sendWebhook = sendWebhook;
-            return this;
+            return (FilesApi.DeleteManyRequestBuilder) this;
         }
         
         /**
          * Set deleteChildFiles
          * @param deleteChildFiles  (optional, default to false)
-         * @return DeleteManyRequestBuilder
+         * @return FilesApi.DeleteManyRequestBuilder
          */
-        public DeleteManyRequestBuilder deleteChildFiles(Boolean deleteChildFiles) {
+        public FilesApi.DeleteManyRequestBuilder deleteChildFiles(Boolean deleteChildFiles) {
             this.deleteChildFiles = deleteChildFiles;
-            return this;
+            return (FilesApi.DeleteManyRequestBuilder) this;
         }
         
         /**
@@ -820,8 +820,8 @@ public class FilesApiGenerated {
      * @deprecated
      */
     @Deprecated
-    public DeleteManyRequestBuilder deleteMany() throws IllegalArgumentException {
-        return new DeleteManyRequestBuilder();
+    public FilesApi.DeleteManyRequestBuilder deleteMany() throws IllegalArgumentException {
+        return ((FilesApi) this).new DeleteManyRequestBuilder();
     }
     private okhttp3.Call deleteV2Call(DeleteFilesV2QueryInput deleteFilesV2QueryInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -894,31 +894,31 @@ public class FilesApiGenerated {
         return localVarCall;
     }
 
-    public class DeleteV2RequestBuilder {
+    public abstract class DeleteV2RequestBuilderGenerated {
         private OrganizationUserFilesToSyncFilters filters;
         private Boolean sendWebhook;
 
-        private DeleteV2RequestBuilder() {
+        public DeleteV2RequestBuilderGenerated() {
         }
 
         /**
          * Set filters
          * @param filters  (optional)
-         * @return DeleteV2RequestBuilder
+         * @return FilesApi.DeleteV2RequestBuilder
          */
-        public DeleteV2RequestBuilder filters(OrganizationUserFilesToSyncFilters filters) {
+        public FilesApi.DeleteV2RequestBuilder filters(OrganizationUserFilesToSyncFilters filters) {
             this.filters = filters;
-            return this;
+            return (FilesApi.DeleteV2RequestBuilder) this;
         }
         
         /**
          * Set sendWebhook
          * @param sendWebhook  (optional, default to false)
-         * @return DeleteV2RequestBuilder
+         * @return FilesApi.DeleteV2RequestBuilder
          */
-        public DeleteV2RequestBuilder sendWebhook(Boolean sendWebhook) {
+        public FilesApi.DeleteV2RequestBuilder sendWebhook(Boolean sendWebhook) {
             this.sendWebhook = sendWebhook;
-            return this;
+            return (FilesApi.DeleteV2RequestBuilder) this;
         }
         
         /**
@@ -1003,8 +1003,8 @@ public class FilesApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public DeleteV2RequestBuilder deleteV2() throws IllegalArgumentException {
-        return new DeleteV2RequestBuilder();
+    public FilesApi.DeleteV2RequestBuilder deleteV2() throws IllegalArgumentException {
+        return ((FilesApi) this).new DeleteV2RequestBuilder();
     }
     private okhttp3.Call getParsedFileCall(Integer fileId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1078,10 +1078,10 @@ public class FilesApiGenerated {
         return localVarCall;
     }
 
-    public class GetParsedFileRequestBuilder {
+    public abstract class GetParsedFileRequestBuilderGenerated {
         private final Integer fileId;
 
-        private GetParsedFileRequestBuilder(Integer fileId) {
+        public GetParsedFileRequestBuilderGenerated(Integer fileId) {
             this.fileId = fileId;
         }
 
@@ -1167,9 +1167,9 @@ public class FilesApiGenerated {
      * @deprecated
      */
     @Deprecated
-    public GetParsedFileRequestBuilder getParsedFile(Integer fileId) throws IllegalArgumentException {
+    public FilesApi.GetParsedFileRequestBuilder getParsedFile(Integer fileId) throws IllegalArgumentException {
         if (fileId == null) throw new IllegalArgumentException("\"fileId\" is required but got null");
-        return new GetParsedFileRequestBuilder(fileId);
+        return ((FilesApi) this).new GetParsedFileRequestBuilder(fileId);
     }
     private okhttp3.Call getRawFileCall(Integer fileId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1243,10 +1243,10 @@ public class FilesApiGenerated {
         return localVarCall;
     }
 
-    public class GetRawFileRequestBuilder {
+    public abstract class GetRawFileRequestBuilderGenerated {
         private final Integer fileId;
 
-        private GetRawFileRequestBuilder(Integer fileId) {
+        public GetRawFileRequestBuilderGenerated(Integer fileId) {
             this.fileId = fileId;
         }
 
@@ -1332,9 +1332,9 @@ public class FilesApiGenerated {
      * @deprecated
      */
     @Deprecated
-    public GetRawFileRequestBuilder getRawFile(Integer fileId) throws IllegalArgumentException {
+    public FilesApi.GetRawFileRequestBuilder getRawFile(Integer fileId) throws IllegalArgumentException {
         if (fileId == null) throw new IllegalArgumentException("\"fileId\" is required but got null");
-        return new GetRawFileRequestBuilder(fileId);
+        return ((FilesApi) this).new GetRawFileRequestBuilder(fileId);
     }
     private okhttp3.Call queryUserFilesCall(OrganizationUserFilesToSyncQueryInput organizationUserFilesToSyncQueryInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1407,7 +1407,7 @@ public class FilesApiGenerated {
         return localVarCall;
     }
 
-    public class QueryUserFilesRequestBuilder {
+    public abstract class QueryUserFilesRequestBuilderGenerated {
         private Pagination pagination;
         private OrganizationUserFilesToSyncOrderByTypes orderBy;
         private OrderDir orderDir;
@@ -1416,77 +1416,77 @@ public class FilesApiGenerated {
         private Boolean includeParsedTextFile;
         private Boolean includeAdditionalFiles;
 
-        private QueryUserFilesRequestBuilder() {
+        public QueryUserFilesRequestBuilderGenerated() {
         }
 
         /**
          * Set pagination
          * @param pagination  (optional)
-         * @return QueryUserFilesRequestBuilder
+         * @return FilesApi.QueryUserFilesRequestBuilder
          */
-        public QueryUserFilesRequestBuilder pagination(Pagination pagination) {
+        public FilesApi.QueryUserFilesRequestBuilder pagination(Pagination pagination) {
             this.pagination = pagination;
-            return this;
+            return (FilesApi.QueryUserFilesRequestBuilder) this;
         }
         
         /**
          * Set orderBy
          * @param orderBy  (optional)
-         * @return QueryUserFilesRequestBuilder
+         * @return FilesApi.QueryUserFilesRequestBuilder
          */
-        public QueryUserFilesRequestBuilder orderBy(OrganizationUserFilesToSyncOrderByTypes orderBy) {
+        public FilesApi.QueryUserFilesRequestBuilder orderBy(OrganizationUserFilesToSyncOrderByTypes orderBy) {
             this.orderBy = orderBy;
-            return this;
+            return (FilesApi.QueryUserFilesRequestBuilder) this;
         }
         
         /**
          * Set orderDir
          * @param orderDir  (optional)
-         * @return QueryUserFilesRequestBuilder
+         * @return FilesApi.QueryUserFilesRequestBuilder
          */
-        public QueryUserFilesRequestBuilder orderDir(OrderDir orderDir) {
+        public FilesApi.QueryUserFilesRequestBuilder orderDir(OrderDir orderDir) {
             this.orderDir = orderDir;
-            return this;
+            return (FilesApi.QueryUserFilesRequestBuilder) this;
         }
         
         /**
          * Set filters
          * @param filters  (optional)
-         * @return QueryUserFilesRequestBuilder
+         * @return FilesApi.QueryUserFilesRequestBuilder
          */
-        public QueryUserFilesRequestBuilder filters(OrganizationUserFilesToSyncFilters filters) {
+        public FilesApi.QueryUserFilesRequestBuilder filters(OrganizationUserFilesToSyncFilters filters) {
             this.filters = filters;
-            return this;
+            return (FilesApi.QueryUserFilesRequestBuilder) this;
         }
         
         /**
          * Set includeRawFile
          * @param includeRawFile  (optional)
-         * @return QueryUserFilesRequestBuilder
+         * @return FilesApi.QueryUserFilesRequestBuilder
          */
-        public QueryUserFilesRequestBuilder includeRawFile(Boolean includeRawFile) {
+        public FilesApi.QueryUserFilesRequestBuilder includeRawFile(Boolean includeRawFile) {
             this.includeRawFile = includeRawFile;
-            return this;
+            return (FilesApi.QueryUserFilesRequestBuilder) this;
         }
         
         /**
          * Set includeParsedTextFile
          * @param includeParsedTextFile  (optional)
-         * @return QueryUserFilesRequestBuilder
+         * @return FilesApi.QueryUserFilesRequestBuilder
          */
-        public QueryUserFilesRequestBuilder includeParsedTextFile(Boolean includeParsedTextFile) {
+        public FilesApi.QueryUserFilesRequestBuilder includeParsedTextFile(Boolean includeParsedTextFile) {
             this.includeParsedTextFile = includeParsedTextFile;
-            return this;
+            return (FilesApi.QueryUserFilesRequestBuilder) this;
         }
         
         /**
          * Set includeAdditionalFiles
          * @param includeAdditionalFiles  (optional)
-         * @return QueryUserFilesRequestBuilder
+         * @return FilesApi.QueryUserFilesRequestBuilder
          */
-        public QueryUserFilesRequestBuilder includeAdditionalFiles(Boolean includeAdditionalFiles) {
+        public FilesApi.QueryUserFilesRequestBuilder includeAdditionalFiles(Boolean includeAdditionalFiles) {
             this.includeAdditionalFiles = includeAdditionalFiles;
-            return this;
+            return (FilesApi.QueryUserFilesRequestBuilder) this;
         }
         
         /**
@@ -1576,8 +1576,8 @@ public class FilesApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public QueryUserFilesRequestBuilder queryUserFiles() throws IllegalArgumentException {
-        return new QueryUserFilesRequestBuilder();
+    public FilesApi.QueryUserFilesRequestBuilder queryUserFiles() throws IllegalArgumentException {
+        return ((FilesApi) this).new QueryUserFilesRequestBuilder();
     }
     private okhttp3.Call queryUserFilesDeprecatedCall(OrganizationUserFilesToSyncQueryInput organizationUserFilesToSyncQueryInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1651,7 +1651,7 @@ public class FilesApiGenerated {
         return localVarCall;
     }
 
-    public class QueryUserFilesDeprecatedRequestBuilder {
+    public abstract class QueryUserFilesDeprecatedRequestBuilderGenerated {
         private Pagination pagination;
         private OrganizationUserFilesToSyncOrderByTypes orderBy;
         private OrderDir orderDir;
@@ -1660,77 +1660,77 @@ public class FilesApiGenerated {
         private Boolean includeParsedTextFile;
         private Boolean includeAdditionalFiles;
 
-        private QueryUserFilesDeprecatedRequestBuilder() {
+        public QueryUserFilesDeprecatedRequestBuilderGenerated() {
         }
 
         /**
          * Set pagination
          * @param pagination  (optional)
-         * @return QueryUserFilesDeprecatedRequestBuilder
+         * @return FilesApi.QueryUserFilesDeprecatedRequestBuilder
          */
-        public QueryUserFilesDeprecatedRequestBuilder pagination(Pagination pagination) {
+        public FilesApi.QueryUserFilesDeprecatedRequestBuilder pagination(Pagination pagination) {
             this.pagination = pagination;
-            return this;
+            return (FilesApi.QueryUserFilesDeprecatedRequestBuilder) this;
         }
         
         /**
          * Set orderBy
          * @param orderBy  (optional)
-         * @return QueryUserFilesDeprecatedRequestBuilder
+         * @return FilesApi.QueryUserFilesDeprecatedRequestBuilder
          */
-        public QueryUserFilesDeprecatedRequestBuilder orderBy(OrganizationUserFilesToSyncOrderByTypes orderBy) {
+        public FilesApi.QueryUserFilesDeprecatedRequestBuilder orderBy(OrganizationUserFilesToSyncOrderByTypes orderBy) {
             this.orderBy = orderBy;
-            return this;
+            return (FilesApi.QueryUserFilesDeprecatedRequestBuilder) this;
         }
         
         /**
          * Set orderDir
          * @param orderDir  (optional)
-         * @return QueryUserFilesDeprecatedRequestBuilder
+         * @return FilesApi.QueryUserFilesDeprecatedRequestBuilder
          */
-        public QueryUserFilesDeprecatedRequestBuilder orderDir(OrderDir orderDir) {
+        public FilesApi.QueryUserFilesDeprecatedRequestBuilder orderDir(OrderDir orderDir) {
             this.orderDir = orderDir;
-            return this;
+            return (FilesApi.QueryUserFilesDeprecatedRequestBuilder) this;
         }
         
         /**
          * Set filters
          * @param filters  (optional)
-         * @return QueryUserFilesDeprecatedRequestBuilder
+         * @return FilesApi.QueryUserFilesDeprecatedRequestBuilder
          */
-        public QueryUserFilesDeprecatedRequestBuilder filters(OrganizationUserFilesToSyncFilters filters) {
+        public FilesApi.QueryUserFilesDeprecatedRequestBuilder filters(OrganizationUserFilesToSyncFilters filters) {
             this.filters = filters;
-            return this;
+            return (FilesApi.QueryUserFilesDeprecatedRequestBuilder) this;
         }
         
         /**
          * Set includeRawFile
          * @param includeRawFile  (optional)
-         * @return QueryUserFilesDeprecatedRequestBuilder
+         * @return FilesApi.QueryUserFilesDeprecatedRequestBuilder
          */
-        public QueryUserFilesDeprecatedRequestBuilder includeRawFile(Boolean includeRawFile) {
+        public FilesApi.QueryUserFilesDeprecatedRequestBuilder includeRawFile(Boolean includeRawFile) {
             this.includeRawFile = includeRawFile;
-            return this;
+            return (FilesApi.QueryUserFilesDeprecatedRequestBuilder) this;
         }
         
         /**
          * Set includeParsedTextFile
          * @param includeParsedTextFile  (optional)
-         * @return QueryUserFilesDeprecatedRequestBuilder
+         * @return FilesApi.QueryUserFilesDeprecatedRequestBuilder
          */
-        public QueryUserFilesDeprecatedRequestBuilder includeParsedTextFile(Boolean includeParsedTextFile) {
+        public FilesApi.QueryUserFilesDeprecatedRequestBuilder includeParsedTextFile(Boolean includeParsedTextFile) {
             this.includeParsedTextFile = includeParsedTextFile;
-            return this;
+            return (FilesApi.QueryUserFilesDeprecatedRequestBuilder) this;
         }
         
         /**
          * Set includeAdditionalFiles
          * @param includeAdditionalFiles  (optional)
-         * @return QueryUserFilesDeprecatedRequestBuilder
+         * @return FilesApi.QueryUserFilesDeprecatedRequestBuilder
          */
-        public QueryUserFilesDeprecatedRequestBuilder includeAdditionalFiles(Boolean includeAdditionalFiles) {
+        public FilesApi.QueryUserFilesDeprecatedRequestBuilder includeAdditionalFiles(Boolean includeAdditionalFiles) {
             this.includeAdditionalFiles = includeAdditionalFiles;
-            return this;
+            return (FilesApi.QueryUserFilesDeprecatedRequestBuilder) this;
         }
         
         /**
@@ -1830,8 +1830,8 @@ public class FilesApiGenerated {
      * @deprecated
      */
     @Deprecated
-    public QueryUserFilesDeprecatedRequestBuilder queryUserFilesDeprecated() throws IllegalArgumentException {
-        return new QueryUserFilesDeprecatedRequestBuilder();
+    public FilesApi.QueryUserFilesDeprecatedRequestBuilder queryUserFilesDeprecated() throws IllegalArgumentException {
+        return ((FilesApi) this).new QueryUserFilesDeprecatedRequestBuilder();
     }
     private okhttp3.Call resyncCall(ResyncFileQueryInput resyncFileQueryInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1904,44 +1904,44 @@ public class FilesApiGenerated {
         return localVarCall;
     }
 
-    public class ResyncRequestBuilder {
+    public abstract class ResyncRequestBuilderGenerated {
         private final Integer fileId;
         private Integer chunkSize;
         private Integer chunkOverlap;
         private Boolean forceEmbeddingGeneration;
 
-        private ResyncRequestBuilder(Integer fileId) {
+        public ResyncRequestBuilderGenerated(Integer fileId) {
             this.fileId = fileId;
         }
 
         /**
          * Set chunkSize
          * @param chunkSize  (optional)
-         * @return ResyncRequestBuilder
+         * @return FilesApi.ResyncRequestBuilder
          */
-        public ResyncRequestBuilder chunkSize(Integer chunkSize) {
+        public FilesApi.ResyncRequestBuilder chunkSize(Integer chunkSize) {
             this.chunkSize = chunkSize;
-            return this;
+            return (FilesApi.ResyncRequestBuilder) this;
         }
         
         /**
          * Set chunkOverlap
          * @param chunkOverlap  (optional)
-         * @return ResyncRequestBuilder
+         * @return FilesApi.ResyncRequestBuilder
          */
-        public ResyncRequestBuilder chunkOverlap(Integer chunkOverlap) {
+        public FilesApi.ResyncRequestBuilder chunkOverlap(Integer chunkOverlap) {
             this.chunkOverlap = chunkOverlap;
-            return this;
+            return (FilesApi.ResyncRequestBuilder) this;
         }
         
         /**
          * Set forceEmbeddingGeneration
          * @param forceEmbeddingGeneration  (optional, default to false)
-         * @return ResyncRequestBuilder
+         * @return FilesApi.ResyncRequestBuilder
          */
-        public ResyncRequestBuilder forceEmbeddingGeneration(Boolean forceEmbeddingGeneration) {
+        public FilesApi.ResyncRequestBuilder forceEmbeddingGeneration(Boolean forceEmbeddingGeneration) {
             this.forceEmbeddingGeneration = forceEmbeddingGeneration;
-            return this;
+            return (FilesApi.ResyncRequestBuilder) this;
         }
         
         /**
@@ -2028,9 +2028,9 @@ public class FilesApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public ResyncRequestBuilder resync(Integer fileId) throws IllegalArgumentException {
+    public FilesApi.ResyncRequestBuilder resync(Integer fileId) throws IllegalArgumentException {
         if (fileId == null) throw new IllegalArgumentException("\"fileId\" is required but got null");
-        return new ResyncRequestBuilder(fileId);
+        return ((FilesApi) this).new ResyncRequestBuilder(fileId);
     }
     private okhttp3.Call uploadCall(File _file, BodyCreateUploadFileUploadfilePost bodyCreateUploadFileUploadfilePost, Integer chunkSize, Integer chunkOverlap, Boolean skipEmbeddingGeneration, Boolean setPageAsBoundary, TMEmbeddingGenerators embeddingModel, Boolean useOcr, Boolean generateSparseVectors, Boolean prependFilenameToChunks, Integer maxItemsPerChunk, Boolean parsePdfTablesWithOcr, Boolean detectAudioLanguage, FileContentTypesNullable mediaType, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -2160,7 +2160,7 @@ public class FilesApiGenerated {
         return localVarCall;
     }
 
-    public class UploadRequestBuilder {
+    public abstract class UploadRequestBuilderGenerated {
         private final File _file;
         private Integer chunkSize;
         private Integer chunkOverlap;
@@ -2175,128 +2175,128 @@ public class FilesApiGenerated {
         private Boolean detectAudioLanguage;
         private FileContentTypesNullable mediaType;
 
-        private UploadRequestBuilder(File _file) {
+        public UploadRequestBuilderGenerated(File _file) {
             this._file = _file;
         }
 
         /**
          * Set chunkSize
          * @param chunkSize Chunk size in tiktoken tokens to be used when processing file. (optional)
-         * @return UploadRequestBuilder
+         * @return FilesApi.UploadRequestBuilder
          */
-        public UploadRequestBuilder chunkSize(Integer chunkSize) {
+        public FilesApi.UploadRequestBuilder chunkSize(Integer chunkSize) {
             this.chunkSize = chunkSize;
-            return this;
+            return (FilesApi.UploadRequestBuilder) this;
         }
         
         /**
          * Set chunkOverlap
          * @param chunkOverlap Chunk overlap in tiktoken tokens to be used when processing file. (optional)
-         * @return UploadRequestBuilder
+         * @return FilesApi.UploadRequestBuilder
          */
-        public UploadRequestBuilder chunkOverlap(Integer chunkOverlap) {
+        public FilesApi.UploadRequestBuilder chunkOverlap(Integer chunkOverlap) {
             this.chunkOverlap = chunkOverlap;
-            return this;
+            return (FilesApi.UploadRequestBuilder) this;
         }
         
         /**
          * Set skipEmbeddingGeneration
          * @param skipEmbeddingGeneration Flag to control whether or not embeddings should be generated and stored             when processing file. (optional, default to false)
-         * @return UploadRequestBuilder
+         * @return FilesApi.UploadRequestBuilder
          */
-        public UploadRequestBuilder skipEmbeddingGeneration(Boolean skipEmbeddingGeneration) {
+        public FilesApi.UploadRequestBuilder skipEmbeddingGeneration(Boolean skipEmbeddingGeneration) {
             this.skipEmbeddingGeneration = skipEmbeddingGeneration;
-            return this;
+            return (FilesApi.UploadRequestBuilder) this;
         }
         
         /**
          * Set setPageAsBoundary
          * @param setPageAsBoundary Flag to control whether or not to set the a page&#39;s worth of content as the maximum             amount of content that can appear in a chunk. Only valid for PDFs. See description route description for             more information. (optional, default to false)
-         * @return UploadRequestBuilder
+         * @return FilesApi.UploadRequestBuilder
          */
-        public UploadRequestBuilder setPageAsBoundary(Boolean setPageAsBoundary) {
+        public FilesApi.UploadRequestBuilder setPageAsBoundary(Boolean setPageAsBoundary) {
             this.setPageAsBoundary = setPageAsBoundary;
-            return this;
+            return (FilesApi.UploadRequestBuilder) this;
         }
         
         /**
          * Set embeddingModel
          * @param embeddingModel Embedding model that will be used to embed file chunks. (optional)
-         * @return UploadRequestBuilder
+         * @return FilesApi.UploadRequestBuilder
          */
-        public UploadRequestBuilder embeddingModel(TMEmbeddingGenerators embeddingModel) {
+        public FilesApi.UploadRequestBuilder embeddingModel(TMEmbeddingGenerators embeddingModel) {
             this.embeddingModel = embeddingModel;
-            return this;
+            return (FilesApi.UploadRequestBuilder) this;
         }
         
         /**
          * Set useOcr
          * @param useOcr Whether or not to use OCR when processing files. Only valid for PDFs. Useful for documents with             tables, images, and/or scanned text. (optional, default to false)
-         * @return UploadRequestBuilder
+         * @return FilesApi.UploadRequestBuilder
          */
-        public UploadRequestBuilder useOcr(Boolean useOcr) {
+        public FilesApi.UploadRequestBuilder useOcr(Boolean useOcr) {
             this.useOcr = useOcr;
-            return this;
+            return (FilesApi.UploadRequestBuilder) this;
         }
         
         /**
          * Set generateSparseVectors
          * @param generateSparseVectors Whether or not to generate sparse vectors for the file. This is *required* for the file to be a             candidate for hybrid search. (optional, default to false)
-         * @return UploadRequestBuilder
+         * @return FilesApi.UploadRequestBuilder
          */
-        public UploadRequestBuilder generateSparseVectors(Boolean generateSparseVectors) {
+        public FilesApi.UploadRequestBuilder generateSparseVectors(Boolean generateSparseVectors) {
             this.generateSparseVectors = generateSparseVectors;
-            return this;
+            return (FilesApi.UploadRequestBuilder) this;
         }
         
         /**
          * Set prependFilenameToChunks
          * @param prependFilenameToChunks Whether or not to prepend the file&#39;s name to chunks. (optional, default to false)
-         * @return UploadRequestBuilder
+         * @return FilesApi.UploadRequestBuilder
          */
-        public UploadRequestBuilder prependFilenameToChunks(Boolean prependFilenameToChunks) {
+        public FilesApi.UploadRequestBuilder prependFilenameToChunks(Boolean prependFilenameToChunks) {
             this.prependFilenameToChunks = prependFilenameToChunks;
-            return this;
+            return (FilesApi.UploadRequestBuilder) this;
         }
         
         /**
          * Set maxItemsPerChunk
          * @param maxItemsPerChunk Number of objects per chunk. For csv, tsv, xlsx, and json files only. (optional)
-         * @return UploadRequestBuilder
+         * @return FilesApi.UploadRequestBuilder
          */
-        public UploadRequestBuilder maxItemsPerChunk(Integer maxItemsPerChunk) {
+        public FilesApi.UploadRequestBuilder maxItemsPerChunk(Integer maxItemsPerChunk) {
             this.maxItemsPerChunk = maxItemsPerChunk;
-            return this;
+            return (FilesApi.UploadRequestBuilder) this;
         }
         
         /**
          * Set parsePdfTablesWithOcr
          * @param parsePdfTablesWithOcr Whether to use rich table parsing when &#x60;use_ocr&#x60; is enabled. (optional, default to false)
-         * @return UploadRequestBuilder
+         * @return FilesApi.UploadRequestBuilder
          */
-        public UploadRequestBuilder parsePdfTablesWithOcr(Boolean parsePdfTablesWithOcr) {
+        public FilesApi.UploadRequestBuilder parsePdfTablesWithOcr(Boolean parsePdfTablesWithOcr) {
             this.parsePdfTablesWithOcr = parsePdfTablesWithOcr;
-            return this;
+            return (FilesApi.UploadRequestBuilder) this;
         }
         
         /**
          * Set detectAudioLanguage
          * @param detectAudioLanguage Whether to automatically detect the language of the uploaded audio file. (optional, default to false)
-         * @return UploadRequestBuilder
+         * @return FilesApi.UploadRequestBuilder
          */
-        public UploadRequestBuilder detectAudioLanguage(Boolean detectAudioLanguage) {
+        public FilesApi.UploadRequestBuilder detectAudioLanguage(Boolean detectAudioLanguage) {
             this.detectAudioLanguage = detectAudioLanguage;
-            return this;
+            return (FilesApi.UploadRequestBuilder) this;
         }
         
         /**
          * Set mediaType
          * @param mediaType The media type of the file. If not provided, it will be inferred from the file extension. (optional, default to TEXT)
-         * @return UploadRequestBuilder
+         * @return FilesApi.UploadRequestBuilder
          */
-        public UploadRequestBuilder mediaType(FileContentTypesNullable mediaType) {
+        public FilesApi.UploadRequestBuilder mediaType(FileContentTypesNullable mediaType) {
             this.mediaType = mediaType;
-            return this;
+            return (FilesApi.UploadRequestBuilder) this;
         }
         
         /**
@@ -2381,9 +2381,9 @@ public class FilesApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public UploadRequestBuilder upload(File _file) throws IllegalArgumentException {
+    public FilesApi.UploadRequestBuilder upload(File _file) throws IllegalArgumentException {
         if (_file == null) throw new IllegalArgumentException("\"_file\" is required but got null");
-        return new UploadRequestBuilder(_file);
+        return ((FilesApi) this).new UploadRequestBuilder(_file);
     }
     private okhttp3.Call uploadFromUrlCall(UploadFileFromUrlInput uploadFileFromUrlInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -2456,7 +2456,7 @@ public class FilesApiGenerated {
         return localVarCall;
     }
 
-    public class UploadFromUrlRequestBuilder {
+    public abstract class UploadFromUrlRequestBuilderGenerated {
         private final String url;
         private String fileName;
         private Integer chunkSize;
@@ -2471,128 +2471,128 @@ public class FilesApiGenerated {
         private Boolean parsePdfTablesWithOcr;
         private Boolean detectAudioLanguage;
 
-        private UploadFromUrlRequestBuilder(String url) {
+        public UploadFromUrlRequestBuilderGenerated(String url) {
             this.url = url;
         }
 
         /**
          * Set fileName
          * @param fileName  (optional)
-         * @return UploadFromUrlRequestBuilder
+         * @return FilesApi.UploadFromUrlRequestBuilder
          */
-        public UploadFromUrlRequestBuilder fileName(String fileName) {
+        public FilesApi.UploadFromUrlRequestBuilder fileName(String fileName) {
             this.fileName = fileName;
-            return this;
+            return (FilesApi.UploadFromUrlRequestBuilder) this;
         }
         
         /**
          * Set chunkSize
          * @param chunkSize  (optional)
-         * @return UploadFromUrlRequestBuilder
+         * @return FilesApi.UploadFromUrlRequestBuilder
          */
-        public UploadFromUrlRequestBuilder chunkSize(Integer chunkSize) {
+        public FilesApi.UploadFromUrlRequestBuilder chunkSize(Integer chunkSize) {
             this.chunkSize = chunkSize;
-            return this;
+            return (FilesApi.UploadFromUrlRequestBuilder) this;
         }
         
         /**
          * Set chunkOverlap
          * @param chunkOverlap  (optional)
-         * @return UploadFromUrlRequestBuilder
+         * @return FilesApi.UploadFromUrlRequestBuilder
          */
-        public UploadFromUrlRequestBuilder chunkOverlap(Integer chunkOverlap) {
+        public FilesApi.UploadFromUrlRequestBuilder chunkOverlap(Integer chunkOverlap) {
             this.chunkOverlap = chunkOverlap;
-            return this;
+            return (FilesApi.UploadFromUrlRequestBuilder) this;
         }
         
         /**
          * Set skipEmbeddingGeneration
          * @param skipEmbeddingGeneration  (optional, default to false)
-         * @return UploadFromUrlRequestBuilder
+         * @return FilesApi.UploadFromUrlRequestBuilder
          */
-        public UploadFromUrlRequestBuilder skipEmbeddingGeneration(Boolean skipEmbeddingGeneration) {
+        public FilesApi.UploadFromUrlRequestBuilder skipEmbeddingGeneration(Boolean skipEmbeddingGeneration) {
             this.skipEmbeddingGeneration = skipEmbeddingGeneration;
-            return this;
+            return (FilesApi.UploadFromUrlRequestBuilder) this;
         }
         
         /**
          * Set setPageAsBoundary
          * @param setPageAsBoundary  (optional, default to false)
-         * @return UploadFromUrlRequestBuilder
+         * @return FilesApi.UploadFromUrlRequestBuilder
          */
-        public UploadFromUrlRequestBuilder setPageAsBoundary(Boolean setPageAsBoundary) {
+        public FilesApi.UploadFromUrlRequestBuilder setPageAsBoundary(Boolean setPageAsBoundary) {
             this.setPageAsBoundary = setPageAsBoundary;
-            return this;
+            return (FilesApi.UploadFromUrlRequestBuilder) this;
         }
         
         /**
          * Set embeddingModel
          * @param embeddingModel  (optional)
-         * @return UploadFromUrlRequestBuilder
+         * @return FilesApi.UploadFromUrlRequestBuilder
          */
-        public UploadFromUrlRequestBuilder embeddingModel(EmbeddingGenerators embeddingModel) {
+        public FilesApi.UploadFromUrlRequestBuilder embeddingModel(EmbeddingGenerators embeddingModel) {
             this.embeddingModel = embeddingModel;
-            return this;
+            return (FilesApi.UploadFromUrlRequestBuilder) this;
         }
         
         /**
          * Set generateSparseVectors
          * @param generateSparseVectors  (optional, default to false)
-         * @return UploadFromUrlRequestBuilder
+         * @return FilesApi.UploadFromUrlRequestBuilder
          */
-        public UploadFromUrlRequestBuilder generateSparseVectors(Boolean generateSparseVectors) {
+        public FilesApi.UploadFromUrlRequestBuilder generateSparseVectors(Boolean generateSparseVectors) {
             this.generateSparseVectors = generateSparseVectors;
-            return this;
+            return (FilesApi.UploadFromUrlRequestBuilder) this;
         }
         
         /**
          * Set useTextract
          * @param useTextract  (optional, default to false)
-         * @return UploadFromUrlRequestBuilder
+         * @return FilesApi.UploadFromUrlRequestBuilder
          */
-        public UploadFromUrlRequestBuilder useTextract(Boolean useTextract) {
+        public FilesApi.UploadFromUrlRequestBuilder useTextract(Boolean useTextract) {
             this.useTextract = useTextract;
-            return this;
+            return (FilesApi.UploadFromUrlRequestBuilder) this;
         }
         
         /**
          * Set prependFilenameToChunks
          * @param prependFilenameToChunks  (optional, default to false)
-         * @return UploadFromUrlRequestBuilder
+         * @return FilesApi.UploadFromUrlRequestBuilder
          */
-        public UploadFromUrlRequestBuilder prependFilenameToChunks(Boolean prependFilenameToChunks) {
+        public FilesApi.UploadFromUrlRequestBuilder prependFilenameToChunks(Boolean prependFilenameToChunks) {
             this.prependFilenameToChunks = prependFilenameToChunks;
-            return this;
+            return (FilesApi.UploadFromUrlRequestBuilder) this;
         }
         
         /**
          * Set maxItemsPerChunk
          * @param maxItemsPerChunk Number of objects per chunk. For csv, tsv, xlsx, and json files only. (optional)
-         * @return UploadFromUrlRequestBuilder
+         * @return FilesApi.UploadFromUrlRequestBuilder
          */
-        public UploadFromUrlRequestBuilder maxItemsPerChunk(Integer maxItemsPerChunk) {
+        public FilesApi.UploadFromUrlRequestBuilder maxItemsPerChunk(Integer maxItemsPerChunk) {
             this.maxItemsPerChunk = maxItemsPerChunk;
-            return this;
+            return (FilesApi.UploadFromUrlRequestBuilder) this;
         }
         
         /**
          * Set parsePdfTablesWithOcr
          * @param parsePdfTablesWithOcr  (optional, default to false)
-         * @return UploadFromUrlRequestBuilder
+         * @return FilesApi.UploadFromUrlRequestBuilder
          */
-        public UploadFromUrlRequestBuilder parsePdfTablesWithOcr(Boolean parsePdfTablesWithOcr) {
+        public FilesApi.UploadFromUrlRequestBuilder parsePdfTablesWithOcr(Boolean parsePdfTablesWithOcr) {
             this.parsePdfTablesWithOcr = parsePdfTablesWithOcr;
-            return this;
+            return (FilesApi.UploadFromUrlRequestBuilder) this;
         }
         
         /**
          * Set detectAudioLanguage
          * @param detectAudioLanguage  (optional, default to false)
-         * @return UploadFromUrlRequestBuilder
+         * @return FilesApi.UploadFromUrlRequestBuilder
          */
-        public UploadFromUrlRequestBuilder detectAudioLanguage(Boolean detectAudioLanguage) {
+        public FilesApi.UploadFromUrlRequestBuilder detectAudioLanguage(Boolean detectAudioLanguage) {
             this.detectAudioLanguage = detectAudioLanguage;
-            return this;
+            return (FilesApi.UploadFromUrlRequestBuilder) this;
         }
         
         /**
@@ -2688,11 +2688,11 @@ public class FilesApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public UploadFromUrlRequestBuilder uploadFromUrl(String url) throws IllegalArgumentException {
+    public FilesApi.UploadFromUrlRequestBuilder uploadFromUrl(String url) throws IllegalArgumentException {
         if (url == null) throw new IllegalArgumentException("\"url\" is required but got null");
             
 
-        return new UploadFromUrlRequestBuilder(url);
+        return ((FilesApi) this).new UploadFromUrlRequestBuilder(url);
     }
     private okhttp3.Call uploadTextCall(RawTextInput rawTextInput, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -2765,7 +2765,7 @@ public class FilesApiGenerated {
         return localVarCall;
     }
 
-    public class UploadTextRequestBuilder {
+    public abstract class UploadTextRequestBuilderGenerated {
         private final String contents;
         private String name;
         private Integer chunkSize;
@@ -2775,78 +2775,78 @@ public class FilesApiGenerated {
         private EmbeddingGeneratorsNullable embeddingModel;
         private Boolean generateSparseVectors;
 
-        private UploadTextRequestBuilder(String contents) {
+        public UploadTextRequestBuilderGenerated(String contents) {
             this.contents = contents;
         }
 
         /**
          * Set name
          * @param name  (optional)
-         * @return UploadTextRequestBuilder
+         * @return FilesApi.UploadTextRequestBuilder
          */
-        public UploadTextRequestBuilder name(String name) {
+        public FilesApi.UploadTextRequestBuilder name(String name) {
             this.name = name;
-            return this;
+            return (FilesApi.UploadTextRequestBuilder) this;
         }
         
         /**
          * Set chunkSize
          * @param chunkSize  (optional)
-         * @return UploadTextRequestBuilder
+         * @return FilesApi.UploadTextRequestBuilder
          */
-        public UploadTextRequestBuilder chunkSize(Integer chunkSize) {
+        public FilesApi.UploadTextRequestBuilder chunkSize(Integer chunkSize) {
             this.chunkSize = chunkSize;
-            return this;
+            return (FilesApi.UploadTextRequestBuilder) this;
         }
         
         /**
          * Set chunkOverlap
          * @param chunkOverlap  (optional)
-         * @return UploadTextRequestBuilder
+         * @return FilesApi.UploadTextRequestBuilder
          */
-        public UploadTextRequestBuilder chunkOverlap(Integer chunkOverlap) {
+        public FilesApi.UploadTextRequestBuilder chunkOverlap(Integer chunkOverlap) {
             this.chunkOverlap = chunkOverlap;
-            return this;
+            return (FilesApi.UploadTextRequestBuilder) this;
         }
         
         /**
          * Set skipEmbeddingGeneration
          * @param skipEmbeddingGeneration  (optional, default to false)
-         * @return UploadTextRequestBuilder
+         * @return FilesApi.UploadTextRequestBuilder
          */
-        public UploadTextRequestBuilder skipEmbeddingGeneration(Boolean skipEmbeddingGeneration) {
+        public FilesApi.UploadTextRequestBuilder skipEmbeddingGeneration(Boolean skipEmbeddingGeneration) {
             this.skipEmbeddingGeneration = skipEmbeddingGeneration;
-            return this;
+            return (FilesApi.UploadTextRequestBuilder) this;
         }
         
         /**
          * Set overwriteFileId
          * @param overwriteFileId  (optional)
-         * @return UploadTextRequestBuilder
+         * @return FilesApi.UploadTextRequestBuilder
          */
-        public UploadTextRequestBuilder overwriteFileId(Integer overwriteFileId) {
+        public FilesApi.UploadTextRequestBuilder overwriteFileId(Integer overwriteFileId) {
             this.overwriteFileId = overwriteFileId;
-            return this;
+            return (FilesApi.UploadTextRequestBuilder) this;
         }
         
         /**
          * Set embeddingModel
          * @param embeddingModel  (optional, default to OPENAI)
-         * @return UploadTextRequestBuilder
+         * @return FilesApi.UploadTextRequestBuilder
          */
-        public UploadTextRequestBuilder embeddingModel(EmbeddingGeneratorsNullable embeddingModel) {
+        public FilesApi.UploadTextRequestBuilder embeddingModel(EmbeddingGeneratorsNullable embeddingModel) {
             this.embeddingModel = embeddingModel;
-            return this;
+            return (FilesApi.UploadTextRequestBuilder) this;
         }
         
         /**
          * Set generateSparseVectors
          * @param generateSparseVectors  (optional, default to false)
-         * @return UploadTextRequestBuilder
+         * @return FilesApi.UploadTextRequestBuilder
          */
-        public UploadTextRequestBuilder generateSparseVectors(Boolean generateSparseVectors) {
+        public FilesApi.UploadTextRequestBuilder generateSparseVectors(Boolean generateSparseVectors) {
             this.generateSparseVectors = generateSparseVectors;
-            return this;
+            return (FilesApi.UploadTextRequestBuilder) this;
         }
         
         /**
@@ -2937,12 +2937,12 @@ public class FilesApiGenerated {
         <tr><td> 200 </td><td> Successful Response </td><td>  -  </td></tr>
      </table>
      */
-    public UploadTextRequestBuilder uploadText(String contents) throws IllegalArgumentException {
+    public FilesApi.UploadTextRequestBuilder uploadText(String contents) throws IllegalArgumentException {
         if (contents == null) throw new IllegalArgumentException("\"contents\" is required but got null");
             if (contents != null && contents.length() < 5) {
               throw new IllegalArgumentException("Invalid value for contents. Length must be greater than or equal to 5.");
             }
 
-        return new UploadTextRequestBuilder(contents);
+        return ((FilesApi) this).new UploadTextRequestBuilder(contents);
     }
 }
