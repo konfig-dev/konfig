@@ -158,10 +158,10 @@ public class SearchLinkApiGenerated {
     }
 
     public abstract class GetRequestBuilderGenerated {
-        private Object ids;
-        private Object links;
-        private Integer page;
-        private Integer pageSize;
+        Object ids;
+        Object links;
+        Integer page;
+        Integer pageSize;
 
         public GetRequestBuilderGenerated() {
         }
@@ -352,10 +352,10 @@ public class SearchLinkApiGenerated {
     }
 
     public abstract class PostRequestBuilderGenerated {
-        private Object ids;
-        private Object links;
-        private Integer page;
-        private Integer pageSize;
+        Object ids;
+        Object links;
+        Integer page;
+        Integer pageSize;
 
         public PostRequestBuilderGenerated() {
         }

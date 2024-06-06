@@ -174,14 +174,14 @@ public class SourcesApiGenerated {
     }
 
     public abstract class GetRequestBuilderGenerated {
-        private String lang;
-        private String countries;
-        private String predefinedSources;
-        private Boolean includeAdditionalInfo;
-        private Integer fromRank;
-        private Integer toRank;
-        private Object sourceName;
-        private String sourceUrl;
+        String lang;
+        String countries;
+        String predefinedSources;
+        Boolean includeAdditionalInfo;
+        Integer fromRank;
+        Integer toRank;
+        Object sourceName;
+        String sourceUrl;
 
         public GetRequestBuilderGenerated() {
         }
@@ -412,14 +412,14 @@ public class SourcesApiGenerated {
     }
 
     public abstract class PostRequestBuilderGenerated {
-        private String lang;
-        private String countries;
-        private String predefinedSources;
-        private Boolean includeAdditionalInfo;
-        private Integer fromRank;
-        private Integer toRank;
-        private Object sourceName;
-        private String sourceUrl;
+        String lang;
+        String countries;
+        String predefinedSources;
+        Boolean includeAdditionalInfo;
+        Integer fromRank;
+        Integer toRank;
+        Object sourceName;
+        String sourceUrl;
 
         public PostRequestBuilderGenerated() {
         }

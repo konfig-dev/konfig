@@ -412,14 +412,14 @@ public class {{classname}}Generated {
 
     public abstract class {{> request_builder_name_partial}}Generated {
         {{#requiredParamsWithRequestBodyProperties}}
-        private final {{> data_type_partial}} {{paramName}};
+        final {{> data_type_partial}} {{paramName}};
         {{/requiredParamsWithRequestBodyProperties}}
         {{#optionalParamsWithRequestBodyProperties}}
-        private {{> data_type_partial}} {{paramName}};
+        {{> data_type_partial}} {{paramName}};
         {{/optionalParamsWithRequestBodyProperties}}
         {{#bodyParam}}
         {{^isStrictlyObject}}
-        private {{{dataType}}} {{paramName}};
+        {{{dataType}}} {{paramName}};
         {{/isStrictlyObject}}
         {{/bodyParam}}
 
