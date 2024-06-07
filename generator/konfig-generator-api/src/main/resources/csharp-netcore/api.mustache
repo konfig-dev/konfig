@@ -117,23 +117,23 @@ namespace {{packageName}}.{{apiPackage}}
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    {{>visibility}} partial class {{classname}} : {{interfacePrefix}}{{classname}}
+    {{>visibility}} partial class {{classname}}Generated : {{interfacePrefix}}{{classname}}
     {
         private {{packageName}}.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="{{classname}}"/> class.
+        /// Initializes a new instance of the <see cref="{{classname}}Generated"/> class.
         /// </summary>
         /// <returns></returns>
-        public {{classname}}() : this((string)null)
+        public {{classname}}Generated() : this((string)null)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="{{classname}}"/> class.
+        /// Initializes a new instance of the <see cref="{{classname}}Generated"/> class.
         /// </summary>
         /// <returns></returns>
-        public {{classname}}(string basePath)
+        public {{classname}}Generated(string basePath)
         {
             this.Configuration = {{packageName}}.Client.Configuration.MergeConfigurations(
                 {{packageName}}.Client.GlobalConfiguration.Instance,
@@ -147,12 +147,12 @@ namespace {{packageName}}.{{apiPackage}}
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="{{classname}}"/> class
+        /// Initializes a new instance of the <see cref="{{classname}}Generated"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public {{classname}}({{packageName}}.Client.Configuration configuration)
+        public {{classname}}Generated({{packageName}}.Client.Configuration configuration)
         {
             if (configuration == null) throw new ArgumentNullException("configuration");
 
@@ -168,13 +168,13 @@ namespace {{packageName}}.{{apiPackage}}
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="{{classname}}"/> class
+        /// Initializes a new instance of the <see cref="{{classname}}Generated"/> class
         /// using a Configuration object and client instance.
         /// </summary>
         /// <param name="client">The client interface for synchronous API access.</param>{{#supportsAsync}}
         /// <param name="asyncClient">The client interface for asynchronous API access.</param>{{/supportsAsync}}
         /// <param name="configuration">The configuration object.</param>
-        public {{classname}}({{packageName}}.Client.ISynchronousClient client, {{#supportsAsync}}{{packageName}}.Client.IAsynchronousClient asyncClient, {{/supportsAsync}}{{packageName}}.Client.IReadableConfiguration configuration)
+        public {{classname}}Generated({{packageName}}.Client.ISynchronousClient client, {{#supportsAsync}}{{packageName}}.Client.IAsynchronousClient asyncClient, {{/supportsAsync}}{{packageName}}.Client.IReadableConfiguration configuration)
         {
             if (client == null) throw new ArgumentNullException("client");
             {{#supportsAsync}}
@@ -523,7 +523,7 @@ namespace {{packageName}}.{{apiPackage}}
         {{#isDeprecated}}
         [Obsolete]
         {{/isDeprecated}}
-        public async System.Threading.Tasks.Task<{{packageName}}.Client.ApiResponse<{{{returnType}}}{{^returnType}}Object{{/returnType}}>> {{operationId}}WithHttpInfoAsync({{#allParams}}{{{dataType}}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = default({{{dataType}}}){{/optionalMethodArgument}}{{/required}}{{^-last}}, {{/-last}}{{/allParams}}{{#allParams.0}}, {{/allParams.0}}int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<{{packageName}}.Client.ApiResponse<{{{returnType}}}{{^returnType}}Object{{/returnType}}>> {{operationId}}WithHttpInfoAsync({{#allParams}}{{{dataType}}} {{paramName}}{{^required}}{{#optionalMethodArgument}} = default({{{dataType}}}){{/optionalMethodArgument}}{{/required}}{{^-last}}, {{/-last}}{{/allParams}}{{#allParams.0}}, {{/allParams.0}}int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             {{#allParams}}
             {{#required}}

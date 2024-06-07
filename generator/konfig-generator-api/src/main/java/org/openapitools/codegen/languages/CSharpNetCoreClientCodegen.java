@@ -169,7 +169,8 @@ public class CSharpNetCoreClientCodegen extends AbstractCSharpCodegen {
         hideGenerationTimestamp = Boolean.TRUE;
         supportsInheritance = true;
         modelTemplateFiles.put("model.mustache", ".cs");
-        apiTemplateFiles.put("api.mustache", ".cs");
+        apiTemplateFiles.put("api.mustache", "Generated.cs");
+        apiTemplateFiles.put("apiCustom.mustache", ".cs");
         modelDocTemplateFiles.put("model_doc.mustache", ".md");
         apiDocTemplateFiles.put("api_doc.mustache", ".md");
         embeddedTemplateDir = templateDir = "csharp-netcore";

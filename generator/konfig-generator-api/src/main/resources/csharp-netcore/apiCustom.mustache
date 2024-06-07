@@ -1,0 +1,11 @@
+using {{packageName}}.Client;
+
+namespace {{packageName}}.{{apiPackage}}
+{
+    {{>visibility}} partial class {{classname}} : {{classname}}Generated {
+        public {{classname}}() : base() {}
+        public {{classname}}(string basePath): base(basePath) {}
+        public {{classname}}({{packageName}}.Client.Configuration configuration): base(configuration) {}
+        public {{classname}}({{packageName}}.Client.ISynchronousClient client, {{#supportsAsync}}{{packageName}}.Client.IAsynchronousClient asyncClient, {{/supportsAsync}}{{packageName}}.Client.IReadableConfiguration configuration): base(client, {{#supportsAsync}}asyncClient, {{/supportsAsync}}configuration) {}
+    }
+}
