@@ -10,6 +10,8 @@
 
 
 using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Newscatcherapi.Net.Client
 {
@@ -63,6 +65,31 @@ namespace Newscatcherapi.Net.Client
             this.ErrorCode = errorCode;
             this.ErrorContent = errorContent;
             this.Headers = headers;
+        }
+
+        /// <summary>
+        /// Gets a message that describes the current exception.
+        /// </summary>
+        public override string Message
+        {
+            get
+            {
+                return base.Message + $"\nResponse Headers:\n{FormatHeaders(Headers)}";
+            }
+        }
+
+        private string FormatHeaders(Multimap<string, string> headers)
+        {
+            if (headers == null)
+            {
+                return "None";
+            }
+            var sb = new StringBuilder();
+            foreach (var header in headers)
+            {
+                sb.AppendLine($"- {header.Key}: {string.Join(", ", header.Value)}");
+            }
+            return sb.ToString();
         }
     }
 

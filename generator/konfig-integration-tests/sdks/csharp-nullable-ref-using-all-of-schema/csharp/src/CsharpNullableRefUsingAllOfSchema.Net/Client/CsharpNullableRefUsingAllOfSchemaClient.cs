@@ -21,7 +21,7 @@ namespace CsharpNullableRefUsingAllOfSchema.Net.Client
         /// <summary>
         /// API instance
         /// </summary>
-        public virtual ITestApi Test { get; set; }
+        public virtual TestApi Test { get; set; }
 
         /// <summary>
         /// Configuration instance
