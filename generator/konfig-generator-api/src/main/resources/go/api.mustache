@@ -131,22 +131,22 @@ func (a *{{{classname}}}Service) {{nickname}}Execute(r {{#structPrefix}}{{&class
 	localVarFormParams := url.Values{}
 	{{#allParams}}
 	{{#minItems}}
-	if len({{> api_request_param}}) < {{minItems}} {
+    if {{^required}}r.{{paramName}} != nil && {{/required}}len({{> api_request_param}}) < {{minItems}} {
 		return {{#returnType}}localVarReturnValue, {{/returnType}}nil, reportError("{{paramName}} must have at least {{minItems}} elements")
 	}
 	{{/minItems}}
 	{{#maxItems}}
-	if len({{> api_request_param}}) > {{maxItems}} {
+	if {{^required}}r.{{paramName}} != nil && {{/required}}len({{> api_request_param}}) > {{maxItems}} {
 		return {{#returnType}}localVarReturnValue, {{/returnType}}nil, reportError("{{paramName}} must have less than {{maxItems}} elements")
 	}
 	{{/maxItems}}
 	{{#minLength}}
-	if strlen({{> api_request_param}}) < {{minLength}} {
+	if {{^required}}r.{{paramName}} != nil && {{/required}}strlen({{> api_request_param}}) < {{minLength}} {
 		return {{#returnType}}localVarReturnValue, {{/returnType}}nil, reportError("{{paramName}} must have at least {{minLength}} elements")
 	}
 	{{/minLength}}
 	{{#maxLength}}
-	if strlen({{> api_request_param}}) > {{maxLength}} {
+	if {{^required}}r.{{paramName}} != nil && {{/required}}strlen({{> api_request_param}}) > {{maxLength}} {
 		return {{#returnType}}localVarReturnValue, {{/returnType}}nil, reportError("{{paramName}} must have less than {{maxLength}} elements")
 	}
 	{{/maxLength}}
@@ -156,7 +156,7 @@ func (a *{{{classname}}}Service) {{nickname}}Execute(r {{#structPrefix}}{{&class
 	if {{paramName}}Txt < {{minimum}} {
 	{{/isString}}
 	{{^isString}}
-	if {{> api_request_param}} < {{minimum}} {
+	if {{^required}}r.{{paramName}} != nil && {{/required}}{{> api_request_param}} < {{minimum}} {
 	{{/isString}}
 		return {{#returnType}}localVarReturnValue, {{/returnType}}nil, reportError("{{paramName}} must be greater than {{minimum}}")
 	}
@@ -167,7 +167,7 @@ func (a *{{{classname}}}Service) {{nickname}}Execute(r {{#structPrefix}}{{&class
 	if {{paramName}}Txt > {{maximum}} {
 	{{/isString}}
 	{{^isString}}
-	if {{> api_request_param}} > {{maximum}} {
+	if {{^required}}r.{{paramName}} != nil && {{/required}}{{> api_request_param}} > {{maximum}} {
 	{{/isString}}
 		return {{#returnType}}localVarReturnValue, {{/returnType}}nil, reportError("{{paramName}} must be less than {{maximum}}")
 	}
