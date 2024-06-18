@@ -15,7 +15,6 @@ import { jsonSchema } from './util/json-schema'
 import { JSONPath } from 'jsonpath-plus'
 import {
   generateSchemaObjectFromJson,
-  mergeSchemaObject,
 } from './util/generate-schema-object-from-json'
 import { getOasVersion } from './util/get-oas-version'
 import { canOperationHaveSingleParameter } from './util/can-operation-have-single-parameter'
@@ -35,9 +34,10 @@ import { transformInnerSchemas } from './util/transform-inner-schemas'
 import { convertOneOfSchemasToAny } from './convert-one-of-schemas-to-any'
 import { orderOpenApiSpecification } from './util/order-openapi-specification'
 import { convertAnyOfSchemasToAny } from './convert-any-of-schemas-to-any'
-import { generateEncapsulatingName } from './generate-encapsulating-name'
 import { removeUuidFormatsFromSpec } from './remove-uuid-formats-from-spec'
 import { handleAllOfWithNullable } from './handle-all-of-with-nullable'
+import { transformSingletonAnyOfSchema } from './util/transform-singleton-anyof-schema'
+import { mergeAnyOfSameSchema } from './util/merge-anyof-same-schema'
 
 export const doNotGenerateVendorExtension = 'x-do-not-generate'
 
@@ -644,117 +644,8 @@ export const transformSpec = async ({
 
     handleAllOfWithNullable({ spec: spec })
 
-    /**
-     * Catch case where there is an unnecessary anyOf schema. Which is when
-     * there is a single schema and the anyOf schema has no description.
-     *
-     * Update: I commented this function because it didn't functionally change
-     * the SnapTrade Java SDK. Originally I added this because the written api.yaml
-     * file changed but I guess Java generator handles this case already.
-     */
-    recurseObject(spec.spec, ({ value: schema }) => {
-      if (schema === null) return
-      if (typeof schema !== 'object') return
-      if (schema['anyOf'] === undefined) return
-      if (!Array.isArray(schema['anyOf'])) return
-      if (schema['anyOf'].length !== 1) return
-      if ('description' in schema) return
-
-      // pull the single anyOf schema out of the array
-      const anyOfSchema = schema['anyOf'][0]
-      if (typeof anyOfSchema !== 'object') return
-      if (anyOfSchema === null) return
-
-      // delete all properties on schema
-      Object.keys(schema).forEach((key) => delete schema[key])
-      // spread anyOfSchema onto schema
-      Object.assign(schema, anyOfSchema)
-    })
-
-    // merge anyOf schemas where all schemas are object type schemas
-    // Why? Newscatcher's API only returned anyOf schemas and its not good DX
-    // to have to deal with anyOf schemas in Java SDK
-    recurseObject(spec.spec, ({ value: schema }) => {
-      if (schema === null) return
-      if (typeof schema !== 'object') return
-      if (schema['anyOf'] === undefined) return
-      if (!Array.isArray(schema['anyOf'])) return
-      if (schema['anyOf'].length === 0) return
-
-      // check if all schemas are the same type
-      const schemaTypes = schema['anyOf'].map((schemaOrRef) => {
-        const schema = resolveRef({
-          refOrObject: schemaOrRef,
-          $ref: spec.$ref,
-        })
-        return schema.type
-      })
-      const allSchemasAreTheSameType = schemaTypes.every(
-        (type) => type === schemaTypes[0]
-      )
-      if (!allSchemasAreTheSameType) return
-
-      // merge all schemas into one schema
-      const mergedSchema: SchemaObject = schema['anyOf'].reduce(
-        (mergedSchema, schemaOrRef) => {
-          const schema = resolveRef({
-            refOrObject: schemaOrRef,
-            $ref: spec.$ref,
-          })
-          return mergeSchemaObject({
-            a: mergedSchema,
-            b: schema,
-            $ref: spec.$ref,
-          })
-        }
-      )
-
-      // ensure all schemas have a $ref property
-      const allSchemasAreRefs = schema['anyOf'].every((schemaOrRef) => {
-        return schemaOrRef['$ref'] !== undefined
-      })
-
-      if (!allSchemasAreRefs) {
-        // delete all properties on schema
-        Object.keys(schema).forEach((key) => delete schema[key])
-        // spread mergedSchema onto schema
-        Object.assign(schema, mergedSchema)
-        return
-      }
-
-      // Add merged schema to a components.schemas under a name combining all the schema names
-      const schemaNames = schema['anyOf'].map((schema: any) => {
-        // assume its a JSON Ref and we can extract the component name from it
-        const refString = schema['$ref']
-        const refStringSplit = refString.split('/')
-        const componentNameFromRef = refStringSplit[refStringSplit.length - 1]
-
-        const resolvedSchema = resolveRef({
-          refOrObject: schema,
-          $ref: spec.$ref,
-        })
-
-        const componentName =
-          'title' in resolvedSchema &&
-          typeof resolvedSchema['title'] === 'string'
-            ? resolvedSchema.title
-            : componentNameFromRef
-
-        return componentName
-      })
-      const generatedName = generateEncapsulatingName(
-        schemaNames,
-        spec.spec.components?.schemas
-          ? Object.keys(spec.spec.components.schemas)
-          : []
-      )
-      if (spec.spec.components === undefined) spec.spec.components = {}
-      if (spec.spec.components.schemas === undefined)
-        spec.spec.components.schemas = {}
-      spec.spec.components.schemas[generatedName] = mergedSchema
-      delete schema['anyOf']
-      schema['$ref'] = `#/components/schemas/${generatedName}`
-    })
+    transformSingletonAnyOfSchema({ spec: spec })
+    mergeAnyOfSameSchema({ spec: spec })
 
     // recurse over all schema objects and add the "x-do-not-generate" vendor
     // extension if the schema is only used in a non-successful response code
@@ -834,6 +725,9 @@ export const transformSpec = async ({
         delete schema['default']
       }
     })
+
+    transformSingletonAnyOfSchema({ spec: spec })
+    mergeAnyOfSameSchema({ spec: spec })
   }
 
   // remove invalid escape sequence "\*" for Python from any descriptions in a schema component in the spec
