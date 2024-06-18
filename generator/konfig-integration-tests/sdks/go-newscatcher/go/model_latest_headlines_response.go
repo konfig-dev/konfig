@@ -22,7 +22,7 @@ type LatestHeadlinesResponse struct {
 	Page int32 `json:"page"`
 	TotalPages int32 `json:"total_pages"`
 	PageSize int32 `json:"page_size"`
-	Articles []map[string]interface{} `json:"articles"`
+	Articles []ArticlesPropertyInner `json:"articles"`
 	UserInput map[string]interface{} `json:"user_input"`
 }
 
@@ -30,7 +30,7 @@ type LatestHeadlinesResponse struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLatestHeadlinesResponse(totalHits int32, page int32, totalPages int32, pageSize int32, articles []map[string]interface{}, userInput map[string]interface{}) *LatestHeadlinesResponse {
+func NewLatestHeadlinesResponse(totalHits int32, page int32, totalPages int32, pageSize int32, articles []ArticlesPropertyInner, userInput map[string]interface{}) *LatestHeadlinesResponse {
 	this := LatestHeadlinesResponse{}
 	var status string = "ok"
 	this.Status = &status
@@ -182,9 +182,9 @@ func (o *LatestHeadlinesResponse) SetPageSize(v int32) {
 }
 
 // GetArticles returns the Articles field value
-func (o *LatestHeadlinesResponse) GetArticles() []map[string]interface{} {
+func (o *LatestHeadlinesResponse) GetArticles() []ArticlesPropertyInner {
 	if o == nil {
-		var ret []map[string]interface{}
+		var ret []ArticlesPropertyInner
 		return ret
 	}
 
@@ -193,7 +193,7 @@ func (o *LatestHeadlinesResponse) GetArticles() []map[string]interface{} {
 
 // GetArticlesOk returns a tuple with the Articles field value
 // and a boolean to check if the value has been set.
-func (o *LatestHeadlinesResponse) GetArticlesOk() ([]map[string]interface{}, bool) {
+func (o *LatestHeadlinesResponse) GetArticlesOk() ([]ArticlesPropertyInner, bool) {
 	if o == nil {
     return nil, false
 	}
@@ -201,7 +201,7 @@ func (o *LatestHeadlinesResponse) GetArticlesOk() ([]map[string]interface{}, boo
 }
 
 // SetArticles sets field value
-func (o *LatestHeadlinesResponse) SetArticles(v []map[string]interface{}) {
+func (o *LatestHeadlinesResponse) SetArticles(v []ArticlesPropertyInner) {
 	o.Articles = v
 }
 

@@ -41,8 +41,8 @@ func Test_newscatcherapi_SearchSimilarApiService(t *testing.T) {
         request.NotLang("notLang_example")
         request.Countries("countries_example")
         request.NotCountries("notCountries_example")
-        request.From(from)
-        request.To(to)
+        request.From("from_example")
+        request.To("to_example")
         request.ByParseDate(false)
         request.PublishedDatePrecision("publishedDatePrecision_example")
         request.SortBy(""relevancy"")
@@ -77,8 +77,6 @@ func Test_newscatcherapi_SearchSimilarApiService(t *testing.T) {
 
     t.Run("Test SearchSimilarApiService Post", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
-        from := *newscatcherapi.NewFrom()
-        to := *newscatcherapi.NewTo()
         
         moreLikeThisRequest := *newscatcherapi.NewMoreLikeThisRequest(
             "null",
@@ -94,8 +92,8 @@ func Test_newscatcherapi_SearchSimilarApiService(t *testing.T) {
         moreLikeThisRequest.SetNotLang("null")
         moreLikeThisRequest.SetCountries("null")
         moreLikeThisRequest.SetNotCountries("null")
-        moreLikeThisRequest.SetFrom(from)
-        moreLikeThisRequest.SetTo(to)
+        moreLikeThisRequest.SetFrom("null")
+        moreLikeThisRequest.SetTo("null")
         moreLikeThisRequest.SetByParseDate(false)
         moreLikeThisRequest.SetPublishedDatePrecision("null")
         moreLikeThisRequest.SetSortBy("relevancy")

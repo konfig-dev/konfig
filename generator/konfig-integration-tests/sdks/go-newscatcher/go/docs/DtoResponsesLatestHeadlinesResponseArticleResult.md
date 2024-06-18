@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **Title** | **string** |  | 
 **Description** | Pointer to **string** |  | [optional] 
 **Author** | Pointer to **string** |  | [optional] 
-**Authors** | Pointer to [**AuthorsProperty**](AuthorsProperty.md) |  | [optional] 
-**Journalists** | Pointer to [**JournalistsProperty**](JournalistsProperty.md) |  | [optional] 
+**Authors** | Pointer to [**Authors**](Authors.md) |  | [optional] 
+**Journalists** | Pointer to [**Journalists**](Journalists.md) |  | [optional] 
 **PublishedDate** | Pointer to **string** |  | [optional] 
 **PublishedDatePrecision** | Pointer to **string** |  | [optional] 
 **UpdatedDate** | Pointer to **string** |  | [optional] 
@@ -30,8 +30,8 @@ Name | Type | Description | Notes
 **WordCount** | Pointer to **int32** |  | [optional] [default to 0]
 **IsOpinion** | Pointer to **bool** |  | [optional] 
 **TwitterAccount** | Pointer to **string** |  | [optional] 
-**AllLinks** | Pointer to [**AllLinksProperty**](AllLinksProperty.md) |  | [optional] 
-**AllDomainLinks** | Pointer to [**AllDomainLinksProperty**](AllDomainLinksProperty.md) |  | [optional] 
+**AllLinks** | Pointer to [**AllLinks**](AllLinks.md) |  | [optional] 
+**AllDomainLinks** | Pointer to [**AllDomainLinks**](AllDomainLinks.md) |  | [optional] 
 **Nlp** | Pointer to **map[string]interface{}** |  | [optional] [default to {}]
 **Id** | **string** |  | 
 **Score** | **float32** |  | 
@@ -127,20 +127,20 @@ HasAuthor returns a boolean if a field has been set.
 
 ### GetAuthors
 
-`func (o *DtoResponsesLatestHeadlinesResponseArticleResult) GetAuthors() AuthorsProperty`
+`func (o *DtoResponsesLatestHeadlinesResponseArticleResult) GetAuthors() Authors`
 
 GetAuthors returns the Authors field if non-nil, zero value otherwise.
 
 ### GetAuthorsOk
 
-`func (o *DtoResponsesLatestHeadlinesResponseArticleResult) GetAuthorsOk() (*AuthorsProperty, bool)`
+`func (o *DtoResponsesLatestHeadlinesResponseArticleResult) GetAuthorsOk() (*Authors, bool)`
 
 GetAuthorsOk returns a tuple with the Authors field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthors
 
-`func (o *DtoResponsesLatestHeadlinesResponseArticleResult) SetAuthors(v AuthorsProperty)`
+`func (o *DtoResponsesLatestHeadlinesResponseArticleResult) SetAuthors(v Authors)`
 
 SetAuthors sets Authors field to given value.
 
@@ -152,20 +152,20 @@ HasAuthors returns a boolean if a field has been set.
 
 ### GetJournalists
 
-`func (o *DtoResponsesLatestHeadlinesResponseArticleResult) GetJournalists() JournalistsProperty`
+`func (o *DtoResponsesLatestHeadlinesResponseArticleResult) GetJournalists() Journalists`
 
 GetJournalists returns the Journalists field if non-nil, zero value otherwise.
 
 ### GetJournalistsOk
 
-`func (o *DtoResponsesLatestHeadlinesResponseArticleResult) GetJournalistsOk() (*JournalistsProperty, bool)`
+`func (o *DtoResponsesLatestHeadlinesResponseArticleResult) GetJournalistsOk() (*Journalists, bool)`
 
 GetJournalistsOk returns a tuple with the Journalists field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetJournalists
 
-`func (o *DtoResponsesLatestHeadlinesResponseArticleResult) SetJournalists(v JournalistsProperty)`
+`func (o *DtoResponsesLatestHeadlinesResponseArticleResult) SetJournalists(v Journalists)`
 
 SetJournalists sets Journalists field to given value.
 
@@ -677,20 +677,20 @@ HasTwitterAccount returns a boolean if a field has been set.
 
 ### GetAllLinks
 
-`func (o *DtoResponsesLatestHeadlinesResponseArticleResult) GetAllLinks() AllLinksProperty`
+`func (o *DtoResponsesLatestHeadlinesResponseArticleResult) GetAllLinks() AllLinks`
 
 GetAllLinks returns the AllLinks field if non-nil, zero value otherwise.
 
 ### GetAllLinksOk
 
-`func (o *DtoResponsesLatestHeadlinesResponseArticleResult) GetAllLinksOk() (*AllLinksProperty, bool)`
+`func (o *DtoResponsesLatestHeadlinesResponseArticleResult) GetAllLinksOk() (*AllLinks, bool)`
 
 GetAllLinksOk returns a tuple with the AllLinks field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAllLinks
 
-`func (o *DtoResponsesLatestHeadlinesResponseArticleResult) SetAllLinks(v AllLinksProperty)`
+`func (o *DtoResponsesLatestHeadlinesResponseArticleResult) SetAllLinks(v AllLinks)`
 
 SetAllLinks sets AllLinks field to given value.
 
@@ -702,20 +702,20 @@ HasAllLinks returns a boolean if a field has been set.
 
 ### GetAllDomainLinks
 
-`func (o *DtoResponsesLatestHeadlinesResponseArticleResult) GetAllDomainLinks() AllDomainLinksProperty`
+`func (o *DtoResponsesLatestHeadlinesResponseArticleResult) GetAllDomainLinks() AllDomainLinks`
 
 GetAllDomainLinks returns the AllDomainLinks field if non-nil, zero value otherwise.
 
 ### GetAllDomainLinksOk
 
-`func (o *DtoResponsesLatestHeadlinesResponseArticleResult) GetAllDomainLinksOk() (*AllDomainLinksProperty, bool)`
+`func (o *DtoResponsesLatestHeadlinesResponseArticleResult) GetAllDomainLinksOk() (*AllDomainLinks, bool)`
 
 GetAllDomainLinksOk returns a tuple with the AllDomainLinks field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAllDomainLinks
 
-`func (o *DtoResponsesLatestHeadlinesResponseArticleResult) SetAllDomainLinks(v AllDomainLinksProperty)`
+`func (o *DtoResponsesLatestHeadlinesResponseArticleResult) SetAllDomainLinks(v AllDomainLinks)`
 
 SetAllDomainLinks sets AllDomainLinks field to given value.
 

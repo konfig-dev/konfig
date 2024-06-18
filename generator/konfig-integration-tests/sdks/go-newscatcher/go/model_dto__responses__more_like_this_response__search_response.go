@@ -18,11 +18,11 @@ import (
 // DtoResponsesMoreLikeThisResponseSearchResponse struct for DtoResponsesMoreLikeThisResponseSearchResponse
 type DtoResponsesMoreLikeThisResponseSearchResponse struct {
 	Status *string `json:"status,omitempty"`
-	TotalHits int32 `json:"total_hits"`
-	Page int32 `json:"page"`
-	TotalPages int32 `json:"total_pages"`
-	PageSize int32 `json:"page_size"`
-	Articles []map[string]interface{} `json:"articles"`
+	TotalHits *int32 `json:"total_hits,omitempty"`
+	Page *int32 `json:"page,omitempty"`
+	TotalPages *int32 `json:"total_pages,omitempty"`
+	PageSize *int32 `json:"page_size,omitempty"`
+	Articles []ArticlesPropertyInner2 `json:"articles,omitempty"`
 	UserInput map[string]interface{} `json:"user_input"`
 }
 
@@ -30,15 +30,10 @@ type DtoResponsesMoreLikeThisResponseSearchResponse struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDtoResponsesMoreLikeThisResponseSearchResponse(totalHits int32, page int32, totalPages int32, pageSize int32, articles []map[string]interface{}, userInput map[string]interface{}) *DtoResponsesMoreLikeThisResponseSearchResponse {
+func NewDtoResponsesMoreLikeThisResponseSearchResponse(userInput map[string]interface{}) *DtoResponsesMoreLikeThisResponseSearchResponse {
 	this := DtoResponsesMoreLikeThisResponseSearchResponse{}
 	var status string = "ok"
 	this.Status = &status
-	this.TotalHits = totalHits
-	this.Page = page
-	this.TotalPages = totalPages
-	this.PageSize = pageSize
-	this.Articles = articles
 	this.UserInput = userInput
 	return &this
 }
@@ -85,123 +80,163 @@ func (o *DtoResponsesMoreLikeThisResponseSearchResponse) SetStatus(v string) {
 	o.Status = &v
 }
 
-// GetTotalHits returns the TotalHits field value
+// GetTotalHits returns the TotalHits field value if set, zero value otherwise.
 func (o *DtoResponsesMoreLikeThisResponseSearchResponse) GetTotalHits() int32 {
-	if o == nil {
+	if o == nil || isNil(o.TotalHits) {
 		var ret int32
 		return ret
 	}
-
-	return o.TotalHits
+	return *o.TotalHits
 }
 
-// GetTotalHitsOk returns a tuple with the TotalHits field value
+// GetTotalHitsOk returns a tuple with the TotalHits field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DtoResponsesMoreLikeThisResponseSearchResponse) GetTotalHitsOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || isNil(o.TotalHits) {
     return nil, false
 	}
-	return &o.TotalHits, true
+	return o.TotalHits, true
 }
 
-// SetTotalHits sets field value
+// HasTotalHits returns a boolean if a field has been set.
+func (o *DtoResponsesMoreLikeThisResponseSearchResponse) HasTotalHits() bool {
+	if o != nil && !isNil(o.TotalHits) {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalHits gets a reference to the given int32 and assigns it to the TotalHits field.
 func (o *DtoResponsesMoreLikeThisResponseSearchResponse) SetTotalHits(v int32) {
-	o.TotalHits = v
+	o.TotalHits = &v
 }
 
-// GetPage returns the Page field value
+// GetPage returns the Page field value if set, zero value otherwise.
 func (o *DtoResponsesMoreLikeThisResponseSearchResponse) GetPage() int32 {
-	if o == nil {
+	if o == nil || isNil(o.Page) {
 		var ret int32
 		return ret
 	}
-
-	return o.Page
+	return *o.Page
 }
 
-// GetPageOk returns a tuple with the Page field value
+// GetPageOk returns a tuple with the Page field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DtoResponsesMoreLikeThisResponseSearchResponse) GetPageOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || isNil(o.Page) {
     return nil, false
 	}
-	return &o.Page, true
+	return o.Page, true
 }
 
-// SetPage sets field value
+// HasPage returns a boolean if a field has been set.
+func (o *DtoResponsesMoreLikeThisResponseSearchResponse) HasPage() bool {
+	if o != nil && !isNil(o.Page) {
+		return true
+	}
+
+	return false
+}
+
+// SetPage gets a reference to the given int32 and assigns it to the Page field.
 func (o *DtoResponsesMoreLikeThisResponseSearchResponse) SetPage(v int32) {
-	o.Page = v
+	o.Page = &v
 }
 
-// GetTotalPages returns the TotalPages field value
+// GetTotalPages returns the TotalPages field value if set, zero value otherwise.
 func (o *DtoResponsesMoreLikeThisResponseSearchResponse) GetTotalPages() int32 {
-	if o == nil {
+	if o == nil || isNil(o.TotalPages) {
 		var ret int32
 		return ret
 	}
-
-	return o.TotalPages
+	return *o.TotalPages
 }
 
-// GetTotalPagesOk returns a tuple with the TotalPages field value
+// GetTotalPagesOk returns a tuple with the TotalPages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DtoResponsesMoreLikeThisResponseSearchResponse) GetTotalPagesOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || isNil(o.TotalPages) {
     return nil, false
 	}
-	return &o.TotalPages, true
+	return o.TotalPages, true
 }
 
-// SetTotalPages sets field value
+// HasTotalPages returns a boolean if a field has been set.
+func (o *DtoResponsesMoreLikeThisResponseSearchResponse) HasTotalPages() bool {
+	if o != nil && !isNil(o.TotalPages) {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalPages gets a reference to the given int32 and assigns it to the TotalPages field.
 func (o *DtoResponsesMoreLikeThisResponseSearchResponse) SetTotalPages(v int32) {
-	o.TotalPages = v
+	o.TotalPages = &v
 }
 
-// GetPageSize returns the PageSize field value
+// GetPageSize returns the PageSize field value if set, zero value otherwise.
 func (o *DtoResponsesMoreLikeThisResponseSearchResponse) GetPageSize() int32 {
-	if o == nil {
+	if o == nil || isNil(o.PageSize) {
 		var ret int32
 		return ret
 	}
-
-	return o.PageSize
+	return *o.PageSize
 }
 
-// GetPageSizeOk returns a tuple with the PageSize field value
+// GetPageSizeOk returns a tuple with the PageSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *DtoResponsesMoreLikeThisResponseSearchResponse) GetPageSizeOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || isNil(o.PageSize) {
     return nil, false
 	}
-	return &o.PageSize, true
+	return o.PageSize, true
 }
 
-// SetPageSize sets field value
-func (o *DtoResponsesMoreLikeThisResponseSearchResponse) SetPageSize(v int32) {
-	o.PageSize = v
-}
-
-// GetArticles returns the Articles field value
-func (o *DtoResponsesMoreLikeThisResponseSearchResponse) GetArticles() []map[string]interface{} {
-	if o == nil {
-		var ret []map[string]interface{}
-		return ret
+// HasPageSize returns a boolean if a field has been set.
+func (o *DtoResponsesMoreLikeThisResponseSearchResponse) HasPageSize() bool {
+	if o != nil && !isNil(o.PageSize) {
+		return true
 	}
 
+	return false
+}
+
+// SetPageSize gets a reference to the given int32 and assigns it to the PageSize field.
+func (o *DtoResponsesMoreLikeThisResponseSearchResponse) SetPageSize(v int32) {
+	o.PageSize = &v
+}
+
+// GetArticles returns the Articles field value if set, zero value otherwise.
+func (o *DtoResponsesMoreLikeThisResponseSearchResponse) GetArticles() []ArticlesPropertyInner2 {
+	if o == nil || isNil(o.Articles) {
+		var ret []ArticlesPropertyInner2
+		return ret
+	}
 	return o.Articles
 }
 
-// GetArticlesOk returns a tuple with the Articles field value
+// GetArticlesOk returns a tuple with the Articles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoResponsesMoreLikeThisResponseSearchResponse) GetArticlesOk() ([]map[string]interface{}, bool) {
-	if o == nil {
+func (o *DtoResponsesMoreLikeThisResponseSearchResponse) GetArticlesOk() ([]ArticlesPropertyInner2, bool) {
+	if o == nil || isNil(o.Articles) {
     return nil, false
 	}
 	return o.Articles, true
 }
 
-// SetArticles sets field value
-func (o *DtoResponsesMoreLikeThisResponseSearchResponse) SetArticles(v []map[string]interface{}) {
+// HasArticles returns a boolean if a field has been set.
+func (o *DtoResponsesMoreLikeThisResponseSearchResponse) HasArticles() bool {
+	if o != nil && !isNil(o.Articles) {
+		return true
+	}
+
+	return false
+}
+
+// SetArticles gets a reference to the given []ArticlesPropertyInner2 and assigns it to the Articles field.
+func (o *DtoResponsesMoreLikeThisResponseSearchResponse) SetArticles(v []ArticlesPropertyInner2) {
 	o.Articles = v
 }
 
@@ -234,19 +269,19 @@ func (o DtoResponsesMoreLikeThisResponseSearchResponse) MarshalJSON() ([]byte, e
 	if !isNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if true {
+	if !isNil(o.TotalHits) {
 		toSerialize["total_hits"] = o.TotalHits
 	}
-	if true {
+	if !isNil(o.Page) {
 		toSerialize["page"] = o.Page
 	}
-	if true {
+	if !isNil(o.TotalPages) {
 		toSerialize["total_pages"] = o.TotalPages
 	}
-	if true {
+	if !isNil(o.PageSize) {
 		toSerialize["page_size"] = o.PageSize
 	}
-	if true {
+	if !isNil(o.Articles) {
 		toSerialize["articles"] = o.Articles
 	}
 	if true {

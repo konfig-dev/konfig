@@ -5,19 +5,20 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Status** | Pointer to **string** |  | [optional] [default to "ok"]
-**TotalHits** | **int32** |  | 
-**Page** | **int32** |  | 
-**TotalPages** | **int32** |  | 
-**PageSize** | **int32** |  | 
-**ClustersCount** | **int32** |  | 
-**Clusters** | [**[]Cluster**](Cluster.md) |  | 
+**TotalHits** | Pointer to **int32** |  | [optional] 
+**Page** | Pointer to **int32** |  | [optional] 
+**TotalPages** | Pointer to **int32** |  | [optional] 
+**PageSize** | Pointer to **int32** |  | [optional] 
+**ClustersCount** | Pointer to **int32** |  | [optional] 
+**Clusters** | Pointer to [**[]Cluster1**](Cluster1.md) |  | [optional] 
 **UserInput** | **map[string]interface{}** |  | 
+**Articles** | Pointer to [**[]ArticlesPropertyInner**](ArticlesPropertyInner.md) |  | [optional] 
 
 ## Methods
 
 ### NewClusteringSearchResponse
 
-`func NewClusteringSearchResponse(totalHits int32, page int32, totalPages int32, pageSize int32, clustersCount int32, clusters []Cluster, userInput map[string]interface{}, ) *ClusteringSearchResponse`
+`func NewClusteringSearchResponse(userInput map[string]interface{}, ) *ClusteringSearchResponse`
 
 NewClusteringSearchResponse instantiates a new ClusteringSearchResponse object
 This constructor will assign default values to properties that have it defined,
@@ -76,6 +77,11 @@ and a boolean to check if the value has been set.
 
 SetTotalHits sets TotalHits field to given value.
 
+### HasTotalHits
+
+`func (o *ClusteringSearchResponse) HasTotalHits() bool`
+
+HasTotalHits returns a boolean if a field has been set.
 
 ### GetPage
 
@@ -96,6 +102,11 @@ and a boolean to check if the value has been set.
 
 SetPage sets Page field to given value.
 
+### HasPage
+
+`func (o *ClusteringSearchResponse) HasPage() bool`
+
+HasPage returns a boolean if a field has been set.
 
 ### GetTotalPages
 
@@ -116,6 +127,11 @@ and a boolean to check if the value has been set.
 
 SetTotalPages sets TotalPages field to given value.
 
+### HasTotalPages
+
+`func (o *ClusteringSearchResponse) HasTotalPages() bool`
+
+HasTotalPages returns a boolean if a field has been set.
 
 ### GetPageSize
 
@@ -136,6 +152,11 @@ and a boolean to check if the value has been set.
 
 SetPageSize sets PageSize field to given value.
 
+### HasPageSize
+
+`func (o *ClusteringSearchResponse) HasPageSize() bool`
+
+HasPageSize returns a boolean if a field has been set.
 
 ### GetClustersCount
 
@@ -156,26 +177,36 @@ and a boolean to check if the value has been set.
 
 SetClustersCount sets ClustersCount field to given value.
 
+### HasClustersCount
+
+`func (o *ClusteringSearchResponse) HasClustersCount() bool`
+
+HasClustersCount returns a boolean if a field has been set.
 
 ### GetClusters
 
-`func (o *ClusteringSearchResponse) GetClusters() []Cluster`
+`func (o *ClusteringSearchResponse) GetClusters() []Cluster1`
 
 GetClusters returns the Clusters field if non-nil, zero value otherwise.
 
 ### GetClustersOk
 
-`func (o *ClusteringSearchResponse) GetClustersOk() (*[]Cluster, bool)`
+`func (o *ClusteringSearchResponse) GetClustersOk() (*[]Cluster1, bool)`
 
 GetClustersOk returns a tuple with the Clusters field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetClusters
 
-`func (o *ClusteringSearchResponse) SetClusters(v []Cluster)`
+`func (o *ClusteringSearchResponse) SetClusters(v []Cluster1)`
 
 SetClusters sets Clusters field to given value.
 
+### HasClusters
+
+`func (o *ClusteringSearchResponse) HasClusters() bool`
+
+HasClusters returns a boolean if a field has been set.
 
 ### GetUserInput
 
@@ -196,6 +227,31 @@ and a boolean to check if the value has been set.
 
 SetUserInput sets UserInput field to given value.
 
+
+### GetArticles
+
+`func (o *ClusteringSearchResponse) GetArticles() []ArticlesPropertyInner`
+
+GetArticles returns the Articles field if non-nil, zero value otherwise.
+
+### GetArticlesOk
+
+`func (o *ClusteringSearchResponse) GetArticlesOk() (*[]ArticlesPropertyInner, bool)`
+
+GetArticlesOk returns a tuple with the Articles field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetArticles
+
+`func (o *ClusteringSearchResponse) SetArticles(v []ArticlesPropertyInner)`
+
+SetArticles sets Articles field to given value.
+
+### HasArticles
+
+`func (o *ClusteringSearchResponse) HasArticles() bool`
+
+HasArticles returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

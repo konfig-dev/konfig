@@ -18,29 +18,24 @@ import (
 // ClusteringSearchResponse struct for ClusteringSearchResponse
 type ClusteringSearchResponse struct {
 	Status *string `json:"status,omitempty"`
-	TotalHits int32 `json:"total_hits"`
-	Page int32 `json:"page"`
-	TotalPages int32 `json:"total_pages"`
-	PageSize int32 `json:"page_size"`
-	ClustersCount int32 `json:"clusters_count"`
-	Clusters []Cluster `json:"clusters"`
+	TotalHits *int32 `json:"total_hits,omitempty"`
+	Page *int32 `json:"page,omitempty"`
+	TotalPages *int32 `json:"total_pages,omitempty"`
+	PageSize *int32 `json:"page_size,omitempty"`
+	ClustersCount *int32 `json:"clusters_count,omitempty"`
+	Clusters []Cluster1 `json:"clusters,omitempty"`
 	UserInput map[string]interface{} `json:"user_input"`
+	Articles []ArticlesPropertyInner `json:"articles,omitempty"`
 }
 
 // NewClusteringSearchResponse instantiates a new ClusteringSearchResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewClusteringSearchResponse(totalHits int32, page int32, totalPages int32, pageSize int32, clustersCount int32, clusters []Cluster, userInput map[string]interface{}) *ClusteringSearchResponse {
+func NewClusteringSearchResponse(userInput map[string]interface{}) *ClusteringSearchResponse {
 	this := ClusteringSearchResponse{}
 	var status string = "ok"
 	this.Status = &status
-	this.TotalHits = totalHits
-	this.Page = page
-	this.TotalPages = totalPages
-	this.PageSize = pageSize
-	this.ClustersCount = clustersCount
-	this.Clusters = clusters
 	this.UserInput = userInput
 	return &this
 }
@@ -87,147 +82,195 @@ func (o *ClusteringSearchResponse) SetStatus(v string) {
 	o.Status = &v
 }
 
-// GetTotalHits returns the TotalHits field value
+// GetTotalHits returns the TotalHits field value if set, zero value otherwise.
 func (o *ClusteringSearchResponse) GetTotalHits() int32 {
-	if o == nil {
+	if o == nil || isNil(o.TotalHits) {
 		var ret int32
 		return ret
 	}
-
-	return o.TotalHits
+	return *o.TotalHits
 }
 
-// GetTotalHitsOk returns a tuple with the TotalHits field value
+// GetTotalHitsOk returns a tuple with the TotalHits field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusteringSearchResponse) GetTotalHitsOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || isNil(o.TotalHits) {
     return nil, false
 	}
-	return &o.TotalHits, true
+	return o.TotalHits, true
 }
 
-// SetTotalHits sets field value
+// HasTotalHits returns a boolean if a field has been set.
+func (o *ClusteringSearchResponse) HasTotalHits() bool {
+	if o != nil && !isNil(o.TotalHits) {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalHits gets a reference to the given int32 and assigns it to the TotalHits field.
 func (o *ClusteringSearchResponse) SetTotalHits(v int32) {
-	o.TotalHits = v
+	o.TotalHits = &v
 }
 
-// GetPage returns the Page field value
+// GetPage returns the Page field value if set, zero value otherwise.
 func (o *ClusteringSearchResponse) GetPage() int32 {
-	if o == nil {
+	if o == nil || isNil(o.Page) {
 		var ret int32
 		return ret
 	}
-
-	return o.Page
+	return *o.Page
 }
 
-// GetPageOk returns a tuple with the Page field value
+// GetPageOk returns a tuple with the Page field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusteringSearchResponse) GetPageOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || isNil(o.Page) {
     return nil, false
 	}
-	return &o.Page, true
+	return o.Page, true
 }
 
-// SetPage sets field value
+// HasPage returns a boolean if a field has been set.
+func (o *ClusteringSearchResponse) HasPage() bool {
+	if o != nil && !isNil(o.Page) {
+		return true
+	}
+
+	return false
+}
+
+// SetPage gets a reference to the given int32 and assigns it to the Page field.
 func (o *ClusteringSearchResponse) SetPage(v int32) {
-	o.Page = v
+	o.Page = &v
 }
 
-// GetTotalPages returns the TotalPages field value
+// GetTotalPages returns the TotalPages field value if set, zero value otherwise.
 func (o *ClusteringSearchResponse) GetTotalPages() int32 {
-	if o == nil {
+	if o == nil || isNil(o.TotalPages) {
 		var ret int32
 		return ret
 	}
-
-	return o.TotalPages
+	return *o.TotalPages
 }
 
-// GetTotalPagesOk returns a tuple with the TotalPages field value
+// GetTotalPagesOk returns a tuple with the TotalPages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusteringSearchResponse) GetTotalPagesOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || isNil(o.TotalPages) {
     return nil, false
 	}
-	return &o.TotalPages, true
+	return o.TotalPages, true
 }
 
-// SetTotalPages sets field value
+// HasTotalPages returns a boolean if a field has been set.
+func (o *ClusteringSearchResponse) HasTotalPages() bool {
+	if o != nil && !isNil(o.TotalPages) {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalPages gets a reference to the given int32 and assigns it to the TotalPages field.
 func (o *ClusteringSearchResponse) SetTotalPages(v int32) {
-	o.TotalPages = v
+	o.TotalPages = &v
 }
 
-// GetPageSize returns the PageSize field value
+// GetPageSize returns the PageSize field value if set, zero value otherwise.
 func (o *ClusteringSearchResponse) GetPageSize() int32 {
-	if o == nil {
+	if o == nil || isNil(o.PageSize) {
 		var ret int32
 		return ret
 	}
-
-	return o.PageSize
+	return *o.PageSize
 }
 
-// GetPageSizeOk returns a tuple with the PageSize field value
+// GetPageSizeOk returns a tuple with the PageSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusteringSearchResponse) GetPageSizeOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || isNil(o.PageSize) {
     return nil, false
 	}
-	return &o.PageSize, true
+	return o.PageSize, true
 }
 
-// SetPageSize sets field value
+// HasPageSize returns a boolean if a field has been set.
+func (o *ClusteringSearchResponse) HasPageSize() bool {
+	if o != nil && !isNil(o.PageSize) {
+		return true
+	}
+
+	return false
+}
+
+// SetPageSize gets a reference to the given int32 and assigns it to the PageSize field.
 func (o *ClusteringSearchResponse) SetPageSize(v int32) {
-	o.PageSize = v
+	o.PageSize = &v
 }
 
-// GetClustersCount returns the ClustersCount field value
+// GetClustersCount returns the ClustersCount field value if set, zero value otherwise.
 func (o *ClusteringSearchResponse) GetClustersCount() int32 {
-	if o == nil {
+	if o == nil || isNil(o.ClustersCount) {
 		var ret int32
 		return ret
 	}
-
-	return o.ClustersCount
+	return *o.ClustersCount
 }
 
-// GetClustersCountOk returns a tuple with the ClustersCount field value
+// GetClustersCountOk returns a tuple with the ClustersCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ClusteringSearchResponse) GetClustersCountOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || isNil(o.ClustersCount) {
     return nil, false
 	}
-	return &o.ClustersCount, true
+	return o.ClustersCount, true
 }
 
-// SetClustersCount sets field value
-func (o *ClusteringSearchResponse) SetClustersCount(v int32) {
-	o.ClustersCount = v
-}
-
-// GetClusters returns the Clusters field value
-func (o *ClusteringSearchResponse) GetClusters() []Cluster {
-	if o == nil {
-		var ret []Cluster
-		return ret
+// HasClustersCount returns a boolean if a field has been set.
+func (o *ClusteringSearchResponse) HasClustersCount() bool {
+	if o != nil && !isNil(o.ClustersCount) {
+		return true
 	}
 
+	return false
+}
+
+// SetClustersCount gets a reference to the given int32 and assigns it to the ClustersCount field.
+func (o *ClusteringSearchResponse) SetClustersCount(v int32) {
+	o.ClustersCount = &v
+}
+
+// GetClusters returns the Clusters field value if set, zero value otherwise.
+func (o *ClusteringSearchResponse) GetClusters() []Cluster1 {
+	if o == nil || isNil(o.Clusters) {
+		var ret []Cluster1
+		return ret
+	}
 	return o.Clusters
 }
 
-// GetClustersOk returns a tuple with the Clusters field value
+// GetClustersOk returns a tuple with the Clusters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusteringSearchResponse) GetClustersOk() ([]Cluster, bool) {
-	if o == nil {
+func (o *ClusteringSearchResponse) GetClustersOk() ([]Cluster1, bool) {
+	if o == nil || isNil(o.Clusters) {
     return nil, false
 	}
 	return o.Clusters, true
 }
 
-// SetClusters sets field value
-func (o *ClusteringSearchResponse) SetClusters(v []Cluster) {
+// HasClusters returns a boolean if a field has been set.
+func (o *ClusteringSearchResponse) HasClusters() bool {
+	if o != nil && !isNil(o.Clusters) {
+		return true
+	}
+
+	return false
+}
+
+// SetClusters gets a reference to the given []Cluster1 and assigns it to the Clusters field.
+func (o *ClusteringSearchResponse) SetClusters(v []Cluster1) {
 	o.Clusters = v
 }
 
@@ -255,31 +298,66 @@ func (o *ClusteringSearchResponse) SetUserInput(v map[string]interface{}) {
 	o.UserInput = v
 }
 
+// GetArticles returns the Articles field value if set, zero value otherwise.
+func (o *ClusteringSearchResponse) GetArticles() []ArticlesPropertyInner {
+	if o == nil || isNil(o.Articles) {
+		var ret []ArticlesPropertyInner
+		return ret
+	}
+	return o.Articles
+}
+
+// GetArticlesOk returns a tuple with the Articles field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusteringSearchResponse) GetArticlesOk() ([]ArticlesPropertyInner, bool) {
+	if o == nil || isNil(o.Articles) {
+    return nil, false
+	}
+	return o.Articles, true
+}
+
+// HasArticles returns a boolean if a field has been set.
+func (o *ClusteringSearchResponse) HasArticles() bool {
+	if o != nil && !isNil(o.Articles) {
+		return true
+	}
+
+	return false
+}
+
+// SetArticles gets a reference to the given []ArticlesPropertyInner and assigns it to the Articles field.
+func (o *ClusteringSearchResponse) SetArticles(v []ArticlesPropertyInner) {
+	o.Articles = v
+}
+
 func (o ClusteringSearchResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if true {
+	if !isNil(o.TotalHits) {
 		toSerialize["total_hits"] = o.TotalHits
 	}
-	if true {
+	if !isNil(o.Page) {
 		toSerialize["page"] = o.Page
 	}
-	if true {
+	if !isNil(o.TotalPages) {
 		toSerialize["total_pages"] = o.TotalPages
 	}
-	if true {
+	if !isNil(o.PageSize) {
 		toSerialize["page_size"] = o.PageSize
 	}
-	if true {
+	if !isNil(o.ClustersCount) {
 		toSerialize["clusters_count"] = o.ClustersCount
 	}
-	if true {
+	if !isNil(o.Clusters) {
 		toSerialize["clusters"] = o.Clusters
 	}
 	if true {
 		toSerialize["user_input"] = o.UserInput
+	}
+	if !isNil(o.Articles) {
+		toSerialize["articles"] = o.Articles
 	}
 	return json.Marshal(toSerialize)
 }

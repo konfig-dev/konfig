@@ -20,8 +20,8 @@ type DtoResponsesMoreLikeThisResponseArticleResult struct {
 	Title string `json:"title"`
 	Description *string `json:"description,omitempty"`
 	Author *string `json:"author,omitempty"`
-	Authors *AuthorsProperty `json:"authors,omitempty"`
-	Journalists *JournalistsProperty `json:"journalists,omitempty"`
+	Authors *Authors `json:"authors,omitempty"`
+	Journalists *Journalists `json:"journalists,omitempty"`
 	PublishedDate *string `json:"published_date,omitempty"`
 	PublishedDatePrecision *string `json:"published_date_precision,omitempty"`
 	UpdatedDate *string `json:"updated_date,omitempty"`
@@ -43,12 +43,12 @@ type DtoResponsesMoreLikeThisResponseArticleResult struct {
 	WordCount *int32 `json:"word_count,omitempty"`
 	IsOpinion *bool `json:"is_opinion,omitempty"`
 	TwitterAccount *string `json:"twitter_account,omitempty"`
-	AllLinks *AllLinksProperty `json:"all_links,omitempty"`
-	AllDomainLinks *AllDomainLinksProperty `json:"all_domain_links,omitempty"`
+	AllLinks *AllLinks `json:"all_links,omitempty"`
+	AllDomainLinks *AllDomainLinks `json:"all_domain_links,omitempty"`
 	Nlp map[string]interface{} `json:"nlp,omitempty"`
 	Id string `json:"id"`
 	Score float32 `json:"score"`
-	SimilarDocuments []SimilarDocument `json:"similar_documents,omitempty"`
+	SimilarDocuments []SimilarDocument1 `json:"similar_documents,omitempty"`
 }
 
 // NewDtoResponsesMoreLikeThisResponseArticleResult instantiates a new DtoResponsesMoreLikeThisResponseArticleResult object
@@ -170,9 +170,9 @@ func (o *DtoResponsesMoreLikeThisResponseArticleResult) SetAuthor(v string) {
 }
 
 // GetAuthors returns the Authors field value if set, zero value otherwise.
-func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetAuthors() AuthorsProperty {
+func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetAuthors() Authors {
 	if o == nil || isNil(o.Authors) {
-		var ret AuthorsProperty
+		var ret Authors
 		return ret
 	}
 	return *o.Authors
@@ -180,7 +180,7 @@ func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetAuthors() AuthorsProp
 
 // GetAuthorsOk returns a tuple with the Authors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetAuthorsOk() (*AuthorsProperty, bool) {
+func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetAuthorsOk() (*Authors, bool) {
 	if o == nil || isNil(o.Authors) {
     return nil, false
 	}
@@ -196,15 +196,15 @@ func (o *DtoResponsesMoreLikeThisResponseArticleResult) HasAuthors() bool {
 	return false
 }
 
-// SetAuthors gets a reference to the given AuthorsProperty and assigns it to the Authors field.
-func (o *DtoResponsesMoreLikeThisResponseArticleResult) SetAuthors(v AuthorsProperty) {
+// SetAuthors gets a reference to the given Authors and assigns it to the Authors field.
+func (o *DtoResponsesMoreLikeThisResponseArticleResult) SetAuthors(v Authors) {
 	o.Authors = &v
 }
 
 // GetJournalists returns the Journalists field value if set, zero value otherwise.
-func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetJournalists() JournalistsProperty {
+func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetJournalists() Journalists {
 	if o == nil || isNil(o.Journalists) {
-		var ret JournalistsProperty
+		var ret Journalists
 		return ret
 	}
 	return *o.Journalists
@@ -212,7 +212,7 @@ func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetJournalists() Journal
 
 // GetJournalistsOk returns a tuple with the Journalists field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetJournalistsOk() (*JournalistsProperty, bool) {
+func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetJournalistsOk() (*Journalists, bool) {
 	if o == nil || isNil(o.Journalists) {
     return nil, false
 	}
@@ -228,8 +228,8 @@ func (o *DtoResponsesMoreLikeThisResponseArticleResult) HasJournalists() bool {
 	return false
 }
 
-// SetJournalists gets a reference to the given JournalistsProperty and assigns it to the Journalists field.
-func (o *DtoResponsesMoreLikeThisResponseArticleResult) SetJournalists(v JournalistsProperty) {
+// SetJournalists gets a reference to the given Journalists and assigns it to the Journalists field.
+func (o *DtoResponsesMoreLikeThisResponseArticleResult) SetJournalists(v Journalists) {
 	o.Journalists = &v
 }
 
@@ -858,9 +858,9 @@ func (o *DtoResponsesMoreLikeThisResponseArticleResult) SetTwitterAccount(v stri
 }
 
 // GetAllLinks returns the AllLinks field value if set, zero value otherwise.
-func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetAllLinks() AllLinksProperty {
+func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetAllLinks() AllLinks {
 	if o == nil || isNil(o.AllLinks) {
-		var ret AllLinksProperty
+		var ret AllLinks
 		return ret
 	}
 	return *o.AllLinks
@@ -868,7 +868,7 @@ func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetAllLinks() AllLinksPr
 
 // GetAllLinksOk returns a tuple with the AllLinks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetAllLinksOk() (*AllLinksProperty, bool) {
+func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetAllLinksOk() (*AllLinks, bool) {
 	if o == nil || isNil(o.AllLinks) {
     return nil, false
 	}
@@ -884,15 +884,15 @@ func (o *DtoResponsesMoreLikeThisResponseArticleResult) HasAllLinks() bool {
 	return false
 }
 
-// SetAllLinks gets a reference to the given AllLinksProperty and assigns it to the AllLinks field.
-func (o *DtoResponsesMoreLikeThisResponseArticleResult) SetAllLinks(v AllLinksProperty) {
+// SetAllLinks gets a reference to the given AllLinks and assigns it to the AllLinks field.
+func (o *DtoResponsesMoreLikeThisResponseArticleResult) SetAllLinks(v AllLinks) {
 	o.AllLinks = &v
 }
 
 // GetAllDomainLinks returns the AllDomainLinks field value if set, zero value otherwise.
-func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetAllDomainLinks() AllDomainLinksProperty {
+func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetAllDomainLinks() AllDomainLinks {
 	if o == nil || isNil(o.AllDomainLinks) {
-		var ret AllDomainLinksProperty
+		var ret AllDomainLinks
 		return ret
 	}
 	return *o.AllDomainLinks
@@ -900,7 +900,7 @@ func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetAllDomainLinks() AllD
 
 // GetAllDomainLinksOk returns a tuple with the AllDomainLinks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetAllDomainLinksOk() (*AllDomainLinksProperty, bool) {
+func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetAllDomainLinksOk() (*AllDomainLinks, bool) {
 	if o == nil || isNil(o.AllDomainLinks) {
     return nil, false
 	}
@@ -916,8 +916,8 @@ func (o *DtoResponsesMoreLikeThisResponseArticleResult) HasAllDomainLinks() bool
 	return false
 }
 
-// SetAllDomainLinks gets a reference to the given AllDomainLinksProperty and assigns it to the AllDomainLinks field.
-func (o *DtoResponsesMoreLikeThisResponseArticleResult) SetAllDomainLinks(v AllDomainLinksProperty) {
+// SetAllDomainLinks gets a reference to the given AllDomainLinks and assigns it to the AllDomainLinks field.
+func (o *DtoResponsesMoreLikeThisResponseArticleResult) SetAllDomainLinks(v AllDomainLinks) {
 	o.AllDomainLinks = &v
 }
 
@@ -1002,9 +1002,9 @@ func (o *DtoResponsesMoreLikeThisResponseArticleResult) SetScore(v float32) {
 }
 
 // GetSimilarDocuments returns the SimilarDocuments field value if set, zero value otherwise.
-func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetSimilarDocuments() []SimilarDocument {
+func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetSimilarDocuments() []SimilarDocument1 {
 	if o == nil || isNil(o.SimilarDocuments) {
-		var ret []SimilarDocument
+		var ret []SimilarDocument1
 		return ret
 	}
 	return o.SimilarDocuments
@@ -1012,7 +1012,7 @@ func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetSimilarDocuments() []
 
 // GetSimilarDocumentsOk returns a tuple with the SimilarDocuments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetSimilarDocumentsOk() ([]SimilarDocument, bool) {
+func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetSimilarDocumentsOk() ([]SimilarDocument1, bool) {
 	if o == nil || isNil(o.SimilarDocuments) {
     return nil, false
 	}
@@ -1028,8 +1028,8 @@ func (o *DtoResponsesMoreLikeThisResponseArticleResult) HasSimilarDocuments() bo
 	return false
 }
 
-// SetSimilarDocuments gets a reference to the given []SimilarDocument and assigns it to the SimilarDocuments field.
-func (o *DtoResponsesMoreLikeThisResponseArticleResult) SetSimilarDocuments(v []SimilarDocument) {
+// SetSimilarDocuments gets a reference to the given []SimilarDocument1 and assigns it to the SimilarDocuments field.
+func (o *DtoResponsesMoreLikeThisResponseArticleResult) SetSimilarDocuments(v []SimilarDocument1) {
 	o.SimilarDocuments = v
 }
 

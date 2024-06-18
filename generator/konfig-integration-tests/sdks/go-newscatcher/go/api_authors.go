@@ -34,8 +34,8 @@ type AuthorsApiGetRequest struct {
 	notLang *string
 	countries *string
 	notCountries *string
-	from *From
-	to *To
+	from *string
+	to *string
 	publishedDatePrecision *string
 	byParseDate *bool
 	sortBy *string
@@ -96,12 +96,12 @@ func (r *AuthorsApiGetRequest) NotCountries(notCountries string) *AuthorsApiGetR
 	return r
 }
 
-func (r *AuthorsApiGetRequest) From(from From) *AuthorsApiGetRequest {
+func (r *AuthorsApiGetRequest) From(from string) *AuthorsApiGetRequest {
 	r.from = &from
 	return r
 }
 
-func (r *AuthorsApiGetRequest) To(to To) *AuthorsApiGetRequest {
+func (r *AuthorsApiGetRequest) To(to string) *AuthorsApiGetRequest {
 	r.to = &to
 	return r
 }
@@ -221,7 +221,7 @@ func (r *AuthorsApiGetRequest) ContentSentimentMax(contentSentimentMax float32) 
 	return r
 }
 
-func (r AuthorsApiGetRequest) Execute() (*AuthorsGetResponse, *http.Response, error) {
+func (r AuthorsApiGetRequest) Execute() (*FSearchResponse, *http.Response, error) {
 	return r.ApiService.GetExecute(r)
 }
 
@@ -243,13 +243,13 @@ func (a *AuthorsApiService) Get(authorName string) AuthorsApiGetRequest {
 }
 
 // Execute executes the request
-//  @return AuthorsGetResponse
-func (a *AuthorsApiService) GetExecute(r AuthorsApiGetRequest) (*AuthorsGetResponse, *http.Response, error) {
+//  @return FSearchResponse
+func (a *AuthorsApiService) GetExecute(r AuthorsApiGetRequest) (*FSearchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *AuthorsGetResponse
+		localVarReturnValue  *FSearchResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthorsApiService.Get")
@@ -262,16 +262,16 @@ func (a *AuthorsApiService) GetExecute(r AuthorsApiGetRequest) (*AuthorsGetRespo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if *r.wordCountMin < 0 {
+	if r.wordCountMin != nil && *r.wordCountMin < 0 {
 		return localVarReturnValue, nil, reportError("wordCountMin must be greater than 0")
 	}
-	if *r.wordCountMax < 0 {
+	if r.wordCountMax != nil && *r.wordCountMax < 0 {
 		return localVarReturnValue, nil, reportError("wordCountMax must be greater than 0")
 	}
-	if *r.page < 0 {
+	if r.page != nil && *r.page < 0 {
 		return localVarReturnValue, nil, reportError("page must be greater than 0")
 	}
-	if *r.pageSize < 0 {
+	if r.pageSize != nil && *r.pageSize < 0 {
 		return localVarReturnValue, nil, reportError("pageSize must be greater than 0")
 	}
 
@@ -456,7 +456,7 @@ type AuthorsApiPostRequest struct {
 	authorSearchRequest AuthorSearchRequest
 }
 
-func (r AuthorsApiPostRequest) Execute() (*AuthorsPostResponse, *http.Response, error) {
+func (r AuthorsApiPostRequest) Execute() (*FSearchResponse1, *http.Response, error) {
 	return r.ApiService.PostExecute(r)
 }
 
@@ -478,13 +478,13 @@ func (a *AuthorsApiService) Post(authorSearchRequest AuthorSearchRequest) Author
 }
 
 // Execute executes the request
-//  @return AuthorsPostResponse
-func (a *AuthorsApiService) PostExecute(r AuthorsApiPostRequest) (*AuthorsPostResponse, *http.Response, error) {
+//  @return FSearchResponse1
+func (a *AuthorsApiService) PostExecute(r AuthorsApiPostRequest) (*FSearchResponse1, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *AuthorsPostResponse
+		localVarReturnValue  *FSearchResponse1
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthorsApiService.Post")

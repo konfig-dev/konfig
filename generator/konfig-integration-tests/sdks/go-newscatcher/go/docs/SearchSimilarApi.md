@@ -45,8 +45,8 @@ func main() {
     request.NotLang("notLang_example")
     request.Countries("countries_example")
     request.NotCountries("notCountries_example")
-    request.From(from)
-    request.To(to)
+    request.From("from_example")
+    request.To("to_example")
     request.ByParseDate(false)
     request.PublishedDatePrecision("publishedDatePrecision_example")
     request.SortBy(""relevancy"")
@@ -77,15 +77,15 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `SearchSimilarApi.Get``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", httpRes)
     }
-    // response from `Get`: SearchSimilarGetResponse
+    // response from `Get`: FSearchResponse2
     fmt.Fprintf(os.Stdout, "Response from `SearchSimilarApi.Get`: %v\n", resp)
-    fmt.Fprintf(os.Stdout, "Response from `SearchSimilarGetResponse.Get.Status`: %v\n", *resp.Status)
-    fmt.Fprintf(os.Stdout, "Response from `SearchSimilarGetResponse.Get.TotalHits`: %v\n", resp.TotalHits)
-    fmt.Fprintf(os.Stdout, "Response from `SearchSimilarGetResponse.Get.Page`: %v\n", resp.Page)
-    fmt.Fprintf(os.Stdout, "Response from `SearchSimilarGetResponse.Get.TotalPages`: %v\n", resp.TotalPages)
-    fmt.Fprintf(os.Stdout, "Response from `SearchSimilarGetResponse.Get.PageSize`: %v\n", resp.PageSize)
-    fmt.Fprintf(os.Stdout, "Response from `SearchSimilarGetResponse.Get.Articles`: %v\n", resp.Articles)
-    fmt.Fprintf(os.Stdout, "Response from `SearchSimilarGetResponse.Get.UserInput`: %v\n", resp.UserInput)
+    fmt.Fprintf(os.Stdout, "Response from `FSearchResponse2.Get.Status`: %v\n", *resp.Status)
+    fmt.Fprintf(os.Stdout, "Response from `FSearchResponse2.Get.TotalHits`: %v\n", *resp.TotalHits)
+    fmt.Fprintf(os.Stdout, "Response from `FSearchResponse2.Get.Page`: %v\n", *resp.Page)
+    fmt.Fprintf(os.Stdout, "Response from `FSearchResponse2.Get.TotalPages`: %v\n", *resp.TotalPages)
+    fmt.Fprintf(os.Stdout, "Response from `FSearchResponse2.Get.PageSize`: %v\n", *resp.PageSize)
+    fmt.Fprintf(os.Stdout, "Response from `FSearchResponse2.Get.Articles`: %v\n", *resp.Articles)
+    fmt.Fprintf(os.Stdout, "Response from `FSearchResponse2.Get.UserInput`: %v\n", resp.UserInput)
 }
 ```
 
@@ -116,8 +116,6 @@ func main() {
     configuration.SetApiKey("X_API_TOKEN")
     client := newscatcherapi.NewAPIClient(configuration)
 
-    from := *newscatcherapi.NewFrom()
-    to := *newscatcherapi.NewTo()
     
     moreLikeThisRequest := *newscatcherapi.NewMoreLikeThisRequest(
         "null",
@@ -133,8 +131,8 @@ func main() {
     moreLikeThisRequest.SetNotLang("null")
     moreLikeThisRequest.SetCountries("null")
     moreLikeThisRequest.SetNotCountries("null")
-    moreLikeThisRequest.SetFrom(from)
-    moreLikeThisRequest.SetTo(to)
+    moreLikeThisRequest.SetFrom("null")
+    moreLikeThisRequest.SetTo("null")
     moreLikeThisRequest.SetByParseDate(false)
     moreLikeThisRequest.SetPublishedDatePrecision("null")
     moreLikeThisRequest.SetSortBy("relevancy")
@@ -169,15 +167,15 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `SearchSimilarApi.Post``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", httpRes)
     }
-    // response from `Post`: SearchSimilarPostResponse
+    // response from `Post`: FSearchResponse3
     fmt.Fprintf(os.Stdout, "Response from `SearchSimilarApi.Post`: %v\n", resp)
-    fmt.Fprintf(os.Stdout, "Response from `SearchSimilarPostResponse.Post.Status`: %v\n", *resp.Status)
-    fmt.Fprintf(os.Stdout, "Response from `SearchSimilarPostResponse.Post.TotalHits`: %v\n", resp.TotalHits)
-    fmt.Fprintf(os.Stdout, "Response from `SearchSimilarPostResponse.Post.Page`: %v\n", resp.Page)
-    fmt.Fprintf(os.Stdout, "Response from `SearchSimilarPostResponse.Post.TotalPages`: %v\n", resp.TotalPages)
-    fmt.Fprintf(os.Stdout, "Response from `SearchSimilarPostResponse.Post.PageSize`: %v\n", resp.PageSize)
-    fmt.Fprintf(os.Stdout, "Response from `SearchSimilarPostResponse.Post.Articles`: %v\n", resp.Articles)
-    fmt.Fprintf(os.Stdout, "Response from `SearchSimilarPostResponse.Post.UserInput`: %v\n", resp.UserInput)
+    fmt.Fprintf(os.Stdout, "Response from `FSearchResponse3.Post.Status`: %v\n", *resp.Status)
+    fmt.Fprintf(os.Stdout, "Response from `FSearchResponse3.Post.TotalHits`: %v\n", *resp.TotalHits)
+    fmt.Fprintf(os.Stdout, "Response from `FSearchResponse3.Post.Page`: %v\n", *resp.Page)
+    fmt.Fprintf(os.Stdout, "Response from `FSearchResponse3.Post.TotalPages`: %v\n", *resp.TotalPages)
+    fmt.Fprintf(os.Stdout, "Response from `FSearchResponse3.Post.PageSize`: %v\n", *resp.PageSize)
+    fmt.Fprintf(os.Stdout, "Response from `FSearchResponse3.Post.Articles`: %v\n", *resp.Articles)
+    fmt.Fprintf(os.Stdout, "Response from `FSearchResponse3.Post.UserInput`: %v\n", resp.UserInput)
 }
 ```
 

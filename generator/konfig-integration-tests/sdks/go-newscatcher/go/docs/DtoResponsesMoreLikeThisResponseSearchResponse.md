@@ -5,18 +5,18 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Status** | Pointer to **string** |  | [optional] [default to "ok"]
-**TotalHits** | **int32** |  | 
-**Page** | **int32** |  | 
-**TotalPages** | **int32** |  | 
-**PageSize** | **int32** |  | 
-**Articles** | **[]map[string]interface{}** |  | 
+**TotalHits** | Pointer to **int32** |  | [optional] 
+**Page** | Pointer to **int32** |  | [optional] 
+**TotalPages** | Pointer to **int32** |  | [optional] 
+**PageSize** | Pointer to **int32** |  | [optional] 
+**Articles** | Pointer to [**[]ArticlesPropertyInner2**](ArticlesPropertyInner2.md) |  | [optional] 
 **UserInput** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewDtoResponsesMoreLikeThisResponseSearchResponse
 
-`func NewDtoResponsesMoreLikeThisResponseSearchResponse(totalHits int32, page int32, totalPages int32, pageSize int32, articles []map[string]interface{}, userInput map[string]interface{}, ) *DtoResponsesMoreLikeThisResponseSearchResponse`
+`func NewDtoResponsesMoreLikeThisResponseSearchResponse(userInput map[string]interface{}, ) *DtoResponsesMoreLikeThisResponseSearchResponse`
 
 NewDtoResponsesMoreLikeThisResponseSearchResponse instantiates a new DtoResponsesMoreLikeThisResponseSearchResponse object
 This constructor will assign default values to properties that have it defined,
@@ -75,6 +75,11 @@ and a boolean to check if the value has been set.
 
 SetTotalHits sets TotalHits field to given value.
 
+### HasTotalHits
+
+`func (o *DtoResponsesMoreLikeThisResponseSearchResponse) HasTotalHits() bool`
+
+HasTotalHits returns a boolean if a field has been set.
 
 ### GetPage
 
@@ -95,6 +100,11 @@ and a boolean to check if the value has been set.
 
 SetPage sets Page field to given value.
 
+### HasPage
+
+`func (o *DtoResponsesMoreLikeThisResponseSearchResponse) HasPage() bool`
+
+HasPage returns a boolean if a field has been set.
 
 ### GetTotalPages
 
@@ -115,6 +125,11 @@ and a boolean to check if the value has been set.
 
 SetTotalPages sets TotalPages field to given value.
 
+### HasTotalPages
+
+`func (o *DtoResponsesMoreLikeThisResponseSearchResponse) HasTotalPages() bool`
+
+HasTotalPages returns a boolean if a field has been set.
 
 ### GetPageSize
 
@@ -135,26 +150,36 @@ and a boolean to check if the value has been set.
 
 SetPageSize sets PageSize field to given value.
 
+### HasPageSize
+
+`func (o *DtoResponsesMoreLikeThisResponseSearchResponse) HasPageSize() bool`
+
+HasPageSize returns a boolean if a field has been set.
 
 ### GetArticles
 
-`func (o *DtoResponsesMoreLikeThisResponseSearchResponse) GetArticles() []map[string]interface{}`
+`func (o *DtoResponsesMoreLikeThisResponseSearchResponse) GetArticles() []ArticlesPropertyInner2`
 
 GetArticles returns the Articles field if non-nil, zero value otherwise.
 
 ### GetArticlesOk
 
-`func (o *DtoResponsesMoreLikeThisResponseSearchResponse) GetArticlesOk() (*[]map[string]interface{}, bool)`
+`func (o *DtoResponsesMoreLikeThisResponseSearchResponse) GetArticlesOk() (*[]ArticlesPropertyInner2, bool)`
 
 GetArticlesOk returns a tuple with the Articles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetArticles
 
-`func (o *DtoResponsesMoreLikeThisResponseSearchResponse) SetArticles(v []map[string]interface{})`
+`func (o *DtoResponsesMoreLikeThisResponseSearchResponse) SetArticles(v []ArticlesPropertyInner2)`
 
 SetArticles sets Articles field to given value.
 
+### HasArticles
+
+`func (o *DtoResponsesMoreLikeThisResponseSearchResponse) HasArticles() bool`
+
+HasArticles returns a boolean if a field has been set.
 
 ### GetUserInput
 

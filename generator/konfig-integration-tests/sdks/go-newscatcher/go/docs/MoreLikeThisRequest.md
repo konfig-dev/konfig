@@ -16,8 +16,8 @@ Name | Type | Description | Notes
 **NotLang** | Pointer to **string** |  | [optional] 
 **Countries** | Pointer to **string** |  | [optional] 
 **NotCountries** | Pointer to **string** |  | [optional] 
-**From** | Pointer to [**From**](From.md) |  | [optional] 
-**To** | Pointer to [**To**](To.md) |  | [optional] 
+**From** | Pointer to **string** |  | [optional] 
+**To** | Pointer to **string** |  | [optional] 
 **ByParseDate** | Pointer to **bool** |  | [optional] [default to false]
 **PublishedDatePrecision** | Pointer to **string** |  | [optional] 
 **SortBy** | Pointer to **string** |  | [optional] [default to "relevancy"]
@@ -358,20 +358,20 @@ HasNotCountries returns a boolean if a field has been set.
 
 ### GetFrom
 
-`func (o *MoreLikeThisRequest) GetFrom() From`
+`func (o *MoreLikeThisRequest) GetFrom() string`
 
 GetFrom returns the From field if non-nil, zero value otherwise.
 
 ### GetFromOk
 
-`func (o *MoreLikeThisRequest) GetFromOk() (*From, bool)`
+`func (o *MoreLikeThisRequest) GetFromOk() (*string, bool)`
 
 GetFromOk returns a tuple with the From field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFrom
 
-`func (o *MoreLikeThisRequest) SetFrom(v From)`
+`func (o *MoreLikeThisRequest) SetFrom(v string)`
 
 SetFrom sets From field to given value.
 
@@ -383,20 +383,20 @@ HasFrom returns a boolean if a field has been set.
 
 ### GetTo
 
-`func (o *MoreLikeThisRequest) GetTo() To`
+`func (o *MoreLikeThisRequest) GetTo() string`
 
 GetTo returns the To field if non-nil, zero value otherwise.
 
 ### GetToOk
 
-`func (o *MoreLikeThisRequest) GetToOk() (*To, bool)`
+`func (o *MoreLikeThisRequest) GetToOk() (*string, bool)`
 
 GetToOk returns a tuple with the To field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTo
 
-`func (o *MoreLikeThisRequest) SetTo(v To)`
+`func (o *MoreLikeThisRequest) SetTo(v string)`
 
 SetTo sets To field to given value.
 

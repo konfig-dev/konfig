@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **Title** | **string** |  | 
 **Description** | Pointer to **string** |  | [optional] 
 **Author** | Pointer to **string** |  | [optional] 
-**Authors** | Pointer to [**AuthorsProperty**](AuthorsProperty.md) |  | [optional] 
-**Journalists** | Pointer to [**JournalistsProperty**](JournalistsProperty.md) |  | [optional] 
+**Authors** | Pointer to [**Authors**](Authors.md) |  | [optional] 
+**Journalists** | Pointer to [**Journalists**](Journalists.md) |  | [optional] 
 **PublishedDate** | Pointer to **string** |  | [optional] 
 **PublishedDatePrecision** | Pointer to **string** |  | [optional] 
 **UpdatedDate** | Pointer to **string** |  | [optional] 
@@ -30,12 +30,12 @@ Name | Type | Description | Notes
 **WordCount** | Pointer to **int32** |  | [optional] [default to 0]
 **IsOpinion** | Pointer to **bool** |  | [optional] 
 **TwitterAccount** | Pointer to **string** |  | [optional] 
-**AllLinks** | Pointer to [**AllLinksProperty**](AllLinksProperty.md) |  | [optional] 
-**AllDomainLinks** | Pointer to [**AllDomainLinksProperty**](AllDomainLinksProperty.md) |  | [optional] 
+**AllLinks** | Pointer to [**AllLinks**](AllLinks.md) |  | [optional] 
+**AllDomainLinks** | Pointer to [**AllDomainLinks**](AllDomainLinks.md) |  | [optional] 
 **Nlp** | Pointer to **map[string]interface{}** |  | [optional] [default to {}]
 **Id** | **string** |  | 
 **Score** | **float32** |  | 
-**SimilarDocuments** | Pointer to [**[]SimilarDocument**](SimilarDocument.md) |  | [optional] [default to []]
+**SimilarDocuments** | Pointer to [**[]SimilarDocument1**](SimilarDocument1.md) |  | [optional] [default to []]
 
 ## Methods
 
@@ -128,20 +128,20 @@ HasAuthor returns a boolean if a field has been set.
 
 ### GetAuthors
 
-`func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetAuthors() AuthorsProperty`
+`func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetAuthors() Authors`
 
 GetAuthors returns the Authors field if non-nil, zero value otherwise.
 
 ### GetAuthorsOk
 
-`func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetAuthorsOk() (*AuthorsProperty, bool)`
+`func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetAuthorsOk() (*Authors, bool)`
 
 GetAuthorsOk returns a tuple with the Authors field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAuthors
 
-`func (o *DtoResponsesMoreLikeThisResponseArticleResult) SetAuthors(v AuthorsProperty)`
+`func (o *DtoResponsesMoreLikeThisResponseArticleResult) SetAuthors(v Authors)`
 
 SetAuthors sets Authors field to given value.
 
@@ -153,20 +153,20 @@ HasAuthors returns a boolean if a field has been set.
 
 ### GetJournalists
 
-`func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetJournalists() JournalistsProperty`
+`func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetJournalists() Journalists`
 
 GetJournalists returns the Journalists field if non-nil, zero value otherwise.
 
 ### GetJournalistsOk
 
-`func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetJournalistsOk() (*JournalistsProperty, bool)`
+`func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetJournalistsOk() (*Journalists, bool)`
 
 GetJournalistsOk returns a tuple with the Journalists field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetJournalists
 
-`func (o *DtoResponsesMoreLikeThisResponseArticleResult) SetJournalists(v JournalistsProperty)`
+`func (o *DtoResponsesMoreLikeThisResponseArticleResult) SetJournalists(v Journalists)`
 
 SetJournalists sets Journalists field to given value.
 
@@ -673,20 +673,20 @@ HasTwitterAccount returns a boolean if a field has been set.
 
 ### GetAllLinks
 
-`func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetAllLinks() AllLinksProperty`
+`func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetAllLinks() AllLinks`
 
 GetAllLinks returns the AllLinks field if non-nil, zero value otherwise.
 
 ### GetAllLinksOk
 
-`func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetAllLinksOk() (*AllLinksProperty, bool)`
+`func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetAllLinksOk() (*AllLinks, bool)`
 
 GetAllLinksOk returns a tuple with the AllLinks field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAllLinks
 
-`func (o *DtoResponsesMoreLikeThisResponseArticleResult) SetAllLinks(v AllLinksProperty)`
+`func (o *DtoResponsesMoreLikeThisResponseArticleResult) SetAllLinks(v AllLinks)`
 
 SetAllLinks sets AllLinks field to given value.
 
@@ -698,20 +698,20 @@ HasAllLinks returns a boolean if a field has been set.
 
 ### GetAllDomainLinks
 
-`func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetAllDomainLinks() AllDomainLinksProperty`
+`func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetAllDomainLinks() AllDomainLinks`
 
 GetAllDomainLinks returns the AllDomainLinks field if non-nil, zero value otherwise.
 
 ### GetAllDomainLinksOk
 
-`func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetAllDomainLinksOk() (*AllDomainLinksProperty, bool)`
+`func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetAllDomainLinksOk() (*AllDomainLinks, bool)`
 
 GetAllDomainLinksOk returns a tuple with the AllDomainLinks field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAllDomainLinks
 
-`func (o *DtoResponsesMoreLikeThisResponseArticleResult) SetAllDomainLinks(v AllDomainLinksProperty)`
+`func (o *DtoResponsesMoreLikeThisResponseArticleResult) SetAllDomainLinks(v AllDomainLinks)`
 
 SetAllDomainLinks sets AllDomainLinks field to given value.
 
@@ -788,20 +788,20 @@ SetScore sets Score field to given value.
 
 ### GetSimilarDocuments
 
-`func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetSimilarDocuments() []SimilarDocument`
+`func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetSimilarDocuments() []SimilarDocument1`
 
 GetSimilarDocuments returns the SimilarDocuments field if non-nil, zero value otherwise.
 
 ### GetSimilarDocumentsOk
 
-`func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetSimilarDocumentsOk() (*[]SimilarDocument, bool)`
+`func (o *DtoResponsesMoreLikeThisResponseArticleResult) GetSimilarDocumentsOk() (*[]SimilarDocument1, bool)`
 
 GetSimilarDocumentsOk returns a tuple with the SimilarDocuments field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSimilarDocuments
 
-`func (o *DtoResponsesMoreLikeThisResponseArticleResult) SetSimilarDocuments(v []SimilarDocument)`
+`func (o *DtoResponsesMoreLikeThisResponseArticleResult) SetSimilarDocuments(v []SimilarDocument1)`
 
 SetSimilarDocuments sets SimilarDocuments field to given value.
 

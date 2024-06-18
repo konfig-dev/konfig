@@ -267,6 +267,7 @@ func main() {
 
 
 ## GetParsedFile
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 Parsed File
 
@@ -312,6 +313,7 @@ func main() {
 
 
 ## GetRawFile
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 Raw File
 
@@ -415,6 +417,7 @@ func main() {
 
 
 ## QueryUserFilesDeprecated
+![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
 User Files
 

@@ -9,14 +9,14 @@ Name | Type | Description | Notes
 **Page** | **int32** |  | 
 **TotalPages** | **int32** |  | 
 **PageSize** | **int32** |  | 
-**Articles** | **[]map[string]interface{}** |  | 
+**Articles** | [**[]ArticlesPropertyInner**](ArticlesPropertyInner.md) |  | 
 **UserInput** | **map[string]interface{}** |  | 
 
 ## Methods
 
 ### NewLatestHeadlinesResponse
 
-`func NewLatestHeadlinesResponse(totalHits int32, page int32, totalPages int32, pageSize int32, articles []map[string]interface{}, userInput map[string]interface{}, ) *LatestHeadlinesResponse`
+`func NewLatestHeadlinesResponse(totalHits int32, page int32, totalPages int32, pageSize int32, articles []ArticlesPropertyInner, userInput map[string]interface{}, ) *LatestHeadlinesResponse`
 
 NewLatestHeadlinesResponse instantiates a new LatestHeadlinesResponse object
 This constructor will assign default values to properties that have it defined,
@@ -138,20 +138,20 @@ SetPageSize sets PageSize field to given value.
 
 ### GetArticles
 
-`func (o *LatestHeadlinesResponse) GetArticles() []map[string]interface{}`
+`func (o *LatestHeadlinesResponse) GetArticles() []ArticlesPropertyInner`
 
 GetArticles returns the Articles field if non-nil, zero value otherwise.
 
 ### GetArticlesOk
 
-`func (o *LatestHeadlinesResponse) GetArticlesOk() (*[]map[string]interface{}, bool)`
+`func (o *LatestHeadlinesResponse) GetArticlesOk() (*[]ArticlesPropertyInner, bool)`
 
 GetArticlesOk returns a tuple with the Articles field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetArticles
 
-`func (o *LatestHeadlinesResponse) SetArticles(v []map[string]interface{})`
+`func (o *LatestHeadlinesResponse) SetArticles(v []ArticlesPropertyInner)`
 
 SetArticles sets Articles field to given value.
 

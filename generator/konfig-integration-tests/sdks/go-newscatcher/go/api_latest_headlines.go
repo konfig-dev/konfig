@@ -226,7 +226,7 @@ func (r *LatestHeadlinesApiGetRequest) ContentSentimentMax(contentSentimentMax f
 	return r
 }
 
-func (r LatestHeadlinesApiGetRequest) Execute() (*LatestHeadlinesGetResponse, *http.Response, error) {
+func (r LatestHeadlinesApiGetRequest) Execute() (*CSLHFResponse, *http.Response, error) {
 	return r.ApiService.GetExecute(r)
 }
 
@@ -246,13 +246,13 @@ func (a *LatestHeadlinesApiService) Get() LatestHeadlinesApiGetRequest {
 }
 
 // Execute executes the request
-//  @return LatestHeadlinesGetResponse
-func (a *LatestHeadlinesApiService) GetExecute(r LatestHeadlinesApiGetRequest) (*LatestHeadlinesGetResponse, *http.Response, error) {
+//  @return CSLHFResponse
+func (a *LatestHeadlinesApiService) GetExecute(r LatestHeadlinesApiGetRequest) (*CSLHFResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *LatestHeadlinesGetResponse
+		localVarReturnValue  *CSLHFResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LatestHeadlinesApiService.Get")
@@ -265,16 +265,16 @@ func (a *LatestHeadlinesApiService) GetExecute(r LatestHeadlinesApiGetRequest) (
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if *r.wordCountMin < 0 {
+	if r.wordCountMin != nil && *r.wordCountMin < 0 {
 		return localVarReturnValue, nil, reportError("wordCountMin must be greater than 0")
 	}
-	if *r.wordCountMax < 0 {
+	if r.wordCountMax != nil && *r.wordCountMax < 0 {
 		return localVarReturnValue, nil, reportError("wordCountMax must be greater than 0")
 	}
-	if *r.page < 0 {
+	if r.page != nil && *r.page < 0 {
 		return localVarReturnValue, nil, reportError("page must be greater than 0")
 	}
-	if *r.pageSize < 0 {
+	if r.pageSize != nil && *r.pageSize < 0 {
 		return localVarReturnValue, nil, reportError("pageSize must be greater than 0")
 	}
 
@@ -461,7 +461,7 @@ type LatestHeadlinesApiPostRequest struct {
 	latestHeadlinesRequest LatestHeadlinesRequest
 }
 
-func (r LatestHeadlinesApiPostRequest) Execute() (*LatestHeadlinesPostResponse, *http.Response, error) {
+func (r LatestHeadlinesApiPostRequest) Execute() (*CSLHFResponse1, *http.Response, error) {
 	return r.ApiService.PostExecute(r)
 }
 
@@ -483,13 +483,13 @@ func (a *LatestHeadlinesApiService) Post(latestHeadlinesRequest LatestHeadlinesR
 }
 
 // Execute executes the request
-//  @return LatestHeadlinesPostResponse
-func (a *LatestHeadlinesApiService) PostExecute(r LatestHeadlinesApiPostRequest) (*LatestHeadlinesPostResponse, *http.Response, error) {
+//  @return CSLHFResponse1
+func (a *LatestHeadlinesApiService) PostExecute(r LatestHeadlinesApiPostRequest) (*CSLHFResponse1, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *LatestHeadlinesPostResponse
+		localVarReturnValue  *CSLHFResponse1
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LatestHeadlinesApiService.Post")

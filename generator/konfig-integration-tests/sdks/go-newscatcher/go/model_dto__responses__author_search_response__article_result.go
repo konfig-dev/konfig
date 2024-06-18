@@ -20,8 +20,8 @@ type DtoResponsesAuthorSearchResponseArticleResult struct {
 	Title string `json:"title"`
 	Description *string `json:"description,omitempty"`
 	Author *string `json:"author,omitempty"`
-	Authors *AuthorsProperty `json:"authors,omitempty"`
-	Journalists *JournalistsProperty `json:"journalists,omitempty"`
+	Authors *Authors `json:"authors,omitempty"`
+	Journalists *Journalists `json:"journalists,omitempty"`
 	PublishedDate *string `json:"published_date,omitempty"`
 	PublishedDatePrecision *string `json:"published_date_precision,omitempty"`
 	UpdatedDate *string `json:"updated_date,omitempty"`
@@ -43,8 +43,8 @@ type DtoResponsesAuthorSearchResponseArticleResult struct {
 	WordCount *int32 `json:"word_count,omitempty"`
 	IsOpinion *bool `json:"is_opinion,omitempty"`
 	TwitterAccount *string `json:"twitter_account,omitempty"`
-	AllLinks *AllLinksProperty `json:"all_links,omitempty"`
-	AllDomainLinks *AllDomainLinksProperty `json:"all_domain_links,omitempty"`
+	AllLinks *AllLinks `json:"all_links,omitempty"`
+	AllDomainLinks *AllDomainLinks `json:"all_domain_links,omitempty"`
 	Nlp map[string]interface{} `json:"nlp,omitempty"`
 	Id string `json:"id"`
 	Score float32 `json:"score"`
@@ -169,9 +169,9 @@ func (o *DtoResponsesAuthorSearchResponseArticleResult) SetAuthor(v string) {
 }
 
 // GetAuthors returns the Authors field value if set, zero value otherwise.
-func (o *DtoResponsesAuthorSearchResponseArticleResult) GetAuthors() AuthorsProperty {
+func (o *DtoResponsesAuthorSearchResponseArticleResult) GetAuthors() Authors {
 	if o == nil || isNil(o.Authors) {
-		var ret AuthorsProperty
+		var ret Authors
 		return ret
 	}
 	return *o.Authors
@@ -179,7 +179,7 @@ func (o *DtoResponsesAuthorSearchResponseArticleResult) GetAuthors() AuthorsProp
 
 // GetAuthorsOk returns a tuple with the Authors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoResponsesAuthorSearchResponseArticleResult) GetAuthorsOk() (*AuthorsProperty, bool) {
+func (o *DtoResponsesAuthorSearchResponseArticleResult) GetAuthorsOk() (*Authors, bool) {
 	if o == nil || isNil(o.Authors) {
     return nil, false
 	}
@@ -195,15 +195,15 @@ func (o *DtoResponsesAuthorSearchResponseArticleResult) HasAuthors() bool {
 	return false
 }
 
-// SetAuthors gets a reference to the given AuthorsProperty and assigns it to the Authors field.
-func (o *DtoResponsesAuthorSearchResponseArticleResult) SetAuthors(v AuthorsProperty) {
+// SetAuthors gets a reference to the given Authors and assigns it to the Authors field.
+func (o *DtoResponsesAuthorSearchResponseArticleResult) SetAuthors(v Authors) {
 	o.Authors = &v
 }
 
 // GetJournalists returns the Journalists field value if set, zero value otherwise.
-func (o *DtoResponsesAuthorSearchResponseArticleResult) GetJournalists() JournalistsProperty {
+func (o *DtoResponsesAuthorSearchResponseArticleResult) GetJournalists() Journalists {
 	if o == nil || isNil(o.Journalists) {
-		var ret JournalistsProperty
+		var ret Journalists
 		return ret
 	}
 	return *o.Journalists
@@ -211,7 +211,7 @@ func (o *DtoResponsesAuthorSearchResponseArticleResult) GetJournalists() Journal
 
 // GetJournalistsOk returns a tuple with the Journalists field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoResponsesAuthorSearchResponseArticleResult) GetJournalistsOk() (*JournalistsProperty, bool) {
+func (o *DtoResponsesAuthorSearchResponseArticleResult) GetJournalistsOk() (*Journalists, bool) {
 	if o == nil || isNil(o.Journalists) {
     return nil, false
 	}
@@ -227,8 +227,8 @@ func (o *DtoResponsesAuthorSearchResponseArticleResult) HasJournalists() bool {
 	return false
 }
 
-// SetJournalists gets a reference to the given JournalistsProperty and assigns it to the Journalists field.
-func (o *DtoResponsesAuthorSearchResponseArticleResult) SetJournalists(v JournalistsProperty) {
+// SetJournalists gets a reference to the given Journalists and assigns it to the Journalists field.
+func (o *DtoResponsesAuthorSearchResponseArticleResult) SetJournalists(v Journalists) {
 	o.Journalists = &v
 }
 
@@ -857,9 +857,9 @@ func (o *DtoResponsesAuthorSearchResponseArticleResult) SetTwitterAccount(v stri
 }
 
 // GetAllLinks returns the AllLinks field value if set, zero value otherwise.
-func (o *DtoResponsesAuthorSearchResponseArticleResult) GetAllLinks() AllLinksProperty {
+func (o *DtoResponsesAuthorSearchResponseArticleResult) GetAllLinks() AllLinks {
 	if o == nil || isNil(o.AllLinks) {
-		var ret AllLinksProperty
+		var ret AllLinks
 		return ret
 	}
 	return *o.AllLinks
@@ -867,7 +867,7 @@ func (o *DtoResponsesAuthorSearchResponseArticleResult) GetAllLinks() AllLinksPr
 
 // GetAllLinksOk returns a tuple with the AllLinks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoResponsesAuthorSearchResponseArticleResult) GetAllLinksOk() (*AllLinksProperty, bool) {
+func (o *DtoResponsesAuthorSearchResponseArticleResult) GetAllLinksOk() (*AllLinks, bool) {
 	if o == nil || isNil(o.AllLinks) {
     return nil, false
 	}
@@ -883,15 +883,15 @@ func (o *DtoResponsesAuthorSearchResponseArticleResult) HasAllLinks() bool {
 	return false
 }
 
-// SetAllLinks gets a reference to the given AllLinksProperty and assigns it to the AllLinks field.
-func (o *DtoResponsesAuthorSearchResponseArticleResult) SetAllLinks(v AllLinksProperty) {
+// SetAllLinks gets a reference to the given AllLinks and assigns it to the AllLinks field.
+func (o *DtoResponsesAuthorSearchResponseArticleResult) SetAllLinks(v AllLinks) {
 	o.AllLinks = &v
 }
 
 // GetAllDomainLinks returns the AllDomainLinks field value if set, zero value otherwise.
-func (o *DtoResponsesAuthorSearchResponseArticleResult) GetAllDomainLinks() AllDomainLinksProperty {
+func (o *DtoResponsesAuthorSearchResponseArticleResult) GetAllDomainLinks() AllDomainLinks {
 	if o == nil || isNil(o.AllDomainLinks) {
-		var ret AllDomainLinksProperty
+		var ret AllDomainLinks
 		return ret
 	}
 	return *o.AllDomainLinks
@@ -899,7 +899,7 @@ func (o *DtoResponsesAuthorSearchResponseArticleResult) GetAllDomainLinks() AllD
 
 // GetAllDomainLinksOk returns a tuple with the AllDomainLinks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DtoResponsesAuthorSearchResponseArticleResult) GetAllDomainLinksOk() (*AllDomainLinksProperty, bool) {
+func (o *DtoResponsesAuthorSearchResponseArticleResult) GetAllDomainLinksOk() (*AllDomainLinks, bool) {
 	if o == nil || isNil(o.AllDomainLinks) {
     return nil, false
 	}
@@ -915,8 +915,8 @@ func (o *DtoResponsesAuthorSearchResponseArticleResult) HasAllDomainLinks() bool
 	return false
 }
 
-// SetAllDomainLinks gets a reference to the given AllDomainLinksProperty and assigns it to the AllDomainLinks field.
-func (o *DtoResponsesAuthorSearchResponseArticleResult) SetAllDomainLinks(v AllDomainLinksProperty) {
+// SetAllDomainLinks gets a reference to the given AllDomainLinks and assigns it to the AllDomainLinks field.
+func (o *DtoResponsesAuthorSearchResponseArticleResult) SetAllDomainLinks(v AllDomainLinks) {
 	o.AllDomainLinks = &v
 }
 
