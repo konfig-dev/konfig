@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.37.7
+
+### Patch Changes
+
+- [#718](https://github.com/konfig-dev/konfig/pull/718) [`e68c6f9ba`](https://github.com/konfig-dev/konfig/commit/e68c6f9bac0352077a5670ad4fd10a561efa19cf) Thanks [@eddiechayes](https://github.com/eddiechayes)! - add mergeAnyOf schemas to go generator transformSpec
+
 ## 1.37.6
 
 ### Patch Changes
