@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.38.43
+
+### Patch Changes
+
+- [#721](https://github.com/konfig-dev/konfig/pull/721) [`103556549`](https://github.com/konfig-dev/konfig/commit/103556549ce6c2aad36f2ea73d9e237dfcc993dc) Thanks [@eddiechayes](https://github.com/eddiechayes)! - support --tolerateRepublish flag for java
+
 ## 1.38.42
 
 ### Patch Changes
