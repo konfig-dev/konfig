@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.38.44
+
+### Patch Changes
+
+- [#724](https://github.com/konfig-dev/konfig/pull/724) [`bff534907`](https://github.com/konfig-dev/konfig/commit/bff534907cfb0331e8985d9109720cf214b97600) Thanks [@eddiechayes](https://github.com/eddiechayes)! - add --ci flag to konfig publish
+
 ## 1.38.43
 
 ### Patch Changes
