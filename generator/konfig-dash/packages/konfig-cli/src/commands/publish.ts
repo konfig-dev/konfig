@@ -178,16 +178,20 @@ const publishScripts = {
   mavenCentral: async ({
     version,
     skipTag,
+    ci
   }: {
     version: string
     skipTag?: boolean
+    ci?: boolean
   }) => {
     const gitTagCommands = await generateGitTagCommands({
       version,
       generator: 'java',
       skipTag,
     })
-    return [`mvn clean deploy -Dmaven.test.skip=true`, ...gitTagCommands]
+    let mvnCommand = `mvn clean deploy -Dmaven.test.skip=true`;
+    if (ci) mvnCommand = `${mvnCommand} -Dgpg.executable=gpg -Dgpg.passphrase="$GPG_PASSPHRASE" -Dgpg.keyname="$GPG_KEY_ID"`
+    return [mvnCommand, ...gitTagCommands]
   },
   php: async ({
     version,
@@ -378,6 +382,10 @@ export default class Publish extends Command {
       description:
         'Do not fail if package version already exists in package manager. Note that published version will not be overridden. Used in CI',
     }),
+    ci: Flags.boolean({
+      name: "ci",
+      description: "Run in CI mode. This ensures non-interactivity in all publishing actions."
+    })
   }
 
   public async run(): Promise<void> {
@@ -554,6 +562,7 @@ export default class Publish extends Command {
           script: publishScripts['mavenCentral']({
             version: generatorConfig.version,
             skipTag: flags.skipTag,
+            ci: flags.ci
           }),
         })
       }
