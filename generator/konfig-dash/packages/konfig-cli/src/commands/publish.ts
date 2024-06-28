@@ -190,7 +190,7 @@ const publishScripts = {
       skipTag,
     })
     let mvnCommand = `mvn clean deploy -Dmaven.test.skip=true`;
-    if (ci) mvnCommand = `${mvnCommand} -Dgpg.executable=gpg -Dgpg.passphrase="$GPG_PASSPHRASE" -Dgpg.keyname="$GPG_KEY_ID"`
+    if (ci) mvnCommand = `${mvnCommand} -Dgpg.executable=gpg -Dgpg.passphrase="$GPG_PASSPHRASE" -Dgpg.keyname="$GPG_KEY_ID" -P ossrh --settings ~/.m2/settings.xml`
     return [mvnCommand, ...gitTagCommands]
   },
   php: async ({
