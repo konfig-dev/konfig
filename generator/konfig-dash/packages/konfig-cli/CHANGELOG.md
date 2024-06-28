@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.38.45
+
+### Patch Changes
+
+- [#726](https://github.com/konfig-dev/konfig/pull/726) [`bb4324939`](https://github.com/konfig-dev/konfig/commit/bb43249394fe049b4a6e2660dc4e1bacb7a85111) Thanks [@eddiechayes](https://github.com/eddiechayes)! - add additional flags to mvn clean deploy when --ci flag is used in java publishing
+
 ## 1.38.44
 
 ### Patch Changes
