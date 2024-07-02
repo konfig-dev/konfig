@@ -465,7 +465,8 @@ export default class Publish extends Command {
         'You cannot publish over the previously published version', // npm
         'deprecations must be strings', // npm
         'File already exists', // pypi
-        'does not allow updating artifact' // maven
+        'does not allow updating artifact', // maven
+        'already exists and cannot be modified', // nuget
       ]
 
       const handleCommandResult = async ({
