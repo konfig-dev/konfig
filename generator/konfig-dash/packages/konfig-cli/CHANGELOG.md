@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.38.46
+
+### Patch Changes
+
+- [#728](https://github.com/konfig-dev/konfig/pull/728) [`6a526d8d4`](https://github.com/konfig-dev/konfig/commit/6a526d8d481b0b73f5ea3fc27a16070f15168199) Thanks [@eddiechayes](https://github.com/eddiechayes)! - --tolerateRepublish flag for konfig publish supports csharp
+
 ## 1.38.45
 
 ### Patch Changes
