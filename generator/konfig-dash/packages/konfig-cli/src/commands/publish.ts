@@ -467,6 +467,7 @@ export default class Publish extends Command {
         'File already exists', // pypi
         'does not allow updating artifact', // maven
         'already exists and cannot be modified', // nuget
+        `tag 'v${generatorConfig.version}' already exists` // go
       ]
 
       const handleCommandResult = async ({
@@ -479,7 +480,7 @@ export default class Publish extends Command {
         if (shellResult.code === 0)
           CliUx.ux.log(`Command "${command}" succeeded`)
         else if (
-          shellResult.code === 1 &&
+          shellResult.code !== 0 &&
           flags.tolerateRepublish &&
           (republishErrorMessages.some((message) =>
             shellResult.stderr.includes(message)
