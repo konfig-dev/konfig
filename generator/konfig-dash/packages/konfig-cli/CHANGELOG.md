@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.38.47
+
+### Patch Changes
+
+- [#730](https://github.com/konfig-dev/konfig/pull/730) [`74d7b3d31`](https://github.com/konfig-dev/konfig/commit/74d7b3d3163b91bfbce11b10b1e490eec168b73d) Thanks [@eddiechayes](https://github.com/eddiechayes)! - support --tolerateRepublish flag for go in konfig publish
+
 ## 1.38.46
 
 ### Patch Changes
