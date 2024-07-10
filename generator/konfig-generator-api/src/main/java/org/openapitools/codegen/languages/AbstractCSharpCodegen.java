@@ -1472,19 +1472,7 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
             //parameter is enum defined as a schema component
             example = "(" + type + ") \"" + example + "\"";
         } else if (p.getComposedSchemas() != null) {
-            if (p.getComposedSchemas().getAnyOf() != null) {
-                p.getComposedSchemas().getAnyOf().sort((a, b) -> {
-                    if (a.dataType.equals("DateTime")) {
-                        return -1;
-                    }
-                    if (b.dataType.equals("DateTime")) {
-                        return 1;
-                    }
-                    return 0;
-                });
-
-                example = "new " + type + "(" + p.getComposedSchemas().getAnyOf().get(0).example + ")";
-            }
+            example = toExampleComposed(p.dataType, p.getComposedSchemas());
         } else if (!languageSpecificPrimitives.contains(type)) {
             // type is a model class, e.g. User
             example = "new " + type + "()";
@@ -1531,7 +1519,33 @@ public abstract class AbstractCSharpCodegen extends DefaultCodegen implements Co
                 return 0;
             });
 
-            return "new " + dataType + "(" + composedSchema.getAnyOf().get(0).example + ")";
+            String example = "null";
+            for (CodegenProperty p : composedSchema.getAnyOf()) {
+                if (p.example != null && !p.example.equals("null")) {
+                    example = p.example;
+                    break;
+                }
+            }
+            // if none have examples then use a default value if possible
+            if (example.equals("null")) {
+                for (CodegenProperty p : composedSchema.getAnyOf()) {
+                    if (p.isNumber) {
+                        example = "100";
+                        break;
+                    }
+                    if (p.isString) {
+                        example = "\"example\"";
+                        break;
+                    }
+                    if (p.isBoolean) {
+                        example = "true";
+                        break;
+                    }
+                    // add more as necessary
+                }
+            }
+
+            return "new " + dataType + "(" + example + ")";
         }
         if (composedSchema.getOneOf() != null) {
             composedSchema.getOneOf().sort((a, b) -> {
