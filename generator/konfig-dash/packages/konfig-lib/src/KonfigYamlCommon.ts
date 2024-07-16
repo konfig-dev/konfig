@@ -191,6 +191,13 @@ export const portal = z
       .describe(
         "List of operations to hide in Konfig's API Portal. The first key is the path and the second is the HTTP method."
       ),
+    cta: z
+      .object({
+        url: z.string(),
+        label: z.string(),
+      })
+      .optional()
+      .describe('Adds a call-to-action button at the top-right of the docs.'),
     hideSecurity: z
       .object({
         name: z.string(),
