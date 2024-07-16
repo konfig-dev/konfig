@@ -31,7 +31,10 @@ import { DemoTableOfContents } from './DemoTableOfContents'
 import { DemoEditThisPage } from './DemoEditThisPage'
 import { DemoLastRan } from './DemoLastRan'
 import { DemoHeader } from './DemoHeader'
-import type { SocialObject } from 'konfig-lib/dist/KonfigYamlCommon'
+import type {
+  KonfigYamlCommonType,
+  SocialObject,
+} from 'konfig-lib/dist/KonfigYamlCommon'
 import Head from 'next/head'
 import { NAVBAR_WIDTH } from './ReferenceNavbar'
 import { proseContainerWidthStyles } from '@/utils/prose-container-width-styles'
@@ -176,6 +179,7 @@ export const DemoPortal = observer(
     repo,
     logo,
     allMarkdown,
+    cta,
   }: {
     state: PortalState
     sandbox?: boolean
@@ -186,6 +190,7 @@ export const DemoPortal = observer(
     allMarkdown: MarkdownPageProps['allMarkdown']
     repo: string
     logo: GenerateLogoLinkResponse
+    cta: NonNullable<KonfigYamlCommonType['portal']>['cta'] | null
   }) => {
     const theme = useMantineTheme()
     const { colorScheme, toggleColorScheme } = useMantineColorScheme()
@@ -330,6 +335,7 @@ export const DemoPortal = observer(
               state={state}
               sandbox={sandbox}
               logo={logo}
+              cta={cta}
             />
           }
         >

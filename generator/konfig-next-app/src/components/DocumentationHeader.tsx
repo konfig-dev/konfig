@@ -6,6 +6,7 @@ import { HeaderTabs } from './HeaderTabs'
 import { TABS } from './HeaderButton'
 import type { GenerateLogoLinkResponse } from '@/utils/generate-logo-link'
 import { MarkdownPageProps } from '@/utils/generate-props-for-markdown-page'
+import { KonfigYamlCommonType } from 'konfig-lib'
 
 export function DocumentationHeader({
   opened,
@@ -17,6 +18,7 @@ export function DocumentationHeader({
   repo,
   logo,
   allMarkdown,
+  cta,
 }: {
   opened: boolean
   setOpened: Dispatch<SetStateAction<boolean>>
@@ -27,6 +29,7 @@ export function DocumentationHeader({
   repo: string
   logo: GenerateLogoLinkResponse
   allMarkdown: MarkdownPageProps['allMarkdown']
+  cta: NonNullable<KonfigYamlCommonType['portal']>['cta'] | null
 }) {
   return (
     <HeaderWrapper
@@ -40,6 +43,7 @@ export function DocumentationHeader({
         setOpened={setOpened}
         title={title}
         logo={logo}
+        cta={cta}
       />
       <HeaderTabs
         hasLightAndDarkLogo={typeof logo !== 'string'}

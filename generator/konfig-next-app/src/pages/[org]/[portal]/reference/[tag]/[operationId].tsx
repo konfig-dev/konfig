@@ -92,6 +92,7 @@ const Operation = ({
   allMarkdown,
   logo,
   metaDescription,
+  cta,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { colors } = useMantineTheme()
   const { colorScheme } = useMantineColorScheme()
@@ -180,6 +181,7 @@ const Operation = ({
           <ReferenceHeader
             owner={owner}
             repo={repo}
+            cta={cta}
             hasDocumentation={hasDocumentation}
             allMarkdown={allMarkdown}
             opened={opened}

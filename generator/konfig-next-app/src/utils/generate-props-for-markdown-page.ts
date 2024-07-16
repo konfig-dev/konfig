@@ -1,5 +1,6 @@
 import {
   DocumentationConfig,
+  KonfigYamlCommonType,
   KonfigYamlType,
   OperationObject,
   getOperations,
@@ -58,6 +59,7 @@ export type MarkdownPageProps = {
   omitOwnerAndRepo: boolean
   faviconLink: string | null
   logo: GenerateLogoLinkResponse
+  cta: NonNullable<KonfigYamlCommonType['portal']>['cta'] | null
 }
 
 export async function generatePropsForMarkdownPage({
@@ -235,6 +237,7 @@ export async function generatePropsForMarkdownPage({
       breadcrumb,
       allMarkdown,
       operations,
+      cta: konfigYaml.content.portal?.cta ?? null,
       defaultBranch,
       idToLabel,
       demos:

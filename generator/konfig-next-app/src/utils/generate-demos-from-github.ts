@@ -3,7 +3,11 @@ import { generateDemosFromFilenameAndContent } from './generate-demos-from-file-
 import { createOctokitInstance } from './octokit'
 import { githubGetFileContent } from './github-get-file-content'
 import { githubGetRepository } from './github-get-repository'
-import type { KonfigYamlType, SocialObject } from 'konfig-lib'
+import type {
+  KonfigYamlCommonType,
+  KonfigYamlType,
+  SocialObject,
+} from 'konfig-lib'
 import { Octokit } from '@octokit/rest'
 import { generateFaviconLink } from './generate-favicon-link'
 import {
@@ -46,6 +50,7 @@ export type FetchResult = {
   hasDocumentation: boolean
   faviconLink: string | null
   logo: GenerateLogoLinkResponse
+  cta: NonNullable<KonfigYamlCommonType['portal']>['cta'] | null
 }
 
 export type GenerationResult =
@@ -100,6 +105,7 @@ export async function generateDemosDataFromGithub({
       allMarkdown: MarkdownPageProps['allMarkdown']
       faviconLink: string | null
       logo: GenerateLogoLinkResponse
+      cta: NonNullable<KonfigYamlCommonType['portal']>['cta'] | null
     }
   | { result: 'error'; reason: 'no demos' }
   | { result: 'error'; reason: 'demo not found' }
@@ -124,6 +130,7 @@ export async function generateDemosDataFromGithub({
     mainBranch,
     organization,
     portal,
+    cta: fetchResult.cta,
     googleAnalyticsId: fetchResult.googleAnalyticsId,
     customSnippet: fetchResult.customSnippet,
     demo,
@@ -245,6 +252,7 @@ async function _fetch({
     primaryColor: konfigYaml.content.portal.primaryColor,
     mainBranch: repository.data.default_branch,
     logo: logoLink,
+    cta: konfigYaml.content.portal?.cta ?? null,
     faviconLink,
     ...(konfigYaml.content.portal.socials
       ? { socials: konfigYaml.content.portal.socials }

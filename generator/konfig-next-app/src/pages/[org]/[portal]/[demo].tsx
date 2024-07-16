@@ -63,6 +63,7 @@ const DemoPage = observer(
     repo,
     faviconLink,
     logo,
+    cta,
   }: InferGetStaticPropsType<typeof getStaticProps>) => {
     const state = useMemo(
       () =>
@@ -119,6 +120,7 @@ const DemoPage = observer(
           owner={owner}
           repo={repo}
           logo={logo}
+          cta={cta}
         />
       </MantineProvider>
     )

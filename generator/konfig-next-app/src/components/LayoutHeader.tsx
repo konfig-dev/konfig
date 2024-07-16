@@ -1,6 +1,7 @@
 import {
   Box,
   Burger,
+  Button,
   Group,
   MantineNumberSize,
   MediaQuery,
@@ -19,6 +20,7 @@ import type { GenerateLogoLinkResponse } from '@/utils/generate-logo-link'
 import { useHeaderColor } from '@/utils/use-header-color'
 import { MarkdownPageProps } from '@/utils/generate-props-for-markdown-page'
 import { Search } from './Search'
+import { KonfigYamlCommonType } from 'konfig-lib'
 
 const useLogoStyles = createStyles(() => ({
   logo: {
@@ -34,6 +36,7 @@ export const LayoutHeader = observer(
     breakpoint,
     allMarkdown,
     logo,
+    cta,
   }: {
     title: string
     opened: boolean
@@ -41,6 +44,7 @@ export const LayoutHeader = observer(
     breakpoint: MantineNumberSize
     logo: GenerateLogoLinkResponse
     allMarkdown: MarkdownPageProps['allMarkdown']
+    cta: NonNullable<KonfigYamlCommonType['portal']>['cta'] | null
   }) => {
     const theme = useMantineTheme()
     const baseUrl = useBaseUrl()
@@ -109,6 +113,30 @@ export const LayoutHeader = observer(
           <div className="sm:hidden">
             <Search />
           </div>
+          {cta ? (
+            <Button
+              variant={
+                !hasLightAndDarkLogo
+                  ? 'filled'
+                  : theme.colorScheme === 'dark'
+                  ? 'light'
+                  : 'filled'
+              }
+              component="a"
+              target="_blank"
+              className="hidden sm:block"
+              color={
+                !hasLightAndDarkLogo
+                  ? 'dark'
+                  : theme.colorScheme === 'dark'
+                  ? 'brand'
+                  : 'dark'
+              }
+              href={cta.url}
+            >
+              {cta.label}
+            </Button>
+          ) : null}
           <ColorSchemeToggle hasLightAndDarkLogo={typeof logo !== 'string'} />
         </Group>
       </Box>

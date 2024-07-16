@@ -8,6 +8,7 @@ import {
   RequestBodyObject,
   getOperations,
   HttpMethods,
+  KonfigYamlCommonType,
 } from 'konfig-lib'
 import { GetStaticPropsResult } from 'next'
 import {
@@ -60,6 +61,7 @@ export type ReferencePageProps = Omit<GithubResources, 'spec'> & {
   securitySchemes: Record<string, SecurityScheme> | null
   omitOwnerAndRepo?: boolean
   logo: GenerateLogoLinkResponse
+  cta: NonNullable<KonfigYamlCommonType['portal']>['cta'] | null
 }
 
 export async function generatePropsForReferencePage({
@@ -320,6 +322,7 @@ export async function generatePropsForReferencePage({
       requestBodyParameter,
       owner,
       repo,
+      cta: props.konfigYaml.portal?.cta ?? null,
       headerParameters,
       oauthTokenUrl,
       cookieParameters,
