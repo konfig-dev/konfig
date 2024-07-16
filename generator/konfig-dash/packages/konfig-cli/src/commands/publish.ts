@@ -467,7 +467,8 @@ export default class Publish extends Command {
         'File already exists', // pypi
         'does not allow updating artifact', // maven
         'already exists and cannot be modified', // nuget
-        `tag 'v${generatorConfig.version}' already exists` // go
+        `tag 'v${generatorConfig.version}' already exists`, // go
+        `tag 'v${generatorConfig.version}-python' already exists` // also python
       ]
 
       const handleCommandResult = async ({
