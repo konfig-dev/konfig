@@ -47,6 +47,7 @@ import { useNavbarStyles } from '@/utils/use-navbar-styles'
 import { NavbarSectionLabel } from './NavbarSectionLabel'
 import { navbarLinkColor } from './NavbarLink'
 import { MarkdownPageProps } from '@/utils/generate-props-for-markdown-page'
+import { generateHtmlTitle } from '@/utils/generate-html-title'
 
 type DemosInput = Demo[]
 
@@ -371,8 +372,19 @@ export const DemoPortal = observer(
                 <Fragment key={i}>
                   {state.currentDemoIndex === i && (
                     <Head>
-                      <title>{demo.name}</title>
-                      <meta property="og:title" content={demo.name} />
+                      <title>
+                        {generateHtmlTitle({
+                          siteTitle: state.portalTitle,
+                          pageTitle: demo.name,
+                        })}
+                      </title>
+                      <meta
+                        property="og:title"
+                        content={generateHtmlTitle({
+                          siteTitle: state.portalTitle,
+                          pageTitle: demo.name,
+                        })}
+                      />
                       <meta name="description" content={demo.metaDescription} />
                       <meta
                         property="og:description"

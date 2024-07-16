@@ -20,6 +20,7 @@ import {
 import { useNavbarStyles } from '@/utils/use-navbar-styles'
 import { generateMantineThemeColors } from '@/utils/generate-mantine-theme-colors'
 import { GoogleAnalyticsProvider } from '@/components/GoogleAnalyticsProvider'
+import { generateHtmlTitle } from '@/utils/generate-html-title'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -125,8 +126,16 @@ const Operation = ({
         googleAnalyticsId={googleAnalyticsId}
       />
       <Head>
-        <title>{metaTitle}</title>
-        <meta property="og:title" content={metaTitle} />
+        <title>
+          {generateHtmlTitle({ pageTitle: metaTitle, siteTitle: title })}
+        </title>
+        <meta
+          property="og:title"
+          content={generateHtmlTitle({
+            pageTitle: metaTitle,
+            siteTitle: title,
+          })}
+        />
         <meta name="description" content={metaDescription} />
         <meta property="og:description" content={metaDescription} />
         {faviconLink ? (

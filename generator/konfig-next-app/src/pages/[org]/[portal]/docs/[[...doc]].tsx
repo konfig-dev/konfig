@@ -42,6 +42,7 @@ import { navbarOffsetBreakpoint } from '@/utils/navbar-offset-breakpoint'
 import { useNavbarStyles } from '@/utils/use-navbar-styles'
 import { NavbarSectionLabel } from '@/components/NavbarSectionLabel'
 import { GoogleAnalyticsProvider } from '@/components/GoogleAnalyticsProvider'
+import { generateHtmlTitle } from '@/utils/generate-html-title'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -158,8 +159,16 @@ const DocumentationPage = observer(
           ) : (
             <link rel="icon" href="/favicon.png" />
           )}
-          <title>{title}</title>
-          <meta property="og:title" content={title} />
+          <title>
+            {generateHtmlTitle({ siteTitle: title, pageTitle: docTitle })}
+          </title>
+          <meta
+            property="og:title"
+            content={generateHtmlTitle({
+              siteTitle: title,
+              pageTitle: docTitle,
+            })}
+          />
           <meta name="description" content={metaDescription} />
           <meta property="og:description" content={metaDescription} />
         </Head>
