@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.38.49
+
+### Patch Changes
+
+- [#736](https://github.com/konfig-dev/konfig/pull/736) [`1c09b4c63`](https://github.com/konfig-dev/konfig/commit/1c09b4c633f13ead4464d949ff80693600f64a68) Thanks [@eddiechayes](https://github.com/eddiechayes)! - fix --tolerateRepublish for python
+
 ## 1.38.48
 
 ### Patch Changes
