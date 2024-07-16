@@ -31,6 +31,9 @@ export async function middleware(request: NextRequest) {
 
   const url = request.nextUrl
   const path = url.pathname
+  console.log('url', request.url)
+  console.log('nextUrl', request.nextUrl)
+  console.log('path', path)
   const rewrittenUrl = new URL(`/${host}${path}`, request.url)
   console.log('rewriting to', rewrittenUrl.href)
   return NextResponse.rewrite(rewrittenUrl)
