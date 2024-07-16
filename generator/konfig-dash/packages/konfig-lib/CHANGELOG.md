@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.37.8
+
+### Patch Changes
+
+- [#734](https://github.com/konfig-dev/konfig/pull/734) [`ca38138b1`](https://github.com/konfig-dev/konfig/commit/ca38138b1b51e35379355dd5bb06b4643538ee59) Thanks [@dphuang2](https://github.com/dphuang2)! - Adds "cta" property to "portal" configuration in konfig.yaml
+
 ## 1.37.7
 
 ### Patch Changes
