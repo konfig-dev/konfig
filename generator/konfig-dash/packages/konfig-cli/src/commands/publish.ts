@@ -468,7 +468,8 @@ export default class Publish extends Command {
         'does not allow updating artifact', // maven
         'already exists and cannot be modified', // nuget
         `tag 'v${generatorConfig.version}' already exists`, // go
-        `tag 'v${generatorConfig.version}-python' already exists` // also python
+        `tag 'v${generatorConfig.version}-python' already exists`, // also python
+        'Repushing of gem versions is not allowed.', // ruby
       ]
 
       const handleCommandResult = async ({
