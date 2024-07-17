@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.38.50
+
+### Patch Changes
+
+- [#739](https://github.com/konfig-dev/konfig/pull/739) [`6da7d85a2`](https://github.com/konfig-dev/konfig/commit/6da7d85a23a88479756e8e22c1415dfaea1c201c) Thanks [@eddiechayes](https://github.com/eddiechayes)! - support --tolerateRepublish for ruby
+
 ## 1.38.49
 
 ### Patch Changes
