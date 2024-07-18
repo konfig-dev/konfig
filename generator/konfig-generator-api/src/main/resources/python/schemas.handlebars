@@ -2102,6 +2102,7 @@ class IntBase:
         IntBase _validate_oapg
         TODO what about types = (int, number) -> IntBase, NumberBase? We could drop int and keep number only
         """
+        if cls._types and int not in cls._types: cls._types.add(int)
         cls.__validate_format(arg, validation_metadata=validation_metadata)
         return super()._validate_oapg(arg, validation_metadata=validation_metadata)
 
