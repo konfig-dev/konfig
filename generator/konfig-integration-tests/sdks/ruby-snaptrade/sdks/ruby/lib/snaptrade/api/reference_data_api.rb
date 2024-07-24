@@ -17,7 +17,9 @@ module SnapTrade
       @api_client = api_client
     end
 
-    # Return the exchange rate of a currency pair
+    # Get exchange rate of a currency pair
+    #
+    # Returns an Exchange Rate Pair object for the specified Currency Pair.
     #
     # @param currency_pair [String] A currency pair based on currency code for example, {CAD-USD}
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
@@ -26,7 +28,9 @@ module SnapTrade
       data
     end
 
-    # Return the exchange rate of a currency pair
+    # Get exchange rate of a currency pair
+    #
+    # Returns an Exchange Rate Pair object for the specified Currency Pair.
     #
     # @param currency_pair [String] A currency pair based on currency code for example, {CAD-USD}
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
@@ -34,7 +38,8 @@ module SnapTrade
       get_currency_exchange_rate_pair_with_http_info_impl(currency_pair, extra)
     end
 
-    # Return the exchange rate of a currency pair
+    # Get exchange rate of a currency pair
+    # Returns an Exchange Rate Pair object for the specified Currency Pair.
     # @param currency_pair [String] A currency pair based on currency code for example, {CAD-USD}
     # @param [Hash] opts the optional parameters
     # @return [ExchangeRatePairs]
@@ -43,7 +48,8 @@ module SnapTrade
       data
     end
 
-    # Return the exchange rate of a currency pair
+    # Get exchange rate of a currency pair
+    # Returns an Exchange Rate Pair object for the specified Currency Pair.
     # @param currency_pair [String] A currency pair based on currency code for example, {CAD-USD}
     # @param [Hash] opts the optional parameters
     # @return [Array<(ExchangeRatePairs, Integer, Hash)>] ExchangeRatePairs data, response status code and response headers
@@ -98,6 +104,8 @@ module SnapTrade
 
     # Get metadata related to Snaptrade partner
     #
+    # Returns useful data related to the specified ClientID, including allowed brokerages and data access.
+    #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def get_partner_info(extra: {})
       data, _status_code, _headers = get_partner_info_with_http_info_impl(extra)
@@ -106,12 +114,15 @@ module SnapTrade
 
     # Get metadata related to Snaptrade partner
     #
+    # Returns useful data related to the specified ClientID, including allowed brokerages and data access.
+    #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def get_partner_info_with_http_info(extra: {})
       get_partner_info_with_http_info_impl(extra)
     end
 
     # Get metadata related to Snaptrade partner
+    # Returns useful data related to the specified ClientID, including allowed brokerages and data access.
     # @param [Hash] opts the optional parameters
     # @return [PartnerData]
     private def get_partner_info_impl(opts = {})
@@ -120,6 +131,7 @@ module SnapTrade
     end
 
     # Get metadata related to Snaptrade partner
+    # Returns useful data related to the specified ClientID, including allowed brokerages and data access.
     # @param [Hash] opts the optional parameters
     # @return [Array<(PartnerData, Integer, Hash)>] PartnerData data, response status code and response headers
     private def get_partner_info_with_http_info_impl(opts = {})
@@ -244,7 +256,9 @@ module SnapTrade
     end
 
 
-    # List exchanges
+    # Get exchanges
+    #
+    # Returns a list of all supported Exchanges.
     #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def get_stock_exchanges(extra: {})
@@ -252,14 +266,17 @@ module SnapTrade
       data
     end
 
-    # List exchanges
+    # Get exchanges
+    #
+    # Returns a list of all supported Exchanges.
     #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def get_stock_exchanges_with_http_info(extra: {})
       get_stock_exchanges_with_http_info_impl(extra)
     end
 
-    # List exchanges
+    # Get exchanges
+    # Returns a list of all supported Exchanges.
     # @param [Hash] opts the optional parameters
     # @return [Array<Exchange>]
     private def get_stock_exchanges_impl(opts = {})
@@ -267,7 +284,8 @@ module SnapTrade
       data
     end
 
-    # List exchanges
+    # Get exchanges
+    # Returns a list of all supported Exchanges.
     # @param [Hash] opts the optional parameters
     # @return [Array<(Array<Exchange>, Integer, Hash)>] Array<Exchange> data, response status code and response headers
     private def get_stock_exchanges_with_http_info_impl(opts = {})
@@ -317,6 +335,10 @@ module SnapTrade
 
     # Search for symbols
     #
+    # Returns a list of Universal Symbol objects that match a defined string.
+    # 
+    # Matches on ticker or name.
+    #
     # @param substring [String] 
     # @param body [SymbolQuery] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
@@ -330,6 +352,10 @@ module SnapTrade
 
     # Search for symbols
     #
+    # Returns a list of Universal Symbol objects that match a defined string.
+    # 
+    # Matches on ticker or name.
+    #
     # @param substring [String] 
     # @param body [SymbolQuery] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
@@ -341,6 +367,7 @@ module SnapTrade
     end
 
     # Search for symbols
+    # Returns a list of Universal Symbol objects that match a defined string.  Matches on ticker or name. 
     # @param [Hash] opts the optional parameters
     # @option opts [SymbolQuery] :symbol_query 
     # @return [Array<UniversalSymbol>]
@@ -350,6 +377,7 @@ module SnapTrade
     end
 
     # Search for symbols
+    # Returns a list of Universal Symbol objects that match a defined string.  Matches on ticker or name. 
     # @param [Hash] opts the optional parameters
     # @option opts [SymbolQuery] :symbol_query 
     # @return [Array<(Array<UniversalSymbol>, Integer, Hash)>] Array<UniversalSymbol> data, response status code and response headers
@@ -403,7 +431,9 @@ module SnapTrade
     end
 
 
-    # Get details of a symbol by the ticker or the universal_symbol_id
+    # Get details of a symbol
+    #
+    # Returns the Universal Symbol object specified by the ticker or the universal_symbol_id.
     #
     # @param query [String] The ticker or universal_symbol_id of the UniversalSymbol to get.
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
@@ -412,7 +442,9 @@ module SnapTrade
       data
     end
 
-    # Get details of a symbol by the ticker or the universal_symbol_id
+    # Get details of a symbol
+    #
+    # Returns the Universal Symbol object specified by the ticker or the universal_symbol_id.
     #
     # @param query [String] The ticker or universal_symbol_id of the UniversalSymbol to get.
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
@@ -420,7 +452,8 @@ module SnapTrade
       get_symbols_by_ticker_with_http_info_impl(query, extra)
     end
 
-    # Get details of a symbol by the ticker or the universal_symbol_id
+    # Get details of a symbol
+    # Returns the Universal Symbol object specified by the ticker or the universal_symbol_id.
     # @param query [String] The ticker or universal_symbol_id of the UniversalSymbol to get.
     # @param [Hash] opts the optional parameters
     # @return [UniversalSymbol]
@@ -429,7 +462,8 @@ module SnapTrade
       data
     end
 
-    # Get details of a symbol by the ticker or the universal_symbol_id
+    # Get details of a symbol
+    # Returns the Universal Symbol object specified by the ticker or the universal_symbol_id.
     # @param query [String] The ticker or universal_symbol_id of the UniversalSymbol to get.
     # @param [Hash] opts the optional parameters
     # @return [Array<(UniversalSymbol, Integer, Hash)>] UniversalSymbol data, response status code and response headers
@@ -482,7 +516,9 @@ module SnapTrade
     end
 
 
-    # List of all brokerage authorization types
+    # Get all brokerage authorization types
+    #
+    # Returns a list of all defined Brokerage authorization Type objects.
     #
     # @param brokerage [String] Comma separated value of brokerage slugs
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
@@ -492,7 +528,9 @@ module SnapTrade
       data
     end
 
-    # List of all brokerage authorization types
+    # Get all brokerage authorization types
+    #
+    # Returns a list of all defined Brokerage authorization Type objects.
     #
     # @param brokerage [String] Comma separated value of brokerage slugs
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
@@ -501,7 +539,8 @@ module SnapTrade
       list_all_brokerage_authorization_type_with_http_info_impl(extra)
     end
 
-    # List of all brokerage authorization types
+    # Get all brokerage authorization types
+    # Returns a list of all defined Brokerage authorization Type objects.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :brokerage Comma separated value of brokerage slugs
     # @return [Array<BrokerageAuthorizationTypeReadOnly>]
@@ -510,7 +549,8 @@ module SnapTrade
       data
     end
 
-    # List of all brokerage authorization types
+    # Get all brokerage authorization types
+    # Returns a list of all defined Brokerage authorization Type objects.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :brokerage Comma separated value of brokerage slugs
     # @return [Array<(Array<BrokerageAuthorizationTypeReadOnly>, Integer, Hash)>] Array<BrokerageAuthorizationTypeReadOnly> data, response status code and response headers
@@ -560,7 +600,9 @@ module SnapTrade
     end
 
 
-    # List brokerages
+    # Get brokerages
+    #
+    # Returns a list of all defined Brokerage objects.
     #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def list_all_brokerages(extra: {})
@@ -568,14 +610,17 @@ module SnapTrade
       data
     end
 
-    # List brokerages
+    # Get brokerages
+    #
+    # Returns a list of all defined Brokerage objects.
     #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def list_all_brokerages_with_http_info(extra: {})
       list_all_brokerages_with_http_info_impl(extra)
     end
 
-    # List brokerages
+    # Get brokerages
+    # Returns a list of all defined Brokerage objects.
     # @param [Hash] opts the optional parameters
     # @return [Array<Brokerage>]
     private def list_all_brokerages_impl(opts = {})
@@ -583,7 +628,8 @@ module SnapTrade
       data
     end
 
-    # List brokerages
+    # Get brokerages
+    # Returns a list of all defined Brokerage objects.
     # @param [Hash] opts the optional parameters
     # @return [Array<(Array<Brokerage>, Integer, Hash)>] Array<Brokerage> data, response status code and response headers
     private def list_all_brokerages_with_http_info_impl(opts = {})
@@ -631,7 +677,9 @@ module SnapTrade
     end
 
 
-    # List currencies
+    # Get currencies
+    #
+    # Returns a list of all defined Currency objects.
     #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def list_all_currencies(extra: {})
@@ -639,14 +687,17 @@ module SnapTrade
       data
     end
 
-    # List currencies
+    # Get currencies
+    #
+    # Returns a list of all defined Currency objects.
     #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def list_all_currencies_with_http_info(extra: {})
       list_all_currencies_with_http_info_impl(extra)
     end
 
-    # List currencies
+    # Get currencies
+    # Returns a list of all defined Currency objects.
     # @param [Hash] opts the optional parameters
     # @return [Array<Currency>]
     private def list_all_currencies_impl(opts = {})
@@ -654,7 +705,8 @@ module SnapTrade
       data
     end
 
-    # List currencies
+    # Get currencies
+    # Returns a list of all defined Currency objects.
     # @param [Hash] opts the optional parameters
     # @return [Array<(Array<Currency>, Integer, Hash)>] Array<Currency> data, response status code and response headers
     private def list_all_currencies_with_http_info_impl(opts = {})
@@ -702,7 +754,9 @@ module SnapTrade
     end
 
 
-    # List currency exchange rates
+    # Get currency exchange rates
+    #
+    # Returns a list of all Exchange Rate Pairs for all supported Currencies.
     #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def list_all_currencies_rates(extra: {})
@@ -710,14 +764,17 @@ module SnapTrade
       data
     end
 
-    # List currency exchange rates
+    # Get currency exchange rates
+    #
+    # Returns a list of all Exchange Rate Pairs for all supported Currencies.
     #
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def list_all_currencies_rates_with_http_info(extra: {})
       list_all_currencies_rates_with_http_info_impl(extra)
     end
 
-    # List currency exchange rates
+    # Get currency exchange rates
+    # Returns a list of all Exchange Rate Pairs for all supported Currencies.
     # @param [Hash] opts the optional parameters
     # @return [Array<ExchangeRatePairs>]
     private def list_all_currencies_rates_impl(opts = {})
@@ -725,7 +782,8 @@ module SnapTrade
       data
     end
 
-    # List currency exchange rates
+    # Get currency exchange rates
+    # Returns a list of all Exchange Rate Pairs for all supported Currencies.
     # @param [Hash] opts the optional parameters
     # @return [Array<(Array<ExchangeRatePairs>, Integer, Hash)>] Array<ExchangeRatePairs> data, response status code and response headers
     private def list_all_currencies_rates_with_http_info_impl(opts = {})
@@ -775,6 +833,10 @@ module SnapTrade
 
     # Search for symbols available in an account
     #
+    # Returns a list of universal symbols that are supported by
+    # the specificied account. Returned symbols are based on the
+    # provided search string, matching on ticker and name.
+    #
     # @param user_id [String] 
     # @param user_secret [String] 
     # @param account_id [String] The ID of the account to search for symbols within.
@@ -791,6 +853,10 @@ module SnapTrade
 
     # Search for symbols available in an account
     #
+    # Returns a list of universal symbols that are supported by
+    # the specificied account. Returned symbols are based on the
+    # provided search string, matching on ticker and name.
+    #
     # @param user_id [String] 
     # @param user_secret [String] 
     # @param account_id [String] The ID of the account to search for symbols within.
@@ -805,6 +871,7 @@ module SnapTrade
     end
 
     # Search for symbols available in an account
+    # Returns a list of universal symbols that are supported by the specificied account. Returned symbols are based on the provided search string, matching on ticker and name. 
     # @param user_id [String] 
     # @param user_secret [String] 
     # @param account_id [String] The ID of the account to search for symbols within.
@@ -817,6 +884,7 @@ module SnapTrade
     end
 
     # Search for symbols available in an account
+    # Returns a list of universal symbols that are supported by the specificied account. Returned symbols are based on the provided search string, matching on ticker and name. 
     # @param user_id [String] 
     # @param user_secret [String] 
     # @param account_id [String] The ID of the account to search for symbols within.
