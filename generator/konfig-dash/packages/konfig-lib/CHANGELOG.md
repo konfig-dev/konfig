@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.37.9
+
+### Patch Changes
+
+- [#744](https://github.com/konfig-dev/konfig/pull/744) [`fbc4c4c71`](https://github.com/konfig-dev/konfig/commit/fbc4c4c716e3ffdeb391fc54cb487178d9605016) Thanks [@eddiechayes](https://github.com/eddiechayes)! - add autoMerge field to konfig.yaml for automation
+
 ## 1.37.8
 
 ### Patch Changes

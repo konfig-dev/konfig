@@ -1,5 +1,16 @@
 # konfig-cli
 
+## 1.38.51
+
+### Patch Changes
+
+- [#746](https://github.com/konfig-dev/konfig/pull/746) [`b4f878f4f`](https://github.com/konfig-dev/konfig/commit/b4f878f4f45a94df4897882b02c2f07bcf380447) Thanks [@eddiechayes](https://github.com/eddiechayes)! - add --allow-root flag to swift publish command so it works in docker
+
+- Updated dependencies [[`fbc4c4c71`](https://github.com/konfig-dev/konfig/commit/fbc4c4c716e3ffdeb391fc54cb487178d9605016)]:
+  - konfig-lib@1.37.9
+  - konfig-openapi-spec@1.8.28
+  - konfig-postman-to-openapi@3.1.28
+
 ## 1.38.50
 
 ### Patch Changes
