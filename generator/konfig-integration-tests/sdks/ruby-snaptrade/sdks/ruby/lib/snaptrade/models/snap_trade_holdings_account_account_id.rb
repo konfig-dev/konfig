@@ -25,6 +25,8 @@ module SnapTrade
 
     attr_accessor :institution_name
 
+    attr_accessor :balance
+
     attr_accessor :meta
 
     attr_accessor :cash_restrictions
@@ -41,6 +43,7 @@ module SnapTrade
         :'name' => :'name',
         :'number' => :'number',
         :'institution_name' => :'institution_name',
+        :'balance' => :'balance',
         :'meta' => :'meta',
         :'cash_restrictions' => :'cash_restrictions',
         :'created_date' => :'created_date'
@@ -61,6 +64,7 @@ module SnapTrade
         :'name' => :'String',
         :'number' => :'String',
         :'institution_name' => :'String',
+        :'balance' => :'SnapTradeHoldingsAccountAccountIdBalance',
         :'meta' => :'Hash<String, Object>',
         :'cash_restrictions' => :'Array<CashRestriction>',
         :'created_date' => :'String'
@@ -71,6 +75,7 @@ module SnapTrade
     def self.openapi_nullable
       Set.new([
         :'name',
+        :'balance',
       ])
     end
 
@@ -111,6 +116,10 @@ module SnapTrade
 
       if attributes.key?(:'institution_name')
         self.institution_name = attributes[:'institution_name']
+      end
+
+      if attributes.key?(:'balance')
+        self.balance = attributes[:'balance']
       end
 
       if attributes.key?(:'meta')
@@ -154,6 +163,7 @@ module SnapTrade
           name == o.name &&
           number == o.number &&
           institution_name == o.institution_name &&
+          balance == o.balance &&
           meta == o.meta &&
           cash_restrictions == o.cash_restrictions &&
           created_date == o.created_date
@@ -168,7 +178,7 @@ module SnapTrade
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, brokerage_authorization, portfolio_group, name, number, institution_name, meta, cash_restrictions, created_date].hash
+      [id, brokerage_authorization, portfolio_group, name, number, institution_name, balance, meta, cash_restrictions, created_date].hash
     end
 
     # Builds the object from hash

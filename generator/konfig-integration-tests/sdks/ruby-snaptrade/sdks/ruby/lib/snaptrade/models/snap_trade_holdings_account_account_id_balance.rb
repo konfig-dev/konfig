@@ -11,18 +11,13 @@ require 'date'
 require 'time'
 
 module SnapTrade
-  class TradingPlaceOCOOrderRequest
-    # The ID of first trade object obtained from trade/impact endpoint
-    attr_accessor :first_trade_id
-
-    # The ID of second trade object obtained from trade/impact endpoint
-    attr_accessor :second_trade_id
+  class SnapTradeHoldingsAccountAccountIdBalance
+    attr_accessor :total
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'first_trade_id' => :'first_trade_id',
-        :'second_trade_id' => :'second_trade_id'
+        :'total' => :'total'
       }
     end
 
@@ -34,40 +29,41 @@ module SnapTrade
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'first_trade_id' => :'Object',
-        :'second_trade_id' => :'Object'
+        :'total' => :'AccountBalanceTotal'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'first_trade_id',
-        :'second_trade_id'
+        :'total'
       ])
+    end
+
+    # List of class defined in allOf (OpenAPI v3)
+    def self.openapi_all_of
+      [
+      :'AccountBalance'
+      ]
     end
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `SnapTrade::TradingPlaceOCOOrderRequest` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `SnapTrade::SnapTradeHoldingsAccountAccountIdBalance` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `SnapTrade::TradingPlaceOCOOrderRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `SnapTrade::SnapTradeHoldingsAccountAccountIdBalance`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'first_trade_id')
-        self.first_trade_id = attributes[:'first_trade_id']
-      end
-
-      if attributes.key?(:'second_trade_id')
-        self.second_trade_id = attributes[:'second_trade_id']
+      if attributes.key?(:'total')
+        self.total = attributes[:'total']
       end
     end
 
@@ -89,8 +85,7 @@ module SnapTrade
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          first_trade_id == o.first_trade_id &&
-          second_trade_id == o.second_trade_id
+          total == o.total
     end
 
     # @see the `==` method
@@ -102,7 +97,7 @@ module SnapTrade
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [first_trade_id, second_trade_id].hash
+      [total].hash
     end
 
     # Builds the object from hash

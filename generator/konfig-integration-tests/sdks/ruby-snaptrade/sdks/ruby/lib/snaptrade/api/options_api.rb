@@ -17,7 +17,9 @@ module SnapTrade
       @api_client = api_client
     end
 
-    # Creates an option strategy object that will be used to place an option strategy order
+    # Create options strategy
+    #
+    # Creates an option strategy object that will be used to place an option strategy order.
     #
     # @param underlying_symbol_id [String] 
     # @param legs [Array<OptionLeg>] 
@@ -37,7 +39,9 @@ module SnapTrade
       data
     end
 
-    # Creates an option strategy object that will be used to place an option strategy order
+    # Create options strategy
+    #
+    # Creates an option strategy object that will be used to place an option strategy order.
     #
     # @param underlying_symbol_id [String] 
     # @param legs [Array<OptionLeg>] 
@@ -56,7 +60,8 @@ module SnapTrade
       get_option_strategy_with_http_info_impl(user_id, user_secret, account_id, options_get_option_strategy_request, extra)
     end
 
-    # Creates an option strategy object that will be used to place an option strategy order
+    # Create options strategy
+    # Creates an option strategy object that will be used to place an option strategy order. 
     # @param user_id [String] 
     # @param user_secret [String] 
     # @param account_id [String] The ID of the account to create the option strategy object in.
@@ -68,7 +73,8 @@ module SnapTrade
       data
     end
 
-    # Creates an option strategy object that will be used to place an option strategy order
+    # Create options strategy
+    # Creates an option strategy object that will be used to place an option strategy order. 
     # @param user_id [String] 
     # @param user_secret [String] 
     # @param account_id [String] The ID of the account to create the option strategy object in.
@@ -143,7 +149,9 @@ module SnapTrade
     end
 
 
-    # Get the options chain
+    # Get the options chain for a symbol
+    #
+    # Returns the option chain for the specified symbol in the specified account.
     #
     # @param user_id [String] 
     # @param user_secret [String] 
@@ -155,7 +163,9 @@ module SnapTrade
       data
     end
 
-    # Get the options chain
+    # Get the options chain for a symbol
+    #
+    # Returns the option chain for the specified symbol in the specified account.
     #
     # @param user_id [String] 
     # @param user_secret [String] 
@@ -166,7 +176,8 @@ module SnapTrade
       get_options_chain_with_http_info_impl(user_id, user_secret, account_id, symbol, extra)
     end
 
-    # Get the options chain
+    # Get the options chain for a symbol
+    # Returns the option chain for the specified symbol in the specified account.
     # @param user_id [String] 
     # @param user_secret [String] 
     # @param account_id [String] The ID of the account to get the options chain from.
@@ -178,7 +189,8 @@ module SnapTrade
       data
     end
 
-    # Get the options chain
+    # Get the options chain for a symbol
+    # Returns the option chain for the specified symbol in the specified account.
     # @param user_id [String] 
     # @param user_secret [String] 
     # @param account_id [String] The ID of the account to get the options chain from.
@@ -249,7 +261,9 @@ module SnapTrade
     end
 
 
-    # Get latest market data of option strategy
+    # Get options strategy quotes
+    #
+    # Returns a Strategy Quotes object which has latest market data of the specified option strategy.
     #
     # @param user_id [String] 
     # @param user_secret [String] 
@@ -261,7 +275,9 @@ module SnapTrade
       data
     end
 
-    # Get latest market data of option strategy
+    # Get options strategy quotes
+    #
+    # Returns a Strategy Quotes object which has latest market data of the specified option strategy.
     #
     # @param user_id [String] 
     # @param user_secret [String] 
@@ -272,7 +288,8 @@ module SnapTrade
       get_options_strategy_quote_with_http_info_impl(user_id, user_secret, account_id, option_strategy_id, extra)
     end
 
-    # Get latest market data of option strategy
+    # Get options strategy quotes
+    # Returns a Strategy Quotes object which has latest market data of the specified option strategy. 
     # @param user_id [String] 
     # @param user_secret [String] 
     # @param account_id [String] The ID of the account the strategy will be placed in.
@@ -284,7 +301,8 @@ module SnapTrade
       data
     end
 
-    # Get latest market data of option strategy
+    # Get options strategy quotes
+    # Returns a Strategy Quotes object which has latest market data of the specified option strategy. 
     # @param user_id [String] 
     # @param user_secret [String] 
     # @param account_id [String] The ID of the account the strategy will be placed in.
@@ -354,7 +372,9 @@ module SnapTrade
     end
 
 
-    # Get the options holdings in the account
+    # Get account option holdings
+    #
+    # Returns a list of Options Positions.
     #
     # @param user_id [String] 
     # @param user_secret [String] 
@@ -365,7 +385,9 @@ module SnapTrade
       data
     end
 
-    # Get the options holdings in the account
+    # Get account option holdings
+    #
+    # Returns a list of Options Positions.
     #
     # @param user_id [String] 
     # @param user_secret [String] 
@@ -375,7 +397,8 @@ module SnapTrade
       list_option_holdings_with_http_info_impl(user_id, user_secret, account_id, extra)
     end
 
-    # Get the options holdings in the account
+    # Get account option holdings
+    # Returns a list of Options Positions. 
     # @param user_id [String] 
     # @param user_secret [String] 
     # @param account_id [String] The ID of the account to fetch options holdings for.
@@ -386,7 +409,8 @@ module SnapTrade
       data
     end
 
-    # Get the options holdings in the account
+    # Get account option holdings
+    # Returns a list of Options Positions. 
     # @param user_id [String] 
     # @param user_secret [String] 
     # @param account_id [String] The ID of the account to fetch options holdings for.
@@ -451,9 +475,11 @@ module SnapTrade
     end
 
 
-    # Place an option strategy order on the brokerage
+    # Place an option strategy order
     #
-    # @param order_type [OrderType] Order Type
+    # Places the option strategy order and returns the order record received from the brokerage.
+    #
+    # @param order_type [OrderTypeStrict] Order Type
     # @param time_in_force [TimeInForceStrict] Trade time in force examples: * FOK - Fill Or Kill * Day - Day * GTC - Good Til Canceled 
     # @param user_id [String] 
     # @param user_secret [String] 
@@ -472,9 +498,11 @@ module SnapTrade
       data
     end
 
-    # Place an option strategy order on the brokerage
+    # Place an option strategy order
     #
-    # @param order_type [OrderType] Order Type
+    # Places the option strategy order and returns the order record received from the brokerage.
+    #
+    # @param order_type [OrderTypeStrict] Order Type
     # @param time_in_force [TimeInForceStrict] Trade time in force examples: * FOK - Fill Or Kill * Day - Day * GTC - Good Til Canceled 
     # @param user_id [String] 
     # @param user_secret [String] 
@@ -492,7 +520,8 @@ module SnapTrade
       place_option_strategy_with_http_info_impl(user_id, user_secret, account_id, option_strategy_id, options_place_option_strategy_request, extra)
     end
 
-    # Place an option strategy order on the brokerage
+    # Place an option strategy order
+    # Places the option strategy order and returns the order record received from the brokerage.
     # @param user_id [String] 
     # @param user_secret [String] 
     # @param account_id [String] The ID of the account to execute the strategy in.
@@ -505,7 +534,8 @@ module SnapTrade
       data
     end
 
-    # Place an option strategy order on the brokerage
+    # Place an option strategy order
+    # Places the option strategy order and returns the order record received from the brokerage.
     # @param user_id [String] 
     # @param user_secret [String] 
     # @param account_id [String] The ID of the account to execute the strategy in.

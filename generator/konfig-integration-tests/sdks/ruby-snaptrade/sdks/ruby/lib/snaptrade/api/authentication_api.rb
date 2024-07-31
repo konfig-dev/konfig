@@ -103,95 +103,6 @@ module SnapTrade
     end
 
 
-    # Generate encrypted JWT token
-    #
-    # @param user_id [String] 
-    # @param user_secret [String] 
-    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_user_jwt(user_id:, user_secret:, extra: {})
-      data, _status_code, _headers = get_user_jwt_with_http_info_impl(user_id, user_secret, extra)
-      data
-    end
-
-    # Generate encrypted JWT token
-    #
-    # @param user_id [String] 
-    # @param user_secret [String] 
-    # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
-    def get_user_jwt_with_http_info(user_id:, user_secret:, extra: {})
-      get_user_jwt_with_http_info_impl(user_id, user_secret, extra)
-    end
-
-    # Generate encrypted JWT token
-    # @param user_id [String] 
-    # @param user_secret [String] 
-    # @param [Hash] opts the optional parameters
-    # @return [EncryptedResponse]
-    private def get_user_jwt_impl(user_id, user_secret, opts = {})
-      data, _status_code, _headers = get_user_jwt_with_http_info(user_id, user_secret, opts)
-      data
-    end
-
-    # Generate encrypted JWT token
-    # @param user_id [String] 
-    # @param user_secret [String] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(EncryptedResponse, Integer, Hash)>] EncryptedResponse data, response status code and response headers
-    private def get_user_jwt_with_http_info_impl(user_id, user_secret, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: AuthenticationApi.get_user_jwt ...'
-      end
-      # verify the required parameter 'user_id' is set
-      if @api_client.config.client_side_validation && user_id.nil?
-        fail ArgumentError, "Missing the required parameter 'user_id' when calling AuthenticationApi.get_user_jwt"
-      end
-      # verify the required parameter 'user_secret' is set
-      if @api_client.config.client_side_validation && user_secret.nil?
-        fail ArgumentError, "Missing the required parameter 'user_secret' when calling AuthenticationApi.get_user_jwt"
-      end
-      # resource path
-      local_var_path = '/snapTrade/encryptedJWT'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-      query_params[:'userId'] = user_id
-      query_params[:'userSecret'] = user_secret
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'EncryptedResponse'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['PartnerClientId', 'PartnerSignature', 'PartnerTimestamp']
-
-      new_options = opts.merge(
-        :operation => :"AuthenticationApi.get_user_jwt",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers, response = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: AuthenticationApi#get_user_jwt\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers, response
-    end
-
-
     # List SnapTrade users
     #
     # Returns a list of users you've registered over the SnapTrade API.
@@ -403,7 +314,10 @@ module SnapTrade
 
     # Create SnapTrade user
     #
-    # @param user_id [String] SnapTrade User ID. Provided by SnapTrade Partner. Can be any string, as long as it's unique to a user
+    # Registers a new SnapTrade user under your ClientID.
+    # Most SnapTrade operations require a user to be passed as a parameter.
+    #
+    # @param user_id [String] SnapTrade User ID. This is chosen by the API partner and can be any string that is a) unique to the user, and b) immutable for the user. It is recommended to NOT use email addresses for this property because they are usually not immutable.
     # @param body [SnapTradeRegisterUserRequestBody] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def register_snap_trade_user(user_id: SENTINEL, extra: {})
@@ -416,7 +330,10 @@ module SnapTrade
 
     # Create SnapTrade user
     #
-    # @param user_id [String] SnapTrade User ID. Provided by SnapTrade Partner. Can be any string, as long as it's unique to a user
+    # Registers a new SnapTrade user under your ClientID.
+    # Most SnapTrade operations require a user to be passed as a parameter.
+    #
+    # @param user_id [String] SnapTrade User ID. This is chosen by the API partner and can be any string that is a) unique to the user, and b) immutable for the user. It is recommended to NOT use email addresses for this property because they are usually not immutable.
     # @param body [SnapTradeRegisterUserRequestBody] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def register_snap_trade_user_with_http_info(user_id: SENTINEL, extra: {})
@@ -427,6 +344,7 @@ module SnapTrade
     end
 
     # Create SnapTrade user
+    # Registers a new SnapTrade user under your ClientID. Most SnapTrade operations require a user to be passed as a parameter. 
     # @param snap_trade_register_user_request_body [SnapTradeRegisterUserRequestBody] 
     # @param [Hash] opts the optional parameters
     # @return [UserIDandSecret]
@@ -436,6 +354,7 @@ module SnapTrade
     end
 
     # Create SnapTrade user
+    # Registers a new SnapTrade user under your ClientID. Most SnapTrade operations require a user to be passed as a parameter. 
     # @param snap_trade_register_user_request_body [SnapTradeRegisterUserRequestBody] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(UserIDandSecret, Integer, Hash)>] UserIDandSecret data, response status code and response headers
@@ -495,8 +414,11 @@ module SnapTrade
 
     # Obtain a new user secret for a user
     #
-    # @param user_id [String] SnapTrade User ID. Provided by SnapTrade Partner. Can be any string, as long as it's unique to a user
-    # @param user_secret [String] SnapTrade User Secret randomly generated by SnapTrade. This should be considered priviledged information and if compromised, you should delete and re-create this SnapTrade user.
+    # This API is used to rotate the secret for a SnapTrade user. You might use this if a userSecret
+    # is compromised. Please note that if you call this endpoint and fail to save the new secret, you'll no longer be able to access any data for this user, and your only option will be to delete and recreate the user, then ask them to reconnect.
+    #
+    # @param user_id [String] SnapTrade User ID. This is chosen by the API partner and can be any string that is a) unique to the user, and b) immutable for the user. It is recommended to NOT use email addresses for this property because they are usually not immutable.
+    # @param user_secret [String] SnapTrade User Secret randomly generated by SnapTrade. This is privileged information and if compromised, should be rotated via the SnapTrade API.
     # @param body [UserIDandSecret] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def reset_snap_trade_user_secret(user_id: SENTINEL, user_secret: SENTINEL, extra: {})
@@ -510,8 +432,11 @@ module SnapTrade
 
     # Obtain a new user secret for a user
     #
-    # @param user_id [String] SnapTrade User ID. Provided by SnapTrade Partner. Can be any string, as long as it's unique to a user
-    # @param user_secret [String] SnapTrade User Secret randomly generated by SnapTrade. This should be considered priviledged information and if compromised, you should delete and re-create this SnapTrade user.
+    # This API is used to rotate the secret for a SnapTrade user. You might use this if a userSecret
+    # is compromised. Please note that if you call this endpoint and fail to save the new secret, you'll no longer be able to access any data for this user, and your only option will be to delete and recreate the user, then ask them to reconnect.
+    #
+    # @param user_id [String] SnapTrade User ID. This is chosen by the API partner and can be any string that is a) unique to the user, and b) immutable for the user. It is recommended to NOT use email addresses for this property because they are usually not immutable.
+    # @param user_secret [String] SnapTrade User Secret randomly generated by SnapTrade. This is privileged information and if compromised, should be rotated via the SnapTrade API.
     # @param body [UserIDandSecret] 
     # @param [Hash] extra additional parameters to pass along through :header_params, :query_params, or parameter name
     def reset_snap_trade_user_secret_with_http_info(user_id: SENTINEL, user_secret: SENTINEL, extra: {})
@@ -523,6 +448,7 @@ module SnapTrade
     end
 
     # Obtain a new user secret for a user
+    # This API is used to rotate the secret for a SnapTrade user. You might use this if a userSecret is compromised. Please note that if you call this endpoint and fail to save the new secret, you'll no longer be able to access any data for this user, and your only option will be to delete and recreate the user, then ask them to reconnect. 
     # @param user_i_dand_secret [UserIDandSecret] 
     # @param [Hash] opts the optional parameters
     # @return [UserIDandSecret]
@@ -532,6 +458,7 @@ module SnapTrade
     end
 
     # Obtain a new user secret for a user
+    # This API is used to rotate the secret for a SnapTrade user. You might use this if a userSecret is compromised. Please note that if you call this endpoint and fail to save the new secret, you&#39;ll no longer be able to access any data for this user, and your only option will be to delete and recreate the user, then ask them to reconnect. 
     # @param user_i_dand_secret [UserIDandSecret] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(UserIDandSecret, Integer, Hash)>] UserIDandSecret data, response status code and response headers

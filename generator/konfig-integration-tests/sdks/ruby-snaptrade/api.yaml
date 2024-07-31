@@ -40,8 +40,6 @@ tags:
   - name: Reference Data
     description: Retrieve basic information for API use, such as supported
       brokerages, exchanges, currencies, etc.
-  - name: Error Logs
-    description: Retrieve error logs for your SnapTrade users and API requests.
   - name: Webhooks
     description:
       Reach out directly to SnapTrade to enable webhooks in order to be
@@ -106,6 +104,9 @@ paths:
       tags:
         - Authentication
       summary: Create SnapTrade user
+      description: |
+        Registers a new SnapTrade user under your ClientID.
+        Most SnapTrade operations require a user to be passed as a parameter.
       operationId: Authentication_registerSnapTradeUser
       requestBody:
         $ref: "#/components/requestBodies/RegisterUserRequestBody"
@@ -226,58 +227,14 @@ paths:
                 $ref: "#/components/schemas/404FailedRequestResponse"
         "500":
           description: Unexpected Error
-  /snapTrade/encryptedJWT:
-    get:
-      tags:
-        - Authentication
-      summary:
-        Generate encrypted JWT token
-      operationId: Authentication_getUserJWT
-      parameters:
-        - in: query
-          required: true
-          name: userId
-          schema:
-            $ref: "#/components/schemas/UserID"
-        - in: query
-          required: true
-          name: userSecret
-          schema:
-            $ref: "#/components/schemas/UserSecret"
-      responses:
-        "200":
-          description:
-            Successfully obtained encrypted JWT data. See description on how to
-            object JWT token
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/encryptedResponse"
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/400FailedRequestResponse"
-        "403":
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/403FailedRequestResponse"
-        "404":
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/404FailedRequestResponse"
-        "500":
-          description: Unexpected Error
   /snapTrade/resetUserSecret:
     post:
       tags:
         - Authentication
       summary: Obtain a new user secret for a user
+      description: |
+        This API is used to rotate the secret for a SnapTrade user. You might use this if a userSecret
+        is compromised. Please note that if you call this endpoint and fail to save the new secret, you'll no longer be able to access any data for this user, and your only option will be to delete and recreate the user, then ask them to reconnect.
       operationId: Authentication_resetSnapTradeUserSecret
       requestBody:
         $ref: "#/components/requestBodies/ResetUserSecretRequestBody"
@@ -313,6 +270,7 @@ paths:
       tags:
         - Reference Data
       summary: Get metadata related to Snaptrade partner
+      description: Returns useful data related to the specified ClientID, including allowed brokerages and data access.
       operationId: ReferenceData_getPartnerInfo
       parameters: []
       responses:
@@ -352,6 +310,9 @@ paths:
       summary:
         List all accounts for the user, plus balances, positions, and orders for each
         account.
+      description: |
+        Lists balances, positions and orders for the specified account. The data returned is similar to
+        the data returned over the more fine-grained **positions**, **orders** and **balances** endpoints.
       operationId: AccountInformation_getAllUserHoldings
       parameters:
         - in: query
@@ -402,6 +363,10 @@ paths:
       tags:
         - Account Information
       summary: List balances, positions and orders for the specified account
+      description: |
+        Lists balances, positions and orders for the specified account as well as
+        option_positions and account metadata. The data returned is similar to the
+        data returned over the more fine-grained **positions**, **orders** and **balances** endpoints.
       operationId: AccountInformation_getUserHoldings
       parameters:
         - in: path
@@ -448,6 +413,7 @@ paths:
       tags:
         - Account Information
       summary: List accounts
+      description: Get a list of all Account objects for the authenticated SnapTrade user.
       operationId: AccountInformation_listUserAccounts
       parameters:
         - in: query
@@ -476,6 +442,9 @@ paths:
       tags:
         - Account Information
       summary: Return details of a specific investment account
+      description: |
+        Returns an account object with details for the specified account,
+        including the total account market value.
       operationId: AccountInformation_getUserAccountDetails
       parameters:
         - in: query
@@ -495,6 +464,7 @@ paths:
           schema:
             type: string
             format: uuid
+            example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
       responses:
         "200":
           description: Details of a specific investment account
@@ -508,6 +478,7 @@ paths:
       tags:
         - Account Information
       summary: Update details of an investment account
+      description: Updates various properties of a specified account.
       operationId: AccountInformation_updateUserAccount
       parameters:
         - in: query
@@ -563,6 +534,7 @@ paths:
           schema:
             type: string
             format: uuid
+            example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
       responses:
         "200":
           description: List of all balances in investment account
@@ -579,6 +551,7 @@ paths:
       tags:
         - Account Information
       summary: List account positions
+      description: Returns a list of positions in the specified account.
       operationId: AccountInformation_getUserAccountPositions
       parameters:
         - in: query
@@ -598,6 +571,7 @@ paths:
           schema:
             type: string
             format: uuid
+            example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
       responses:
         "200":
           description: List all positions in investment account
@@ -638,7 +612,7 @@ paths:
               - executed
         - in: query
           name: days
-          description: Number of days in the past to fetch the most recent orders. Defaults to the last 90 days if no value is passed in.
+          description: Number of days in the past to fetch the most recent orders. Defaults to the last 30 days if no value is passed in.
           schema:
             type: integer
             format: int32
@@ -651,6 +625,7 @@ paths:
           schema:
             type: string
             format: uuid
+            example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
       responses:
         "200":
           description: List all orders in account
@@ -671,6 +646,7 @@ paths:
       tags:
         - Trading
       summary: Get symbol quotes
+      description: Returns live quote(s) from the brokerage for the specified symbol(s).
       operationId: Trading_getUserAccountQuotes
       parameters:
         - in: query
@@ -700,6 +676,8 @@ paths:
           description: The ID of the account to get quotes.
           schema:
             type: string
+            format: uuid
+            example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
       responses:
         "200":
           description: Returns quotes object with different prices
@@ -718,6 +696,9 @@ paths:
       tags:
         - Trading
       summary: Cancel open order in account
+      description: |
+        Sends a signal to the brokerage to cancel the specified order.
+        This will only work if the order has not yet been executed.
       operationId: Trading_cancelUserAccountOrder
       parameters:
         - in: query
@@ -737,6 +718,7 @@ paths:
           schema:
             type: string
             format: uuid
+            example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
 
       requestBody:
         $ref: '#/components/requestBodies/CancelOrderRequestBody'
@@ -769,6 +751,10 @@ paths:
         - Reference Data
       summary:
         Search for symbols available in an account
+      description: |
+        Returns a list of universal symbols that are supported by
+        the specificied account. Returned symbols are based on the
+        provided search string, matching on ticker and name.
       operationId: ReferenceData_symbolSearchUserAccount
       parameters:
         - in: query
@@ -788,6 +774,7 @@ paths:
           schema:
             type: string
             format: uuid
+            example: 917c8734-8470-4a3e-a18f-57c3f2ee6631
       requestBody:
         content:
           application/json:
@@ -796,7 +783,7 @@ paths:
       responses:
         "200":
           description:
-            Array of universal symbol supported by account based on substring
+            List of universal symbol supported by account based on substring
             sent it
           content:
             "*/*":
@@ -810,7 +797,9 @@ paths:
     get:
       tags:
         - Options
-      summary: Get the options holdings in the account
+      summary: Get account option holdings
+      description: |
+        Returns a list of Options Positions.
       operationId: Options_listOptionHoldings
       parameters:
         - in: query
@@ -849,7 +838,8 @@ paths:
     get:
       tags:
         - Options
-      summary: Get the options chain
+      summary: Get the options chain for a symbol
+      description: Returns the option chain for the specified symbol in the specified account.
       operationId: Options_getOptionsChain
       parameters:
         - in: query
@@ -893,7 +883,9 @@ paths:
     post:
       tags:
         - Options
-      summary: Creates an option strategy object that will be used to place an option strategy order
+      summary: Create options strategy
+      description: |
+        Creates an option strategy object that will be used to place an option strategy order.
       operationId: Options_getOptionStrategy
       parameters:
         - in: query
@@ -935,7 +927,9 @@ paths:
     get:
       tags:
         - Options
-      summary: Get latest market data of option strategy
+      summary: Get options strategy quotes
+      description: |
+        Returns a Strategy Quotes object which has latest market data of the specified option strategy.
       operationId: Options_getOptionsStrategyQuote
       parameters:
         - in: query
@@ -979,7 +973,8 @@ paths:
     post:
       tags:
         - Options
-      summary: Place an option strategy order on the brokerage
+      summary: Place an option strategy order
+      description: Places the option strategy order and returns the order record received from the brokerage.
       operationId: Options_placeOptionStrategy
       parameters:
         - in: query
@@ -1024,7 +1019,8 @@ paths:
     get:
       tags:
         - Connections
-      summary: List all brokerage authorizations for the user
+      summary: List all brokerage authorizations for the User
+      description: Returns a list of Brokerage Authorization objects for the user
       operationId: Connections_listBrokerageAuthorizations
       parameters:
         - in: query
@@ -1053,6 +1049,7 @@ paths:
       tags:
         - Connections
       summary: Get brokerage authorization details
+      description: Returns a single brokerage authorization object for the specified ID.
       operationId: Connections_detailBrokerageAuthorization
       parameters:
         - in: path
@@ -1084,6 +1081,7 @@ paths:
       tags:
         - Connections
       summary: Delete brokerage authorization
+      description: Deletes a specified brokerage authorization given by the ID.
       operationId: Connections_removeBrokerageAuthorization
       parameters:
         - in: path
@@ -1111,11 +1109,124 @@ paths:
           description: The specified authorizationId was not found.
         default:
           description: Unexpected error.
+  "/authorizations/{authorizationId}/refresh":
+    post:
+      tags:
+        - Connections
+      summary: Refresh holdings for a connection
+      description: Trigger a holdings update for all accounts under this authorization. Updates will be queued asynchronously. ACCOUNT_HOLDINGS_UPDATED webhook will be sent once the sync completes
+      operationId: Connections_refreshBrokerageAuthorization
+      parameters:
+        - in: path
+          name: authorizationId
+          required: true
+          description: The ID of a brokerage authorization object.
+          schema:
+            $ref: "#/components/schemas/Id"
+        - in: query
+          required: true
+          name: userId
+          schema:
+            $ref: "#/components/schemas/UserID"
+        - in: query
+          required: true
+          name: userSecret
+          schema:
+            $ref: "#/components/schemas/UserSecret"
+      responses:
+        "200":
+          description: Confirmation that the syncs have been scheduled
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BrokerageAuthorizationRefreshConfirmation"
+        "401":
+          description: Unauthorized, invalid credentials for this resource
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/401FailedRequestResponse"
+        "402":
+          description: Unable to sync with brokerage account because the connection is disabled.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/402BrokerageAuthDisabledResponse"
+        "403":
+          description: Customer or user does not have access to this feature
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/403FeatureNotEnabledResponse"
+        "404":
+          description: The requested resource does not exist.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/404FailedRequestResponse"
+  "/authorizations/{authorizationId}/disable":
+    post:
+      tags:
+        - Connections
+      summary: Manually disable a connection for testing
+      description: Manually disable a connection. This should only be used for testing a reconnect flow, and never used on production connections.
+        Will trigger a disconnect as if it happened naturally, and send a CONNECTION_BROKEN webhook for the connection. Please contact us in order to use this endpoint as it is disabled by default.
+      operationId: Connections_disableBrokerageAuthorization
+      parameters:
+        - in: path
+          name: authorizationId
+          required: true
+          description: The ID of a brokerage authorization object.
+          schema:
+            $ref: "#/components/schemas/Id"
+        - in: query
+          required: true
+          name: userId
+          schema:
+            $ref: "#/components/schemas/UserID"
+        - in: query
+          required: true
+          name: userSecret
+          schema:
+            $ref: "#/components/schemas/UserSecret"
+      responses:
+        "200":
+          description: Confirmation that the connection has been disabled
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BrokerageAuthorizationDisabledConfirmation"
+        "401":
+          description: Unauthorized, invalid credentials for this resource
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/401FailedRequestResponse"
+        "402":
+          description: Unable to sync with brokerage account because the connection is disabled.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/402BrokerageAuthAlreadyDisabledException"
+        "403":
+          description: Customer or user does not have access to this feature
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/403FeatureNotEnabledResponse"
+        "404":
+          description: The requested resource does not exist.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/404FailedRequestResponse"
+
   "/sessionEvents":
     get:
       tags:
         - Connections
-      summary: List all session events for the partner
+      summary: Get all session events for a user
+      description: Returns a list of session events associated with a user.
       operationId: Connections_sessionEvents
       parameters:
         - in: query
@@ -1153,7 +1264,8 @@ paths:
     get:
       tags:
         - Reference Data
-      summary: List brokerages
+      summary: Get brokerages
+      description: Returns a list of all defined Brokerage objects.
       operationId: ReferenceData_listAllBrokerages
       parameters: []
       responses:
@@ -1171,7 +1283,8 @@ paths:
     get:
       tags:
         - Reference Data
-      summary: List of all brokerage authorization types
+      summary: Get all brokerage authorization types
+      description: Returns a list of all defined Brokerage authorization Type objects.
       operationId: ReferenceData_listAllBrokerageAuthorizationType
       parameters:
         - in: query
@@ -1196,7 +1309,8 @@ paths:
     get:
       tags:
         - Reference Data
-      summary: List currencies
+      summary: Get currencies
+      description: Returns a list of all defined Currency objects.
       operationId: ReferenceData_listAllCurrencies
       parameters: []
       responses:
@@ -1210,37 +1324,12 @@ paths:
                   $ref: "#/components/schemas/Currency"
         default:
           description: Unexpected error.
-  /snapTrade/listUserErrors:
-    get:
-      tags:
-        - Error Logs
-      summary: Retrieve error logs on behalf of your SnapTrade users
-      operationId: ErrorLogs_listUserErrors
-      parameters:
-        - in: query
-          required: true
-          name: userId
-          schema:
-            $ref: "#/components/schemas/UserID"
-        - in: query
-          required: true
-          name: userSecret
-          schema:
-            $ref: "#/components/schemas/UserSecret"
-      responses:
-        "200":
-          description: A list of all user errors for a particular user in the last 90 days.
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/UserErrorLog"
   /currencies/rates:
     get:
       tags:
         - Reference Data
-      summary: List currency exchange rates
+      summary: Get currency exchange rates
+      description: Returns a list of all Exchange Rate Pairs for all supported Currencies.
       operationId: ReferenceData_listAllCurrenciesRates
       parameters: []
       responses:
@@ -1256,7 +1345,8 @@ paths:
     get:
       tags:
         - Reference Data
-      summary: Return the exchange rate of a currency pair
+      summary: Get exchange rate of a currency pair
+      description: Returns an Exchange Rate Pair object for the specified Currency Pair.
       operationId: ReferenceData_getCurrencyExchangeRatePair
       parameters:
         - in: path
@@ -1276,7 +1366,8 @@ paths:
     get:
       tags:
         - Reference Data
-      summary: List exchanges
+      summary: Get exchanges
+      description: Returns a list of all supported Exchanges.
       operationId: ReferenceData_getStockExchanges
       parameters: []
       responses:
@@ -1312,6 +1403,10 @@ paths:
       tags:
         - Reference Data
       summary: Search for symbols
+      description: |
+        Returns a list of Universal Symbol objects that match a defined string.
+
+        Matches on ticker or name.
       operationId: ReferenceData_getSymbols
       parameters: []
       responses:
@@ -1334,7 +1429,8 @@ paths:
     get:
       tags:
         - Reference Data
-      summary: Get details of a symbol by the ticker or the universal_symbol_id
+      summary: Get details of a symbol
+      description: Returns the Universal Symbol object specified by the ticker or the universal_symbol_id.
       operationId: ReferenceData_getSymbolsByTicker
       parameters:
         - in: path
@@ -1359,6 +1455,7 @@ paths:
       tags:
         - Trading
       summary: Place a trade with NO validation.
+      description: Places a specified trade in the specified account.
       operationId: Trading_placeForceOrder
       parameters:
         - in: query
@@ -1399,7 +1496,8 @@ paths:
     post:
       tags:
         - Trading
-      summary: Check impact of trades on account.
+      summary: Check the impact of a trade on an account
+      description: Return the trade object and it's impact on the account for the specified order.
       operationId: Trading_getOrderImpact
       parameters:
         - in: query
@@ -1440,6 +1538,9 @@ paths:
       tags:
         - Trading
       summary: Place order
+      description: |
+        Places the specified trade object. This places the order in the account and
+        returns the status of the order from the brokerage.
       operationId: Trading_placeOrder
       parameters:
         - in: path
@@ -1474,41 +1575,8 @@ paths:
                 $ref: "#/components/schemas/400FailedRequestResponse"
         "500":
           description: Unexpected Error
-  /trade/oco:
-    post:
-      deprecated: true
-      tags:
-        - Trading
-      summary: Place a OCO (One Cancels Other) order
-      operationId: Trading_placeOCOOrder
-      parameters:
-        - in: query
-          required: true
-          name: userId
-          schema:
-            $ref: "#/components/schemas/UserID"
-        - in: query
-          required: true
-          name: userSecret
-          schema:
-            $ref: "#/components/schemas/UserSecret"
-      responses:
-        "200":
-          description: Status of order placed
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/AccountOrderRecord"
-        "400":
-          description: Failed to submit order to broker
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/400FailedRequestResponse"
-        "500":
-          description: Unexpected Error
       requestBody:
-        $ref: "#/components/requestBodies/OCORequestBody"
+        $ref: "#/components/requestBodies/ValidatedTradeRequestBody"
   /activities:
     get:
       tags:
@@ -1663,6 +1731,7 @@ paths:
       tags:
         - Webhooks
       operationId: Webhooks_connectionAdded
+      description: A webhook that is sent whenever a new connection is added.
       requestBody:
         description: Information about a new connection in the system
         content:
@@ -1679,6 +1748,7 @@ paths:
       tags:
         - Webhooks
       operationId: Webhooks_connectionDeleted
+      description: A webhook that is sent whenever an existing connection is deleted.
       requestBody:
         description: Information about the deleted connection
         content:
@@ -1697,6 +1767,7 @@ paths:
       tags:
         - Webhooks
       operationId: Webhooks_userRegistered
+      description: A webhook that is sent whenever a user is newly registered.
       requestBody:
         description: Information about the newly registered user
         content:
@@ -1716,6 +1787,7 @@ paths:
       tags:
         - Webhooks
       operationId: Webhooks_userDeleted
+      description: A webhook that is sent whenever an existing user is deleted.
       requestBody:
         description: Information about the deleted user
         content:
@@ -1733,6 +1805,7 @@ paths:
       tags:
         - Webhooks
       operationId: Webhooks_accountAdded
+      description: A webhook that is sent whenever a new account is added to an existing brokerage authorization.
       requestBody:
         description: Information about the newly added account
         content:
@@ -1746,12 +1819,13 @@ paths:
             successfully
         "201":
           description: Return a 201 status to indicate that the account was added
-            successfull
+            successfully
   /accountDeleted:
     post:
       tags:
         - Webhooks
       operationId: Webhooks_accountDeleted
+      description: A webhook that is sent whenever an existing account under a brokerage authorization is deleted.
       requestBody:
         description: Information about the deleted account
         content:
@@ -1771,6 +1845,7 @@ paths:
       tags:
         - Webhooks
       operationId: Webhooks_updatedTransactions
+      description: A webhook that is sent whenever transactions have been updated for an account.
       requestBody:
         description: Information about the account for which transactions have been updated
         content:
@@ -1859,8 +1934,12 @@ components:
         application/json:
           schema:
             $ref: "#/components/schemas/ManualTradeForm"
-
-
+    ValidatedTradeRequestBody:
+      required: false
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ValidatedTradeBody"
     CancelOrderRequestBody:
       description: The Order ID to be canceled
       required: true
@@ -1891,17 +1970,6 @@ components:
                 description: API Client Secret from brokerage when registering app
               redirectURI:
                 description: Redirect uri from brokerage when registering app
-    OCORequestBody:
-      required: true
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              first_trade_id:
-                description: The ID of first trade object obtained from trade/impact endpoint
-              second_trade_id:
-                description: The ID of second trade object obtained from trade/impact endpoint
 
     OptionStrategyRequestBody:
       required: true
@@ -1931,7 +1999,7 @@ components:
             required: ["order_type", "time_in_force"]
             properties:
               order_type:
-                $ref: "#/components/schemas/OrderType"
+                $ref: "#/components/schemas/OrderTypeStrict"
               time_in_force:
                 $ref: "#/components/schemas/TimeInForceStrict"
               price:
@@ -1966,6 +2034,22 @@ components:
           example: Unable to verify signature sent
         default_code:
           example: 1076
+    402BrokerageAuthDisabledResponse:
+      description: Cannot perform action because connection is disabled
+      type: object
+      properties:
+        detail:
+          example: Unable to sync with brokerage account because the connection is disabled.
+        code:
+          example: 3003
+    402BrokerageAuthAlreadyDisabledException:
+      description: This connection is already disabled.
+      type: object
+      properties:
+        detail:
+          example: This connection is already disabled.
+        code:
+          example: 3011
     403FailedRequestResponse:
       description: Example for failed request response
       type: object
@@ -1974,6 +2058,14 @@ components:
           example: User does not have permission to access this resource
         default_code:
           example: 1066
+    403FeatureNotEnabledResponse:
+      description: Example for failed request response
+      type: object
+      properties:
+        detail:
+          example: Feature is not enabled for this customer or this connection
+        default_code:
+          example: 1141
     404FailedRequestResponse:
       description: Example for failed request response
       type: object
@@ -2017,6 +2109,8 @@ components:
       properties:
         transactions:
           $ref: "#/components/schemas/TransactionsStatus"
+        holdings:
+          $ref: "#/components/schemas/HoldingsStatus"
     TransactionsStatus:
       description: Status of account transaction sync
       properties:
@@ -2024,6 +2118,15 @@ components:
           type: boolean
         last_successful_sync:
           $ref: "#/components/schemas/SyncStatusDate"
+        first_transaction_date:
+          $ref: "#/components/schemas/SyncStatusDate"
+    HoldingsStatus:
+      description: Status of account holdings sync
+      properties:
+        initial_sync_completed:
+          type: boolean
+        last_successful_sync:
+          $ref: "#/components/schemas/HoldingsSyncStatusDate"
     AccountBalance:
       description: Balance of the account
       properties:
@@ -2033,7 +2136,7 @@ components:
           allOf:
            - $ref: "#/components/schemas/Amount"
     Amount:
-      description: Total Value of the account
+      description: Total value of the account, as reported by the brokerage
       properties:
         amount:
           type: number
@@ -2133,6 +2236,11 @@ components:
           nullable: true
           items:
             $ref: "#/components/schemas/Position"
+        option_positions:
+          type: array
+          nullable: true
+          items:
+            $ref: "#/components/schemas/OptionsPosition"
         orders:
           type: array
           nullable: true
@@ -2158,7 +2266,9 @@ components:
         action:
           $ref: "#/components/schemas/Action"
         total_quantity:
-          $ref: "#/components/schemas/Units"
+          nullable: true
+          allOf:
+            - $ref: "#/components/schemas/Units"
         open_quantity:
           $ref: "#/components/schemas/OpenUnits"
         canceled_quantity:
@@ -2178,7 +2288,13 @@ components:
         time_placed:
           $ref: "#/components/schemas/Time"
         time_updated:
-          $ref: "#/components/schemas/Time"
+          nullable: true
+          allOf:
+            - $ref: "#/components/schemas/Time"
+        time_executed:
+          nullable: true
+          allOf:
+            - $ref: "#/components/schemas/Time"
         expiry_date:
           $ref: "#/components/schemas/Time"
     AccountOrderRecordStatus:
@@ -2210,7 +2326,7 @@ components:
       type: object
       properties:
         symbol:
-          $ref: "#/components/schemas/BrokerageSymbol"
+          $ref: "#/components/schemas/OptionBrokerageSymbol"
         price:
           $ref: "#/components/schemas/Price"
         units:
@@ -2649,6 +2765,10 @@ components:
         institution_name:
           type: string
           example: Alpaca
+        balance:
+          nullable: true
+          allOf:
+            - $ref: "#/components/schemas/AccountBalance"
         meta:
           type: object
           example:
@@ -2663,7 +2783,7 @@ components:
           $ref: "#/components/schemas/Time"
 
     SnapTradeHoldingsTotalValue:
-      description: Summed value of account positions and cash balances
+      description: Calculated based on the sum of the values of account positions and cash balances
       type: object
       properties:
         value:
@@ -2683,6 +2803,10 @@ components:
         cash:
           type: number
           example: 300.71
+          nullable: true
+        buying_power:
+          type: number
+          example: 410.71
           nullable: true
     ConsumerKey:
       description: Shared key used to sign requests
@@ -2794,9 +2918,9 @@ components:
       type: string
       example: SNAPTRADETEST
     UserID:
-      description: SnapTrade User ID
+      description: SnapTrade User ID. This is chosen by the API partner and can be any string that is a) unique to the user, and b) immutable for the user. It is recommended to NOT use email addresses for this property because they are usually not immutable.
       type: string
-      example: John.doe@snaptrade.com
+      example: snaptrade-user-123
     UserSecret:
       description: SnapTrade User Secret (generated when registering user)
       type: string
@@ -3128,12 +3252,11 @@ components:
             - v2
             - v3
     SnapTradeUserID:
-      description: SnapTrade User ID. Provided by SnapTrade Partner. Can be any
-        string, as long as it's unique to a user
+      description: SnapTrade User ID. This is chosen by the API partner and can be any string that is a) unique to the user, and b) immutable for the user. It is recommended to NOT use email addresses for this property because they are usually not immutable.
       type: string
       example: snaptrade-user-123
     SnapTradeUserSecret:
-      description: SnapTrade User Secret randomly generated by SnapTrade. This should be considered priviledged information and if compromised, you should delete and re-create this SnapTrade user.
+      description: SnapTrade User Secret randomly generated by SnapTrade. This is privileged information and if compromised, should be rotated via the SnapTrade API.
       type: string
       example: h81@cx1lkalablakwjaltkejraj11=
     Symbol:
@@ -3161,6 +3284,10 @@ components:
           type: string
           example: BBG000B9XRY4
           nullable: true
+        figi_instrument:
+          nullable: true
+          allOf:
+           - $ref: "#/components/schemas/FigiInstrument"
     Timestamp:
       externalDocs:
         url: https://en.wikipedia.org/wiki/Unix_time
@@ -3227,13 +3354,13 @@ components:
             name:
               type: string
               example: Questrade
-              description: Name of Brokerage
+              description: Full name of the brokerage.
             slug:
               type: string
               example: QUESTRADE
               description:
-                Slug of Brokerage. It is usually the name of the brokerage in
-                capital letters
+                A unique identifier for that brokerage. It is usually the name of the brokerage in
+                capital letters and will never change.
     Brokerage:
       type: object
       properties:
@@ -3242,9 +3369,11 @@ components:
         name:
           type: string
           example: Questrade
+          description: Full name of the brokerage.
         display_name:
           type: string
           example: Questrade
+          description: A display-friendly name of the brokerage.
         description:
           type: string
           example: Questrade is an online brokerage firm and wealth management firm based in Canada. It is Canada's largest discount broker.
@@ -3252,9 +3381,22 @@ components:
           type: string
           format: url
           example: https://www.snaptrade.com/questrade.logo
+        aws_s3_square_logo_url:
+          type: string
+          format: url
+          example: https://www.snaptrade.com/questrade.logo
+          nullable: true
+        open_url:
+          type: string
+          format: url
+          example: https://www.brokerage.com
+          nullable: true
         slug:
           type: string
           example: QUESTRADE
+          description:
+            A unique identifier for that brokerage. It is usually the name of the brokerage in
+            capital letters and will never change.
         url:
           type: string
           format: url
@@ -3329,6 +3471,20 @@ components:
           type: object
           example:
             identifier: 123456
+    BrokerageAuthorizationRefreshConfirmation:
+      type: object
+      properties:
+        detail:
+          description: Refresh confirmation details
+          type: string
+          example: Connection 0b3ebefb-ed47-43df-cd8f-729a4420b5cf scheduled for refresh
+    BrokerageAuthorizationDisabledConfirmation:
+      type: object
+      properties:
+        detail:
+          description: Connection disabled confirmation
+          type: string
+          example: Connection 0b3ebefb-ed47-43df-cd8f-729a4420b5cf has been disabled
     SessionEvent:
       type: object
       properties:
@@ -3337,13 +3493,21 @@ components:
         session_event_type:
           type: string
           enum:
-            - CONNECTION_FAILED
+            - OAUTH_REDIRECT
             - DISCLAIMER_ACCEPTED
             - BROKERAGE_CONNECTION_INITIATED
+            - BROKERAGE_RECONNECT_INITIATED
             - BROKERAGE_AUTHENTICATION
-            - MFA_AUTHORIZATION
+            - OAUTH_BROKERAGE_AUTHENTICATION
+            - MFA_REQUESTED
+            - MFA_SUBMITTED
+            - MFA_CHOICE_REQUESTED
+            - MFA_CHOICE_SUBMITTED
             - CONNECTION_SUCCESSFUL
+            - CONNECTION_FAILED
             - PARTNER_REDIRECT
+            - CONNECTION_ABORTED
+            - SESSION_STARTED
         session_id:
           $ref: "#/components/schemas/Id"
         user_id:
@@ -3379,6 +3543,17 @@ components:
           allOf:
             - $ref: "#/components/schemas/OptionsSymbol"
           nullable: true
+    OptionBrokerageSymbol:
+      description: Option Brokerage symbol
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/Id"
+        description:
+          type: string
+          example: SPY CALL 7/17 200
+        option_symbol:
+          $ref: "#/components/schemas/OptionsSymbol"
     PositionSymbol:
       description: Symbol returned in position object
       type: object
@@ -3730,6 +3905,13 @@ components:
       example: "2022-01-24"
       format: date
       nullable: true
+    HoldingsSyncStatusDate:
+      description:
+        Date in ISO 8601 format or null (YYYY-MM-DD HH:MM:SS.mmmmmmTZ)
+      type: string
+      example: "2024-06-28 18:42:46.561408+00:00"
+      format: datetime
+      nullable: true
     TargetAsset:
       description: Target percentage of a certain asset
       type: object
@@ -3855,15 +4037,17 @@ components:
           type: string
           example: 2bcd7cc3-e922-4976-bce1-9855556801c3
         order_type:
-          $ref: "#/components/schemas/OrderType"
+          $ref: "#/components/schemas/OrderTypeStrict"
         time_in_force:
           $ref: "#/components/schemas/TimeInForce"
         symbol:
           $ref: "#/components/schemas/ManualTradeSymbol"
         action:
-          $ref: "#/components/schemas/Action"
+          $ref: "#/components/schemas/ActionStrict"
         units:
-          $ref: "#/components/schemas/Units"
+          nullable: true
+          allOf:
+            - $ref: "#/components/schemas/Units"
         price:
           $ref: "#/components/schemas/Price"
     ManualTradeSymbol:
@@ -3937,9 +4121,9 @@ components:
         account_id:
           $ref: "#/components/schemas/Id"
         action:
-          $ref: "#/components/schemas/Action"
+          $ref: "#/components/schemas/ActionStrict"
         order_type:
-          $ref: "#/components/schemas/OrderType"
+          $ref: "#/components/schemas/OrderTypeStrict"
         price:
           $ref: "#/components/schemas/Price"
         stop:
@@ -3956,15 +4140,32 @@ components:
           nullable: true
           allOf:
             - $ref: "#/components/schemas/NotionalValue"
+    ValidatedTradeBody:
+      description: Validated Trade Form
+      type: object
+      properties:
+        wait_to_confirm:
+          nullable: true
+          example: true
+          type: boolean
+          description: Optional, defaults to true. Determines if a wait is performed to check on order status. If false, latency will be reduced but orders returned will be more likely to be of status PENDING as we will not wait to check on the status before responding to the request
     Cash:
       description: Cash
       type: number
       example: 1.11
       nullable: true
-    OrderType:
+    OrderTypeStrict:
       description: Order Type
       type: string
       enum:
+        - Limit
+        - Market
+        - StopLimit
+        - StopLoss
+    OrderType:
+      type: string
+      nullable: true
+      description: Order Type potential values include (but are not limited to)
         - Limit
         - Market
         - StopLimit
@@ -3997,12 +4198,23 @@ components:
           * GTC - Good Til Canceled
           * GTD - Good Til Date
       type: string
-    Action:
+    ActionStrict:
       description: Trade Action
       type: string
       enum:
         - BUY
         - SELL
+    Action:
+      type: string
+      description: Trade Action potential values include (but are not limited to)
+        - BUY
+        - SELL
+        - BUY_COVER
+        - SELL_SHORT
+        - BUY_OPEN
+        - BUY_CLOSE
+        - SELL_OPEN
+        - SELL_CLOSE
     Units:
       description: Trade Units. Cannot work with notional value.
       type: number
@@ -4024,8 +4236,10 @@ components:
       nullable: true
       example: 31.33
     NotionalValue:
-      description: Dollar amount to trade. Cannot work with units. Can only work for market order types and day for time in force. **Only available for Alpaca, Alpaca Paper, and Robinhood. Please contact support to get access to place notional trades**
-      type: number
+      description: Dollar amount to trade. Cannot work with units. Can only work for market order types and day for time in force. **Only available for Alpaca, Alpaca Paper, and Robinhood.**
+      oneOf:
+        - type: string
+        - type: number
       example: 100.00
     StopPrice:
       description:
@@ -4113,6 +4327,18 @@ components:
           type: number
           description: Usually but not necessarily an integer
           example: 5
+    FigiInstrument:
+      description: Open FIGI Identifiers
+      type: object
+      properties:
+        figi_code:
+          type: string
+          example: BBG000B9Y5X2
+          nullable: true
+        figi_share_class:
+          type: string
+          example: BBG001S5N8V8
+          nullable: true
     UniversalSymbol:
       description: Universal symbol
       type: object
@@ -4143,6 +4369,10 @@ components:
           type: string
           example: BBG000B9XRY4
           nullable: true
+        figi_instrument:
+          nullable: true
+          allOf:
+           - $ref: "#/components/schemas/FigiInstrument"
       required:
         - id
         - symbol
@@ -4177,6 +4407,10 @@ components:
           type: string
           example: BBG000B9XRY4
           nullable: true
+        figi_instrument:
+          nullable: true
+          allOf:
+           - $ref: "#/components/schemas/FigiInstrument"
     OptionsSymbol:
       description: Options Symbol
       type: object

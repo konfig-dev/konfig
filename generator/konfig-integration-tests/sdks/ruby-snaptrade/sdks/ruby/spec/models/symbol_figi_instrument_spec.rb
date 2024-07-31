@@ -11,22 +11,22 @@ require 'spec_helper'
 require 'json'
 require 'date'
 
-# Unit tests for SnapTrade::TradingPlaceOCOOrderRequest
-describe SnapTrade::TradingPlaceOCOOrderRequest do
-  let(:instance) { SnapTrade::TradingPlaceOCOOrderRequest.new }
+# Unit tests for SnapTrade::SymbolFigiInstrument
+describe SnapTrade::SymbolFigiInstrument do
+  let(:instance) { SnapTrade::SymbolFigiInstrument.new }
 
-  describe 'test an instance of TradingPlaceOCOOrderRequest' do
-    it 'should create an instance of TradingPlaceOCOOrderRequest' do
-      expect(instance).to be_instance_of(SnapTrade::TradingPlaceOCOOrderRequest)
+  describe 'test an instance of SymbolFigiInstrument' do
+    it 'should create an instance of SymbolFigiInstrument' do
+      expect(instance).to be_instance_of(SnapTrade::SymbolFigiInstrument)
     end
   end
-  describe 'test attribute "first_trade_id"' do
+  describe 'test attribute "figi_code"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "second_trade_id"' do
+  describe 'test attribute "figi_share_class"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

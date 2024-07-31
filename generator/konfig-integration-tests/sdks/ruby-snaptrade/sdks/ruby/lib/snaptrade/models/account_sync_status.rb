@@ -15,10 +15,13 @@ module SnapTrade
   class AccountSyncStatus
     attr_accessor :transactions
 
+    attr_accessor :holdings
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'transactions' => :'transactions'
+        :'transactions' => :'transactions',
+        :'holdings' => :'holdings'
       }
     end
 
@@ -30,7 +33,8 @@ module SnapTrade
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'transactions' => :'TransactionsStatus'
+        :'transactions' => :'TransactionsStatus',
+        :'holdings' => :'HoldingsStatus'
       }
     end
 
@@ -58,6 +62,10 @@ module SnapTrade
       if attributes.key?(:'transactions')
         self.transactions = attributes[:'transactions']
       end
+
+      if attributes.key?(:'holdings')
+        self.holdings = attributes[:'holdings']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -78,7 +86,8 @@ module SnapTrade
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          transactions == o.transactions
+          transactions == o.transactions &&
+          holdings == o.holdings
     end
 
     # @see the `==` method
@@ -90,7 +99,7 @@ module SnapTrade
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [transactions].hash
+      [transactions, holdings].hash
     end
 
     # Builds the object from hash

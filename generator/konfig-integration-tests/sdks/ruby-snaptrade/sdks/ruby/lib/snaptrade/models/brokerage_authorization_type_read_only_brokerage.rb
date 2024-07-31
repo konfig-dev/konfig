@@ -14,10 +14,10 @@ module SnapTrade
   class BrokerageAuthorizationTypeReadOnlyBrokerage
     attr_accessor :id
 
-    # Name of Brokerage
+    # Full name of the brokerage.
     attr_accessor :name
 
-    # Slug of Brokerage. It is usually the name of the brokerage in capital letters
+    # A unique identifier for that brokerage. It is usually the name of the brokerage in capital letters and will never change.
     attr_accessor :slug
 
     # Attribute mapping from ruby-style variable name to JSON key.

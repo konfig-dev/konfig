@@ -17,11 +17,14 @@ module SnapTrade
 
     attr_accessor :cash
 
+    attr_accessor :buying_power
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'currency' => :'currency',
-        :'cash' => :'cash'
+        :'cash' => :'cash',
+        :'buying_power' => :'buying_power'
       }
     end
 
@@ -34,14 +37,16 @@ module SnapTrade
     def self.openapi_types
       {
         :'currency' => :'Currency',
-        :'cash' => :'Float'
+        :'cash' => :'Float',
+        :'buying_power' => :'Float'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'cash'
+        :'cash',
+        :'buying_power'
       ])
     end
 
@@ -67,6 +72,10 @@ module SnapTrade
       if attributes.key?(:'cash')
         self.cash = attributes[:'cash']
       end
+
+      if attributes.key?(:'buying_power')
+        self.buying_power = attributes[:'buying_power']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -88,7 +97,8 @@ module SnapTrade
       return true if self.equal?(o)
       self.class == o.class &&
           currency == o.currency &&
-          cash == o.cash
+          cash == o.cash &&
+          buying_power == o.buying_power
     end
 
     # @see the `==` method
@@ -100,7 +110,7 @@ module SnapTrade
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [currency, cash].hash
+      [currency, cash, buying_power].hash
     end
 
     # Builds the object from hash

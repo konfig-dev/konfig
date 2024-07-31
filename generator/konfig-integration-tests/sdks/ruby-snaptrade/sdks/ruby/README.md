@@ -6,7 +6,7 @@
 
 Connect brokerage accounts to your app for live positions and trading
 
-[![npm](https://img.shields.io/badge/gem-v2.0.4-blue)](https://rubygems.org/gems/snaptrade/versions/2.0.4)
+[![npm](https://img.shields.io/badge/gem-v2.0.29-blue)](https://rubygems.org/gems/snaptrade/versions/2.0.29)
 [![More Info](https://img.shields.io/badge/More%20Info-Click%20Here-orange)](https://snaptrade.com/)
 
 </div>
@@ -29,16 +29,16 @@ Connect brokerage accounts to your app for live positions and trading
   * [`snaptrade.account_information.update_user_account`](#snaptradeaccount_informationupdate_user_account)
   * [`snaptrade.api_status.check`](#snaptradeapi_statuscheck)
   * [`snaptrade.authentication.delete_snap_trade_user`](#snaptradeauthenticationdelete_snap_trade_user)
-  * [`snaptrade.authentication.get_user_jwt`](#snaptradeauthenticationget_user_jwt)
   * [`snaptrade.authentication.list_snap_trade_users`](#snaptradeauthenticationlist_snap_trade_users)
   * [`snaptrade.authentication.login_snap_trade_user`](#snaptradeauthenticationlogin_snap_trade_user)
   * [`snaptrade.authentication.register_snap_trade_user`](#snaptradeauthenticationregister_snap_trade_user)
   * [`snaptrade.authentication.reset_snap_trade_user_secret`](#snaptradeauthenticationreset_snap_trade_user_secret)
   * [`snaptrade.connections.detail_brokerage_authorization`](#snaptradeconnectionsdetail_brokerage_authorization)
+  * [`snaptrade.connections.disable_brokerage_authorization`](#snaptradeconnectionsdisable_brokerage_authorization)
   * [`snaptrade.connections.list_brokerage_authorizations`](#snaptradeconnectionslist_brokerage_authorizations)
+  * [`snaptrade.connections.refresh_brokerage_authorization`](#snaptradeconnectionsrefresh_brokerage_authorization)
   * [`snaptrade.connections.remove_brokerage_authorization`](#snaptradeconnectionsremove_brokerage_authorization)
   * [`snaptrade.connections.session_events`](#snaptradeconnectionssession_events)
-  * [`snaptrade.error_logs.list_user_errors`](#snaptradeerror_logslist_user_errors)
   * [`snaptrade.options.get_option_strategy`](#snaptradeoptionsget_option_strategy)
   * [`snaptrade.options.get_options_chain`](#snaptradeoptionsget_options_chain)
   * [`snaptrade.options.get_options_strategy_quote`](#snaptradeoptionsget_options_strategy_quote)
@@ -59,7 +59,6 @@ Connect brokerage accounts to your app for live positions and trading
   * [`snaptrade.trading.get_order_impact`](#snaptradetradingget_order_impact)
   * [`snaptrade.trading.get_user_account_quotes`](#snaptradetradingget_user_account_quotes)
   * [`snaptrade.trading.place_force_order`](#snaptradetradingplace_force_order)
-  * [`snaptrade.trading.place_oco_order`](#snaptradetradingplace_oco_order)
   * [`snaptrade.trading.place_order`](#snaptradetradingplace_order)
   * [`snaptrade.transactions_and_reporting.get_activities`](#snaptradetransactions_and_reportingget_activities)
   * [`snaptrade.transactions_and_reporting.get_reporting_custom_range`](#snaptradetransactions_and_reportingget_reporting_custom_range)
@@ -71,7 +70,7 @@ Connect brokerage accounts to your app for live positions and trading
 Add to Gemfile:
 
 ```ruby
-gem 'snaptrade', '~> 2.0.4'
+gem 'snaptrade', '~> 2.0.29'
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -79,10 +78,12 @@ gem 'snaptrade', '~> 2.0.4'
 ```ruby
 require 'snaptrade'
 
-SnapTrade.client_id = "YOUR_CLIENT_ID"
-SnapTrade.consumer_key = "YOUR_CONSUMER_KEY"
+configuration = SnapTrade::Configuration.new
+configuration.client_id = ENV["SNAPTRADE_CLIENT_ID"]
+configuration.consumer_key = ENV["SNAPTRADE_CONSUMER_KEY"]
+snaptrade = SnapTrade::Client.new(configuration)
 result = snaptrade.account_information.get_all_user_holdings(
-  user_id: "John.doe@snaptrade.com",
+  user_id: "snaptrade-user-123",
   user_secret: "USERSECRET123",
   brokerage_authorizations: "917c8734-8470-4a3e-a18f-57c3f2ee6631",
 )
@@ -95,7 +96,7 @@ To access the raw HTTP response, suffix any method with `_with_http_info`.
 
 ```ruby
 result = snaptrade.account_information.get_all_user_holdings_with_http_info(
-  user_id: "John.doe@snaptrade.com",
+  user_id: "snaptrade-user-123",
   user_secret: "USERSECRET123",
   brokerage_authorizations: "917c8734-8470-4a3e-a18f-57c3f2ee6631",
 )
@@ -111,13 +112,15 @@ p.result[3] # [Faraday::Response] Raw HTTP response
 ### `snaptrade.account_information.get_all_user_holdings`<a id="snaptradeaccount_informationget_all_user_holdings"></a>
 ![Deprecated](https://img.shields.io/badge/deprecated-yellow)
 
-List all accounts for the user, plus balances, positions, and orders for each account.
+Lists balances, positions and orders for the specified account. The data returned is similar to
+the data returned over the more fine-grained **positions**, **orders** and **balances** endpoints.
+
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
 result = snaptrade.account_information.get_all_user_holdings(
-  user_id: "John.doe@snaptrade.com",
+  user_id: "snaptrade-user-123",
   user_secret: "USERSECRET123",
   brokerage_authorizations: "917c8734-8470-4a3e-a18f-57c3f2ee6631",
 )
@@ -153,9 +156,9 @@ A list of account balances for the specified account (one per currency that the 
 
 ```ruby
 result = snaptrade.account_information.get_user_account_balance(
-  user_id: "John.doe@snaptrade.com",
+  user_id: "snaptrade-user-123",
   user_secret: "USERSECRET123",
-  account_id: "accountId_example",
+  account_id: "917c8734-8470-4a3e-a18f-57c3f2ee6631",
 )
 p result
 ```
@@ -182,15 +185,17 @@ The ID of the account to get balances.
 
 ### `snaptrade.account_information.get_user_account_details`<a id="snaptradeaccount_informationget_user_account_details"></a>
 
-Return details of a specific investment account
+Returns an account object with details for the specified account,
+including the total account market value.
+
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
 result = snaptrade.account_information.get_user_account_details(
-  user_id: "John.doe@snaptrade.com",
+  user_id: "snaptrade-user-123",
   user_secret: "USERSECRET123",
-  account_id: "accountId_example",
+  account_id: "917c8734-8470-4a3e-a18f-57c3f2ee6631",
 )
 p result
 ```
@@ -223,9 +228,9 @@ Fetch all recent orders from a user's account.
 
 ```ruby
 result = snaptrade.account_information.get_user_account_orders(
-  user_id: "John.doe@snaptrade.com",
+  user_id: "snaptrade-user-123",
   user_secret: "USERSECRET123",
-  account_id: "accountId_example",
+  account_id: "917c8734-8470-4a3e-a18f-57c3f2ee6631",
   state: "all",
   days: 30,
 )
@@ -244,7 +249,7 @@ defaults value is set to \"all\"
 
 ##### days: `Integer`<a id="days-integer"></a>
 Number of days in the past to fetch the most recent orders. Defaults to the last
-90 days if no value is passed in.
+30 days if no value is passed in.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -261,15 +266,15 @@ Number of days in the past to fetch the most recent orders. Defaults to the last
 
 ### `snaptrade.account_information.get_user_account_positions`<a id="snaptradeaccount_informationget_user_account_positions"></a>
 
-List account positions
+Returns a list of positions in the specified account.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
 result = snaptrade.account_information.get_user_account_positions(
-  user_id: "John.doe@snaptrade.com",
+  user_id: "snaptrade-user-123",
   user_secret: "USERSECRET123",
-  account_id: "accountId_example",
+  account_id: "917c8734-8470-4a3e-a18f-57c3f2ee6631",
 )
 p result
 ```
@@ -296,14 +301,17 @@ The ID of the account to get positions.
 
 ### `snaptrade.account_information.get_user_holdings`<a id="snaptradeaccount_informationget_user_holdings"></a>
 
-List balances, positions and orders for the specified account
+Lists balances, positions and orders for the specified account as well as
+option_positions and account metadata. The data returned is similar to the
+data returned over the more fine-grained **positions**, **orders** and **balances** endpoints.
+
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
 result = snaptrade.account_information.get_user_holdings(
   account_id: "917c8734-8470-4a3e-a18f-57c3f2ee6631",
-  user_id: "John.doe@snaptrade.com",
+  user_id: "snaptrade-user-123",
   user_secret: "USERSECRET123",
 )
 p result
@@ -331,13 +339,13 @@ The ID of the account to fetch holdings for.
 
 ### `snaptrade.account_information.list_user_accounts`<a id="snaptradeaccount_informationlist_user_accounts"></a>
 
-List accounts
+Get a list of all Account objects for the authenticated SnapTrade user.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
 result = snaptrade.account_information.list_user_accounts(
-  user_id: "John.doe@snaptrade.com",
+  user_id: "snaptrade-user-123",
   user_secret: "USERSECRET123",
 )
 p result
@@ -362,13 +370,13 @@ p result
 
 ### `snaptrade.account_information.update_user_account`<a id="snaptradeaccount_informationupdate_user_account"></a>
 
-Update details of an investment account
+Updates various properties of a specified account.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
 result = snaptrade.account_information.update_user_account(
-  user_id: "John.doe@snaptrade.com",
+  user_id: "snaptrade-user-123",
   user_secret: "USERSECRET123",
   account_id: "accountId_example",
 )
@@ -427,7 +435,7 @@ Deletes a user you've registered over the SnapTrade API, and any data associated
 
 ```ruby
 result = snaptrade.authentication.delete_snap_trade_user(
-  user_id: "John.doe@snaptrade.com",
+  user_id: "snaptrade-user-123",
 )
 p result
 ```
@@ -442,37 +450,6 @@ p result
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/snapTrade/deleteUser` `DELETE`
-
-[🔙 **Back to Table of Contents**](#table-of-contents)
-
----
-
-
-### `snaptrade.authentication.get_user_jwt`<a id="snaptradeauthenticationget_user_jwt"></a>
-
-Generate encrypted JWT token
-
-#### 🛠️ Usage<a id="🛠️-usage"></a>
-
-```ruby
-result = snaptrade.authentication.get_user_jwt(
-  user_id: "John.doe@snaptrade.com",
-  user_secret: "USERSECRET123",
-)
-p result
-```
-
-#### ⚙️ Parameters<a id="⚙️-parameters"></a>
-
-##### user_id: `String`<a id="user_id-string"></a>
-##### user_secret: `String`<a id="user_secret-string"></a>
-#### 🔄 Return<a id="🔄-return"></a>
-
-[EncryptedResponse](./lib/snaptrade/models/encrypted_response.rb)
-
-#### 🌐 Endpoint<a id="🌐-endpoint"></a>
-
-`/snapTrade/encryptedJWT` `GET`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
@@ -507,7 +484,7 @@ Logs in a SnapTrade user and returns an authenticated connection portal URL for 
 
 ```ruby
 result = snaptrade.authentication.login_snap_trade_user(
-  user_id: "John.doe@snaptrade.com",
+  user_id: "snaptrade-user-123",
   user_secret: "USERSECRET123",
   broker: "ALPACA",
   immediate_redirect: true,
@@ -559,7 +536,9 @@ Sets the version of the connection portal to render, with a default to 'v2'
 
 ### `snaptrade.authentication.register_snap_trade_user`<a id="snaptradeauthenticationregister_snap_trade_user"></a>
 
-Create SnapTrade user
+Registers a new SnapTrade user under your ClientID.
+Most SnapTrade operations require a user to be passed as a parameter.
+
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -573,8 +552,10 @@ p result
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
 ##### userId: `String`<a id="userid-string"></a>
-SnapTrade User ID. Provided by SnapTrade Partner. Can be any string, as long as
-it's unique to a user
+SnapTrade User ID. This is chosen by the API partner and can be any string that
+is a) unique to the user, and b) immutable for the user. It is recommended to
+NOT use email addresses for this property because they are usually not
+immutable.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -591,7 +572,9 @@ it's unique to a user
 
 ### `snaptrade.authentication.reset_snap_trade_user_secret`<a id="snaptradeauthenticationreset_snap_trade_user_secret"></a>
 
-Obtain a new user secret for a user
+This API is used to rotate the secret for a SnapTrade user. You might use this if a userSecret
+is compromised. Please note that if you call this endpoint and fail to save the new secret, you'll no longer be able to access any data for this user, and your only option will be to delete and recreate the user, then ask them to reconnect.
+
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -606,13 +589,14 @@ p result
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
 ##### userId: `String`<a id="userid-string"></a>
-SnapTrade User ID. Provided by SnapTrade Partner. Can be any string, as long as
-it's unique to a user
+SnapTrade User ID. This is chosen by the API partner and can be any string that
+is a) unique to the user, and b) immutable for the user. It is recommended to
+NOT use email addresses for this property because they are usually not
+immutable.
 
 ##### userSecret: `String`<a id="usersecret-string"></a>
-SnapTrade User Secret randomly generated by SnapTrade. This should be considered
-priviledged information and if compromised, you should delete and re-create this
-SnapTrade user.
+SnapTrade User Secret randomly generated by SnapTrade. This is privileged
+information and if compromised, should be rotated via the SnapTrade API.
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -629,14 +613,14 @@ SnapTrade user.
 
 ### `snaptrade.connections.detail_brokerage_authorization`<a id="snaptradeconnectionsdetail_brokerage_authorization"></a>
 
-Get brokerage authorization details
+Returns a single brokerage authorization object for the specified ID.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
 result = snaptrade.connections.detail_brokerage_authorization(
   authorization_id: "2bcd7cc3-e922-4976-bce1-9858296801c3",
-  user_id: "John.doe@snaptrade.com",
+  user_id: "snaptrade-user-123",
   user_secret: "USERSECRET123",
 )
 p result
@@ -662,15 +646,50 @@ The ID of a brokerage authorization object.
 ---
 
 
+### `snaptrade.connections.disable_brokerage_authorization`<a id="snaptradeconnectionsdisable_brokerage_authorization"></a>
+
+Manually disable a connection. This should only be used for testing a reconnect flow, and never used on production connections. Will trigger a disconnect as if it happened naturally, and send a CONNECTION_BROKEN webhook for the connection. Please contact us in order to use this endpoint as it is disabled by default.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = snaptrade.connections.disable_brokerage_authorization(
+  authorization_id: "2bcd7cc3-e922-4976-bce1-9858296801c3",
+  user_id: "snaptrade-user-123",
+  user_secret: "USERSECRET123",
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### authorization_id: `String`<a id="authorization_id-string"></a>
+The ID of a brokerage authorization object.
+
+##### user_id: `String`<a id="user_id-string"></a>
+##### user_secret: `String`<a id="user_secret-string"></a>
+#### 🔄 Return<a id="🔄-return"></a>
+
+[BrokerageAuthorizationDisabledConfirmation](./lib/snaptrade/models/brokerage_authorization_disabled_confirmation.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/authorizations/{authorizationId}/disable` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
 ### `snaptrade.connections.list_brokerage_authorizations`<a id="snaptradeconnectionslist_brokerage_authorizations"></a>
 
-List all brokerage authorizations for the user
+Returns a list of Brokerage Authorization objects for the user
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
 result = snaptrade.connections.list_brokerage_authorizations(
-  user_id: "John.doe@snaptrade.com",
+  user_id: "snaptrade-user-123",
   user_secret: "USERSECRET123",
 )
 p result
@@ -693,16 +712,51 @@ p result
 ---
 
 
+### `snaptrade.connections.refresh_brokerage_authorization`<a id="snaptradeconnectionsrefresh_brokerage_authorization"></a>
+
+Trigger a holdings update for all accounts under this authorization. Updates will be queued asynchronously. ACCOUNT_HOLDINGS_UPDATED webhook will be sent once the sync completes
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```ruby
+result = snaptrade.connections.refresh_brokerage_authorization(
+  authorization_id: "2bcd7cc3-e922-4976-bce1-9858296801c3",
+  user_id: "snaptrade-user-123",
+  user_secret: "USERSECRET123",
+)
+p result
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### authorization_id: `String`<a id="authorization_id-string"></a>
+The ID of a brokerage authorization object.
+
+##### user_id: `String`<a id="user_id-string"></a>
+##### user_secret: `String`<a id="user_secret-string"></a>
+#### 🔄 Return<a id="🔄-return"></a>
+
+[BrokerageAuthorizationRefreshConfirmation](./lib/snaptrade/models/brokerage_authorization_refresh_confirmation.rb)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/authorizations/{authorizationId}/refresh` `POST`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
 ### `snaptrade.connections.remove_brokerage_authorization`<a id="snaptradeconnectionsremove_brokerage_authorization"></a>
 
-Delete brokerage authorization
+Deletes a specified brokerage authorization given by the ID.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
 snaptrade.connections.remove_brokerage_authorization(
   authorization_id: "2bcd7cc3-e922-4976-bce1-9858296801c3",
-  user_id: "John.doe@snaptrade.com",
+  user_id: "snaptrade-user-123",
   user_secret: "USERSECRET123",
 )
 ```
@@ -725,7 +779,7 @@ The ID of the Authorization to delete.
 
 ### `snaptrade.connections.session_events`<a id="snaptradeconnectionssession_events"></a>
 
-List all session events for the partner
+Returns a list of session events associated with a user.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -762,40 +816,10 @@ specific users
 ---
 
 
-### `snaptrade.error_logs.list_user_errors`<a id="snaptradeerror_logslist_user_errors"></a>
-
-Retrieve error logs on behalf of your SnapTrade users
-
-#### 🛠️ Usage<a id="🛠️-usage"></a>
-
-```ruby
-result = snaptrade.error_logs.list_user_errors(
-  user_id: "John.doe@snaptrade.com",
-  user_secret: "USERSECRET123",
-)
-p result
-```
-
-#### ⚙️ Parameters<a id="⚙️-parameters"></a>
-
-##### user_id: `String`<a id="user_id-string"></a>
-##### user_secret: `String`<a id="user_secret-string"></a>
-#### 🔄 Return<a id="🔄-return"></a>
-
-[UserErrorLog](./lib/snaptrade/models/user_error_log.rb)
-
-#### 🌐 Endpoint<a id="🌐-endpoint"></a>
-
-`/snapTrade/listUserErrors` `GET`
-
-[🔙 **Back to Table of Contents**](#table-of-contents)
-
----
-
-
 ### `snaptrade.options.get_option_strategy`<a id="snaptradeoptionsget_option_strategy"></a>
 
-Creates an option strategy object that will be used to place an option strategy order
+Creates an option strategy object that will be used to place an option strategy order.
+
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -810,7 +834,7 @@ result = snaptrade.options.get_option_strategy(
         }
     ],
   strategy_type: "CUSTOM",
-  user_id: "John.doe@snaptrade.com",
+  user_id: "snaptrade-user-123",
   user_secret: "USERSECRET123",
   account_id: "accountId_example",
 )
@@ -842,13 +866,13 @@ The ID of the account to create the option strategy object in.
 
 ### `snaptrade.options.get_options_chain`<a id="snaptradeoptionsget_options_chain"></a>
 
-Get the options chain
+Returns the option chain for the specified symbol in the specified account.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
 result = snaptrade.options.get_options_chain(
-  user_id: "John.doe@snaptrade.com",
+  user_id: "snaptrade-user-123",
   user_secret: "USERSECRET123",
   account_id: "accountId_example",
   symbol: "symbol_example",
@@ -881,13 +905,14 @@ Universal symbol ID if symbol
 
 ### `snaptrade.options.get_options_strategy_quote`<a id="snaptradeoptionsget_options_strategy_quote"></a>
 
-Get latest market data of option strategy
+Returns a Strategy Quotes object which has latest market data of the specified option strategy.
+
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
 result = snaptrade.options.get_options_strategy_quote(
-  user_id: "John.doe@snaptrade.com",
+  user_id: "snaptrade-user-123",
   user_secret: "USERSECRET123",
   account_id: "accountId_example",
   option_strategy_id: "2bcd7cc3-e922-4976-bce1-9858296801c3",
@@ -920,13 +945,14 @@ Option strategy id obtained from response when creating option strategy object
 
 ### `snaptrade.options.list_option_holdings`<a id="snaptradeoptionslist_option_holdings"></a>
 
-Get the options holdings in the account
+Returns a list of Options Positions.
+
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
 result = snaptrade.options.list_option_holdings(
-  user_id: "John.doe@snaptrade.com",
+  user_id: "snaptrade-user-123",
   user_secret: "USERSECRET123",
   account_id: "accountId_example",
 )
@@ -955,7 +981,7 @@ The ID of the account to fetch options holdings for.
 
 ### `snaptrade.options.place_option_strategy`<a id="snaptradeoptionsplace_option_strategy"></a>
 
-Place an option strategy order on the brokerage
+Places the option strategy order and returns the order record received from the brokerage.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -963,7 +989,7 @@ Place an option strategy order on the brokerage
 result = snaptrade.options.place_option_strategy(
   order_type: "Limit",
   time_in_force: "FOK",
-  user_id: "John.doe@snaptrade.com",
+  user_id: "snaptrade-user-123",
   user_secret: "USERSECRET123",
   account_id: "2bcd7cc3-e922-4976-bce1-9858296801c3",
   option_strategy_id: "2bcd7cc3-e922-4976-bce1-9858296801c3",
@@ -974,7 +1000,7 @@ p result
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### order_type: [`OrderType`](./lib/snaptrade/models/order_type.rb)<a id="order_type-ordertypelibsnaptrademodelsorder_typerb"></a>
+##### order_type: [`OrderTypeStrict`](./lib/snaptrade/models/order_type_strict.rb)<a id="order_type-ordertypestrictlibsnaptrademodelsorder_type_strictrb"></a>
 Order Type
 
 ##### time_in_force: [`TimeInForceStrict`](./lib/snaptrade/models/time_in_force_strict.rb)<a id="time_in_force-timeinforcestrictlibsnaptrademodelstime_in_force_strictrb"></a>
@@ -1007,7 +1033,7 @@ Trade Price if limit or stop limit order
 
 ### `snaptrade.reference_data.get_currency_exchange_rate_pair`<a id="snaptradereference_dataget_currency_exchange_rate_pair"></a>
 
-Return the exchange rate of a currency pair
+Returns an Exchange Rate Pair object for the specified Currency Pair.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1038,7 +1064,7 @@ A currency pair based on currency code for example, {CAD-USD}
 
 ### `snaptrade.reference_data.get_partner_info`<a id="snaptradereference_dataget_partner_info"></a>
 
-Get metadata related to Snaptrade partner
+Returns useful data related to the specified ClientID, including allowed brokerages and data access.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1086,7 +1112,7 @@ p result
 
 ### `snaptrade.reference_data.get_stock_exchanges`<a id="snaptradereference_dataget_stock_exchanges"></a>
 
-List exchanges
+Returns a list of all supported Exchanges.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1110,7 +1136,10 @@ p result
 
 ### `snaptrade.reference_data.get_symbols`<a id="snaptradereference_dataget_symbols"></a>
 
-Search for symbols
+Returns a list of Universal Symbol objects that match a defined string.
+
+Matches on ticker or name.
+
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1139,7 +1168,7 @@ p result
 
 ### `snaptrade.reference_data.get_symbols_by_ticker`<a id="snaptradereference_dataget_symbols_by_ticker"></a>
 
-Get details of a symbol by the ticker or the universal_symbol_id
+Returns the Universal Symbol object specified by the ticker or the universal_symbol_id.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1170,7 +1199,7 @@ The ticker or universal_symbol_id of the UniversalSymbol to get.
 
 ### `snaptrade.reference_data.list_all_brokerage_authorization_type`<a id="snaptradereference_datalist_all_brokerage_authorization_type"></a>
 
-List of all brokerage authorization types
+Returns a list of all defined Brokerage authorization Type objects.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1201,7 +1230,7 @@ Comma separated value of brokerage slugs
 
 ### `snaptrade.reference_data.list_all_brokerages`<a id="snaptradereference_datalist_all_brokerages"></a>
 
-List brokerages
+Returns a list of all defined Brokerage objects.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1225,7 +1254,7 @@ p result
 
 ### `snaptrade.reference_data.list_all_currencies`<a id="snaptradereference_datalist_all_currencies"></a>
 
-List currencies
+Returns a list of all defined Currency objects.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1249,7 +1278,7 @@ p result
 
 ### `snaptrade.reference_data.list_all_currencies_rates`<a id="snaptradereference_datalist_all_currencies_rates"></a>
 
-List currency exchange rates
+Returns a list of all Exchange Rate Pairs for all supported Currencies.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
@@ -1273,15 +1302,18 @@ p result
 
 ### `snaptrade.reference_data.symbol_search_user_account`<a id="snaptradereference_datasymbol_search_user_account"></a>
 
-Search for symbols available in an account
+Returns a list of universal symbols that are supported by
+the specificied account. Returned symbols are based on the
+provided search string, matching on ticker and name.
+
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
 result = snaptrade.reference_data.symbol_search_user_account(
-  user_id: "John.doe@snaptrade.com",
+  user_id: "snaptrade-user-123",
   user_secret: "USERSECRET123",
-  account_id: "accountId_example",
+  account_id: "917c8734-8470-4a3e-a18f-57c3f2ee6631",
   substring: "apple",
 )
 p result
@@ -1310,15 +1342,17 @@ The ID of the account to search for symbols within.
 
 ### `snaptrade.trading.cancel_user_account_order`<a id="snaptradetradingcancel_user_account_order"></a>
 
-Cancel open order in account
+Sends a signal to the brokerage to cancel the specified order.
+This will only work if the order has not yet been executed.
+
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
 result = snaptrade.trading.cancel_user_account_order(
-  user_id: "John.doe@snaptrade.com",
+  user_id: "snaptrade-user-123",
   user_secret: "USERSECRET123",
-  account_id: "accountId_example",
+  account_id: "917c8734-8470-4a3e-a18f-57c3f2ee6631",
   brokerage_order_id: "2bcd7cc3-e922-4976-bce1-9858296801c3",
 )
 p result
@@ -1347,13 +1381,13 @@ The ID of the account to cancel the order in.
 
 ### `snaptrade.trading.get_order_impact`<a id="snaptradetradingget_order_impact"></a>
 
-Check impact of trades on account.
+Return the trade object and it's impact on the account for the specified order.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
 result = snaptrade.trading.get_order_impact(
-  user_id: "John.doe@snaptrade.com",
+  user_id: "snaptrade-user-123",
   user_secret: "USERSECRET123",
   account_id: "2bcd7cc3-e922-4976-bce1-9858296801c3",
   action: "BUY",
@@ -1363,7 +1397,7 @@ result = snaptrade.trading.get_order_impact(
   time_in_force: "FOK",
   units: 3.14,
   universal_symbol_id: "2bcd7cc3-e922-4976-bce1-9858296801c3",
-  notional_value: 100,
+  notional_value: None,
 )
 p result
 ```
@@ -1373,10 +1407,10 @@ p result
 ##### user_id: `String`<a id="user_id-string"></a>
 ##### user_secret: `String`<a id="user_secret-string"></a>
 ##### account_id: `String`<a id="account_id-string"></a>
-##### action: [`Action`](./lib/snaptrade/models/action.rb)<a id="action-actionlibsnaptrademodelsactionrb"></a>
+##### action: [`ActionStrict`](./lib/snaptrade/models/action_strict.rb)<a id="action-actionstrictlibsnaptrademodelsaction_strictrb"></a>
 Trade Action
 
-##### order_type: [`OrderType`](./lib/snaptrade/models/order_type.rb)<a id="order_type-ordertypelibsnaptrademodelsorder_typerb"></a>
+##### order_type: [`OrderTypeStrict`](./lib/snaptrade/models/order_type_strict.rb)<a id="order_type-ordertypestrictlibsnaptrademodelsorder_type_strictrb"></a>
 Order Type
 
 ##### price: `Float`<a id="price-float"></a>
@@ -1391,7 +1425,7 @@ Canceled
 
 ##### units: [`Float`](./lib/snaptrade/models/float.rb)<a id="units-floatlibsnaptrademodelsfloatrb"></a>
 ##### universal_symbol_id: `String`<a id="universal_symbol_id-string"></a>
-##### notional_value: [`Float`](./lib/snaptrade/models/float.rb)<a id="notional_value-floatlibsnaptrademodelsfloatrb"></a>
+##### notional_value: [`ManualTradeFormNotionalValue`](./lib/snaptrade/models/manual_trade_form_notional_value.rb)<a id="notional_value-manualtradeformnotionalvaluelibsnaptrademodelsmanual_trade_form_notional_valuerb"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [ManualTradeAndImpact](./lib/snaptrade/models/manual_trade_and_impact.rb)
@@ -1407,16 +1441,16 @@ Canceled
 
 ### `snaptrade.trading.get_user_account_quotes`<a id="snaptradetradingget_user_account_quotes"></a>
 
-Get symbol quotes
+Returns live quote(s) from the brokerage for the specified symbol(s).
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
 result = snaptrade.trading.get_user_account_quotes(
-  user_id: "John.doe@snaptrade.com",
+  user_id: "snaptrade-user-123",
   user_secret: "USERSECRET123",
   symbols: "symbols_example",
-  account_id: "accountId_example",
+  account_id: "917c8734-8470-4a3e-a18f-57c3f2ee6631",
   use_ticker: true,
 )
 p result
@@ -1450,13 +1484,13 @@ Should be set to True if providing tickers.
 
 ### `snaptrade.trading.place_force_order`<a id="snaptradetradingplace_force_order"></a>
 
-Place a trade with NO validation.
+Places a specified trade in the specified account.
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
 result = snaptrade.trading.place_force_order(
-  user_id: "John.doe@snaptrade.com",
+  user_id: "snaptrade-user-123",
   user_secret: "USERSECRET123",
   account_id: "2bcd7cc3-e922-4976-bce1-9858296801c3",
   action: "BUY",
@@ -1466,7 +1500,7 @@ result = snaptrade.trading.place_force_order(
   time_in_force: "FOK",
   units: 3.14,
   universal_symbol_id: "2bcd7cc3-e922-4976-bce1-9858296801c3",
-  notional_value: 100,
+  notional_value: None,
 )
 p result
 ```
@@ -1476,10 +1510,10 @@ p result
 ##### user_id: `String`<a id="user_id-string"></a>
 ##### user_secret: `String`<a id="user_secret-string"></a>
 ##### account_id: `String`<a id="account_id-string"></a>
-##### action: [`Action`](./lib/snaptrade/models/action.rb)<a id="action-actionlibsnaptrademodelsactionrb"></a>
+##### action: [`ActionStrict`](./lib/snaptrade/models/action_strict.rb)<a id="action-actionstrictlibsnaptrademodelsaction_strictrb"></a>
 Trade Action
 
-##### order_type: [`OrderType`](./lib/snaptrade/models/order_type.rb)<a id="order_type-ordertypelibsnaptrademodelsorder_typerb"></a>
+##### order_type: [`OrderTypeStrict`](./lib/snaptrade/models/order_type_strict.rb)<a id="order_type-ordertypestrictlibsnaptrademodelsorder_type_strictrb"></a>
 Order Type
 
 ##### price: `Float`<a id="price-float"></a>
@@ -1494,7 +1528,7 @@ Canceled
 
 ##### units: [`Float`](./lib/snaptrade/models/float.rb)<a id="units-floatlibsnaptrademodelsfloatrb"></a>
 ##### universal_symbol_id: `String`<a id="universal_symbol_id-string"></a>
-##### notional_value: [`Float`](./lib/snaptrade/models/float.rb)<a id="notional_value-floatlibsnaptrademodelsfloatrb"></a>
+##### notional_value: [`ManualTradeFormNotionalValue`](./lib/snaptrade/models/manual_trade_form_notional_value.rb)<a id="notional_value-manualtradeformnotionalvaluelibsnaptrademodelsmanual_trade_form_notional_valuerb"></a>
 #### 🔄 Return<a id="🔄-return"></a>
 
 [AccountOrderRecord](./lib/snaptrade/models/account_order_record.rb)
@@ -1508,57 +1542,20 @@ Canceled
 ---
 
 
-### `snaptrade.trading.place_oco_order`<a id="snaptradetradingplace_oco_order"></a>
-![Deprecated](https://img.shields.io/badge/deprecated-yellow)
-
-Place a OCO (One Cancels Other) order
-
-#### 🛠️ Usage<a id="🛠️-usage"></a>
-
-```ruby
-result = snaptrade.trading.place_oco_order(
-  user_id: "John.doe@snaptrade.com",
-  user_secret: "USERSECRET123",
-  first_trade_id: None,
-  second_trade_id: None,
-)
-p result
-```
-
-#### ⚙️ Parameters<a id="⚙️-parameters"></a>
-
-##### user_id: `String`<a id="user_id-string"></a>
-##### user_secret: `String`<a id="user_secret-string"></a>
-##### first_trade_id: `Object`<a id="first_trade_id-object"></a>
-The ID of first trade object obtained from trade/impact endpoint
-
-##### second_trade_id: `Object`<a id="second_trade_id-object"></a>
-The ID of second trade object obtained from trade/impact endpoint
-
-#### 🔄 Return<a id="🔄-return"></a>
-
-[AccountOrderRecord](./lib/snaptrade/models/account_order_record.rb)
-
-#### 🌐 Endpoint<a id="🌐-endpoint"></a>
-
-`/trade/oco` `POST`
-
-[🔙 **Back to Table of Contents**](#table-of-contents)
-
----
-
-
 ### `snaptrade.trading.place_order`<a id="snaptradetradingplace_order"></a>
 
-Place order
+Places the specified trade object. This places the order in the account and
+returns the status of the order from the brokerage.
+
 
 #### 🛠️ Usage<a id="🛠️-usage"></a>
 
 ```ruby
 result = snaptrade.trading.place_order(
   trade_id: "tradeId_example",
-  user_id: "John.doe@snaptrade.com",
+  user_id: "snaptrade-user-123",
   user_secret: "USERSECRET123",
+  wait_to_confirm: true,
 )
 p result
 ```
@@ -1570,6 +1567,12 @@ The ID of trade object obtained from trade/impact endpoint
 
 ##### user_id: `String`<a id="user_id-string"></a>
 ##### user_secret: `String`<a id="user_secret-string"></a>
+##### wait_to_confirm: `Boolean`<a id="wait_to_confirm-boolean"></a>
+Optional, defaults to true. Determines if a wait is performed to check on order
+status. If false, latency will be reduced but orders returned will be more
+likely to be of status PENDING as we will not wait to check on the status before
+responding to the request
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [AccountOrderRecord](./lib/snaptrade/models/account_order_record.rb)
@@ -1591,7 +1594,7 @@ Returns activities (transactions) for a user. Specifying start and end date is h
 
 ```ruby
 result = snaptrade.transactions_and_reporting.get_activities(
-  user_id: "John.doe@snaptrade.com",
+  user_id: "snaptrade-user-123",
   user_secret: "USERSECRET123",
   start_date: "2022-01-24",
   end_date: "2022-01-24",
@@ -1650,7 +1653,7 @@ Returns performance information (contributions, dividends, rate of return, etc) 
 result = snaptrade.transactions_and_reporting.get_reporting_custom_range(
   start_date: "2022-01-24",
   end_date: "2022-01-24",
-  user_id: "John.doe@snaptrade.com",
+  user_id: "snaptrade-user-123",
   user_secret: "USERSECRET123",
   accounts: "917c8734-8470-4a3e-a18f-57c3f2ee6631,65e839a3-9103-4cfb-9b72-2071ef80c5f2",
   detailed: true,

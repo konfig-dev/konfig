@@ -39,18 +39,6 @@ describe 'AuthenticationApi' do
     end
   end
 
-  # unit tests for get_user_jwt
-  # Generate encrypted JWT token
-  # @param user_id 
-  # @param user_secret 
-  # @param [Hash] opts the optional parameters
-  # @return [EncryptedResponse]
-  describe 'get_user_jwt test' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
   # unit tests for list_snap_trade_users
   # List SnapTrade users
   # Returns a list of users you&#39;ve registered over the SnapTrade API.
@@ -78,6 +66,7 @@ describe 'AuthenticationApi' do
 
   # unit tests for register_snap_trade_user
   # Create SnapTrade user
+  # Registers a new SnapTrade user under your ClientID. Most SnapTrade operations require a user to be passed as a parameter. 
   # @param snap_trade_register_user_request_body 
   # @param [Hash] opts the optional parameters
   # @return [UserIDandSecret]
@@ -89,6 +78,7 @@ describe 'AuthenticationApi' do
 
   # unit tests for reset_snap_trade_user_secret
   # Obtain a new user secret for a user
+  # This API is used to rotate the secret for a SnapTrade user. You might use this if a userSecret is compromised. Please note that if you call this endpoint and fail to save the new secret, you&#39;ll no longer be able to access any data for this user, and your only option will be to delete and recreate the user, then ask them to reconnect. 
   # @param user_i_dand_secret 
   # @param [Hash] opts the optional parameters
   # @return [UserIDandSecret]

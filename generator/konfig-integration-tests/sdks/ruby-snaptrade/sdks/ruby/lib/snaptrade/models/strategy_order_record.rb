@@ -23,7 +23,7 @@ module SnapTrade
 
     attr_accessor :closed_quantity
 
-    # Order Type
+    # Order Type potential values include (but are not limited to) - Limit - Market - StopLimit - StopLoss
     attr_accessor :order_type
 
     # Trade time in force examples:   * FOK - Fill Or Kill   * Day - Day   * GTC - Good Til Canceled   * GTD - Good Til Date 
@@ -71,7 +71,7 @@ module SnapTrade
         :'filled_quantity' => :'Float',
         :'open_quantity' => :'Float',
         :'closed_quantity' => :'Float',
-        :'order_type' => :'OrderType',
+        :'order_type' => :'String',
         :'time_in_force' => :'String',
         :'limit_price' => :'Float',
         :'execution_price' => :'Float',
@@ -83,6 +83,7 @@ module SnapTrade
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'order_type',
         :'limit_price',
         :'execution_price',
       ])
