@@ -351,6 +351,7 @@ export const KonfigYamlCommon = z
       ),
     filterPaths: filterPaths.optional(),
     doNotAutoMergeBumpPr: z.boolean().optional(),
+    disableAutomationLinter: z.boolean().optional(),
     tagPriority: tagPrioritySchema.optional(),
     takeFirstTag: z
       .boolean()
