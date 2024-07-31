@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.38.53
+
+### Patch Changes
+
+- [#749](https://github.com/konfig-dev/konfig/pull/749) [`02d145f97`](https://github.com/konfig-dev/konfig/commit/02d145f971e4a7abd099a7f148f5bc3191beca42) Thanks [@eddiechayes](https://github.com/eddiechayes)! - try locking prism version at 5.5.2
+
 ## 1.38.52
 
 ### Patch Changes
