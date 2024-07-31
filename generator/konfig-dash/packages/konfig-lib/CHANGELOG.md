@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.37.10
+
+### Patch Changes
+
+- [#747](https://github.com/konfig-dev/konfig/pull/747) [`6c510cc29`](https://github.com/konfig-dev/konfig/commit/6c510cc29544801b7ffb69f6de3b6ffb5647e985) Thanks [@konfig-publisher](https://github.com/konfig-publisher)! - disableAutomationLinter field
+
 ## 1.37.9
 
 ### Patch Changes
