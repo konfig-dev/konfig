@@ -227,6 +227,25 @@ public class CodegenModel implements IJsonSchemaValidationProperties {
         return names;
     }
 
+    public static class OneOf {
+        public final String name;
+        public final String datatype;
+
+        public OneOf(String name, String datatype) {
+            this.name = name;
+            this.datatype = datatype;
+        }
+    }
+    public List<OneOf> oneOfNames() {
+        List<OneOf> names = new ArrayList<>();
+        for (String type : oneOf) {
+            // add more rules as needed
+            String name = type.startsWith("[") && type.endsWith("]") ? type.substring(1, type.length() - 1) + "Array" : type;
+            names.add(new OneOf(name, type));
+        }
+        return names;
+    }
+
     @Override
     public CodegenProperty getContains() {
         return contains;
