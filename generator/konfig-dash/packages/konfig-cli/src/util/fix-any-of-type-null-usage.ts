@@ -111,5 +111,105 @@ export async function fixAnyOfTypeNullUsage({
     numberOfAnyOfTypeNullUsagesReverted++
   })
 
+  // Repeat the exact same process with oneOf
+  recurseObject(spec.spec, ({ value: schema }) => {
+    if (schema === null) return
+    if (typeof schema !== 'object') return
+    if (schema['oneOf'] === undefined) return
+    if (!Array.isArray(schema['oneOf'])) return
+
+    // ensure that one of the schemas is a "type": "null"
+    const hasNullType = schema['oneOf'].some((schemaOrRef) => {
+      const schema = resolveRef({
+        refOrObject: schemaOrRef,
+        $ref: spec.$ref,
+      })
+      if (schema === null) return false
+      if (typeof schema !== 'object') return false
+      if (schema['type'] !== 'null') return false
+      return true
+    })
+    if (!hasNullType) return
+
+    // check if oneOf is size 2 meaning it is a schemas + "type": "null"
+    if (schema['oneOf'].length === 2) {
+      // check if the schema that is not "type": "null" is a "$ref" or inline schema that has a "type" property
+      const nonNullSchema = schema['oneOf'].find((schemaOrRef) => {
+        const schema = resolveRef({
+          refOrObject: schemaOrRef,
+          $ref: spec.$ref,
+        })
+        if (schema === null) return false
+        if (typeof schema !== 'object') return false
+        if (schema['type'] === 'null') return false
+        return true
+      })
+
+      // expected to find a nonNullSchema
+      if (nonNullSchema === undefined) return
+
+      // check if nonNullSchema is a "$ref"
+      const isRef = '$ref' in nonNullSchema
+
+      // if it is a ref then we need to create a new schema for that ref with the "nullable": true property
+      // since we can't add "nullable": true to a ref
+      if (isRef) {
+        const ref = nonNullSchema['$ref']
+        const refSchema = resolveRef({
+          refOrObject: nonNullSchema,
+          $ref: spec.$ref,
+        })
+
+        // remove oneOf from schema
+        delete schema['oneOf']
+
+        // create copy of referenced schema but also override and extra properties
+        // that were on the oneOf schema
+        const copyOfSchema = { ...refSchema, ...schema }
+
+        copyOfSchema['nullable'] = true
+
+        const titleFromRef = ref.split('/').pop()
+
+        const newSchemaName = `${titleFromRef}Nullable`
+
+        if (spec.spec.components === undefined) spec.spec.components = {}
+        if (spec.spec.components.schemas === undefined)
+          spec.spec.components.schemas = {}
+
+        spec.spec.components.schemas[newSchemaName] = copyOfSchema
+
+        // delete all properties on schema to fix "no-$ref-siblings" rule
+        Object.keys(schema).forEach((key) => delete schema[key])
+
+        // replace oneOf with ref to new schema
+        schema['$ref'] = `#/components/schemas/${newSchemaName}`
+      } else {
+        // if it is not a ref we can just add the "nullable": true property to the non null schema object
+        // and replace the oneOf with the modified non null schema object
+        delete schema['oneOf']
+        // add all properties from nonNullSchema to schema
+        nonNullSchema['nullable'] = true
+        Object.assign(schema, nonNullSchema)
+      }
+    } else if (schema['oneOf'].length > 2) {
+      // just remove the "type": "null" from the oneOf array
+      // and add "nullable": true to the schema
+      schema['nullable'] = true
+      schema['oneOf'] = schema['oneOf'].filter((schemaOrRef) => {
+        const schema = resolveRef({
+          refOrObject: schemaOrRef,
+          $ref: spec.$ref,
+        })
+        if (schema === null) return false
+        if (typeof schema !== 'object') return false
+        if (schema['type'] !== 'null') return true
+        return false
+      })
+    }
+
+    numberOfAnyOfTypeNullUsagesReverted++
+  })
+
   return numberOfAnyOfTypeNullUsagesReverted
 }
