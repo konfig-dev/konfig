@@ -533,7 +533,7 @@ export class Progress {
     // Dylan: I think zod has a bug that makes this not compile so we have to add "as any"
     const parsedOperationId = operationIdSchema.safeParse(operationId)
     if (parsedOperationId.success) {
-      operationIds[httpMethod] = parsedOperationId.data
+      operationIds[httpMethod] = parsedOperationId.data as any
     } else {
       throw Error(
         `Failed to parse operationId "${operationId}": ${parsedOperationId.error}`
