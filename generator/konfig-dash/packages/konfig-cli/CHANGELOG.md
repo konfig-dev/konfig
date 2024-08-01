@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.38.54
+
+### Patch Changes
+
+- [#751](https://github.com/konfig-dev/konfig/pull/751) [`00d110792`](https://github.com/konfig-dev/konfig/commit/00d110792a553b1a6d3f2eb7a227ea14389a0668) Thanks [@eddiechayes](https://github.com/eddiechayes)! - extend anyOf null fix rule to oneOf
+
 ## 1.38.53
 
 ### Patch Changes
