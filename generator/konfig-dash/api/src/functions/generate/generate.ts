@@ -711,6 +711,8 @@ async function queueGoGeneration({
           generatorConfig.apiDocumentationAuthenticationPartial,
         defaultTimeout: generatorConfig.defaultTimeout,
         userAgent: generatorConfig.userAgent,
+        clientState: generatorConfig.clientState,
+        clientStateWithExamples: generatorConfig.clientStateWithExamples,
       },
       packageName: generatorConfig.packageName,
       generatorName: 'go',

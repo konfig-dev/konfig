@@ -117,6 +117,8 @@ export const goConfig = z.object({
 
       `By convention, packages are given lower case, single-word names; there should be no need for underscores or mixedCaps (https://go.dev/doc/effective_go#package-names)`
     ),
+  clientState,
+  clientStateWithExamples,
 })
 
 export const objcConfig = z.object({
