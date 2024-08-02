@@ -1557,6 +1557,7 @@ const DO_NOT_DELETE_THESE_FILES = new Set([
   'pnpm-lock.yaml', // for TypeScript SDK
   'poetry.lock', // for Python SDK
   'pubspec.lock', // for Dart SDK
+  'go.sum', // For Go SDK
 ])
 
 const safelyDeleteFiles = async (
@@ -1981,9 +1982,7 @@ async function copyPhpOutput({
     CliUx.ux.action.stop()
 
     // insert TOC at beginning of README.md
-    CliUx.ux.action.start(
-      'Inserting table of contents into README.md'
-    )
+    CliUx.ux.action.start('Inserting table of contents into README.md')
     insertTableOfContents({ outputDirectory })
     CliUx.ux.action.stop()
   }

@@ -247,12 +247,12 @@ func (c *Configuration) Set{{nameInCamelCase}}({{nameInPascalCase}} string) {
 {{/apiKeyMethods}}
 {{#clientStateSetterGetterPascalCase}}
 func (c *Configuration) Set{{state}}({{state}} string) {
-    c.AddAPIKey("{{name}}", APIKey{Key: {{state}}{{#vendorExtensions.x-konfig-prefix}}, Prefix: "{{{.}}}"{{/vendorExtensions.x-konfig-prefix}}})
+    c.AddAPIKey("{{state}}", APIKey{Key: {{state}}{{#vendorExtensions.x-konfig-prefix}}, Prefix: "{{{.}}}"{{/vendorExtensions.x-konfig-prefix}}})
 }
 {{/clientStateSetterGetterPascalCase}}
 {{#clientStateWithExamplesSetterGetterPascalCase}}
 func (c *Configuration) Set{{state}}({{state}} string) {
-    c.AddAPIKey("{{name}}", APIKey{Key: {{state}}{{#vendorExtensions.x-konfig-prefix}}, Prefix: "{{{.}}}"{{/vendorExtensions.x-konfig-prefix}}})
+    c.AddAPIKey("{{state}}", APIKey{Key: {{state}}{{#vendorExtensions.x-konfig-prefix}}, Prefix: "{{{.}}}"{{/vendorExtensions.x-konfig-prefix}}})
 }
 {{/clientStateWithExamplesSetterGetterPascalCase}}
 // Setup OAuth Client Credentials Flow for all requests
