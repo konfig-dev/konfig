@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.38.55
+
+### Patch Changes
+
+- [#756](https://github.com/konfig-dev/konfig/pull/756) [`923cd7dda`](https://github.com/konfig-dev/konfig/commit/923cd7dda5132c7b54a4bc6aff83d4f331a0ffb3) Thanks [@dphuang2](https://github.com/dphuang2)! - upgrade @stoplight/prism-cli to fix Invalid reference token: **bundled**
+
 ## 1.38.54
 
 ### Patch Changes
