@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.38.56
+
+### Patch Changes
+
+- [`9e4c207b5`](https://github.com/konfig-dev/konfig/commit/9e4c207b587aefc5e48cd1bcfda984aeae358dfb) Thanks [@dphuang2](https://github.com/dphuang2)! - pin @stoplight/json to 3.20.0
+
 ## 1.38.55
 
 ### Patch Changes
