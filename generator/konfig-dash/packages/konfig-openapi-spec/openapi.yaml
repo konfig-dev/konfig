@@ -1800,6 +1800,35 @@ components:
                 packageName:
                   type: string
                   description: acme
+                clientState:
+                  type: array
+                  items:
+                    type: string
+                  description: A list of stateful properties generated into the SDK that can be
+                    used in custom implementation hooks. This is useful when you
+                    need state in the SDK that is not described in the OpenAPI
+                    Specification such as a key used for request signing.
+                clientStateWithExamples:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      example:
+                        type: string
+                      required:
+                        type: boolean
+                        description: Configures SDKs to validate that this client state is non-empty.
+                          (e.g. not empty string '' or null)
+                    required:
+                      - name
+                  description: A list of stateful properties generated into the SDK that can be
+                    used in custom implementation hooks. This is useful when you
+                    need state in the SDK that is not described in the OpenAPI
+                    Specification such as a key used for request signing. This
+                    is different from the "clientState" field in that it also
+                    includes examples for the generated documentation
               required:
                 - version
                 - git
@@ -3742,6 +3771,37 @@ components:
                   packageName:
                     type: string
                     description: acme
+                  clientState:
+                    type: array
+                    items:
+                      type: string
+                    description: A list of stateful properties generated into the SDK that can be
+                      used in custom implementation hooks. This is useful when
+                      you need state in the SDK that is not described in the
+                      OpenAPI Specification such as a key used for request
+                      signing.
+                  clientStateWithExamples:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        example:
+                          type: string
+                        required:
+                          type: boolean
+                          description: Configures SDKs to validate that this client state is non-empty.
+                            (e.g. not empty string '' or null)
+                      required:
+                        - name
+                    description: A list of stateful properties generated into the SDK that can be
+                      used in custom implementation hooks. This is useful when
+                      you need state in the SDK that is not described in the
+                      OpenAPI Specification such as a key used for request
+                      signing. This is different from the "clientState" field in
+                      that it also includes examples for the generated
+                      documentation
                 required:
                   - generator
                   - version
