@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.38.57
+
+### Patch Changes
+
+- [`4ef319451`](https://github.com/konfig-dev/konfig/commit/4ef3194517d0b022030b775ad0e4650019fb2561) Thanks [@dphuang2](https://github.com/dphuang2)! - also iterate over additional generators
+
 ## 1.38.56
 
 ### Patch Changes
