@@ -118,7 +118,10 @@ const publishScripts = {
       skipTag,
     })
     // git tag has to be present for pod trunk to work
-    return [...gitTagCommands, `pod trunk push ${projectName}.podspec --allow-warnings --allow-root`]
+    return [
+      ...gitTagCommands,
+      `pod trunk push ${projectName}.podspec --allow-warnings --allow-root`,
+    ]
   },
   go: async ({
     version,
@@ -138,7 +141,8 @@ const publishScripts = {
     skipTag?: boolean
   }) => {
     const majorVersion = version.split('.')[0]
-    const majorVersionStr = parseInt(majorVersion) > 1 ? `/v${majorVersion}` : ''
+    const majorVersionStr =
+      parseInt(majorVersion) > 1 ? `/v${majorVersion}` : ''
     return [
       ...(await generateGitTagCommands({
         version,
@@ -178,7 +182,7 @@ const publishScripts = {
   mavenCentral: async ({
     version,
     skipTag,
-    ci
+    ci,
   }: {
     version: string
     skipTag?: boolean
@@ -189,8 +193,9 @@ const publishScripts = {
       generator: 'java',
       skipTag,
     })
-    let mvnCommand = `mvn clean deploy -Dmaven.test.skip=true`;
-    if (ci) mvnCommand = `${mvnCommand} -Dgpg.executable=gpg -Dgpg.passphrase="$GPG_PASSPHRASE" -Dgpg.keyname="$GPG_KEY_ID" -P ossrh --settings ~/.m2/settings.xml`
+    let mvnCommand = `mvn clean deploy -Dmaven.test.skip=true`
+    if (ci)
+      mvnCommand = `${mvnCommand} -Dgpg.executable=gpg -Dgpg.passphrase="$GPG_PASSPHRASE" -Dgpg.keyname="$GPG_KEY_ID" -P ossrh --settings ~/.m2/settings.xml`
     return [mvnCommand, ...gitTagCommands]
   },
   php: async ({
@@ -383,9 +388,10 @@ export default class Publish extends Command {
         'Do not fail if package version already exists in package manager. Note that published version will not be overridden. Used in CI',
     }),
     ci: Flags.boolean({
-      name: "ci",
-      description: "Run in CI mode. This ensures non-interactivity in all publishing actions."
-    })
+      name: 'ci',
+      description:
+        'Run in CI mode. This ensures non-interactivity in all publishing actions.',
+    }),
   }
 
   public async run(): Promise<void> {
@@ -467,7 +473,9 @@ export default class Publish extends Command {
         'File already exists', // pypi
         'does not allow updating artifact', // maven
         'already exists and cannot be modified', // nuget
-        `tag 'v${generatorConfig.version}' already exists`, // go
+        `tag 'v${generatorConfig.version}' already exists`, // go submodule
+        `tag '${generatorConfig.outputDirectory}v${generatorConfig.version}' already exists`, // go subdirectory
+        `tag '${generatorConfig.outputDirectory}/v${generatorConfig.version}' already exists`, // go subdirectory
         `tag 'v${generatorConfig.version}-python' already exists`, // also python
         'Repushing of gem versions is not allowed.', // ruby
       ]
@@ -566,7 +574,7 @@ export default class Publish extends Command {
           script: publishScripts['mavenCentral']({
             version: generatorConfig.version,
             skipTag: flags.skipTag,
-            ci: flags.ci
+            ci: flags.ci,
           }),
         })
       }
