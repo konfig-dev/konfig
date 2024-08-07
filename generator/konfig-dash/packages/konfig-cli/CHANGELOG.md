@@ -1,5 +1,13 @@
 # konfig-cli
 
+## 1.38.58
+
+### Patch Changes
+
+- [#754](https://github.com/konfig-dev/konfig/pull/754) [`799585764`](https://github.com/konfig-dev/konfig/commit/7995857648f9dc87315474b46a4dc2e52ec60c7f) Thanks [@dphuang2](https://github.com/dphuang2)! - Tolerate republishing when Go SDK is in subdirectory of SDK repo
+
+- [#754](https://github.com/konfig-dev/konfig/pull/754) [`799585764`](https://github.com/konfig-dev/konfig/commit/7995857648f9dc87315474b46a4dc2e52ec60c7f) Thanks [@dphuang2](https://github.com/dphuang2)! - fix compilation error
+
 ## 1.38.57
 
 ### Patch Changes
