@@ -1,5 +1,14 @@
 # konfig-cli
 
+## 1.38.59
+
+### Patch Changes
+
+- Updated dependencies [[`a72afc9e4`](https://github.com/konfig-dev/konfig/commit/a72afc9e47f41548e584059a6c7347e7d12860c4)]:
+  - konfig-lib@1.37.11
+  - konfig-openapi-spec@1.8.30
+  - konfig-postman-to-openapi@3.1.30
+
 ## 1.38.58
 
 ### Patch Changes
