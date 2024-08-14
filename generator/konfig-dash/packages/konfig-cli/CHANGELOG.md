@@ -1,5 +1,11 @@
 # konfig-cli
 
+## 1.38.60
+
+### Patch Changes
+
+- [`1f44e5511`](https://github.com/konfig-dev/konfig/commit/1f44e55115f0b91a1c5db51522dfec240738d692) Thanks [@dphuang2](https://github.com/dphuang2)! - pin more dependencies for prism
+
 ## 1.38.59
 
 ### Patch Changes
