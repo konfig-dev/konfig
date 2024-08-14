@@ -1,5 +1,11 @@
 # konfig-lib
 
+## 1.37.12
+
+### Patch Changes
+
+- [`3e5790056`](https://github.com/konfig-dev/konfig/commit/3e57900567f3cb80cf0bd030341dcde8db452903) Thanks [@dphuang2](https://github.com/dphuang2)! - pin more dependencies
+
 ## 1.37.11
 
 ### Patch Changes
