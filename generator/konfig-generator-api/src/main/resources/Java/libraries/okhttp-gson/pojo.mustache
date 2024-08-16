@@ -555,6 +555,7 @@ public class {{classname}} {{#parent}}extends {{{.}}} {{/parent}}{{#vendorExtens
       }
       {{/isString}}
       {{#isModel}}
+      {{^isNestedPrimitive}}
       {{#required}}
       // validate the required field `{{{baseName}}}`
       {{{dataType}}}.validateJsonObject(jsonObj.getAsJsonObject("{{{baseName}}}"));
@@ -565,6 +566,7 @@ public class {{classname}} {{#parent}}extends {{{.}}} {{/parent}}{{#vendorExtens
         {{{dataType}}}.validateJsonObject(jsonObj.getAsJsonObject("{{{baseName}}}"));
       }
       {{/required}}
+      {{/isNestedPrimitive}}
       {{/isModel}}
       {{/isContainer}}
       {{/vars}}

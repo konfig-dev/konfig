@@ -329,6 +329,21 @@ public class CodegenProperty implements Cloneable, IJsonSchemaValidationProperti
         return dataType;
     }
 
+    public boolean isNestedPrimitive() {
+        if (composedSchemas == null)
+            return false;
+        CodegenProperty nested = null;
+        if (composedSchemas.getAnyOf() != null && composedSchemas.getAnyOf().size() == 1) {
+            nested = composedSchemas.getAnyOf().get(0);
+        } else if (composedSchemas.getOneOf() != null && composedSchemas.getOneOf().size() == 1) {
+            nested = composedSchemas.getOneOf().get(0);
+        } else if (composedSchemas.getAllOf() != null && composedSchemas.getAllOf().size() == 1) {
+            nested = composedSchemas.getAllOf().get(0);
+        }
+        // add more conditions as required
+        return nested != null && (nested.isPrimitiveType || nested.isDate || nested.isDateTime|| nested.isUuid);
+    }
+
     public void setDatatype(String datatype) {
         this.dataType = datatype;
     }
