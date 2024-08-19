@@ -43,7 +43,7 @@ public class CodegenOperation {
     public CodegenProperty returnProperty;
     public String returnBaseType;
     public String path, operationId, returnType, returnFormat, httpMethod,
-            returnContainer, summary, unescapedNotes, notes, baseName, defaultResponse;
+            returnContainer, summary, description, unescapedNotes, notes, baseName, defaultResponse;
     public String unescapedNotesWithPounds;
     public CodegenDiscriminator discriminator;
     public List<Map<String, String>> consumes, produces, prioritizedContentTypes;

@@ -11,6 +11,7 @@
 {{#if isDeprecated}}@api_client.DeprecationWarningOnce(prefix="{{clientApiName}}")
 {{/if}}def {{methodName}}(
 {{> endpoint_args isOverload=false skipDeserialization="null" contentType="null" interface=true}}
+    """ {{{description}}} """
     args = self._{{operationId}}_mapped_args(
         {{> endpoint_args_call_mapped_args}}
     )

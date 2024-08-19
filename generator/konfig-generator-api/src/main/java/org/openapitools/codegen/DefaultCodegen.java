@@ -4631,6 +4631,7 @@ public class DefaultCodegen implements CodegenConfig {
 
         op.operationId = toOperationId(operationId);
         op.summary = escapeText(operation.getSummary());
+        op.description = escapeText(operation.getDescription());
         op.unescapedNotes = operation.getDescription();
         if (op.unescapedNotes != null) {
             op.unescapedNotesWithPounds = Arrays.stream(operation.getDescription().split("\n")).map(s -> "# " + s)
