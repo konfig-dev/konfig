@@ -468,4 +468,297 @@ describe('highlight-json-lines', () => {
       }).highlightedLines
     ).toStrictEqual(Array.from({ length: 21 - 6 + 1 }).map((_, i) => i + 6))
   })
+
+  const snaptradeResponse = {
+    account: {
+      id: '917c8734-8470-4a3e-a18f-57c3f2ee6631',
+      brokerage_authorization: '87b24961-b51e-4db8-9226-f198f6518a89',
+      portfolio_group: '2bcd7cc3-e922-4976-bce1-9858296801c3',
+      name: 'Robinhood Individual',
+      number: 'Q6542138443',
+      institution_name: 'Robinhood',
+      created_date: '2024-07-23T22:50:22.761Z',
+      meta: {
+        type: 'Margin',
+        status: 'ACTIVE',
+        institution_name: 'Robinhood',
+      },
+      cash_restrictions: [],
+      sync_status: {
+        transactions: {
+          initial_sync_completed: true,
+          last_successful_sync: '2022-01-24',
+          first_transaction_date: '2022-01-24',
+        },
+        holdings: {
+          initial_sync_completed: true,
+          last_successful_sync: '2024-06-28 18:42:46.561408+00:00',
+        },
+      },
+      balance: {
+        total: {
+          amount: 15363.23,
+          currency: 'USD',
+        },
+      },
+    },
+    balances: [
+      {
+        currency: {
+          id: '87b24961-b51e-4db8-9226-f198f6518a89',
+          code: 'USD',
+          name: 'US Dollar',
+        },
+        cash: 300.71,
+        buying_power: 410.71,
+      },
+    ],
+    positions: [
+      {
+        symbol: {
+          id: '2bcd7cc3-e922-4976-bce1-9858296801c3',
+          description: 'VANGUARD CDN AGGREGATE BOND INDEX ETF',
+          symbol: {
+            id: '2bcd7cc3-e922-4976-bce1-9858296801c3',
+            symbol: 'VAB.TO',
+            raw_symbol: 'VAB',
+            description: 'VANGUARD CDN AGGREGATE BOND INDEX ETF',
+            currency: {
+              id: '87b24961-b51e-4db8-9226-f198f6518a89',
+              code: 'USD',
+              name: 'US Dollar',
+            },
+            exchange: {
+              id: '2bcd7cc3-e922-4976-bce1-9858296801c3',
+              code: 'TSX',
+              mic_code: 'XTSE',
+              name: 'Toronto Stock Exchange',
+              timezone: 'America/New_York',
+              start_time: '09:30:00',
+              close_time: '16:00:00',
+              suffix: '.TO',
+            },
+            type: {
+              id: '2bcd7cc3-e922-4976-bce1-9858296801c3',
+              code: 'cs',
+              description: 'Common Stock',
+              is_supported: true,
+            },
+            currencies: [
+              {
+                id: '87b24961-b51e-4db8-9226-f198f6518a89',
+                code: 'USD',
+                name: 'US Dollar',
+              },
+            ],
+            figi_code: 'BBG000B9XRY4',
+            figi_instrument: {
+              figi_code: 'BBG000B9Y5X2',
+              figi_share_class: 'BBG001S5N8V8',
+            },
+          },
+          local_id: '3291231',
+          is_quotable: true,
+          is_tradable: true,
+        },
+        units: 40,
+        price: 113.15,
+        open_pnl: 0.44,
+        fractional_units: 1.44,
+        average_purchase_price: 108.3353,
+      },
+    ],
+    option_positions: [
+      {
+        symbol: {
+          id: '2bcd7cc3-e922-4976-bce1-9858296801c3',
+          description: 'SPY CALL 7/17 200',
+          option_symbol: {
+            id: '2bcd7cc3-e922-4976-bce1-9858296801c3',
+            ticker: 'SPY 220819P00200000',
+            option_type: 'CALL',
+            strike_price: 200,
+            expiration_date: '2026-12-18',
+            is_mini_option: false,
+            underlying_symbol: {
+              id: '2bcd7cc3-e922-4976-bce1-9858296801c3',
+              symbol: 'SPY',
+              raw_symbol: 'VAB',
+              description: 'SPDR S&P 500 ETF Trust',
+              currency: {
+                id: '87b24961-b51e-4db8-9226-f198f6518a89',
+                code: 'USD',
+                name: 'US Dollar',
+              },
+              exchange: {
+                id: '2bcd7cc3-e922-4976-bce1-9858296801c3',
+                code: 'ARCX',
+                mic_code: 'ARCA',
+                name: 'NYSE ARCA',
+                timezone: 'America/New_York',
+                start_time: '09:30:00',
+                close_time: '16:00:00',
+                suffix: 'None',
+                allows_cryptocurrency_symbols: false,
+              },
+              type: {
+                id: '2bcd7cc3-e922-4976-bce1-9858296801c3',
+                code: 'cs',
+                description: 'Common Stock',
+                is_supported: true,
+              },
+              currencies: [
+                {
+                  id: '87b24961-b51e-4db8-9226-f198f6518a89',
+                  code: 'USD',
+                  name: 'US Dollar',
+                },
+              ],
+              figi_code: 'BBG000B9XRY4',
+              figi_instrument: {
+                figi_code: 'BBG000B9Y5X2',
+                figi_share_class: 'BBG001S5N8V8',
+              },
+            },
+          },
+        },
+        price: 113.15,
+        units: 10,
+        currency: {
+          id: '87b24961-b51e-4db8-9226-f198f6518a89',
+          code: 'USD',
+          name: 'US Dollar',
+        },
+        average_purchase_price: 108.3353,
+      },
+    ],
+    orders: [
+      {
+        brokerage_order_id: 'string',
+        status: 'NONE',
+        symbol: '2bcd7cc3-e922-4976-bce1-9858296801c3',
+        universal_symbol: {
+          id: '2bcd7cc3-e922-4976-bce1-9858296801c3',
+          symbol: 'VAB.TO',
+          raw_symbol: 'VAB',
+          description: 'VANGUARD CDN AGGREGATE BOND INDEX ETF',
+          currency: {
+            id: '87b24961-b51e-4db8-9226-f198f6518a89',
+            code: 'USD',
+            name: 'US Dollar',
+          },
+          exchange: {
+            id: '2bcd7cc3-e922-4976-bce1-9858296801c3',
+            code: 'TSX',
+            mic_code: 'XTSE',
+            name: 'Toronto Stock Exchange',
+            timezone: 'America/New_York',
+            start_time: '09:30:00',
+            close_time: '16:00:00',
+            suffix: '.TO',
+          },
+          type: {
+            id: '2bcd7cc3-e922-4976-bce1-9858296801c3',
+            code: 'cs',
+            description: 'Common Stock',
+            is_supported: true,
+          },
+          currencies: [
+            {
+              id: '87b24961-b51e-4db8-9226-f198f6518a89',
+              code: 'USD',
+              name: 'US Dollar',
+            },
+          ],
+          figi_code: 'BBG000B9XRY4',
+          figi_instrument: {
+            figi_code: 'BBG000B9Y5X2',
+            figi_share_class: 'BBG001S5N8V8',
+          },
+        },
+        option_symbol: {
+          id: '2bcd7cc3-e922-4976-bce1-9858296801c3',
+          ticker: 'SPY 220819P00200000',
+          option_type: 'CALL',
+          strike_price: 200,
+          expiration_date: '2026-12-18',
+          is_mini_option: false,
+          underlying_symbol: {
+            id: '2bcd7cc3-e922-4976-bce1-9858296801c3',
+            symbol: 'SPY',
+            raw_symbol: 'VAB',
+            description: 'SPDR S&P 500 ETF Trust',
+            currency: {
+              id: '87b24961-b51e-4db8-9226-f198f6518a89',
+              code: 'USD',
+              name: 'US Dollar',
+            },
+            exchange: {
+              id: '2bcd7cc3-e922-4976-bce1-9858296801c3',
+              code: 'ARCX',
+              mic_code: 'ARCA',
+              name: 'NYSE ARCA',
+              timezone: 'America/New_York',
+              start_time: '09:30:00',
+              close_time: '16:00:00',
+              suffix: 'None',
+              allows_cryptocurrency_symbols: false,
+            },
+            type: {
+              id: '2bcd7cc3-e922-4976-bce1-9858296801c3',
+              code: 'cs',
+              description: 'Common Stock',
+              is_supported: true,
+            },
+            currencies: [
+              {
+                id: '87b24961-b51e-4db8-9226-f198f6518a89',
+                code: 'USD',
+                name: 'US Dollar',
+              },
+            ],
+            figi_code: 'BBG000B9XRY4',
+            figi_instrument: {
+              figi_code: 'BBG000B9Y5X2',
+              figi_share_class: 'BBG001S5N8V8',
+            },
+          },
+        },
+        action: 'string',
+        total_quantity: 100,
+        open_quantity: 10,
+        canceled_quantity: 10,
+        filled_quantity: 80,
+        execution_price: 12.34,
+        limit_price: 12.34,
+        stop_price: 12.5,
+        order_type: 'Market',
+        time_in_force: 'string',
+        time_placed: '2024-07-30T22:51:49.746Z',
+        time_updated: '2024-08-05T00:05:57.409Z',
+        time_executed: '2024-08-05T00:05:57.409Z',
+        expiry_date: '2024-08-05T00:05:57.409Z',
+      },
+    ],
+    total_value: {
+      value: 32600.71,
+      currency: 'USD',
+    },
+  }
+  test('snaptrade - list account holdings - balances', () => {
+    expect(
+      highlightJsonLines({
+        json: snaptradeResponse,
+        path: ['balances'],
+      }).highlightedLines
+    ).toStrictEqual(Array.from({ length: 44 - 34 + 1 }).map((_, i) => i + 34))
+  })
+  test('snaptrade - list account holdings - account.cash_restrictions', () => {
+    expect(
+      highlightJsonLines({
+        json: snaptradeResponse,
+        path: ['account', 'cash_restrictions'],
+      }).highlightedLines
+    ).toStrictEqual([15])
+  })
 })

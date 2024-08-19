@@ -94,7 +94,10 @@ export function highlightJsonLines({
         parsingState.pathSoFar.push(fieldName)
       }
     }
-    if (trimmedLine.endsWith(']') || trimmedLine.endsWith('],')) {
+    if (
+      !(trimmedLine.endsWith('[]') || trimmedLine.endsWith('[],')) &&
+      (trimmedLine.endsWith(']') || trimmedLine.endsWith('],'))
+    ) {
       parsingState.inArray--
       parsingState.pathSoFar.pop() // $item
       if (
