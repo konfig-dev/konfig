@@ -340,18 +340,23 @@ async function main() {
   }
   const mergedDb = {
     specifications: {
-      ...openapiDirectoryDb.specifications,
-      ...customRequestDb.specifications,
+      ...(process.env.FILTER_CUSTOM
+        ? customRequestDb.specifications
+        : {
+            ...openapiDirectoryDb.specifications,
+            ...customRequestDb.specifications,
+          }),
     },
   };
   console.log("Adding difficulty scores");
-  const db = await addDifficulty(mergedDb);
-  // delete specFolder if it exists
-  fs.rmSync(specFolder, { recursive: true });
-  // ensure specFolder exists
-  fs.mkdirSync(specFolder, { recursive: true });
+  if (process.env.FILTER_CUSTOM === undefined) {
+    // delete specFolder if it exists
+    fs.rmSync(specFolder, { recursive: true });
+    // ensure specFolder exists
+    fs.mkdirSync(specFolder, { recursive: true });
+  }
   console.log("Writing data to disk");
-  writeData(db);
+  writeData(mergedDb);
   console.log("Done!");
 }
 

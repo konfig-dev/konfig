@@ -978,7 +978,7 @@ paths:
           - language: curl
             code: >-
               curl --location
-              'https://sandboxpurchaseapi.connexpay.com/api/v1/token' 
+              'https://sandboxpurchasesapi.connexpay.com/api/v1/token' 
 
               --header 'Content-Type: application/x-www-form-urlencoded' 
 
@@ -1105,14 +1105,11 @@ paths:
                     US Clients only: The statement description allows a client
                     to customize the Merchant name that appears on the
                     cardholder statement such that the cardholder recognizes the
-                    transaction on their statement. For US Merchants: ConnexPay
-                    recommends sending a recognizable DBA along with the PNR
-                    i.e. ABC Travel ABC123.  The maximum length is 25
-                    alpha-numeric characters.  For EU Merchants: The maximum
-                    length of the description is 13 alphanumeric characters and
-                    the DBA Name and City will automatically be coded to appear
-                    as part of the statement description. Note: functionality
-                    not applicable for American Express program.
+                    transaction on their statement. ConnexPay recommends sending
+                    a recognizable DBA along with the PNR i.e. ABC Travel
+                    ABC123.  The maximum length is 25 alpha-numeric characters. 
+                    Note: functionality not available for EU Merchants and
+                    American Express program.
                   default: '{{StatementDescription}}'
                 CustomerID:
                   type: string
@@ -1781,30 +1778,6 @@ paths:
                     association ID to the sales and the virtual card for
                     downstream reporting. The maximum length is 100
                     alpha-numeric characters.
-                CustomParameters:
-                  type: array
-                  description: >-
-                    You can add custom parameters to your sale request in the
-                    event that you need to associate additional information with
-                    the pay-in. For example, if you want to add an invoice
-                    number you would include the custom parameters object with
-                    the name parameter = "invoice" and the value parameter as
-                    the invoice number. This requires customized reporting so
-                    you'll need to work with your implementations specialist to
-                    determine what's required.
-                  items:
-                    properties:
-                      Name:
-                        type: string
-                        description: >-
-                          Custom Parameter's Name, up to a maximum of 100
-                          alphanumeric characters allowed.
-                      Value:
-                        type: string
-                        description: >-
-                          Custom Parameter's Value, up to a maximum of 100
-                          alphanumeric characters allowed.
-                    type: object
                 LabelIDs:
                   type: array
                   description: >-
@@ -5442,30 +5415,6 @@ paths:
                     association ID to the sales and the virtual card for
                     downstream reporting. The maximum length is 100
                     alpha-numeric characters.
-                CustomParameters:
-                  type: array
-                  description: >-
-                    You can add custom parameters to your sale request in the
-                    event that you need to associate additional information with
-                    the pay-in. For example, if you want to add an invoice
-                    number you would include the custom parameters object with
-                    the name parameter = "invoice" and the value parameter as
-                    the invoice number. This requires customized reporting so
-                    you'll need to work with your implementations specialist to
-                    determine what's required.
-                  items:
-                    properties:
-                      Name:
-                        type: string
-                        description: >-
-                          Custom Parameter's Name, up to a maximum of 100
-                          alphanumeric characters allowed.
-                      Value:
-                        type: string
-                        description: >-
-                          Custom Parameter's Value, up to a maximum of 100
-                          alphanumeric characters allowed.
-                    type: object
             examples:
               Create Capture Request Example:
                 value:
@@ -8145,7 +8094,8 @@ paths:
                   description: >-
                     Payment types you wish to make available to your consumer
                     when they enter payment information into the Hosted Payment
-                    Page. Options are "ACH", "Credit", "GooglePay"/
+                    Page. Options are "ACH", "Credit", "GooglePay", and
+                    "ApplePay".
                   default:
                     - Credit
                   items:
@@ -8176,11 +8126,6 @@ paths:
                         purposes i.e. risk analysis, merchant processinging,
                         etc.  The minimun amount is: $0.50.
                       format: int64
-                    TenderType:
-                      type: string
-                      description: >-
-                        Allowed values:  1. Credit (default if TenderType not
-                        provided) 2. Cash 3. ACH
                     SequenceNumber:
                       type: string
                       description: >-
@@ -8370,6 +8315,12 @@ paths:
                     true: Fund your merchant cash balance from your merchant
                     bank account. false: Withdraw your merchant cash balance and
                     ConnexPay will credit your merchant bank account.
+                customerID:
+                  type: string
+                  description: >-
+                    The Customer ID value can be used to reconcile this entry to
+                    a Sale or Purchase in the future by using the same Customer
+                    ID.
       responses:
         '201':
           description: '201'
@@ -8694,7 +8645,7 @@ paths:
                   description: >-
                     Security Control: Maximum dollar amount the card can be
                     authorized and settled, which must be less than or equal to
-                    $1,000,000.00. The value must incorporate any anticipated
+                    $5,000,000.00. The value must incorporate any anticipated
                     overages such as currency conversion or taxes that a
                     supplier may associate with the transaction. If a supplier
                     attempts to authorize a card for more than the amount limit
@@ -8739,32 +8690,13 @@ paths:
                     card is used at hotel, it will be declined. Available
                     purchase type values are: '01' (Airline), '02' (Hotels and
                     Resorts), '03' (Car Rental), '04' (Cable, Satellite,
-                    Television, and Radio Services),  '05' (Cruise Lines), '11'
-                    (Medical Services and Health Practitioners), '21'
-                    (Advertising Services), '22' (Misc Advertising and Business
-                    Services), '23' (Ticketing), '31' (Insurance Sales,
-                    Underwriting, and Premiums), '91' (Restaurants and Food
-                    Services), and '93' (Tax Payments). Leave this blank if you
-                    plan to utilize MID level controls.
-                MIDWhitelist:
-                  type: array
-                  description: >-
-                    MID = Merchant ID. Whitelisted MIDs are a supplement to
-                    Purchase Type. Utilize if you have a supplier MID(s) where
-                    the card can be used if that MID is categorized in an MCC
-                    other than the Purchase Type selected. Or use instead of
-                    Purchase Type. (eg. ['273514000108778', '900074KLM'])
-                  items:
-                    type: string
-                MIDBlacklist:
-                  type: array
-                  description: >-
-                    MID = Merchant ID. The list of MIDs where the virtual card
-                    will always be DECLINED regardless of PurchaseType or
-                    MIDWhitelist. MIDBlacklist overrides all other
-                    specifications. (eg. ['273594000108778'].)
-                  items:
-                    type: string
+                    Television, and Radio Services), '05' (Cruise Lines), '6'
+                    (Travel), '11' (Medical Services and Health Practitioners),
+                    '21' (Advertising Services), '22' (Misc Advertising and
+                    Business Services), '23' (Ticketing), '31' (Insurance Sales,
+                    Underwriting, and Premiums), '32' (Insurance and Real Estate
+                    Codes), '91' (Restaurants and Food Services), and '93' (Tax
+                    Payments)..
                 SequenceNumber:
                   type: string
                   description: >-
@@ -8792,13 +8724,19 @@ paths:
                     sale transaction, or in the Group Sale response of the group
                     sale. All virtual card requests must be associated with an
                     original sale or group transaction.
-                SupplierId:
+                PayeeId:
                   type: string
                   description: >-
-                    The SupplierId is used to assist with Intelligent Routing
-                    functionality. The field accepts up to 100 alpha-numeric
-                    characters.  Alphanumeric with a max length of 100
-                    characters
+                    The PayeeId is used to assist with Intelligent Routing
+                    functionality. This field was previously labeled as the
+                    Supplier ID and serves the same purpose for Intelligent
+                    Routing; however, it also supports additional functionality
+                    if a Payee has been created. Creating a Payee allows you
+                    complete control over the type of virtual card used to pay
+                    your payee and minimizes the data that must be passed in
+                    each card request.  The field accepts up to 100
+                    alpha-numeric characters. Reference our MerchantPayees APIs
+                    for additional details.
                 NonDomesticSupplier:
                   type: boolean
                   description: >-
@@ -8862,7 +8800,7 @@ paths:
                       type: string
                       description: >-
                         Mandatory for email or fax transmission. The message
-                        body of the email or fax. 1024 char max.
+                        body of the email or fax. 2048 char max.
                     DaysToExpire:
                       type: string
                       description: >-
@@ -8907,35 +8845,6 @@ paths:
                     association ID to the sales and the virtual card for
                     downstream reporting. The maximum length is 100
                     alpha-numeric characters.
-                CustomParameters:
-                  type: array
-                  description: >-
-                    You can add custom parameters to your issue card request in
-                    the event that you need to associate additional information
-                    with the virtual card. For example, if you want to add an
-                    invoice number you would include the custom parameters
-                    object with the name parameter = "invoice" and the value
-                    parameter as the invoice number. This requires customized
-                    reporting so you'll need to work with your implementations
-                    specialist to determine what's required.
-                  items:
-                    properties:
-                      Name:
-                        type: string
-                        description: >-
-                          The custom parameter name can be anything you want to
-                          label the field. You can include as many custom
-                          parameters as needed to provide additional data to be
-                          included for the virtual card.
-                      Value:
-                        type: string
-                        description: >-
-                          The value associated with this parameter. For example,
-                          if you are including an invoice number with your
-                          virtual card request, you would populate the custom
-                          parameter 'Name' as 'Invoice' and the custom parameter
-                          'Value' as the invoice number.
-                    type: object
                 LabelIDs:
                   type: array
                   description: >-
@@ -9202,7 +9111,7 @@ paths:
                   description: >-
                     Security Control: Maximum dollar amount the card can be
                     authorized and settled, which must be less than or equal to
-                    $1,000,000.00. The value must incorporate any anticipated
+                    $5,000,000.00. The value must incorporate any anticipated
                     overages such as currency conversion or taxes that a
                     supplier may associate with the transaction. If a supplier
                     attempts to authorize a card for more than the amount limit
@@ -9248,33 +9157,14 @@ paths:
                     card is used at hotel, it will be declined. Available
                     purchase type values are: '01' (Airline), '02' (Hotels and
                     Resorts), '03' (Car Rental), '04' (Cable, Satellite,
-                    Television, and Radio Services),  '05' (Cruise Lines), '11'
-                    (Medical Services and Health Practitioners), '21'
-                    (Advertising Services), '22' (Misc Advertising and Business
-                    Services), '23' (Ticketing), '31' (Insurance Sales,
-                    Underwriting, and Premiums), '91' (Restaurants and Food
-                    Services), and '93' (Tax Payments). Leave this blank if you
-                    plan to utilize MID level controls.
+                    Television, and Radio Services), '05' (Cruise Lines), '6'
+                    (Travel), '11' (Medical Services and Health Practitioners),
+                    '21' (Advertising Services), '22' (Misc Advertising and
+                    Business Services), '23' (Ticketing), '31' (Insurance Sales,
+                    Underwriting, and Premiums), '32' (Insurance and Real Estate
+                    Codes), '91' (Restaurants and Food Services), and '93' (Tax
+                    Payments)..
                   default: '01'
-                MIDWhitelist:
-                  type: array
-                  description: >-
-                    MID = Merchant ID. Whitelisted MIDs are a supplement to
-                    Purchase Type. Utilize if you have a supplier MID(s) where
-                    the card can be used if that MID is categorized in an MCC
-                    other than the Purchase Type selected. Or use instead of
-                    Purchase Type. (e.g., ['273154000108778', '900074LKM'])
-                  items:
-                    type: string
-                MIDBlacklist:
-                  type: array
-                  description: >-
-                    MID = Merchant ID. The list of MIDs where the virtual card
-                    will always be DECLINED regardless of PurchaseType or
-                    MIDWhitelist. MIDBlacklist overrides all other
-                    specifications. (eg. ['273594000108778'].)
-                  items:
-                    type: string
                 SequenceNumber:
                   type: string
                   description: >-
@@ -9286,13 +9176,19 @@ paths:
                     issued.  Note: value is not searchable or reportable in
                     Bridge.  Alphanumeric.
                   default: '987654321'
-                SupplierId:
+                PayeeId:
                   type: string
                   description: >-
-                    The SupplierId is used to assist with Intelligent Routing
-                    functionality. The field accepts up to 100 alpha-numeric
-                    characters.  Alphanumeric with a max length of 100
-                    characters
+                    The PayeeId is used to assist with Intelligent Routing
+                    functionality. This field was previously labeled as the
+                    Supplier ID and serves the same purpose for Intelligent
+                    Routing; however, it also supports additional functionality
+                    if a Payee has been created. Creating a Payee allows you
+                    complete control over the type of virtual card used to pay
+                    your payee and minimizes the data that must be passed in
+                    each card request. The field accepts up to 100 alpha-numeric
+                    characters. Reference our MerchantPayees APIs for additional
+                    details.
                   default: DL
                 NonDomesticSupplier:
                   type: boolean
@@ -9379,7 +9275,7 @@ paths:
                       type: string
                       description: >-
                         Mandatory for email or fax transmission. The message
-                        body of the email or fax. 1024 char max.
+                        body of the email or fax. 2048 char max.
                     DaysToExpire:
                       type: string
                       description: >-
@@ -9405,35 +9301,6 @@ paths:
                     data is returned in the response. When set to a value of
                     false, the Card Account Number and Security Code (CVV) will
                     be excluded from the response.
-                CustomParameters:
-                  type: array
-                  description: >-
-                    You can add custom parameters to your issue card request in
-                    the event that you need to associate additional information
-                    with the virtual card. For example, if you want to add an
-                    invoice number you would include the custom parameters
-                    object with the name parameter = "invoice" and the value
-                    parameter as the invoice number. This requires customized
-                    reporting so you'll need to work with your implementations
-                    specialist to determine what's required.
-                  items:
-                    properties:
-                      Name:
-                        type: string
-                        description: >-
-                          The custom parameter name can be anything you want to
-                          label the field. You can include as many custom
-                          parameters as needed to provide additional data to be
-                          included for the virtual card.
-                      Value:
-                        type: string
-                        description: >-
-                          The value associated with this parameter. For example,
-                          if you are including an invoice number with your
-                          virtual card request, you would populate the custom
-                          parameter 'Name' as 'Invoice' and the custom parameter
-                          'Value' as the invoice number.
-                    type: object
                 ActivationDate:
                   type: string
                   description: >-
@@ -9482,12 +9349,6 @@ paths:
                   ExpirationDate: '2024-12-30'
                   TerminateDate: '2023-12-30'
                   PurchaseType: '01'
-                  MIDWhitelist:
-                    - '111'
-                    - '222'
-                    - '333'
-                  MIDBlacklist:
-                    - '777'
                   SequenceNumber: Sample-seq-1
                   NonDomesticSupplier: true
                   OrderNumber: OrderNumber-1
@@ -9632,6 +9493,7 @@ paths:
                 - LastName
                 - AmountLimit
                 - LimitWindow
+                - PurchaseType
               properties:
                 MerchantGuid:
                   type: string
@@ -9711,7 +9573,7 @@ paths:
                   description: >-
                     Security Control: Maximum dollar amount the card can be
                     authorized and settled, which must be less than or equal to
-                    $1,000,000.00. The value must incorporate any anticipated
+                    $5,000,000.00. The value must incorporate any anticipated
                     overages such as currency conversion or taxes that a
                     supplier may associate with the transaction. If a supplier
                     attempts to authorize a card for more than the amount limit
@@ -9763,13 +9625,13 @@ paths:
                     card is used at hotel, it will be declined. Available
                     purchase type values are: '01' (Airline), '02' (Hotels and
                     Resorts), '03' (Car Rental), '04' (Cable, Satellite,
-                    Television, and Radio Services),  '05' (Cruise Lines), '11'
-                    (Medical Services and Health Practitioners), '21'
-                    (Advertising Services), '22' (Misc Advertising and Business
-                    Services), '23' (Ticketing), '31' (Insurance Sales,
-                    Underwriting, and Premiums), '91' (Restaurants and Food
-                    Services), and '93' (Tax Payments). Leave this blank if you
-                    plan to utilize MID level controls.
+                    Television, and Radio Services), '05' (Cruise Lines), '6'
+                    (Travel), '11' (Medical Services and Health Practitioners),
+                    '21' (Advertising Services), '22' (Misc Advertising and
+                    Business Services), '23' (Ticketing), '31' (Insurance Sales,
+                    Underwriting, and Premiums), '32' (Insurance and Real Estate
+                    Codes), '91' (Restaurants and Food Services), and '93' (Tax
+                    Payments)..
                 SequenceNumber:
                   type: string
                   description: >-
@@ -9789,16 +9651,19 @@ paths:
                     as a Record Locator, PNR, or transaction ID.  The maximum
                     length is 50 alpha-numeric characters and allows the
                     following special characters: [._ /- ].
-                SupplierId:
+                PayeeId:
                   type: string
                   description: >-
-                    The SupplierId is used to assist with Intelligent Routing
-                    functionality. In many cases, a Lodged Card is used at
-                    several different suppliers. In this case, there may be no
-                    reason to include SupplierId. However, if the Lodged Card
-                    will be used at a single supplier, we recommend sending in
-                    the SupplierId to assist with acceptance and rebate. The
-                    field accepts up to 100 alpha-numeric characters.
+                    The PayeeId is used to assist with Intelligent Routing
+                    functionality. This field was previously labeled as the
+                    Supplier ID and serves the same purpose for Intelligent
+                    Routing; however, it also supports additional functionality
+                    if a Payee has been created. Creating a Payee allows you
+                    complete control over the type of virtual card used to pay
+                    your payee and minimizes the data that must be passed in
+                    each card request. The field accepts up to 100 alpha-numeric
+                    characters. Reference our MerchantPayees APIs for additional
+                    details.
                 NonDomesticSupplier:
                   type: boolean
                   description: >-
@@ -9862,7 +9727,7 @@ paths:
                       type: string
                       description: >-
                         Mandatory for email or fax transmission. The message
-                        body of the email or fax. 1024 char max.
+                        body of the email or fax. 2048 char max.
                     DaysToExpire:
                       type: string
                       description: >-
@@ -9918,35 +9783,6 @@ paths:
                     Label IDs before use.
                   items:
                     type: string
-                CustomParameters:
-                  type: array
-                  description: >-
-                    You can add custom parameters to your issue card request in
-                    the event that you need to associate additional information
-                    with the virtual card. For example, if you want to add an
-                    invoice number you would include the custom parameters
-                    object with the name parameter = "invoice" and the value
-                    parameter as the invoice number. This requires customized
-                    reporting so you'll need to work with your implementations
-                    specialist to determine what's required.
-                  items:
-                    properties:
-                      Name:
-                        type: string
-                        description: >-
-                          The custom parameter name can be anything you want to
-                          label the field. You can include as many custom
-                          parameters as needed to provide additional data to be
-                          included for the virtual card.
-                      Value:
-                        type: string
-                        description: >-
-                          The value associated with this parameter. For example,
-                          if you are including an invoice number with your
-                          virtual card request, you would populate the custom
-                          parameter 'Name' as 'Invoice' and the custom parameter
-                          'Value' as the invoice number.
-                    type: object
       responses:
         '200':
           description: '200'
@@ -10288,32 +10124,13 @@ paths:
                     card is used at hotel, it will be declined. Available
                     purchase type values are: '01' (Airline), '02' (Hotels and
                     Resorts), '03' (Car Rental), '04' (Cable, Satellite,
-                    Television, and Radio Services),  '05' (Cruise Lines), '11'
-                    (Medical Services and Health Practitioners), '21'
-                    (Advertising Services), '22' (Misc Advertising and Business
-                    Services), '23' (Ticketing), '31' (Insurance Sales,
-                    Underwriting, and Premiums), '91' (Restaurants and Food
-                    Services), and '93' (Tax Payments). Leave this blank if you
-                    plan to utilize MID level controls.
-                MIDWhitelist:
-                  type: array
-                  description: >-
-                    MID = Merchant ID. Whitelisted MIDs are a supplement to
-                    Purchase Type. Utilize if you have a supplier MID(s) where
-                    the card can be used if that MID is categorized in an MCC
-                    other than the Purchase Type selected. Or use instead of
-                    Purchase Type. (e.g., ['273154000108778', '900074LKM'])
-                  items:
-                    type: string
-                MIDBlacklist:
-                  type: array
-                  description: >-
-                    MID = Merchant ID. The list of MIDs where the virtual card
-                    will always be DECLINED regardless of PurchaseType or
-                    MIDWhitelist. MIDBlacklist overrides all other
-                    specifications. (eg. ['273594000108778'].)
-                  items:
-                    type: string
+                    Television, and Radio Services), '05' (Cruise Lines), '6'
+                    (Travel), '11' (Medical Services and Health Practitioners),
+                    '21' (Advertising Services), '22' (Misc Advertising and
+                    Business Services), '23' (Ticketing), '31' (Insurance Sales,
+                    Underwriting, and Premiums), '32' (Insurance and Real Estate
+                    Codes), '91' (Restaurants and Food Services), and '93' (Tax
+                    Payments)..
                 UsageLimit:
                   type: integer
                   description: >-
@@ -10356,7 +10173,7 @@ paths:
                   description: >-
                     Security Control: Maximum dollar amount the card can be
                     authorized and settled, which must be less than or equal to
-                    $1,000,000.00. The value must incorporate any anticipated
+                    $5,000,000.00. The value must incorporate any anticipated
                     overages such as currency conversion or taxes that a
                     supplier may associate with the transaction. If a supplier
                     attempts to authorize a card for more than the amount limit
@@ -10366,12 +10183,6 @@ paths:
               Reload / Update PuchaseType Example Request:
                 value:
                   PurchaseType: '01'
-                  MIDWhitelist:
-                    - '111'
-                    - '222'
-                    - '333'
-                  MIDBlacklist:
-                    - '777'
                   UsageLimit: 10
                   AssociationId: Test 1
                   TerminateDate: '2023-12-30'
@@ -10397,14 +10208,6 @@ paths:
                             "nameLine2": "Rayeek",
                             "status": "Card - Active",
                             "cardType": "Visa",
-                            "midWhitelist": [
-                                "111",
-                                "222",
-                                "333"
-                            ],
-                            "midBlacklist": [
-                                "777"
-                            ],
                             "associationId": "Test",
                             "clientProgram": "31"
                         },
@@ -10454,16 +10257,6 @@ paths:
                       cardType:
                         type: string
                         example: Visa
-                      midWhitelist:
-                        type: array
-                        items:
-                          type: string
-                          example: '111'
-                      midBlacklist:
-                        type: array
-                        items:
-                          type: string
-                          example: '777'
                       associationId:
                         type: string
                         example: Test
@@ -10525,7 +10318,7 @@ paths:
                   description: >-
                     Security Control: Maximum dollar amount the card can be
                     authorized and settled, which must be less than or equal to
-                    $1,000,000.00. The value must incorporate any anticipated
+                    $5,000,000.00. The value must incorporate any anticipated
                     overages such as currency conversion or taxes that a
                     supplier may associate with the transaction. If a supplier
                     attempts to authorize a card for more than the amount limit
@@ -10546,13 +10339,13 @@ paths:
                     card is used at hotel, it will be declined. Available
                     purchase type values are: '01' (Airline), '02' (Hotels and
                     Resorts), '03' (Car Rental), '04' (Cable, Satellite,
-                    Television, and Radio Services),  '05' (Cruise Lines), '11'
-                    (Medical Services and Health Practitioners), '21'
-                    (Advertising Services), '22' (Misc Advertising and Business
-                    Services), '23' (Ticketing), '31' (Insurance Sales,
-                    Underwriting, and Premiums), '91' (Restaurants and Food
-                    Services), and '93' (Tax Payments). Leave this blank if you
-                    plan to utilize MID level controls.
+                    Television, and Radio Services), '05' (Cruise Lines), '6'
+                    (Travel), '11' (Medical Services and Health Practitioners),
+                    '21' (Advertising Services), '22' (Misc Advertising and
+                    Business Services), '23' (Ticketing), '31' (Insurance Sales,
+                    Underwriting, and Premiums), '32' (Insurance and Real Estate
+                    Codes), '91' (Restaurants and Food Services), and '93' (Tax
+                    Payments)..
                 Activated:
                   type: boolean
                   description: True activates a lodged card. False suspends a lodged card.
@@ -10834,129 +10627,6 @@ paths:
                   message:
                     type: string
                     example: The request is invalid.
-      deprecated: false
-  /api/v1/IssueCard/Cancel/{{CardGuid}}:
-    put:
-      summary: Cancel Card
-      description: >-
-        This endpoint should be called when you want to completely cancel a
-        virtual card you created using the IssueLite endpoint.
-      operationId: cancel-card
-      responses:
-        '200':
-          description: '200'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: |-
-                    {
-                        "cardHolder": {
-                            "cardHolderGuid": "2eda6839-4e8a-49eb-9079-18f829585e50",
-                            "firstName": "Ping",
-                            "lastName": "Lite6",
-                            "phone": "1231231234",
-                            "address1": "107 Techlogy Park",
-                            "address2": "",
-                            "city": "PT Corners",
-                            "zipcode": "30092"
-                        },
-                        "card": {
-                            "cardGuid": "2cf4bdbf-48c1-4e23-9ae3-4d5236a8b917",
-                            "amountLimit": 12.07,
-                            "usageLimit": 2,
-                            "limitWindow": "LIFETIME",
-                            "expirationDate": "2021-11-04T00:00:00",
-                            "expiration": "1222",
-                            "firstSix": "111111",
-                            "lastFour": "3349",
-                            "nameLine1": "Ping",
-                            "nameLine2": "Lite6",
-                            "status": "Card - Deactivated",
-                            "cardType": "Other"
-                        }
-                    }
-              schema:
-                type: object
-                properties:
-                  cardHolder:
-                    type: object
-                    properties:
-                      cardHolderGuid:
-                        type: string
-                        example: 2eda6839-4e8a-49eb-9079-18f829585e50
-                      firstName:
-                        type: string
-                        example: Ping
-                      lastName:
-                        type: string
-                        example: Lite6
-                      phone:
-                        type: string
-                        example: '1231231234'
-                      address1:
-                        type: string
-                        example: 107 Techlogy Park
-                      address2:
-                        type: string
-                        example: ''
-                      city:
-                        type: string
-                        example: PT Corners
-                      zipcode:
-                        type: string
-                        example: '30092'
-                  card:
-                    type: object
-                    properties:
-                      cardGuid:
-                        type: string
-                        example: 2cf4bdbf-48c1-4e23-9ae3-4d5236a8b917
-                      amountLimit:
-                        type: number
-                        example: 12.07
-                        default: 0
-                      usageLimit:
-                        type: integer
-                        example: 2
-                        default: 0
-                      limitWindow:
-                        type: string
-                        example: LIFETIME
-                      expirationDate:
-                        type: string
-                        example: '2021-11-04T00:00:00'
-                      expiration:
-                        type: string
-                        example: '1222'
-                      firstSix:
-                        type: string
-                        example: '111111'
-                      lastFour:
-                        type: string
-                        example: '3349'
-                      nameLine1:
-                        type: string
-                        example: Ping
-                      nameLine2:
-                        type: string
-                        example: Lite6
-                      status:
-                        type: string
-                        example: Card - Deactivated
-                      cardType:
-                        type: string
-                        example: Other
-        '400':
-          description: '400'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: '{}'
-              schema:
-                type: object
-                properties: {}
       deprecated: false
   /api/v1/IssueCard/SendPaymentInfo/{cardGuid}:
     put:
@@ -12355,7 +12025,7 @@ paths:
                     provided by ConnexPay.
                 Amount:
                   type: number
-                  description: Payment amount. Minimum amount > 0.5.
+                  description: Payment amount. Minimum amount 0.01.
                   format: float
                 PayeeName:
                   type: string
@@ -12602,7 +12272,7 @@ paths:
                     provided by ConnexPay.
                 Amount:
                   type: number
-                  description: Payment amount with the minimum amount > 0.5.
+                  description: Payment amount with the minimum amount 0.01.
                   format: float
                 PayeeName:
                   type: string

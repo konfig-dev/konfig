@@ -683,7 +683,6 @@ components:
             - form
             - office365
             - layer_anon
-            - smooch
             - smtp
             - talkdesk
             - truly
@@ -777,6 +776,10 @@ components:
           items:
             $ref: '#/components/schemas/Attachment'
           description: List of files attached to the comment
+        is_pinned:
+          type: boolean
+          description: Whether or not the comment is pinned in its conversation
+          example: true
     Contact:
       properties:
         name:
@@ -1160,6 +1163,9 @@ components:
         body:
           type: string
           description: Content of the comment. Can include markdown formatting.
+        is_pinned:
+          type: boolean
+          description: Whether or not the comment is pinned in its conversation.
         attachments:
           description: >-
             Binary data of attached files. Must use `Content-Type:
@@ -1640,49 +1646,54 @@ components:
           type: boolean
           description: Whether the tag is visible in conversation lists.
           default: false
+    CreateTeammateGroup:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: Name of the teammate group
+        description:
+          type: string
+          description: Description of the teammate group
+        permissions:
+          type: object
+          description: Permissions for the teammate group
+          properties:
+            contacts:
+              type: object
+              description: >-
+                Permissions for accessing contact lists. This only applies if
+                shared contacts permissions are enabled.
+              required:
+                - access
+              properties:
+                access:
+                  type: string
+                  description: One of 'all', 'contact_groups', or 'none'.
+                contact_group_ids:
+                  type: array
+                  description: >-
+                    List of contact group ids. Can only be specified if access
+                    is set to 'contact_groups'.
+                  items:
+                    type: string
     CustomFieldParameter:
       type: object
-      properties:
-        key:
-          description: The `name` property of the custom field
-          type: string
-          example: custom_key
-        value:
-          description: >-
-            The `value` property of the custom field as defined by
-            https://dev.frontapp.com/reference/custom-fields
-          anyOf:
-            - type: string
-              description: String values
-              example: London, UK
-            - type: boolean
-              description: Boolean `true`/`false`
-              example: true
-            - type: integer
-              description: Epoch Timestamps
-              example: 1525417200
-            - type: integer
-              description: Integers
-              example: 90
-            - type: string
-              format: email
-              description: Email address of a teammate
-              example: leela@planet-express.com
-            - type: array
-              description: List of email addresses of teammates
-              items:
-                type: string
-                format: email
-              example:
-                - leela@planet-express.com
-                - fry@planet-express.com
-                - bender@planet-express.com
-            - type: string
-              description: Inbox id
-              example: inb_55c8c149
-            - type: string
-              description: Enum string values
-              example: firefighter
+      description: >-
+        An object whose key is the `name` property defined for the custom field
+        in the Front UI. The value of the key must use the same `type` specified
+        for the custom field, as described in
+        https://dev.frontapp.com/reference/custom-fields
+      example:
+        city: London, UK
+        isVIP: true
+        renewal_date: 1525417200
+        sla_time: 90
+        owner: leela@planet-express.com
+        replyTo: inb_55c8c149
+        Job Title: firefighter
     CustomFieldResponse:
       properties:
         _links:
@@ -2144,6 +2155,12 @@ components:
           type: boolean
           description: Whether or not the inbox is individual
           example: false
+        is_public:
+          type: boolean
+          description: >-
+            Whether or not the inbox is available to all members of a team by
+            default
+          example: true
         custom_fields:
           description: Custom fields for this inbox
           $ref: '#/components/schemas/CustomFieldParameter'
@@ -2665,7 +2682,6 @@ components:
             - internal
             - phone-call
             - sms
-            - smooch
             - tweet
             - tweet_dm
             - whatsapp
@@ -3520,6 +3536,80 @@ components:
           description: List of the teammates that have access to the team
           items:
             $ref: '#/components/schemas/TeammateResponse'
+    TeammateGroupResponse:
+      description: A teammate group is a group of teammates in Front.
+      properties:
+        _links:
+          type: object
+          properties:
+            self:
+              type: string
+              description: Link to resource
+              example: https://yourCompany.api.frontapp.com/teammate_groups/cir_123
+            related:
+              type: object
+              properties:
+                teammates:
+                  type: string
+                  description: Link to list of teammate members
+                  example: >-
+                    https://yourCompany.api.frontapp.com/teammate_groups/cir_123/teammates
+                teams:
+                  type: string
+                  description: Link to list of associated teams
+                  example: >-
+                    https://yourCompany.api.frontapp.com/teammate_groups/cir_123/teams
+                inboxes:
+                  type: string
+                  description: Link to list of inboxes that teammate members can access
+                  example: >-
+                    https://yourCompany.api.frontapp.com/teammate_groups/cir_123/inboxes
+        id:
+          type: string
+          description: Unique identifier of the teammate group
+          example: cir_123
+        name:
+          type: string
+          description: The name of the teammate group
+          example: Sales team
+        description:
+          type: string
+          description: Description of the teammate group
+          example: Best sales team ever
+        is_managed_by_scim:
+          type: boolean
+          description: Is teammate group managed by SCIM or by Front
+          example: false
+        permissions:
+          type: object
+          description: Permissions for the teammate group
+          example:
+            contacts:
+              access: contact_groups
+              contact_group_ids:
+                - grp_1
+                - grp_2
+          properties:
+            contacts:
+              type: object
+              description: Permissions for teammate group access to contact groups
+              properties:
+                access:
+                  type: string
+                  description: >-
+                    Level of access for the teammate group to contact groups.
+                    Must be one of 'all', 'contact_groups', or 'none'.
+                contact_group_ids:
+                  type: array
+                  description: >-
+                    List of contact groups the teammate group is allowed to
+                    access. May only be specified if 'access' is set to
+                    'contact_groups'.
+                  example:
+                    - grp_123
+                    - grp_456
+                  items:
+                    type: string
     TeammateIds:
       type: object
       required:
@@ -3630,6 +3720,16 @@ components:
               description: >-
                 The webhook URL outbound messages should be sent to. Only
                 allowed for "custom" type channels.
+    UpdateComment:
+      properties:
+        body:
+          type: string
+          description: >-
+            Content of the comment. Can include markdown formatting. Can only be
+            updated if the comment was created using the same token.
+        is_pinned:
+          type: boolean
+          description: Whether or not the comment is pinned in its conversation.
     UpdateConversation:
       properties:
         assignee_id:
@@ -3871,6 +3971,37 @@ components:
             existing custom fields before making the update to note the current
             fields.
           $ref: '#/components/schemas/CustomFieldParameter'
+    UpdateTeammateGroup:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the teammate group
+        description:
+          type: string
+          description: Description of the teammate group
+        permissions:
+          type: object
+          description: Permissions for the teammate group
+          properties:
+            contacts:
+              type: object
+              description: >-
+                Permissions for accessing contact lists. This only applies if
+                shared contacts permissions are enabled.
+              required:
+                - access
+              properties:
+                access:
+                  type: string
+                  description: One of 'all', 'contact_groups', or 'none'.
+                contact_group_ids:
+                  type: array
+                  description: >-
+                    List of contact group ids. Can only be specified if access
+                    is set to 'contact_groups'.
+                  items:
+                    type: string
   securitySchemes:
     http:
       type: http
@@ -4162,6 +4293,24 @@ components:
                 type: array
                 items:
                   $ref: '#/components/schemas/TeammateResponse'
+    listOfTeammateGroups:
+      description: Array of teammate groups
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              _links:
+                type: object
+                properties:
+                  self:
+                    type: string
+                    description: Link to resource
+                    example: https://yourCompany.api.frontapp.com/teammate_groups
+              _results:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TeammateGroupResponse'
     listOfShifts:
       description: Array of Shifts
       content:
@@ -4733,6 +4882,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/TeammateResponse'
+    teammateGroup:
+      description: A teammate group
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TeammateGroupResponse'
     event:
       description: An event
       content:
@@ -5300,6 +5455,31 @@ paths:
           schema:
             type: string
             default: com_123
+      responses:
+        '200':
+          $ref: '#/components/responses/comment'
+  /comments/{comment_id}/:
+    patch:
+      summary: Update comment
+      operationId: update-comment
+      description: >-
+        Update a comment in a
+        [conversation](https://dev.frontapp.com/reference/conversations).
+      tags:
+        - Comments
+      parameters:
+        - in: path
+          name: comment_id
+          required: true
+          description: The Comment ID
+          schema:
+            type: string
+            default: com_123
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateComment'
       responses:
         '200':
           $ref: '#/components/responses/comment'
@@ -8254,6 +8434,302 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/listOfConversations'
+  /teammate_groups:
+    get:
+      summary: List teammate groups
+      operationId: list-company-teammate-groups
+      description: List the teammate groups in the company.
+      tags:
+        - Teammate groups
+      responses:
+        '200':
+          $ref: '#/components/responses/listOfTeammateGroups'
+    post:
+      summary: Create teammate group
+      operationId: create-company-teammate-group
+      description: Create a new teammate group.
+      tags:
+        - Teammate groups
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTeammateGroup'
+      responses:
+        '201':
+          $ref: '#/components/responses/teammateGroup'
+  /teammate_groups/{teammate_group_id}:
+    get:
+      summary: Get teammate group
+      operationId: get-company-teammate-group
+      description: Fetch a teammate group.
+      tags:
+        - Teammate groups
+      parameters:
+        - in: path
+          name: teammate_group_id
+          required: true
+          description: The teammate group ID.
+          schema:
+            type: string
+            default: cir_123
+      responses:
+        '200':
+          $ref: '#/components/responses/teammateGroup'
+    patch:
+      summary: Update a teammate group
+      operationId: update-a-company-teammate-group
+      description: >-
+        Updates a teammate group. Note - You cannot modify a teammate group that
+        is managed by SCIM.
+      tags:
+        - Teammate groups
+      parameters:
+        - in: path
+          name: teammate_group_id
+          required: true
+          description: The teammate group ID.
+          schema:
+            type: string
+            default: cir_123
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTeammateGroup'
+      responses:
+        '204':
+          description: No content
+    delete:
+      summary: Delete teammate group
+      operationId: delete-company-teammate-group
+      description: >-
+        Deletes a teammate group. Note - You cannot delete a teammate group that
+        is managed by SCIM.
+      tags:
+        - Teammate groups
+      parameters:
+        - in: path
+          name: teammate_group_id
+          required: true
+          description: The teammate group ID.
+          schema:
+            type: string
+            default: cir_123
+      responses:
+        '204':
+          description: No content
+  /teammate_groups/{teammate_group_id}/inboxes:
+    get:
+      summary: List teammate group team inboxes
+      operationId: list-company-teammate-group-team-inboxes
+      description: >-
+        List inboxes that the teammate group has access to via its associated
+        teams.
+      tags:
+        - Teammate groups
+      parameters:
+        - in: path
+          name: teammate_group_id
+          required: true
+          description: The teammate group ID.
+          schema:
+            type: string
+            default: cir_123
+      responses:
+        '200':
+          $ref: '#/components/responses/listOfInboxes'
+    post:
+      summary: Add teammate group team inboxes
+      operationId: add-company-teammate-group-team-inboxes
+      description: >-
+        Links non-public inboxes to the teammate group. The inbox must be part
+        of a team that has been added to the teammate group.
+      tags:
+        - Teammate groups
+      parameters:
+        - in: path
+          name: teammate_group_id
+          required: true
+          description: The teammate group ID.
+          schema:
+            type: string
+            default: cir_123
+      requestBody:
+        description: Inbox IDs to add
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InboxIds'
+      responses:
+        '204':
+          description: No content
+    delete:
+      summary: Remove teammate group team inboxes
+      operationId: remove-company-teammate-group-team-inboxes
+      description: Unlinks non-public inboxes from the teammate group.
+      tags:
+        - Teammate groups
+      parameters:
+        - in: path
+          name: teammate_group_id
+          required: true
+          description: The teammate group ID.
+          schema:
+            type: string
+            default: cir_123
+      requestBody:
+        description: Inbox IDs to remove
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InboxIds'
+      responses:
+        '204':
+          description: No content
+  /teammate_groups/{teammate_group_id}/teammates:
+    get:
+      summary: List teammate group teammates
+      operationId: list-company-teammate-group-teammates
+      description: List teammate group teammates.
+      tags:
+        - Teammate groups
+      parameters:
+        - in: path
+          name: teammate_group_id
+          required: true
+          description: The teammate group ID.
+          schema:
+            type: string
+            default: cir_123
+      responses:
+        '200':
+          $ref: '#/components/responses/listOfTeammates'
+    post:
+      summary: Add teammate group teammates
+      operationId: add-company-teammate-group-teammates
+      description: >-
+        Add teammate group teammates. Note - You cannot modify a teammate group
+        that is managed by SCIM.
+      tags:
+        - Teammate groups
+      parameters:
+        - in: path
+          name: teammate_group_id
+          required: true
+          description: The teammate group ID.
+          schema:
+            type: string
+            default: cir_123
+      requestBody:
+        description: >-
+          Teammate IDs to add. Alternatively, you can supply emails as a
+          [resource alias](https://dev.frontapp.com/docs/resource-aliases-1).
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeammateIds'
+      responses:
+        '204':
+          description: No content
+    delete:
+      summary: Remove teammate group teammates
+      operationId: remove-company-teammate-group-teammates
+      description: >-
+        Remove teammate group teammates. Note - You cannot modify a teammate
+        group that is managed by SCIM.
+      tags:
+        - Teammate groups
+      parameters:
+        - in: path
+          name: teammate_group_id
+          required: true
+          description: The teammate group ID.
+          schema:
+            type: string
+            default: cir_123
+      requestBody:
+        description: >-
+          Teammate IDs to remove. Alternatively, you can supply emails as a
+          [resource alias](https://dev.frontapp.com/docs/resource-aliases-1).
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeammateIds'
+      responses:
+        '204':
+          description: No content
+  /teammate_groups/{teammate_group_id}/teams:
+    get:
+      summary: List teammate group teams
+      operationId: list-company-teammate-group-teams
+      description: >-
+        List teams added to the teammate group. Any teams added to the teammate
+        group will automatically link public inboxes.
+      tags:
+        - Teammate groups
+      parameters:
+        - in: path
+          name: teammate_group_id
+          required: true
+          description: The teammate group ID.
+          schema:
+            type: string
+            default: cir_123
+      responses:
+        '200':
+          $ref: '#/components/responses/listOfTeams'
+    post:
+      summary: Add teammate group teams
+      operationId: add-company-teammate-group-teams
+      description: >-
+        Adds teams to the teammate group. Any teams added to the teammate group
+        will automatically link public inboxes. Non-public inboxes can be added
+        to the teammate group separately.
+      tags:
+        - Teammate groups
+      parameters:
+        - in: path
+          name: teammate_group_id
+          required: true
+          description: The teammate group ID.
+          schema:
+            type: string
+            default: cir_123
+      requestBody:
+        description: Team IDs to add
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamIds'
+      responses:
+        '204':
+          description: No content
+    delete:
+      summary: Remove teammate group teams
+      operationId: remove-company-teammate-group-teams
+      description: >-
+        Remove teams from the teammate group. Unlinks to any associated team
+        inboxes.
+      tags:
+        - Teammate groups
+      parameters:
+        - in: path
+          name: teammate_group_id
+          required: true
+          description: The teammate group ID.
+          schema:
+            type: string
+            default: cir_123
+      requestBody:
+        description: Team IDs to remove.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamIds'
+      responses:
+        '204':
+          description: No content
   /teammates:
     get:
       summary: List teammates
