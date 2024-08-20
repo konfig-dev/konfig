@@ -13,9 +13,9 @@ paths:
       x-codeSamples:
         - lang: bash
           source: |
-            curl --request GET \
-            --url https://api.baseten.co/v1/secrets \
-            --header "Authorization: Api-Key $BASETEN_API_KEY"
+            curl --request GET \ 
+            --url https://api.baseten.co/v1/secrets \ 
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
         - lang: python
           source: |-
             import requests
@@ -29,7 +29,7 @@ paths:
                 "GET",
                 url,
                 headers=headers,
-                json={}
+                data={}
             )
 
             print(response.text)
@@ -45,9 +45,9 @@ paths:
       x-codeSamples:
         - lang: bash
           source: |-
-            curl --request POST \
-            --url https://api.baseten.co/v1/secrets \
-            --header "Authorization: Api-Key $BASETEN_API_KEY" \
+            curl --request POST \ 
+            --url https://api.baseten.co/v1/secrets \ 
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
             --data '{
               "name": "my_secret",
               "value": "my_secret_value"
@@ -65,7 +65,7 @@ paths:
                 "POST",
                 url,
                 headers=headers,
-                json={'name': 'my_secret', 'value': 'my_secret_value'}
+                data={'name': 'my_secret', 'value': 'my_secret_value'}
             )
 
             print(response.text)
@@ -94,9 +94,9 @@ paths:
       x-codeSamples:
         - lang: bash
           source: |
-            curl --request GET \
-            --url https://api.baseten.co/v1/models \
-            --header "Authorization: Api-Key $BASETEN_API_KEY"
+            curl --request GET \ 
+            --url https://api.baseten.co/v1/models \ 
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
         - lang: python
           source: |-
             import requests
@@ -110,7 +110,7 @@ paths:
                 "GET",
                 url,
                 headers=headers,
-                json={}
+                data={}
             )
 
             print(response.text)
@@ -127,9 +127,9 @@ paths:
       x-codeSamples:
         - lang: bash
           source: |
-            curl --request GET \
-            --url https://api.baseten.co/v1/models/{model_id} \
-            --header "Authorization: Api-Key $BASETEN_API_KEY"
+            curl --request GET \ 
+            --url https://api.baseten.co/v1/models/{model_id} \ 
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
         - lang: python
           source: |-
             import requests
@@ -143,7 +143,7 @@ paths:
                 "GET",
                 url,
                 headers=headers,
-                json={}
+                data={}
             )
 
             print(response.text)
@@ -162,9 +162,9 @@ paths:
       x-codeSamples:
         - lang: bash
           source: |
-            curl --request GET \
-            --url https://api.baseten.co/v1/models/{model_id}/deployments \
-            --header "Authorization: Api-Key $BASETEN_API_KEY"
+            curl --request GET \ 
+            --url https://api.baseten.co/v1/models/{model_id}/deployments \ 
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
         - lang: python
           source: |-
             import requests
@@ -178,7 +178,7 @@ paths:
                 "GET",
                 url,
                 headers=headers,
-                json={}
+                data={}
             )
 
             print(response.text)
@@ -197,13 +197,13 @@ paths:
       x-codeSamples:
         - lang: bash
           source: >
-            curl --request GET \
+            curl --request GET \ 
 
             --url
             https://api.baseten.co/v1/models/{model_id}/deployments/development
-            \
+            \ 
 
-            --header "Authorization: Api-Key $BASETEN_API_KEY"
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
         - lang: python
           source: >-
             import requests
@@ -223,7 +223,7 @@ paths:
                 "GET",
                 url,
                 headers=headers,
-                json={}
+                data={}
             )
 
 
@@ -244,12 +244,13 @@ paths:
       x-codeSamples:
         - lang: bash
           source: >
-            curl --request GET \
+            curl --request GET \ 
 
             --url
-            https://api.baseten.co/v1/models/{model_id}/deployments/production \
+            https://api.baseten.co/v1/models/{model_id}/deployments/production
+            \ 
 
-            --header "Authorization: Api-Key $BASETEN_API_KEY"
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
         - lang: python
           source: >-
             import requests
@@ -269,7 +270,7 @@ paths:
                 "GET",
                 url,
                 headers=headers,
-                json={}
+                data={}
             )
 
 
@@ -290,13 +291,13 @@ paths:
       x-codeSamples:
         - lang: bash
           source: >
-            curl --request GET \
+            curl --request GET \ 
 
             --url
             https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}
-            \
+            \ 
 
-            --header "Authorization: Api-Key $BASETEN_API_KEY"
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
         - lang: python
           source: >-
             import requests
@@ -316,7 +317,7 @@ paths:
                 "GET",
                 url,
                 headers=headers,
-                json={}
+                data={}
             )
 
 
@@ -338,13 +339,13 @@ paths:
       x-codeSamples:
         - lang: bash
           source: >-
-            curl --request PATCH \
+            curl --request PATCH \ 
 
             --url
             https://api.baseten.co/v1/models/{model_id}/deployments/development/autoscaling_settings
-            \
+            \ 
 
-            --header "Authorization: Api-Key $BASETEN_API_KEY" \
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
 
             --data '{
               "min_replica": 0,
@@ -372,7 +373,7 @@ paths:
                 "PATCH",
                 url,
                 headers=headers,
-                json={'min_replica': 0, 'max_replica': 7, 'autoscaling_window': 600, 'scale_down_delay': 120, 'concurrency_target': 2}
+                data={'min_replica': 0, 'max_replica': 7, 'autoscaling_window': 600, 'scale_down_delay': 120, 'concurrency_target': 2}
             )
 
 
@@ -401,13 +402,13 @@ paths:
       x-codeSamples:
         - lang: bash
           source: >-
-            curl --request PATCH \
+            curl --request PATCH \ 
 
             --url
             https://api.baseten.co/v1/models/{model_id}/deployments/production/autoscaling_settings
-            \
+            \ 
 
-            --header "Authorization: Api-Key $BASETEN_API_KEY" \
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
 
             --data '{
               "min_replica": 0,
@@ -435,7 +436,7 @@ paths:
                 "PATCH",
                 url,
                 headers=headers,
-                json={'min_replica': 0, 'max_replica': 7, 'autoscaling_window': 600, 'scale_down_delay': 120, 'concurrency_target': 2}
+                data={'min_replica': 0, 'max_replica': 7, 'autoscaling_window': 600, 'scale_down_delay': 120, 'concurrency_target': 2}
             )
 
 
@@ -464,13 +465,13 @@ paths:
       x-codeSamples:
         - lang: bash
           source: >-
-            curl --request PATCH \
+            curl --request PATCH \ 
 
             --url
             https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/autoscaling_settings
-            \
+            \ 
 
-            --header "Authorization: Api-Key $BASETEN_API_KEY" \
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
 
             --data '{
               "min_replica": 0,
@@ -498,7 +499,7 @@ paths:
                 "PATCH",
                 url,
                 headers=headers,
-                json={'min_replica': 0, 'max_replica': 7, 'autoscaling_window': 600, 'scale_down_delay': 120, 'concurrency_target': 2}
+                data={'min_replica': 0, 'max_replica': 7, 'autoscaling_window': 600, 'scale_down_delay': 120, 'concurrency_target': 2}
             )
 
 
@@ -528,13 +529,13 @@ paths:
       x-codeSamples:
         - lang: bash
           source: >-
-            curl --request POST \
+            curl --request POST \ 
 
             --url
             https://api.baseten.co/v1/models/{model_id}/deployments/development/promote
-            \
+            \ 
 
-            --header "Authorization: Api-Key $BASETEN_API_KEY" \
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
 
             --data '{
               "scale_down_previous_production": true
@@ -558,7 +559,7 @@ paths:
                 "POST",
                 url,
                 headers=headers,
-                json={'scale_down_previous_production': True}
+                data={'scale_down_previous_production': True}
             )
 
 
@@ -587,13 +588,13 @@ paths:
       x-codeSamples:
         - lang: bash
           source: >-
-            curl --request POST \
+            curl --request POST \ 
 
             --url
             https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/promote
-            \
+            \ 
 
-            --header "Authorization: Api-Key $BASETEN_API_KEY" \
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
 
             --data '{
               "scale_down_previous_production": true
@@ -617,7 +618,7 @@ paths:
                 "POST",
                 url,
                 headers=headers,
-                json={'scale_down_previous_production': True}
+                data={'scale_down_previous_production': True}
             )
 
 
@@ -647,13 +648,13 @@ paths:
       x-codeSamples:
         - lang: bash
           source: >
-            curl --request POST \
+            curl --request POST \ 
 
             --url
             https://api.baseten.co/v1/models/{model_id}/deployments/development/activate
-            \
+            \ 
 
-            --header "Authorization: Api-Key $BASETEN_API_KEY"
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
         - lang: python
           source: >-
             import requests
@@ -673,7 +674,7 @@ paths:
                 "POST",
                 url,
                 headers=headers,
-                json={}
+                data={}
             )
 
 
@@ -696,13 +697,13 @@ paths:
       x-codeSamples:
         - lang: bash
           source: >
-            curl --request POST \
+            curl --request POST \ 
 
             --url
             https://api.baseten.co/v1/models/{model_id}/deployments/production/activate
-            \
+            \ 
 
-            --header "Authorization: Api-Key $BASETEN_API_KEY"
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
         - lang: python
           source: >-
             import requests
@@ -722,7 +723,7 @@ paths:
                 "POST",
                 url,
                 headers=headers,
-                json={}
+                data={}
             )
 
 
@@ -745,13 +746,13 @@ paths:
       x-codeSamples:
         - lang: bash
           source: >
-            curl --request POST \
+            curl --request POST \ 
 
             --url
             https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/activate
-            \
+            \ 
 
-            --header "Authorization: Api-Key $BASETEN_API_KEY"
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
         - lang: python
           source: >-
             import requests
@@ -771,7 +772,7 @@ paths:
                 "POST",
                 url,
                 headers=headers,
-                json={}
+                data={}
             )
 
 
@@ -793,13 +794,13 @@ paths:
       x-codeSamples:
         - lang: bash
           source: >
-            curl --request POST \
+            curl --request POST \ 
 
             --url
             https://api.baseten.co/v1/models/{model_id}/deployments/development/deactivate
-            \
+            \ 
 
-            --header "Authorization: Api-Key $BASETEN_API_KEY"
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
         - lang: python
           source: >-
             import requests
@@ -819,7 +820,7 @@ paths:
                 "POST",
                 url,
                 headers=headers,
-                json={}
+                data={}
             )
 
 
@@ -842,13 +843,13 @@ paths:
       x-codeSamples:
         - lang: bash
           source: >
-            curl --request POST \
+            curl --request POST \ 
 
             --url
             https://api.baseten.co/v1/models/{model_id}/deployments/production/deactivate
-            \
+            \ 
 
-            --header "Authorization: Api-Key $BASETEN_API_KEY"
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
         - lang: python
           source: >-
             import requests
@@ -868,7 +869,7 @@ paths:
                 "POST",
                 url,
                 headers=headers,
-                json={}
+                data={}
             )
 
 
@@ -889,13 +890,13 @@ paths:
       x-codeSamples:
         - lang: bash
           source: >
-            curl --request POST \
+            curl --request POST \ 
 
             --url
             https://api.baseten.co/v1/models/{model_id}/deployments/{deployment_id}/deactivate
-            \
+            \ 
 
-            --header "Authorization: Api-Key $BASETEN_API_KEY"
+            --header "Authorization: Api-Key $BASETEN_API_KEY" \ 
         - lang: python
           source: >-
             import requests
@@ -915,7 +916,7 @@ paths:
                 "POST",
                 url,
                 headers=headers,
-                json={}
+                data={}
             )
 
 

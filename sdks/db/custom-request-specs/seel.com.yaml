@@ -2,14 +2,14 @@ openapi: 3.0.0
 info:
   title: Seel API
   description: Seel API
-  version: 2.1.0
+  version: 1.3.0
 servers:
   - url: https://api-test.seel.com/v1
     description: Test server
   - url: https://api.seel.com/v1
     description: Production server
 paths:
-  /ecommerce/merchants:
+  /{partner}/merchants:
     post:
       summary: Create a merchant
       operationId: createMerchant
@@ -19,6 +19,7 @@ paths:
         - $ref: '#/components/parameters/api_key'
         - $ref: '#/components/parameters/api_version'
         - $ref: '#/components/parameters/content_type'
+        - $ref: '#/components/parameters/partner'
       requestBody:
         required: true
         content:
@@ -72,10 +73,6 @@ paths:
                   type: string
                   example: 555-1234
                   description: The phone number on file for the merchant.
-                support_email:
-                  type: string
-                  example: support@myshop.com
-                  description: The customer support email address on file for the merchant.
                 seel_services:
                   type: array
                   items:
@@ -131,6 +128,7 @@ paths:
         - $ref: '#/components/parameters/content_type'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/page_size'
+        - $ref: '#/components/parameters/partner'
       responses:
         '200':
           description: Success
@@ -156,7 +154,7 @@ paths:
                     description: List of merchants.
                     items:
                       $ref: '#/components/schemas/Merchant'
-  /ecommerce/merchants/{merchant_id}:
+  /{partner}/merchants/{merchant_id}:
     post:
       summary: Update a merchant
       operationId: updateMerchant
@@ -172,6 +170,7 @@ paths:
         - $ref: '#/components/parameters/api_key'
         - $ref: '#/components/parameters/api_version'
         - $ref: '#/components/parameters/content_type'
+        - $ref: '#/components/parameters/partner'
       requestBody:
         required: true
         content:
@@ -225,10 +224,6 @@ paths:
                   type: string
                   example: 555-1234
                   description: The phone number on file for the merchant.
-                support_email:
-                  type: string
-                  example: support@myshop.com
-                  description: The customer support email address on file for the merchant.
                 seel_services:
                   type: array
                   items:
@@ -274,6 +269,7 @@ paths:
             type: string
         - $ref: '#/components/parameters/api_key'
         - $ref: '#/components/parameters/api_version'
+        - $ref: '#/components/parameters/partner'
       responses:
         '200':
           description: Success
@@ -281,13 +277,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Merchant'
-  /ecommerce/quotes:
+  /{partner}/quotes:
     post:
       summary: Create a quote
       operationId: createQuote
       tags:
         - Quote
       parameters:
+        - $ref: '#/components/parameters/partner'
         - $ref: '#/components/parameters/api_key'
         - $ref: '#/components/parameters/api_version'
         - $ref: '#/components/parameters/content_type'
@@ -310,16 +307,6 @@ paths:
                   type: string
                   description: The ID of the shopping session.
                   example: '223128'
-                device_category:
-                  type: string
-                  description: The type of device from which user activity originated.
-                  example: desktop
-                device_platform:
-                  type: string
-                  description: >-
-                    The method by which users accessed your website or
-                    application.
-                  example: Web
                 device_id:
                   type: string
                   description: The ID of the client device.
@@ -331,11 +318,7 @@ paths:
                 type:
                   type: string
                   description: The type of the quote.
-                  example: seel-wfp
-                is_default_on:
-                  type: boolean
-                  description: The default opt-in setting for the quote
-                  example: true
+                  example: seel-ra
                 line_items:
                   type: array
                   description: The list of items included in the quote.
@@ -355,9 +338,6 @@ paths:
                 - shipping_address
                 - customer
                 - type
-                - device_category
-                - device_platform
-                - is_default_on
       responses:
         '200':
           description: Success
@@ -365,7 +345,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Quote'
-  /ecommerce/quotes/{quote_id}:
+  /{partner}/quotes/{quote_id}:
     get:
       summary: Get a quote
       operationId: getQuote
@@ -381,6 +361,7 @@ paths:
             default: '2023051501242226386401725266'
         - $ref: '#/components/parameters/api_key'
         - $ref: '#/components/parameters/api_version'
+        - $ref: '#/components/parameters/partner'
       responses:
         '200':
           description: Success
@@ -388,13 +369,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Quote'
-  /ecommerce/products:
+  /{partner}/products:
     post:
       summary: Create a product
       operationId: createProduct
       tags:
         - Product
       parameters:
+        - $ref: '#/components/parameters/partner'
         - $ref: '#/components/parameters/api_key'
         - $ref: '#/components/parameters/api_version'
         - $ref: '#/components/parameters/content_type'
@@ -595,7 +577,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Product'
-  /ecommerce/products/batch:
+  /{partner}/products/batch:
     post:
       summary: Batch create products
       operationId: createProductBatch
@@ -605,6 +587,7 @@ paths:
         - $ref: '#/components/parameters/api_key'
         - $ref: '#/components/parameters/api_version'
         - $ref: '#/components/parameters/content_type'
+        - $ref: '#/components/parameters/partner'
       requestBody:
         required: true
         content:
@@ -631,7 +614,7 @@ paths:
                     description: The list of products.
                     items:
                       $ref: '#/components/schemas/Product'
-  /ecommerce/products/{product_id}:
+  /{partner}/products/{product_id}:
     get:
       summary: Get a product
       operationId: getProduct
@@ -647,6 +630,7 @@ paths:
             default: '2023051501242226386401725266'
         - $ref: '#/components/parameters/api_key'
         - $ref: '#/components/parameters/api_version'
+        - $ref: '#/components/parameters/partner'
       responses:
         '200':
           description: Success
@@ -667,6 +651,7 @@ paths:
           schema:
             type: string
             default: '2023051501242226386401725266'
+        - $ref: '#/components/parameters/partner'
         - $ref: '#/components/parameters/api_key'
         - $ref: '#/components/parameters/api_version'
         - $ref: '#/components/parameters/content_type'
@@ -881,6 +866,7 @@ paths:
             type: string
         - $ref: '#/components/parameters/api_key'
         - $ref: '#/components/parameters/api_version'
+        - $ref: '#/components/parameters/partner'
       responses:
         '200':
           description: Success
@@ -888,7 +874,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Product'
-  /ecommerce/products/{product_id}/plans:
+  /{partner}/products/{product_id}/plans:
     get:
       summary: Get product plans
       operationId: getProductPlans
@@ -904,6 +890,7 @@ paths:
             default: '2023051501242226386401725266'
         - $ref: '#/components/parameters/api_key'
         - $ref: '#/components/parameters/api_version'
+        - $ref: '#/components/parameters/partner'
       responses:
         '200':
           description: Success
@@ -914,7 +901,7 @@ paths:
                 description: List of product plans.
                 items:
                   $ref: '#/components/schemas/ProductPlan'
-  /ecommerce/orders:
+  /{partner}/orders:
     post:
       summary: Create an order
       operationId: createOrder
@@ -924,6 +911,7 @@ paths:
         - $ref: '#/components/parameters/api_key'
         - $ref: '#/components/parameters/api_version'
         - $ref: '#/components/parameters/content_type'
+        - $ref: '#/components/parameters/partner'
       requestBody:
         required: true
         content:
@@ -958,16 +946,6 @@ paths:
                   type: string
                   description: The ID of the client device.
                   example: device123
-                device_category:
-                  type: string
-                  description: The type of device from which user activity originated.
-                  example: desktop
-                device_platform:
-                  type: string
-                  description: >-
-                    The method by which users accessed your website or
-                    application.
-                  example: Web
                 client_ip:
                   type: string
                   description: The IP address of the client.
@@ -998,13 +976,8 @@ paths:
                       price:
                         type: number
                         format: double
-                        description: The price of the service
+                        description: Price of the service
                         example: 1.99
-                      sales_tax:
-                        type: number
-                        format: double
-                        description: The sales tax of the service
-                        example: 0.19
                       quote_id:
                         type: string
                         description: Quote ID of the service
@@ -1025,8 +998,6 @@ paths:
                 - line_items
                 - shipping_address
                 - customer
-                - device_category
-                - device_platform
       responses:
         '200':
           description: Success
@@ -1034,7 +1005,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Order'
-  /ecommerce/orders/batch:
+  /{partner}/orders/batch:
     post:
       summary: Batch create orders
       operationId: createOrderBatch
@@ -1044,6 +1015,7 @@ paths:
         - $ref: '#/components/parameters/api_key'
         - $ref: '#/components/parameters/api_version'
         - $ref: '#/components/parameters/content_type'
+        - $ref: '#/components/parameters/partner'
       requestBody:
         required: true
         content:
@@ -1070,7 +1042,7 @@ paths:
                     description: The list of orders.
                     items:
                       $ref: '#/components/schemas/Order'
-  /ecommerce/orders/{order_id}:
+  /{partner}/orders/{order_id}:
     post:
       summary: Update an order
       operationId: updateOrder
@@ -1086,6 +1058,7 @@ paths:
         - $ref: '#/components/parameters/api_key'
         - $ref: '#/components/parameters/api_version'
         - $ref: '#/components/parameters/content_type'
+        - $ref: '#/components/parameters/partner'
       requestBody:
         required: true
         content:
@@ -1133,6 +1106,7 @@ paths:
             type: string
         - $ref: '#/components/parameters/api_key'
         - $ref: '#/components/parameters/api_version'
+        - $ref: '#/components/parameters/partner'
       responses:
         '200':
           description: Get an order
@@ -1140,7 +1114,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Order'
-  /ecommerce/orders/{order_id}/cancel:
+  /{partner}/orders/{order_id}/cancel:
     post:
       summary: Cancel an order
       operationId: cancelOrder
@@ -1155,6 +1129,7 @@ paths:
             type: string
         - $ref: '#/components/parameters/api_key'
         - $ref: '#/components/parameters/api_version'
+        - $ref: '#/components/parameters/partner'
       responses:
         '200':
           description: Success
@@ -1162,7 +1137,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Order'
-  /ecommerce/orders/{order_id}/fulfillments:
+  /{partner}/orders/{order_id}/fulfillments:
     post:
       summary: Create a fulfillment
       operationId: createFulfillment
@@ -1178,6 +1153,7 @@ paths:
         - $ref: '#/components/parameters/api_key'
         - $ref: '#/components/parameters/api_version'
         - $ref: '#/components/parameters/content_type'
+        - $ref: '#/components/parameters/partner'
       requestBody:
         required: true
         content:
@@ -1208,6 +1184,7 @@ paths:
         - $ref: '#/components/parameters/content_type'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/page_size'
+        - $ref: '#/components/parameters/partner'
       responses:
         '200':
           description: Success
@@ -1233,7 +1210,7 @@ paths:
                     description: List of fulfillments.
                     items:
                       $ref: '#/components/schemas/Fulfillment'
-  /ecommerce/orders/{order_id}/fulfillments/{fulfillment_id}:
+  /{partner}/orders/{order_id}/fulfillments/{fulfillment_id}:
     post:
       summary: Update a fulfillment
       operationId: updateFulfillment
@@ -1255,6 +1232,7 @@ paths:
         - $ref: '#/components/parameters/api_key'
         - $ref: '#/components/parameters/api_version'
         - $ref: '#/components/parameters/content_type'
+        - $ref: '#/components/parameters/partner'
       requestBody:
         required: true
         content:
@@ -1336,6 +1314,7 @@ paths:
             type: string
         - $ref: '#/components/parameters/api_key'
         - $ref: '#/components/parameters/api_version'
+        - $ref: '#/components/parameters/partner'
       responses:
         '200':
           description: Success
@@ -1343,7 +1322,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Fulfillment'
-  /ecommerce/orders/{order_id}/fulfillments/{fulfillment_id}/cancel:
+  /{partner}/orders/{order_id}/fulfillments/{fulfillment_id}/cancel:
     post:
       summary: Cancel a fulfillment
       operationId: cancelFulfillment
@@ -1364,6 +1343,7 @@ paths:
             type: string
         - $ref: '#/components/parameters/api_key'
         - $ref: '#/components/parameters/api_version'
+        - $ref: '#/components/parameters/partner'
       responses:
         '200':
           description: Success
@@ -1371,7 +1351,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Fulfillment'
-  /ecommerce/contracts:
+  /{partner}/contracts:
     get:
       summary: List contracts
       operationId: listContracts
@@ -1384,6 +1364,7 @@ paths:
         - $ref: '#/components/parameters/order_id'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/page_size'
+        - $ref: '#/components/parameters/partner'
       responses:
         '200':
           description: Success
@@ -1409,7 +1390,7 @@ paths:
                     description: List of contracts.
                     items:
                       $ref: '#/components/schemas/Contract'
-  /ecommerce/contracts/{contract_id}:
+  /{partner}/contracts/{contract_id}:
     get:
       summary: Get a contract
       operationId: getContract
@@ -1424,6 +1405,7 @@ paths:
             type: string
         - $ref: '#/components/parameters/api_key'
         - $ref: '#/components/parameters/api_version'
+        - $ref: '#/components/parameters/partner'
       responses:
         '200':
           description: Success
@@ -1431,7 +1413,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Contract'
-  /ecommerce/claims:
+  /{partner}/claims:
     get:
       summary: List claims
       operationId: listClaims
@@ -1444,6 +1426,7 @@ paths:
         - $ref: '#/components/parameters/order_id'
         - $ref: '#/components/parameters/page'
         - $ref: '#/components/parameters/page_size'
+        - $ref: '#/components/parameters/partner'
       responses:
         '200':
           description: Success
@@ -1469,7 +1452,7 @@ paths:
                     description: List of claims.
                     items:
                       $ref: '#/components/schemas/Claim'
-  /ecommerce/claims/{claim_id}:
+  /{partner}/claims/{claim_id}:
     get:
       summary: Get a claim
       operationId: getClaim
@@ -1484,6 +1467,7 @@ paths:
             type: string
         - $ref: '#/components/parameters/api_key'
         - $ref: '#/components/parameters/api_version'
+        - $ref: '#/components/parameters/partner'
       responses:
         '200':
           description: Success
@@ -1491,196 +1475,69 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Claim'
-  /v1/ecommerce/bills:
+  /{partner}/invoices:
     get:
-      summary: List bills
-      operationId: listBills
+      summary: List invoices
+      operationId: listInvoices
       tags:
-        - Bill
+        - Invoice
       parameters:
-        - name: merchant_id
-          in: query
-          required: true
-          schema:
-            type: string
-            example: merchant12345
-          description: Merchant account ID
-        - name: bill_id
-          in: query
-          schema:
-            type: string
-            example: '202409121213434343'
-          description: Bill number
-        - name: bill_start_date
-          in: query
-          schema:
-            type: string
-            format: date-time
-            example: '2024-01-01T00:00:00Z'
-          description: Bill start date
-        - name: bill_end_date
-          in: query
-          schema:
-            type: string
-            format: date-time
-            example: '2024-01-31T23:59:59Z'
-          description: Bill end date
-        - name: page
-          in: query
-          schema:
-            type: integer
-            default: 0
-            example: 0
-          description: Page number
-        - name: page_size
-          in: query
-          schema:
-            type: integer
-            default: 50
-            example: 50
-          description: Page size
+        - $ref: '#/components/parameters/api_key'
+        - $ref: '#/components/parameters/api_version'
+        - $ref: '#/components/parameters/content_type'
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/page_size'
+        - $ref: '#/components/parameters/partner'
       responses:
         '200':
-          description: A list of bills
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Bill'
-  /v1/ecommerce/bills/{bill_id}:
-    get:
-      summary: Get a bill
-      operationId: getBill
-      tags:
-        - Bill
-      parameters:
-        - name: bill_id
-          in: path
-          required: true
-          schema:
-            type: string
-            example: '202409121213434343'
-          description: Bill number
-        - name: merchant_id
-          in: query
-          required: true
-          schema:
-            type: string
-            example: merchant12345
-          description: Merchant account ID
-      responses:
-        '200':
-          description: Details of a specific bill
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Bill'
-  /v1/ecommerce/bills/{bill_id}/billitems:
-    get:
-      summary: Get bill details
-      operationId: listBillitems
-      tags:
-        - BillItem
-      parameters:
-        - name: bill_id
-          in: path
-          required: true
-          schema:
-            type: string
-            example: '202409121213434343'
-          description: Bill number
-        - name: merchant_id
-          in: query
-          required: true
-          schema:
-            type: string
-            example: merchant12345
-          description: Merchant account ID
-        - name: seel_service_type
-          in: query
-          schema:
-            type: string
-            example: Make it Returnable
-          description: Seel service type
-        - name: contract_id
-          in: query
-          schema:
-            type: string
-            example: contract7890
-          description: Contract number
-        - name: order_id
-          in: query
-          schema:
-            type: string
-            example: order4567
-          description: Order number
-        - name: order_name
-          in: query
-          schema:
-            type: string
-            example: Order April 2024
-          description: Order name
-        - name: page
-          in: query
-          schema:
-            type: integer
-            default: 0
-            example: 0
-          description: Page number
-        - name: page_size
-          in: query
-          schema:
-            type: integer
-            default: 50
-            example: 50
-          description: Page size
-      responses:
-        '200':
-          description: Bill details
+          description: Success
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  bill_id:
-                    type: string
-                    example: '202409121213434343'
-                  merchant_id:
-                    type: string
-                    example: merchant12345
-                  seel_service_type:
-                    type: string
-                    example: Make it Returnable
-                  contract_id:
-                    type: string
-                    example: contract7890
-                  order_id:
-                    type: string
-                    example: order4567
-                  order_name:
-                    type: string
-                    example: Order April 2024
-                  transaction_date:
-                    type: string
-                    format: date-time
-                    example: '2024-04-15T10:00:00Z'
-                  fee:
+                  page:
                     type: integer
-                    example: 1000
-                  tax:
+                    description: Current page number.
+                    example: 0
+                  page_size:
                     type: integer
-                    example: 100
-                  credit:
+                    description: Number of invoices per page.
+                    example: 0
+                  total:
                     type: integer
-                    example: 200
-                  tax_credit:
-                    type: integer
-                    example: 20
-                  currency:
-                    type: string
-                    example: USD
-  /ecommerce/events:
+                    description: Total number of invoices.
+                    example: 0
+                  invoices:
+                    type: array
+                    description: List of invoices.
+                    items:
+                      $ref: '#/components/schemas/Invoice'
+  /{partner}/invoices/{invoice_id}:
+    get:
+      summary: Get an invoice
+      operationId: getInvoice
+      tags:
+        - Invoice
+      parameters:
+        - name: invoice_id
+          in: path
+          description: ID of the invoice
+          required: true
+          schema:
+            type: string
+            example: '12345'
+        - $ref: '#/components/parameters/api_key'
+        - $ref: '#/components/parameters/api_version'
+        - $ref: '#/components/parameters/partner'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+  /{partner}/events:
     post:
       summary: Create events
       operationId: createEvent
@@ -1690,6 +1547,7 @@ paths:
         - $ref: '#/components/parameters/api_key'
         - $ref: '#/components/parameters/api_version'
         - $ref: '#/components/parameters/content_type'
+        - $ref: '#/components/parameters/partner'
       requestBody:
         required: true
         content:
@@ -1807,10 +1665,6 @@ components:
           type: string
           example: 555-1234
           description: The phone number on file for the merchant.
-        support_email:
-          type: string
-          example: support@myshop.com
-          description: The customer support email address on file for the merchant.
         seel_services:
           type: array
           items:
@@ -1876,14 +1730,6 @@ components:
           type: string
           description: The ID of the client device.
           example: device123
-        device_category:
-          type: string
-          description: The type of device from which user activity originated.
-          example: desktop
-        device_platform:
-          type: string
-          description: The method by which users accessed your website or application.
-          example: Web
         client_ip:
           type: string
           description: The IP address of the client.
@@ -1897,11 +1743,6 @@ components:
           format: double
           description: The price of the quote.
           example: 1.99
-        sales_tax:
-          type: number
-          format: double
-          description: The sales tax of the quote.
-          example: 0.19
         currency:
           type: string
           description: The three-letter currency code (ISO 4217 format), i.e. USD etc.
@@ -1913,10 +1754,6 @@ components:
           enum:
             - accepted
             - rejected
-        is_default_on:
-          type: boolean
-          description: The default opt-in setting for the quote
-          example: true
         created_ts:
           type: string
           format: date-time
@@ -1927,61 +1764,14 @@ components:
           description: The list of items included in the quote.
           items:
             $ref: '#/components/schemas/Item'
-        eligible_items:
-          type: array
-          description: The list of items eligible for Seel services.
-          items:
-            type: object
-            properties:
-              line_item_id:
-                type: string
-                description: The id of the line item.
-                example: 123456783892q467
-              product_id:
-                type: string
-                description: The id of the product.
-                example: '2938913472133121'
-              variant_id:
-                type: string
-                description: The id of the variant.
-                example: '123409847213131'
-              coverages:
-                type: array
-                description: The list of coverages.
-                items:
-                  $ref: '#/components/schemas/Coverage'
         shipping_address:
           $ref: '#/components/schemas/Address'
         customer:
           $ref: '#/components/schemas/Customer'
         extra_info:
           type: object
-          description: Additional information for the quote
-          properties:
-            display_widget_text:
-              type: array
-              description: The text of widget display.
-              example:
-                - Hassle-Free 7-Day Returns
-                - No Questions Asked
-            opt_out_warning_text:
-              type: string
-              description: The warning message of opting out.
-              example: Your order is non-refundable.
-            coverage_details_text:
-              type: array
-              description: The text of coverage details.
-              example:
-                - Item doesn't fit
-                - Lost in-transit
-            terms_url:
-              type: string
-              description: The url of terms.
-              example: https://www.seel.com/terms/seel-worry-free-purchase-for-customer
-            privacy_policy_url:
-              type: string
-              description: The url of privacy policy.
-              example: https://www.seel.com/privacy
+          description: Additional information for the order
+          example: {}
     Order:
       type: object
       properties:
@@ -2011,14 +1801,6 @@ components:
           type: string
           description: The ID of the client device.
           example: device123
-        device_category:
-          type: string
-          description: The type of device from which user activity originated.
-          example: desktop
-        device_platform:
-          type: string
-          description: The method by which users accessed your website or application.
-          example: Web
         client_ip:
           type: string
           description: The IP address of the client.
@@ -2084,11 +1866,6 @@ components:
           format: double
           description: The refund amount.
           example: 19.99
-        currency:
-          type: number
-          format: string
-          description: The refund currency.
-          example: USD
         refund_reason:
           type: string
           description: The refund reason.
@@ -2195,11 +1972,6 @@ components:
                 type: number
                 format: double
                 description: The value covered by the contract.
-              coverages:
-                type: array
-                description: The list of coverages.
-                items:
-                  $ref: '#/components/schemas/Coverage'
     Claim:
       type: object
       properties:
@@ -2289,6 +2061,92 @@ components:
           nullable: true
           description: The timestamp in milliseconds when the contract was created.
           example: '1686049398000'
+    Invoice:
+      type: object
+      properties:
+        invoice_id:
+          type: string
+          description: The ID of the invoice.
+          example: '12345'
+        merchant_id:
+          type: string
+          description: The ID of the merchant.
+          example: '12345'
+        billing_cycle:
+          type: integer
+          description: The number of the billing cycle.
+          example: 1
+        billing_date:
+          type: string
+          description: The date when the merchant was charged for contracts sold.
+          example: '1686049398000'
+        billing_start_date:
+          type: string
+          description: The start date of the billing cycle.
+          example: '1686049398000'
+        billing_end_date:
+          type: string
+          description: The end date of the billing cycle.
+          example: '1686049398000'
+        currency:
+          type: string
+          description: The three-letter currency code (ISO 4217 format).
+          example: USD
+        status:
+          type: string
+          description: The status of the invoice.
+          example: unpaid
+          enum:
+            - unpaid
+            - paid
+        invoice_amount:
+          type: number
+          format: double
+          description: The amount of the invoice.
+          example: 190
+        invoice_link:
+          type: string
+          description: URL of the invoice
+          example: https://invoicelinke.com
+        invoice_items:
+          type: array
+          description: A list of contracts associated with this invoice.
+          items:
+            type: object
+            properties:
+              contract_id:
+                type: string
+                description: The ID of the contract sold during the billing cycle.
+              order_id:
+                type: string
+                description: The ID of the order.
+              order_number:
+                type: string
+                description: Order number
+              product_type:
+                type: string
+                description: The protection plan name.
+                example: buyer protection
+              created_ts:
+                type: string
+                format: date-time
+                description: The timestamp when the contract was purchased.
+              cancelled_ts:
+                type: string
+                format: date-time
+                description: The timestamp when the contract was cancelled.
+              amount_collected:
+                type: number
+                format: double
+                description: >-
+                  The protection cost of the contract to collect from the
+                  merchant.
+                example: 9.99
+              amount_reconciled:
+                type: number
+                format: double
+                description: The amount refunded due to contract cancellation.
+                example: 9.99
     Customer:
       type: object
       properties:
@@ -2599,13 +2457,6 @@ components:
           enum:
             - shipped
             - delivered
-        status:
-          type: string
-          description: The status of the fulfillment
-          example: success
-          enum:
-            - success
-            - cancelled
         line_items:
           type: array
           description: The list of items included in the fulfillment.
@@ -2654,13 +2505,8 @@ components:
         price:
           type: number
           format: double
-          description: The price of the service
+          description: Price of the service
           example: 1.99
-        sales_tax:
-          type: number
-          format: double
-          description: The sales tax of the service
-          example: 0.19
         status:
           type: string
           description: The status of the service
@@ -2683,11 +2529,6 @@ components:
                 type: integer
                 description: The quantity of the item.
                 example: 1
-              coverages:
-                type: array
-                description: The list of coverages.
-                items:
-                  $ref: '#/components/schemas/Coverage'
         extra_info:
           type: object
           description: Additional information for the service
@@ -3065,160 +2906,6 @@ components:
         - service_type
         - replacement_type
         - deductible
-    Coverage:
-      type: object
-      properties:
-        coverage_type:
-          type: string
-          description: The type of the coverage.
-          example: gdd
-        description:
-          type: string
-          description: The description of the coverage.
-          example: 7-Day Return.
-    Bill:
-      type: object
-      properties:
-        bill_id:
-          type: string
-          example: '202409121213434343'
-        bill_no:
-          type: string
-          example: monthly-2024-04
-        merchant_id:
-          type: string
-          example: merchant12345
-        bill_cycle:
-          type: string
-          enum:
-            - day
-            - week
-            - month
-          example: month
-        bill_start_date:
-          type: string
-          format: date-time
-          example: '2024-04-01T00:00:00Z'
-        bill_end_date:
-          type: string
-          format: date-time
-          example: '2024-04-30T23:59:59Z'
-        bill_date:
-          type: string
-          format: date-time
-          example: '2024-05-01T00:00:00Z'
-        fee:
-          type: integer
-          example: 100000
-        credit:
-          type: integer
-          example: 20000
-        amount_due:
-          type: integer
-          example: 80000
-        currency:
-          type: string
-          example: USD
-        currency_symbol:
-          type: string
-          example: $
-        payment_due_date:
-          type: string
-          format: date-time
-          example: '2024-05-15T23:59:59Z'
-        bill_paid_date:
-          type: string
-          format: date-time
-          example: '2024-04-15T23:59:59Z'
-        status:
-          type: string
-          enum:
-            - pending
-            - partially_paid
-            - settled
-          example: pending
-        bill_subject_list:
-          type: array
-          items:
-            $ref: '#/components/schemas/BillSubject'
-        bill_payment_list:
-          type: array
-          items:
-            $ref: '#/components/schemas/BillPayment'
-    BillSubject:
-      type: object
-      properties:
-        bill_id:
-          type: string
-          example: '202409121213434343'
-        bill_subject_id:
-          type: string
-          example: subject12345
-        seel_service_type:
-          type: string
-          example: Make it Returnable
-        bill_subject_category:
-          type: string
-          enum:
-            - receivable
-            - credit
-          example: receivable
-        bill_subject_type:
-          type: string
-          enum:
-            - premium
-            - premium_tax
-          example: premium
-        amount:
-          type: integer
-          example: 5000
-        currency:
-          type: string
-          example: USD
-    BillPayment:
-      type: object
-      properties:
-        bill_id:
-          type: string
-          example: '202409121213434343'
-        bill_payment_id:
-          type: string
-          example: payment67890
-        amount:
-          type: integer
-          example: 10000
-        currency:
-          type: string
-          example: USD
-        payment_category:
-          type: string
-          enum:
-            - receivable
-            - credit
-          example: receivable
-        payment_gateway:
-          type: string
-          enum:
-            - stripe
-            - paypal
-          example: stripe
-        payment_method_href:
-          type: string
-          example: https://payment.example.com/invoice/202409121213434343
-        invoice_pdf:
-          type: string
-          example: https://example.com/invoice/202409121213434343.pdf
-        payment_status:
-          type: string
-          enum:
-            - pending
-            - paid
-            - failed
-          example: paid
-        payment_success_date:
-          type: string
-          format: date-time
-          example: '2024-05-01T15:00:00Z'
   parameters:
     api_key:
       name: X-Seel-API-Key
@@ -3266,7 +2953,7 @@ components:
     page_size:
       name: page_size
       in: query
-      description: Query by page_size, default 100, max 200
+      description: Query by page_size, default 100
       required: false
       example: 100
       schema:
@@ -3285,4 +2972,4 @@ x-readme:
   explorer-enabled: true
   proxy-enabled: true
   samples-enabled: true
-_id: 66b4aad6f5bb700069ec925f
+_id: 65b8ba34c84f0600704354c4

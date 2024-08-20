@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Xero Accounting API
-  version: 6.1.1
+  version: 3.0.1
   termsOfService: https://developer.xero.com/xero-developer-platform-terms-conditions/
   contact:
     name: Xero Platform Team
@@ -1093,7 +1093,6 @@ paths:
           schema:
             type: integer
         - $ref: '#/components/parameters/unitdp'
-        - $ref: '#/components/parameters/pageSize'
       responses:
         '200':
           description: >-
@@ -1106,8 +1105,7 @@ paths:
               example: >-
                 { "Id": "18e7e80c-5dca-4a57-974e-8b572cc5efe8", "Status": "OK",
                 "ProviderName": "Xero API Partner", "DateTimeUTC":
-                "/Date(1551212901659)/", "pagination": { "page": 1, "pageSize":
-                100, "pageCount": 1, "itemCount": 3 }, "BankTransactions": [ {
+                "/Date(1551212901659)/", "BankTransactions": [ {
                 "BankTransactionID": "db54aab0-ad40-4ced-bcff-0940ba20db2c",
                 "BankAccount": { "AccountID":
                 "6f7594f2-f059-4d56-9e67-47ac9733bfe9", "Code": "088", "Name":
@@ -2981,7 +2979,6 @@ paths:
           example: Joe Bloggs
           schema:
             type: string
-        - $ref: '#/components/parameters/pageSize'
       responses:
         '200':
           description: Success - return response of type Contacts array with 0 to N Contact
@@ -2992,27 +2989,25 @@ paths:
               example: >-
                 { "Id": "04e93d48-e72f-4775-b7dd-15a041fab972", "Status": "OK",
                 "ProviderName": "Xero API Partner", "DateTimeUTC":
-                "\/Date(1551399323399)\/", "pagination": { "page": 1,
-                "pageSize": 100, "pageCount": 1, "itemCount": 2 }, "Contacts": [
-                { "ContactID": "5cc8cf28-567e-4d43-b287-687cfcaec47c",
-                "ContactStatus": "ACTIVE", "Name": "Katherine Warren",
-                "FirstName": "Katherine", "LastName": "Warren", "CompanyNumber":
-                "NumberBusiness1234", "EmailAddress": "kat.warren@clampett.com",
-                "BankAccountDetails": "", "Addresses": [ { "AddressType":
-                "STREET", "City": "", "Region": "", "PostalCode": "", "Country":
-                "" }, { "AddressType": "POBOX", "AddressLine1": "",
-                "AddressLine2": "", "AddressLine3": "", "AddressLine4": "",
-                "City": "Palo Alto", "Region": "CA", "PostalCode": "94020",
-                "Country": "United States" } ], "Phones": [ { "PhoneType":
-                "DDI", "PhoneNumber": "", "PhoneAreaCode": "",
-                "PhoneCountryCode": "" }, { "PhoneType": "DEFAULT",
-                "PhoneNumber": "847-1294", "PhoneAreaCode": "(626)",
-                "PhoneCountryCode": "" }, { "PhoneType": "FAX", "PhoneNumber":
+                "\/Date(1551399323399)\/", "Contacts": [ { "ContactID":
+                "5cc8cf28-567e-4d43-b287-687cfcaec47c", "ContactStatus":
+                "ACTIVE", "Name": "Katherine Warren", "FirstName": "Katherine",
+                "LastName": "Warren", "CompanyNumber": "NumberBusiness1234",
+                "EmailAddress": "kat.warren@clampett.com", "BankAccountDetails":
+                "", "Addresses": [ { "AddressType": "STREET", "City": "",
+                "Region": "", "PostalCode": "", "Country": "" }, {
+                "AddressType": "POBOX", "AddressLine1": "", "AddressLine2": "",
+                "AddressLine3": "", "AddressLine4": "", "City": "Palo Alto",
+                "Region": "CA", "PostalCode": "94020", "Country": "United
+                States" } ], "Phones": [ { "PhoneType": "DDI", "PhoneNumber":
                 "", "PhoneAreaCode": "", "PhoneCountryCode": "" }, {
-                "PhoneType": "MOBILE", "PhoneNumber": "", "PhoneAreaCode": "",
-                "PhoneCountryCode": "" } ], "UpdatedDateUTC":
-                "\/Date(1503348544227+0000)\/", "ContactGroups": [],
-                "IsSupplier": true, "IsCustomer": true,
+                "PhoneType": "DEFAULT", "PhoneNumber": "847-1294",
+                "PhoneAreaCode": "(626)", "PhoneCountryCode": "" }, {
+                "PhoneType": "FAX", "PhoneNumber": "", "PhoneAreaCode": "",
+                "PhoneCountryCode": "" }, { "PhoneType": "MOBILE",
+                "PhoneNumber": "", "PhoneAreaCode": "", "PhoneCountryCode": "" }
+                ], "UpdatedDateUTC": "\/Date(1503348544227+0000)\/",
+                "ContactGroups": [], "IsSupplier": true, "IsCustomer": true,
                 "SalesDefaultLineAmountType": "INCLUSIVE",
                 "PurchasesDefaultLineAmountType": "INCLUSIVE", "Balances": {
                 "AccountsReceivable": { "Outstanding": 760.00, "Overdue": 920.00
@@ -4240,7 +4235,6 @@ paths:
           schema:
             type: integer
         - $ref: '#/components/parameters/unitdp'
-        - $ref: '#/components/parameters/pageSize'
       responses:
         '200':
           description: Success - return response of type Credit Notes array of CreditNote
@@ -4251,9 +4245,7 @@ paths:
               example: >-
                 { "Id": "306379b0-3d75-4c77-953a-be08fa0efae8", "Status": "OK",
                 "ProviderName": "Provider Name Example", "DateTimeUTC":
-                "\/Date(1551812506620)\/", "pagination": { "page": 1,
-                "pageSize": 100, "pageCount": 1, "itemCount": 2 },
-                "CreditNotes": [ { "CreditNoteID":
+                "\/Date(1551812506620)\/", "CreditNotes": [ { "CreditNoteID":
                 "249f15fa-f2a7-4acc-8769-0984103f2225", "CreditNoteNumber":
                 "CN-0005", "Payments": [ { "PaymentID":
                 "6b037c9b-2e5d-4905-84d3-eabfb3438242", "Date":
@@ -6345,8 +6337,6 @@ paths:
             type: boolean
         - $ref: '#/components/parameters/unitdp'
         - $ref: '#/components/parameters/summaryOnly'
-        - $ref: '#/components/parameters/pageSize'
-        - $ref: '#/components/parameters/searchTerm'
       responses:
         '200':
           description: Success - return response of type Invoices array with all Invoices
@@ -6357,23 +6347,21 @@ paths:
               example: >-
                 { "Id": "900c500b-e83c-4ce2-902a-b8ba04751748", "Status": "OK",
                 "ProviderName": "Provider Name Example", "DateTimeUTC":
-                "\/Date(1552326816230)\/", "pagination": { "page": 1,
-                "pageSize": 100, "pageCount": 1, "itemCount": 3 }, "Invoices": [
-                { "Type": "ACCREC", "InvoiceID":
-                "d4956132-ed94-4dd7-9eaa-aa22dfdf06f2", "InvoiceNumber":
-                "INV-0001", "Reference": "Red Fish, Blue Fish", "Payments": [],
-                "CreditNotes": [], "Prepayments": [], "Overpayments": [],
-                "AmountDue": 0.00, "AmountPaid": 0.00, "AmountCredited": 0.00,
-                "SentToContact": true, "CurrencyRate": 1.000000, "HasErrors":
-                false, "IsDiscounted": false, "HasAttachments": false,
-                "RepeatingInvoiceID": "428c0d75-909f-4b04-8403-a48dc27283b0",
-                "Contact": { "ContactID":
-                "a3675fc4-f8dd-4f03-ba5b-f1870566bcd7", "Name": "Barney
-                Rubble-83203", "Addresses": [], "Phones": [], "ContactGroups":
-                [], "ContactPersons": [], "HasValidationErrors": false },
-                "DateString": "2018-10-20T00:00:00", "Date":
-                "\/Date(1539993600000+0000)\/", "DueDateString":
-                "2018-12-30T00:00:00", "DueDate":
+                "\/Date(1552326816230)\/", "Invoices": [ { "Type": "ACCREC",
+                "InvoiceID": "d4956132-ed94-4dd7-9eaa-aa22dfdf06f2",
+                "InvoiceNumber": "INV-0001", "Reference": "Red Fish, Blue Fish",
+                "Payments": [], "CreditNotes": [], "Prepayments": [],
+                "Overpayments": [], "AmountDue": 0.00, "AmountPaid": 0.00,
+                "AmountCredited": 0.00, "SentToContact": true, "CurrencyRate":
+                1.000000, "HasErrors": false, "IsDiscounted": false,
+                "HasAttachments": false, "RepeatingInvoiceID":
+                "428c0d75-909f-4b04-8403-a48dc27283b0", "Contact": {
+                "ContactID": "a3675fc4-f8dd-4f03-ba5b-f1870566bcd7", "Name":
+                "Barney Rubble-83203", "Addresses": [], "Phones": [],
+                "ContactGroups": [], "ContactPersons": [],
+                "HasValidationErrors": false }, "DateString":
+                "2018-10-20T00:00:00", "Date": "\/Date(1539993600000+0000)\/",
+                "DueDateString": "2018-12-30T00:00:00", "DueDate":
                 "\/Date(1546128000000+0000)\/", "Status": "VOIDED",
                 "LineAmountTypes": "Exclusive", "LineItems": [], "SubTotal":
                 40.00, "TotalTax": 0.00, "Total": 40.00, "UpdatedDateUTC":
@@ -8448,7 +8436,6 @@ paths:
           example: 1
           schema:
             type: integer
-        - $ref: '#/components/parameters/pageSize'
       responses:
         '200':
           description: >-
@@ -8461,16 +8448,14 @@ paths:
               example: >-
                 { "Id": "8a508ec1-b578-48bf-97df-020c918fbf7d", "Status": "OK",
                 "ProviderName": "Provider Name Example", "DateTimeUTC":
-                "\/Date(1552357217359)\/", "pagination": { "page": 1,
-                "pageSize": 100, "pageCount": 1, "itemCount": 3 },
-                "ManualJournals": [ { "Date": "\/Date(1553126400000+0000)\/",
-                "Status": "POSTED", "LineAmountTypes": "NoTax",
-                "UpdatedDateUTC": "\/Date(1552357188083+0000)\/",
-                "ManualJournalID": "0b159335-606b-485f-b51b-97b3b32bad32",
-                "Narration": "Reversal: These aren't the droids you are looking
-                for", "JournalLines": [], "ShowOnCashBasisReports": true,
-                "HasAttachments": false }, { "Date":
-                "\/Date(1552348800000+0000)\/", "Status": "POSTED",
+                "\/Date(1552357217359)\/", "ManualJournals": [ { "Date":
+                "\/Date(1553126400000+0000)\/", "Status": "POSTED",
+                "LineAmountTypes": "NoTax", "UpdatedDateUTC":
+                "\/Date(1552357188083+0000)\/", "ManualJournalID":
+                "0b159335-606b-485f-b51b-97b3b32bad32", "Narration": "Reversal:
+                These aren't the droids you are looking for", "JournalLines":
+                [], "ShowOnCashBasisReports": true, "HasAttachments": false }, {
+                "Date": "\/Date(1552348800000+0000)\/", "Status": "POSTED",
                 "LineAmountTypes": "NoTax", "UpdatedDateUTC":
                 "\/Date(1552357188147+0000)\/", "ManualJournalID":
                 "99cb8353-ce73-4a5d-8e0d-8b0edf86cfc4", "Narration": "These
@@ -8519,7 +8504,7 @@ paths:
           key: lineAmount
           keyPascal: LineAmount
           keySnake: line_amount
-          default: -100
+          default: 100
           is_money: true
           object: credit
         - accountCode: null
@@ -8550,7 +8535,7 @@ paths:
           key: lineAmount
           keyPascal: LineAmount
           keySnake: line_amount
-          default: 100
+          default: -100
           is_money: true
           object: debit
         - accountCode: null
@@ -8705,7 +8690,7 @@ paths:
           key: lineAmount
           keyPascal: LineAmount
           keySnake: line_amount
-          default: -100
+          default: 100
           is_money: true
           object: credit
         - accountCode: null
@@ -8736,7 +8721,7 @@ paths:
           key: lineAmount
           keyPascal: LineAmount
           keySnake: line_amount
-          default: 100
+          default: -100
           is_money: true
           object: debit
         - accountCode: null
@@ -8940,7 +8925,7 @@ paths:
           key: lineAmount
           keyPascal: LineAmount
           keySnake: line_amount
-          default: -100
+          default: 100
           is_money: true
           object: credit
         - accountCode: null
@@ -8971,7 +8956,7 @@ paths:
           key: lineAmount
           keyPascal: LineAmount
           keySnake: line_amount
-          default: 100
+          default: -100
           is_money: true
           object: debit
         - accountCode: null
@@ -9466,7 +9451,6 @@ paths:
           schema:
             type: integer
         - $ref: '#/components/parameters/unitdp'
-        - $ref: '#/components/parameters/pageSize'
       responses:
         '200':
           description: >-
@@ -9479,9 +9463,7 @@ paths:
               example: >-
                 { "Id": "c0ce675e-e5bc-4b2a-a20e-76a9eaedf89d", "Status": "OK",
                 "ProviderName": "Provider Name Example", "DateTimeUTC":
-                "\/Date(1552428951416)\/", "pagination": { "page": 1,
-                "pageSize": 100, "pageCount": 1, "itemCount": 5 },
-                "Overpayments": [ { "OverpaymentID":
+                "\/Date(1552428951416)\/", "Overpayments": [ { "OverpaymentID":
                 "098b4dcb-5622-4699-87f8-9d40c4ccceb3", "ID":
                 "098b4dcb-5622-4699-87f8-9d40c4ccceb3", "Type":
                 "SPEND-OVERPAYMENT", "RemainingCredit": 500.00, "Allocations":
@@ -9831,7 +9813,6 @@ paths:
           example: 1
           schema:
             type: integer
-        - $ref: '#/components/parameters/pageSize'
       responses:
         '200':
           description: Success - return response of type Payments array for all Payments
@@ -9842,21 +9823,20 @@ paths:
               example: >-
                 { "Id": "9f310473-e1b5-4704-a25c-eec653deb596", "Status": "OK",
                 "ProviderName": "Provider Name Example", "DateTimeUTC":
-                "\/Date(1552431874205)\/", "pagination": { "page": 1,
-                "pageSize": 100, "pageCount": 1, "itemCount": 2 }, "Payments": [
-                { "PaymentID": "99ea7f6b-c513-4066-bc27-b7c65dcd76c2",
-                "BatchPaymentID": "b54aa50c-794c-461b-89d1-846e1b84d9c0",
-                "BatchPayment": { "Account": { "AccountID":
-                "5690f1e8-1d02-4893-90c2-ee1a69eff942" }, "BatchPaymentID":
-                "b54aa50c-794c-461b-89d1-846e1b84d9c0", "Date":
-                "\/Date(1552521600000+0000)\/", "Type": "RECBATCH", "Status":
-                "AUTHORISED", "TotalAmount": "50.00", "UpdatedDateUTC":
-                "\/Date(1541176592690+0000)\/", "IsReconciled": "false" },
-                "Date": "\/Date(1543449600000+0000)\/", "BankAmount": 46.00,
-                "Amount": 46.00, "Reference": "", "CurrencyRate": 1.000000,
-                "PaymentType": "ACCRECPAYMENT", "Status": "AUTHORISED",
-                "UpdatedDateUTC": "\/Date(1541176592690+0000)\/", "HasAccount":
-                true, "IsReconciled": false, "Account": { "AccountID":
+                "\/Date(1552431874205)\/", "Payments": [ { "PaymentID":
+                "99ea7f6b-c513-4066-bc27-b7c65dcd76c2", "BatchPaymentID":
+                "b54aa50c-794c-461b-89d1-846e1b84d9c0", "BatchPayment": {
+                "Account": { "AccountID": "5690f1e8-1d02-4893-90c2-ee1a69eff942"
+                }, "BatchPaymentID": "b54aa50c-794c-461b-89d1-846e1b84d9c0",
+                "Date": "\/Date(1552521600000+0000)\/", "Type": "RECBATCH",
+                "Status": "AUTHORISED", "TotalAmount": "50.00",
+                "UpdatedDateUTC": "\/Date(1541176592690+0000)\/",
+                "IsReconciled": "false" }, "Date":
+                "\/Date(1543449600000+0000)\/", "BankAmount": 46.00, "Amount":
+                46.00, "Reference": "", "CurrencyRate": 1.000000, "PaymentType":
+                "ACCRECPAYMENT", "Status": "AUTHORISED", "UpdatedDateUTC":
+                "\/Date(1541176592690+0000)\/", "HasAccount": true,
+                "IsReconciled": false, "Account": { "AccountID":
                 "5690f1e8-1d02-4893-90c2-ee1a69eff942", "Code": "970" },
                 "Invoice": { "Type": "ACCREC", "InvoiceID":
                 "046d8a6d-1ae1-4b4d-9340-5601bdf41b87", "InvoiceNumber":
@@ -10553,7 +10533,6 @@ paths:
           schema:
             type: integer
         - $ref: '#/components/parameters/unitdp'
-        - $ref: '#/components/parameters/pageSize'
       responses:
         '200':
           description: >-
@@ -10566,9 +10545,7 @@ paths:
               example: >-
                 { "Id": "d7a9ca0c-6159-4c26-ad2e-715440c50b7d", "Status": "OK",
                 "ProviderName": "Provider Name Example", "DateTimeUTC":
-                "\/Date(1552489227595)\/", "pagination": { "page": 1,
-                "pageSize": 100, "pageCount": 1, "itemCount": 1 },
-                "Prepayments": [ { "PrepaymentID":
+                "\/Date(1552489227595)\/", "Prepayments": [ { "PrepaymentID":
                 "ce0cddef-cf5a-4e59-b638-f225679115a7", "ID":
                 "ce0cddef-cf5a-4e59-b638-f225679115a7", "Type":
                 "RECEIVE-PREPAYMENT", "Reference": "INV-0011",
@@ -10923,7 +10900,6 @@ paths:
           example: 1
           schema:
             type: integer
-        - $ref: '#/components/parameters/pageSize'
       responses:
         '200':
           description: >-
@@ -10936,15 +10912,13 @@ paths:
               example: >-
                 { "Id": "66910bfc-15cc-4692-bd4c-cc8f671e653c", "Status": "OK",
                 "ProviderName": "Provider Name Example", "DateTimeUTC":
-                "\/Date(1552523977238)\/", "pagination": { "page": 1,
-                "pageSize": 100, "pageCount": 1, "itemCount": 2 },
-                "PurchaseOrders": [ { "PurchaseOrderID":
-                "f9627f0d-b715-4039-bb6a-96dc3eae5ec5", "PurchaseOrderNumber":
-                "PO-0001", "DateString": "2019-03-12T00:00:00", "Date":
-                "\/Date(1552348800000+0000)\/", "AttentionTo": "Jimmy",
-                "HasErrors": false, "IsDiscounted": false, "Type":
-                "PURCHASEORDER", "CurrencyRate": 1.000000, "CurrencyCode":
-                "NZD", "Contact": { "ContactID":
+                "\/Date(1552523977238)\/", "PurchaseOrders": [ {
+                "PurchaseOrderID": "f9627f0d-b715-4039-bb6a-96dc3eae5ec5",
+                "PurchaseOrderNumber": "PO-0001", "DateString":
+                "2019-03-12T00:00:00", "Date": "\/Date(1552348800000+0000)\/",
+                "AttentionTo": "Jimmy", "HasErrors": false, "IsDiscounted":
+                false, "Type": "PURCHASEORDER", "CurrencyRate": 1.000000,
+                "CurrencyCode": "NZD", "Contact": { "ContactID":
                 "430fa14a-f945-44d3-9f97-5df5e28441b8", "ContactStatus":
                 "ACTIVE", "Name": "Liam Gallagher", "FirstName": "Liam",
                 "LastName": "Gallagher", "Addresses": [ { "AddressType":
@@ -16084,17 +16058,6 @@ components:
       schema:
         type: boolean
         default: false
-    searchTerm:
-      in: query
-      name: searchTerm
-      x-snake: search_term
-      description: >-
-        Search parameter that performs a case-insensitive text search across the
-        fields e.g. InvoiceNumber, Reference.
-      example: SearchTerm=REF12
-      x-example-python: 'True'
-      schema:
-        type: string
     FromDate:
       in: query
       name: fromDate
@@ -16113,13 +16076,6 @@ components:
       schema:
         type: string
         format: date
-    pageSize:
-      in: query
-      name: pageSize
-      description: Number of records to retrieve per page
-      example: 100
-      schema:
-        type: integer
     AccountID:
       required: true
       in: path
@@ -16611,7 +16567,7 @@ components:
       type: object
     Accounts:
       type: object
-      x-objectArrayKey: accounts
+      x-isObjectArray: true
       properties:
         Accounts:
           type: array
@@ -16776,7 +16732,7 @@ components:
         - PAYG
     Attachments:
       type: object
-      x-objectArrayKey: attachments
+      x-isObjectArray: true
       properties:
         Attachments:
           type: array
@@ -16813,15 +16769,8 @@ components:
           type: boolean
     BankTransactions:
       type: object
-      x-objectArrayKey: bank_transactions
+      x-isObjectArray: true
       properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        Warnings:
-          description: Displays array of warning messages from the API
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
         BankTransactions:
           type: array
           items:
@@ -17091,7 +17040,7 @@ components:
       type: object
     BankTransfers:
       type: object
-      x-objectArrayKey: bank_transfers
+      x-isObjectArray: true
       properties:
         BankTransfers:
           type: array
@@ -17176,7 +17125,7 @@ components:
       type: object
     BatchPayments:
       type: object
-      x-objectArrayKey: batch_payments
+      x-isObjectArray: true
       properties:
         BatchPayments:
           type: array
@@ -17371,7 +17320,7 @@ components:
       type: object
     BrandingThemes:
       type: object
-      x-objectArrayKey: branding_themes
+      x-isObjectArray: true
       properties:
         BrandingThemes:
           type: array
@@ -17412,7 +17361,7 @@ components:
       type: object
     PaymentServices:
       type: object
-      x-objectArrayKey: payment_services
+      x-isObjectArray: true
       properties:
         PaymentServices:
           type: array
@@ -17447,15 +17396,8 @@ components:
             $ref: '#/components/schemas/ValidationError'
     Contacts:
       type: object
-      x-objectArrayKey: contacts
+      x-isObjectArray: true
       properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        Warnings:
-          description: Displays array of warning messages from the API
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
         Contacts:
           type: array
           items:
@@ -17670,7 +17612,7 @@ components:
       type: object
     Budgets:
       type: object
-      x-objectArrayKey: budgets
+      x-isObjectArray: true
       properties:
         Budgets:
           type: array
@@ -17782,7 +17724,7 @@ components:
           x-is-money: true
     CISSettings:
       type: object
-      x-objectArrayKey: cis_settings
+      x-isObjectArray: true
       properties:
         CISSettings:
           type: array
@@ -17805,7 +17747,7 @@ components:
           x-is-money: true
     CISOrgSettings:
       type: object
-      x-objectArrayKey: cis_settings
+      x-isObjectArray: true
       properties:
         CISSettings:
           type: array
@@ -17852,7 +17794,7 @@ components:
       type: object
     ContactGroups:
       type: object
-      x-objectArrayKey: contact_groups
+      x-isObjectArray: true
       properties:
         ContactGroups:
           type: array
@@ -17901,15 +17843,8 @@ components:
       type: object
     CreditNotes:
       type: object
-      x-objectArrayKey: credit_notes
+      x-isObjectArray: true
       properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        Warnings:
-          description: Displays array of warning messages from the API
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
         CreditNotes:
           type: array
           items:
@@ -18073,7 +18008,7 @@ components:
       type: object
     Allocations:
       type: object
-      x-objectArrayKey: allocations
+      x-isObjectArray: true
       properties:
         Allocations:
           type: array
@@ -18123,7 +18058,7 @@ components:
       type: object
     Currencies:
       type: object
-      x-objectArrayKey: currencies
+      x-isObjectArray: true
       properties:
         Currencies:
           type: array
@@ -18484,7 +18419,7 @@ components:
         - ZWD
     Employees:
       type: object
-      x-objectArrayKey: employees
+      x-isObjectArray: true
       properties:
         Employees:
           type: array
@@ -18535,7 +18470,7 @@ components:
       type: object
     ExpenseClaims:
       type: object
-      x-objectArrayKey: expense_claims
+      x-isObjectArray: true
       properties:
         ExpenseClaims:
           type: array
@@ -18612,7 +18547,7 @@ components:
       type: object
     HistoryRecords:
       type: object
-      x-objectArrayKey: history_records
+      x-isObjectArray: true
       properties:
         HistoryRecords:
           type: array
@@ -18640,15 +18575,8 @@ components:
       type: object
     Invoices:
       type: object
-      x-objectArrayKey: invoices
+      x-isObjectArray: true
       properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        Warnings:
-          description: Displays array of warning messages from the API
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
         Invoices:
           type: array
           items:
@@ -18881,7 +18809,7 @@ components:
       type: object
     OnlineInvoices:
       type: object
-      x-objectArrayKey: online_invoices
+      x-isObjectArray: true
       properties:
         OnlineInvoices:
           type: array
@@ -18897,7 +18825,7 @@ components:
       type: object
     InvoiceReminders:
       type: object
-      x-objectArrayKey: invoice_reminders
+      x-isObjectArray: true
       properties:
         InvoiceReminders:
           type: array
@@ -18913,7 +18841,7 @@ components:
       type: object
     Items:
       type: object
-      x-objectArrayKey: items
+      x-isObjectArray: true
       properties:
         Items:
           type: array
@@ -19030,13 +18958,8 @@ components:
       type: object
     Journals:
       type: object
-      x-objectArrayKey: journals
+      x-isObjectArray: true
       properties:
-        Warnings:
-          description: Displays array of warning messages from the API
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
         Journals:
           type: array
           items:
@@ -19175,7 +19098,7 @@ components:
       type: object
     LinkedTransactions:
       type: object
-      x-objectArrayKey: linked_transactions
+      x-isObjectArray: true
       properties:
         LinkedTransactions:
           type: array
@@ -19265,15 +19188,8 @@ components:
       type: object
     ManualJournals:
       type: object
-      x-objectArrayKey: manual_journals
+      x-isObjectArray: true
       properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        Warnings:
-          description: Displays array of warning messages from the API
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
         ManualJournals:
           type: array
           items:
@@ -19397,7 +19313,7 @@ components:
       type: object
     Actions:
       type: object
-      x-objectArrayKey: actions
+      x-isObjectArray: true
       properties:
         Actions:
           type: array
@@ -19419,7 +19335,7 @@ components:
             - NOT-ALLOWED
     Organisations:
       type: object
-      x-objectArrayKey: organisations
+      x-isObjectArray: true
       properties:
         Organisations:
           type: array
@@ -19605,13 +19521,6 @@ components:
             - NON_GST_CASHBOOK
             - ULTIMATE
             - LITE
-            - ULTIMATE_10
-            - ULTIMATE_20
-            - ULTIMATE_50
-            - ULTIMATE_100
-            - IGNITE
-            - GROW
-            - COMPREHENSIVE
         Edition:
           description: >-
             BUSINESS or PARTNER. Partner edition organisations are sold
@@ -20081,15 +19990,8 @@ components:
       type: object
     Overpayments:
       type: object
-      x-objectArrayKey: overpayments
+      x-isObjectArray: true
       properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        Warnings:
-          description: Displays array of warning messages from the API
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
         Overpayments:
           type: array
           items:
@@ -20195,15 +20097,8 @@ components:
       type: object
     Payments:
       type: object
-      x-objectArrayKey: payments
+      x-isObjectArray: true
       properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        Warnings:
-          description: Displays array of warning messages from the API
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
         Payments:
           type: array
           items:
@@ -20354,15 +20249,8 @@ components:
       type: object
     Prepayments:
       type: object
-      x-objectArrayKey: prepayments
+      x-isObjectArray: true
       properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        Warnings:
-          description: Displays array of warning messages from the API
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
         Prepayments:
           type: array
           items:
@@ -20473,15 +20361,8 @@ components:
       type: object
     PurchaseOrders:
       type: object
-      x-objectArrayKey: purchase_orders
+      x-isObjectArray: true
       properties:
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        Warnings:
-          description: Displays array of warning messages from the API
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationError'
         PurchaseOrders:
           type: array
           items:
@@ -20623,20 +20504,9 @@ components:
           items:
             $ref: '#/components/schemas/Attachment'
       type: object
-    Pagination:
-      type: object
-      properties:
-        page:
-          type: integer
-        pageSize:
-          type: integer
-        pageCount:
-          type: integer
-        itemCount:
-          type: integer
     Quotes:
       type: object
-      x-objectArrayKey: quotes
+      x-isObjectArray: true
       properties:
         Quotes:
           type: array
@@ -20777,7 +20647,7 @@ components:
         - DELETED
     Receipts:
       type: object
-      x-objectArrayKey: receipts
+      x-isObjectArray: true
       properties:
         Receipts:
           type: array
@@ -20875,7 +20745,7 @@ components:
       type: object
     RepeatingInvoices:
       type: object
-      x-objectArrayKey: repeating_invoices
+      x-isObjectArray: true
       properties:
         RepeatingInvoices:
           type: array
@@ -21089,7 +20959,7 @@ components:
           type: string
     Reports:
       type: object
-      x-objectArrayKey: reports
+      x-isObjectArray: true
       properties:
         Reports:
           type: array
@@ -21282,7 +21152,7 @@ components:
       type: object
     TaxRates:
       type: object
-      x-objectArrayKey: tax_rates
+      x-isObjectArray: true
       properties:
         TaxRates:
           type: array
@@ -21412,9 +21282,6 @@ components:
         - IMREY24
         - BADDEBTRECOVERYY24
         - OSOUTPUT2
-        - BLINPUT3
-        - BLINPUT3Y23
-        - BLINPUT3Y24
     Setup:
       externalDocs:
         url: https://developer.xero.com/documentation/api-guides/conversions
@@ -21671,7 +21538,6 @@ components:
             - IMRE
             - BADDEBTRECOVERY
             - USSALESTAX
-            - BLINPUT3
         CanApplyToAssets:
           description: >-
             Boolean to describe if tax rate can be used for asset accounts i.e. 
@@ -21738,7 +21604,7 @@ components:
       type: object
     TrackingCategories:
       type: object
-      x-objectArrayKey: tracking_categories
+      x-isObjectArray: true
       properties:
         TrackingCategories:
           type: array
@@ -21787,7 +21653,7 @@ components:
       type: object
     TrackingOptions:
       type: object
-      x-objectArrayKey: options
+      x-isObjectArray: true
       properties:
         Options:
           type: array
@@ -21836,7 +21702,7 @@ components:
       type: object
     Users:
       type: object
-      x-objectArrayKey: users
+      x-isObjectArray: true
       properties:
         Users:
           type: array

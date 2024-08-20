@@ -1,39 +1,37 @@
 openapi: 3.0.3
 info:
   title: Visier Authentication APIs
-  description: >-
-    Visier APIs for authenticating with Visier. To use Visier's public APIs, you
-    must first authenticate yourself as a Visier user who is allowed to use
-    Visier APIs.
+  description: Visier APIs for generating authentication tokens
   license:
     name: Apache License, Version 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0
-  version: 22222222.99201.1452
+  version: 22222222.99201.1256
 paths:
-  /v1/auth/oauth2/userinfo:
-    get:
+  /v1/admin/visierSecureTicket:
+    post:
+      deprecated: true
       tags:
-        - OAuth2
-      summary: Retrieve the user-specific metadata
-      description: >-
-        Retrieve user-specific metadata, such as a user's ID, username, and
-        profile capabilities.
-      operationId: OAuth2_UserInfo
-      parameters:
-        - name: includeTenantDetails
-          in: query
-          description: >-
-            If `true`, includes tenant details in the response. Default is
-            `false`.
-          schema:
-            type: boolean
+        - Authentication
+      summary: Generate a legacy Visier secure ticket
+      description: Generate a legacy Visier secure ticket
+      operationId: Authentication_TicketAuthentication
+      requestBody:
+        description: Secure ticket request body
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AuthenticationRequest'
+        required: true
       responses:
         '200':
-          description: OK
+          description: Secure ticket response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/OAuth2UserInfoDTO'
+                type: string
+            text/plain:
+              schema:
+                type: string
         default:
           description: Default error response
           content:
@@ -42,15 +40,14 @@ paths:
                 $ref: '#/components/schemas/Status'
   /v1/admin/visierSecureToken:
     post:
+      deprecated: true
       tags:
-        - BasicAuthentication
-      summary: Request a Visier authentication token
-      description: Generate a secure ASID token.
-      operationId: BasicAuthentication_ASIDTokenAuthentication
+        - Authentication
+      summary: Generate a Visier authentication token
+      description: Generate a Visier authentication token
+      operationId: Authentication_ASIDTokenAuthentication
       requestBody:
-        description: >-
-          Your username and password credentials to request an authentication
-          token.
+        description: Authentication token request body
         content:
           application/x-www-form-urlencoded:
             schema:
@@ -60,6 +57,9 @@ paths:
         '200':
           description: Authentication token response
           content:
+            application/json:
+              schema:
+                type: string
             text/plain:
               schema:
                 type: string
@@ -69,225 +69,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Status'
-  /v1/admin/visierImpersonationToken:
-    post:
-      tags:
-        - BasicAuthentication
-      summary: Request an impersonation token
-      description: Generate an impersonation token for the given username.
-      operationId: BasicAuthentication_GenerateImpersonationToken
-      parameters:
-        - name: TargetTenantID
-          in: header
-          description: The tenant ID to execute the call on.
-          schema:
-            type: string
-      requestBody:
-        description: Request to generate an impersonation token.
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/GenerateImpersonationTokenRequest'
-        required: true
-      responses:
-        '200':
-          description: Impersonation token response
-          content:
-            text/plain:
-              schema:
-                type: string
-        default:
-          description: Default error response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Status'
-  /v1/auth/oauth2/authorize:
-    get:
-      tags:
-        - OAuth2
-      summary: Request an authorization code.
-      description: >-
-        Request an authorization code for the authorization_code grant type. Not
-        required in other OAuth 2.0 grant types.
-      operationId: OAuth2_OAuth2Authorize
-      parameters:
-        - name: redirect_uri
-          in: query
-          description: The optional URI to redirect to after authorization.
-          required: false
-          schema:
-            type: string
-        - name: response_type
-          in: query
-          description: The response type. Must be `code`.
-          required: true
-          schema:
-            type: string
-        - name: client_id
-          in: query
-          description: The ID of the pre-registered client application.
-          required: true
-          schema:
-            type: string
-        - name: scope
-          in: query
-          description: >-
-            The OAuth 2.0 scope of the authorization request. Default is `read`.
-            If the scope includes `visier:login:bypass_users`, then the redirect
-            login URL ends in "/auth/admin" instead of "/auth". This allows
-            single sign-on (SSO) Bypass Users to login through Visier instead of
-            being redirected to the SSO login page.
-          required: false
-          schema:
-            type: string
-      responses:
-        default:
-          description: Default error response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Status'
-        3XX:
-          description: Redirect to authorization page.
-      security:
-        - ApiKeyAuth: []
-  /v1/auth/oauth2/token:
-    post:
-      tags:
-        - OAuth2
-      summary: Request a JSON Web Token.
-      description: Use an OAuth 2.0 grant type to request a JWT.
-      operationId: OAuth2_OAuth2Token
-      requestBody:
-        content:
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/TokenRequestBody'
-        required: true
-      responses:
-        '200':
-          description: Returns access and refresh tokens along with the expiration time.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TokenResponse'
-        default:
-          description: Default error response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Status'
-      security:
-        - ApiKeyAuth: []
-        - ApiKeyAuth: []
-          BasicAuth: []
 components:
   schemas:
-    CapabilityGroupDTO:
+    AuthenticationRequest:
       type: object
       properties:
-        group:
-          enum:
-            - unknown
-            - Any
-            - NotRequired
-            - Data
-            - Application
-            - ApplicationManagement
-            - Security
-            - UserManagement
-            - Model
-            - TenantManagement
-            - Settings
-            - DataUpload
-            - FileSharing
-            - Approve
-            - TwoStepPublish
-            - DirectPublish
-            - TenantPreview
-            - OpenAPI
-            - OpenPlatform
-            - ManageJobs
-            - SupportPowerUser
-            - LMSPowerUser
-            - SupportProjectManager
-            - SupportStandardUser
-            - Translation
-            - ModuleManagement
-            - ClassicAdminConfig
-            - ClassicReadOnlyAdminConfig
-            - ClassicManageTenant
-            - ClassicAnalysis
-            - ClassicDraft
-            - ClassicInternalDebugging
-            - ClassicAPIRestricted
-            - InfrastructureOperations
-            - SolutionDesigner
-            - AccessToAllData
-            - FeatureToggle
-            - SystemDiagnostics
-            - SystemDiagnosticsSensitive
-            - ConsumptionPricingAdmin
-            - ReadImpersonator
-            - WriteImpersonator
-            - ReadImpersonated
-            - WriteImpersonated
-            - MasterImpersonator
-            - Impersonator
-            - WillowUser
-            - WillowAdmin
-            - GeminiManager
-            - GeminiSupport
-            - GeminiAdmin
-            - ConsolidatedAnalytics
-            - RequestSecureTicket
-            - RequestAuthToken
-            - OAuth2ClientRegistration
-            - AccessToAllProperties
-            - AccessToKeyProperties
-            - PlanningManagement
-            - WillowVantageCrawler
-            - DataValidation
-            - ContentReassignment
-            - ReportDownloading
-            - PlutoUser
-            - ReportingManagement
-            - QuotaManagement
+        username:
           type: string
-          format: enum
-        accessLevel:
-          enum:
-            - NoAccess
-            - ReadOnly
-            - Write
+        password:
           type: string
-          format: enum
-        viewLevel:
-          enum:
-            - Simple
-            - Detailed
-            - API
-            - Certified
-            - Embedded
-          type: string
-          format: enum
-        apiAccessLevel:
-          enum:
-            - NoAccess
-            - ReadOnly
-            - Write
-          type: string
-          format: enum
-        apiViewLevel:
-          enum:
-            - Simple
-            - Detailed
-            - API
-            - Certified
-            - Embedded
-          type: string
-          format: enum
+      description: Basic Authentication Request Body
     GoogleProtobufAny:
       type: object
       properties:
@@ -298,126 +89,6 @@ components:
       description: >-
         Contains an arbitrary serialized message along with a @type that
         describes the type of the serialized message.
-    OAuth2UserInfoDTO:
-      type: object
-      properties:
-        subject:
-          type: string
-          description: The user's display name.
-        name:
-          type: string
-          description: The user's Common Name.
-        email:
-          type: string
-          description: The user's email address.
-        visier:user_id:
-          type: string
-          description: The user's unique ID.
-        visier:capabilities:
-          allOf:
-            - $ref: '#/components/schemas/ServicingCapabilityProtoEnumAccessLookupDTO'
-          description: The user's profile capabilities.
-        visier:subnets:
-          allOf:
-            - $ref: '#/components/schemas/OAuth2UserSubnetInfoDTO'
-          description: >-
-            Subnet restrictions controlling the IP addresses from which users
-            can access the tenant.
-        visier:export_subnets:
-          allOf:
-            - $ref: '#/components/schemas/OAuth2UserSubnetInfoDTO'
-          description: >-
-            Subnet restrictions controlling the IP addresses from which data and
-            metadata requests can be made.
-        visier:tenant_details:
-          allOf:
-            - $ref: '#/components/schemas/OAuth2UserTenantDetailsDTO'
-          description: >-
-            Detailed information about the analytic tenant. Included in the
-            response if `includeTenantDetail` is `true`.
-      description: Response from OAuth 2 `userinfo` endpoint.
-    OAuth2UserSubnetInfoDTO:
-      type: object
-      properties:
-        accessType:
-          enum:
-            - Unknown
-            - All
-            - Restricted
-            - None
-          type: string
-          description: |-
-            The type of subnet access granted to the user. Possible values are:
-             * `Unknown`: Could not determine subnet access details.
-             * `All': No subnet restrictions.
-             * `Restricted`: Access is only granted to requests originating from the specified `subnets`.
-             * `None`: Access is denied. Only applicable to the Data Export API.
-          format: enum
-        subnets:
-          type: array
-          items:
-            type: string
-          description: >-
-            The list of trusted IP addresses from which access is granted if
-            accessType is `Restricted`. Must be in Classless Inter-Domain
-            Routing (CIDR) format: `xxx.xxx.xxx.xxx/xx`.
-      description: Subnet access details.
-    OAuth2UserTenantDetailDTO:
-      type: object
-      properties:
-        tenantCode:
-          type: string
-          description: The tenant's unique ID.
-        displayName:
-          type: string
-          description: The tenant's display name.
-        properties:
-          allOf:
-            - $ref: '#/components/schemas/OAuth2UserTenantPropertiesDTO'
-          description: The tenant's properties.
-      description: Tenant detail information.
-    OAuth2UserTenantDetailsDTO:
-      type: object
-      properties:
-        details:
-          type: array
-          items:
-            $ref: '#/components/schemas/OAuth2UserTenantDetailDTO'
-          description: The details of all accessible analytic tenants.
-      description: The details of all accessible analytic tenants
-    OAuth2UserTenantPropertiesDTO:
-      type: object
-      properties:
-        vanityUrlName:
-          type: string
-          description: The tenant's vanity name.
-      description: Detailed information about the tenant.
-    ServicingCapabilityProtoEnumAccessLookupDTO:
-      type: object
-      properties:
-        capabilityGroups:
-          type: array
-          items:
-            $ref: '#/components/schemas/CapabilityGroupDTO'
-    GenerateImpersonationTokenRequest:
-      description: The details of the user to impersonate.
-      type: object
-      properties:
-        TargetUsername:
-          type: string
-          description: The username of the user to impersonate.
-    AuthenticationRequest:
-      type: object
-      properties:
-        username:
-          type: string
-          description: The unique identifier of the API user requesting a security token.
-        password:
-          type: string
-          description: The password that corresponds to the user making the request.
-      description: >-
-        Your username and password credentials to request an authentication
-        token.
     Status:
       type: object
       properties:
@@ -452,85 +123,10 @@ components:
     TokenResponse:
       type: object
       properties:
-        access_token:
+        token:
           type: string
-          description: The access token to be used for API calls.
-        refresh_token:
-          type: string
-          description: The token used to obtain new access tokens.
-        id_token:
-          type: string
-          description: The ID token containing user identity information.
-        token_type:
-          type: string
-          description: The type of the token, typically "Bearer".
-        expires_in:
-          type: integer
-          description: The duration in seconds for which the access token is valid.
-    TokenRequestBody:
-      type: object
-      properties:
-        grant_type:
-          description: >-
-            The grant type. Supported values:
-
-            - `authorization_code`: The authorization code grant type.
-
-            - `password`: The password grant type.
-
-            - `urn:ietf:params:oauth:grant-type:saml2-bearer`: The saml2-bearer
-            grant type.
-
-            - `urn:visier:params:oauth:grant-type:asid-token`: The ASID token
-            grant type.
-          type: string
-        client_id:
-          description: The ID of the pre-registered client application.
-          type: string
-        redirect_uri:
-          description: The optional URI to redirect to after authorization.
-          type: string
-        code:
-          description: >-
-            The authorization code. Applicable only for authorization code grant
-            type.
-          type: string
-        username:
-          description: >-
-            The username of the user to authenticate. Applicable only for
-            password grant type.
-          type: string
-        password:
-          description: >-
-            The password of the user to authenticate. Applicable only for
-            password grant type.
-          type: string
-        asid_token:
-          description: The ASID token. Applicable only for ASID token grant type.
-          type: string
-      description: Token request body definition.
-  securitySchemes:
-    BasicAuth:
-      type: http
-      scheme: basic
-    ApiKeyAuth:
-      type: apiKey
-      name: apikey
-      in: header
 tags:
-  - name: BasicAuthentication
-    description: >-
-      Request an authentication token through basic authentication. With basic
-      authentication, use your username and password to request a secure token.
-      The response returns an ASID token that you can use in your API calls.
-  - name: OAuth2
-    description: >-
-      Request an authentication token through OAuth 2.0 with Open ID Connect
-      (OIDC). With OAuth 2.0 with OIDC, use an OAuth 2.0 grant to request an
-      authentication token. 
-
-      The response returns a JSON Web Token (JWT) that you can use in your API
-      calls.
+  - name: Authentication
 servers:
   - url: https://{vanity-name}.api.visier.io
     variables:

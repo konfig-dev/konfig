@@ -30,7 +30,7 @@ paths:
   /api/v3/timeentries:
     parameters: []
     get:
-      summary: List multiple TimeEntries
+      summary: List TimeEntries
       tags:
         - TimeEntries
       responses:
@@ -60,31 +60,38 @@ paths:
           $ref: '#/components/responses/ResponseProblem'
       operationId: get-api-v3-timeentries
       description: >-
-        List all TimeEntries satisfying query filters.
+        Retrieve a list of TimeEntries.
 
 
-        Please refer to the [TimeEntry API
-        reference](reference/Timmi-Timesheet-v3.yaml/components/schemas/TimeEntry)
-        for additional information on the TimeEntry object.
+        The `startsAt` query parameter can operate comparisons with a given
+        date-time value:
+
+        - `?startsAt=2021-01-01`: strict equality.
+
+        - `?startsAt=since,2021-01-01`: greater than or equal.
+
+        - `?startsAt=until,2021-01-01`: lower than or equal.
+
+        - `?startsAt=between,2021-01-01,2021-01-31`: comprised between two
+        dates.
 
 
-        Please see [this
-        guide](../docs/Use-cases/Timmi%20Timesheet/Retrieve-time-entries.md) on
-        how to retrieve TimeEntries the right way.
+        To retrieve the total count of all TimeEntries (on all pages), please
+        include the field `?field=collection.count`.
       parameters:
         - $ref: '#/components/parameters/paging'
         - schema:
             type: array
           in: query
           name: ownerId
-          description: Filter out TimeEntries on its ownerIds
+          description: User's identifier
           style: form
         - schema:
             type: string
             example: between,2021-01-01,2021-02-01
           in: query
           name: startsAt
-          description: '{comparator},{date-time}. Filter out TimeEntries on its startsAt.'
+          description: '{comparator},{date-time}'
         - schema:
             type: array
           in: query
@@ -102,39 +109,30 @@ paths:
             example: since,2021-01-01T08:45:23Z
           in: query
           name: modifiedAt
-          description: >-
-            {comparator},{date-time}. Filter out TimeEntries on their
-            modifiedAt.
+          description: '{comparator},{date-time}'
         - schema:
             type: string
             example: since,2021-01-01T08:45:23Z
           in: query
           name: archivedAt
-          description: '{comparator},{date-time}. Filter out TimeEntries on their startsAt.'
-        - schema:
-            type: string
-          in: query
-          name: orderBy
-          description: '{fieldName},{direction}. Defaults to {id},{asc}'
+          description: '{comparator},{date-time}'
     post:
       summary: Create new TimeEntries
       operationId: post-api-v3-timeentries
       description: >-
-        Create one or multiple TimeEntries. 
+        <!-- theme: warning --> 
+
+        >#### Warning
+
+        > This endpoint will soon be deprecated, please use [Timmi Timesheet v4
+        API](Timmi-Timesheet.yaml/paths/~1timmi-timesheet~1services~1time-entries/put)
 
 
-        A single request can create TimeEntries for several different owners.
+        You can create a single or multiple TimeEntries for a given user.
 
 
-        Please refer to the [TimeEntry API
-        reference](reference/Timmi-Timesheet-v3.yaml/components/schemas/TimeEntry)
-        for additional information on the TimeEntry object, and any validation
-        error that you might encounter when using this API.
-
-
-        There are different ways to update TimeEntries. Please see [this
-        guide](../docs/Use-cases/Timmi%20Timesheet/Update-time-entries.md) on
-        how to update TimeEntries the right way depending on your use case.
+        Beware, a new TimeEntry cannot intersect with a submitted or approved
+        timesheet.
       responses:
         '200':
           description: OK
@@ -152,23 +150,6 @@ paths:
                             type: array
                             items:
                               $ref: '#/components/schemas/TimeEntry'
-              examples:
-                Example 1:
-                  value:
-                    data:
-                      ownerId: 90
-                      unit: 2
-                      startsAt: '2024-04-22T09:30:00'
-                      duration: '03:45:00'
-                      creationSource: 2
-                      axisSections:
-                        - id: 41
-                        - id: 127
-                      comment:
-                        name: This is a comment
-                      timeTypeId: null
-        '201':
-          description: Created
         '400':
           $ref: '#/components/responses/ResponseProblem'
         '401':
@@ -184,223 +165,12 @@ paths:
           application/json:
             schema:
               oneOf:
-                - type: object
-                  x-stoplight:
-                    id: uq2vot9ruvfs9
-                  properties:
-                    ownerId:
-                      type: integer
-                      x-stoplight:
-                        id: yls9tv5bnwro7
-                      example: 1
-                      description: Reference to the TimeEntry owner.
-                    startsAt:
-                      type: string
-                      x-stoplight:
-                        id: nb3ojzdk2ob5v
-                      description: >-
-                        The timeEntry start date and time. Please do NOT send
-                        any offset/timezone information ("Z", "+01:00", etc...).
-                      format: date-time
-                    duration:
-                      type: string
-                      x-stoplight:
-                        id: bl9hreztqkbv9
-                      format: timespan
-                      description: "Duration of the TimeEntry in the\_\"c\" format of a C# timespan In other words : d.hh:mm:ss.\nMax: \"1.00:00:00\" (ie 24 hours)."
-                    unit:
-                      type: integer
-                      x-stoplight:
-                        id: tzo8tnxex6dq5
-                      description: |-
-                        Unit in which the TimeEntry has been entered. 
-                        - 0: Days (eg "1/2 day")
-                        - 1: Hours (eg "8h15min")
-                        - 2: Time (eg "23:45:00") 
-                    creationSource:
-                      type: integer
-                      x-stoplight:
-                        id: yh3j23iil5oxm
-                      description: >-
-                        Attribute used to identify last modification source :
-
-                        - 0: Automatic fallback on theoretical TimeEntries from
-                        workcycles.
-
-                        - 1: Entered with Timmi Timesheet quick-fill tools.
-
-                        - 2: Manually created or edited (default).
-
-                        - 3: Imported from external sources. Can be read-only
-                        for the user depending on Timesheet configuration.
-
-                        - 4: Entered with Timmi Timesheet clock-in clock-out
-                        tool. 
-                      default: 2
-                    axisSections:
-                      type:
-                        - array
-                        - 'null'
-                      x-stoplight:
-                        id: sv0azc22zq5vh
-                      description: >-
-                        Represent the activities that TimeEntry should be
-                        associated with. When not in activity mode, send an
-                        empty array, or do not serialize this property.
-                      items:
-                        $ref: '#/components/schemas/AxisSection'
-                        x-stoplight:
-                          id: 0bwtusdyf5cbj
-                    comment:
-                      type:
-                        - object
-                        - 'null'
-                      x-stoplight:
-                        id: lpoi5zmajvf1s
-                      description: >-
-                        A comment to add additional information about the given
-                        TimeEntry. It will be visible on Timmi Timesheet user
-                        interface.
-                      properties:
-                        content:
-                          type: string
-                          x-stoplight:
-                            id: x6f8qln31nzkc
-                    timeTypeId:
-                      type:
-                        - integer
-                        - 'null'
-                      x-stoplight:
-                        id: ruczf8vauynjb
-                      example: 1
-                      description: >-
-                        Optional reference of a configured Time Type. To use
-                        only if the timesheet is set up to use Time Types. Null
-                        otherwise.
-                  required:
-                    - ownerId
-                    - startsAt
-                    - duration
-                    - unit
+                - $ref: '#/components/schemas/TimeEntry'
+                  description: Create a single TimeEntry
                 - type: array
-                  x-stoplight:
-                    id: uq2vot9ruvfs9
                   items:
-                    x-stoplight:
-                      id: lsdc5uqqxfm6p
-                    type: object
-                    properties:
-                      ownerId:
-                        type: integer
-                        x-stoplight:
-                          id: 33jzvtt76aee0
-                        example: 1
-                        description: Reference to the TimeEntry owner.
-                      startsAt:
-                        type: string
-                        x-stoplight:
-                          id: 831cuw8ig71qp
-                        description: >-
-                          The timeEntry start date and time. Please do NOT send
-                          any offset/timezone information ("Z", "+01:00",
-                          etc...).
-                        format: date-time
-                      duration:
-                        type: string
-                        x-stoplight:
-                          id: jsimqbkpx9n8j
-                        description: "Duration of the TimeEntry in the\_\"c\" format of a C# timespan In other words : d.hh:mm:ss.\nMax: \"1.00:00:00\" (ie 24 hours)."
-                        format: timespan
-                      unit:
-                        type: integer
-                        x-stoplight:
-                          id: p6adi2ntes9vx
-                        description: |-
-                          Unit in which the TimeEntry has been entered. 
-                          - 0: Days (eg "1/2 day")
-                          - 1: Hours (eg "8h15min")
-                          - 2: Time (eg "23:45:00") 
-                      creationSource:
-                        type: integer
-                        x-stoplight:
-                          id: ayyjxzlf9eyiu
-                        description: >-
-                          Attribute used to identify last modification source :
-
-                          - 0: Automatic fallback on theoretical TimeEntries
-                          from workcycles.
-
-                          - 1: Entered with Timmi Timesheet quick-fill tools.
-
-                          - 2: Manually created or edited (default).
-
-                          - 3: Imported from external sources. Can be read-only
-                          for the user depending on Timesheet configuration.
-
-                          - 4: Entered with Timmi Timesheet clock-in clock-out
-                          tool. 
-                        default: 2
-                      axisSections:
-                        type:
-                          - array
-                          - 'null'
-                        x-stoplight:
-                          id: 5cgs0nrx9wf5w
-                        description: >-
-                          Represent the activities that TimeEntry should be
-                          associated with. When not in activity mode, send an
-                          empty array, or do not serialize this property.
-                        items:
-                          $ref: '#/components/schemas/AxisSection'
-                          x-stoplight:
-                            id: pq6dnakvvyoxz
-                      comment:
-                        type:
-                          - object
-                          - 'null'
-                        x-stoplight:
-                          id: 45rgdxqtbsuqx
-                        description: >-
-                          A comment to add additional information about the
-                          given TimeEntry. It will be visible on Timmi Timesheet
-                          user interface.
-                        properties:
-                          content:
-                            type: string
-                            x-stoplight:
-                              id: tefmslvby6l2d
-                      timeTypeId:
-                        type:
-                          - integer
-                          - 'null'
-                        x-stoplight:
-                          id: 2jc75mf5ih92q
-                        description: >-
-                          Optional reference of a configured Time Type. To use
-                          only if the timesheet is set up to use Time Types.
-                          Null otherwise.
-                        example: 1
-                    required:
-                      - ownerId
-                      - startsAt
-                      - duration
-                      - unit
-            examples:
-              Example 1:
-                value:
-                  ownerId: 90
-                  unit: 2
-                  startsAt: '2024-04-22T09:30:00'
-                  duration: '03:45:00'
-                  creationSource: 2
-                  axisSections:
-                    - id: 41
-                    - id: 127
-                    - id: 346
-                    - id: 347
-                  comment:
-                    name: This is a comment
-                  timeTypeId: null
+                    $ref: '#/components/schemas/TimeEntry'
+                  description: Create multiple TimeEntries
         description: Create a single of multiple TimeEntry (toggle body type).
       tags:
         - TimeEntries
@@ -408,264 +178,25 @@ paths:
       summary: Update multiple TimeEntries
       operationId: put-api-v3-timeentries
       description: >-
-        Update one or several TimeEntries. 
+        <!-- theme: warning --> 
+
+        >#### Warning
+
+        > This endpoint will soon be deprecated, please use [Timmi Timesheet v4
+        API](Timmi-Timesheet.yaml/paths/~1timmi-timesheet~1services~1time-entries/put)
 
 
-        The "id" field must be sent and correspond to an existing TimeEntry. 
-
-
-        A single request can edit TimeEntries for several different owners.
-
-
-        Please refer to the [TimeEntry API
-        reference](reference/Timmi-Timesheet-v3.yaml/components/schemas/TimeEntry)
-        for additional information on the TimeEntry object, and any validation
-        error that you might encounter when using this API.
-
-
-        There are different ways to update TimeEntries. Please see [this
-        guide](../docs/Use-cases/Timmi%20Timesheet/Update-time-entries.md) on
-        how to update TimeEntries the right way depending on your use case.
+        Update one or several TimeEntries. The "id" field must be sent and
+        correspond to an existing TimeEntry.
       requestBody:
         content:
           application/json:
             schema:
               oneOf:
-                - type: object
-                  x-stoplight:
-                    id: xxo6vwhyuhmqh
-                  properties:
-                    id:
-                      type: integer
-                      x-stoplight:
-                        id: lflnrlv8dkqp2
-                      example: 552586
-                      description: Unique identifier of the TimeEntry
-                    ownerId:
-                      type: integer
-                      x-stoplight:
-                        id: k9dc7sxu751dg
-                      description: Reference to the TimeEntry owner.
-                      example: 1
-                    startsAt:
-                      type: string
-                      x-stoplight:
-                        id: bnj9phq7psh8u
-                      description: >-
-                        The timeEntry start date and time. Please do NOT send
-                        any offset/timezone information ("Z", "+01:00", etc...).
-                      format: date-time
-                    duration:
-                      type: string
-                      x-stoplight:
-                        id: 0kv3fms6zdlol
-                      description: "Duration of the TimeEntry in the\_\"c\" format of a C# timespan In other words : d.hh:mm:ss.\nMax: \"1.00:00:00\" (ie 24 hours)."
-                      format: timespan
-                    unit:
-                      type: integer
-                      x-stoplight:
-                        id: qxu7hh21qhyg6
-                      description: |-
-                        Unit in which the TimeEntry has been entered. 
-                        - 0: Days (eg "1/2 day")
-                        - 1: Hours (eg "8h15min")
-                        - 2: Time (eg "23:45:00") 
-                      example: '1'
-                    creationSource:
-                      type: integer
-                      x-stoplight:
-                        id: kwouifugeymhg
-                      description: >-
-                        Attribute used to identify last modification source :
-
-                        - 0: Automatic fallback on theoretical TimeEntries from
-                        workcycles.
-
-                        - 1: Entered with Timmi Timesheet quick-fill tools.
-
-                        - 2: Manually created or edited (default).
-
-                        - 3: Imported from external sources. Can be read-only
-                        for the user depending on Timesheet configuration.
-
-                        - 4: Entered with Timmi Timesheet clock-in clock-out
-                        tool. 
-                      default: 2
-                    axisSections:
-                      type:
-                        - array
-                        - 'null'
-                      x-stoplight:
-                        id: 7kumnahilkqfi
-                      description: >-
-                        Represent the activities that TimeEntry should be
-                        associated with. When not in activity mode, send an
-                        empty array, or do not serialize this property.
-                      items:
-                        $ref: '#/components/schemas/AxisSection'
-                        x-stoplight:
-                          id: v6cugt7jpusow
-                    comment:
-                      type:
-                        - object
-                        - 'null'
-                      x-stoplight:
-                        id: qrbemk50bzlkx
-                      description: >-
-                        A comment to add additional information about the given
-                        TimeEntry. It will be visible on Timmi Timesheet user
-                        interface.
-                      properties:
-                        content:
-                          type: string
-                          x-stoplight:
-                            id: kceyh1pakciwy
-                    timeTypeId:
-                      type:
-                        - integer
-                        - 'null'
-                      x-stoplight:
-                        id: cjrxoiee4p4d0
-                      description: >-
-                        Optional reference of a configured Time Type. To use
-                        only if the timesheet is set up to use Time Types. Null
-                        otherwise.
-                      example: 1
-                  required:
-                    - id
-                    - ownerId
-                    - startsAt
-                    - duration
-                    - unit
+                - $ref: '#/components/schemas/TimeEntry'
                 - type: array
-                  x-stoplight:
-                    id: ltd6zmc3ya91g
                   items:
-                    x-stoplight:
-                      id: 2opeuqwsomvdo
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                        x-stoplight:
-                          id: u0agophwm4xxc
-                        description: Unique identifier of the TimeEntry
-                        example: 552586
-                      ownerId:
-                        type: integer
-                        x-stoplight:
-                          id: j54svficxluoz
-                        description: Reference to the TimeEntry owner.
-                        example: 1
-                      startsAt:
-                        type: string
-                        x-stoplight:
-                          id: lzut3haqau3z0
-                        description: >-
-                          The timeEntry start date and time. Please do NOT send
-                          any offset/timezone information ("Z", "+01:00",
-                          etc...).
-                        format: date-time
-                      duration:
-                        type: string
-                        x-stoplight:
-                          id: 0o74bz2th49m2
-                        description: "Duration of the TimeEntry in the\_\"c\" format of a C# timespan In other words : d.hh:mm:ss.\nMax: \"1.00:00:00\" (ie 24 hours)."
-                        format: timespan
-                      unit:
-                        type: integer
-                        x-stoplight:
-                          id: hzc7mdc41scdq
-                        description: |-
-                          Unit in which the TimeEntry has been entered. 
-                          - 0: Days (eg "1/2 day")
-                          - 1: Hours (eg "8h15min")
-                          - 2: Time (eg "23:45:00") 
-                        example: 1
-                      creationSource:
-                        type: integer
-                        x-stoplight:
-                          id: dbpasxcfr7d9p
-                        description: >-
-                          Attribute used to identify last modification source :
-
-                          - 0: Automatic fallback on theoretical TimeEntries
-                          from workcycles.
-
-                          - 1: Entered with Timmi Timesheet quick-fill tools.
-
-                          - 2: Manually created or edited (default).
-
-                          - 3: Imported from external sources. Can be read-only
-                          for the user depending on Timesheet configuration.
-
-                          - 4: Entered with Timmi Timesheet clock-in clock-out
-                          tool. 
-                        default: 2
-                      axisSections:
-                        type:
-                          - array
-                          - 'null'
-                        x-stoplight:
-                          id: z5yean16uohte
-                        description: >-
-                          Represent the activities that TimeEntry should be
-                          associated with. When not in activity mode, send an
-                          empty array, or do not serialize this property.
-                        items:
-                          $ref: '#/components/schemas/AxisSection'
-                          x-stoplight:
-                            id: h93xmih75uybr
-                      comment:
-                        type:
-                          - object
-                          - 'null'
-                        x-stoplight:
-                          id: gfvvlbr5rew5l
-                        description: >-
-                          A comment to add additional information about the
-                          given TimeEntry. It will be visible on Timmi Timesheet
-                          user interface.
-                        properties:
-                          content:
-                            type: string
-                            x-stoplight:
-                              id: cilgcx8g7viq5
-                      timeTypeId:
-                        type:
-                          - integer
-                          - 'null'
-                        x-stoplight:
-                          id: xmb5lc1tul17q
-                        description: >-
-                          Optional reference of a configured Time Type. To use
-                          only if the timesheet is set up to use Time Types.
-                          Null otherwise.
-                        example: 1
-                    required:
-                      - id
-                      - ownerId
-                      - startsAt
-                      - duration
-                      - unit
-            examples:
-              Example 1:
-                value:
-                  id: 552586
-                  ownerId: 90
-                  unit: 2
-                  startsAt: '2024-04-22T08:30:00'
-                  duration: '04:45:00'
-                  creationSource: 2
-                  axisSections:
-                    - id: 42
-                    - id: 127
-                    - id: 346
-                    - id: 347
-                  comment:
-                    id: 59
-                    name: This is another comment
-                  timeTypeId: 1
+                    $ref: '#/components/schemas/TimeEntry'
         description: >-
           You can either update a single or multiple TimeEntries. Pick the
           correct body type accordingly.
@@ -686,9 +217,6 @@ paths:
                             type: array
                             items:
                               $ref: '#/components/schemas/TimeEntry'
-              examples: {}
-        '201':
-          description: Created
         '400':
           $ref: '#/components/responses/ResponseProblem'
         '401':
@@ -699,33 +227,21 @@ paths:
           $ref: '#/components/responses/ResponseProblem'
       tags:
         - TimeEntries
+      deprecated: true
     delete:
       summary: Delete multiple TimeEntries
       operationId: delete-api-v3-timeentries
       description: >-
-        Delete one or several TimeEntries. Deletion is irrevocable.
+        <!-- theme: warning --> 
+
+        >#### Warning
+
+        > This endpoint will soon be deprecated, please use [Timmi Timesheet v4
+        API](Timmi-Timesheet.yaml/paths/~1timmi-timesheet~1services~1time-entries/put)
 
 
-        The "id" field of each TimeEntry must be sent and correspond to existing
-        TimeEntries.
-
-
-        A single request can delete TimeEntries for several different owners.
-
-
-        It actually doest not delete entirely the object, but rather sets the
-        "archivedAt" field to the current DateTime.
-
-
-        Please refer to the [TimeEntry API
-        reference](reference/Timmi-Timesheet-v3.yaml/components/schemas/TimeEntry)
-        for additional information on the TimeEntry object, and any validation
-        error that you might encounter when using this API.
-
-
-        There are different ways to update TimeEntries. Please see [this
-        guide](../docs/Use-cases/Timmi%20Timesheet/Update-time-entries.md) on
-        how to update TimeEntries the right way depending on your use case.
+        Delete one or several TimeEntries. The "id" field of each TimeEntry must
+        be sent and correspond to an existing TimeEntry.
       requestBody:
         content:
           application/json:
@@ -737,13 +253,8 @@ paths:
                   id:
                     type: integer
                     minimum: 0
-                    description: Unique identifiers of the TimeEntries to delete.
                 required:
                   - id
-            examples:
-              Example 1:
-                value:
-                  - id: 552586
       responses:
         '200':
           description: OK
@@ -769,18 +280,7 @@ paths:
         description: Identifier of the TimeEntry.
     get:
       summary: Get a TimeEntry by id
-      description: >-
-        Retrieve a single TimeEntry identified by its unique identifier.
-
-
-        Please refer to the [TimeEntry API
-        reference](reference/Timmi-Timesheet-v3.yaml/components/schemas/TimeEntry)
-        for additional information on the TimeEntry object.
-
-
-        Please see [this
-        guide](../docs/Use-cases/Timmi%20Timesheet/Retrieve-time-entries.md) on
-        how to retrieve TimeEntries the right way.
+      description: Retrieve a single TimeEntry identified by its unique identifier.
       responses:
         '200':
           description: OK
@@ -791,23 +291,6 @@ paths:
                 properties:
                   data:
                     $ref: '#/components/schemas/TimeEntry'
-              examples:
-                Example 1:
-                  value:
-                    ownerId: 90
-                    unit: 2
-                    startsAt: '2024-04-22T08:30:00'
-                    duration: '04:45:00'
-                    creationSource: 2
-                    axisSections:
-                      - id: 42
-                      - id: 127
-                      - id: 346
-                      - id: 347
-                    comment:
-                      id: 59
-                      name: This is another comment
-                    timeTypeId: 1
         '400':
           $ref: '#/components/responses/ResponseProblem'
         '401':
@@ -824,21 +307,15 @@ paths:
       summary: Update a TimeEntry by id
       operationId: put-api-v3-timeentries-timeEntryId
       description: >-
+        <!-- theme: warning --> 
+
+        >#### Warning
+
+        > This endpoint will soon be deprecated, please use [Timmi Timesheet v4
+        API](Timmi-Timesheet.yaml/paths/~1timmi-timesheet~1services~1time-entries/put)
+
+
         Update fields of a single TimeEntry identified by its unique id.
-
-
-        The "id" field must be sent and correspond to an existing TimeEntry. 
-
-
-        Please refer to the [TimeEntry API
-        reference](reference/Timmi-Timesheet-v3.yaml/components/schemas/TimeEntry)
-        for additional information on the TimeEntry object, and any validation
-        error that you might encounter when using this API.
-
-
-        There are different ways to update TimeEntries. Please see [this
-        guide](../docs/Use-cases/Timmi%20Timesheet/Update-time-entries.md) on
-        how to update TimeEntries the right way depending on your use case.
       responses:
         '200':
           description: OK
@@ -849,10 +326,6 @@ paths:
                 properties:
                   data:
                     $ref: '#/components/schemas/TimeEntry'
-              examples:
-                Example 1:
-                  value:
-                    id: 552586,
         '400':
           $ref: '#/components/responses/ResponseProblem'
         '401':
@@ -868,48 +341,21 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/TimeEntry'
-            examples:
-              Example 1:
-                value:
-                  ownerId: 90
-                  unit: 2
-                  startsAt: '2024-04-22T08:30:00'
-                  duration: '04:45:00'
-                  creationSource: 2
-                  axisSections:
-                    - id: 42
-                    - id: 127
-                    - id: 346
-                    - id: 347
-                  comment:
-                    id: 59
-                    name: This is another comment
-                  timeTypeId: 1
       tags:
         - TimeEntries
     delete:
       summary: Delete a TimeEntry by id
       operationId: delete-api-v3-timeentries-timeEntryId
       description: >-
-        Delete a TimeEntry. Deletion is irrevocable.
+        <!-- theme: warning --> 
+
+        >#### Warning
+
+        > This endpoint will soon be deprecated, please use [Timmi Timesheet v4
+        API](Timmi-Timesheet.yaml/paths/~1timmi-timesheet~1services~1time-entries/put)
 
 
-        The "id" field must be set and correspond to an existing TimeEntry.
-
-
-        It actually doest not delete entirely the object, but rather sets the
-        "archivedAt" field to the current DateTime.
-
-
-        Please refer to the [TimeEntry API
-        reference](reference/Timmi-Timesheet-v3.yaml/components/schemas/TimeEntry)
-        for additional information on the TimeEntry object, and any validation
-        error that you might encounter when using this API.
-
-
-        There are different ways to update TimeEntries. Please see [this
-        guide](../docs/Use-cases/Timmi%20Timesheet/Update-time-entries.md) on
-        how to update TimeEntries the right way depending on your use case.
+        Delete a single TimeEntry. Deletion is irrevocable.
       responses:
         '200':
           description: OK
@@ -929,13 +375,7 @@ paths:
     parameters: []
     get:
       summary: List timesheets
-      description: >-
-        List all timesheets satisfying query filters.
-
-
-        Please refer to the [Timesheet API
-        reference](reference/Timmi-Timesheet-v3.yaml/components/schemas/Timesheet)
-        for additional information on the Timesheet resource.
+      description: List all timesheets satisfying query filters.
       tags:
         - Timesheets
       responses:
@@ -951,10 +391,10 @@ paths:
                     properties:
                       items:
                         type: array
-                        description: The list of timesheets satisfying query filters.
                         items:
-                          $ref: '#/components/schemas/Timesheet'
-              examples: {}
+                          $ref: '#/components/schemas/TimesheetUser'
+                      count:
+                        type: integer
         '400':
           $ref: '#/components/responses/ResponseProblem'
         '401':
@@ -985,9 +425,7 @@ paths:
               $ref: '#/components/schemas/Timesheet/properties/status'
           in: query
           name: status
-          description: >-
-            Filter on the timesheet workflow status. 0 for temporary, 1 for
-            pending, 2 for approved, 3 for rejected.
+          description: Filter on the timesheet workflow status.
           style: form
         - schema:
             type: string
@@ -1000,18 +438,12 @@ paths:
       operationId: get-api-v3-timmitimesheets-remindable
       summary: List due timesheets
       description: >-
-        List timesheets that are not yet submitted (status: 0). 
-
+        List timesheet that are not yet submitted (status: 0). 
 
         You must filter on either `ownerIds`, `managerIds` or `legalEntityIds`.
 
         As long as a timesheet is not submitted, its unique identifier is equal
         to zero.
-
-
-        Please refer to the [Timesheet API
-        reference](reference/Timmi-Timesheet-v3.yaml/components/schemas/Timesheet)
-        for additional information on the Timesheet resource.
       tags:
         - Timesheets
       parameters:
@@ -1021,21 +453,21 @@ paths:
             type: array
             items:
               type: integer
-          description: List unique identifier of owners.
+          description: List unique identifier of submitters.
         - name: legalEntityIds
           in: query
           schema:
             type: array
             items:
               type: integer
-          description: List unique identifier of owners' legal establishments.
+          description: List unique identifier of submitters' legal establishments.
         - name: managerIds
           in: query
           schema:
             type: array
             items:
               type: integer
-          description: List unique identifier of owners' managers.
+          description: List unique identifier of submitters' manager.
         - schema:
             type: string
             format: date
@@ -1064,7 +496,9 @@ paths:
                       items:
                         type: array
                         items:
-                          $ref: '#/components/schemas/Timesheet'
+                          $ref: '#/components/schemas/TimesheetUser'
+                      count:
+                        type: integer
         '400':
           $ref: '#/components/responses/ResponseProblem'
         '401':
@@ -1088,7 +522,7 @@ paths:
         '500':
           $ref: '#/components/responses/ResponseWorkflowService'
       operationId: post-timmi-services-workflow-remind
-      description: Remind users of a due timesheet. Sends him/her an email.
+      description: Remind user of a due timesheet. Sends him/her an email.
       requestBody:
         content:
           application/json:
@@ -1102,21 +536,19 @@ paths:
                     properties:
                       startsAt:
                         type: string
-                        x-stoplight:
-                          id: i3c9jye3jzskl
                         format: date
-                        example: '2024-06-01'
                       endsAt:
                         type: string
-                        x-stoplight:
-                          id: b86lsw6ph51wq
                         format: date
-                        example: '2024-07-01'
                       ownerId:
                         type: integer
-                        x-stoplight:
-                          id: a5z5v8ehlbk2d
                         minimum: 1
+                      comment:
+                        type: string
+                    required:
+                      - startsAt
+                      - endsAt
+                      - ownerId
         description: Timesheets are identified by startsAt, endsAt & ownerId.
       tags:
         - Workflow
@@ -1291,13 +723,9 @@ paths:
                         type: integer
                       transfers:
                         type: array
-                        items:
-                          $ref: '#/components/schemas/Transfer'
-                          x-stoplight:
-                            id: dma639e0a6c7j
+                        items: {}
                     required:
                       - id
-        description: ''
       tags:
         - Workflow
     parameters: []
@@ -1428,14 +856,9 @@ paths:
         systematically returned.
 
 
-        Starts the creation of a a report, based on based on an existing
-        report-template. So you first need to retrieve the report-template
-        unique identifier `templateId`.
-
-
-        Please see [this
-        guide](../docs/Use-cases/Timmi%20Timesheet/Downloading-a-report.md) on
-        how to download reports.
+        A report can only be created based on an existing report-template. So
+        you first need to retrieve the report-template unique identifier
+        `templateId`.
       requestBody:
         content:
           application/json:
@@ -1520,18 +943,17 @@ paths:
 components:
   schemas:
     TimeEntry:
-      title: The TimeEntry resource
-      x-stoplight:
-        id: e04f983327192
+      title: The Time Entry resource
       type: object
       description: >-
         TimeEntries are the working time sequences spent by a user on any given
         day.
 
 
-        TimeEntries come in different **units** and **submission modes** that
-        should match the timesheet configuration of a given owner on a given
-        day.
+        These ressources are exposed in the `/api/v3/timeentries` endpoint.
+
+
+        TimeEntries come in different **units** and **submission modes**.
 
 
         ## About units & duration
@@ -1582,6 +1004,23 @@ components:
         `hh` the number of hours, `mm` the number of minutes, and `ss` the
         number of seconds.
 
+
+        <!-- theme: warning -->
+
+        > #### StartsAt and timezones
+
+        > The `startsAt` date-time property must be considered a
+        [floating](https://www.w3.org/International/wiki/FloatingTime)
+        date-time. As such, no UTC offset should be sent when creating or
+        editing a TimeEntry.
+
+
+        <!-- theme: warning -->
+
+        > #### Max duration
+
+        > A TimeEntry cannot have a duration longer than 24h00 (ie one full
+        day). 
 
 
         Some examples :
@@ -1643,11 +1082,7 @@ components:
         Therefore, TimeEntries in activities mode have a supplementary property:
         the set of task / project / cost center / ... the user worked on. These
         analytical items are called AxisSections. [More info
-        here](reference/Timmi-Timesheet-v3.yaml/components/schemas/AxisSection).
-
-
-        The TimeEntry is NOT determined by the `axisSection[]` it is associated
-        with as a user can change the `axisSection[]`.
+        here](docs/General/Resources/010.AxisSection.md).
 
 
 
@@ -1705,95 +1140,8 @@ components:
         left `null`.
 
 
-        ## Validation rules
-
-
-        #### Locked timeentries after timesheet submission
-
-        A TimeEntry cannot be modified if its `startsAt` date belongs to an
-        already submitted or approved timesheet.
-
-
-        #### StartsAt and timezones
-
-        The `startsAt` date-time property must be considered a
-        [floating](https://www.w3.org/International/wiki/FloatingTime)
-        date-time. As such, no UTC offset should be sent when creating or
-        editing a TimeEntry.
-
-
-        #### Max duration
-
-        A TimeEntry cannot have a duration longer than 24h00 (ie one full day). 
-
-
-        #### Cut at midnight
-
-        A TimeEntry cannot overlap 2 different days (example `startsAt =
-        18:00:00` and `duration = 10:00:00`). It should be two distinct
-        TimeEntries cut at `00:00:00`.
-
-
-        #### Mandatory axisSection on activity timesheets
-
-        A TimeEntry must have axisSection if the corresponding timesheet is in
-        activity mode, and vice-versa.
-
-
-        #### Inactive axisSection
-
-        A TimeEntry cannot be modified if one of its axisSection is no longer
-        active (`active=false`).
-
-
-        #### Incompatible axisSections
-
-        A TimeEntry cannot have nested axisSections that does not meet a correct
-        parent-child tree structure.
-
-
         ## Fields
-      examples:
-        - id: 552586
-          ownerId: 90
-          owner:
-            id: 90
-            name: Hélène Girard
-            url: https://demotimmi7.ilucca-test.net/api/v3/timesheetusers/90
-          unit: 2
-          startsAt: '2024-04-22T09:30:00'
-          duration: '03:45:00'
-          endsAt: '2024-04-22T13:15:00'
-          authorId: 90
-          createdAt: '2024-07-04T11:59:51.09'
-          modifierId: 90
-          modifiedAt: '2024-07-04T17:00:54.4'
-          archivedAt: null
-          creationSource: 2
-          layer: 0
-          axisSections:
-            - id: 41
-              name: Conception
-              url: https://demotimmi7.ilucca-test.net/api/v3/axissections/41
-            - id: 127
-              name: Animal Logic
-              url: https://demotimmi7.ilucca-test.net/api/v3/axissections/127
-            - id: 346
-              name: 'Projet Rose  : KPI - tableau de bord'
-              url: https://demotimmi7.ilucca-test.net/api/v3/axissections/346
-            - id: 347
-              name: Art Direction
-              url: https://demotimmi7.ilucca-test.net/api/v3/axissections/347
-          comment:
-            id: 59
-            name: This is a comment
-            url: https://demotimmi7.ilucca-test.net/api/v3/timeentrycomments/59
-          timeTypeId: null
-          timesheetId: 10967
-          timesheet:
-            id: 10967
-            name: 90 - avril 2024 - Submitted
-            url: https://demotimmi7.ilucca-test.net/api/v3/timmitimesheets/10967
+      examples: []
       x-tags:
         - TimeEntries
       properties:
@@ -1802,28 +1150,6 @@ components:
           minimum: 1
           description: Unique identifier for this object.
           readOnly: true
-        ownerId:
-          type: integer
-          minimum: 1
-          description: Reference to the TimeEntry owner.
-          example: 199
-        owner:
-          $ref: '#/components/schemas/TimesheetUser'
-          x-stoplight:
-            id: 6l3wqgzsn60jr
-          description: The owner of this TimeEntry.
-        unit:
-          type: integer
-          enum:
-            - 0
-            - 1
-            - 2
-          example: 2
-          description: |-
-            Unit in which the TimeEntry has been entered. 
-            - 0: Days (eg "1/2 day")
-            - 1: Hours (eg "8h15min")
-            - 2: Time (eg "23:45:00") 
         startsAt:
           type: string
           format: date-time
@@ -1834,53 +1160,34 @@ components:
         duration:
           type: string
           format: timespan
+          description: 'Format: d.hh:mm:ss. Max: "1.00:00:00" (ie 24 hours).'
           default: '00:00:00'
           example: '03:45:00'
-          description: "Duration of the TimeEntry in the\_\"c\" format of a C# timespan In other words : d.hh:mm:ss.\nMax: \"1.00:00:00\" (ie 24 hours)."
+        unit:
+          type: integer
+          enum:
+            - 0
+            - 1
+            - 2
+          description: >-
+            0: Days (eg "1/2 day"). 1: Hours (eg "8h15min"). 2: Time (eg
+            "23:45:00").
+          example: 0
         endsAt:
           type: string
           format: date-time
-          description: Automatically set as startsAs + duration when editing a timeentry.
-          example: '2022-01-01T11:45:00'
           readOnly: true
+        ownerId:
+          type: integer
+          minimum: 1
+          description: The user's unique identifier.
         authorId:
           type: integer
           description: Identifier of the user who initially created this TimeEntry.
-          example: 199
           readOnly: true
         createdAt:
           type: string
           format: date-time
-          description: >-
-            Date and time when TimeEntry was first created. (Central European
-            Time)
-          example: '2022-01-01T18:35:10'
-          readOnly: true
-        modifierId:
-          type: integer
-          description: The unique identifier of the user who last updated the TimeEntry.
-          readOnly: true
-        modifiedAt:
-          type: string
-          description: >-
-            Date and time when TimeEntry was last modified. (Central European
-            Time). The TimeEntry is modified by any change made to the
-            TimeEntry, including when corresponding timesheet is sent for
-            approbation (status=1) and when the timesheet is completely approved
-            (status=2).
-          format: date-time
-          example: '2022-01-01T18:42:14'
-          readOnly: true
-        archivedAt:
-          type: string
-          x-stoplight:
-            id: cj0thwch4hyrm
-          description: >-
-            Date and time when TimeEntry was deleted (Central European Time).
-            When null, implies that the TimeEntry still has not been deleted
-            (and maybe never will).
-          format: date-time
-          example: '2022-01-01T18:41:12'
           readOnly: true
         creationSource:
           type: integer
@@ -1889,86 +1196,57 @@ components:
             - 1
             - 2
             - 3
-          description: >-
-            Attribute used to identify last modification source :
-
-            - 0: Automatic fallback on theoretical TimeEntries from workcycles.
-
-            - 1: Entered with Timmi Timesheet quick-fill tools.
-
-            - 2: Manually created or edited (default).
-
-            - 3: Imported from external sources. Can be read-only for the user
-            depending on Timesheet configuration.
-
-            - 4: Entered with Timmi Timesheet clock-in clock-out tool. 
+          description: |-
+            0: Fallback on theoretical TimeEntries.
+            1: Application of bookmarked week.
+            2: Manual creation.
+            3: Import
           default: 2
+        modifierId:
+          type: integer
+          description: The unique identifier of the user who last updated the TimeEntry.
+          readOnly: true
+        modifiedAt:
+          type: integer
+          description: Date and time when TimeEntry was last modified.
+          readOnly: true
         layer:
           type: integer
-          description: >-
-            Used to store the original workcycle at the time of TimeEntry
-            modification. In 99.999% of use cases, you will want the 0 : Actual
-            TimeEntry.
-
-            - 0: Actual TimeEntry.
-
-            - 1: Theoretical workcycle.
+          description: |-
+            0: Actual.
+            1: Theoretical
           readOnly: true
         axisSections:
-          type:
-            - array
-            - 'null'
+          type: array
           description: >-
-            Represent the activities that TimeEntry should be associated with.
             When not in activity mode, send an empty array, or do not serialize
             this property.
           items:
             $ref: '#/components/schemas/AxisSection'
-            x-stoplight:
-              id: nltwte5hhnp7y
         comment:
           type:
             - 'null'
             - object
-          description: >-
-            A comment to add additional information about the given TimeEntry.
-            It will be visible on Timmi Timesheet user interface.
+          description: Only used on activities (TimeEntries w/ AxisSections).
           properties:
             content:
               type: string
-              description: Comment content
             authorId:
               type: integer
-              description: Identifier of the user who initially created this comment
               readOnly: true
             createdAt:
               type: string
               format: date-time
-              description: >-
-                Date and time when the comment was first created. (Central
-                European Time)
               readOnly: true
         timeTypeId:
           type:
             - integer
             - 'null'
-          description: >-
-            Optional reference of a configured Time Type. To use only if the
-            timesheet is set up to use Time Types. Null otherwise.
-        timesheetId:
-          type: integer
-          x-stoplight:
-            id: hqs9472rr2g5a
-          description: >-
-            The reference to the timeshet this timeentry is associated with when
-            the timesheet is at least sent for approval. Is null if the
-            timesheet is still pending submission.
-          readOnly: true
       required:
-        - ownerId
-        - unit
         - startsAt
         - duration
+        - unit
+        - ownerId
     Timesheet:
       title: The Timesheet resource
       type: object
@@ -1998,8 +1276,8 @@ components:
 
         - is created upon submission ;
 
-        - is "pending approval" or "submitted" (`status: 1`) as long as all
-        approvers have not approved it ;
+        - is "pending approval" (`status: 1`) as long as all approvers have not
+        approved it ;
 
         - is "approved" (`status: 2`) once all approvers have approved it ;
 
@@ -2012,116 +1290,10 @@ components:
         workflow starts again.
 
 
-        Timesheets are created and their status are set to `submitted`. In some
-        cases, timesheets may then be automatically `approved`, depending on the
-        approval workflow settings.
-
-
-        Once submitted, all timeentries on the period for that user can no
-        longer be modified. In order to be able to modify them, the timesheet
-        must first be rejected through `cancel`, `deny` or `invalidate`
-        operations (depends on the current timesheet status).
-
-
-        ## Available guide
-
-
-        Please see [this
-        guide](../docs/Use-cases/Timmi%20Timesheet/Mass-submit-timesheets.md) on
-        how to submit timesheets the right way.
-
-
         ## Fields
-      x-tags:
-        - Timesheets
-      examples:
-        - id: 10959
-          name: 45 - avril 2024 - Approved
-          ownerId: 45
-          owner:
-            id: 45
-            name: Noël Flantier
-            url: https://demotimmi7.ilucca-test.net/api/v3/timesheetusers/45
-          startsOn: '2024-04-29T00:00:00'
-          endsOn: '2024-05-06T00:00:00'
-          statuteId: 4
-          expectedNextActorId: null
-          expectedNextActor: null
-          status: 2
-          timeEntries:
-            - id: 551915
-              name: ''
-              url: https://demotimmi7.ilucca-test.net/api/v3/timeentries/551915
-            - id: 551916
-              name: ''
-              url: https://demotimmi7.ilucca-test.net/api/v3/timeentries/551916
-            - id: 551917
-              name: ''
-              url: https://demotimmi7.ilucca-test.net/api/v3/timeentries/551917
-            - id: 551918
-              name: ''
-              url: https://demotimmi7.ilucca-test.net/api/v3/timeentries/551918
-            - id: 551919
-              name: ''
-              url: https://demotimmi7.ilucca-test.net/api/v3/timeentries/551919
-            - id: 551920
-              name: ''
-              url: https://demotimmi7.ilucca-test.net/api/v3/timeentries/551920
-            - id: 551921
-              name: ''
-              url: https://demotimmi7.ilucca-test.net/api/v3/timeentries/551921
-            - id: 551922
-              name: ''
-              url: https://demotimmi7.ilucca-test.net/api/v3/timeentries/551922
       properties:
         id:
-          type: integer
-          description: Uniquer identifier of the timesheet.
-          readOnly: true
-        name:
           type: string
-          x-stoplight:
-            id: bh0o8b9c7gcab
-          description: Human-readable description of the Timesheet
-          example: 45 - January 2016 - Approved
-          readOnly: true
-        ownerId:
-          type: integer
-          minimum: 1
-          description: Reference to the Timesheet owner.
-          readOnly: true
-        owner:
-          allOf:
-            - $ref: '#/components/schemas/TimesheetUser'
-            - type: object
-              properties:
-                manager:
-                  $ref: '#/components/schemas/TimesheetUser'
-        startsOn:
-          type: string
-          format: date
-          description: The Timesheet starting date (included).
-          readOnly: true
-        endsOn:
-          type: string
-          description: The Timesheet ending date (excluded).
-          format: date
-          readOnly: true
-        expectedNextActorId:
-          type: integer
-          x-stoplight:
-            id: 82bs4d7vj1hgw
-          description: >-
-            Reference to the TimesheetUser responsible for the next approval
-            workflow step. Is null if status <> 1
-          readOnly: true
-        expectedNextActor:
-          $ref: '#/components/schemas/TimesheetUser'
-          x-stoplight:
-            id: 82bs4d7vj1hgw
-          description: >-
-            Reference to the TimesheetUser responsible for the next approval
-            workflow step. Is null if status <> 1
         status:
           type: integer
           enum:
@@ -2130,8 +1302,6 @@ components:
             - 2
             - 3
           description: >
-            Approval workflow status for this timesheet
-
             - 0: the timesheet is yet to be submitted
 
             - 1: the timesheet has been submitted and approval is still pending
@@ -2140,19 +1310,30 @@ components:
 
             - 3: the timesheet has been rejected (cancelled after submission,
             denied upon approval or invalidated after having been approved)
-          readOnly: true
+        startsOn:
+          type: string
+          format: date
+        endsOn:
+          type: string
+        ownerId:
+          type: integer
+          minimum: 1
+        owner:
+          allOf:
+            - $ref: '#/components/schemas/TimesheetUser'
+            - type: object
+              properties:
+                manager:
+                  $ref: '#/components/schemas/TimesheetUser'
         statuteId:
           type: integer
-          description: Reference to the applicable "statute" (configuration).
-          readOnly: true
+          description: Identifier of the applicable "statute" (configuration).
+      x-tags:
+        - Timesheets
     Report:
       title: The Report resource
       type: object
       description: >-
-        A report is generated from an existing report-template, referenced by
-        its unique identifier `templateId`.
-
-
         ## Status
 
 
@@ -2181,40 +1362,28 @@ components:
 
 
         ## Fields
-      x-tags:
-        - Reports
       properties:
         id:
           type: integer
-          description: Unique identifier of the report generated
           readOnly: true
-        templateId:
-          type: string
-          description: Reference to a ReportTemplate to generate a report from.
         status:
           type: string
           enum:
             - pending
             - done
             - error
-          description: Status of a generated report.
           readOnly: true
         name:
           type: string
-          description: Name given to the generated report.
           readOnly: true
+        templateId:
+          type: string
         startsOn:
           type: string
           format: date
-          description: >-
-            Starting date of the generated report. Default dates of the
-            report-template are applied if left null.
         endsOn:
           type: string
           format: date
-          description: >-
-            Ending date of the generated report. Default of the report-template
-            are applied if left null.
         filters:
           type:
             - array
@@ -2252,8 +1421,10 @@ components:
           readOnly: true
       required:
         - templateId
+      x-tags:
+        - Reports
     AxisSection:
-      title: The AxisSection resource
+      title: The Axis Section resource
       type: object
       properties:
         id:
@@ -2304,6 +1475,25 @@ components:
       description: >-
         You can [read more about this resource
         here](reference/Organization-v3.yaml/components/schemas/AxisSection).
+    Transfer:
+      title: Transfer
+      x-stoplight:
+        id: 8ubrw13wqq6dy
+      type: object
+      properties:
+        transferAuthorizationId:
+          type: integer
+          minimum: 1
+          description: Unique identifier of the associated transfer authorization.
+        amount:
+          type: string
+          format: timespan
+          description: 'Format: d.hh:mm:ss. Max: "1.00:00:00" (ie 24 hours).'
+          default: '00:00:00'
+          example: '03:45:00'
+        comment:
+          type: string
+      description: Transfer defines a change in pay's element distribution
     TimesheetUser:
       title: Timesheet User
       x-stoplight:
@@ -2329,31 +1519,6 @@ components:
           description: >-
             Unique identifier of the legal establishment this user currently has
             a work contract with.
-      description: A Timesheet limited model of a user
-    Transfer:
-      title: Transfer
-      x-stoplight:
-        id: 2v2zjb02xdgm2
-      type: object
-      description: Transfer defines a change in pay's element distribution
-      properties:
-        transferAuthorizationId:
-          type: integer
-          x-stoplight:
-            id: pcm10smh3hzqd
-          description: Unique identifier of the associated transfer authorization.
-        amount:
-          type: string
-          x-stoplight:
-            id: tabyjeutfdh4j
-          description: 'Format: d.hh:mm:ss. Max: "1.00:00:00" (ie 24 hours).'
-          format: timespan
-          default: '00:00:00'
-          example: '03:45:00'
-        comment:
-          type: string
-          x-stoplight:
-            id: 0xvfaanqkzlyp
   responses:
     ResponseProblem:
       description: Problem
@@ -2411,7 +1576,7 @@ components:
       required: true
       schema:
         type: string
-        example: 2000,500
+        example: 100,0
       description: '{offset},{limit}. Defaults to 0,1000.'
   securitySchemes:
     Authorization:

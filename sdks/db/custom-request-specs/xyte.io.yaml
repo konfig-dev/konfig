@@ -375,12 +375,9 @@ paths:
                     Details of the device. Will be visible in a different tab on
                     the device's view calls 'Details'.
                   properties: {}
-                sub_model:
-                  type: string
-                  default: Device's sub module
       responses:
-        '202':
-          description: '202'
+        '200':
+          description: '200'
           content:
             application/json:
               examples:
@@ -668,55 +665,6 @@ paths:
                   error:
                     type: string
                     example: Not authorized
-      deprecated: false
-    delete:
-      summary: Delete Device
-      description: ''
-      operationId: delete-device
-      parameters:
-        - name: deviceId
-          in: path
-          description: Unique Device ID
-          schema:
-            type: string
-          required: true
-      responses:
-        '200':
-          description: '200'
-          content:
-            application/json:
-              examples:
-                '- Success':
-                  value: ''
-        '401':
-          description: '401'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: |-
-                    {
-                        "error": "Not authorized"
-                    }
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    example: Not authorized
-        '404':
-          description: '404'
-          content:
-            application/json:
-              examples:
-                '- Error in data':
-                  value: "{\n\t\"error\": \"Incident not found\"\n}"
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    example: Incident not found
       deprecated: false
   /v1/devices/{deviceId}/cloud_settings:
     put:
@@ -1645,22 +1593,6 @@ paths:
                   error:
                     type: string
                     example: Not authorized
-        '403':
-          description: '403'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: |-
-                    {
-                      "error": "Only allowed to set: inuse/removed/error"
-                    }
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    example: 'Only allowed to set: inuse/removed/error'
         '404':
           description: '404'
           content:
@@ -1713,39 +1645,42 @@ paths:
               examples:
                 '- Pending licenses':
                   value: |-
+                    [
                     {
-                        "data": "device specific license info...",
-                        "signature": "53de0d68-8c19-4dbf-911a-d6e2d24f733d",
-                        "id": "bc3ee841-73c5-460c-aa8a-12adcf5e699a",
-                        "action": "add",
-                        "expires_at": "2122-12-19T09:40:43Z",
-                        "current_time": "2024-05-28T07:44:57Z"
-                    }
+                            "data": "device specific license info...",
+                            "signature": "RSA signature...",
+                            "id": "ec101553-050c...",
+                            "add": true
+                        },
+                        {
+                            "data": "device specific license info...",
+                            "signature": "RSA signature...",
+                            "id": "cf00c764-b37a...",
+                            "remove": true
+                        }
+                      ]
                 '- No license changes required':
                   value: '[]'
               schema:
                 oneOf:
                   - title: '- Pending licenses'
-                    type: object
-                    properties:
-                      data:
-                        type: string
-                        example: device specific license info...
-                      signature:
-                        type: string
-                        example: 53de0d68-8c19-4dbf-911a-d6e2d24f733d
-                      id:
-                        type: string
-                        example: bc3ee841-73c5-460c-aa8a-12adcf5e699a
-                      action:
-                        type: string
-                        example: add
-                      expires_at:
-                        type: string
-                        example: '2122-12-19T09:40:43Z'
-                      current_time:
-                        type: string
-                        example: '2024-05-28T07:44:57Z'
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        data:
+                          type: string
+                          example: device specific license info...
+                        signature:
+                          type: string
+                          example: RSA signature...
+                        id:
+                          type: string
+                          example: ec101553-050c...
+                        add:
+                          type: boolean
+                          example: true
+                          default: true
                   - title: '- No license changes required'
                     type: array
         '401':
@@ -1959,101 +1894,6 @@ paths:
                     type: string
                     example: File not found
       deprecated: false
-  /v1/devices/{deviceId}/events:
-    post:
-      summary: Add Event
-      description: ''
-      operationId: add-event
-      parameters:
-        - name: deviceId
-          in: path
-          schema:
-            type: string
-          required: true
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              required:
-                - name
-                - category
-              properties:
-                name:
-                  type: string
-                category:
-                  type: string
-                int_key_1:
-                  type: integer
-                  format: int32
-                int_key_2:
-                  type: integer
-                  format: int32
-                string_key_1:
-                  type: string
-                string_key_2:
-                  type: string
-                timestamp:
-                  type: string
-                  default: Current time
-                  format: date
-            examples:
-              Request Example:
-                value:
-                  issue: cover_open
-                  priority: 1
-                  title: Device cover is open
-                  description: >-
-                    The top guard cover is open and will prevent any device
-                    operation until closed.
-      responses:
-        '200':
-          description: '200'
-          content:
-            application/json:
-              examples:
-                Success:
-                  value: |-
-                    {
-                      "status":true
-                    }
-              schema:
-                type: object
-                properties:
-                  status:
-                    type: boolean
-                    example: true
-                    default: true
-        '401':
-          description: '401'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: |-
-                    {
-                        "error": "Not authorized"
-                    }
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    example: Not authorized
-        '422':
-          description: '422'
-          content:
-            application/json:
-              examples:
-                Error in data:
-                  value: "{\n\t\"error\": \"Name can't be blank\"\n}"
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    example: Name can't be blank
-      deprecated: false
   /v1/devices/{deviceId}/incidents:
     post:
       summary: Open Incident
@@ -2148,62 +1988,6 @@ paths:
                   error:
                     type: string
                     example: Priority must be between 1 and 5
-      deprecated: false
-    delete:
-      summary: Close Incidents
-      description: ''
-      operationId: close-incidents
-      parameters:
-        - name: deviceId
-          in: path
-          description: Unique Device ID
-          schema:
-            type: string
-          required: true
-      responses:
-        '200':
-          description: '200'
-          content:
-            application/json:
-              examples:
-                '- Success':
-                  value: "{\n\t\"success\": true\n}"
-              schema:
-                type: object
-                properties:
-                  success:
-                    type: boolean
-                    example: true
-                    default: true
-        '401':
-          description: '401'
-          content:
-            application/json:
-              examples:
-                Result:
-                  value: |-
-                    {
-                        "error": "Not authorized"
-                    }
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    example: Not authorized
-        '404':
-          description: '404'
-          content:
-            application/json:
-              examples:
-                '- Error in data':
-                  value: "{\n\t\"error\": \"Incident not found\"\n}"
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    example: Incident not found
       deprecated: false
     get:
       summary: Get Incidents

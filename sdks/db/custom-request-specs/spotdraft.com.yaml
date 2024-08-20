@@ -1303,10 +1303,8 @@ paths:
   /v2.1/public/auth/roles/:
     get:
       operationId: v2.1_public_auth_roles_list
-      summary: Get Active Roles
-      description: >-
-        Returns the Roles that exist for the workspace whose credentials are
-        used.
+      summary: Get active roles for a workspace
+      description: ''
       responses:
         '200':
           description: Success
@@ -1314,30 +1312,18 @@ paths:
             application/json:
               schema:
                 title: ExternalUserActiveRolesResponseList
-                description: External model containing list of active roles.
+                description: |-
+                  Pydantic Model that takes in the list if active
+                  roles pydantic response
                 required:
                   - active_roles
                 type: object
                 properties:
                   active_roles:
                     title: Active Roles
-                    description: The list of roles active in the current workspace.
                     type: array
                     items:
                       $ref: '#/components/schemas/ExternalUserActiveRolesData'
-              examples:
-                response:
-                  value:
-                    active_roles:
-                      - id: 1
-                        name: Legal Team
-                        description: The in-house legal team responsible for TPP Reviews.
-                      - id: 2
-                        name: NA Sales
-                        description: The North America Sales Team
-                      - id: 3
-                        name: APAC Sales
-                        description: The Asia Pacific Sales Team (ex Japan)
       tags:
         - V2.1 User APIs
     parameters: []
@@ -1365,17 +1351,10 @@ paths:
             application/json:
               schema:
                 title: PublicRoleMemberAddResponse
-                description: A list of the members who were added to the role.
+                description: The updated members of the role.
                 type: array
                 items:
                   $ref: '#/components/schemas/PublicMinimalUserResponse'
-              examples:
-                response:
-                  value:
-                    - id: 6545
-                      email: barack@obama.com
-                      name: Barack Obama
-                      designation: President
       tags:
         - V2.1 User APIs
     delete:
@@ -1494,15 +1473,10 @@ paths:
   /v2.1/public/clickwrap/{clickwrap_public_id}/consent_status/:
     post:
       operationId: v2.1_public_clickwrap_consent_status_create
-      summary: Get Consent Status
-      description: >
-
-        Used to know if a particular user has given consent to a specific
-        clickwrap.
-
+      summary: Get consent status
+      description: |
 
         Returns one of the following values as consent status for the user.
-
         <table>
             <thead>
             <tr>
@@ -1918,7 +1892,7 @@ paths:
   /v2.1/public/contracts/approvals/{contract_id}/:
     get:
       operationId: v2.1_public_contracts_approvals_read
-      summary: Get Contract Approvals
+      summary: Get contract approvals
       description: ''
       parameters:
         - name: contract_id
@@ -1948,10 +1922,10 @@ paths:
                       $ref: >-
                         #/components/schemas/PublicContractApprovalExpandedResponse
       tags:
-        - V2.1 Contract Approval APIs
+        - V2.1 Contract APIs
     post:
       operationId: v2.1_public_contracts_approvals_create
-      summary: Create and Send adhoc Approvals
+      summary: Create and send adhoc approvals
       description: ''
       parameters:
         - name: contract_id
@@ -1995,7 +1969,7 @@ paths:
                       notes: Hi team need your approval on this contract.
                       order: 2
       tags:
-        - V2.1 Contract Approval APIs
+        - V2.1 Contract APIs
     parameters:
       - name: contract_id
         in: path
@@ -2362,17 +2336,9 @@ paths:
     post:
       operationId: v2.1_public_contracts_upload_review_contracts_create
       summary: Upload Contract For Review
-      description: >
+      description: >2
 
-        This API can be used to create a new Third-Party Paper (TPP) contract
-        for review.
-
-        Use this API when you want to upload a new contract and send it for
-        review.
-
-
-        It accepts intake form data.
-
+                        This method takes in intake_form_data to be used for contract creation.
 
         The Intake Form Data should have the following data types with the
         following output:
@@ -2549,17 +2515,9 @@ paths:
     post:
       operationId: v2.1_public_contracts_upload_sign_contracts_create
       summary: Upload Contract For Signature
-      description: >
+      description: >2
 
-        This API can be used to create a new Third-Party Paper (TPP) contract
-        for signing.
-
-        Use this API when you want to upload a new contract and send it for
-        signing.
-
-
-        It accepts intake form data.
-
+                        This method takes in intake_form_data to be used for contract creation.
 
         The Intake Form Data should have the following data types with the
         following output:
@@ -2879,7 +2837,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ContractKeyPointerMinimalResponse'
       tags:
-        - V2.1 Contract Key Pointer APIs
+        - V2.1 Contract APIs
     parameters:
       - name: composite_id
         in: path
@@ -2905,149 +2863,6 @@ paths:
           description: Successfully Marked for Execution
       tags:
         - V2.1 Contract APIs
-    parameters:
-      - name: composite_id
-        in: path
-        required: true
-        schema:
-          type: string
-  /v2.1/public/contracts/{composite_id}/recipients/:
-    get:
-      operationId: v2.1_public_contracts_recipients_list
-      summary: Get Contract Recipients
-      description: >-
-        A recipient is a person who can access the contract and perform an
-        action. A recipient can be one of these
-                3 types:<table>
-                <thead>
-                    <tr>
-                        <th>Type</td>
-                        <th>Action</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>APPROVER</td>
-                        <td>Approve the contract</td>
-                    <tr>
-                    <tr>
-                        <td>SIGNATORY</td>
-                        <td>Sign the contract</td>
-                    <tr>
-                    <tr>
-                        <td>RECEIVER</td>
-                        <td>Receive the contract</td>
-                    <tr>
-                </tbody>
-            </table>
-            Further, every action has a status associated with it. It can be one of these 3 types:<table>
-                <thead>
-                    <tr>
-                        <th>Action Status</td>
-                        <th>Description</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>COMPLETED</td>
-                        <td>User has successfully performed the action</td>
-                    <tr>
-                    <tr>
-                        <td>IN_PROGRESS</td>
-                        <td>User has been invited but is yet to perform the action</td>
-                    <tr>
-                    <tr>
-                        <td>PENDING</td>
-                        <td>User is yet to be invited to perform the action</td>
-                    <tr>
-                </tbody>
-            </table>
-            This API can be used to get list of all recipients for a contract.
-      parameters:
-        - name: composite_id
-          in: path
-          description: >-
-            ID of the Contract. Should be of the form T-123 or H-123. T stands
-            for Template contracts and H stands for Historical contracts.
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                title: PublicSignRecipientWithStatusListResponse
-                description: SD Base Model from which all other Models should inherit
-                required:
-                  - items
-                type: object
-                properties:
-                  items:
-                    title: Items
-                    description: List of all recipients with their details for the contract
-                    type: array
-                    items:
-                      $ref: >-
-                        #/components/schemas/PublicSignRecipientWithStatusResponse
-              examples:
-                response:
-                  value:
-                    items:
-                      - recipient:
-                          id: 143476
-                          recipient_type: APPROVER
-                          user:
-                            id: 25367
-                            name: Tyler
-                            designation: Senior Manager
-                            email: tyler@yahoo.com
-                          title: Senior Manager - Operations
-                          recipient_order: 1
-                          note: He is a Senior Manager heading operations team
-                          is_sent_for_signature: true
-                          created: '2024-05-24T05:45:34.478802Z'
-                          last_sent_for_signature_at: '2024-05-24T05:46:22.721800Z'
-                        recipient_action:
-                          is_success: true
-                          action_notes: Approving on behalf of tyler
-                          timestamp: '2024-05-24T05:47:31.594842Z'
-                        status: COMPLETED
-                      - recipient:
-                          id: 143776
-                          recipient_type: SIGNATORY
-                          user:
-                            id: 25567
-                            name: Mike Reed
-                            designation: Operations Head
-                            email: mike_reed@yahoo.com
-                          title: ''
-                          recipient_order: 2
-                          note: null
-                          is_sent_for_signature: true
-                          created: '2024-05-24T05:45:34.478802Z'
-                          last_sent_for_signature_at: '2024-05-25T05:46:22.721800Z'
-                        recipient_action: null
-                        status: IN_PROGRESS
-                      - recipient:
-                          id: 144776
-                          recipient_type: RECEIVER
-                          user:
-                            id: 25367
-                            name: Alice
-                            designation: null
-                            email: alice@yahoo.com
-                          title: ''
-                          recipient_order: 3
-                          note: null
-                          is_sent_for_signature: false
-                          created: '2024-05-24T05:45:34.478802Z'
-                          last_sent_for_signature_at: null
-                        recipient_action: null
-                        status: IN_PROGRESS
-      tags:
-        - V2.1 Recipient APIs
     parameters:
       - name: composite_id
         in: path
@@ -3128,51 +2943,10 @@ paths:
         required: true
         schema:
           type: string
-  /v2.1/public/contracts/{composite_id}/status/void:
-    post:
-      operationId: v2.1_public_contracts_status_void_create
-      summary: Void contract
-      description: Void the contract for the requested contract id
-      parameters:
-        - name: composite_id
-          in: path
-          description: >-
-            ID of the Contract. Should be of the form T-123 or H-123. T stands
-            for Template contracts and H stands for Historical contracts.
-          required: true
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              title: body
-              required:
-                - note
-              type: object
-              properties:
-                note:
-                  type: string
-                  description: Reason for voiding the contract.
-                  example: One of the signatories has left the organization.
-        required: true
-      responses:
-        '204':
-          description: Successfully voided the contract.
-        '400':
-          description: Voiding failed. Cannot Void an Executed contract.
-      tags:
-        - V1 Contract APIs
-    parameters:
-      - name: composite_id
-        in: path
-        required: true
-        schema:
-          type: string
   /v2.1/public/contracts/{composite_id}/unmark_for_execution:
     post:
       operationId: v2.1_public_contracts_unmark_for_execution_create
-      summary: Unmark the Contract for Execution
+      summary: Unmarks the contract for execution
       description: >-
         Unmarks the contract for execution and voids the signature service
         resource (For eg. DocuSign's envelope if enabled).
@@ -3216,7 +2990,7 @@ paths:
   /v2.1/public/contracts/{contract_id}/comments/:
     get:
       operationId: v2.1_public_contracts_comments_list
-      summary: Get Comments in Contract Activity Log.
+      summary: Get comments in contract activity log.
       description: ''
       parameters:
         - name: page
@@ -3287,10 +3061,10 @@ paths:
                         comment: Hi team this contract need your review.
                         replies: []
       tags:
-        - V2.1 Contract Activity Log APIs
+        - V2.1 Contract APIs
     post:
       operationId: v2.1_public_contracts_comments_create
-      summary: Add Comment to Contract Activity Log.
+      summary: Add comment to contract activity log.
       description: ''
       parameters:
         - name: contract_id
@@ -3341,7 +3115,7 @@ paths:
                     comment: Hey test.user@spotdraft.com please review this contract.
                     replies: []
       tags:
-        - V2.1 Contract Activity Log APIs
+        - V2.1 Contract APIs
     parameters:
       - name: contract_id
         in: path
@@ -3663,19 +3437,21 @@ paths:
         content:
           application/json:
             schema:
-              title: body
+              title: PublicExternalMetadataCreateOrUpdateRequest
+              description: SD Base Model from which all other Models should inherit
               required:
                 - external_metadata
               type: object
               properties:
                 external_metadata:
-                  type: object
+                  title: External Metadata
                   description: Details of the external metadata associated with a contract
-                  example:
-                    id: external_record_id
-                    integration_name: HubSpot
-                    record_type: Account
-                    record_data: {}
+                  type: object
+              example:
+                id: external_record_id
+                integration_name: HubSpot
+                record_type: Account
+                record_data: {}
         required: true
       responses:
         '200':
@@ -3748,7 +3524,7 @@ paths:
                         name: Legal
                         description: Legal team
       tags:
-        - V2.1 Contract Invite APIs
+        - V2.1 Contract APIs
     parameters:
       - name: contract_id
         in: path
@@ -3781,7 +3557,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ContractKeyPointerMinimalResponse'
       tags:
-        - V2.1 Contract Key Pointer APIs
+        - V2.1 Contract APIs
     parameters:
       - name: contract_id
         in: path
@@ -3871,7 +3647,7 @@ paths:
                     format_option:
                       data: sample format option
       tags:
-        - V2.1 Contract Key Pointer APIs
+        - V2.1 Contract APIs
     parameters:
       - name: contract_id
         in: path
@@ -3926,7 +3702,7 @@ paths:
                     text: sample note for contract
                     note_tag: sample_tag
       tags:
-        - V2.1 Contract Notes APIs
+        - V2.1 Contract APIs
     parameters:
       - name: contract_id
         in: path
@@ -3993,7 +3769,7 @@ paths:
                     text: sample note for contract
                     note_tag: sample_tag
       tags:
-        - V2.1 Contract Notes APIs
+        - V2.1 Contract APIs
     parameters:
       - name: contract_id
         in: path
@@ -4114,7 +3890,7 @@ paths:
                       like signing, approval, etc.
                     type: string
       tags:
-        - V2.1 Recipient APIs
+        - V2.1 Contract APIs
     parameters:
       - name: contract_id
         in: path
@@ -4212,8 +3988,7 @@ paths:
       summary: Un-Invite a User or Role
       description: >-
         Un-Invite a specific user or roles to this contract who have been
-        invited. This does not change contract type based access, this will also
-        not remove read access given to sign recipients.
+        invited. This does not change contract type based access.
       parameters:
         - name: contract_id
           in: path
@@ -4245,7 +4020,7 @@ paths:
         '200':
           description: Success
       tags:
-        - V2.1 Contract Invite APIs
+        - V2.1 Contract APIs
     parameters:
       - name: contract_id
         in: path
@@ -4258,8 +4033,7 @@ paths:
       summary: Un-Invite all Users & Roles
       description: >-
         Un-Invite all the users and roles who have been invited to this
-        contract. This does not change contract type based access. this will
-        also not remove read access given to sign recipients.
+        contract. This does not change contract type based access.
       parameters:
         - name: contract_id
           in: path
@@ -4271,7 +4045,7 @@ paths:
         '200':
           description: Success
       tags:
-        - V2.1 Contract Invite APIs
+        - V2.1 Contract APIs
     parameters:
       - name: contract_id
         in: path
@@ -5739,143 +5513,11 @@ paths:
       tags:
         - V2.1 Tasks and Reminders APIs
     parameters: []
-  /v2.1/public/webhooks/:
-    post:
-      operationId: v2.1_public_webhooks_create
-      summary: Setup Webhook
-      description: >-
-        This API can be used to do setup inorder receive webhooks when certain
-        actions are taken by users on the
-                platform. Please go through [Webhooks](https://api.spotdraft.com) for more details.
-      requestBody:
-        content:
-          application/json:
-            schema:
-              title: PublicWebhookCreateRequest
-              description: SD Base Model from which all other Models should inherit
-              required:
-                - title
-                - only_for_activities
-                - url
-              type: object
-              properties:
-                title:
-                  title: Title
-                  description: The title of this webhook
-                  type: string
-                  minLength: 1
-                description:
-                  title: Description
-                  description: The description for the webhook
-                  type: string
-                custom_headers:
-                  title: Custom Headers
-                  description: >-
-                    Custom headers to be included in the webhook call. Should
-                    always start with X- but must not start with X-Google-,
-                    X-Goog-, X-GFE-, X-Amz-, X-MS-, X-DD-, X-Datadog-, X-B3-,
-                    X-SD- and X-SPOTDRAFT-.
-                  type: object
-                only_for_activities:
-                  description: Webhook activity types for which to trigger this webhook
-                  type: array
-                  items:
-                    $ref: '#/components/schemas/ContractWebhookActivityType'
-                url:
-                  title: Url
-                  description: The url to receive this event
-                  type: string
-                  minLength: 1
-              example:
-                title: Contract Created webhook
-                only_for_activities:
-                  - CONTRACT_CREATED
-                url: https://yourdomain.com/webhooks/event-handler
-                description: Created for contract create webhook
-                custom_headers:
-                  X-ABC-ACCESS-KEY: eb366057-5dc1-4c9f-adaa-4269536cd577
-                  'DEF-ACCESS-KEY ': '8gb366057-5dc1-4c4f-adaa-4269536cd577 '
-        required: true
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                title: PublicWebhookResponse
-                description: SD Base Model from which all other Models should inherit
-                required:
-                  - id
-                  - title
-                  - url
-                  - status
-                type: object
-                properties:
-                  id:
-                    title: Id
-                    description: Webhook ID
-                    type: integer
-                  title:
-                    title: Title
-                    description: The title of this webhook
-                    type: string
-                    minLength: 1
-                  only_for_activities:
-                    description: Webhook activity types for which to trigger this webhook
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/ContractWebhookActivityType'
-                  url:
-                    title: Url
-                    description: The url to receive this event
-                    type: string
-                  created_by_user:
-                    title: Created By User
-                    description: Basic details of the user who created the webhook
-                    type: object
-                    allOf:
-                      - $ref: '#/components/schemas/PublicMinimalUserResponse'
-                  description:
-                    title: Description
-                    description: The description for the webhook
-                    type: string
-                  custom_headers:
-                    title: Custom Headers
-                    description: Custom headers to be included in the webhook call
-                    type: object
-                  status:
-                    description: The status of the webhook
-                    type: object
-                    allOf:
-                      - $ref: '#/components/schemas/ContractActivityWebhookStatus'
-              examples:
-                response:
-                  value:
-                    id: 511
-                    title: Contract Created webhook
-                    only_for_activities:
-                      - CONTRACT_CREATED
-                    url: https://yourdomain.com/webhooks/event-handler
-                    created_by_user:
-                      id: 17258
-                      name: Mike Reed
-                      email: mike_reed@yahoo.com
-                      designation: Senior Marketing Manager
-                    description: Created for contract create webhook
-                    custom_headers:
-                      X-ABC-ACCESS-KEY: eb366057-5dc1-4c9f-adaa-4269536cd577
-                      DEF-ACCESS-KEY: 8gb366057-5dc1-4c4f-adaa-4269536cd577
-                    status: ACTIVE
-      tags:
-        - V2.1 Webhook APIs
-    parameters: []
   /v2/public/auth/roles/:
     get:
       operationId: v2_public_auth_roles_list
-      summary: Get Active Roles
-      description: >-
-        Returns the Roles that exist for the workspace whose credentials are
-        used.
+      summary: Get active roles for a workspace
+      description: Get list of active roles for Client's Workspace
       responses:
         '200':
           description: Success
@@ -5883,30 +5525,18 @@ paths:
             application/json:
               schema:
                 title: ExternalUserActiveRolesResponseList
-                description: External model containing list of active roles.
+                description: |-
+                  Pydantic Model that takes in the list if active
+                  roles pydantic response
                 required:
                   - active_roles
                 type: object
                 properties:
                   active_roles:
                     title: Active Roles
-                    description: The list of roles active in the current workspace.
                     type: array
                     items:
                       $ref: '#/components/schemas/ExternalUserActiveRolesData'
-              examples:
-                response:
-                  value:
-                    active_roles:
-                      - id: 1
-                        name: Legal Team
-                        description: The in-house legal team responsible for TPP Reviews.
-                      - id: 2
-                        name: NA Sales
-                        description: The North America Sales Team
-                      - id: 3
-                        name: APAC Sales
-                        description: The Asia Pacific Sales Team (ex Japan)
       tags:
         - V2 User APIs
     parameters: []
@@ -5934,17 +5564,10 @@ paths:
             application/json:
               schema:
                 title: PublicRoleMemberAddResponse
-                description: A list of the members who were added to the role.
+                description: The updated members of the role.
                 type: array
                 items:
                   $ref: '#/components/schemas/PublicMinimalUserResponse'
-              examples:
-                response:
-                  value:
-                    - id: 6545
-                      email: barack@obama.com
-                      name: Barack Obama
-                      designation: President
       tags:
         - V2 User APIs
     delete:
@@ -6396,7 +6019,7 @@ paths:
   /v2/public/contracts/approvals/{contract_id}/:
     get:
       operationId: v2_public_contracts_approvals_read
-      summary: Get Contract Approvals
+      summary: Get contract approvals
       description: ''
       parameters:
         - name: contract_id
@@ -6426,10 +6049,10 @@ paths:
                       $ref: >-
                         #/components/schemas/PublicContractApprovalExpandedResponse
       tags:
-        - V2 Contract Approval APIs
+        - V2 Contract APIs
     post:
       operationId: v2_public_contracts_approvals_create
-      summary: Create and Send adhoc Approvals
+      summary: Create and send adhoc approvals
       description: ''
       parameters:
         - name: contract_id
@@ -6473,7 +6096,7 @@ paths:
                       notes: Hi team need your approval on this contract.
                       order: 2
       tags:
-        - V2 Contract Approval APIs
+        - V2 Contract APIs
     parameters:
       - name: contract_id
         in: path
@@ -6685,17 +6308,9 @@ paths:
     post:
       operationId: v2_public_contracts_upload_review_contracts_create
       summary: Upload Contract For Review
-      description: >
+      description: >2
 
-        This API can be used to create a new Third-Party Paper (TPP) contract
-        for review.
-
-        Use this API when you want to upload a new contract and send it for
-        review.
-
-
-        It accepts intake form data.
-
+                        This method takes in intake_form_data to be used for contract creation.
 
         The Intake Form Data should have the following data types with the
         following output:
@@ -6872,17 +6487,9 @@ paths:
     post:
       operationId: v2_public_contracts_upload_sign_contracts_create
       summary: Upload Contract For Signature
-      description: >
+      description: >2
 
-        This API can be used to create a new Third-Party Paper (TPP) contract
-        for signing.
-
-        Use this API when you want to upload a new contract and send it for
-        signing.
-
-
-        It accepts intake form data.
-
+                        This method takes in intake_form_data to be used for contract creation.
 
         The Intake Form Data should have the following data types with the
         following output:
@@ -7183,7 +6790,7 @@ paths:
   /v2/public/contracts/{contract_id}/comments/:
     get:
       operationId: v2_public_contracts_comments_list
-      summary: Get Comments in Contract Activity Log.
+      summary: Get comments in contract activity log.
       description: ''
       parameters:
         - name: page
@@ -7254,10 +6861,10 @@ paths:
                         comment: Hi team this contract need your review.
                         replies: []
       tags:
-        - V2 Contract Activity Log APIs
+        - V2 Contract APIs
     post:
       operationId: v2_public_contracts_comments_create
-      summary: Add Comment to Contract Activity Log.
+      summary: Add comment to contract activity log.
       description: ''
       parameters:
         - name: contract_id
@@ -7308,7 +6915,7 @@ paths:
                     comment: Hey test.user@spotdraft.com please review this contract.
                     replies: []
       tags:
-        - V2 Contract Activity Log APIs
+        - V2 Contract APIs
     parameters:
       - name: contract_id
         in: path
@@ -7557,7 +7164,7 @@ paths:
                         name: Legal
                         description: Legal team
       tags:
-        - V2 Contract Invite APIs
+        - V2 Contract APIs
     parameters:
       - name: contract_id
         in: path
@@ -7590,7 +7197,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/ContractKeyPointerMinimalResponse'
       tags:
-        - V2 Contract Key Pointer APIs
+        - V2 Contract APIs
     parameters:
       - name: contract_id
         in: path
@@ -7680,7 +7287,7 @@ paths:
                     format_option:
                       data: sample format option
       tags:
-        - V2 Contract Key Pointer APIs
+        - V2 Contract APIs
     parameters:
       - name: contract_id
         in: path
@@ -7735,7 +7342,7 @@ paths:
                     text: sample note for contract
                     note_tag: sample_tag
       tags:
-        - V2 Contract Notes APIs
+        - V2 Contract APIs
     parameters:
       - name: contract_id
         in: path
@@ -7802,7 +7409,7 @@ paths:
                     text: sample note for contract
                     note_tag: sample_tag
       tags:
-        - V2 Contract Notes APIs
+        - V2 Contract APIs
     parameters:
       - name: contract_id
         in: path
@@ -7923,7 +7530,7 @@ paths:
                       like signing, approval, etc.
                     type: string
       tags:
-        - V2 Recipient APIs
+        - V2 Contract APIs
     parameters:
       - name: contract_id
         in: path
@@ -9471,29 +9078,6 @@ components:
                   permission_name: CONTRACT.READ
                   note: Inviting Legal team with contract read access.
       required: true
-    v2.1_public_auth_roles_members_createData:
-      content:
-        application/json:
-          schema:
-            title: PublicRoleMembersAddRequest
-            description: SD Base Model from which all other Models should inherit
-            type: object
-            properties:
-              user_ids_to_add:
-                title: User Ids To Add
-                description: >-
-                  The user ids that are to be added to the role. The IDs are
-                  returned by the [Get User
-                  List](#operation/v2.1_public_auth_users_list) API.
-                type: array
-                items:
-                  type: integer
-                default: []
-            example:
-              user_ids_to_add:
-                - 4567
-                - 2345
-      required: true
     v2.1_public_user_tasks_createData:
       content:
         application/json:
@@ -9572,6 +9156,23 @@ components:
                 - Tag1
                 - Tag2
       required: true
+    v2.1_public_auth_roles_members_deleteData:
+      content:
+        application/json:
+          schema:
+            title: body
+            type: object
+            properties:
+              user_ids_to_remove:
+                name: user_ids_to_remove
+                in: body
+                description: The user ids that are to be removed from the role.
+                type: array
+                items:
+                  type: integer
+            required:
+              - user_ids_to_remove
+      required: true
     v2.1_public_organizations_entities_createData:
       content:
         application/json:
@@ -9636,29 +9237,6 @@ components:
                 line_one: 3659 Burwell Heights Road
                 country_iso_code: US
               is_primary: false
-      required: true
-    v2.1_public_auth_roles_members_deleteData:
-      content:
-        application/json:
-          schema:
-            title: PublicRoleMembersDeleteRequest
-            description: SD Base Model from which all other Models should inherit
-            type: object
-            properties:
-              user_ids_to_remove:
-                title: User Ids To Remove
-                description: >-
-                  The user ids that are to be removed from the role. The IDs are
-                  returned by the [Get User
-                  List](#operation/v2.1_public_auth_users_list) API.
-                type: array
-                items:
-                  type: integer
-                default: []
-            example:
-              user_ids_to_remove:
-                - 1453
-                - 2464
       required: true
     v2.1_public_contracts_upload_review_contracts_createData:
       content:
@@ -9827,47 +9405,6 @@ components:
             example:
               comment: Hey !!@12310!! please review this contract.
       required: true
-    v2.1_public_contracts_contract_version_createData:
-      content:
-        application/json:
-          schema:
-            title: PublicUploadContractVersionRequest
-            description: SD Base Model from which all other Models should inherit
-            required:
-              - document_name
-              - document_base_64
-            type: object
-            properties:
-              document_name:
-                title: Document Name
-                description: >-
-                  Name of the document along with file type extension that is
-                  being uploaded as a new contract version. Only PDF uploads are
-                  supported
-                type: string
-              document_base_64:
-                title: Document Base 64
-                description: The document content in bytes converted to a base64 string.
-                type: string
-              collect_approvals:
-                title: Collect Approvals
-                description: >-
-                  Boolean flag to collect/skip approvals if there are any
-                  pending/running approvals at the moment.
-                type: boolean
-                default: true
-              is_executed_version:
-                title: Is Executed Version
-                description: >-
-                  Boolean flag to ​​mark the uploaded version as the executed
-                  version
-                type: boolean
-                default: false
-            example:
-              document_name: OneNDA.pdf
-              document_base_64: OneNDA document content in bytes converted to base64 string.
-              collect_approvals: true
-      required: true
     v2.1_public_contracts_contract_data_partial_updateData:
       content:
         application/json:
@@ -9907,11 +9444,68 @@ components:
               file_name: Acme Related Document.pdf
               file_base64: base64 encoded string of the file content
       required: true
+    v2.1_public_contracts_contract_version_createData:
+      content:
+        application/json:
+          schema:
+            title: PublicUploadContractVersionRequest
+            description: SD Base Model from which all other Models should inherit
+            required:
+              - document_name
+              - document_base_64
+            type: object
+            properties:
+              document_name:
+                title: Document Name
+                description: >-
+                  Name of the document along with file type extension that is
+                  being uploaded as a new contract version.
+                type: string
+              document_base_64:
+                title: Document Base 64
+                description: The document content in bytes converted to a base64 string.
+                type: string
+              collect_approvals:
+                title: Collect Approvals
+                description: >-
+                  Boolean flag to collect/skip approvals if there are any
+                  pending/running approvals at the moment.
+                type: boolean
+                default: true
+              is_executed_version:
+                title: Is Executed Version
+                description: >-
+                  Boolean flag to ​​mark the uploaded version as the executed
+                  version
+                type: boolean
+                default: false
+            example:
+              document_name: OneNDA.docx
+              document_base_64: OneNDA document content in bytes converted to base64 string.
+              collect_approvals: true
+      required: true
     SendToCounterparty:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/SendToCounterparty'
+      required: true
+    v2.1_public_auth_roles_members_createData:
+      content:
+        application/json:
+          schema:
+            title: body
+            type: object
+            properties:
+              user_ids_to_add:
+                name: user_ids_to_add
+                in: body
+                description: The user ids that are to be added to the role.
+                type: array
+                items:
+                  type: integer
+            required:
+              - user_ids_to_add
       required: true
     v2.1_public_contracts_approvals_createData:
       content:
@@ -11109,9 +10703,6 @@ components:
         - COUNTER_PARTY_ADDRESS_UPDATED
         - CONTRACT_ACTIVITY_LOG_COMMENT_CREATED
         - CONTRACT_VOIDED
-        - CONTRACT_PROCESS_METRIC_UPDATED
-        - CONTRACT_EXTERNAL_METADATA_CREATED
-        - CONTRACT_EXTERNAL_METADATA_UPDATED
     ContractKindActivityData:
       title: ContractKindActivityData
       description: An enumeration.
@@ -11194,7 +10785,9 @@ components:
           type: string
     ExternalUserActiveRolesData:
       title: ExternalUserActiveRolesData
-      description: Details of an active role
+      description: |-
+        Pydantic model to take in the list of
+        active roles for a workspace
       required:
         - id
         - name
@@ -11202,19 +10795,15 @@ components:
       properties:
         id:
           title: Id
-          description: >-
-            ID of the role. Use this to identify the role when calling APIs like
-            Add/Delete Role Member.
+          description: Id of the role
           type: integer
         name:
           title: Name
-          description: The user visible name of the role.
+          description: Name of the role
           type: string
         description:
           title: Description
-          description: >-
-            An option description that helps clarify the use of a particular
-            role.
+          description: Description of the role.
           type: string
     PublicMinimalUserResponse:
       title: PublicMinimalUserResponse
@@ -11227,7 +10816,7 @@ components:
       properties:
         id:
           title: Id
-          description: ID of the user
+          description: Id of the user
           type: integer
         email:
           title: Email
@@ -12099,130 +11688,6 @@ components:
           data_type: string
           format_option:
             data: sample format option
-    RecipientType:
-      title: RecipientType
-      description: An enumeration.
-      type: string
-      enum:
-        - SIGNATORY
-        - APPROVER
-        - RECEIVER
-    PublicSignRecipientDomainModel:
-      title: PublicSignRecipientDomainModel
-      description: SD Base Model from which all other Models should inherit
-      required:
-        - id
-        - recipient_type
-        - user
-        - created
-      type: object
-      properties:
-        id:
-          title: Id
-          description: Signatory ID
-          type: integer
-        recipient_type:
-          description: The type of recipient as set by the creator/editor for the contract
-          allOf:
-            - $ref: '#/components/schemas/RecipientType'
-        user:
-          title: User
-          description: Basic details of a recipient user
-          allOf:
-            - $ref: '#/components/schemas/PublicMinimalUserResponse'
-        recipient_order:
-          title: Recipient Order
-          description: >-
-            The order in which contract is sent out to the recipient, as set by
-            the creator/editor for the contract
-          type: integer
-        note:
-          title: Note
-          description: >-
-            The note for the recipient as set by the creator/editor for the
-            contract
-          type: string
-        created:
-          title: Created
-          description: >-
-            The timestamp (in ISO 8601 format) when the recipient was added by
-            the creator/editor for the contract
-          type: string
-          format: date-time
-        title:
-          title: Title
-          description: >-
-            The title of the recipient as set by the creator/editor for the
-            contract
-          default: ''
-          type: string
-        is_sent_for_signature:
-          title: Is Sent For Signature
-          description: >-
-            Set to true when contract has been sent out to recipient and false
-            when contract has yet to be sent out to recipient
-          default: false
-          type: boolean
-        last_sent_for_signature_at:
-          title: Last Sent For Signature At
-          description: >-
-            The timestamp (in ISO 8601 format) when the contract was last sent
-            to the recipient
-          type: string
-          format: date-time
-    PublicRecipientActionResponse:
-      title: PublicRecipientActionResponse
-      description: SD Base Model from which all other Models should inherit
-      type: object
-      properties:
-        is_success:
-          title: Is Success
-          description: >-
-            Set to true when recipient has signed/approved the contract and
-            false when recipient has declined to sign/approve the contract
-          default: false
-          type: boolean
-        action_notes:
-          title: Action Notes
-          description: Note added by the recipient while signing/approving the contract
-          type: string
-        timestamp:
-          title: Timestamp
-          description: >-
-            The timestamp (in ISO 8601 format) when recipient performed the
-            action on the contract
-          type: string
-          format: date-time
-    RecipientStatus:
-      title: RecipientStatus
-      description: An enumeration.
-      type: string
-      enum:
-        - PENDING
-        - IN_PROGRESS
-        - COMPLETED
-    PublicSignRecipientWithStatusResponse:
-      title: PublicSignRecipientWithStatusResponse
-      description: SD Base Model from which all other Models should inherit
-      required:
-        - recipient
-        - status
-      type: object
-      properties:
-        recipient:
-          title: Recipient
-          description: The details of the recipient
-          allOf:
-            - $ref: '#/components/schemas/PublicSignRecipientDomainModel'
-        recipient_action:
-          title: Recipient Action
-          description: The action taken by the recipient
-          allOf:
-            - $ref: '#/components/schemas/PublicRecipientActionResponse'
-        status:
-          description: The current status of action that the recipient can perform
-          allOf:
-            - $ref: '#/components/schemas/RecipientStatus'
     ExternalReplyResponse:
       title: ExternalReplyResponse
       description: SD Base Model from which all other Models should inherit
@@ -13134,13 +12599,7 @@ components:
             iso_code: US
     PartyOrganizationKind:
       title: PartyOrganizationKind
-      description: |-
-        Enum representing types of party organization kinds.
-
-        Values:
-            INDIVIDUAL (str): Represents an individual.
-            ORGANISATION (str): Represents an organization.
-            BOTH (str): Represents both individual and organization.
+      description: An enumeration.
       type: string
       enum:
         - Individual
@@ -13157,33 +12616,6 @@ components:
         role_id:
           title: Role Id
           type: integer
-    ContractDisplayStatus:
-      title: ContractDisplayStatus
-      description: An enumeration.
-      type: string
-      enum:
-        - DRAFT
-        - REDLINING
-        - SIGN
-        - EXECUTED
-        - ON_HOLD
-        - VOIDED
-    ContractWorkflowStatus:
-      title: ContractWorkflowStatus
-      description: An enumeration.
-      type: string
-      enum:
-        - DRAFT
-        - INVITE_CLIENT
-        - INFO_COLLECTION
-        - CONTRACT_APPROVAL
-        - CONTRACT_DRAFT_APPROVAL
-        - CONTRACT_APPROVAL_REJECTED
-        - REVIEW
-        - SIGN
-        - COMPLETING
-        - COMPLETED
-        - TEMPLATE_PRE_SIGN_APPROVAL
     ContractKind:
       title: ContractKind
       description: An enumeration.
@@ -13196,134 +12628,30 @@ components:
         - UPLOAD_EXECUTED
         - EXPRESS_TEMPLATE
         - CLICKWRAP
-    ContractEditorClient:
-      title: ContractEditorClient
-      description: An enumeration.
-      type: string
-      enum:
-        - ONLY_OFFICE_NATIVE
-        - WOPI
-        - UNSET
     ContractV3MinimalDomainModel:
       title: ContractV3MinimalDomainModel
-      description: |-
-        Minimal response model for a contract.
-        Attributes:
-            id (ContractId): The ID of the contract.
-            public_id (str): Public ID of the contract.
-            contract_name (str): Name of the contract.
-            contract_type_id (ContractTypeId): ID of the contract type.
-            contract_template_id (Optional[int], optional): ID of the associated contract template.
-            status (str): Status of the contract.
-            display_status (ContractDisplayStatus): Display status of the contract.
-            display_status_without_on_hold_check (ContractDisplayStatus):
-                Display status of the contract without on-hold check.
-            workflow_status (Optional[ContractWorkflowStatus], optional): Workflow status of the contract.
-            contract_kind (ContractKind): Kind of the contract.
-            campaign_id (Optional[int], optional): ID of the associated campaign.
-            campaign_v3_id (Optional[CampaignId], optional): ID of the associated campaign (v3).
-            express_template_id (Optional[int], optional): ID of the express template.
-            contract_data_id (Optional[int], optional): ID of the contract data.
-            contract_editable_document_id (Optional[int], optional): ID of the editable document related to the contract.
-            created (datetime): Date and time when the contract was created.
-            created_by_workspace_id (WorkspaceId): ID of the workspace where the contract was created.
-            editor_client (ContractEditorClient): Client editor of the contract.
-            execution_date (Optional[datetime], optional): Date and time of contract execution.
-            frozen_template_id (Optional[int], optional): ID of the frozen contract template.
-            workflow_id (str): ID of the workflow associated with the contract.
-
-        Methods:
-            is_executed() -> bool:
-                Checks if the contract is executed.
-
-            is_voided() -> bool:
-                Checks if the contract is voided.
-
-            is_historic_upload() -> bool:
-                Checks if the contract is a historic upload.
-
-            contract_response_v2() -> ContractResponseV2:
-                Retrieves the full response object for the contract.
-
-            get_fields_to_select() -> List[str]:
-                Retrieves the list of fields to select for the contract.
+      description: SD Base Model from which all other Models should inherit
       required:
         - id
-        - public_id
         - contract_name
         - contract_type_id
-        - status
-        - display_status
-        - display_status_without_on_hold_check
         - contract_kind
-        - created
-        - created_by_workspace_id
-        - editor_client
-        - workflow_id
+        - status
       type: object
       properties:
         id:
           title: Id
           type: integer
-        public_id:
-          title: Public Id
-          type: string
         contract_name:
           title: Contract Name
           type: string
         contract_type_id:
           title: Contract Type Id
           type: integer
-        contract_template_id:
-          title: Contract Template Id
-          type: integer
-        status:
-          title: Status
-          type: string
-        display_status:
-          $ref: '#/components/schemas/ContractDisplayStatus'
-        display_status_without_on_hold_check:
-          $ref: '#/components/schemas/ContractDisplayStatus'
-        workflow_status:
-          $ref: '#/components/schemas/ContractWorkflowStatus'
         contract_kind:
           $ref: '#/components/schemas/ContractKind'
-        campaign_id:
-          title: Campaign Id
-          type: integer
-        campaign_v3_id:
-          title: Campaign V3 Id
-          type: integer
-        express_template_id:
-          title: Express Template Id
-          type: integer
-        contract_data_id:
-          title: Contract Data Id
-          type: integer
-        contract_editable_document_id:
-          title: Contract Editable Document Id
-          type: integer
-        created:
-          title: Created
-          type: string
-          format: date-time
-        created_by_workspace_id:
-          title: Created By Workspace Id
-          type: integer
-        editor_client:
-          $ref: '#/components/schemas/ContractEditorClient'
-        execution_date:
-          title: Execution Date
-          type: string
-          format: date-time
-        frozen_template_id:
-          title: Frozen Template Id
-          type: integer
-        workflow_id:
-          title: Workflow Id
-          type: string
-        workflow_name:
-          title: Workflow Name
+        status:
+          title: Status
           type: string
     OrganizationUserResponse:
       title: OrganizationUserResponse
@@ -13493,11 +12821,3 @@ components:
           title: Absolute Time
           type: string
           format: date-time
-    ContractActivityWebhookStatus:
-      title: ContractActivityWebhookStatus
-      description: An enumeration.
-      type: string
-      enum:
-        - ACTIVE
-        - DISABLED_BY_USER
-        - DISABLED_BY_ERROR

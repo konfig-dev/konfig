@@ -97,7 +97,7 @@ info:
     cross-domain communication from the browser. All responses have a wildcard
     same-origin which makes them completely public and accessible to everyone,
     including any code on any site.
-  version: 1.28.0
+  version: 1.21.0
   x-logo:
     altText: Svix Logo
     url: https://www.svix.com/static/img/brand-padded.svg
@@ -199,8 +199,7 @@ paths:
             const appPortalAccessOut = await
             svix.authentication.appPortalAccess("app_id", {
                 featureFlags: [],
-                expiry: null,
-                readOnly: null
+                expiry: null
             });
         - label: TypeScript
           lang: JavaScript
@@ -208,8 +207,7 @@ paths:
             const appPortalAccessOut = await
             svix.authentication.appPortalAccess("app_id", {
                 featureFlags: [],
-                expiry: null,
-                readOnly: null
+                expiry: null
             });
         - label: Python
           lang: Python
@@ -217,8 +215,7 @@ paths:
             app_portal_access_out =
             svix.authentication.app_portal_access("app_id", AppPortalAccessIn(
                 feature_flags=[],
-                expiry=None,
-                read_only=None
+                expiry=None
             ), None)
         - label: Python (Async)
           lang: Python
@@ -226,8 +223,7 @@ paths:
             app_portal_access_out = await
             svix.authentication.app_portal_access("app_id", AppPortalAccessIn(
                 feature_flags=[],
-                expiry=None,
-                read_only=None
+                expiry=None
             ), None)
         - label: Go
           lang: Go
@@ -237,7 +233,6 @@ paths:
             &AppPortalAccessIn{
                 FeatureFlags: []interface{}{},
                 Expiry: nil,
-                ReadOnly: nil,
             })
         - label: Kotlin
           lang: Kotlin
@@ -246,7 +241,6 @@ paths:
             svix.authentication.appPortalAccess("app_id", AppPortalAccessIn()
                 .featureFlags(arrayOf())
                 .expiry(null)
-                .readOnly(null)
             )
         - label: Java
           lang: Java
@@ -256,7 +250,6 @@ paths:
             AppPortalAccessIn()
                 .featureFlags(new Object[]{})
                 .expiry(null)
-                .readOnly(null)
             )
         - label: Ruby
           lang: Ruby
@@ -265,8 +258,7 @@ paths:
             svix.authentication.app_portal_access("app_id",
             Svix::AppPortalAccessIn.new({
                 "feature_flags": [],
-                "expiry": nil,
-                "read_only": nil
+                "expiry": nil
             }))
         - label: Rust
           lang: Rust
@@ -276,7 +268,6 @@ paths:
             {
                 feature_flags: Some(vec![]),
                 expiry: None,
-                read_only: None,
             }, None).await?;
         - label: C#
           lang: C#
@@ -285,16 +276,14 @@ paths:
             svix.Authentication.AppPortalAccessAsync("app_id", new
             AppPortalAccessIn{
                 featureFlags: new Object[] {},
-                expiry: null,
-                readOnly: null
+                expiry: null
             })
         - label: CLI
           lang: Shell
           source: |-
             svix authentication app-portal-access "app_id" '{
                 "featureFlags": [],
-                "expiry": null,
-                "readOnly": null
+                "expiry": null
             }'
         - label: cURL
           lang: Shell
@@ -306,8 +295,7 @@ paths:
               -H 'Content-Type: application/json' \
               -d '{
                     "featureFlags": [],
-                    "expiry": null,
-                    "readOnly": null
+                    "expiry": null
                 }'
   /api/v1/auth/dashboard-access/{app_id}:
     post:
@@ -3624,189 +3612,6 @@ paths:
               -d '{
                     "headers": {"X-Example":"123","X-Foobar":"Bar"}
                 }'
-  /api/v1/app/{app_id}/endpoint/{endpoint_id}/send-example:
-    post:
-      tags:
-        - Endpoint
-      summary: Send Event Type Example Message
-      description: Send an example message for an event
-      operationId: v1.endpoint.send-example
-      parameters:
-        - in: path
-          name: app_id
-          description: The app's ID or UID
-          required: true
-          schema:
-            description: The app's ID or UID
-            type: string
-            maxLength: 256
-            minLength: 1
-            pattern: ^[a-zA-Z0-9\-_.]+$
-            example: unique-app-identifier
-          style: simple
-        - in: path
-          name: endpoint_id
-          description: The ep's ID or UID
-          required: true
-          schema:
-            description: The ep's ID or UID
-            type: string
-            maxLength: 256
-            minLength: 1
-            pattern: ^[a-zA-Z0-9\-_.]+$
-            example: unique-ep-identifier
-          style: simple
-        - in: header
-          name: idempotency-key
-          description: The request's idempotency key
-          schema:
-            type: string
-          style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/EventExampleIn'
-        required: true
-      responses:
-        '202':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MessageOut'
-        '400':
-          description: Bad request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HttpErrorOut'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HttpErrorOut'
-        '403':
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HttpErrorOut'
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HttpErrorOut'
-        '409':
-          description: Conflict
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HttpErrorOut'
-        '422':
-          description: Validation Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HTTPValidationError'
-        '429':
-          description: Too Many Requests
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HttpErrorOut'
-      security:
-        - HTTPBearer: []
-      x-codeSamples:
-        - label: JavaScript
-          lang: JavaScript
-          source: >-
-            const messageOut = await svix.endpoint.sendExample("app_id",
-            "endpoint_id", {
-                eventType: "user.signup"
-            });
-        - label: TypeScript
-          lang: JavaScript
-          source: >-
-            const messageOut = await svix.endpoint.sendExample("app_id",
-            "endpoint_id", {
-                eventType: "user.signup"
-            });
-        - label: Python
-          lang: Python
-          source: >-
-            message_out = svix.endpoint.send_example("app_id", "endpoint_id",
-            EventExampleIn(
-                event_type="user.signup"
-            ), None)
-        - label: Python (Async)
-          lang: Python
-          source: >-
-            message_out = await svix.endpoint.send_example("app_id",
-            "endpoint_id", EventExampleIn(
-                event_type="user.signup"
-            ), None)
-        - label: Go
-          lang: Go
-          source: >-
-            messageOut, err := svixClient.Endpoint.SendExample(ctx, "app_id",
-            "endpoint_id", &EventExampleIn{
-                EventType: "user.signup",
-            })
-        - label: Kotlin
-          lang: Kotlin
-          source: >-
-            val messageOut = svix.endpoint.sendExample("app_id", "endpoint_id",
-            EventExampleIn()
-                .eventType("user.signup")
-            )
-        - label: Java
-          lang: Java
-          source: >-
-            MessageOut messageOut = svix.getEndpoint().sendExample("app_id",
-            "endpoint_id", new EventExampleIn()
-                .eventType("user.signup")
-            )
-        - label: Ruby
-          lang: Ruby
-          source: >-
-            message_out = svix.endpoint.send_example("app_id", "endpoint_id",
-            Svix::EventExampleIn.new({
-                "event_type": "user.signup"
-            }))
-        - label: Rust
-          lang: Rust
-          source: >-
-            let message_out = svix.endpoint().send_example("app_id",
-            "endpoint_id", EventExampleIn {
-                event_type: "user.signup".to_string(),
-            }, None).await?;
-        - label: C#
-          lang: C#
-          source: >-
-            var messageOut = await svix.Endpoint.SendExampleAsync("app_id",
-            "endpoint_id", new EventExampleIn{
-                eventType: "user.signup"
-            })
-        - label: CLI
-          lang: Shell
-          source: |-
-            svix endpoint send-example "app_id" "endpoint_id" '{
-                "eventType": "user.signup"
-            }'
-        - label: cURL
-          lang: Shell
-          source: |-
-            curl -X 'POST' \
-              'https://api.eu.svix.com/api/v1/app/{app_id}/endpoint/{endpoint_id}/send-example' \
-              -H 'Authorization: Bearer AUTH_TOKEN' \
-              -H 'Accept: application/json' \
-              -H 'Content-Type: application/json' \
-              -d '{
-                    "eventType": "user.signup"
-                }'
   /api/v1/app/{app_id}/endpoint/{endpoint_id}/replay-missing:
     post:
       tags:
@@ -4650,6 +4455,189 @@ paths:
               -d '{
                     "until": null
                 }'
+  /api/v1/app/{app_id}/endpoint/{endpoint_id}/send-example:
+    post:
+      tags:
+        - Endpoint
+      summary: Send Event Type Example Message
+      description: Send an example message for event
+      operationId: v1.endpoint.send-example
+      parameters:
+        - in: path
+          name: app_id
+          description: The app's ID or UID
+          required: true
+          schema:
+            description: The app's ID or UID
+            type: string
+            maxLength: 256
+            minLength: 1
+            pattern: ^[a-zA-Z0-9\-_.]+$
+            example: unique-app-identifier
+          style: simple
+        - in: path
+          name: endpoint_id
+          description: The ep's ID or UID
+          required: true
+          schema:
+            description: The ep's ID or UID
+            type: string
+            maxLength: 256
+            minLength: 1
+            pattern: ^[a-zA-Z0-9\-_.]+$
+            example: unique-ep-identifier
+          style: simple
+        - in: header
+          name: idempotency-key
+          description: The request's idempotency key
+          schema:
+            type: string
+          style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventExampleIn'
+        required: true
+      responses:
+        '202':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageOut'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpErrorOut'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpErrorOut'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpErrorOut'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpErrorOut'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpErrorOut'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpErrorOut'
+      security:
+        - HTTPBearer: []
+      x-codeSamples:
+        - label: JavaScript
+          lang: JavaScript
+          source: >-
+            const messageOut = await svix.endpoint.sendExample("app_id",
+            "endpoint_id", {
+                eventType: "user.signup"
+            });
+        - label: TypeScript
+          lang: JavaScript
+          source: >-
+            const messageOut = await svix.endpoint.sendExample("app_id",
+            "endpoint_id", {
+                eventType: "user.signup"
+            });
+        - label: Python
+          lang: Python
+          source: >-
+            message_out = svix.endpoint.send_example("app_id", "endpoint_id",
+            EventExampleIn(
+                event_type="user.signup"
+            ), None)
+        - label: Python (Async)
+          lang: Python
+          source: >-
+            message_out = await svix.endpoint.send_example("app_id",
+            "endpoint_id", EventExampleIn(
+                event_type="user.signup"
+            ), None)
+        - label: Go
+          lang: Go
+          source: >-
+            messageOut, err := svixClient.Endpoint.SendExample(ctx, "app_id",
+            "endpoint_id", &EventExampleIn{
+                EventType: "user.signup",
+            })
+        - label: Kotlin
+          lang: Kotlin
+          source: >-
+            val messageOut = svix.endpoint.sendExample("app_id", "endpoint_id",
+            EventExampleIn()
+                .eventType("user.signup")
+            )
+        - label: Java
+          lang: Java
+          source: >-
+            MessageOut messageOut = svix.getEndpoint().sendExample("app_id",
+            "endpoint_id", new EventExampleIn()
+                .eventType("user.signup")
+            )
+        - label: Ruby
+          lang: Ruby
+          source: >-
+            message_out = svix.endpoint.send_example("app_id", "endpoint_id",
+            Svix::EventExampleIn.new({
+                "event_type": "user.signup"
+            }))
+        - label: Rust
+          lang: Rust
+          source: >-
+            let message_out = svix.endpoint().send_example("app_id",
+            "endpoint_id", EventExampleIn {
+                event_type: "user.signup".to_string(),
+            }, None).await?;
+        - label: C#
+          lang: C#
+          source: >-
+            var messageOut = await svix.Endpoint.SendExampleAsync("app_id",
+            "endpoint_id", new EventExampleIn{
+                eventType: "user.signup"
+            })
+        - label: CLI
+          lang: Shell
+          source: |-
+            svix endpoint send-example "app_id" "endpoint_id" '{
+                "eventType": "user.signup"
+            }'
+        - label: cURL
+          lang: Shell
+          source: |-
+            curl -X 'POST' \
+              'https://api.eu.svix.com/api/v1/app/{app_id}/endpoint/{endpoint_id}/send-example' \
+              -H 'Authorization: Bearer AUTH_TOKEN' \
+              -H 'Accept: application/json' \
+              -H 'Content-Type: application/json' \
+              -d '{
+                    "eventType": "user.signup"
+                }'
   /api/v1/event-type:
     get:
       tags:
@@ -4897,8 +4885,7 @@ paths:
                 description: "A user has signed up",
                 archived: false,
                 schemas: {"1":{"description":"An invoice was paid by a user","properties":{"invoiceId":{"description":"The invoice id","type":"string"},"userId":{"description":"The user id","type":"string"}},"required":["invoiceId","userId"],"title":"Invoice Paid Event","type":"object"}},
-                featureFlag: "cool-new-feature",
-                groupName: "user"
+                featureFlag: "cool-new-feature"
             });
         - label: TypeScript
           lang: JavaScript
@@ -4908,8 +4895,7 @@ paths:
                 description: "A user has signed up",
                 archived: false,
                 schemas: {"1":{"description":"An invoice was paid by a user","properties":{"invoiceId":{"description":"The invoice id","type":"string"},"userId":{"description":"The user id","type":"string"}},"required":["invoiceId","userId"],"title":"Invoice Paid Event","type":"object"}},
-                featureFlag: "cool-new-feature",
-                groupName: "user"
+                featureFlag: "cool-new-feature"
             });
         - label: Python
           lang: Python
@@ -4919,8 +4905,7 @@ paths:
                 description="A user has signed up",
                 archived=False,
                 schemas={"1": {"description": "An invoice was paid by a user", "properties": {"invoiceId": {"description": "The invoice id", "type": "string"}, "userId": {"description": "The user id", "type": "string"}}, "required": ["invoiceId", "userId"], "title": "Invoice Paid Event", "type": "object"}},
-                feature_flag="cool-new-feature",
-                group_name="user"
+                feature_flag="cool-new-feature"
             ), None)
         - label: Python (Async)
           lang: Python
@@ -4930,8 +4915,7 @@ paths:
                 description="A user has signed up",
                 archived=False,
                 schemas={"1": {"description": "An invoice was paid by a user", "properties": {"invoiceId": {"description": "The invoice id", "type": "string"}, "userId": {"description": "The user id", "type": "string"}}, "required": ["invoiceId", "userId"], "title": "Invoice Paid Event", "type": "object"}},
-                feature_flag="cool-new-feature",
-                group_name="user"
+                feature_flag="cool-new-feature"
             ), None)
         - label: Go
           lang: Go
@@ -4942,7 +4926,6 @@ paths:
                 Archived: false,
                 Schemas: map[interface{}]interface{}{"1": map[string]interface{}{"description": "An invoice was paid by a user", "properties": map[interface{}]interface{}{"invoiceId": map[string]interface{}{"description": "The invoice id", "type": "string"}, "userId": map[string]interface{}{"description": "The user id", "type": "string"}}, "required": []string{"invoiceId", "userId"}, "title": "Invoice Paid Event", "type": "object"}},
                 FeatureFlag: "cool-new-feature",
-                GroupName: "user",
             })
         - label: Kotlin
           lang: Kotlin
@@ -4953,7 +4936,6 @@ paths:
                 .archived(false)
                 .schemas(/* ... */)
                 .featureFlag("cool-new-feature")
-                .groupName("user")
             )
         - label: Java
           lang: Java
@@ -4965,7 +4947,6 @@ paths:
                 .archived(false)
                 .schemas(/* ... */)
                 .featureFlag("cool-new-feature")
-                .groupName("user")
             )
         - label: Ruby
           lang: Ruby
@@ -4975,8 +4956,7 @@ paths:
                 "description": "A user has signed up",
                 "archived": false,
                 "schemas": {"1":{"description":"An invoice was paid by a user","properties":{"invoiceId":{"description":"The invoice id","type":"string"},"userId":{"description":"The user id","type":"string"}},"required":["invoiceId","userId"],"title":"Invoice Paid Event","type":"object"}},
-                "feature_flag": "cool-new-feature",
-                "group_name": "user"
+                "feature_flag": "cool-new-feature"
             }))
         - label: Rust
           lang: Rust
@@ -4987,7 +4967,6 @@ paths:
                 archived: Some(false),
                 schemas: Some(json!({"1":{"description":"An invoice was paid by a user","properties":{"invoiceId":{"description":"The invoice id","type":"string"},"userId":{"description":"The user id","type":"string"}},"required":["invoiceId","userId"],"title":"Invoice Paid Event","type":"object"}})),
                 feature_flag: Some("cool-new-feature".to_string()),
-                group_name: Some("user".to_string()),
             }, None).await?;
         - label: C#
           lang: C#
@@ -4997,8 +4976,7 @@ paths:
                 description: "A user has signed up",
                 archived: false,
                 schemas: /* ... */,
-                featureFlag: "cool-new-feature",
-                groupName: "user"
+                featureFlag: "cool-new-feature"
             })
         - label: CLI
           lang: Shell
@@ -5008,8 +4986,7 @@ paths:
                 "description": "A user has signed up",
                 "archived": false,
                 "schemas": {"1":{"description":"An invoice was paid by a user","properties":{"invoiceId":{"description":"The invoice id","type":"string"},"userId":{"description":"The user id","type":"string"}},"required":["invoiceId","userId"],"title":"Invoice Paid Event","type":"object"}},
-                "featureFlag": "cool-new-feature",
-                "groupName": "user"
+                "featureFlag": "cool-new-feature"
             }'
         - label: cURL
           lang: Shell
@@ -5024,8 +5001,7 @@ paths:
                     "description": "A user has signed up",
                     "archived": false,
                     "schemas": {"1":{"description":"An invoice was paid by a user","properties":{"invoiceId":{"description":"The invoice id","type":"string"},"userId":{"description":"The user id","type":"string"}},"required":["invoiceId","userId"],"title":"Invoice Paid Event","type":"object"}},
-                    "featureFlag": "cool-new-feature",
-                    "groupName": "user"
+                    "featureFlag": "cool-new-feature"
                 }'
   /api/v1/event-type/import/openapi:
     post:
@@ -5423,8 +5399,7 @@ paths:
                 description: "A user has signed up",
                 archived: false,
                 schemas: {"1":{"description":"An invoice was paid by a user","properties":{"invoiceId":{"description":"The invoice id","type":"string"},"userId":{"description":"The user id","type":"string"}},"required":["invoiceId","userId"],"title":"Invoice Paid Event","type":"object"}},
-                featureFlag: "cool-new-feature",
-                groupName: "user"
+                featureFlag: "cool-new-feature"
             });
         - label: TypeScript
           lang: JavaScript
@@ -5434,8 +5409,7 @@ paths:
                 description: "A user has signed up",
                 archived: false,
                 schemas: {"1":{"description":"An invoice was paid by a user","properties":{"invoiceId":{"description":"The invoice id","type":"string"},"userId":{"description":"The user id","type":"string"}},"required":["invoiceId","userId"],"title":"Invoice Paid Event","type":"object"}},
-                featureFlag: "cool-new-feature",
-                groupName: "user"
+                featureFlag: "cool-new-feature"
             });
         - label: Python
           lang: Python
@@ -5445,8 +5419,7 @@ paths:
                 description="A user has signed up",
                 archived=False,
                 schemas={"1": {"description": "An invoice was paid by a user", "properties": {"invoiceId": {"description": "The invoice id", "type": "string"}, "userId": {"description": "The user id", "type": "string"}}, "required": ["invoiceId", "userId"], "title": "Invoice Paid Event", "type": "object"}},
-                feature_flag="cool-new-feature",
-                group_name="user"
+                feature_flag="cool-new-feature"
             ))
         - label: Python (Async)
           lang: Python
@@ -5456,8 +5429,7 @@ paths:
                 description="A user has signed up",
                 archived=False,
                 schemas={"1": {"description": "An invoice was paid by a user", "properties": {"invoiceId": {"description": "The invoice id", "type": "string"}, "userId": {"description": "The user id", "type": "string"}}, "required": ["invoiceId", "userId"], "title": "Invoice Paid Event", "type": "object"}},
-                feature_flag="cool-new-feature",
-                group_name="user"
+                feature_flag="cool-new-feature"
             ))
         - label: Go
           lang: Go
@@ -5468,7 +5440,6 @@ paths:
                 Archived: false,
                 Schemas: map[interface{}]interface{}{"1": map[string]interface{}{"description": "An invoice was paid by a user", "properties": map[interface{}]interface{}{"invoiceId": map[string]interface{}{"description": "The invoice id", "type": "string"}, "userId": map[string]interface{}{"description": "The user id", "type": "string"}}, "required": []string{"invoiceId", "userId"}, "title": "Invoice Paid Event", "type": "object"}},
                 FeatureFlag: "cool-new-feature",
-                GroupName: "user",
             })
         - label: Kotlin
           lang: Kotlin
@@ -5479,7 +5450,6 @@ paths:
                 .archived(false)
                 .schemas(/* ... */)
                 .featureFlag("cool-new-feature")
-                .groupName("user")
             )
         - label: Java
           lang: Java
@@ -5490,7 +5460,6 @@ paths:
                 .archived(false)
                 .schemas(/* ... */)
                 .featureFlag("cool-new-feature")
-                .groupName("user")
             )
         - label: Ruby
           lang: Ruby
@@ -5500,8 +5469,7 @@ paths:
                 "description": "A user has signed up",
                 "archived": false,
                 "schemas": {"1":{"description":"An invoice was paid by a user","properties":{"invoiceId":{"description":"The invoice id","type":"string"},"userId":{"description":"The user id","type":"string"}},"required":["invoiceId","userId"],"title":"Invoice Paid Event","type":"object"}},
-                "feature_flag": "cool-new-feature",
-                "group_name": "user"
+                "feature_flag": "cool-new-feature"
             }))
         - label: Rust
           lang: Rust
@@ -5512,7 +5480,6 @@ paths:
                 archived: Some(false),
                 schemas: Some(json!({"1":{"description":"An invoice was paid by a user","properties":{"invoiceId":{"description":"The invoice id","type":"string"},"userId":{"description":"The user id","type":"string"}},"required":["invoiceId","userId"],"title":"Invoice Paid Event","type":"object"}})),
                 feature_flag: Some("cool-new-feature".to_string()),
-                group_name: Some("user".to_string()),
             }).await?;
         - label: C#
           lang: C#
@@ -5522,8 +5489,7 @@ paths:
                 description: "A user has signed up",
                 archived: false,
                 schemas: /* ... */,
-                featureFlag: "cool-new-feature",
-                groupName: "user"
+                featureFlag: "cool-new-feature"
             })
         - label: CLI
           lang: Shell
@@ -5532,8 +5498,7 @@ paths:
                 "description": "A user has signed up",
                 "archived": false,
                 "schemas": {"1":{"description":"An invoice was paid by a user","properties":{"invoiceId":{"description":"The invoice id","type":"string"},"userId":{"description":"The user id","type":"string"}},"required":["invoiceId","userId"],"title":"Invoice Paid Event","type":"object"}},
-                "featureFlag": "cool-new-feature",
-                "groupName": "user"
+                "featureFlag": "cool-new-feature"
             }'
         - label: cURL
           lang: Shell
@@ -5547,8 +5512,7 @@ paths:
                     "description": "A user has signed up",
                     "archived": false,
                     "schemas": {"1":{"description":"An invoice was paid by a user","properties":{"invoiceId":{"description":"The invoice id","type":"string"},"userId":{"description":"The user id","type":"string"}},"required":["invoiceId","userId"],"title":"Invoice Paid Event","type":"object"}},
-                    "featureFlag": "cool-new-feature",
-                    "groupName": "user"
+                    "featureFlag": "cool-new-feature"
                 }'
     delete:
       tags:
@@ -5763,16 +5727,14 @@ paths:
           source: |-
             const eventTypeOut = await svix.eventType.patch("event_type_name", {
                 schemas: {"description":"An invoice was paid by a user","properties":{"invoiceId":{"description":"The invoice id","type":"string"},"userId":{"description":"The user id","type":"string"}},"required":["invoiceId","userId"],"title":"Invoice Paid Event","type":"object"},
-                featureFlag: "cool-new-feature",
-                groupName: "user"
+                featureFlag: "cool-new-feature"
             });
         - label: TypeScript
           lang: JavaScript
           source: |-
             const eventTypeOut = await svix.eventType.patch("event_type_name", {
                 schemas: {"description":"An invoice was paid by a user","properties":{"invoiceId":{"description":"The invoice id","type":"string"},"userId":{"description":"The user id","type":"string"}},"required":["invoiceId","userId"],"title":"Invoice Paid Event","type":"object"},
-                featureFlag: "cool-new-feature",
-                groupName: "user"
+                featureFlag: "cool-new-feature"
             });
         - label: Python
           lang: Python
@@ -5780,8 +5742,7 @@ paths:
             event_type_out = svix.event_type.patch("event_type_name",
             EventTypePatch(
                 schemas={"description": "An invoice was paid by a user", "properties": {"invoiceId": {"description": "The invoice id", "type": "string"}, "userId": {"description": "The user id", "type": "string"}}, "required": ["invoiceId", "userId"], "title": "Invoice Paid Event", "type": "object"},
-                feature_flag="cool-new-feature",
-                group_name="user"
+                feature_flag="cool-new-feature"
             ))
         - label: Python (Async)
           lang: Python
@@ -5789,8 +5750,7 @@ paths:
             event_type_out = await svix.event_type.patch("event_type_name",
             EventTypePatch(
                 schemas={"description": "An invoice was paid by a user", "properties": {"invoiceId": {"description": "The invoice id", "type": "string"}, "userId": {"description": "The user id", "type": "string"}}, "required": ["invoiceId", "userId"], "title": "Invoice Paid Event", "type": "object"},
-                feature_flag="cool-new-feature",
-                group_name="user"
+                feature_flag="cool-new-feature"
             ))
         - label: Go
           lang: Go
@@ -5799,7 +5759,6 @@ paths:
             "event_type_name", &EventTypePatch{
                 Schemas: map[string]interface{}{"description": "An invoice was paid by a user", "properties": map[interface{}]interface{}{"invoiceId": map[string]interface{}{"description": "The invoice id", "type": "string"}, "userId": map[string]interface{}{"description": "The user id", "type": "string"}}, "required": []string{"invoiceId", "userId"}, "title": "Invoice Paid Event", "type": "object"},
                 FeatureFlag: "cool-new-feature",
-                GroupName: "user",
             })
         - label: Kotlin
           lang: Kotlin
@@ -5808,7 +5767,6 @@ paths:
             EventTypePatch()
                 .schemas(/* ... */)
                 .featureFlag("cool-new-feature")
-                .groupName("user")
             )
         - label: Java
           lang: Java
@@ -5817,7 +5775,6 @@ paths:
             svix.getEventType().patch("event_type_name", new EventTypePatch()
                 .schemas(/* ... */)
                 .featureFlag("cool-new-feature")
-                .groupName("user")
             )
         - label: Ruby
           lang: Ruby
@@ -5825,8 +5782,7 @@ paths:
             event_type_out = svix.event_type.patch("event_type_name",
             Svix::EventTypePatch.new({
                 "schemas": {"description":"An invoice was paid by a user","properties":{"invoiceId":{"description":"The invoice id","type":"string"},"userId":{"description":"The user id","type":"string"}},"required":["invoiceId","userId"],"title":"Invoice Paid Event","type":"object"},
-                "feature_flag": "cool-new-feature",
-                "group_name": "user"
+                "feature_flag": "cool-new-feature"
             }))
         - label: Rust
           lang: Rust
@@ -5835,7 +5791,6 @@ paths:
             EventTypePatch {
                 schemas: Some(json!({"description":"An invoice was paid by a user","properties":{"invoiceId":{"description":"The invoice id","type":"string"},"userId":{"description":"The user id","type":"string"}},"required":["invoiceId","userId"],"title":"Invoice Paid Event","type":"object"})),
                 feature_flag: Some("cool-new-feature".to_string()),
-                group_name: Some("user".to_string()),
             }).await?;
         - label: C#
           lang: C#
@@ -5843,16 +5798,14 @@ paths:
             var eventTypeOut = await
             svix.EventType.PatchAsync("event_type_name", new EventTypePatch{
                 schemas: /* ... */,
-                featureFlag: "cool-new-feature",
-                groupName: "user"
+                featureFlag: "cool-new-feature"
             })
         - label: CLI
           lang: Shell
           source: |-
             svix event-type patch "event_type_name" '{
                 "schemas": {"description":"An invoice was paid by a user","properties":{"invoiceId":{"description":"The invoice id","type":"string"},"userId":{"description":"The user id","type":"string"}},"required":["invoiceId","userId"],"title":"Invoice Paid Event","type":"object"},
-                "featureFlag": "cool-new-feature",
-                "groupName": "user"
+                "featureFlag": "cool-new-feature"
             }'
         - label: cURL
           lang: Shell
@@ -5864,8 +5817,7 @@ paths:
               -H 'Content-Type: application/json' \
               -d '{
                     "schemas": {"description":"An invoice was paid by a user","properties":{"invoiceId":{"description":"The invoice id","type":"string"},"userId":{"description":"The user id","type":"string"}},"required":["invoiceId","userId"],"title":"Invoice Paid Event","type":"object"},
-                    "featureFlag": "cool-new-feature",
-                    "groupName": "user"
+                    "featureFlag": "cool-new-feature"
                 }'
   /api/v1/app/{app_id}/msg:
     get:
@@ -6100,8 +6052,8 @@ paths:
         The `eventId` is an optional custom unique ID. It's verified to be
         unique only up to a day, after that no verification will be made.
 
-        If a message with the same `eventId` already exists for the application,
-        a 409 conflict error will be returned.
+        If a message with the same `eventId` already exists for any application
+        in your environment, a 409 conflict error will be returned.
 
 
         The `eventType` indicates the type and schema of the event. All messages
@@ -8598,128 +8550,6 @@ paths:
               -H 'Authorization: Bearer AUTH_TOKEN' \
               -H 'Accept: application/json' \
               -H 'Content-Type: application/json'
-  /api/v1/stats/usage/event-types:
-    put:
-      tags:
-        - Statistics
-      summary: Aggregate Event Types
-      description: >-
-        Creates a background task to calculate the listed event types for all
-        apps in the organization.
-
-
-        Note that this endpoint is asynchronous. You will need to poll the `Get
-        Background Task` endpoint to
-
-        retrieve the results of the operation.
-      operationId: v1.statistics.aggregate-event-types
-      responses:
-        '202':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AggregateEventTypesOut'
-        '400':
-          description: Bad request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HttpErrorOut'
-        '401':
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HttpErrorOut'
-        '403':
-          description: Forbidden
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HttpErrorOut'
-        '404':
-          description: Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HttpErrorOut'
-        '409':
-          description: Conflict
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HttpErrorOut'
-        '422':
-          description: Validation Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HTTPValidationError'
-        '429':
-          description: Too Many Requests
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/HttpErrorOut'
-      security:
-        - HTTPBearer: []
-      x-codeSamples:
-        - label: JavaScript
-          lang: JavaScript
-          source: >-
-            const aggregateEventTypesOut = await
-            svix.statistics.aggregateEventTypes();
-        - label: TypeScript
-          lang: JavaScript
-          source: >-
-            const aggregateEventTypesOut = await
-            svix.statistics.aggregateEventTypes();
-        - label: Python
-          lang: Python
-          source: aggregate_event_types_out = svix.statistics.aggregate_event_types()
-        - label: Python (Async)
-          lang: Python
-          source: >-
-            aggregate_event_types_out = await
-            svix.statistics.aggregate_event_types()
-        - label: Go
-          lang: Go
-          source: >-
-            aggregateEventTypesOut, err :=
-            svixClient.Statistics.AggregateEventTypes(ctx)
-        - label: Kotlin
-          lang: Kotlin
-          source: val aggregateEventTypesOut = svix.statistics.aggregateEventTypes()
-        - label: Java
-          lang: Java
-          source: >-
-            AggregateEventTypesOut aggregateEventTypesOut =
-            svix.getStatistics().aggregateEventTypes()
-        - label: Ruby
-          lang: Ruby
-          source: aggregate_event_types_out = svix.statistics.aggregate_event_types()
-        - label: Rust
-          lang: Rust
-          source: >-
-            let aggregate_event_types_out =
-            svix.statistics().aggregate_event_types().await?;
-        - label: C#
-          lang: C#
-          source: >-
-            var aggregateEventTypesOut = await
-            svix.Statistics.AggregateEventTypesAsync()
-        - label: CLI
-          lang: Shell
-          source: 'svix statistics aggregate-event-types '
-        - label: cURL
-          lang: Shell
-          source: |-
-            curl -X 'PUT' \
-              'https://api.eu.svix.com/api/v1/stats/usage/event-types' \
-              -H 'Authorization: Bearer AUTH_TOKEN' \
-              -H 'Accept: application/json' \
-              -H 'Content-Type: application/json'
   /api/v1/stats/usage/app:
     post:
       tags:
@@ -8885,6 +8715,128 @@ paths:
               -d '{
                     "appIds": null
                 }'
+  /api/v1/stats/usage/event-types:
+    put:
+      tags:
+        - Statistics
+      summary: Aggregate Event Types
+      description: >-
+        Creates a background task to calculate the listed event types for all
+        apps in the organization.
+
+
+        Note that this endpoint is asynchronous. You will need to poll the `Get
+        Background Task` endpoint to
+
+        retrieve the results of the operation.
+      operationId: v1.statistics.aggregate-event-types
+      responses:
+        '202':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AggregateEventTypesOut'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpErrorOut'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpErrorOut'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpErrorOut'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpErrorOut'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpErrorOut'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+        '429':
+          description: Too Many Requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpErrorOut'
+      security:
+        - HTTPBearer: []
+      x-codeSamples:
+        - label: JavaScript
+          lang: JavaScript
+          source: >-
+            const aggregateEventTypesOut = await
+            svix.statistics.aggregateEventTypes();
+        - label: TypeScript
+          lang: JavaScript
+          source: >-
+            const aggregateEventTypesOut = await
+            svix.statistics.aggregateEventTypes();
+        - label: Python
+          lang: Python
+          source: aggregate_event_types_out = svix.statistics.aggregate_event_types()
+        - label: Python (Async)
+          lang: Python
+          source: >-
+            aggregate_event_types_out = await
+            svix.statistics.aggregate_event_types()
+        - label: Go
+          lang: Go
+          source: >-
+            aggregateEventTypesOut, err :=
+            svixClient.Statistics.AggregateEventTypes(ctx)
+        - label: Kotlin
+          lang: Kotlin
+          source: val aggregateEventTypesOut = svix.statistics.aggregateEventTypes()
+        - label: Java
+          lang: Java
+          source: >-
+            AggregateEventTypesOut aggregateEventTypesOut =
+            svix.getStatistics().aggregateEventTypes()
+        - label: Ruby
+          lang: Ruby
+          source: aggregate_event_types_out = svix.statistics.aggregate_event_types()
+        - label: Rust
+          lang: Rust
+          source: >-
+            let aggregate_event_types_out =
+            svix.statistics().aggregate_event_types().await?;
+        - label: C#
+          lang: C#
+          source: >-
+            var aggregateEventTypesOut = await
+            svix.Statistics.AggregateEventTypesAsync()
+        - label: CLI
+          lang: Shell
+          source: 'svix statistics aggregate-event-types '
+        - label: cURL
+          lang: Shell
+          source: |-
+            curl -X 'PUT' \
+              'https://api.eu.svix.com/api/v1/stats/usage/event-types' \
+              -H 'Authorization: Bearer AUTH_TOKEN' \
+              -H 'Accept: application/json' \
+              -H 'Content-Type: application/json'
   /api/v1/app/{app_id}/integration:
     get:
       tags:
@@ -10172,7 +10124,6 @@ components:
           enum:
             - endpoint.created
     EndpointCreatedEventData:
-      description: Sent when an endpoint is created, updated, or deleted
       type: object
       required:
         - appId
@@ -10217,7 +10168,6 @@ components:
           enum:
             - endpoint.deleted
     EndpointDeletedEventData:
-      description: Sent when an endpoint is created, updated, or deleted
       type: object
       required:
         - appId
@@ -10315,7 +10265,6 @@ components:
           enum:
             - endpoint.updated
     EndpointUpdatedEventData:
-      description: Sent when an endpoint is created, updated, or deleted
       type: object
       required:
         - appId
@@ -10552,19 +10501,14 @@ components:
           uniqueItems: true
           example: []
         expiry:
-          description: |-
-            How long the token will be valid for, in seconds.
-
-            Valid values are between 1 hour and 7 days. The default is 7 days.
+          description: >-
+            How long the token will be valid for, in seconds. Valid values are
+            between 1 hour and 7 days. The default is 7 days.
           default: 604800
           type: integer
           format: uint64
           maximum: 604800
           minimum: 3600
-          nullable: true
-        readOnly:
-          description: Whether the app portal should be in read-only mode.
-          type: boolean
           nullable: true
     AppPortalAccessOut:
       type: object
@@ -10654,48 +10598,6 @@ components:
           minimum: 0
           nullable: true
           example: 60
-    CreateMessageTokenIn:
-      type: object
-      required:
-        - name
-      properties:
-        name:
-          description: The name of the token.
-          type: string
-        expiry:
-          description: How long the token will be valid for, in seconds.
-          type: integer
-          format: uint64
-          minimum: 0
-          nullable: true
-    AuthTokenOut:
-      type: object
-      required:
-        - createdAt
-        - id
-        - token
-      properties:
-        token:
-          type: string
-        id:
-          description: The key's ID
-          type: string
-          example: key_1srOrx2ZWZBpBUvZwXKQmoEYga2
-        name:
-          type: string
-          nullable: true
-        createdAt:
-          type: string
-          format: date-time
-        expiresAt:
-          type: string
-          format: date-time
-          nullable: true
-        scopes:
-          type: array
-          items:
-            type: string
-          nullable: true
     ApplicationIn:
       type: object
       required:
@@ -11211,554 +11113,6 @@ components:
           example:
             X-Example: '123'
             X-Foobar: Bar
-    EventExampleIn:
-      type: object
-      required:
-        - eventType
-      properties:
-        eventType:
-          description: The event type's name
-          type: string
-          maxLength: 256
-          pattern: ^[a-zA-Z0-9\-_.]+$
-          example: user.signup
-    MessageOut:
-      type: object
-      required:
-        - eventType
-        - id
-        - payload
-        - timestamp
-      properties:
-        eventId:
-          description: Optional unique identifier for the message
-          type: string
-          maxLength: 256
-          minLength: 1
-          pattern: ^[a-zA-Z0-9\-_.]+$
-          example: unique-msg-identifier
-          nullable: true
-        eventType:
-          description: The event type's name
-          type: string
-          maxLength: 256
-          pattern: ^[a-zA-Z0-9\-_.]+$
-          example: user.signup
-        payload:
-          type: object
-          example:
-            email: test@example.com
-            type: user.created
-            username: test_user
-        channels:
-          description: List of free-form identifiers that endpoints can filter by
-          type: array
-          items:
-            type: string
-            maxLength: 128
-            pattern: ^[a-zA-Z0-9\-_.]+$
-            example: project_1337
-          maxItems: 5
-          minItems: 1
-          uniqueItems: true
-          nullable: true
-          example:
-            - project_123
-            - group_2
-        id:
-          description: The msg's ID
-          type: string
-          example: msg_1srOrx2ZWZBpBUvZwXKQmoEYga2
-        timestamp:
-          type: string
-          format: date-time
-        tags:
-          type: array
-          items:
-            type: string
-            maxLength: 128
-            pattern: ^[a-zA-Z0-9\-_.]+$
-            example: project_1337
-          uniqueItems: true
-          nullable: true
-    EndpointOauthConfigIn:
-      type: object
-      required:
-        - authMethod
-        - clientId
-        - grantType
-        - tokenUrl
-      properties:
-        grantType:
-          description: The OAuth grant type.
-          $ref: '#/components/schemas/Oauth2GrantTypeIn'
-        authMethod:
-          $ref: '#/components/schemas/Oauth2AuthMethodIn'
-        jwtParams:
-          description: Optional JWT parameters. Only required for `clientSecretJwt`
-          $ref: '#/components/schemas/ClientSecretJwtParamsIn'
-          nullable: true
-        clientId:
-          description: The client ID. Required for all authentication types.
-          type: string
-        clientSecret:
-          description: >-
-            Optional client secret. This is only used for `clientSecretBasic`
-            and `clientSecretPost`.
-
-
-            For `clientSecretBasic`, the secret will be appended to the
-            `Authorization` header. For `clientSecretPost`, this will be added
-            to the body in a `client_secret` parameter.
-          type: string
-          nullable: true
-        tokenUrl:
-          description: The URL of the authorization server.
-          type: string
-          format: uri
-        scopes:
-          description: Optional OAuth scopes added to the request body.
-          type: array
-          items:
-            type: string
-          nullable: true
-        extraParams:
-          description: Extra parameters added to the request body as key-value pairs.
-          type: object
-          additionalProperties:
-            type: string
-          nullable: true
-        refreshToken:
-          description: For `refreshToken` grant type
-          type: string
-          nullable: true
-    Oauth2GrantTypeIn:
-      type: string
-      enum:
-        - clientCredentials
-        - refreshToken
-    Oauth2AuthMethodIn:
-      description: >-
-        The method used for authenticating to the OAuth authorization server.
-        `clientSecretJwt` will construct a JWT used for authentication with the
-        oauth authorization server. This method is less commonly used and may
-        not be supported by all oauth providers. `clientSecretBasic` will
-        authenticate to the oauth authorization server using an `Authorization`
-        header with the client secret as the value. This is the most common
-        means of authentication. `clientSecretPost` will authenticate to the
-        oauth authorization server by passing the client secret in a
-        `client_secret` field in the request body. This method may not be
-        supported by all oauth providers, and in general `clientSecretBasic`
-        should be preferred.
-      type: string
-      enum:
-        - clientSecretJwt
-        - clientSecretBasic
-        - clientSecretPost
-    ClientSecretJwtParamsIn:
-      type: object
-      required:
-        - secretBase64
-        - signingAlgorithm
-      properties:
-        secretBase64:
-          description: The base64-encoded secret used for signing the JWT.
-          type: string
-        signingAlgorithm:
-          description: The algorithm used to sign the JWT.
-          $ref: '#/components/schemas/OauthJwsSigningAlgorithm'
-        secretId:
-          description: >-
-            Optional secret identifier. If supplied, this will be populated in
-            the JWT header in the `kid` field.
-          type: string
-          nullable: true
-        tokenExpirySecs:
-          description: >-
-            Optional number of seconds after which the JWT should expire.
-            Defaults to 300 seconds.
-          type: integer
-          format: uint64
-          minimum: 0
-          nullable: true
-    OauthJwsSigningAlgorithm:
-      type: string
-      enum:
-        - RS256
-    EndpointMtlsConfigIn:
-      type: object
-      required:
-        - identity
-      properties:
-        identity:
-          description: >-
-            A PEM encoded private key and X509 certificate to identify the
-            webhook sender.
-          type: string
-        serverCaCert:
-          description: >-
-            A PEM encoded X509 certificate used to verify the webhook receiver's
-            certificate.
-          type: string
-          nullable: true
-    SinkIn:
-      type: object
-      oneOf:
-        - type: object
-          required:
-            - routingKey
-            - type
-            - uri
-          properties:
-            type:
-              type: string
-              enum:
-                - rabbitMQ
-            uri:
-              type: string
-            routingKey:
-              type: string
-        - type: object
-          required:
-            - accessKey
-            - queueDsn
-            - region
-            - secretKey
-            - type
-          properties:
-            type:
-              type: string
-              enum:
-                - sqs
-            queueDsn:
-              type: string
-              format: uri
-            region:
-              type: string
-            accessKey:
-              type: string
-            secretKey:
-              type: string
-        - type: object
-          required:
-            - brokers
-            - securityProtocol
-            - topic
-            - type
-          properties:
-            type:
-              type: string
-              enum:
-                - kafka
-            brokers:
-              type: string
-            topic:
-              type: string
-            securityProtocol:
-              $ref: '#/components/schemas/KafkaSecurityProtocolType'
-            saslUsername:
-              description: Username for SASL, if `security_protocol` is `sasl-ssl`.
-              type: string
-              nullable: true
-            saslPassword:
-              description: Password for SASL, if `security_protocol` is `sasl-ssl`.
-              type: string
-              nullable: true
-        - type: object
-          required:
-            - type
-            - url
-          properties:
-            type:
-              type: string
-              enum:
-                - otelV1HttpTrace
-            url:
-              type: string
-              format: uri
-      properties:
-        description:
-          default: ''
-          type: string
-          example: An example endpoint name
-        rateLimit:
-          type: integer
-          format: uint16
-          minimum: 1
-          nullable: true
-        uid:
-          description: Optional unique identifier for the sink
-          type: string
-          maxLength: 256
-          minLength: 1
-          pattern: ^[a-zA-Z0-9\-_.]+$
-          example: unique-ep-identifier
-          nullable: true
-        secret:
-          description: >-
-            The endpoint's verification secret. If `null` is passed, a secret is
-            automatically generated. Format: `base64` encoded random bytes
-            optionally prefixed with `whsec_`. Recommended size: 24.
-          type: string
-          pattern: ^(whsec_)?[a-zA-Z0-9+/=]{32,100}$
-          example: whsec_C2FVsBQIhrscChlQIMV+b5sSYspob7oD
-          nullable: true
-        disabled:
-          default: false
-          type: boolean
-          example: false
-        filterTypes:
-          type: array
-          items:
-            description: The event type's name
-            type: string
-            maxLength: 256
-            pattern: ^[a-zA-Z0-9\-_.]+$
-            example: user.signup
-          minItems: 1
-          uniqueItems: true
-          nullable: true
-          example:
-            - user.signup
-            - user.deleted
-        channels:
-          description: List of message channels this sink listens to (omit for all)
-          type: array
-          items:
-            type: string
-            maxLength: 128
-            pattern: ^[a-zA-Z0-9\-_.]+$
-            example: project_1337
-          maxItems: 10
-          minItems: 1
-          uniqueItems: true
-          nullable: true
-          example:
-            - project_123
-            - group_2
-        metadata:
-          default: {}
-          type: object
-          additionalProperties:
-            type: string
-        batchSize:
-          description: |-
-            Upper limit for how many messages to publish to the sink at once.
-
-            Default: `100`
-          default: 100
-          type: integer
-          format: uint16
-          maximum: 1000
-          minimum: 1
-        maxWait:
-          description: >-
-            How many seconds to spend waiting to try and fill a given batch.
-
-
-            When preparing to flush a partial batch of messages to the sink,
-            wait this long for any late-arriving messages that could complete
-            the batch.
-
-
-            Default: `0` meaning "don't wait."
-          default: 0
-          type: integer
-          format: uint16
-          maximum: 3600
-          minimum: 0
-    KafkaSecurityProtocolType:
-      type: string
-      enum:
-        - plaintext
-        - ssl
-        - sasl-ssl
-    SinkOut:
-      type: object
-      oneOf:
-        - type: object
-          required:
-            - routingKey
-            - type
-            - uri
-          properties:
-            type:
-              type: string
-              enum:
-                - rabbitMQ
-            uri:
-              type: string
-            routingKey:
-              type: string
-        - type: object
-          required:
-            - accessKey
-            - queueDsn
-            - region
-            - secretKey
-            - type
-          properties:
-            type:
-              type: string
-              enum:
-                - sqs
-            queueDsn:
-              type: string
-              format: uri
-            region:
-              type: string
-            accessKey:
-              type: string
-            secretKey:
-              type: string
-        - type: object
-          required:
-            - brokers
-            - securityProtocol
-            - topic
-            - type
-          properties:
-            type:
-              type: string
-              enum:
-                - kafka
-            brokers:
-              type: string
-            topic:
-              type: string
-            securityProtocol:
-              $ref: '#/components/schemas/KafkaSecurityProtocolType'
-            saslUsername:
-              description: Username for SASL, if `security_protocol` is `sasl-ssl`.
-              type: string
-              nullable: true
-            saslPassword:
-              description: Password for SASL, if `security_protocol` is `sasl-ssl`.
-              type: string
-              nullable: true
-        - type: object
-          required:
-            - type
-            - url
-          properties:
-            type:
-              type: string
-              enum:
-                - otelV1HttpTrace
-            url:
-              type: string
-              format: uri
-      required:
-        - batchSize
-        - createdAt
-        - description
-        - id
-        - maxWait
-        - metadata
-        - updatedAt
-      properties:
-        id:
-          description: The ep's ID
-          type: string
-          example: ep_1srOrx2ZWZBpBUvZwXKQmoEYga2
-        metadata:
-          type: object
-          additionalProperties:
-            type: string
-        description:
-          description: An example endpoint name
-          type: string
-        rateLimit:
-          type: integer
-          format: uint16
-          minimum: 0
-          nullable: true
-        uid:
-          description: Optional unique identifier for the endpoint
-          type: string
-          maxLength: 256
-          minLength: 1
-          pattern: ^[a-zA-Z0-9\-_.]+$
-          example: unique-ep-identifier
-          nullable: true
-        disabled:
-          default: false
-          type: boolean
-          example: false
-        filterTypes:
-          type: array
-          items:
-            description: The event type's name
-            type: string
-            maxLength: 256
-            pattern: ^[a-zA-Z0-9\-_.]+$
-            example: user.signup
-          minItems: 1
-          uniqueItems: true
-          nullable: true
-          example:
-            - user.signup
-            - user.deleted
-        channels:
-          description: List of message channels this endpoint listens to (omit for all)
-          type: array
-          items:
-            type: string
-            maxLength: 128
-            pattern: ^[a-zA-Z0-9\-_.]+$
-            example: project_1337
-          maxItems: 10
-          minItems: 1
-          uniqueItems: true
-          nullable: true
-          example:
-            - project_123
-            - group_2
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        batchSize:
-          description: The desired batch size when flushing events to the sink.
-          type: integer
-          format: uint16
-          minimum: 0
-        maxWait:
-          description: >-
-            How many seconds to spend waiting to try and fill a given batch.
-
-
-            When preparing to flush a partial batch of messages to the sink,
-            wait this long for any late-arriving messages that could complete
-            the batch.
-
-
-            Default: `0` meaning "don't wait."
-          type: integer
-          format: uint16
-          minimum: 0
-    ListResponse_SinkOut_:
-      type: object
-      required:
-        - data
-        - done
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/SinkOut'
-        iterator:
-          type: string
-          nullable: true
-          example: iterator
-        prevIterator:
-          type: string
-          nullable: true
-          example: '-iterator'
-        done:
-          type: boolean
     ReplayIn:
       type: object
       required:
@@ -11914,6 +11268,76 @@ components:
           $ref: '#/components/schemas/BackgroundTaskStatus'
         task:
           $ref: '#/components/schemas/BackgroundTaskType'
+    EventExampleIn:
+      type: object
+      required:
+        - eventType
+      properties:
+        eventType:
+          description: The event type's name
+          type: string
+          maxLength: 256
+          pattern: ^[a-zA-Z0-9\-_.]+$
+          example: user.signup
+    MessageOut:
+      type: object
+      required:
+        - eventType
+        - id
+        - payload
+        - timestamp
+      properties:
+        eventId:
+          description: Optional unique identifier for the message
+          type: string
+          maxLength: 256
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_.]+$
+          example: unique-msg-identifier
+          nullable: true
+        eventType:
+          description: The event type's name
+          type: string
+          maxLength: 256
+          pattern: ^[a-zA-Z0-9\-_.]+$
+          example: user.signup
+        payload:
+          type: object
+          example:
+            email: test@example.com
+            type: user.created
+            username: test_user
+        channels:
+          description: List of free-form identifiers that endpoints can filter by
+          type: array
+          items:
+            type: string
+            maxLength: 128
+            pattern: ^[a-zA-Z0-9\-_.]+$
+            example: project_1337
+          maxItems: 5
+          minItems: 1
+          uniqueItems: true
+          nullable: true
+          example:
+            - project_123
+            - group_2
+        id:
+          description: The msg's ID
+          type: string
+          example: msg_1srOrx2ZWZBpBUvZwXKQmoEYga2
+        timestamp:
+          type: string
+          format: date-time
+        tags:
+          type: array
+          items:
+            type: string
+            maxLength: 128
+            pattern: ^[a-zA-Z0-9\-_.]+$
+            example: project_1337
+          uniqueItems: true
+          nullable: true
     EventTypeIn:
       type: object
       required:
@@ -11933,9 +11357,6 @@ components:
           default: false
           type: boolean
           example: false
-        deprecated:
-          default: false
-          type: boolean
         schemas:
           description: >-
             The schema for the event type for a specific version as a JSON
@@ -11965,18 +11386,10 @@ components:
           pattern: ^[a-zA-Z0-9\-_.]+$
           example: cool-new-feature
           nullable: true
-        groupName:
-          description: The event type group's name
-          type: string
-          maxLength: 256
-          pattern: ^[a-zA-Z0-9\-_.]+$
-          example: user
-          nullable: true
     EventTypeOut:
       type: object
       required:
         - createdAt
-        - deprecated
         - description
         - name
         - updatedAt
@@ -11994,8 +11407,6 @@ components:
           default: false
           type: boolean
           example: false
-        deprecated:
-          type: boolean
         schemas:
           description: >-
             The schema for the event type for a specific version as a JSON
@@ -12031,13 +11442,6 @@ components:
           pattern: ^[a-zA-Z0-9\-_.]+$
           example: cool-new-feature
           nullable: true
-        groupName:
-          description: The event type group's name
-          type: string
-          maxLength: 256
-          pattern: ^[a-zA-Z0-9\-_.]+$
-          example: user
-          nullable: true
     ListResponse_EventTypeOut_:
       type: object
       required:
@@ -12069,12 +11473,6 @@ components:
         a `400` **Bad Request**.
       type: object
       properties:
-        dry_run:
-          description: >-
-            If `true`, return the event types that would be modified without
-            actually modifying them.
-          default: false
-          type: boolean
         spec:
           description: A pre-parsed JSON spec.
           type: object
@@ -12163,47 +11561,6 @@ components:
             maxLength: 256
             pattern: ^[a-zA-Z0-9\-_.]+$
             example: user.signup
-        to_modify:
-          type: array
-          items:
-            $ref: '#/components/schemas/EventTypeFromOpenApi'
-          nullable: true
-    EventTypeFromOpenApi:
-      type: object
-      required:
-        - deprecated
-        - description
-        - name
-      properties:
-        name:
-          description: The event type's name
-          type: string
-          maxLength: 256
-          pattern: ^[a-zA-Z0-9\-_.]+$
-          example: user.signup
-        description:
-          type: string
-        schemas:
-          type: object
-          additionalProperties:
-            type: object
-          example:
-            description: An invoice was paid by a user
-            properties:
-              invoiceId:
-                description: The invoice id
-                type: string
-              userId:
-                description: The user id
-                type: string
-            required:
-              - invoiceId
-              - userId
-            title: Invoice Paid Event
-            type: object
-          nullable: true
-        deprecated:
-          type: boolean
     RetryScheduleInOut:
       type: object
       properties:
@@ -12240,9 +11597,6 @@ components:
           default: false
           type: boolean
           example: false
-        deprecated:
-          default: false
-          type: boolean
         schemas:
           description: >-
             The schema for the event type for a specific version as a JSON
@@ -12272,21 +11626,12 @@ components:
           pattern: ^[a-zA-Z0-9\-_.]+$
           example: cool-new-feature
           nullable: true
-        groupName:
-          description: The event type group's name
-          type: string
-          maxLength: 256
-          pattern: ^[a-zA-Z0-9\-_.]+$
-          example: user
-          nullable: true
     EventTypePatch:
       type: object
       properties:
         description:
           type: string
         archived:
-          type: boolean
-        deprecated:
           type: boolean
         schemas:
           type: object
@@ -12312,13 +11657,6 @@ components:
           maxLength: 256
           pattern: ^[a-zA-Z0-9\-_.]+$
           example: cool-new-feature
-          nullable: true
-        groupName:
-          description: The event type group's name
-          type: string
-          maxLength: 256
-          pattern: ^[a-zA-Z0-9\-_.]+$
-          example: user
           nullable: true
     ExportEventTypeOut:
       type: object
@@ -12427,7 +11765,7 @@ components:
           description: Extra parameters to pass to Transformations (for future use)
           type: object
           nullable: true
-    MessageEventsOut:
+    MessageStreamOut:
       type: object
       required:
         - data
@@ -12442,16 +11780,6 @@ components:
           type: string
         done:
           type: boolean
-    MessageSubscriberAuthTokenOut:
-      type: object
-      required:
-        - bridgeToken
-        - token
-      properties:
-        token:
-          type: string
-        bridgeToken:
-          type: string
     MessageRawPayloadOut:
       type: object
       required:
@@ -12468,7 +11796,6 @@ components:
         - id
         - msgId
         - response
-        - responseDurationMs
         - responseStatusCode
         - status
         - timestamp
@@ -12488,9 +11815,6 @@ components:
           type: integer
           format: int16
           example: 200
-        responseDurationMs:
-          type: integer
-          format: int64
         status:
           $ref: '#/components/schemas/MessageStatus'
         triggerType:
@@ -12814,7 +12138,6 @@ components:
         - id
         - msgId
         - response
-        - responseDurationMs
         - responseStatusCode
         - status
         - timestamp
@@ -12834,9 +12157,6 @@ components:
           type: integer
           format: int16
           example: 200
-        responseDurationMs:
-          type: integer
-          format: int64
         status:
           $ref: '#/components/schemas/MessageStatus'
         triggerType:
@@ -12883,19 +12203,6 @@ components:
           items:
             type: string
           uniqueItems: true
-    AggregateEventTypesOut:
-      type: object
-      required:
-        - id
-        - status
-        - task
-      properties:
-        id:
-          type: string
-        status:
-          $ref: '#/components/schemas/BackgroundTaskStatus'
-        task:
-          $ref: '#/components/schemas/BackgroundTaskType'
     AppUsageStatsIn:
       type: object
       required:
@@ -12920,6 +12227,19 @@ components:
           uniqueItems: true
           nullable: true
     AppUsageStatsOut:
+      type: object
+      required:
+        - id
+        - status
+        - task
+      properties:
+        id:
+          type: string
+        status:
+          $ref: '#/components/schemas/BackgroundTaskStatus'
+        task:
+          $ref: '#/components/schemas/BackgroundTaskType'
+    AggregateEventTypesOut:
       type: object
       required:
         - id
@@ -13047,9 +12367,6 @@ components:
           nullable: true
         showUseSvixPlay:
           default: true
-          type: boolean
-        wipeSuccessfulPayload:
-          default: false
           type: boolean
     CustomThemeOverride:
       type: object
@@ -13211,9 +12528,6 @@ components:
         showUseSvixPlay:
           default: true
           type: boolean
-        wipeSuccessfulPayload:
-          default: false
-          type: boolean
     EnvironmentIn:
       type: object
       required:
@@ -13298,53 +12612,6 @@ components:
         showUseSvixPlay:
           default: true
           type: boolean
-        wipeSuccessfulPayload:
-          default: false
-          type: boolean
-    CreateStreamIn:
-      type: object
-      required:
-        - events
-      properties:
-        events:
-          type: array
-          items:
-            $ref: '#/components/schemas/EventIn'
-    EventIn:
-      type: object
-      required:
-        - payload
-      properties:
-        payload:
-          type: string
-    CreateStreamOut:
-      type: object
-    EventStreamOut:
-      type: object
-      required:
-        - data
-        - done
-        - iterator
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/EventOut'
-        iterator:
-          type: string
-        done:
-          type: boolean
-    EventOut:
-      type: object
-      required:
-        - payload
-        - timestamp
-      properties:
-        payload:
-          type: string
-        timestamp:
-          type: string
-          format: date-time
     ListResponse_BackgroundTaskOut_:
       type: object
       required:
@@ -13778,7 +13045,7 @@ components:
           type: string
         role:
           type: string
-    OAuthPayloadIn:
+    OauthPayloadIn:
       type: object
       required:
         - code
@@ -13788,7 +13055,7 @@ components:
           type: string
         redirectUri:
           type: string
-    IncomingWebhookPayloadOut:
+    OauthPayloadOut:
       type: object
       properties:
         error:
@@ -13801,25 +13068,6 @@ components:
         channel:
           type: string
           nullable: true
-    OAuthPayloadOut:
-      type: object
-      properties:
-        accessToken:
-          type: string
-          nullable: true
-        refreshToken:
-          type: string
-          nullable: true
-        error:
-          type: string
-          nullable: true
-    HubspotOauthConfigIn:
-      type: object
-      required:
-        - refresh_token
-      properties:
-        refresh_token:
-          type: string
     RotatedUrlOut:
       type: object
       required:
@@ -13868,7 +13116,7 @@ tags:
   - name: Endpoint
     description: >-
       Endpoints are the URLs messages will be sent to. Each application can have
-      up to 50 endpoints and each message sent to that application will be sent
+      multiple endpoints and each message sent to that application will be sent
       to all of them (unless they are not subscribed to the sent event type).
   - name: Integration
     description: >-

@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: Lob
-  version: 1.19.33
+  version: 1.19.28
   description: >
     The Lob API is organized around REST. Our API is designed to have
     predictable, resource-oriented URLs and uses HTTP response codes to indicate
@@ -1848,17 +1848,6 @@ tags:
       need to worry about the format.
 
 
-      For fields that are intended to accept only string values, submitting JSON
-      objects in string format (stringified JSON objects) is not supported. 
-
-      Our system automatically parses and validates incoming data according to
-      their expected types. 
-
-      As a result, providing a stringified JSON object in a field designated for
-      string input can cause parsing errors or lead to unexpected validation
-      results.
-
-
       ### Form URL Encoded
 
 
@@ -2173,8 +2162,12 @@ tags:
 
 
       To ensure that you are producing PDF's correctly please follow the
-      guidelines [outlined in our help center
-      here](https://help.lob.com/print-and-mail/designing-mail-creatives/creative-formatting/pdf-preflight-checklist#requirements-for-static-pdfs)
+      guidelines below:
+
+      - [Make sure all non-standard fonts are
+      embedded.](#section/Standard-PDF-Fonts)
+
+      - Generated PDF's need to be be PDF/A compliant.
 
 
       **Prepping PNGs/JPEGs**
@@ -2231,9 +2224,6 @@ tags:
       PDF editing software that are compliant with PDF standards.
 
 
-      Please note, only standard base14 fonts can be Type 1.
-
-
       <table>
         <tr>
           <th style="white-space: nowrap">FONT NAME</th>
@@ -2241,15 +2231,15 @@ tags:
         </tr>
         <tr>
           <td style="white-space: nowrap"><code>Arial</code></td>
-          <td style="white-space: nowrap">TrueType, CID TrueType</td>
+          <td style="white-space: nowrap">Type 1, TrueType, CID TrueType</td>
         </tr>
         <tr>
           <td style="white-space: nowrap"><code>Arial,Bold</code></td>
-          <td style="white-space: nowrap">TrueType, CID TrueType</td>
+          <td style="white-space: nowrap">Type 1, TrueType, CID TrueType</td>
         </tr>
         <tr>
           <td style="white-space: nowrap"><code>Arial,BoldItalic</code></td>
-          <td style="white-space: nowrap">TrueType, CID TrueType</td>
+          <td style="white-space: nowrap">Type 1, TrueType, CID TrueType</td>
         </tr>
         <tr>
           <td style="white-space: nowrap"><code>Arial,Italic</code></td>
@@ -4914,13 +4904,13 @@ components:
         * `secondary_number`
         * `pmb_designator`
         * `pmb_number`
-      maxLength: 200
+      maxLength: 500
     secondary_line:
       type: string
       description: >
         The secondary delivery line of the address. This field is typically
         empty but may contain information if `primary_line` is too long.
-      maxLength: 200
+      maxLength: 500
     urbanization:
       type: string
       description: >
@@ -4928,7 +4918,7 @@ components:
         area, sector, or development within a city. See <a
         href="https://pe.usps.com/text/pub28/28api_008.htm#:~:text=I51.,-4%20Urbanizations&text=In%20Puerto%20Rico%2C%20identical%20street,placed%20before%20the%20urbanization%20name."
         target="_blank">USPS documentation</a> for clarification.
-      maxLength: 200
+      maxLength: 500
     city_no_description:
       type: string
       maxLength: 200
@@ -6057,8 +6047,8 @@ components:
       default: 4x6
     returned:
       description: >-
-        Properties that the postcards in your Creative should have. See the
-        `qr_code` attribute below to add a QR code to your creative.
+        Properties that the postcards in your Creative should have. Check within
+        in order to add a QR code to your creative.
       properties:
         mail_type:
           $ref: '#/components/schemas/mail_type'
@@ -6181,8 +6171,8 @@ components:
       nullable: true
     letter_details_returned:
       description: >-
-        Properties that the letters in your Creative should have. See the
-        `qr_code` attribute below to add a QR code to your creative.
+        Properties that the letters in your Creative should have. Check within
+        in order to add a QR code to your creative.
       properties:
         address_placement:
           $ref: '#/components/schemas/address_placement'
@@ -6232,8 +6222,8 @@ components:
       default: 6x18_bifold
     self_mailer_details_returned:
       description: >-
-        Properties that the self mailers in your Creative should have. See the
-        `qr_code` attribute below to add a QR code to your creative.
+        Properties that the self mailers in your Creative should have. Check
+        within in order to add a QR code to your creative.
       properties:
         mail_type:
           $ref: '#/components/schemas/mail_type'
@@ -6547,7 +6537,6 @@ components:
       example:
         name: recipient_name
         gift_code: code
-        qr_code_redirect_url: redirect_url
       description: >-
         The mapping of column headers in your file to the merge variables
         present in your creative. See our <a
@@ -6559,10 +6548,9 @@ components:
         a different value is provided, then when the campaign is processing it
         will get overwritten with the mapped value present in the
         `requiredAddressColumnMapping` or `optionalAddressColumnMapping`
-        objects. The redirect URLs for QR codes can also be customized using
-        this mapping. If the URL has a variable and the variable mapping
-        existsing here, then data from the respective column in the audience
-        file will be merged into the URL template.
+        objects. If using customized QR code redirect from the Audience file,
+        then a `qr_code_redirect_url` must be mapped to the column header as
+        used in the CSV.
     upload_writable:
       type: object
       required:
@@ -7019,25 +7007,24 @@ components:
     merge_variables:
       type: object
       description: >-
-        You can input a merge variable payload object to your template or QR
-        code redirect URLs to render dynamic content. For example, if you have a
-        template like: `{{variable_name}}`, pass in `{"variable_name": "Harry"}`
-        to render `Harry`. `merge_variables` must be an object. Any type of
-        value is accepted as long as the object is valid JSON; you can use
-        `strings`, `numbers`, `booleans`, `arrays`, `objects`, or `null`. The
-        max length of the object is 25,000 characters. If you call
-        `JSON.stringify` on your object, it can be no longer than 25,000
-        characters. Your variable names cannot contain any whitespace or any of
-        the following special characters: `!`, `"`, `#`, `%`, `&`, `'`, `(`,
-        `)`, `*`, `+`, `,`, `/`, `;`, `<`, `=`, `>`, `@`, `[`, `\`, `]`, `^`, ``
-        ` ``, `{`, `|`, `}`, `~`. More instructions can be found in <a
+        You can input a merge variable payload object to your template to render
+        dynamic content. For example, if you have a template like:
+        `{{variable_name}}`, pass in `{"variable_name": "Harry"}` to render
+        `Harry`. `merge_variables` must be an object. Any type of value is
+        accepted as long as the object is valid JSON; you can use `strings`,
+        `numbers`, `booleans`, `arrays`, `objects`, or `null`. The max length of
+        the object is 25,000 characters. If you call `JSON.stringify` on your
+        object, it can be no longer than 25,000 characters. Your variable names
+        cannot contain any whitespace or any of the following special
+        characters: `!`, `"`, `#`, `%`, `&`, `'`, `(`, `)`, `*`, `+`, `,`, `/`,
+        `;`, `<`, `=`, `>`, `@`, `[`, `\`, `]`, `^`, `` ` ``, `{`, `|`, `}`,
+        `~`. More instructions can be found in <a
         href="https://help.lob.com/print-and-mail/designing-mail-creatives/dynamic-personalization#using-html-and-merge-variables-10"
         target="_blank">our guide to using html and merge variables</a>.
         Depending on your <a href="https://dashboard.lob.com/#/settings/account"
         target="_blank">Merge Variable strictness</a> setting, if you define
         variables in your HTML but do not pass them here, you will either
-        receive an error or the variable will render as an empty string. These
-        settings only apply on HTML templates and not on QR code redirect URLs.
+        receive an error or the variable will render as an empty string.
       maxLength: 25000
       nullable: true
     editable_no_mailtype:
@@ -7793,16 +7780,26 @@ components:
       oneOf:
         - $ref: '#/components/schemas/tmpl_id'
         - $ref: '#/components/schemas/local_file_path'
+    single_redirect_url:
+      type: string
+      description: >-
+        Redirect all QRs in the camapign to a common URL. Add a redirect_url in
+        the request body along with the url as string.
+    customized_redirect_url:
+      type: string
+      description: >-
+        Redirect all mail receipients to a unique URL per mailpiece. Add an
+        extra column in the [audience
+        file](https://help.lob.com/print-and-mail/building-a-mail-strategy/campaign-or-triggered-sends/campaign-audience-guide)
+        with a unique link against each address row and map that row using the
+        merge variable mapping while creating an upload.
     qr_code_campaigns:
       type: object
       description: >-
         Customize and place a QR code on all the postcards, letters or self
-        mailers in a campaign. Redirect URLs are fully customizable i.e. they
-        can be standard single URLs for the whole campaign, or variables can be
-        used to customize them for each recipient. More details on customizing
-        redirect URLs can be found in <a
-        href="https://help.lob.com/print-and-mail/designing-mail-creatives/adding-qr-codes#destination-url-and-redirects"
-        target="_blank">our help center.</a>
+        mailers in a campaign. Redirect URLs can either be unique for each
+        recipient, or a single link can be used for the whole campaign. See
+        `redirect_url` attribute below for more details.
       required:
         - position
         - width
@@ -7837,26 +7834,21 @@ components:
             allowed if "top" isn't provided.
         redirect_url:
           description: >
-            The url to redirect the user when a QR code is scanned. The URL can
-            be a standard URL for all recipients in the campaign or customized
-            per recipient. To customize for each recipient, use a mustache style
-            template with merge variables enclosed in curly braces(for example,
-            `https://www.example.com` or `{{name}}` or
-            `https://www.example.com?q={{name}}`). If a merge variable is used
-            in the URL, a mapping to that merge variable should be provided in
-            the `mergeVariableColumnMapping` property when creating an upload.
-            If the variable is not provided/does not exist, then the templated
-            URL will be used. More details on customizing redirect URLs can be
-            found in <a
-            href="https://help.lob.com/print-and-mail/designing-mail-creatives/adding-qr-codes#destination-url-and-redirects"
-            target="_blank">our help center.</a>.
-
-            Note: Please use unique variable names between HTML templates and
-            Redirect URLs to avoid conflicts. For example, if you are using
-            `{{name}}` in the HTML template, use `{{name_redirect}}` in the
-            Redirect URL. They can still be mapped to the same column in the
-            audience file. Failing to set or map the redirect URL when using QR
-            codes may lead to errors in generating mail pieces.
+            Redirect all mail recipients to either a single URL or a custom
+            personalized URL for each recipient.  To redirect to a single URL
+            for the whole campaign, add a `redirect_url` in the request body
+            along with the url as string. To redirect to a custom URL for each
+            recipient, do not provide any value for `redirect_url`. Instead,
+            create an extra column in the [audience
+            file](https://help.lob.com/print-and-mail/building-a-mail-strategy/campaign-or-triggered-sends/campaign-audience-guide)
+            with a unique link against each address row and while creating an
+            upload, map `qr_code_redirect_url` to this column. If the QR code
+            section is used but a redirection url is not provided or mapped
+            while creating an upload, then there might be failures in creating
+            individual mail pieces.
+          oneOf:
+            - $ref: '#/components/schemas/single_redirect_url'
+            - $ref: '#/components/schemas/customized_redirect_url'
         width:
           type: string
           description: >-
@@ -7877,8 +7869,8 @@ components:
             of both ("1,3,5-7").
     writable:
       description: >-
-        Properties that the postcards in your Creative should have. See the
-        `qr_code` attribute below to add a QR code to your creative.
+        Properties that the postcards in your Creative should have. Check within
+        in order to add a QR code to your creative.
       required:
         - color
       properties:
@@ -7909,8 +7901,8 @@ components:
       pattern: ^env_[a-zA-Z0-9]+$
     letter_details_writable:
       description: >-
-        Properties that the letters in your Creative should have. See the
-        `qr_code` attribute below to add a QR code to your creative.
+        Properties that the letters in your Creative should have. Check within
+        in order to add a QR code to your creative.
       required:
         - color
       properties:
@@ -8042,8 +8034,8 @@ components:
         - $ref: '#/components/schemas/local_file_path'
     self_mailer_details_writable:
       description: >-
-        Properties that the self mailers in your Creative should have. See the
-        `qr_code` attribute below to add a QR code to your creative.
+        Properties that the self mailers in your Creative should have. Check
+        within in order to add a QR code to your creative.
       required:
         - color
       properties:
@@ -9104,7 +9096,9 @@ components:
       default: false
     qr_code:
       type: object
-      description: Customize and place a QR code on the creative at the required position.
+      description: >-
+        Customize and place a QR code on the creative at the required position.
+        Not available for `us_legal` letter size and snap packs.
       required:
         - position
         - redirect_url
@@ -9119,41 +9113,32 @@ components:
             with this, you should provide one of 'top' or 'bottom', and one of
             'left' or 'right'.
         top:
-          type: number
+          type: string
           description: >-
             Vertical distance (in inches) to place QR code from the top. Only
             allowed if "bottom" isn't provided.
         right:
-          type: number
+          type: string
           description: >-
             Horizontal distance (in inches) to place QR code from the right.
             Only allowed if "left" isn't provided.
         left:
-          type: number
+          type: string
           description: >-
             Horizontal distance (in inches) to place QR code from the left. Only
             allowed if "right" isn't provided.
         bottom:
-          type: number
+          type: string
           description: >-
             Vertical distance (in inches) to place QR code from the bottom. Only
             allowed if "top" isn't provided.
         redirect_url:
           type: string
           description: >-
-            The url to redirect the user when a QR code is scanned. The URL can
-            be a literal URL, a template URL containing merge variables, or
-            consist entirely of merge variables. For example,
-            `https://www.example.com` or `https://www.example.com?q={{name}}` or
-            `{{name}}`, respectively. When a merge variable exists in the URL,
-            it is replaced with data from merge_variables. If the variable does
-            not exist, then nothing with be replaced and the destination URL
-            will be the same as the input URL. More details on merge variables
-            can be found in <a
-            href="https://help.lob.com/print-and-mail/designing-mail-creatives/adding-qr-codes#destination-url-and-redirects"
-            target="_blank">our help center</a>.
+            The url to redirect the user when a QR code is scanned. The url must
+            start with `https://`
         width:
-          type: number
+          type: string
           description: >-
             The size (in inches) of the QR code with a minimum of 1 inch. All QR
             codes are generated as a square.
@@ -9170,35 +9155,6 @@ components:
             For letters, the values can be specific page numbers ("1", "3"),
             page number ranges such as "1-3", or a comma separated combination
             of both ("1,3,5-7").
-        logo:
-          type: object
-          description: >-
-            Allows specifying a logo to be placed over the center of the QR
-            code.  Logos must be in PNG or JPEG format and have a maximum file
-            size of 1 MB.
-          properties:
-            url:
-              type: string
-              description: >-
-                The public URL of the logo image to be retrieved and placed over
-                the center of the QR code.
-              pattern: ^https://[-a-zA-Z0-9@:%._+~#=/]{1,256}.(png|jpe?g)$
-        style:
-          type: object
-          description: Customizes the appearance of the QR code.
-          properties:
-            background_color:
-              type: string
-              description: >-
-                The background color of the QR code in hexadecimal format. For
-                example, `#000000` is black and `#FFFFFF` is white.
-              pattern: ^#[A-Fa-f0-9]{6}$
-            foreground_color:
-              type: string
-              description: >-
-                The foreground color of the QR code in hexadecimal format. For
-                example, `#000000` is black and `#FFFFFF` is white.
-              pattern: ^#[A-Fa-f0-9]{6}$
     ltr_size:
       type: string
       enum:
@@ -9881,8 +9837,6 @@ components:
               allOf:
                 - $ref: '#/components/schemas/color'
                 - default: false
-            qr_code:
-              $ref: '#/components/schemas/qr_code'
     snap_pack_id:
       type: string
       description: Unique identifier prefixed with `ord_`.

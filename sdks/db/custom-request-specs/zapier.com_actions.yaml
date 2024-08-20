@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.0.2
 info:
   title: Zapier AI Actions API
   version: 1.0.0
@@ -16,10 +16,10 @@ paths:
           description: OK
       description: Test that the API and auth are working.
       security:
+        - SessionAuth: []
         - AccessPointApiKeyHeader: []
         - AccessPointApiKeyQuery: []
         - AccessPointOAuth: []
-        - SessionAuth: []
   /api/v1/configuration-link/:
     get:
       operationId: get_configuration_link
@@ -32,10 +32,10 @@ paths:
         Provides a link to configure more actions. Alternatively, searching
         through apps and actions will provide more specific configuration links.
       security:
+        - SessionAuth: []
         - AccessPointApiKeyHeader: []
         - AccessPointApiKeyQuery: []
         - AccessPointOAuth: []
-        - SessionAuth: []
   /api/v1/exposed/:
     get:
       operationId: list_exposed_actions
@@ -50,10 +50,10 @@ paths:
                 $ref: '#/components/schemas/ExposedActionResponseSchema'
       description: List all the currently exposed actions for the given account.
       security:
+        - SessionAuth: []
         - AccessPointApiKeyHeader: []
         - AccessPointApiKeyQuery: []
         - AccessPointOAuth: []
-        - SessionAuth: []
   /api/v1/exposed/{exposed_app_action_id}/execute/:
     post:
       operationId: execute_app_action_endpoint
@@ -62,10 +62,12 @@ paths:
         - in: path
           name: exposed_app_action_id
           schema:
-            format: uuid
             title: Exposed App Action Id
             type: string
+            pattern: ^[A-Z0-9]{26}$
+            example: 01ARZ3NDEKTSV4RRFFQ69G5FAV
           required: true
+          example: 01ARZ3NDEKTSV4RRFFQ69G5FAV
       responses:
         '200':
           description: OK
@@ -90,10 +92,10 @@ paths:
               $ref: '#/components/schemas/ExecuteRequest'
         required: true
       security:
+        - SessionAuth: []
         - AccessPointApiKeyHeader: []
         - AccessPointApiKeyQuery: []
         - AccessPointOAuth: []
-        - SessionAuth: []
   /api/v1/execution-log/{execution_log_id}/:
     get:
       operationId: get_execution_log_endpoint
@@ -102,10 +104,12 @@ paths:
         - in: path
           name: execution_log_id
           schema:
-            format: uuid
             title: Execution Log Id
             type: string
+            pattern: ^[A-Z0-9]{26}$
+            example: 01ARZ3NDEKTSV4RRFFQ69G5FAV
           required: true
+          example: 01ARZ3NDEKTSV4RRFFQ69G5FAV
       responses:
         '200':
           description: OK
@@ -121,162 +125,156 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
       description: Get the execution log for a given execution log id.
       security:
+        - SessionAuth: []
         - AccessPointApiKeyHeader: []
         - AccessPointApiKeyQuery: []
         - AccessPointOAuth: []
-        - SessionAuth: []
 components:
   schemas:
-    ExposedActionResponseSchema:
-      properties:
-        results:
-          items:
-            $ref: '#/components/schemas/ExposedActionSchema'
-          title: Results
-          type: array
-        configuration_link:
-          description: URL to configure and expose more actions.
-          title: Configuration Link
-          type: string
-      required:
-        - results
-        - configuration_link
-      title: ExposedActionResponseSchema
-      type: object
     ExposedActionSchema:
+      title: ExposedActionSchema
+      type: object
       properties:
         id:
-          description: The unique ID of the exposed action.
           title: Id
+          description: The unique ID of the exposed action.
           type: string
         operation_id:
-          description: The operation ID of the exposed action.
           title: Operation Id
+          description: The operation ID of the exposed action.
           type: string
         description:
-          description: Description of the action.
           title: Description
+          description: Description of the action.
           type: string
         params:
-          description: Available hint fields for the action.
           title: Params
+          description: Available hint fields for the action.
           type: object
       required:
         - id
         - operation_id
         - description
         - params
-      title: ExposedActionSchema
+    ExposedActionResponseSchema:
+      title: ExposedActionResponseSchema
       type: object
+      properties:
+        results:
+          title: Results
+          type: array
+          items:
+            $ref: '#/components/schemas/ExposedActionSchema'
+        configuration_link:
+          title: Configuration Link
+          description: URL to configure and expose more actions.
+          type: string
+      required:
+        - results
+        - configuration_link
     ExecuteResponse:
+      title: ExecuteResponse
       description: This is a summary of the results given the action that was executed.
+      type: object
       properties:
         id:
-          description: The id of the execution log.
           title: Id
+          description: The id of the execution log.
           type: string
         action_used:
-          description: The name of the action that was executed.
           title: Action Used
+          description: The name of the action that was executed.
           type: string
         input_params:
-          description: The params we used / will use to execute the action.
           title: Input Params
+          description: The params we used / will use to execute the action.
           type: object
         review_url:
+          title: Review Url
           description: >-
             The URL to run the action or review the AI choices the AI made for
             input_params given instructions.
-          title: Review Url
           type: string
         result:
-          anyOf:
-            - type: object
-            - type: 'null'
+          title: Result
           description: >-
             A trimmed down result of the first item of the full results. Ideal
             for humans and language models!
-          title: Result
+          type: object
         additional_results:
+          title: Additional Results
           description: The rest of the full results. Always returns an array of objects
+          type: array
           items:
             type: object
-          title: Additional Results
-          type: array
         result_field_labels:
-          anyOf:
-            - type: object
-            - type: 'null'
-          description: Human readable labels for some of the keys in the result.
           title: Result Field Labels
+          description: Human readable labels for some of the keys in the result.
+          type: object
         status:
-          default: success
+          title: Status
           description: The status of the execution.
+          default: success
           enum:
             - success
             - error
             - empty
             - preview
-          title: Status
           type: string
         error:
-          anyOf:
-            - type: string
-            - type: 'null'
-          description: The error message if the execution failed.
           title: Error
+          description: The error message if the execution failed.
+          type: string
         assistant_hint:
-          anyOf:
-            - type: string
-            - type: 'null'
-          description: A hint for the assistant on what to do next.
           title: Assistant Hint
+          description: A hint for the assistant on what to do next.
+          type: string
       required:
         - id
         - action_used
         - input_params
         - review_url
         - additional_results
-      title: ExecuteResponse
-      type: object
     ErrorResponse:
-      additionalProperties: true
+      title: ErrorResponse
+      type: object
       properties:
         error:
-          description: Error message.
           title: Error
+          description: Error message.
           type: string
       required:
         - error
-      title: ErrorResponse
-      type: object
     ExecuteRequest:
-      additionalProperties: true
+      title: ExecuteRequest
       description: >-
         This extends from ExecuteRequestBase to add the preview_only option.
 
 
         (1) Providers who allow side effects or (2) actions that do not have a
         side effect should use this class.
+      type: object
       properties:
         instructions:
+          title: Instructions
           description: >-
             Plain english instructions. Provide as much detail as possible, even
             if other fields are present.
-          title: Instructions
           type: string
         preview_only:
-          default: false
+          title: Preview Only
           description: >-
             If true, we will not execute the action, but will return the params
             of the preview.
-          title: Preview Only
+          default: false
           type: boolean
       required:
         - instructions
-      title: ExecuteRequest
-      type: object
   securitySchemes:
+    SessionAuth:
+      type: apiKey
+      in: cookie
+      name: nlasession
     AccessPointApiKeyHeader:
       type: apiKey
       in: header
@@ -293,8 +291,3 @@ components:
           tokenUrl: /oauth/token/
           scopes:
             nla:exposed_actions:execute: Run AI Actions
-            openid: OpenID Connect scope
-    SessionAuth:
-      type: apiKey
-      in: cookie
-      name: nlasession

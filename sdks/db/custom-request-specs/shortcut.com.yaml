@@ -318,7 +318,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateEntityTemplate'
-        description: Request parameters for creating an entirely new entity template.
+        description: Request paramaters for creating an entirely new entity template.
         required: true
       responses:
         '201':
@@ -1084,6 +1084,34 @@ paths:
           description: Unprocessable
       operationId: createGroup
       summary: Create Group
+  /api/v3/groups/disable:
+    put:
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Schema mismatch
+        '404':
+          description: Resource does not exist
+        '422':
+          description: Unprocessable
+      operationId: disableGroups
+      description: Disables Groups for the current workspace2
+      summary: Disable Groups
+  /api/v3/groups/enable:
+    put:
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Schema mismatch
+        '404':
+          description: Resource does not exist
+        '422':
+          description: Unprocessable
+      operationId: enableGroups
+      description: Enables Groups for the current workspace2
+      summary: Enable Groups
   /api/v3/groups/{group-public-id}:
     get:
       parameters:
@@ -1852,9 +1880,7 @@ paths:
         '422':
           description: Unprocessable
       operationId: listMilestones
-      description: >-
-        (Deprecated: Use 'List Objectives') List Milestones returns a list of
-        all Milestones and their attributes.
+      description: List Milestones returns a list of all Milestones and their attributes.
       summary: List Milestones
     post:
       requestBody:
@@ -1883,9 +1909,7 @@ paths:
         '422':
           description: Unprocessable
       operationId: createMilestone
-      description: >-
-        (Deprecated: Use 'Create Objective') Create Milestone allows you to
-        create a new Milestone in Shortcut.
+      description: Create Milestone allows you to create a new Milestone in Shortcut.
       summary: Create Milestone
   /api/v3/milestones/{milestone-public-id}:
     get:
@@ -1911,9 +1935,7 @@ paths:
         '422':
           description: Unprocessable
       operationId: getMilestone
-      description: >-
-        (Deprecated: Use 'Get Objective') Get Milestone returns information
-        about a chosen Milestone.
+      description: Get Milestone returns information about a chosen Milestone.
       summary: Get Milestone
     put:
       parameters:
@@ -1944,9 +1966,7 @@ paths:
         '422':
           description: Unprocessable
       operationId: updateMilestone
-      description: >-
-        (Deprecated: Use 'Update Objective') Update Milestone can be used to
-        update Milestone properties.
+      description: Update Milestone can be used to update Milestone properties.
       summary: Update Milestone
     delete:
       parameters:
@@ -1967,9 +1987,7 @@ paths:
         '422':
           description: Unprocessable
       operationId: deleteMilestone
-      description: >-
-        (Deprecated: Use 'Delete Objective') Delete Milestone can be used to
-        delete any Milestone.
+      description: Delete Milestone can be used to delete any Milestone.
       summary: Delete Milestone
   /api/v3/milestones/{milestone-public-id}/epics:
     get:
@@ -1997,9 +2015,7 @@ paths:
         '422':
           description: Unprocessable
       operationId: listMilestoneEpics
-      description: >-
-        (Deprecated: Use 'List Objective Epics') List all of the Epics within
-        the Milestone.
+      description: List all of the Epics within the Milestone.
       summary: List Milestone Epics
   /api/v3/objectives:
     get:
@@ -3354,41 +3370,6 @@ paths:
       operationId: deleteStoryReaction
       description: Delete a reaction from any story comment.
       summary: Delete Story Reaction
-  /api/v3/stories/{story-public-id}/comments/{comment-public-id}/unlink-from-slack:
-    post:
-      parameters:
-        - in: path
-          name: story-public-id
-          description: The ID of the Story to unlink.
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - in: path
-          name: comment-public-id
-          description: The ID of the Comment to unlink.
-          required: true
-          schema:
-            type: integer
-            format: int64
-      responses:
-        '201':
-          description: Resource
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/StoryComment'
-        '400':
-          description: Schema mismatch
-        '404':
-          description: Resource does not exist
-        '422':
-          description: Unprocessable
-      operationId: unlinkCommentThreadFromSlack
-      description: >-
-        Unlinks a Comment from its linked Slack thread (Comment replies and
-        Slack replies will no longer be synced)
-      summary: Unlink Comment thread from Slack
   /api/v3/stories/{story-public-id}/history:
     get:
       parameters:
@@ -3743,8 +3724,8 @@ components:
       type: object
       properties:
         description:
-          maxLength: 2048
           minLength: 1
+          maxLength: 2048
           description: The Task description.
           type: string
         complete:
@@ -3761,7 +3742,6 @@ components:
             type: string
             format: uuid
         external_id:
-          maxLength: 128
           description: >-
             This field can be set to another unique ID. In the case that the
             Task has been imported from another tool, the ID in the other tool
@@ -3983,7 +3963,6 @@ components:
       type: object
       properties:
         name:
-          maxLength: 128
           minLength: 1
           description: The name of the new Category.
           type: string
@@ -3996,7 +3975,6 @@ components:
           minLength: 1
           type: string
         external_id:
-          maxLength: 128
           minLength: 1
           description: >-
             This field can be set to another unique ID. In the case that the
@@ -4016,7 +3994,6 @@ components:
       type: object
       properties:
         name:
-          maxLength: 128
           minLength: 1
           description: The name of the new Category.
           type: string
@@ -4029,7 +4006,6 @@ components:
           minLength: 1
           type: string
         external_id:
-          maxLength: 128
           minLength: 1
           description: >-
             This field can be set to another unique ID. In the case that the
@@ -4067,7 +4043,6 @@ components:
           type: string
           format: date-time
         external_id:
-          maxLength: 128
           description: >-
             This field can be set to another unique ID. In the case that the
             comment has been imported from another tool, the ID in the other
@@ -4077,11 +4052,10 @@ components:
       required:
         - text
     CreateEntityTemplate:
-      description: Request parameters for creating an entirely new entity template.
+      description: Request paramaters for creating an entirely new entity template.
       type: object
       properties:
         name:
-          maxLength: 128
           minLength: 1
           description: The name of the new entity template
           type: string
@@ -4119,8 +4093,8 @@ components:
             type: integer
             format: int64
         name:
-          maxLength: 256
           minLength: 1
+          maxLength: 256
           description: The Epic's name.
           type: string
         planned_start_date:
@@ -4192,7 +4166,6 @@ components:
             type: string
             format: uuid
         external_id:
-          maxLength: 128
           description: >-
             This field can be set to another unique ID. In the case that the
             Epic has been imported from another tool, the ID in the other tool
@@ -4240,7 +4213,6 @@ components:
           type: string
           format: date-time
         external_id:
-          maxLength: 128
           description: >-
             This field can be set to another unique ID. In the case that the
             comment has been imported from another tool, the ID in the other
@@ -4253,7 +4225,6 @@ components:
       type: object
       properties:
         description:
-          maxLength: 4096
           description: The description of the Group.
           type: string
         member_ids:
@@ -4270,13 +4241,13 @@ components:
             type: integer
             format: int64
         name:
-          maxLength: 63
           minLength: 1
+          maxLength: 63
           description: The name of this Group.
           type: string
         mention_name:
-          maxLength: 63
           minLength: 1
+          maxLength: 63
           description: The mention name of this Group.
           type: string
         color:
@@ -4340,8 +4311,8 @@ components:
           description: The description of the Iteration.
           type: string
         name:
-          maxLength: 256
           minLength: 1
+          maxLength: 256
           description: The name of this Iteration.
           type: string
         start_date:
@@ -4362,12 +4333,11 @@ components:
       type: object
       properties:
         name:
-          maxLength: 128
           minLength: 1
+          maxLength: 128
           description: The name of the new Label.
           type: string
         description:
-          maxLength: 1024
           description: The description of the new Label.
           type: string
         color:
@@ -4379,7 +4349,6 @@ components:
           minLength: 1
           type: string
         external_id:
-          maxLength: 128
           minLength: 1
           description: >-
             This field can be set to another unique ID. In the case that the
@@ -4394,7 +4363,6 @@ components:
       type: object
       properties:
         description:
-          maxLength: 512
           description: The description of the file.
           type: string
         story_id:
@@ -4402,8 +4370,8 @@ components:
           type: integer
           format: int64
         name:
-          maxLength: 256
           minLength: 1
+          maxLength: 256
           description: The name of the file.
           type: string
         thumbnail_url:
@@ -4429,7 +4397,6 @@ components:
           type: string
           format: uuid
         content_type:
-          maxLength: 128
           description: The content type of the image (e.g. txt/plain).
           type: string
         url:
@@ -4447,8 +4414,8 @@ components:
       type: object
       properties:
         name:
-          maxLength: 256
           minLength: 1
+          maxLength: 256
           description: The name of the Milestone.
           type: string
         description:
@@ -4483,8 +4450,8 @@ components:
       type: object
       properties:
         name:
-          maxLength: 256
           minLength: 1
+          maxLength: 256
           description: The name of the Objective.
           type: string
         description:
@@ -4541,8 +4508,8 @@ components:
           minLength: 1
           type: string
         name:
-          maxLength: 128
           minLength: 1
+          maxLength: 128
           description: The name of the Project.
           type: string
         start_time:
@@ -4564,7 +4531,6 @@ components:
             type: string
             format: uuid
         external_id:
-          maxLength: 128
           description: >-
             This field can be set to another unique ID. In the case that the
             Project has been imported from another tool, the ID in the other
@@ -4579,7 +4545,6 @@ components:
           type: integer
           format: int64
         abbreviation:
-          maxLength: 63
           description: >-
             The Project abbreviation used in Story summaries. Should be kept to
             3 characters at most.
@@ -4633,7 +4598,6 @@ components:
           type: string
           format: date-time
         external_id:
-          maxLength: 1024
           description: >-
             This field can be set to another unique ID. In the case that the
             comment has been imported from another tool, the ID in the other
@@ -4674,7 +4638,6 @@ components:
           type: string
           format: date-time
         external_id:
-          maxLength: 1024
           description: >-
             This field can be set to another unique ID. In the case that the
             comment has been imported from another tool, the ID in the other
@@ -4846,20 +4809,13 @@ components:
             type: integer
             format: int64
           uniqueItems: true
-        source_task_id:
-          description: >-
-            Given this story was converted from a task in another story, this is
-            the original task ID that was converted to this story.
-          type: integer
-          format: int64
-          nullable: true
         completed_at_override:
           description: A manual override for the time/date the Story was completed.
           type: string
           format: date-time
         name:
-          maxLength: 512
           minLength: 1
+          maxLength: 512
           description: >-
             The name of the story. Must be provided if the template does not
             provide a name.
@@ -4993,7 +4949,6 @@ components:
             format: uuid
           uniqueItems: true
         external_id:
-          maxLength: 1024
           description: >-
             This field can be set to another unique ID. In the case that the
             Story has been imported from another tool, the ID in the other tool
@@ -5183,20 +5138,13 @@ components:
             type: integer
             format: int64
           uniqueItems: true
-        source_task_id:
-          description: >-
-            Given this story was converted from a task in another story, this is
-            the original task ID that was converted to this story.
-          type: integer
-          format: int64
-          nullable: true
         completed_at_override:
           description: A manual override for the time/date the Story was completed.
           type: string
           format: date-time
         name:
-          maxLength: 512
           minLength: 1
+          maxLength: 512
           description: The name of the story.
           type: string
         comments:
@@ -5268,7 +5216,6 @@ components:
             format: uuid
           uniqueItems: true
         external_id:
-          maxLength: 1024
           description: >-
             This field can be set to another unique ID. In the case that the
             Story has been imported from another tool, the ID in the other tool
@@ -5310,8 +5257,8 @@ components:
       type: object
       properties:
         description:
-          maxLength: 2048
           minLength: 1
+          maxLength: 2048
           description: The Task description.
           type: string
         complete:
@@ -5328,7 +5275,6 @@ components:
             type: string
             format: uuid
         external_id:
-          maxLength: 128
           description: >-
             This field can be set to another unique ID. In the case that the
             Task has been imported from another tool, the ID in the other tool
@@ -5354,8 +5300,8 @@ components:
       type: object
       properties:
         description:
-          maxLength: 2048
           minLength: 1
+          maxLength: 2048
           description: The Task description.
           type: string
         complete:
@@ -5372,7 +5318,6 @@ components:
             type: string
             format: uuid
         external_id:
-          maxLength: 128
           description: >-
             This field can be set to another unique ID. In the case that the
             Task has been imported from another tool, the ID in the other tool
@@ -5397,13 +5342,13 @@ components:
       type: object
       properties:
         description:
-          maxLength: 512
           minLength: 1
+          maxLength: 512
           description: A string description of the CustomField
           type: string
         icon_set_identifier:
-          maxLength: 63
           minLength: 1
+          maxLength: 63
           description: >-
             A string that represents the icon that corresponds to this custom
             field.
@@ -5420,8 +5365,8 @@ components:
           items:
             type: string
         name:
-          maxLength: 63
           minLength: 1
+          maxLength: 63
           description: The name of the Custom Field.
           type: string
         fixed_position:
@@ -5482,8 +5427,8 @@ components:
           type: string
           format: uuid
         value:
-          maxLength: 63
           minLength: 1
+          maxLength: 63
           description: A string value within the domain of this Custom Field.
           type: string
         position:
@@ -5641,7 +5586,7 @@ components:
           items:
             $ref: '#/components/schemas/LabelSlim'
         mention_ids:
-          description: '`Deprecated:` use `member_mention_ids`.'
+          description: 'Deprecated: use member_mention_ids.'
           type: array
           items:
             type: string
@@ -5917,7 +5862,7 @@ components:
           items:
             $ref: '#/components/schemas/LabelSlim'
         mention_ids:
-          description: '`Deprecated:` use `member_mention_ids`.'
+          description: 'Deprecated: use member_mention_ids.'
           type: array
           items:
             type: string
@@ -6203,7 +6148,7 @@ components:
           items:
             $ref: '#/components/schemas/LabelSlim'
         mention_ids:
-          description: '`Deprecated:` use `member_mention_ids`.'
+          description: 'Deprecated: use member_mention_ids.'
           type: array
           items:
             type: string
@@ -6670,7 +6615,7 @@ components:
             - turquoise
           nullable: true
         num_stories:
-          description: The total number of stories assigned to the group.
+          description: The total number of stories assigned ot the group.
           type: integer
           format: int64
         num_epics_started:
@@ -6803,10 +6748,6 @@ components:
           description: The ID of the webhook that handled the change.
           type: string
           nullable: true
-        automation_id:
-          description: The ID of the automation that performed the change.
-          type: string
-          format: uuid
       additionalProperties: false
       required:
         - changed_at
@@ -7965,11 +7906,10 @@ components:
           description: The type of entity referenced.
           type: string
         type:
-          description: Either "backlog", "unstarted", "started", or "done".
+          description: Either "unstarted", "started", or "done".
           type: string
           enum:
             - started
-            - backlog
             - unstarted
             - done
         name:
@@ -8060,7 +8000,7 @@ components:
           items:
             $ref: '#/components/schemas/Label'
         mention_ids:
-          description: '`Deprecated:` use `member_mention_ids`.'
+          description: 'Deprecated: use member_mention_ids.'
           type: array
           items:
             type: string
@@ -8106,7 +8046,7 @@ components:
             type: string
             format: uuid
         end_date:
-          description: The date this iteration ends.
+          description: The date this iteration begins.
           type: string
           format: date-time
         follower_ids:
@@ -8222,7 +8162,7 @@ components:
           items:
             $ref: '#/components/schemas/Label'
         mention_ids:
-          description: '`Deprecated:` use `member_mention_ids`.'
+          description: 'Deprecated: use member_mention_ids.'
           type: array
           items:
             type: string
@@ -8268,7 +8208,7 @@ components:
             type: string
             format: uuid
         end_date:
-          description: The date this iteration ends.
+          description: The date this iteration begins.
           type: string
           format: date-time
         follower_ids:
@@ -8707,7 +8647,7 @@ components:
             type: integer
             format: int64
         mention_ids:
-          description: '`Deprecated:` use `member_mention_ids`.'
+          description: 'Deprecated: use member_mention_ids.'
           type: array
           items:
             type: string
@@ -8901,10 +8841,8 @@ components:
         - workspace2
     Milestone:
       description: >-
-        (Deprecated) A Milestone is a collection of Epics that represent a
-        release or some other large initiative that you are working on.
-        Milestones have become Objectives, so you should use Objective-related
-        API resources instead of Milestone ones.
+        A Milestone is a collection of Epics that represent a release or some
+        other large initiative that you are working on.
       type: object
       properties:
         app_url:
@@ -9658,8 +9596,8 @@ components:
       type: object
       properties:
         name:
-          maxLength: 128
           minLength: 1
+          maxLength: 128
           description: The name of the new Label to remove.
           type: string
       additionalProperties: false
@@ -9862,7 +9800,6 @@ components:
             format: uuid
           uniqueItems: true
         external_id:
-          maxLength: 1024
           description: >-
             An ID or URL that references an external resource. Useful during
             imports.
@@ -9920,7 +9857,7 @@ components:
           items:
             $ref: '#/components/schemas/LabelSlim'
         mention_ids:
-          description: '`Deprecated:` use `member_mention_ids`.'
+          description: 'Deprecated: use member_mention_ids.'
           type: array
           items:
             type: string
@@ -10219,7 +10156,7 @@ components:
           type: integer
           format: int64
         mention_ids:
-          description: '`Deprecated:` use `member_mention_ids`.'
+          description: 'Deprecated: use member_mention_ids.'
           type: array
           items:
             type: string
@@ -10240,11 +10177,6 @@ components:
             Marks the comment as a blocker that can be surfaced to permissions
             or teams mentioned in the comment. Can only be used on a top-level
             comment.
-          type: boolean
-        linked_to_slack:
-          description: >-
-            Whether the Comment is currently the root of a thread that is linked
-            to Slack.
           type: boolean
         updated_at:
           description: The time/date when the Comment was updated.
@@ -10307,7 +10239,6 @@ components:
         - mention_ids
         - author_id
         - member_mention_ids
-        - linked_to_slack
         - updated_at
         - group_mention_ids
         - external_id
@@ -10656,7 +10587,7 @@ components:
             type: integer
             format: int64
         mention_ids:
-          description: '`Deprecated:` use `member_mention_ids`.'
+          description: 'Deprecated: use member_mention_ids.'
           type: array
           items:
             type: string
@@ -11018,7 +10949,7 @@ components:
             type: integer
             format: int64
         mention_ids:
-          description: '`Deprecated:` use `member_mention_ids`.'
+          description: 'Deprecated: use member_mention_ids.'
           type: array
           items:
             type: string
@@ -11325,7 +11256,7 @@ components:
           type: integer
           format: int64
         mention_ids:
-          description: '`Deprecated:` use `member_mention_ids`.'
+          description: 'Deprecated: use member_mention_ids.'
           type: array
           items:
             type: string
@@ -11412,7 +11343,7 @@ components:
           description: True/false boolean indicating whether the Comment is deleted.
           type: boolean
         mention_ids:
-          description: '`Deprecated:` use `member_mention_ids`.'
+          description: 'Deprecated: use member_mention_ids.'
           type: array
           items:
             type: string
@@ -11538,15 +11469,15 @@ components:
           enum:
             - entitlement-violation
         entitlement_tag:
-          maxLength: 63
           minLength: 1
+          maxLength: 63
           description: >-
             Short tag describing the unusable entitlement action taken by the
             user.
           type: string
         message:
-          maxLength: 256
           minLength: 1
+          maxLength: 256
           description: Message displayed to the user on why their action failed.
           type: string
       additionalProperties: false
@@ -11594,8 +11525,8 @@ components:
             enabled fields can be applied to Stories.
           type: boolean
         name:
-          maxLength: 63
           minLength: 1
+          maxLength: 63
           description: A collection of objects representing reporting periods for years.
           type: string
         values:
@@ -11606,8 +11537,8 @@ components:
           items:
             $ref: '#/components/schemas/UpdateCustomFieldEnumValue'
         icon_set_identifier:
-          maxLength: 63
           minLength: 1
+          maxLength: 63
           description: >-
             A frontend-controlled string that represents the icon for this
             custom field.
@@ -11634,8 +11565,8 @@ components:
           type: string
           format: uuid
         value:
-          maxLength: 63
           minLength: 1
+          maxLength: 63
           description: A string value within the domain of this Custom Field.
           type: string
         color_key:
@@ -11694,8 +11625,8 @@ components:
             type: integer
             format: int64
         name:
-          maxLength: 256
           minLength: 1
+          maxLength: 256
           description: The Epic's name.
           type: string
         planned_start_date:
@@ -11762,7 +11693,6 @@ components:
             type: string
             format: uuid
         external_id:
-          maxLength: 128
           description: >-
             This field can be set to another unique ID. In the case that the
             Epic has been imported from another tool, the ID in the other tool
@@ -11787,7 +11717,6 @@ components:
       type: object
       properties:
         description:
-          maxLength: 4096
           description: The description of the file.
           type: string
         created_at:
@@ -11799,8 +11728,8 @@ components:
           type: string
           format: date-time
         name:
-          maxLength: 1024
           minLength: 1
+          maxLength: 1024
           description: The name of the file.
           type: string
         uploader_id:
@@ -11810,7 +11739,6 @@ components:
           type: string
           format: uuid
         external_id:
-          maxLength: 128
           description: An additional ID that you may wish to assign to the file.
           type: string
       additionalProperties: false
@@ -11818,7 +11746,6 @@ components:
       type: object
       properties:
         description:
-          maxLength: 4096
           description: The description of this Group.
           type: string
         archived:
@@ -11838,13 +11765,13 @@ components:
           format: uuid
           nullable: true
         mention_name:
-          maxLength: 63
           minLength: 1
+          maxLength: 63
           description: The mention name of this Group.
           type: string
         name:
-          maxLength: 63
           minLength: 1
+          maxLength: 63
           description: The name of this Group.
           type: string
         color_key:
@@ -11908,8 +11835,8 @@ components:
           description: The description of the Iteration.
           type: string
         name:
-          maxLength: 256
           minLength: 1
+          maxLength: 256
           description: The name of this Iteration
           type: string
         start_date:
@@ -11925,7 +11852,6 @@ components:
       type: object
       properties:
         name:
-          maxLength: 1024
           description: The name of the Key Result.
           type: string
         initial_observed_value:
@@ -11940,12 +11866,11 @@ components:
       type: object
       properties:
         name:
-          maxLength: 128
           minLength: 1
+          maxLength: 128
           description: The new name of the label.
           type: string
         description:
-          maxLength: 1024
           description: The new description of the label.
           type: string
         color:
@@ -11966,7 +11891,6 @@ components:
       type: object
       properties:
         description:
-          maxLength: 512
           description: The description of the file.
           type: string
         story_id:
@@ -12022,8 +11946,8 @@ components:
           format: date-time
           nullable: true
         name:
-          maxLength: 256
           minLength: 1
+          maxLength: 256
           description: The name of the Milestone.
           type: string
         state:
@@ -12069,8 +11993,8 @@ components:
           format: date-time
           nullable: true
         name:
-          maxLength: 256
           minLength: 1
+          maxLength: 256
           description: The name of the Objective.
           type: string
         state:
@@ -12125,8 +12049,8 @@ components:
           minLength: 1
           type: string
         name:
-          maxLength: 128
           minLength: 1
+          maxLength: 128
           description: The Project's name.
           type: string
         follower_ids:
@@ -12345,8 +12269,8 @@ components:
           format: date-time
           nullable: true
         name:
-          maxLength: 512
           minLength: 1
+          maxLength: 512
           description: The title of the story.
           type: string
         epic_id:
@@ -12577,8 +12501,8 @@ components:
       type: object
       properties:
         description:
-          maxLength: 2048
           minLength: 1
+          maxLength: 2048
           description: The Task's description.
           type: string
         owner_ids:
@@ -12620,7 +12544,7 @@ components:
             type: integer
             format: int64
         mention_ids:
-          description: '`Deprecated:` use `member_mention_ids`.'
+          description: 'Deprecated: use member_mention_ids.'
           type: array
           items:
             type: string
