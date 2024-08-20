@@ -558,6 +558,398 @@ paths:
         '417':
           description: Delete failed.
       deprecated: false
+  /{objectName}/{id}/FileAttachments:
+    get:
+      tags:
+        - CustomObjectsRecords
+      summary: Gets a Record's File Attachments
+      operationId: GetFileAttachments
+      parameters:
+        - name: objectName
+          in: path
+          description: The object name
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          description: A Record's ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: updated_after_utc
+          in: query
+          description: Optional, earliest date when file attachment was last updated.
+          required: false
+          schema:
+            type: string
+            format: date-time
+        - name: skip
+          in: query
+          description: Optional, number of file attachments to skip.
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: top
+          in: query
+          description: >-
+            Optional, maximum number of file attachments to return in the
+            response.
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - name: count_total
+          in: query
+          description: >-
+            true if total number of records should be returned in the response
+            headers.
+          required: false
+          schema:
+            type: boolean
+            default: false
+        - name: Authorization
+          in: header
+          description: Authorization
+          required: true
+          schema:
+            type: string
+            default: '{{Authorization}}'
+      responses:
+        '200':
+          description: Request succeeded.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  title: CustomObjectsRecords
+                  required:
+                    - RECORD_NAME
+                  type: object
+                  properties:
+                    RECORD_ID:
+                      format: int64
+                      maxLength: 0
+                      type: integer
+                      readOnly: true
+                    RECORD_NAME:
+                      format: string
+                      maxLength: 0
+                      type: string
+                      readOnly: false
+                    OWNER_USER_ID:
+                      format: int32
+                      maxLength: 0
+                      type: integer
+                      readOnly: false
+                    DATE_CREATED_UTC:
+                      format: date-time
+                      maxLength: 0
+                      type: string
+                      readOnly: true
+                    VISIBLE_TO:
+                      format: string
+                      maxLength: 11
+                      type: string
+                      readOnly: false
+                    VISIBLE_TEAM_ID:
+                      format: int64
+                      maxLength: 0
+                      type: integer
+                      readOnly: false
+                    CUSTOMFIELDS:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/APICustomField'
+        '400':
+          description: Often missing or invalid parameter.
+        '401':
+          description: Authentication failed.
+        '403':
+          description: API User does not have access to Record.
+        '404':
+          description: Record not found.
+      deprecated: false
+    post:
+      tags:
+        - CustomObjectsRecords
+      summary: Adds a File Attachment to a Record
+      description: >-
+        This endpoint expects multipart/form-data as the request payload. See
+        Stack Overflow for examples of how to generate multipart requests, or
+        see our <a href="http://github.com/Insightly" target="_blank">client
+        libraries</a> for an example of how this is generated. Only one file can
+        be added per request. Some file types are not allowed for security
+        reasons.
+      operationId: AddFileAttachment
+      parameters:
+        - name: objectName
+          in: path
+          description: The object name
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          description: Record ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: Authorization
+          in: header
+          description: Authorization
+          required: true
+          schema:
+            type: string
+            default: '{{Authorization}}'
+      requestBody:
+        $ref: '#/components/requestBodies/AddFileAttachment'
+      responses:
+        '201':
+          description: Request succeeded.
+          content:
+            application/json:
+              schema:
+                title: CustomObjectsRecords
+                required:
+                  - RECORD_NAME
+                type: object
+                properties:
+                  RECORD_ID:
+                    format: int64
+                    maxLength: 0
+                    type: integer
+                    readOnly: true
+                  RECORD_NAME:
+                    format: string
+                    maxLength: 0
+                    type: string
+                    readOnly: false
+                  OWNER_USER_ID:
+                    format: int32
+                    maxLength: 0
+                    type: integer
+                    readOnly: false
+                  DATE_CREATED_UTC:
+                    format: date-time
+                    maxLength: 0
+                    type: string
+                    readOnly: true
+                  VISIBLE_TO:
+                    format: string
+                    maxLength: 11
+                    type: string
+                    readOnly: false
+                  VISIBLE_TEAM_ID:
+                    format: int64
+                    maxLength: 0
+                    type: integer
+                    readOnly: false
+                  CUSTOMFIELDS:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/APICustomField'
+            text/json:
+              schema:
+                title: CustomObjectsRecords
+                required:
+                  - RECORD_NAME
+                type: object
+                properties:
+                  RECORD_ID:
+                    format: int64
+                    maxLength: 0
+                    type: integer
+                    readOnly: true
+                  RECORD_NAME:
+                    format: string
+                    maxLength: 0
+                    type: string
+                    readOnly: false
+                  OWNER_USER_ID:
+                    format: int32
+                    maxLength: 0
+                    type: integer
+                    readOnly: false
+                  DATE_CREATED_UTC:
+                    format: date-time
+                    maxLength: 0
+                    type: string
+                    readOnly: true
+                  VISIBLE_TO:
+                    format: string
+                    maxLength: 11
+                    type: string
+                    readOnly: false
+                  VISIBLE_TEAM_ID:
+                    format: int64
+                    maxLength: 0
+                    type: integer
+                    readOnly: false
+                  CUSTOMFIELDS:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/APICustomField'
+        '400':
+          description: Data validation error.
+        '401':
+          description: Authentication failed.
+        '402':
+          description: Record or storage limit reached.
+        '403':
+          description: API User does not have access to Record.
+        '404':
+          description: Record not found.
+        '417':
+          description: File Attachment insert failed.
+      deprecated: false
+  /{objectName}/{id}/MergeDocument/{documentTemplateId}:
+    post:
+      tags:
+        - CustomObjectsRecords
+      summary: Generates a new Merge Document
+      description: >-
+        Returns the generated document. If the 'format' parameter is set to
+        'JSON', returns the metadata of the associated File Attachment in JSON
+        format.
+      operationId: GenerateMergeDocument
+      parameters:
+        - name: objectName
+          in: path
+          description: The object name
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          description: A Record's ID (RECORD_ID)
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: documentTemplateId
+          in: path
+          description: A Document Template Id
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: format
+          in: query
+          description: Binary(default) or JSON
+          required: false
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Authorization
+          required: true
+          schema:
+            type: string
+            default: '{{Authorization}}'
+      responses:
+        '200':
+          description: Request succeeded.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  title: CustomObjectsRecords
+                  required:
+                    - RECORD_NAME
+                  type: object
+                  properties:
+                    RECORD_ID:
+                      format: int64
+                      maxLength: 0
+                      type: integer
+                      readOnly: true
+                    RECORD_NAME:
+                      format: string
+                      maxLength: 0
+                      type: string
+                      readOnly: false
+                    OWNER_USER_ID:
+                      format: int32
+                      maxLength: 0
+                      type: integer
+                      readOnly: false
+                    DATE_CREATED_UTC:
+                      format: date-time
+                      maxLength: 0
+                      type: string
+                      readOnly: true
+                    VISIBLE_TO:
+                      format: string
+                      maxLength: 11
+                      type: string
+                      readOnly: false
+                    VISIBLE_TEAM_ID:
+                      format: int64
+                      maxLength: 0
+                      type: integer
+                      readOnly: false
+                    CUSTOMFIELDS:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/APICustomField'
+            text/json:
+              schema:
+                type: array
+                items:
+                  title: CustomObjectsRecords
+                  required:
+                    - RECORD_NAME
+                  type: object
+                  properties:
+                    RECORD_ID:
+                      format: int64
+                      maxLength: 0
+                      type: integer
+                      readOnly: true
+                    RECORD_NAME:
+                      format: string
+                      maxLength: 0
+                      type: string
+                      readOnly: false
+                    OWNER_USER_ID:
+                      format: int32
+                      maxLength: 0
+                      type: integer
+                      readOnly: false
+                    DATE_CREATED_UTC:
+                      format: date-time
+                      maxLength: 0
+                      type: string
+                      readOnly: true
+                    VISIBLE_TO:
+                      format: string
+                      maxLength: 11
+                      type: string
+                      readOnly: false
+                    VISIBLE_TEAM_ID:
+                      format: int64
+                      maxLength: 0
+                      type: integer
+                      readOnly: false
+                    CUSTOMFIELDS:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/APICustomField'
+        '400':
+          description: Often missing or invalid parameter.
+        '401':
+          description: Authentication failed.
+        '403':
+          description: API User does not have access to Document Template.
+        '404':
+          description: Record not found.
+      deprecated: false
   /{objectName}/{id}/Translations/{language}:
     get:
       tags:
@@ -2693,227 +3085,6 @@ paths:
         '417':
           description: Delete failed.
       deprecated: false
-  /CommunityComments/{id}/MergeDocument/{documentTemplateId}:
-    post:
-      tags:
-        - ForumComments
-      summary: Generates a new Merge Document
-      description: >-
-        Returns the generated document. If the 'format' parameter is set to
-        'JSON', returns the metadata of the associated File Attachment in JSON
-        format.
-      operationId: GenerateMergeDocument
-      parameters:
-        - name: id
-          in: path
-          description: A Record's ID (RECORD_ID)
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: documentTemplateId
-          in: path
-          description: A Document Template Id
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: format
-          in: query
-          description: Binary(default) or JSON
-          required: false
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          description: Authorization
-          required: true
-          schema:
-            type: string
-            default: '{{Authorization}}'
-      responses:
-        '200':
-          description: Request succeeded.
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  title: SupportForumComment
-                  required:
-                    - POST_ID
-                    - FORUM_ID
-                  type: object
-                  properties:
-                    COMMENT_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    BODY:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: false
-                    ANSWER:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-                    SPAM:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-                    PENDING:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-                    OFFICIAL:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-                    UPVOTE_COUNT:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: false
-                    DOWNVOTE_COUNT:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: false
-                    POST_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    CREATED_CONTACT_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    EDITED_CONTACT_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    DATE_EDITED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    DATE_CREATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    DATE_UPDATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    FORUM_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-            text/json:
-              schema:
-                type: array
-                items:
-                  title: SupportForumComment
-                  required:
-                    - POST_ID
-                    - FORUM_ID
-                  type: object
-                  properties:
-                    COMMENT_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    BODY:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: false
-                    ANSWER:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-                    SPAM:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-                    PENDING:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-                    OFFICIAL:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-                    UPVOTE_COUNT:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: false
-                    DOWNVOTE_COUNT:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: false
-                    POST_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    CREATED_CONTACT_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    EDITED_CONTACT_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    DATE_EDITED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    DATE_CREATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    DATE_UPDATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    FORUM_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-        '400':
-          description: Often missing or invalid parameter.
-        '401':
-          description: Authentication failed.
-        '403':
-          description: API User does not have access to Document Template.
-        '404':
-          description: Record not found.
-      deprecated: false
   /CommunityComments/Search:
     get:
       tags:
@@ -4903,177 +5074,6 @@ paths:
           description: Record not found.
         '417':
           description: Delete failed.
-      deprecated: false
-  /CommunityForums/{id}/MergeDocument/{documentTemplateId}:
-    post:
-      tags:
-        - Forums
-      summary: Generates a new Merge Document
-      description: >-
-        Returns the generated document. If the 'format' parameter is set to
-        'JSON', returns the metadata of the associated File Attachment in JSON
-        format.
-      operationId: GenerateMergeDocument
-      parameters:
-        - name: id
-          in: path
-          description: A Record's ID (RECORD_ID)
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: documentTemplateId
-          in: path
-          description: A Document Template Id
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: format
-          in: query
-          description: Binary(default) or JSON
-          required: false
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          description: Authorization
-          required: true
-          schema:
-            type: string
-            default: '{{Authorization}}'
-      responses:
-        '200':
-          description: Request succeeded.
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  title: SupportForum
-                  required:
-                    - FORUM_CATEGORY_ID
-                    - FORUM_NAME
-                  type: object
-                  properties:
-                    FORUM_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    FORUM_CATEGORY_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    FORUM_NAME:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    DESCRIPTION:
-                      format: string
-                      maxLength: 500
-                      type: string
-                      readOnly: false
-                    FORUM_TYPE:
-                      format: string
-                      maxLength: 20
-                      type: string
-                      readOnly: false
-                    VISIBILITY:
-                      format: string
-                      maxLength: 20
-                      type: string
-                      readOnly: false
-                    CREATED_USER_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    DATE_CREATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    DATE_UPDATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    FORUM_ORDER:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: false
-            text/json:
-              schema:
-                type: array
-                items:
-                  title: SupportForum
-                  required:
-                    - FORUM_CATEGORY_ID
-                    - FORUM_NAME
-                  type: object
-                  properties:
-                    FORUM_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    FORUM_CATEGORY_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    FORUM_NAME:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    DESCRIPTION:
-                      format: string
-                      maxLength: 500
-                      type: string
-                      readOnly: false
-                    FORUM_TYPE:
-                      format: string
-                      maxLength: 20
-                      type: string
-                      readOnly: false
-                    VISIBILITY:
-                      format: string
-                      maxLength: 20
-                      type: string
-                      readOnly: false
-                    CREATED_USER_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    DATE_CREATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    DATE_UPDATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    FORUM_ORDER:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: false
-        '400':
-          description: Often missing or invalid parameter.
-        '401':
-          description: Authentication failed.
-        '403':
-          description: API User does not have access to Document Template.
-        '404':
-          description: Record not found.
       deprecated: false
   /CommunityForums/Search:
     get:
@@ -7352,285 +7352,6 @@ paths:
           description: Record not found.
         '417':
           description: Delete failed.
-      deprecated: false
-  /CommunityPosts/{id}/MergeDocument/{documentTemplateId}:
-    post:
-      tags:
-        - ForumPosts
-      summary: Generates a new Merge Document
-      description: >-
-        Returns the generated document. If the 'format' parameter is set to
-        'JSON', returns the metadata of the associated File Attachment in JSON
-        format.
-      operationId: GenerateMergeDocument
-      parameters:
-        - name: id
-          in: path
-          description: A Record's ID (RECORD_ID)
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: documentTemplateId
-          in: path
-          description: A Document Template Id
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: format
-          in: query
-          description: Binary(default) or JSON
-          required: false
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          description: Authorization
-          required: true
-          schema:
-            type: string
-            default: '{{Authorization}}'
-      responses:
-        '200':
-          description: Request succeeded.
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  title: SupportForumPost
-                  required:
-                    - FORUM_ID
-                  type: object
-                  properties:
-                    POST_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    FORUM_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    POST_NAME:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    MESSAGE:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: false
-                    PINNED:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-                    FEATURED:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-                    CLOSED:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-                    PENDING:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-                    STATUS:
-                      format: string
-                      maxLength: 20
-                      type: string
-                      readOnly: false
-                    COMMENT_COUNT:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    VIEW_COUNT:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    FOLLOWER_COUNT:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    UPVOTE_COUNT:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    DOWNVOTE_COUNT:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    TICKET_ID:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    CREATED_CONTACT_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    EDITED_CONTACT_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    DATE_EDITED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    DATE_CREATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    DATE_UPDATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    SPAM:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-            text/json:
-              schema:
-                type: array
-                items:
-                  title: SupportForumPost
-                  required:
-                    - FORUM_ID
-                  type: object
-                  properties:
-                    POST_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    FORUM_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    POST_NAME:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    MESSAGE:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: false
-                    PINNED:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-                    FEATURED:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-                    CLOSED:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-                    PENDING:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-                    STATUS:
-                      format: string
-                      maxLength: 20
-                      type: string
-                      readOnly: false
-                    COMMENT_COUNT:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    VIEW_COUNT:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    FOLLOWER_COUNT:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    UPVOTE_COUNT:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    DOWNVOTE_COUNT:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    TICKET_ID:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    CREATED_CONTACT_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    EDITED_CONTACT_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    DATE_EDITED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    DATE_CREATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    DATE_UPDATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    SPAM:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-        '400':
-          description: Often missing or invalid parameter.
-        '401':
-          description: Authentication failed.
-        '403':
-          description: API User does not have access to Document Template.
-        '404':
-          description: Record not found.
       deprecated: false
   /CommunityPosts/Search:
     get:
@@ -15575,6 +15296,75 @@ paths:
         '401':
           description: Authentication failed.
       deprecated: false
+  /cti/user/{user_id}/{object_name}/{record_id}/display:
+    post:
+      tags:
+        - Cti
+      summary: Insightly Object Screen Pop
+      description: >-
+        This endpoint loads Insightly object page within the client browser
+        running Insightly for convenience and increased productivity.
+      operationId: AddDisplayObjectOnClient
+      parameters:
+        - name: user_id
+          in: path
+          description: Required, the user id.
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: object_name
+          in: path
+          description: Required, the object name.
+          required: true
+          schema:
+            type: string
+        - name: record_id
+          in: path
+          description: Required, the record's ID.
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: Authorization
+          in: header
+          description: Authorization
+          required: true
+          schema:
+            type: string
+            default: '{{Authorization}}'
+      responses:
+        '202':
+          description: Request accepted.
+        '401':
+          description: Authentication failed.
+        '404':
+          description: Object not found.
+        '417':
+          description: Request failed.
+      deprecated: false
+  /cti/user/{user_id}/tickets/{ticket_id}/display:
+    post:
+      tags:
+        - Cti
+      operationId: AddDisplayTicketOnClient
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+        - name: ticket_id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+      deprecated: false
   /Currencies:
     get:
       tags:
@@ -18964,213 +18754,6 @@ paths:
         '417':
           description: Delete failed.
       deprecated: false
-  /Events/{id}/MergeDocument/{documentTemplateId}:
-    post:
-      tags:
-        - Events
-      summary: Generates a new Merge Document
-      description: >-
-        Returns the generated document. If the 'format' parameter is set to
-        'JSON', returns the metadata of the associated File Attachment in JSON
-        format.
-      operationId: GenerateMergeDocument
-      parameters:
-        - name: id
-          in: path
-          description: A Record's ID (RECORD_ID)
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: documentTemplateId
-          in: path
-          description: A Document Template Id
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: format
-          in: query
-          description: Binary(default) or JSON
-          required: false
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          description: Authorization
-          required: true
-          schema:
-            type: string
-            default: '{{Authorization}}'
-      responses:
-        '200':
-          description: Request succeeded.
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  title: Event
-                  required:
-                    - START_DATE_UTC
-                    - END_DATE_UTC
-                  type: object
-                  properties:
-                    EVENT_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    TITLE:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    LOCATION:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    START_DATE_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: false
-                    END_DATE_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: false
-                    ALL_DAY:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-                    DETAILS:
-                      format: string
-                      maxLength: 4000
-                      type: string
-                      readOnly: false
-                    DATE_CREATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: false
-                    DATE_UPDATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: false
-                    REMINDER_DATE_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: false
-                    REMINDER_SENT:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-                    OWNER_USER_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    CUSTOMFIELDS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APICustomField'
-                    LINKS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APILinkDto'
-            text/json:
-              schema:
-                type: array
-                items:
-                  title: Event
-                  required:
-                    - START_DATE_UTC
-                    - END_DATE_UTC
-                  type: object
-                  properties:
-                    EVENT_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    TITLE:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    LOCATION:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    START_DATE_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: false
-                    END_DATE_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: false
-                    ALL_DAY:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-                    DETAILS:
-                      format: string
-                      maxLength: 4000
-                      type: string
-                      readOnly: false
-                    DATE_CREATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: false
-                    DATE_UPDATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: false
-                    REMINDER_DATE_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: false
-                    REMINDER_SENT:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-                    OWNER_USER_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    CUSTOMFIELDS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APICustomField'
-                    LINKS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APILinkDto'
-        '400':
-          description: Often missing or invalid parameter.
-        '401':
-          description: Authentication failed.
-        '403':
-          description: API User does not have access to Document Template.
-        '404':
-          description: Record not found.
-      deprecated: false
   /Events/Search:
     get:
       tags:
@@ -22001,305 +21584,6 @@ paths:
         '417':
           description: Image update failed.
       deprecated: false
-  /KnowledgeArticle/{id}/MergeDocument/{documentTemplateId}:
-    post:
-      tags:
-        - KnowledgeArticles
-      summary: Generates a new Merge Document
-      description: >-
-        Returns the generated document. If the 'format' parameter is set to
-        'JSON', returns the metadata of the associated File Attachment in JSON
-        format.
-      operationId: GenerateMergeDocument
-      parameters:
-        - name: id
-          in: path
-          description: A Record's ID (RECORD_ID)
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: documentTemplateId
-          in: path
-          description: A Document Template Id
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: format
-          in: query
-          description: Binary(default) or JSON
-          required: false
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          description: Authorization
-          required: true
-          schema:
-            type: string
-            default: '{{Authorization}}'
-      responses:
-        '200':
-          description: Request succeeded.
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  title: KnowledgeArticle
-                  required:
-                    - FOLDER_ID
-                    - URL_SLUG
-                    - Title
-                  type: object
-                  properties:
-                    ARTICLE_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    CATEGORY_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    FOLDER_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    ARTICLE_NO:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    ArticleVersion:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    Status:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    Language:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    Title:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: false
-                    Body:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: false
-                    URL_SLUG:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    DOWNVOTE_COUNT:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    UPVOTE_COUNT:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    PROMOTED:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-                    FIRST_PUBLISHED_DATE_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    LAST_PUBLISHED_DATE_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    ARCHIVED_DATE_UTC:
-                      format: string
-                      maxLength: 20
-                      type: string
-                      readOnly: false
-                    DATE_CREATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    DATE_UPDATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    OWNER_USER_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    CREATED_USER_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    ExternalLinkCount:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    CUSTOMFIELDS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APICustomField'
-                    TAGS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APITag'
-            text/json:
-              schema:
-                type: array
-                items:
-                  title: KnowledgeArticle
-                  required:
-                    - FOLDER_ID
-                    - URL_SLUG
-                    - Title
-                  type: object
-                  properties:
-                    ARTICLE_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    CATEGORY_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    FOLDER_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    ARTICLE_NO:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    ArticleVersion:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    Status:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    Language:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    Title:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: false
-                    Body:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: false
-                    URL_SLUG:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    DOWNVOTE_COUNT:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    UPVOTE_COUNT:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    PROMOTED:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-                    FIRST_PUBLISHED_DATE_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    LAST_PUBLISHED_DATE_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    ARCHIVED_DATE_UTC:
-                      format: string
-                      maxLength: 20
-                      type: string
-                      readOnly: false
-                    DATE_CREATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    DATE_UPDATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    OWNER_USER_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    CREATED_USER_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    ExternalLinkCount:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    CUSTOMFIELDS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APICustomField'
-                    TAGS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APITag'
-        '400':
-          description: Often missing or invalid parameter.
-        '401':
-          description: Authentication failed.
-        '403':
-          description: API User does not have access to Document Template.
-        '404':
-          description: Record not found.
-      deprecated: false
   /KnowledgeArticle/{id}/Tags:
     get:
       tags:
@@ -24484,135 +23768,6 @@ paths:
         '404':
           description: Record not found.
       deprecated: false
-  /KnowledgeArticleCategory/{id}/MergeDocument/{documentTemplateId}:
-    post:
-      tags:
-        - KnowledgeArticleCategories
-      summary: Generates a new Merge Document
-      description: >-
-        Returns the generated document. If the 'format' parameter is set to
-        'JSON', returns the metadata of the associated File Attachment in JSON
-        format.
-      operationId: GenerateMergeDocument
-      parameters:
-        - name: id
-          in: path
-          description: A Record's ID (RECORD_ID)
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: documentTemplateId
-          in: path
-          description: A Document Template Id
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: format
-          in: query
-          description: Binary(default) or JSON
-          required: false
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          description: Authorization
-          required: true
-          schema:
-            type: string
-            default: '{{Authorization}}'
-      responses:
-        '200':
-          description: Request succeeded.
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  title: KnowledgeArticleCategory
-                  required:
-                    - CATEGORY_NAME
-                  type: object
-                  properties:
-                    CATEGORY_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    CATEGORY_NAME:
-                      format: string
-                      maxLength: 50
-                      type: string
-                      readOnly: false
-                    DESCRIPTION:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    CREATED_USER_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    DATE_CREATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    DATE_UPDATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-            text/json:
-              schema:
-                type: array
-                items:
-                  title: KnowledgeArticleCategory
-                  required:
-                    - CATEGORY_NAME
-                  type: object
-                  properties:
-                    CATEGORY_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    CATEGORY_NAME:
-                      format: string
-                      maxLength: 50
-                      type: string
-                      readOnly: false
-                    DESCRIPTION:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    CREATED_USER_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    DATE_CREATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    DATE_UPDATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-        '400':
-          description: Often missing or invalid parameter.
-        '401':
-          description: Authentication failed.
-        '403':
-          description: API User does not have access to Document Template.
-        '404':
-          description: Record not found.
-      deprecated: false
   /KnowledgeArticleCategory/Search:
     get:
       tags:
@@ -25391,157 +24546,6 @@ paths:
         '404':
           description: Record not found.
       deprecated: false
-  /KnowledgeArticleFolder/{id}/MergeDocument/{documentTemplateId}:
-    post:
-      tags:
-        - KnowledgeArticleFolders
-      summary: Generates a new Merge Document
-      description: >-
-        Returns the generated document. If the 'format' parameter is set to
-        'JSON', returns the metadata of the associated File Attachment in JSON
-        format.
-      operationId: GenerateMergeDocument
-      parameters:
-        - name: id
-          in: path
-          description: A Record's ID (RECORD_ID)
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: documentTemplateId
-          in: path
-          description: A Document Template Id
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: format
-          in: query
-          description: Binary(default) or JSON
-          required: false
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          description: Authorization
-          required: true
-          schema:
-            type: string
-            default: '{{Authorization}}'
-      responses:
-        '200':
-          description: Request succeeded.
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  title: KnowledgeArticleFolder
-                  required:
-                    - FOLDER_NAME
-                    - CATEGORY_ID
-                  type: object
-                  properties:
-                    FOLDER_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    FOLDER_NAME:
-                      format: string
-                      maxLength: 50
-                      type: string
-                      readOnly: false
-                    CATEGORY_ID:
-                      format: string
-                      maxLength: 11
-                      type: string
-                      readOnly: false
-                    VISIBILITY:
-                      format: string
-                      maxLength: 20
-                      type: string
-                      readOnly: false
-                    ORDER_ARTICLES:
-                      format: string
-                      maxLength: 20
-                      type: string
-                      readOnly: false
-                    CREATED_USER_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    DATE_CREATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    DATE_UPDATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-            text/json:
-              schema:
-                type: array
-                items:
-                  title: KnowledgeArticleFolder
-                  required:
-                    - FOLDER_NAME
-                    - CATEGORY_ID
-                  type: object
-                  properties:
-                    FOLDER_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    FOLDER_NAME:
-                      format: string
-                      maxLength: 50
-                      type: string
-                      readOnly: false
-                    CATEGORY_ID:
-                      format: string
-                      maxLength: 11
-                      type: string
-                      readOnly: false
-                    VISIBILITY:
-                      format: string
-                      maxLength: 20
-                      type: string
-                      readOnly: false
-                    ORDER_ARTICLES:
-                      format: string
-                      maxLength: 20
-                      type: string
-                      readOnly: false
-                    CREATED_USER_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    DATE_CREATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    DATE_UPDATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-        '400':
-          description: Often missing or invalid parameter.
-        '401':
-          description: Authentication failed.
-        '403':
-          description: API User does not have access to Document Template.
-        '404':
-          description: Record not found.
-      deprecated: false
   /KnowledgeArticleFolder/Search:
     get:
       tags:
@@ -25974,10 +24978,6 @@ paths:
                       type: array
                       items:
                         $ref: '#/components/schemas/APITag'
-                    LINKS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APILinkDto'
                     LINKED_EMAIL_ADDRESS:
                       format: string
                       type: string
@@ -26182,10 +25182,6 @@ paths:
                       type: array
                       items:
                         $ref: '#/components/schemas/APITag'
-                    LINKS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APILinkDto'
                     LINKED_EMAIL_ADDRESS:
                       format: string
                       type: string
@@ -26562,10 +25558,6 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/APITag'
-                  LINKS:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/APILinkDto'
                   LINKED_EMAIL_ADDRESS:
                     format: string
                     type: string
@@ -26768,10 +25760,6 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/APITag'
-                  LINKS:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/APILinkDto'
                   LINKED_EMAIL_ADDRESS:
                     format: string
                     type: string
@@ -27149,10 +26137,6 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/APITag'
-                  LINKS:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/APILinkDto'
                   LINKED_EMAIL_ADDRESS:
                     format: string
                     type: string
@@ -27355,10 +26339,6 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/APITag'
-                  LINKS:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/APILinkDto'
                   LINKED_EMAIL_ADDRESS:
                     format: string
                     type: string
@@ -27594,10 +26574,6 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/APITag'
-                  LINKS:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/APILinkDto'
                   LINKED_EMAIL_ADDRESS:
                     format: string
                     type: string
@@ -27800,10 +26776,6 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/APITag'
-                  LINKS:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/APILinkDto'
                   LINKED_EMAIL_ADDRESS:
                     format: string
                     type: string
@@ -28597,10 +27569,6 @@ paths:
                       type: array
                       items:
                         $ref: '#/components/schemas/APITag'
-                    LINKS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APILinkDto'
                     LINKED_EMAIL_ADDRESS:
                       format: string
                       type: string
@@ -28805,10 +27773,6 @@ paths:
                       type: array
                       items:
                         $ref: '#/components/schemas/APITag'
-                    LINKS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APILinkDto'
                     LINKED_EMAIL_ADDRESS:
                       format: string
                       type: string
@@ -29149,10 +28113,6 @@ paths:
                       type: array
                       items:
                         $ref: '#/components/schemas/APITag'
-                    LINKS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APILinkDto'
                     LINKED_EMAIL_ADDRESS:
                       format: string
                       type: string
@@ -29357,10 +28317,6 @@ paths:
                       type: array
                       items:
                         $ref: '#/components/schemas/APITag'
-                    LINKS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APILinkDto'
                     LINKED_EMAIL_ADDRESS:
                       format: string
                       type: string
@@ -29415,176 +28371,6 @@ paths:
           description: API User does not have access to Record.
         '404':
           description: Record not found.
-      deprecated: false
-  /Leads/{id}/Links:
-    get:
-      tags:
-        - Leads
-      summary: Gets a Lead's Links
-      description: ''
-      operationId: GetLinks
-      parameters:
-        - name: id
-          in: path
-          description: A Record's ID
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: Authorization
-          in: header
-          description: Authorization
-          required: true
-          schema:
-            type: string
-            default: '{{Authorization}}'
-      responses:
-        '200':
-          description: Request succeeded.
-          content:
-            application/octet-stream:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/APILinkDto'
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/APILinkDto'
-        '400':
-          description: Often missing or invalid parameter.
-        '401':
-          description: Authentication failed.
-        '403':
-          description: API User does not have access to Record.
-        '404':
-          description: Record not found.
-      deprecated: false
-    put:
-      tags:
-        - Leads
-      summary: Updates a Link
-      description: ''
-      operationId: UpdateLink
-      parameters:
-        - name: id
-          in: path
-          description: A Record's ID (RECORD_ID)
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: Authorization
-          in: header
-          description: Authorization
-          required: true
-          schema:
-            type: string
-            default: '{{Authorization}}'
-      requestBody:
-        $ref: '#/components/requestBodies/APILinkDto'
-      responses:
-        '200':
-          description: Request succeeded.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/APILinkDto'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/APILinkDto'
-        '400':
-          description: Data validation error.
-        '401':
-          description: Authentication failed.
-        '403':
-          description: API User does not have access to Record.
-        '404':
-          description: Record or Link not found.
-      deprecated: false
-    post:
-      tags:
-        - Leads
-      summary: Adds a Link
-      description: ''
-      operationId: AddLink
-      parameters:
-        - name: id
-          in: path
-          description: A Record's ID (RECORD_ID)
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: Authorization
-          in: header
-          description: Authorization
-          required: true
-          schema:
-            type: string
-            default: '{{Authorization}}'
-      requestBody:
-        $ref: '#/components/requestBodies/APILinkDto'
-      responses:
-        '201':
-          description: Request succeeded.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/APILinkDto'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/APILinkDto'
-        '400':
-          description: Data validation error.
-        '401':
-          description: Authentication failed.
-        '403':
-          description: API User does not have access to Record.
-        '404':
-          description: Record not found.
-      deprecated: false
-  /Leads/{id}/Links/{linkId}:
-    delete:
-      tags:
-        - Leads
-      summary: Deletes a Link
-      description: ''
-      operationId: DeleteLink
-      parameters:
-        - name: id
-          in: path
-          description: A Record's ID (RECORD_ID)
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: linkId
-          in: path
-          description: A Link's ID (LINK_ID)
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: Authorization
-          in: header
-          description: Authorization
-          required: true
-          schema:
-            type: string
-            default: '{{Authorization}}'
-      responses:
-        '202':
-          description: Delete succeeded.
-        '401':
-          description: Authentication failed.
-        '403':
-          description: API User does not have access to Record.
-        '404':
-          description: Record or Link not found.
-        '417':
-          description: Delete failed.
       deprecated: false
   /Leads/{id}/MergeDocument/{documentTemplateId}:
     post:
@@ -29828,10 +28614,6 @@ paths:
                       type: array
                       items:
                         $ref: '#/components/schemas/APITag'
-                    LINKS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APILinkDto'
                     LINKED_EMAIL_ADDRESS:
                       format: string
                       type: string
@@ -30036,10 +28818,6 @@ paths:
                       type: array
                       items:
                         $ref: '#/components/schemas/APITag'
-                    LINKS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APILinkDto'
                     LINKED_EMAIL_ADDRESS:
                       format: string
                       type: string
@@ -30279,10 +29057,6 @@ paths:
                       type: array
                       items:
                         $ref: '#/components/schemas/APITag'
-                    LINKS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APILinkDto'
                     LINKED_EMAIL_ADDRESS:
                       format: string
                       type: string
@@ -30487,10 +29261,6 @@ paths:
                       type: array
                       items:
                         $ref: '#/components/schemas/APITag'
-                    LINKS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APILinkDto'
                     LINKED_EMAIL_ADDRESS:
                       format: string
                       type: string
@@ -30872,10 +29642,6 @@ paths:
                       type: array
                       items:
                         $ref: '#/components/schemas/APITag'
-                    LINKS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APILinkDto'
                     LINKED_EMAIL_ADDRESS:
                       format: string
                       type: string
@@ -31080,10 +29846,6 @@ paths:
                       type: array
                       items:
                         $ref: '#/components/schemas/APITag'
-                    LINKS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APILinkDto'
                     LINKED_EMAIL_ADDRESS:
                       format: string
                       type: string
@@ -31465,10 +30227,6 @@ paths:
                       type: array
                       items:
                         $ref: '#/components/schemas/APITag'
-                    LINKS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APILinkDto'
                     LINKED_EMAIL_ADDRESS:
                       format: string
                       type: string
@@ -31673,10 +30431,6 @@ paths:
                       type: array
                       items:
                         $ref: '#/components/schemas/APITag'
-                    LINKS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APILinkDto'
                     LINKED_EMAIL_ADDRESS:
                       format: string
                       type: string
@@ -32430,10 +31184,6 @@ paths:
                       type: array
                       items:
                         $ref: '#/components/schemas/APITag'
-                    LINKS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APILinkDto'
                     LINKED_EMAIL_ADDRESS:
                       format: string
                       type: string
@@ -32638,10 +31388,6 @@ paths:
                       type: array
                       items:
                         $ref: '#/components/schemas/APITag'
-                    LINKS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APILinkDto'
                     LINKED_EMAIL_ADDRESS:
                       format: string
                       type: string
@@ -32910,10 +31656,6 @@ paths:
                       type: array
                       items:
                         $ref: '#/components/schemas/APITag'
-                    LINKS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APILinkDto'
                     LINKED_EMAIL_ADDRESS:
                       format: string
                       type: string
@@ -33118,10 +31860,6 @@ paths:
                       type: array
                       items:
                         $ref: '#/components/schemas/APITag'
-                    LINKS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APILinkDto'
                     LINKED_EMAIL_ADDRESS:
                       format: string
                       type: string
@@ -40937,7 +39675,7 @@ paths:
             type: string
             default: '{{Authorization}}'
       requestBody:
-        $ref: '#/components/requestBodies/APIPipelineChange2'
+        $ref: '#/components/requestBodies/APIPipelineChange'
       responses:
         '200':
           description: Request succeeded.
@@ -41017,7 +39755,7 @@ paths:
             type: string
             default: '{{Authorization}}'
       requestBody:
-        $ref: '#/components/requestBodies/APIPipelineChange'
+        $ref: '#/components/requestBodies/APIPipelineStageChange'
       responses:
         '200':
           description: Request succeeded.
@@ -41026,12 +39764,12 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/APIPipelineChange'
+                  $ref: '#/components/schemas/APIPipelineStageChange'
             text/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/APIPipelineChange'
+                  $ref: '#/components/schemas/APIPipelineStageChange'
         '400':
           description: Data validation error.
         '401':
@@ -51308,177 +50046,6 @@ paths:
         '417':
           description: Delete failed.
       deprecated: false
-  /Pricebook/{id}/MergeDocument/{documentTemplateId}:
-    post:
-      tags:
-        - PriceBooks
-      summary: Generates a new Merge Document
-      description: >-
-        Returns the generated document. If the 'format' parameter is set to
-        'JSON', returns the metadata of the associated File Attachment in JSON
-        format.
-      operationId: GenerateMergeDocument
-      parameters:
-        - name: id
-          in: path
-          description: A Record's ID (RECORD_ID)
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: documentTemplateId
-          in: path
-          description: A Document Template Id
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: format
-          in: query
-          description: Binary(default) or JSON
-          required: false
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          description: Authorization
-          required: true
-          schema:
-            type: string
-            default: '{{Authorization}}'
-      responses:
-        '200':
-          description: Request succeeded.
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  title: Pricebook
-                  required:
-                    - NAME
-                    - ACTIVE
-                  type: object
-                  properties:
-                    PRICEBOOK_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    NAME:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    DESCRIPTION:
-                      format: string
-                      maxLength: 4000
-                      type: string
-                      readOnly: false
-                    CURRENCY_CODE:
-                      format: string
-                      maxLength: 3
-                      type: string
-                      readOnly: false
-                    IS_STANDARD:
-                      format: boolean
-                      maxLength: 255
-                      type: boolean
-                      readOnly: true
-                    ACTIVE:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-                    OWNER_USER_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    CREATED_USER_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    DATE_CREATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    DATE_UPDATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-            text/json:
-              schema:
-                type: array
-                items:
-                  title: Pricebook
-                  required:
-                    - NAME
-                    - ACTIVE
-                  type: object
-                  properties:
-                    PRICEBOOK_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    NAME:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    DESCRIPTION:
-                      format: string
-                      maxLength: 4000
-                      type: string
-                      readOnly: false
-                    CURRENCY_CODE:
-                      format: string
-                      maxLength: 3
-                      type: string
-                      readOnly: false
-                    IS_STANDARD:
-                      format: boolean
-                      maxLength: 255
-                      type: boolean
-                      readOnly: true
-                    ACTIVE:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-                    OWNER_USER_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    CREATED_USER_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    DATE_CREATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    DATE_UPDATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-        '400':
-          description: Often missing or invalid parameter.
-        '401':
-          description: Authentication failed.
-        '403':
-          description: API User does not have access to Document Template.
-        '404':
-          description: Record not found.
-      deprecated: false
   /Pricebook/{id}/PricebookEntry:
     get:
       tags:
@@ -60343,7 +58910,7 @@ paths:
             type: string
             default: '{{Authorization}}'
       requestBody:
-        $ref: '#/components/requestBodies/APIPipelineChange2'
+        $ref: '#/components/requestBodies/APIPipelineChange'
       responses:
         '200':
           description: Request succeeded.
@@ -60423,7 +58990,7 @@ paths:
             type: string
             default: '{{Authorization}}'
       requestBody:
-        $ref: '#/components/requestBodies/APIPipelineChange'
+        $ref: '#/components/requestBodies/APIPipelineStageChange'
       responses:
         '200':
           description: Request succeeded.
@@ -60432,12 +58999,12 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/APIPipelineChange'
+                  $ref: '#/components/schemas/APIPipelineStageChange'
             text/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/APIPipelineChange'
+                  $ref: '#/components/schemas/APIPipelineStageChange'
         '400':
           description: Data validation error.
         '401':
@@ -63925,441 +62492,6 @@ paths:
           description: Record not found.
         '417':
           description: Image update failed.
-      deprecated: false
-  /Prospect/{id}/MergeDocument/{documentTemplateId}:
-    post:
-      tags:
-        - Prospects
-      summary: Generates a new Merge Document
-      description: >-
-        Returns the generated document. If the 'format' parameter is set to
-        'JSON', returns the metadata of the associated File Attachment in JSON
-        format.
-      operationId: GenerateMergeDocument
-      parameters:
-        - name: id
-          in: path
-          description: A Record's ID (RECORD_ID)
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: documentTemplateId
-          in: path
-          description: A Document Template Id
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: format
-          in: query
-          description: Binary(default) or JSON
-          required: false
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          description: Authorization
-          required: true
-          schema:
-            type: string
-            default: '{{Authorization}}'
-      responses:
-        '200':
-          description: Request succeeded.
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  title: Prospect
-                  required:
-                    - EMAIL_ADDRESS
-                  type: object
-                  properties:
-                    PROSPECT_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    LEAD_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    CONTACT_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    ORGANISATION_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    SALUTATION:
-                      format: string
-                      maxLength: 50
-                      type: string
-                      readOnly: false
-                    FIRST_NAME:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    LAST_NAME:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    ORGANISATION_NAME:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    TITLE:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    EMAIL_ADDRESS:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    PHONE:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    MOBILE:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    FAX:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    WEBSITE:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    ADDRESS_STREET:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    ADDRESS_CITY:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    ADDRESS_STATE:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    ADDRESS_POSTCODE:
-                      format: string
-                      maxLength: 128
-                      type: string
-                      readOnly: false
-                    ADDRESS_COUNTRY:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    INDUSTRY:
-                      format: string
-                      maxLength: 128
-                      type: string
-                      readOnly: false
-                    EMPLOYEE_COUNT:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    SCORE:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    GRADE:
-                      format: string
-                      maxLength: 2
-                      type: string
-                      readOnly: true
-                    DESCRIPTION:
-                      format: string
-                      maxLength: 4000
-                      type: string
-                      readOnly: false
-                    DO_NOT_EMAIL:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-                    DO_NOT_CALL:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-                    OPTED_OUT:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-                    LAST_ACTIVITY_DATE_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    CREATED_USER_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    OWNER_USER_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    DATE_CREATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    DATE_UPDATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    DO_NOT_SYNC:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-                    LEAD_CONVERSION_DATE_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    GRADE_PROFILE_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    CUSTOMFIELDS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APICustomField'
-                    TAGS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APITag'
-            text/json:
-              schema:
-                type: array
-                items:
-                  title: Prospect
-                  required:
-                    - EMAIL_ADDRESS
-                  type: object
-                  properties:
-                    PROSPECT_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    LEAD_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    CONTACT_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    ORGANISATION_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    SALUTATION:
-                      format: string
-                      maxLength: 50
-                      type: string
-                      readOnly: false
-                    FIRST_NAME:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    LAST_NAME:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    ORGANISATION_NAME:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    TITLE:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    EMAIL_ADDRESS:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    PHONE:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    MOBILE:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    FAX:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    WEBSITE:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    ADDRESS_STREET:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    ADDRESS_CITY:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    ADDRESS_STATE:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    ADDRESS_POSTCODE:
-                      format: string
-                      maxLength: 128
-                      type: string
-                      readOnly: false
-                    ADDRESS_COUNTRY:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    INDUSTRY:
-                      format: string
-                      maxLength: 128
-                      type: string
-                      readOnly: false
-                    EMPLOYEE_COUNT:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    SCORE:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    GRADE:
-                      format: string
-                      maxLength: 2
-                      type: string
-                      readOnly: true
-                    DESCRIPTION:
-                      format: string
-                      maxLength: 4000
-                      type: string
-                      readOnly: false
-                    DO_NOT_EMAIL:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-                    DO_NOT_CALL:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-                    OPTED_OUT:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-                    LAST_ACTIVITY_DATE_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    CREATED_USER_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    OWNER_USER_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    DATE_CREATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    DATE_UPDATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    DO_NOT_SYNC:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-                    LEAD_CONVERSION_DATE_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    GRADE_PROFILE_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    CUSTOMFIELDS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APICustomField'
-                    TAGS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APITag'
-        '400':
-          description: Often missing or invalid parameter.
-        '401':
-          description: Authentication failed.
-        '403':
-          description: API User does not have access to Document Template.
-        '404':
-          description: Record not found.
       deprecated: false
   /Prospect/{id}/StaticListMembership:
     get:
@@ -69640,6 +67772,450 @@ paths:
           description: Record not found.
         '417':
           description: Delete failed.
+      deprecated: false
+  /Quotation/{id}/Sync:
+    put:
+      tags:
+        - Quotes
+      summary: Sync Quote to an Opportunity
+      description: >-
+        Syncs a quote to its associated opportunity. If the opportunity already
+        has another quote synced to it, it will unsync that quote and then sync
+        this new quote to the opportunity.
+      operationId: SyncQuotationToOpportunity
+      parameters:
+        - name: id
+          in: path
+          description: The Quotation's ID
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: Authorization
+          in: header
+          description: Authorization
+          required: true
+          schema:
+            type: string
+            default: '{{Authorization}}'
+      responses:
+        '200':
+          description: Request succeeded.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  title: Quotation
+                  required:
+                    - QUOTATION_NAME
+                    - OPPORTUNITY_ID
+                  type: object
+                  properties:
+                    QUOTE_ID:
+                      format: int64
+                      maxLength: 0
+                      type: integer
+                      readOnly: true
+                    QUOTATION_NAME:
+                      format: string
+                      maxLength: 255
+                      type: string
+                      readOnly: false
+                    OPPORTUNITY_ID:
+                      format: int64
+                      maxLength: 0
+                      type: integer
+                      readOnly: false
+                    CONTACT_ID:
+                      format: int64
+                      maxLength: 0
+                      type: integer
+                      readOnly: false
+                    ORGANISATION_ID:
+                      format: int64
+                      maxLength: 0
+                      type: integer
+                      readOnly: false
+                    PRICEBOOK_ID:
+                      format: int64
+                      maxLength: 0
+                      type: integer
+                      readOnly: false
+                    QUOTATION_NUMBER:
+                      format: string
+                      maxLength: 30
+                      type: string
+                      readOnly: true
+                    QUOTATION_DESCRIPTION:
+                      format: string
+                      maxLength: 4000
+                      type: string
+                      readOnly: false
+                    QUOTATION_PHONE:
+                      format: string
+                      maxLength: 255
+                      type: string
+                      readOnly: false
+                    QUOTATION_EMAIL:
+                      format: string
+                      maxLength: 255
+                      type: string
+                      readOnly: false
+                    QUOTATION_FAX:
+                      format: string
+                      maxLength: 255
+                      type: string
+                      readOnly: false
+                    QUOTE_STATUS:
+                      format: string
+                      maxLength: 20
+                      type: string
+                      readOnly: false
+                    QUOTATION_EXPIRATION_DATE:
+                      format: date-time
+                      maxLength: 0
+                      type: string
+                      readOnly: false
+                    LINE_ITEM_COUNT:
+                      format: int32
+                      maxLength: 0
+                      type: integer
+                      readOnly: true
+                    IS_SYNCING:
+                      format: boolean
+                      maxLength: 0
+                      type: boolean
+                      readOnly: false
+                    QUOTATION_CURRENCY_CODE:
+                      format: string
+                      maxLength: 3
+                      type: string
+                      readOnly: true
+                    SUBTOTAL:
+                      format: string
+                      maxLength: 0
+                      type: number
+                      readOnly: true
+                    DISCOUNT:
+                      format: string
+                      maxLength: 0
+                      type: number
+                      readOnly: true
+                    TOTAL_PRICE:
+                      format: string
+                      maxLength: 0
+                      type: number
+                      readOnly: true
+                    SHIPPING_HANDLING:
+                      format: string
+                      maxLength: 0
+                      type: number
+                      readOnly: false
+                    TAX:
+                      format: string
+                      maxLength: 0
+                      type: number
+                      readOnly: false
+                    GRAND_TOTAL:
+                      format: string
+                      maxLength: 0
+                      type: number
+                      readOnly: true
+                    ADDRESS_BILLING_NAME:
+                      format: string
+                      maxLength: 255
+                      type: string
+                      readOnly: false
+                    ADDRESS_BILLING_STREET:
+                      format: string
+                      maxLength: 255
+                      type: string
+                      readOnly: false
+                    ADDRESS_BILLING_CITY:
+                      format: string
+                      maxLength: 255
+                      type: string
+                      readOnly: false
+                    ADDRESS_BILLING_STATE:
+                      format: string
+                      maxLength: 255
+                      type: string
+                      readOnly: false
+                    ADDRESS_BILLING_POSTCODE:
+                      format: string
+                      maxLength: 128
+                      type: string
+                      readOnly: false
+                    ADDRESS_BILLING_COUNTRY:
+                      format: string
+                      maxLength: 255
+                      type: string
+                      readOnly: false
+                    ADDRESS_SHIPPING_NAME:
+                      format: string
+                      maxLength: 255
+                      type: string
+                      readOnly: false
+                    ADDRESS_SHIPPING_STREET:
+                      format: string
+                      maxLength: 255
+                      type: string
+                      readOnly: false
+                    ADDRESS_SHIPPING_CITY:
+                      format: string
+                      maxLength: 255
+                      type: string
+                      readOnly: false
+                    ADDRESS_SHIPPING_STATE:
+                      format: string
+                      maxLength: 255
+                      type: string
+                      readOnly: false
+                    ADDRESS_SHIPPING_POSTCODE:
+                      format: string
+                      maxLength: 128
+                      type: string
+                      readOnly: false
+                    ADDRESS_SHIPPING_COUNTRY:
+                      format: string
+                      maxLength: 255
+                      type: string
+                      readOnly: false
+                    OWNER_USER_ID:
+                      format: int64
+                      maxLength: 0
+                      type: integer
+                      readOnly: true
+                    DATE_CREATED_UTC:
+                      format: date-time
+                      maxLength: 0
+                      type: string
+                      readOnly: true
+                    DATE_UPDATED_UTC:
+                      format: date-time
+                      maxLength: 0
+                      type: string
+                      readOnly: true
+                    CREATED_USER_ID:
+                      format: int32
+                      maxLength: 0
+                      type: integer
+                      readOnly: true
+                    CUSTOMFIELDS:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/APICustomField'
+            text/json:
+              schema:
+                type: array
+                items:
+                  title: Quotation
+                  required:
+                    - QUOTATION_NAME
+                    - OPPORTUNITY_ID
+                  type: object
+                  properties:
+                    QUOTE_ID:
+                      format: int64
+                      maxLength: 0
+                      type: integer
+                      readOnly: true
+                    QUOTATION_NAME:
+                      format: string
+                      maxLength: 255
+                      type: string
+                      readOnly: false
+                    OPPORTUNITY_ID:
+                      format: int64
+                      maxLength: 0
+                      type: integer
+                      readOnly: false
+                    CONTACT_ID:
+                      format: int64
+                      maxLength: 0
+                      type: integer
+                      readOnly: false
+                    ORGANISATION_ID:
+                      format: int64
+                      maxLength: 0
+                      type: integer
+                      readOnly: false
+                    PRICEBOOK_ID:
+                      format: int64
+                      maxLength: 0
+                      type: integer
+                      readOnly: false
+                    QUOTATION_NUMBER:
+                      format: string
+                      maxLength: 30
+                      type: string
+                      readOnly: true
+                    QUOTATION_DESCRIPTION:
+                      format: string
+                      maxLength: 4000
+                      type: string
+                      readOnly: false
+                    QUOTATION_PHONE:
+                      format: string
+                      maxLength: 255
+                      type: string
+                      readOnly: false
+                    QUOTATION_EMAIL:
+                      format: string
+                      maxLength: 255
+                      type: string
+                      readOnly: false
+                    QUOTATION_FAX:
+                      format: string
+                      maxLength: 255
+                      type: string
+                      readOnly: false
+                    QUOTE_STATUS:
+                      format: string
+                      maxLength: 20
+                      type: string
+                      readOnly: false
+                    QUOTATION_EXPIRATION_DATE:
+                      format: date-time
+                      maxLength: 0
+                      type: string
+                      readOnly: false
+                    LINE_ITEM_COUNT:
+                      format: int32
+                      maxLength: 0
+                      type: integer
+                      readOnly: true
+                    IS_SYNCING:
+                      format: boolean
+                      maxLength: 0
+                      type: boolean
+                      readOnly: false
+                    QUOTATION_CURRENCY_CODE:
+                      format: string
+                      maxLength: 3
+                      type: string
+                      readOnly: true
+                    SUBTOTAL:
+                      format: string
+                      maxLength: 0
+                      type: number
+                      readOnly: true
+                    DISCOUNT:
+                      format: string
+                      maxLength: 0
+                      type: number
+                      readOnly: true
+                    TOTAL_PRICE:
+                      format: string
+                      maxLength: 0
+                      type: number
+                      readOnly: true
+                    SHIPPING_HANDLING:
+                      format: string
+                      maxLength: 0
+                      type: number
+                      readOnly: false
+                    TAX:
+                      format: string
+                      maxLength: 0
+                      type: number
+                      readOnly: false
+                    GRAND_TOTAL:
+                      format: string
+                      maxLength: 0
+                      type: number
+                      readOnly: true
+                    ADDRESS_BILLING_NAME:
+                      format: string
+                      maxLength: 255
+                      type: string
+                      readOnly: false
+                    ADDRESS_BILLING_STREET:
+                      format: string
+                      maxLength: 255
+                      type: string
+                      readOnly: false
+                    ADDRESS_BILLING_CITY:
+                      format: string
+                      maxLength: 255
+                      type: string
+                      readOnly: false
+                    ADDRESS_BILLING_STATE:
+                      format: string
+                      maxLength: 255
+                      type: string
+                      readOnly: false
+                    ADDRESS_BILLING_POSTCODE:
+                      format: string
+                      maxLength: 128
+                      type: string
+                      readOnly: false
+                    ADDRESS_BILLING_COUNTRY:
+                      format: string
+                      maxLength: 255
+                      type: string
+                      readOnly: false
+                    ADDRESS_SHIPPING_NAME:
+                      format: string
+                      maxLength: 255
+                      type: string
+                      readOnly: false
+                    ADDRESS_SHIPPING_STREET:
+                      format: string
+                      maxLength: 255
+                      type: string
+                      readOnly: false
+                    ADDRESS_SHIPPING_CITY:
+                      format: string
+                      maxLength: 255
+                      type: string
+                      readOnly: false
+                    ADDRESS_SHIPPING_STATE:
+                      format: string
+                      maxLength: 255
+                      type: string
+                      readOnly: false
+                    ADDRESS_SHIPPING_POSTCODE:
+                      format: string
+                      maxLength: 128
+                      type: string
+                      readOnly: false
+                    ADDRESS_SHIPPING_COUNTRY:
+                      format: string
+                      maxLength: 255
+                      type: string
+                      readOnly: false
+                    OWNER_USER_ID:
+                      format: int64
+                      maxLength: 0
+                      type: integer
+                      readOnly: true
+                    DATE_CREATED_UTC:
+                      format: date-time
+                      maxLength: 0
+                      type: string
+                      readOnly: true
+                    DATE_UPDATED_UTC:
+                      format: date-time
+                      maxLength: 0
+                      type: string
+                      readOnly: true
+                    CREATED_USER_ID:
+                      format: int32
+                      maxLength: 0
+                      type: integer
+                      readOnly: true
+                    CUSTOMFIELDS:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/APICustomField'
+        '400':
+          description: Data validation error.
+        '401':
+          description: Authentication failed.
+        '404':
+          description: Quotation not found.
       deprecated: false
   /Quotation/Search:
     get:
@@ -75641,391 +74217,6 @@ paths:
         '417':
           description: Delete failed.
       deprecated: false
-  /Tasks/{id}/MergeDocument/{documentTemplateId}:
-    post:
-      tags:
-        - Tasks
-      summary: Generates a new Merge Document
-      description: >-
-        Returns the generated document. If the 'format' parameter is set to
-        'JSON', returns the metadata of the associated File Attachment in JSON
-        format.
-      operationId: GenerateMergeDocument
-      parameters:
-        - name: id
-          in: path
-          description: A Record's ID (RECORD_ID)
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: documentTemplateId
-          in: path
-          description: A Document Template Id
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: format
-          in: query
-          description: Binary(default) or JSON
-          required: false
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          description: Authorization
-          required: true
-          schema:
-            type: string
-            default: '{{Authorization}}'
-      responses:
-        '200':
-          description: Request succeeded.
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  title: Task
-                  required:
-                    - TASK_ID
-                    - TITLE
-                    - COMPLETED
-                    - OWNER_USER_ID
-                    - DATE_CREATED_UTC
-                    - DATE_UPDATED_UTC
-                  type: object
-                  properties:
-                    TASK_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    TITLE:
-                      format: string
-                      maxLength: 500
-                      type: string
-                      readOnly: false
-                    CATEGORY_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    DUE_DATE:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: false
-                    COMPLETED_DATE_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    COMPLETED:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-                    DETAILS:
-                      format: string
-                      maxLength: 4000
-                      type: string
-                      readOnly: false
-                    STATUS:
-                      format: string
-                      maxLength: 20
-                      type: string
-                      readOnly: false
-                    PRIORITY:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    PERCENT_COMPLETE:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    START_DATE:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: false
-                    MILESTONE_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    RESPONSIBLE_USER_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    OWNER_USER_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    DATE_CREATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    DATE_UPDATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    EMAIL_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    PROJECT_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    REMINDER_DATE_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: false
-                    REMINDER_SENT:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: true
-                    OWNER_VISIBLE:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-                    STAGE_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    ASSIGNED_BY_USER_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    PARENT_TASK_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    RECURRENCE:
-                      format: string
-                      maxLength: 20
-                      type: string
-                      readOnly: false
-                    OPPORTUNITY_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    ASSIGNED_TEAM_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    ASSIGNED_DATE_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    CREATED_USER_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    CUSTOMFIELDS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APICustomField'
-                    LINKS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APILinkDto'
-            text/json:
-              schema:
-                type: array
-                items:
-                  title: Task
-                  required:
-                    - TASK_ID
-                    - TITLE
-                    - COMPLETED
-                    - OWNER_USER_ID
-                    - DATE_CREATED_UTC
-                    - DATE_UPDATED_UTC
-                  type: object
-                  properties:
-                    TASK_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    TITLE:
-                      format: string
-                      maxLength: 500
-                      type: string
-                      readOnly: false
-                    CATEGORY_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    DUE_DATE:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: false
-                    COMPLETED_DATE_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    COMPLETED:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-                    DETAILS:
-                      format: string
-                      maxLength: 4000
-                      type: string
-                      readOnly: false
-                    STATUS:
-                      format: string
-                      maxLength: 20
-                      type: string
-                      readOnly: false
-                    PRIORITY:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    PERCENT_COMPLETE:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    START_DATE:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: false
-                    MILESTONE_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    RESPONSIBLE_USER_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    OWNER_USER_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    DATE_CREATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    DATE_UPDATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    EMAIL_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    PROJECT_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    REMINDER_DATE_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: false
-                    REMINDER_SENT:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: true
-                    OWNER_VISIBLE:
-                      format: boolean
-                      maxLength: 0
-                      type: boolean
-                      readOnly: false
-                    STAGE_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    ASSIGNED_BY_USER_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    PARENT_TASK_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    RECURRENCE:
-                      format: string
-                      maxLength: 20
-                      type: string
-                      readOnly: false
-                    OPPORTUNITY_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    ASSIGNED_TEAM_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    ASSIGNED_DATE_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    CREATED_USER_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    CUSTOMFIELDS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APICustomField'
-                    LINKS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APILinkDto'
-        '400':
-          description: Often missing or invalid parameter.
-        '401':
-          description: Authentication failed.
-        '403':
-          description: API User does not have access to Document Template.
-        '404':
-          description: Record not found.
-      deprecated: false
   /Tasks/Search:
     get:
       tags:
@@ -77240,6 +75431,11 @@ paths:
                       maxLength: 0
                       type: string
                       readOnly: true
+                    BRAND_ID:
+                      format: int64
+                      maxLength: 0
+                      type: integer
+                      readOnly: false
                     TicketCommentBodyHtml:
                       format: string
                       maxLength: 0
@@ -77344,6 +75540,11 @@ paths:
                       maxLength: 0
                       type: string
                       readOnly: true
+                    BRAND_ID:
+                      format: int64
+                      maxLength: 0
+                      type: integer
+                      readOnly: false
                     TicketCommentBodyHtml:
                       format: string
                       maxLength: 0
@@ -77435,6 +75636,11 @@ paths:
                   readOnly: false
                 OWNER_USER_ID:
                   format: int32
+                  maxLength: 0
+                  type: integer
+                  readOnly: false
+                BRAND_ID:
+                  format: int64
                   maxLength: 0
                   type: integer
                   readOnly: false
@@ -77539,6 +75745,11 @@ paths:
                     maxLength: 0
                     type: string
                     readOnly: true
+                  BRAND_ID:
+                    format: int64
+                    maxLength: 0
+                    type: integer
+                    readOnly: false
                   TicketCommentBodyHtml:
                     format: string
                     maxLength: 0
@@ -77641,6 +75852,11 @@ paths:
                     maxLength: 0
                     type: string
                     readOnly: true
+                  BRAND_ID:
+                    format: int64
+                    maxLength: 0
+                    type: integer
+                    readOnly: false
                   TicketCommentBodyHtml:
                     format: string
                     maxLength: 0
@@ -77735,6 +75951,11 @@ paths:
                   readOnly: false
                 OWNER_USER_ID:
                   format: int32
+                  maxLength: 0
+                  type: integer
+                  readOnly: false
+                BRAND_ID:
+                  format: int64
                   maxLength: 0
                   type: integer
                   readOnly: false
@@ -77842,6 +76063,11 @@ paths:
                     maxLength: 0
                     type: string
                     readOnly: true
+                  BRAND_ID:
+                    format: int64
+                    maxLength: 0
+                    type: integer
+                    readOnly: false
                   TicketCommentBodyHtml:
                     format: string
                     maxLength: 0
@@ -77944,6 +76170,11 @@ paths:
                     maxLength: 0
                     type: string
                     readOnly: true
+                  BRAND_ID:
+                    format: int64
+                    maxLength: 0
+                    type: integer
+                    readOnly: false
                   TicketCommentBodyHtml:
                     format: string
                     maxLength: 0
@@ -78079,6 +76310,11 @@ paths:
                     maxLength: 0
                     type: string
                     readOnly: true
+                  BRAND_ID:
+                    format: int64
+                    maxLength: 0
+                    type: integer
+                    readOnly: false
                   TicketCommentBodyHtml:
                     format: string
                     maxLength: 0
@@ -78181,6 +76417,11 @@ paths:
                     maxLength: 0
                     type: string
                     readOnly: true
+                  BRAND_ID:
+                    format: int64
+                    maxLength: 0
+                    type: integer
+                    readOnly: false
                   TicketCommentBodyHtml:
                     format: string
                     maxLength: 0
@@ -78296,12 +76537,12 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/APIComment'
+                  $ref: '#/components/schemas/APITicketComment'
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/APIComment'
+                  $ref: '#/components/schemas/APITicketComment'
         '400':
           description: Often missing or invalid parameter.
         '401':
@@ -78333,7 +76574,12 @@ paths:
             type: string
             default: '{{Authorization}}'
       requestBody:
-        $ref: '#/components/requestBodies/APIComment'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/APITicketComment'
+        description: The record to add (just include the JSON object as the request body)
+        required: true
       responses:
         '201':
           description: Request succeeded.
@@ -78342,12 +76588,12 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/APIComment'
+                  $ref: '#/components/schemas/APITicketComment'
             text/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/APIComment'
+                  $ref: '#/components/schemas/APITicketComment'
         '400':
           description: Data validation error.
         '401':
@@ -78685,6 +76931,11 @@ paths:
                       maxLength: 0
                       type: string
                       readOnly: true
+                    BRAND_ID:
+                      format: int64
+                      maxLength: 0
+                      type: integer
+                      readOnly: false
                     TicketCommentBodyHtml:
                       format: string
                       maxLength: 0
@@ -78789,6 +77040,11 @@ paths:
                       maxLength: 0
                       type: string
                       readOnly: true
+                    BRAND_ID:
+                      format: int64
+                      maxLength: 0
+                      type: integer
+                      readOnly: false
                     TicketCommentBodyHtml:
                       format: string
                       maxLength: 0
@@ -78939,6 +77195,11 @@ paths:
                       maxLength: 0
                       type: string
                       readOnly: true
+                    BRAND_ID:
+                      format: int64
+                      maxLength: 0
+                      type: integer
+                      readOnly: false
                     TicketCommentBodyHtml:
                       format: string
                       maxLength: 0
@@ -79043,6 +77304,11 @@ paths:
                       maxLength: 0
                       type: string
                       readOnly: true
+                    BRAND_ID:
+                      format: int64
+                      maxLength: 0
+                      type: integer
+                      readOnly: false
                     TicketCommentBodyHtml:
                       format: string
                       maxLength: 0
@@ -79062,265 +77328,6 @@ paths:
           description: Authentication failed.
         '403':
           description: API User does not have access to record.
-        '404':
-          description: Record not found.
-      deprecated: false
-  /Ticket/{id}/MergeDocument/{documentTemplateId}:
-    post:
-      tags:
-        - Tickets
-      summary: Generates a new Merge Document
-      description: >-
-        Returns the generated document. If the 'format' parameter is set to
-        'JSON', returns the metadata of the associated File Attachment in JSON
-        format.
-      operationId: GenerateMergeDocument
-      parameters:
-        - name: id
-          in: path
-          description: A Record's ID (RECORD_ID)
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: documentTemplateId
-          in: path
-          description: A Document Template Id
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: format
-          in: query
-          description: Binary(default) or JSON
-          required: false
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          description: Authorization
-          required: true
-          schema:
-            type: string
-            default: '{{Authorization}}'
-      responses:
-        '200':
-          description: Request succeeded.
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  title: Ticket
-                  required:
-                    - SUBJECT
-                    - TICKET_STATUS
-                    - CONTACT_ID
-                  type: object
-                  properties:
-                    TICKET_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    ORGANISATION_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    TICKET_TYPE:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: false
-                    SUBJECT:
-                      format: string
-                      maxLength: 500
-                      type: string
-                      readOnly: false
-                    TICKET_STATUS:
-                      format: string
-                      maxLength: 20
-                      type: string
-                      readOnly: false
-                    PRIORITY:
-                      format: string
-                      maxLength: 20
-                      type: string
-                      readOnly: false
-                    TO_EMAIL_ADDRESS:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    CONTACT_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    CREATED_USER_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    OWNER_USER_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    DATE_CREATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    DATE_UPDATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    TICKET_NUMBER:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    SOURCE:
-                      format: string
-                      maxLength: 20
-                      type: string
-                      readOnly: true
-                    DATE_SOLVED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    DATE_CLOSED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    TicketCommentBodyHtml:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: false
-                    CUSTOMFIELDS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APICustomField'
-                    TAGS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APITag'
-            text/json:
-              schema:
-                type: array
-                items:
-                  title: Ticket
-                  required:
-                    - SUBJECT
-                    - TICKET_STATUS
-                    - CONTACT_ID
-                  type: object
-                  properties:
-                    TICKET_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    ORGANISATION_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    TICKET_TYPE:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: false
-                    SUBJECT:
-                      format: string
-                      maxLength: 500
-                      type: string
-                      readOnly: false
-                    TICKET_STATUS:
-                      format: string
-                      maxLength: 20
-                      type: string
-                      readOnly: false
-                    PRIORITY:
-                      format: string
-                      maxLength: 20
-                      type: string
-                      readOnly: false
-                    TO_EMAIL_ADDRESS:
-                      format: string
-                      maxLength: 255
-                      type: string
-                      readOnly: false
-                    CONTACT_ID:
-                      format: int64
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    CREATED_USER_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: true
-                    OWNER_USER_ID:
-                      format: int32
-                      maxLength: 0
-                      type: integer
-                      readOnly: false
-                    DATE_CREATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    DATE_UPDATED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    TICKET_NUMBER:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    SOURCE:
-                      format: string
-                      maxLength: 20
-                      type: string
-                      readOnly: true
-                    DATE_SOLVED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    DATE_CLOSED_UTC:
-                      format: date-time
-                      maxLength: 0
-                      type: string
-                      readOnly: true
-                    TicketCommentBodyHtml:
-                      format: string
-                      maxLength: 0
-                      type: string
-                      readOnly: false
-                    CUSTOMFIELDS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APICustomField'
-                    TAGS:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/APITag'
-        '400':
-          description: Often missing or invalid parameter.
-        '401':
-          description: Authentication failed.
-        '403':
-          description: API User does not have access to Document Template.
         '404':
           description: Record not found.
       deprecated: false
@@ -79648,6 +77655,11 @@ paths:
                       maxLength: 0
                       type: string
                       readOnly: true
+                    BRAND_ID:
+                      format: int64
+                      maxLength: 0
+                      type: integer
+                      readOnly: false
                     TicketCommentBodyHtml:
                       format: string
                       maxLength: 0
@@ -79752,6 +77764,11 @@ paths:
                       maxLength: 0
                       type: string
                       readOnly: true
+                    BRAND_ID:
+                      format: int64
+                      maxLength: 0
+                      type: integer
+                      readOnly: false
                     TicketCommentBodyHtml:
                       format: string
                       maxLength: 0
@@ -79920,6 +77937,11 @@ paths:
                       maxLength: 0
                       type: string
                       readOnly: true
+                    BRAND_ID:
+                      format: int64
+                      maxLength: 0
+                      type: integer
+                      readOnly: false
                     TicketCommentBodyHtml:
                       format: string
                       maxLength: 0
@@ -80024,6 +78046,11 @@ paths:
                       maxLength: 0
                       type: string
                       readOnly: true
+                    BRAND_ID:
+                      format: int64
+                      maxLength: 0
+                      type: integer
+                      readOnly: false
                     TicketCommentBodyHtml:
                       format: string
                       maxLength: 0
@@ -80459,15 +78486,6 @@ components:
             $ref: '#/components/schemas/APIDate'
       description: The Date collection to update
       required: true
-    APIPipelineChange:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/APIPipelineChange'
-      description: >-
-        Pipeline stage change parameters (just include JSON object as request
-        body)
-      required: true
     AddEntityFieldvalues:
       content:
         application/json:
@@ -80691,12 +78709,21 @@ components:
                   $ref: '#/components/schemas/APICustomField'
       description: The record to update (just include the JSON object as the request body)
       required: true
-    APIPipelineChange2:
+    APIPipelineChange:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/APIPipelineChange'
       description: Pipeline change parameters (just include JSON object as request body)
+      required: true
+    APIPipelineStageChange:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/APIPipelineStageChange'
+      description: >-
+        Pipeline stage change parameters (just include JSON object as request
+        body)
       required: true
     APIPricebookEntry2:
       content:
@@ -81524,6 +79551,53 @@ components:
           maxLength: 0
           type: integer
           readOnly: false
+    APITicketComment:
+      title: Ticket.Comment
+      required:
+        - PUBLIC_COMMENT
+        - CHANNEL
+      type: object
+      properties:
+        TICKET_COMMENT_ID:
+          format: int64
+          maxLength: 0
+          type: integer
+          readOnly: true
+        TICKET_ID:
+          format: int64
+          maxLength: 0
+          type: integer
+          readOnly: false
+        BODY_HTML:
+          format: string
+          maxLength: 0
+          type: string
+          readOnly: false
+        PUBLIC_COMMENT:
+          format: boolean
+          maxLength: 0
+          type: boolean
+          readOnly: false
+        CHANNEL:
+          format: string
+          maxLength: 20
+          type: string
+          readOnly: false
+        AUTHOR_CONTACT_ID:
+          format: int64
+          maxLength: 0
+          type: integer
+          readOnly: false
+        CREATED_USER_ID:
+          format: int32
+          maxLength: 0
+          type: integer
+          readOnly: false
+        DATE_CREATED_UTC:
+          format: date-time
+          maxLength: 0
+          type: string
+          readOnly: true
     APIEvent:
       title: Event
       required:

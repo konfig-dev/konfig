@@ -137,6 +137,14 @@ paths:
                   minLength: 1
                   maxLength: 50
                   description: Username to assign the user.
+                date_of_birth:
+                  type: string
+                  format: date
+                  description: User's date of birth.
+                1099_adjustment_2024:
+                  type: integer
+                  minimum: 1
+                  description: Income paid outside of the Dots platform in 2024.
                 metadata:
                   type:
                     - string
@@ -239,6 +247,14 @@ paths:
                   description: >-
                     Enables auto payout for the user whenever a default payout
                     method is defined
+                date_of_birth:
+                  type: string
+                  format: date
+                  description: User's date of birth.
+                1099_adjustment_2024:
+                  type: integer
+                  minimum: 1
+                  description: Income paid outside of the Dots platform in 2024.
                 metadata:
                   description: Arbitrary metadata
   /v2/users/{user_id}/compliance:
@@ -545,8 +561,49 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/payment-method'
-                description: The payout method.
+                type: object
+                properties:
+                  platform:
+                    enum:
+                      - ach
+                      - paypal
+                      - venmo
+                      - cash_app
+                      - airtm
+                      - payoneer
+                    type: string
+                    description: The type of account to add.
+                  handle:
+                    type: string
+                    description: Handle for Venmo accounts.
+                  email:
+                    type: string
+                    description: Email for PayPal and Payoneer accounts.
+                  phone_number:
+                    type: string
+                    description: Phone number for Venmo accounts.
+                  cash_tag:
+                    type: string
+                    description: Cash tag for Cash App accounts.
+                  account_number:
+                    type: string
+                    description: ACH account number.
+                  routing_number:
+                    type: string
+                    description: ACH routing number.
+                  account_type:
+                    type: string
+                    enum:
+                      - checking
+                      - savings
+                    description: ACH account type, either "checking" or "savings".
+                  rtp_enabled:
+                    type: boolean
+                    description: >-
+                      Indicates if RTP is enabled for the payment method
+                      (applies to ach only).
+                required:
+                  - platform
       requestBody:
         content:
           application/json:
@@ -593,6 +650,20 @@ paths:
                 cash_tag:
                   type: string
                   description: Cash App Cash Tag. Required if `platform` = `cash_app`.
+                is_default:
+                  type:
+                    - boolean
+                    - 'null'
+                  description: >-
+                    When true, the newly added payment method will be set as the
+                    user's default payout method.
+                auto_payout_enabled:
+                  type:
+                    - boolean
+                    - 'null'
+                  description: >-
+                    When specified, enables or disables auto payout for this
+                    user.
               required:
                 - platform
             examples:
@@ -678,6 +749,28 @@ paths:
           in: query
           name: user_id
           description: Include only results with this user ID attached.
+        - schema:
+            type: string
+          in: query
+          name: type
+          description: Filter transfers by type.
+        - schema:
+            type: string
+          in: query
+          name: status
+          description: Filter transfers by status.
+        - schema:
+            type: string
+            format: date-time
+          in: query
+          name: start_date
+          description: Filter transfers by start date.
+        - schema:
+            type: string
+            format: date-time
+          in: query
+          name: end_date
+          description: Filter transfers by end date.
       description: List all transfers.
     post:
       summary: Create a Transfer
@@ -1107,6 +1200,14 @@ paths:
                       - manage-payouts
                       - payout
                       - redirect
+                accounting_data:
+                  type: object
+                  properties:
+                    quickbooks_account_id:
+                      type: integer
+                      description: >-
+                        Source/destination account ID to use when syncing the
+                        transaction to Quickbooks.
               required:
                 - amount
       description: Create a Payout Link.
@@ -1146,6 +1247,28 @@ paths:
                 $ref: '#/components/schemas/payout-link'
                 description: The `payout-link` object.
       description: Cancel a payout link
+      tags:
+        - payout-links
+  /v2/payout-links/{payout_link_id}/redeliver:
+    parameters:
+      - schema:
+          type: string
+        name: payout_link_id
+        in: path
+        required: true
+        description: Id of the payout link
+    post:
+      summary: Redeliver Payout Link
+      operationId: redeliver-payout-link
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/payout-link'
+                description: The `payout-link` object.
+      description: Redeliver a payout link. Payout links will be delivered up to 5 times.
       tags:
         - payout-links
   /v2/payouts:
@@ -1195,6 +1318,11 @@ paths:
                     Creates a transfer for the amount to the user before
                     creating the payout. The funds are returned if the payout
                     does not succeed.
+                tax_exempt:
+                  type: boolean
+                  description: >-
+                    Payouts marked as `tax_exempt` will not be counted towards
+                    the 1099 threshold. Can be `true` only if `fund` is `true`.
                 idempotency_key:
                   type: string
                   format: uuid
@@ -1401,6 +1529,14 @@ paths:
                     Overrides the setting for which party will pay fees on this
                     payout. This takes precedence over the default for your
                     application.
+                accounting_data:
+                  type: object
+                  properties:
+                    quickbooks_account_id:
+                      type: integer
+                      description: >-
+                        Source/destination account ID to use when syncing the
+                        transaction to Quickbooks.
               required:
                 - amount
       description: >-
@@ -2030,6 +2166,12 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/payment-customer'
+              oneOf:
+                - required:
+                    - first_name
+                    - last_name
+                - required:
+                    - business_name
       tags:
         - payment-customers
   /v2/payment-customers/{payment_customer_id}:
@@ -2504,6 +2646,33 @@ paths:
                   description: Idempotency key in UUID format.
               required:
                 - amount
+  /v2/apps/{app_id}/compliance-flow:
+    parameters:
+      - schema:
+          type: string
+        name: app_id
+        in: path
+        required: true
+        description: The ID of the App.
+    post:
+      summary: Refresh compliance flow
+      operationId: post-app-compliance-flow
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+      tags:
+        - apps
+      description: >-
+        Refresh the app's KYB compliance flow. Returns a URL that can be shared
+        or embedded to allow the app's owners to submit mandatory onboarding
+        information about their business.
+
+        The flow URL will expire after 72 hours. Refreshing the flow will also
+        expire the old URL.
   /v2/payment-methods:
     get:
       summary: List all Payment Methods for a Payment Customer
@@ -3017,7 +3186,7 @@ paths:
         description: The ID of the user
     put:
       summary: Add User Address
-      descriptions: Add an address to the user
+      description: Add an address to the user
       tags:
         - users
       responses:
@@ -3054,6 +3223,16 @@ paths:
                   type: string
 components:
   schemas:
+    rail:
+      type: string
+      enum:
+        - ach
+        - paypal
+        - venmo
+        - cash_app
+        - intl_bank
+        - airtm
+        - payoneer
     flow:
       type: object
       properties:
@@ -3123,6 +3302,8 @@ components:
             - venmo
             - cash_app
             - intl_transfer
+            - airtm
+            - payoneer
           type: string
         description:
           type: string
@@ -3140,6 +3321,11 @@ components:
         currency:
           type: string
           format: iso4217
+        rtp_enabled:
+          type: boolean
+          description: >-
+            Indicates if RTP is enabled for the payment method (applies to ach
+            only).
       required:
         - platform
     payout-link:
@@ -3163,12 +3349,15 @@ components:
         status:
           type: string
           enum:
-            - sent
-            - claimed
+            - created
             - delivery_pending
             - delivery_failed
+            - sent
             - delivered
+            - claimed
+            - reversed
             - canceled
+            - expired
           description: Status of the `payout-link`.
         payee:
           type: object
@@ -3328,6 +3517,8 @@ components:
             - pending
             - failed
             - completed
+            - reversed
+            - canceled
             - flagged
         type:
           type: string
@@ -3389,6 +3580,10 @@ components:
               type: string
             phone_number:
               type: string
+        default_payout_method:
+          $ref: '#/components/schemas/rail'
+        default_payout_method_details:
+          $ref: '#/components/schemas/payment-method'
         wallet:
           $ref: '#/components/schemas/wallet'
         compliance:
@@ -3522,6 +3717,29 @@ components:
           type: string
         last_name:
           type: string
+        business_name:
+          type: string
+        address:
+          type: object
+          properties:
+            country:
+              type: string
+            city:
+              type: string
+            state:
+              type: string
+            postcode:
+              type: string
+            line_1:
+              type: string
+            line_2:
+              type: string
+          required:
+            - country
+            - city
+            - state
+            - postcode
+            - line_1
         metadata:
           type: object
         created:
@@ -3648,6 +3866,7 @@ components:
             - incorporation_type
             - incorporation_state
             - incorporation_date
+            - ubo_count
           properties:
             dba:
               maxLength: 60
@@ -3684,6 +3903,12 @@ components:
               minLength: 3
               type: string
               description: Company web address
+            ubo_count:
+              type: integer
+              minimum: 1
+              description: >-
+                Number of Ultimate Benficial Owners (UBOs). This must be the
+                same as the length of the `directors` array.
         contact_info:
           type: object
           required:

@@ -6,7 +6,7 @@ info:
     upon HTTPS for transport. We respond with meaningful HTTP response codes and
     if an error occurs, we include error details in the response body.  API
     Documentation is at https://api.ynab.com
-  version: 1.68.0
+  version: 1.72.1
 servers:
   - url: https://api.ynab.com/v1
 security:
@@ -631,6 +631,51 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      tags:
+        - Payees
+      summary: Update a payee
+      description: Update a payee
+      operationId: updatePayee
+      parameters:
+        - name: budget_id
+          in: path
+          description: >-
+            The id of the budget. "last-used" can be used to specify the last
+            used budget and "default" can be used if default budget selection is
+            enabled (see: https://api.ynab.com/#oauth-default-budget).
+          required: true
+          schema:
+            type: string
+        - name: payee_id
+          in: path
+          description: The id of the payee
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: The payee to update
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchPayeeWrapper'
+        required: true
+      responses:
+        '200':
+          description: The payee was successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SavePayeeResponse'
+        '400':
+          description: >-
+            The request could not be understood due to malformed syntax or
+            validation error(s)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-codegen-request-body-name: data
   /budgets/{budget_id}/payee_locations:
     get:
       tags:
@@ -910,8 +955,8 @@ paths:
         Creates a single transaction or multiple transactions.  If you provide a
         body containing a `transaction` object, a single transaction will be
         created and if you provide a body containing a `transactions` array,
-        multiple transactions will be created.  Scheduled transactions cannot be
-        created on this endpoint.
+        multiple transactions will be created.  Scheduled transactions
+        (transactions with a future date) cannot be created on this endpoint.
       operationId: createTransaction
       parameters:
         - name: budget_id
@@ -1379,6 +1424,76 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+  /budgets/{budget_id}/months/{month}/transactions:
+    get:
+      tags:
+        - Transactions
+      summary: List transactions in month, excluding any pending transactions
+      description: Returns all transactions for a specified month
+      operationId: getTransactionsByMonth
+      parameters:
+        - name: budget_id
+          in: path
+          description: >-
+            The id of the budget. "last-used" can be used to specify the last
+            used budget and "default" can be used if default budget selection is
+            enabled (see: https://api.ynab.com/#oauth-default-budget).
+          required: true
+          schema:
+            type: string
+        - name: month
+          in: path
+          description: >-
+            The budget month in ISO format (e.g. 2016-12-01) ("current" can also
+            be used to specify the current calendar month (UTC))
+          required: true
+          schema:
+            type: string
+        - name: since_date
+          in: query
+          description: >-
+            If specified, only transactions on or after this date will be
+            included.  The date should be ISO formatted (e.g. 2016-12-30).
+          schema:
+            type: string
+            format: date
+        - name: type
+          in: query
+          description: >-
+            If specified, only transactions of the specified type will be
+            included. "uncategorized" and "unapproved" are currently supported.
+          schema:
+            type: string
+            enum:
+              - uncategorized
+              - unapproved
+        - name: last_knowledge_of_server
+          in: query
+          description: >-
+            The starting server knowledge.  If provided, only entities that have
+            changed since `last_knowledge_of_server` will be included.
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: The list of requested transactions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HybridTransactionsResponse'
+        '404':
+          description: No transactions were found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        default:
+          description: An error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
   /budgets/{budget_id}/scheduled_transactions:
     get:
       tags:
@@ -1423,6 +1538,47 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+    post:
+      tags:
+        - Scheduled Transactions
+      summary: Create a single scheduled transaction
+      description: >-
+        Creates a single scheduled transaction (a transaction with a future
+        date).
+      operationId: createScheduledTransaction
+      parameters:
+        - name: budget_id
+          in: path
+          description: >-
+            The id of the budget. "last-used" can be used to specify the last
+            used budget and "default" can be used if default budget selection is
+            enabled (see: https://api.ynab.com/#oauth-default-budget).
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: The scheduled transaction to create
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostScheduledTransactionWrapper'
+        required: true
+      responses:
+        '201':
+          description: The scheduled transaction was successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScheduledTransactionResponse'
+        '400':
+          description: >-
+            The request could not be understood due to malformed syntax or
+            validation error(s).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-codegen-request-body-name: data
   /budgets/{budget_id}/scheduled_transactions/{scheduled_transaction_id}:
     get:
       tags:
@@ -1970,6 +2126,15 @@ components:
             - DEBT
             - null
           nullable: true
+        goal_needs_whole_amount:
+          type: boolean
+          description: >-
+            Indicates the monthly rollover behavior for "NEED"-type goals. When
+            "true", the goal will always ask for the target amount in the new
+            month ("Set Aside"). When "false", previous month category funding
+            is used ("Refill"). For other goal types, this field will be null.
+          nullable: true
+          default: null
         goal_day:
           type: integer
           description: >-
@@ -2112,6 +2277,23 @@ components:
           properties:
             payee:
               $ref: '#/components/schemas/Payee'
+    SavePayeeResponse:
+      required:
+        - data
+      type: object
+      properties:
+        data:
+          required:
+            - payee
+            - server_knowledge
+          type: object
+          properties:
+            payee:
+              $ref: '#/components/schemas/Payee'
+            server_knowledge:
+              type: integer
+              description: The knowledge of the server
+              format: int64
     Payee:
       required:
         - deleted
@@ -2330,10 +2512,10 @@ components:
             The payee for the transaction.  To create a transfer between two
             accounts, use the account transfer payee pointing to the target
             account.  Account transfer payees are specified as
-            `tranfer_payee_id` on the account resource.
+            `transfer_payee_id` on the account resource.
           format: uuid
         payee_name:
-          maxLength: 50
+          maxLength: 200
           type: string
           nullable: true
           description: >-
@@ -2354,7 +2536,7 @@ components:
             be ignored if supplied.
           format: uuid
         memo:
-          maxLength: 200
+          maxLength: 500
           type: string
           nullable: true
         cleared:
@@ -2389,7 +2571,7 @@ components:
           description: The payee for the subtransaction.
           format: uuid
         payee_name:
-          maxLength: 50
+          maxLength: 200
           type: string
           nullable: true
           description: >-
@@ -2406,7 +2588,7 @@ components:
             are not permitted and will be ignored if supplied.
           format: uuid
         memo:
-          maxLength: 200
+          maxLength: 500
           type: string
           nullable: true
     SaveTransactionsResponse:
@@ -2620,6 +2802,21 @@ components:
               description: >-
                 The name of the category.  If a split transaction, this will be
                 'Split'.
+    PatchPayeeWrapper:
+      required:
+        - payee
+      type: object
+      properties:
+        payee:
+          $ref: '#/components/schemas/SavePayee'
+    SavePayee:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: false
+          maxLength: 500
+          description: The name of the payee. The name must be a maximum of 500 characters.
     PatchCategoryWrapper:
       required:
         - category
@@ -2789,6 +2986,66 @@ components:
           properties:
             scheduled_transaction:
               $ref: '#/components/schemas/ScheduledTransactionDetail'
+    PostScheduledTransactionWrapper:
+      required:
+        - scheduled_transaction
+      type: object
+      properties:
+        scheduled_transaction:
+          $ref: '#/components/schemas/SaveScheduledTransaction'
+    SaveScheduledTransaction:
+      required:
+        - account_id
+        - date
+      type: object
+      properties:
+        account_id:
+          type: string
+          format: uuid
+        date:
+          type: string
+          description: >-
+            The scheduled transaction date in ISO format (e.g. 2016-12-01). 
+            This should be a future date no more than 5 years into the future.
+          format: date
+        amount:
+          type: integer
+          description: The scheduled transaction amount in milliunits format.
+          format: int64
+        payee_id:
+          type: string
+          nullable: true
+          description: >-
+            The payee for the scheduled transaction.  To create a transfer
+            between two accounts, use the account transfer payee pointing to the
+            target account.  Account transfer payees are specified as
+            `transfer_payee_id` on the account resource.
+          format: uuid
+        payee_name:
+          maxLength: 200
+          type: string
+          nullable: true
+          description: >-
+            The payee name for the the scheduled transaction.  If a `payee_name`
+            value is provided and `payee_id` has a null value, the `payee_name`
+            value will be used to resolve the payee by either (1) a payee with
+            the same name or (2) creation of a new payee.
+        category_id:
+          type: string
+          nullable: true
+          description: >-
+            The category for the scheduled transaction. Credit Card Payment
+            categories are not permitted. Creating a split scheduled transaction
+            is not currently supported.
+          format: uuid
+        memo:
+          maxLength: 500
+          type: string
+          nullable: true
+        flag_color:
+          $ref: '#/components/schemas/TransactionFlagColor'
+        frequency:
+          $ref: '#/components/schemas/ScheduledTransactionFrequency'
     ScheduledTransactionSummary:
       required:
         - account_id
@@ -3041,6 +3298,23 @@ components:
         - cleared
         - uncleared
         - reconciled
+    ScheduledTransactionFrequency:
+      type: string
+      description: The scheduled transaction frequency
+      enum:
+        - never
+        - daily
+        - weekly
+        - everyOtherWeek
+        - twiceAMonth
+        - every4Weeks
+        - monthly
+        - everyOtherMonth
+        - every3Months
+        - every4Months
+        - twiceAYear
+        - yearly
+        - everyOtherYear
   securitySchemes:
     bearer:
       type: http

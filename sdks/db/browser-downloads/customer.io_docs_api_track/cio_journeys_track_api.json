@@ -121,23 +121,23 @@
         "x-codeSamples": [
           {
             "lang": "Shell + Curl",
-            "source": "curl --request GET \\\n  --url https://track.customer.io/api/v1/accounts/region \\\n  --header \"Authorization: Basic $(echo -n site_id:api_key | base64)\""
+            "source": "curl --request GET \\\n  --url https://track.customer.io/api/v1/accounts/region"
           },
           {
             "lang": "Node + Native",
-            "source": "const http = require(\"https\");\n\nconst options = {\n  \"method\": \"GET\",\n  \"hostname\": \"track.customer.io\",\n  \"port\": null,\n  \"path\": \"/api/v1/accounts/region\",\n  \"headers\": {\n    \"Authorization\": \"Basic REPLACE_BASIC_AUTH\"\n  }\n};\n\nconst req = http.request(options, function (res) {\n  const chunks = [];\n\n  res.on(\"data\", function (chunk) {\n    chunks.push(chunk);\n  });\n\n  res.on(\"end\", function () {\n    const body = Buffer.concat(chunks);\n    console.log(body.toString());\n  });\n});\n\nreq.end();"
+            "source": "const http = require(\"https\");\n\nconst options = {\n  \"method\": \"GET\",\n  \"hostname\": \"track.customer.io\",\n  \"port\": null,\n  \"path\": \"/api/v1/accounts/region\",\n  \"headers\": {}\n};\n\nconst req = http.request(options, function (res) {\n  const chunks = [];\n\n  res.on(\"data\", function (chunk) {\n    chunks.push(chunk);\n  });\n\n  res.on(\"end\", function () {\n    const body = Buffer.concat(chunks);\n    console.log(body.toString());\n  });\n});\n\nreq.end();"
           },
           {
             "lang": "Ruby + Native",
-            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://track.customer.io/api/v1/accounts/region\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\nrequest[\"Authorization\"] = 'Basic REPLACE_BASIC_AUTH'\n\nresponse = http.request(request)\nputs response.read_body"
+            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://track.customer.io/api/v1/accounts/region\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Get.new(url)\n\nresponse = http.request(request)\nputs response.read_body"
           },
           {
             "lang": "Python + Python3",
-            "source": "import http.client\n\nconn = http.client.HTTPSConnection(\"track.customer.io\")\n\nheaders = { 'Authorization': \"Basic REPLACE_BASIC_AUTH\" }\n\nconn.request(\"GET\", \"/api/v1/accounts/region\", headers=headers)\n\nres = conn.getresponse()\ndata = res.read()\n\nprint(data.decode(\"utf-8\"))"
+            "source": "import http.client\n\nconn = http.client.HTTPSConnection(\"track.customer.io\")\n\nconn.request(\"GET\", \"/api/v1/accounts/region\")\n\nres = conn.getresponse()\ndata = res.read()\n\nprint(data.decode(\"utf-8\"))"
           },
           {
             "lang": "Go + Native",
-            "source": "package main\n\nimport (\n\t\"fmt\"\n\t\"net/http\"\n\t\"io/ioutil\"\n)\n\nfunc main() {\n\n\turl := \"https://track.customer.io/api/v1/accounts/region\"\n\n\treq, _ := http.NewRequest(\"GET\", url, nil)\n\n\treq.Header.Add(\"Authorization\", \"Basic REPLACE_BASIC_AUTH\")\n\n\tres, _ := http.DefaultClient.Do(req)\n\n\tdefer res.Body.Close()\n\tbody, _ := ioutil.ReadAll(res.Body)\n\n\tfmt.Println(res)\n\tfmt.Println(string(body))\n\n}"
+            "source": "package main\n\nimport (\n\t\"fmt\"\n\t\"net/http\"\n\t\"io/ioutil\"\n)\n\nfunc main() {\n\n\turl := \"https://track.customer.io/api/v1/accounts/region\"\n\n\treq, _ := http.NewRequest(\"GET\", url, nil)\n\n\tres, _ := http.DefaultClient.Do(req)\n\n\tdefer res.Body.Close()\n\tbody, _ := ioutil.ReadAll(res.Body)\n\n\tfmt.Println(res)\n\tfmt.Println(string(body))\n\n}"
           }
         ]
       }
@@ -373,7 +373,7 @@
         "x-codeSamples": [
           {
             "lang": "Shell + Curl",
-            "source": "curl --request PUT \\\n  --url https://track.customer.io/api/v1/customers/{identifier} \\\n  --header \"Authorization: Basic $(echo -n site_id:api_key | base64)\" \\\n  --header 'content-type: application/json' \\\n  --data '{\"id\":\"string\",\"email\":\"user@example.com\",\"anonymous_id\":\"string\",\"created_at\":0,\"_update\":true,\"cio_relationships\":{\"action\":\"add_relationships\",\"relationships\":[{\"identifiers\":{\"object_type_id\":\"1\",\"object_id\":\"acme\"},\"relationship_attributes\":{\"role\":\"admin\"}}]},\"unsubscribed\":true,\"cio_subscription_preferences\":{\"topics\":{\"topic_<id>1\":true,\"topic_<id>2\":true}},\"Attributes1\":\"string\",\"Attributes2\":\"string\"}'"
+            "source": "curl --request PUT \\\n  --url https://track.customer.io/api/v1/customers/{identifier} \\\n  --header 'content-type: application/json' \\\n  --data '{\"id\":\"string\",\"email\":\"user@example.com\",\"anonymous_id\":\"string\",\"created_at\":0,\"_update\":true,\"cio_relationships\":{\"action\":\"add_relationships\",\"relationships\":[{\"identifiers\":{\"object_type_id\":\"1\",\"object_id\":\"acme\"},\"relationship_attributes\":{\"role\":\"admin\"}}]},\"unsubscribed\":true,\"cio_subscription_preferences\":{\"topics\":{\"topic_<id>1\":true,\"topic_<id>2\":true}},\"Attributes1\":\"string\",\"Attributes2\":\"string\"}'"
           },
           {
             "lang": "Node + Native",
@@ -469,7 +469,7 @@
           },
           {
             "lang": "Shell + Curl",
-            "source": "curl --request DELETE \\\n  --url https://track.customer.io/api/v1/customers/{identifier} \\\n  --header \"Authorization: Basic $(echo -n site_id:api_key | base64)\""
+            "source": "curl --request DELETE \\\n  --url https://track.customer.io/api/v1/customers/{identifier}"
           }
         ]
       }
@@ -664,7 +664,7 @@
         "x-codeSamples": [
           {
             "lang": "Shell + Curl",
-            "source": "curl --request PUT \\\n  --url https://track.customer.io/api/v1/customers/{identifier}/devices \\\n  --header \"Authorization: Basic $(echo -n site_id:api_key | base64)\" \\\n  --header 'content-type: application/json' \\\n  --data '{\"device\":{\"id\":\"string\",\"last_used\":0,\"platform\":\"ios\",\"attributes\":{\"device_os\":\"string\",\"device_model\":\"string\",\"app_version\":\"string\",\"cio_sdk_version\":\"string\",\"device_locale\":\"string\",\"push_enabled\":\"true\",\"Custom Device Attributes1\":\"string\",\"Custom Device Attributes2\":\"string\"}}}'"
+            "source": "curl --request PUT \\\n  --url https://track.customer.io/api/v1/customers/{identifier}/devices \\\n  --header 'content-type: application/json' \\\n  --data '{\"device\":{\"id\":\"string\",\"last_used\":0,\"platform\":\"ios\",\"attributes\":{\"device_os\":\"string\",\"device_model\":\"string\",\"app_version\":\"string\",\"cio_sdk_version\":\"string\",\"device_locale\":\"string\",\"push_enabled\":\"true\",\"Custom Device Attributes1\":\"string\",\"Custom Device Attributes2\":\"string\"}}}'"
           },
           {
             "lang": "Node + Native",
@@ -780,7 +780,7 @@
         "x-codeSamples": [
           {
             "lang": "Shell + Curl",
-            "source": "curl --request DELETE \\\n  --url https://track.customer.io/api/v1/customers/{identifier}/devices/{device_id} \\\n  --header \"Authorization: Basic $(echo -n site_id:api_key | base64)\""
+            "source": "curl --request DELETE \\\n  --url https://track.customer.io/api/v1/customers/{identifier}/devices/{device_id}"
           },
           {
             "lang": "Node + Native",
@@ -862,7 +862,7 @@
         "x-codeSamples": [
           {
             "lang": "Shell + Curl",
-            "source": "curl --request POST \\\n  --url https://track.customer.io/api/v1/customers/{identifier}/suppress \\\n  --header \"Authorization: Basic $(echo -n site_id:api_key | base64)\""
+            "source": "curl --request POST \\\n  --url https://track.customer.io/api/v1/customers/{identifier}/suppress"
           },
           {
             "lang": "Node + Native",
@@ -878,7 +878,7 @@
           },
           {
             "lang": "Go + Native",
-            "source": "package main\n\nimport (\n\t\"fmt\"\n\t\"net/http\"\n\t\"io/ioutil\"\n)\n\nfunc main() {\n\n\turl := \"https://track.customer.io/api/v1/customers/{identifier}/suppress\"\n\n\treq, _ := http.NewRequest(\"POST\", url, nil)\n\n\treq.Header.Add(\"Authorization\", \"Basic REPLACE_BASIC_AUTH\")\n\n\tres, _ := http.DefaultClient.Do(req)\n\n\tdefer res.Body.Close()\n\tbody, _ := ioutil.ReadAll(res.Body)\n\n\tfmt.Println(res)\n\tfmt.Println(string(body))\n\n}"
+            "source": "package main\n\nimport (\n\t\"fmt\"\n\t\"net/http\"\n\t\"io/ioutil\"\n)\n\nfunc main() {\n\n\turl := \"https://track.customer.io/api/v1/customers/{identifier}/suppress\"\n\n\treq, _ := http.NewRequest(\"POST\", url, nil)\n\n\tres, _ := http.DefaultClient.Do(req)\n\n\tdefer res.Body.Close()\n\tbody, _ := ioutil.ReadAll(res.Body)\n\n\tfmt.Println(res)\n\tfmt.Println(string(body))\n\n}"
           }
         ]
       }
@@ -944,11 +944,11 @@
         "x-codeSamples": [
           {
             "lang": "Shell + Curl",
-            "source": "curl --request POST \\\n  --url https://track.customer.io/api/v1/customers/{identifier}/unsuppress \\\n  --header \"Authorization: Basic $(echo -n site_id:api_key | base64)\""
+            "source": "curl --request POST \\\n  --url https://track.customer.io/api/v1/customers/{identifier}/unsuppress"
           },
           {
             "lang": "Node + Native",
-            "source": "const http = require(\"https\");\n\nconst options = {\n  \"method\": \"POST\",\n  \"hostname\": \"track.customer.io\",\n  \"port\": null,\n  \"path\": \"/api/v1/customers/{identifier}/unsuppress\",\n  \"headers\": {\n    \"Authorization\": \"Basic REPLACE_BASIC_AUTH\"\n  }\n};\n\nconst req = http.request(options, function (res) {\n  const chunks = [];\n\n  res.on(\"data\", function (chunk) {\n    chunks.push(chunk);\n  });\n\n  res.on(\"end\", function () {\n    const body = Buffer.concat(chunks);\n    console.log(body.toString());\n  });\n});\n\nreq.end();"
+            "source": "const http = require(\"https\");\n\nconst options = {\n  \"method\": \"POST\",\n  \"hostname\": \"track.customer.io\",\n  \"port\": null,\n  \"path\": \"/api/v1/customers/{identifier}/unsuppress\",\n  \"headers\": {}\n};\n\nconst req = http.request(options, function (res) {\n  const chunks = [];\n\n  res.on(\"data\", function (chunk) {\n    chunks.push(chunk);\n  });\n\n  res.on(\"end\", function () {\n    const body = Buffer.concat(chunks);\n    console.log(body.toString());\n  });\n});\n\nreq.end();"
           },
           {
             "lang": "Ruby + Native",
@@ -960,7 +960,7 @@
           },
           {
             "lang": "Go + Native",
-            "source": "package main\n\nimport (\n\t\"fmt\"\n\t\"net/http\"\n\t\"io/ioutil\"\n)\n\nfunc main() {\n\n\turl := \"https://track.customer.io/api/v1/customers/{identifier}/unsuppress\"\n\n\treq, _ := http.NewRequest(\"POST\", url, nil)\n\n\treq.Header.Add(\"Authorization\", \"Basic REPLACE_BASIC_AUTH\")\n\n\tres, _ := http.DefaultClient.Do(req)\n\n\tdefer res.Body.Close()\n\tbody, _ := ioutil.ReadAll(res.Body)\n\n\tfmt.Println(res)\n\tfmt.Println(string(body))\n\n}"
+            "source": "package main\n\nimport (\n\t\"fmt\"\n\t\"net/http\"\n\t\"io/ioutil\"\n)\n\nfunc main() {\n\n\turl := \"https://track.customer.io/api/v1/customers/{identifier}/unsuppress\"\n\n\treq, _ := http.NewRequest(\"POST\", url, nil)\n\n\tres, _ := http.DefaultClient.Do(req)\n\n\tdefer res.Body.Close()\n\tbody, _ := ioutil.ReadAll(res.Body)\n\n\tfmt.Println(res)\n\tfmt.Println(string(body))\n\n}"
           }
         ]
       }
@@ -1270,7 +1270,7 @@
         "x-codeSamples": [
           {
             "lang": "Shell + Curl",
-            "source": "curl --request POST \\\n  --url https://track.customer.io/api/v1/customers/{identifier}/events \\\n  --header \"Authorization: Basic $(echo -n site_id:api_key | base64)\" \\\n  --header 'content-type: application/json' \\\n  --data '{\"name\":\"purchase\",\"data\":{\"price\":23.45,\"product\":\"socks\"}}'"
+            "source": "curl --request POST \\\n  --url https://track.customer.io/api/v1/customers/{identifier}/events \\\n  --header 'content-type: application/json' \\\n  --data '{\"name\":\"purchase\",\"data\":{\"price\":23.45,\"product\":\"socks\"}}'"
           },
           {
             "lang": "Node + Native",
@@ -1494,7 +1494,7 @@
         "x-codeSamples": [
           {
             "lang": "Shell + Curl",
-            "source": "curl --request POST \\\n  --url https://track.customer.io/api/v1/events \\\n  --header \"Authorization: Basic $(echo -n site_id:api_key | base64)\" \\\n  --header 'content-type: application/json' \\\n  --data '{\"name\":\"watched_video\",\"anonymous_id\":\"abc123\",\"data\":{\"video\":\"intro-to-platform\"}}'"
+            "source": "curl --request POST \\\n  --url https://track.customer.io/api/v1/events \\\n  --header 'content-type: application/json' \\\n  --data '{\"name\":\"watched_video\",\"anonymous_id\":\"abc123\",\"data\":{\"video\":\"intro-to-platform\"}}'"
           },
           {
             "lang": "Node + Native",
@@ -1652,23 +1652,23 @@
         "x-codeSamples": [
           {
             "lang": "Shell + Curl",
-            "source": "curl --request POST \\\n  --url https://track.customer.io/api/v1/forms/{form_id}/submit \\\n  --header \"Authorization: Basic $(echo -n site_id:api_key | base64)\" \\\n  --header 'content-type: application/json' \\\n  --data '{\"data\":{\"email\":\"cool.person@example.com\",\"first_name\":\"cool\",\"last_name\":\"person\",\"fav_food\":\"pizza\"}}'"
+            "source": "curl --request POST \\\n  --url https://track.customer.io/api/v1/forms/{form_id}/submit \\\n  --header 'content-type: application/json' \\\n  --data '{\"data\":{\"email\":\"cool.person@example.com\",\"first_name\":\"cool\",\"last_name\":\"person\",\"fav_food\":\"pizza\"}}'"
           },
           {
             "lang": "Node + Native",
-            "source": "const http = require(\"https\");\n\nconst options = {\n  \"method\": \"POST\",\n  \"hostname\": \"track.customer.io\",\n  \"port\": null,\n  \"path\": \"/api/v1/forms/{form_id}/submit\",\n  \"headers\": {\n    \"content-type\": \"application/json\",\n    \"Authorization\": \"Basic REPLACE_BASIC_AUTH\"\n  }\n};\n\nconst req = http.request(options, function (res) {\n  const chunks = [];\n\n  res.on(\"data\", function (chunk) {\n    chunks.push(chunk);\n  });\n\n  res.on(\"end\", function () {\n    const body = Buffer.concat(chunks);\n    console.log(body.toString());\n  });\n});\n\nreq.write(JSON.stringify({\n  data: {\n    email: 'cool.person@example.com',\n    first_name: 'cool',\n    last_name: 'person',\n    fav_food: 'pizza'\n  }\n}));\nreq.end();"
+            "source": "const http = require(\"https\");\n\nconst options = {\n  \"method\": \"POST\",\n  \"hostname\": \"track.customer.io\",\n  \"port\": null,\n  \"path\": \"/api/v1/forms/{form_id}/submit\",\n  \"headers\": {\n    \"content-type\": \"application/json\"\n  }\n};\n\nconst req = http.request(options, function (res) {\n  const chunks = [];\n\n  res.on(\"data\", function (chunk) {\n    chunks.push(chunk);\n  });\n\n  res.on(\"end\", function () {\n    const body = Buffer.concat(chunks);\n    console.log(body.toString());\n  });\n});\n\nreq.write(JSON.stringify({\n  data: {\n    email: 'cool.person@example.com',\n    first_name: 'cool',\n    last_name: 'person',\n    fav_food: 'pizza'\n  }\n}));\nreq.end();"
           },
           {
             "lang": "Ruby + Native",
-            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://track.customer.io/api/v1/forms/{form_id}/submit\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Basic REPLACE_BASIC_AUTH'\nrequest.body = \"{\\\"data\\\":{\\\"email\\\":\\\"cool.person@example.com\\\",\\\"first_name\\\":\\\"cool\\\",\\\"last_name\\\":\\\"person\\\",\\\"fav_food\\\":\\\"pizza\\\"}}\"\n\nresponse = http.request(request)\nputs response.read_body"
+            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://track.customer.io/api/v1/forms/{form_id}/submit\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest.body = \"{\\\"data\\\":{\\\"email\\\":\\\"cool.person@example.com\\\",\\\"first_name\\\":\\\"cool\\\",\\\"last_name\\\":\\\"person\\\",\\\"fav_food\\\":\\\"pizza\\\"}}\"\n\nresponse = http.request(request)\nputs response.read_body"
           },
           {
             "lang": "Python + Python3",
-            "source": "import http.client\n\nconn = http.client.HTTPSConnection(\"track.customer.io\")\n\npayload = \"{\\\"data\\\":{\\\"email\\\":\\\"cool.person@example.com\\\",\\\"first_name\\\":\\\"cool\\\",\\\"last_name\\\":\\\"person\\\",\\\"fav_food\\\":\\\"pizza\\\"}}\"\n\nheaders = {\n    'content-type': \"application/json\",\n    'Authorization': \"Basic REPLACE_BASIC_AUTH\"\n    }\n\nconn.request(\"POST\", \"/api/v1/forms/{form_id}/submit\", payload, headers)\n\nres = conn.getresponse()\ndata = res.read()\n\nprint(data.decode(\"utf-8\"))"
+            "source": "import http.client\n\nconn = http.client.HTTPSConnection(\"track.customer.io\")\n\npayload = \"{\\\"data\\\":{\\\"email\\\":\\\"cool.person@example.com\\\",\\\"first_name\\\":\\\"cool\\\",\\\"last_name\\\":\\\"person\\\",\\\"fav_food\\\":\\\"pizza\\\"}}\"\n\nheaders = { 'content-type': \"application/json\" }\n\nconn.request(\"POST\", \"/api/v1/forms/{form_id}/submit\", payload, headers)\n\nres = conn.getresponse()\ndata = res.read()\n\nprint(data.decode(\"utf-8\"))"
           },
           {
             "lang": "Go + Native",
-            "source": "package main\n\nimport (\n\t\"fmt\"\n\t\"strings\"\n\t\"net/http\"\n\t\"io/ioutil\"\n)\n\nfunc main() {\n\n\turl := \"https://track.customer.io/api/v1/forms/{form_id}/submit\"\n\n\tpayload := strings.NewReader(\"{\\\"data\\\":{\\\"email\\\":\\\"cool.person@example.com\\\",\\\"first_name\\\":\\\"cool\\\",\\\"last_name\\\":\\\"person\\\",\\\"fav_food\\\":\\\"pizza\\\"}}\")\n\n\treq, _ := http.NewRequest(\"POST\", url, payload)\n\n\treq.Header.Add(\"content-type\", \"application/json\")\n\treq.Header.Add(\"Authorization\", \"Basic REPLACE_BASIC_AUTH\")\n\n\tres, _ := http.DefaultClient.Do(req)\n\n\tdefer res.Body.Close()\n\tbody, _ := ioutil.ReadAll(res.Body)\n\n\tfmt.Println(res)\n\tfmt.Println(string(body))\n\n}"
+            "source": "package main\n\nimport (\n\t\"fmt\"\n\t\"strings\"\n\t\"net/http\"\n\t\"io/ioutil\"\n)\n\nfunc main() {\n\n\turl := \"https://track.customer.io/api/v1/forms/{form_id}/submit\"\n\n\tpayload := strings.NewReader(\"{\\\"data\\\":{\\\"email\\\":\\\"cool.person@example.com\\\",\\\"first_name\\\":\\\"cool\\\",\\\"last_name\\\":\\\"person\\\",\\\"fav_food\\\":\\\"pizza\\\"}}\")\n\n\treq, _ := http.NewRequest(\"POST\", url, payload)\n\n\treq.Header.Add(\"content-type\", \"application/json\")\n\n\tres, _ := http.DefaultClient.Do(req)\n\n\tdefer res.Body.Close()\n\tbody, _ := ioutil.ReadAll(res.Body)\n\n\tfmt.Println(res)\n\tfmt.Println(string(body))\n\n}"
           }
         ]
       }
@@ -1704,7 +1704,7 @@
                 ],
                 "properties": {
                   "primary": {
-                    "description": "The person that you want to remain after the merge, identified by one of `id`, `email`, or `cio_id`. This person receives information from the secondary person in the merge.",
+                    "description": "The person that you want to remain after the merge, identified by one of `id`, `email`, or `cio_id`. This person receives information from the secondary person in the merge. \n\nIf email is disabled as an identifier in your [workspace settings](https://fly.customer.io/workspaces/last/settings/edit), then you must reference people by `id` or `cio_id`. Under How to Modify, `id` must be set to \"Reference people by cio_id\" for a successful merge. \n",
                     "oneOf": [
                       {
                         "title": "ID",
@@ -1745,7 +1745,7 @@
                     ]
                   },
                   "secondary": {
-                    "description": "The person that you want to delete after the merge, identified by one of `id`, `email`, or `cio_id`. This person's information is merged into the primary person's profile and then it is deleted.",
+                    "description": "The person that you want to delete after the merge, identified by one of `id`, `email`, or `cio_id`. This person's information is merged into the primary person's profile and then it is deleted.\n\nIf email is disabled as an identifier in your [workspace settings](https://fly.customer.io/workspaces/last/settings/edit), then you must reference people by `id` or `cio_id`. Under How to Modify, `id` must be set to \"Reference people by cio_id\" for a successful merge.\n",
                     "oneOf": [
                       {
                         "title": "ID",
@@ -1831,23 +1831,23 @@
         "x-codeSamples": [
           {
             "lang": "Shell + Curl",
-            "source": "curl --request POST \\\n  --url https://track.customer.io/api/v1/merge_customers \\\n  --header \"Authorization: Basic $(echo -n site_id:api_key | base64)\" \\\n  --header 'content-type: application/json' \\\n  --data '{\"primary\":{\"id\":\"42\"},\"secondary\":{\"id\":\"42\"}}'"
+            "source": "curl --request POST \\\n  --url https://track.customer.io/api/v1/merge_customers \\\n  --header 'content-type: application/json' \\\n  --data '{\"primary\":{\"id\":\"42\"},\"secondary\":{\"id\":\"42\"}}'"
           },
           {
             "lang": "Node + Native",
-            "source": "const http = require(\"https\");\n\nconst options = {\n  \"method\": \"POST\",\n  \"hostname\": \"track.customer.io\",\n  \"port\": null,\n  \"path\": \"/api/v1/merge_customers\",\n  \"headers\": {\n    \"content-type\": \"application/json\",\n    \"Authorization\": \"Basic REPLACE_BASIC_AUTH\"\n  }\n};\n\nconst req = http.request(options, function (res) {\n  const chunks = [];\n\n  res.on(\"data\", function (chunk) {\n    chunks.push(chunk);\n  });\n\n  res.on(\"end\", function () {\n    const body = Buffer.concat(chunks);\n    console.log(body.toString());\n  });\n});\n\nreq.write(JSON.stringify({primary: {id: '42'}, secondary: {id: '42'}}));\nreq.end();"
+            "source": "const http = require(\"https\");\n\nconst options = {\n  \"method\": \"POST\",\n  \"hostname\": \"track.customer.io\",\n  \"port\": null,\n  \"path\": \"/api/v1/merge_customers\",\n  \"headers\": {\n    \"content-type\": \"application/json\"\n  }\n};\n\nconst req = http.request(options, function (res) {\n  const chunks = [];\n\n  res.on(\"data\", function (chunk) {\n    chunks.push(chunk);\n  });\n\n  res.on(\"end\", function () {\n    const body = Buffer.concat(chunks);\n    console.log(body.toString());\n  });\n});\n\nreq.write(JSON.stringify({primary: {id: '42'}, secondary: {id: '42'}}));\nreq.end();"
           },
           {
             "lang": "Ruby + Native",
-            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://track.customer.io/api/v1/merge_customers\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Basic REPLACE_BASIC_AUTH'\nrequest.body = \"{\\\"primary\\\":{\\\"id\\\":\\\"42\\\"},\\\"secondary\\\":{\\\"id\\\":\\\"42\\\"}}\"\n\nresponse = http.request(request)\nputs response.read_body"
+            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://track.customer.io/api/v1/merge_customers\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest.body = \"{\\\"primary\\\":{\\\"id\\\":\\\"42\\\"},\\\"secondary\\\":{\\\"id\\\":\\\"42\\\"}}\"\n\nresponse = http.request(request)\nputs response.read_body"
           },
           {
             "lang": "Python + Python3",
-            "source": "import http.client\n\nconn = http.client.HTTPSConnection(\"track.customer.io\")\n\npayload = \"{\\\"primary\\\":{\\\"id\\\":\\\"42\\\"},\\\"secondary\\\":{\\\"id\\\":\\\"42\\\"}}\"\n\nheaders = {\n    'content-type': \"application/json\",\n    'Authorization': \"Basic REPLACE_BASIC_AUTH\"\n    }\n\nconn.request(\"POST\", \"/api/v1/merge_customers\", payload, headers)\n\nres = conn.getresponse()\ndata = res.read()\n\nprint(data.decode(\"utf-8\"))"
+            "source": "import http.client\n\nconn = http.client.HTTPSConnection(\"track.customer.io\")\n\npayload = \"{\\\"primary\\\":{\\\"id\\\":\\\"42\\\"},\\\"secondary\\\":{\\\"id\\\":\\\"42\\\"}}\"\n\nheaders = { 'content-type': \"application/json\" }\n\nconn.request(\"POST\", \"/api/v1/merge_customers\", payload, headers)\n\nres = conn.getresponse()\ndata = res.read()\n\nprint(data.decode(\"utf-8\"))"
           },
           {
             "lang": "Go + Native",
-            "source": "package main\n\nimport (\n\t\"fmt\"\n\t\"strings\"\n\t\"net/http\"\n\t\"io/ioutil\"\n)\n\nfunc main() {\n\n\turl := \"https://track.customer.io/api/v1/merge_customers\"\n\n\tpayload := strings.NewReader(\"{\\\"primary\\\":{\\\"id\\\":\\\"42\\\"},\\\"secondary\\\":{\\\"id\\\":\\\"42\\\"}}\")\n\n\treq, _ := http.NewRequest(\"POST\", url, payload)\n\n\treq.Header.Add(\"content-type\", \"application/json\")\n\treq.Header.Add(\"Authorization\", \"Basic REPLACE_BASIC_AUTH\")\n\n\tres, _ := http.DefaultClient.Do(req)\n\n\tdefer res.Body.Close()\n\tbody, _ := ioutil.ReadAll(res.Body)\n\n\tfmt.Println(res)\n\tfmt.Println(string(body))\n\n}"
+            "source": "package main\n\nimport (\n\t\"fmt\"\n\t\"strings\"\n\t\"net/http\"\n\t\"io/ioutil\"\n)\n\nfunc main() {\n\n\turl := \"https://track.customer.io/api/v1/merge_customers\"\n\n\tpayload := strings.NewReader(\"{\\\"primary\\\":{\\\"id\\\":\\\"42\\\"},\\\"secondary\\\":{\\\"id\\\":\\\"42\\\"}}\")\n\n\treq, _ := http.NewRequest(\"POST\", url, payload)\n\n\treq.Header.Add(\"content-type\", \"application/json\")\n\n\tres, _ := http.DefaultClient.Do(req)\n\n\tdefer res.Body.Close()\n\tbody, _ := ioutil.ReadAll(res.Body)\n\n\tfmt.Println(res)\n\tfmt.Println(string(body))\n\n}"
           }
         ]
       }
@@ -2333,7 +2333,7 @@
         ],
         "operationId": "add_to_segment",
         "summary": "Add people to a manual segment",
-        "description": "Add people to a manual segment by ID. You are limited to 1000 customer IDs per request.\n\nThis endpoint requires people to have `id` attributes. If your workspace does not use `id` as an identifier, or you have not assigned people `id` values, you cannot add people to manual segments using the API. Our user interface does not have this limitation. You can add people to manual segments through the UI when you upload a CSV of people or as a part of a campaign. If you pass an `id` that does not belong to anybody in your workspace, we'll ignore it.\n\nThis endpoint lets you add people to manual segments, but a segment must exist before you can add people to it. You can create and find manual segments using the [App API](/docs/api/#operation/createManSegment).\n\n**NOTE**: You cannot add people to data-driven segments using the API. See [our documentation on segments](/docs/segments) for more information about segments.\n",
+        "description": "Add people to a manual segment by ID. You are limited to 1000 customer IDs per request.\n\nThis endpoint lets you add people to manual segments, but a segment must exist before you can add people to it. You can create and find manual segments using the [App API](/docs/api/#operation/createManSegment).\n\nWhen you call this API, you can pass an `id_type` query parameter determining the type of identifier you want to use, `id`, `email`, or `cio_id`; If you don't pass this parameter, it defaults to `id`. The request body always uses `ids`, even though it'll accept either IDs, emails, or `cio_id`s depending on the query parameter. Everybody in the payload must use the same kind of identifier; we'll ignore values in the `ids` array that don't match the `id_type` parameter.\n\n**NOTE**: You cannot add people to data-driven segments using the API. See [our documentation on segments](/docs/segments) for more information about segments.\n",
         "servers": [
           {
             "url": "https://track.customer.io",
@@ -2357,7 +2357,7 @@
                 "properties": {
                   "ids": {
                     "type": "array",
-                    "description": "The customer IDs you want to add to the segment.",
+                    "description": "The customer IDs you want to add to the segment. The type of value you pass in the array corresponds to the `id_type` query parameter—`id`, `email`, or `cio_id`. Entries in the array that don't match the `id_type` are ignored.",
                     "maxItems": 1000,
                     "minItems": 1,
                     "items": {
@@ -2398,23 +2398,23 @@
         "x-codeSamples": [
           {
             "lang": "Shell + Curl",
-            "source": "curl --request POST \\\n  --url https://track.customer.io/api/v1/segments/{segment_id}/add_customers \\\n  --header \"Authorization: Basic $(echo -n site_id:api_key | base64)\" \\\n  --header 'content-type: application/json' \\\n  --data '{\"ids\":[\"string\"]}'"
+            "source": "curl --request POST \\\n  --url https://track.customer.io/api/v1/segments/{segment_id}/add_customers \\\n  --header 'content-type: application/json' \\\n  --data '{\"ids\":[\"string\"]}'"
           },
           {
             "lang": "Node + Native",
-            "source": "const http = require(\"https\");\n\nconst options = {\n  \"method\": \"POST\",\n  \"hostname\": \"track.customer.io\",\n  \"port\": null,\n  \"path\": \"/api/v1/segments/{segment_id}/add_customers\",\n  \"headers\": {\n    \"content-type\": \"application/json\",\n    \"Authorization\": \"Basic REPLACE_BASIC_AUTH\"\n  }\n};\n\nconst req = http.request(options, function (res) {\n  const chunks = [];\n\n  res.on(\"data\", function (chunk) {\n    chunks.push(chunk);\n  });\n\n  res.on(\"end\", function () {\n    const body = Buffer.concat(chunks);\n    console.log(body.toString());\n  });\n});\n\nreq.write(JSON.stringify({ids: ['string']}));\nreq.end();"
+            "source": "const http = require(\"https\");\n\nconst options = {\n  \"method\": \"POST\",\n  \"hostname\": \"track.customer.io\",\n  \"port\": null,\n  \"path\": \"/api/v1/segments/{segment_id}/add_customers\",\n  \"headers\": {\n    \"content-type\": \"application/json\"\n  }\n};\n\nconst req = http.request(options, function (res) {\n  const chunks = [];\n\n  res.on(\"data\", function (chunk) {\n    chunks.push(chunk);\n  });\n\n  res.on(\"end\", function () {\n    const body = Buffer.concat(chunks);\n    console.log(body.toString());\n  });\n});\n\nreq.write(JSON.stringify({ids: ['string']}));\nreq.end();"
           },
           {
             "lang": "Ruby + Native",
-            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://track.customer.io/api/v1/segments/{segment_id}/add_customers\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Basic REPLACE_BASIC_AUTH'\nrequest.body = \"{\\\"ids\\\":[\\\"string\\\"]}\"\n\nresponse = http.request(request)\nputs response.read_body"
+            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://track.customer.io/api/v1/segments/{segment_id}/add_customers\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest.body = \"{\\\"ids\\\":[\\\"string\\\"]}\"\n\nresponse = http.request(request)\nputs response.read_body"
           },
           {
             "lang": "Python + Python3",
-            "source": "import http.client\n\nconn = http.client.HTTPSConnection(\"track.customer.io\")\n\npayload = \"{\\\"ids\\\":[\\\"string\\\"]}\"\n\nheaders = {\n    'content-type': \"application/json\",\n    'Authorization': \"Basic REPLACE_BASIC_AUTH\"\n    }\n\nconn.request(\"POST\", \"/api/v1/segments/{segment_id}/add_customers\", payload, headers)\n\nres = conn.getresponse()\ndata = res.read()\n\nprint(data.decode(\"utf-8\"))"
+            "source": "import http.client\n\nconn = http.client.HTTPSConnection(\"track.customer.io\")\n\npayload = \"{\\\"ids\\\":[\\\"string\\\"]}\"\n\nheaders = { 'content-type': \"application/json\" }\n\nconn.request(\"POST\", \"/api/v1/segments/{segment_id}/add_customers\", payload, headers)\n\nres = conn.getresponse()\ndata = res.read()\n\nprint(data.decode(\"utf-8\"))"
           },
           {
             "lang": "Go + Native",
-            "source": "package main\n\nimport (\n\t\"fmt\"\n\t\"strings\"\n\t\"net/http\"\n\t\"io/ioutil\"\n)\n\nfunc main() {\n\n\turl := \"https://track.customer.io/api/v1/segments/{segment_id}/add_customers\"\n\n\tpayload := strings.NewReader(\"{\\\"ids\\\":[\\\"string\\\"]}\")\n\n\treq, _ := http.NewRequest(\"POST\", url, payload)\n\n\treq.Header.Add(\"content-type\", \"application/json\")\n\treq.Header.Add(\"Authorization\", \"Basic REPLACE_BASIC_AUTH\")\n\n\tres, _ := http.DefaultClient.Do(req)\n\n\tdefer res.Body.Close()\n\tbody, _ := ioutil.ReadAll(res.Body)\n\n\tfmt.Println(res)\n\tfmt.Println(string(body))\n\n}"
+            "source": "package main\n\nimport (\n\t\"fmt\"\n\t\"strings\"\n\t\"net/http\"\n\t\"io/ioutil\"\n)\n\nfunc main() {\n\n\turl := \"https://track.customer.io/api/v1/segments/{segment_id}/add_customers\"\n\n\tpayload := strings.NewReader(\"{\\\"ids\\\":[\\\"string\\\"]}\")\n\n\treq, _ := http.NewRequest(\"POST\", url, payload)\n\n\treq.Header.Add(\"content-type\", \"application/json\")\n\n\tres, _ := http.DefaultClient.Do(req)\n\n\tdefer res.Body.Close()\n\tbody, _ := ioutil.ReadAll(res.Body)\n\n\tfmt.Println(res)\n\tfmt.Println(string(body))\n\n}"
           }
         ]
       }
@@ -2518,23 +2518,23 @@
         "x-codeSamples": [
           {
             "lang": "Shell + Curl",
-            "source": "curl --request POST \\\n  --url https://track.customer.io/api/v1/segments/{segment_id}/remove_customers \\\n  --header \"Authorization: Basic $(echo -n site_id:api_key | base64)\" \\\n  --header 'content-type: application/json' \\\n  --data '{\"ids\":[\"string\"]}'"
+            "source": "curl --request POST \\\n  --url https://track.customer.io/api/v1/segments/{segment_id}/remove_customers \\\n  --header 'content-type: application/json' \\\n  --data '{\"ids\":[\"string\"]}'"
           },
           {
             "lang": "Node + Native",
-            "source": "const http = require(\"https\");\n\nconst options = {\n  \"method\": \"POST\",\n  \"hostname\": \"track.customer.io\",\n  \"port\": null,\n  \"path\": \"/api/v1/segments/{segment_id}/remove_customers\",\n  \"headers\": {\n    \"content-type\": \"application/json\",\n    \"Authorization\": \"Basic REPLACE_BASIC_AUTH\"\n  }\n};\n\nconst req = http.request(options, function (res) {\n  const chunks = [];\n\n  res.on(\"data\", function (chunk) {\n    chunks.push(chunk);\n  });\n\n  res.on(\"end\", function () {\n    const body = Buffer.concat(chunks);\n    console.log(body.toString());\n  });\n});\n\nreq.write(JSON.stringify({ids: ['string']}));\nreq.end();"
+            "source": "const http = require(\"https\");\n\nconst options = {\n  \"method\": \"POST\",\n  \"hostname\": \"track.customer.io\",\n  \"port\": null,\n  \"path\": \"/api/v1/segments/{segment_id}/remove_customers\",\n  \"headers\": {\n    \"content-type\": \"application/json\"\n  }\n};\n\nconst req = http.request(options, function (res) {\n  const chunks = [];\n\n  res.on(\"data\", function (chunk) {\n    chunks.push(chunk);\n  });\n\n  res.on(\"end\", function () {\n    const body = Buffer.concat(chunks);\n    console.log(body.toString());\n  });\n});\n\nreq.write(JSON.stringify({ids: ['string']}));\nreq.end();"
           },
           {
             "lang": "Ruby + Native",
-            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://track.customer.io/api/v1/segments/{segment_id}/remove_customers\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Basic REPLACE_BASIC_AUTH'\nrequest.body = \"{\\\"ids\\\":[\\\"string\\\"]}\"\n\nresponse = http.request(request)\nputs response.read_body"
+            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://track.customer.io/api/v1/segments/{segment_id}/remove_customers\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest.body = \"{\\\"ids\\\":[\\\"string\\\"]}\"\n\nresponse = http.request(request)\nputs response.read_body"
           },
           {
             "lang": "Python + Python3",
-            "source": "import http.client\n\nconn = http.client.HTTPSConnection(\"track.customer.io\")\n\npayload = \"{\\\"ids\\\":[\\\"string\\\"]}\"\n\nheaders = {\n    'content-type': \"application/json\",\n    'Authorization': \"Basic REPLACE_BASIC_AUTH\"\n    }\n\nconn.request(\"POST\", \"/api/v1/segments/{segment_id}/remove_customers\", payload, headers)\n\nres = conn.getresponse()\ndata = res.read()\n\nprint(data.decode(\"utf-8\"))"
+            "source": "import http.client\n\nconn = http.client.HTTPSConnection(\"track.customer.io\")\n\npayload = \"{\\\"ids\\\":[\\\"string\\\"]}\"\n\nheaders = { 'content-type': \"application/json\" }\n\nconn.request(\"POST\", \"/api/v1/segments/{segment_id}/remove_customers\", payload, headers)\n\nres = conn.getresponse()\ndata = res.read()\n\nprint(data.decode(\"utf-8\"))"
           },
           {
             "lang": "Go + Native",
-            "source": "package main\n\nimport (\n\t\"fmt\"\n\t\"strings\"\n\t\"net/http\"\n\t\"io/ioutil\"\n)\n\nfunc main() {\n\n\turl := \"https://track.customer.io/api/v1/segments/{segment_id}/remove_customers\"\n\n\tpayload := strings.NewReader(\"{\\\"ids\\\":[\\\"string\\\"]}\")\n\n\treq, _ := http.NewRequest(\"POST\", url, payload)\n\n\treq.Header.Add(\"content-type\", \"application/json\")\n\treq.Header.Add(\"Authorization\", \"Basic REPLACE_BASIC_AUTH\")\n\n\tres, _ := http.DefaultClient.Do(req)\n\n\tdefer res.Body.Close()\n\tbody, _ := ioutil.ReadAll(res.Body)\n\n\tfmt.Println(res)\n\tfmt.Println(string(body))\n\n}"
+            "source": "package main\n\nimport (\n\t\"fmt\"\n\t\"strings\"\n\t\"net/http\"\n\t\"io/ioutil\"\n)\n\nfunc main() {\n\n\turl := \"https://track.customer.io/api/v1/segments/{segment_id}/remove_customers\"\n\n\tpayload := strings.NewReader(\"{\\\"ids\\\":[\\\"string\\\"]}\")\n\n\treq, _ := http.NewRequest(\"POST\", url, payload)\n\n\treq.Header.Add(\"content-type\", \"application/json\")\n\n\tres, _ := http.DefaultClient.Do(req)\n\n\tdefer res.Body.Close()\n\tbody, _ := ioutil.ReadAll(res.Body)\n\n\tfmt.Println(res)\n\tfmt.Println(string(body))\n\n}"
           }
         ]
       }
@@ -2665,9 +2665,11 @@
                                       }
                                     },
                                     "example": {
-                                      "topic_1": true,
-                                      "topic_2": false,
-                                      "topic_3": true
+                                      "topics": {
+                                        "topic_1": true,
+                                        "topic_2": false,
+                                        "topic_3": true
+                                      }
                                     }
                                   }
                                 }
@@ -3718,7 +3720,7 @@
                             ]
                           },
                           "primary": {
-                            "description": "The person that you want to remain after the merge, identified by one of `id`, `email`, or `cio_id`. This person receives information from the secondary person in the merge.",
+                            "description": "The person that you want to remain after the merge, identified by one of `id`, `email`, or `cio_id`. This person receives information from the secondary person in the merge. \n        \nIf email is disabled as an identifier in your [workspace settings](https://fly.customer.io/workspaces/last/settings/edit), then you must reference people by `id` or `cio_id`. Under How to Modify, `id` must be set to \"Reference people by cio_id\" for a successful merge. \n",
                             "oneOf": [
                               {
                                 "title": "id",
@@ -3765,7 +3767,7 @@
                             ]
                           },
                           "secondary": {
-                            "description": "The person that you want to delete after the merge, identified by one of `id`, `email`, or `cio_id`. This person's information is merged into the primary person's profile and then it is deleted.",
+                            "description": "The person that you want to delete after the merge, identified by one of `id`, `email`, or `cio_id`. This person's information is merged into the primary person's profile and then it is deleted.\n      \nIf email is disabled as an identifier in your [workspace settings](https://fly.customer.io/workspaces/last/settings/edit), then you must reference people by `id` or `cio_id`. Under How to Modify, `id` must be set to \"Reference people by cio_id\" for a successful merge.\n",
                             "oneOf": [
                               {
                                 "title": "id",
@@ -4693,23 +4695,23 @@
         "x-codeSamples": [
           {
             "lang": "Shell + Curl",
-            "source": "curl --request POST \\\n  --url https://track.customer.io/api/v2/entity \\\n  --header \"Authorization: Basic $(echo -n site_id:api_key | base64)\" \\\n  --header 'content-type: application/json' \\\n  --data '{\"type\":\"person\",\"identifiers\":{\"id\":\"42\"},\"action\":\"identify\",\"attributes\":{\"cio_subscription_preferences\":{\"topic_1\":true,\"topic_2\":false,\"topic_3\":true}},\"cio_relationships\":[{\"identifiers\":{\"object_type_id\":\"1\",\"object_id\":\"acme\"},\"relationship_attributes\":{\"role\":\"admin\"}}]}'"
+            "source": "curl --request POST \\\n  --url https://track.customer.io/api/v2/entity \\\n  --header 'content-type: application/json' \\\n  --data '{\"type\":\"person\",\"identifiers\":{\"id\":\"42\"},\"action\":\"identify\",\"attributes\":{\"cio_subscription_preferences\":{\"topics\":{\"topic_1\":true,\"topic_2\":false,\"topic_3\":true}}},\"cio_relationships\":[{\"identifiers\":{\"object_type_id\":\"1\",\"object_id\":\"acme\"},\"relationship_attributes\":{\"role\":\"admin\"}}]}'"
           },
           {
             "lang": "Node + Native",
-            "source": "const http = require(\"https\");\n\nconst options = {\n  \"method\": \"POST\",\n  \"hostname\": \"track.customer.io\",\n  \"port\": null,\n  \"path\": \"/api/v2/entity\",\n  \"headers\": {\n    \"content-type\": \"application/json\",\n    \"Authorization\": \"Basic REPLACE_BASIC_AUTH\"\n  }\n};\n\nconst req = http.request(options, function (res) {\n  const chunks = [];\n\n  res.on(\"data\", function (chunk) {\n    chunks.push(chunk);\n  });\n\n  res.on(\"end\", function () {\n    const body = Buffer.concat(chunks);\n    console.log(body.toString());\n  });\n});\n\nreq.write(JSON.stringify({\n  type: 'person',\n  identifiers: {id: '42'},\n  action: 'identify',\n  attributes: {cio_subscription_preferences: {topic_1: true, topic_2: false, topic_3: true}},\n  cio_relationships: [\n    {\n      identifiers: {object_type_id: '1', object_id: 'acme'},\n      relationship_attributes: {role: 'admin'}\n    }\n  ]\n}));\nreq.end();"
+            "source": "const http = require(\"https\");\n\nconst options = {\n  \"method\": \"POST\",\n  \"hostname\": \"track.customer.io\",\n  \"port\": null,\n  \"path\": \"/api/v2/entity\",\n  \"headers\": {\n    \"content-type\": \"application/json\"\n  }\n};\n\nconst req = http.request(options, function (res) {\n  const chunks = [];\n\n  res.on(\"data\", function (chunk) {\n    chunks.push(chunk);\n  });\n\n  res.on(\"end\", function () {\n    const body = Buffer.concat(chunks);\n    console.log(body.toString());\n  });\n});\n\nreq.write(JSON.stringify({\n  type: 'person',\n  identifiers: {id: '42'},\n  action: 'identify',\n  attributes: {\n    cio_subscription_preferences: {topics: {topic_1: true, topic_2: false, topic_3: true}}\n  },\n  cio_relationships: [\n    {\n      identifiers: {object_type_id: '1', object_id: 'acme'},\n      relationship_attributes: {role: 'admin'}\n    }\n  ]\n}));\nreq.end();"
           },
           {
             "lang": "Ruby + Native",
-            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://track.customer.io/api/v2/entity\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Basic REPLACE_BASIC_AUTH'\nrequest.body = \"{\\\"type\\\":\\\"person\\\",\\\"identifiers\\\":{\\\"id\\\":\\\"42\\\"},\\\"action\\\":\\\"identify\\\",\\\"attributes\\\":{\\\"cio_subscription_preferences\\\":{\\\"topic_1\\\":true,\\\"topic_2\\\":false,\\\"topic_3\\\":true}},\\\"cio_relationships\\\":[{\\\"identifiers\\\":{\\\"object_type_id\\\":\\\"1\\\",\\\"object_id\\\":\\\"acme\\\"},\\\"relationship_attributes\\\":{\\\"role\\\":\\\"admin\\\"}}]}\"\n\nresponse = http.request(request)\nputs response.read_body"
+            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://track.customer.io/api/v2/entity\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest.body = \"{\\\"type\\\":\\\"person\\\",\\\"identifiers\\\":{\\\"id\\\":\\\"42\\\"},\\\"action\\\":\\\"identify\\\",\\\"attributes\\\":{\\\"cio_subscription_preferences\\\":{\\\"topics\\\":{\\\"topic_1\\\":true,\\\"topic_2\\\":false,\\\"topic_3\\\":true}}},\\\"cio_relationships\\\":[{\\\"identifiers\\\":{\\\"object_type_id\\\":\\\"1\\\",\\\"object_id\\\":\\\"acme\\\"},\\\"relationship_attributes\\\":{\\\"role\\\":\\\"admin\\\"}}]}\"\n\nresponse = http.request(request)\nputs response.read_body"
           },
           {
             "lang": "Python + Python3",
-            "source": "import http.client\n\nconn = http.client.HTTPSConnection(\"track.customer.io\")\n\npayload = \"{\\\"type\\\":\\\"person\\\",\\\"identifiers\\\":{\\\"id\\\":\\\"42\\\"},\\\"action\\\":\\\"identify\\\",\\\"attributes\\\":{\\\"cio_subscription_preferences\\\":{\\\"topic_1\\\":true,\\\"topic_2\\\":false,\\\"topic_3\\\":true}},\\\"cio_relationships\\\":[{\\\"identifiers\\\":{\\\"object_type_id\\\":\\\"1\\\",\\\"object_id\\\":\\\"acme\\\"},\\\"relationship_attributes\\\":{\\\"role\\\":\\\"admin\\\"}}]}\"\n\nheaders = {\n    'content-type': \"application/json\",\n    'Authorization': \"Basic REPLACE_BASIC_AUTH\"\n    }\n\nconn.request(\"POST\", \"/api/v2/entity\", payload, headers)\n\nres = conn.getresponse()\ndata = res.read()\n\nprint(data.decode(\"utf-8\"))"
+            "source": "import http.client\n\nconn = http.client.HTTPSConnection(\"track.customer.io\")\n\npayload = \"{\\\"type\\\":\\\"person\\\",\\\"identifiers\\\":{\\\"id\\\":\\\"42\\\"},\\\"action\\\":\\\"identify\\\",\\\"attributes\\\":{\\\"cio_subscription_preferences\\\":{\\\"topics\\\":{\\\"topic_1\\\":true,\\\"topic_2\\\":false,\\\"topic_3\\\":true}}},\\\"cio_relationships\\\":[{\\\"identifiers\\\":{\\\"object_type_id\\\":\\\"1\\\",\\\"object_id\\\":\\\"acme\\\"},\\\"relationship_attributes\\\":{\\\"role\\\":\\\"admin\\\"}}]}\"\n\nheaders = { 'content-type': \"application/json\" }\n\nconn.request(\"POST\", \"/api/v2/entity\", payload, headers)\n\nres = conn.getresponse()\ndata = res.read()\n\nprint(data.decode(\"utf-8\"))"
           },
           {
             "lang": "Go + Native",
-            "source": "package main\n\nimport (\n\t\"fmt\"\n\t\"strings\"\n\t\"net/http\"\n\t\"io/ioutil\"\n)\n\nfunc main() {\n\n\turl := \"https://track.customer.io/api/v2/entity\"\n\n\tpayload := strings.NewReader(\"{\\\"type\\\":\\\"person\\\",\\\"identifiers\\\":{\\\"id\\\":\\\"42\\\"},\\\"action\\\":\\\"identify\\\",\\\"attributes\\\":{\\\"cio_subscription_preferences\\\":{\\\"topic_1\\\":true,\\\"topic_2\\\":false,\\\"topic_3\\\":true}},\\\"cio_relationships\\\":[{\\\"identifiers\\\":{\\\"object_type_id\\\":\\\"1\\\",\\\"object_id\\\":\\\"acme\\\"},\\\"relationship_attributes\\\":{\\\"role\\\":\\\"admin\\\"}}]}\")\n\n\treq, _ := http.NewRequest(\"POST\", url, payload)\n\n\treq.Header.Add(\"content-type\", \"application/json\")\n\treq.Header.Add(\"Authorization\", \"Basic REPLACE_BASIC_AUTH\")\n\n\tres, _ := http.DefaultClient.Do(req)\n\n\tdefer res.Body.Close()\n\tbody, _ := ioutil.ReadAll(res.Body)\n\n\tfmt.Println(res)\n\tfmt.Println(string(body))\n\n}"
+            "source": "package main\n\nimport (\n\t\"fmt\"\n\t\"strings\"\n\t\"net/http\"\n\t\"io/ioutil\"\n)\n\nfunc main() {\n\n\turl := \"https://track.customer.io/api/v2/entity\"\n\n\tpayload := strings.NewReader(\"{\\\"type\\\":\\\"person\\\",\\\"identifiers\\\":{\\\"id\\\":\\\"42\\\"},\\\"action\\\":\\\"identify\\\",\\\"attributes\\\":{\\\"cio_subscription_preferences\\\":{\\\"topics\\\":{\\\"topic_1\\\":true,\\\"topic_2\\\":false,\\\"topic_3\\\":true}}},\\\"cio_relationships\\\":[{\\\"identifiers\\\":{\\\"object_type_id\\\":\\\"1\\\",\\\"object_id\\\":\\\"acme\\\"},\\\"relationship_attributes\\\":{\\\"role\\\":\\\"admin\\\"}}]}\")\n\n\treq, _ := http.NewRequest(\"POST\", url, payload)\n\n\treq.Header.Add(\"content-type\", \"application/json\")\n\n\tres, _ := http.DefaultClient.Do(req)\n\n\tdefer res.Body.Close()\n\tbody, _ := ioutil.ReadAll(res.Body)\n\n\tfmt.Println(res)\n\tfmt.Println(string(body))\n\n}"
           }
         ]
       }
@@ -4846,9 +4848,11 @@
                                             }
                                           },
                                           "example": {
-                                            "topic_1": true,
-                                            "topic_2": false,
-                                            "topic_3": true
+                                            "topics": {
+                                              "topic_1": true,
+                                              "topic_2": false,
+                                              "topic_3": true
+                                            }
                                           }
                                         }
                                       }
@@ -5899,7 +5903,7 @@
                                   ]
                                 },
                                 "primary": {
-                                  "description": "The person that you want to remain after the merge, identified by one of `id`, `email`, or `cio_id`. This person receives information from the secondary person in the merge.",
+                                  "description": "The person that you want to remain after the merge, identified by one of `id`, `email`, or `cio_id`. This person receives information from the secondary person in the merge. \n        \nIf email is disabled as an identifier in your [workspace settings](https://fly.customer.io/workspaces/last/settings/edit), then you must reference people by `id` or `cio_id`. Under How to Modify, `id` must be set to \"Reference people by cio_id\" for a successful merge. \n",
                                   "oneOf": [
                                     {
                                       "title": "id",
@@ -5946,7 +5950,7 @@
                                   ]
                                 },
                                 "secondary": {
-                                  "description": "The person that you want to delete after the merge, identified by one of `id`, `email`, or `cio_id`. This person's information is merged into the primary person's profile and then it is deleted.",
+                                  "description": "The person that you want to delete after the merge, identified by one of `id`, `email`, or `cio_id`. This person's information is merged into the primary person's profile and then it is deleted.\n      \nIf email is disabled as an identifier in your [workspace settings](https://fly.customer.io/workspaces/last/settings/edit), then you must reference people by `id` or `cio_id`. Under How to Modify, `id` must be set to \"Reference people by cio_id\" for a successful merge.\n",
                                   "oneOf": [
                                     {
                                       "title": "id",
@@ -6910,23 +6914,23 @@
         "x-codeSamples": [
           {
             "lang": "Shell + Curl",
-            "source": "curl --request POST \\\n  --url https://track.customer.io/api/v2/batch \\\n  --header \"Authorization: Basic $(echo -n site_id:api_key | base64)\" \\\n  --header 'content-type: application/json' \\\n  --data '{\"batch\":[{\"type\":\"person\",\"identifiers\":{\"id\":\"42\"},\"action\":\"identify\",\"attributes\":{\"cio_subscription_preferences\":{\"topic_1\":true,\"topic_2\":false,\"topic_3\":true}},\"cio_relationships\":[{\"identifiers\":{\"object_type_id\":\"1\",\"object_id\":\"acme\"},\"relationship_attributes\":{\"role\":\"admin\"}}]}]}'"
+            "source": "curl --request POST \\\n  --url https://track.customer.io/api/v2/batch \\\n  --header 'content-type: application/json' \\\n  --data '{\"batch\":[{\"type\":\"person\",\"identifiers\":{\"id\":\"42\"},\"action\":\"identify\",\"attributes\":{\"cio_subscription_preferences\":{\"topics\":{\"topic_1\":true,\"topic_2\":false,\"topic_3\":true}}},\"cio_relationships\":[{\"identifiers\":{\"object_type_id\":\"1\",\"object_id\":\"acme\"},\"relationship_attributes\":{\"role\":\"admin\"}}]}]}'"
           },
           {
             "lang": "Node + Native",
-            "source": "const http = require(\"https\");\n\nconst options = {\n  \"method\": \"POST\",\n  \"hostname\": \"track.customer.io\",\n  \"port\": null,\n  \"path\": \"/api/v2/batch\",\n  \"headers\": {\n    \"content-type\": \"application/json\",\n    \"Authorization\": \"Basic REPLACE_BASIC_AUTH\"\n  }\n};\n\nconst req = http.request(options, function (res) {\n  const chunks = [];\n\n  res.on(\"data\", function (chunk) {\n    chunks.push(chunk);\n  });\n\n  res.on(\"end\", function () {\n    const body = Buffer.concat(chunks);\n    console.log(body.toString());\n  });\n});\n\nreq.write(JSON.stringify({\n  batch: [\n    {\n      type: 'person',\n      identifiers: {id: '42'},\n      action: 'identify',\n      attributes: {cio_subscription_preferences: {topic_1: true, topic_2: false, topic_3: true}},\n      cio_relationships: [\n        {\n          identifiers: {object_type_id: '1', object_id: 'acme'},\n          relationship_attributes: {role: 'admin'}\n        }\n      ]\n    }\n  ]\n}));\nreq.end();"
+            "source": "const http = require(\"https\");\n\nconst options = {\n  \"method\": \"POST\",\n  \"hostname\": \"track.customer.io\",\n  \"port\": null,\n  \"path\": \"/api/v2/batch\",\n  \"headers\": {\n    \"content-type\": \"application/json\"\n  }\n};\n\nconst req = http.request(options, function (res) {\n  const chunks = [];\n\n  res.on(\"data\", function (chunk) {\n    chunks.push(chunk);\n  });\n\n  res.on(\"end\", function () {\n    const body = Buffer.concat(chunks);\n    console.log(body.toString());\n  });\n});\n\nreq.write(JSON.stringify({\n  batch: [\n    {\n      type: 'person',\n      identifiers: {id: '42'},\n      action: 'identify',\n      attributes: {\n        cio_subscription_preferences: {topics: {topic_1: true, topic_2: false, topic_3: true}}\n      },\n      cio_relationships: [\n        {\n          identifiers: {object_type_id: '1', object_id: 'acme'},\n          relationship_attributes: {role: 'admin'}\n        }\n      ]\n    }\n  ]\n}));\nreq.end();"
           },
           {
             "lang": "Ruby + Native",
-            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://track.customer.io/api/v2/batch\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest[\"Authorization\"] = 'Basic REPLACE_BASIC_AUTH'\nrequest.body = \"{\\\"batch\\\":[{\\\"type\\\":\\\"person\\\",\\\"identifiers\\\":{\\\"id\\\":\\\"42\\\"},\\\"action\\\":\\\"identify\\\",\\\"attributes\\\":{\\\"cio_subscription_preferences\\\":{\\\"topic_1\\\":true,\\\"topic_2\\\":false,\\\"topic_3\\\":true}},\\\"cio_relationships\\\":[{\\\"identifiers\\\":{\\\"object_type_id\\\":\\\"1\\\",\\\"object_id\\\":\\\"acme\\\"},\\\"relationship_attributes\\\":{\\\"role\\\":\\\"admin\\\"}}]}]}\"\n\nresponse = http.request(request)\nputs response.read_body"
+            "source": "require 'uri'\nrequire 'net/http'\nrequire 'openssl'\n\nurl = URI(\"https://track.customer.io/api/v2/batch\")\n\nhttp = Net::HTTP.new(url.host, url.port)\nhttp.use_ssl = true\nhttp.verify_mode = OpenSSL::SSL::VERIFY_NONE\n\nrequest = Net::HTTP::Post.new(url)\nrequest[\"content-type\"] = 'application/json'\nrequest.body = \"{\\\"batch\\\":[{\\\"type\\\":\\\"person\\\",\\\"identifiers\\\":{\\\"id\\\":\\\"42\\\"},\\\"action\\\":\\\"identify\\\",\\\"attributes\\\":{\\\"cio_subscription_preferences\\\":{\\\"topics\\\":{\\\"topic_1\\\":true,\\\"topic_2\\\":false,\\\"topic_3\\\":true}}},\\\"cio_relationships\\\":[{\\\"identifiers\\\":{\\\"object_type_id\\\":\\\"1\\\",\\\"object_id\\\":\\\"acme\\\"},\\\"relationship_attributes\\\":{\\\"role\\\":\\\"admin\\\"}}]}]}\"\n\nresponse = http.request(request)\nputs response.read_body"
           },
           {
             "lang": "Python + Python3",
-            "source": "import http.client\n\nconn = http.client.HTTPSConnection(\"track.customer.io\")\n\npayload = \"{\\\"batch\\\":[{\\\"type\\\":\\\"person\\\",\\\"identifiers\\\":{\\\"id\\\":\\\"42\\\"},\\\"action\\\":\\\"identify\\\",\\\"attributes\\\":{\\\"cio_subscription_preferences\\\":{\\\"topic_1\\\":true,\\\"topic_2\\\":false,\\\"topic_3\\\":true}},\\\"cio_relationships\\\":[{\\\"identifiers\\\":{\\\"object_type_id\\\":\\\"1\\\",\\\"object_id\\\":\\\"acme\\\"},\\\"relationship_attributes\\\":{\\\"role\\\":\\\"admin\\\"}}]}]}\"\n\nheaders = {\n    'content-type': \"application/json\",\n    'Authorization': \"Basic REPLACE_BASIC_AUTH\"\n    }\n\nconn.request(\"POST\", \"/api/v2/batch\", payload, headers)\n\nres = conn.getresponse()\ndata = res.read()\n\nprint(data.decode(\"utf-8\"))"
+            "source": "import http.client\n\nconn = http.client.HTTPSConnection(\"track.customer.io\")\n\npayload = \"{\\\"batch\\\":[{\\\"type\\\":\\\"person\\\",\\\"identifiers\\\":{\\\"id\\\":\\\"42\\\"},\\\"action\\\":\\\"identify\\\",\\\"attributes\\\":{\\\"cio_subscription_preferences\\\":{\\\"topics\\\":{\\\"topic_1\\\":true,\\\"topic_2\\\":false,\\\"topic_3\\\":true}}},\\\"cio_relationships\\\":[{\\\"identifiers\\\":{\\\"object_type_id\\\":\\\"1\\\",\\\"object_id\\\":\\\"acme\\\"},\\\"relationship_attributes\\\":{\\\"role\\\":\\\"admin\\\"}}]}]}\"\n\nheaders = { 'content-type': \"application/json\" }\n\nconn.request(\"POST\", \"/api/v2/batch\", payload, headers)\n\nres = conn.getresponse()\ndata = res.read()\n\nprint(data.decode(\"utf-8\"))"
           },
           {
             "lang": "Go + Native",
-            "source": "package main\n\nimport (\n\t\"fmt\"\n\t\"strings\"\n\t\"net/http\"\n\t\"io/ioutil\"\n)\n\nfunc main() {\n\n\turl := \"https://track.customer.io/api/v2/batch\"\n\n\tpayload := strings.NewReader(\"{\\\"batch\\\":[{\\\"type\\\":\\\"person\\\",\\\"identifiers\\\":{\\\"id\\\":\\\"42\\\"},\\\"action\\\":\\\"identify\\\",\\\"attributes\\\":{\\\"cio_subscription_preferences\\\":{\\\"topic_1\\\":true,\\\"topic_2\\\":false,\\\"topic_3\\\":true}},\\\"cio_relationships\\\":[{\\\"identifiers\\\":{\\\"object_type_id\\\":\\\"1\\\",\\\"object_id\\\":\\\"acme\\\"},\\\"relationship_attributes\\\":{\\\"role\\\":\\\"admin\\\"}}]}]}\")\n\n\treq, _ := http.NewRequest(\"POST\", url, payload)\n\n\treq.Header.Add(\"content-type\", \"application/json\")\n\treq.Header.Add(\"Authorization\", \"Basic REPLACE_BASIC_AUTH\")\n\n\tres, _ := http.DefaultClient.Do(req)\n\n\tdefer res.Body.Close()\n\tbody, _ := ioutil.ReadAll(res.Body)\n\n\tfmt.Println(res)\n\tfmt.Println(string(body))\n\n}"
+            "source": "package main\n\nimport (\n\t\"fmt\"\n\t\"strings\"\n\t\"net/http\"\n\t\"io/ioutil\"\n)\n\nfunc main() {\n\n\turl := \"https://track.customer.io/api/v2/batch\"\n\n\tpayload := strings.NewReader(\"{\\\"batch\\\":[{\\\"type\\\":\\\"person\\\",\\\"identifiers\\\":{\\\"id\\\":\\\"42\\\"},\\\"action\\\":\\\"identify\\\",\\\"attributes\\\":{\\\"cio_subscription_preferences\\\":{\\\"topics\\\":{\\\"topic_1\\\":true,\\\"topic_2\\\":false,\\\"topic_3\\\":true}}},\\\"cio_relationships\\\":[{\\\"identifiers\\\":{\\\"object_type_id\\\":\\\"1\\\",\\\"object_id\\\":\\\"acme\\\"},\\\"relationship_attributes\\\":{\\\"role\\\":\\\"admin\\\"}}]}]}\")\n\n\treq, _ := http.NewRequest(\"POST\", url, payload)\n\n\treq.Header.Add(\"content-type\", \"application/json\")\n\n\tres, _ := http.DefaultClient.Do(req)\n\n\tdefer res.Body.Close()\n\tbody, _ := ioutil.ReadAll(res.Body)\n\n\tfmt.Println(res)\n\tfmt.Println(string(body))\n\n}"
           }
         ]
       }
@@ -6963,9 +6967,7 @@
           "type": "string",
           "enum": [
             "bounces",
-            "blocks",
-            "spam_reports",
-            "invalid_emails"
+            "spam_reports"
           ]
         }
       },
@@ -13757,7 +13759,7 @@
         ]
       },
       "device_object_cdp": {
-        "description": "The properties representing an individual device in Journeys when sent from a Customer.io SDK that natively supports Data Pipelines (like iOS 3.x or later). [Our CDP-enabled SDK's](/docs/sdk/) gather all the properties defined below automatically, unless you disable the `autoTrackDeviceAttributes` setting.",
+        "description": "The properties representing an individual device in Journeys when sent from a Customer.io SDK that natively supports Data Pipelines (iOS 3.0, Android 4.0, or later versions). [Our Data Pipelines-enabled SDK's](/docs/sdk/) gather all the properties defined below automatically unless you disable the `autoTrackDeviceAttributes` setting.",
         "allOf": [
           {
             "type": "object",
@@ -14977,7 +14979,7 @@
                                       },
                                       "mutable-content": {
                                         "type": "integer",
-                                        "description": "The notification service app extension flag. If the value is 1, your notification is passed to your notification service app extension before delivery. Use your extension to modify the notification’s content."
+                                        "description": "If you use the Customer.io SDK, you *must* set this value to `1` to support images and \"delivered\" metrics from your push notifications.\nWhen the value is 1, your notification is passed to your notification service app extension before delivery. Use your extension to modify the notification’s content.\n"
                                       },
                                       "target-content-id": {
                                         "type": "string",
@@ -15151,7 +15153,7 @@
                           },
                           "mutable-content": {
                             "type": "integer",
-                            "description": "The notification service app extension flag. If the value is 1, your notification is passed to your notification service app extension before delivery. Use your extension to modify the notification’s content."
+                            "description": "If you use the Customer.io SDK, you *must* set this value to `1` to support images and \"delivered\" metrics from your push notifications.\nWhen the value is 1, your notification is passed to your notification service app extension before delivery. Use your extension to modify the notification’s content.\n"
                           },
                           "target-content-id": {
                             "type": "string",
@@ -15614,10 +15616,22 @@
             "description": "An identifier in the format `id:timestamp` where the id is the id of the object you are working with (Campaigns, Deliveries, Exports, Identities, Newsletters, Segments, and Templates), and the timestamp is the last time the object was updated.",
             "example": "15:1492548073"
           },
+          "content_ids": {
+            "type": "array",
+            "description": "A list of languages in a multi-language newsletter and/or A/B test variants for this message. [Look up a newsletter variant](#operation/getNewsletterVariant) to get more information about an individual content ID.",
+            "items": {
+              "type": "integer"
+            }
+          },
           "name": {
             "type": "string",
             "description": "The name of the newsletter.",
             "readOnly": true
+          },
+          "sent_at": {
+            "type": "integer",
+            "format": "unix timestamp",
+            "description": "The last time the newsletter was sent."
           },
           "created": {
             "type": "integer",
@@ -15632,25 +15646,6 @@
             "description": "The date time when the referenced ID was last updated.",
             "example": 1552341937,
             "readOnly": true
-          },
-          "sent_at": {
-            "type": "integer",
-            "format": "unix timestamp",
-            "description": "The last time the newsletter was sent."
-          },
-          "recipient_segment_ids": {
-            "description": "A list of segments used in a newsletter's recipient filter, returned if newsletter recipients were filtered by one or more segments.",
-            "type": "array",
-            "items": {
-              "type": "integer"
-            }
-          },
-          "content_ids": {
-            "type": "array",
-            "description": "A list of languages in a multi-language newsletter and/or A/B test variants for this message. [Look up a newsletter variant](#operation/getNewsletterVariant) to get more information about an individual content ID.",
-            "items": {
-              "type": "integer"
-            }
           },
           "type": {
             "type": "string",
@@ -15669,6 +15664,13 @@
             "description": "An array of tags you set on this newsletter.",
             "items": {
               "type": "string"
+            }
+          },
+          "recipient_segment_ids": {
+            "description": "A list of segments used in a newsletter's recipient filter, returned if newsletter recipients were filtered by one or more segments.",
+            "type": "array",
+            "items": {
+              "type": "integer"
             }
           },
           "subscription_topic_id": {
@@ -18434,6 +18436,13 @@
             "description": "The name of the broadcast.",
             "readOnly": true
           },
+          "type": {
+            "type": "string",
+            "description": "The type of broadcast.",
+            "enum": [
+              "triggered_broadcast"
+            ]
+          },
           "created": {
             "type": "integer",
             "format": "unix timestamp",
@@ -18451,6 +18460,38 @@
           "active": {
             "type": "boolean",
             "description": "If true, the broadcast is active."
+          },
+          "state": {
+            "type": "string",
+            "description": "The state of the broadcast.",
+            "enum": [
+              "running",
+              "draft"
+            ]
+          },
+          "actions": {
+            "type": "array",
+            "description": "A list of actions used by the broadcast.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "description": "The identifier for the action."
+                },
+                "type": {
+                  "type": "string",
+                  "description": "The type of action.",
+                  "enum": [
+                    "email",
+                    "webhook",
+                    "push",
+                    "sms",
+                    "slack"
+                  ]
+                }
+              }
+            }
           },
           "msg_template_ids": {
             "type": "array",
@@ -18477,29 +18518,11 @@
               }
             }
           },
-          "actions": {
-            "type": "array",
-            "description": "A list of actions used by the broadcast.",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "integer",
-                  "description": "The identifier for the action."
-                },
-                "type": {
-                  "type": "string",
-                  "description": "The type of action.",
-                  "enum": [
-                    "email",
-                    "webhook",
-                    "push",
-                    "sms",
-                    "slack"
-                  ]
-                }
-              }
-            }
+          "first_started": {
+            "type": "integer",
+            "format": "unix timestamp",
+            "description": "The date and time when you activated the broadcast.",
+            "example": 1552341937
           },
           "tags": {
             "type": "array",
@@ -18517,6 +18540,7 @@
           "updated": 1520467200,
           "name": "basic",
           "active": true,
+          "state": "running",
           "actions": [
             {
               "id": 3,
@@ -18873,7 +18897,7 @@
                                           },
                                           "mutable-content": {
                                             "type": "integer",
-                                            "description": "The notification service app extension flag. If the value is 1, your notification is passed to your notification service app extension before delivery. Use your extension to modify the notification’s content."
+                                            "description": "If you use the Customer.io SDK, you *must* set this value to `1` to support images and \"delivered\" metrics from your push notifications.\nWhen the value is 1, your notification is passed to your notification service app extension before delivery. Use your extension to modify the notification’s content.\n"
                                           },
                                           "target-content-id": {
                                             "type": "string",
@@ -19047,7 +19071,7 @@
                               },
                               "mutable-content": {
                                 "type": "integer",
-                                "description": "The notification service app extension flag. If the value is 1, your notification is passed to your notification service app extension before delivery. Use your extension to modify the notification’s content."
+                                "description": "If you use the Customer.io SDK, you *must* set this value to `1` to support images and \"delivered\" metrics from your push notifications.\nWhen the value is 1, your notification is passed to your notification service app extension before delivery. Use your extension to modify the notification’s content.\n"
                               },
                               "target-content-id": {
                                 "type": "string",
@@ -20435,6 +20459,100 @@
             }
           },
           {
+            "title": "SMS / MMS",
+            "allOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "description": "The identifier for an action.",
+                    "type": "integer",
+                    "readOnly": true,
+                    "example": 96,
+                    "nullable": true
+                  },
+                  "broadcast_id": {
+                    "type": "integer",
+                    "description": "The identifier for a broadcast.",
+                    "example": 2
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "deduplicate_id": {
+                    "type": "string",
+                    "readOnly": true,
+                    "description": "An identifier in the format `id:timestamp` where the id is the id of the object you are working with (Campaigns, Deliveries, Exports, Identities, Newsletters, Segments, and Templates), and the timestamp is the last time the object was updated.",
+                    "example": "15:1492548073"
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The name of the action.",
+                    "readOnly": true,
+                    "example": "Opening Message"
+                  },
+                  "layout": {
+                    "type": "string",
+                    "description": "The layout used for the action, if it exists.",
+                    "readOnly": true
+                  },
+                  "created": {
+                    "type": "integer",
+                    "format": "unix timestamp",
+                    "description": "The date time when the referenced ID was created.",
+                    "example": 1552341937,
+                    "readOnly": true
+                  },
+                  "updated": {
+                    "type": "integer",
+                    "format": "unix timestamp",
+                    "description": "The date time when the referenced ID was last updated.",
+                    "example": 1552341937,
+                    "readOnly": true
+                  },
+                  "body": {
+                    "type": "string",
+                    "description": "The body of your SMS message."
+                  },
+                  "language": {
+                    "type": "string",
+                    "description": "The language variant for your message. If you don't use our [localization feature](/docs/localization), or this is the default message, this value is an empty string.",
+                    "example": "fr",
+                    "readOnly": true
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "For SMS/MMS messages, the `type` is always `twilio`.",
+                    "enum": [
+                      "twilio"
+                    ],
+                    "readOnly": true
+                  },
+                  "image_url": {
+                    "type": "string",
+                    "description": "The URL of the image in your SMS (MMS) message."
+                  },
+                  "sending_state": {
+                    "type": "string",
+                    "enum": [
+                      "automatic",
+                      "draft",
+                      "off"
+                    ],
+                    "description": "Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action."
+                  },
+                  "recipient": {
+                    "type": "string",
+                    "description": "The recipient value. In general, your recipient is an attribute that you reference using liquid, like `{{customer.phone}}`, instead of a hard-coded value. If you set this field to a liquid statement like `{{customer.phone}}`, the field returns blank in `GET` requests because we populate the recipient from your liquid statement at send time.",
+                    "example": ""
+                  }
+                }
+              }
+            ]
+          },
+          {
             "title": "Webhook",
             "type": "object",
             "properties": {
@@ -20678,6 +20796,78 @@
         "example": 1,
         "readOnly": true
       },
+      "smsActionObject": {
+        "type": "object",
+        "properties": {
+          "deduplicate_id": {
+            "type": "string",
+            "readOnly": true,
+            "description": "An identifier in the format `id:timestamp` where the id is the id of the object you are working with (Campaigns, Deliveries, Exports, Identities, Newsletters, Segments, and Templates), and the timestamp is the last time the object was updated.",
+            "example": "15:1492548073"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the action.",
+            "readOnly": true,
+            "example": "Opening Message"
+          },
+          "layout": {
+            "type": "string",
+            "description": "The layout used for the action, if it exists.",
+            "readOnly": true
+          },
+          "created": {
+            "type": "integer",
+            "format": "unix timestamp",
+            "description": "The date time when the referenced ID was created.",
+            "example": 1552341937,
+            "readOnly": true
+          },
+          "updated": {
+            "type": "integer",
+            "format": "unix timestamp",
+            "description": "The date time when the referenced ID was last updated.",
+            "example": 1552341937,
+            "readOnly": true
+          },
+          "body": {
+            "type": "string",
+            "description": "The body of your SMS message."
+          },
+          "language": {
+            "type": "string",
+            "description": "The language variant for your message. If you don't use our [localization feature](/docs/localization), or this is the default message, this value is an empty string.",
+            "example": "fr",
+            "readOnly": true
+          },
+          "type": {
+            "type": "string",
+            "description": "For SMS/MMS messages, the `type` is always `twilio`.",
+            "enum": [
+              "twilio"
+            ],
+            "readOnly": true
+          },
+          "image_url": {
+            "type": "string",
+            "description": "The URL of the image in your SMS (MMS) message."
+          },
+          "sending_state": {
+            "type": "string",
+            "enum": [
+              "automatic",
+              "draft",
+              "off"
+            ],
+            "description": "Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action."
+          },
+          "recipient": {
+            "type": "string",
+            "description": "The recipient value. In general, your recipient is an attribute that you reference using liquid, like `{{customer.phone}}`, instead of a hard-coded value. If you set this field to a liquid statement like `{{customer.phone}}`, the field returns blank in `GET` requests because we populate the recipient from your liquid statement at send time.",
+            "example": ""
+          }
+        }
+      },
       "actionObject": {
         "oneOf": [
           {
@@ -20844,6 +21034,107 @@
                 }
               }
             }
+          },
+          {
+            "title": "SMS/MMS",
+            "allOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "description": "The identifier for an action.",
+                    "type": "integer",
+                    "readOnly": true,
+                    "example": 96,
+                    "nullable": true
+                  },
+                  "campaign_id": {
+                    "readOnly": true,
+                    "description": "The identifier for a campaign.",
+                    "type": "integer",
+                    "example": 5
+                  },
+                  "parent_action_id": {
+                    "type": "integer",
+                    "description": "The ID of the parent action, if the action occurred within a campaign and has a parent (like a randomized split, etc).",
+                    "example": 1,
+                    "readOnly": true
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "deduplicate_id": {
+                    "type": "string",
+                    "readOnly": true,
+                    "description": "An identifier in the format `id:timestamp` where the id is the id of the object you are working with (Campaigns, Deliveries, Exports, Identities, Newsletters, Segments, and Templates), and the timestamp is the last time the object was updated.",
+                    "example": "15:1492548073"
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The name of the action.",
+                    "readOnly": true,
+                    "example": "Opening Message"
+                  },
+                  "layout": {
+                    "type": "string",
+                    "description": "The layout used for the action, if it exists.",
+                    "readOnly": true
+                  },
+                  "created": {
+                    "type": "integer",
+                    "format": "unix timestamp",
+                    "description": "The date time when the referenced ID was created.",
+                    "example": 1552341937,
+                    "readOnly": true
+                  },
+                  "updated": {
+                    "type": "integer",
+                    "format": "unix timestamp",
+                    "description": "The date time when the referenced ID was last updated.",
+                    "example": 1552341937,
+                    "readOnly": true
+                  },
+                  "body": {
+                    "type": "string",
+                    "description": "The body of your SMS message."
+                  },
+                  "language": {
+                    "type": "string",
+                    "description": "The language variant for your message. If you don't use our [localization feature](/docs/localization), or this is the default message, this value is an empty string.",
+                    "example": "fr",
+                    "readOnly": true
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "For SMS/MMS messages, the `type` is always `twilio`.",
+                    "enum": [
+                      "twilio"
+                    ],
+                    "readOnly": true
+                  },
+                  "image_url": {
+                    "type": "string",
+                    "description": "The URL of the image in your SMS (MMS) message."
+                  },
+                  "sending_state": {
+                    "type": "string",
+                    "enum": [
+                      "automatic",
+                      "draft",
+                      "off"
+                    ],
+                    "description": "Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action."
+                  },
+                  "recipient": {
+                    "type": "string",
+                    "description": "The recipient value. In general, your recipient is an attribute that you reference using liquid, like `{{customer.phone}}`, instead of a hard-coded value. If you set this field to a liquid statement like `{{customer.phone}}`, the field returns blank in `GET` requests because we populate the recipient from your liquid statement at send time.",
+                    "example": ""
+                  }
+                }
+              }
+            ]
           },
           {
             "title": "Webhook",
@@ -21304,141 +21595,872 @@
       },
       "campaignObject": {
         "type": "object",
-        "properties": {
-          "id": {
-            "description": "The identifier for a campaign.",
-            "type": "integer",
-            "example": 5
-          },
-          "deduplicate_id": {
-            "type": "string",
-            "readOnly": true,
-            "description": "An identifier in the format `id:timestamp` where the id is the id of the object you are working with (Campaigns, Deliveries, Exports, Identities, Newsletters, Segments, and Templates), and the timestamp is the last time the object was updated.",
-            "example": "15:1492548073"
-          },
-          "name": {
-            "type": "string",
-            "description": "The name of the campaign.",
-            "readOnly": true
-          },
-          "type": {
-            "type": "string",
-            "description": "The type of campaign.",
-            "enum": [
-              "segment"
-            ]
-          },
-          "created": {
-            "type": "integer",
-            "format": "unix timestamp",
-            "description": "The date time when the referenced ID was created.",
-            "example": 1552341937,
-            "readOnly": true
-          },
-          "updated": {
-            "type": "integer",
-            "format": "unix timestamp",
-            "description": "The date time when the referenced ID was last updated.",
-            "example": 1552341937,
-            "readOnly": true
-          },
-          "filter_segment_ids": {
-            "description": "A list of segments used in the campaign filter, returned if the campaign audience was filtered on one or more segments.",
-            "type": "array",
-            "items": {
-              "type": "integer"
-            },
-            "example": [
-              21,
-              42
-            ]
-          },
-          "trigger_segment_ids": {
-            "description": "A list of segments used in the campaign trigger, returned if the campaign trigger included one or more segment conditions.",
-            "type": "array",
-            "items": {
-              "type": "integer"
-            },
-            "example": [
-              90
-            ]
-          },
-          "active": {
-            "type": "boolean",
-            "description": "If true, the campaign is active and can still send messages."
-          },
-          "msg_templates": {
-            "type": "array",
-            "deprecated": true,
-            "description": "Indicates the message templates used in this campaign.",
-            "items": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "description": "The message type the template represents.",
-                  "enum": [
-                    "email",
-                    "sms",
-                    "push",
-                    "slack"
-                  ]
+        "oneOf": [
+          {
+            "title": "Segment",
+            "type": "object",
+            "properties": {
+              "id": {
+                "description": "The identifier for a campaign.",
+                "type": "integer",
+                "example": 5
+              },
+              "deduplicate_id": {
+                "type": "string",
+                "readOnly": true,
+                "description": "An identifier in the format `id:timestamp` where the id is the id of the object you are working with (Campaigns, Deliveries, Exports, Identities, Newsletters, Segments, and Templates), and the timestamp is the last time the object was updated.",
+                "example": "15:1492548073"
+              },
+              "name": {
+                "type": "string",
+                "description": "The name of the campaign.",
+                "readOnly": true
+              },
+              "type": {
+                "type": "string",
+                "description": "The type of campaign trigger.",
+                "enum": [
+                  "segment"
+                ]
+              },
+              "created": {
+                "type": "integer",
+                "format": "unix timestamp",
+                "description": "The date time when the referenced ID was created.",
+                "example": 1552341937,
+                "readOnly": true
+              },
+              "updated": {
+                "type": "integer",
+                "format": "unix timestamp",
+                "description": "The date time when the referenced ID was last updated.",
+                "example": 1552341937,
+                "readOnly": true
+              },
+              "active": {
+                "type": "boolean",
+                "description": "If true, the campaign is active and can still send messages."
+              },
+              "state": {
+                "type": "string",
+                "description": "The status of the campaign.",
+                "enum": [
+                  "running",
+                  "draft",
+                  "stopped"
+                ]
+              },
+              "actions": {
+                "type": "array",
+                "description": "An array of actions contained within the campaign.",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "description": "The action type.",
+                      "example": "email"
+                    },
+                    "id": {
+                      "type": "integer",
+                      "description": "The identifier for the action.",
+                      "example": 259
+                    }
+                  }
+                }
+              },
+              "first_started": {
+                "type": "integer",
+                "format": "unix timestamp",
+                "description": "The date and time when you first started the campaign and it first became eligible to be triggered.",
+                "example": 1552341937
+              },
+              "tags": {
+                "type": "array",
+                "description": "An array of tags you set on this campaign.",
+                "items": {
+                  "type": "string"
                 },
-                "id": {
-                  "type": "integer",
-                  "description": "The identifier for the template."
+                "example": [
+                  "new",
+                  "welcome"
+                ]
+              },
+              "trigger_segment_ids": {
+                "description": "A list of segments used in the campaign trigger, returned if the campaign trigger included one or more segment conditions.",
+                "type": "array",
+                "items": {
+                  "type": "integer"
+                },
+                "example": [
+                  90
+                ]
+              },
+              "filter_segment_ids": {
+                "description": "A list of segments used in the campaign filter, returned if the campaign audience was filtered on one or more segments.",
+                "type": "array",
+                "items": {
+                  "type": "integer"
+                },
+                "example": [
+                  21,
+                  42
+                ]
+              },
+              "msg_templates": {
+                "type": "array",
+                "deprecated": true,
+                "description": "Indicates the message templates used in this campaign.",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "description": "The message type the template represents.",
+                      "enum": [
+                        "email",
+                        "sms",
+                        "push",
+                        "slack"
+                      ]
+                    },
+                    "id": {
+                      "type": "integer",
+                      "description": "The identifier for the template."
+                    }
+                  }
                 }
               }
             }
           },
-          "actions": {
-            "type": "array",
-            "description": "An array of actions contained within the campaign.",
-            "items": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "description": "The message type actions resulting from the campaign.",
-                  "enum": [
-                    "email",
-                    "sms",
-                    "push",
-                    "slack",
-                    "webhook"
-                  ]
-                },
-                "id": {
-                  "type": "integer",
-                  "description": "The identifier for the action."
+          {
+            "title": "Event",
+            "type": "object",
+            "properties": {
+              "id": {
+                "description": "The identifier for a campaign.",
+                "type": "integer",
+                "example": 5
+              },
+              "deduplicate_id": {
+                "type": "string",
+                "readOnly": true,
+                "description": "An identifier in the format `id:timestamp` where the id is the id of the object you are working with (Campaigns, Deliveries, Exports, Identities, Newsletters, Segments, and Templates), and the timestamp is the last time the object was updated.",
+                "example": "15:1492548073"
+              },
+              "name": {
+                "type": "string",
+                "description": "The name of the campaign.",
+                "readOnly": true
+              },
+              "type": {
+                "type": "string",
+                "description": "The type of campaign trigger.",
+                "enum": [
+                  "event"
+                ]
+              },
+              "created": {
+                "type": "integer",
+                "format": "unix timestamp",
+                "description": "The date time when the referenced ID was created.",
+                "example": 1552341937,
+                "readOnly": true
+              },
+              "updated": {
+                "type": "integer",
+                "format": "unix timestamp",
+                "description": "The date time when the referenced ID was last updated.",
+                "example": 1552341937,
+                "readOnly": true
+              },
+              "active": {
+                "type": "boolean",
+                "description": "If true, the campaign is active and can still send messages."
+              },
+              "state": {
+                "type": "string",
+                "description": "The status of the campaign.",
+                "enum": [
+                  "running",
+                  "draft",
+                  "stopped"
+                ]
+              },
+              "actions": {
+                "type": "array",
+                "description": "An array of actions contained within the campaign.",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "description": "The action type.",
+                      "example": "email"
+                    },
+                    "id": {
+                      "type": "integer",
+                      "description": "The identifier for the action.",
+                      "example": 259
+                    }
+                  }
                 }
+              },
+              "first_started": {
+                "type": "integer",
+                "format": "unix timestamp",
+                "description": "The date and time when you first started the campaign and it first became eligible to be triggered.",
+                "example": 1552341937
+              },
+              "tags": {
+                "type": "array",
+                "description": "An array of tags you set on this campaign.",
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "new",
+                  "welcome"
+                ]
+              },
+              "filter_segment_ids": {
+                "description": "A list of segments used in the campaign filter, returned if the campaign audience was filtered on one or more segments.",
+                "type": "array",
+                "items": {
+                  "type": "integer"
+                },
+                "example": [
+                  21,
+                  42
+                ]
+              },
+              "event_name": {
+                "description": "The name of the event. How you reference the event in campaigns or segments.",
+                "type": "string"
               }
             }
           },
-          "first_started": {
-            "type": "integer",
-            "format": "unix timestamp",
-            "description": "The date and time when you first started the campaign and it first became eligible to be triggered.",
-            "example": 1552341937
+          {
+            "title": "Form",
+            "type": "object",
+            "properties": {
+              "id": {
+                "description": "The identifier for a campaign.",
+                "type": "integer",
+                "example": 5
+              },
+              "deduplicate_id": {
+                "type": "string",
+                "readOnly": true,
+                "description": "An identifier in the format `id:timestamp` where the id is the id of the object you are working with (Campaigns, Deliveries, Exports, Identities, Newsletters, Segments, and Templates), and the timestamp is the last time the object was updated.",
+                "example": "15:1492548073"
+              },
+              "name": {
+                "type": "string",
+                "description": "The name of the campaign.",
+                "readOnly": true
+              },
+              "type": {
+                "type": "string",
+                "description": "The type of campaign trigger.",
+                "enum": [
+                  "form"
+                ]
+              },
+              "created": {
+                "type": "integer",
+                "format": "unix timestamp",
+                "description": "The date time when the referenced ID was created.",
+                "example": 1552341937,
+                "readOnly": true
+              },
+              "updated": {
+                "type": "integer",
+                "format": "unix timestamp",
+                "description": "The date time when the referenced ID was last updated.",
+                "example": 1552341937,
+                "readOnly": true
+              },
+              "active": {
+                "type": "boolean",
+                "description": "If true, the campaign is active and can still send messages."
+              },
+              "state": {
+                "type": "string",
+                "description": "The status of the campaign.",
+                "enum": [
+                  "running",
+                  "draft",
+                  "stopped"
+                ]
+              },
+              "actions": {
+                "type": "array",
+                "description": "An array of actions contained within the campaign.",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "description": "The action type.",
+                      "example": "email"
+                    },
+                    "id": {
+                      "type": "integer",
+                      "description": "The identifier for the action.",
+                      "example": 259
+                    }
+                  }
+                }
+              },
+              "first_started": {
+                "type": "integer",
+                "format": "unix timestamp",
+                "description": "The date and time when you first started the campaign and it first became eligible to be triggered.",
+                "example": 1552341937
+              },
+              "tags": {
+                "type": "array",
+                "description": "An array of tags you set on this campaign.",
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "new",
+                  "welcome"
+                ]
+              },
+              "filter_segment_ids": {
+                "description": "A list of segments used in the campaign filter, returned if the campaign audience was filtered on one or more segments.",
+                "type": "array",
+                "items": {
+                  "type": "integer"
+                },
+                "example": [
+                  21,
+                  42
+                ]
+              }
+            }
           },
-          "created_by": {
-            "type": "string",
-            "format": "email",
-            "description": "The email address of the person who created the campaign.",
-            "example": "hugh.mann@example.com"
+          {
+            "title": "Date",
+            "type": "object",
+            "properties": {
+              "id": {
+                "description": "The identifier for a campaign.",
+                "type": "integer",
+                "example": 5
+              },
+              "deduplicate_id": {
+                "type": "string",
+                "readOnly": true,
+                "description": "An identifier in the format `id:timestamp` where the id is the id of the object you are working with (Campaigns, Deliveries, Exports, Identities, Newsletters, Segments, and Templates), and the timestamp is the last time the object was updated.",
+                "example": "15:1492548073"
+              },
+              "name": {
+                "type": "string",
+                "description": "The name of the campaign.",
+                "readOnly": true
+              },
+              "type": {
+                "type": "string",
+                "description": "The type of campaign trigger.",
+                "enum": [
+                  "date"
+                ]
+              },
+              "created": {
+                "type": "integer",
+                "format": "unix timestamp",
+                "description": "The date time when the referenced ID was created.",
+                "example": 1552341937,
+                "readOnly": true
+              },
+              "updated": {
+                "type": "integer",
+                "format": "unix timestamp",
+                "description": "The date time when the referenced ID was last updated.",
+                "example": 1552341937,
+                "readOnly": true
+              },
+              "active": {
+                "type": "boolean",
+                "description": "If true, the campaign is active and can still send messages."
+              },
+              "state": {
+                "type": "string",
+                "description": "The status of the campaign.",
+                "enum": [
+                  "running",
+                  "draft",
+                  "stopped"
+                ]
+              },
+              "actions": {
+                "type": "array",
+                "description": "An array of actions contained within the campaign.",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "description": "The action type.",
+                      "example": "email"
+                    },
+                    "id": {
+                      "type": "integer",
+                      "description": "The identifier for the action.",
+                      "example": 259
+                    }
+                  }
+                }
+              },
+              "first_started": {
+                "type": "integer",
+                "format": "unix timestamp",
+                "description": "The date and time when you first started the campaign and it first became eligible to be triggered.",
+                "example": 1552341937
+              },
+              "tags": {
+                "type": "array",
+                "description": "An array of tags you set on this campaign.",
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "new",
+                  "welcome"
+                ]
+              },
+              "filter_segment_ids": {
+                "description": "A list of segments used in the campaign filter, returned if the campaign audience was filtered on one or more segments.",
+                "type": "array",
+                "items": {
+                  "type": "integer"
+                },
+                "example": [
+                  21,
+                  42
+                ]
+              },
+              "frequency": {
+                "description": "How often a person will receive this campaign based on the date specified in the campaign trigger.",
+                "type": "string",
+                "enum": [
+                  "once",
+                  "monthly",
+                  "yearly"
+                ]
+              },
+              "date_attribute": {
+                "description": "The attribute on people's profiles you use to configure the date of the campaign trigger.",
+                "type": "string"
+              },
+              "timezone": {
+                "description": "The timezone you set to configure the date of the campaign trigger.",
+                "type": "string",
+                "example": "America/Chicago"
+              },
+              "use_customer_timezone": {
+                "description": "If you chose \"the user's timezone\" while configuring the date of the campaign trigger, this is `true`. Otherwise, you set a specific timezone so it's `false`.",
+                "type": "boolean"
+              },
+              "start_hour": {
+                "description": "The hour you set the campaign to trigger. Follows the 24-hour clock.",
+                "type": "integer"
+              },
+              "start_minutes": {
+                "description": "The minutes you set the campaign to trigger. Follows the 24-hour clock.",
+                "type": "integer"
+              }
+            }
           },
-          "tags": {
-            "type": "array",
-            "description": "An array of tags you set on this campaign.",
-            "items": {
-              "type": "string"
-            },
-            "example": [
-              "new",
-              "welcome"
-            ]
+          {
+            "title": "Relationship",
+            "type": "object",
+            "properties": {
+              "id": {
+                "description": "The identifier for a campaign.",
+                "type": "integer",
+                "example": 5
+              },
+              "deduplicate_id": {
+                "type": "string",
+                "readOnly": true,
+                "description": "An identifier in the format `id:timestamp` where the id is the id of the object you are working with (Campaigns, Deliveries, Exports, Identities, Newsletters, Segments, and Templates), and the timestamp is the last time the object was updated.",
+                "example": "15:1492548073"
+              },
+              "name": {
+                "type": "string",
+                "description": "The name of the campaign.",
+                "readOnly": true
+              },
+              "type": {
+                "type": "string",
+                "description": "The type of campaign trigger.",
+                "enum": [
+                  "relationship"
+                ]
+              },
+              "created": {
+                "type": "integer",
+                "format": "unix timestamp",
+                "description": "The date time when the referenced ID was created.",
+                "example": 1552341937,
+                "readOnly": true
+              },
+              "updated": {
+                "type": "integer",
+                "format": "unix timestamp",
+                "description": "The date time when the referenced ID was last updated.",
+                "example": 1552341937,
+                "readOnly": true
+              },
+              "active": {
+                "type": "boolean",
+                "description": "If true, the campaign is active and can still send messages."
+              },
+              "state": {
+                "type": "string",
+                "description": "The status of the campaign.",
+                "enum": [
+                  "running",
+                  "draft",
+                  "stopped"
+                ]
+              },
+              "actions": {
+                "type": "array",
+                "description": "An array of actions contained within the campaign.",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "description": "The action type.",
+                      "example": "email"
+                    },
+                    "id": {
+                      "type": "integer",
+                      "description": "The identifier for the action.",
+                      "example": 259
+                    }
+                  }
+                }
+              },
+              "first_started": {
+                "type": "integer",
+                "format": "unix timestamp",
+                "description": "The date and time when you first started the campaign and it first became eligible to be triggered.",
+                "example": 1552341937
+              },
+              "tags": {
+                "type": "array",
+                "description": "An array of tags you set on this campaign.",
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "new",
+                  "welcome"
+                ]
+              },
+              "filter_segment_ids": {
+                "description": "A list of segments used in the campaign filter, returned if the campaign audience was filtered on one or more segments.",
+                "type": "array",
+                "items": {
+                  "type": "integer"
+                },
+                "example": [
+                  21,
+                  42
+                ]
+              },
+              "object_type_id": {
+                "description": "The the object type ID of the trigger.",
+                "type": "integer"
+              },
+              "filter_object_attributes": {
+                "description": "A list of object attributes used in the campaign filter, returned if the campaign audience was filtered on one or more object attributes.",
+                "type": "string",
+                "example": "{\"and\":[{\"object_attribute\":{\"type_id\":1,\"field\":\"name\",\"operator\":\"eq\",\"value\":\"sfa\"}},{\"object_attribute\":{\"type_id\":1,\"field\":\"renewal_date\",\"operator\":\"eq\",\"value\":\"sdfs\"}}]}"
+              },
+              "filter_relationship_attributes": {
+                "description": "A list of relationship attributes used in the campaign filter, returned if the campaign audience was filtered on one or more relationship attributes.",
+                "type": "string",
+                "example": "{\"and\":[{\"relationship_attribute\":{\"type_id\":1,\"field\":\"email\",\"operator\":\"eq\",\"value\":\"dscs@test.com\"}},{\"relationship_attribute\":{\"type_id\":1,\"field\":\"trig\",\"operator\":\"eq\",\"value\":\"false\"}}]}"
+              },
+              "audience": {
+                "description": "Defines the people who will start a journey in your campaign.",
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "description": "The type of audience selected. \"Person added to object\" is `0`. \"Every person in the object\" is `1`. \"Certain people in the object\" is also `1`. \"Certain people\" will always have one or more audience filters (see below). \"Every person\" will never have an audience filter.",
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  "person_filters": {
+                    "description": "Returns the profile attributes you filtered the audience by, if any. Only applies to `type 1`, \"Certain people in the object\".",
+                    "type": "object",
+                    "example": "{\"and\":[{\"attribute\":{\"field\":\"title\",\"operator\":\"eq\",\"value\":\"asdca\"}}]}"
+                  },
+                  "relationship_filters": {
+                    "description": "Returns the relationship attributes you filtered the audience by, if any. Only applies to `type 1`, \"Certain people in the object\".",
+                    "type": "object",
+                    "example": "{\"and\":[{\"relationship_attribute\":{\"type_id\":1,\"field\":\"trig\",\"operator\":\"eq\",\"value\":\"asd\"}}]}"
+                  }
+                }
+              },
+              "relationship_attribute_triggers": {
+                "description": "A list of relationship attributes used to trigger the campaign.",
+                "type": "object",
+                "example": "{\"and\":[{\"relationship_attribute\":{\"type_id\":1,\"field\":\"trig\",\"operator\":\"eq\",\"value\":\"true\"}}]}"
+              }
+            }
+          },
+          {
+            "title": "Object",
+            "type": "object",
+            "properties": {
+              "id": {
+                "description": "The identifier for a campaign.",
+                "type": "integer",
+                "example": 5
+              },
+              "deduplicate_id": {
+                "type": "string",
+                "readOnly": true,
+                "description": "An identifier in the format `id:timestamp` where the id is the id of the object you are working with (Campaigns, Deliveries, Exports, Identities, Newsletters, Segments, and Templates), and the timestamp is the last time the object was updated.",
+                "example": "15:1492548073"
+              },
+              "name": {
+                "type": "string",
+                "description": "The name of the campaign.",
+                "readOnly": true
+              },
+              "type": {
+                "type": "string",
+                "description": "The type of campaign trigger.",
+                "enum": [
+                  "object"
+                ]
+              },
+              "created": {
+                "type": "integer",
+                "format": "unix timestamp",
+                "description": "The date time when the referenced ID was created.",
+                "example": 1552341937,
+                "readOnly": true
+              },
+              "updated": {
+                "type": "integer",
+                "format": "unix timestamp",
+                "description": "The date time when the referenced ID was last updated.",
+                "example": 1552341937,
+                "readOnly": true
+              },
+              "active": {
+                "type": "boolean",
+                "description": "If true, the campaign is active and can still send messages."
+              },
+              "state": {
+                "type": "string",
+                "description": "The status of the campaign.",
+                "enum": [
+                  "running",
+                  "draft",
+                  "stopped"
+                ]
+              },
+              "actions": {
+                "type": "array",
+                "description": "An array of actions contained within the campaign.",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "description": "The action type.",
+                      "example": "email"
+                    },
+                    "id": {
+                      "type": "integer",
+                      "description": "The identifier for the action.",
+                      "example": 259
+                    }
+                  }
+                }
+              },
+              "first_started": {
+                "type": "integer",
+                "format": "unix timestamp",
+                "description": "The date and time when you first started the campaign and it first became eligible to be triggered.",
+                "example": 1552341937
+              },
+              "tags": {
+                "type": "array",
+                "description": "An array of tags you set on this campaign.",
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "new",
+                  "welcome"
+                ]
+              },
+              "filter_segment_ids": {
+                "description": "A list of segments used in the campaign filter, returned if the campaign audience was filtered on one or more segments.",
+                "type": "array",
+                "items": {
+                  "type": "integer"
+                },
+                "example": [
+                  21,
+                  42
+                ]
+              },
+              "object_type_id": {
+                "description": "The the object type ID of the trigger.",
+                "type": "integer"
+              },
+              "filter_object_attributes": {
+                "description": "A list of object attributes used in the campaign filter, returned if the campaign audience was filtered on one or more object attributes.",
+                "type": "string",
+                "example": "{\"and\":[{\"object_attribute\":{\"type_id\":1,\"field\":\"name\",\"operator\":\"eq\",\"value\":\"sfa\"}},{\"object_attribute\":{\"type_id\":1,\"field\":\"renewal_date\",\"operator\":\"eq\",\"value\":\"sdfs\"}}]}"
+              },
+              "filter_relationship_attributes": {
+                "description": "A list of relationship attributes used in the campaign filter, returned if the campaign audience was filtered on one or more relationship attributes.",
+                "type": "string",
+                "example": "{\"and\":[{\"relationship_attribute\":{\"type_id\":1,\"field\":\"email\",\"operator\":\"eq\",\"value\":\"dscs@test.com\"}},{\"relationship_attribute\":{\"type_id\":1,\"field\":\"trig\",\"operator\":\"eq\",\"value\":\"false\"}}]}"
+              },
+              "audience": {
+                "description": "Defines the people who will start a journey in your campaign.",
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "description": "The type of audience selected. \"Every person in the object\" is `1`. \"Certain people in the object\" is also `1`. \"Certain people\" will always have one or more audience filters (see below). \"Every person\" will never have an audience filter.",
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  "person_filters": {
+                    "description": "Returns the profile attributes you filtered the audience by, if any. Only applies to `type 1`, \"Certain people in the object\".",
+                    "type": "object",
+                    "example": "{\"and\":[{\"attribute\":{\"field\":\"title\",\"operator\":\"eq\",\"value\":\"asdca\"}}]}"
+                  },
+                  "relationship_filters": {
+                    "description": "Returns the relationship attributes you filtered the audience by, if any. Only applies to `type 1`, \"Certain people in the object\".",
+                    "type": "object",
+                    "example": "{\"and\":[{\"relationship_attribute\":{\"type_id\":1,\"field\":\"trig\",\"operator\":\"eq\",\"value\":\"asd\"}}]}"
+                  }
+                }
+              },
+              "object_attribute_triggers": {
+                "description": "A list of object attributes used to trigger the campaign.",
+                "type": "object",
+                "example": "{\"and\":[{\"object_attribute\":{\"type_id\":1,\"field\":\"name\",\"operator\":\"eq\",\"value\":\"sfa\"}},{\"object_attribute\":{\"type_id\":1,\"field\":\"renewal_date\",\"operator\":\"eq\",\"value\":\"sdfs\"}}]}"
+              }
+            }
+          },
+          {
+            "title": "Webhook",
+            "type": "object",
+            "properties": {
+              "id": {
+                "description": "The identifier for a campaign.",
+                "type": "integer",
+                "example": 5
+              },
+              "deduplicate_id": {
+                "type": "string",
+                "readOnly": true,
+                "description": "An identifier in the format `id:timestamp` where the id is the id of the object you are working with (Campaigns, Deliveries, Exports, Identities, Newsletters, Segments, and Templates), and the timestamp is the last time the object was updated.",
+                "example": "15:1492548073"
+              },
+              "name": {
+                "type": "string",
+                "description": "The name of the campaign.",
+                "readOnly": true
+              },
+              "type": {
+                "type": "string",
+                "description": "The type of campaign trigger.",
+                "enum": [
+                  "webhook"
+                ]
+              },
+              "created": {
+                "type": "integer",
+                "format": "unix timestamp",
+                "description": "The date time when the referenced ID was created.",
+                "example": 1552341937,
+                "readOnly": true
+              },
+              "updated": {
+                "type": "integer",
+                "format": "unix timestamp",
+                "description": "The date time when the referenced ID was last updated.",
+                "example": 1552341937,
+                "readOnly": true
+              },
+              "active": {
+                "type": "boolean",
+                "description": "If true, the campaign is active and can still send messages."
+              },
+              "state": {
+                "type": "string",
+                "description": "The status of the campaign.",
+                "enum": [
+                  "running",
+                  "draft",
+                  "stopped"
+                ]
+              },
+              "actions": {
+                "type": "array",
+                "description": "An array of actions contained within the campaign.",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "description": "The action type.",
+                      "example": "email"
+                    },
+                    "id": {
+                      "type": "integer",
+                      "description": "The identifier for the action.",
+                      "example": 259
+                    }
+                  }
+                }
+              },
+              "first_started": {
+                "type": "integer",
+                "format": "unix timestamp",
+                "description": "The date and time when you first started the campaign and it first became eligible to be triggered.",
+                "example": 1552341937
+              },
+              "tags": {
+                "type": "array",
+                "description": "An array of tags you set on this campaign.",
+                "items": {
+                  "type": "string"
+                },
+                "example": [
+                  "new",
+                  "welcome"
+                ]
+              },
+              "webhook_id": {
+                "description": "The ID of the webhook trigger generated by Customer.io.",
+                "type": "integer"
+              }
+            }
           }
-        }
+        ]
       },
       "esp_suppression": {
         "type": "object",
@@ -21448,9 +22470,7 @@
             "description": "The reason the addresses are suppressed.",
             "enum": [
               "bounces",
-              "blocks",
-              "spam",
-              "invalid"
+              "spam"
             ],
             "example": "bounces"
           },
@@ -22312,7 +23332,7 @@
           },
           "mutable-content": {
             "type": "integer",
-            "description": "The notification service app extension flag. If the value is 1, your notification is passed to your notification service app extension before delivery. Use your extension to modify the notification’s content."
+            "description": "If you use the Customer.io SDK, you *must* set this value to `1` to support images and \"delivered\" metrics from your push notifications.\nWhen the value is 1, your notification is passed to your notification service app extension before delivery. Use your extension to modify the notification’s content.\n"
           },
           "target-content-id": {
             "type": "string",
@@ -22506,7 +23526,7 @@
                           },
                           "mutable-content": {
                             "type": "integer",
-                            "description": "The notification service app extension flag. If the value is 1, your notification is passed to your notification service app extension before delivery. Use your extension to modify the notification’s content."
+                            "description": "If you use the Customer.io SDK, you *must* set this value to `1` to support images and \"delivered\" metrics from your push notifications.\nWhen the value is 1, your notification is passed to your notification service app extension before delivery. Use your extension to modify the notification’s content.\n"
                           },
                           "target-content-id": {
                             "type": "string",
@@ -22680,7 +23700,7 @@
                           },
                           "mutable-content": {
                             "type": "integer",
-                            "description": "The notification service app extension flag. If the value is 1, your notification is passed to your notification service app extension before delivery. Use your extension to modify the notification’s content."
+                            "description": "If you use the Customer.io SDK, you *must* set this value to `1` to support images and \"delivered\" metrics from your push notifications.\nWhen the value is 1, your notification is passed to your notification service app extension before delivery. Use your extension to modify the notification’s content.\n"
                           },
                           "target-content-id": {
                             "type": "string",
@@ -22883,7 +23903,7 @@
               },
               "mutable-content": {
                 "type": "integer",
-                "description": "The notification service app extension flag. If the value is 1, your notification is passed to your notification service app extension before delivery. Use your extension to modify the notification’s content."
+                "description": "If you use the Customer.io SDK, you *must* set this value to `1` to support images and \"delivered\" metrics from your push notifications.\nWhen the value is 1, your notification is passed to your notification service app extension before delivery. Use your extension to modify the notification’s content.\n"
               },
               "target-content-id": {
                 "type": "string",
@@ -23083,7 +24103,7 @@
                               },
                               "mutable-content": {
                                 "type": "integer",
-                                "description": "The notification service app extension flag. If the value is 1, your notification is passed to your notification service app extension before delivery. Use your extension to modify the notification’s content."
+                                "description": "If you use the Customer.io SDK, you *must* set this value to `1` to support images and \"delivered\" metrics from your push notifications.\nWhen the value is 1, your notification is passed to your notification service app extension before delivery. Use your extension to modify the notification’s content.\n"
                               },
                               "target-content-id": {
                                 "type": "string",
@@ -23257,7 +24277,7 @@
                   },
                   "mutable-content": {
                     "type": "integer",
-                    "description": "The notification service app extension flag. If the value is 1, your notification is passed to your notification service app extension before delivery. Use your extension to modify the notification’s content."
+                    "description": "If you use the Customer.io SDK, you *must* set this value to `1` to support images and \"delivered\" metrics from your push notifications.\nWhen the value is 1, your notification is passed to your notification service app extension before delivery. Use your extension to modify the notification’s content.\n"
                   },
                   "target-content-id": {
                     "type": "string",
@@ -23422,7 +24442,7 @@
               },
               "mutable-content": {
                 "type": "integer",
-                "description": "The notification service app extension flag. If the value is 1, your notification is passed to your notification service app extension before delivery. Use your extension to modify the notification’s content."
+                "description": "If you use the Customer.io SDK, you *must* set this value to `1` to support images and \"delivered\" metrics from your push notifications.\nWhen the value is 1, your notification is passed to your notification service app extension before delivery. Use your extension to modify the notification’s content.\n"
               },
               "target-content-id": {
                 "type": "string",
@@ -24736,9 +25756,11 @@
                           }
                         },
                         "example": {
-                          "topic_1": true,
-                          "topic_2": false,
-                          "topic_3": true
+                          "topics": {
+                            "topic_1": true,
+                            "topic_2": false,
+                            "topic_3": true
+                          }
                         }
                       }
                     }
@@ -25789,7 +26811,7 @@
                 ]
               },
               "primary": {
-                "description": "The person that you want to remain after the merge, identified by one of `id`, `email`, or `cio_id`. This person receives information from the secondary person in the merge.",
+                "description": "The person that you want to remain after the merge, identified by one of `id`, `email`, or `cio_id`. This person receives information from the secondary person in the merge. \n        \nIf email is disabled as an identifier in your [workspace settings](https://fly.customer.io/workspaces/last/settings/edit), then you must reference people by `id` or `cio_id`. Under How to Modify, `id` must be set to \"Reference people by cio_id\" for a successful merge. \n",
                 "oneOf": [
                   {
                     "title": "id",
@@ -25836,7 +26858,7 @@
                 ]
               },
               "secondary": {
-                "description": "The person that you want to delete after the merge, identified by one of `id`, `email`, or `cio_id`. This person's information is merged into the primary person's profile and then it is deleted.",
+                "description": "The person that you want to delete after the merge, identified by one of `id`, `email`, or `cio_id`. This person's information is merged into the primary person's profile and then it is deleted.\n      \nIf email is disabled as an identifier in your [workspace settings](https://fly.customer.io/workspaces/last/settings/edit), then you must reference people by `id` or `cio_id`. Under How to Modify, `id` must be set to \"Reference people by cio_id\" for a successful merge.\n",
                 "oneOf": [
                   {
                     "title": "id",
@@ -26153,9 +27175,11 @@
               }
             },
             "example": {
-              "topic_1": true,
-              "topic_2": false,
-              "topic_3": true
+              "topics": {
+                "topic_1": true,
+                "topic_2": false,
+                "topic_3": true
+              }
             }
           }
         }
@@ -27349,9 +28373,11 @@
                       }
                     },
                     "example": {
-                      "topic_1": true,
-                      "topic_2": false,
-                      "topic_3": true
+                      "topics": {
+                        "topic_1": true,
+                        "topic_2": false,
+                        "topic_3": true
+                      }
                     }
                   }
                 }
@@ -27962,7 +28988,7 @@
             ]
           },
           "primary": {
-            "description": "The person that you want to remain after the merge, identified by one of `id`, `email`, or `cio_id`. This person receives information from the secondary person in the merge.",
+            "description": "The person that you want to remain after the merge, identified by one of `id`, `email`, or `cio_id`. This person receives information from the secondary person in the merge. \n        \nIf email is disabled as an identifier in your [workspace settings](https://fly.customer.io/workspaces/last/settings/edit), then you must reference people by `id` or `cio_id`. Under How to Modify, `id` must be set to \"Reference people by cio_id\" for a successful merge. \n",
             "oneOf": [
               {
                 "title": "id",
@@ -28009,7 +29035,7 @@
             ]
           },
           "secondary": {
-            "description": "The person that you want to delete after the merge, identified by one of `id`, `email`, or `cio_id`. This person's information is merged into the primary person's profile and then it is deleted.",
+            "description": "The person that you want to delete after the merge, identified by one of `id`, `email`, or `cio_id`. This person's information is merged into the primary person's profile and then it is deleted.\n      \nIf email is disabled as an identifier in your [workspace settings](https://fly.customer.io/workspaces/last/settings/edit), then you must reference people by `id` or `cio_id`. Under How to Modify, `id` must be set to \"Reference people by cio_id\" for a successful merge.\n",
             "oneOf": [
               {
                 "title": "id",
@@ -28484,9 +29510,11 @@
           }
         },
         "example": {
-          "topic_1": true,
-          "topic_2": false,
-          "topic_3": true
+          "topics": {
+            "topic_1": true,
+            "topic_2": false,
+            "topic_3": true
+          }
         }
       },
       "workspace": {
@@ -28529,11 +29557,93 @@
             "example": 10
           }
         }
+      },
+      "campaign_actions": {
+        "type": "array",
+        "description": "An array of actions contained within the campaign.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "description": "The action type.",
+              "example": "email"
+            },
+            "id": {
+              "type": "integer",
+              "description": "The identifier for the action.",
+              "example": 259
+            }
+          }
+        }
+      },
+      "campaign_name": {
+        "type": "string",
+        "description": "The name of the campaign.",
+        "readOnly": true
+      },
+      "active": {
+        "type": "boolean",
+        "description": "If true, the campaign is active and can still send messages."
+      },
+      "state": {
+        "type": "string",
+        "description": "The status of the campaign.",
+        "enum": [
+          "running",
+          "draft",
+          "stopped"
+        ]
+      },
+      "first_started": {
+        "type": "integer",
+        "format": "unix timestamp",
+        "description": "The date and time when you first started the campaign and it first became eligible to be triggered.",
+        "example": 1552341937
+      },
+      "tags": {
+        "type": "array",
+        "description": "An array of tags you set on this campaign.",
+        "items": {
+          "type": "string"
+        },
+        "example": [
+          "new",
+          "welcome"
+        ]
+      },
+      "filter_segment_ids": {
+        "description": "A list of segments used in the campaign filter, returned if the campaign audience was filtered on one or more segments.",
+        "type": "array",
+        "items": {
+          "type": "integer"
+        },
+        "example": [
+          21,
+          42
+        ]
+      },
+      "object_type_id_trigger": {
+        "description": "The the object type ID of the trigger.",
+        "type": "integer"
+      },
+      "filter_object_attributes": {
+        "description": "A list of object attributes used in the campaign filter, returned if the campaign audience was filtered on one or more object attributes.",
+        "type": "string",
+        "example": "{\"and\":[{\"object_attribute\":{\"type_id\":1,\"field\":\"name\",\"operator\":\"eq\",\"value\":\"sfa\"}},{\"object_attribute\":{\"type_id\":1,\"field\":\"renewal_date\",\"operator\":\"eq\",\"value\":\"sdfs\"}}]}"
+      },
+      "filter_relationship_attributes": {
+        "description": "A list of relationship attributes used in the campaign filter, returned if the campaign audience was filtered on one or more relationship attributes.",
+        "type": "string",
+        "example": "{\"and\":[{\"relationship_attribute\":{\"type_id\":1,\"field\":\"email\",\"operator\":\"eq\",\"value\":\"dscs@test.com\"}},{\"relationship_attribute\":{\"type_id\":1,\"field\":\"trig\",\"operator\":\"eq\",\"value\":\"false\"}}]}"
       }
     },
     "responses": {
       "200": {
         "description": "A successful request returns an empty object response."
+      },
+      "204": {
+        "description": "Success. No content."
       },
       "400": {
         "description": "Invalid or malformed request.",
@@ -28563,8 +29673,26 @@
       "401": {
         "description": "Unauthorized request. Make sure that you provided the right credentials."
       },
+      "404": {
+        "description": "The campaign and/or action do not exist."
+      },
       "429": {
         "description": "Your request is over the 10-per-second limit."
+      },
+      "400-campaigns": {
+        "description": "The `campaignID` or `actionID` is invalid."
+      },
+      "400-campaigns-lang": {
+        "description": "The `campaignID` or `actionID` is invalid. It could also be that the `language` requested does not exist for this action."
+      },
+      "400-broadcasts": {
+        "description": "The `broadcastID`, `actionID` or `triggerID` is invalid."
+      },
+      "400-broadcasts-lang": {
+        "description": "The `broadcastID`, `actionID` or `triggerID` is invalid. Or the `language` does not exist for this action."
+      },
+      "404-broadcasts": {
+        "description": "The broadcast, action, and/or trigger do not exist."
       },
       "segment_404": {
         "description": "The segment does not exist. Check the segment ID and try again.",

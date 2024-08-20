@@ -171,6 +171,148 @@ paths:
                     details: The provided id is wrong
       security:
         - partner-api-oauth: []
+  /companies/{companyId}/payment-files:
+    get:
+      operationId: GET_companyPaymentFilePayroll
+      summary: Get payment file data payroll
+      description: Returns Payment file payroll of the company for a given month.
+      tags:
+        - Company
+      parameters:
+        - in: path
+          name: companyId
+          schema:
+            type: string
+          required: true
+          description: The id of the company
+        - in: query
+          name: date
+          schema:
+            type: string
+            pattern: ^2\d{3}(0[1-9]|1[0-2])$
+          required: true
+          description: >-
+            The month to fetch the data for. This must be in the format YYYYMM,
+            January being the month "01".
+          example: 202212
+      responses:
+        '200':
+          description: The Payment file
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                title: error
+                type: object
+                additionalProperties: false
+                properties:
+                  error:
+                    type: string
+                    description: A human readable error
+                  details:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: string
+                        additionalProperties: true
+                required:
+                  - error
+              examples:
+                error:
+                  summary: An example of an error message
+                  value:
+                    code: 400
+                    error: Bad request
+                    details: Field "id" is required.
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                title: error
+                type: object
+                additionalProperties: false
+                properties:
+                  error:
+                    type: string
+                    description: A human readable error
+                  details:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: string
+                        additionalProperties: true
+                required:
+                  - error
+              examples:
+                error:
+                  summary: An example of an error message
+                  value:
+                    code: 401
+                    error: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                title: error
+                type: object
+                additionalProperties: false
+                properties:
+                  error:
+                    type: string
+                    description: A human readable error
+                  details:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: string
+                        additionalProperties: true
+                required:
+                  - error
+              examples:
+                error:
+                  summary: An example of an error message
+                  value:
+                    code: 403
+                    error: Forbidden action
+                    details: Missing scope "contracts:read".
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                title: error
+                type: object
+                additionalProperties: false
+                properties:
+                  error:
+                    type: string
+                    description: A human readable error
+                  details:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: string
+                        additionalProperties: true
+                required:
+                  - error
+              examples:
+                error:
+                  summary: An example of an error message
+                  value:
+                    code: 404
+                    error: Ressource not found
+                    details: The provided id is wrong
+      security:
+        - partner-api-oauth:
+            - payment-files:read
   /companies/{companyId}/accounting:
     get:
       operationId: GET_companyAccounting
@@ -363,14 +505,44 @@ paths:
                     operationDate:
                       type: string
                       format: date
-                      description: Date of accounting operation.
-                    analyticCode:
-                      type: string
-                      description: The analyticCode allows to group operation by label.
-                      nullable: true
+                      description: Date of the accounting entry.
+                    analyticCodes:
+                      type: array
+                      description: >-
+                        Composition of all sections the collaborator belongs to
+                        in Payfit analytical accounting settings.
+                      items:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                            description: >-
+                              The type of analytic based on accounting settings
+                              (ex: Team).
+                            nullable: true
+                          code:
+                            type: string
+                            description: >-
+                              The code of analytic based on accounting settings
+                              (ex: 6312000).
+                            nullable: true
+                          value:
+                            type: string
+                            description: >-
+                              The value of analytic based on accounting settings
+                              (ex: Sales).
+                            nullable: true
+                        required:
+                          - type
+                          - code
+                          - value
                     employeeFullName:
                       type: string
-                      description: The fullname of the concerned employee.
+                      description: The Fullname of the concerned employee.
+                      nullable: true
+                    contractId:
+                      type: string
+                      description: The contractId of the employee entry.
                       nullable: true
                     accountId:
                       type: string
@@ -379,7 +551,7 @@ paths:
                         accounting system.
                     accountName:
                       type: string
-                      description: Represents the textual description of the account.
+                      description: Label of the accounting entry.
                     debit:
                       type: number
                       description: Amount of the debit operation.
@@ -390,8 +562,9 @@ paths:
                       nullable: true
                   required:
                     - operationDate
-                    - analyticCode
+                    - analyticCodes
                     - employeeFullName
+                    - contractId
                     - accountId
                     - accountName
                     - debit
@@ -676,6 +849,196 @@ paths:
                     details: The provided id is wrong
       security:
         - partner-api-oauth: []
+  /companies/{companyId}/income-taxes-documents:
+    get:
+      operationId: GET_companyIncomeTaxesDocuments
+      summary: Get Income Taxes documents
+      description: >
+        Returns all the documents related to income taxes (P45, P60, P11D). This
+        endpoint should only be used for UK companies.
+      tags:
+        - Company
+      parameters:
+        - in: path
+          name: companyId
+          schema:
+            type: string
+          required: true
+          description: The id of the company
+      responses:
+        '200':
+          description: The Tax Incomes documents
+          content:
+            application/json:
+              schema:
+                title: incomeTaxesDocuments
+                type: object
+                additionalProperties: false
+                properties:
+                  documents:
+                    type: array
+                    items:
+                      title: incomeTaxesDocument
+                      type: object
+                      properties:
+                        documentId:
+                          type: string
+                          description: The id of the document
+                        createdAt:
+                          type: string
+                          format: date-time
+                          description: Date when the file has been created.
+                          example: '2022-09-22T11:56:24.221Z'
+                        contractId:
+                          type: string
+                          description: The contractId linked to the document
+                        type:
+                          type: string
+                          enum:
+                            - P60
+                            - P45
+                            - P11D
+                          description: Define the document expectation
+                        year:
+                          type: string
+                          description: Legal year of the document
+                        month:
+                          type: string
+                          description: Legal month of the document
+                        documentUrl:
+                          type: string
+                          description: The Payfit api URL to download the document
+                      required:
+                        - documentId
+                        - createdAt
+                        - contractId
+                        - type
+                        - year
+                        - month
+                        - documentUrl
+              examples:
+                documents:
+                  summary: An example of documents
+                  value:
+                    documentId: '123456789'
+                    createdAt: '2024-03-13T17:28:29.799Z'
+                    contractId: 65bbe20455d8bfbf55d0fdf3
+                    name: P60-ALICE-DUPOND-13.03.2024.pdf
+                    type: P60
+                    year: '2024'
+                    month: '03'
+                    documentUrl: >-
+                      /companies/5f9b03f75a18101bd958591b/contracts/65bbe20455d8bfbf55d0fdf3/documents/123456789
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                title: error
+                type: object
+                additionalProperties: false
+                properties:
+                  error:
+                    type: string
+                    description: A human readable error
+                  details:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: string
+                        additionalProperties: true
+                required:
+                  - error
+              examples:
+                error:
+                  summary: An example of an error message
+                  value:
+                    code: 400
+                    error: Bad request
+                    details: Field "id" is required.
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                title: error
+                type: object
+                additionalProperties: false
+                properties:
+                  error:
+                    type: string
+                    description: A human readable error
+                  details:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: string
+                        additionalProperties: true
+                required:
+                  - error
+              examples:
+                error:
+                  summary: An example of an error message
+                  value:
+                    code: 401
+                    error: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                title: error
+                type: object
+                additionalProperties: false
+                properties:
+                  error:
+                    type: string
+                    description: A human readable error
+                  details:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: string
+                        additionalProperties: true
+                required:
+                  - error
+              examples:
+                error:
+                  summary: An example of an error message
+                  value:
+                    code: 403
+                    error: Forbidden action
+                    details: Missing scope "contracts:read".
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                title: error
+                type: object
+                additionalProperties: false
+                properties:
+                  error:
+                    type: string
+                    description: A human readable error
+                  details:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: string
+                        additionalProperties: true
+                required:
+                  - error
+              examples:
+                error:
+                  summary: An example of an error message
+                  value:
+                    code: 404
+                    error: Ressource not found
+                    details: The provided id is wrong
+      security:
+        - partner-api-oauth:
+            - contracts:payslips:read
   /companies/{companyId}/health-insurance-contracts:
     get:
       operationId: GET_healthInsuranceContracts
@@ -912,6 +1275,8 @@ paths:
       security:
         - partner-api-oauth:
             - health-insurance:affiliation:read
+        - partner-api-oauth:
+            - health-insurance:read
   /companies/{companyId}/provident-fund-contracts:
     get:
       operationId: GET_providentFundContracts
@@ -1128,6 +1493,329 @@ paths:
       security:
         - partner-api-oauth:
             - health-insurance:affiliation:read
+        - partner-api-oauth:
+            - health-insurance:read
+  /companies/{companyId}/auto-enrolment-documents:
+    get:
+      operationId: GET_companyAutoEnrolmentDocuments
+      summary: Get Auto Enrolment documents
+      description: >
+        Returns the all documents related to auto enrolment. This endpoint
+        should only be used for UK companies.
+      tags:
+        - Company
+      parameters:
+        - in: path
+          name: companyId
+          schema:
+            type: string
+          required: true
+          description: The id of the company
+      responses:
+        '200':
+          description: The Auto Enrolment documents
+          content:
+            application/json:
+              schema:
+                title: autoEnrolmentDocuments
+                type: object
+                additionalProperties: false
+                properties:
+                  documents:
+                    type: array
+                    items:
+                      title: autoEnrolmentLetterDocument
+                      type: object
+                      properties:
+                        documentId:
+                          type: string
+                          description: The id of the document
+                        createdAt:
+                          type: string
+                          format: date-time
+                          description: Date when the file has been created.
+                          example: '2022-09-22T11:56:24.221Z'
+                        contractId:
+                          type: string
+                          description: The contractId linked to the document
+                        year:
+                          type: string
+                          description: Legal year of the document
+                        month:
+                          type: string
+                          description: Legal month of the document
+                        documentUrl:
+                          type: string
+                          description: The Payfit api URL to download the document
+                      required:
+                        - documentId
+                        - createdAt
+                        - contractId
+                        - year
+                        - month
+                        - documentUrl
+              examples:
+                documents:
+                  summary: An example of documents
+                  value:
+                    documentId: '123456789'
+                    createdAt: '2024-03-13T17:28:29.799Z'
+                    contractId: 65bbe20455d8bfbf55d0fdf3
+                    name: AUTO-ENROLMENT-LETTER-ALICE-DUPOND-13.03.2024.pdf
+                    year: '2024'
+                    month: '03'
+                    documentUrl: >-
+                      /companies/5f9b03f75a18101bd958591b/contracts/65bbe20455d8bfbf55d0fdf3/documents/123456789
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                title: error
+                type: object
+                additionalProperties: false
+                properties:
+                  error:
+                    type: string
+                    description: A human readable error
+                  details:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: string
+                        additionalProperties: true
+                required:
+                  - error
+              examples:
+                error:
+                  summary: An example of an error message
+                  value:
+                    code: 400
+                    error: Bad request
+                    details: Field "id" is required.
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                title: error
+                type: object
+                additionalProperties: false
+                properties:
+                  error:
+                    type: string
+                    description: A human readable error
+                  details:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: string
+                        additionalProperties: true
+                required:
+                  - error
+              examples:
+                error:
+                  summary: An example of an error message
+                  value:
+                    code: 401
+                    error: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                title: error
+                type: object
+                additionalProperties: false
+                properties:
+                  error:
+                    type: string
+                    description: A human readable error
+                  details:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: string
+                        additionalProperties: true
+                required:
+                  - error
+              examples:
+                error:
+                  summary: An example of an error message
+                  value:
+                    code: 403
+                    error: Forbidden action
+                    details: Missing scope "contracts:read".
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                title: error
+                type: object
+                additionalProperties: false
+                properties:
+                  error:
+                    type: string
+                    description: A human readable error
+                  details:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: string
+                        additionalProperties: true
+                required:
+                  - error
+              examples:
+                error:
+                  summary: An example of an error message
+                  value:
+                    code: 404
+                    error: Ressource not found
+                    details: The provided id is wrong
+      security:
+        - partner-api-oauth:
+            - pension:read
+  /companies/{companyId}/documents/{documentId}:
+    get:
+      operationId: GET_document_by_id
+      summary: Get a company's document
+      description: Returns a company's document.
+      tags:
+        - Company
+      parameters:
+        - in: path
+          name: companyId
+          schema:
+            type: string
+          required: true
+          description: The id of the company
+        - in: path
+          name: documentId
+          schema:
+            type: string
+          required: true
+          description: The id of the document
+      responses:
+        '200':
+          description: The document file requested
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                title: error
+                type: object
+                additionalProperties: false
+                properties:
+                  error:
+                    type: string
+                    description: A human readable error
+                  details:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: string
+                        additionalProperties: true
+                required:
+                  - error
+              examples:
+                error:
+                  summary: An example of an error message
+                  value:
+                    code: 400
+                    error: Bad request
+                    details: Field "id" is required.
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                title: error
+                type: object
+                additionalProperties: false
+                properties:
+                  error:
+                    type: string
+                    description: A human readable error
+                  details:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: string
+                        additionalProperties: true
+                required:
+                  - error
+              examples:
+                error:
+                  summary: An example of an error message
+                  value:
+                    code: 401
+                    error: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                title: error
+                type: object
+                additionalProperties: false
+                properties:
+                  error:
+                    type: string
+                    description: A human readable error
+                  details:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: string
+                        additionalProperties: true
+                required:
+                  - error
+              examples:
+                error:
+                  summary: An example of an error message
+                  value:
+                    code: 403
+                    error: Forbidden action
+                    details: Missing scope "contracts:read".
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                title: error
+                type: object
+                additionalProperties: false
+                properties:
+                  error:
+                    type: string
+                    description: A human readable error
+                  details:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: string
+                        additionalProperties: true
+                required:
+                  - error
+              examples:
+                error:
+                  summary: An example of an error message
+                  value:
+                    code: 404
+                    error: Ressource not found
+                    details: The provided id is wrong
+      security:
+        - partner-api-oauth:
+            - contracts:payslips:read
+        - partner-api-oauth:
+            - pension:read
   /companies-fr/{companyId}:
     get:
       operationId: GET_company_fr
@@ -1198,12 +1886,26 @@ paths:
                       postalCode:
                         type: string
                         description: The postal code of the company
+                      healthInsuranceProrationMethod:
+                        type: string
+                        description: >-
+                          The method to prorate the health insurance. This field
+                          is set only if the 'health-insurance:read' scope is
+                          set.
+                        enum:
+                          - WORKING_DAYS
+                          - CALENDAR_DAYS
+                          - THIRTY_DAYS
+                          - null
+                        nullable: true
+                        x-enum-name: HealthInsuranceProrationMethodEnum
                     required:
                       - siren
                       - siret
                       - address
                       - city
                       - postalCode
+                      - healthInsuranceProrationMethod
               examples:
                 companyFr:
                   summary: An example of french company
@@ -1217,6 +1919,7 @@ paths:
                     address: 1 RUE DE SAINT PETERSBOURG
                     city: PARIS
                     postalCode: '75018'
+                    healthInsuranceProrationMethod: WORKING_DAYS
         '400':
           description: Bad Request
           content:
@@ -1326,6 +2029,158 @@ paths:
                     details: The provided id is wrong
       security:
         - partner-api-oauth: []
+  /companies-fr/{companyId}/health-insurance-setup-sheets:
+    post:
+      operationId: POST_health_insurance_setup_sheets
+      summary: Create health insurance contracts from setup sheets (FR)
+      description: >
+        Allows to create or update health insurance contracts of a company,
+        given setup sheets.  Setup sheets are the documents sent to
+        "net-entreprises.fr" when new health insurance or prevoyance contracts
+        are available. Notes : - This is only available for French companies -
+        This is only available to specific partners
+      tags:
+        - Company
+      parameters:
+        - in: path
+          name: companyId
+          schema:
+            type: string
+          required: true
+          description: The id of the company
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                pdfFile:
+                  type: string
+                  format: binary
+                xmlFile:
+                  type: string
+                  format: binary
+              required:
+                - pdfFile
+                - xmlFile
+      responses:
+        '201':
+          description: The setup sheet was correctly sent
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                title: error
+                type: object
+                additionalProperties: false
+                properties:
+                  error:
+                    type: string
+                    description: A human readable error
+                  details:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: string
+                        additionalProperties: true
+                required:
+                  - error
+              examples:
+                error:
+                  summary: An example of an error message
+                  value:
+                    code: 400
+                    error: Bad request
+                    details: Field "id" is required.
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                title: error
+                type: object
+                additionalProperties: false
+                properties:
+                  error:
+                    type: string
+                    description: A human readable error
+                  details:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: string
+                        additionalProperties: true
+                required:
+                  - error
+              examples:
+                error:
+                  summary: An example of an error message
+                  value:
+                    code: 401
+                    error: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                title: error
+                type: object
+                additionalProperties: false
+                properties:
+                  error:
+                    type: string
+                    description: A human readable error
+                  details:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: string
+                        additionalProperties: true
+                required:
+                  - error
+              examples:
+                error:
+                  summary: An example of an error message
+                  value:
+                    code: 403
+                    error: Forbidden action
+                    details: Missing scope "contracts:read".
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                title: error
+                type: object
+                additionalProperties: false
+                properties:
+                  error:
+                    type: string
+                    description: A human readable error
+                  details:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: string
+                        additionalProperties: true
+                required:
+                  - error
+              examples:
+                error:
+                  summary: An example of an error message
+                  value:
+                    code: 404
+                    error: Ressource not found
+                    details: The provided id is wrong
+      security:
+        - partner-api-oauth:
+            - health-insurance:write
   /companies/{companyId}/contracts:
     get:
       operationId: GET_contracts
@@ -2654,9 +3509,8 @@ paths:
                                   description: >-
                                     List of the health insurance contracts the
                                     contract is affiliated to. It will be
-                                    available if
-                                    `health-insurance:affiliation:read` scope is
-                                    set on the token.
+                                    available if `health-insurance:read` scope
+                                    is set on the token.
                                 providentFundContractIds:
                                   type: array
                                   items:
@@ -2665,9 +3519,8 @@ paths:
                                   description: >-
                                     List of the provident funds contracts the
                                     contract is affiliated to. It will be
-                                    available if
-                                    `health-insurance:affiliation:read` scope is
-                                    set on the token.
+                                    available if `health-insurance:read` scope
+                                    is set on the token.
                                 estCadreDirigeant:
                                   type: boolean
                                   description: >-
@@ -3118,8 +3971,7 @@ paths:
                         description: >-
                           List of the health insurance contracts the contract is
                           affiliated to. It will be available if
-                          `health-insurance:affiliation:read` scope is set on
-                          the token.
+                          `health-insurance:read` scope is set on the token.
                       providentFundContractIds:
                         type: array
                         items:
@@ -3128,8 +3980,7 @@ paths:
                         description: >-
                           List of the provident funds contracts the contract is
                           affiliated to. It will be available if
-                          `health-insurance:affiliation:read` scope is set on
-                          the token.
+                          `health-insurance:read` scope is set on the token.
                       estCadreDirigeant:
                         type: boolean
                         description: >-
@@ -3302,6 +4153,165 @@ paths:
       security:
         - partner-api-oauth:
             - contracts:read
+  /companies/{companyId}/contracts-fr/{contractId}/regularization:
+    post:
+      operationId: requestContractHealthInsuranceRegularization
+      summary: Request a Health Insurance regularization
+      description: >-
+        In case an affiliation was applied too late in PayFit, a regularization
+        can be requested. Note: this endpoint is only available for PayFit
+        partners
+      tags:
+        - Contract
+      parameters:
+        - in: path
+          name: companyId
+          schema:
+            type: string
+          required: true
+          description: The id of the company
+        - in: path
+          name: contractId
+          schema:
+            type: string
+          required: true
+          description: The id of the contract
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                healthInsuranceContractIds:
+                  type: array
+                  items:
+                    type: string
+                    description: An array of health insurance contract ids
+                effectiveDate:
+                  type: string
+                  format: date
+              required:
+                - healthInsuranceContractIds
+                - effectiveDate
+      responses:
+        '204':
+          description: This endpoint returns no data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                title: error
+                type: object
+                additionalProperties: false
+                properties:
+                  error:
+                    type: string
+                    description: A human readable error
+                  details:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: string
+                        additionalProperties: true
+                required:
+                  - error
+              examples:
+                error:
+                  summary: An example of an error message
+                  value:
+                    code: 400
+                    error: Bad request
+                    details: Field "id" is required.
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                title: error
+                type: object
+                additionalProperties: false
+                properties:
+                  error:
+                    type: string
+                    description: A human readable error
+                  details:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: string
+                        additionalProperties: true
+                required:
+                  - error
+              examples:
+                error:
+                  summary: An example of an error message
+                  value:
+                    code: 401
+                    error: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                title: error
+                type: object
+                additionalProperties: false
+                properties:
+                  error:
+                    type: string
+                    description: A human readable error
+                  details:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: string
+                        additionalProperties: true
+                required:
+                  - error
+              examples:
+                error:
+                  summary: An example of an error message
+                  value:
+                    code: 403
+                    error: Forbidden action
+                    details: Missing scope "contracts:read".
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                title: error
+                type: object
+                additionalProperties: false
+                properties:
+                  error:
+                    type: string
+                    description: A human readable error
+                  details:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: string
+                        additionalProperties: true
+                required:
+                  - error
+              examples:
+                error:
+                  summary: An example of an error message
+                  value:
+                    code: 404
+                    error: Ressource not found
+                    details: The provided id is wrong
+      security:
+        - partner-api-oauth:
+            - health-insurance:affiliation:write
   /companies/{companyId}/contracts-fr/{contractId}/health-insurance:
     put:
       operationId: setHealthInsuranceAffiliation
@@ -3609,8 +4619,10 @@ paths:
   /companies/{companyId}/collaborators:
     get:
       operationId: GET_collaborators
-      summary: List all Collaborators
-      description: Returns all Collaborators. This list is paginated.
+      summary: List Collaborators
+      description: >
+        Returns the collaborators of the company. This list is paginated. The
+        output can be filtered given some fields.
       tags:
         - Collaborator
       parameters:
@@ -3639,10 +4651,19 @@ paths:
           description: >-
             Allows to define the maximum number of items to fetch at once. (Max:
             50, Default: 10)
+        - in: query
+          name: email
+          schema:
+            type: string
+            format: email
+          description: >
+            Filter by email.  Important note: only emails in the collaborator's
+            contracts are used for the search, so you can't filter by the login
+            email.
       responses:
         '200':
           description: >-
-            All collaborators of the company. Some collaborators may not have a
+            The collaborators of the company. Some collaborators may not have a
             contract.
           content:
             application/json:
@@ -3769,9 +4790,12 @@ paths:
                                 description: Email of the collaborator.
                               type:
                                 type: string
-                                description: >-
+                                description: >
                                   Indicates whether this is a personal or a
-                                  professional email.
+                                  professional email. For historical reasons, we
+                                  can't always tell with certitude if an address
+                                  is personal or professional, so in some cases
+                                  the type might be 'unknown'.
                                 enum:
                                   - professional
                                   - personal
@@ -4083,6 +5107,317 @@ paths:
       security:
         - partner-api-oauth:
             - collaborators:read
+  /companies/{companyId}/absences:
+    get:
+      operationId: GET_absences
+      summary: List approved Absences
+      description: >
+        Returns the absences of the company. This list is paginated. The output
+        can be filtered given some fields like contractId.
+      tags:
+        - Absences
+      parameters:
+        - in: path
+          name: companyId
+          schema:
+            type: string
+          required: true
+          description: The id of the company
+        - in: query
+          name: nextPageToken
+          required: false
+          schema:
+            title: nextPageToken
+            type: string
+            additionalProperties: false
+          description: The encoded pagination token
+        - in: query
+          name: maxResults
+          required: false
+          schema:
+            title: maxResults
+            type: string
+            additionalProperties: false
+            default: '10'
+          description: >-
+            Allows to define the maximum number of items to fetch at once. (Max:
+            50, Default: 10)
+        - in: query
+          name: contractId
+          schema:
+            type: string
+          description: |
+            Filter by contractId.
+      responses:
+        '200':
+          description: The absences of the collaborators in the company.
+          content:
+            application/json:
+              schema:
+                title: absences
+                type: object
+                additionalProperties: false
+                required:
+                  - absences
+                properties:
+                  absences:
+                    type: array
+                    items:
+                      title: absence
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Id of the absence.
+                        contractId:
+                          type: string
+                          description: Contract ID of the absence owner.
+                        startDate:
+                          type: object
+                          description: Date and moment of the day when the absence starts.
+                          properties:
+                            date:
+                              type: string
+                              format: date
+                              description: Date of the absence in the format YYYY-MM-DD
+                            moment:
+                              type: string
+                              enum:
+                                - beginning-of-day
+                                - middle-of-day
+                                - end-of-day
+                              description: Moment of the day when the absence starts.
+                          required:
+                            - date
+                            - moment
+                        endDate:
+                          type: object
+                          description: Date and moment of the day when the absence ends.
+                          properties:
+                            date:
+                              type: string
+                              format: date
+                              description: Date of the absence in the format YYYY-MM-DD
+                            moment:
+                              type: string
+                              enum:
+                                - beginning-of-day
+                                - middle-of-day
+                                - end-of-day
+                              description: Moment of the day when the absence ends.
+                          required:
+                            - date
+                            - moment
+                        type:
+                          type: string
+                          description: >-
+                            Type of absences. Other is used when the type is not
+                            yet defined.
+                          x-enum-name: AbsenceType
+                          enum:
+                            - fr_conges_payes
+                            - fr_rtt
+                            - fr_absence_remuneree
+                            - fr_repos
+                            - fr_sans_solde
+                            - fr_maladie_ordinaire
+                            - fr_accident_travail
+                            - fr_accident_trajet
+                            - fr_maladie_professionnelle
+                            - fr_temps_partiel_therapeutique
+                            - fr_paternite
+                            - fr_maternite
+                            - fr_second_parent
+                            - fr_pathologique
+                            - fr_naissance
+                            - fr_enfant_malade
+                            - fr_parental_education
+                            - fr_mariage
+                            - fr_deces
+                            - fr_deuil
+                            - fr_mise_a_pied
+                            - fr_activite_partielle
+                            - fr_autre
+                            - fr_ecole
+                            - uk_annual_leave
+                            - uk_maternity
+                            - uk_paternity
+                            - uk_kit
+                            - uk_adoption
+                            - uk_sick_leave
+                            - uk_covid
+                            - uk_paid_leave
+                            - uk_jury_service
+                            - uk_unpaid_leave
+                            - uk_compassionate_leave
+                            - uk_bereavement_leave
+                            - es_vacaciones
+                            - es_visita_medica
+                            - es_asunto_personal
+                            - es_asunto_familiar
+                            - es_cuidado_de_hijos
+                            - es_permisos
+                            - es_compensacion_dias_trabajados
+                            - es_baja_medica
+                            - es_otros
+                            - colleague_leave
+                            - colleague_partial_leave
+                            - colleague_school
+                            - colleague_remote
+                            - other
+                      required:
+                        - id
+                        - contractId
+                        - startDate
+                        - endDate
+                        - type
+                  meta:
+                    title: meta
+                    type: object
+                    additionalProperties: false
+                    properties:
+                      nextPageToken:
+                        type: string
+                        nullable: true
+                      count:
+                        type: integer
+                        nullable: true
+              examples:
+                collaborators:
+                  summary: An example of absences
+                  value:
+                    meta:
+                      nextPageToken: eyJsaW1pdCI6NTAsIm9mZnNldCI6NTB9
+                      count: 2
+                    absences:
+                      - id: '123456789'
+                        startDate:
+                          date: '2020-01-01T00:00:00.000Z'
+                          moment: beginning-of-day
+                        endDate:
+                          date: '2020-01-02T00:00:00.000Z'
+                          moment: end-of-day
+                        contractId: 5b59e7b282ddef55f860d322
+                        type: fr_conges_payes
+                      - id: '987654321'
+                        startDate:
+                          date: '2020-01-03T00:00:00.000Z'
+                          moment: beginning-of-day
+                        endDate:
+                          date: '2020-01-04T00:00:00.000Z'
+                          moment: end-of-day
+                        contractId: 5b59e7b282ddef55f860d323
+                        type: fr_conges_payes
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                title: error
+                type: object
+                additionalProperties: false
+                properties:
+                  error:
+                    type: string
+                    description: A human readable error
+                  details:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: string
+                        additionalProperties: true
+                required:
+                  - error
+              examples:
+                error:
+                  summary: An example of an error message
+                  value:
+                    code: 400
+                    error: Bad request
+                    details: Field "id" is required.
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                title: error
+                type: object
+                additionalProperties: false
+                properties:
+                  error:
+                    type: string
+                    description: A human readable error
+                  details:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: string
+                        additionalProperties: true
+                required:
+                  - error
+              examples:
+                error:
+                  summary: An example of an error message
+                  value:
+                    code: 401
+                    error: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                title: error
+                type: object
+                additionalProperties: false
+                properties:
+                  error:
+                    type: string
+                    description: A human readable error
+                  details:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: string
+                        additionalProperties: true
+                required:
+                  - error
+              examples:
+                error:
+                  summary: An example of an error message
+                  value:
+                    code: 403
+                    error: Forbidden action
+                    details: Missing scope "contracts:read".
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                title: error
+                type: object
+                additionalProperties: false
+                properties:
+                  error:
+                    type: string
+                    description: A human readable error
+                  details:
+                    oneOf:
+                      - type: object
+                        additionalProperties: true
+                      - type: string
+                        additionalProperties: true
+                required:
+                  - error
+              examples:
+                error:
+                  summary: An example of an error message
+                  value:
+                    code: 404
+                    error: Ressource not found
+                    details: The provided id is wrong
+      security:
+        - partner-api-oauth:
+            - time:read
   /companies/{companyId}/collaborators/meal-vouchers:
     get:
       operationId: GET_collaborators_meal_vouchers
@@ -4455,9 +5790,12 @@ paths:
                           description: Email of the collaborator.
                         type:
                           type: string
-                          description: >-
+                          description: >
                             Indicates whether this is a personal or a
-                            professional email.
+                            professional email. For historical reasons, we can't
+                            always tell with certitude if an address is personal
+                            or professional, so in some cases the type might be
+                            'unknown'.
                           enum:
                             - professional
                             - personal
@@ -5077,6 +6415,7 @@ components:
             contracts:read: Allow to read contracts information
             contracts:payslips:read: Allow to read payslips
             contracts:time-information:read: Allow to read time related information of contracts
+            pension:read: Allow to read pension documents
             collaborators:securite-sociale:read: Deprecated. Use `collaborators:social-security:read` instead.
             collaborators:read: Read general information of collaborators.
             collaborators:contracts:read: Read contract information of collaborators.
@@ -5087,10 +6426,13 @@ components:
             collaborators:legal-identity:read: Read the legal identity information of collaborators.
             collaborators:bank-info:read: Allow to read the bank info of collaborators.
             accounting:read: Allow to read company accounting information
+            payment-files:read: Allow to read company payment file information
             time:read: Allow to read time data
             time:write: Allow to write time data
-            health-insurance:affiliation:read: Allow to read health insurance affiliations
-            health-insurance:affiliation:write: Allow to write health insurance affiliations
+            health-insurance:affiliation:read: Deprecated. Allow to read health insurance affiliations
+            health-insurance:affiliation:write: Deprecated. Allow to write health insurance affiliations
+            health-insurance:read: Allow to read health insurance contracts
+            health-insurance:write: Allow to write health insurance contracts
   parameters:
     nextPageToken:
       in: query
@@ -5219,12 +6561,25 @@ components:
             postalCode:
               type: string
               description: The postal code of the company
+            healthInsuranceProrationMethod:
+              type: string
+              description: >-
+                The method to prorate the health insurance. This field is set
+                only if the 'health-insurance:read' scope is set.
+              enum:
+                - WORKING_DAYS
+                - CALENDAR_DAYS
+                - THIRTY_DAYS
+                - null
+              nullable: true
+              x-enum-name: HealthInsuranceProrationMethodEnum
           required:
             - siren
             - siret
             - address
             - city
             - postalCode
+            - healthInsuranceProrationMethod
     Collaborator:
       title: collaborator
       type: object
@@ -5329,7 +6684,11 @@ components:
                 description: Email of the collaborator.
               type:
                 type: string
-                description: Indicates whether this is a personal or a professional email.
+                description: >
+                  Indicates whether this is a personal or a professional email.
+                  For historical reasons, we can't always tell with certitude if
+                  an address is personal or professional, so in some cases the
+                  type might be 'unknown'.
                 enum:
                   - professional
                   - personal
@@ -5921,8 +7280,8 @@ components:
               nullable: true
               description: >-
                 List of the health insurance contracts the contract is
-                affiliated to. It will be available if
-                `health-insurance:affiliation:read` scope is set on the token.
+                affiliated to. It will be available if `health-insurance:read`
+                scope is set on the token.
             providentFundContractIds:
               type: array
               items:
@@ -5930,8 +7289,8 @@ components:
               nullable: true
               description: >-
                 List of the provident funds contracts the contract is affiliated
-                to. It will be available if `health-insurance:affiliation:read`
-                scope is set on the token.
+                to. It will be available if `health-insurance:read` scope is set
+                on the token.
             estCadreDirigeant:
               type: boolean
               description: >-
@@ -6322,8 +7681,7 @@ components:
                   description: >-
                     List of the health insurance contracts the contract is
                     affiliated to. It will be available if
-                    `health-insurance:affiliation:read` scope is set on the
-                    token.
+                    `health-insurance:read` scope is set on the token.
                 providentFundContractIds:
                   type: array
                   items:
@@ -6332,8 +7690,7 @@ components:
                   description: >-
                     List of the provident funds contracts the contract is
                     affiliated to. It will be available if
-                    `health-insurance:affiliation:read` scope is set on the
-                    token.
+                    `health-insurance:read` scope is set on the token.
                 estCadreDirigeant:
                   type: boolean
                   description: >-
@@ -6390,6 +7747,76 @@ components:
         - standardWeeklyHours
         - fullTimeEquivalent
         - isFullTime
+    IncomeTaxesDocument:
+      title: incomeTaxesDocument
+      type: object
+      properties:
+        documentId:
+          type: string
+          description: The id of the document
+        createdAt:
+          type: string
+          format: date-time
+          description: Date when the file has been created.
+          example: '2022-09-22T11:56:24.221Z'
+        contractId:
+          type: string
+          description: The contractId linked to the document
+        type:
+          type: string
+          enum:
+            - P60
+            - P45
+            - P11D
+          description: Define the document expectation
+        year:
+          type: string
+          description: Legal year of the document
+        month:
+          type: string
+          description: Legal month of the document
+        documentUrl:
+          type: string
+          description: The Payfit api URL to download the document
+      required:
+        - documentId
+        - createdAt
+        - contractId
+        - type
+        - year
+        - month
+        - documentUrl
+    AutoEnrolmentDocument:
+      title: autoEnrolmentLetterDocument
+      type: object
+      properties:
+        documentId:
+          type: string
+          description: The id of the document
+        createdAt:
+          type: string
+          format: date-time
+          description: Date when the file has been created.
+          example: '2022-09-22T11:56:24.221Z'
+        contractId:
+          type: string
+          description: The contractId linked to the document
+        year:
+          type: string
+          description: Legal year of the document
+        month:
+          type: string
+          description: Legal month of the document
+        documentUrl:
+          type: string
+          description: The Payfit api URL to download the document
+      required:
+        - documentId
+        - createdAt
+        - contractId
+        - year
+        - month
+        - documentUrl
     Error:
       title: error
       type: object
@@ -6456,14 +7883,42 @@ components:
         operationDate:
           type: string
           format: date
-          description: Date of accounting operation.
-        analyticCode:
-          type: string
-          description: The analyticCode allows to group operation by label.
-          nullable: true
+          description: Date of the accounting entry.
+        analyticCodes:
+          type: array
+          description: >-
+            Composition of all sections the collaborator belongs to in Payfit
+            analytical accounting settings.
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                description: 'The type of analytic based on accounting settings (ex: Team).'
+                nullable: true
+              code:
+                type: string
+                description: >-
+                  The code of analytic based on accounting settings (ex:
+                  6312000).
+                nullable: true
+              value:
+                type: string
+                description: >-
+                  The value of analytic based on accounting settings (ex:
+                  Sales).
+                nullable: true
+            required:
+              - type
+              - code
+              - value
         employeeFullName:
           type: string
-          description: The fullname of the concerned employee.
+          description: The Fullname of the concerned employee.
+          nullable: true
+        contractId:
+          type: string
+          description: The contractId of the employee entry.
           nullable: true
         accountId:
           type: string
@@ -6472,7 +7927,7 @@ components:
             system.
         accountName:
           type: string
-          description: Represents the textual description of the account.
+          description: Label of the accounting entry.
         debit:
           type: number
           description: Amount of the debit operation.
@@ -6483,12 +7938,120 @@ components:
           nullable: true
       required:
         - operationDate
-        - analyticCode
+        - analyticCodes
         - employeeFullName
+        - contractId
         - accountId
         - accountName
         - debit
         - credit
+    Absence:
+      title: absence
+      type: object
+      properties:
+        id:
+          type: string
+          description: Id of the absence.
+        contractId:
+          type: string
+          description: Contract ID of the absence owner.
+        startDate:
+          type: object
+          description: Date and moment of the day when the absence starts.
+          properties:
+            date:
+              type: string
+              format: date
+              description: Date of the absence in the format YYYY-MM-DD
+            moment:
+              type: string
+              enum:
+                - beginning-of-day
+                - middle-of-day
+                - end-of-day
+              description: Moment of the day when the absence starts.
+          required:
+            - date
+            - moment
+        endDate:
+          type: object
+          description: Date and moment of the day when the absence ends.
+          properties:
+            date:
+              type: string
+              format: date
+              description: Date of the absence in the format YYYY-MM-DD
+            moment:
+              type: string
+              enum:
+                - beginning-of-day
+                - middle-of-day
+                - end-of-day
+              description: Moment of the day when the absence ends.
+          required:
+            - date
+            - moment
+        type:
+          type: string
+          description: Type of absences. Other is used when the type is not yet defined.
+          x-enum-name: AbsenceType
+          enum:
+            - fr_conges_payes
+            - fr_rtt
+            - fr_absence_remuneree
+            - fr_repos
+            - fr_sans_solde
+            - fr_maladie_ordinaire
+            - fr_accident_travail
+            - fr_accident_trajet
+            - fr_maladie_professionnelle
+            - fr_temps_partiel_therapeutique
+            - fr_paternite
+            - fr_maternite
+            - fr_second_parent
+            - fr_pathologique
+            - fr_naissance
+            - fr_enfant_malade
+            - fr_parental_education
+            - fr_mariage
+            - fr_deces
+            - fr_deuil
+            - fr_mise_a_pied
+            - fr_activite_partielle
+            - fr_autre
+            - fr_ecole
+            - uk_annual_leave
+            - uk_maternity
+            - uk_paternity
+            - uk_kit
+            - uk_adoption
+            - uk_sick_leave
+            - uk_covid
+            - uk_paid_leave
+            - uk_jury_service
+            - uk_unpaid_leave
+            - uk_compassionate_leave
+            - uk_bereavement_leave
+            - es_vacaciones
+            - es_visita_medica
+            - es_asunto_personal
+            - es_asunto_familiar
+            - es_cuidado_de_hijos
+            - es_permisos
+            - es_compensacion_dias_trabajados
+            - es_baja_medica
+            - es_otros
+            - colleague_leave
+            - colleague_partial_leave
+            - colleague_school
+            - colleague_remote
+            - other
+      required:
+        - id
+        - contractId
+        - startDate
+        - endDate
+        - type
 tags:
   - name: Company
   - name: Collaborator

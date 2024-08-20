@@ -275,6 +275,126 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
+  /v1/sound-generation:
+    post:
+      tags:
+        - sound-generation
+      summary: Sound Generation
+      description: Converts a text of your choice into sound
+      operationId: Sound_Generation_v1_sound_generation_post
+      parameters:
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            type: string
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+          name: xi-api-key
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: >-
+                #/components/schemas/Body_Sound_Generation_v1_sound_generation_post
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            audio/mpeg: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/audio-isolation:
+    post:
+      tags:
+        - audio-isolation
+      summary: Audio Isolation
+      description: Removes background noise from audio
+      operationId: Audio_Isolation_v1_audio_isolation_post
+      parameters:
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            type: string
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+          name: xi-api-key
+          in: header
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: >-
+                #/components/schemas/Body_Audio_Isolation_v1_audio_isolation_post
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            audio/mpeg: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/audio-isolation/stream:
+    post:
+      tags:
+        - audio-isolation
+      summary: Audio Isolation Stream
+      description: Removes background noise from audio and streams the result
+      operationId: Audio_Isolation_Stream_v1_audio_isolation_stream_post
+      parameters:
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            type: string
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+          name: xi-api-key
+          in: header
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: >-
+                #/components/schemas/Body_Audio_Isolation_Stream_v1_audio_isolation_stream_post
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            audio/mpeg: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
   /v1/voices/{voice_id}/samples/{sample_id}:
     delete:
       tags:
@@ -424,6 +544,23 @@ paths:
           example: 21m00Tcm4TlvDq8ikWAM
           name: voice_id
           in: path
+        - description: >-
+            When enable_logging is set to false full privacy mode will be used
+            for the request. This will mean history features are unavailable for
+            this request, including request stitching. Full privacy mode may
+            only be used by enterprise customers.
+          required: false
+          schema:
+            type: boolean
+            title: Enable request logging.
+            description: >-
+              When enable_logging is set to false full privacy mode will be used
+              for the request. This will mean history features are unavailable
+              for this request, including request stitching. Full privacy mode
+              may only be used by enterprise customers.
+            default: true
+          name: enable_logging
+          in: query
         - description: >
             You can turn on latency optimizations at some cost of quality. The
             best possible final latency varies by model. Possible values:
@@ -443,13 +580,14 @@ paths:
             mispronounce eg numbers and dates).
 
 
-            Defaults to 0.
+            Defaults to None.
           required: false
+          deprecated: true
           schema:
             type: integer
             title: >-
-              How much we should optimize streaming request latency (time to
-              first audio byte).
+              DEPRECATED. How much we should optimize streaming request latency
+              (time to first audio byte).
             description: >
               You can turn on latency optimizations at some cost of quality. The
               best possible final latency varies by model. Possible values:
@@ -469,8 +607,7 @@ paths:
               mispronounce eg numbers and dates).
 
 
-              Defaults to 0.
-            default: 0
+              Defaults to None.
           name: optimize_streaming_latency
           in: query
         - description: >
@@ -578,15 +715,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
-  /v1/text-to-speech/{voice_id}/stream:
+  /v1/text-to-speech/{voice_id}/with-timestamps:
     post:
       tags:
         - text-to-speech
-      summary: Text To Speech
+      summary: Text To Speech With Timestamps
       description: >-
-        Converts text into speech using a voice of your choice and returns audio
-        as an audio stream.
-      operationId: Text_to_speech_v1_text_to_speech__voice_id__stream_post
+        Converts text into speech using a voice of your choice and returns JSON
+        containing audio as a base64 encoded string together with information on
+        when which character was spoken.
+      operationId: >-
+        Text_to_speech_with_timestamps_v1_text_to_speech__voice_id__with_timestamps_post
       parameters:
         - description: >-
             Voice ID to be used, you can use https://api.elevenlabs.io/v1/voices
@@ -602,6 +741,23 @@ paths:
           example: 21m00Tcm4TlvDq8ikWAM
           name: voice_id
           in: path
+        - description: >-
+            When enable_logging is set to false full privacy mode will be used
+            for the request. This will mean history features are unavailable for
+            this request, including request stitching. Full privacy mode may
+            only be used by enterprise customers.
+          required: false
+          schema:
+            type: boolean
+            title: Enable request logging.
+            description: >-
+              When enable_logging is set to false full privacy mode will be used
+              for the request. This will mean history features are unavailable
+              for this request, including request stitching. Full privacy mode
+              may only be used by enterprise customers.
+            default: true
+          name: enable_logging
+          in: query
         - description: >
             You can turn on latency optimizations at some cost of quality. The
             best possible final latency varies by model. Possible values:
@@ -621,13 +777,14 @@ paths:
             mispronounce eg numbers and dates).
 
 
-            Defaults to 0.
+            Defaults to None.
           required: false
+          deprecated: true
           schema:
             type: integer
             title: >-
-              How much we should optimize streaming request latency (time to
-              first audio byte).
+              DEPRECATED. How much we should optimize streaming request latency
+              (time to first audio byte).
             description: >
               You can turn on latency optimizations at some cost of quality. The
               best possible final latency varies by model. Possible values:
@@ -647,8 +804,7 @@ paths:
               mispronounce eg numbers and dates).
 
 
-              Defaults to 0.
-            default: 0
+              Defaults to None.
           name: optimize_streaming_latency
           in: query
         - description: >
@@ -743,7 +899,397 @@ paths:
           application/json:
             schema:
               $ref: >-
-                #/components/schemas/Body_Text_to_speech_v1_text_to_speech__voice_id__stream_post
+                #/components/schemas/Body_Text_to_speech_with_timestamps_v1_text_to_speech__voice_id__with_timestamps_post
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/text-to-speech/{voice_id}/stream:
+    post:
+      tags:
+        - text-to-speech
+      summary: Text To Speech Streaming
+      description: >-
+        Converts text into speech using a voice of your choice and returns audio
+        as an audio stream.
+      operationId: Text_to_speech_streaming_v1_text_to_speech__voice_id__stream_post
+      parameters:
+        - description: >-
+            Voice ID to be used, you can use https://api.elevenlabs.io/v1/voices
+            to list all the available voices.
+          required: true
+          schema:
+            type: string
+            title: Voice Id
+            description: >-
+              Voice ID to be used, you can use
+              https://api.elevenlabs.io/v1/voices to list all the available
+              voices.
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: voice_id
+          in: path
+        - description: >-
+            When enable_logging is set to false full privacy mode will be used
+            for the request. This will mean history features are unavailable for
+            this request, including request stitching. Full privacy mode may
+            only be used by enterprise customers.
+          required: false
+          schema:
+            type: boolean
+            title: Enable request logging.
+            description: >-
+              When enable_logging is set to false full privacy mode will be used
+              for the request. This will mean history features are unavailable
+              for this request, including request stitching. Full privacy mode
+              may only be used by enterprise customers.
+            default: true
+          name: enable_logging
+          in: query
+        - description: >
+            You can turn on latency optimizations at some cost of quality. The
+            best possible final latency varies by model. Possible values:
+
+            0 - default mode (no latency optimizations)
+
+            1 - normal latency optimizations (about 50% of possible latency
+            improvement of option 3)
+
+            2 - strong latency optimizations (about 75% of possible latency
+            improvement of option 3)
+
+            3 - max latency optimizations
+
+            4 - max latency optimizations, but also with text normalizer turned
+            off for even more latency savings (best latency, but can
+            mispronounce eg numbers and dates).
+
+
+            Defaults to None.
+          required: false
+          deprecated: true
+          schema:
+            type: integer
+            title: >-
+              DEPRECATED. How much we should optimize streaming request latency
+              (time to first audio byte).
+            description: >
+              You can turn on latency optimizations at some cost of quality. The
+              best possible final latency varies by model. Possible values:
+
+              0 - default mode (no latency optimizations)
+
+              1 - normal latency optimizations (about 50% of possible latency
+              improvement of option 3)
+
+              2 - strong latency optimizations (about 75% of possible latency
+              improvement of option 3)
+
+              3 - max latency optimizations
+
+              4 - max latency optimizations, but also with text normalizer
+              turned off for even more latency savings (best latency, but can
+              mispronounce eg numbers and dates).
+
+
+              Defaults to None.
+          name: optimize_streaming_latency
+          in: query
+        - description: >
+            Output format of the generated audio. Must be one of:
+
+            mp3_22050_32 - output format, mp3 with 22.05kHz sample rate at
+            32kbps.
+
+            mp3_44100_32 - output format, mp3 with 44.1kHz sample rate at
+            32kbps.
+
+            mp3_44100_64 - output format, mp3 with 44.1kHz sample rate at
+            64kbps.
+
+            mp3_44100_96 - output format, mp3 with 44.1kHz sample rate at
+            96kbps.
+
+            mp3_44100_128 - default output format, mp3 with 44.1kHz sample rate
+            at 128kbps.
+
+            mp3_44100_192 - output format, mp3 with 44.1kHz sample rate at
+            192kbps. Requires you to be subscribed to Creator tier or above.
+
+            pcm_16000 - PCM format (S16LE) with 16kHz sample rate.
+
+            pcm_22050 - PCM format (S16LE) with 22.05kHz sample rate.
+
+            pcm_24000 - PCM format (S16LE) with 24kHz sample rate.
+
+            pcm_44100 - PCM format (S16LE) with 44.1kHz sample rate. Requires
+            you to be subscribed to Pro tier or above.
+
+            ulaw_8000 - μ-law format (sometimes written mu-law, often
+            approximated as u-law) with 8kHz sample rate. Note that this format
+            is commonly used for Twilio audio inputs.
+          required: false
+          schema:
+            type: string
+            title: Output format of the generated audio.
+            description: >
+              Output format of the generated audio. Must be one of:
+
+              mp3_22050_32 - output format, mp3 with 22.05kHz sample rate at
+              32kbps.
+
+              mp3_44100_32 - output format, mp3 with 44.1kHz sample rate at
+              32kbps.
+
+              mp3_44100_64 - output format, mp3 with 44.1kHz sample rate at
+              64kbps.
+
+              mp3_44100_96 - output format, mp3 with 44.1kHz sample rate at
+              96kbps.
+
+              mp3_44100_128 - default output format, mp3 with 44.1kHz sample
+              rate at 128kbps.
+
+              mp3_44100_192 - output format, mp3 with 44.1kHz sample rate at
+              192kbps. Requires you to be subscribed to Creator tier or above.
+
+              pcm_16000 - PCM format (S16LE) with 16kHz sample rate.
+
+              pcm_22050 - PCM format (S16LE) with 22.05kHz sample rate.
+
+              pcm_24000 - PCM format (S16LE) with 24kHz sample rate.
+
+              pcm_44100 - PCM format (S16LE) with 44.1kHz sample rate. Requires
+              you to be subscribed to Pro tier or above.
+
+              ulaw_8000 - μ-law format (sometimes written mu-law, often
+              approximated as u-law) with 8kHz sample rate. Note that this
+              format is commonly used for Twilio audio inputs.
+            default: mp3_44100_128
+          name: output_format
+          in: query
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            type: string
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+          name: xi-api-key
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: >-
+                #/components/schemas/Body_Text_to_speech_streaming_v1_text_to_speech__voice_id__stream_post
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/text-to-speech/{voice_id}/stream/with-timestamps:
+    post:
+      tags:
+        - text-to-speech
+      summary: Text To Speech Streaming With Timestamps
+      description: >-
+        Converts text into speech using a voice of your choice and returns a
+        stream of JSONs containing audio as a base64 encoded string together
+        with information on when which character was spoken.
+      operationId: >-
+        Text_to_speech_streaming_with_timestamps_v1_text_to_speech__voice_id__stream_with_timestamps_post
+      parameters:
+        - description: >-
+            Voice ID to be used, you can use https://api.elevenlabs.io/v1/voices
+            to list all the available voices.
+          required: true
+          schema:
+            type: string
+            title: Voice Id
+            description: >-
+              Voice ID to be used, you can use
+              https://api.elevenlabs.io/v1/voices to list all the available
+              voices.
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: voice_id
+          in: path
+        - description: >-
+            When enable_logging is set to false full privacy mode will be used
+            for the request. This will mean history features are unavailable for
+            this request, including request stitching. Full privacy mode may
+            only be used by enterprise customers.
+          required: false
+          schema:
+            type: boolean
+            title: Enable request logging.
+            description: >-
+              When enable_logging is set to false full privacy mode will be used
+              for the request. This will mean history features are unavailable
+              for this request, including request stitching. Full privacy mode
+              may only be used by enterprise customers.
+            default: true
+          name: enable_logging
+          in: query
+        - description: >
+            You can turn on latency optimizations at some cost of quality. The
+            best possible final latency varies by model. Possible values:
+
+            0 - default mode (no latency optimizations)
+
+            1 - normal latency optimizations (about 50% of possible latency
+            improvement of option 3)
+
+            2 - strong latency optimizations (about 75% of possible latency
+            improvement of option 3)
+
+            3 - max latency optimizations
+
+            4 - max latency optimizations, but also with text normalizer turned
+            off for even more latency savings (best latency, but can
+            mispronounce eg numbers and dates).
+
+
+            Defaults to None.
+          required: false
+          deprecated: true
+          schema:
+            type: integer
+            title: >-
+              DEPRECATED. How much we should optimize streaming request latency
+              (time to first audio byte).
+            description: >
+              You can turn on latency optimizations at some cost of quality. The
+              best possible final latency varies by model. Possible values:
+
+              0 - default mode (no latency optimizations)
+
+              1 - normal latency optimizations (about 50% of possible latency
+              improvement of option 3)
+
+              2 - strong latency optimizations (about 75% of possible latency
+              improvement of option 3)
+
+              3 - max latency optimizations
+
+              4 - max latency optimizations, but also with text normalizer
+              turned off for even more latency savings (best latency, but can
+              mispronounce eg numbers and dates).
+
+
+              Defaults to None.
+          name: optimize_streaming_latency
+          in: query
+        - description: >
+            Output format of the generated audio. Must be one of:
+
+            mp3_22050_32 - output format, mp3 with 22.05kHz sample rate at
+            32kbps.
+
+            mp3_44100_32 - output format, mp3 with 44.1kHz sample rate at
+            32kbps.
+
+            mp3_44100_64 - output format, mp3 with 44.1kHz sample rate at
+            64kbps.
+
+            mp3_44100_96 - output format, mp3 with 44.1kHz sample rate at
+            96kbps.
+
+            mp3_44100_128 - default output format, mp3 with 44.1kHz sample rate
+            at 128kbps.
+
+            mp3_44100_192 - output format, mp3 with 44.1kHz sample rate at
+            192kbps. Requires you to be subscribed to Creator tier or above.
+
+            pcm_16000 - PCM format (S16LE) with 16kHz sample rate.
+
+            pcm_22050 - PCM format (S16LE) with 22.05kHz sample rate.
+
+            pcm_24000 - PCM format (S16LE) with 24kHz sample rate.
+
+            pcm_44100 - PCM format (S16LE) with 44.1kHz sample rate. Requires
+            you to be subscribed to Pro tier or above.
+
+            ulaw_8000 - μ-law format (sometimes written mu-law, often
+            approximated as u-law) with 8kHz sample rate. Note that this format
+            is commonly used for Twilio audio inputs.
+          required: false
+          schema:
+            type: string
+            title: Output format of the generated audio.
+            description: >
+              Output format of the generated audio. Must be one of:
+
+              mp3_22050_32 - output format, mp3 with 22.05kHz sample rate at
+              32kbps.
+
+              mp3_44100_32 - output format, mp3 with 44.1kHz sample rate at
+              32kbps.
+
+              mp3_44100_64 - output format, mp3 with 44.1kHz sample rate at
+              64kbps.
+
+              mp3_44100_96 - output format, mp3 with 44.1kHz sample rate at
+              96kbps.
+
+              mp3_44100_128 - default output format, mp3 with 44.1kHz sample
+              rate at 128kbps.
+
+              mp3_44100_192 - output format, mp3 with 44.1kHz sample rate at
+              192kbps. Requires you to be subscribed to Creator tier or above.
+
+              pcm_16000 - PCM format (S16LE) with 16kHz sample rate.
+
+              pcm_22050 - PCM format (S16LE) with 22.05kHz sample rate.
+
+              pcm_24000 - PCM format (S16LE) with 24kHz sample rate.
+
+              pcm_44100 - PCM format (S16LE) with 44.1kHz sample rate. Requires
+              you to be subscribed to Pro tier or above.
+
+              ulaw_8000 - μ-law format (sometimes written mu-law, often
+              approximated as u-law) with 8kHz sample rate. Note that this
+              format is commonly used for Twilio audio inputs.
+            default: mp3_44100_128
+          name: output_format
+          in: query
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            type: string
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+          name: xi-api-key
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: >-
+                #/components/schemas/Body_Text_to_speech_streaming_with_timestamps_v1_text_to_speech__voice_id__stream_with_timestamps_post
         required: true
       responses:
         '200':
@@ -778,6 +1324,23 @@ paths:
           example: 21m00Tcm4TlvDq8ikWAM
           name: voice_id
           in: path
+        - description: >-
+            When enable_logging is set to false full privacy mode will be used
+            for the request. This will mean history features are unavailable for
+            this request, including request stitching. Full privacy mode may
+            only be used by enterprise customers.
+          required: false
+          schema:
+            type: boolean
+            title: Enable request logging.
+            description: >-
+              When enable_logging is set to false full privacy mode will be used
+              for the request. This will mean history features are unavailable
+              for this request, including request stitching. Full privacy mode
+              may only be used by enterprise customers.
+            default: true
+          name: enable_logging
+          in: query
         - description: >
             You can turn on latency optimizations at some cost of quality. The
             best possible final latency varies by model. Possible values:
@@ -797,13 +1360,14 @@ paths:
             mispronounce eg numbers and dates).
 
 
-            Defaults to 0.
+            Defaults to None.
           required: false
+          deprecated: true
           schema:
             type: integer
             title: >-
-              How much we should optimize streaming request latency (time to
-              first audio byte).
+              DEPRECATED. How much we should optimize streaming request latency
+              (time to first audio byte).
             description: >
               You can turn on latency optimizations at some cost of quality. The
               best possible final latency varies by model. Possible values:
@@ -823,8 +1387,7 @@ paths:
               mispronounce eg numbers and dates).
 
 
-              Defaults to 0.
-            default: 0
+              Defaults to None.
           name: optimize_streaming_latency
           in: query
         - description: >
@@ -956,6 +1519,23 @@ paths:
           example: 21m00Tcm4TlvDq8ikWAM
           name: voice_id
           in: path
+        - description: >-
+            When enable_logging is set to false full privacy mode will be used
+            for the request. This will mean history features are unavailable for
+            this request, including request stitching. Full privacy mode may
+            only be used by enterprise customers.
+          required: false
+          schema:
+            type: boolean
+            title: Enable request logging.
+            description: >-
+              When enable_logging is set to false full privacy mode will be used
+              for the request. This will mean history features are unavailable
+              for this request, including request stitching. Full privacy mode
+              may only be used by enterprise customers.
+            default: true
+          name: enable_logging
+          in: query
         - description: >
             You can turn on latency optimizations at some cost of quality. The
             best possible final latency varies by model. Possible values:
@@ -975,13 +1555,14 @@ paths:
             mispronounce eg numbers and dates).
 
 
-            Defaults to 0.
+            Defaults to None.
           required: false
+          deprecated: true
           schema:
             type: integer
             title: >-
-              How much we should optimize streaming request latency (time to
-              first audio byte).
+              DEPRECATED. How much we should optimize streaming request latency
+              (time to first audio byte).
             description: >
               You can turn on latency optimizations at some cost of quality. The
               best possible final latency varies by model. Possible values:
@@ -1001,8 +1582,7 @@ paths:
               mispronounce eg numbers and dates).
 
 
-              Defaults to 0.
-            default: 0
+              Defaults to None.
           name: optimize_streaming_latency
           in: query
         - description: >
@@ -1294,6 +1874,20 @@ paths:
       description: Gets a list of all available voices for a user.
       operationId: Get_voices_v1_voices_get
       parameters:
+        - description: >-
+            If set to true, legacy premade voices will be included in responses
+            from /v1/voices
+          required: false
+          schema:
+            type: boolean
+            title: Show Legacy
+            description: >-
+              If set to true, legacy premade voices will be included in
+              responses from /v1/voices
+            default: false
+          example: true
+          name: show_legacy
+          in: query
         - description: >-
             Your API key. This is required by most endpoints to access our API
             programatically. You can view your xi-api-key using the 'Profile'
@@ -1700,6 +2294,14 @@ paths:
               tab on the website.
           name: xi-api-key
           in: header
+        - description: Your app check token.
+          required: false
+          schema:
+            type: string
+            title: Xi-App-Check-Token
+            description: Your app check token.
+          name: xi-app-check-token
+          in: header
       requestBody:
         content:
           application/json:
@@ -1845,6 +2447,62 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProjectExtendedResponseModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    post:
+      tags:
+        - projects
+      summary: Edit Basic Project Info
+      description: Edits basic project info.
+      operationId: Edit_basic_project_info_v1_projects__project_id__post
+      parameters:
+        - description: >-
+            The project_id of the project, you can query GET
+            https://api.elevenlabs.io/v1/projects to list all available
+            projects.
+          required: true
+          schema:
+            type: string
+            title: Project Id
+            description: >-
+              The project_id of the project, you can query GET
+              https://api.elevenlabs.io/v1/projects to list all available
+              projects.
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: project_id
+          in: path
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            type: string
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+          name: xi-api-key
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: >-
+                #/components/schemas/Body_Edit_basic_project_info_v1_projects__project_id__post
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditProjectResponseModel'
         '422':
           description: Validation Error
           content:
@@ -2294,6 +2952,62 @@ paths:
               tab on the website.
           name: xi-api-key
           in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/projects/{project_id}/chapters/add:
+    post:
+      tags:
+        - projects
+      summary: Add Chapter To A Project
+      description: Creates a new chapter either as blank or from a URL.
+      operationId: Add_chapter_to_a_project_v1_projects__project_id__chapters_add_post
+      parameters:
+        - description: >-
+            The project_id of the project, you can query GET
+            https://api.elevenlabs.io/v1/projects to list all available
+            projects.
+          required: true
+          schema:
+            type: string
+            title: Project Id
+            description: >-
+              The project_id of the project, you can query GET
+              https://api.elevenlabs.io/v1/projects to list all available
+              projects.
+          example: 21m00Tcm4TlvDq8ikWAM
+          name: project_id
+          in: path
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            type: string
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+          name: xi-api-key
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: >-
+                #/components/schemas/Body_Add_chapter_to_a_project_v1_projects__project_id__chapters_add_post
+        required: true
       responses:
         '200':
           description: Successful Response
@@ -2757,6 +3471,72 @@ paths:
       responses:
         '200':
           description: Successful Response
+          content:
+            application/octet-stream: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/dubbing/{dubbing_id}/transcript/{language_code}:
+    get:
+      tags:
+        - dubbing
+      summary: Get Transcript For Dub
+      description: Returns transcript for the dub as an SRT file.
+      operationId: >-
+        Get_transcript_for_dub_v1_dubbing__dubbing_id__transcript__language_code__get
+      parameters:
+        - description: ID of the dubbing project.
+          required: true
+          schema:
+            type: string
+            title: Dubbing Id
+            description: ID of the dubbing project.
+          name: dubbing_id
+          in: path
+        - description: ID of the language.
+          required: true
+          schema:
+            type: string
+            title: Language Code
+            description: ID of the language.
+          name: language_code
+          in: path
+        - description: Format to use for the subtitle file, either 'srt' or 'webvtt'
+          required: false
+          schema:
+            type: string
+            enum:
+              - srt
+              - webvtt
+            title: Format Type
+            description: Format to use for the subtitle file, either 'srt' or 'webvtt'
+            embed: true
+          name: format_type
+          in: query
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            type: string
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+          name: xi-api-key
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+            application/text: {}
         '422':
           description: Validation Error
           content:
@@ -2782,7 +3562,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SsoProviderDBModel'
+                $ref: '#/components/schemas/SsoProviderResponseModel'
         '422':
           description: Validation Error
           content:
@@ -3040,6 +3820,149 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
+  /v1/similar-voices:
+    post:
+      tags:
+        - voices
+      summary: Get Similar Library Voices
+      description: >-
+        Returns a list of shared voices similar to the provided audio sample. If
+        neither similarity_threshold nor top_k is provided, we will apply
+        default values.
+      operationId: Get_similar_library_voices_v1_similar_voices_post
+      parameters:
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            type: string
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+          name: xi-api-key
+          in: header
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: >-
+                #/components/schemas/Body_Get_similar_library_voices_v1_similar_voices_post
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetLibraryVoicesResponseModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/usage/character-stats:
+    get:
+      tags:
+        - usage
+      summary: Get Characters Usage Metrics
+      description: >-
+        Returns the credit usage metrics for the current user or the entire
+        workspace they are part of. The response will return a time axis with
+        unix timestamps for each day and daily usage along that axis. The usage
+        will be broken down by the specified breakdown type. For example,
+        breakdown type "voice" will return the usage of each voice along the
+        time axis.
+      operationId: Get_characters_usage_metrics_v1_usage_character_stats_get
+      parameters:
+        - description: >-
+            UTC Unix timestamp for the start of the usage window, in
+            milliseconds. To include the first day of the window, the timestamp
+            should be at 00:00:00 of that day.
+          required: true
+          schema:
+            type: integer
+            title: Start Unix
+            description: >-
+              UTC Unix timestamp for the start of the usage window, in
+              milliseconds. To include the first day of the window, the
+              timestamp should be at 00:00:00 of that day.
+          example: '1685574000'
+          name: start_unix
+          in: query
+        - description: >-
+            UTC Unix timestamp for the end of the usage window, in milliseconds.
+            To include the last day of the window, the timestamp should be at
+            23:59:59 of that day.
+          required: true
+          schema:
+            type: integer
+            title: End Unix
+            description: >-
+              UTC Unix timestamp for the end of the usage window, in
+              milliseconds. To include the last day of the window, the timestamp
+              should be at 23:59:59 of that day.
+          example: '1688165999'
+          name: end_unix
+          in: query
+        - description: Whether or not to include the statistics of the entire workspace.
+          required: false
+          schema:
+            type: boolean
+            title: Include Workspace Metrics
+            description: Whether or not to include the statistics of the entire workspace.
+            default: false
+          name: include_workspace_metrics
+          in: query
+        - description: >-
+            How to break down the information. Cannot be "user" if
+            include_workspace_metrics is False.
+          required: false
+          schema:
+            type: string
+            enum:
+              - none
+              - voice
+              - user
+              - api_keys
+              - product_type
+            title: Breakdown Type
+            description: >-
+              How to break down the information. Cannot be "user" if
+              include_workspace_metrics is False.
+            default: none
+          name: breakdown_type
+          in: query
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            type: string
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+          name: xi-api-key
+          in: header
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageCharactersResponseModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
   /v1/pronunciation-dictionaries/add-from-file:
     post:
       tags:
@@ -3234,8 +4157,7 @@ paths:
         '200':
           description: Successful Response
           content:
-            application/json:
-              schema: {}
+            text/plain: {}
         '422':
           description: Validation Error
           content:
@@ -3349,6 +4271,171 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HTTPValidationError'
+  /v1/workspace/invites/add:
+    post:
+      tags:
+        - workspace
+      summary: Invite User
+      description: >-
+        Sends an email invitation to join your workspace to the provided email.
+        If the user doesn't have an account they will be prompted to create one.
+        If the user accepts this invite they will be added as a user to your
+        workspace and your subscription using one of your seats. This endpoint
+        may only be called by workspace administrators.
+      operationId: Invite_user_v1_workspace_invites_add_post
+      parameters:
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            type: string
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+          name: xi-api-key
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: >-
+                #/components/schemas/Body_Invite_user_v1_workspace_invites_add_post
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/workspace/invites:
+    delete:
+      tags:
+        - workspace
+      summary: Delete Existing Invitation
+      description: >-
+        Invalidates an existing email invitation. The invitation will still show
+        up in the inbox it has been delivered to, but activating it to join the
+        workspace won't work. This endpoint may only be called by workspace
+        administrators.
+      operationId: Delete_existing_invitation_v1_workspace_invites_delete
+      parameters:
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            type: string
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+          name: xi-api-key
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: >-
+                #/components/schemas/Body_Delete_existing_invitation_v1_workspace_invites_delete
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /v1/workspace/members:
+    post:
+      tags:
+        - workspace
+      summary: Update Member
+      description: >-
+        Updates attributes of a workspace member. Apart from the email
+        identifier, all parameters will remain unchanged unless specified. This
+        endpoint may only be called by workspace administrators.
+      operationId: Update_member_v1_workspace_members_post
+      parameters:
+        - description: >-
+            Your API key. This is required by most endpoints to access our API
+            programatically. You can view your xi-api-key using the 'Profile'
+            tab on the website.
+          required: false
+          schema:
+            type: string
+            title: Xi-Api-Key
+            description: >-
+              Your API key. This is required by most endpoints to access our API
+              programatically. You can view your xi-api-key using the 'Profile'
+              tab on the website.
+          name: xi-api-key
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: >-
+                #/components/schemas/Body_Update_member_v1_workspace_members_post
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /profile/{handle}:
+    get:
+      tags:
+        - voices
+      summary: Get A Profile Page
+      description: Gets a profile page based on a handle
+      operationId: Get_a_profile_page_profile__handle__get
+      parameters:
+        - description: Handle for a VA's profile page
+          required: true
+          schema:
+            type: string
+            title: Handle
+            description: Handle for a VA's profile page
+          example: talexgeorge
+          name: handle
+          in: path
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProfilePageResponseModel'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
   /docs:
     get:
       summary: Redirect To Mintlify
@@ -3438,6 +4525,12 @@ components:
       title: AudioNativeCreateProjectResponseModel
     Body_Add_a_pronunciation_dictionary_v1_pronunciation_dictionaries_add_from_file_post:
       properties:
+        name:
+          type: string
+          title: Name
+          description: >-
+            The name of the pronunciation dictionary, used for identification
+            only.
         file:
           type: string
           format: binary
@@ -3445,29 +4538,33 @@ components:
           description: >-
             A lexicon .pls file which we will use to initialize the project
             with.
-        name:
-          type: string
-          title: Name
-          description: >-
-            The name of the pronunciation dictionary, used for identification
-            only.
         description:
           type: string
           title: Description
           description: >-
             A description of the pronunciation dictionary, used for
             identification only.
+        workspace_access:
+          type: string
+          enum:
+            - admin
+            - editor
+            - viewer
+          title: Workspace Access
+          description: >-
+            Should be one of 'editor' or 'viewer'. If not provided, defaults to
+            no access.
       type: object
       required:
         - name
       title: >-
         Body_Add_a_pronunciation_dictionary_v1_pronunciation_dictionaries_add_from_file_post
-    Body_Add_project_v1_projects_add_post:
+    Body_Add_chapter_to_a_project_v1_projects__project_id__chapters_add_post:
       properties:
         name:
           type: string
           title: Name
-          description: The name of the project, used for identification only.
+          description: The name of the chapter, used for identification only.
         from_url:
           type: string
           title: From Url
@@ -3476,16 +4573,16 @@ components:
             project. If this is set, 'from_url' must be null. If neither
             'from_url' or 'from_document' are provided we will initialize the
             project as blank.
-        from_document:
+      type: object
+      required:
+        - name
+      title: Body_Add_chapter_to_a_project_v1_projects__project_id__chapters_add_post
+    Body_Add_project_v1_projects_add_post:
+      properties:
+        name:
           type: string
-          format: binary
-          title: From Document
-          description: >-
-            An optional .epub, .pdf, .txt or similar file can be provided. If
-            provided, we will initialize the project with its content. If this
-            is set, 'from_url' must be null.  If neither 'from_url' or
-            'from_document' are provided we will initialize the project as
-            blank.
+          title: Name
+          description: The name of the project, used for identification only.
         default_title_voice_id:
           type: string
           title: Default Title Voice Id
@@ -3505,6 +4602,24 @@ components:
             The model_id of the model to be used for this project, you can query
             GET https://api.elevenlabs.io/v1/models to list all available
             models.
+        from_url:
+          type: string
+          title: From Url
+          description: >-
+            An optional URL from which we will extract content to initialize the
+            project. If this is set, 'from_url' must be null. If neither
+            'from_url' or 'from_document' are provided we will initialize the
+            project as blank.
+        from_document:
+          type: string
+          format: binary
+          title: From Document
+          description: >-
+            An optional .epub, .pdf, .txt or similar file can be provided. If
+            provided, we will initialize the project with its content. If this
+            is set, 'from_url' must be null.  If neither 'from_url' or
+            'from_document' are provided we will initialize the project as
+            blank.
         quality_preset:
           type: string
           title: Quality of the generated audio.
@@ -3515,15 +4630,15 @@ components:
 
             high - high quality output format, 192kbps with 44.1kHz sample rate
             and major improvements on our side. Using this setting increases the
-            character cost by 20%.
+            credit cost by 20%.
 
             ultra - ultra quality output format, 192kbps with 44.1kHz sample
             rate and highest improvements on our side. Using this setting
-            increases the character cost by 50%.
+            increases the credit cost by 50%.
 
             ultra lossless - ultra quality output format, 705.6kbps with 44.1kHz
             sample rate and highest improvements on our side in a fully lossless
-            format. Using this setting increases the character cost by 100%.
+            format. Using this setting increases the credit cost by 100%.
           default: standard
           include_in_schema: true
         title:
@@ -3567,16 +4682,24 @@ components:
           type: array
           title: Pronunciation Dictionary Locators
           description: >-
-            A list of pronunciation dictionary locators (id, version_id) encoded
-            as a list of JSON strings for pronunciation dictionaries to be
-            applied to the text.  A list of json encoded strings is required as
-            adding projects may occur through formData as opposed to jsonBody
+            A list of pronunciation dictionary locators
+            (pronunciation_dictionary_id, version_id) encoded as a list of JSON
+            strings for pronunciation dictionaries to be applied to the text.  A
+            list of json encoded strings is required as adding projects may
+            occur through formData as opposed to jsonBody. To specify multiple
+            dictionaries use multiple --form lines in your curl, such as --form
+            'pronunciation_dictionary_locators="{\"pronunciation_dictionary_id\":\"Vmd4Zor6fplcA7WrINey\",\"version_id\":\"hRPaxjlTdR7wFMhV4w0b\"}"'
+            --form
+            'pronunciation_dictionary_locators="{\"pronunciation_dictionary_id\":\"JzWtcGQMJ6bnlWwyMo7e\",\"version_id\":\"lbmwxiLu4q6txYxgdZqn\"}"'.
+            Note that multiple dictionaries are not currently supported by our
+            UI which will only show the first.
         callback_url:
           type: string
           title: Callback Url
           description: >-
-            A url that will be called by our service when the project is
-            converted with a json containing the status of the conversion
+            [Deprecated] A url that will be called by our service when the
+            project is converted with a json containing the status of the
+            conversion
           include_in_schema: false
       type: object
       required:
@@ -3584,7 +4707,6 @@ components:
         - default_title_voice_id
         - default_paragraph_voice_id
         - default_model_id
-        - pronunciation_dictionary_locators
       title: Body_Add_project_v1_projects_add_post
     Body_Add_rules_to_the_pronunciation_dictionary_v1_pronunciation_dictionaries__pronunciation_dictionary_id__add_rules_post:
       properties:
@@ -3632,7 +4754,7 @@ components:
             format: binary
           type: array
           title: Files
-          description: One or more audio files to clone the voice from
+          description: A list of file paths to audio recordings intended for voice cloning
         description:
           type: string
           title: Description
@@ -3646,6 +4768,28 @@ components:
         - name
         - files
       title: Body_Add_voice_v1_voices_add_post
+    Body_Audio_Isolation_Stream_v1_audio_isolation_stream_post:
+      properties:
+        audio:
+          type: string
+          format: binary
+          title: Audio
+          description: The audio file from which vocals/speech will be isolated from.
+      type: object
+      required:
+        - audio
+      title: Body_Audio_Isolation_Stream_v1_audio_isolation_stream_post
+    Body_Audio_Isolation_v1_audio_isolation_post:
+      properties:
+        audio:
+          type: string
+          format: binary
+          title: Audio
+          description: The audio file from which vocals/speech will be isolated from.
+      type: object
+      required:
+        - audio
+      title: Body_Audio_Isolation_v1_audio_isolation_post
     Body_Create_a_previously_generated_voice_v1_voice_generation_create_voice_post:
       properties:
         voice_name:
@@ -3761,8 +4905,17 @@ components:
       type: object
       required:
         - name
-        - file
       title: Body_Creates_AudioNative_enabled_project__v1_audio_native_post
+    Body_Delete_existing_invitation_v1_workspace_invites_delete:
+      properties:
+        email:
+          type: string
+          title: Email
+          description: Email of the target user.
+      type: object
+      required:
+        - email
+      title: Body_Delete_existing_invitation_v1_workspace_invites_delete
     Body_Download_history_items_v1_history_download_post:
       properties:
         history_item_ids:
@@ -3784,30 +4937,11 @@ components:
       title: Body_Download_history_items_v1_history_download_post
     Body_Dub_a_video_or_an_audio_file_v1_dubbing_post:
       properties:
-        mode:
-          type: string
-          title: Mode
-          description: automatic or manual.
         file:
           type: string
           format: binary
           title: File
-          description: One or more audio files to clone the voice from
-        csv_file:
-          type: string
-          format: binary
-          title: Csv File
-          description: CSV file containing transcription/translation metadata
-        foreground_audio_file:
-          type: string
-          format: binary
-          title: Foreground Audio File
-          description: For use only with csv input
-        background_audio_file:
-          type: string
-          format: binary
-          title: Background Audio File
-          description: For use only with csv input
+          description: A list of file paths to audio recordings intended for voice cloning
         name:
           type: string
           title: Name
@@ -3824,13 +4958,13 @@ components:
         target_lang:
           type: string
           title: Target Lang
-          description: >-
-            The Target language to dub the content into. Can be none if dubbing
-            studio editor is enabled and running manual mode
+          description: The Target language to dub the content into.
         num_speakers:
           type: integer
           title: Num Speakers
-          description: Number of speakers to use for the dubbing.
+          description: >-
+            Number of speakers to use for the dubbing. Set to 0 to automatically
+            detect the number of speakers
           default: 0
         watermark:
           type: boolean
@@ -3850,13 +4984,67 @@ components:
           title: Highest Resolution
           description: Whether to use the highest resolution available.
           default: false
-        dubbing_studio:
+        drop_background_audio:
           type: boolean
-          title: Dubbing Studio
-          description: Whether to prepare dub for edits in dubbing studio.
+          title: Drop Background Audio
+          description: >-
+            An advanced setting. Whether to drop background audio from the final
+            dub. This can improve dub quality where it's known that audio
+            shouldn't have a background track such as for speeches or
+            monologues.
           default: false
       type: object
       title: Body_Dub_a_video_or_an_audio_file_v1_dubbing_post
+    Body_Edit_basic_project_info_v1_projects__project_id__post:
+      properties:
+        name:
+          type: string
+          title: Name
+          description: The name of the project, used for identification only.
+        default_title_voice_id:
+          type: string
+          title: Default Title Voice Id
+          description: >-
+            The voice_id that corresponds to the default voice used for new
+            titles.
+        default_paragraph_voice_id:
+          type: string
+          title: Default Paragraph Voice Id
+          description: >-
+            The voice_id that corresponds to the default voice used for new
+            paragraphs.
+        title:
+          type: string
+          title: Title
+          description: >-
+            An optional name of the author of the project, this will be added as
+            metadata to the mp3 file on project / chapter download.
+        author:
+          type: string
+          title: Author
+          description: >-
+            An optional name of the author of the project, this will be added as
+            metadata to the mp3 file on project / chapter download.
+        isbn_number:
+          type: string
+          title: Isbn Number
+          description: >-
+            An optional ISBN number of the project you want to create, this will
+            be added as metadata to the mp3 file on project / chapter download.
+        volume_normalization:
+          type: boolean
+          title: Volume Normalization
+          description: >-
+            When the project is downloaded, should the returned audio have
+            postprocessing in order to make it compliant with audiobook
+            normalized volume requirements
+          default: false
+      type: object
+      required:
+        - name
+        - default_title_voice_id
+        - default_paragraph_voice_id
+      title: Body_Edit_basic_project_info_v1_projects__project_id__post
     Body_Edit_voice_v1_voices__voice_id__edit_post:
       properties:
         name:
@@ -3929,6 +5117,38 @@ components:
         - accent_strength
         - text
       title: Body_Generate_a_random_voice_v1_voice_generation_generate_voice_post
+    Body_Get_similar_library_voices_v1_similar_voices_post:
+      properties:
+        audio_file:
+          type: string
+          format: binary
+          title: Audio File
+        similarity_threshold:
+          type: number
+          title: Similarity Threshold
+          description: >-
+            Threshold for voice similarity between provided sample and library
+            voices. Must be in range <0, 2>. The smaller the value the more
+            similar voices will be returned.
+        top_k:
+          type: integer
+          title: Top K
+          description: >-
+            Number of most similar voices to return. If similarity_threshold is
+            provided, less than this number of voices may be returned. Must be
+            in range <1, 100>.
+      type: object
+      title: Body_Get_similar_library_voices_v1_similar_voices_post
+    Body_Invite_user_v1_workspace_invites_add_post:
+      properties:
+        email:
+          type: string
+          title: Email
+          description: Email of the target user.
+      type: object
+      required:
+        - email
+      title: Body_Invite_user_v1_workspace_invites_add_post
     Body_Remove_rules_from_the_pronunciation_dictionary_v1_pronunciation_dictionaries__pronunciation_dictionary_id__remove_rules_post:
       properties:
         rule_strings:
@@ -3942,6 +5162,31 @@ components:
         - rule_strings
       title: >-
         Body_Remove_rules_from_the_pronunciation_dictionary_v1_pronunciation_dictionaries__pronunciation_dictionary_id__remove_rules_post
+    Body_Sound_Generation_v1_sound_generation_post:
+      properties:
+        text:
+          type: string
+          title: Text
+          description: The text that will get converted into a sound effect.
+        duration_seconds:
+          type: number
+          title: Duration Seconds
+          description: >-
+            The duration of the sound which will be generated in seconds. Must
+            be at least 0.5 and at most 22. If set to None we will guess the
+            optimal duration using the prompt. Defaults to None.
+        prompt_influence:
+          type: number
+          title: Prompt Influence
+          description: >-
+            A higher prompt influence makes your generation follow the prompt
+            more closely while also making generations less variable. Must be a
+            value between 0 and 1. Defaults to 0.3.
+          default: 0.3
+      type: object
+      required:
+        - text
+      title: Body_Sound_Generation_v1_sound_generation_post
     Body_Speech_to_Speech_Streaming_v1_speech_to_speech__voice_id__stream_post:
       properties:
         audio:
@@ -3967,6 +5212,14 @@ components:
             Voice settings overriding stored setttings for the given voice. They
             are applied only on the given request. Needs to be send as a JSON
             encoded string.
+        seed:
+          type: integer
+          title: Seed
+          description: >-
+            If specified, our system will make a best effort to sample
+            deterministically, such that repeated requests with the same seed
+            and parameters should return the same result. Determinism is not
+            guaranteed.
       type: object
       required:
         - audio
@@ -3997,6 +5250,14 @@ components:
             Voice settings overriding stored setttings for the given voice. They
             are applied only on the given request. Needs to be send as a JSON
             encoded string.
+        seed:
+          type: integer
+          title: Seed
+          description: >-
+            If specified, our system will make a best effort to sample
+            deterministically, such that repeated requests with the same seed
+            and parameters should return the same result. Determinism is not
+            guaranteed.
       type: object
       required:
         - audio
@@ -4021,6 +5282,211 @@ components:
       type: object
       title: >-
         Body_Stream_project_audio_v1_projects__project_id__snapshots__project_snapshot_id__stream_post
+    Body_Text_to_speech_streaming_v1_text_to_speech__voice_id__stream_post:
+      properties:
+        text:
+          type: string
+          title: Text
+          description: The text that will get converted into speech.
+        model_id:
+          type: string
+          title: Model Id
+          description: >-
+            Identifier of the model that will be used, you can query them using
+            GET /v1/models. The model needs to have support for text to speech,
+            you can check this using the can_do_text_to_speech property.
+          default: eleven_monolingual_v1
+        language_code:
+          type: string
+          title: Language Code
+          description: >-
+            Language code (ISO 639-1) used to enforce a language for the model.
+            Currently only Turbo v2.5 supports language enforcement. For other
+            models, an error will be returned if language code is provided.
+        voice_settings:
+          allOf:
+            - $ref: '#/components/schemas/VoiceSettingsResponseModel'
+          title: Voice Settings
+          description: >-
+            Voice settings overriding stored setttings for the given voice. They
+            are applied only on the given request.
+        pronunciation_dictionary_locators:
+          items:
+            $ref: '#/components/schemas/PronunciationDictionaryVersionLocatorDBModel'
+          type: array
+          title: Pronunciation Dictionary Locators
+          description: >-
+            A list of pronunciation dictionary locators (id, version_id) to be
+            applied to the text. They will be applied in order. You may have up
+            to 3 locators per request
+          default: []
+        seed:
+          type: integer
+          title: Seed
+          description: >-
+            If specified, our system will make a best effort to sample
+            deterministically, such that repeated requests with the same seed
+            and parameters should return the same result. Determinism is not
+            guaranteed.
+        previous_text:
+          type: string
+          title: Previous Text
+          description: >-
+            The text that came before the text of the current request. Can be
+            used to improve the flow of prosody when concatenating together
+            multiple generations or to influence the prosody in the current
+            generation.
+        next_text:
+          type: string
+          title: Next Text
+          description: >-
+            The text that comes after the text of the current request. Can be
+            used to improve the flow of prosody when concatenating together
+            multiple generations or to influence the prosody in the current
+            generation.
+        previous_request_ids:
+          items:
+            type: string
+          type: array
+          title: Previous Request Ids
+          description: >-
+            A list of request_id of the samples that were generated before this
+            generation. Can be used to improve the flow of prosody when
+            splitting up a large task into multiple requests. The results will
+            be best when the same model is used across the generations. In case
+            both previous_text and previous_request_ids is send, previous_text
+            will be ignored. A maximum of 3 request_ids can be send.
+          default: []
+        next_request_ids:
+          items:
+            type: string
+          type: array
+          title: Next Request Ids
+          description: >-
+            A list of request_id of the samples that were generated before this
+            generation. Can be used to improve the flow of prosody when
+            splitting up a large task into multiple requests. The results will
+            be best when the same model is used across the generations. In case
+            both next_text and next_request_ids is send, next_text will be
+            ignored. A maximum of 3 request_ids can be send.
+          default: []
+        use_pvc_as_ivc:
+          type: boolean
+          title: Use Pvc As Ivc
+          description: >-
+            If true, we won't use PVC version of the voice for the generation
+            but the IVC version. This is a temporary workaround for higher
+            latency in PVC versions.
+          default: false
+          deprecated: true
+          include_in_schema: false
+      type: object
+      required:
+        - text
+      title: Body_Text_to_speech_streaming_v1_text_to_speech__voice_id__stream_post
+    Body_Text_to_speech_streaming_with_timestamps_v1_text_to_speech__voice_id__stream_with_timestamps_post:
+      properties:
+        text:
+          type: string
+          title: Text
+          description: The text that will get converted into speech.
+        model_id:
+          type: string
+          title: Model Id
+          description: >-
+            Identifier of the model that will be used, you can query them using
+            GET /v1/models. The model needs to have support for text to speech,
+            you can check this using the can_do_text_to_speech property.
+          default: eleven_monolingual_v1
+        language_code:
+          type: string
+          title: Language Code
+          description: >-
+            Language code (ISO 639-1) used to enforce a language for the model.
+            Currently only Turbo v2.5 supports language enforcement. For other
+            models, an error will be returned if language code is provided.
+        voice_settings:
+          allOf:
+            - $ref: '#/components/schemas/VoiceSettingsResponseModel'
+          title: Voice Settings
+          description: >-
+            Voice settings overriding stored setttings for the given voice. They
+            are applied only on the given request.
+        pronunciation_dictionary_locators:
+          items:
+            $ref: '#/components/schemas/PronunciationDictionaryVersionLocatorDBModel'
+          type: array
+          title: Pronunciation Dictionary Locators
+          description: >-
+            A list of pronunciation dictionary locators (id, version_id) to be
+            applied to the text. They will be applied in order. You may have up
+            to 3 locators per request
+          default: []
+        seed:
+          type: integer
+          title: Seed
+          description: >-
+            If specified, our system will make a best effort to sample
+            deterministically, such that repeated requests with the same seed
+            and parameters should return the same result. Determinism is not
+            guaranteed.
+        previous_text:
+          type: string
+          title: Previous Text
+          description: >-
+            The text that came before the text of the current request. Can be
+            used to improve the flow of prosody when concatenating together
+            multiple generations or to influence the prosody in the current
+            generation.
+        next_text:
+          type: string
+          title: Next Text
+          description: >-
+            The text that comes after the text of the current request. Can be
+            used to improve the flow of prosody when concatenating together
+            multiple generations or to influence the prosody in the current
+            generation.
+        previous_request_ids:
+          items:
+            type: string
+          type: array
+          title: Previous Request Ids
+          description: >-
+            A list of request_id of the samples that were generated before this
+            generation. Can be used to improve the flow of prosody when
+            splitting up a large task into multiple requests. The results will
+            be best when the same model is used across the generations. In case
+            both previous_text and previous_request_ids is send, previous_text
+            will be ignored. A maximum of 3 request_ids can be send.
+          default: []
+        next_request_ids:
+          items:
+            type: string
+          type: array
+          title: Next Request Ids
+          description: >-
+            A list of request_id of the samples that were generated before this
+            generation. Can be used to improve the flow of prosody when
+            splitting up a large task into multiple requests. The results will
+            be best when the same model is used across the generations. In case
+            both next_text and next_request_ids is send, next_text will be
+            ignored. A maximum of 3 request_ids can be send.
+          default: []
+        use_pvc_as_ivc:
+          type: boolean
+          title: Use Pvc As Ivc
+          description: >-
+            If true, we won't use PVC version of the voice for the generation
+            but the IVC version. This is a temporary workaround for higher
+            latency in PVC versions.
+          default: false
+          deprecated: true
+          include_in_schema: false
+      type: object
+      required:
+        - text
+      title: >-
+        Body_Text_to_speech_streaming_with_timestamps_v1_text_to_speech__voice_id__stream_with_timestamps_post
     Body_Text_to_speech_v1_text_to_speech__voice_id__post:
       properties:
         text:
@@ -4035,6 +5501,13 @@ components:
             GET /v1/models. The model needs to have support for text to speech,
             you can check this using the can_do_text_to_speech property.
           default: eleven_monolingual_v1
+        language_code:
+          type: string
+          title: Language Code
+          description: >-
+            Language code (ISO 639-1) used to enforce a language for the model.
+            Currently only Turbo v2.5 supports language enforcement. For other
+            models, an error will be returned if language code is provided.
         voice_settings:
           allOf:
             - $ref: '#/components/schemas/VoiceSettingsResponseModel'
@@ -4052,11 +5525,71 @@ components:
             applied to the text. They will be applied in order. You may have up
             to 3 locators per request
           default: []
+        seed:
+          type: integer
+          title: Seed
+          description: >-
+            If specified, our system will make a best effort to sample
+            deterministically, such that repeated requests with the same seed
+            and parameters should return the same result. Determinism is not
+            guaranteed.
+        previous_text:
+          type: string
+          title: Previous Text
+          description: >-
+            The text that came before the text of the current request. Can be
+            used to improve the flow of prosody when concatenating together
+            multiple generations or to influence the prosody in the current
+            generation.
+        next_text:
+          type: string
+          title: Next Text
+          description: >-
+            The text that comes after the text of the current request. Can be
+            used to improve the flow of prosody when concatenating together
+            multiple generations or to influence the prosody in the current
+            generation.
+        previous_request_ids:
+          items:
+            type: string
+          type: array
+          title: Previous Request Ids
+          description: >-
+            A list of request_id of the samples that were generated before this
+            generation. Can be used to improve the flow of prosody when
+            splitting up a large task into multiple requests. The results will
+            be best when the same model is used across the generations. In case
+            both previous_text and previous_request_ids is send, previous_text
+            will be ignored. A maximum of 3 request_ids can be send.
+          default: []
+        next_request_ids:
+          items:
+            type: string
+          type: array
+          title: Next Request Ids
+          description: >-
+            A list of request_id of the samples that were generated before this
+            generation. Can be used to improve the flow of prosody when
+            splitting up a large task into multiple requests. The results will
+            be best when the same model is used across the generations. In case
+            both next_text and next_request_ids is send, next_text will be
+            ignored. A maximum of 3 request_ids can be send.
+          default: []
+        use_pvc_as_ivc:
+          type: boolean
+          title: Use Pvc As Ivc
+          description: >-
+            If true, we won't use PVC version of the voice for the generation
+            but the IVC version. This is a temporary workaround for higher
+            latency in PVC versions.
+          default: false
+          deprecated: true
+          include_in_schema: false
       type: object
       required:
         - text
       title: Body_Text_to_speech_v1_text_to_speech__voice_id__post
-    Body_Text_to_speech_v1_text_to_speech__voice_id__stream_post:
+    Body_Text_to_speech_with_timestamps_v1_text_to_speech__voice_id__with_timestamps_post:
       properties:
         text:
           type: string
@@ -4070,6 +5603,13 @@ components:
             GET /v1/models. The model needs to have support for text to speech,
             you can check this using the can_do_text_to_speech property.
           default: eleven_monolingual_v1
+        language_code:
+          type: string
+          title: Language Code
+          description: >-
+            Language code (ISO 639-1) used to enforce a language for the model.
+            Currently only Turbo v2.5 supports language enforcement. For other
+            models, an error will be returned if language code is provided.
         voice_settings:
           allOf:
             - $ref: '#/components/schemas/VoiceSettingsResponseModel'
@@ -4087,10 +5627,71 @@ components:
             applied to the text. They will be applied in order. You may have up
             to 3 locators per request
           default: []
+        seed:
+          type: integer
+          title: Seed
+          description: >-
+            If specified, our system will make a best effort to sample
+            deterministically, such that repeated requests with the same seed
+            and parameters should return the same result. Determinism is not
+            guaranteed.
+        previous_text:
+          type: string
+          title: Previous Text
+          description: >-
+            The text that came before the text of the current request. Can be
+            used to improve the flow of prosody when concatenating together
+            multiple generations or to influence the prosody in the current
+            generation.
+        next_text:
+          type: string
+          title: Next Text
+          description: >-
+            The text that comes after the text of the current request. Can be
+            used to improve the flow of prosody when concatenating together
+            multiple generations or to influence the prosody in the current
+            generation.
+        previous_request_ids:
+          items:
+            type: string
+          type: array
+          title: Previous Request Ids
+          description: >-
+            A list of request_id of the samples that were generated before this
+            generation. Can be used to improve the flow of prosody when
+            splitting up a large task into multiple requests. The results will
+            be best when the same model is used across the generations. In case
+            both previous_text and previous_request_ids is send, previous_text
+            will be ignored. A maximum of 3 request_ids can be send.
+          default: []
+        next_request_ids:
+          items:
+            type: string
+          type: array
+          title: Next Request Ids
+          description: >-
+            A list of request_id of the samples that were generated before this
+            generation. Can be used to improve the flow of prosody when
+            splitting up a large task into multiple requests. The results will
+            be best when the same model is used across the generations. In case
+            both next_text and next_request_ids is send, next_text will be
+            ignored. A maximum of 3 request_ids can be send.
+          default: []
+        use_pvc_as_ivc:
+          type: boolean
+          title: Use Pvc As Ivc
+          description: >-
+            If true, we won't use PVC version of the voice for the generation
+            but the IVC version. This is a temporary workaround for higher
+            latency in PVC versions.
+          default: false
+          deprecated: true
+          include_in_schema: false
       type: object
       required:
         - text
-      title: Body_Text_to_speech_v1_text_to_speech__voice_id__stream_post
+      title: >-
+        Body_Text_to_speech_with_timestamps_v1_text_to_speech__voice_id__with_timestamps_post
     Body_Update_Pronunciation_Dictionaries_v1_projects__project_id__update_pronunciation_dictionaries_post:
       properties:
         pronunciation_dictionary_locators:
@@ -4099,15 +5700,43 @@ components:
           type: array
           title: Pronunciation Dictionary Locators
           description: >-
-            A list of pronunciation dictionary locators (id, version_id) encoded
-            as a list of JSON strings for pronunciation dictionaries to be
-            applied to the text.  A list of json encoded strings is required as
-            adding projects may occur through formData as opposed to jsonBody
+            A list of pronunciation dictionary locators
+            (pronunciation_dictionary_id, version_id) encoded as a list of JSON
+            strings for pronunciation dictionaries to be applied to the text.  A
+            list of json encoded strings is required as adding projects may
+            occur through formData as opposed to jsonBody. To specify multiple
+            dictionaries use multiple --form lines in your curl, such as --form
+            'pronunciation_dictionary_locators="{\"pronunciation_dictionary_id\":\"Vmd4Zor6fplcA7WrINey\",\"version_id\":\"hRPaxjlTdR7wFMhV4w0b\"}"'
+            --form
+            'pronunciation_dictionary_locators="{\"pronunciation_dictionary_id\":\"JzWtcGQMJ6bnlWwyMo7e\",\"version_id\":\"lbmwxiLu4q6txYxgdZqn\"}"'.
+            Note that multiple dictionaries are not currently supported by our
+            UI which will only show the first.
       type: object
       required:
         - pronunciation_dictionary_locators
       title: >-
         Body_Update_Pronunciation_Dictionaries_v1_projects__project_id__update_pronunciation_dictionaries_post
+    Body_Update_member_v1_workspace_members_post:
+      properties:
+        email:
+          type: string
+          title: Email
+          description: Email of the target user.
+        is_locked:
+          type: boolean
+          title: Is Locked
+          description: Whether to lock or unlock the user account.
+        workspace_role:
+          type: string
+          enum:
+            - workspace_admin
+            - workspace_member
+          title: Workspace Role
+          description: Role dictating permissions in the workspace.
+      type: object
+      required:
+        - email
+      title: Body_Update_member_v1_workspace_members_post
     ChapterResponseModel:
       properties:
         chapter_id:
@@ -4224,22 +5853,29 @@ components:
         status:
           type: string
           title: Status
-        error:
-          type: string
-          title: Error
         target_languages:
           items:
             type: string
           type: array
           title: Target Languages
+        error:
+          type: string
+          title: Error
       type: object
       required:
         - dubbing_id
         - name
         - status
-        - error
         - target_languages
       title: DubbingMetadataResponse
+    EditProjectResponseModel:
+      properties:
+        project:
+          $ref: '#/components/schemas/ProjectResponseModel'
+      type: object
+      required:
+        - project
+      title: EditProjectResponseModel
     ExtendedSubscriptionResponseModel:
       properties:
         tier:
@@ -4305,6 +5941,12 @@ components:
             - monthly_period
             - annual_period
           title: Billing Period
+        character_refresh_period:
+          type: string
+          enum:
+            - monthly_period
+            - annual_period
+          title: Character Refresh Period
         next_invoice:
           $ref: '#/components/schemas/InvoiceResponseModel'
         has_open_invoices:
@@ -4328,6 +5970,7 @@ components:
         - currency
         - status
         - billing_period
+        - character_refresh_period
         - next_invoice
         - has_open_invoices
       title: ExtendedSubscriptionResponseModel
@@ -4373,16 +6016,18 @@ components:
         is_allowed_to_fine_tune:
           type: boolean
           title: Is Allowed To Fine Tune
-        finetuning_state:
-          type: string
-          enum:
-            - not_started
-            - queued
-            - fine_tuning
-            - fine_tuned
-            - failed
-            - delayed
-          title: Finetuning State
+        state:
+          additionalProperties:
+            type: string
+            enum:
+              - not_started
+              - queued
+              - fine_tuning
+              - fine_tuned
+              - failed
+              - delayed
+          type: object
+          title: State
         verification_failures:
           items:
             type: string
@@ -4397,13 +6042,15 @@ components:
         language:
           type: string
           title: Language
-        finetuning_progress:
+        progress:
           additionalProperties:
             type: number
           type: object
-          title: Finetuning Progress
+          title: Progress
         message:
-          type: string
+          additionalProperties:
+            type: string
+          type: object
           title: Message
         dataset_duration_seconds:
           type: number
@@ -4423,7 +6070,7 @@ components:
       type: object
       required:
         - is_allowed_to_fine_tune
-        - finetuning_state
+        - state
         - verification_failures
         - verification_attempts_count
         - manual_verification_requested
@@ -4555,6 +6202,40 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
+    HistoryAlignmentResponseModel:
+      properties:
+        characters:
+          items:
+            type: string
+          type: array
+          title: Characters
+        character_start_times_seconds:
+          items:
+            type: number
+          type: array
+          title: Character Start Times Seconds
+        character_end_times_seconds:
+          items:
+            type: number
+          type: array
+          title: Character End Times Seconds
+      type: object
+      required:
+        - characters
+        - character_start_times_seconds
+        - character_end_times_seconds
+      title: HistoryAlignmentResponseModel
+    HistoryAlignmentsResponseModel:
+      properties:
+        alignment:
+          $ref: '#/components/schemas/HistoryAlignmentResponseModel'
+        normalized_alignment:
+          $ref: '#/components/schemas/HistoryAlignmentResponseModel'
+      type: object
+      required:
+        - alignment
+        - normalized_alignment
+      title: HistoryAlignmentsResponseModel
     InvoiceResponseModel:
       properties:
         amount_due_cents:
@@ -4628,6 +6309,9 @@ components:
         usage_character_count_7d:
           type: integer
           title: Usage Character Count 7D
+        play_api_usage_character_count_1y:
+          type: integer
+          title: Play Api Usage Character Count 1Y
         cloned_by_count:
           type: integer
           title: Cloned By Count
@@ -4658,6 +6342,9 @@ components:
         tiktok_username:
           type: string
           title: Tiktok Username
+        image_url:
+          type: string
+          title: Image Url
       type: object
       required:
         - public_owner_id
@@ -4675,6 +6362,7 @@ components:
         - preview_url
         - usage_character_count_1y
         - usage_character_count_7d
+        - play_api_usage_character_count_1y
         - cloned_by_count
         - rate
         - free_users_allowed
@@ -4725,6 +6413,15 @@ components:
         - request_time_unix
         - files
       title: ManualVerificationResponseModel
+    ModelRatesResponseModel:
+      properties:
+        character_cost_multiplier:
+          type: number
+          title: Character Cost Multiplier
+      type: object
+      required:
+        - character_cost_multiplier
+      title: ModelRatesResponseModel
     ModelResponseModel:
       properties:
         model_id:
@@ -4766,11 +6463,16 @@ components:
         max_characters_request_subscribed_user:
           type: integer
           title: Max Characters Request Subscribed User
+        maximum_text_length_per_request:
+          type: integer
+          title: Maximum Text Length Per Request
         languages:
           items:
             $ref: '#/components/schemas/LanguageResponseModel'
           type: array
           title: Languages
+        model_rates:
+          $ref: '#/components/schemas/ModelRatesResponseModel'
       type: object
       required:
         - model_id
@@ -4786,8 +6488,35 @@ components:
         - requires_alpha_access
         - max_characters_request_free_user
         - max_characters_request_subscribed_user
+        - maximum_text_length_per_request
         - languages
+        - model_rates
       title: ModelResponseModel
+    ProfilePageResponseModel:
+      properties:
+        handle:
+          type: string
+          title: Handle
+        public_user_id:
+          type: string
+          title: Public User Id
+        name:
+          type: string
+          title: Name
+        bio:
+          type: string
+          title: Bio
+        profile_picture:
+          type: string
+          title: Profile Picture
+      type: object
+      required:
+        - handle
+        - public_user_id
+        - name
+        - bio
+        - profile_picture
+      title: ProfilePageResponseModel
     ProjectExtendedResponseModel:
       properties:
         project_id:
@@ -4882,6 +6611,7 @@ components:
           enum:
             - default
             - converting
+            - in_queue
           title: State
       type: object
       required:
@@ -4913,6 +6643,10 @@ components:
         name:
           type: string
           title: Name
+        audio_upload:
+          $ref: '#/components/schemas/ProjectSnapshotUploadResponseModel'
+        zip_upload:
+          $ref: '#/components/schemas/ProjectSnapshotUploadResponseModel'
       type: object
       required:
         - project_snapshot_id
@@ -4920,6 +6654,23 @@ components:
         - created_at_unix
         - name
       title: ProjectSnapshotResponseModel
+    ProjectSnapshotUploadResponseModel:
+      properties:
+        status:
+          type: string
+          enum:
+            - success
+            - in_queue
+            - pending
+            - failed
+          title: Status
+        acx_volume_normalization:
+          type: boolean
+          title: Acx Volume Normalization
+      type: object
+      required:
+        - status
+      title: ProjectSnapshotUploadResponseModel
     ProjectSnapshotsResponseModel:
       properties:
         snapshots:
@@ -5110,6 +6861,8 @@ components:
             - TTS
             - STS
           title: Source
+        alignments:
+          $ref: '#/components/schemas/HistoryAlignmentsResponseModel'
       type: object
       required:
         - history_item_id
@@ -5129,7 +6882,7 @@ components:
         - share_link_id
         - source
       title: SpeechHistoryItemResponseModel
-    SsoProviderDBModel:
+    SsoProviderResponseModel:
       properties:
         provider_type:
           type: string
@@ -5150,7 +6903,7 @@ components:
         - provider_type
         - provider_id
         - domains
-      title: SsoProviderDBModel
+      title: SsoProviderResponseModel
     SubscriptionResponseModel:
       properties:
         tier:
@@ -5216,6 +6969,12 @@ components:
             - monthly_period
             - annual_period
           title: Billing Period
+        character_refresh_period:
+          type: string
+          enum:
+            - monthly_period
+            - annual_period
+          title: Character Refresh Period
       type: object
       required:
         - tier
@@ -5234,7 +6993,27 @@ components:
         - currency
         - status
         - billing_period
+        - character_refresh_period
       title: SubscriptionResponseModel
+    UsageCharactersResponseModel:
+      properties:
+        time:
+          items:
+            type: integer
+          type: array
+          title: Time
+        usage:
+          additionalProperties:
+            items:
+              type: integer
+            type: array
+          type: object
+          title: Usage
+      type: object
+      required:
+        - time
+        - usage
+      title: UsageCharactersResponseModel
     UserResponseModel:
       properties:
         subscription:
@@ -5251,9 +7030,19 @@ components:
         is_onboarding_completed:
           type: boolean
           title: Is Onboarding Completed
+        is_onboarding_checklist_completed:
+          type: boolean
+          title: Is Onboarding Checklist Completed
         first_name:
           type: string
           title: First Name
+        is_api_key_hashed:
+          type: boolean
+          title: Is Api Key Hashed
+          default: false
+        xi_api_key_preview:
+          type: string
+          title: Xi Api Key Preview
       type: object
       required:
         - subscription
@@ -5261,6 +7050,7 @@ components:
         - xi_api_key
         - can_use_delayed_payment_methods
         - is_onboarding_completed
+        - is_onboarding_checklist_completed
       title: UserResponseModel
     ValidationError:
       properties:
@@ -5421,6 +7211,10 @@ components:
         permission_on_resource:
           type: string
           title: Permission On Resource
+        is_legacy:
+          type: boolean
+          title: Is Legacy
+          default: false
       type: object
       required:
         - voice_id
@@ -5514,10 +7308,14 @@ components:
             - generated
             - professional
             - high_quality
+            - famous
           title: Category
         reader_app_enabled:
           type: boolean
           title: Reader App Enabled
+        image_url:
+          type: string
+          title: Image Url
         ban_reason:
           type: string
           title: Ban Reason
@@ -5583,6 +7381,7 @@ components:
         - featured
         - category
         - reader_app_enabled
+        - image_url
         - ban_reason
         - liked_by_count
         - cloned_by_count

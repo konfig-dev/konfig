@@ -5240,6 +5240,43 @@ paths:
       security:
         - scope: []
           user: []
+  /basic/notification/channel:
+    post:
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommonResponse'
+        '400':
+          description: Bad Request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NotificationRequest'
+      security:
+        - user:
+            - developer
+        - server: []
+    parameters:
+      - name: X-BEAM-SCOPE
+        in: header
+        schema:
+          type: string
+        description: >-
+          Customer and project scope. This should be in the form of
+          '<customer-id>.<project-id>'.
+        required: true
+      - name: X-BEAM-GAMERTAG
+        in: header
+        schema:
+          type: string
+        description: >-
+          Override the Gamer Tag of the player. This is generally inferred by
+          the auth token.
+        required: false
   /basic/notification/player:
     post:
       responses:
@@ -5257,25 +5294,26 @@ paths:
             schema:
               $ref: '#/components/schemas/NotificationRequest'
       security:
-        - scope: []
-  /basic/notification/global:
-    post:
-      responses:
-        '200':
-          description: ''
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CommonResponse'
-        '400':
-          description: Bad Request
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/NotificationRequest'
-      security:
-        - scope: []
+        - user:
+            - developer
+        - server: []
+    parameters:
+      - name: X-BEAM-SCOPE
+        in: header
+        schema:
+          type: string
+        description: >-
+          Customer and project scope. This should be in the form of
+          '<customer-id>.<project-id>'.
+        required: true
+      - name: X-BEAM-GAMERTAG
+        in: header
+        schema:
+          type: string
+        description: >-
+          Override the Gamer Tag of the player. This is generally inferred by
+          the auth token.
+        required: false
   /basic/notification/custom:
     post:
       responses:
@@ -5293,7 +5331,26 @@ paths:
             schema:
               $ref: '#/components/schemas/NotificationRequest'
       security:
-        - scope: []
+        - user:
+            - developer
+        - server: []
+    parameters:
+      - name: X-BEAM-SCOPE
+        in: header
+        schema:
+          type: string
+        description: >-
+          Customer and project scope. This should be in the form of
+          '<customer-id>.<project-id>'.
+        required: true
+      - name: X-BEAM-GAMERTAG
+        in: header
+        schema:
+          type: string
+        description: >-
+          Override the Gamer Tag of the player. This is generally inferred by
+          the auth token.
+        required: false
   /basic/notification/server:
     post:
       responses:
@@ -5311,8 +5368,26 @@ paths:
             schema:
               $ref: '#/components/schemas/ServerEvent'
       security:
-        - scope: []
-          user: []
+        - user:
+            - developer
+        - server: []
+    parameters:
+      - name: X-BEAM-SCOPE
+        in: header
+        schema:
+          type: string
+        description: >-
+          Customer and project scope. This should be in the form of
+          '<customer-id>.<project-id>'.
+        required: true
+      - name: X-BEAM-GAMERTAG
+        in: header
+        schema:
+          type: string
+        description: >-
+          Override the Gamer Tag of the player. This is generally inferred by
+          the auth token.
+        required: false
   /basic/notification/generic:
     post:
       responses:
@@ -5330,7 +5405,26 @@ paths:
             schema:
               $ref: '#/components/schemas/NotificationRequest'
       security:
-        - scope: []
+        - user:
+            - developer
+        - server: []
+    parameters:
+      - name: X-BEAM-SCOPE
+        in: header
+        schema:
+          type: string
+        description: >-
+          Customer and project scope. This should be in the form of
+          '<customer-id>.<project-id>'.
+        required: true
+      - name: X-BEAM-GAMERTAG
+        in: header
+        schema:
+          type: string
+        description: >-
+          Override the Gamer Tag of the player. This is generally inferred by
+          the auth token.
+        required: false
   /basic/notification/:
     get:
       responses:
@@ -5343,8 +5437,25 @@ paths:
         '400':
           description: Bad Request
       security:
-        - scope: []
-          user: []
+        - user: []
+        - server: []
+    parameters:
+      - name: X-BEAM-SCOPE
+        in: header
+        schema:
+          type: string
+        description: >-
+          Customer and project scope. This should be in the form of
+          '<customer-id>.<project-id>'.
+        required: true
+      - name: X-BEAM-GAMERTAG
+        in: header
+        schema:
+          type: string
+        description: >-
+          Override the Gamer Tag of the player. This is generally inferred by
+          the auth token.
+        required: false
   /basic/notification/game:
     post:
       responses:
@@ -5362,7 +5473,26 @@ paths:
             schema:
               $ref: '#/components/schemas/NotificationRequest'
       security:
-        - scope: []
+        - user:
+            - developer
+        - server: []
+    parameters:
+      - name: X-BEAM-SCOPE
+        in: header
+        schema:
+          type: string
+        description: >-
+          Customer and project scope. This should be in the form of
+          '<customer-id>.<project-id>'.
+        required: true
+      - name: X-BEAM-GAMERTAG
+        in: header
+        schema:
+          type: string
+        description: >-
+          Override the Gamer Tag of the player. This is generally inferred by
+          the auth token.
+        required: false
   /basic/session/history:
     get:
       responses:
@@ -12475,36 +12605,45 @@ components:
           type: string
         meta:
           type: object
-          additionalProperties: true
+          additionalProperties:
+            type: string
         messageFull:
           type: string
     ServerEvent:
       properties:
         event:
           type: string
-        payload: {}
+        payload:
+          type: string
         toAll:
           type: boolean
       additionalProperties: false
       title: Server Event
       type: object
       required:
+        - event
         - toAll
     NotificationRequest:
       properties:
         payload:
           $ref: '#/components/schemas/NotificationRequestData'
-        dbid:
-          type: integer
         customChannelSuffix:
           type: string
+        dbid:
+          type: integer
+          format: int64
+        useSignalWhenPossible:
+          type: boolean
         dbids:
           type: array
           items:
             type: integer
+            format: int64
       additionalProperties: false
       title: Notification Request
       type: object
+      required:
+        - payload
     SubscriberDetailsResponse:
       properties:
         customChannelPrefix:
@@ -12513,6 +12652,10 @@ components:
           type: string
         authenticationKey:
           type: string
+        playerChannels:
+          type: array
+          items:
+            type: string
         gameGlobalNotificationChannel:
           type: string
         gameNotificationChannel:
@@ -12524,6 +12667,14 @@ components:
       additionalProperties: false
       title: Subscriber Details Response
       type: object
+      required:
+        - subscribeKey
+        - gameNotificationChannel
+        - playerChannel
+        - playerForRealmChannel
+        - customChannelPrefix
+        - authenticationKey
+        - playerChannels
     SessionHistoryRequest:
       properties:
         dbid:
@@ -14213,6 +14364,11 @@ components:
         header.
       scheme: bearer
       bearerFormat: Bearer <Access Token>
+    server:
+      type: apiKey
+      name: X-DE-SIGNATURE
+      in: header
+      description: Signed Request authentication using project secret key.
 security: []
 externalDocs:
   description: Beamable Documentation

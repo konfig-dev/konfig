@@ -729,6 +729,10 @@ paths:
                         type:
                           - boolean
                           - 'null'
+                      subcategory_count:
+                        type:
+                          - integer
+                          - 'null'
                       sort_order:
                         type:
                           - string
@@ -870,6 +874,7 @@ paths:
                       - can_edit
                       - topic_template
                       - has_children
+                      - subcategory_count
                       - sort_order
                       - sort_ascending
                       - show_subcategory_list
@@ -1021,6 +1026,10 @@ paths:
                                 - 'null'
                             has_children:
                               type: boolean
+                            subcategory_count:
+                              type:
+                                - integer
+                                - 'null'
                             sort_order:
                               type:
                                 - string
@@ -1102,6 +1111,7 @@ paths:
                             - can_edit
                             - topic_template
                             - has_children
+                            - subcategory_count
                             - sort_order
                             - sort_ascending
                             - show_subcategory_list
@@ -1206,6 +1216,10 @@ paths:
                       has_children:
                         type:
                           - boolean
+                          - 'null'
+                      subcategory_count:
+                        type:
+                          - integer
                           - 'null'
                       sort_order:
                         type:
@@ -1349,6 +1363,7 @@ paths:
                       - topic_template
                       - form_template_ids
                       - has_children
+                      - subcategory_count
                       - sort_order
                       - sort_ascending
                       - show_subcategory_list
@@ -1567,7 +1582,7 @@ paths:
                                     type: integer
                                   primary_group_id:
                                     type:
-                                      - string
+                                      - integer
                                       - 'null'
                                 required:
                                   - extras
@@ -1687,6 +1702,10 @@ paths:
                       has_children:
                         type:
                           - boolean
+                          - 'null'
+                      subcategory_count:
+                        type:
+                          - integer
                           - 'null'
                       sort_order:
                         type:
@@ -1829,6 +1848,7 @@ paths:
                       - can_edit
                       - topic_template
                       - has_children
+                      - subcategory_count
                       - sort_order
                       - sort_ascending
                       - show_subcategory_list
@@ -2307,9 +2327,9 @@ paths:
                         type:
                           - string
                           - 'null'
-                      smtp_ssl:
+                      smtp_ssl_mode:
                         type:
-                          - string
+                          - integer
                           - 'null'
                       imap_enabled:
                         type: boolean
@@ -2435,7 +2455,7 @@ paths:
                       - automatic_membership_email_domains
                       - smtp_server
                       - smtp_port
-                      - smtp_ssl
+                      - smtp_ssl_mode
                       - imap_server
                       - imap_port
                       - imap_ssl
@@ -3220,7 +3240,7 @@ paths:
                             - 'null'
                         flair_group_id:
                           type:
-                            - string
+                            - integer
                             - 'null'
                         version:
                           type: integer
@@ -3277,7 +3297,7 @@ paths:
                           type: boolean
                         reviewable_id:
                           type:
-                            - string
+                            - integer
                             - 'null'
                         reviewable_score_count:
                           type: integer
@@ -3369,7 +3389,7 @@ paths:
                       - 'null'
                   flair_group_id:
                     type:
-                      - string
+                      - integer
                       - 'null'
                   version:
                     type: integer
@@ -3432,7 +3452,7 @@ paths:
                     type: boolean
                   reviewable_id:
                     type:
-                      - string
+                      - integer
                       - 'null'
                   reviewable_score_count:
                     type: integer
@@ -3562,7 +3582,7 @@ paths:
           required: true
       responses:
         '200':
-          description: single post
+          description: single reviewable post
           content:
             application/json:
               schema:
@@ -3628,7 +3648,7 @@ paths:
                       - 'null'
                   flair_group_id:
                     type:
-                      - string
+                      - integer
                       - 'null'
                   version:
                     type: integer
@@ -3697,7 +3717,7 @@ paths:
                     type: boolean
                   reviewable_id:
                     type:
-                      - string
+                      - integer
                       - 'null'
                   reviewable_score_count:
                     type: integer
@@ -3844,7 +3864,7 @@ paths:
                           - 'null'
                       flair_group_id:
                         type:
-                          - string
+                          - integer
                           - 'null'
                       version:
                         type: integer
@@ -3909,7 +3929,7 @@ paths:
                         type: boolean
                       reviewable_id:
                         type:
-                          - string
+                          - integer
                           - 'null'
                       reviewable_score_count:
                         type: integer
@@ -4118,7 +4138,7 @@ paths:
                         - 'null'
                     flair_group_id:
                       type:
-                        - string
+                        - integer
                         - 'null'
                     version:
                       type: integer
@@ -4192,7 +4212,7 @@ paths:
                       type: boolean
                     reviewable_id:
                       type:
-                        - string
+                        - integer
                         - 'null'
                     reviewable_score_count:
                       type: integer
@@ -4434,7 +4454,7 @@ paths:
                     type: object
                   reviewable_id:
                     type:
-                      - string
+                      - integer
                       - 'null'
                   reviewable_score_count:
                     type: integer
@@ -4596,7 +4616,7 @@ paths:
                                     type: integer
                                   primary_group_id:
                                     type:
-                                      - string
+                                      - integer
                                       - 'null'
                             participants:
                               type: array
@@ -4613,7 +4633,7 @@ paths:
                                     type: integer
                                   primary_group_id:
                                     type:
-                                      - string
+                                      - integer
                                       - 'null'
   /topics/private-messages-sent/{username}.json:
     get:
@@ -4758,7 +4778,7 @@ paths:
                                     type: integer
                                   primary_group_id:
                                     type:
-                                      - string
+                                      - integer
                                       - 'null'
                             participants:
                               type: array
@@ -5129,15 +5149,12 @@ paths:
                         type: integer
                       suggested_topics:
                         type: integer
-                      admin_guide:
-                        type: integer
                     required:
                       - first_notification
                       - topic_timeline
                       - post_menu
                       - topic_notification_levels
                       - suggested_topics
-                      - admin_guide
                   groups:
                     type: array
                     items:
@@ -5204,7 +5221,13 @@ paths:
                           type: string
                         is_flag:
                           type: boolean
-                        is_custom_flag:
+                        require_message:
+                          type: boolean
+                        enabled:
+                          type: boolean
+                        applies_to:
+                          type: array
+                        is_used:
                           type: boolean
                       required:
                         - id
@@ -5213,7 +5236,10 @@ paths:
                         - description
                         - short_description
                         - is_flag
-                        - is_custom_flag
+                        - require_message
+                        - enabled
+                        - applies_to
+                        - is_used
                   topic_flag_types:
                     type: array
                     items:
@@ -5236,7 +5262,13 @@ paths:
                           type: string
                         is_flag:
                           type: boolean
-                        is_custom_flag:
+                        require_message:
+                          type: boolean
+                        enabled:
+                          type: boolean
+                        applies_to:
+                          type: array
+                        is_used:
                           type: boolean
                       required:
                         - id
@@ -5245,7 +5277,10 @@ paths:
                         - description
                         - short_description
                         - is_flag
-                        - is_custom_flag
+                        - require_message
+                        - enabled
+                        - applies_to
+                        - is_used
                   can_create_tag:
                     type: boolean
                   can_tag_topics:
@@ -5377,6 +5412,10 @@ paths:
                             - 'null'
                         has_children:
                           type: boolean
+                        subcategory_count:
+                          type:
+                            - integer
+                            - 'null'
                         sort_order:
                           type:
                             - string
@@ -5471,6 +5510,7 @@ paths:
                         - notification_level
                         - topic_template
                         - has_children
+                        - subcategory_count
                         - sort_order
                         - sort_ascending
                         - show_subcategory_list
@@ -5517,6 +5557,8 @@ paths:
                   whispers_allowed_groups_names:
                     type: array
                   denied_emojis:
+                    type: array
+                  valid_flag_applies_to_types:
                     type: array
                   navigation_menu_site_top_tags:
                     type: array
@@ -5584,6 +5626,10 @@ paths:
                     type: string
                   login_required:
                     type: boolean
+                  locale:
+                    type: string
+                  include_in_discourse_discover:
+                    type: boolean
                   mobile_logo_url:
                     type: string
                 required:
@@ -5596,6 +5642,8 @@ paths:
                   - header_primary_color
                   - header_background_color
                   - login_required
+                  - locale
+                  - include_in_discourse_discover
                   - mobile_logo_url
   /tag_groups.json:
     get:
@@ -5966,7 +6014,7 @@ paths:
                                     type: integer
                                   primary_group_id:
                                     type:
-                                      - string
+                                      - integer
                                       - 'null'
   /t/{id}/posts.json:
     get:
@@ -6668,8 +6716,6 @@ paths:
                     type:
                       - string
                       - 'null'
-                  summarizable:
-                    type: boolean
                   details:
                     type: object
                     additionalProperties: false
@@ -6752,7 +6798,7 @@ paths:
                                 - 'null'
                             flair_group_id:
                               type:
-                                - string
+                                - integer
                                 - 'null'
                             admin:
                               type: boolean
@@ -6877,7 +6923,6 @@ paths:
                   - show_read_indicator
                   - thumbnails
                   - slow_mode_enabled_until
-                  - summarizable
                   - details
     delete:
       summary: Remove a topic
@@ -7257,7 +7302,7 @@ paths:
                                     type: integer
                                   primary_group_id:
                                     type:
-                                      - string
+                                      - integer
                                       - 'null'
   /top.json:
     get:
@@ -7410,7 +7455,7 @@ paths:
                                     type: integer
                                   primary_group_id:
                                     type:
-                                      - string
+                                      - integer
                                       - 'null'
   /t/{id}/notifications.json:
     post:
@@ -7549,7 +7594,7 @@ paths:
                     type: boolean
                   category_id:
                     type:
-                      - string
+                      - integer
                       - 'null'
       requestBody:
         content:
@@ -8533,7 +8578,7 @@ paths:
             type: string
       responses:
         '200':
-          description: user response
+          description: user with primary group response
           content:
             application/json:
               schema:
@@ -8570,7 +8615,11 @@ paths:
                         type: boolean
                       can_ignore_user:
                         type: boolean
+                      can_ignore_users:
+                        type: boolean
                       can_mute_user:
+                        type: boolean
+                      can_mute_users:
                         type: boolean
                       can_send_private_messages:
                         type: boolean
@@ -8619,7 +8668,7 @@ paths:
                         type: integer
                       primary_group_id:
                         type:
-                          - string
+                          - integer
                           - 'null'
                       primary_group_name:
                         type:
@@ -8627,7 +8676,7 @@ paths:
                           - 'null'
                       flair_group_id:
                         type:
-                          - string
+                          - integer
                           - 'null'
                       flair_name:
                         type:
@@ -8661,7 +8710,7 @@ paths:
                         type: boolean
                       uploaded_avatar_id:
                         type:
-                          - string
+                          - integer
                           - 'null'
                       has_title_badges:
                         type: boolean
@@ -9300,7 +9349,11 @@ paths:
                         type: boolean
                       can_ignore_user:
                         type: boolean
+                      can_ignore_users:
+                        type: boolean
                       can_mute_user:
+                        type: boolean
+                      can_mute_users:
                         type: boolean
                       can_send_private_messages:
                         type: boolean
@@ -9349,7 +9402,7 @@ paths:
                         type: integer
                       primary_group_id:
                         type:
-                          - string
+                          - integer
                           - 'null'
                       primary_group_name:
                         type:
@@ -9357,7 +9410,7 @@ paths:
                           - 'null'
                       flair_group_id:
                         type:
-                          - string
+                          - integer
                           - 'null'
                       flair_name:
                         type:
@@ -9391,7 +9444,7 @@ paths:
                         type: boolean
                       uploaded_avatar_id:
                         type:
-                          - string
+                          - integer
                           - 'null'
                       has_title_badges:
                         type: boolean
@@ -9992,7 +10045,11 @@ paths:
                         type: boolean
                       can_ignore_user:
                         type: boolean
+                      can_ignore_users:
+                        type: boolean
                       can_mute_user:
+                        type: boolean
+                      can_mute_users:
                         type: boolean
                       can_send_private_messages:
                         type: boolean
@@ -10041,7 +10098,7 @@ paths:
                         type: integer
                       primary_group_id:
                         type:
-                          - string
+                          - integer
                           - 'null'
                       primary_group_name:
                         type:
@@ -10049,7 +10106,7 @@ paths:
                           - 'null'
                       flair_group_id:
                         type:
-                          - string
+                          - integer
                           - 'null'
                       flair_name:
                         type:
@@ -10083,7 +10140,7 @@ paths:
                         type: boolean
                       uploaded_avatar_id:
                         type:
-                          - string
+                          - integer
                           - 'null'
                       has_title_badges:
                         type: boolean
@@ -10974,7 +11031,7 @@ paths:
                       - 'null'
                   primary_group_id:
                     type:
-                      - string
+                      - integer
                       - 'null'
                   badge_count:
                     type: integer
@@ -11199,7 +11256,7 @@ paths:
                             - 'null'
                         flair_group_id:
                           type:
-                            - string
+                            - integer
                             - 'null'
                         bio_raw:
                           type:

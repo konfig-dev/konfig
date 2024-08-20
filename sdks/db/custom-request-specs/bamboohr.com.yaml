@@ -15,6 +15,103 @@ security:
   - auth: []
   - basic: []
 paths:
+  /{companyDomain}/v1/company_information/:
+    get:
+      description: Gets Company Information
+      summary: Get Company Information
+      tags:
+        - Employees
+      operationId: Get Company Information
+      parameters:
+        - $ref: '#/components/parameters/CompanyDomainParameter'
+      responses:
+        '200':
+          description: Company Information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  legalName:
+                    type: string
+                    description: The legal name of the company
+                  displayName:
+                    type: string
+                    description: The display name of the company
+                  address:
+                    type: object
+                    properties:
+                      line1:
+                        type: string
+                        description: The first line of the address
+                      line2:
+                        type: string
+                        description: The second line of the address
+                      city:
+                        type: string
+                        description: The city of the address
+                      state:
+                        type: string
+                        description: The state of the address
+                      zip:
+                        type: string
+                        description: The zip code of the address
+                  phone:
+                    type: string
+                    description: The phone number of the company
+                additionalProperties: false
+                example:
+                  legalName: BambooHR
+                  displayName: BambooHR
+                  address:
+                    line1: 335 S 560 W
+                    line2: Suite 200
+                    city: Lindon
+                    state: UT
+                    zip: '84042'
+                  phone: 801-724-6600
+      security:
+        - basic: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /{companyDomain}/v1/company_eins/:
+    get:
+      description: Gets Company EINs
+      summary: Get Company EINs
+      tags:
+        - Employees
+      operationId: Get Company EINs
+      parameters:
+        - $ref: '#/components/parameters/CompanyDomainParameter'
+      responses:
+        '200':
+          description: Company EINs
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  eins:
+                    type: array
+                    items:
+                      type: string
+                    description: The EINs of the company
+                additionalProperties: false
+                example:
+                  eins:
+                    - '263008157'
+      security:
+        - basic: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
   /{companyDomain}/v1/employees/{id}/:
     get:
       description: >-
@@ -2781,6 +2878,53 @@ paths:
         AllowDynamicQueryParameters: false
         AllowDynamicFormParameters: false
         IsMultiContentStreaming: false
+  /{companyDomain}/v1_2/benefit/company_benefit/{id}:
+    post:
+      description: Update a company benefit
+      summary: Update a company benefit
+      tags:
+        - Benefits
+      operationId: update-company-benefit-properties
+      parameters:
+        - $ref: '#/components/parameters/CompanyDomainParameter'
+        - name: id
+          in: path
+          required: true
+          description: '{id} is the company benefit ID.'
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompanyBenefitUpdateRequest'
+        required: true
+      responses:
+        '204':
+          description: Successful update will return a 204 - No content response.
+      security:
+        - basic: []
+      x-unitTests:
+        - request:
+            method: POST
+            uri: /benefit/company_benefit/{id}
+            headers:
+              Authorization: Basic {{apiKey}}
+          expectedResponse:
+            x-allowExtraHeaders: true
+            x-bodyMatchMode: NONE
+            x-arrayOrderedMatching: false
+            x-arrayCheckCount: false
+            x-matchResponseSchema: true
+            headers: {}
+          x-testShouldPass: true
+          x-testEnabled: true
+          x-testName: 'HE: Update a Company Benefit'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
   /{companyDomain}/v1/benefit/company_benefit/type:
     get:
       description: Get a list of company benefit types
@@ -5499,7 +5643,7 @@ paths:
       description: Get all timesheet entries for a given period of time.
       summary: Get Timesheet Entries
       tags:
-        - Time Tracking - Private Beta
+        - Time Tracking - Public Beta
       operationId: get-timesheet-entries
       parameters:
         - $ref: '#/components/parameters/CompanyDomainParameter'
@@ -5554,7 +5698,7 @@ paths:
       description: Add or edit timesheet clock entries.
       summary: Add/Edit Timesheet Clock Entries
       tags:
-        - Time Tracking - Private Beta
+        - Time Tracking - Public Beta
       operationId: store-timesheet-clock-entries
       parameters:
         - $ref: '#/components/parameters/CompanyDomainParameter'
@@ -5651,7 +5795,7 @@ paths:
       description: Delete timesheet clock entries.
       summary: Delete Timesheet Clock Entries
       tags:
-        - Time Tracking - Private Beta
+        - Time Tracking - Public Beta
       operationId: delete-timesheet-clock-entries
       parameters:
         - $ref: '#/components/parameters/CompanyDomainParameter'
@@ -5699,7 +5843,7 @@ paths:
       description: Add or edit timesheet hour entries.
       summary: Add/Edit Timesheet Hour Entries
       tags:
-        - Time Tracking - Private Beta
+        - Time Tracking - Public Beta
       operationId: store-timesheet-hour-entries
       parameters:
         - $ref: '#/components/parameters/CompanyDomainParameter'
@@ -5787,7 +5931,7 @@ paths:
       description: Delete timesheet hour entries.
       summary: Delete Timesheet Hour Entries
       tags:
-        - Time Tracking - Private Beta
+        - Time Tracking - Public Beta
       operationId: delete-timesheet-hour-entries
       parameters:
         - $ref: '#/components/parameters/CompanyDomainParameter'
@@ -5835,7 +5979,7 @@ paths:
       description: Clock in an employee.
       summary: Add Timesheet Clock-In Entry
       tags:
-        - Time Tracking - Private Beta
+        - Time Tracking - Public Beta
       operationId: clock-in-employee
       parameters:
         - $ref: '#/components/parameters/CompanyDomainParameter'
@@ -5867,6 +6011,18 @@ paths:
                   type: string
                   example: Back from lunch.
                   description: The note that should be associated with the timesheet entry
+                date:
+                  type: string
+                  description: Date for the timesheet entry. Must be in YYYY-MM-DD format.
+                  example: '2024-01-31'
+                start:
+                  type: string
+                  description: The time for the clock in. In 24 hour format HH:MM
+                  example: '13:00'
+                timezone:
+                  type: string
+                  example: America/Denver
+                  description: The timezone associated with the clock in.
       responses:
         '200':
           description: Success.
@@ -5899,7 +6055,7 @@ paths:
       description: Clock out an employee.
       summary: Add Timesheet Clock-Out Entry
       tags:
-        - Time Tracking - Private Beta
+        - Time Tracking - Public Beta
       operationId: clock-out-employee
       parameters:
         - $ref: '#/components/parameters/CompanyDomainParameter'
@@ -5909,6 +6065,24 @@ paths:
           description: id of the employee to clock out.
           schema:
             type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                  description: Date for the timesheet entry. Must be in YYYY-MM-DD format.
+                  example: '2024-01-31'
+                end:
+                  type: string
+                  description: The time for the clock out. In 24 hour format HH:MM
+                  example: '13:00'
+                timezone:
+                  type: string
+                  example: America/Denver
+                  description: The timezone associated with the clock out.
       responses:
         '200':
           description: Success.
@@ -5941,7 +6115,7 @@ paths:
       description: Get the projects an employee can track time for.
       summary: Get Employee Projects
       tags:
-        - Time Tracking - Private Beta
+        - Time Tracking - Public Beta
       operationId: get-employee-projects
       parameters:
         - $ref: '#/components/parameters/CompanyDomainParameter'
@@ -5979,7 +6153,7 @@ paths:
       description: Create a time tracking project with optional tasks.
       summary: Create a Time Tracking Project
       tags:
-        - Time Tracking - Private Beta
+        - Time Tracking - Public Beta
       operationId: create-time-tracking-project
       parameters:
         - $ref: '#/components/parameters/CompanyDomainParameter'
@@ -11503,6 +11677,26 @@ components:
             - 'yes'
             - 'no'
             - null
+    CompanyBenefitUpdateRequest:
+      title: Company Benefit Update Request
+      type: object
+      properties:
+        properties:
+          description: Property
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                enum:
+                  - endYmd
+                  - url
+                  - ssoLoginPrompt
+                  - ssoLoginUrl
+                  - externalId
+              value:
+                type: string
     CompanyBenefitRequest:
       title: Company Benefit Request
       type: object

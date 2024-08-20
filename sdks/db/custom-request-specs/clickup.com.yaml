@@ -16,14 +16,43 @@ info:
   version: '2.0'
 jsonSchemaDialect: https://json-schema.org/draft/2020-12/schema
 servers:
-  - url: https://api.clickup.com/api/v2
+  - url: https://api.clickup.com/api/
     description: ClickUp
     variables: {}
   - url: https://a00fb6e0-339c-4201-972f-503b9932d17a.remockly.com
     description: Mock Server
     variables: {}
+security:
+  - Authorization Token: []
+tags:
+  - name: Authorization
+  - name: Attachments
+  - name: Comments
+  - name: Custom Task Types
+  - name: Custom Fields
+  - name: Docs
+  - name: Folders
+  - name: Goals
+  - name: Guests
+  - name: Lists
+  - name: Members
+  - name: Roles
+  - name: Shared Hierarchy
+  - name: Spaces
+  - name: Tags
+  - name: Tasks
+  - name: Task Checklists
+  - name: Task Relationships
+  - name: Task Templates
+  - name: Teams - Workspaces
+  - name: Teams - User Groups
+  - name: Time Tracking
+  - name: Time Tracking (Legacy)
+  - name: Users
+  - name: Views
+  - name: Webhooks
 paths:
-  /task/{task_id}/attachment:
+  /v2/task/{task_id}/attachment:
     post:
       summary: Create Task Attachment
       tags:
@@ -98,7 +127,7 @@ paths:
                 url: >-
                   https://attachments-public.clickup.com/ac434d4e-8b1c-4571-951b-866b6d9f2ee6/logo_small.png
       deprecated: false
-  /oauth/token:
+  /v2/oauth/token:
     post:
       summary: Get Access Token
       tags:
@@ -152,7 +181,7 @@ paths:
       security: []
       x-hideTryItPanel: true
     parameters: []
-  /user:
+  /v2/user:
     get:
       summary: Get Authorized User
       tags:
@@ -176,7 +205,7 @@ paths:
                   profilePicture: https://clickup.com/avatar.jpg
       deprecated: false
     parameters: []
-  /team:
+  /v2/team:
     get:
       summary: Get Authorized Teams (Workspaces)
       tags:
@@ -207,7 +236,7 @@ paths:
                           profilePicture: https://clickup.com/avatar.jpg
       deprecated: false
     parameters: []
-  /task/{task_id}/checklist:
+  /v2/task/{task_id}/checklist:
     post:
       summary: Create Checklist
       tags:
@@ -276,7 +305,7 @@ paths:
                   items: []
       deprecated: false
     parameters: []
-  /checklist/{checklist_id}:
+  /v2/checklist/{checklist_id}:
     put:
       summary: Edit Checklist
       tags:
@@ -345,7 +374,7 @@ paths:
               example: {}
       deprecated: false
     parameters: []
-  /checklist/{checklist_id}/checklist_item:
+  /v2/checklist/{checklist_id}/checklist_item:
     post:
       summary: Create Checklist Item
       tags:
@@ -407,7 +436,7 @@ paths:
                       children: []
       deprecated: false
     parameters: []
-  /checklist/{checklist_id}/checklist_item/{checklist_item_id}:
+  /v2/checklist/{checklist_id}/checklist_item/{checklist_item_id}:
     put:
       summary: Edit Checklist Item
       tags:
@@ -515,7 +544,7 @@ paths:
               example: {}
       deprecated: false
     parameters: []
-  /task/{task_id}/comment:
+  /v2/task/{task_id}/comment:
     get:
       summary: Get Task Comments
       description: >-
@@ -619,6 +648,7 @@ paths:
                         https://attachments-public.clickup.com/profilePictures/183_abc.jpg
                     reactions: []
                     date: '1568036964079'
+                    reply_count: '1'
       deprecated: false
     post:
       summary: Create Task Comment
@@ -669,6 +699,7 @@ paths:
             example:
               comment_text: Task comment content
               assignee: 183
+              group_assignee: dd01f92f-48ca-446d-88a1-0beb0e8f5f14
               notify_all: true
         required: true
       responses:
@@ -685,7 +716,7 @@ paths:
                 date: 1568036964079
       deprecated: false
     parameters: []
-  /view/{view_id}/comment:
+  /v2/view/{view_id}/comment:
     get:
       summary: Get Chat View Comments
       description: >-
@@ -753,6 +784,7 @@ paths:
                     assigned_by: null
                     reactions: []
                     date: '1568036964079'
+                    reply_count: '1'
       deprecated: false
     post:
       summary: Create Chat View Comment
@@ -794,7 +826,7 @@ paths:
                 date: 1568037065216
       deprecated: false
     parameters: []
-  /list/{list_id}/comment:
+  /v2/list/{list_id}/comment:
     get:
       summary: Get List Comments
       description: >-
@@ -877,6 +909,7 @@ paths:
                         https://attachments-public.clickup.com/profilePictures/183_abc.jpg
                     reactions: []
                     date: '1568036964079'
+                    reply_count: '1'
       deprecated: false
     post:
       summary: Create List Comment
@@ -920,7 +953,7 @@ paths:
                 date: 1568037341249
       deprecated: false
     parameters: []
-  /comment/{comment_id}:
+  /v2/comment/{comment_id}:
     put:
       summary: Update Comment
       tags:
@@ -949,6 +982,7 @@ paths:
             example:
               comment_text: Updated comment content
               assignee: 183
+              group_assignee: dd01f92f-48ca-446d-88a1-0beb0e8f5f14
               resolved: true
         required: true
       responses:
@@ -995,12 +1029,115 @@ paths:
               example: {}
       deprecated: false
     parameters: []
-  /list/{list_id}/field:
+  /v2/comment/{comment_id}/reply:
     get:
-      summary: Get Accessible Custom Fields
+      summary: Get Threaded Comments
+      description: View threaded comments. The parent comment is not included.
+      tags:
+        - Comments
+      operationId: GetThreadedComments
+      parameters:
+        - name: comment_id
+          in: path
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: number
+            contentEncoding: double
+            examples:
+              - 456
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTaskCommentsresponse'
+              example:
+                comments:
+                  - id: '458'
+                    comment:
+                      - text: Task comment content
+                    comment_text: Task comment content
+                    user:
+                      id: 183
+                      username: John Doe
+                      initials: JD
+                      email: johndoe@gmail.com
+                      color: '#827718'
+                      profilePicture: >-
+                        https://attachments-public.clickup.com/profilePictures/183_abc.jpg
+                    resolved: false
+                    assignee:
+                      id: 183
+                      username: John Doe
+                      initials: JD
+                      email: johndoe@gmail.com
+                      color: '#827718'
+                      profilePicture: >-
+                        https://attachments-public.clickup.com/profilePictures/183_abc.jpg
+                    assigned_by:
+                      id: 183
+                      username: John Doe
+                      initials: JD
+                      email: johndoe@gmail.com
+                      color: '#827718'
+                      profilePicture: >-
+                        https://attachments-public.clickup.com/profilePictures/183_abc.jpg
+                    reactions: []
+                    date: '1568036964079'
+                    reply_count: '0'
+      deprecated: false
+    post:
+      summary: Create Threaded Comment
+      tags:
+        - Comments
+      description: Create a threaded comment.
+      operationId: CreateThreadedComment
+      parameters:
+        - name: comment_id
+          in: path
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: number
+            contentEncoding: double
+            examples:
+              - 456
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTaskCommentrequest'
+            example:
+              comment_text: Task comment content
+              assignee: 183
+              group_assignee: d01f92f-48ca-446d-88a1-0beb0e8f5f14
+              notify_all: true
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: object
+                examples:
+                  - {}
+                contentMediaType: application/json
+              example: {}
+      deprecated: false
+  /v2/list/{list_id}/field:
+    get:
+      summary: Get List Custom Fields
       tags:
         - Custom Fields
-      description: View the Custom Fields available on tasks in a specific List.
+      description: View the Custom Fields you have access to in a specific List.
       operationId: GetAccessibleCustomFields
       parameters:
         - name: list_id
@@ -1033,7 +1170,121 @@ paths:
                 $ref: '#/components/schemas/GetAccessibleCustomFieldsresponse'
       deprecated: false
     parameters: []
-  /task/{task_id}/field/{field_id}:
+  /v2/folder/{folder_id}/field:
+    get:
+      summary: Get Folder Custom Fields
+      tags:
+        - Custom Fields
+      description: View the Custom Fields you have access to in a specific Folder.
+      operationId: getFolderAvailableFields
+      parameters:
+        - name: folder_id
+          in: path
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: number
+            contentEncoding: double
+            examples:
+              - 123
+        - name: Content-Type
+          in: header
+          description: ''
+          required: true
+          style: simple
+          schema:
+            const: application/json
+            type: string
+            examples:
+              - application/json
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetFolderAvailableFieldsresponse'
+      deprecated: false
+    parameters: []
+  /v2/space/{space_id}/field:
+    get:
+      summary: Get Space Custom Fields
+      tags:
+        - Custom Fields
+      description: View the Custom Fields you have access to in a specific Space.
+      operationId: getSpaceAvailableFields
+      parameters:
+        - name: space_id
+          in: path
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: number
+            contentEncoding: double
+            examples:
+              - 123
+        - name: Content-Type
+          in: header
+          description: ''
+          required: true
+          style: simple
+          schema:
+            const: application/json
+            type: string
+            examples:
+              - application/json
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetSpaceAvailableFieldsresponse'
+      deprecated: false
+    parameters: []
+  /v2/team/{team_id}/field:
+    get:
+      summary: Get Workspace Custom Fields
+      tags:
+        - Custom Fields
+      description: View the Custom Fields you have access to in a specific Workspace.
+      operationId: getTeamAvailableFields
+      parameters:
+        - name: team_id
+          in: path
+          description: Team ID (Workspace)
+          required: true
+          style: simple
+          schema:
+            type: number
+            contentEncoding: double
+            examples:
+              - 123
+        - name: Content-Type
+          in: header
+          description: ''
+          required: true
+          style: simple
+          schema:
+            const: application/json
+            type: string
+            examples:
+              - application/json
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTeamAvailableFieldsresponse'
+      deprecated: false
+    parameters: []
+  /v2/task/{task_id}/field/{field_id}:
     post:
       summary: Set Custom Field Value
       description: >-
@@ -1242,7 +1493,7 @@ paths:
               example: {}
       deprecated: false
     parameters: []
-  /task/{task_id}/dependency:
+  /v2/task/{task_id}/dependency:
     post:
       summary: Add Dependency
       tags:
@@ -1387,7 +1638,7 @@ paths:
               example: {}
       deprecated: false
     parameters: []
-  /task/{task_id}/link/{links_to}:
+  /v2/task/{task_id}/link/{links_to}:
     post:
       summary: Add Task Link
       tags:
@@ -1581,7 +1832,7 @@ paths:
                   url: https://app.clickup.com/t/9hx
       deprecated: false
     parameters: []
-  /space/{space_id}/folder:
+  /v2/space/{space_id}/folder:
     get:
       summary: Get Folders
       tags:
@@ -1690,7 +1941,7 @@ paths:
                 task_count: '0'
       deprecated: false
     parameters: []
-  /folder/{folder_id}:
+  /v2/folder/{folder_id}:
     get:
       summary: Get Folder
       tags:
@@ -1806,7 +2057,7 @@ paths:
               example: {}
       deprecated: false
     parameters: []
-  /team/{team_id}/goal:
+  /v2/team/{team_id}/goal:
     get:
       summary: Get Goals
       tags:
@@ -2004,7 +2255,7 @@ paths:
                   pretty_url: https://app.clickup.com/512/goals/6
       deprecated: false
     parameters: []
-  /goal/{goal_id}:
+  /v2/goal/{goal_id}:
     get:
       summary: Get Goal
       tags:
@@ -2171,7 +2422,7 @@ paths:
               example: {}
       deprecated: false
     parameters: []
-  /goal/{goal_id}/key_result:
+  /v2/goal/{goal_id}/key_result:
     post:
       summary: Create Key Result
       tags:
@@ -2246,7 +2497,7 @@ paths:
                     steps_current: null
       deprecated: false
     parameters: []
-  /key_result/{key_result_id}:
+  /v2/key_result/{key_result_id}:
     put:
       summary: Edit Key Result
       tags:
@@ -2348,7 +2599,7 @@ paths:
               example: {}
       deprecated: false
     parameters: []
-  /team/{team_id}/guest:
+  /v2/team/{team_id}/guest:
     post:
       summary: Invite Guest To Workspace
       tags:
@@ -2461,7 +2712,7 @@ paths:
                       custom: true
       deprecated: false
     parameters: []
-  /team/{team_id}/guest/{guest_id}:
+  /v2/team/{team_id}/guest/{guest_id}:
     get:
       summary: Get Guest
       tags:
@@ -2637,7 +2888,7 @@ paths:
                   members: []
       deprecated: false
     parameters: []
-  /task/{task_id}/guest/{guest_id}:
+  /v2/task/{task_id}/guest/{guest_id}:
     post:
       summary: Add Guest To Task
       tags:
@@ -2901,7 +3152,7 @@ paths:
                     folders: []
       deprecated: false
     parameters: []
-  /list/{list_id}/guest/{guest_id}:
+  /v2/list/{list_id}/guest/{guest_id}:
     post:
       summary: Add Guest To List
       tags:
@@ -3093,7 +3344,7 @@ paths:
                     folders: []
       deprecated: false
     parameters: []
-  /folder/{folder_id}/guest/{guest_id}:
+  /v2/folder/{folder_id}/guest/{guest_id}:
     post:
       summary: Add Guest To Folder
       tags:
@@ -3282,7 +3533,7 @@ paths:
                     folders: []
       deprecated: false
     parameters: []
-  /folder/{folder_id}/list:
+  /v2/folder/{folder_id}/list:
     get:
       summary: Get Lists
       tags:
@@ -3404,7 +3655,7 @@ paths:
                   add.task.1389.ac725f.31518a6a-05bb-4997-92a6-1dcfe2f527ca@tasks.clickup.com
       deprecated: false
     parameters: []
-  /space/{space_id}/list:
+  /v2/space/{space_id}/list:
     get:
       summary: Get Folderless Lists
       tags:
@@ -3526,7 +3777,7 @@ paths:
                   add.task.1389.ac725f.31518a6a-05bb-4997-92a6-1dcfe2f527ca@tasks.clickup.com
       deprecated: false
     parameters: []
-  /list/{list_id}:
+  /v2/list/{list_id}:
     get:
       summary: Get List
       tags:
@@ -3715,7 +3966,7 @@ paths:
               example: {}
       deprecated: false
     parameters: []
-  /list/{list_id}/task/{task_id}:
+  /v2/list/{list_id}/task/{task_id}:
     post:
       summary: Add Task To List
       tags:
@@ -3806,12 +4057,14 @@ paths:
               example: {}
       deprecated: false
     parameters: []
-  /task/{task_id}/member:
+  /v2/task/{task_id}/member:
     get:
       summary: Get Task Members
       tags:
         - Members
-      description: View the people who have access to a task.
+      description: >-
+        View the people who have access to a task. Responses do not include
+        people with inherited Hierarchy permission to the task.
       operationId: GetTaskMembers
       parameters:
         - name: task_id
@@ -3865,7 +4118,7 @@ paths:
                       viewed_top_tier_user: null
       deprecated: false
     parameters: []
-  /list/{list_id}/member:
+  /v2/list/{list_id}/member:
     get:
       summary: Get List Members
       tags:
@@ -3925,7 +4178,7 @@ paths:
                       viewed_top_tier_user: null
       deprecated: false
     parameters: []
-  /team/{team_id}/customroles:
+  /v2/team/{team_id}/customroles:
     get:
       summary: Get Custom Roles
       tags:
@@ -3988,7 +4241,7 @@ paths:
                       - 818181
       deprecated: false
     parameters: []
-  /team/{team_id}/shared:
+  /v2/team/{team_id}/shared:
     get:
       summary: Shared Hierarchy
       tags:
@@ -4041,7 +4294,7 @@ paths:
                       archived: false
       deprecated: false
     parameters: []
-  /team/{team_id}/space:
+  /v2/team/{team_id}/space:
     get:
       summary: Get Spaces
       tags:
@@ -4266,7 +4519,7 @@ paths:
                 archived: false
       deprecated: false
     parameters: []
-  /space/{space_id}:
+  /v2/space/{space_id}:
     get:
       summary: Get Space
       tags:
@@ -4457,7 +4710,7 @@ paths:
               example: {}
       deprecated: false
     parameters: []
-  /space/{space_id}/tag:
+  /v2/space/{space_id}/tag:
     get:
       summary: Get Space Tags
       tags:
@@ -4542,7 +4795,7 @@ paths:
               example: {}
       deprecated: false
     parameters: []
-  /space/{space_id}/tag/{tag_name}:
+  /v2/space/{space_id}/tag/{tag_name}:
     put:
       summary: Edit Space Tag
       tags:
@@ -4647,7 +4900,7 @@ paths:
               example: {}
       deprecated: false
     parameters: []
-  /task/{task_id}/tag/{tag_name}:
+  /v2/task/{task_id}/tag/{tag_name}:
     post:
       summary: Add Tag To Task
       tags:
@@ -4793,7 +5046,7 @@ paths:
               example: {}
       deprecated: false
     parameters: []
-  /list/{list_id}/task:
+  /v2/list/{list_id}/task:
     get:
       summary: Get Tasks
       tags:
@@ -4999,7 +5252,8 @@ paths:
         - name: custom_fields
           in: query
           description: >-
-            Include tasks with specific values in multiple Custom Fields.\
+            Include tasks with specific values in one or more Custom Fields.
+            Custom Relationships are included.\
              \
             For example:
             `?custom_fields=[{"field_id":"abcdefghi12345678","operator":"=","value":"1234"},{"field_id":"jklmnop123456","operator":"<","value":"5"}]`\
@@ -5009,6 +5263,17 @@ paths:
              \
             Learn more about [filtering using Custom
             Fields.](https://clickup.com/api)
+          style: form
+          explode: true
+          schema:
+            type: array
+            items:
+              type: string
+        - name: custom_field
+          in: query
+          description: >-
+            Include tasks with specific values in only one Custom Field. This
+            Custom Field can be a Custom Relationship.
           style: form
           explode: true
           schema:
@@ -5101,7 +5366,7 @@ paths:
                         parent: null
                         priority: null
                         due_date: null
-                        start_date: null
+                        points: 3
                         time_estimate: null
                         time_spent: null
                         list:
@@ -5165,6 +5430,9 @@ paths:
               markdown_description: New Task Description
               assignees:
                 - 183
+              archived: false
+              group_assignees:
+                - dd01f92f-48ca-446d-88a1-0beb0e8f5f14
               tags:
                 - tag name 1
               status: Open
@@ -5174,6 +5442,7 @@ paths:
               time_estimate: 8640000
               start_date: 1567780450202
               start_date_time: false
+              points: 3
               notify_all: true
               parent: null
               links_to: null
@@ -5215,12 +5484,15 @@ paths:
                   profilePicture: >-
                     https://attachments-public.clickup.com/profilePictures/183_abc.jpg
                 assignees: []
+                archived: false
+                group_assignees: []
                 checklists: []
                 tags: []
                 parent: abc1234
                 priority: null
                 due_date: null
                 start_date: null
+                points: 3
                 time_estimate: null
                 time_spent: null
                 custom_fields:
@@ -5242,7 +5514,7 @@ paths:
                 url: https://app.clickup.com/t/9hx
       deprecated: false
     parameters: []
-  /task/{task_id}:
+  /v2/task/{task_id}:
     get:
       summary: Get Task
       tags:
@@ -5305,6 +5577,26 @@ paths:
             type: boolean
             examples:
               - true
+        - name: custom_fields
+          in: query
+          description: >-
+            Include tasks with specific values in one or more Custom Fields.
+            Custom Relationships are included.\
+             \
+            For example:
+            `?custom_fields=[{"field_id":"abcdefghi12345678","operator":"=","value":"1234"},{"field_id":"jklmnop123456","operator":"<","value":"5"}]`\
+             \
+            If you want to include tasks with specific values in only one Custom
+            Field, use `custom_field` instead.\
+             \
+            Learn more about [filtering using Custom
+            Fields.](https://clickup.com/api)
+          style: form
+          explode: true
+          schema:
+            type: array
+            items:
+              type: string
       responses:
         '200':
           description: ''
@@ -5373,11 +5665,17 @@ paths:
               time_estimate: 8640000
               start_date: 1567780450202
               start_date_time: false
+              points: 3
               assignees:
                 add:
                   - 182
                 rem:
                   - 183
+              group_assignees:
+                add:
+                  - dd01f92f-48ca-446d-88a1-0beb0e8f5f14
+                rem:
+                  - dd01f92f-48ca-446d-88a1-0beb0e8f5f13
               archived: false
         required: true
       responses:
@@ -5413,12 +5711,14 @@ paths:
                   profilePicture: >-
                     https://attachments-public.clickup.com/profilePictures/183_abc.jpg
                 assignees: []
+                group_assignees: []
                 checklists: []
                 tags: []
                 parent: abc1234
                 priority: null
                 due_date: null
                 start_date: null
+                points: 3
                 time_estimate: null
                 time_spent: null
                 custom_fields:
@@ -5521,7 +5821,7 @@ paths:
               example: {}
       deprecated: false
     parameters: []
-  /team/{team_Id}/task:
+  /v2/team/{team_Id}/task:
     get:
       summary: Get Filtered Team Tasks
       tags:
@@ -5530,7 +5830,9 @@ paths:
         View the tasks that meet specific criteria from a Workspace. Responses
         are limited to 100 tasks per page.  \
          \
-        You can only view task information of tasks you can access.
+        You can only view task information of tasks you can access. \
+         \
+         Our Try It modal currently supports filtering by two or more Lists, Folders, or Spaces. To filter by a single List, Folder, or Space, we recommend using a free app like [Postman](https://www.postman.com/) to test our public API.
       operationId: GetFilteredTeamTasks
       parameters:
         - name: team_Id
@@ -5600,12 +5902,12 @@ paths:
             type: array
             items:
               type: string
-        - name: list_ids
+        - name: list_ids[]
           in: query
           description: |-
             Filter by Lists. For example: \
              \
-            `?list_ids[]=1234&list_ids[]=6789`
+            `?list_ids[]=1234&list_ids[]=6789` 
           style: form
           explode: true
           schema:
@@ -5669,7 +5971,7 @@ paths:
           explode: true
           schema:
             type: integer
-            contentEncoding: int32
+            contentEncoding: int64
         - name: due_date_lt
           in: query
           description: Filter by due date less than Unix time in milliseconds.
@@ -5677,7 +5979,7 @@ paths:
           explode: true
           schema:
             type: integer
-            contentEncoding: int32
+            contentEncoding: int64
         - name: date_created_gt
           in: query
           description: Filter by date created greater than Unix time in milliseconds.
@@ -5685,7 +5987,7 @@ paths:
           explode: true
           schema:
             type: integer
-            contentEncoding: int32
+            contentEncoding: int64
         - name: date_created_lt
           in: query
           description: Filter by date created less than Unix time in milliseconds.
@@ -5693,7 +5995,7 @@ paths:
           explode: true
           schema:
             type: integer
-            contentEncoding: int32
+            contentEncoding: int64
         - name: date_updated_gt
           in: query
           description: Filter by date updated greater than Unix time in milliseconds.
@@ -5701,7 +6003,7 @@ paths:
           explode: true
           schema:
             type: integer
-            contentEncoding: int32
+            contentEncoding: int64
         - name: date_updated_lt
           in: query
           description: Filter by date updated less than Unix time in milliseconds.
@@ -5709,7 +6011,7 @@ paths:
           explode: true
           schema:
             type: integer
-            contentEncoding: int32
+            contentEncoding: int64
         - name: date_done_gt
           in: query
           description: Filter by date done greater than Unix time in milliseconds.
@@ -5717,7 +6019,7 @@ paths:
           explode: true
           schema:
             type: integer
-            contentEncoding: int32
+            contentEncoding: int64
         - name: date_done_lt
           in: query
           description: Filter by date done less than Unix time in milliseconds.
@@ -5725,14 +6027,17 @@ paths:
           explode: true
           schema:
             type: integer
-            contentEncoding: int32
+            contentEncoding: int64
         - name: custom_fields
           in: query
           description: >-
-            Include tasks with specific values in one or more Custom Fields.\
+            Include tasks with specific values in one or more Custom Fields.
+            Custom Relationships are included.\
              \
             For example:
             `?custom_fields=[{"field_id":"abcdefghi12345678","operator":"=","value":"1234"}{"field_id":"jklmnop123456","operator":"<","value":"5"}]`\
+             \
+            The `=` operator isn't supported with Label Custom Fields.\
              \
             Learn more about [filtering using Custom
             Fields.](https://clickup.com/api)
@@ -5870,7 +6175,7 @@ paths:
                     priority: 1
                     due_date: '1508369194377'
                     start_date: '1508369194377'
-                    points: 1.3
+                    points: 3
                     time_estimate: 1.2
                     custom_fields:
                       - id: be43f58e-989e-4233-9f25-27584f094b74
@@ -5903,7 +6208,7 @@ paths:
                       id: '1'
       deprecated: false
     parameters: []
-  /task/{task_id}/time_in_status:
+  /v2/task/{task_id}/time_in_status:
     get:
       summary: Get Task's Time in Status
       tags:
@@ -5988,7 +6293,7 @@ paths:
                     orderindex: 4
       deprecated: false
     parameters: []
-  /task/bulk_time_in_status/task_ids:
+  /v2/task/bulk_time_in_status/task_ids:
     get:
       summary: Get Bulk Tasks' Time in Status
       tags:
@@ -6099,7 +6404,7 @@ paths:
                       orderindex: 4
       deprecated: false
     parameters: []
-  /team/{team_id}/taskTemplate:
+  /v2/team/{team_id}/taskTemplate:
     get:
       summary: Get Task Templates
       tags:
@@ -6150,7 +6455,7 @@ paths:
                 templates: []
       deprecated: false
     parameters: []
-  /list/{list_id}/taskTemplate/{template_id}:
+  /v2/list/{list_id}/taskTemplate/{template_id}:
     post:
       summary: Create Task From Template
       tags:
@@ -6197,7 +6502,7 @@ paths:
                 contentMediaType: application/json
       deprecated: false
     parameters: []
-  /team/{team_id}/seats:
+  /v2/team/{team_id}/seats:
     get:
       summary: Get Workspace seats
       tags:
@@ -6233,7 +6538,7 @@ paths:
                   empty_guest_seats: 48
       deprecated: false
     parameters: []
-  /team/{team_id}/plan:
+  /v2/team/{team_id}/plan:
     get:
       summary: Get Workspace Plan
       tags:
@@ -6263,7 +6568,7 @@ paths:
                 plan_id: 4
       deprecated: false
     parameters: []
-  /team/{team_id}/group:
+  /v2/team/{team_id}/group:
     post:
       summary: Create Team
       tags:
@@ -6346,7 +6651,7 @@ paths:
                   icon: null
       deprecated: false
     parameters: []
-  /team/{team_id}/custom_item:
+  /v2/team/{team_id}/custom_item:
     get:
       summary: Get Custom Task Types
       tags:
@@ -6379,7 +6684,7 @@ paths:
                       name_plural: Bugs
                       description: Custom item type for bugs.
       deprecated: false
-  /group/{group_id}:
+  /v2/group/{group_id}:
     put:
       summary: Update Team
       tags:
@@ -6503,7 +6808,7 @@ paths:
               example: {}
       deprecated: false
     parameters: []
-  /group:
+  /v2/group:
     get:
       summary: Get Teams
       tags:
@@ -6595,7 +6900,7 @@ paths:
                       icon: null
       deprecated: false
     parameters: []
-  /task/{task_id}/time:
+  /v2/task/{task_id}/time:
     get:
       summary: Get tracked time
       tags:
@@ -6743,7 +7048,7 @@ paths:
                 id: '123'
       deprecated: false
     parameters: []
-  /task/{task_id}/time/{interval_id}:
+  /v2/task/{task_id}/time/{interval_id}:
     put:
       summary: Edit time tracked
       tags:
@@ -6894,7 +7199,7 @@ paths:
               example: {}
       deprecated: false
     parameters: []
-  /team/{team_Id}/time_entries:
+  /v2/team/{team_Id}/time_entries:
     get:
       summary: Get time entries within a date range
       tags:
@@ -7197,7 +7502,7 @@ paths:
                 tid: task_id
       deprecated: false
     parameters: []
-  /team/{team_id}/time_entries/{timer_id}:
+  /v2/team/{team_id}/time_entries/{timer_id}:
     get:
       summary: Get singular time entry
       tags:
@@ -7232,10 +7537,10 @@ paths:
             type: string
             examples:
               - '1963465985517105840'
-        - name: include_task_
+        - name: include_task_tags
           in: query
           description: >-
-            Include task  in the response for time entries associated with
+            Include task tags in the response for time entries associated with
             tasks.
           style: form
           explode: true
@@ -7294,7 +7599,7 @@ paths:
                       list_name: List
                       folder_name: Folder
                       space_name: Space
-                    task_:
+                    task_tags:
                       - name: content-request
                         tag_fg: '#800000'
                         tag_bg: '#2ecd6f'
@@ -7459,7 +7764,7 @@ paths:
                 contentMediaType: application/json
       deprecated: false
     parameters: []
-  /team/{team_id}/time_entries/{timer_id}/history:
+  /v2/team/{team_id}/time_entries/{timer_id}/history:
     get:
       summary: Get time entry history
       tags:
@@ -7512,7 +7817,7 @@ paths:
                 contentMediaType: application/json
       deprecated: false
     parameters: []
-  /team/{team_id}/time_entries/current:
+  /v2/team/{team_id}/time_entries/current:
     get:
       summary: Get running time entry
       tags:
@@ -7589,7 +7894,7 @@ paths:
                   at: '1595293042560'
       deprecated: false
     parameters: []
-  /team/{team_id}/time_entries/tags:
+  /v2/team/{team_id}/time_entries/tags:
     delete:
       summary: Remove tags from time entries
       tags:
@@ -7765,7 +8070,7 @@ paths:
               example: {}
       deprecated: false
     parameters: []
-  /team/{team_Id}/time_entries/start:
+  /v2/team/{team_Id}/time_entries/start:
     post:
       summary: Start a time Entry
       tags:
@@ -7860,7 +8165,7 @@ paths:
                   at: 1595289452790
       deprecated: false
     parameters: []
-  /team/{team_id}/time_entries/stop:
+  /v2/team/{team_id}/time_entries/stop:
     post:
       summary: Stop a time Entry
       tags:
@@ -7927,7 +8232,7 @@ paths:
                   at: 1595289452790
       deprecated: false
     parameters: []
-  /team/{team_id}/user:
+  /v2/team/{team_id}/user:
     post:
       summary: Invite User To Workspace
       tags:
@@ -8026,7 +8331,7 @@ paths:
                       custom: true
       deprecated: false
     parameters: []
-  /team/{team_id}/user/{user_id}:
+  /v2/team/{team_id}/user/{user_id}:
     get:
       summary: Get User
       tags:
@@ -8222,7 +8527,7 @@ paths:
                   members: []
       deprecated: false
     parameters: []
-  /team/{team_id}/view:
+  /v2/team/{team_id}/view:
     get:
       summary: Get Workspace (Everything level) Views
       tags:
@@ -8447,7 +8752,7 @@ paths:
                     me_checklists: true
       deprecated: false
     parameters: []
-  /space/{space_id}/view:
+  /v2/space/{space_id}/view:
     get:
       summary: Get Space Views
       tags:
@@ -8670,7 +8975,7 @@ paths:
                     me_checklists: true
       deprecated: false
     parameters: []
-  /folder/{folder_id}/view:
+  /v2/folder/{folder_id}/view:
     get:
       summary: Get Folder Views
       tags:
@@ -8893,7 +9198,7 @@ paths:
                     me_checklists: true
       deprecated: false
     parameters: []
-  /list/{list_id}/view:
+  /v2/list/{list_id}/view:
     get:
       summary: Get List Views
       tags:
@@ -9118,7 +9423,7 @@ paths:
                     me_checklists: true
       deprecated: false
     parameters: []
-  /view/{view_id}:
+  /v2/view/{view_id}:
     get:
       summary: Get View
       tags:
@@ -9370,7 +9675,7 @@ paths:
               example: {}
       deprecated: false
     parameters: []
-  /view/{view_id}/task:
+  /v2/view/{view_id}/task:
     get:
       summary: Get View Tasks
       tags:
@@ -9433,8 +9738,19 @@ paths:
                     priority: null
                     due_date: null
                     start_date: null
+                    points: 3
                     time_estimate: null
                     time_spent: null
+                    custom_fields:
+                      id: 0a52c486-5f05-403b-b4fd-c512ff05131c
+                      name: My Text Custom field
+                      type: text
+                      type_config: {}
+                      date_created: '1622176979540'
+                      hide_from_guests: false
+                      value:
+                        value: This is a string of text added to a Custom Field.
+                      required: true
                     list:
                       id: '123'
                     folder:
@@ -9467,8 +9783,19 @@ paths:
                     priority: null
                     due_date: null
                     start_date: null
+                    points: 3
                     time_estimate: null
                     time_spent: null
+                    custom_fields:
+                      id: 0a52c486-5f05-403b-b4fd-c512ff05131c
+                      name: My Text Custom field
+                      type: text
+                      type_config: {}
+                      date_created: '1622176979540'
+                      hide_from_guests: false
+                      value:
+                        value: This is a string of text added to a Custom Field.
+                      required: true
                     list:
                       id: '123'
                     folder:
@@ -9479,7 +9806,7 @@ paths:
                 last_page: true
       deprecated: false
     parameters: []
-  /team/{team_id}/webhook:
+  /v2/team/{team_id}/webhook:
     get:
       summary: Get Webhooks
       tags:
@@ -9672,7 +9999,7 @@ paths:
                     O94IM25S7PXBPYTMNXLLET230SRP0S89COR7B1YOJ2ZIE8WQNK5UUKEF26W0Z5GA
       deprecated: false
     parameters: []
-  /webhook/{webhook_id}:
+  /v2/webhook/{webhook_id}:
     put:
       summary: Update Webhook
       tags:
@@ -9793,6 +10120,349 @@ paths:
               example: {}
       deprecated: false
     parameters: []
+  /v3/workspaces/{workspaceId}/docs:
+    get:
+      operationId: searchDocs
+      summary: Search Docs
+      description: >-
+        View the Docs in your Workspace. You can only view information of Docs
+        you can access.
+      parameters:
+        - name: workspaceId
+          required: true
+          in: path
+          description: The ID of your Workspace.
+          schema:
+            type: number
+        - name: id
+          required: false
+          in: query
+          description: Filter results to a single Doc with the given Doc ID.
+          schema:
+            type: string
+        - name: creator
+          required: false
+          in: query
+          description: Filter results to Docs created by the user with the given user ID.
+          schema:
+            type: number
+        - name: deleted
+          required: false
+          in: query
+          description: Filter results to return deleted Docs.
+          schema:
+            default: 'false'
+            type: boolean
+        - name: archived
+          required: false
+          in: query
+          description: Filter results to return archived Docs.
+          schema:
+            default: 'false'
+            type: boolean
+        - name: parent_id
+          required: false
+          in: query
+          description: >-
+            Filter results to children of a parent Doc with the given parent Doc
+            ID.
+          schema:
+            type: string
+        - name: parent_type
+          required: false
+          in: query
+          description: >-
+            Filter results to children of the given parent Doc type. For
+            example, `SPACE`, `FOLDER`, `LIST`, `EVERYTHING`, `WORKSPACE`.
+          schema:
+            type: string
+        - name: limit
+          required: false
+          in: query
+          description: The maximum number of results to retrieve for each page.
+          schema:
+            minimum: 10
+            maximum: 100
+            default: 50
+            type: number
+        - name: next_cursor
+          required: false
+          in: query
+          description: The cursor to use to get the next page of results.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocsSearchResultDto'
+      tags:
+        - Docs
+    post:
+      operationId: createDoc
+      summary: Create Doc
+      description: 'Create a new Doc. '
+      parameters:
+        - name: workspaceId
+          required: true
+          in: path
+          description: The ID of the Workspace.
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDocOptionsDto'
+      responses:
+        '201':
+          description: Doc created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocDto'
+      tags:
+        - Docs
+  /v3/workspaces/{workspaceId}/docs/{docId}:
+    get:
+      operationId: getDoc
+      summary: Get Doc
+      description: View information about a Doc.
+      parameters:
+        - name: workspaceId
+          required: true
+          in: path
+          description: The ID of the Workspace.
+          schema:
+            type: number
+        - name: docId
+          required: true
+          in: path
+          description: The ID of the Doc.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Doc found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocDto'
+        '404':
+          description: Doc not found
+      tags:
+        - Docs
+  /v3/workspaces/{workspaceId}/docs/{docId}/pageListing:
+    get:
+      operationId: getDocPageListing
+      summary: Get Doc PageListing
+      description: View the PageListing for a Doc.
+      parameters:
+        - name: workspaceId
+          required: true
+          in: path
+          description: The ID of the Workspace.
+          schema:
+            type: number
+        - name: docId
+          required: true
+          in: path
+          description: The ID of the Doc.
+          schema:
+            type: string
+        - name: max_page_depth
+          required: false
+          in: query
+          description: >-
+            The maximum depth to retrieve pages and subpages. A value less than
+            0 does not limit the depth.
+          schema:
+            default: '-1'
+            type: number
+      responses:
+        '200':
+          description: PageListing found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PageV3ReferenceDto'
+        '404':
+          description: PageListing not found
+      tags:
+        - Docs
+  /v3/workspaces/{workspaceId}/docs/{docId}/pages:
+    get:
+      operationId: getDocPages
+      summary: Get Doc pages
+      description: View pages belonging to a Doc.
+      parameters:
+        - name: workspaceId
+          required: true
+          in: path
+          description: The ID of the Workspace.
+          schema:
+            type: number
+        - name: docId
+          required: true
+          in: path
+          description: The ID of the Doc.
+          schema:
+            type: string
+        - name: max_page_depth
+          required: false
+          in: query
+          description: >-
+            The maximum depth to retrieve pages and subpages. A value less than
+            0 does not limit the depth.
+          schema:
+            default: '-1'
+            type: number
+        - name: content_format
+          required: false
+          in: query
+          description: >-
+            The format to return the page content in. For example, `text/md` for
+            markdown or `text/plain` for plain.
+          schema:
+            default: text/md
+            type: string
+      responses:
+        '200':
+          description: Pages found
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PageV3Dto'
+      tags:
+        - Docs
+    post:
+      operationId: createPage
+      summary: Create page
+      description: Create a page in a Doc.
+      parameters:
+        - name: workspaceId
+          required: true
+          in: path
+          description: The ID of the Workspace.
+          schema:
+            type: number
+        - name: docId
+          required: true
+          in: path
+          description: The ID of the Doc.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PublicCreatePageOptionsDto'
+      responses:
+        '201':
+          description: Page created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageV3Dto'
+      tags:
+        - Docs
+  /v3/workspaces/{workspaceId}/docs/{docId}/pages/{pageId}:
+    get:
+      operationId: getPage
+      summary: Get page
+      description: >-
+        View the information about a page in a Doc. Due to markdown format
+        limitations, some content elements [will not be displayed exactly as
+        they appear in ClickUp.](https://clickup.com/api)
+      parameters:
+        - name: workspaceId
+          required: true
+          in: path
+          description: The ID of the Workspace.
+          schema:
+            type: number
+        - name: docId
+          required: true
+          in: path
+          description: The ID of the Doc.
+          schema:
+            type: string
+        - name: pageId
+          required: true
+          in: path
+          description: The ID of the page.
+          schema:
+            type: string
+        - name: content_format
+          required: false
+          in: query
+          description: >-
+            The format to return the page content in. For example, `text/md` for
+            markdown or `text/plain` for plain.
+          schema:
+            default: text/md
+            type: string
+      responses:
+        '200':
+          description: Page found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageV3Dto'
+        '404':
+          description: Page not found
+      tags:
+        - Docs
+    put:
+      operationId: editPage
+      summary: Edit page
+      description: Edit a page in a Doc.
+      parameters:
+        - name: workspaceId
+          required: true
+          in: path
+          description: The ID of the Workspace.
+          schema:
+            type: number
+        - name: docId
+          required: true
+          in: path
+          description: The ID of the Doc.
+          schema:
+            type: string
+        - name: pageId
+          required: true
+          in: path
+          description: The ID of the page.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PublicEditPageOptionsDto'
+      responses:
+        '200':
+          description: Page updated
+          content:
+            application/json:
+              schema:
+                type: object
+                examples:
+                  - {}
+                contentMediaType: application/json
+              example: {}
+      tags:
+        - Docs
 components:
   securitySchemes:
     Authorization Token:
@@ -10502,6 +11172,9 @@ components:
           description: ''
         date:
           type: string
+        reply_count:
+          type: string
+          description: For threaded comments, `reply_count` is always 0.
       examples:
         - id: '458'
           comment:
@@ -10531,6 +11204,7 @@ components:
             profilePicture: https://attachments-public.clickup.com/profilePictures/183_abc.jpg
           reactions: []
           date: '1568036964079'
+          reply_count: '1'
     GetTaskCommentsresponse:
       title: GetTaskCommentsresponse
       required:
@@ -10575,11 +11249,11 @@ components:
                   https://attachments-public.clickup.com/profilePictures/183_abc.jpg
               reactions: []
               date: '1568036964079'
+              reply_count: '1'
     CreateTaskCommentrequest:
       title: CreateTaskCommentrequest
       required:
         - comment_text
-        - assignee
         - notify_all
       type: object
       properties:
@@ -10588,6 +11262,10 @@ components:
         assignee:
           type: integer
           contentEncoding: int32
+        group_assignee:
+          type: integer
+          contentEncoding: int32
+          description: ''
         notify_all:
           description: >-
             If `notify_all` is true, notifications will be sent to everyone
@@ -10596,6 +11274,7 @@ components:
       examples:
         - comment_text: Task comment content
           assignee: 183
+          group_assignee: d01f92f-48ca-446d-88a1-0beb0e8f5f14
           notify_all: true
     CreateTaskCommentresponse:
       title: CreateTaskCommentresponse
@@ -10658,6 +11337,8 @@ components:
           description: ''
         date:
           type: string
+        reply_count:
+          type: string
       examples:
         - id: '459'
           comment:
@@ -10675,6 +11356,7 @@ components:
           assigned_by: null
           reactions: []
           date: '1568036964079'
+          reply_count: '1'
     GetChatViewCommentsresponse:
       title: GetChatViewCommentsresponse
       required:
@@ -10705,6 +11387,7 @@ components:
               assigned_by: null
               reactions: []
               date: '1568036964079'
+              reply_count: '1'
     CreateChatViewCommentrequest:
       title: CreateChatViewCommentrequest
       required:
@@ -10785,6 +11468,7 @@ components:
                   https://attachments-public.clickup.com/profilePictures/183_abc.jpg
               reactions: []
               date: '1568036964079'
+              reply_count: '1'
     CreateListCommentrequest:
       title: CreateListCommentrequest
       required:
@@ -10839,6 +11523,10 @@ components:
         assignee:
           type: integer
           contentEncoding: int32
+        group_assignee:
+          type: integer
+          contentEncoding: int32
+          description: ''
         resolved:
           description: ''
           type: boolean
@@ -10969,6 +11657,39 @@ components:
           hide_from_guests: false
     GetAccessibleCustomFieldsresponse:
       title: GetAccessibleCustomFieldsresponse
+      required:
+        - fields
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+          description: ''
+    GetFolderAvailableFieldsresponse:
+      title: GetFolderAvailableFieldsresponse
+      required:
+        - fields
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+          description: ''
+    GetSpaceAvailableFieldsresponse:
+      title: GetSpaceAvailableFieldsresponse
+      required:
+        - fields
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+          description: ''
+    GetTeamAvailableFieldsresponse:
+      title: GetTeamAvailableFieldsresponse
       required:
         - fields
       type: object
@@ -15135,6 +15856,11 @@ components:
             **Status** refers to the List color rather than the task Statuses
             available in the List.
           type: string
+        include_markdown_description:
+          description: >-
+            To return List descriptions in Markdown format, use
+            `?include_markdown_description=true`.
+          type: boolean
       examples:
         - name: New List Name
           content: New List Content
@@ -15608,6 +16334,11 @@ components:
           description: >-
             By default, this is `false.` To remove the List color use
             `unset_status: true`.
+          type: boolean
+        include_markdown_description:
+          description: >-
+            To return List descriptions in Markdown format, use
+            `?include_markdown_description=true`.
           type: boolean
       examples:
         - name: Updated List Name
@@ -17144,364 +17875,6 @@ components:
             name: Tag name
             tag_fg: '#000000'
             tag_bg: '#000000'
-    Task9:
-      title: Task9
-      required:
-        - id
-        - custom_item_id
-        - name
-        - status
-        - orderindex
-        - date_created
-        - date_updated
-        - date_closed
-        - date_done
-        - creator
-        - assignees
-        - watchers
-        - checklists
-        - tags
-        - parent
-        - priority
-        - due_date
-        - start_date
-        - time_estimate
-        - time_spent
-        - list
-        - folder
-        - space
-        - url
-      type: object
-      properties:
-        id:
-          type: string
-        custom_item_id:
-          type:
-            - number
-            - 'null'
-        name:
-          type: string
-        status:
-          $ref: '#/components/schemas/Status'
-        markdown_description:
-          type: string
-        orderindex:
-          type: string
-        date_created:
-          type: string
-        date_updated:
-          type: string
-        date_closed:
-          type:
-            - string
-            - 'null'
-        date_done:
-          type:
-            - string
-            - 'null'
-        creator:
-          $ref: '#/components/schemas/Creator'
-        assignees:
-          type: array
-          items:
-            type: string
-          description: ''
-        watchers:
-          type: array
-          items:
-            type: string
-          description: ''
-        checklists:
-          type: array
-          items:
-            type: string
-          description: ''
-        tags:
-          type: array
-          items:
-            type: string
-          description: ''
-        parent:
-          type:
-            - string
-            - 'null'
-        priority:
-          type:
-            - string
-            - 'null'
-        due_date:
-          type:
-            - string
-            - 'null'
-        start_date:
-          type:
-            - string
-            - 'null'
-        time_estimate:
-          type:
-            - string
-            - 'null'
-        time_spent:
-          type:
-            - string
-            - 'null'
-        list:
-          $ref: '#/components/schemas/List'
-        folder:
-          $ref: '#/components/schemas/Folder'
-        space:
-          $ref: '#/components/schemas/Space'
-        url:
-          type: string
-      examples:
-        - id: 9hx
-          name: New Task Name
-          custom_item_id: null
-          status:
-            status: Open
-            color: '#d3d3d3'
-            orderindex: 0
-            type: open
-          markdown_description: Task description
-          orderindex: '1.00000000000000000000000000000000'
-          date_created: '1567780450202'
-          date_updated: '1567780450202'
-          date_closed: null
-          date_done: null
-          creator:
-            id: 183
-            username: John Doe
-            color: '#827718'
-            profilePicture: https://attachments-public.clickup.com/profilePictures/183_abc.jpg
-          assignees: []
-          watchers: []
-          checklists: []
-          tags: []
-          parent: null
-          priority: null
-          due_date: null
-          start_date: null
-          time_estimate: null
-          time_spent: null
-          list:
-            id: '123'
-          folder:
-            id: '456'
-          space:
-            id: '789'
-          url: https://app.clickup.com/t/9hx
-    GetTasksresponse:
-      title: GetViewTasksresponse
-      required:
-        - tasks
-        - last_page
-      type: object
-      properties:
-        tasks:
-          type: array
-          items:
-            $ref: '#/components/schemas/Task9'
-          description: ''
-        last_page:
-          type: boolean
-      examples:
-        - tasks:
-            - id: 9hx
-              custom_item_id: null
-              name: New Task Name
-              status:
-                status: Open
-                color: '#d3d3d3'
-                orderindex: 0
-                type: open
-              markdown_description: Task description
-              orderindex: '1.00000000000000000000000000000000'
-              date_created: '1567780450202'
-              date_updated: '1567780450202'
-              date_closed: null
-              date_done: null
-              creator:
-                id: 183
-                username: John Doe
-                color: '#827718'
-                profilePicture: >-
-                  https://attachments-public.clickup.com/profilePictures/183_abc.jpg
-              assignees: []
-              watchers: []
-              checklists: []
-              tags: []
-              parent: null
-              priority: null
-              due_date: null
-              start_date: null
-              time_estimate: null
-              time_spent: null
-              list:
-                id: '123'
-              folder:
-                id: '456'
-              space:
-                id: '789'
-              url: https://app.clickup.com/t/9hx
-            - id: 9hz
-              custom_item_id: null
-              name: Second task
-              status:
-                status: Open
-                color: '#d3d3d3'
-                orderindex: 0
-                type: open
-              orderindex: '2.00000000000000000000000000000000'
-              date_created: '1567780450202'
-              date_updated: '1567780450202'
-              date_closed: null
-              date_done: null
-              creator:
-                id: 183
-                username: John Doe
-                color: '#827718'
-                profilePicture: >-
-                  https://attachments-public.clickup.com/profilePictures/183_abc.jpg
-              assignees: []
-              watchers: []
-              checklists: []
-              tags: []
-              parent: null
-              priority: null
-              due_date: null
-              start_date: null
-              time_estimate: null
-              time_spent: null
-              list:
-                id: '123'
-              folder:
-                id: '456'
-              space:
-                id: '789'
-              url: https://app.clickup.com/t/9hz
-    CustomFields6:
-      title: CustomFields6
-      required:
-        - id
-        - value
-      type: object
-      properties:
-        id:
-          type: string
-        value:
-          oneOf:
-            - type: integer
-              contentEncoding: int32
-            - type: string
-      examples:
-        - id: 0a52c486-5f05-403b-b4fd-c512ff05131c
-          value: 23
-    CreateTaskrequest:
-      title: CreateTaskrequest
-      required:
-        - name
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        assignees:
-          type: array
-          items:
-            type: integer
-            contentEncoding: int32
-          description: ''
-        tags:
-          type: array
-          items:
-            type: string
-          description: ''
-        status:
-          type: string
-        priority:
-          type:
-            - integer
-            - 'null'
-          contentEncoding: int32
-        due_date:
-          type: integer
-          contentEncoding: int64
-        due_date_time:
-          type: boolean
-        time_estimate:
-          type: integer
-          contentEncoding: int32
-        start_date:
-          type: integer
-          contentEncoding: int64
-        start_date_time:
-          type: boolean
-        notify_all:
-          type: boolean
-          description: >-
-            If `notify_all` is true, notifications will be sent to everyone
-            including the creator of the comment.
-        parent:
-          description: >-
-            You can create a subtask by including an existing task ID.\
-             \
-            The `parent` task ID you include cannot be a subtask, and must be in
-            the same List specified in the path parameter.
-          type:
-            - string
-            - 'null'
-        links_to:
-          description: Include a task ID to create a linked dependency with your new task.
-          type:
-            - string
-            - 'null'
-        check_required_custom_fields:
-          description: >-
-            When creating a task via API any required Custom Fields are ignored
-            by default (`false`).\
-             \
-            You can enforce required Custom Fields by including
-            `check_required_custom_fields: true`.
-          type: boolean
-        custom_fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomFields6'
-          description: '[Filter by Custom Fields.](https://clickup.com/api)'
-        custom_item_id:
-          type: number
-          description: >-
-            To create a task that doesn't use a custom task type, either don't
-            include this field in the request body, or send `'null'`. \
-             \
-            To create this task as a Milestone, send a value of `1`.\
-             \
-            To use a custom task type, send the custom task type ID as defined
-            in your Workspace, such as `2`.
-      examples:
-        - name: New Task Name
-          description: New Task Description
-          assignees:
-            - 183
-          tags:
-            - tag name 1
-          status: Open
-          priority: 3
-          due_date: 1508369194377
-          due_date_time: false
-          time_estimate: 8640000
-          start_date: 1567780450202
-          start_date_time: false
-          notify_all: true
-          parent: null
-          links_to: null
-          check_required_custom_fields: true
-          custom_fields:
-            - id: 0a52c486-5f05-403b-b4fd-c512ff05131c
-              value: 23
-            - id: 03efda77-c7a0-42d3-8afd-fd546353c2f5
-              value: Text field input
     TypeConfig1:
       title: TypeConfig1
       type: object
@@ -17609,6 +17982,407 @@ components:
             - value: null
         required:
           type: boolean
+    Task9:
+      title: Task9
+      required:
+        - id
+        - custom_item_id
+        - name
+        - status
+        - orderindex
+        - date_created
+        - date_updated
+        - date_closed
+        - date_done
+        - creator
+        - assignees
+        - watchers
+        - checklists
+        - tags
+        - parent
+        - priority
+        - due_date
+        - start_date
+        - points
+        - time_estimate
+        - time_spent
+        - list
+        - folder
+        - space
+        - url
+      type: object
+      properties:
+        id:
+          type: string
+        custom_item_id:
+          type:
+            - number
+            - 'null'
+        name:
+          type: string
+        status:
+          $ref: '#/components/schemas/Status'
+        markdown_description:
+          type: string
+        orderindex:
+          type: string
+        date_created:
+          type: string
+        date_updated:
+          type: string
+        date_closed:
+          type:
+            - string
+            - 'null'
+        date_done:
+          type:
+            - string
+            - 'null'
+        creator:
+          $ref: '#/components/schemas/Creator'
+        assignees:
+          type: array
+          items:
+            type: string
+          description: ''
+        watchers:
+          type: array
+          items:
+            type: string
+          description: ''
+        checklists:
+          type: array
+          items:
+            type: string
+          description: ''
+        tags:
+          type: array
+          items:
+            type: string
+          description: ''
+        parent:
+          type:
+            - string
+            - 'null'
+        priority:
+          type:
+            - string
+            - 'null'
+        due_date:
+          type:
+            - string
+            - 'null'
+        start_date:
+          type:
+            - string
+            - 'null'
+        points:
+          type:
+            - number
+        time_estimate:
+          type:
+            - string
+            - 'null'
+        time_spent:
+          type:
+            - string
+            - 'null'
+        custom_fields:
+          $ref: '#/components/schemas/CustomFields8'
+        list:
+          $ref: '#/components/schemas/List'
+        folder:
+          $ref: '#/components/schemas/Folder'
+        space:
+          $ref: '#/components/schemas/Space'
+        url:
+          type: string
+      examples:
+        - id: 9hx
+          name: New Task Name
+          custom_item_id: null
+          status:
+            status: Open
+            color: '#d3d3d3'
+            orderindex: 0
+            type: open
+          markdown_description: Task description
+          orderindex: '1.00000000000000000000000000000000'
+          date_created: '1567780450202'
+          date_updated: '1567780450202'
+          date_closed: null
+          date_done: null
+          creator:
+            id: 183
+            username: John Doe
+            color: '#827718'
+            profilePicture: https://attachments-public.clickup.com/profilePictures/183_abc.jpg
+          assignees: []
+          watchers: []
+          checklists: []
+          tags: []
+          parent: null
+          priority: null
+          due_date: null
+          start_date: null
+          time_estimate: null
+          time_spent: null
+          list:
+            id: '123'
+          folder:
+            id: '456'
+          space:
+            id: '789'
+          url: https://app.clickup.com/t/9hx
+    GetTasksresponse:
+      title: GetViewTasksresponse
+      required:
+        - tasks
+        - last_page
+      type: object
+      properties:
+        tasks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Task9'
+          description: ''
+        last_page:
+          type: boolean
+      examples:
+        - tasks:
+            - id: 9hx
+              custom_item_id: null
+              name: New Task Name
+              status:
+                status: Open
+                color: '#d3d3d3'
+                orderindex: 0
+                type: open
+              markdown_description: Task description
+              orderindex: '1.00000000000000000000000000000000'
+              date_created: '1567780450202'
+              date_updated: '1567780450202'
+              date_closed: null
+              date_done: null
+              creator:
+                id: 183
+                username: John Doe
+                color: '#827718'
+                profilePicture: >-
+                  https://attachments-public.clickup.com/profilePictures/183_abc.jpg
+              assignees: []
+              watchers: []
+              checklists: []
+              tags: []
+              parent: null
+              priority: null
+              due_date: null
+              start_date: null
+              points: 3
+              time_estimate: null
+              time_spent: null
+              custom_fields:
+                id: 0a52c486-5f05-403b-b4fd-c512ff05131c
+                name: My Text Custom field
+                type: text
+                type_config: {}
+                date_created: '1622176979540'
+                hide_from_guests: false
+                value:
+                  value: This is a string of text added to a Custom Field.
+                required: true
+              list:
+                id: '123'
+              folder:
+                id: '456'
+              space:
+                id: '789'
+              url: https://app.clickup.com/t/9hx
+            - id: 9hz
+              custom_item_id: null
+              name: Second task
+              status:
+                status: Open
+                color: '#d3d3d3'
+                orderindex: 0
+                type: open
+              orderindex: '2.00000000000000000000000000000000'
+              date_created: '1567780450202'
+              date_updated: '1567780450202'
+              date_closed: null
+              date_done: null
+              creator:
+                id: 183
+                username: John Doe
+                color: '#827718'
+                profilePicture: >-
+                  https://attachments-public.clickup.com/profilePictures/183_abc.jpg
+              assignees: []
+              watchers: []
+              checklists: []
+              tags: []
+              parent: null
+              priority: null
+              due_date: null
+              start_date: null
+              points: 3
+              time_estimate: null
+              time_spent: null
+              custom_fields:
+                id: 0a52c486-5f05-403b-b4fd-c512ff05131c
+                name: My Text Custom field
+                type: text
+                type_config: {}
+                date_created: '1622176979540'
+                hide_from_guests: false
+                value:
+                  value: This is a string of text added to a Custom Field.
+                required: true
+              list:
+                id: '123'
+              folder:
+                id: '456'
+              space:
+                id: '789'
+              url: https://app.clickup.com/t/9hz
+    CustomFields6:
+      title: CustomFields6
+      required:
+        - id
+        - value
+      type: object
+      properties:
+        id:
+          type: string
+        value:
+          oneOf:
+            - type: integer
+              contentEncoding: int32
+            - type: string
+      examples:
+        - id: 0a52c486-5f05-403b-b4fd-c512ff05131c
+          value: 23
+    CreateTaskrequest:
+      title: CreateTaskrequest
+      required:
+        - name
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        assignees:
+          type: array
+          items:
+            type: integer
+            contentEncoding: int32
+          description: ''
+        archived:
+          type: boolean
+        group_assignees:
+          type: array
+          items:
+            type: integer
+            contentEncoding: int32
+          description: ''
+        tags:
+          type: array
+          items:
+            type: string
+          description: ''
+        status:
+          type: string
+        priority:
+          type:
+            - integer
+            - 'null'
+          contentEncoding: int32
+        due_date:
+          type: integer
+          contentEncoding: int64
+        due_date_time:
+          type: boolean
+        time_estimate:
+          type: integer
+          contentEncoding: int32
+        start_date:
+          type: integer
+          contentEncoding: int64
+        start_date_time:
+          type: boolean
+        points:
+          type: number
+          description: Add Sprint Points to the task.
+        notify_all:
+          type: boolean
+          description: >-
+            If `notify_all` is true, notifications will be sent to everyone
+            including the creator of the comment.
+        parent:
+          description: >-
+            You can create a subtask by including an existing task ID.\
+             \
+            The `parent` task ID you include can be a subtask, but must be in
+            the same List specified in the path parameter.
+          type:
+            - string
+            - 'null'
+        links_to:
+          description: Include a task ID to create a linked dependency with your new task.
+          type:
+            - string
+            - 'null'
+        check_required_custom_fields:
+          description: >-
+            When creating a task via API any required Custom Fields are ignored
+            by default (`false`).\
+             \
+            You can enforce required Custom Fields by including
+            `check_required_custom_fields: true`.
+          type: boolean
+        custom_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomFields6'
+          description: '[Filter by Custom Fields.](https://clickup.com/api)'
+        custom_item_id:
+          type: number
+          description: >-
+            To create a task that doesn't use a custom task type, either don't
+            include this field in the request body, or send `'null'`. \
+             \
+            To create this task as a Milestone, send a value of `1`.\
+             \
+            To use a custom task type, send the custom task type ID as defined
+            in your Workspace, such as `2`.
+      examples:
+        - name: New Task Name
+          description: New Task Description
+          assignees:
+            - 183
+          archived: false
+          group_assignees:
+            - dd01f92f-48ca-446d-88a1-0beb0e8f5f14
+          tags:
+            - tag name 1
+          status: Open
+          priority: 3
+          due_date: 1508369194377
+          due_date_time: false
+          time_estimate: 8640000
+          start_date: 1567780450202
+          start_date_time: false
+          points: 3
+          notify_all: true
+          parent: null
+          links_to: null
+          check_required_custom_fields: true
+          custom_fields:
+            - id: 0a52c486-5f05-403b-b4fd-c512ff05131c
+              value: 23
+            - id: 03efda77-c7a0-42d3-8afd-fd546353c2f5
+              value: Text field input
     CreateTaskresponse:
       title: CreateTaskresponse.yaml
       type: object
@@ -17651,6 +18425,13 @@ components:
           items:
             type: string
           description: ''
+        archived:
+          type: boolean
+        group_assignees:
+          type: array
+          items:
+            type: string
+          description: ''
         checklists:
           type: array
           items:
@@ -17677,6 +18458,9 @@ components:
           type:
             - string
             - 'null'
+        points:
+          type:
+            - number
         time_estimate:
           type:
             - string
@@ -17865,6 +18649,9 @@ components:
           type:
             - string
             - 'null'
+        points:
+          type:
+            - number
         time_estimate:
           type:
             - string
@@ -17989,8 +18776,26 @@ components:
           contentEncoding: int64
         start_date_time:
           type: boolean
+        points:
+          type: number
+          description: Update the task's Sprint Points.
         assignees:
           $ref: '#/components/schemas/Assignees'
+        group_assignees:
+          type: object
+          properties:
+            add:
+              type: array
+              items:
+                type: integer
+                contentEncoding: int32
+              description: ''
+            rem:
+              type: array
+              items:
+                type: integer
+                contentEncoding: int32
+              description: ''
         watchers:
           $ref: '#/components/schemas/Watchers'
         archived:
@@ -18006,11 +18811,17 @@ components:
           time_estimate: 8640000
           start_date: 1567780450202
           start_date_time: false
+          points: 3
           assignees:
             add:
               - 182
             rem:
               - 183
+          group_assignees:
+            add:
+              - dd01f92f-48ca-446d-88a1-0beb0e8f5f14
+            rem:
+              - dd01f92f-48ca-446d-88a1-0beb0e8f5f13
           watchers:
             add:
               - 182
@@ -18095,6 +18906,11 @@ components:
           items:
             type: string
           description: ''
+        group_assignees:
+          type: array
+          items:
+            type: string
+          description: ''
         checklists:
           type: array
           items:
@@ -18119,6 +18935,9 @@ components:
           type:
             - string
             - 'null'
+        points:
+          type:
+            - number
         time_estimate:
           type:
             - string
@@ -18162,12 +18981,14 @@ components:
             color: '#827718'
             profilePicture: https://attachments-public.clickup.com/profilePictures/183_abc.jpg
           assignees: []
+          group_assignees: []
           checklists: []
           tags: []
           parent: abc1234
           priority: null
           due_date: null
           start_date: null
+          points: 3
           time_estimate: null
           time_spent: null
           custom_fields:
@@ -18588,7 +19409,7 @@ components:
           priority: 1
           due_date: '1508369194377'
           start_date: '1508369194377'
-          points: 1.3
+          points: 3
           time_estimate: 1.2
           custom_fields:
             - id: be43f58e-989e-4233-9f25-27584f094b74
@@ -18692,7 +19513,7 @@ components:
               priority: 1
               due_date: '1508369194377'
               start_date: '1508369194377'
-              points: 1.3
+              points: 3
               time_estimate: 1.2
               custom_fields:
                 - id: be43f58e-989e-4233-9f25-27584f094b74
@@ -22345,8 +23166,19 @@ components:
               priority: null
               due_date: null
               start_date: null
+              points: 3
               time_estimate: null
               time_spent: null
+              custom_fields:
+                id: 0a52c486-5f05-403b-b4fd-c512ff05131c
+                name: My Text Custom field
+                type: text
+                type_config: {}
+                date_created: '1622176979540'
+                hide_from_guests: false
+                value:
+                  value: This is a string of text added to a Custom Field.
+                required: true
               list:
                 id: '123'
               folder:
@@ -22379,8 +23211,19 @@ components:
               priority: null
               due_date: null
               start_date: null
+              points: 3
               time_estimate: null
               time_spent: null
+              custom_fields:
+                id: 0a52c486-5f05-403b-b4fd-c512ff05131c
+                name: My Text Custom field
+                type: text
+                type_config: {}
+                date_created: '1622176979540'
+                hide_from_guests: false
+                value:
+                  value: This is a string of text added to a Custom Field.
+                required: true
               list:
                 id: '123'
               folder:
@@ -22742,31 +23585,350 @@ components:
               status: active
               fail_count: 0
             secret: O94IM25S7PXBPYTMNXLLET230SRP0S89COR7B1YOJ2ZIE8WQNK5UUKEF26W0Z5GA
-security:
-  - Authorization Token: []
-tags:
-  - name: Authorization
-  - name: Attachments
-  - name: Comments
-  - name: Custom Task Types
-  - name: Custom Fields
-  - name: Folders
-  - name: Goals
-  - name: Guests
-  - name: Lists
-  - name: Members
-  - name: Roles
-  - name: Shared Hierarchy
-  - name: Spaces
-  - name: Tags
-  - name: Tasks
-  - name: Task Checklists
-  - name: Task Relationships
-  - name: Task Templates
-  - name: Teams - Workspaces
-  - name: Teams - User Groups
-  - name: Time Tracking
-  - name: Time Tracking (Legacy)
-  - name: Users
-  - name: Views
-  - name: Webhooks
+    ParentDto:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: number
+          description: >-
+            The parent Doc type. Use `4` for Space, `5` for Folder, `6` for
+            List, `7` for Everything, and `12` for Workspace.
+      required:
+        - id
+        - type
+    DocCoreDto:
+      type: object
+      properties:
+        id:
+          type: string
+        date_created:
+          type: number
+        date_updated:
+          type: number
+        name:
+          type: string
+        type:
+          type: number
+          enum: []
+        parent:
+          $ref: '#/components/schemas/ParentDto'
+        public:
+          type: boolean
+        workspace_id:
+          type: number
+        creator:
+          type: number
+        deleted:
+          type: boolean
+        date_deleted:
+          type: number
+        deleted_by:
+          type: number
+        archived:
+          type: boolean
+        archived_by:
+          type: number
+        date_archived:
+          type: number
+      required:
+        - id
+        - date_created
+        - name
+        - type
+        - parent
+        - public
+        - workspace_id
+        - creator
+        - deleted
+        - archived
+    DocsSearchResultDto:
+      type: object
+      properties:
+        docs:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocCoreDto'
+        next_cursor:
+          type: string
+      required:
+        - docs
+    CreateDocOptionsDto:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the new Doc.
+        parent:
+          description: The parent of the new Doc.
+          allOf:
+            - $ref: '#/components/schemas/ParentDto'
+        visibility:
+          type: string
+          description: The visibility of the new Doc. For example, `PUBLIC` or `PRIVATE`.
+        create_page:
+          type: boolean
+          description: Create a new page when creating the Doc.
+          default: true
+    PresentationDetailsDto:
+      type: object
+      properties:
+        font:
+          type: string
+        font_size:
+          type: number
+        line_height:
+          type: number
+        page_width:
+          type: number
+        paragraph_spacing:
+          type: number
+        show_author_header:
+          type: boolean
+        show_contributor_header:
+          type: boolean
+        show_cover_header:
+          type: boolean
+        show_date_header:
+          type: boolean
+        show_page_outline:
+          type: boolean
+        show_sub_pages:
+          type: boolean
+        sub_page_size:
+          type: string
+        show_sub_title_header:
+          type: boolean
+        show_title_icon_header:
+          type: boolean
+        show_relationships:
+          type: boolean
+        show_relationships_compact:
+          type: boolean
+        show_sub_pages_author:
+          type: boolean
+        show_sub_pages_thumbnail:
+          type: boolean
+        show_sub_pages_compact:
+          type: boolean
+        sub_pages_style:
+          type: string
+    DocDto:
+      type: object
+      properties:
+        id:
+          type: string
+        date_created:
+          type: number
+        date_updated:
+          type: number
+        name:
+          type: string
+        type:
+          type: number
+          enum: []
+        parent:
+          $ref: '#/components/schemas/ParentDto'
+        public:
+          type: boolean
+        workspace_id:
+          type: number
+        archived:
+          type: boolean
+        archived_by:
+          type: number
+        creator:
+          type: number
+        date_archived:
+          type: number
+        date_deleted:
+          type: number
+        deleted:
+          type: boolean
+        deleted_by:
+          type: number
+        page_defaults:
+          $ref: '#/components/schemas/PresentationDetailsDto'
+      required:
+        - id
+        - date_created
+        - name
+        - type
+        - parent
+        - public
+        - workspace_id
+        - creator
+    PageV3ReferenceDto:
+      type: object
+      properties:
+        id:
+          type: string
+        doc_id:
+          type: string
+        parent_page_id:
+          type: string
+        workspace_id:
+          type: number
+        name:
+          type: string
+        pages:
+          type: array
+          items:
+            $ref: '#/components/schemas/PageV3ReferenceDto'
+      required:
+        - id
+        - doc_id
+        - workspace_id
+        - name
+    PageV3Dto:
+      type: object
+      properties:
+        id:
+          type: string
+        doc_id:
+          type: string
+        parent_page_id:
+          type: string
+        workspace_id:
+          type: number
+        name:
+          type: string
+        pages:
+          type: array
+          items:
+            $ref: '#/components/schemas/PageV3Dto'
+        sub_title:
+          type: string
+        date_created:
+          type: number
+        date_updated:
+          type: number
+        content:
+          type: string
+        avatar:
+          $ref: '#/components/schemas/AvatarDto'
+        creator_id:
+          type: number
+        deleted:
+          type: boolean
+        deleted_by:
+          type: number
+        date_deleted:
+          type: number
+        date_edited:
+          type: number
+        edited_by:
+          type: number
+        archived:
+          type: boolean
+        archived_by:
+          type: number
+        date_archived:
+          type: number
+        authors:
+          type: array
+          items:
+            type: number
+        contributors:
+          type: array
+          items:
+            type: number
+        cover:
+          $ref: '#/components/schemas/PageCoverDto'
+        protected:
+          type: boolean
+        protected_by:
+          type: number
+        protected_note:
+          type: string
+        presentation_details:
+          $ref: '#/components/schemas/PresentationDetailsDto'
+      required:
+        - id
+        - doc_id
+        - workspace_id
+        - name
+        - date_created
+        - content
+        - creator_id
+        - authors
+    AvatarDto:
+      type: object
+      properties:
+        color:
+          type: string
+        value:
+          type: string
+        source:
+          type: string
+    PositionDto:
+      type: object
+      properties:
+        x:
+          type: number
+        'y':
+          type: number
+      required:
+        - x
+        - 'y'
+    PageCoverDto:
+      type: object
+      properties:
+        color:
+          type: string
+        image_url:
+          type: string
+        position:
+          $ref: '#/components/schemas/PositionDto'
+    PublicCreatePageOptionsDto:
+      type: object
+      properties:
+        parent_page_id:
+          type: string
+          description: >-
+            The ID of the parent page. If this is a root page in the Doc,
+            `parent_page_id` will not be returned.
+          default: null
+        name:
+          type: string
+          description: The name of the new page.
+          default: ''
+        sub_title:
+          type: string
+          description: The subtitle of the new page.
+          default: null
+        content:
+          type: string
+          description: The content of the new page.
+          default: ''
+        content_format:
+          type: string
+          description: >-
+            The format the page content is in. For example, `text/md` for
+            markdown or `text/plain` for plain.
+          default: text/md
+    PublicEditPageOptionsDto:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The updated name of the page.
+        sub_title:
+          type: string
+          description: The updated subtitle of the page.
+        content:
+          type: string
+          description: The updated content of the page.
+        content_edit_mode:
+          type: string
+          description: >-
+            The strategy for updating content on the page. For example,
+            `replace`, `append`, or `prepend`.
+          default: replace
+        content_format:
+          type: string
+          description: >-
+            The format the page content is in. For example, `text/md` for
+            markdown and `text/plain` for plain.
+          default: text/md

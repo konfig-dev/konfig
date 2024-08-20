@@ -1,9 +1,5 @@
 processed:
   securitySchemes:
-    SessionAuth:
-      type: apiKey
-      in: cookie
-      name: nlasession
     AccessPointApiKeyHeader:
       type: apiKey
       in: header
@@ -20,6 +16,11 @@ processed:
           tokenUrl: /oauth/token/
           scopes:
             nla:exposed_actions:execute: Run AI Actions
+            openid: OpenID Connect scope
+    SessionAuth:
+      type: apiKey
+      in: cookie
+      name: nlasession
   apiBaseUrl: https://actions.zapier.com
   apiVersion: 1.0.0
   apiDescription: ''

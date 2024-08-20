@@ -196,14 +196,14 @@ const customRequests: Record<string, CustomRequest> = {
       return downloadOpenApiSpecFromReadme({ urls });
     },
   },
-  "hyperplane.ai": {
-    lambda: async () => {
-      const urls = await collectEndpointsFromReadme({
-        url: "https://docs.hyperplane.ai/reference",
-      });
-      return downloadOpenApiSpecFromReadme({ urls });
-    },
-  },
+  // "hyperplane.ai": {
+  //   lambda: async () => {
+  //     const urls = await collectEndpointsFromReadme({
+  //       url: "https://docs.hyperplane.ai/reference",
+  //     });
+  //     return downloadOpenApiSpecFromReadme({ urls });
+  //   },
+  // },
   "clerk.com_Backend": {
     lambda: async ({ browser }) => {
       return downloadOpenApiSpecFromRedoclyEmbedded({
@@ -251,7 +251,7 @@ const customRequests: Record<string, CustomRequest> = {
   },
   "langfuse.com": {
     type: "GET",
-    url: "https://cloud.langfuse.com/openapi-server.yml",
+    url: "https://cloud.langfuse.com/generated/api/openapi.yml",
     servers: [
       { url: "https://cloud.langfuse.com", description: "EU" },
       { url: "https://us.cloud.langfuse.com", description: "US" },
@@ -585,10 +585,10 @@ const customRequests: Record<string, CustomRequest> = {
     type: "GET",
     url: "https://api.salesflare.com/openapi.json",
   },
-  "pipelinersales.com": {
-    type: "GET",
-    url: "https://stoplight.io/api/v1/projects/pipeliner/api-docs/nodes/openapi.json?fromExportButton=true&snapshotType=http_service&deref=optimizedBundle",
-  },
+  // "pipelinersales.com": {
+  //   type: "GET",
+  //   url: "https://stoplight.io/api/v1/projects/pipeliner/api-docs/nodes/openapi.json?fromExportButton=true&snapshotType=http_service&deref=optimizedBundle",
+  // },
   "keap.com": {
     type: "GET",
     url: "https://api.infusionsoft.com/info-service/crm/docs/rest/V1",
@@ -704,7 +704,7 @@ const customRequests: Record<string, CustomRequest> = {
   },
   "okta.com": {
     type: "GET",
-    url: "https://raw.githubusercontent.com/okta/okta-management-openapi-spec/master/dist/spec.yaml",
+    url: "https://raw.githubusercontent.com/okta/okta-management-openapi-spec/master/dist/legacy-v1-swagger/spec.yaml",
   },
   "payfit.com": {
     lambda: async () => {

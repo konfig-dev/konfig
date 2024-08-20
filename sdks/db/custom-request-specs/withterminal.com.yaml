@@ -76,7 +76,7 @@ paths:
           in: query
           schema:
             type: string
-            example: ut est
+            example: laboris anim
           description: Filter connections by tag
         - name: updatedAfter
           in: query
@@ -116,7 +116,7 @@ paths:
                   properties:
                     days:
                       type: number
-                      example: 47457977.31426272
+                      example: -75480254.70974733
                     startFrom:
                       type: string
                       example: '2021-01-06T03:24:53.000Z'
@@ -127,28 +127,28 @@ paths:
                       type: array
                       items:
                         type: string
-                        example: non
+                        example: ''
                       example:
-                        - non
-                        - sunt ullamco elit
+                        - ''
+                        - nulla dolore
                     name:
                       type: string
-                      example: adipisicing amet ea dolor
+                      example: qui incididunt reprehenderit sunt
                 credentials:
                   type: object
                   properties:
                     database:
                       type: string
-                      example: non consequat sint dolore adipisicing
+                      example: nostrud
                     password:
                       type: string
-                      example: culpa non dolore
+                      example: dolor
                     username:
                       type: string
-                      example: reprehenderit nulla Lorem
+                      example: amet cillum reprehenderit mollit culpa
                 externalId:
                   type: string
-                  example: laborum ullamco pariatur magna
+                  example: consequat nostrud ea Excepteur ipsum
                 provider:
                   type: string
                   example: geotab
@@ -167,18 +167,18 @@ paths:
               Create Connection:
                 value:
                   backfill:
-                    days: 47457977.31426272
+                    days: -75480254.70974733
                     startFrom: '2021-01-06T03:24:53.000Z'
                   company:
                     dotNumbers:
-                      - non
-                      - sunt ullamco elit
-                    name: adipisicing amet ea dolor
+                      - ''
+                      - nulla dolore
+                    name: qui incididunt reprehenderit sunt
                   credentials:
-                    database: non consequat sint dolore adipisicing
-                    password: culpa non dolore
-                    username: reprehenderit nulla Lorem
-                  externalId: laborum ullamco pariatur magna
+                    database: nostrud
+                    password: dolor
+                    username: amet cillum reprehenderit mollit culpa
+                  externalId: consequat nostrud ea Excepteur ipsum
                   provider: geotab
                   syncMode: automatic
                   tags:
@@ -239,10 +239,10 @@ paths:
                       example: Acme Inc.
                 externalId:
                   type: string
-                  example: officia proident
+                  example: nostrud sint minim enim
                 status:
                   type: string
-                  example: veniam sed mollit commodo
+                  example: et labore cupidatat
                 syncMode:
                   type: string
                   example: automatic
@@ -250,21 +250,21 @@ paths:
                   type: array
                   items:
                     type: string
-                    example: ullamco sed nisi officia
+                    example: proident eu reprehenderit in
                   example:
-                    - ullamco sed nisi officia
-                    - ullamco fugiat anim
+                    - proident eu reprehenderit in
+                    - cillum est esse qui
             examples:
               Update Current Connection:
                 value:
                   company:
                     name: Acme Inc.
-                  externalId: officia proident
-                  status: veniam sed mollit commodo
+                  externalId: nostrud sint minim enim
+                  status: et labore cupidatat
                   syncMode: automatic
                   tags:
-                    - ullamco sed nisi officia
-                    - ullamco fugiat anim
+                    - proident eu reprehenderit in
+                    - cillum est esse qui
       responses:
         '200':
           description: ''
@@ -757,13 +757,13 @@ paths:
           in: query
           schema:
             type: string
-            example: '1947-03-03'
+            example: '1963-12-29'
           description: Only include daily logs from on or after a specific date
         - name: endDate
           in: query
           schema:
             type: string
-            example: '1947-03-03'
+            example: '1963-12-29'
           description: Only include daily logs from on or before a specific date
         - name: modifiedAfter
           in: query
@@ -909,13 +909,13 @@ paths:
           in: query
           schema:
             type: string
-            example: '1967-06-22'
+            example: '1982-07-09'
           description: Timestamp to start when the issue was last observed
         - name: lastReportedBefore
           in: query
           schema:
             type: string
-            example: '1967-06-22'
+            example: '1982-07-09'
           description: Timestamp to end when the issue was last observed
         - name: expand
           in: query
@@ -933,13 +933,13 @@ paths:
           in: query
           schema:
             type: string
-            example: missing_safety_configuration
+            example: unknown_device_type
           description: Filter issues to a specific error code
         - name: status
           in: query
           schema:
             type: string
-            example: ongoing
+            example: resolved
           description: Filter issues to a specific status
       responses:
         '200':
@@ -960,7 +960,7 @@ paths:
         required: true
         schema:
           type: string
-          example: ut est
+          example: laboris anim
         description: '(Required) '
   /providers:
     get:
@@ -1299,6 +1299,12 @@ paths:
             type: string
             example: '{{vehicleId}}'
           description: Comma separated list of vehicle IDs to filter for
+        - name: driverIds
+          in: query
+          schema:
+            type: string
+            example: '{{driverId}}'
+          description: Comma separated list of driver IDs to filter for
         - name: expand
           in: query
           schema:
@@ -1591,6 +1597,12 @@ paths:
           description: >-
             Include raw responses used to normalize model. Used for debugging or
             accessing unique properties that are not unified.
+        - name: expand
+          in: query
+          schema:
+            type: string
+            example: ''
+          description: Expand resources in the returned response
         - name: connection-token
           in: header
           schema:

@@ -74,16 +74,6 @@ paths:
                     properties:
                       items:
                         $ref: '#/components/schemas/AxisSection'
-              examples:
-                Get User Alice Smith:
-                  value:
-                    id: 142
-                    firstName: Alice
-                    lastName: Smith
-                    email: alice.smith@gmail.com
-                    dateOfBirth: '1997-10-31'
-                    emailVerified: true
-                    signUpDate: '2019-08-24'
         '400':
           description: Bad Request
         '401':
@@ -284,16 +274,6 @@ paths:
             application/json:
               schema:
                 type: object
-                x-examples:
-                  example-1:
-                    node: null
-                    children:
-                      - node:
-                          id: 0
-                          name: string
-                          url: string
-                        children:
-                          - null
                 properties:
                   data:
                     type: object
@@ -307,7 +287,16 @@ paths:
                           - 'null'
                         description: 'Max depth: 9 levels'
                         items:
-                          $ref: '#/components/schemas/DepartmentTreeNode'
+                          allOf:
+                            - $ref: '#/components/schemas/DepartmentTreeNode'
+                            - type: object
+                              properties:
+                                children:
+                                  type:
+                                    - array
+                                    - 'null'
+                                  items:
+                                    $ref: '#/components/schemas/DepartmentTreeNode'
         '400':
           $ref: '#/components/responses/Error'
         '401':
@@ -319,7 +308,7 @@ paths:
         List all departments as a tree.
 
         Remark: first node is always empty and represents the starting point of
-        the tree as multiple departments might be set to the highest level. 
+        the tree as multiple departments might be set to the highest level.
   /api/v3/departments/{departmentId}:
     parameters:
       - schema:
@@ -756,9 +745,7 @@ components:
       required:
         - multilingualName
     DepartmentTreeNode:
-      title: DepartmentTreeNode
-      x-stoplight:
-        id: trn3naznwv1de
+      title: IDepartment
       type: object
       properties:
         node:
@@ -777,10 +764,10 @@ components:
               format: uri
               description: Department URL
         children:
-          type: array
-          description: List of all children departments.
-          items:
-            $ref: '#/components/schemas/DepartmentTreeNode'
+          type:
+            - array
+            - 'null'
+          description: List of DepartmentTreeNode objects
     User:
       title: User
       x-stoplight:

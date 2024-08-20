@@ -16,8 +16,8 @@ tags:
     description: Operations about Workspaces
   - name: Folders
     description: Operations about Folders
-  - name: Filters
-    description: Operations about Filters
+  - name: SavedFilters
+    description: Operations about SavedFilters
   - name: Costs
     description: Operations about Costs
   - name: Segments
@@ -28,8 +28,8 @@ tags:
     description: Operations about Teams
   - name: AccessGrants
     description: Operations about AccessGrants
-  - name: Notifications
-    description: Operations about Notifications
+  - name: ReportNotifications
+    description: Operations about ReportNotifications
   - name: Users
     description: Operations about Users
   - name: BusinessMetrics
@@ -40,6 +40,8 @@ tags:
     description: Operations about ResourceReports
   - name: FinancialCommitmentReports
     description: Operations about FinancialCommitmentReports
+  - name: FinancialCommitments
+    description: Operations about FinancialCommitments
   - name: KubernetesEfficiencyReports
     description: Operations about KubernetesEfficiencyReports
   - name: AnomalyAlerts
@@ -52,10 +54,59 @@ tags:
     description: Operations about Budgets
   - name: BudgetAlerts
     description: Operations about BudgetAlerts
+  - name: Integrations
+    description: Operations about Integrations
+  - name: UserCostsUpload
+    description: Operations about UserCostsUploads
+  - name: Recommendations
+    description: Operations about Recommendations
+  - name: ManagedAccounts
+    description: Operations about ManagedAccounts
+  - name: BillingRules
+    description: Operations about BillingRules
   - name: Ping
     description: Operations about Pings
 paths:
   /workspaces:
+    post:
+      description: Create a workspace
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                name:
+                  description: Name of the workspace.
+                  type: string
+              required:
+                - name
+        required: true
+      security:
+        - oauth2:
+            - write
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Workspace'
+              examples:
+                response:
+                  value:
+                    token: wrkspc_a8b2c1867c84febc
+                    name: Ellingson Mineral Corporation
+                    created_at: '2024-05-17T21:24:55Z'
+        '400':
+          description: BadRequest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+        - Workspaces
+      operationId: createWorkspace
     get:
       description: Return all Workspaces that the current API token has access to.
       parameters:
@@ -93,12 +144,43 @@ paths:
                       last: https://api.vantage.com/v2/workspaces?page=1
                       prev: null
                     workspaces:
-                      - token: wrkspc_f936ced69bcbf8fa
-                        name: Senger and Sons
+                      - token: wrkspc_ee55a4a36ada7d80
+                        name: Johns-Anderson 2039e721
+                        created_at: '2024-05-17T21:24:56Z'
+                      - token: wrkspc_d191b2396bda86a4
+                        name: Wisozk, Marquardt and Kulas d7ed4ecc
+                        created_at: '2024-05-17T21:24:56Z'
       tags:
         - Workspaces
       operationId: getWorkspaces
   /workspaces/{workspace_token}:
+    delete:
+      description: Delete a Workspace
+      parameters:
+        - in: path
+          name: workspace_token
+          required: true
+          schema:
+            type: string
+      security:
+        - oauth2:
+            - write
+      responses:
+        '204':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Workspace'
+        '404':
+          description: NotFound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+        - Workspaces
+      operationId: deleteWorkspace
     get:
       description: Return a specific Workspace.
       parameters:
@@ -120,8 +202,9 @@ paths:
               examples:
                 response:
                   value:
-                    token: wrkspc_be2a1b2c1ebfa3c9
-                    name: Crist-Simonis
+                    token: wrkspc_b6510290cad5b0f9
+                    name: Zulauf, Hauck and O'Keefe ca58ebd3
+                    created_at: '2024-05-17T21:24:57Z'
         '404':
           description: NotFound
           content:
@@ -354,13 +437,13 @@ paths:
               examples:
                 response:
                   value:
-                    token: svd_fltr_84a8a4e35a845f97
+                    token: svd_fltr_4de629566ddd68c9
                     title: New Saved Filter
                     cost_report_tokens: []
-                    filter: (costs.provider = 'datadog')
-                    created_at: '2023-09-12T05:06:52Z'
-                    created_by: usr_4011f2b8a607729d
-                    workspace_token: wrkspc_6f54abb1b2a5aefc
+                    filter: costs.provider = 'datadog'
+                    created_at: '2024-07-15T16:08:58Z'
+                    created_by: team_e58399e4df1175e9
+                    workspace_token: wrkspc_e4cacf2493142e5b
         '400':
           description: BadRequest
           content:
@@ -374,7 +457,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Errors'
       tags:
-        - Filters
+        - SavedFilters
       operationId: createSavedFilter
     get:
       description: Return all SavedFilters that can be applied to a CostReport.
@@ -413,16 +496,16 @@ paths:
                       last: https://api.vantage.com/v2/saved_filters?page=1
                       prev: null
                     saved_filters:
-                      - token: svd_fltr_52a89bb6b1c84380
-                        title: White
+                      - token: svd_fltr_3dffc0458f7a2487
+                        title: Oolong (5)
                         cost_report_tokens:
-                          - rprt_fef8f7e70f993108
-                        filter: (costs.provider = 'aws' AND costs.account_id = '74')
-                        created_at: '2023-09-12T05:07:35Z'
-                        created_by: usr_055cb925f37bfa75
-                        workspace_token: wrkspc_c3a582b964a67afd
+                          - rprt_3d0ae4648f5fd8f7
+                        filter: (costs.provider = 'aws' AND costs.account_id = '30')
+                        created_at: '2024-07-15T16:08:53Z'
+                        created_by: usr_95fac32734bdceab
+                        workspace_token: wrkspc_914dcb0959497507
       tags:
-        - Filters
+        - SavedFilters
       operationId: getSavedFilters
   /saved_filters/{saved_filter_token}:
     delete:
@@ -450,7 +533,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Errors'
       tags:
-        - Filters
+        - SavedFilters
       operationId: deleteSavedFilter
     put:
       description: Update a SavedFilter for CostReports.
@@ -479,13 +562,13 @@ paths:
               examples:
                 response:
                   value:
-                    token: svd_fltr_92c840f4c76c76b3
+                    token: svd_fltr_eeabf4c7264f94a8
                     title: Updated Saved Filter
                     cost_report_tokens: []
-                    filter: (costs.provider = 'azure')
-                    created_at: '2023-09-12T05:07:35Z'
-                    created_by: usr_fcd9ff9f8aa6bd1f
-                    workspace_token: wrkspc_49c6865bb1f6356f
+                    filter: costs.provider = 'azure'
+                    created_at: '2024-07-15T16:08:55Z'
+                    created_by: usr_240a5fd77d5da076
+                    workspace_token: wrkspc_0b7ef373f9c5d485
         '400':
           description: BadRequest
           content:
@@ -505,7 +588,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Errors'
       tags:
-        - Filters
+        - SavedFilters
       operationId: updateSavedFilter
     get:
       description: Return a specific SavedFilter.
@@ -528,14 +611,14 @@ paths:
               examples:
                 response:
                   value:
-                    token: svd_fltr_7d37f2b3704d1c41
-                    title: Black
+                    token: svd_fltr_be3f24eb1b5aabf6
+                    title: Green (8)
                     cost_report_tokens:
-                      - rprt_267f8c135c20bf99
-                    filter: (costs.provider = 'aws' AND costs.account_id = '57')
-                    created_at: '2023-09-12T05:07:36Z'
-                    created_by: usr_86017037cec4a852
-                    workspace_token: wrkspc_7020b8708f0e6556
+                      - rprt_47023ad2b735f57d
+                    filter: (costs.provider = 'aws' AND costs.account_id = '98')
+                    created_at: '2024-07-15T16:08:54Z'
+                    created_by: team_73f6001f98e9012b
+                    workspace_token: wrkspc_be6568a301b1d06c
         '404':
           description: NotFound
           content:
@@ -543,7 +626,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Errors'
       tags:
-        - Filters
+        - SavedFilters
       operationId: getSavedFilter
   /cost_reports:
     post:
@@ -567,14 +650,19 @@ paths:
               examples:
                 response:
                   value:
-                    token: rprt_362b04093c087475
+                    token: rprt_9783f373184498cd
                     title: New Cost Report
-                    folder_token: fldr_819fe3807f88ff90
+                    folder_token: fldr_02bd44d9af7b07e8
                     saved_filter_tokens:
-                      - svd_fltr_a50b002184902819
+                      - svd_fltr_43bbe2f3133a30d7
                     business_metric_tokens_with_metadata:
-                      - business_metric_token: bsnss_mtrc_bc0689f1b54094b1
+                      - business_metric_token: bsnss_mtrc_e2414629ee5f2a5b
                         unit_scale: per_thousand
+                        label_filter:
+                          - CBGB
+                          - Roxy
+                          - Studio 54
+                          - ''
                     filter: >-
                       costs.provider = 'aws' AND costs.service = 'Amazon Simple
                       Storage Service'
@@ -586,8 +674,15 @@ paths:
                       include_tax: true
                       amortize: true
                       unallocated: false
-                    created_at: '2024-03-19T15:22:51Z'
-                    workspace_token: wrkspc_d50edff4c3ae23b2
+                    created_at: '2024-07-03T00:00:00Z'
+                    workspace_token: wrkspc_0f1aaeec11b32bc9
+                    previous_period_start_date: null
+                    previous_period_end_date: null
+                    start_date: '2024-07-01'
+                    end_date: '2024-07-31'
+                    date_interval: this_month
+                    chart_type: bar
+                    date_bin: day
         '400':
           description: BadRequest
           content:
@@ -640,11 +735,11 @@ paths:
                       last: https://api.vantage.com/v2/cost_reports?page=1
                       prev: null
                     cost_reports:
-                      - token: rprt_e97ef22efaa6da12
+                      - token: rprt_06850587c8f93488
                         title: Untitled
                         folder_token: null
                         saved_filter_tokens:
-                          - svd_fltr_cc4a422cf86f9e26
+                          - svd_fltr_c2656b3d52620239
                         business_metric_tokens_with_metadata: []
                         filter: null
                         groupings: provider,service
@@ -655,8 +750,15 @@ paths:
                           include_tax: true
                           amortize: true
                           unallocated: false
-                        created_at: '2024-03-19T15:22:54Z'
-                        workspace_token: wrkspc_3dc89ff43657f255
+                        created_at: '2024-07-22T16:47:16Z'
+                        workspace_token: wrkspc_894b3cd355b674cb
+                        previous_period_start_date: null
+                        previous_period_end_date: null
+                        start_date: '2024-07-01'
+                        end_date: '2024-07-31'
+                        date_interval: this_month
+                        chart_type: line
+                        date_bin: cumulative
       tags:
         - Costs
       operationId: getCostReports
@@ -715,14 +817,21 @@ paths:
               examples:
                 response:
                   value:
-                    token: rprt_77fec1422cfc25df
+                    token: rprt_af5d4e67c9cc969a
                     title: Updated Cost Report
-                    folder_token: fldr_54b65b6cb9af21d0
+                    folder_token: fldr_40c4abedffd2635b
                     saved_filter_tokens:
-                      - svd_fltr_33736ce7e17d7803
+                      - svd_fltr_37d6f9b74b196e6b
                     business_metric_tokens_with_metadata:
-                      - business_metric_token: bsnss_mtrc_58c57f66d35a1ad7
+                      - business_metric_token: bsnss_mtrc_7fb977537ec08a72
                         unit_scale: per_thousand
+                        label_filter:
+                          - CBGB
+                          - Roxy
+                          - Studio 54
+                          - ''
+                      - business_metric_token: bsnss_mtrc_723bc37034c6fc13
+                        unit_scale: per_million
                     filter: costs.provider = 'azure'
                     groupings: service,account_id
                     settings:
@@ -732,8 +841,15 @@ paths:
                       include_tax: true
                       amortize: true
                       unallocated: false
-                    created_at: '2024-03-19T15:22:52Z'
-                    workspace_token: wrkspc_ca0b4a774e8fa57c
+                    created_at: '2024-07-03T00:00:00Z'
+                    workspace_token: wrkspc_594cb0434116d0db
+                    previous_period_start_date: null
+                    previous_period_end_date: null
+                    start_date: '2024-07-01'
+                    end_date: '2024-07-31'
+                    date_interval: this_month
+                    chart_type: pie
+                    date_bin: week
         '400':
           description: BadRequest
           content:
@@ -770,12 +886,14 @@ paths:
               examples:
                 response:
                   value:
-                    token: rprt_16a4d01d67a50631
-                    title: Segment Report
-                    folder_token: fldr_fa3d9420651c11d7
+                    token: rprt_e894ef5699f7f798
+                    title: Untitled
+                    folder_token: null
+                    saved_filter_tokens:
+                      - svd_fltr_2fbc5b6fc12f0559
                     business_metric_tokens_with_metadata: []
                     filter: null
-                    groupings: null
+                    groupings: provider,service
                     settings:
                       include_credits: false
                       include_refunds: false
@@ -783,8 +901,15 @@ paths:
                       include_tax: true
                       amortize: true
                       unallocated: false
-                    created_at: '2024-03-19T15:22:54Z'
-                    workspace_token: wrkspc_6a917500aba6bca8
+                    created_at: '2024-07-22T16:47:24Z'
+                    workspace_token: wrkspc_a233cd64c8383c9b
+                    previous_period_start_date: null
+                    previous_period_end_date: null
+                    start_date: '2024-07-01'
+                    end_date: '2024-07-31'
+                    date_interval: this_month
+                    chart_type: line
+                    date_bin: cumulative
         '404':
           description: NotFound
           content:
@@ -816,17 +941,18 @@ paths:
               examples:
                 response:
                   value:
-                    token: fltr_sgmt_1e47944f3821d5c3
+                    token: fltr_sgmt_a22e3e52e9a93a75
                     title: New Segment
-                    parent_segment_token: fltr_sgmt_ac17f90b94f8d00f
+                    parent_segment_token: fltr_sgmt_7f1af73e92e5e156
                     description: I'm a Segment.
                     track_unallocated: false
                     priority: 100
                     filter: >-
-                      (costs.provider = 'aws' AND costs.service = 'Amazon Simple
-                      Storage Service')
-                    created_at: '2024-02-02T01:02:08Z'
-                    workspace_token: wrkspc_d5d4814d5e42522c
+                      costs.provider = 'aws' AND costs.service = 'Amazon Simple
+                      Storage Service'
+                    created_at: '2024-05-14T14:34:24Z'
+                    workspace_token: wrkspc_f75aec7671a72dd3
+                    report_token: null
         '400':
           description: BadRequest
           content:
@@ -879,10 +1005,10 @@ paths:
                       last: https://api.vantage.com/v2/segments?page=1
                       prev: null
                     segments:
-                      - token: fltr_sgmt_0db07f2863f779cc
-                        title: installation
+                      - token: fltr_sgmt_79b0b8ef658d6bba
+                        title: neural-net
                         parent_segment_token: null
-                        description: Multi-lateral attitude-oriented process improvement
+                        description: Optimized encompassing algorithm
                         track_unallocated: false
                         report_settings:
                           include_credits: false
@@ -892,8 +1018,9 @@ paths:
                           amortize: true
                         priority: 100
                         filter: (costs.provider = 'aws')
-                        created_at: '2024-02-02T01:02:07Z'
-                        workspace_token: wrkspc_7036b752bf43a658
+                        created_at: '2024-05-14T14:34:22Z'
+                        workspace_token: wrkspc_21f36c4ad272fb7b
+                        report_token: rprt_8dd4e1fe3b88c821
       tags:
         - Segments
       operationId: getSegments
@@ -952,15 +1079,16 @@ paths:
               examples:
                 response:
                   value:
-                    token: fltr_sgmt_99969c652d4df258
+                    token: fltr_sgmt_1550eb291314035c
                     title: Updated Segment
-                    parent_segment_token: fltr_sgmt_d8d4da2ef1751c13
-                    description: Ameliorated disintermediate challenge
+                    parent_segment_token: fltr_sgmt_a39cf865967ed4d8
+                    description: Total object-oriented productivity
                     track_unallocated: false
                     priority: 42
-                    filter: (costs.provider = 'azure')
-                    created_at: '2024-02-02T01:05:01Z'
-                    workspace_token: wrkspc_c144e5f763a5b05e
+                    filter: costs.provider = 'azure'
+                    created_at: '2024-05-14T14:34:23Z'
+                    workspace_token: wrkspc_1be9d0445f94db0b
+                    report_token: rprt_3e460438ae115013
         '400':
           description: BadRequest
           content:
@@ -997,10 +1125,10 @@ paths:
               examples:
                 response:
                   value:
-                    token: fltr_sgmt_d1de6bdb3133d61e
-                    title: benchmark
+                    token: fltr_sgmt_e528df30fe4c9da4
+                    title: Function-based
                     parent_segment_token: null
-                    description: Synergized bandwidth-monitored help-desk
+                    description: Total multi-tasking encoding
                     track_unallocated: false
                     report_settings:
                       include_credits: false
@@ -1010,8 +1138,9 @@ paths:
                       amortize: true
                     priority: 100
                     filter: (costs.provider = 'aws')
-                    created_at: '2024-02-02T01:02:09Z'
-                    workspace_token: wrkspc_5c9b1211804105ff
+                    created_at: '2024-05-14T14:34:18Z'
+                    workspace_token: wrkspc_eb7573db105407df
+                    report_token: rprt_f7828113036f5fce
         '404':
           description: NotFound
           content:
@@ -1311,6 +1440,48 @@ paths:
           schema:
             type: integer
             format: int32
+        - in: query
+          name: settings[include_credits]
+          description: Results will include credits.
+          required: false
+          schema:
+            type: boolean
+            default: false
+        - in: query
+          name: settings[include_refunds]
+          description: Results will include refunds.
+          required: false
+          schema:
+            type: boolean
+            default: false
+        - in: query
+          name: settings[include_discounts]
+          description: Results will include discounts.
+          required: false
+          schema:
+            type: boolean
+            default: true
+        - in: query
+          name: settings[include_tax]
+          description: Results will include tax.
+          required: false
+          schema:
+            type: boolean
+            default: true
+        - in: query
+          name: settings[amortize]
+          description: Results will amortize.
+          required: false
+          schema:
+            type: boolean
+            default: true
+        - in: query
+          name: settings[unallocated]
+          description: Results will show unallocated costs.
+          required: false
+          schema:
+            type: boolean
+            default: false
       security:
         - oauth2:
             - read
@@ -1908,7 +2079,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Errors'
       tags:
-        - Notifications
+        - ReportNotifications
       operationId: createReportNotification
     get:
       description: Return all ReportNotifications.
@@ -1955,7 +2126,7 @@ paths:
                         frequency: weekly
                         change: percentage
       tags:
-        - Notifications
+        - ReportNotifications
       operationId: getReportNotifications
   /report_notifications/{report_notification_token}:
     delete:
@@ -1983,7 +2154,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Errors'
       tags:
-        - Notifications
+        - ReportNotifications
       operationId: deleteReportNotification
     put:
       description: Update a ReportNotification.
@@ -2032,7 +2203,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Errors'
       tags:
-        - Notifications
+        - ReportNotifications
       operationId: updateReportNotification
     get:
       description: Return a ReportNotification.
@@ -2069,7 +2240,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Errors'
       tags:
-        - Notifications
+        - ReportNotifications
       operationId: getReportNotification
   /users:
     get:
@@ -2183,19 +2354,27 @@ paths:
               examples:
                 response:
                   value:
-                    token: bsnss_mtrc_8fd798977fbef041
+                    token: bsnss_mtrc_553dd522c66cb1aa
                     title: New Biz Metric
-                    created_by_token: usr_736c1e3753ee2900
+                    created_by_token: usr_16adb5609ee89b8e
                     cost_report_tokens_with_metadata:
-                      - cost_report_token: rprt_659365dfc7f15a60
+                      - cost_report_token: rprt_6633ef89c4c8c87e
                         unit_scale: per_thousand
+                        label_filter:
+                          - CBGB
+                          - Roxy
+                          - Studio 54
+                          - ''
                     values:
                       - date: '2024-01-03T00:00:00Z'
                         amount: '300.0'
+                        label: Cost Center 3
                       - date: '2024-01-02T00:00:00Z'
                         amount: '200.0'
+                        label: Cost Center 2
                       - date: '2024-01-01T00:00:00Z'
                         amount: '100.0'
+                        label: Cost Center 1
         '400':
           description: BadRequest
           content:
@@ -2254,9 +2433,9 @@ paths:
                 response:
                   value:
                     business_metrics:
-                      - token: bsnss_mtrc_731b7041ac0e8639
+                      - token: bsnss_mtrc_11d005e278be649c
                         title: Biz Metric
-                        created_by_token: null
+                        created_by_token: usr_bce141144bee90d6
                         cost_report_tokens_with_metadata: []
                         values: []
       tags:
@@ -2323,12 +2502,17 @@ paths:
               examples:
                 response:
                   value:
-                    token: bsnss_mtrc_f61afeebb9482934
+                    token: bsnss_mtrc_a7f01adf0feb24a6
                     title: New Title
-                    created_by_token: null
+                    created_by_token: usr_0ce8d894fa21de5b
                     cost_report_tokens_with_metadata:
-                      - cost_report_token: rprt_d0b678c7275142fa
+                      - cost_report_token: rprt_3e844c470bb76b93
                         unit_scale: per_thousand
+                        label_filter:
+                          - CBGB
+                          - Roxy
+                          - Studio 54
+                          - ''
                     values:
                       - date: '2024-01-03T00:00:00Z'
                         amount: '600.0'
@@ -2384,9 +2568,9 @@ paths:
               examples:
                 response:
                   value:
-                    token: bsnss_mtrc_20b28191d23d5bee
+                    token: bsnss_mtrc_40f153ce6c3ca185
                     title: Biz Metric
-                    created_by_token: null
+                    created_by_token: usr_d0f62560360b1481
                     cost_report_tokens_with_metadata: []
                     values: []
         '404':
@@ -2433,17 +2617,20 @@ paths:
               examples:
                 response:
                   value:
-                    token: bsnss_mtrc_20326908a5f928d8
+                    token: bsnss_mtrc_5bb17b18e416648d
                     title: Biz Metric
-                    created_by_token: null
+                    created_by_token: usr_e2ac901c508a8174
                     cost_report_tokens_with_metadata: []
                     values:
                       - date: '2024-01-03T00:00:00Z'
                         amount: '300.3'
+                        label: Cost Center 3
                       - date: '2024-01-02T00:00:00Z'
                         amount: '200.2'
+                        label: Cost Center 2
                       - date: '2024-01-01T00:00:00Z'
                         amount: '100.1'
+                        label: Cost Center 1
         '400':
           description: BadRequest
           content:
@@ -2979,6 +3166,61 @@ paths:
       tags:
         - FinancialCommitmentReports
       operationId: getFinancialCommitmentReport
+  /financial_commitments:
+    get:
+      description: Return all FinancialCommitments.
+      parameters:
+        - in: query
+          name: page
+          description: The page of results to return.
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - in: query
+          name: limit
+          description: The amount of results to return. The maximum is 1000.
+          required: false
+          schema:
+            type: integer
+            format: int32
+      security:
+        - oauth2:
+            - read
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FinancialCommitments'
+              examples:
+                response:
+                  value:
+                    links:
+                      self: https://api.vantage.com/v2/financial_commitments
+                      first: https://api.vantage.com/v2/financial_commitments?page=1
+                      next: null
+                      last: https://api.vantage.com/v2/financial_commitments?page=1
+                      prev: null
+                    financial_commitments:
+                      - commitment_type: aws_savings_plan
+                        service: Compute
+                        account: '153271892032'
+                        type: 3 Year Compute Savings Plan
+                        instance_count: null
+                        term: 1 Year
+                        payment_type: No upfront
+                        region: null
+                        purchase_date: '2024-04-15'
+                        expiration_date: '2025-04-15'
+                        commitment: $1.00
+                        status: active
+                        created_at: '2024-04-15T19:51:27Z'
+                        workspace_token: wrkspc_8c897c3d73b69279
+      tags:
+        - FinancialCommitments
+      operationId: getFinancialCommitments
   /kubernetes_efficiency_reports:
     get:
       description: Return all KubernetesEfficiencyReports.
@@ -3249,22 +3491,23 @@ paths:
               examples:
                 response:
                   value:
-                    token: vtag_f4a84302f614d658
-                    created_by_token: usr_b594fc347b8216fc
+                    token: vtag_d5503747c5ce9a21
+                    created_by_token: team_7589281b8e354c45
                     key: Expense Code
                     overridable: false
-                    backfill_until: '2024-04-01'
+                    backfill_until: '2024-07-01'
                     values:
-                      - name: EXPC-1234
-                        filter: >-
-                          (costs.provider = 'aws' AND costs.service = 'Amazon
-                          Elastic Compute Cloud') AND (costs.provider = 'aws'
-                          AND costs.account_id IN ('1234', '5678'))
-                      - name: EXPC-9876
-                        filter: >-
-                          (costs.provider = 'aws' AND costs.account_id IN
-                          ('1234', '5678')) OR (costs.provider = 'gcp' AND
-                          costs.service = 'Google Compute Engine')
+                      - filter: |
+                          costs.provider = 'aws' AND
+                          costs.service = 'Amazon Elastic Compute Cloud' AND
+                          costs.account_id IN ('1234', '5678')
+                        name: EXPC-1234
+                      - filter: |
+                          (
+                            (costs.provider = 'aws' AND costs.account_id IN ('1234', '5678')) OR
+                            (costs.provider = 'gcp' AND costs.service = 'Google Compute Engine')
+                          )
+                        name: EXPC-9876
         '400':
           description: BadRequest
           content:
@@ -3308,32 +3551,32 @@ paths:
                 response:
                   value:
                     virtual_tag_configs:
-                      - token: vtag_8ec959d189f5e069
-                        created_by_token: usr_95037e6816d8274c
+                      - token: vtag_1a19e1d80dbbfac1
+                        created_by_token: usr_66a02851d18a9504
                         key: Product Team
                         overridable: false
-                        backfill_until: '2024-04-01'
+                        backfill_until: '2024-07-01'
                         values:
-                          - name: Growth
-                            filter: >-
+                          - filter: >-
                               (costs.provider = 'aws' AND costs.service =
                               'Amazon Elastic Compute Cloud') AND
                               (costs.provider = 'aws' AND costs.account_id IN
                               ('1234', '5678'))
-                          - name: API
-                            filter: >-
+                            name: Growth
+                          - filter: >-
                               (costs.provider = 'aws' AND costs.account_id IN
                               ('1234', '5678')) OR (costs.provider = 'gcp' AND
                               costs.service = 'Google Compute Engine')
+                            name: API
       tags:
         - VirtualTags
       operationId: getVirtualTagConfigs
-  /virtual_tag_configs/{virtual_tag_config_token}:
+  /virtual_tag_configs/{token}:
     delete:
       description: Deletes an existing VirtualTagConfig.
       parameters:
         - in: path
-          name: virtual_tag_config_token
+          name: token
           required: true
           schema:
             type: string
@@ -3366,7 +3609,7 @@ paths:
       description: Updates an existing VirtualTagConfig.
       parameters:
         - in: path
-          name: virtual_tag_config_token
+          name: token
           required: true
           schema:
             type: string
@@ -3389,22 +3632,25 @@ paths:
               examples:
                 response:
                   value:
-                    token: vtag_a479efbaec5eb18a
-                    created_by_token: usr_e490836e766d2f3b
+                    token: vtag_4430add8b8552a32
+                    created_by_token: usr_c3dedc15ebe12e03
                     key: team
                     overridable: true
-                    backfill_until: '2024-04-01'
+                    backfill_until: '2024-07-01'
                     values:
-                      - name: marketing
-                        filter: >-
-                          (costs.provider = 'aws' AND costs.service = 'Amazon
-                          Elastic Compute Cloud') AND (costs.provider = 'aws'
-                          AND costs.account_id IN ('1234', '5678'))
-                      - name: third-party integrations
-                        filter: >-
-                          (costs.provider = 'aws' AND costs.account_id IN
-                          ('1234', '5678')) OR (costs.provider = 'gcp' AND
-                          costs.service = 'Google Compute Engine')
+                      - filter: >
+                          costs.provider = 'aws' AND costs.service = 'Amazon
+                          Elastic Compute Cloud' AND
+
+                          costs.account_id IN ('1234', '5678')
+                        name: marketing
+                      - filter: >
+                          ((costs.provider = 'aws' AND costs.account_id IN
+                          ('1234', '5678')) OR
+
+                          (costs.provider = 'gcp' AND costs.service = 'Google
+                          Compute Engine'))
+                        name: third-party integrations
         '400':
           description: BadRequest
           content:
@@ -3436,7 +3682,7 @@ paths:
       description: Return a specific VirtualTagConfig.
       parameters:
         - in: path
-          name: virtual_tag_config_token
+          name: token
           required: true
           schema:
             type: string
@@ -3453,22 +3699,22 @@ paths:
               examples:
                 response:
                   value:
-                    token: vtag_d8ec602528464b61
-                    created_by_token: usr_64ff4a87ec8aeef2
+                    token: vtag_9cefbbc5f17d06fc
+                    created_by_token: usr_f8c083243325740b
                     key: Product Team
                     overridable: false
-                    backfill_until: '2024-04-01'
+                    backfill_until: '2024-07-01'
                     values:
-                      - name: Growth
-                        filter: >-
+                      - filter: >-
                           (costs.provider = 'aws' AND costs.service = 'Amazon
                           Elastic Compute Cloud') AND (costs.provider = 'aws'
                           AND costs.account_id IN ('1234', '5678'))
-                      - name: API
-                        filter: >-
+                        name: Growth
+                      - filter: >-
                           (costs.provider = 'aws' AND costs.account_id IN
                           ('1234', '5678')) OR (costs.provider = 'gcp' AND
                           costs.service = 'Google Compute Engine')
+                        name: API
         '404':
           description: NotFound
           content:
@@ -3701,12 +3947,13 @@ paths:
               examples:
                 response:
                   value:
-                    token: bdgt_67c963605b463c9a
+                    token: bdgt_ea1eaec89d553e34
                     name: New Budget Name
-                    workspace_token: wrkspc_5272e025c2e51299
-                    user_token: usr_47ea83ecb7bb8f5d
+                    workspace_token: wrkspc_b83e21368ee5fd9d
+                    user_token: null
+                    created_by_token: team_aea2488160e90528
                     cost_report_token: null
-                    created_at: '2024-04-12T19:33:25Z'
+                    created_at: '2024-07-11T20:22:52Z'
                     budget_alert_tokens: []
                     periods:
                       - start_at: '2024-01-01'
@@ -3783,19 +4030,20 @@ paths:
                       last: https://api.vantage.com/v2/budgets?page=1
                       prev: null
                     budgets:
-                      - token: bdgt_f2690e3a3cf64f4e
-                        name: contextually-based
-                        workspace_token: wrkspc_6210a6e46e9933c6
-                        user_token: usr_a4da9c294e713e24
-                        cost_report_token: rprt_5309907f17010b11
-                        created_at: '2024-04-12T19:33:25Z'
+                      - token: bdgt_0d825e79a0682cc2
+                        name: database
+                        workspace_token: wrkspc_226ab053bd01bb2b
+                        user_token: usr_8e44c17792242852
+                        created_by_token: usr_8e44c17792242852
+                        cost_report_token: rprt_92062240b4ffda91
+                        created_at: '2024-07-11T20:22:49Z'
                         budget_alert_tokens: []
                         periods:
-                          - start_at: '2024-04-01'
-                            end_at: '2024-06-30'
+                          - start_at: '2024-07-01'
+                            end_at: '2024-09-30'
                             amount: '10000.0'
                         performance:
-                          - date: April, 2024
+                          - date: July, 2024
                             actual: '-100%'
                             amount: '10000.0'
       tags:
@@ -3856,12 +4104,13 @@ paths:
               examples:
                 response:
                   value:
-                    token: bdgt_056887ad3d9c9710
+                    token: bdgt_39ce7f848dff6d54
                     name: New Name New Budget Who Dis
-                    workspace_token: wrkspc_85a607a626ba9b39
-                    user_token: usr_5bd274f26b777577
-                    cost_report_token: rprt_4a53de75c432dd44
-                    created_at: '2024-04-12T19:33:25Z'
+                    workspace_token: wrkspc_949771e4fb8d7bfe
+                    user_token: usr_9b375256090d0fda
+                    created_by_token: usr_9b375256090d0fda
+                    cost_report_token: rprt_07325bc3667263b7
+                    created_at: '2024-07-11T20:22:48Z'
                     budget_alert_tokens: []
                     periods:
                       - start_at: '2023-01-01'
@@ -3870,13 +4119,16 @@ paths:
                       - start_at: '2024-01-01'
                         end_at: '2024-01-31'
                         amount: '123.0'
-                      - start_at: '2024-04-01'
-                        end_at: '2024-06-30'
+                      - start_at: '2024-07-01'
+                        end_at: '2024-09-30'
                         amount: '10000.0'
                     performance:
-                      - date: April, 2024
+                      - date: July, 2024
                         actual: '-100%'
                         amount: '10000.0'
+                      - null
+                      - null
+                      - null
                       - null
                       - null
                       - date: January, 2024
@@ -3932,19 +4184,20 @@ paths:
               examples:
                 response:
                   value:
-                    token: bdgt_46df14a770ad8e38
-                    name: Reverse-engineered
-                    workspace_token: wrkspc_cf284d188c114099
-                    user_token: usr_cd90de17f3dddd1b
-                    cost_report_token: rprt_08a5f7ad5ad7bcd6
-                    created_at: '2024-04-12T19:33:25Z'
+                    token: bdgt_24068dbacaaad7fb
+                    name: Total
+                    workspace_token: wrkspc_545a937d68541448
+                    user_token: usr_470d15b368844366
+                    created_by_token: usr_470d15b368844366
+                    cost_report_token: rprt_9ee9f29893956951
+                    created_at: '2024-07-11T20:22:41Z'
                     budget_alert_tokens: []
                     periods:
-                      - start_at: '2024-04-01'
-                        end_at: '2024-06-30'
+                      - start_at: '2024-07-01'
+                        end_at: '2024-09-30'
                         amount: '10000.0'
                     performance:
-                      - date: April, 2024
+                      - date: July, 2024
                         actual: '-100%'
                         amount: '10000.0'
         '404':
@@ -4177,6 +4430,1131 @@ paths:
       tags:
         - BudgetAlerts
       operationId: getBudgetAlert
+  /integrations/azure:
+    post:
+      description: Create an Azure Integration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createAzureIntegration'
+        required: true
+      security:
+        - oauth2:
+            - write
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Integration'
+              examples:
+                response:
+                  value:
+                    token: accss_crdntl_6eddcfaa81f7303f
+                    provider: azure
+                    account_identifier: fake-tenant
+                    status: connected
+                    workspace_tokens: []
+                    created_at: '2024-07-29T21:41:48Z'
+        '400':
+          description: BadRequest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+        - Integrations
+      operationId: createAzureIntegration
+  /integrations/gcp:
+    post:
+      description: Create a GCP Integration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createGCPIntegration'
+        required: true
+      security:
+        - oauth2:
+            - write
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Integration'
+              examples:
+                response:
+                  value:
+                    token: accss_crdntl_c36f82e698677581
+                    provider: gcp
+                    account_identifier: A11111-B22222-C33333
+                    status: connected
+                    workspace_tokens: []
+                    created_at: '2024-07-29T21:41:46Z'
+        '400':
+          description: BadRequest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+        - Integrations
+      operationId: createGCPIntegration
+  /integrations/custom_costs:
+    post:
+      description: Create a Custom Provider Integration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createCustomCostsIntegration'
+        required: true
+      security:
+        - oauth2:
+            - write
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Integration'
+              examples:
+                response:
+                  value:
+                    token: accss_crdntl_bcdf86ea5d4c202c
+                    provider: custom_costs
+                    account_identifier: Custom Provider Integration
+                    status: connected
+                    workspace_tokens: []
+                    created_at: '2024-08-06T23:12:59Z'
+        '400':
+          description: BadRequest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+        - Integrations
+      operationId: createCustomCostsIntegration
+  /integrations:
+    get:
+      description: Return all Integrations.
+      parameters:
+        - in: query
+          name: provider
+          description: >-
+            Query by provider name to list all Integrations for a specific
+            provider.
+          required: false
+          schema:
+            type: string
+            enum:
+              - aws
+              - azure
+              - gcp
+              - snowflake
+              - databricks
+              - mongo
+              - datadog
+              - fastly
+              - new_relic
+              - opencost
+              - open_ai
+              - oracle
+              - confluent
+              - planetscale
+              - coralogix
+              - kubernetes
+              - custom_costs
+              - github
+        - in: query
+          name: account_identifier
+          description: >-
+            Query by account identifier to list all Integrations that match a
+            specific account. For Azure, this is the subscription ID. Must
+            include provider when using this parameter.
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: page
+          description: The page of results to return.
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - in: query
+          name: limit
+          description: The number of results to return. The maximum is 1000.
+          required: false
+          schema:
+            type: integer
+            format: int32
+      security:
+        - oauth2:
+            - read
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Integrations'
+              examples:
+                response:
+                  value:
+                    links:
+                      self: https://api.vantage.com/v2/integrations
+                      first: https://api.vantage.com/v2/integrations?page=1
+                      next: null
+                      last: https://api.vantage.com/v2/integrations?page=1
+                      prev: null
+                    integrations:
+                      - token: accss_crdntl_ac985d1d8bb8bc12
+                        provider: gcp
+                        account_identifier: project_id-3fc92ac0
+                        status: connected
+                        workspace_tokens:
+                          - wrkspc_838cb4508ead3f6d
+                        created_at: '2024-07-29T21:41:49Z'
+      tags:
+        - Integrations
+      operationId: getIntegrations
+  /integrations/{integration_token}:
+    delete:
+      description: Delete an Integration.
+      parameters:
+        - in: path
+          name: integration_token
+          required: true
+          schema:
+            type: string
+      security:
+        - oauth2:
+            - write
+      responses:
+        '204':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Integration'
+        '404':
+          description: NotFound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+        - Integrations
+      operationId: deleteIntegration
+    put:
+      description: Update an Integration.
+      parameters:
+        - in: path
+          name: integration_token
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+        description: The Workspace tokens to associate to the Integration.
+        required: true
+      security:
+        - oauth2:
+            - write
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Integration'
+              examples:
+                response:
+                  value:
+                    token: accss_crdntl_4de527c50afa4fd3
+                    provider: gcp
+                    account_identifier: project_id-e38a8e02
+                    status: connected
+                    workspace_tokens:
+                      - wrkspc_6bffe31969c9f385
+                    created_at: '2024-07-29T21:41:44Z'
+        '400':
+          description: BadRequest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+        '404':
+          description: NotFound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+        - Integrations
+      operationId: updateIntegration
+    get:
+      description: Return an Integration.
+      parameters:
+        - in: path
+          name: integration_token
+          required: true
+          schema:
+            type: string
+      security:
+        - oauth2:
+            - read
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Integration'
+              examples:
+                response:
+                  value:
+                    token: accss_crdntl_f45057cd18834fc7
+                    provider: gcp
+                    account_identifier: project_id-4d4c6f0b
+                    status: connected
+                    workspace_tokens:
+                      - wrkspc_d69f96653fb985d6
+                    created_at: '2024-07-29T21:41:49Z'
+        '404':
+          description: NotFound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+        - Integrations
+      operationId: getIntegration
+  /integrations/{integration_token}/costs:
+    get:
+      description: List CustomCostUploads.
+      parameters:
+        - in: path
+          name: integration_token
+          required: true
+          schema:
+            type: string
+      security:
+        - oauth2:
+            - read
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserCostsUploads'
+              examples:
+                response:
+                  value:
+                    user_costs_uploads:
+                      - token: usr_csts_upld_aa8526f6b76d789f
+                        filename: costs_0.csv
+                        amount: '1234.56'
+                        start_date: '2021-01-01'
+                        end_date: '2021-03-31'
+                        created_by_token: usr_f275d188c2fa41ff
+                        created_at: '2024-08-14T18:10:37.040Z'
+                        processed_at: '2021-04-01T07:00:00.000Z'
+                      - token: usr_csts_upld_c31a59a0fdb5f645
+                        filename: costs_1.csv
+                        amount: '789.01'
+                        start_date: '2021-04-01'
+                        end_date: '2021-06-30'
+                        created_by_token: usr_f0581e95d32dfe0b
+                        created_at: '2024-08-14T18:10:37.116Z'
+                        processed_at: null
+      tags:
+        - Integrations
+      operationId: getUserCostsUploads
+  /integrations/{integration_token}/costs/{user_costs_upload_token}:
+    delete:
+      description: Delete a UserCostsUpload.
+      parameters:
+        - in: path
+          name: integration_token
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: user_costs_upload_token
+          required: true
+          schema:
+            type: integer
+            format: int32
+      security:
+        - oauth2:
+            - write
+      responses:
+        '204':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cost'
+        '404':
+          description: NotFound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+        - Integrations
+        - UserCostsUpload
+      operationId: deleteUserCostsUpload
+  /integrations/{integration_token}/costs.csv:
+    post:
+      description: Create UserCostsUpload via CSV
+      parameters:
+        - in: path
+          name: integration_token
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                csv:
+                  description: CSV file containing custom costs
+                  type: string
+                  format: binary
+              required:
+                - csv
+        required: true
+      security:
+        - oauth2:
+            - write
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserCostsUpload'
+              examples:
+                response:
+                  value:
+                    token: usr_csts_upld_ad7e046b4e9ca72e
+                    filename: costs.csv20240814-86209-20ef1x
+                    amount: '1000.0'
+                    start_date: '2021-01-01'
+                    end_date: '2021-02-01'
+                    created_by_token: usr_73fcd6e6b003d49d
+                    created_at: '2024-08-14T18:10:35.083Z'
+                    processed_at: null
+        '400':
+          description: BadRequest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+        '404':
+          description: NotFound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+        '422':
+          description: UnprocessableEntity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+        - Integrations
+        - UserCostsUpload
+      operationId: createUserCostsUploadViaCSV
+  /recommendations:
+    get:
+      description: Return all Recommendations.
+      parameters:
+        - in: query
+          name: workspace_token
+          description: Filter by workspace.
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: provider_account_id
+          description: >-
+            Filter by provider account id (AWS account, Azure subscription id,
+            etc).
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: category
+          description: Filter by category.
+          required: false
+          schema:
+            type: string
+            enum:
+              - ebs_gp2_to_gp3
+              - ebs_unattached_volume
+              - elasticache_reserved_instances
+              - elastic_search_reserved_instances
+              - rds_reserved_instances
+              - redshift_reserved_instances
+              - ec2_generational_upgrades
+              - rds_generational_upgrades
+              - es_generational_upgrades
+              - cw_log_retention_policy
+              - workspace_unused
+              - workspace_stranded
+              - cloudfront_cloudflare
+              - s3_cloudflare
+              - ip_unattached
+              - s3_bucket_intelligent_tiering
+              - savings_plan
+              - unused_financial_commitments
+              - datadog_financial_commitments
+              - az_compute_reserved_instances
+              - az_compute_reserved_instances_cosmos
+              - az_compute_reserved_instances_sql
+              - az_compute_reserved_instances_app_service
+              - az_disks_unattached
+              - dynamodb_reserved_capacity_recommender
+              - ec2_rightsizing_recommender
+              - kubernetes_recommender
+              - gcp_compute_rightsizing_recommender
+              - gcp_compute_commitment_recommender
+              - ec2_snapshot_recommender
+              - ebs_compute_optimizer_recommender
+              - lambda_compute_optimizer_recommender
+              - ecs_compute_optimizer_recommender
+              - rds_compute_optimizer_recommender
+        - in: query
+          name: provider
+          description: Filter by provider.
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: page
+          description: The page of results to return.
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - in: query
+          name: limit
+          description: The number of results to return. The maximum is 1000.
+          required: false
+          schema:
+            type: integer
+            format: int32
+      security:
+        - oauth2:
+            - read
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recommendations'
+              examples:
+                response:
+                  value:
+                    links:
+                      self: https://api.vantage.com/v2/recommendations
+                      first: https://api.vantage.com/v2/recommendations?page=1
+                      next: null
+                      last: https://api.vantage.com/v2/recommendations?page=1
+                      prev: null
+                    recommendations:
+                      - token: rcmmndtn_8f62a61ced7a5742
+                        category: ip_unattached
+                        workspace_token: wrkspc_2bab2a7936e9b90d
+                        provider: aws
+                        provider_account_id: '123456789012'
+                        description: IP address is not attached to an instance.
+                        potential_savings: '100.0'
+                        service: AWS IP
+                        created_at: '2024-05-06T20:26:34Z'
+                        resources_affected_count: 0
+      tags:
+        - Recommendations
+      operationId: getRecommendations
+  /recommendations/{recommendation_token}:
+    get:
+      description: Return a Recommendation.
+      parameters:
+        - in: path
+          name: recommendation_token
+          required: true
+          schema:
+            type: string
+      security:
+        - oauth2:
+            - read
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recommendation'
+              examples:
+                response:
+                  value:
+                    token: rcmmndtn_8d1de80da52bebe3
+                    category: ip_unattached
+                    workspace_token: wrkspc_326b4663fe20770c
+                    provider: aws
+                    provider_account_id: '123456789012'
+                    description: IP address is not attached to an instance.
+                    potential_savings: '100.0'
+                    service: AWS IP
+                    created_at: '2024-05-06T20:26:34Z'
+                    resources_affected_count: 0
+        '404':
+          description: NotFound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+        - Recommendations
+      operationId: getRecommendation
+  /recommendations/{recommendation_token}/resources:
+    get:
+      description: >-
+        Return all Active Resources, including Recommendation Actions,
+        referenced in this Recommendation.
+      parameters:
+        - in: path
+          name: recommendation_token
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: page
+          description: The page of results to return.
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - in: query
+          name: limit
+          description: The number of results to return. The maximum is 1000.
+          required: false
+          schema:
+            type: integer
+            format: int32
+      security:
+        - oauth2:
+            - read
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProviderResource'
+              examples:
+                response:
+                  value:
+                    links:
+                      self: >-
+                        https://api.vantage.com/v2/recommendations/rcmmndtn_e08af6956416a359/resources
+                      first: >-
+                        https://api.vantage.com/v2/recommendations/rcmmndtn_e08af6956416a359/resources?page=1
+                      next: null
+                      last: >-
+                        https://api.vantage.com/v2/recommendations/rcmmndtn_e08af6956416a359/resources?page=1
+                      prev: null
+                    resources:
+                      - token: prvdr_rsrc_01352c715023e445
+                        resource_id: i-12345
+                        recommendation_actions:
+                          - action: modify
+                            description: >-
+                              Migrate to c5a.xlarge. Reasons: CPU
+                              over-provisioned, EBS IOPS over-provisioned, EBS
+                              throughput over-provisioned, Network bandwidth
+                              over-provisioned, and Network PPS
+                              over-provisioned.
+                            potential_savings: 100
+                            instance_type: c5a.xlarge
+      tags:
+        - Recommendations
+      operationId: getRecommendationResources
+  /recommendations/{recommendation_token}/resources/{resource_token}:
+    get:
+      description: >-
+        Return an Active Resource, including Recommendation Actions, referenced
+        in this Recommendation.
+      parameters:
+        - in: path
+          name: recommendation_token
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: resource_token
+          required: true
+          schema:
+            type: string
+      security:
+        - oauth2:
+            - read
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProviderResource'
+              examples:
+                response:
+                  value:
+                    token: prvdr_rsrc_018edad7219e02b4
+                    resource_id: i-12345
+                    recommendation_actions:
+                      - action: modify
+                        description: >-
+                          Migrate to c5a.xlarge. Reasons: CPU over-provisioned,
+                          EBS IOPS over-provisioned, EBS throughput
+                          over-provisioned, Network bandwidth over-provisioned,
+                          and Network PPS over-provisioned.
+                        potential_savings: 100
+                        instance_type: c5a.xlarge
+        '404':
+          description: NotFound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+        - Recommendations
+      operationId: getRecommendationResource
+  /managed_accounts:
+    post:
+      description: Create a Managed Account.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createManagedAccount'
+        required: true
+      security:
+        - oauth2:
+            - write
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManagedAccount'
+              examples:
+                response:
+                  value:
+                    token: acct_ace620fc3d602740
+                    name: New Managed Account
+                    contact_email: admin@acme.com
+                    parent_account_token: acct_e6baa6dcf81b4e20
+                    access_credential_tokens:
+                      - accss_crdntl_72a8c8ab1d6c9d2c
+        '400':
+          description: BadRequest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+        - ManagedAccounts
+      operationId: createManagedAccount
+    get:
+      description: Returns a list of managed accounts.
+      parameters:
+        - in: query
+          name: page
+          description: The page of results to return.
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - in: query
+          name: limit
+          description: The amount of results to return. The maximum is 1000.
+          required: false
+          schema:
+            type: integer
+            format: int32
+      security:
+        - oauth2:
+            - read
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManagedAccounts'
+              examples:
+                response:
+                  value:
+                    links:
+                      self: https://api.vantage.com/v2/managed_accounts
+                      first: https://api.vantage.com/v2/managed_accounts?page=1
+                      next: null
+                      last: https://api.vantage.com/v2/managed_accounts?page=1
+                      prev: null
+                    managed_accounts:
+                      - token: acct_be30cfd09cf0b3c5
+                        name: Rep. Gavin Berge
+                        contact_email: gavin_berge_rep@orn.net
+                        parent_account_token: acct_f95654a3aefab4b7
+                        access_credential_tokens: []
+      tags:
+        - ManagedAccounts
+      operationId: getManagedAccounts
+  /managed_accounts/{managed_account_token}:
+    delete:
+      description: Delete a Managed Account.
+      parameters:
+        - in: path
+          name: managed_account_token
+          required: true
+          schema:
+            type: string
+      security:
+        - oauth2:
+            - write
+      responses:
+        '204':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManagedAccount'
+        '404':
+          description: NotFound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+        - ManagedAccounts
+      operationId: deleteManagedAccount
+    put:
+      description: Update a Managed Account.
+      parameters:
+        - in: path
+          name: managed_account_token
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateManagedAccount'
+        required: true
+      security:
+        - oauth2:
+            - write
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManagedAccount'
+              examples:
+                response:
+                  value:
+                    token: acct_dd2fdf6564b60319
+                    name: New Name
+                    contact_email: newguy@acme.com
+                    parent_account_token: acct_bb022aecd1125ada
+                    access_credential_tokens:
+                      - accss_crdntl_686904ffd39a4618
+        '400':
+          description: BadRequest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+        '404':
+          description: NotFound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+        - ManagedAccounts
+      operationId: updateManagedAccount
+    get:
+      description: Return a Managed Account.
+      parameters:
+        - in: path
+          name: managed_account_token
+          required: true
+          schema:
+            type: string
+      security:
+        - oauth2:
+            - read
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManagedAccount'
+              examples:
+                response:
+                  value:
+                    token: acct_d3f99e1941a01861
+                    name: Tamisha Mohr
+                    contact_email: mohr_tamisha@vandervort.io
+                    parent_account_token: acct_aaa060a863c2012b
+                    access_credential_tokens: []
+        '404':
+          description: NotFound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+        - ManagedAccounts
+      operationId: getManagedAccount
+  /billing_rules:
+    post:
+      description: Create a Billing Rule.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/createBillingRule'
+        required: true
+      security:
+        - oauth2:
+            - write
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingRule'
+              examples:
+                response:
+                  value:
+                    token: bllng_rule_9cc9eab6bb73266b
+                    title: Credit for Data Transfer
+                    type: Credit
+                    created_by_token: usr_ae0b14f6c9108edc
+                    created_at: '2024-07-02T15:26:52Z'
+                    service: Amazon S3
+                    category: Data Transfer
+                    sub_category: Outbound
+                    start_period: '2024-05-01'
+                    amount: '300.0'
+        '400':
+          description: BadRequest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+        - BillingRules
+      operationId: createBillingRule
+    get:
+      description: Returns a list of billing rules.
+      parameters:
+        - in: query
+          name: page
+          description: The page of results to return.
+          required: false
+          schema:
+            type: integer
+            format: int32
+        - in: query
+          name: limit
+          description: The amount of results to return. The maximum is 1000.
+          required: false
+          schema:
+            type: integer
+            format: int32
+      security:
+        - oauth2:
+            - read
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingRules'
+              examples:
+                response:
+                  value:
+                    links:
+                      self: https://api.vantage.com/v2/billing_rules
+                      first: https://api.vantage.com/v2/billing_rules?page=1
+                      next: null
+                      last: https://api.vantage.com/v2/billing_rules?page=1
+                      prev: null
+                    billing_rules:
+                      - token: bllng_rule_ac6852c686e265a1
+                        title: Exclude Reserved Instance Fees
+                        type: Exclusion
+                        created_by_token: usr_018532419bd2e1da
+                        created_at: '2024-07-02T15:26:51Z'
+                        charge_type: Reserved Instance Fees
+      tags:
+        - BillingRules
+      operationId: getBillingRules
+  /billing_rules/{billing_rule_token}:
+    delete:
+      description: Delete a Billing Rule.
+      parameters:
+        - in: path
+          name: billing_rule_token
+          required: true
+          schema:
+            type: string
+      security:
+        - oauth2:
+            - write
+      responses:
+        '204':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingRule'
+        '404':
+          description: NotFound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+        - BillingRules
+      operationId: deleteBillingRule
+    put:
+      description: Update a Billing Rule.
+      parameters:
+        - in: path
+          name: billing_rule_token
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updateBillingRule'
+        required: true
+      security:
+        - oauth2:
+            - write
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingRule'
+              examples:
+                response:
+                  value:
+                    token: bllng_rule_16c2d217f026d23e
+                    title: Updated Adjustment
+                    type: Adjustment
+                    created_by_token: usr_cef510966067477f
+                    created_at: '2024-07-02T15:26:52Z'
+                    service: Amazon S3
+                    category: Data Transfer
+                    adjusted_rate: '0.85'
+        '400':
+          description: BadRequest
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+        '404':
+          description: NotFound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+        - BillingRules
+      operationId: updateBillingRule
+    get:
+      description: Return a Billing Rule.
+      parameters:
+        - in: path
+          name: billing_rule_token
+          required: true
+          schema:
+            type: string
+      security:
+        - oauth2:
+            - read
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingRule'
+              examples:
+                response:
+                  value:
+                    token: bllng_rule_a2708f17b2d3fb0e
+                    title: Exclude Reserved Instance Fees
+                    type: Exclusion
+                    created_by_token: usr_d253a52c80171514
+                    created_at: '2024-07-02T15:26:50Z'
+                    charge_type: Reserved Instance Fees
+        '404':
+          description: NotFound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+      tags:
+        - BillingRules
+      operationId: getBillingRule
   /ping:
     get:
       description: >-
@@ -4207,16 +5585,6 @@ components:
             read: Grants read access
             write: Grants write access
   schemas:
-    Workspaces:
-      type: object
-      properties:
-        links:
-          type: object
-        workspaces:
-          type: array
-          items:
-            $ref: '#/components/schemas/Workspace'
-      description: Workspaces model
     Workspace:
       type: object
       properties:
@@ -4226,6 +5594,12 @@ components:
           type: string
           example: Acme Corp.
           description: The name of the Workspace.
+        created_at:
+          type: string
+          example: '2023-08-04T00:00:00Z'
+          description: >-
+            The date and time, in UTC, the Workspace was created. ISO 8601
+            Formatted.
       description: Workspace model
     Errors:
       type: object
@@ -4237,6 +5611,16 @@ components:
           items:
             type: string
       description: Errors model
+    Workspaces:
+      type: object
+      properties:
+        links:
+          type: object
+        workspaces:
+          type: array
+          items:
+            $ref: '#/components/schemas/Workspace'
+      description: Workspaces model
     createFolder:
       type: object
       properties:
@@ -4373,7 +5757,7 @@ components:
             Formatted.
         created_by:
           type: string
-          description: The User who created the SavedFilter.
+          description: The token for the Creator of this SavedFilter.
         workspace_token:
           type: string
           description: The token for the Workspace the SavedFilter is a part of.
@@ -4454,6 +5838,11 @@ components:
                   - per_million
                   - per_billion
                 default: per_unit
+              label_filter:
+                type: array
+                description: Include only values with these labels in the CostReport.
+                items:
+                  type: string
             required:
               - business_metric_token
         folder_token:
@@ -4489,8 +5878,68 @@ components:
               type: boolean
               description: Report will show unallocated costs.
               default: false
+        previous_period_start_date:
+          type: string
+          description: >-
+            The previous period start date of the CostReport. ISO 8601
+            Formatted.
+        previous_period_end_date:
+          type: string
+          description: The previous period end date of the CostReport. ISO 8601 Formatted.
+        start_date:
+          type: string
+          description: >-
+            The start date of the CostReport. ISO 8601 Formatted. Incompatible
+            with 'date_interval' parameter.
+        end_date:
+          type: string
+          description: >-
+            The end date of the CostReport. ISO 8601 Formatted. Incompatible
+            with 'date_interval' parameter.
+        date_interval:
+          type: string
+          description: >-
+            The date interval of the CostReport. Incompatible with 'start_date'
+            and 'end_date' parameters. Defaults to 'this_month' if start_date
+            and end_date are not provided.
+          enum:
+            - this_month
+            - last_7_days
+            - last_30_days
+            - last_month
+            - last_3_months
+            - last_6_months
+            - custom
+            - last_12_months
+            - last_24_months
+            - last_36_months
+            - next_month
+            - next_3_months
+            - next_6_months
+            - next_12_months
+            - year_to_date
+        chart_type:
+          type: string
+          description: The chart type of the CostReport.
+          enum:
+            - area
+            - line
+            - pie
+            - bar
+          default: line
+        date_bin:
+          type: string
+          description: The date bin of the CostReport.
+          enum:
+            - cumulative
+            - day
+            - week
+            - month
+          default: cumulative
       required:
         - title
+        - previous_period_end_date
+        - end_date
       description: Create a CostReport.
     CostReport:
       type: object
@@ -4514,8 +5963,8 @@ components:
           items:
             $ref: '#/components/schemas/AttachedBusinessMetricForCostReport'
           description: >-
-            The tokens for the BusinessMetrics assigned to the CostReport, and
-            the unit scale.
+            The tokens for the BusinessMetrics assigned to the CostReport, the
+            unit scale, and label filter.
         filter:
           type: string
           description: >-
@@ -4562,6 +6011,37 @@ components:
         workspace_token:
           type: string
           description: The token for the Workspace the CostReport is a part of.
+        previous_period_start_date:
+          type: string
+          example: '2024-06-01'
+          description: >-
+            The previous period start date of the CostReport. ISO 8601
+            Formatted.
+        previous_period_end_date:
+          type: string
+          example: '2024-06-15'
+          description: The previous period end date of the CostReport. ISO 8601 Formatted.
+        start_date:
+          type: string
+          example: '2024-07-01'
+          description: >-
+            The start date of the CostReports. ISO 8601 Formatted. Overwrites
+            'date_interval' if set.
+        end_date:
+          type: string
+          example: '2024-07-15'
+          description: >-
+            The end date of the CostReports. ISO 8601 Formatted. Overwrites
+            'date_interval' if set.
+        date_interval:
+          type: string
+          description: The date interval of the CostReport.
+        chart_type:
+          type: string
+          description: The chart type of the CostReport.
+        date_bin:
+          type: string
+          description: The date bin of the CostReport.
       description: CostReport model
     AttachedBusinessMetricForCostReport:
       type: object
@@ -4581,6 +6061,17 @@ components:
             - per_billion
           description: >-
             Determines the scale of the BusinessMetric's values within a
+            particular CostReport.
+        label_filter:
+          type: array
+          items:
+            type: string
+            example:
+              - label_1
+              - label_2
+          x-omitempty: true
+          description: >-
+            The labels that the BusinessMetric is filtered by within a
             particular CostReport.
     CostReports:
       type: object
@@ -4639,6 +6130,11 @@ components:
                   - per_million
                   - per_billion
                 default: per_unit
+              label_filter:
+                type: array
+                description: Include only values with these labels in the CostReport.
+                items:
+                  type: string
             required:
               - business_metric_token
         folder_token:
@@ -4668,6 +6164,64 @@ components:
             unallocated:
               type: boolean
               description: Report will show unallocated costs.
+        previous_period_start_date:
+          type: string
+          description: >-
+            The previous period start date of the CostReport. ISO 8601
+            Formatted.
+        previous_period_end_date:
+          type: string
+          description: The previous period end date of the CostReport. ISO 8601 Formatted.
+        start_date:
+          type: string
+          description: >-
+            The start date of the CostReport. ISO 8601 Formatted. Incompatible
+            with 'date_interval' parameter.
+        end_date:
+          type: string
+          description: >-
+            The end date of the CostReport. ISO 8601 Formatted. Incompatible
+            with 'date_interval' parameter.
+        date_interval:
+          type: string
+          description: >-
+            The date interval of the CostReport. Incompatible with 'start_date'
+            and 'end_date' parameters. Defaults to 'this_month' if start_date
+            and end_date are not provided.
+          enum:
+            - this_month
+            - last_7_days
+            - last_30_days
+            - last_month
+            - last_3_months
+            - last_6_months
+            - custom
+            - last_12_months
+            - last_24_months
+            - last_36_months
+            - next_month
+            - next_3_months
+            - next_6_months
+            - next_12_months
+            - year_to_date
+        chart_type:
+          type: string
+          description: The chart type of the CostReport.
+          enum:
+            - area
+            - line
+            - pie
+            - bar
+          default: line
+        date_bin:
+          type: string
+          description: The date bin of the CostReport.
+          enum:
+            - cumulative
+            - day
+            - week
+            - month
+          default: cumulative
       description: Update a CostReport.
     createSegment:
       type: object
@@ -4783,6 +6337,9 @@ components:
         workspace_token:
           type: string
           description: The token for the Workspace the Segment is a part of.
+        report_token:
+          type: string
+          description: The token for the Report the Segment has generated.
       description: Segment model
     Segments:
       type: object
@@ -4889,6 +6446,7 @@ components:
             - next_3_months
             - next_6_months
             - next_12_months
+            - year_to_date
         start_date:
           type: string
           description: >-
@@ -4955,6 +6513,7 @@ components:
             - next_3_months
             - next_6_months
             - next_12_months
+            - year_to_date
           description: >-
             Determines the date range in the Dashboard. Guaranteed to be set to
             'custom' if 'start_date' and 'end_date' are set.
@@ -5043,6 +6602,7 @@ components:
             - next_3_months
             - next_6_months
             - next_12_months
+            - year_to_date
         start_date:
           type: string
           description: >-
@@ -5108,6 +6668,8 @@ components:
             - planetscale
             - coralogix
             - kubernetes
+            - custom_costs
+            - github
           description: The cost provider which incurred the cost.
         billing_account_id:
           type: string
@@ -5151,6 +6713,7 @@ components:
           type: string
           example: DataTransfer-Regional-Bytes
           description: The subcategory for the cost.
+      description: Cost model
     createTeam:
       type: object
       properties:
@@ -5496,8 +7059,8 @@ components:
         cost_report_tokens_with_metadata:
           type: array
           description: >-
-            The tokens for any CostReports that use the BusinessMetric, and the
-            unit scale.
+            The tokens for any CostReports that use the BusinessMetric, the unit
+            scale, and label filter.
           items:
             type: object
             properties:
@@ -5516,11 +7079,16 @@ components:
                   - per_million
                   - per_billion
                 default: per_unit
+              label_filter:
+                type: array
+                description: Include only values with these labels in the CostReport.
+                items:
+                  type: string
             required:
               - cost_report_token
         values:
           type: array
-          description: The dates and amounts for the BusinessMetric.
+          description: The dates, amounts, and (optional) labels for the BusinessMetric.
           items:
             type: object
             properties:
@@ -5530,6 +7098,9 @@ components:
               amount:
                 type: number
                 format: double
+              label:
+                type: string
+                nullable: true
             required:
               - date
               - amount
@@ -5556,13 +7127,13 @@ components:
           items:
             $ref: '#/components/schemas/AttachedCostReportForBusinessMetric'
           description: >-
-            The tokens for any CostReports that use the BusinessMetric, and the
-            unit scale.
+            The tokens for any CostReports that use the BusinessMetric, the unit
+            scale, and label filter.
         values:
           type: array
           items:
             $ref: '#/components/schemas/BusinessMetricValue'
-          description: The dates and amounts for the BusinessMetric
+          description: The dates, amounts, and (optional) labels for the BusinessMetric.
       description: BusinessMetric model
     AttachedCostReportForBusinessMetric:
       type: object
@@ -5583,6 +7154,17 @@ components:
           description: >-
             Determines the scale of the BusinessMetric's values within a
             particular CostReport.
+        label_filter:
+          type: array
+          items:
+            type: string
+            example:
+              - label_1
+              - label_2
+          x-omitempty: true
+          description: >-
+            The labels that the BusinessMetric is filtered by within a
+            particular CostReport.
     BusinessMetricValue:
       type: object
       properties:
@@ -5596,6 +7178,10 @@ components:
           description: >-
             The amount of the Business Metric Value as a string to ensure
             precision.
+        label:
+          type: string
+          example: Cost Center A
+          description: The label of the Business Metric Value.
     BusinessMetrics:
       type: object
       properties:
@@ -5633,11 +7219,16 @@ components:
                   - per_million
                   - per_billion
                 default: per_unit
+              label_filter:
+                type: array
+                description: Include only values with these labels in the CostReport.
+                items:
+                  type: string
             required:
               - cost_report_token
         values:
           type: array
-          description: The dates and amounts for the BusinessMetric.
+          description: The dates, amounts, and (optional) labels for the BusinessMetric.
           items:
             type: object
             properties:
@@ -5647,6 +7238,9 @@ components:
               amount:
                 type: number
                 format: double
+              label:
+                type: string
+                nullable: true
             required:
               - date
               - amount
@@ -5847,6 +7441,76 @@ components:
           example: discountable
           description: 'The scope for the costs. Possible values: discountable, all.'
       description: FinancialCommitmentReport model
+    FinancialCommitments:
+      type: object
+      properties:
+        links:
+          type: object
+        financial_commitments:
+          type: array
+          items:
+            $ref: '#/components/schemas/FinancialCommitment'
+      description: FinancialCommitments model
+    FinancialCommitment:
+      type: object
+      properties:
+        commitment_type:
+          type: string
+          example: Savings Plan
+          description: The commitment type (eg Savings Plan or Reserved Instance).
+        service:
+          type: string
+          example: Compute
+          description: The service this commitment applies towards.
+        account:
+          type: string
+          example: '113074892135'
+          description: The account for this financial commitment.
+        type:
+          type: string
+          example: m5.large
+          description: The type of financial commitment.
+        amount:
+          type: string
+          example: '4'
+          description: The number of instances for the financial commitment.
+        term:
+          type: string
+          example: 3 Year
+          description: The duration in years of the financial commitment.
+        payment_type:
+          type: string
+          example: No upfront
+          description: The type of payment for the financial commitment.
+        region:
+          type: string
+          example: us-east-1
+          description: The region for the financial commitment.
+        purchase_date:
+          type: string
+          example: '2023-08-30'
+          description: The purchase date of the financial commitment. ISO 8601 Formatted.
+        expiration_date:
+          type: string
+          example: '2026-08-30'
+          description: The expiration date of the financial commitment. ISO 8601 Formatted.
+        commitment:
+          type: string
+          example: $2.18
+          description: The amount of the financial commitment.
+        status:
+          type: string
+          example: active
+          description: The status of the financial commitment (e.g. active vs expired).
+        created_at:
+          type: string
+          example: '2024-03-19T00:00:00Z'
+          description: >-
+            The date and time, in UTC, the Financial Commitment was created. ISO
+            8601 Formatted.
+        workspace_token:
+          type: string
+          description: The token for the Workspace the FinancialCommitment is a part of.
     KubernetesEfficiencyReports:
       type: object
       properties:
@@ -6007,16 +7671,34 @@ components:
           items:
             type: object
             properties:
-              name:
-                type: string
-                description: The name of the value.
               filter:
                 type: string
                 description: >-
                   The filter query language to apply to the value. Additional
                   documentation available at https://docs.vantage.sh/vql.
+              name:
+                type: string
+                description: The name of the value.
+              business_metric_token:
+                type: string
+                description: The token of an associated business metric.
+              cost_metric:
+                type: object
+                properties:
+                  filter:
+                    type: string
+                  aggregation:
+                    type: object
+                    properties:
+                      tag:
+                        type: string
+                    required:
+                      - tag
+                required:
+                  - filter
+                  - aggregation
             required:
-              - name
+              - filter
       required:
         - key
         - overridable
@@ -6043,7 +7725,7 @@ components:
             a matching Cost.
         backfill_until:
           type: string
-          example: '2023-10-01'
+          example: '2024-02-01'
           description: The earliest month VirtualTagConfig should be backfilled to.
         values:
           type: array
@@ -6056,16 +7738,36 @@ components:
     VirtualTagConfigValue:
       type: object
       properties:
-        name:
-          type: string
-          example: Informatics
-          description: The name of the Value.
         filter:
           type: string
           example: >-
             costs.provider = 'aws' AND costs.service = 'Amazon Simple Storage
             Service'
           description: The filter VQL for the Value.
+        name:
+          type: string
+          example: Informatics
+          description: The name of the Value.
+        business_metric_token:
+          type: string
+          example: bsnss_mtrc_abc123
+          description: The token of the associated BusinessMetric.
+        cost_metric:
+          $ref: '#/components/schemas/VirtualTagConfigValueCostMetric'
+    VirtualTagConfigValueCostMetric:
+      type: object
+      properties:
+        filter:
+          type: string
+          description: The filter VQL for the cost metric.
+        aggregation:
+          $ref: '#/components/schemas/VirtualTagConfigValueCostMetricAggregation'
+    VirtualTagConfigValueCostMetricAggregation:
+      type: object
+      properties:
+        tag:
+          type: string
+          description: The tag to aggregate on.
     VirtualTagConfigs:
       type: object
       properties:
@@ -6099,30 +7801,48 @@ components:
           items:
             type: object
             properties:
-              name:
-                type: string
-                description: The name of the value.
               filter:
                 type: string
                 description: >-
                   The filter query language to apply to the value. Additional
                   documentation available at https://docs.vantage.sh/vql.
+              name:
+                type: string
+                description: The name of the value.
+              business_metric_token:
+                type: string
+                description: The token of an associated business metric.
+              cost_metric:
+                type: object
+                properties:
+                  filter:
+                    type: string
+                  aggregation:
+                    type: object
+                    properties:
+                      tag:
+                        type: string
+                    required:
+                      - tag
+                required:
+                  - filter
+                  - aggregation
             required:
-              - name
+              - filter
       description: Updates an existing VirtualTagConfig.
     createAnomalyNotification:
       type: object
       properties:
         cost_report_token:
           type: string
-          description: The token of the Cost Report folder that has the notification.
+          description: The token of the Cost Report that has the notification.
         threshold:
           type: integer
           format: int32
           description: The threshold amount that must be met for the notification to fire.
         user_tokens:
           type: array
-          description: The tokens of the users that receive the notification.
+          description: The tokens of the Users that receive the notification.
           items:
             type: string
         recipient_channels:
@@ -6252,6 +7972,9 @@ components:
         user_token:
           type: string
           description: The token for the User who created this Budget.
+        created_by_token:
+          type: string
+          description: The token for the Creator of this Budget.
         cost_report_token:
           type: string
           description: The token of the Report associated with the Budget.
@@ -6440,3 +8163,444 @@ components:
           items:
             $ref: '#/components/schemas/BudgetAlert'
       description: BudgetAlerts model
+    createAzureIntegration:
+      type: object
+      properties:
+        tenant:
+          type: string
+          description: Azure AD Tenant ID.
+        app_id:
+          type: string
+          description: Service Principal Application ID.
+        password:
+          type: string
+          description: Service Principal Password.
+      required:
+        - tenant
+        - app_id
+        - password
+      description: Create an Azure Integration
+    Integration:
+      type: object
+      properties:
+        token:
+          type: string
+        provider:
+          type: string
+          example: AWS
+          description: The name of the Integration.
+        account_identifier:
+          type: string
+          example: 011389-EF4C3E-3ED7AE
+          description: >-
+            The account identifier. For GCP this is the billing Account ID, for
+            Azure this is the account ID
+        status:
+          type: string
+          example: connected
+          enum:
+            - connected
+            - disconnected
+          description: The status of the Integration. Can be 'connected' or 'disconnected'.
+        workspace_tokens:
+          type: array
+          items:
+            type: string
+            example:
+              - wrkspc_abcd1234
+              - wrkspc_efgh5678
+          description: The tokens for any Workspaces that the account belongs to.
+        created_at:
+          type: string
+          example: '2023-08-04T00:00:00Z'
+          description: >-
+            The date and time, in UTC, the Integration was created. ISO 8601
+            Formatted.
+      description: Integration model
+    createGCPIntegration:
+      type: object
+      properties:
+        billing_account_id:
+          type: string
+          description: GCP billing account ID.
+        project_id:
+          type: string
+          description: GCP project ID.
+        dataset_name:
+          type: string
+          description: BigQuery dataset name.
+      required:
+        - billing_account_id
+        - project_id
+        - dataset_name
+      description: Create a GCP Integration
+    createCustomCostsIntegration:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the Custom Provider Integration.
+        description:
+          type: string
+          description: Description of the Custom Provider Integration.
+      required:
+        - name
+      description: Create a Custom Provider Integration
+    Integrations:
+      type: object
+      properties:
+        links:
+          type: object
+        integrations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Integration'
+      description: Integrations model
+    UserCostsUploads:
+      type: object
+      properties:
+        user_costs_uploads:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserCostsUpload'
+      description: UserCostsUploads model
+    UserCostsUpload:
+      type: object
+      properties:
+        token:
+          type: string
+          example: usr_csts_upld_1234
+          description: The token of the UserCostsUpload.
+        filename:
+          type: string
+          example: usr_csts_upld_1234.parquet
+          description: The filename of the uploaded costs UserCostsUpload.
+        amount:
+          type: string
+          example: 1234.56
+          description: The total amount of the costs in the UserCostsUpload.
+        start_date:
+          type: string
+          example: '2021-01-01'
+          description: The start date of the costs in the UserCostsUpload.
+        end_date:
+          type: string
+          example: '2021-01-31'
+          description: The end date of the costs in the UserCostsUpload.
+        created_by_token:
+          type: string
+          example: usr_1234
+          description: The token of the User who created the UserCostsUpload.
+        created_at:
+          type: string
+          example: '2021-01-01T00:00:00Z'
+          description: When the UserCostsUpload was uploaded.
+        processed_at:
+          type: string
+          example: '2021-01-01T00:00:00Z'
+          description: When the UserCostsUpload was first imported.
+      description: UserCostsUpload model
+    Recommendations:
+      type: object
+      properties:
+        links:
+          type: object
+        recommendations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Recommendation'
+      description: Recommendations model
+    Recommendation:
+      type: object
+      properties:
+        token:
+          type: string
+        category:
+          type: string
+          example: ec2_rightsizing_recommender
+          description: The category of the Recommendation.
+        workspace_token:
+          type: string
+          description: The token for the Workspace the Recommendation is a part of.
+        provider:
+          type: string
+          description: The provider the Recommendation is for.
+        provider_account_id:
+          type: string
+          description: >-
+            The account ID of the provider. For Azure, this is the subscription
+            ID.
+        description:
+          type: string
+        potential_savings:
+          type: string
+          example: '100.00'
+          description: The monthly potential savings of the Recommendation.
+        service:
+          type: string
+          example: Amazon EC2
+          description: The service the Recommendation is for.
+        created_at:
+          type: string
+          description: >-
+            The date and time, in UTC, the Recommendation was created. ISO 8601
+            Formatted.
+        resources_affected_count:
+          type: string
+          description: >-
+            The number of ProviderResources related to the Recommendation. Use
+            the `recommendations/:token/resources` endpoint to get the full list
+            of resources.
+      description: Recommendation model
+    ProviderResource:
+      type: object
+      properties:
+        token:
+          type: string
+        resource_id:
+          type: string
+          example: i-0a1b2c3d4e5f6g7h8
+          description: The unique identifier of the Active Resource.
+        recommendation_actions:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecommendationAction'
+          description: The actions to take to implement the Recommendation.
+      description: ProviderResource model
+    RecommendationAction:
+      type: object
+      properties:
+        action:
+          type: string
+        description:
+          type: string
+        potential_savings:
+          type: string
+          example: '100.00'
+          description: Potential savings in dollars
+        instance_type:
+          type: string
+        containers:
+          type: string
+    createManagedAccount:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the Managed Account.
+        contact_email:
+          type: string
+          description: The contact email address for the Managed Account.
+        access_credential_tokens:
+          type: array
+          description: >-
+            Access Credential (aka Integrations) tokens to assign to the Managed
+            Account.
+          items:
+            type: string
+        billing_rule_tokens:
+          type: array
+          description: Billing Rule tokens to assign to the Managed Account.
+          items:
+            type: string
+      required:
+        - name
+        - contact_email
+      description: Create a Managed Account.
+    ManagedAccount:
+      type: object
+      properties:
+        token:
+          type: string
+        name:
+          type: string
+        contact_email:
+          type: string
+        parent_account_token:
+          type: string
+          description: The token for the parent Account.
+        access_credential_tokens:
+          type: array
+          items:
+            type: string
+          description: >-
+            The tokens for the Access Credentials assigned to the Managed
+            Account.
+        billing_rule_tokens:
+          type: array
+          items:
+            type: string
+          description: The tokens for the Billing Rules assigned to the Managed Account.
+      description: ManagedAccount model
+    ManagedAccounts:
+      type: object
+      properties:
+        links:
+          type: object
+        managed_accounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/ManagedAccount'
+      description: ManagedAccounts model
+    updateManagedAccount:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the Managed Account.
+        contact_email:
+          type: string
+          description: The contact email address for the Managed Account.
+        access_credential_tokens:
+          type: array
+          description: >-
+            Access Credential (aka Integrations) tokens to assign to the Managed
+            Account.
+          items:
+            type: string
+        billing_rule_tokens:
+          type: array
+          description: Billing Rule tokens to assign to the Managed Account.
+          items:
+            type: string
+      description: Update a Managed Account.
+    createBillingRule:
+      type: object
+      properties:
+        type:
+          type: string
+          description: 'The type of the Billing Rule. Note: the values are case insensitive.'
+          enum:
+            - exclusion
+            - adjustment
+            - credit
+            - charge
+        title:
+          type: string
+          description: The title of the Billing Rule.
+        charge_type:
+          type: string
+          description: The charge type of the Billing Rule.
+        percentage:
+          type: number
+          format: double
+          description: 'The percentage of the cost shown. Example value: 75.0'
+        service:
+          type: string
+          description: The service of the Billing Rule.
+        category:
+          type: string
+          description: The category of the Billing Rule.
+        sub_category:
+          type: string
+          description: The subcategory of the Billing Rule.
+        start_period:
+          type: string
+          description: The start period of the Billing Rule.
+        amount:
+          type: number
+          format: double
+          description: 'The amount for the Billing Rule. Example value: 300'
+      required:
+        - type
+        - title
+        - charge_type
+        - percentage
+        - service
+        - category
+        - sub_category
+        - start_period
+        - amount
+      description: Create a Billing Rule.
+    BillingRule:
+      type: object
+      properties:
+        token:
+          type: string
+        title:
+          type: string
+          example: Credit for Unused EC2 Instances
+          description: The title of the Billing Rule.
+        type:
+          type: string
+          example: credit
+          description: The type of the Billing Rule.
+        created_by_token:
+          type: string
+          example: usr_1234
+          description: The token of the User who created the Billing Rule.
+        created_at:
+          type: string
+          example: '2024-06-28T00:00:00Z'
+          description: >-
+            The date and time, in UTC, the Billing Rule was created. ISO 8601
+            Formatted.
+        service:
+          type: string
+          example: AWS Cloudfront
+          description: The service for the Billing Rule (Charge).
+        category:
+          type: string
+          example: MSP Fee
+          description: The category for the Billing Rule (Charge).
+        percentage:
+          type: string
+          example: '75.0'
+          description: The percentage of the cost shown for the Billing Rule (Adjustment).
+        charge_type:
+          type: string
+          example: RIFee
+          description: The charge type for the Billing Rule.
+        sub_category:
+          type: string
+          example: One-time
+          description: The subcategory for the Billing Rule (Charge).
+        start_period:
+          type: string
+          example: '2024-05-01'
+          description: The start period for the Billing Rule (Charge).
+        amount:
+          type: string
+          example: '5000.25'
+          description: The amount for the Billing Rule (Charge).
+      description: BillingRule model
+    BillingRules:
+      type: object
+      properties:
+        links:
+          type: object
+        billing_rules:
+          type: array
+          items:
+            $ref: '#/components/schemas/BillingRule'
+      description: BillingRules model
+    updateBillingRule:
+      type: object
+      properties:
+        title:
+          type: string
+          description: The title of the Billing Rule.
+        charge_type:
+          type: string
+          description: The charge type of the Billing Rule.
+        percentage:
+          type: number
+          format: double
+          description: 'The percentage of the cost shown. Example value: 75.0'
+        service:
+          type: string
+          description: The service of the Billing Rule.
+        category:
+          type: string
+          description: The category of the Billing Rule.
+        sub_category:
+          type: string
+          description: The subcategory of the Billing Rule.
+        start_period:
+          type: string
+          description: The start period of the Billing Rule.
+        amount:
+          type: number
+          format: double
+          description: 'The credit amount for the Billing Rule. Example value: 300'
+      description: Update a Billing Rule.

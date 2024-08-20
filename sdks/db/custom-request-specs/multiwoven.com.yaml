@@ -1,9 +1,9 @@
 openapi: 3.0.1
 info:
-  title: MultiWoven API
+  title: AI Squared API
   version: 1.0.0
 servers:
-  - url: https://api.multiwoven.com
+  - url: https://api.squared.ai
 paths:
   /api/v1/models:
     get:
@@ -462,8 +462,6 @@ paths:
                       enum:
                         - source
                         - destination
-                    query_type:
-                      type: string
                     connector_name:
                       type: string
                     configuration:
@@ -662,8 +660,6 @@ paths:
                       enum:
                         - source
                         - destination
-                    query_type:
-                      type: string
                     configuration:
                       type: object
                       description: >-
@@ -746,6 +742,12 @@ paths:
           schema:
             type: string
           description: Unique ID of the connector
+        - name: refresh
+          in: query
+          required: false
+          schema:
+            type: boolean
+          description: Set to true to force refresh the catalog
       responses:
         '200':
           description: Catalog information for the connector
@@ -893,6 +895,10 @@ paths:
                               type: string
                               enum:
                                 - minutes
+                            cron_expression:
+                              type: string
+                            cursor_field:
+                              type: string
                             stream_name:
                               type: string
                             status:
@@ -960,6 +966,10 @@ paths:
                       type: string
                       enum:
                         - minutes
+                    cron_expression:
+                      type: string
+                    cursor_field:
+                      type: string
                   required:
                     - source_id
                     - destination_id
@@ -1010,6 +1020,10 @@ paths:
                         type: string
                         enum:
                           - minutes
+                      cron_expression:
+                        type: string
+                      cursor_field:
+                        type: string
                       stream_name:
                         type: string
                       status:
@@ -1068,6 +1082,10 @@ paths:
                         type: string
                         enum:
                           - minutes
+                      cron_expression:
+                        type: string
+                      cursor_field:
+                        type: string
                       stream_name:
                         type: string
                       status:
@@ -1113,6 +1131,8 @@ paths:
                     sync_interval:
                       type: integer
                     sync_interval_unit:
+                      type: string
+                    cron_expression:
                       type: string
       responses:
         '200':
@@ -1161,6 +1181,10 @@ paths:
                             type: string
                             enum:
                               - minutes
+                          cron_expression:
+                            type: string
+                          cursor_field:
+                            type: string
                           stream_name:
                             type: string
                           status:
@@ -1483,6 +1507,8 @@ paths:
                               type: number
                               format: float
                             total_query_rows:
+                              type: integer
+                            skipped_rows:
                               type: integer
                             total_rows:
                               type: integer

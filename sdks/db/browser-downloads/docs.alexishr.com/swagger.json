@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "AlexisHR API",
-    "description": "<h1 id=\"introduction\">Introduction</h1>\r\n<p>\r\n  AlexisHR API is currently in preview. This means that small, backward\r\n  incompatible changes might be introduced while in preview. The changes will be\r\n  documented and communicated.\r\n  <a\r\n    href=\"https://cdn.forms-content.sg-form.com/56c6a65c-90a2-11eb-a700-a6de1aea3a1a\"\r\n    target=\"_blank\"\r\n    ><button>Subscribe to updates</button></a\r\n  >\r\n</p>\r\n\r\n<h1 id=\"authentication\">Authentication</h1>\r\n<pre class=\"click-to-expand-wrapper is-snippet-wrapper language-undefined\">\r\n<code class=\"is-highlighted language-bash\">curl https://api.alexishr.com/v1/employee \\\r\n  -H \"Authorization: Bearer &lt;your_access_token&gt;\"</code>\r\n</pre>\r\n<p>\r\n  Authenticate your account when using the API by including your secret Access\r\n  Token in the request.\r\n  <a href=\"https://app.alexishr.com/access-tokens\">Manage your Access Tokens</a\r\n  >.\r\n</p>\r\n<p>\r\n  Authentication is performed by passing the Access Token in the Authorization\r\n  header.\r\n</p>\r\n<hr />\r\n\r\n<h1 id=\"structure\">Structure</h1>\r\n<p>\r\n  You will find the structure of the API to be highly uniform and consistent.\r\n  Typically every resource can be accessed via a top level endpoint, such as\r\n  <code>/v1/employee</code>. For every such resource, you can perform some of\r\n  the following operations:\r\n</p>\r\n<h2>Operations</h2>\r\n<table>\r\n  <tr>\r\n    <td>GET /v1/:resource</td>\r\n    <td>List all objects of this type</td>\r\n  </tr>\r\n  <tr>\r\n    <td>GET /v1/:resource/:id</td>\r\n    <td>Retrieve a resource by id</td>\r\n  </tr>\r\n  <tr>\r\n    <td>POST /v1/:resource</td>\r\n    <td>Create a resource of this type</td>\r\n  </tr>\r\n  <tr>\r\n    <td>PATCH /v1/:resource/:id</td>\r\n    <td>Update the resource by id</td>\r\n  </tr>\r\n  <tr>\r\n    <td>DELETE /v1/:resource/:id</td>\r\n    <td>Delete the resource by id</td>\r\n  </tr>\r\n</table>\r\n<hr />\r\n\r\n<h1 id=\"roles\">Roles</h1>\r\n<p>The Access Tokens will have owner permission on the account</p>\r\n<hr />\r\n\r\n<h1 id=\"filters\">Filters</h1>\r\n<p>\r\n  Some of the list endpoints allow to filter results by certain conditions.\r\n  Refer to specific resources to find out what criteria are allowed. Below is a\r\n  list of the different conditions.\r\n</p>\r\n\r\n<h4 id=\"eq\"><code>$eq</code></h4>\r\n<p>Find all results matching the attribute value specified.</p>\r\n<div>\r\n  <pre><code class=\"language-shell\" data-lang=\"shell\">GET /v1/example?filters[fieldName][$eq]=value</code></pre>\r\n</div>\r\n<p>Can also be simplified like this.</p>\r\n<div>\r\n  <pre><code class=\"language-shell\" data-lang=\"shell\">GET /v1/example?filters[fieldName]=value</code></pre>\r\n</div>\r\n\r\n<h4 id=\"neq\"><code>$neq</code></h4>\r\n<p>Find all results not matching the attribute value specified.</p>\r\n<div>\r\n  <pre><code class=\"language-shell\" data-lang=\"shell\">GET /v1/example?filters[fieldName][$neq]=value</code></pre>\r\n</div>\r\n\r\n<h4 id=\"gt\"><code>$gt</code>, <code>$gte</code></h4>\r\n<p>\r\n  Find all results where the value is more (<code>$gt</code>) or more and equal\r\n  (<code>$gte</code>) to a given value.\r\n</p>\r\n<div>\r\n  <pre><code class=\"language-shell\" data-lang=\"shell\">GET /v1/example?filters[startDate][$gte]=2020-01-01</code></pre>\r\n</div>\r\n<hr />\r\n\r\n<h4 id=\"lt\"><code>$lt</code>, <code>$lte</code></h4>\r\n<p>\r\n  Find all results where the value is less (<code>$lt</code>) or less and equal\r\n  (<code>$lte</code>) to a given value.\r\n</p>\r\n<div>\r\n  <pre><code class=\"language-shell\" data-lang=\"shell\">GET /v1/example?filters[startDate][$lte]=2020-01-01</code></pre>\r\n</div>\r\n<hr />\r\n\r\n<h4 id=\"in\"><code>$in</code>, <code>$nin</code></h4>\r\n<p>\r\n  Find all results matching (<code>$in</code>) or not matching\r\n  (<code>$nin</code>) any of the attribute values specified.\r\n</p>\r\n<div>\r\n  <pre><code class=\"language-shell\" data-lang=\"shell\">GET /v1/example?filters[fieldName][$in][]=value1&filters[fieldName][$in][]=value2</code></pre>\r\n</div>\r\n<hr />\r\n\r\n<h4 id=\"between\"><code>$between</code></h4>\r\n<p>Find all results between two values specified.</p>\r\n<div>\r\n  <pre><code class=\"language-shell\" data-lang=\"shell\">GET /v1/example?filters[startDate][$between][]=2020-01-01&filters[startDate][$between][]=2020-12-31</code></pre>\r\n</div>\r\n<hr />\r\n\r\n<h1 id=\"versioning\">Versioning</h1>\r\n<p>\r\n  Each version of the API is guaranteed to be compatible with the resources of\r\n  the same version. When we make breaking changes to the API a new version will\r\n  be published\r\n</p>\r\n<hr />\r\n\r\n<h1 id=\"changelog\">Changelog</h1>\r\n<h3>2023-12-20</h3>\r\n<p>Field [updated] added for filter & select for Get Many Employments and Get Many Employees.</p>\r\n<h3>2021-03-15</h3>\r\n<p>First draft was published</p>\r\n<hr />\r\n\n# Authentication\n\n<!-- ReDoc-Inject: <security-definitions> -->",
+    "description": "<h1 id=\"introduction\">Introduction</h1>\n<p>\n  AlexisHR API is currently in preview. This means that small, backward\n  incompatible changes might be introduced while in preview. The changes will be\n  documented and communicated.\n  <a\n    href=\"https://cdn.forms-content.sg-form.com/56c6a65c-90a2-11eb-a700-a6de1aea3a1a\"\n    target=\"_blank\"\n    ><button>Subscribe to updates</button></a\n  >\n</p>\n\n<h1 id=\"authentication\">Authentication</h1>\n<pre class=\"click-to-expand-wrapper is-snippet-wrapper language-undefined\">\n<code class=\"is-highlighted language-bash\">curl https://api.alexishr.com/v1/employee \\\n  -H \"Authorization: Bearer &lt;your_access_token&gt;\"</code>\n</pre>\n<p>\n  Authenticate your account when using the API by including your secret Access\n  Token in the request.\n  <a href=\"https://app.alexishr.com/access-tokens\">Manage your Access Tokens</a\n  >.\n</p>\n<p>\n  Authentication is performed by passing the Access Token in the Authorization\n  header.\n</p>\n<hr />\n\n<h1 id=\"structure\">Structure</h1>\n<p>\n  You will find the structure of the API to be highly uniform and consistent.\n  Typically every resource can be accessed via a top level endpoint, such as\n  <code>/v1/employee</code>. For every such resource, you can perform some of\n  the following operations:\n</p>\n<h2>Operations</h2>\n<table>\n  <tr>\n    <td>GET /v1/:resource</td>\n    <td>List all objects of this type</td>\n  </tr>\n  <tr>\n    <td>GET /v1/:resource/:id</td>\n    <td>Retrieve a resource by id</td>\n  </tr>\n  <tr>\n    <td>POST /v1/:resource</td>\n    <td>Create a resource of this type</td>\n  </tr>\n  <tr>\n    <td>PATCH /v1/:resource/:id</td>\n    <td>Update the resource by id</td>\n  </tr>\n  <tr>\n    <td>DELETE /v1/:resource/:id</td>\n    <td>Delete the resource by id</td>\n  </tr>\n</table>\n<hr />\n\n<h1 id=\"roles\">Roles</h1>\n<p>The Access Tokens will have owner permission on the account</p>\n<hr />\n\n<h1 id=\"filters\">Filters</h1>\n<p>\n  Some of the list endpoints allow to filter results by certain conditions.\n  Refer to specific resources to find out what criteria are allowed. Below is a\n  list of the different conditions.\n</p>\n\n<h4 id=\"eq\"><code>$eq</code></h4>\n<p>Find all results matching the attribute value specified.</p>\n<div>\n  <pre><code class=\"language-shell\" data-lang=\"shell\">GET /v1/example?filters[fieldName][$eq]=value</code></pre>\n</div>\n<p>Can also be simplified like this.</p>\n<div>\n  <pre><code class=\"language-shell\" data-lang=\"shell\">GET /v1/example?filters[fieldName]=value</code></pre>\n</div>\n\n<h4 id=\"neq\"><code>$neq</code></h4>\n<p>Find all results not matching the attribute value specified.</p>\n<div>\n  <pre><code class=\"language-shell\" data-lang=\"shell\">GET /v1/example?filters[fieldName][$neq]=value</code></pre>\n</div>\n\n<h4 id=\"gt\"><code>$gt</code>, <code>$gte</code></h4>\n<p>\n  Find all results where the value is more (<code>$gt</code>) or more and equal\n  (<code>$gte</code>) to a given value.\n</p>\n<div>\n  <pre><code class=\"language-shell\" data-lang=\"shell\">GET /v1/example?filters[startDate][$gte]=2020-01-01</code></pre>\n</div>\n<hr />\n\n<h4 id=\"lt\"><code>$lt</code>, <code>$lte</code></h4>\n<p>\n  Find all results where the value is less (<code>$lt</code>) or less and equal\n  (<code>$lte</code>) to a given value.\n</p>\n<div>\n  <pre><code class=\"language-shell\" data-lang=\"shell\">GET /v1/example?filters[startDate][$lte]=2020-01-01</code></pre>\n</div>\n<hr />\n\n<h4 id=\"in\"><code>$in</code>, <code>$nin</code></h4>\n<p>\n  Find all results matching (<code>$in</code>) or not matching\n  (<code>$nin</code>) any of the attribute values specified.\n</p>\n<div>\n  <pre><code class=\"language-shell\" data-lang=\"shell\">GET /v1/example?filters[fieldName][$in][]=value1&filters[fieldName][$in][]=value2</code></pre>\n</div>\n<hr />\n\n<h4 id=\"between\"><code>$between</code></h4>\n<p>Find all results between two values specified.</p>\n<div>\n  <pre><code class=\"language-shell\" data-lang=\"shell\">GET /v1/example?filters[startDate][$between][]=2020-01-01&filters[startDate][$between][]=2020-12-31</code></pre>\n</div>\n<hr />\n\n<h1 id=\"versioning\">Versioning</h1>\n<p>\n  Each version of the API is guaranteed to be compatible with the resources of\n  the same version. When we make breaking changes to the API a new version will\n  be published\n</p>\n<hr />\n\n<h1 id=\"changelog\">Changelog</h1>\n<h3>2023-12-20</h3>\n<p>Field [updated] added for filter & select for Get Many Employments and Get Many Employees.</p>\n<h3>2021-03-15</h3>\n<p>First draft was published</p>\n<hr />\n\n# Authentication\n\n<!-- ReDoc-Inject: <security-definitions> -->",
     "version": "v1-preview",
     "contact": {
       "name": "AlexisHR Support",
@@ -340,6 +340,7 @@
                   "managerEmployeeId",
                   "departmentId",
                   "costCenterId",
+                  "effectiveCostCenterId",
                   "employmentId",
                   "employmentTypeId",
                   "employmentCountry",
@@ -718,6 +719,50 @@
                   }
                 },
                 "costCenterId": {
+                  "type": "object",
+                  "properties": {
+                    "$eq": {
+                      "type": "string"
+                    },
+                    "$neq": {
+                      "type": "string"
+                    },
+                    "$gt": {
+                      "type": "string"
+                    },
+                    "$lt": {
+                      "type": "string"
+                    },
+                    "$gte": {
+                      "type": "string"
+                    },
+                    "$lte": {
+                      "type": "string"
+                    },
+                    "$in": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$nin": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$between": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$all": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "effectiveCostCenterId": {
                   "type": "object",
                   "properties": {
                     "$eq": {
@@ -2081,6 +2126,13 @@
                     "desc"
                   ]
                 },
+                "effectiveCostCenterId": {
+                  "type": "string",
+                  "enum": [
+                    "asc",
+                    "desc"
+                  ]
+                },
                 "employmentId": {
                   "type": "string",
                   "enum": [
@@ -2456,6 +2508,7 @@
                   "managerEmployeeId",
                   "departmentId",
                   "costCenterId",
+                  "effectiveCostCenterId",
                   "employmentId",
                   "employmentTypeId",
                   "employmentCountry",
@@ -8022,6 +8075,2411 @@
         },
         "tags": [
           "compensation"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/bonus-compensation": {
+      "get": {
+        "operationId": "getmanyBonusCompensation",
+        "summary": "Get Many Bonus Compensations",
+        "description": "Get Many Bonus Compensations",
+        "parameters": [
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "Select Bonus Compensation fields, comma-separated. (e.g. `select=id,firstName,lastName,workEmail`)",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "id",
+                  "companyId",
+                  "employeeId",
+                  "userId",
+                  "name",
+                  "amount",
+                  "payoutDate",
+                  "currencyId",
+                  "note"
+                ]
+              }
+            },
+            "style": "form",
+            "explode": false
+          },
+          {
+            "name": "filters",
+            "required": false,
+            "in": "query",
+            "description": "Filters conditions per field. (e.g. `filters[id][$eq]=507f1f77bcf86cd799439011`)",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "object",
+                  "properties": {
+                    "$eq": {
+                      "type": "string"
+                    },
+                    "$neq": {
+                      "type": "string"
+                    },
+                    "$gt": {
+                      "type": "string"
+                    },
+                    "$lt": {
+                      "type": "string"
+                    },
+                    "$gte": {
+                      "type": "string"
+                    },
+                    "$lte": {
+                      "type": "string"
+                    },
+                    "$in": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$nin": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$between": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$all": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "companyId": {
+                  "type": "object",
+                  "properties": {
+                    "$eq": {
+                      "type": "string"
+                    },
+                    "$neq": {
+                      "type": "string"
+                    },
+                    "$gt": {
+                      "type": "string"
+                    },
+                    "$lt": {
+                      "type": "string"
+                    },
+                    "$gte": {
+                      "type": "string"
+                    },
+                    "$lte": {
+                      "type": "string"
+                    },
+                    "$in": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$nin": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$between": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$all": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "employeeId": {
+                  "type": "object",
+                  "properties": {
+                    "$eq": {
+                      "type": "string"
+                    },
+                    "$neq": {
+                      "type": "string"
+                    },
+                    "$gt": {
+                      "type": "string"
+                    },
+                    "$lt": {
+                      "type": "string"
+                    },
+                    "$gte": {
+                      "type": "string"
+                    },
+                    "$lte": {
+                      "type": "string"
+                    },
+                    "$in": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$nin": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$between": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$all": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "userId": {
+                  "type": "object",
+                  "properties": {
+                    "$eq": {
+                      "type": "string"
+                    },
+                    "$neq": {
+                      "type": "string"
+                    },
+                    "$gt": {
+                      "type": "string"
+                    },
+                    "$lt": {
+                      "type": "string"
+                    },
+                    "$gte": {
+                      "type": "string"
+                    },
+                    "$lte": {
+                      "type": "string"
+                    },
+                    "$in": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$nin": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$between": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$all": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "name": {
+                  "type": "object",
+                  "properties": {
+                    "$eq": {
+                      "type": "string"
+                    },
+                    "$neq": {
+                      "type": "string"
+                    },
+                    "$gt": {
+                      "type": "string"
+                    },
+                    "$lt": {
+                      "type": "string"
+                    },
+                    "$gte": {
+                      "type": "string"
+                    },
+                    "$lte": {
+                      "type": "string"
+                    },
+                    "$in": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$nin": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$between": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$all": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "amount": {
+                  "type": "object",
+                  "properties": {
+                    "$eq": {
+                      "type": "string"
+                    },
+                    "$neq": {
+                      "type": "string"
+                    },
+                    "$gt": {
+                      "type": "string"
+                    },
+                    "$lt": {
+                      "type": "string"
+                    },
+                    "$gte": {
+                      "type": "string"
+                    },
+                    "$lte": {
+                      "type": "string"
+                    },
+                    "$in": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$nin": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$between": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$all": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "payoutDate": {
+                  "type": "object",
+                  "properties": {
+                    "$eq": {
+                      "type": "string"
+                    },
+                    "$neq": {
+                      "type": "string"
+                    },
+                    "$gt": {
+                      "type": "string"
+                    },
+                    "$lt": {
+                      "type": "string"
+                    },
+                    "$gte": {
+                      "type": "string"
+                    },
+                    "$lte": {
+                      "type": "string"
+                    },
+                    "$in": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$nin": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$between": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$all": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "currencyId": {
+                  "type": "object",
+                  "properties": {
+                    "$eq": {
+                      "type": "string"
+                    },
+                    "$neq": {
+                      "type": "string"
+                    },
+                    "$gt": {
+                      "type": "string"
+                    },
+                    "$lt": {
+                      "type": "string"
+                    },
+                    "$gte": {
+                      "type": "string"
+                    },
+                    "$lte": {
+                      "type": "string"
+                    },
+                    "$in": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$nin": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$between": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$all": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "note": {
+                  "type": "object",
+                  "properties": {
+                    "$eq": {
+                      "type": "string"
+                    },
+                    "$neq": {
+                      "type": "string"
+                    },
+                    "$gt": {
+                      "type": "string"
+                    },
+                    "$lt": {
+                      "type": "string"
+                    },
+                    "$gte": {
+                      "type": "string"
+                    },
+                    "$lte": {
+                      "type": "string"
+                    },
+                    "$in": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$nin": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$between": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$all": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "style": "deepObject",
+            "explode": true,
+            "allowReserved": true
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "Limit amount of received Bonus Compensations. (e.g. `limit=20`)",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "offset",
+            "required": false,
+            "in": "query",
+            "description": "Offset amount of received Bonus Compensations. (e.g. `offset=20`)",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "sort",
+            "required": false,
+            "in": "query",
+            "description": "Sort received Bonus Compensations by field. (e.g. `sort[id]=asc`)",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "enum": [
+                    "asc",
+                    "desc"
+                  ]
+                },
+                "companyId": {
+                  "type": "string",
+                  "enum": [
+                    "asc",
+                    "desc"
+                  ]
+                },
+                "employeeId": {
+                  "type": "string",
+                  "enum": [
+                    "asc",
+                    "desc"
+                  ]
+                },
+                "userId": {
+                  "type": "string",
+                  "enum": [
+                    "asc",
+                    "desc"
+                  ]
+                },
+                "name": {
+                  "type": "string",
+                  "enum": [
+                    "asc",
+                    "desc"
+                  ]
+                },
+                "amount": {
+                  "type": "string",
+                  "enum": [
+                    "asc",
+                    "desc"
+                  ]
+                },
+                "payoutDate": {
+                  "type": "string",
+                  "enum": [
+                    "asc",
+                    "desc"
+                  ]
+                },
+                "currencyId": {
+                  "type": "string",
+                  "enum": [
+                    "asc",
+                    "desc"
+                  ]
+                },
+                "note": {
+                  "type": "string",
+                  "enum": [
+                    "asc",
+                    "desc"
+                  ]
+                }
+              }
+            },
+            "style": "deepObject",
+            "explode": true,
+            "allowReserved": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BonusCompensationsGetManyResponseMapped"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "bonus-compensation"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "post": {
+        "operationId": "createBonusCompensation",
+        "summary": "Create One Bonus Compensation",
+        "description": "Create One Bonus Compensation",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateBonusCompensationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BonusCompensationResponseMapped"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "bonus-compensation"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/bonus-compensation/{id}": {
+      "get": {
+        "operationId": "getBonusCompensation",
+        "summary": "Get One Bonus Compensation",
+        "description": "Get One Bonus Compensation",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "example": "507f1f77bcf86cd799439011",
+            "description": "Resource Id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "Select Bonus Compensation fields, comma-separated. (e.g. `select=id,firstName,lastName,workEmail`)",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "id",
+                  "companyId",
+                  "employeeId",
+                  "userId",
+                  "name",
+                  "amount",
+                  "payoutDate",
+                  "currencyId",
+                  "note"
+                ]
+              }
+            },
+            "style": "form",
+            "explode": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BonusCompensationGetOneResponseMapped"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "bonus-compensation"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "patch": {
+        "operationId": "updateBonusCompensation",
+        "summary": "Update One Bonus Compensation",
+        "description": "Update One Bonus Compensation",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "example": "507f1f77bcf86cd799439011",
+            "description": "Resource Id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateBonusCompensationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BonusCompensationResponseMapped"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "bonus-compensation"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "put": {
+        "operationId": "replaceBonusCompensation",
+        "summary": "Replace One Bonus Compensation",
+        "description": "Replace One Bonus Compensation",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "example": "507f1f77bcf86cd799439011",
+            "description": "Resource Id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateBonusCompensationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BonusCompensationResponseMapped"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "bonus-compensation"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "deleteBonusCompensation",
+        "summary": "Delete One Bonus Compensation",
+        "description": "Delete One Bonus Compensation",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "example": "507f1f77bcf86cd799439011",
+            "description": "Resource Id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponseMapped"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "bonus-compensation"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/additional-compensation": {
+      "get": {
+        "operationId": "getmanyAdditionalCompensation",
+        "summary": "Get Many Additional Compensations",
+        "description": "Get Many Additional Compensations",
+        "parameters": [
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "Select Additional Compensation fields, comma-separated. (e.g. `select=id,firstName,lastName,workEmail`)",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "id",
+                  "companyId",
+                  "employeeId",
+                  "userId",
+                  "name",
+                  "amount",
+                  "currencyId",
+                  "effectiveDate",
+                  "endDate",
+                  "payoutDay",
+                  "payoutPeriod",
+                  "payoutFrequency",
+                  "salarySchedule",
+                  "note"
+                ]
+              }
+            },
+            "style": "form",
+            "explode": false
+          },
+          {
+            "name": "filters",
+            "required": false,
+            "in": "query",
+            "description": "Filters conditions per field. (e.g. `filters[id][$eq]=507f1f77bcf86cd799439011`)",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "object",
+                  "properties": {
+                    "$eq": {
+                      "type": "string"
+                    },
+                    "$neq": {
+                      "type": "string"
+                    },
+                    "$gt": {
+                      "type": "string"
+                    },
+                    "$lt": {
+                      "type": "string"
+                    },
+                    "$gte": {
+                      "type": "string"
+                    },
+                    "$lte": {
+                      "type": "string"
+                    },
+                    "$in": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$nin": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$between": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$all": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "companyId": {
+                  "type": "object",
+                  "properties": {
+                    "$eq": {
+                      "type": "string"
+                    },
+                    "$neq": {
+                      "type": "string"
+                    },
+                    "$gt": {
+                      "type": "string"
+                    },
+                    "$lt": {
+                      "type": "string"
+                    },
+                    "$gte": {
+                      "type": "string"
+                    },
+                    "$lte": {
+                      "type": "string"
+                    },
+                    "$in": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$nin": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$between": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$all": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "employeeId": {
+                  "type": "object",
+                  "properties": {
+                    "$eq": {
+                      "type": "string"
+                    },
+                    "$neq": {
+                      "type": "string"
+                    },
+                    "$gt": {
+                      "type": "string"
+                    },
+                    "$lt": {
+                      "type": "string"
+                    },
+                    "$gte": {
+                      "type": "string"
+                    },
+                    "$lte": {
+                      "type": "string"
+                    },
+                    "$in": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$nin": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$between": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$all": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "userId": {
+                  "type": "object",
+                  "properties": {
+                    "$eq": {
+                      "type": "string"
+                    },
+                    "$neq": {
+                      "type": "string"
+                    },
+                    "$gt": {
+                      "type": "string"
+                    },
+                    "$lt": {
+                      "type": "string"
+                    },
+                    "$gte": {
+                      "type": "string"
+                    },
+                    "$lte": {
+                      "type": "string"
+                    },
+                    "$in": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$nin": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$between": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$all": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "name": {
+                  "type": "object",
+                  "properties": {
+                    "$eq": {
+                      "type": "string"
+                    },
+                    "$neq": {
+                      "type": "string"
+                    },
+                    "$gt": {
+                      "type": "string"
+                    },
+                    "$lt": {
+                      "type": "string"
+                    },
+                    "$gte": {
+                      "type": "string"
+                    },
+                    "$lte": {
+                      "type": "string"
+                    },
+                    "$in": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$nin": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$between": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$all": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "amount": {
+                  "type": "object",
+                  "properties": {
+                    "$eq": {
+                      "type": "string"
+                    },
+                    "$neq": {
+                      "type": "string"
+                    },
+                    "$gt": {
+                      "type": "string"
+                    },
+                    "$lt": {
+                      "type": "string"
+                    },
+                    "$gte": {
+                      "type": "string"
+                    },
+                    "$lte": {
+                      "type": "string"
+                    },
+                    "$in": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$nin": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$between": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$all": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "currencyId": {
+                  "type": "object",
+                  "properties": {
+                    "$eq": {
+                      "type": "string"
+                    },
+                    "$neq": {
+                      "type": "string"
+                    },
+                    "$gt": {
+                      "type": "string"
+                    },
+                    "$lt": {
+                      "type": "string"
+                    },
+                    "$gte": {
+                      "type": "string"
+                    },
+                    "$lte": {
+                      "type": "string"
+                    },
+                    "$in": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$nin": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$between": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$all": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "effectiveDate": {
+                  "type": "object",
+                  "properties": {
+                    "$eq": {
+                      "type": "string"
+                    },
+                    "$neq": {
+                      "type": "string"
+                    },
+                    "$gt": {
+                      "type": "string"
+                    },
+                    "$lt": {
+                      "type": "string"
+                    },
+                    "$gte": {
+                      "type": "string"
+                    },
+                    "$lte": {
+                      "type": "string"
+                    },
+                    "$in": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$nin": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$between": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$all": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "endDate": {
+                  "type": "object",
+                  "properties": {
+                    "$eq": {
+                      "type": "string"
+                    },
+                    "$neq": {
+                      "type": "string"
+                    },
+                    "$gt": {
+                      "type": "string"
+                    },
+                    "$lt": {
+                      "type": "string"
+                    },
+                    "$gte": {
+                      "type": "string"
+                    },
+                    "$lte": {
+                      "type": "string"
+                    },
+                    "$in": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$nin": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$between": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$all": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "payoutDay": {
+                  "type": "object",
+                  "properties": {
+                    "$eq": {
+                      "type": "string"
+                    },
+                    "$neq": {
+                      "type": "string"
+                    },
+                    "$gt": {
+                      "type": "string"
+                    },
+                    "$lt": {
+                      "type": "string"
+                    },
+                    "$gte": {
+                      "type": "string"
+                    },
+                    "$lte": {
+                      "type": "string"
+                    },
+                    "$in": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$nin": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$between": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$all": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "payoutPeriod": {
+                  "type": "object",
+                  "properties": {
+                    "$eq": {
+                      "type": "string"
+                    },
+                    "$neq": {
+                      "type": "string"
+                    },
+                    "$gt": {
+                      "type": "string"
+                    },
+                    "$lt": {
+                      "type": "string"
+                    },
+                    "$gte": {
+                      "type": "string"
+                    },
+                    "$lte": {
+                      "type": "string"
+                    },
+                    "$in": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$nin": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$between": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$all": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "payoutFrequency": {
+                  "type": "object",
+                  "properties": {
+                    "$eq": {
+                      "type": "string"
+                    },
+                    "$neq": {
+                      "type": "string"
+                    },
+                    "$gt": {
+                      "type": "string"
+                    },
+                    "$lt": {
+                      "type": "string"
+                    },
+                    "$gte": {
+                      "type": "string"
+                    },
+                    "$lte": {
+                      "type": "string"
+                    },
+                    "$in": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$nin": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$between": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$all": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "salarySchedule": {
+                  "type": "object",
+                  "properties": {
+                    "$eq": {
+                      "type": "string"
+                    },
+                    "$neq": {
+                      "type": "string"
+                    },
+                    "$gt": {
+                      "type": "string"
+                    },
+                    "$lt": {
+                      "type": "string"
+                    },
+                    "$gte": {
+                      "type": "string"
+                    },
+                    "$lte": {
+                      "type": "string"
+                    },
+                    "$in": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$nin": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$between": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$all": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "note": {
+                  "type": "object",
+                  "properties": {
+                    "$eq": {
+                      "type": "string"
+                    },
+                    "$neq": {
+                      "type": "string"
+                    },
+                    "$gt": {
+                      "type": "string"
+                    },
+                    "$lt": {
+                      "type": "string"
+                    },
+                    "$gte": {
+                      "type": "string"
+                    },
+                    "$lte": {
+                      "type": "string"
+                    },
+                    "$in": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$nin": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$between": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "$all": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "style": "deepObject",
+            "explode": true,
+            "allowReserved": true
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "Limit amount of received Additional Compensations. (e.g. `limit=20`)",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "offset",
+            "required": false,
+            "in": "query",
+            "description": "Offset amount of received Additional Compensations. (e.g. `offset=20`)",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "sort",
+            "required": false,
+            "in": "query",
+            "description": "Sort received Additional Compensations by field. (e.g. `sort[id]=asc`)",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "enum": [
+                    "asc",
+                    "desc"
+                  ]
+                },
+                "companyId": {
+                  "type": "string",
+                  "enum": [
+                    "asc",
+                    "desc"
+                  ]
+                },
+                "employeeId": {
+                  "type": "string",
+                  "enum": [
+                    "asc",
+                    "desc"
+                  ]
+                },
+                "userId": {
+                  "type": "string",
+                  "enum": [
+                    "asc",
+                    "desc"
+                  ]
+                },
+                "name": {
+                  "type": "string",
+                  "enum": [
+                    "asc",
+                    "desc"
+                  ]
+                },
+                "amount": {
+                  "type": "string",
+                  "enum": [
+                    "asc",
+                    "desc"
+                  ]
+                },
+                "currencyId": {
+                  "type": "string",
+                  "enum": [
+                    "asc",
+                    "desc"
+                  ]
+                },
+                "effectiveDate": {
+                  "type": "string",
+                  "enum": [
+                    "asc",
+                    "desc"
+                  ]
+                },
+                "endDate": {
+                  "type": "string",
+                  "enum": [
+                    "asc",
+                    "desc"
+                  ]
+                },
+                "payoutDay": {
+                  "type": "string",
+                  "enum": [
+                    "asc",
+                    "desc"
+                  ]
+                },
+                "payoutPeriod": {
+                  "type": "string",
+                  "enum": [
+                    "asc",
+                    "desc"
+                  ]
+                },
+                "payoutFrequency": {
+                  "type": "string",
+                  "enum": [
+                    "asc",
+                    "desc"
+                  ]
+                },
+                "salarySchedule": {
+                  "type": "string",
+                  "enum": [
+                    "asc",
+                    "desc"
+                  ]
+                },
+                "note": {
+                  "type": "string",
+                  "enum": [
+                    "asc",
+                    "desc"
+                  ]
+                }
+              }
+            },
+            "style": "deepObject",
+            "explode": true,
+            "allowReserved": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdditionalCompensationsGetManyResponseMapped"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "additional-compensation"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "post": {
+        "operationId": "createAdditionalCompensation",
+        "summary": "Create One Additional Compensation",
+        "description": "Create One Additional Compensation",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAdditionalCompensationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdditionalCompensationResponseMapped"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "additional-compensation"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/additional-compensation/{id}": {
+      "get": {
+        "operationId": "getAdditionalCompensation",
+        "summary": "Get One Additional Compensation",
+        "description": "Get One Additional Compensation",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "example": "507f1f77bcf86cd799439011",
+            "description": "Resource Id",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "select",
+            "required": false,
+            "in": "query",
+            "description": "Select Additional Compensation fields, comma-separated. (e.g. `select=id,firstName,lastName,workEmail`)",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "id",
+                  "companyId",
+                  "employeeId",
+                  "userId",
+                  "name",
+                  "amount",
+                  "currencyId",
+                  "effectiveDate",
+                  "endDate",
+                  "payoutDay",
+                  "payoutPeriod",
+                  "payoutFrequency",
+                  "salarySchedule",
+                  "note"
+                ]
+              }
+            },
+            "style": "form",
+            "explode": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdditionalCompensationGetOneResponseMapped"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "additional-compensation"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "patch": {
+        "operationId": "updateAdditionalCompensation",
+        "summary": "Update One Additional Compensation",
+        "description": "Update One Additional Compensation",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "example": "507f1f77bcf86cd799439011",
+            "description": "Resource Id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAdditionalCompensationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdditionalCompensationResponseMapped"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "additional-compensation"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "put": {
+        "operationId": "replaceAdditionalCompensation",
+        "summary": "Replace One Additional Compensation",
+        "description": "Replace One Additional Compensation",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "example": "507f1f77bcf86cd799439011",
+            "description": "Resource Id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAdditionalCompensationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdditionalCompensationResponseMapped"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "additional-compensation"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "deleteAdditionalCompensation",
+        "summary": "Delete One Additional Compensation",
+        "description": "Delete One Additional Compensation",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "example": "507f1f77bcf86cd799439011",
+            "description": "Resource Id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyResponseMapped"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequestResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFoundResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "additional-compensation"
         ],
         "security": [
           {
@@ -18542,6 +21000,10 @@
             "type": "string",
             "example": "507f1f77bcf86cd799439011"
           },
+          "effectiveCostCenterId": {
+            "type": "string",
+            "example": "507f1f77bcf86cd799439011"
+          },
           "employmentId": {
             "type": "string",
             "example": "507f1f77bcf86cd799439011"
@@ -21493,6 +23955,538 @@
           "paidOvertime": {
             "type": "boolean",
             "example": false
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      },
+      "BonusCompensationResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "507f1f77bcf86cd799439011"
+          },
+          "companyId": {
+            "type": "string",
+            "example": "507f1f77bcf86cd799439011"
+          },
+          "employeeId": {
+            "type": "string",
+            "example": "507f1f77bcf86cd799439011"
+          },
+          "userId": {
+            "type": "string",
+            "example": "507f1f77bcf86cd799439011"
+          },
+          "name": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number"
+          },
+          "payoutDate": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "currencyId": {
+            "type": "string",
+            "example": "507f1f77bcf86cd799439011"
+          },
+          "note": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "companyId",
+          "employeeId",
+          "userId",
+          "name",
+          "amount",
+          "payoutDate",
+          "currencyId"
+        ]
+      },
+      "BonusCompensationsGetManyResponseMapped": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "ok",
+            "description": "Status String"
+          },
+          "data": {
+            "description": "Resource data",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BonusCompensationResponse"
+            }
+          },
+          "total": {
+            "type": "number",
+            "description": "Number of all resources",
+            "example": 500
+          },
+          "count": {
+            "type": "number",
+            "description": "Number of received resources",
+            "example": 50
+          },
+          "offset": {
+            "type": "number",
+            "description": "Offset amount of received resources",
+            "example": 50
+          },
+          "relations": {
+            "description": "Resource relations",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/EmptyResponse"
+              }
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "data",
+          "total",
+          "count"
+        ]
+      },
+      "BonusCompensationGetOneResponseMapped": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "ok",
+            "description": "Status String"
+          },
+          "data": {
+            "description": "Resource data",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/BonusCompensationResponse"
+              }
+            ]
+          },
+          "relations": {
+            "description": "Resource relations",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/EmptyResponse"
+              }
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "data"
+        ]
+      },
+      "CreateBonusCompensationRequest": {
+        "type": "object",
+        "properties": {
+          "companyId": {
+            "type": "string",
+            "example": "507f1f77bcf86cd799439011"
+          },
+          "employeeId": {
+            "type": "string",
+            "example": "507f1f77bcf86cd799439011"
+          },
+          "userId": {
+            "type": "string",
+            "example": "507f1f77bcf86cd799439011"
+          },
+          "name": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number"
+          },
+          "payoutDate": {
+            "type": "string"
+          },
+          "currencyId": {
+            "type": "string",
+            "example": "507f1f77bcf86cd799439011"
+          },
+          "note": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "companyId",
+          "employeeId",
+          "userId",
+          "name",
+          "amount",
+          "payoutDate",
+          "currencyId"
+        ]
+      },
+      "BonusCompensationResponseMapped": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "ok",
+            "description": "Status String"
+          },
+          "data": {
+            "description": "Resource data",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/BonusCompensationResponse"
+              }
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "data"
+        ]
+      },
+      "UpdateBonusCompensationRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number"
+          },
+          "payoutDate": {
+            "type": "string"
+          },
+          "currencyId": {
+            "type": "string",
+            "example": "507f1f77bcf86cd799439011"
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      },
+      "AdditionalCompensationResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "507f1f77bcf86cd799439011"
+          },
+          "companyId": {
+            "type": "string",
+            "example": "507f1f77bcf86cd799439011"
+          },
+          "employeeId": {
+            "type": "string",
+            "example": "507f1f77bcf86cd799439011"
+          },
+          "userId": {
+            "type": "string",
+            "example": "507f1f77bcf86cd799439011"
+          },
+          "name": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number"
+          },
+          "currencyId": {
+            "type": "string",
+            "example": "507f1f77bcf86cd799439011"
+          },
+          "effectiveDate": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "endDate": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "payoutDay": {
+            "type": "number",
+            "example": 25
+          },
+          "payoutPeriod": {
+            "type": "string",
+            "example": "MONTHLY",
+            "enum": [
+              "HOURLY",
+              "DAILY",
+              "WEEKLY",
+              "BI_WEEKLY",
+              "MONTHLY",
+              "QUARTERLY",
+              "ANNUAL"
+            ]
+          },
+          "payoutFrequency": {
+            "type": "string",
+            "example": "MONTH",
+            "enum": [
+              "WEEK",
+              "BI_WEEKLY",
+              "MONTH"
+            ]
+          },
+          "salarySchedule": {
+            "type": "string",
+            "example": "ADVANCE",
+            "enum": [
+              "ADVANCE",
+              "DELAYED"
+            ]
+          },
+          "note": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "companyId",
+          "employeeId",
+          "userId",
+          "amount",
+          "currencyId",
+          "effectiveDate"
+        ]
+      },
+      "AdditionalCompensationsGetManyResponseMapped": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "ok",
+            "description": "Status String"
+          },
+          "data": {
+            "description": "Resource data",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AdditionalCompensationResponse"
+            }
+          },
+          "total": {
+            "type": "number",
+            "description": "Number of all resources",
+            "example": 500
+          },
+          "count": {
+            "type": "number",
+            "description": "Number of received resources",
+            "example": 50
+          },
+          "offset": {
+            "type": "number",
+            "description": "Offset amount of received resources",
+            "example": 50
+          },
+          "relations": {
+            "description": "Resource relations",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/EmptyResponse"
+              }
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "data",
+          "total",
+          "count"
+        ]
+      },
+      "AdditionalCompensationGetOneResponseMapped": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "ok",
+            "description": "Status String"
+          },
+          "data": {
+            "description": "Resource data",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AdditionalCompensationResponse"
+              }
+            ]
+          },
+          "relations": {
+            "description": "Resource relations",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/EmptyResponse"
+              }
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "data"
+        ]
+      },
+      "CreateAdditionalCompensationRequest": {
+        "type": "object",
+        "properties": {
+          "companyId": {
+            "type": "string",
+            "example": "507f1f77bcf86cd799439011"
+          },
+          "employeeId": {
+            "type": "string",
+            "example": "507f1f77bcf86cd799439011"
+          },
+          "userId": {
+            "type": "string",
+            "example": "507f1f77bcf86cd799439011"
+          },
+          "name": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number"
+          },
+          "currencyId": {
+            "type": "string",
+            "example": "507f1f77bcf86cd799439011"
+          },
+          "effectiveDate": {
+            "type": "string"
+          },
+          "endDate": {
+            "type": "string"
+          },
+          "payoutDay": {
+            "type": "number",
+            "example": 25
+          },
+          "payoutPeriod": {
+            "type": "string",
+            "example": "MONTHLY",
+            "enum": [
+              "HOURLY",
+              "DAILY",
+              "WEEKLY",
+              "BI_WEEKLY",
+              "MONTHLY",
+              "QUARTERLY",
+              "ANNUAL"
+            ]
+          },
+          "payoutFrequency": {
+            "type": "string",
+            "example": "MONTH",
+            "enum": [
+              "WEEK",
+              "BI_WEEKLY",
+              "MONTH"
+            ]
+          },
+          "salarySchedule": {
+            "type": "string",
+            "example": "ADVANCE",
+            "enum": [
+              "ADVANCE",
+              "DELAYED"
+            ]
+          },
+          "note": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "companyId",
+          "employeeId",
+          "userId",
+          "name",
+          "amount",
+          "currencyId",
+          "effectiveDate",
+          "payoutDay",
+          "payoutPeriod",
+          "payoutFrequency"
+        ]
+      },
+      "AdditionalCompensationResponseMapped": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "ok",
+            "description": "Status String"
+          },
+          "data": {
+            "description": "Resource data",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AdditionalCompensationResponse"
+              }
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "data"
+        ]
+      },
+      "UpdateAdditionalCompensationRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number"
+          },
+          "currencyId": {
+            "type": "string",
+            "example": "507f1f77bcf86cd799439011"
+          },
+          "effectiveDate": {
+            "type": "string"
+          },
+          "endDate": {
+            "type": "string"
+          },
+          "payoutDay": {
+            "type": "number",
+            "example": 25
+          },
+          "payoutPeriod": {
+            "type": "string",
+            "example": "MONTHLY",
+            "enum": [
+              "HOURLY",
+              "DAILY",
+              "WEEKLY",
+              "BI_WEEKLY",
+              "MONTHLY",
+              "QUARTERLY",
+              "ANNUAL"
+            ]
+          },
+          "payoutFrequency": {
+            "type": "string",
+            "example": "MONTH",
+            "enum": [
+              "WEEK",
+              "BI_WEEKLY",
+              "MONTH"
+            ]
+          },
+          "salarySchedule": {
+            "type": "string",
+            "example": "ADVANCE",
+            "enum": [
+              "ADVANCE",
+              "DELAYED"
+            ]
           },
           "note": {
             "type": "string"
