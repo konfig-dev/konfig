@@ -155,7 +155,14 @@ class ResponsesState {
         if ('$ref' in schema) {
           throw new Error('$ref not expected in schema')
         }
-        return [schema]
+        return [
+          {
+            ...schema,
+            description: responseObject.schema.description
+              ? responseObject.schema.description
+              : schema.description,
+          },
+        ]
       }
     }
     if (responseObject.schema === null) return null
@@ -215,7 +222,6 @@ class ResponsesState {
     path: string = ''
   ): FieldDocumentationWithDepth[] {
     const fieldsWithDepth: FieldDocumentationWithDepth[] = []
-
     for (const field of fields) {
       if (field.schema.allOf !== undefined) {
         if (field.schema.allOf.length === 1) {
@@ -224,6 +230,10 @@ class ResponsesState {
           if ('$ref' in schema) {
             throw new Error('$ref not expected in schema')
           }
+          schema.description =
+            'description' in field.schema
+              ? field.schema.description
+              : schema.description
           if (isNullable) {
             ;(schema as any).nullable = true
           }
@@ -650,13 +660,15 @@ const ResponseFieldDocumentationContents = observer(
           'ml-4': depth > 0,
         })}
       >
-        {fields.map((field) => (
-          <ResponseFieldDocumentationField
-            key={field.name}
-            field={field}
-            depth={depth}
-          />
-        ))}
+        {fields.map((field) => {
+          return (
+            <ResponseFieldDocumentationField
+              key={field.name}
+              field={field}
+              depth={depth}
+            />
+          )
+        })}
       </div>
     )
   }
