@@ -10,6 +10,7 @@ import { getGitRepositoryName } from './get-git-repository-name'
 import { isSubmodule } from './is-submodule'
 import { UnwrapPromise } from './unwrap-promise'
 import { getSdkDefaultBranch } from './get-sdk-default-branch'
+import * as fs from 'fs'
 
 export async function generateReadme({
   konfigYaml,
@@ -87,7 +88,17 @@ export async function generateReadme({
       }
     )
     .join('\n')
-  return `# ${name}\n\n|Language|Version|Package Manager|README|Source|\n|-|-|-|-|-|\n${languageSection}`
+  const table = `|Language|Version|Package Manager|README|Source|\n|-|-|-|-|-|\n${languageSection}`
+  if (konfigYaml.overrideTopLevelReadme) {
+    const readme = await overrideReadme(konfigYaml.overrideTopLevelReadme)
+    return readme.replace("<!-- TABLE -->", table)
+  }
+  return `# ${name}\n\n${table}`
+}
+
+async function overrideReadme(filePath: string): Promise<string> {
+  const readme = fs.readFileSync(filePath).toString()
+  return readme
 }
 
 export async function getDocumentationUrl({

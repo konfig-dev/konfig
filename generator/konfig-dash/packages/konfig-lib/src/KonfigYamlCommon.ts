@@ -323,6 +323,7 @@ export const KonfigYamlCommon = z
       .optional()
       .describe("Title to be used in Konfig's API Portal"),
     defaultChangesetBumpType: defaultChangesetBumpType.default('patch'),
+    overrideTopLevelReadme: z.string().optional(),
     fixConfig: fixConfig.optional(),
     filterQueryParams: z.string().array().optional(),
     filterTags: z.array(z.string()).optional(),

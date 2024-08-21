@@ -209,6 +209,23 @@
               },
               "description": "List of operations to hide in Konfig's API Portal. The first key is the path and the second is the HTTP method."
             },
+            "cta": {
+              "type": "object",
+              "properties": {
+                "url": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "url",
+                "label"
+              ],
+              "additionalProperties": false,
+              "description": "Adds a call-to-action button at the top-right of the docs."
+            },
             "hideSecurity": {
               "type": "array",
               "items": {
@@ -392,6 +409,9 @@
           "description": "Default changeset bump type for 'konfig changeset' command",
           "default": "patch"
         },
+        "overrideTopLevelReadme": {
+          "type": "string"
+        },
         "fixConfig": {
           "type": "object",
           "properties": {
@@ -561,6 +581,12 @@
             "additionalProperties": false
           },
           "description": "Filter operations from OpenAPI spec by path and method. Filtered operations won't be generated in SDKs. Omitting method will filter all methods for the path."
+        },
+        "doNotAutoMergeBumpPr": {
+          "type": "boolean"
+        },
+        "disableAutomationLinter": {
+          "type": "boolean"
         },
         "tagPriority": {
           "type": "array",
@@ -1758,6 +1784,12 @@
                 "packageName": {
                   "type": "string",
                   "description": "acme"
+                },
+                "clientState": {
+                  "$ref": "#/definitions/konfigYaml/properties/generators/properties/java/properties/clientState"
+                },
+                "clientStateWithExamples": {
+                  "$ref": "#/definitions/konfigYaml/properties/generators/properties/java/properties/clientStateWithExamples"
                 }
               },
               "required": [
@@ -2936,6 +2968,12 @@
                   },
                   "packageName": {
                     "$ref": "#/definitions/konfigYaml/properties/generators/properties/go/properties/packageName"
+                  },
+                  "clientState": {
+                    "$ref": "#/definitions/konfigYaml/properties/generators/properties/java/properties/clientState"
+                  },
+                  "clientStateWithExamples": {
+                    "$ref": "#/definitions/konfigYaml/properties/generators/properties/java/properties/clientStateWithExamples"
                   }
                 },
                 "required": [
