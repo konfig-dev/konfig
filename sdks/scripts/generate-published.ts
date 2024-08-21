@@ -638,17 +638,21 @@ function removeRelativeLinks({
   // (/api/rest/responses/#hateoas-links)
   // (any link that is not an absolute link and is relative)
   const relativeLinkRegex = /href="\/([^"]+)"/g;
+  const parenthesesLinkRegex = /\(\/([^)]+)\)/g;
+  const nonAbsoluteLinkRegex =
+    /\(((https:\/\/)|(http:\/\/))([a-zA-Z0-9-_/?#%]+)\)/g;
+
   specString = specString.replace(
     relativeLinkRegex,
     `href="${developerDocumentation}`
   );
   specString = specString.replace(
-    /\(\/([^)]+)\)/g,
-    `(${developerDocumentation}`
+    parenthesesLinkRegex,
+    `(${developerDocumentation})`
   );
   specString = specString.replace(
-    /\((?!https?:\/\/)([a-zA-Z0-9-_/?#%]+)\)/g,
-    `(${developerDocumentation}`
+    nonAbsoluteLinkRegex,
+    `(${developerDocumentation})`
   );
   return specString;
 }
